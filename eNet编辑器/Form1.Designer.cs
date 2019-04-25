@@ -30,37 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.panelDgv = new System.Windows.Forms.Panel();
-            this.panel9 = new System.Windows.Forms.Panel();
-            this.txtShow = new System.Windows.Forms.TextBox();
-            this.panelshang = new System.Windows.Forms.Panel();
-            this.panelSection = new System.Windows.Forms.Panel();
-            this.panel7 = new System.Windows.Forms.Panel();
-            this.btnweizhi = new System.Windows.Forms.Button();
-            this.label4 = new System.Windows.Forms.Label();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.label3 = new System.Windows.Forms.Label();
-            this.panelxia = new System.Windows.Forms.Panel();
-            this.panelTitle = new System.Windows.Forms.Panel();
-            this.panel8 = new System.Windows.Forms.Panel();
-            this.btndxs = new System.Windows.Forms.Button();
-            this.LbTitleName = new System.Windows.Forms.Label();
-            this.cbType = new System.Windows.Forms.ComboBox();
-            this.splitContainer2 = new System.Windows.Forms.SplitContainer();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.label2 = new System.Windows.Forms.Label();
-            this.panelThree = new System.Windows.Forms.Panel();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.btnName = new DevComponents.DotNetBar.ButtonX();
-            this.btnPoint = new DevComponents.DotNetBar.ButtonX();
-            this.btnScene = new DevComponents.DotNetBar.ButtonX();
-            this.btnTimer = new DevComponents.DotNetBar.ButtonX();
-            this.btnBind = new DevComponents.DotNetBar.ButtonX();
-            this.btnLogic = new DevComponents.DotNetBar.ButtonX();
-            this.btnOperation = new DevComponents.DotNetBar.ButtonX();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.文件ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.新建项目ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -137,272 +106,37 @@
             this.tsTimer = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.panel1 = new System.Windows.Forms.Panel();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
-            this.splitContainer1.Panel1.SuspendLayout();
-            this.splitContainer1.Panel2.SuspendLayout();
-            this.splitContainer1.SuspendLayout();
-            this.panel3.SuspendLayout();
-            this.panel9.SuspendLayout();
-            this.panelshang.SuspendLayout();
-            this.panel7.SuspendLayout();
-            this.panel4.SuspendLayout();
-            this.panelxia.SuspendLayout();
-            this.panel8.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
-            this.splitContainer2.Panel1.SuspendLayout();
-            this.splitContainer2.Panel2.SuspendLayout();
-            this.splitContainer2.SuspendLayout();
-            this.panel2.SuspendLayout();
-            this.flowLayoutPanel1.SuspendLayout();
+            this.Form1_Fill_Panel = new Infragistics.Win.Misc.UltraPanel();
+            this.panelDgv = new System.Windows.Forms.Panel();
+            this.ultraButton1 = new Infragistics.Win.Misc.UltraButton();
+            this.btnName = new DevComponents.DotNetBar.ButtonX();
+            this.btnTimer = new DevComponents.DotNetBar.ButtonX();
+            this.btndxs = new System.Windows.Forms.Button();
+            this.btnScene = new DevComponents.DotNetBar.ButtonX();
+            this.LbTitleName = new System.Windows.Forms.Label();
+            this.btnPoint = new DevComponents.DotNetBar.ButtonX();
+            this.btnweizhi = new System.Windows.Forms.Button();
+            this.btnBind = new DevComponents.DotNetBar.ButtonX();
+            this.cbType = new System.Windows.Forms.ComboBox();
+            this.btnLogic = new DevComponents.DotNetBar.ButtonX();
+            this.label4 = new System.Windows.Forms.Label();
+            this.btnOperation = new DevComponents.DotNetBar.ButtonX();
+            this.txtShow = new System.Windows.Forms.TextBox();
+            this.tabStrip1 = new DevComponents.DotNetBar.TabStrip();
+            this.tabItem1 = new DevComponents.DotNetBar.TabItem(this.components);
+            this.tabItem2 = new DevComponents.DotNetBar.TabItem(this.components);
+            this.tabItem3 = new DevComponents.DotNetBar.TabItem(this.components);
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
+            this.Form1_Fill_Panel.ClientArea.SuspendLayout();
+            this.Form1_Fill_Panel.SuspendLayout();
+            this.panelDgv.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // splitContainer1
-            // 
-            resources.ApplyResources(this.splitContainer1, "splitContainer1");
-            this.splitContainer1.Name = "splitContainer1";
-            // 
-            // splitContainer1.Panel1
-            // 
-            this.splitContainer1.Panel1.Controls.Add(this.panel3);
-            this.splitContainer1.Panel1.Controls.Add(this.panelDgv);
-            this.splitContainer1.Panel1.Controls.Add(this.panel9);
-            // 
-            // splitContainer1.Panel2
-            // 
-            this.splitContainer1.Panel2.Controls.Add(this.panelshang);
-            this.splitContainer1.Panel2.Controls.Add(this.panel4);
-            this.splitContainer1.Panel2.Controls.Add(this.panelxia);
-            // 
-            // panel3
-            // 
-            this.panel3.BackColor = System.Drawing.Color.Lavender;
-            this.panel3.Controls.Add(this.label1);
-            resources.ApplyResources(this.panel3, "panel3");
-            this.panel3.Name = "panel3";
-            // 
-            // label1
-            // 
-            resources.ApplyResources(this.label1, "label1");
-            this.label1.Name = "label1";
-            // 
-            // panelDgv
-            // 
-            resources.ApplyResources(this.panelDgv, "panelDgv");
-            this.panelDgv.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.panelDgv.Name = "panelDgv";
-            // 
-            // panel9
-            // 
-            this.panel9.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.panel9.Controls.Add(this.txtShow);
-            resources.ApplyResources(this.panel9, "panel9");
-            this.panel9.Name = "panel9";
-            // 
-            // txtShow
-            // 
-            resources.ApplyResources(this.txtShow, "txtShow");
-            this.txtShow.Name = "txtShow";
-            // 
-            // panelshang
-            // 
-            resources.ApplyResources(this.panelshang, "panelshang");
-            this.panelshang.BackColor = System.Drawing.Color.Lavender;
-            this.panelshang.Controls.Add(this.panelSection);
-            this.panelshang.Controls.Add(this.panel7);
-            this.panelshang.Name = "panelshang";
-            // 
-            // panelSection
-            // 
-            resources.ApplyResources(this.panelSection, "panelSection");
-            this.panelSection.Name = "panelSection";
-            // 
-            // panel7
-            // 
-            this.panel7.BackColor = System.Drawing.Color.Lavender;
-            this.panel7.Controls.Add(this.btnweizhi);
-            this.panel7.Controls.Add(this.label4);
-            resources.ApplyResources(this.panel7, "panel7");
-            this.panel7.Name = "panel7";
-            // 
-            // btnweizhi
-            // 
-            resources.ApplyResources(this.btnweizhi, "btnweizhi");
-            this.btnweizhi.Name = "btnweizhi";
-            this.btnweizhi.UseVisualStyleBackColor = true;
-            this.btnweizhi.Click += new System.EventHandler(this.btnweizhi_Click);
-            // 
-            // label4
-            // 
-            resources.ApplyResources(this.label4, "label4");
-            this.label4.Name = "label4";
-            // 
-            // panel4
-            // 
-            this.panel4.BackColor = System.Drawing.Color.Lavender;
-            this.panel4.Controls.Add(this.label3);
-            resources.ApplyResources(this.panel4, "panel4");
-            this.panel4.Name = "panel4";
-            // 
-            // label3
-            // 
-            resources.ApplyResources(this.label3, "label3");
-            this.label3.Name = "label3";
-            // 
-            // panelxia
-            // 
-            this.panelxia.BackColor = System.Drawing.Color.White;
-            this.panelxia.Controls.Add(this.panelTitle);
-            this.panelxia.Controls.Add(this.panel8);
-            resources.ApplyResources(this.panelxia, "panelxia");
-            this.panelxia.Name = "panelxia";
-            // 
-            // panelTitle
-            // 
-            resources.ApplyResources(this.panelTitle, "panelTitle");
-            this.panelTitle.Name = "panelTitle";
-            // 
-            // panel8
-            // 
-            this.panel8.BackColor = System.Drawing.Color.Lavender;
-            this.panel8.Controls.Add(this.btndxs);
-            this.panel8.Controls.Add(this.LbTitleName);
-            this.panel8.Controls.Add(this.cbType);
-            resources.ApplyResources(this.panel8, "panel8");
-            this.panel8.Name = "panel8";
-            // 
-            // btndxs
-            // 
-            resources.ApplyResources(this.btndxs, "btndxs");
-            this.btndxs.Name = "btndxs";
-            this.btndxs.UseVisualStyleBackColor = true;
-            this.btndxs.Click += new System.EventHandler(this.btndxs_Click);
-            // 
-            // LbTitleName
-            // 
-            resources.ApplyResources(this.LbTitleName, "LbTitleName");
-            this.LbTitleName.Name = "LbTitleName";
-            // 
-            // cbType
-            // 
-            this.cbType.FormattingEnabled = true;
-            resources.ApplyResources(this.cbType, "cbType");
-            this.cbType.Name = "cbType";
-            this.cbType.SelectedIndexChanged += new System.EventHandler(this.cbType_SelectedIndexChanged);
-            // 
-            // splitContainer2
-            // 
-            resources.ApplyResources(this.splitContainer2, "splitContainer2");
-            this.splitContainer2.Name = "splitContainer2";
-            // 
-            // splitContainer2.Panel1
-            // 
-            this.splitContainer2.Panel1.Controls.Add(this.panel2);
-            this.splitContainer2.Panel1.Controls.Add(this.panelThree);
-            this.splitContainer2.Panel1.Controls.Add(this.flowLayoutPanel1);
-            // 
-            // splitContainer2.Panel2
-            // 
-            this.splitContainer2.Panel2.Controls.Add(this.splitContainer1);
-            // 
-            // panel2
-            // 
-            resources.ApplyResources(this.panel2, "panel2");
-            this.panel2.BackColor = System.Drawing.Color.Lavender;
-            this.panel2.Controls.Add(this.label2);
-            this.panel2.Name = "panel2";
-            // 
-            // label2
-            // 
-            resources.ApplyResources(this.label2, "label2");
-            this.label2.Name = "label2";
-            // 
-            // panelThree
-            // 
-            resources.ApplyResources(this.panelThree, "panelThree");
-            this.panelThree.Name = "panelThree";
-            // 
-            // flowLayoutPanel1
-            // 
-            resources.ApplyResources(this.flowLayoutPanel1, "flowLayoutPanel1");
-            this.flowLayoutPanel1.BackColor = System.Drawing.Color.Lavender;
-            this.flowLayoutPanel1.Controls.Add(this.btnName);
-            this.flowLayoutPanel1.Controls.Add(this.btnPoint);
-            this.flowLayoutPanel1.Controls.Add(this.btnScene);
-            this.flowLayoutPanel1.Controls.Add(this.btnTimer);
-            this.flowLayoutPanel1.Controls.Add(this.btnBind);
-            this.flowLayoutPanel1.Controls.Add(this.btnLogic);
-            this.flowLayoutPanel1.Controls.Add(this.btnOperation);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            // 
-            // btnName
-            // 
-            this.btnName.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnName.ColorTable = DevComponents.DotNetBar.eButtonColor.MagentaWithBackground;
-            resources.ApplyResources(this.btnName, "btnName");
-            this.btnName.Name = "btnName";
-            this.btnName.Style = DevComponents.DotNetBar.eDotNetBarStyle.VS2005;
-            this.btnName.Click += new System.EventHandler(this.btnName_Click_1);
-            // 
-            // btnPoint
-            // 
-            this.btnPoint.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnPoint.ColorTable = DevComponents.DotNetBar.eButtonColor.MagentaWithBackground;
-            resources.ApplyResources(this.btnPoint, "btnPoint");
-            this.btnPoint.Name = "btnPoint";
-            this.btnPoint.Style = DevComponents.DotNetBar.eDotNetBarStyle.VS2005;
-            this.btnPoint.Click += new System.EventHandler(this.btnPoint_Click);
-            // 
-            // btnScene
-            // 
-            this.btnScene.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnScene.ColorTable = DevComponents.DotNetBar.eButtonColor.MagentaWithBackground;
-            resources.ApplyResources(this.btnScene, "btnScene");
-            this.btnScene.Name = "btnScene";
-            this.btnScene.Style = DevComponents.DotNetBar.eDotNetBarStyle.VS2005;
-            this.btnScene.Click += new System.EventHandler(this.btnScene_Click_1);
-            // 
-            // btnTimer
-            // 
-            this.btnTimer.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnTimer.ColorTable = DevComponents.DotNetBar.eButtonColor.MagentaWithBackground;
-            resources.ApplyResources(this.btnTimer, "btnTimer");
-            this.btnTimer.Name = "btnTimer";
-            this.btnTimer.Style = DevComponents.DotNetBar.eDotNetBarStyle.VS2005;
-            this.btnTimer.Click += new System.EventHandler(this.btnTimer_Click_1);
-            // 
-            // btnBind
-            // 
-            this.btnBind.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnBind.ColorTable = DevComponents.DotNetBar.eButtonColor.MagentaWithBackground;
-            resources.ApplyResources(this.btnBind, "btnBind");
-            this.btnBind.Name = "btnBind";
-            this.btnBind.Style = DevComponents.DotNetBar.eDotNetBarStyle.VS2005;
-            this.btnBind.Click += new System.EventHandler(this.btnBind_Click_1);
-            // 
-            // btnLogic
-            // 
-            this.btnLogic.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnLogic.ColorTable = DevComponents.DotNetBar.eButtonColor.MagentaWithBackground;
-            resources.ApplyResources(this.btnLogic, "btnLogic");
-            this.btnLogic.Name = "btnLogic";
-            this.btnLogic.Style = DevComponents.DotNetBar.eDotNetBarStyle.VS2005;
-            this.btnLogic.Click += new System.EventHandler(this.btnLogic_Click_1);
-            // 
-            // btnOperation
-            // 
-            this.btnOperation.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnOperation.ColorTable = DevComponents.DotNetBar.eButtonColor.MagentaWithBackground;
-            resources.ApplyResources(this.btnOperation, "btnOperation");
-            this.btnOperation.Name = "btnOperation";
-            this.btnOperation.Style = DevComponents.DotNetBar.eDotNetBarStyle.VS2005;
-            this.btnOperation.Click += new System.EventHandler(this.btnOperation_Click_1);
             // 
             // menuStrip1
             // 
-            this.menuStrip1.BackColor = System.Drawing.Color.DarkGray;
+            this.menuStrip1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(216)))), ((int)(((byte)(216)))));
+            this.menuStrip1.GripMargin = new System.Windows.Forms.Padding(0);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.文件ToolStripMenuItem,
             this.编辑ToolStripMenuItem,
@@ -806,7 +540,8 @@
             // toolStrip1
             // 
             resources.ApplyResources(this.toolStrip1, "toolStrip1");
-            this.toolStrip1.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.toolStrip1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(216)))), ((int)(((byte)(216)))));
+            this.toolStrip1.GripMargin = new System.Windows.Forms.Padding(0);
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsNewfile,
             this.tsOpenfile,
@@ -908,19 +643,179 @@
             this.timer1.Interval = 3000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // panel1
+            // Form1_Fill_Panel
             // 
-            resources.ApplyResources(this.panel1, "panel1");
-            this.panel1.Name = "panel1";
+            // 
+            // Form1_Fill_Panel.ClientArea
+            // 
+            this.Form1_Fill_Panel.ClientArea.Controls.Add(this.tabStrip1);
+            this.Form1_Fill_Panel.ClientArea.Controls.Add(this.panelDgv);
+            this.Form1_Fill_Panel.ClientArea.Controls.Add(this.toolStrip1);
+            this.Form1_Fill_Panel.Cursor = System.Windows.Forms.Cursors.Default;
+            resources.ApplyResources(this.Form1_Fill_Panel, "Form1_Fill_Panel");
+            this.Form1_Fill_Panel.Name = "Form1_Fill_Panel";
+            // 
+            // panelDgv
+            // 
+            resources.ApplyResources(this.panelDgv, "panelDgv");
+            this.panelDgv.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panelDgv.Controls.Add(this.ultraButton1);
+            this.panelDgv.Controls.Add(this.btnName);
+            this.panelDgv.Controls.Add(this.btnTimer);
+            this.panelDgv.Controls.Add(this.btndxs);
+            this.panelDgv.Controls.Add(this.btnScene);
+            this.panelDgv.Controls.Add(this.LbTitleName);
+            this.panelDgv.Controls.Add(this.btnPoint);
+            this.panelDgv.Controls.Add(this.btnweizhi);
+            this.panelDgv.Controls.Add(this.btnBind);
+            this.panelDgv.Controls.Add(this.cbType);
+            this.panelDgv.Controls.Add(this.btnLogic);
+            this.panelDgv.Controls.Add(this.label4);
+            this.panelDgv.Controls.Add(this.btnOperation);
+            this.panelDgv.Controls.Add(this.txtShow);
+            this.panelDgv.Name = "panelDgv";
+            // 
+            // ultraButton1
+            // 
+            resources.ApplyResources(this.ultraButton1, "ultraButton1");
+            this.ultraButton1.Name = "ultraButton1";
+            // 
+            // btnName
+            // 
+            this.btnName.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnName.ColorTable = DevComponents.DotNetBar.eButtonColor.MagentaWithBackground;
+            resources.ApplyResources(this.btnName, "btnName");
+            this.btnName.Name = "btnName";
+            this.btnName.Style = DevComponents.DotNetBar.eDotNetBarStyle.VS2005;
+            this.btnName.Click += new System.EventHandler(this.btnName_Click_1);
+            // 
+            // btnTimer
+            // 
+            this.btnTimer.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnTimer.ColorTable = DevComponents.DotNetBar.eButtonColor.MagentaWithBackground;
+            resources.ApplyResources(this.btnTimer, "btnTimer");
+            this.btnTimer.Name = "btnTimer";
+            this.btnTimer.Style = DevComponents.DotNetBar.eDotNetBarStyle.VS2005;
+            this.btnTimer.Click += new System.EventHandler(this.btnTimer_Click_1);
+            // 
+            // btndxs
+            // 
+            resources.ApplyResources(this.btndxs, "btndxs");
+            this.btndxs.Name = "btndxs";
+            this.btndxs.UseVisualStyleBackColor = true;
+            this.btndxs.Click += new System.EventHandler(this.btndxs_Click);
+            // 
+            // btnScene
+            // 
+            this.btnScene.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnScene.ColorTable = DevComponents.DotNetBar.eButtonColor.MagentaWithBackground;
+            resources.ApplyResources(this.btnScene, "btnScene");
+            this.btnScene.Name = "btnScene";
+            this.btnScene.Style = DevComponents.DotNetBar.eDotNetBarStyle.VS2005;
+            this.btnScene.Click += new System.EventHandler(this.btnScene_Click_1);
+            // 
+            // LbTitleName
+            // 
+            resources.ApplyResources(this.LbTitleName, "LbTitleName");
+            this.LbTitleName.Name = "LbTitleName";
+            // 
+            // btnPoint
+            // 
+            this.btnPoint.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnPoint.ColorTable = DevComponents.DotNetBar.eButtonColor.MagentaWithBackground;
+            resources.ApplyResources(this.btnPoint, "btnPoint");
+            this.btnPoint.Name = "btnPoint";
+            this.btnPoint.Style = DevComponents.DotNetBar.eDotNetBarStyle.VS2005;
+            this.btnPoint.Click += new System.EventHandler(this.btnPoint_Click);
+            // 
+            // btnweizhi
+            // 
+            resources.ApplyResources(this.btnweizhi, "btnweizhi");
+            this.btnweizhi.Name = "btnweizhi";
+            this.btnweizhi.UseVisualStyleBackColor = true;
+            this.btnweizhi.Click += new System.EventHandler(this.btnweizhi_Click);
+            // 
+            // btnBind
+            // 
+            this.btnBind.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnBind.ColorTable = DevComponents.DotNetBar.eButtonColor.MagentaWithBackground;
+            resources.ApplyResources(this.btnBind, "btnBind");
+            this.btnBind.Name = "btnBind";
+            this.btnBind.Style = DevComponents.DotNetBar.eDotNetBarStyle.VS2005;
+            this.btnBind.Click += new System.EventHandler(this.btnBind_Click_1);
+            // 
+            // cbType
+            // 
+            this.cbType.FormattingEnabled = true;
+            resources.ApplyResources(this.cbType, "cbType");
+            this.cbType.Name = "cbType";
+            this.cbType.SelectedIndexChanged += new System.EventHandler(this.cbType_SelectedIndexChanged);
+            // 
+            // btnLogic
+            // 
+            this.btnLogic.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnLogic.ColorTable = DevComponents.DotNetBar.eButtonColor.MagentaWithBackground;
+            resources.ApplyResources(this.btnLogic, "btnLogic");
+            this.btnLogic.Name = "btnLogic";
+            this.btnLogic.Style = DevComponents.DotNetBar.eDotNetBarStyle.VS2005;
+            this.btnLogic.Click += new System.EventHandler(this.btnLogic_Click_1);
+            // 
+            // label4
+            // 
+            resources.ApplyResources(this.label4, "label4");
+            this.label4.Name = "label4";
+            // 
+            // btnOperation
+            // 
+            this.btnOperation.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnOperation.ColorTable = DevComponents.DotNetBar.eButtonColor.MagentaWithBackground;
+            resources.ApplyResources(this.btnOperation, "btnOperation");
+            this.btnOperation.Name = "btnOperation";
+            this.btnOperation.Style = DevComponents.DotNetBar.eDotNetBarStyle.VS2005;
+            this.btnOperation.Click += new System.EventHandler(this.btnOperation_Click_1);
+            // 
+            // txtShow
+            // 
+            resources.ApplyResources(this.txtShow, "txtShow");
+            this.txtShow.Name = "txtShow";
+            // 
+            // tabStrip1
+            // 
+            this.tabStrip1.AutoSelectAttachedControl = true;
+            this.tabStrip1.CanReorderTabs = true;
+            this.tabStrip1.CloseButtonVisible = true;
+            resources.ApplyResources(this.tabStrip1, "tabStrip1");
+            this.tabStrip1.Name = "tabStrip1";
+            this.tabStrip1.SelectedTab = this.tabItem3;
+            this.tabStrip1.Style = DevComponents.DotNetBar.eTabStripStyle.VS2005;
+            this.tabStrip1.Tabs.Add(this.tabItem1);
+            this.tabStrip1.Tabs.Add(this.tabItem2);
+            this.tabStrip1.Tabs.Add(this.tabItem3);
+            // 
+            // tabItem1
+            // 
+            this.tabItem1.Name = "tabItem1";
+            resources.ApplyResources(this.tabItem1, "tabItem1");
+            // 
+            // tabItem2
+            // 
+            this.tabItem2.BackColor2 = System.Drawing.Color.Silver;
+            this.tabItem2.Name = "tabItem2";
+            resources.ApplyResources(this.tabItem2, "tabItem2");
+            // 
+            // tabItem3
+            // 
+            this.tabItem3.BackColor2 = System.Drawing.Color.Silver;
+            this.tabItem3.Icon = ((System.Drawing.Icon)(resources.GetObject("tabItem3.Icon")));
+            this.tabItem3.Name = "tabItem3";
+            resources.ApplyResources(this.tabItem3, "tabItem3");
             // 
             // Form1
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.White;
             resources.ApplyResources(this, "$this");
-            this.Controls.Add(this.splitContainer2);
-            this.Controls.Add(this.panel1);
-            this.Controls.Add(this.toolStrip1);
+            this.Controls.Add(this.Form1_Fill_Panel);
             this.Controls.Add(this.menuStrip1);
             this.KeyPreview = true;
             this.Name = "Form1";
@@ -928,33 +823,14 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             this.SizeChanged += new System.EventHandler(this.Form1_SizeChanged);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
-            this.splitContainer1.Panel1.ResumeLayout(false);
-            this.splitContainer1.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
-            this.splitContainer1.ResumeLayout(false);
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
-            this.panel9.ResumeLayout(false);
-            this.panel9.PerformLayout();
-            this.panelshang.ResumeLayout(false);
-            this.panel7.ResumeLayout(false);
-            this.panel7.PerformLayout();
-            this.panel4.ResumeLayout(false);
-            this.panel4.PerformLayout();
-            this.panelxia.ResumeLayout(false);
-            this.panel8.ResumeLayout(false);
-            this.panel8.PerformLayout();
-            this.splitContainer2.Panel1.ResumeLayout(false);
-            this.splitContainer2.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
-            this.splitContainer2.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
-            this.flowLayoutPanel1.ResumeLayout(false);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
+            this.Form1_Fill_Panel.ClientArea.ResumeLayout(false);
+            this.Form1_Fill_Panel.ResumeLayout(false);
+            this.panelDgv.ResumeLayout(false);
+            this.panelDgv.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -988,39 +864,7 @@
         private System.Windows.Forms.ToolStripButton tsNet;
         private System.Windows.Forms.ToolStripButton tsTimer;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
-        private System.Windows.Forms.Panel panelDgv;
-        private System.Windows.Forms.Panel panelThree;
         private System.Windows.Forms.Timer timer1;
-        private System.Windows.Forms.Panel panel1;
-        private DevComponents.DotNetBar.ButtonX btnTimer;
-        private DevComponents.DotNetBar.ButtonX btnScene;
-        private DevComponents.DotNetBar.ButtonX btnName;
-        private DevComponents.DotNetBar.ButtonX btnOperation;
-        private DevComponents.DotNetBar.ButtonX btnLogic;
-        private DevComponents.DotNetBar.ButtonX btnBind;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Panel panelSection;
-        private System.Windows.Forms.Panel panelshang;
-        private System.Windows.Forms.ComboBox cbType;
-        private System.Windows.Forms.Panel panelxia;
-        private System.Windows.Forms.Panel panelTitle;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label LbTitleName;
-        private System.Windows.Forms.Panel panel7;
-        private System.Windows.Forms.Panel panel8;
-        private System.Windows.Forms.Panel panel9;
-        private System.Windows.Forms.Button btnweizhi;
-        private System.Windows.Forms.Button btndxs;
-        private System.Windows.Forms.TextBox txtShow;
-        private System.Windows.Forms.SplitContainer splitContainer1;
-        private System.Windows.Forms.SplitContainer splitContainer2;
-        private DevComponents.DotNetBar.ButtonX btnPoint;
         private System.Windows.Forms.ToolStripMenuItem 功能GToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 设备在线搜索ToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem3;
@@ -1070,6 +914,26 @@
         private System.Windows.Forms.ToolStripMenuItem 帮助ToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem24;
         private System.Windows.Forms.ToolStripMenuItem 关于软件ToolStripMenuItem;
+        private Infragistics.Win.Misc.UltraPanel Form1_Fill_Panel;
+        private System.Windows.Forms.Panel panelDgv;
+        private Infragistics.Win.Misc.UltraButton ultraButton1;
+        private DevComponents.DotNetBar.ButtonX btnName;
+        private DevComponents.DotNetBar.ButtonX btnTimer;
+        private System.Windows.Forms.Button btndxs;
+        private DevComponents.DotNetBar.ButtonX btnScene;
+        private System.Windows.Forms.Label LbTitleName;
+        private DevComponents.DotNetBar.ButtonX btnPoint;
+        private System.Windows.Forms.Button btnweizhi;
+        private DevComponents.DotNetBar.ButtonX btnBind;
+        private System.Windows.Forms.ComboBox cbType;
+        private DevComponents.DotNetBar.ButtonX btnLogic;
+        private System.Windows.Forms.Label label4;
+        private DevComponents.DotNetBar.ButtonX btnOperation;
+        private System.Windows.Forms.TextBox txtShow;
+        private DevComponents.DotNetBar.TabStrip tabStrip1;
+        private DevComponents.DotNetBar.TabItem tabItem3;
+        private DevComponents.DotNetBar.TabItem tabItem1;
+        private DevComponents.DotNetBar.TabItem tabItem2;
 
     }
 }

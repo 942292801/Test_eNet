@@ -95,11 +95,10 @@ namespace eNet编辑器
             dgvoperation = new DgvOperation();
 
             //第一次加载基本窗口
-            Control_Add(threename, panelThree);//默认添加窗口一
-            Control_Add(threesection, panelSection);
-            Control_Add(dgvname, panelDgv);
-            Control_Add(threesection, panelSection);
-            Control_Add(threetitle, panelTitle);
+            //修改窗口暂时屏蔽——————————Control_Add(threename, panelThree);//默认添加窗口一
+            //修改窗口暂时屏蔽——————————Control_Add(threesection, panelSection);
+            //修改窗口暂时屏蔽——————————Control_Add(dgvname, panelDgv);
+            //修改窗口暂时屏蔽——————————Control_Add(threetitle, panelTitle);
 
             //对象选择框调用
             threesection.addTitleNode += new AddTitleNode(threesection_addTitleNode);
@@ -363,7 +362,7 @@ namespace eNet编辑器
             btnStyleIni();
             btnName.Style  = DevComponents.DotNetBar.eDotNetBarStyle.Office2003;
             //自定义函数加载窗体 CleanRecycle  
-            Control_Add(threename, panelThree);
+            //修改窗口暂时屏蔽——————————Control_Add(threename, panelThree);
             Control_Add(dgvname, panelDgv);
             //cbtype添加选择项 
             cbtypeName("equipment");
@@ -382,7 +381,7 @@ namespace eNet编辑器
             btnStyleIni();
             btnPoint.Style = DevComponents.DotNetBar.eDotNetBarStyle.Office2003;
             //自定义函数加载窗体 CleanRecycle  
-            Control_Add(threepoint, panelThree);
+            //修改窗口暂时屏蔽——————————Control_Add(threepoint, panelThree);
             Control_Add(dgvpoint, panelDgv);
             //cbtype添加选择项 
             cbtypeName("point");
@@ -405,7 +404,7 @@ namespace eNet编辑器
             btnStyleIni();
             btnScene.Style = DevComponents.DotNetBar.eDotNetBarStyle.Office2003;
             //自定义函数加载窗体 CleanRecycle  
-            Control_Add(threescene, panelThree);
+            //修改窗口暂时屏蔽——————————Control_Add(threescene, panelThree);
             Control_Add(dgvscene, panelDgv);
             //界面显示类型 
             FileMesege.formType = "scene";
@@ -423,7 +422,7 @@ namespace eNet编辑器
             btnStyleIni();
             btnTimer.Style = DevComponents.DotNetBar.eDotNetBarStyle.Office2003;
             //自定义函数加载窗体 CleanRecycle  
-            Control_Add(threetimer, panelThree);
+            //修改窗口暂时屏蔽——————————Control_Add(threetimer, panelThree);
             Control_Add(dgvtimer, panelDgv);
             //界面显示类型 
             FileMesege.formType = "timer";
@@ -441,7 +440,7 @@ namespace eNet编辑器
             btnBind.Style = DevComponents.DotNetBar.eDotNetBarStyle.Office2003;
           
             //自定义函数加载窗体 CleanRecycle  
-            Control_Add(threebind, panelThree);
+            //修改窗口暂时屏蔽——————————Control_Add(threebind, panelThree);
             Control_Add(dgvbind, panelDgv);
             //界面显示类型 
             FileMesege.formType = "bind";
@@ -458,7 +457,7 @@ namespace eNet编辑器
             btnStyleIni();
             btnLogic.Style = DevComponents.DotNetBar.eDotNetBarStyle.Office2003;
             //自定义函数加载窗体 CleanRecycle  
-            Control_Add(threelogic, panelThree);
+            //修改窗口暂时屏蔽——————————Control_Add(threelogic, panelThree);
             Control_Add(dgvlogic, panelDgv);
             //界面显示类型 
             FileMesege.formType = "logic";
@@ -475,7 +474,7 @@ namespace eNet编辑器
             btnStyleIni();
             btnOperation.Style = DevComponents.DotNetBar.eDotNetBarStyle.Office2003;
             //自定义函数加载窗体 CleanRecycle  
-            Control_Add(threeoperation, panelThree);
+            //修改窗口暂时屏蔽——————————Control_Add(threeoperation, panelThree);
             Control_Add(dgvoperation, panelDgv);
             //界面显示类型 
             FileMesege.formType = "operation";
@@ -914,6 +913,7 @@ namespace eNet编辑器
         #region 检索栏 上中下格式设置
         private void btnweizhi_Click(object sender, EventArgs e)
         {
+            /*
             //位置对象五五分开状态
             if (searchLocition == 2)
             {
@@ -923,12 +923,13 @@ namespace eNet编辑器
             else if (searchLocition == 3)
             {
                 Searchzhong();
-            }
+            }*/
           
         }
 
         private void btndxs_Click(object sender, EventArgs e)
         {
+            /*
             //
             if (panelTitle.Size.Height == 0)
             {
@@ -938,12 +939,12 @@ namespace eNet编辑器
             else if (panelTitle.Size.Height!= 0 && panelSection.Size.Height!=0)
             {
                 Searchxia();
-            }
+            }*/
 
         }
 
 
-
+        /*
         private void Searchshang()
         {
             //设备全展
@@ -977,14 +978,14 @@ namespace eNet编辑器
             panelSection.Size = new Size(panel4.Size.Width, 0);//原来 190.275
             searchLocition = 3;
         }
-
+        */
         //窗体大小改变 跟随变化
         private void Form1_SizeChanged(object sender, EventArgs e)
         {
             //对象标题在最下面
             if (searchLocition == 1)
             {
-                Searchshang();
+                //Searchshang();
             }
         }
         #endregion 
@@ -1014,6 +1015,7 @@ namespace eNet编辑器
 
         #endregion
 
+     
   
 
   
