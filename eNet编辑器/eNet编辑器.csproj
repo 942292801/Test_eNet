@@ -1,0 +1,397 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{7562BC9E-DF8B-4F51-899C-CBA7360FCE65}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>eNet编辑器</RootNamespace>
+    <AssemblyName>eNet编辑器</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>0.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DevComponents.DotNetBar.Keyboard, Version=14.0.0.3, Culture=neutral, PublicKeyToken=c39c3242a43eee2b, processorArchitecture=MSIL" />
+    <Reference Include="DevComponents.DotNetBar.Layout, Version=14.0.0.3, Culture=neutral, PublicKeyToken=c39c3242a43eee2b, processorArchitecture=MSIL" />
+    <Reference Include="DevComponents.DotNetBar.Schedule, Version=14.0.0.3, Culture=neutral, PublicKeyToken=c39c3242a43eee2b, processorArchitecture=MSIL" />
+    <Reference Include="DevComponents.DotNetBar2, Version=14.0.0.3, Culture=neutral, PublicKeyToken=c39c3242a43eee2b, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib, Version=0.86.0.518, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Release\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualBasic">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>D:\Documents\Downloads\Bin\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AddForm\DGVconcrol.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddForm\DGVconcrol.Designer.cs">
+      <DependentUpon>DGVconcrol.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AddForm\DgvNameState.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddForm\DgvNameState.Designer.cs">
+      <DependentUpon>DgvNameState.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AddForm\newProject.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddForm\newProject.Designer.cs">
+      <DependentUpon>newProject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AddForm\OnlineSearch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddForm\OnlineSearch.Designer.cs">
+      <DependentUpon>OnlineSearch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AddForm\sceneAddress.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddForm\sceneAddress.Designer.cs">
+      <DependentUpon>sceneAddress.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AddForm\sceneConcrol.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddForm\sceneConcrol.Designer.cs">
+      <DependentUpon>sceneConcrol.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AddForm\tnDevice.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddForm\tnDevice.Designer.cs">
+      <DependentUpon>tnDevice.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AddForm\tnGateway.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddForm\tnGateway.Designer.cs">
+      <DependentUpon>tnGateway.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AddForm\tsChange.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddForm\tsChange.Designer.cs">
+      <DependentUpon>tsChange.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AddForm\TsSceneAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddForm\TsSceneAdd.Designer.cs">
+      <DependentUpon>TsSceneAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AddForm\tsSection.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddForm\tsSection.Designer.cs">
+      <DependentUpon>tsSection.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ClientAsync.cs" />
+    <Compile Include="CommandManager.cs.cs" />
+    <Compile Include="DataChange.cs" />
+    <Compile Include="DataJson.cs" />
+    <Compile Include="DataListHelper.cs" />
+    <Compile Include="DgvMesege.cs" />
+    <Compile Include="DgvView\DgvBind.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DgvView\DgvBind.Designer.cs">
+      <DependentUpon>DgvBind.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DgvView\DgvDevice.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DgvView\DgvDevice.Designer.cs">
+      <DependentUpon>DgvDevice.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DgvView\DgvLogic.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DgvView\DgvLogic.Designer.cs">
+      <DependentUpon>DgvLogic.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DgvView\DgvName.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DgvView\DgvName.Designer.cs">
+      <DependentUpon>DgvName.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DgvView\DgvOperation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DgvView\DgvOperation.Designer.cs">
+      <DependentUpon>DgvOperation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DgvView\DgvPoint.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DgvView\DgvPoint.Designer.cs">
+      <DependentUpon>DgvPoint.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DgvView\DgvScene.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DgvView\DgvScene.Designer.cs">
+      <DependentUpon>DgvScene.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DgvView\DgvTimer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DgvView\DgvTimer.Designer.cs">
+      <DependentUpon>DgvTimer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FileMesege.cs" />
+    <Compile Include="FolderSelectDialog.cs" />
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form1.en-US.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Form1.en-US.resx</DependentUpon>
+    </Compile>
+    <Compile Include="IniConfig.cs" />
+    <Compile Include="IniHelper.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SocketUtil.cs" />
+    <Compile Include="TcpSocket.cs" />
+    <Compile Include="ThreeView\ThreeBind.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ThreeView\ThreeBind.Designer.cs">
+      <DependentUpon>ThreeBind.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ThreeView\ThreeLogic.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ThreeView\ThreeLogic.Designer.cs">
+      <DependentUpon>ThreeLogic.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ThreeView\ThreeName.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ThreeView\ThreeName.Designer.cs">
+      <DependentUpon>ThreeName.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ThreeView\ThreeOperation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ThreeView\ThreeOperation.Designer.cs">
+      <DependentUpon>ThreeOperation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ThreeView\ThreePoint.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ThreeView\ThreePoint.Designer.cs">
+      <DependentUpon>ThreePoint.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ThreeView\ThreeScene.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ThreeView\ThreeScene.Designer.cs">
+      <DependentUpon>ThreeScene.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ThreeView\ThreeSection.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ThreeView\ThreeSection.Designer.cs">
+      <DependentUpon>ThreeSection.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ThreeView\ThreeTimer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ThreeView\ThreeTimer.Designer.cs">
+      <DependentUpon>ThreeTimer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ThreeView\ThreeTitle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ThreeView\ThreeTitle.Designer.cs">
+      <DependentUpon>ThreeTitle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TreeMesege.cs" />
+    <Compile Include="UdpSocket.cs" />
+    <Compile Include="ZipHelper.cs" />
+    <EmbeddedResource Include="AddForm\DGVconcrol.resx">
+      <DependentUpon>DGVconcrol.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddForm\DgvNameState.resx">
+      <DependentUpon>DgvNameState.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddForm\newProject.resx">
+      <DependentUpon>newProject.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddForm\OnlineSearch.resx">
+      <DependentUpon>OnlineSearch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddForm\sceneAddress.resx">
+      <DependentUpon>sceneAddress.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddForm\sceneConcrol.resx">
+      <DependentUpon>sceneConcrol.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddForm\tnDevice.resx">
+      <DependentUpon>tnDevice.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddForm\tnGateway.resx">
+      <DependentUpon>tnGateway.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddForm\tsChange.resx">
+      <DependentUpon>tsChange.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddForm\TsSceneAdd.resx">
+      <DependentUpon>TsSceneAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddForm\tsSection.resx">
+      <DependentUpon>tsSection.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DgvView\DgvBind.resx">
+      <DependentUpon>DgvBind.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DgvView\DgvDevice.resx">
+      <DependentUpon>DgvDevice.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DgvView\DgvLogic.resx">
+      <DependentUpon>DgvLogic.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DgvView\DgvName.resx">
+      <DependentUpon>DgvName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DgvView\DgvOperation.resx">
+      <DependentUpon>DgvOperation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DgvView\DgvPoint.resx">
+      <DependentUpon>DgvPoint.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DgvView\DgvScene.resx">
+      <DependentUpon>DgvScene.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DgvView\DgvTimer.resx">
+      <DependentUpon>DgvTimer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form1.en-US.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Form1.en-US.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form1.en.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="ThreeView\ThreeBind.resx">
+      <DependentUpon>ThreeBind.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ThreeView\ThreeLogic.resx">
+      <DependentUpon>ThreeLogic.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ThreeView\ThreeName.resx">
+      <DependentUpon>ThreeName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ThreeView\ThreeOperation.resx">
+      <DependentUpon>ThreeOperation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ThreeView\ThreePoint.resx">
+      <DependentUpon>ThreePoint.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ThreeView\ThreeScene.resx">
+      <DependentUpon>ThreeScene.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ThreeView\ThreeSection.resx">
+      <DependentUpon>ThreeSection.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ThreeView\ThreeTimer.resx">
+      <DependentUpon>ThreeTimer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ThreeView\ThreeTitle.resx">
+      <DependentUpon>ThreeTitle.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="0.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
