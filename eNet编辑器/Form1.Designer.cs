@@ -30,6 +30,9 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.文件ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.新建项目ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -106,36 +109,55 @@
             this.tsTimer = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.Form1_Fill_Panel = new Infragistics.Win.Misc.UltraPanel();
             this.panelDgv = new System.Windows.Forms.Panel();
-            this.ultraButton1 = new Infragistics.Win.Misc.UltraButton();
             this.btnName = new DevComponents.DotNetBar.ButtonX();
             this.btnTimer = new DevComponents.DotNetBar.ButtonX();
-            this.btndxs = new System.Windows.Forms.Button();
             this.btnScene = new DevComponents.DotNetBar.ButtonX();
             this.LbTitleName = new System.Windows.Forms.Label();
             this.btnPoint = new DevComponents.DotNetBar.ButtonX();
-            this.btnweizhi = new System.Windows.Forms.Button();
             this.btnBind = new DevComponents.DotNetBar.ButtonX();
             this.cbType = new System.Windows.Forms.ComboBox();
             this.btnLogic = new DevComponents.DotNetBar.ButtonX();
-            this.label4 = new System.Windows.Forms.Label();
             this.btnOperation = new DevComponents.DotNetBar.ButtonX();
             this.txtShow = new System.Windows.Forms.TextBox();
-            this.tabStrip1 = new DevComponents.DotNetBar.TabStrip();
-            this.tabItem1 = new DevComponents.DotNetBar.TabItem(this.components);
-            this.tabItem2 = new DevComponents.DotNetBar.TabItem(this.components);
-            this.tabItem3 = new DevComponents.DotNetBar.TabItem(this.components);
+            this.PlMeustrip = new Infragistics.Win.Misc.UltraPanel();
+            this.PlToolstrip = new Infragistics.Win.Misc.UltraPanel();
+            this.PlTabStrip = new Infragistics.Win.Misc.UltraPanel();
+            this.tabStrip = new DevComponents.DotNetBar.TabControl();
+            this.tabControlPanel6 = new DevComponents.DotNetBar.TabControlPanel();
+            this.tabReaction = new DevComponents.DotNetBar.TabItem(this.components);
+            this.tabControlPanel7 = new DevComponents.DotNetBar.TabControlPanel();
+            this.tabLogic = new DevComponents.DotNetBar.TabItem(this.components);
+            this.tabControlPanel5 = new DevComponents.DotNetBar.TabControlPanel();
+            this.tabPanel = new DevComponents.DotNetBar.TabItem(this.components);
+            this.tabControlPanel4 = new DevComponents.DotNetBar.TabControlPanel();
+            this.tabTimer = new DevComponents.DotNetBar.TabItem(this.components);
+            this.tabControlPanel3 = new DevComponents.DotNetBar.TabControlPanel();
+            this.tabScene = new DevComponents.DotNetBar.TabItem(this.components);
+            this.tabControlPanel2 = new DevComponents.DotNetBar.TabControlPanel();
+            this.tabPoint = new DevComponents.DotNetBar.TabItem(this.components);
+            this.tabControlPanel1 = new DevComponents.DotNetBar.TabControlPanel();
+            this.tabName = new DevComponents.DotNetBar.TabItem(this.components);
+            this.PlMain = new Infragistics.Win.Misc.UltraPanel();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
-            this.Form1_Fill_Panel.ClientArea.SuspendLayout();
-            this.Form1_Fill_Panel.SuspendLayout();
             this.panelDgv.SuspendLayout();
+            this.PlMeustrip.ClientArea.SuspendLayout();
+            this.PlMeustrip.SuspendLayout();
+            this.PlToolstrip.ClientArea.SuspendLayout();
+            this.PlToolstrip.SuspendLayout();
+            this.PlTabStrip.ClientArea.SuspendLayout();
+            this.PlTabStrip.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tabStrip)).BeginInit();
+            this.tabStrip.SuspendLayout();
+            this.PlMain.ClientArea.SuspendLayout();
+            this.PlMain.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
             // 
             this.menuStrip1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(216)))), ((int)(((byte)(216)))));
+            resources.ApplyResources(this.menuStrip1, "menuStrip1");
             this.menuStrip1.GripMargin = new System.Windows.Forms.Padding(0);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.文件ToolStripMenuItem,
@@ -143,7 +165,6 @@
             this.功能GToolStripMenuItem,
             this.工具TToolStripMenuItem,
             this.帮助HToolStripMenuItem});
-            resources.ApplyResources(this.menuStrip1, "menuStrip1");
             this.menuStrip1.Name = "menuStrip1";
             // 
             // 文件ToolStripMenuItem
@@ -643,42 +664,21 @@
             this.timer1.Interval = 3000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // Form1_Fill_Panel
-            // 
-            // 
-            // Form1_Fill_Panel.ClientArea
-            // 
-            this.Form1_Fill_Panel.ClientArea.Controls.Add(this.tabStrip1);
-            this.Form1_Fill_Panel.ClientArea.Controls.Add(this.panelDgv);
-            this.Form1_Fill_Panel.ClientArea.Controls.Add(this.toolStrip1);
-            this.Form1_Fill_Panel.Cursor = System.Windows.Forms.Cursors.Default;
-            resources.ApplyResources(this.Form1_Fill_Panel, "Form1_Fill_Panel");
-            this.Form1_Fill_Panel.Name = "Form1_Fill_Panel";
-            // 
             // panelDgv
             // 
-            resources.ApplyResources(this.panelDgv, "panelDgv");
             this.panelDgv.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.panelDgv.Controls.Add(this.ultraButton1);
             this.panelDgv.Controls.Add(this.btnName);
             this.panelDgv.Controls.Add(this.btnTimer);
-            this.panelDgv.Controls.Add(this.btndxs);
             this.panelDgv.Controls.Add(this.btnScene);
             this.panelDgv.Controls.Add(this.LbTitleName);
             this.panelDgv.Controls.Add(this.btnPoint);
-            this.panelDgv.Controls.Add(this.btnweizhi);
             this.panelDgv.Controls.Add(this.btnBind);
             this.panelDgv.Controls.Add(this.cbType);
             this.panelDgv.Controls.Add(this.btnLogic);
-            this.panelDgv.Controls.Add(this.label4);
             this.panelDgv.Controls.Add(this.btnOperation);
             this.panelDgv.Controls.Add(this.txtShow);
+            resources.ApplyResources(this.panelDgv, "panelDgv");
             this.panelDgv.Name = "panelDgv";
-            // 
-            // ultraButton1
-            // 
-            resources.ApplyResources(this.ultraButton1, "ultraButton1");
-            this.ultraButton1.Name = "ultraButton1";
             // 
             // btnName
             // 
@@ -697,13 +697,6 @@
             this.btnTimer.Name = "btnTimer";
             this.btnTimer.Style = DevComponents.DotNetBar.eDotNetBarStyle.VS2005;
             this.btnTimer.Click += new System.EventHandler(this.btnTimer_Click_1);
-            // 
-            // btndxs
-            // 
-            resources.ApplyResources(this.btndxs, "btndxs");
-            this.btndxs.Name = "btndxs";
-            this.btndxs.UseVisualStyleBackColor = true;
-            this.btndxs.Click += new System.EventHandler(this.btndxs_Click);
             // 
             // btnScene
             // 
@@ -727,13 +720,6 @@
             this.btnPoint.Name = "btnPoint";
             this.btnPoint.Style = DevComponents.DotNetBar.eDotNetBarStyle.VS2005;
             this.btnPoint.Click += new System.EventHandler(this.btnPoint_Click);
-            // 
-            // btnweizhi
-            // 
-            resources.ApplyResources(this.btnweizhi, "btnweizhi");
-            this.btnweizhi.Name = "btnweizhi";
-            this.btnweizhi.UseVisualStyleBackColor = true;
-            this.btnweizhi.Click += new System.EventHandler(this.btnweizhi_Click);
             // 
             // btnBind
             // 
@@ -760,11 +746,6 @@
             this.btnLogic.Style = DevComponents.DotNetBar.eDotNetBarStyle.VS2005;
             this.btnLogic.Click += new System.EventHandler(this.btnLogic_Click_1);
             // 
-            // label4
-            // 
-            resources.ApplyResources(this.label4, "label4");
-            this.label4.Name = "label4";
-            // 
             // btnOperation
             // 
             this.btnOperation.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
@@ -779,44 +760,257 @@
             resources.ApplyResources(this.txtShow, "txtShow");
             this.txtShow.Name = "txtShow";
             // 
-            // tabStrip1
+            // PlMeustrip
             // 
-            this.tabStrip1.AutoSelectAttachedControl = true;
-            this.tabStrip1.CanReorderTabs = true;
-            this.tabStrip1.CloseButtonVisible = true;
-            resources.ApplyResources(this.tabStrip1, "tabStrip1");
-            this.tabStrip1.Name = "tabStrip1";
-            this.tabStrip1.SelectedTab = this.tabItem3;
-            this.tabStrip1.Style = DevComponents.DotNetBar.eTabStripStyle.VS2005;
-            this.tabStrip1.Tabs.Add(this.tabItem1);
-            this.tabStrip1.Tabs.Add(this.tabItem2);
-            this.tabStrip1.Tabs.Add(this.tabItem3);
+            appearance1.BackColor = System.Drawing.Color.DarkGray;
+            this.PlMeustrip.Appearance = appearance1;
             // 
-            // tabItem1
+            // PlMeustrip.ClientArea
             // 
-            this.tabItem1.Name = "tabItem1";
-            resources.ApplyResources(this.tabItem1, "tabItem1");
+            this.PlMeustrip.ClientArea.Controls.Add(this.menuStrip1);
+            resources.ApplyResources(this.PlMeustrip, "PlMeustrip");
+            this.PlMeustrip.Name = "PlMeustrip";
             // 
-            // tabItem2
+            // PlToolstrip
             // 
-            this.tabItem2.BackColor2 = System.Drawing.Color.Silver;
-            this.tabItem2.Name = "tabItem2";
-            resources.ApplyResources(this.tabItem2, "tabItem2");
+            appearance2.BackColor = System.Drawing.Color.DarkGray;
+            this.PlToolstrip.Appearance = appearance2;
             // 
-            // tabItem3
+            // PlToolstrip.ClientArea
             // 
-            this.tabItem3.BackColor2 = System.Drawing.Color.Silver;
-            this.tabItem3.Icon = ((System.Drawing.Icon)(resources.GetObject("tabItem3.Icon")));
-            this.tabItem3.Name = "tabItem3";
-            resources.ApplyResources(this.tabItem3, "tabItem3");
+            this.PlToolstrip.ClientArea.Controls.Add(this.toolStrip1);
+            resources.ApplyResources(this.PlToolstrip, "PlToolstrip");
+            this.PlToolstrip.Name = "PlToolstrip";
+            // 
+            // PlTabStrip
+            // 
+            appearance3.BackColor = System.Drawing.Color.Gray;
+            this.PlTabStrip.Appearance = appearance3;
+            // 
+            // PlTabStrip.ClientArea
+            // 
+            this.PlTabStrip.ClientArea.Controls.Add(this.tabStrip);
+            resources.ApplyResources(this.PlTabStrip, "PlTabStrip");
+            this.PlTabStrip.Name = "PlTabStrip";
+            // 
+            // tabStrip
+            // 
+            this.tabStrip.BackColor = System.Drawing.Color.Gray;
+            this.tabStrip.CanReorderTabs = true;
+            this.tabStrip.ColorScheme.TabBackground = System.Drawing.Color.Silver;
+            this.tabStrip.ColorScheme.TabBackground2 = System.Drawing.Color.Empty;
+            this.tabStrip.ColorScheme.TabItemHotBackground = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.tabStrip.ColorScheme.TabItemHotBackground2 = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.tabStrip.ColorScheme.TabItemSelectedBorderDark = System.Drawing.Color.Empty;
+            this.tabStrip.ColorScheme.TabItemSelectedBorderLight = System.Drawing.Color.Empty;
+            this.tabStrip.Controls.Add(this.tabControlPanel4);
+            this.tabStrip.Controls.Add(this.tabControlPanel3);
+            this.tabStrip.Controls.Add(this.tabControlPanel2);
+            this.tabStrip.Controls.Add(this.tabControlPanel1);
+            this.tabStrip.Controls.Add(this.tabControlPanel7);
+            this.tabStrip.Controls.Add(this.tabControlPanel5);
+            this.tabStrip.Controls.Add(this.tabControlPanel6);
+            resources.ApplyResources(this.tabStrip, "tabStrip");
+            this.tabStrip.Name = "tabStrip";
+            this.tabStrip.SelectedTabFont = new System.Drawing.Font("幼圆", 9F, System.Drawing.FontStyle.Bold);
+            this.tabStrip.SelectedTabIndex = 2;
+            this.tabStrip.TabLayoutType = DevComponents.DotNetBar.eTabLayoutType.FixedWithNavigationBox;
+            this.tabStrip.Tabs.Add(this.tabName);
+            this.tabStrip.Tabs.Add(this.tabPoint);
+            this.tabStrip.Tabs.Add(this.tabScene);
+            this.tabStrip.Tabs.Add(this.tabTimer);
+            this.tabStrip.Tabs.Add(this.tabPanel);
+            this.tabStrip.Tabs.Add(this.tabReaction);
+            this.tabStrip.Tabs.Add(this.tabLogic);
+            // 
+            // tabControlPanel6
+            // 
+            this.tabControlPanel6.DisabledBackColor = System.Drawing.Color.Empty;
+            resources.ApplyResources(this.tabControlPanel6, "tabControlPanel6");
+            this.tabControlPanel6.Name = "tabControlPanel6";
+            this.tabControlPanel6.Style.BackColor1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(232)))));
+            this.tabControlPanel6.Style.BackColor2.Color = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(149)))), ((int)(((byte)(170)))));
+            this.tabControlPanel6.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
+            this.tabControlPanel6.Style.BorderColor.Color = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(97)))), ((int)(((byte)(156)))));
+            this.tabControlPanel6.Style.BorderSide = ((DevComponents.DotNetBar.eBorderSide)(((DevComponents.DotNetBar.eBorderSide.Left | DevComponents.DotNetBar.eBorderSide.Right)
+                        | DevComponents.DotNetBar.eBorderSide.Bottom)));
+            this.tabControlPanel6.Style.GradientAngle = -90;
+            this.tabControlPanel6.TabItem = this.tabReaction;
+            // 
+            // tabReaction
+            // 
+            this.tabReaction.AttachedControl = this.tabControlPanel6;
+            this.tabReaction.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(232)))));
+            this.tabReaction.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(149)))), ((int)(((byte)(170)))));
+            this.tabReaction.Name = "tabReaction";
+            this.tabReaction.PredefinedColor = DevComponents.DotNetBar.eTabItemColor.Silver;
+            resources.ApplyResources(this.tabReaction, "tabReaction");
+            this.tabReaction.TextColor = System.Drawing.Color.Black;
+            // 
+            // tabControlPanel7
+            // 
+            this.tabControlPanel7.DisabledBackColor = System.Drawing.Color.Empty;
+            resources.ApplyResources(this.tabControlPanel7, "tabControlPanel7");
+            this.tabControlPanel7.Name = "tabControlPanel7";
+            this.tabControlPanel7.Style.BackColor1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(232)))));
+            this.tabControlPanel7.Style.BackColor2.Color = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(149)))), ((int)(((byte)(170)))));
+            this.tabControlPanel7.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
+            this.tabControlPanel7.Style.BorderColor.Color = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(97)))), ((int)(((byte)(156)))));
+            this.tabControlPanel7.Style.BorderSide = ((DevComponents.DotNetBar.eBorderSide)(((DevComponents.DotNetBar.eBorderSide.Left | DevComponents.DotNetBar.eBorderSide.Right)
+                        | DevComponents.DotNetBar.eBorderSide.Bottom)));
+            this.tabControlPanel7.Style.GradientAngle = -90;
+            this.tabControlPanel7.TabItem = this.tabLogic;
+            // 
+            // tabLogic
+            // 
+            this.tabLogic.AttachedControl = this.tabControlPanel7;
+            this.tabLogic.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(232)))));
+            this.tabLogic.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(149)))), ((int)(((byte)(170)))));
+            this.tabLogic.Name = "tabLogic";
+            this.tabLogic.PredefinedColor = DevComponents.DotNetBar.eTabItemColor.Silver;
+            resources.ApplyResources(this.tabLogic, "tabLogic");
+            this.tabLogic.TextColor = System.Drawing.Color.Black;
+            // 
+            // tabControlPanel5
+            // 
+            this.tabControlPanel5.DisabledBackColor = System.Drawing.Color.Empty;
+            resources.ApplyResources(this.tabControlPanel5, "tabControlPanel5");
+            this.tabControlPanel5.Name = "tabControlPanel5";
+            this.tabControlPanel5.Style.BackColor1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(232)))));
+            this.tabControlPanel5.Style.BackColor2.Color = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(149)))), ((int)(((byte)(170)))));
+            this.tabControlPanel5.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
+            this.tabControlPanel5.Style.BorderColor.Color = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(97)))), ((int)(((byte)(156)))));
+            this.tabControlPanel5.Style.BorderSide = ((DevComponents.DotNetBar.eBorderSide)(((DevComponents.DotNetBar.eBorderSide.Left | DevComponents.DotNetBar.eBorderSide.Right)
+                        | DevComponents.DotNetBar.eBorderSide.Bottom)));
+            this.tabControlPanel5.Style.GradientAngle = -90;
+            this.tabControlPanel5.TabItem = this.tabPanel;
+            // 
+            // tabPanel
+            // 
+            this.tabPanel.AttachedControl = this.tabControlPanel5;
+            this.tabPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(232)))));
+            this.tabPanel.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(149)))), ((int)(((byte)(170)))));
+            this.tabPanel.Name = "tabPanel";
+            this.tabPanel.PredefinedColor = DevComponents.DotNetBar.eTabItemColor.Silver;
+            resources.ApplyResources(this.tabPanel, "tabPanel");
+            this.tabPanel.TextColor = System.Drawing.Color.Black;
+            // 
+            // tabControlPanel4
+            // 
+            this.tabControlPanel4.DisabledBackColor = System.Drawing.Color.Empty;
+            resources.ApplyResources(this.tabControlPanel4, "tabControlPanel4");
+            this.tabControlPanel4.Name = "tabControlPanel4";
+            this.tabControlPanel4.Style.BackColor1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(232)))));
+            this.tabControlPanel4.Style.BackColor2.Color = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(149)))), ((int)(((byte)(170)))));
+            this.tabControlPanel4.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
+            this.tabControlPanel4.Style.BorderColor.Color = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(97)))), ((int)(((byte)(156)))));
+            this.tabControlPanel4.Style.BorderSide = ((DevComponents.DotNetBar.eBorderSide)(((DevComponents.DotNetBar.eBorderSide.Left | DevComponents.DotNetBar.eBorderSide.Right)
+                        | DevComponents.DotNetBar.eBorderSide.Bottom)));
+            this.tabControlPanel4.Style.GradientAngle = -90;
+            this.tabControlPanel4.TabItem = this.tabTimer;
+            // 
+            // tabTimer
+            // 
+            this.tabTimer.AttachedControl = this.tabControlPanel4;
+            this.tabTimer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(232)))));
+            this.tabTimer.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(149)))), ((int)(((byte)(170)))));
+            this.tabTimer.Name = "tabTimer";
+            this.tabTimer.PredefinedColor = DevComponents.DotNetBar.eTabItemColor.Silver;
+            resources.ApplyResources(this.tabTimer, "tabTimer");
+            this.tabTimer.TextColor = System.Drawing.Color.Black;
+            // 
+            // tabControlPanel3
+            // 
+            this.tabControlPanel3.DisabledBackColor = System.Drawing.Color.Empty;
+            resources.ApplyResources(this.tabControlPanel3, "tabControlPanel3");
+            this.tabControlPanel3.Name = "tabControlPanel3";
+            this.tabControlPanel3.Style.BackColor1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(232)))));
+            this.tabControlPanel3.Style.BackColor2.Color = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(149)))), ((int)(((byte)(170)))));
+            this.tabControlPanel3.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
+            this.tabControlPanel3.Style.BorderColor.Color = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(97)))), ((int)(((byte)(156)))));
+            this.tabControlPanel3.Style.BorderSide = ((DevComponents.DotNetBar.eBorderSide)(((DevComponents.DotNetBar.eBorderSide.Left | DevComponents.DotNetBar.eBorderSide.Right)
+                        | DevComponents.DotNetBar.eBorderSide.Bottom)));
+            this.tabControlPanel3.Style.GradientAngle = -90;
+            this.tabControlPanel3.TabItem = this.tabScene;
+            // 
+            // tabScene
+            // 
+            this.tabScene.AttachedControl = this.tabControlPanel3;
+            this.tabScene.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(232)))));
+            this.tabScene.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(149)))), ((int)(((byte)(170)))));
+            this.tabScene.Icon = ((System.Drawing.Icon)(resources.GetObject("tabScene.Icon")));
+            this.tabScene.Name = "tabScene";
+            this.tabScene.PredefinedColor = DevComponents.DotNetBar.eTabItemColor.Silver;
+            resources.ApplyResources(this.tabScene, "tabScene");
+            this.tabScene.TextColor = System.Drawing.Color.Black;
+            // 
+            // tabControlPanel2
+            // 
+            this.tabControlPanel2.DisabledBackColor = System.Drawing.Color.Empty;
+            resources.ApplyResources(this.tabControlPanel2, "tabControlPanel2");
+            this.tabControlPanel2.Name = "tabControlPanel2";
+            this.tabControlPanel2.Style.BackColor1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(232)))));
+            this.tabControlPanel2.Style.BackColor2.Color = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(149)))), ((int)(((byte)(170)))));
+            this.tabControlPanel2.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
+            this.tabControlPanel2.Style.BorderColor.Color = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(97)))), ((int)(((byte)(156)))));
+            this.tabControlPanel2.Style.BorderSide = ((DevComponents.DotNetBar.eBorderSide)(((DevComponents.DotNetBar.eBorderSide.Left | DevComponents.DotNetBar.eBorderSide.Right)
+                        | DevComponents.DotNetBar.eBorderSide.Bottom)));
+            this.tabControlPanel2.Style.GradientAngle = -90;
+            this.tabControlPanel2.TabItem = this.tabPoint;
+            // 
+            // tabPoint
+            // 
+            this.tabPoint.AttachedControl = this.tabControlPanel2;
+            this.tabPoint.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(232)))));
+            this.tabPoint.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(149)))), ((int)(((byte)(170)))));
+            this.tabPoint.Icon = ((System.Drawing.Icon)(resources.GetObject("tabPoint.Icon")));
+            this.tabPoint.Name = "tabPoint";
+            this.tabPoint.PredefinedColor = DevComponents.DotNetBar.eTabItemColor.Silver;
+            resources.ApplyResources(this.tabPoint, "tabPoint");
+            this.tabPoint.TextColor = System.Drawing.Color.Black;
+            // 
+            // tabControlPanel1
+            // 
+            this.tabControlPanel1.DisabledBackColor = System.Drawing.Color.Empty;
+            resources.ApplyResources(this.tabControlPanel1, "tabControlPanel1");
+            this.tabControlPanel1.Name = "tabControlPanel1";
+            this.tabControlPanel1.Style.BackColor1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(232)))));
+            this.tabControlPanel1.Style.BackColor2.Color = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(149)))), ((int)(((byte)(170)))));
+            this.tabControlPanel1.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
+            this.tabControlPanel1.Style.BorderColor.Color = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(97)))), ((int)(((byte)(156)))));
+            this.tabControlPanel1.Style.BorderSide = ((DevComponents.DotNetBar.eBorderSide)(((DevComponents.DotNetBar.eBorderSide.Left | DevComponents.DotNetBar.eBorderSide.Right)
+                        | DevComponents.DotNetBar.eBorderSide.Bottom)));
+            this.tabControlPanel1.Style.GradientAngle = -90;
+            this.tabControlPanel1.TabItem = this.tabName;
+            // 
+            // tabName
+            // 
+            this.tabName.AttachedControl = this.tabControlPanel1;
+            this.tabName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(232)))));
+            this.tabName.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(149)))), ((int)(((byte)(170)))));
+            this.tabName.Name = "tabName";
+            this.tabName.PredefinedColor = DevComponents.DotNetBar.eTabItemColor.Silver;
+            resources.ApplyResources(this.tabName, "tabName");
+            this.tabName.TextColor = System.Drawing.Color.Black;
+            // 
+            // PlMain
+            // 
+            // 
+            // PlMain.ClientArea
+            // 
+            this.PlMain.ClientArea.Controls.Add(this.panelDgv);
+            resources.ApplyResources(this.PlMain, "PlMain");
+            this.PlMain.Name = "PlMain";
             // 
             // Form1
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.White;
             resources.ApplyResources(this, "$this");
-            this.Controls.Add(this.Form1_Fill_Panel);
-            this.Controls.Add(this.menuStrip1);
+            this.Controls.Add(this.PlMain);
+            this.Controls.Add(this.PlTabStrip);
+            this.Controls.Add(this.PlToolstrip);
+            this.Controls.Add(this.PlMeustrip);
             this.KeyPreview = true;
             this.Name = "Form1";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
@@ -827,12 +1021,20 @@
             this.menuStrip1.PerformLayout();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
-            this.Form1_Fill_Panel.ClientArea.ResumeLayout(false);
-            this.Form1_Fill_Panel.ResumeLayout(false);
             this.panelDgv.ResumeLayout(false);
             this.panelDgv.PerformLayout();
+            this.PlMeustrip.ClientArea.ResumeLayout(false);
+            this.PlMeustrip.ClientArea.PerformLayout();
+            this.PlMeustrip.ResumeLayout(false);
+            this.PlToolstrip.ClientArea.ResumeLayout(false);
+            this.PlToolstrip.ResumeLayout(false);
+            this.PlTabStrip.ClientArea.ResumeLayout(false);
+            this.PlTabStrip.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.tabStrip)).EndInit();
+            this.tabStrip.ResumeLayout(false);
+            this.PlMain.ClientArea.ResumeLayout(false);
+            this.PlMain.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -914,26 +1116,36 @@
         private System.Windows.Forms.ToolStripMenuItem 帮助ToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem24;
         private System.Windows.Forms.ToolStripMenuItem 关于软件ToolStripMenuItem;
-        private Infragistics.Win.Misc.UltraPanel Form1_Fill_Panel;
         private System.Windows.Forms.Panel panelDgv;
-        private Infragistics.Win.Misc.UltraButton ultraButton1;
         private DevComponents.DotNetBar.ButtonX btnName;
         private DevComponents.DotNetBar.ButtonX btnTimer;
-        private System.Windows.Forms.Button btndxs;
         private DevComponents.DotNetBar.ButtonX btnScene;
-        private System.Windows.Forms.Label LbTitleName;
         private DevComponents.DotNetBar.ButtonX btnPoint;
-        private System.Windows.Forms.Button btnweizhi;
         private DevComponents.DotNetBar.ButtonX btnBind;
         private System.Windows.Forms.ComboBox cbType;
         private DevComponents.DotNetBar.ButtonX btnLogic;
-        private System.Windows.Forms.Label label4;
         private DevComponents.DotNetBar.ButtonX btnOperation;
         private System.Windows.Forms.TextBox txtShow;
-        private DevComponents.DotNetBar.TabStrip tabStrip1;
-        private DevComponents.DotNetBar.TabItem tabItem3;
-        private DevComponents.DotNetBar.TabItem tabItem1;
-        private DevComponents.DotNetBar.TabItem tabItem2;
+        private Infragistics.Win.Misc.UltraPanel PlMeustrip;
+        private Infragistics.Win.Misc.UltraPanel PlToolstrip;
+        private System.Windows.Forms.Label LbTitleName;
+        private Infragistics.Win.Misc.UltraPanel PlTabStrip;
+        private DevComponents.DotNetBar.TabControl tabStrip;
+        private DevComponents.DotNetBar.TabControlPanel tabControlPanel5;
+        private DevComponents.DotNetBar.TabItem tabPanel;
+        private DevComponents.DotNetBar.TabControlPanel tabControlPanel4;
+        private DevComponents.DotNetBar.TabItem tabTimer;
+        private DevComponents.DotNetBar.TabControlPanel tabControlPanel3;
+        private DevComponents.DotNetBar.TabItem tabScene;
+        private DevComponents.DotNetBar.TabControlPanel tabControlPanel1;
+        private DevComponents.DotNetBar.TabItem tabName;
+        private DevComponents.DotNetBar.TabControlPanel tabControlPanel2;
+        private DevComponents.DotNetBar.TabItem tabPoint;
+        private DevComponents.DotNetBar.TabControlPanel tabControlPanel6;
+        private DevComponents.DotNetBar.TabItem tabReaction;
+        private DevComponents.DotNetBar.TabControlPanel tabControlPanel7;
+        private DevComponents.DotNetBar.TabItem tabLogic;
+        private Infragistics.Win.Misc.UltraPanel PlMain;
 
     }
 }
