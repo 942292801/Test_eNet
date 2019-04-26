@@ -122,7 +122,7 @@
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="menuStrip1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>幼圆, 9pt</value>
+    <value>黑体, 9pt</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="新建项目ToolStripMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
@@ -1110,95 +1110,65 @@
   <data name="&gt;&gt;PlToolstrip.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="tabControlPanel4.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+  <data name="tabControlPanel1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
-  <data name="tabControlPanel4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 26</value>
+  <data name="tabControlPanel1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 28</value>
   </data>
-  <data name="tabControlPanel4.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="tabControlPanel1.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>1, 1, 1, 1</value>
   </data>
-  <data name="tabControlPanel4.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="tabControlPanel1.Size" type="System.Drawing.Size, System.Drawing">
     <value>1264, 0</value>
   </data>
-  <data name="tabControlPanel4.TabIndex" type="System.Int32, mscorlib">
-    <value>13</value>
+  <data name="tabControlPanel1.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
   </data>
-  <data name="tabTimer.Text" xml:space="preserve">
-    <value>定时设置</value>
-  </data>
-  <data name="&gt;&gt;tabControlPanel4.Name" xml:space="preserve">
-    <value>tabControlPanel4</value>
-  </data>
-  <data name="&gt;&gt;tabControlPanel4.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.TabControlPanel, DevComponents.DotNetBar2, Version=14.0.0.3, Culture=neutral, PublicKeyToken=c39c3242a43eee2b</value>
-  </data>
-  <data name="&gt;&gt;tabControlPanel4.Parent" xml:space="preserve">
-    <value>tabStrip</value>
-  </data>
-  <data name="&gt;&gt;tabControlPanel4.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="tabControlPanel3.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="tabControlPanel3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 26</value>
-  </data>
-  <data name="tabControlPanel3.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>1, 1, 1, 1</value>
-  </data>
-  <data name="tabControlPanel3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1264, 0</value>
-  </data>
-  <data name="tabControlPanel3.TabIndex" type="System.Int32, mscorlib">
-    <value>9</value>
-  </data>
-  <data name="tabScene.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="tabName.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAQAAMMOAADDDgAAAAAAAAAA
-        AAC6wsT/i6Ko/4yjqf+No6n/jaOp/42jqf+No6n/jaOp/42jqf+No6n/jaOp/42jqf+No6r/jKOq/4yk
-        qv+Ooqf/fZee/3ycp/+NqbD/i6iv/4uorf+KqK3/iqit/4qorf+KqK3/iqit/4uorf+LqK7/iaas/4Wi
-        qf+Go6r/gZWe/2+Ijv+ytbX/z83M//Lx8P/6+/v/+fv6//n7+v/5+/r/+fv6//n7+v/5+/r/+vz7/+bn
-        5v/BwL//vby6/6qopv9whIn/r62r/7u5tf/KyMT/6+vq////////////////////////////////////
-        ///+/v7/9/b2/8rKyf+sq6r/bIKK/7i9vv/Z2df/19fV/+Pj4//s7Oz/7Ozs/+zs7P/s7Oz/7Ozs/+zs
-        7P/s7Oz/7Ozs/+vs7P/o6ej/zcvK/3F/hf9miZH/bpCX/2+PmP9uj5f/bY6X/22Ol/9tjpf/bY6X/22O
-        l/9tjpf/bY6X/26Ol/9tjpf/bY+V/2qHjP+ElZX/UYub/0epxP9IqsP/SKvD/0erw/9Hq8P/R6vD/0er
-        w/9Hq8P/R6vD/0erw/9Iq8P/SarE/0mqwv9Lpbr/qLS1/0+Mmv9Budf/RafA/0yetP9MnrX/S561/0ue
-        tf9LnrX/S561/0uetf9MnrX/TJ61/0yes/9EqsT/R7LM/9HV1v9bh4//Ra7G/0Wnwf9Pi5r/UIuZ/06L
-        mf9Ni5n/TYuZ/02Lmf9Oi5n/UIuZ/1GKmf9Oipn/QqW8/0+ov//u8e//e5Ka/0edsP9Cu9v/RbXR/0Wz
-        0P9DtND/QrTQ/0O00P9CtM//Q7TP/0Wzz/9Fs8//Q7XQ/0K62v9jo7X//v7+/6eyt/9Qi5n/Ra/K/2iV
-        n/+Goar/hKGp/4Shqf+Eoan/hKGp/4Shqf+Foan/hKGp/2uVn/9Grcf/fKmz///////W2dr/Y4SO/0qp
-        wf9aorL/baWy/2umsv9sprL/bKay/2ymsv9sprL/bKay/2ymsv9cobH/R6vH/6G2vf//////9vb2/4eV
-        mf9Jm67/QqrE/0uXq/9LmKz/TJir/0yYq/9MmKv/TJir/0yYq/9Ll6r/RqG4/02mvf/Ezc7/////////
-        //+8v7//VYOM/0amv/9LjZ//T4yd/06Nnf9OjZ3/To2d/06Mnf9OjZ3/Touc/0earf9fobL/4uPk////
-        ////////7vHu/5qgof94o6//eae0/3qntP95p7T/eae0/3mntP95p7T/eae0/3qns/94prP/lquz//b2
-        9f/////////////////5+Pj/9fPz//b09P/19PT/9vTz//b08//29PP/9vTz//b08//29PP/9fPz//b1
-        9f/+/v7/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAD/////4uTk/6e6v/+ivcL/q7q7/8nGxP/Kycj/sru8/6S9wf+lubz/yMzN//X29P//////////////
+        /////////////8rT1f9Ppr3/RLLO/2als//b3Nv/6ujn/4irtf9Grsn/S6G4/1eYqv+Hr7r/zNTU//f2
+        9f/////////////////M1Nb/VJKj/02Spf9moa//rq2s/8PAwP+NqLD/S42e/0yXqP9Cq8b/P7fU/1So
+        v/+Drbj/x9DS//Pz8v//////y9TX/0+gtv9Fp8H/Zqe2/83Ny//f3t3/jK+4/0SjvP9KoLf/RarG/0ak
+        vv9MlKX/R6bA/1Gpvv96o67//////8vT1P9tmaX/e6q3/2WXpP+zs7P/xMPA/4ylqv91o67/XZam/0Kq
+        xf9As9H/S5So/1KDkv9Lmq//SqG2///////K0dL/l6it/8nT1f9mjpb/wMHB/87Myv+NnKH/vMPE/3ec
+        pf9DqMP/SanB/0urxf9Ersj/RqrF/0qiuf//////ytHS/5upr//K1dj/ZI+X/8HDw//Ozs3/jJ2h/73F
+        xf93nab/QabB/3eqtf+5xMb/eau2/0uvx/9Io7v//////8rR0v+aqq//ytXY/2SPl//Dw8P/zs7M/4yd
+        of+9xcX/eJ2m/0GmwP+CtL///Pr4//Lw7/+Er7n/SJ+1///////K0dL/mqes/8jS1P9lj5b/wb+//8vL
+        yP+MnKD/vMHB/3ebpP9ApsD/gbO///z6+f/+/fz/kbnB/0ietP//////y9PV/2uZpf91qbb/ZJik/7a0
+        tP/GxMP/i6Wr/3GirP9bl6b/QafB/3isuv/v7e3///z7/5C5wf9InrX//////8vU1/9Mpr3/QrDM/2Wp
+        uv/a2tn/6urp/4uxu/9Drcf/SaW7/0Kqw/9JsMr/eKq3/7jFyf+DrLb/R5+1///////M1Nb/VI+e/02N
+        n/9mn6//qKWk/7y5uP+MqK3/S4mW/0uUp/9Eq8X/RK3K/0ikvP9LqcH/TKfA/0uiuf//////ytLV/02g
+        uP9Frcz/ZaGx/9XW1f/m5eL/hqmw/0Oqxf9Kn7b/RqW9/0aowf9ShZT/UIua/0eowf9Ko7r//////+Xm
+        5v+ToKT/jp6l/6mxtP+opqX/uba1/6+ztP+PoKX/o7G1/5e0vf9gq77/SavF/0qctP9JnLH/SaK3////
+        ////////+vj4/97b2//HxMP/yMfF/8rIyP/Mysn/1NLQ/9XR0P/S0M//ztDQ/6S9w/9orb//SLTM/0uj
+        uf//////////////////////+Pj3/9rZ2P++vLz/wL29/66qq/+rqKj/xMDA/6+qq/+5tLP/vL27/36V
+        mv9Xf4b/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
         AAAAAAAAAAAAAA==
 </value>
   </data>
-  <data name="tabScene.Text" xml:space="preserve">
-    <value>场景设置</value>
+  <data name="tabName.Text" xml:space="preserve">
+    <value> 设 备   </value>
   </data>
-  <data name="&gt;&gt;tabControlPanel3.Name" xml:space="preserve">
-    <value>tabControlPanel3</value>
+  <data name="&gt;&gt;tabControlPanel1.Name" xml:space="preserve">
+    <value>tabControlPanel1</value>
   </data>
-  <data name="&gt;&gt;tabControlPanel3.Type" xml:space="preserve">
+  <data name="&gt;&gt;tabControlPanel1.Type" xml:space="preserve">
     <value>DevComponents.DotNetBar.TabControlPanel, DevComponents.DotNetBar2, Version=14.0.0.3, Culture=neutral, PublicKeyToken=c39c3242a43eee2b</value>
   </data>
-  <data name="&gt;&gt;tabControlPanel3.Parent" xml:space="preserve">
+  <data name="&gt;&gt;tabControlPanel1.Parent" xml:space="preserve">
     <value>tabStrip</value>
   </data>
-  <data name="&gt;&gt;tabControlPanel3.ZOrder" xml:space="preserve">
-    <value>1</value>
+  <data name="&gt;&gt;tabControlPanel1.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="tabControlPanel2.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
   <data name="tabControlPanel2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 26</value>
+    <value>0, 28</value>
   </data>
   <data name="tabControlPanel2.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>1, 1, 1, 1</value>
@@ -1234,7 +1204,7 @@
 </value>
   </data>
   <data name="tabPoint.Text" xml:space="preserve">
-    <value>点位</value>
+    <value> 点 位</value>
   </data>
   <data name="&gt;&gt;tabControlPanel2.Name" xml:space="preserve">
     <value>tabControlPanel2</value>
@@ -1246,73 +1216,67 @@
     <value>tabStrip</value>
   </data>
   <data name="&gt;&gt;tabControlPanel2.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="tabControlPanel1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="tabControlPanel1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 26</value>
-  </data>
-  <data name="tabControlPanel1.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>1, 1, 1, 1</value>
-  </data>
-  <data name="tabControlPanel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1264, 0</value>
-  </data>
-  <data name="tabControlPanel1.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
-  <data name="tabName.Text" xml:space="preserve">
-    <value>设备</value>
-  </data>
-  <data name="&gt;&gt;tabControlPanel1.Name" xml:space="preserve">
-    <value>tabControlPanel1</value>
-  </data>
-  <data name="&gt;&gt;tabControlPanel1.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.TabControlPanel, DevComponents.DotNetBar2, Version=14.0.0.3, Culture=neutral, PublicKeyToken=c39c3242a43eee2b</value>
-  </data>
-  <data name="&gt;&gt;tabControlPanel1.Parent" xml:space="preserve">
-    <value>tabStrip</value>
-  </data>
-  <data name="&gt;&gt;tabControlPanel1.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="tabControlPanel7.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+  <data name="tabControlPanel4.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
-  <data name="tabControlPanel7.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 26</value>
+  <data name="tabControlPanel4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 28</value>
   </data>
-  <data name="tabControlPanel7.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="tabControlPanel4.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>1, 1, 1, 1</value>
   </data>
-  <data name="tabControlPanel7.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="tabControlPanel4.Size" type="System.Drawing.Size, System.Drawing">
     <value>1264, 0</value>
   </data>
-  <data name="tabControlPanel7.TabIndex" type="System.Int32, mscorlib">
-    <value>25</value>
+  <data name="tabControlPanel4.TabIndex" type="System.Int32, mscorlib">
+    <value>13</value>
   </data>
-  <data name="tabLogic.Text" xml:space="preserve">
-    <value>逻辑设置</value>
+  <data name="tabTimer.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAQAAMMOAADDDgAAAAAAAAAA
+        AAC6wsT/i6Ko/4yjqf+No6n/jaOp/42jqf+No6n/jaOp/42jqf+No6n/jaOp/42jqf+No6r/jKOq/4yk
+        qv+Ooqf/fZee/3ycp/+NqbD/i6iv/4uorf+KqK3/iqit/4qorf+KqK3/iqit/4uorf+LqK7/iaas/4Wi
+        qf+Go6r/gZWe/2+Ijv+ytbX/z83M//Lx8P/6+/v/+fv6//n7+v/5+/r/+fv6//n7+v/5+/r/+vz7/+bn
+        5v/BwL//vby6/6qopv9whIn/r62r/7u5tf/KyMT/6+vq////////////////////////////////////
+        ///+/v7/9/b2/8rKyf+sq6r/bIKK/7i9vv/Z2df/19fV/+Pj4//s7Oz/7Ozs/+zs7P/s7Oz/7Ozs/+zs
+        7P/s7Oz/7Ozs/+vs7P/o6ej/zcvK/3F/hf9miZH/bpCX/2+PmP9uj5f/bY6X/22Ol/9tjpf/bY6X/22O
+        l/9tjpf/bY6X/26Ol/9tjpf/bY+V/2qHjP+ElZX/UYub/0epxP9IqsP/SKvD/0erw/9Hq8P/R6vD/0er
+        w/9Hq8P/R6vD/0erw/9Iq8P/SarE/0mqwv9Lpbr/qLS1/0+Mmv9Budf/RafA/0yetP9MnrX/S561/0ue
+        tf9LnrX/S561/0uetf9MnrX/TJ61/0yes/9EqsT/R7LM/9HV1v9bh4//Ra7G/0Wnwf9Pi5r/UIuZ/06L
+        mf9Ni5n/TYuZ/02Lmf9Oi5n/UIuZ/1GKmf9Oipn/QqW8/0+ov//u8e//e5Ka/0edsP9Cu9v/RbXR/0Wz
+        0P9DtND/QrTQ/0O00P9CtM//Q7TP/0Wzz/9Fs8//Q7XQ/0K62v9jo7X//v7+/6eyt/9Qi5n/Ra/K/2iV
+        n/+Goar/hKGp/4Shqf+Eoan/hKGp/4Shqf+Foan/hKGp/2uVn/9Grcf/fKmz///////W2dr/Y4SO/0qp
+        wf9aorL/baWy/2umsv9sprL/bKay/2ymsv9sprL/bKay/2ymsv9cobH/R6vH/6G2vf//////9vb2/4eV
+        mf9Jm67/QqrE/0uXq/9LmKz/TJir/0yYq/9MmKv/TJir/0yYq/9Ll6r/RqG4/02mvf/Ezc7/////////
+        //+8v7//VYOM/0amv/9LjZ//T4yd/06Nnf9OjZ3/To2d/06Mnf9OjZ3/Touc/0earf9fobL/4uPk////
+        ////////7vHu/5qgof94o6//eae0/3qntP95p7T/eae0/3mntP95p7T/eae0/3qns/94prP/lquz//b2
+        9f/////////////////5+Pj/9fPz//b09P/19PT/9vTz//b08//29PP/9vTz//b08//29PP/9fPz//b1
+        9f/+/v7/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAA==
+</value>
   </data>
-  <data name="&gt;&gt;tabControlPanel7.Name" xml:space="preserve">
-    <value>tabControlPanel7</value>
+  <data name="tabTimer.Text" xml:space="preserve">
+    <value> 定时设置</value>
   </data>
-  <data name="&gt;&gt;tabControlPanel7.Type" xml:space="preserve">
+  <data name="&gt;&gt;tabControlPanel4.Name" xml:space="preserve">
+    <value>tabControlPanel4</value>
+  </data>
+  <data name="&gt;&gt;tabControlPanel4.Type" xml:space="preserve">
     <value>DevComponents.DotNetBar.TabControlPanel, DevComponents.DotNetBar2, Version=14.0.0.3, Culture=neutral, PublicKeyToken=c39c3242a43eee2b</value>
   </data>
-  <data name="&gt;&gt;tabControlPanel7.Parent" xml:space="preserve">
+  <data name="&gt;&gt;tabControlPanel4.Parent" xml:space="preserve">
     <value>tabStrip</value>
   </data>
-  <data name="&gt;&gt;tabControlPanel7.ZOrder" xml:space="preserve">
-    <value>4</value>
+  <data name="&gt;&gt;tabControlPanel4.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
   <data name="tabControlPanel5.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
   <data name="tabControlPanel5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 26</value>
+    <value>0, 28</value>
   </data>
   <data name="tabControlPanel5.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>1, 1, 1, 1</value>
@@ -1323,8 +1287,32 @@
   <data name="tabControlPanel5.TabIndex" type="System.Int32, mscorlib">
     <value>17</value>
   </data>
+  <data name="tabPanel.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAQAAMMOAADDDgAAAAAAAAAA
+        AAC6wsT/i6Ko/4yjqf+No6n/jaOp/42jqf+No6n/jaOp/42jqf+No6n/jaOp/42jqf+No6r/jKOq/4yk
+        qv+Ooqf/fZee/3ycp/+NqbD/i6iv/4uorf+KqK3/iqit/4qorf+KqK3/iqit/4uorf+LqK7/iaas/4Wi
+        qf+Go6r/gZWe/2+Ijv+ytbX/z83M//Lx8P/6+/v/+fv6//n7+v/5+/r/+fv6//n7+v/5+/r/+vz7/+bn
+        5v/BwL//vby6/6qopv9whIn/r62r/7u5tf/KyMT/6+vq////////////////////////////////////
+        ///+/v7/9/b2/8rKyf+sq6r/bIKK/7i9vv/Z2df/19fV/+Pj4//s7Oz/7Ozs/+zs7P/s7Oz/7Ozs/+zs
+        7P/s7Oz/7Ozs/+vs7P/o6ej/zcvK/3F/hf9miZH/bpCX/2+PmP9uj5f/bY6X/22Ol/9tjpf/bY6X/22O
+        l/9tjpf/bY6X/26Ol/9tjpf/bY+V/2qHjP+ElZX/UYub/0epxP9IqsP/SKvD/0erw/9Hq8P/R6vD/0er
+        w/9Hq8P/R6vD/0erw/9Iq8P/SarE/0mqwv9Lpbr/qLS1/0+Mmv9Budf/RafA/0yetP9MnrX/S561/0ue
+        tf9LnrX/S561/0uetf9MnrX/TJ61/0yes/9EqsT/R7LM/9HV1v9bh4//Ra7G/0Wnwf9Pi5r/UIuZ/06L
+        mf9Ni5n/TYuZ/02Lmf9Oi5n/UIuZ/1GKmf9Oipn/QqW8/0+ov//u8e//e5Ka/0edsP9Cu9v/RbXR/0Wz
+        0P9DtND/QrTQ/0O00P9CtM//Q7TP/0Wzz/9Fs8//Q7XQ/0K62v9jo7X//v7+/6eyt/9Qi5n/Ra/K/2iV
+        n/+Goar/hKGp/4Shqf+Eoan/hKGp/4Shqf+Foan/hKGp/2uVn/9Grcf/fKmz///////W2dr/Y4SO/0qp
+        wf9aorL/baWy/2umsv9sprL/bKay/2ymsv9sprL/bKay/2ymsv9cobH/R6vH/6G2vf//////9vb2/4eV
+        mf9Jm67/QqrE/0uXq/9LmKz/TJir/0yYq/9MmKv/TJir/0yYq/9Ll6r/RqG4/02mvf/Ezc7/////////
+        //+8v7//VYOM/0amv/9LjZ//T4yd/06Nnf9OjZ3/To2d/06Mnf9OjZ3/Touc/0earf9fobL/4uPk////
+        ////////7vHu/5qgof94o6//eae0/3qntP95p7T/eae0/3mntP95p7T/eae0/3qns/94prP/lquz//b2
+        9f/////////////////5+Pj/9fPz//b09P/19PT/9vTz//b08//29PP/9vTz//b08//29PP/9fPz//b1
+        9f/+/v7/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAA==
+</value>
+  </data>
   <data name="tabPanel.Text" xml:space="preserve">
-    <value>面板设置</value>
+    <value> 面板设置</value>
   </data>
   <data name="&gt;&gt;tabControlPanel5.Name" xml:space="preserve">
     <value>tabControlPanel5</value>
@@ -1336,13 +1324,121 @@
     <value>tabStrip</value>
   </data>
   <data name="&gt;&gt;tabControlPanel5.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="tabControlPanel3.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="tabControlPanel3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 28</value>
+  </data>
+  <data name="tabControlPanel3.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>1, 1, 1, 1</value>
+  </data>
+  <data name="tabControlPanel3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1264, 0</value>
+  </data>
+  <data name="tabControlPanel3.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="tabScene.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAQAAMMOAADDDgAAAAAAAAAA
+        AAC6wsT/i6Ko/4yjqf+No6n/jaOp/42jqf+No6n/jaOp/42jqf+No6n/jaOp/42jqf+No6r/jKOq/4yk
+        qv+Ooqf/fZee/3ycp/+NqbD/i6iv/4uorf+KqK3/iqit/4qorf+KqK3/iqit/4uorf+LqK7/iaas/4Wi
+        qf+Go6r/gZWe/2+Ijv+ytbX/z83M//Lx8P/6+/v/+fv6//n7+v/5+/r/+fv6//n7+v/5+/r/+vz7/+bn
+        5v/BwL//vby6/6qopv9whIn/r62r/7u5tf/KyMT/6+vq////////////////////////////////////
+        ///+/v7/9/b2/8rKyf+sq6r/bIKK/7i9vv/Z2df/19fV/+Pj4//s7Oz/7Ozs/+zs7P/s7Oz/7Ozs/+zs
+        7P/s7Oz/7Ozs/+vs7P/o6ej/zcvK/3F/hf9miZH/bpCX/2+PmP9uj5f/bY6X/22Ol/9tjpf/bY6X/22O
+        l/9tjpf/bY6X/26Ol/9tjpf/bY+V/2qHjP+ElZX/UYub/0epxP9IqsP/SKvD/0erw/9Hq8P/R6vD/0er
+        w/9Hq8P/R6vD/0erw/9Iq8P/SarE/0mqwv9Lpbr/qLS1/0+Mmv9Budf/RafA/0yetP9MnrX/S561/0ue
+        tf9LnrX/S561/0uetf9MnrX/TJ61/0yes/9EqsT/R7LM/9HV1v9bh4//Ra7G/0Wnwf9Pi5r/UIuZ/06L
+        mf9Ni5n/TYuZ/02Lmf9Oi5n/UIuZ/1GKmf9Oipn/QqW8/0+ov//u8e//e5Ka/0edsP9Cu9v/RbXR/0Wz
+        0P9DtND/QrTQ/0O00P9CtM//Q7TP/0Wzz/9Fs8//Q7XQ/0K62v9jo7X//v7+/6eyt/9Qi5n/Ra/K/2iV
+        n/+Goar/hKGp/4Shqf+Eoan/hKGp/4Shqf+Foan/hKGp/2uVn/9Grcf/fKmz///////W2dr/Y4SO/0qp
+        wf9aorL/baWy/2umsv9sprL/bKay/2ymsv9sprL/bKay/2ymsv9cobH/R6vH/6G2vf//////9vb2/4eV
+        mf9Jm67/QqrE/0uXq/9LmKz/TJir/0yYq/9MmKv/TJir/0yYq/9Ll6r/RqG4/02mvf/Ezc7/////////
+        //+8v7//VYOM/0amv/9LjZ//T4yd/06Nnf9OjZ3/To2d/06Mnf9OjZ3/Touc/0earf9fobL/4uPk////
+        ////////7vHu/5qgof94o6//eae0/3qntP95p7T/eae0/3mntP95p7T/eae0/3qns/94prP/lquz//b2
+        9f/////////////////5+Pj/9fPz//b09P/19PT/9vTz//b08//29PP/9vTz//b08//29PP/9fPz//b1
+        9f/+/v7/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAA==
+</value>
+  </data>
+  <data name="tabScene.Text" xml:space="preserve">
+    <value> 场景设置</value>
+  </data>
+  <data name="&gt;&gt;tabControlPanel3.Name" xml:space="preserve">
+    <value>tabControlPanel3</value>
+  </data>
+  <data name="&gt;&gt;tabControlPanel3.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.TabControlPanel, DevComponents.DotNetBar2, Version=14.0.0.3, Culture=neutral, PublicKeyToken=c39c3242a43eee2b</value>
+  </data>
+  <data name="&gt;&gt;tabControlPanel3.Parent" xml:space="preserve">
+    <value>tabStrip</value>
+  </data>
+  <data name="&gt;&gt;tabControlPanel3.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="tabControlPanel7.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="tabControlPanel7.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 28</value>
+  </data>
+  <data name="tabControlPanel7.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>1, 1, 1, 1</value>
+  </data>
+  <data name="tabControlPanel7.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1264, 0</value>
+  </data>
+  <data name="tabControlPanel7.TabIndex" type="System.Int32, mscorlib">
+    <value>25</value>
+  </data>
+  <data name="tabLogic.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAQAAMMOAADDDgAAAAAAAAAA
+        AAC6wsT/i6Ko/4yjqf+No6n/jaOp/42jqf+No6n/jaOp/42jqf+No6n/jaOp/42jqf+No6r/jKOq/4yk
+        qv+Ooqf/fZee/3ycp/+NqbD/i6iv/4uorf+KqK3/iqit/4qorf+KqK3/iqit/4uorf+LqK7/iaas/4Wi
+        qf+Go6r/gZWe/2+Ijv+ytbX/z83M//Lx8P/6+/v/+fv6//n7+v/5+/r/+fv6//n7+v/5+/r/+vz7/+bn
+        5v/BwL//vby6/6qopv9whIn/r62r/7u5tf/KyMT/6+vq////////////////////////////////////
+        ///+/v7/9/b2/8rKyf+sq6r/bIKK/7i9vv/Z2df/19fV/+Pj4//s7Oz/7Ozs/+zs7P/s7Oz/7Ozs/+zs
+        7P/s7Oz/7Ozs/+vs7P/o6ej/zcvK/3F/hf9miZH/bpCX/2+PmP9uj5f/bY6X/22Ol/9tjpf/bY6X/22O
+        l/9tjpf/bY6X/26Ol/9tjpf/bY+V/2qHjP+ElZX/UYub/0epxP9IqsP/SKvD/0erw/9Hq8P/R6vD/0er
+        w/9Hq8P/R6vD/0erw/9Iq8P/SarE/0mqwv9Lpbr/qLS1/0+Mmv9Budf/RafA/0yetP9MnrX/S561/0ue
+        tf9LnrX/S561/0uetf9MnrX/TJ61/0yes/9EqsT/R7LM/9HV1v9bh4//Ra7G/0Wnwf9Pi5r/UIuZ/06L
+        mf9Ni5n/TYuZ/02Lmf9Oi5n/UIuZ/1GKmf9Oipn/QqW8/0+ov//u8e//e5Ka/0edsP9Cu9v/RbXR/0Wz
+        0P9DtND/QrTQ/0O00P9CtM//Q7TP/0Wzz/9Fs8//Q7XQ/0K62v9jo7X//v7+/6eyt/9Qi5n/Ra/K/2iV
+        n/+Goar/hKGp/4Shqf+Eoan/hKGp/4Shqf+Foan/hKGp/2uVn/9Grcf/fKmz///////W2dr/Y4SO/0qp
+        wf9aorL/baWy/2umsv9sprL/bKay/2ymsv9sprL/bKay/2ymsv9cobH/R6vH/6G2vf//////9vb2/4eV
+        mf9Jm67/QqrE/0uXq/9LmKz/TJir/0yYq/9MmKv/TJir/0yYq/9Ll6r/RqG4/02mvf/Ezc7/////////
+        //+8v7//VYOM/0amv/9LjZ//T4yd/06Nnf9OjZ3/To2d/06Mnf9OjZ3/Touc/0earf9fobL/4uPk////
+        ////////7vHu/5qgof94o6//eae0/3qntP95p7T/eae0/3mntP95p7T/eae0/3qns/94prP/lquz//b2
+        9f/////////////////5+Pj/9fPz//b09P/19PT/9vTz//b08//29PP/9vTz//b08//29PP/9fPz//b1
+        9f/+/v7/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAA==
+</value>
+  </data>
+  <data name="tabLogic.Text" xml:space="preserve">
+    <value> 逻辑设置</value>
+  </data>
+  <data name="&gt;&gt;tabControlPanel7.Name" xml:space="preserve">
+    <value>tabControlPanel7</value>
+  </data>
+  <data name="&gt;&gt;tabControlPanel7.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.TabControlPanel, DevComponents.DotNetBar2, Version=14.0.0.3, Culture=neutral, PublicKeyToken=c39c3242a43eee2b</value>
+  </data>
+  <data name="&gt;&gt;tabControlPanel7.Parent" xml:space="preserve">
+    <value>tabStrip</value>
+  </data>
+  <data name="&gt;&gt;tabControlPanel7.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
   <data name="tabControlPanel6.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
   <data name="tabControlPanel6.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 26</value>
+    <value>0, 28</value>
   </data>
   <data name="tabControlPanel6.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>1, 1, 1, 1</value>
@@ -1353,8 +1449,32 @@
   <data name="tabControlPanel6.TabIndex" type="System.Int32, mscorlib">
     <value>21</value>
   </data>
+  <data name="tabReaction.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAQAAMMOAADDDgAAAAAAAAAA
+        AAC6wsT/i6Ko/4yjqf+No6n/jaOp/42jqf+No6n/jaOp/42jqf+No6n/jaOp/42jqf+No6r/jKOq/4yk
+        qv+Ooqf/fZee/3ycp/+NqbD/i6iv/4uorf+KqK3/iqit/4qorf+KqK3/iqit/4uorf+LqK7/iaas/4Wi
+        qf+Go6r/gZWe/2+Ijv+ytbX/z83M//Lx8P/6+/v/+fv6//n7+v/5+/r/+fv6//n7+v/5+/r/+vz7/+bn
+        5v/BwL//vby6/6qopv9whIn/r62r/7u5tf/KyMT/6+vq////////////////////////////////////
+        ///+/v7/9/b2/8rKyf+sq6r/bIKK/7i9vv/Z2df/19fV/+Pj4//s7Oz/7Ozs/+zs7P/s7Oz/7Ozs/+zs
+        7P/s7Oz/7Ozs/+vs7P/o6ej/zcvK/3F/hf9miZH/bpCX/2+PmP9uj5f/bY6X/22Ol/9tjpf/bY6X/22O
+        l/9tjpf/bY6X/26Ol/9tjpf/bY+V/2qHjP+ElZX/UYub/0epxP9IqsP/SKvD/0erw/9Hq8P/R6vD/0er
+        w/9Hq8P/R6vD/0erw/9Iq8P/SarE/0mqwv9Lpbr/qLS1/0+Mmv9Budf/RafA/0yetP9MnrX/S561/0ue
+        tf9LnrX/S561/0uetf9MnrX/TJ61/0yes/9EqsT/R7LM/9HV1v9bh4//Ra7G/0Wnwf9Pi5r/UIuZ/06L
+        mf9Ni5n/TYuZ/02Lmf9Oi5n/UIuZ/1GKmf9Oipn/QqW8/0+ov//u8e//e5Ka/0edsP9Cu9v/RbXR/0Wz
+        0P9DtND/QrTQ/0O00P9CtM//Q7TP/0Wzz/9Fs8//Q7XQ/0K62v9jo7X//v7+/6eyt/9Qi5n/Ra/K/2iV
+        n/+Goar/hKGp/4Shqf+Eoan/hKGp/4Shqf+Foan/hKGp/2uVn/9Grcf/fKmz///////W2dr/Y4SO/0qp
+        wf9aorL/baWy/2umsv9sprL/bKay/2ymsv9sprL/bKay/2ymsv9cobH/R6vH/6G2vf//////9vb2/4eV
+        mf9Jm67/QqrE/0uXq/9LmKz/TJir/0yYq/9MmKv/TJir/0yYq/9Ll6r/RqG4/02mvf/Ezc7/////////
+        //+8v7//VYOM/0amv/9LjZ//T4yd/06Nnf9OjZ3/To2d/06Mnf9OjZ3/Touc/0earf9fobL/4uPk////
+        ////////7vHu/5qgof94o6//eae0/3qntP95p7T/eae0/3mntP95p7T/eae0/3qns/94prP/lquz//b2
+        9f/////////////////5+Pj/9fPz//b09P/19PT/9vTz//b08//29PP/9vTz//b08//29PP/9fPz//b1
+        9f/+/v7/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAA==
+</value>
+  </data>
   <data name="tabReaction.Text" xml:space="preserve">
-    <value>感应设置</value>
+    <value> 感应设置</value>
   </data>
   <data name="&gt;&gt;tabControlPanel6.Name" xml:space="preserve">
     <value>tabControlPanel6</value>
@@ -1369,19 +1489,22 @@
     <value>6</value>
   </data>
   <data name="tabStrip.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
+    <value>Top</value>
   </data>
   <data name="tabStrip.Font" type="System.Drawing.Font, System.Drawing">
-    <value>幼圆, 9pt</value>
+    <value>黑体, 10.5pt</value>
   </data>
   <data name="tabStrip.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
   <data name="tabStrip.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1264, 26</value>
+    <value>1264, 27</value>
   </data>
   <data name="tabStrip.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
+  </data>
+  <data name="tabStrip.Text" xml:space="preserve">
+    <value>n </value>
   </data>
   <data name="&gt;&gt;tabStrip.Name" xml:space="preserve">
     <value>tabStrip</value>
@@ -1414,7 +1537,7 @@
     <value>0, 76</value>
   </data>
   <data name="PlTabStrip.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1264, 26</value>
+    <value>1264, 30</value>
   </data>
   <data name="PlTabStrip.TabIndex" type="System.Int32, mscorlib">
     <value>14</value>
@@ -1447,10 +1570,10 @@
     <value>Fill</value>
   </data>
   <data name="PlMain.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 102</value>
+    <value>0, 106</value>
   </data>
   <data name="PlMain.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1264, 540</value>
+    <value>1264, 536</value>
   </data>
   <data name="PlMain.TabIndex" type="System.Int32, mscorlib">
     <value>15</value>
@@ -1923,24 +2046,6 @@
   <data name="&gt;&gt;timer1.Type" xml:space="preserve">
     <value>System.Windows.Forms.Timer, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;tabReaction.Name" xml:space="preserve">
-    <value>tabReaction</value>
-  </data>
-  <data name="&gt;&gt;tabReaction.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.TabItem, DevComponents.DotNetBar2, Version=14.0.0.3, Culture=neutral, PublicKeyToken=c39c3242a43eee2b</value>
-  </data>
-  <data name="&gt;&gt;tabLogic.Name" xml:space="preserve">
-    <value>tabLogic</value>
-  </data>
-  <data name="&gt;&gt;tabLogic.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.TabItem, DevComponents.DotNetBar2, Version=14.0.0.3, Culture=neutral, PublicKeyToken=c39c3242a43eee2b</value>
-  </data>
-  <data name="&gt;&gt;tabPanel.Name" xml:space="preserve">
-    <value>tabPanel</value>
-  </data>
-  <data name="&gt;&gt;tabPanel.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.TabItem, DevComponents.DotNetBar2, Version=14.0.0.3, Culture=neutral, PublicKeyToken=c39c3242a43eee2b</value>
-  </data>
   <data name="&gt;&gt;tabTimer.Name" xml:space="preserve">
     <value>tabTimer</value>
   </data>
@@ -1963,6 +2068,24 @@
     <value>tabName</value>
   </data>
   <data name="&gt;&gt;tabName.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.TabItem, DevComponents.DotNetBar2, Version=14.0.0.3, Culture=neutral, PublicKeyToken=c39c3242a43eee2b</value>
+  </data>
+  <data name="&gt;&gt;tabLogic.Name" xml:space="preserve">
+    <value>tabLogic</value>
+  </data>
+  <data name="&gt;&gt;tabLogic.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.TabItem, DevComponents.DotNetBar2, Version=14.0.0.3, Culture=neutral, PublicKeyToken=c39c3242a43eee2b</value>
+  </data>
+  <data name="&gt;&gt;tabPanel.Name" xml:space="preserve">
+    <value>tabPanel</value>
+  </data>
+  <data name="&gt;&gt;tabPanel.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.TabItem, DevComponents.DotNetBar2, Version=14.0.0.3, Culture=neutral, PublicKeyToken=c39c3242a43eee2b</value>
+  </data>
+  <data name="&gt;&gt;tabReaction.Name" xml:space="preserve">
+    <value>tabReaction</value>
+  </data>
+  <data name="&gt;&gt;tabReaction.Type" xml:space="preserve">
     <value>DevComponents.DotNetBar.TabItem, DevComponents.DotNetBar2, Version=14.0.0.3, Culture=neutral, PublicKeyToken=c39c3242a43eee2b</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">

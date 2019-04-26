@@ -513,13 +513,7 @@ namespace eNet编辑器
 
         private void btnStyleIni()
         {
-            btnName.Style = DevComponents.DotNetBar.eDotNetBarStyle.VS2005;
-            btnPoint.Style = DevComponents.DotNetBar.eDotNetBarStyle.VS2005;
-            btnScene.Style = DevComponents.DotNetBar.eDotNetBarStyle.VS2005;
-            btnTimer.Style = DevComponents.DotNetBar.eDotNetBarStyle.VS2005;
-            btnBind.Style = DevComponents.DotNetBar.eDotNetBarStyle.VS2005;
-            btnLogic.Style = DevComponents.DotNetBar.eDotNetBarStyle.VS2005;
-            btnOperation.Style = DevComponents.DotNetBar.eDotNetBarStyle.VS2005;
+           
             
         }
         #endregion
@@ -1015,7 +1009,57 @@ namespace eNet编辑器
 
         #endregion
 
-     
+        private void tabName_Click(object sender, EventArgs e)
+        {
+            tabStyleIni(tabName);
+        }
+
+        private void tabPoint_Click(object sender, EventArgs e)
+        {
+            tabStyleIni(tabPoint);
+        }
+
+        private void tabScene_Click(object sender, EventArgs e)
+        {
+            tabStyleIni(tabScene);
+        }
+
+        private void tabTimer_Click(object sender, EventArgs e)
+        {
+            tabStyleIni(tabTimer);
+        }
+
+        private void tabPanel_Click(object sender, EventArgs e)
+        {
+            tabStyleIni(tabPanel);
+        }
+
+        private void tabReaction_Click(object sender, EventArgs e)
+        {
+            tabStyleIni(tabReaction);
+        }
+
+        private void tabLogic_Click(object sender, EventArgs e)
+        {
+            tabStyleIni(tabLogic);
+        }
+
+        //所有按钮变回默认
+        private void tabStyleIni(DevComponents.DotNetBar.TabItem target)
+        {
+            /*
+            target.BackColor = Color.LightSteelBlue;
+            foreach (DevComponents.DotNetBar.TabItem item in tabStrip.Tabs)
+            {
+                if (item == target)
+                {
+                    continue;
+                }
+                target.BackColor = Color.White;
+                
+            }*/
+            
+        }
 
      
   
