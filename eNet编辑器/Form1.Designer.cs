@@ -109,39 +109,48 @@
             this.tsTimer = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.panelDgv = new System.Windows.Forms.Panel();
-            this.btnName = new DevComponents.DotNetBar.ButtonX();
-            this.btnTimer = new DevComponents.DotNetBar.ButtonX();
-            this.btnScene = new DevComponents.DotNetBar.ButtonX();
             this.LbTitleName = new System.Windows.Forms.Label();
-            this.btnPoint = new DevComponents.DotNetBar.ButtonX();
-            this.btnBind = new DevComponents.DotNetBar.ButtonX();
             this.cbType = new System.Windows.Forms.ComboBox();
-            this.btnLogic = new DevComponents.DotNetBar.ButtonX();
-            this.btnOperation = new DevComponents.DotNetBar.ButtonX();
             this.txtShow = new System.Windows.Forms.TextBox();
             this.PlMeustrip = new Infragistics.Win.Misc.UltraPanel();
             this.PlToolstrip = new Infragistics.Win.Misc.UltraPanel();
             this.PlTabStrip = new Infragistics.Win.Misc.UltraPanel();
             this.tabStrip = new DevComponents.DotNetBar.TabControl();
-            this.tabControlPanel4 = new DevComponents.DotNetBar.TabControlPanel();
-            this.tabTimer = new DevComponents.DotNetBar.TabItem(this.components);
-            this.tabControlPanel3 = new DevComponents.DotNetBar.TabControlPanel();
-            this.tabScene = new DevComponents.DotNetBar.TabItem(this.components);
-            this.tabControlPanel2 = new DevComponents.DotNetBar.TabControlPanel();
-            this.tabPoint = new DevComponents.DotNetBar.TabItem(this.components);
             this.tabControlPanel1 = new DevComponents.DotNetBar.TabControlPanel();
             this.tabName = new DevComponents.DotNetBar.TabItem(this.components);
-            this.tabControlPanel7 = new DevComponents.DotNetBar.TabControlPanel();
-            this.tabLogic = new DevComponents.DotNetBar.TabItem(this.components);
-            this.tabControlPanel5 = new DevComponents.DotNetBar.TabControlPanel();
-            this.tabPanel = new DevComponents.DotNetBar.TabItem(this.components);
             this.tabControlPanel6 = new DevComponents.DotNetBar.TabControlPanel();
             this.tabReaction = new DevComponents.DotNetBar.TabItem(this.components);
-            this.PlMain = new Infragistics.Win.Misc.UltraPanel();
+            this.tabControlPanel7 = new DevComponents.DotNetBar.TabControlPanel();
+            this.tabLogic = new DevComponents.DotNetBar.TabItem(this.components);
+            this.tabControlPanel2 = new DevComponents.DotNetBar.TabControlPanel();
+            this.tabPoint = new DevComponents.DotNetBar.TabItem(this.components);
+            this.tabControlPanel3 = new DevComponents.DotNetBar.TabControlPanel();
+            this.tabScene = new DevComponents.DotNetBar.TabItem(this.components);
+            this.tabControlPanel4 = new DevComponents.DotNetBar.TabControlPanel();
+            this.tabTimer = new DevComponents.DotNetBar.TabItem(this.components);
+            this.tabControlPanel5 = new DevComponents.DotNetBar.TabControlPanel();
+            this.tabPanel = new DevComponents.DotNetBar.TabItem(this.components);
+            this.plMain = new System.Windows.Forms.Panel();
+            this.plLeft = new System.Windows.Forms.Panel();
+            this.plInfo = new System.Windows.Forms.Panel();
+            this.plCentent = new System.Windows.Forms.Panel();
+            this.plRight = new System.Windows.Forms.Panel();
+            this.ultraSplitter1 = new Infragistics.Win.Misc.UltraSplitter();
+            this.ultraSplitter2 = new Infragistics.Win.Misc.UltraSplitter();
+            this.ultraSplitter3 = new Infragistics.Win.Misc.UltraSplitter();
+            this.plDgv = new System.Windows.Forms.Panel();
+            this.plSection = new System.Windows.Forms.Panel();
+            this.plTitle = new System.Windows.Forms.Panel();
+            this.ultraSplitter4 = new Infragistics.Win.Misc.UltraSplitter();
+            this.plInfoTitle = new System.Windows.Forms.Panel();
+            this.btnInfoClear = new DevComponents.DotNetBar.ButtonX();
+            this.plTitleCbbox = new System.Windows.Forms.Panel();
+            this.plTitleTree = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.symbolBox1 = new DevComponents.DotNetBar.Controls.SymbolBox();
+            this.symbolBox2 = new DevComponents.DotNetBar.Controls.SymbolBox();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
-            this.panelDgv.SuspendLayout();
             this.PlMeustrip.ClientArea.SuspendLayout();
             this.PlMeustrip.SuspendLayout();
             this.PlToolstrip.ClientArea.SuspendLayout();
@@ -150,8 +159,13 @@
             this.PlTabStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tabStrip)).BeginInit();
             this.tabStrip.SuspendLayout();
-            this.PlMain.ClientArea.SuspendLayout();
-            this.PlMain.SuspendLayout();
+            this.plMain.SuspendLayout();
+            this.plInfo.SuspendLayout();
+            this.plCentent.SuspendLayout();
+            this.plRight.SuspendLayout();
+            this.plTitle.SuspendLayout();
+            this.plInfoTitle.SuspendLayout();
+            this.plTitleCbbox.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -664,96 +678,17 @@
             this.timer1.Interval = 3000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // panelDgv
-            // 
-            this.panelDgv.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.panelDgv.Controls.Add(this.btnName);
-            this.panelDgv.Controls.Add(this.btnTimer);
-            this.panelDgv.Controls.Add(this.btnScene);
-            this.panelDgv.Controls.Add(this.LbTitleName);
-            this.panelDgv.Controls.Add(this.btnPoint);
-            this.panelDgv.Controls.Add(this.btnBind);
-            this.panelDgv.Controls.Add(this.cbType);
-            this.panelDgv.Controls.Add(this.btnLogic);
-            this.panelDgv.Controls.Add(this.btnOperation);
-            this.panelDgv.Controls.Add(this.txtShow);
-            resources.ApplyResources(this.panelDgv, "panelDgv");
-            this.panelDgv.Name = "panelDgv";
-            // 
-            // btnName
-            // 
-            this.btnName.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnName.ColorTable = DevComponents.DotNetBar.eButtonColor.MagentaWithBackground;
-            resources.ApplyResources(this.btnName, "btnName");
-            this.btnName.Name = "btnName";
-            this.btnName.Style = DevComponents.DotNetBar.eDotNetBarStyle.VS2005;
-            this.btnName.Click += new System.EventHandler(this.btnName_Click_1);
-            // 
-            // btnTimer
-            // 
-            this.btnTimer.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnTimer.ColorTable = DevComponents.DotNetBar.eButtonColor.MagentaWithBackground;
-            resources.ApplyResources(this.btnTimer, "btnTimer");
-            this.btnTimer.Name = "btnTimer";
-            this.btnTimer.Style = DevComponents.DotNetBar.eDotNetBarStyle.VS2005;
-            this.btnTimer.Click += new System.EventHandler(this.btnTimer_Click_1);
-            // 
-            // btnScene
-            // 
-            this.btnScene.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnScene.ColorTable = DevComponents.DotNetBar.eButtonColor.MagentaWithBackground;
-            resources.ApplyResources(this.btnScene, "btnScene");
-            this.btnScene.Name = "btnScene";
-            this.btnScene.Style = DevComponents.DotNetBar.eDotNetBarStyle.VS2005;
-            this.btnScene.Click += new System.EventHandler(this.btnScene_Click_1);
-            // 
             // LbTitleName
             // 
             resources.ApplyResources(this.LbTitleName, "LbTitleName");
             this.LbTitleName.Name = "LbTitleName";
             // 
-            // btnPoint
-            // 
-            this.btnPoint.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnPoint.ColorTable = DevComponents.DotNetBar.eButtonColor.MagentaWithBackground;
-            resources.ApplyResources(this.btnPoint, "btnPoint");
-            this.btnPoint.Name = "btnPoint";
-            this.btnPoint.Style = DevComponents.DotNetBar.eDotNetBarStyle.VS2005;
-            this.btnPoint.Click += new System.EventHandler(this.btnPoint_Click);
-            // 
-            // btnBind
-            // 
-            this.btnBind.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnBind.ColorTable = DevComponents.DotNetBar.eButtonColor.MagentaWithBackground;
-            resources.ApplyResources(this.btnBind, "btnBind");
-            this.btnBind.Name = "btnBind";
-            this.btnBind.Style = DevComponents.DotNetBar.eDotNetBarStyle.VS2005;
-            this.btnBind.Click += new System.EventHandler(this.btnBind_Click_1);
-            // 
             // cbType
             // 
-            this.cbType.FormattingEnabled = true;
             resources.ApplyResources(this.cbType, "cbType");
+            this.cbType.FormattingEnabled = true;
             this.cbType.Name = "cbType";
             this.cbType.SelectedIndexChanged += new System.EventHandler(this.cbType_SelectedIndexChanged);
-            // 
-            // btnLogic
-            // 
-            this.btnLogic.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnLogic.ColorTable = DevComponents.DotNetBar.eButtonColor.MagentaWithBackground;
-            resources.ApplyResources(this.btnLogic, "btnLogic");
-            this.btnLogic.Name = "btnLogic";
-            this.btnLogic.Style = DevComponents.DotNetBar.eDotNetBarStyle.VS2005;
-            this.btnLogic.Click += new System.EventHandler(this.btnLogic_Click_1);
-            // 
-            // btnOperation
-            // 
-            this.btnOperation.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnOperation.ColorTable = DevComponents.DotNetBar.eButtonColor.MagentaWithBackground;
-            resources.ApplyResources(this.btnOperation, "btnOperation");
-            this.btnOperation.Name = "btnOperation";
-            this.btnOperation.Style = DevComponents.DotNetBar.eDotNetBarStyle.VS2005;
-            this.btnOperation.Click += new System.EventHandler(this.btnOperation_Click_1);
             // 
             // txtShow
             // 
@@ -784,7 +719,7 @@
             // 
             // PlTabStrip
             // 
-            appearance3.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            appearance3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(145)))), ((int)(((byte)(230)))));
             this.PlTabStrip.Appearance = appearance3;
             // 
             // PlTabStrip.ClientArea
@@ -819,14 +754,13 @@
             this.tabStrip.ColorScheme.TabItemSelectedBorderDark = System.Drawing.Color.Empty;
             this.tabStrip.ColorScheme.TabItemSelectedBorderLight = System.Drawing.Color.Empty;
             this.tabStrip.ColorScheme.TabItemSelectedText = System.Drawing.Color.White;
-            this.tabStrip.ColorScheme.TabItemText = System.Drawing.SystemColors.ControlText;
-            this.tabStrip.Controls.Add(this.tabControlPanel1);
-            this.tabStrip.Controls.Add(this.tabControlPanel2);
-            this.tabStrip.Controls.Add(this.tabControlPanel4);
-            this.tabStrip.Controls.Add(this.tabControlPanel5);
-            this.tabStrip.Controls.Add(this.tabControlPanel3);
             this.tabStrip.Controls.Add(this.tabControlPanel7);
             this.tabStrip.Controls.Add(this.tabControlPanel6);
+            this.tabStrip.Controls.Add(this.tabControlPanel5);
+            this.tabStrip.Controls.Add(this.tabControlPanel4);
+            this.tabStrip.Controls.Add(this.tabControlPanel3);
+            this.tabStrip.Controls.Add(this.tabControlPanel2);
+            this.tabStrip.Controls.Add(this.tabControlPanel1);
             resources.ApplyResources(this.tabStrip, "tabStrip");
             this.tabStrip.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.tabStrip.Name = "tabStrip";
@@ -841,69 +775,6 @@
             this.tabStrip.Tabs.Add(this.tabPanel);
             this.tabStrip.Tabs.Add(this.tabReaction);
             this.tabStrip.Tabs.Add(this.tabLogic);
-            // 
-            // tabControlPanel4
-            // 
-            this.tabControlPanel4.DisabledBackColor = System.Drawing.Color.Empty;
-            resources.ApplyResources(this.tabControlPanel4, "tabControlPanel4");
-            this.tabControlPanel4.Name = "tabControlPanel4";
-            this.tabControlPanel4.Style.BackColor2.Color = System.Drawing.Color.Silver;
-            this.tabControlPanel4.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
-            this.tabControlPanel4.Style.BorderColor.Color = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(157)))), ((int)(((byte)(185)))));
-            this.tabControlPanel4.Style.BorderSide = ((DevComponents.DotNetBar.eBorderSide)(((DevComponents.DotNetBar.eBorderSide.Left | DevComponents.DotNetBar.eBorderSide.Right)
-                        | DevComponents.DotNetBar.eBorderSide.Bottom)));
-            this.tabControlPanel4.Style.GradientAngle = 90;
-            this.tabControlPanel4.TabItem = this.tabTimer;
-            // 
-            // tabTimer
-            // 
-            this.tabTimer.AttachedControl = this.tabControlPanel4;
-            this.tabTimer.Icon = ((System.Drawing.Icon)(resources.GetObject("tabTimer.Icon")));
-            this.tabTimer.Name = "tabTimer";
-            resources.ApplyResources(this.tabTimer, "tabTimer");
-            this.tabTimer.Click += new System.EventHandler(this.tabTimer_Click);
-            // 
-            // tabControlPanel3
-            // 
-            this.tabControlPanel3.DisabledBackColor = System.Drawing.Color.Empty;
-            resources.ApplyResources(this.tabControlPanel3, "tabControlPanel3");
-            this.tabControlPanel3.Name = "tabControlPanel3";
-            this.tabControlPanel3.Style.BackColor2.Color = System.Drawing.Color.Silver;
-            this.tabControlPanel3.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
-            this.tabControlPanel3.Style.BorderColor.Color = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(157)))), ((int)(((byte)(185)))));
-            this.tabControlPanel3.Style.BorderSide = ((DevComponents.DotNetBar.eBorderSide)(((DevComponents.DotNetBar.eBorderSide.Left | DevComponents.DotNetBar.eBorderSide.Right)
-                        | DevComponents.DotNetBar.eBorderSide.Bottom)));
-            this.tabControlPanel3.Style.GradientAngle = 90;
-            this.tabControlPanel3.TabItem = this.tabScene;
-            // 
-            // tabScene
-            // 
-            this.tabScene.AttachedControl = this.tabControlPanel3;
-            this.tabScene.Icon = ((System.Drawing.Icon)(resources.GetObject("tabScene.Icon")));
-            this.tabScene.Name = "tabScene";
-            resources.ApplyResources(this.tabScene, "tabScene");
-            this.tabScene.Click += new System.EventHandler(this.tabScene_Click);
-            // 
-            // tabControlPanel2
-            // 
-            this.tabControlPanel2.DisabledBackColor = System.Drawing.Color.Empty;
-            resources.ApplyResources(this.tabControlPanel2, "tabControlPanel2");
-            this.tabControlPanel2.Name = "tabControlPanel2";
-            this.tabControlPanel2.Style.BackColor2.Color = System.Drawing.Color.Silver;
-            this.tabControlPanel2.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
-            this.tabControlPanel2.Style.BorderColor.Color = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(157)))), ((int)(((byte)(185)))));
-            this.tabControlPanel2.Style.BorderSide = ((DevComponents.DotNetBar.eBorderSide)(((DevComponents.DotNetBar.eBorderSide.Left | DevComponents.DotNetBar.eBorderSide.Right)
-                        | DevComponents.DotNetBar.eBorderSide.Bottom)));
-            this.tabControlPanel2.Style.GradientAngle = 90;
-            this.tabControlPanel2.TabItem = this.tabPoint;
-            // 
-            // tabPoint
-            // 
-            this.tabPoint.AttachedControl = this.tabControlPanel2;
-            this.tabPoint.Icon = ((System.Drawing.Icon)(resources.GetObject("tabPoint.Icon")));
-            this.tabPoint.Name = "tabPoint";
-            resources.ApplyResources(this.tabPoint, "tabPoint");
-            this.tabPoint.Click += new System.EventHandler(this.tabPoint_Click);
             // 
             // tabControlPanel1
             // 
@@ -926,6 +797,27 @@
             resources.ApplyResources(this.tabName, "tabName");
             this.tabName.Click += new System.EventHandler(this.tabName_Click);
             // 
+            // tabControlPanel6
+            // 
+            this.tabControlPanel6.DisabledBackColor = System.Drawing.Color.Empty;
+            resources.ApplyResources(this.tabControlPanel6, "tabControlPanel6");
+            this.tabControlPanel6.Name = "tabControlPanel6";
+            this.tabControlPanel6.Style.BackColor2.Color = System.Drawing.Color.Silver;
+            this.tabControlPanel6.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
+            this.tabControlPanel6.Style.BorderColor.Color = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(157)))), ((int)(((byte)(185)))));
+            this.tabControlPanel6.Style.BorderSide = ((DevComponents.DotNetBar.eBorderSide)(((DevComponents.DotNetBar.eBorderSide.Left | DevComponents.DotNetBar.eBorderSide.Right)
+                        | DevComponents.DotNetBar.eBorderSide.Bottom)));
+            this.tabControlPanel6.Style.GradientAngle = 90;
+            this.tabControlPanel6.TabItem = this.tabReaction;
+            // 
+            // tabReaction
+            // 
+            this.tabReaction.AttachedControl = this.tabControlPanel6;
+            this.tabReaction.Icon = ((System.Drawing.Icon)(resources.GetObject("tabReaction.Icon")));
+            this.tabReaction.Name = "tabReaction";
+            resources.ApplyResources(this.tabReaction, "tabReaction");
+            this.tabReaction.Click += new System.EventHandler(this.tabReaction_Click);
+            // 
             // tabControlPanel7
             // 
             this.tabControlPanel7.DisabledBackColor = System.Drawing.Color.Empty;
@@ -946,6 +838,69 @@
             this.tabLogic.Name = "tabLogic";
             resources.ApplyResources(this.tabLogic, "tabLogic");
             this.tabLogic.Click += new System.EventHandler(this.tabLogic_Click);
+            // 
+            // tabControlPanel2
+            // 
+            this.tabControlPanel2.DisabledBackColor = System.Drawing.Color.Empty;
+            resources.ApplyResources(this.tabControlPanel2, "tabControlPanel2");
+            this.tabControlPanel2.Name = "tabControlPanel2";
+            this.tabControlPanel2.Style.BackColor2.Color = System.Drawing.Color.Silver;
+            this.tabControlPanel2.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
+            this.tabControlPanel2.Style.BorderColor.Color = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(157)))), ((int)(((byte)(185)))));
+            this.tabControlPanel2.Style.BorderSide = ((DevComponents.DotNetBar.eBorderSide)(((DevComponents.DotNetBar.eBorderSide.Left | DevComponents.DotNetBar.eBorderSide.Right)
+                        | DevComponents.DotNetBar.eBorderSide.Bottom)));
+            this.tabControlPanel2.Style.GradientAngle = 90;
+            this.tabControlPanel2.TabItem = this.tabPoint;
+            // 
+            // tabPoint
+            // 
+            this.tabPoint.AttachedControl = this.tabControlPanel2;
+            this.tabPoint.Icon = ((System.Drawing.Icon)(resources.GetObject("tabPoint.Icon")));
+            this.tabPoint.Name = "tabPoint";
+            resources.ApplyResources(this.tabPoint, "tabPoint");
+            this.tabPoint.Click += new System.EventHandler(this.tabPoint_Click);
+            // 
+            // tabControlPanel3
+            // 
+            this.tabControlPanel3.DisabledBackColor = System.Drawing.Color.Empty;
+            resources.ApplyResources(this.tabControlPanel3, "tabControlPanel3");
+            this.tabControlPanel3.Name = "tabControlPanel3";
+            this.tabControlPanel3.Style.BackColor2.Color = System.Drawing.Color.Silver;
+            this.tabControlPanel3.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
+            this.tabControlPanel3.Style.BorderColor.Color = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(157)))), ((int)(((byte)(185)))));
+            this.tabControlPanel3.Style.BorderSide = ((DevComponents.DotNetBar.eBorderSide)(((DevComponents.DotNetBar.eBorderSide.Left | DevComponents.DotNetBar.eBorderSide.Right)
+                        | DevComponents.DotNetBar.eBorderSide.Bottom)));
+            this.tabControlPanel3.Style.GradientAngle = 90;
+            this.tabControlPanel3.TabItem = this.tabScene;
+            // 
+            // tabScene
+            // 
+            this.tabScene.AttachedControl = this.tabControlPanel3;
+            this.tabScene.Icon = ((System.Drawing.Icon)(resources.GetObject("tabScene.Icon")));
+            this.tabScene.Name = "tabScene";
+            resources.ApplyResources(this.tabScene, "tabScene");
+            this.tabScene.Click += new System.EventHandler(this.tabScene_Click);
+            // 
+            // tabControlPanel4
+            // 
+            this.tabControlPanel4.DisabledBackColor = System.Drawing.Color.Empty;
+            resources.ApplyResources(this.tabControlPanel4, "tabControlPanel4");
+            this.tabControlPanel4.Name = "tabControlPanel4";
+            this.tabControlPanel4.Style.BackColor2.Color = System.Drawing.Color.Silver;
+            this.tabControlPanel4.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
+            this.tabControlPanel4.Style.BorderColor.Color = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(157)))), ((int)(((byte)(185)))));
+            this.tabControlPanel4.Style.BorderSide = ((DevComponents.DotNetBar.eBorderSide)(((DevComponents.DotNetBar.eBorderSide.Left | DevComponents.DotNetBar.eBorderSide.Right)
+                        | DevComponents.DotNetBar.eBorderSide.Bottom)));
+            this.tabControlPanel4.Style.GradientAngle = 90;
+            this.tabControlPanel4.TabItem = this.tabTimer;
+            // 
+            // tabTimer
+            // 
+            this.tabTimer.AttachedControl = this.tabControlPanel4;
+            this.tabTimer.Icon = ((System.Drawing.Icon)(resources.GetObject("tabTimer.Icon")));
+            this.tabTimer.Name = "tabTimer";
+            resources.ApplyResources(this.tabTimer, "tabTimer");
+            this.tabTimer.Click += new System.EventHandler(this.tabTimer_Click);
             // 
             // tabControlPanel5
             // 
@@ -968,42 +923,158 @@
             resources.ApplyResources(this.tabPanel, "tabPanel");
             this.tabPanel.Click += new System.EventHandler(this.tabPanel_Click);
             // 
-            // tabControlPanel6
+            // plMain
             // 
-            this.tabControlPanel6.DisabledBackColor = System.Drawing.Color.Empty;
-            resources.ApplyResources(this.tabControlPanel6, "tabControlPanel6");
-            this.tabControlPanel6.Name = "tabControlPanel6";
-            this.tabControlPanel6.Style.BackColor2.Color = System.Drawing.Color.Silver;
-            this.tabControlPanel6.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
-            this.tabControlPanel6.Style.BorderColor.Color = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(157)))), ((int)(((byte)(185)))));
-            this.tabControlPanel6.Style.BorderSide = ((DevComponents.DotNetBar.eBorderSide)(((DevComponents.DotNetBar.eBorderSide.Left | DevComponents.DotNetBar.eBorderSide.Right)
-                        | DevComponents.DotNetBar.eBorderSide.Bottom)));
-            this.tabControlPanel6.Style.GradientAngle = 90;
-            this.tabControlPanel6.TabItem = this.tabReaction;
+            this.plMain.Controls.Add(this.plCentent);
+            this.plMain.Controls.Add(this.ultraSplitter2);
+            this.plMain.Controls.Add(this.ultraSplitter1);
+            this.plMain.Controls.Add(this.plRight);
+            this.plMain.Controls.Add(this.plLeft);
+            resources.ApplyResources(this.plMain, "plMain");
+            this.plMain.Name = "plMain";
             // 
-            // tabReaction
+            // plLeft
             // 
-            this.tabReaction.AttachedControl = this.tabControlPanel6;
-            this.tabReaction.Icon = ((System.Drawing.Icon)(resources.GetObject("tabReaction.Icon")));
-            this.tabReaction.Name = "tabReaction";
-            resources.ApplyResources(this.tabReaction, "tabReaction");
-            this.tabReaction.Click += new System.EventHandler(this.tabReaction_Click);
+            resources.ApplyResources(this.plLeft, "plLeft");
+            this.plLeft.Name = "plLeft";
             // 
-            // PlMain
+            // plInfo
+            // 
+            this.plInfo.BackColor = System.Drawing.Color.Maroon;
+            this.plInfo.Controls.Add(this.txtShow);
+            this.plInfo.Controls.Add(this.plInfoTitle);
+            resources.ApplyResources(this.plInfo, "plInfo");
+            this.plInfo.Name = "plInfo";
+            // 
+            // plCentent
+            // 
+            this.plCentent.BackColor = System.Drawing.Color.Silver;
+            this.plCentent.Controls.Add(this.plDgv);
+            this.plCentent.Controls.Add(this.ultraSplitter3);
+            this.plCentent.Controls.Add(this.plInfo);
+            resources.ApplyResources(this.plCentent, "plCentent");
+            this.plCentent.Name = "plCentent";
+            // 
+            // plRight
+            // 
+            this.plRight.Controls.Add(this.ultraSplitter4);
+            this.plRight.Controls.Add(this.plTitle);
+            this.plRight.Controls.Add(this.plSection);
+            resources.ApplyResources(this.plRight, "plRight");
+            this.plRight.Name = "plRight";
+            // 
+            // ultraSplitter1
+            // 
+            resources.ApplyResources(this.ultraSplitter1, "ultraSplitter1");
+            this.ultraSplitter1.Name = "ultraSplitter1";
+            this.ultraSplitter1.RestoreExtent = 102;
+            // 
+            // ultraSplitter2
+            // 
+            this.ultraSplitter2.BackColor = System.Drawing.Color.White;
+            resources.ApplyResources(this.ultraSplitter2, "ultraSplitter2");
+            this.ultraSplitter2.Name = "ultraSplitter2";
+            this.ultraSplitter2.RestoreExtent = 200;
+            // 
+            // ultraSplitter3
+            // 
+            this.ultraSplitter3.BackColor = System.Drawing.Color.Silver;
+            resources.ApplyResources(this.ultraSplitter3, "ultraSplitter3");
+            this.ultraSplitter3.Name = "ultraSplitter3";
+            this.ultraSplitter3.RestoreExtent = 83;
+            // 
+            // plDgv
+            // 
+            resources.ApplyResources(this.plDgv, "plDgv");
+            this.plDgv.Name = "plDgv";
+            // 
+            // plSection
+            // 
+            resources.ApplyResources(this.plSection, "plSection");
+            this.plSection.Name = "plSection";
+            // 
+            // plTitle
+            // 
+            this.plTitle.Controls.Add(this.plTitleTree);
+            this.plTitle.Controls.Add(this.plTitleCbbox);
+            resources.ApplyResources(this.plTitle, "plTitle");
+            this.plTitle.Name = "plTitle";
+            // 
+            // ultraSplitter4
+            // 
+            this.ultraSplitter4.BackColor = System.Drawing.Color.White;
+            resources.ApplyResources(this.ultraSplitter4, "ultraSplitter4");
+            this.ultraSplitter4.Name = "ultraSplitter4";
+            this.ultraSplitter4.RestoreExtent = 252;
+            // 
+            // plInfoTitle
+            // 
+            this.plInfoTitle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.plInfoTitle.Controls.Add(this.btnInfoClear);
+            this.plInfoTitle.Controls.Add(this.symbolBox1);
+            this.plInfoTitle.Controls.Add(this.label1);
+            resources.ApplyResources(this.plInfoTitle, "plInfoTitle");
+            this.plInfoTitle.Name = "plInfoTitle";
+            // 
+            // btnInfoClear
+            // 
+            this.btnInfoClear.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            resources.ApplyResources(this.btnInfoClear, "btnInfoClear");
+            this.btnInfoClear.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnInfoClear.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
+            this.btnInfoClear.FocusCuesEnabled = false;
+            this.btnInfoClear.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.Image;
+            this.btnInfoClear.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnInfoClear.HoverImage")));
+            this.btnInfoClear.Image = ((System.Drawing.Image)(resources.GetObject("btnInfoClear.Image")));
+            this.btnInfoClear.Name = "btnInfoClear";
+            this.btnInfoClear.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnInfoClear.Click += new System.EventHandler(this.btnInfoClear_Click);
+            // 
+            // plTitleCbbox
+            // 
+            this.plTitleCbbox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.plTitleCbbox.Controls.Add(this.cbType);
+            this.plTitleCbbox.Controls.Add(this.symbolBox2);
+            this.plTitleCbbox.Controls.Add(this.LbTitleName);
+            resources.ApplyResources(this.plTitleCbbox, "plTitleCbbox");
+            this.plTitleCbbox.Name = "plTitleCbbox";
+            // 
+            // plTitleTree
+            // 
+            resources.ApplyResources(this.plTitleTree, "plTitleTree");
+            this.plTitleTree.Name = "plTitleTree";
+            // 
+            // label1
+            // 
+            resources.ApplyResources(this.label1, "label1");
+            this.label1.Name = "label1";
+            // 
+            // symbolBox1
             // 
             // 
-            // PlMain.ClientArea
             // 
-            this.PlMain.ClientArea.Controls.Add(this.panelDgv);
-            resources.ApplyResources(this.PlMain, "PlMain");
-            this.PlMain.Name = "PlMain";
+            // 
+            this.symbolBox1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            resources.ApplyResources(this.symbolBox1, "symbolBox1");
+            this.symbolBox1.Name = "symbolBox1";
+            this.symbolBox1.Symbol = "";
+            // 
+            // symbolBox2
+            // 
+            // 
+            // 
+            // 
+            this.symbolBox2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            resources.ApplyResources(this.symbolBox2, "symbolBox2");
+            this.symbolBox2.Name = "symbolBox2";
+            this.symbolBox2.Symbol = "";
             // 
             // Form1
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.White;
             resources.ApplyResources(this, "$this");
-            this.Controls.Add(this.PlMain);
+            this.Controls.Add(this.plMain);
             this.Controls.Add(this.PlTabStrip);
             this.Controls.Add(this.PlToolstrip);
             this.Controls.Add(this.PlMeustrip);
@@ -1011,14 +1082,11 @@
             this.Name = "Form1";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
-            this.SizeChanged += new System.EventHandler(this.Form1_SizeChanged);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
-            this.panelDgv.ResumeLayout(false);
-            this.panelDgv.PerformLayout();
             this.PlMeustrip.ClientArea.ResumeLayout(false);
             this.PlMeustrip.ClientArea.PerformLayout();
             this.PlMeustrip.ResumeLayout(false);
@@ -1028,8 +1096,16 @@
             this.PlTabStrip.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.tabStrip)).EndInit();
             this.tabStrip.ResumeLayout(false);
-            this.PlMain.ClientArea.ResumeLayout(false);
-            this.PlMain.ResumeLayout(false);
+            this.plMain.ResumeLayout(false);
+            this.plInfo.ResumeLayout(false);
+            this.plInfo.PerformLayout();
+            this.plCentent.ResumeLayout(false);
+            this.plRight.ResumeLayout(false);
+            this.plTitle.ResumeLayout(false);
+            this.plInfoTitle.ResumeLayout(false);
+            this.plInfoTitle.PerformLayout();
+            this.plTitleCbbox.ResumeLayout(false);
+            this.plTitleCbbox.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1112,15 +1188,7 @@
         private System.Windows.Forms.ToolStripMenuItem 帮助ToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem24;
         private System.Windows.Forms.ToolStripMenuItem 关于软件ToolStripMenuItem;
-        private System.Windows.Forms.Panel panelDgv;
-        private DevComponents.DotNetBar.ButtonX btnName;
-        private DevComponents.DotNetBar.ButtonX btnTimer;
-        private DevComponents.DotNetBar.ButtonX btnScene;
-        private DevComponents.DotNetBar.ButtonX btnPoint;
-        private DevComponents.DotNetBar.ButtonX btnBind;
         private System.Windows.Forms.ComboBox cbType;
-        private DevComponents.DotNetBar.ButtonX btnLogic;
-        private DevComponents.DotNetBar.ButtonX btnOperation;
         private System.Windows.Forms.TextBox txtShow;
         private Infragistics.Win.Misc.UltraPanel PlMeustrip;
         private Infragistics.Win.Misc.UltraPanel PlToolstrip;
@@ -1141,7 +1209,25 @@
         private DevComponents.DotNetBar.TabItem tabReaction;
         private DevComponents.DotNetBar.TabControlPanel tabControlPanel7;
         private DevComponents.DotNetBar.TabItem tabLogic;
-        private Infragistics.Win.Misc.UltraPanel PlMain;
+        private System.Windows.Forms.Panel plMain;
+        private Infragistics.Win.Misc.UltraSplitter ultraSplitter2;
+        private Infragistics.Win.Misc.UltraSplitter ultraSplitter1;
+        private System.Windows.Forms.Panel plCentent;
+        private System.Windows.Forms.Panel plInfo;
+        private System.Windows.Forms.Panel plLeft;
+        private System.Windows.Forms.Panel plRight;
+        private Infragistics.Win.Misc.UltraSplitter ultraSplitter3;
+        private System.Windows.Forms.Panel plDgv;
+        private Infragistics.Win.Misc.UltraSplitter ultraSplitter4;
+        private System.Windows.Forms.Panel plTitle;
+        private System.Windows.Forms.Panel plSection;
+        private System.Windows.Forms.Panel plInfoTitle;
+        private DevComponents.DotNetBar.ButtonX btnInfoClear;
+        private System.Windows.Forms.Panel plTitleTree;
+        private System.Windows.Forms.Panel plTitleCbbox;
+        private System.Windows.Forms.Label label1;
+        private DevComponents.DotNetBar.Controls.SymbolBox symbolBox1;
+        private DevComponents.DotNetBar.Controls.SymbolBox symbolBox2;
 
     }
 }

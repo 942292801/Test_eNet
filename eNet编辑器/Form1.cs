@@ -59,7 +59,6 @@ namespace eNet编辑器
         }
         private void Form1_Load(object sender, EventArgs e)
         {
-            
             LoadIni();
         }
 
@@ -95,10 +94,10 @@ namespace eNet编辑器
             dgvoperation = new DgvOperation();
 
             //第一次加载基本窗口
-            //修改窗口暂时屏蔽——————————Control_Add(threename, panelThree);//默认添加窗口一
-            //修改窗口暂时屏蔽——————————Control_Add(threesection, panelSection);
-            //修改窗口暂时屏蔽——————————Control_Add(dgvname, panelDgv);
-            //修改窗口暂时屏蔽——————————Control_Add(threetitle, panelTitle);
+            Control_Add(threename, plLeft);//默认添加窗口一
+            Control_Add(threesection, plSection);
+            Control_Add(dgvname, plDgv);
+            Control_Add(threetitle, plTitleTree);
 
             //对象选择框调用
             threesection.addTitleNode += new AddTitleNode(threesection_addTitleNode);
@@ -288,11 +287,11 @@ namespace eNet编辑器
         {
             if (flag)
             {
-                Control_Add(dgvdevice, panelDgv);
+                Control_Add(dgvdevice, plDgv);
             }
             else
             {
-                Control_Add(dgvname, panelDgv);
+                Control_Add(dgvname, plDgv);
             }
             
         }
@@ -303,7 +302,7 @@ namespace eNet编辑器
         /// </summary>
         /// <param name="form">窗口</param>
         /// <param name="panel">panel容器</param>
-        private void Control_Add(Form form,Panel panel)
+        private void Control_Add(Form form, Panel panel)
         {
             panel.Controls.Clear();    //移除所有控件  
             form.TopLevel = false;      //设置为非顶级窗体  
@@ -332,6 +331,13 @@ namespace eNet编辑器
             txtShow.AppendText(string.Format("{0}\r\n", msg));
         }
 
+        //清除txt信息
+        private void btnInfoClear_Click(object sender, EventArgs e)
+        {
+            txtShow.Clear();
+        }
+
+
         /// <summary>
         /// treetitle对象选择框改变
         /// </summary>
@@ -356,14 +362,12 @@ namespace eNet编辑器
 
 
         #region 左栏按钮 命名 场景 时钟 绑定 逻辑 运算 cbtype 读取
-        //旧名字：命名  新名字：设备
-        private void btnName_Click_1(object sender, EventArgs e)
+
+        private void tabName_Click(object sender, EventArgs e)
         {
-            btnStyleIni();
-            btnName.Style  = DevComponents.DotNetBar.eDotNetBarStyle.Office2003;
             //自定义函数加载窗体 CleanRecycle  
-            //修改窗口暂时屏蔽——————————Control_Add(threename, panelThree);
-            Control_Add(dgvname, panelDgv);
+            Control_Add(threename, plLeft);
+            Control_Add(dgvname, plDgv);
             //cbtype添加选择项 
             cbtypeName("equipment");
             //界面显示类型 
@@ -375,14 +379,11 @@ namespace eNet编辑器
             dgvname.dgvNameAddItem();
         }
 
-        //点位
-        private void btnPoint_Click(object sender, EventArgs e)
+        private void tabPoint_Click(object sender, EventArgs e)
         {
-            btnStyleIni();
-            btnPoint.Style = DevComponents.DotNetBar.eDotNetBarStyle.Office2003;
             //自定义函数加载窗体 CleanRecycle  
-            //修改窗口暂时屏蔽——————————Control_Add(threepoint, panelThree);
-            Control_Add(dgvpoint, panelDgv);
+            Control_Add(threepoint, plLeft);
+            Control_Add(dgvpoint, plDgv);
             //cbtype添加选择项 
             cbtypeName("point");
             //界面显示类型 
@@ -396,16 +397,11 @@ namespace eNet编辑器
             dgvpoint.dgvPointAddItemBySection();
         }
 
-
-
-        //场景
-        private void btnScene_Click_1(object sender, EventArgs e)
+        private void tabScene_Click(object sender, EventArgs e)
         {
-            btnStyleIni();
-            btnScene.Style = DevComponents.DotNetBar.eDotNetBarStyle.Office2003;
             //自定义函数加载窗体 CleanRecycle  
-            //修改窗口暂时屏蔽——————————Control_Add(threescene, panelThree);
-            Control_Add(dgvscene, panelDgv);
+            Control_Add(threescene, plLeft);
+            Control_Add(dgvscene, plDgv);
             //界面显示类型 
             FileMesege.formType = "scene";
             //cbtype添加选择项
@@ -416,14 +412,12 @@ namespace eNet编辑器
             LbTitleName.Text = Resources.lbTitleObj;
             dgvscene.dgvsceneAddItem();
         }
-        //时钟
-        private void btnTimer_Click_1(object sender, EventArgs e)
+
+        private void tabTimer_Click(object sender, EventArgs e)
         {
-            btnStyleIni();
-            btnTimer.Style = DevComponents.DotNetBar.eDotNetBarStyle.Office2003;
             //自定义函数加载窗体 CleanRecycle  
-            //修改窗口暂时屏蔽——————————Control_Add(threetimer, panelThree);
-            Control_Add(dgvtimer, panelDgv);
+            Control_Add(threetimer, plLeft);
+            Control_Add(dgvtimer, plDgv);
             //界面显示类型 
             FileMesege.formType = "timer";
             //cbtype添加选择项 
@@ -433,53 +427,48 @@ namespace eNet编辑器
             //更改Title 小标题
             LbTitleName.Text = Resources.lbTitleObj;
         }
-        //绑定
-        private void btnBind_Click_1(object sender, EventArgs e)
+
+        //面板绑定
+        private void tabPanel_Click(object sender, EventArgs e)
         {
-            btnStyleIni();
-            btnBind.Style = DevComponents.DotNetBar.eDotNetBarStyle.Office2003;
-          
             //自定义函数加载窗体 CleanRecycle  
-            //修改窗口暂时屏蔽——————————Control_Add(threebind, panelThree);
-            Control_Add(dgvbind, panelDgv);
+            Control_Add(threebind, plLeft);
+            Control_Add(dgvbind, plDgv);
             //界面显示类型 
-            FileMesege.formType = "bind";
+            FileMesege.formType = "panel";
             //cbtype添加选择项 
-            cbtypeName("bind");
+            cbtypeName("panel");
             //添加对象树状图
             threetitle.ThreeTitleAddNode(cbType.SelectedIndex);
             //更改Title 小标题
             LbTitleName.Text = Resources.lbTitleObj;
         }
-        //逻辑
-        private void btnLogic_Click_1(object sender, EventArgs e)
+
+        //感应设置
+        private void tabReaction_Click(object sender, EventArgs e)
         {
-            btnStyleIni();
-            btnLogic.Style = DevComponents.DotNetBar.eDotNetBarStyle.Office2003;
             //自定义函数加载窗体 CleanRecycle  
-            //修改窗口暂时屏蔽——————————Control_Add(threelogic, panelThree);
-            Control_Add(dgvlogic, panelDgv);
+            Control_Add(threeoperation, plLeft);
+            Control_Add(dgvoperation, plDgv);
+            //界面显示类型 
+            FileMesege.formType = "reaction";
+            //cbtype添加选择项 
+            cbtypeName("reaction");
+            //添加对象树状图
+            threetitle.ThreeTitleAddNode(cbType.SelectedIndex);
+            //更改Title 小标题
+            LbTitleName.Text = Resources.lbTitleObj;
+        }
+
+        private void tabLogic_Click(object sender, EventArgs e)
+        {
+            //自定义函数加载窗体 CleanRecycle  
+            Control_Add(threelogic, plLeft);
+            Control_Add(dgvlogic, plDgv);
             //界面显示类型 
             FileMesege.formType = "logic";
             //cbtype添加选择项 
             cbtypeName("logic");
-            //添加对象树状图
-            threetitle.ThreeTitleAddNode(cbType.SelectedIndex);
-            //更改Title 小标题
-            LbTitleName.Text = Resources.lbTitleObj;
-        }
-        //运算
-        private void btnOperation_Click_1(object sender, EventArgs e)
-        {
-            btnStyleIni();
-            btnOperation.Style = DevComponents.DotNetBar.eDotNetBarStyle.Office2003;
-            //自定义函数加载窗体 CleanRecycle  
-            //修改窗口暂时屏蔽——————————Control_Add(threeoperation, panelThree);
-            Control_Add(dgvoperation, panelDgv);
-            //界面显示类型 
-            FileMesege.formType = "operation";
-            //cbtype添加选择项 
-            cbtypeName("operation");
             //添加对象树状图
             threetitle.ThreeTitleAddNode(cbType.SelectedIndex);
             //更改Title 小标题
@@ -904,86 +893,7 @@ namespace eNet编辑器
         #endregion
 
 
-        #region 检索栏 上中下格式设置
-        private void btnweizhi_Click(object sender, EventArgs e)
-        {
-            /*
-            //位置对象五五分开状态
-            if (searchLocition == 2)
-            {
-                Searchshang();
-            }
-            //对象全展开状态
-            else if (searchLocition == 3)
-            {
-                Searchzhong();
-            }*/
-          
-        }
-
-        private void btndxs_Click(object sender, EventArgs e)
-        {
-            /*
-            //
-            if (panelTitle.Size.Height == 0)
-            {
-                 Searchzhong();
-
-            }
-            else if (panelTitle.Size.Height!= 0 && panelSection.Size.Height!=0)
-            {
-                Searchxia();
-            }*/
-
-        }
-
-
-        /*
-        private void Searchshang()
-        {
-            //设备全展
-            panelxia.Location = new Point(panelxia.Location.X, panelThree.Size.Height + 138);
-            panelshang.Size = new Size(panel4.Size.Width, panelThree.Size.Height + 31);//大上框原 .306    大下框302
-            panelSection.Size = new Size(panel4.Size.Width, panelThree.Size.Height);//上框原 .275  下框271
-            panelTitle.Size = new Size(panel4.Size.Width, 0);
-            panelxia.Size = new Size(panel4.Size.Width, 31);
-            searchLocition = 1;
-        }
-
-        private void Searchzhong()
-        {
-
-                //中部
-            panelxia.Location = new Point(panelxia.Location.X, panelxia.Location.Y - panelThree.Size.Height / 2);
-            panelshang.Size = new Size(panel4.Size.Width, panelThree.Size.Height / 2 + 31);//原来大小 190.306    + 408
-            panelSection.Size = new Size(panel4.Size.Width, panelThree.Size.Height / 2);//原来 190.275
-            panelxia.Size = new Size(panel4.Size.Width, panelThree.Size.Height / 2 + 31);
-            panelTitle.Size = new Size(panel4.Size.Width, panelThree.Size.Height / 2);
-            searchLocition = 2;
-        }
-
-        private void Searchxia()
-        {
-            //对象全展开
-            panelxia.Location = new Point(panelxia.Location.X, 138);
-            panelTitle.Size = new Size(panel4.Size.Width, panelTitle.Size.Height + panelSection.Size.Height);
-            panelxia.Size = new Size(panel4.Size.Width, panelxia.Size.Height + panelSection.Size.Height);
-            panelshang.Size = new Size(panel4.Size.Width, 31);//原来大小 190.306    + 408
-            panelSection.Size = new Size(panel4.Size.Width, 0);//原来 190.275
-            searchLocition = 3;
-        }
-        */
-        //窗体大小改变 跟随变化
-        private void Form1_SizeChanged(object sender, EventArgs e)
-        {
-            //对象标题在最下面
-            if (searchLocition == 1)
-            {
-                //Searchshang();
-            }
-        }
-        #endregion 
-
+  
 
 
         #region 快捷键功能 因为在meustrip设置了快捷键 所以这个快捷键可以删除
@@ -1009,66 +919,21 @@ namespace eNet编辑器
 
         #endregion
 
-        private void tabName_Click(object sender, EventArgs e)
-        {
-            tabStyleIni(tabName);
-        }
+   
+   
 
-        private void tabPoint_Click(object sender, EventArgs e)
-        {
-            tabStyleIni(tabPoint);
-        }
 
-        private void tabScene_Click(object sender, EventArgs e)
-        {
-            tabStyleIni(tabScene);
-        }
 
-        private void tabTimer_Click(object sender, EventArgs e)
-        {
-            tabStyleIni(tabTimer);
-        }
 
-        private void tabPanel_Click(object sender, EventArgs e)
-        {
-            tabStyleIni(tabPanel);
-        }
 
-        private void tabReaction_Click(object sender, EventArgs e)
-        {
-            tabStyleIni(tabReaction);
-        }
 
-        private void tabLogic_Click(object sender, EventArgs e)
-        {
-            tabStyleIni(tabLogic);
-        }
 
-        //所有按钮变回默认
-        private void tabStyleIni(DevComponents.DotNetBar.TabItem target)
-        {
-            /*
-            target.BackColor = Color.LightSteelBlue;
-            foreach (DevComponents.DotNetBar.TabItem item in tabStrip.Tabs)
-            {
-                if (item == target)
-                {
-                    continue;
-                }
-                target.BackColor = Color.White;
-                
-            }*/
-            
-        }
 
-     
-  
 
-  
 
-       
 
-  
+
+
 
 
 

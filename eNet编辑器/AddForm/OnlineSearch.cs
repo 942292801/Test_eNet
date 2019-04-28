@@ -38,10 +38,17 @@ namespace eNet编辑器.AddForm
        
         private void OnlineSearch_Load(object sender, EventArgs e)
         {
-            //初始化UDP
-            udp = new UdpSocket();
+            udpIni();
             tm = new TreeMesege();
             receviceDelegate = new ReceviceDelegate(receviceDelegateMsg);
+           
+
+        }
+
+        private void udpIni()
+        {
+            //初始化UDP
+            udp = new UdpSocket();
             udp.Received += new Action<string, string>((IP, msg) =>
             {
                 try
@@ -51,15 +58,14 @@ namespace eNet编辑器.AddForm
                         //跨线程调用
                         this.Invoke(receviceDelegate, msg);
                     }
-                    
-                   
+
+
                 }
                 catch
                 {
                     //报错不处理
                 }
             });
-
         }
 
         /// <summary>
@@ -283,19 +289,15 @@ namespace eNet编辑器.AddForm
             //每次搜索清空树状图
             treeView1.Nodes.Clear();
             
-         
-            if (Localip != SocketUtil.GetLocalIP())
-            {
-                udp.udpClose();
-            }
+            
+           
+            udp.udpClose();
+            udpIni();
             //获取本地IP
             Localip = SocketUtil.GetLocalIP();
-            //如果为非绑定 自动绑定
-            if (!udp.isbing)
-            {
-                //udp 绑定
-                udp.udpBing(Localip, "6004");              
-            }
+            //udp 绑定
+            udp.udpBing(Localip, "6004");              
+            
             //绑定成功
             if (udp.isbing)
             {

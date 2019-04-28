@@ -44,7 +44,7 @@ namespace eNet编辑器
         //左栏 树状图treebind节点选中临时存放
         public static TreeNode bindSelectNode = null;
         /// <summary>
-        /// form下按钮的选择命名、场景。。。。  默认为命名 用来设置treetitle的显示功能 name,point,scene,timer,bind,logic,operation
+        /// form下按钮的选择命名、场景。。。。  默认为命名 用来设置treetitle的显示功能 name,point,scene,timer,panel,reaction,logic
         /// </summary>
         public static string formType = "name";
         /// <summary>

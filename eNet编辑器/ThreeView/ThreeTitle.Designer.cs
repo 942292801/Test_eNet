@@ -40,7 +40,7 @@
             // 
             // treeView1
             // 
-            this.treeView1.BackColor = System.Drawing.Color.Gainsboro;
+            this.treeView1.BackColor = System.Drawing.Color.White;
             this.treeView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.treeView1.CheckBoxes = true;
             this.treeView1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -48,7 +48,7 @@
             this.treeView1.HideSelection = false;
             this.treeView1.Location = new System.Drawing.Point(0, 0);
             this.treeView1.Name = "treeView1";
-            this.treeView1.Size = new System.Drawing.Size(240, 569);
+            this.treeView1.Size = new System.Drawing.Size(240, 273);
             this.treeView1.TabIndex = 1;
             this.treeView1.DrawNode += new System.Windows.Forms.DrawTreeNodeEventHandler(this.treeView1_DrawNode);
             this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
@@ -96,7 +96,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(240, 569);
+            this.ClientSize = new System.Drawing.Size(240, 273);
             this.Controls.Add(this.treeView1);
             this.Name = "ThreeTitle";
             this.Text = "ThreeTitle";

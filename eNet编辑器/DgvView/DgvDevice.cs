@@ -513,7 +513,7 @@ namespace eNet编辑器.DgvView
                 {
                     client.Dispoes();
                 }
-                
+
                 //清空在线标志 
                 for (int i = 0; i < dataGridView1.RowCount; i++)
                 {
@@ -807,6 +807,8 @@ namespace eNet编辑器.DgvView
             
         }
         #endregion
+
+       
 
       
 

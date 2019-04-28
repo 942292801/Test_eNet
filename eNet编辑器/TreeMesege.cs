@@ -23,6 +23,7 @@ namespace eNet编辑器
             tn.SelectedImageIndex = 0;
             tn.Expand();
             return treeView1.Nodes.Add((TreeNode)(tn.Clone()));
+          
         }
 
         public  int AddNode2(TreeView treeView1, string name, int index)

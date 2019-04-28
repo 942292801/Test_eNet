@@ -386,13 +386,13 @@ namespace eNet编辑器.ThreeView
                 case "timer":
                     dgvNodeAdd(treeView1.SelectedNode);
                     break;
-                case "bind":
+                case "panel":
                     dgvNodeAdd(treeView1.SelectedNode);
                     break;
                 case "logic":
                     dgvNodeAdd(treeView1.SelectedNode);
                     break;
-                case "operation":
+                case "reaction":
                     dgvNodeAdd(treeView1.SelectedNode);
                     break;
                 default: break;
@@ -434,14 +434,14 @@ namespace eNet编辑器.ThreeView
                     break;
                 case "timer":
                     break;
-                case "bind":
+                case "panel":
                     bindFormtype(tn.Text);
                     //回调更新界面
                     dgvbindAddItem();
                     break;
                 case "logic":
                     break;
-                case "operation":
+                case "reaction":
                     break;
                 default: break;
             }

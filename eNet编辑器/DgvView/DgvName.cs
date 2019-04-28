@@ -664,17 +664,14 @@ namespace eNet编辑器.DgvView
 
 
         #region  刷新按键
-
         /// <summary>
         /// 刷新按键 按时获取1  
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void btnNew_Click(object sender, EventArgs e)
+        private void btnNew_Click_1(object sender, EventArgs e)
         {
-
             shuaxinBtn();
-
         }
 
         /// <summary>
@@ -997,6 +994,9 @@ namespace eNet编辑器.DgvView
 
         #endregion
 
+     
+
+    
    
 
 
