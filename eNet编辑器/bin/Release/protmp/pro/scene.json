@@ -1,1 +1,90 @@
-[]
+[
+    {
+        "scenes": [
+            {
+                "sceneInfo": [
+                    {
+                        "id": 1,
+                        "pid": 10462,
+                        "type": "8.0_uart",
+                        "address": "FFFFFFFF",
+                        "opt": "",
+                        "optName": "",
+                        "Delay": 0
+                    },
+                    {
+                        "id": 2,
+                        "pid": 23246,
+                        "type": "8.0_uart",
+                        "address": "FFFFFFFF",
+                        "opt": "",
+                        "optName": "",
+                        "Delay": 0
+                    },
+                    {
+                        "id": 3,
+                        "pid": 89924,
+                        "type": "7.0_ir",
+                        "address": "FFFFFFFF",
+                        "opt": "",
+                        "optName": "",
+                        "Delay": 0
+                    },
+                    {
+                        "id": 4,
+                        "pid": 18166,
+                        "type": "1.0_switch",
+                        "address": "FFFFFFFF",
+                        "opt": "",
+                        "optName": "",
+                        "Delay": 0
+                    },
+                    {
+                        "id": 5,
+                        "pid": 40340,
+                        "type": "",
+                        "address": "FFFFFFFF",
+                        "opt": "",
+                        "optName": "",
+                        "Delay": 0
+                    },
+                    {
+                        "id": 6,
+                        "pid": 51703,
+                        "type": "",
+                        "address": "FFFFFFFF",
+                        "opt": "",
+                        "optName": "",
+                        "Delay": 0
+                    },
+                    {
+                        "id": 7,
+                        "pid": 46920,
+                        "type": "",
+                        "address": "FFFFFFFF",
+                        "opt": "",
+                        "optName": "",
+                        "Delay": 0
+                    }
+                ],
+                "id": 1,
+                "pid": 54889,
+                "address": "03100001"
+            }
+        ],
+        "IP": "192.168.1.3",
+        "Dev": "GW100A"
+    },
+    {
+        "scenes": [
+            {
+                "sceneInfo": [],
+                "id": 1,
+                "pid": 93767,
+                "address": "6F100001"
+            }
+        ],
+        "IP": "192.168.1.111",
+        "Dev": "GW100A"
+    }
+]

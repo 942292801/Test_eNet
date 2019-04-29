@@ -34,6 +34,12 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DgvName));
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.NamePort = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NameType = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NameSection = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NameName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NameState = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NameOperation = new System.Windows.Forms.DataGridViewButtonColumn();
             this.doubleClickTimer = new System.Windows.Forms.Timer(this.components);
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
@@ -42,12 +48,6 @@
             this.btnNew = new DevComponents.DotNetBar.ButtonX();
             this.symbolBox1 = new DevComponents.DotNetBar.Controls.SymbolBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.NamePort = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NameType = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NameSection = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NameName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NameState = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NameOperation = new System.Windows.Forms.DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -64,7 +64,7 @@
             this.dataGridView1.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableAlwaysIncludeHeaderText;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("黑体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -82,7 +82,7 @@
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.DarkGray;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(235)))), ((int)(((byte)(248)))));
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
@@ -100,6 +100,54 @@
             this.dataGridView1.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_CellMouseDown);
             this.dataGridView1.KeyUp += new System.Windows.Forms.KeyEventHandler(this.dataGridView1_KeyUp);
             this.dataGridView1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.dataGridView1_MouseDown);
+            // 
+            // NamePort
+            // 
+            this.NamePort.HeaderText = "端口";
+            this.NamePort.MinimumWidth = 10;
+            this.NamePort.Name = "NamePort";
+            this.NamePort.ReadOnly = true;
+            this.NamePort.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.NamePort.Width = 60;
+            // 
+            // NameType
+            // 
+            this.NameType.HeaderText = "类型";
+            this.NameType.Name = "NameType";
+            this.NameType.ReadOnly = true;
+            this.NameType.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.NameType.Width = 60;
+            // 
+            // NameSection
+            // 
+            this.NameSection.HeaderText = "区域";
+            this.NameSection.Name = "NameSection";
+            this.NameSection.ReadOnly = true;
+            this.NameSection.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.NameSection.Width = 300;
+            // 
+            // NameName
+            // 
+            this.NameName.HeaderText = "名称";
+            this.NameName.Name = "NameName";
+            this.NameName.ReadOnly = true;
+            this.NameName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // NameState
+            // 
+            this.NameState.HeaderText = "状态";
+            this.NameState.Name = "NameState";
+            this.NameState.ReadOnly = true;
+            this.NameState.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.NameState.Width = 60;
+            // 
+            // NameOperation
+            // 
+            this.NameOperation.HeaderText = "操作";
+            this.NameOperation.Name = "NameOperation";
+            this.NameOperation.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.NameOperation.Text = "操作";
+            this.NameOperation.Width = 60;
             // 
             // doubleClickTimer
             // 
@@ -154,9 +202,9 @@
             this.btnNew.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.Image;
             this.btnNew.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnNew.HoverImage")));
             this.btnNew.Image = ((System.Drawing.Image)(resources.GetObject("btnNew.Image")));
-            this.btnNew.Location = new System.Drawing.Point(837, 0);
+            this.btnNew.Location = new System.Drawing.Point(839, 0);
             this.btnNew.Name = "btnNew";
-            this.btnNew.Size = new System.Drawing.Size(25, 25);
+            this.btnNew.Size = new System.Drawing.Size(17, 22);
             this.btnNew.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnNew.TabIndex = 0;
             this.btnNew.Tooltip = "清空";
@@ -173,6 +221,7 @@
             this.symbolBox1.Name = "symbolBox1";
             this.symbolBox1.Size = new System.Drawing.Size(16, 16);
             this.symbolBox1.Symbol = "";
+            this.symbolBox1.SymbolColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(119)))), ((int)(((byte)(119)))));
             this.symbolBox1.TabIndex = 2;
             this.symbolBox1.Text = "symbolBox1";
             // 
@@ -180,60 +229,13 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("黑体", 9F);
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
             this.label1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.label1.Location = new System.Drawing.Point(31, 7);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(29, 12);
             this.label1.TabIndex = 1;
             this.label1.Text = "内容";
-            // 
-            // NamePort
-            // 
-            this.NamePort.HeaderText = "端口";
-            this.NamePort.MinimumWidth = 10;
-            this.NamePort.Name = "NamePort";
-            this.NamePort.ReadOnly = true;
-            this.NamePort.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.NamePort.Width = 60;
-            // 
-            // NameType
-            // 
-            this.NameType.HeaderText = "类型";
-            this.NameType.Name = "NameType";
-            this.NameType.ReadOnly = true;
-            this.NameType.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.NameType.Width = 60;
-            // 
-            // NameSection
-            // 
-            this.NameSection.HeaderText = "区域";
-            this.NameSection.Name = "NameSection";
-            this.NameSection.ReadOnly = true;
-            this.NameSection.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.NameSection.Width = 300;
-            // 
-            // NameName
-            // 
-            this.NameName.HeaderText = "名称";
-            this.NameName.Name = "NameName";
-            this.NameName.ReadOnly = true;
-            this.NameName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // NameState
-            // 
-            this.NameState.HeaderText = "状态";
-            this.NameState.Name = "NameState";
-            this.NameState.ReadOnly = true;
-            this.NameState.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.NameState.Width = 60;
-            // 
-            // NameOperation
-            // 
-            this.NameOperation.HeaderText = "操作";
-            this.NameOperation.Name = "NameOperation";
-            this.NameOperation.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.NameOperation.Text = "操作";
-            this.NameOperation.Width = 60;
             // 
             // DgvName
             // 

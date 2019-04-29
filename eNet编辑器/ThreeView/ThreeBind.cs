@@ -232,7 +232,7 @@ namespace eNet编辑器.ThreeView
         {
             if ((e.State & TreeNodeStates.Selected) == TreeNodeStates.Selected)
             {
-                e.Graphics.FillRectangle(new SolidBrush(Color.DarkGray), e.Bounds);
+                e.Graphics.FillRectangle(new SolidBrush(Color.FromArgb(204, 235, 248)), e.Bounds);
                 e.Graphics.DrawString(e.Node.Text, treeView1.Font, new SolidBrush(Color.Black), e.Bounds.Location);
             }
             else

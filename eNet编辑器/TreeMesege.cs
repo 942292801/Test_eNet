@@ -20,7 +20,7 @@ namespace eNet编辑器
             //添加根节点
             tn.Text = name;
             tn.ImageIndex = 0;
-            tn.SelectedImageIndex = 0;
+            tn.SelectedImageIndex = 1;
             tn.Expand();
             return treeView1.Nodes.Add((TreeNode)(tn.Clone()));
           
@@ -30,8 +30,8 @@ namespace eNet编辑器
         {
             TreeNode tn = new TreeNode();
             tn.Text = name;
-            tn.ImageIndex = 1;
-            tn.SelectedImageIndex = 2;
+            tn.ImageIndex = 0;
+            tn.SelectedImageIndex = 1;
             tn.Expand();
             return treeView1.Nodes[index].Nodes.Add((TreeNode)(tn.Clone()));
         }

@@ -35,7 +35,10 @@
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.全选ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.反选ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.contextMenuStrip2.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // treeView1
@@ -45,10 +48,12 @@
             this.treeView1.CheckBoxes = true;
             this.treeView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.treeView1.DrawMode = System.Windows.Forms.TreeViewDrawMode.OwnerDrawText;
+            this.treeView1.Font = new System.Drawing.Font("黑体", 9.75F);
             this.treeView1.HideSelection = false;
+            this.treeView1.ItemHeight = 20;
             this.treeView1.Location = new System.Drawing.Point(0, 0);
             this.treeView1.Name = "treeView1";
-            this.treeView1.Size = new System.Drawing.Size(240, 273);
+            this.treeView1.Size = new System.Drawing.Size(240, 266);
             this.treeView1.TabIndex = 1;
             this.treeView1.DrawNode += new System.Windows.Forms.DrawTreeNodeEventHandler(this.treeView1_DrawNode);
             this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
@@ -92,16 +97,36 @@
             this.反选ToolStripMenuItem.Text = "反选";
             this.反选ToolStripMenuItem.Click += new System.EventHandler(this.反选ToolStripMenuItem_Click);
             // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.White;
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel3.Location = new System.Drawing.Point(0, 0);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(240, 7);
+            this.panel3.TabIndex = 7;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.treeView1);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(0, 7);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(240, 266);
+            this.panel1.TabIndex = 8;
+            // 
             // ThreeTitle
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(240, 273);
-            this.Controls.Add(this.treeView1);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.panel3);
             this.Name = "ThreeTitle";
             this.Text = "ThreeTitle";
             this.Load += new System.EventHandler(this.ThreeTitle_Load);
             this.contextMenuStrip2.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -114,5 +139,7 @@
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem 全选ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 反选ToolStripMenuItem;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Panel panel1;
     }
 }

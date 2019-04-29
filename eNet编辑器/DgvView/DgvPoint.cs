@@ -76,7 +76,7 @@ namespace eNet编辑器.DgvView
             this.dataGridView1.Columns.Insert(5, cbValue);
         }
 
-        //根据区域加类型TYPE
+        //根据区域和 类型TYPE（灯。空调。电视。）
         public void dgvPointAddItemByObjType()
         {
             try
@@ -88,6 +88,7 @@ namespace eNet编辑器.DgvView
                 {
                     return;
                 }
+         
                 //搜索选中区域  加载所有同区域的节点
                 //区域
                 string[] sections = FileMesege.sectionNodeCopy.Split('\\');
@@ -95,7 +96,11 @@ namespace eNet编辑器.DgvView
                 {
                     foreach (DataJson.PointInfo eq in FileMesege.PointList.equipment)
                     {
-                        if (!string.IsNullOrEmpty(FileMesege.objType) && eq.objType != FileMesege.objType)
+                        if (!string.IsNullOrEmpty(FileMesege.objType) && FileMesege.objType == "所有点位")
+                        {
+
+                        }
+                        else if (!string.IsNullOrEmpty(FileMesege.objType) && eq.objType != FileMesege.objType)
                         {
                             continue;
                         }
@@ -107,7 +112,10 @@ namespace eNet编辑器.DgvView
                 {
                     foreach (DataJson.PointInfo eq in FileMesege.PointList.equipment)
                     {
-                        if (!string.IsNullOrEmpty(FileMesege.objType) && eq.objType != FileMesege.objType)
+                        if (!string.IsNullOrEmpty(FileMesege.objType) && FileMesege.objType == "所有点位")
+                        {
+                            
+                        }else if(!string.IsNullOrEmpty(FileMesege.objType) && eq.objType != FileMesege.objType)
                         {
                             continue;
                         }
@@ -297,14 +305,23 @@ namespace eNet编辑器.DgvView
         /// <param name="e"></param>
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(FileMesege.sectionNodeCopy)  || string.IsNullOrEmpty(FileMesege.titleinfo))
+            if (string.IsNullOrEmpty(FileMesege.sectionNodeCopy)  )
             {
-                txtAppShow("请选择区域和名称！");
+                txtAppShow("请选择区域");
+                return;
+            }
+            else if (string.IsNullOrEmpty(FileMesege.titleinfo))
+            {
+                txtAppShow("请选择名称");
                 return;
             }
             //搜索选中区域  加载所有同区域的节点
             //区域
             string[] sect = FileMesege.sectionNodeCopy.Split('\\');
+            if (sect[0] == "全部")
+            {
+                return;
+            }
             //计算name的排序
             DataJson.PointInfo point = new DataJson.PointInfo();
             point.pid = DataChange.randomNum();
@@ -993,6 +1010,10 @@ namespace eNet编辑器.DgvView
 
         }
         #endregion
+
+ 
+
+   
 
      
        

@@ -457,10 +457,8 @@ namespace eNet编辑器.ThreeView
             
             if ((e.State & TreeNodeStates.Selected) == TreeNodeStates.Selected)
             {
-                e.Graphics.FillRectangle(new SolidBrush(Color.DarkGray), e.Bounds);
+                e.Graphics.FillRectangle(new SolidBrush(Color.FromArgb(204,235,248)), e.Bounds);
                 e.Graphics.DrawString(e.Node.Text, treeView1.Font, new SolidBrush(Color.Black), e.Bounds.Location);
-                //e.Graphics.FillRectangle(new SolidBrush(Color.DarkGray), new Rectangle(e.Bounds.Location, new Size(this.treeView1.Width - e.Bounds.X, e.Bounds.Height)));
-                //e.Graphics.DrawString(e.Node.Text, this.treeView1.Font, new SolidBrush(Color.Black), e.Bounds.X, e.Bounds.Y + 5);
             }
             else
             {

@@ -134,7 +134,8 @@ namespace eNet编辑器.AddForm
             }
             catch
             {
-                MessageBox.Show("界面初始化出错");
+                this.Close();
+                //MessageBox.Show("界面初始化出错");
             }
             
         }

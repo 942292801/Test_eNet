@@ -30,13 +30,17 @@
         {
             this.treeView1 = new System.Windows.Forms.TreeView();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.plInfoTitle = new System.Windows.Forms.Panel();
             this.symbolBox1 = new DevComponents.DotNetBar.Controls.SymbolBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.panel2 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
-            this.plInfoTitle.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.panel4.SuspendLayout();
+            this.panel3.SuspendLayout();
+            this.plInfoTitle.SuspendLayout();
             this.SuspendLayout();
             // 
             // treeView1
@@ -46,10 +50,12 @@
             this.treeView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.treeView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.treeView1.DrawMode = System.Windows.Forms.TreeViewDrawMode.OwnerDrawText;
+            this.treeView1.Font = new System.Drawing.Font("黑体", 9.75F);
             this.treeView1.HideSelection = false;
+            this.treeView1.ItemHeight = 20;
             this.treeView1.Location = new System.Drawing.Point(0, 0);
             this.treeView1.Name = "treeView1";
-            this.treeView1.Size = new System.Drawing.Size(202, 406);
+            this.treeView1.Size = new System.Drawing.Size(202, 399);
             this.treeView1.TabIndex = 2;
             this.treeView1.DrawNode += new System.Windows.Forms.DrawTreeNodeEventHandler(this.treeView1_DrawNode);
             this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
@@ -57,12 +63,40 @@
             // panel1
             // 
             this.panel1.Controls.Add(this.panel2);
-            this.panel1.Controls.Add(this.plInfoTitle);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(202, 431);
             this.panel1.TabIndex = 3;
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.panel4);
+            this.panel2.Controls.Add(this.panel3);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(202, 431);
+            this.panel2.TabIndex = 4;
+            // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.treeView1);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel4.Location = new System.Drawing.Point(0, 32);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(202, 399);
+            this.panel4.TabIndex = 8;
+            // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.White;
+            this.panel3.Controls.Add(this.plInfoTitle);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel3.Location = new System.Drawing.Point(0, 0);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(202, 32);
+            this.panel3.TabIndex = 7;
             // 
             // plInfoTitle
             // 
@@ -85,6 +119,7 @@
             this.symbolBox1.Name = "symbolBox1";
             this.symbolBox1.Size = new System.Drawing.Size(16, 16);
             this.symbolBox1.Symbol = "";
+            this.symbolBox1.SymbolColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(119)))), ((int)(((byte)(119)))));
             this.symbolBox1.TabIndex = 2;
             this.symbolBox1.Text = "symbolBox1";
             // 
@@ -99,15 +134,6 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "导航";
             // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.treeView1);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(0, 25);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(202, 406);
-            this.panel2.TabIndex = 4;
-            // 
             // ThreePoint
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -118,9 +144,11 @@
             this.Text = "ThreePoint";
             this.Load += new System.EventHandler(this.ThreePoint_Load);
             this.panel1.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
+            this.panel4.ResumeLayout(false);
+            this.panel3.ResumeLayout(false);
             this.plInfoTitle.ResumeLayout(false);
             this.plInfoTitle.PerformLayout();
-            this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -133,6 +161,8 @@
         private DevComponents.DotNetBar.Controls.SymbolBox symbolBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Panel panel3;
 
     }
 }

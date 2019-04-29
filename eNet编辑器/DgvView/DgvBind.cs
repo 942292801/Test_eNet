@@ -480,11 +480,11 @@ namespace eNet编辑器.DgvView
         }
 
         //清除
-        private void btnDown_Click(object sender, EventArgs e)
+        private void btnRemove_Click(object sender, EventArgs e)
         {
-             Socket sock = null;
+            Socket sock = null;
             //产生场景文件写进去
-             if (FileMesege.bindSelectNode == null || FileMesege.bindSelectNode.Parent == null)
+            if (FileMesege.bindSelectNode == null || FileMesege.bindSelectNode.Parent == null)
             {
                 return;
             }
@@ -544,13 +544,16 @@ namespace eNet编辑器.DgvView
             {
                 TxtShow("发送指令失败！\r\n");
             }
-             
         }
 
+
+       
+
+
         //设置
-        private void btnCall_Click(object sender, EventArgs e)
+        private void btnSet_Click(object sender, EventArgs e)
         {
-           /* Socket sock = null;
+            /* Socket sock = null;
             //产生场景文件写进去
             if (FileMesege.bindSelectNode != null && FileMesege.bindSelectNode.Parent != null)
             {
@@ -661,6 +664,8 @@ namespace eNet编辑器.DgvView
                 //无场景信息加载
             }*/
         }
+
+
 
         #endregion
 
@@ -1120,9 +1125,14 @@ namespace eNet编辑器.DgvView
         }
         #endregion
 
+ 
+
+      
   
         #endregion
 
+
+        
         
 
 

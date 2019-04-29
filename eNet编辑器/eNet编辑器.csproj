@@ -57,6 +57,7 @@
     <Reference Include="Infragistics4.Win.UltraWinStatusBar.v12.2, Version=12.2.20122.2123, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb" />
     <Reference Include="Infragistics4.Win.UltraWinTabControl.v12.2, Version=12.2.20122.2123, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb" />
     <Reference Include="Infragistics4.Win.UltraWinToolbars.v12.2, Version=12.2.20122.2123, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
+    <Reference Include="Infragistics4.Win.UltraWinTree.v12.2, Version=12.2.20122.2123, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
     <Reference Include="Infragistics4.Win.v12.2, Version=12.2.20122.2123, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb" />
     <Reference Include="Microsoft.VisualBasic">
       <Private>True</Private>

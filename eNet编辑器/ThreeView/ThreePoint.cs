@@ -31,7 +31,7 @@ namespace eNet编辑器.ThreeView
                 //记录当前节点展开状况
                 // List<string> isExpands = tm.treeIsExpandsState(treeView1);
                 treeView1.Nodes.Clear();
-
+                tm.AddNode1(treeView1, "所有点位");
                 DirectoryInfo folder = new DirectoryInfo(Application.StartupPath + "//objs");
                 string name = "";
                 foreach (FileInfo file in folder.GetFiles("*.ini"))
@@ -62,7 +62,7 @@ namespace eNet编辑器.ThreeView
         {
             if ((e.State & TreeNodeStates.Selected) == TreeNodeStates.Selected)
             {
-                e.Graphics.FillRectangle(new SolidBrush(Color.DarkGray), e.Bounds);
+                e.Graphics.FillRectangle(new SolidBrush(Color.FromArgb(204, 235, 248)), e.Bounds);
                 e.Graphics.DrawString(e.Node.Text, treeView1.Font, new SolidBrush(Color.Black), e.Bounds.Location);
             }
             else
@@ -80,6 +80,10 @@ namespace eNet编辑器.ThreeView
                 return;
             }
             FileMesege.objType = IniHelper.findObjsFileNae_ByName(treeView1.SelectedNode.Text);
+            if (treeView1.SelectedNode.Text == "所有点位")
+            {
+                FileMesege.objType = "所有点位";
+            }
             updateDgvPoint();
         }
 
