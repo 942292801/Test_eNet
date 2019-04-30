@@ -364,7 +364,6 @@ namespace eNet编辑器
         private void writeAlltoPro(string path)
         {
             tmpPathClear();
-            Directory.CreateDirectory(path + "\\objs");
             File.WriteAllText(path + "\\pro\\point.json", ConvertJsonString(JsonConvert.SerializeObject(PointList)));
             File.WriteAllText(path + "\\pro\\area.json", ConvertJsonString(JsonConvert.SerializeObject(AreaList)));
             File.WriteAllText(path + "\\pro\\device.json", ConvertJsonString(JsonConvert.SerializeObject(DeviceList)));
@@ -378,12 +377,14 @@ namespace eNet编辑器
         /// <param name="path"></param>
         public void tmpPathClear()
         {
-            if (System.IO.Directory.Exists(TmpFilePath))
+            if (System.IO.Directory.Exists(TmpFilePath + "\\objs"))
             {
-                Directory.Delete(TmpFilePath, true);
+                Directory.Delete(TmpFilePath + "\\objs", true);
             }
-            
-            Directory.CreateDirectory(TmpFilePath);
+            if (System.IO.Directory.Exists(TmpFilePath + "\\pro"))
+            {
+                Directory.Delete(TmpFilePath + "\\pro", true);
+            }
             Directory.CreateDirectory(TmpFilePath + "\\objs");
             Directory.CreateDirectory(TmpFilePath + "\\pro");
         }

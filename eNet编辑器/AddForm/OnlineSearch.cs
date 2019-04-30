@@ -384,7 +384,6 @@ namespace eNet编辑器.AddForm
             //异步连接
             client.ConnectAsync(selectIP, 6001);
             client.SendAsync("read serial.json$");
-            //client.Close();
         }
 
       

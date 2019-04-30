@@ -36,6 +36,15 @@
   <PropertyGroup>
     <ApplicationIcon>0.ico</ApplicationIcon>
   </PropertyGroup>
+  <PropertyGroup>
+    <TargetZone>LocalIntranet</TargetZone>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="DevComponents.DotNetBar.Keyboard, Version=14.0.0.3, Culture=neutral, PublicKeyToken=c39c3242a43eee2b, processorArchitecture=MSIL">
       <Private>True</Private>
@@ -156,12 +165,6 @@
     </Compile>
     <Compile Include="AddForm\DgvNameState.Designer.cs">
       <DependentUpon>DgvNameState.cs</DependentUpon>
-    </Compile>
-    <Compile Include="AddForm\newProject.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="AddForm\newProject.Designer.cs">
-      <DependentUpon>newProject.cs</DependentUpon>
     </Compile>
     <Compile Include="AddForm\OnlineSearch.cs">
       <SubType>Form</SubType>
@@ -348,9 +351,6 @@
     <EmbeddedResource Include="AddForm\DgvNameState.resx">
       <DependentUpon>DgvNameState.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AddForm\newProject.resx">
-      <DependentUpon>newProject.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="AddForm\OnlineSearch.resx">
       <DependentUpon>OnlineSearch.cs</DependentUpon>
     </EmbeddedResource>
@@ -448,6 +448,7 @@
     <EmbeddedResource Include="ThreeView\ThreeTitle.resx">
       <DependentUpon>ThreeTitle.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="Properties\app.manifest" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

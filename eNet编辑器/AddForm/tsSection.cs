@@ -53,6 +53,13 @@ namespace eNet编辑器.AddForm
                 return;
             }
             FileMesege.info = cbname.Text;
+            try
+            {
+                cbname.SelectedIndex = cbname.SelectedIndex + 1;
+            }
+            catch { 
+            
+            }
             //利用回调机制 
             addNode();
         }

@@ -83,14 +83,41 @@ namespace eNet编辑器.ThreeView
             
         }
 
+        #region 新建 修改 删除 展开（收起）节点
 
         private void 新建ToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            isAddChild = true;
+            newTsSection();
+        }
 
-           
-                newTsSection();
-               
-            
+        /// <summary>
+        /// 新建节点弹框获取信息
+        /// </summary>
+        /// <returns></returns>
+        private void newTsSection()
+        {
+            //把窗口向屏幕中间刷新
+            tss.StartPosition = FormStartPosition.CenterParent;
+            tss.Newflag = true;
+            //设定开始层级
+            int i = 0;
+            if (treeView1.SelectedNode != null)
+            {
+                i = treeView1.SelectedNode.Level + 1;
+                if (treeView1.SelectedNode.Text == "全部")
+                {
+                    isAddChild = false;
+                    i = 0;
+                }
+            }
+            if (i > 3)
+            {
+                return;
+            }
+            tss.Selectindex = i;
+            tss.ShowDialog();
+
         }
 
         //新建节点
@@ -98,37 +125,71 @@ namespace eNet编辑器.ThreeView
         {
 
             sectionname = FileMesege.info;
+            if (sectionname == "全部")
+            {
+                return;
+            }
             if (newflag == false)
             {
                 //新建节点 
                 area1();
             }
-            else
+            else 
             {
-                if (FileMesege.sectionNode != null && FileMesege.sectionNode.Text == "全部")
-                {
-                    return;
-                }
                 TreeMesege tm = new TreeMesege();
-                string[] nums = tm.GetNodeNum(FileMesege.sectionNode).Split(' ');
-                switch (nums.Length)
+                if (isAddChild)
                 {
-                    case 4:
-                        //area1();
-                        break;
-                    case 1:
-                        area2(nums[0]);
-                        break;
-                    case 2:
-                        area3(nums[0], nums[1]);
-                        break;
-                    case 3:
-                        area4(nums[0], nums[1], nums[2]);
-                        break;
-                    default:
-                        area1();
-                        break;
+                    if (FileMesege.sectionNode != null && FileMesege.sectionNode.Text == "全部")
+                    {
+                        return;
+                    }
+                    //添加子节点
+                    string[] nums = tm.GetNodeNum(FileMesege.sectionNode).Split(' ');
+                    switch (nums.Length)
+                    {
+                        case 4:
+                            //area1();
+                            break;
+                        case 1:
+                            area2(nums[0]);
+                            break;
+                        case 2:
+                            area3(nums[0], nums[1]);
+                            break;
+                        case 3:
+                            area4(nums[0], nums[1], nums[2]);
+                            break;
+                        default:
+                            area1();
+                            break;
+                    }
+
                 }
+                else
+                {
+                    //添加节点
+                    string[] nums = tm.GetNodeNum(FileMesege.sectionNode).Split(' ');
+                    switch (nums.Length)
+                    {
+                        case 4:
+                            area4(nums[0], nums[1], nums[2]);
+                            break;
+                        case 1:
+                            area1();
+                            break;
+                        case 2:
+                            area2(nums[0]);
+                            
+                            break;
+                        case 3:
+                            area3(nums[0], nums[1]);
+                            
+                            break;
+                        default:
+                            break;
+                    }
+                }
+                
             }
             string parentNodePath = "";
             if(treeView1.SelectedNode != null)
@@ -140,6 +201,7 @@ namespace eNet编辑器.ThreeView
             {
                 try
                 {
+                    //展开添加的节点
                     TreeMesege.findNodeByName(treeView1, parentNodePath).Expand();
                 }
                 catch { 
@@ -152,9 +214,8 @@ namespace eNet编辑器.ThreeView
 
         private void 修改ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (FileMesege.sectionNode.Text != "全部")
-            {
-                if (treeView1.SelectedNode != null && treeView1.SelectedNode.Text == "全部")
+            
+                if (treeView1.SelectedNode == null || treeView1.SelectedNode.Text == "全部")
                 {
                     return;
                 }
@@ -205,7 +266,7 @@ namespace eNet编辑器.ThreeView
                 }
 
 
-            }//if地址为空
+           
         }
 
         #region  修改AreaList表中数据
@@ -410,7 +471,7 @@ namespace eNet编辑器.ThreeView
 
         private void 删除ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (FileMesege.sectionNode.Text != "全部")
+            if (treeView1.SelectedNode!=null && FileMesege.sectionNode.Text != "全部")
             {
               
                 //右击树状图外面区域
@@ -835,42 +896,14 @@ namespace eNet编辑器.ThreeView
                 newflag = false;
                 if (CurrentNode != null)
                 {
-                    treeView1.SelectedNode = CurrentNode;//选中这个节点
-                   
+                    treeView1.SelectedNode = CurrentNode;//选中这个节点 
                     newflag = true;
                     
                 }
             }
         }
 
-        /// <summary>
-        /// 新建节点弹框获取信息
-        /// </summary>
-        /// <returns></returns>
-        private void newTsSection()
-        {
-            
-            //把窗口向屏幕中间刷新
-            tss.StartPosition = FormStartPosition.CenterParent;
-            tss.Newflag = newflag;
-            //设定开始层级
-            int i = 0;
-            if (treeView1.SelectedNode != null)
-            {
-                i = treeView1.SelectedNode.Level + 1;
-                if (treeView1.SelectedNode.Text == "全部")
-                {
-                    i = 0;
-                }
-            }
-            if (i > 3)
-            {
-                return;
-            }
-            tss.Selectindex = i ;
-            tss.ShowDialog();
-         
-        }
+    
 
         /// <summary>
         /// 添加新的第一级节点
@@ -1058,6 +1091,10 @@ namespace eNet编辑器.ThreeView
             return true;
         }
 
+        #endregion
+
+
+        #region 选中节点  树状图重绘
         //选中节点后发生的事件
         private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
         {
@@ -1099,6 +1136,8 @@ namespace eNet编辑器.ThreeView
                 e.DrawDefault = true;
             }
         }
+
+        #endregion
 
         #region 树状图拖拽节点
 
@@ -1537,7 +1576,52 @@ namespace eNet编辑器.ThreeView
         }
         #endregion
 
-      
+        #region 新增节点  子节点 删除 （按键）
+        //用于标记是否新建子节点
+        private bool isAddChild = false;
+        private void btnAddNode_Click(object sender, EventArgs e)
+        {
+            isAddChild = false;
+            //把窗口向屏幕中间刷新
+            tss.StartPosition = FormStartPosition.CenterParent;
+            tss.Newflag = newflag;
+            //设定开始层级
+            int i = 0;
+            if (treeView1.SelectedNode != null)
+            {
+                i = treeView1.SelectedNode.Level;
+                
+            }
+            if (i > 3)
+            {
+                return;
+            }
+            tss.Selectindex = i;
+            tss.ShowDialog();
+        }
+
+        private void btnAddChild_Click(object sender, EventArgs e)
+        {
+            if (treeView1.SelectedNode == null || treeView1.SelectedNode.Text == "全部")
+            {
+                return;
+            }
+            isAddChild = true;
+            newflag = true;
+            newTsSection();
+        }
+
+        private void btnDel_Click(object sender, EventArgs e)
+        {
+            if (treeView1.SelectedNode != null && FileMesege.sectionNode.Text != "全部")
+            {
+
+                bool flag = deleteNode(treeView1.SelectedNode);
+                ThreeSEctionAddNode();
+            }
+        }
+        #endregion
+
 
     }
 }

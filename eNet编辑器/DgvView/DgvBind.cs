@@ -45,8 +45,7 @@ namespace eNet编辑器.DgvView
 
         private void DgvBind_Load(object sender, EventArgs e)
         {
-          
-            
+
             //新增对象列 加载
             this.dataGridView1.Rows.Clear();
              obj = new DataGridViewComboBoxColumn();
@@ -67,8 +66,6 @@ namespace eNet编辑器.DgvView
                 
                 
             }
-
-           
             showmode.Items.Add("无");
             showmode.Items.Add("同步");
             showmode.Items.Add("反显");
@@ -399,8 +396,8 @@ namespace eNet编辑器.DgvView
 
         #endregion
 
-        #region 四大按键
-        //增加
+         #region 增加 清空  清除 设置 按键
+         //增加
         private void btnAdd_Click(object sender, EventArgs e)
         {
             if (FileMesege.bindSelectNode == null || FileMesege.bindSelectNode.Parent == null)
@@ -454,6 +451,7 @@ namespace eNet编辑器.DgvView
             dgvbindAddItem();
 
         }
+
         //清空
         private void btnClear_Click(object sender, EventArgs e)
         {
@@ -545,10 +543,6 @@ namespace eNet编辑器.DgvView
                 TxtShow("发送指令失败！\r\n");
             }
         }
-
-
-       
-
 
         //设置
         private void btnSet_Click(object sender, EventArgs e)

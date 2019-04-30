@@ -250,6 +250,7 @@ namespace eNet编辑器.ThreeView
             }
             else//右击树状图区域
             {
+                newitemflag = false;
                 //删除网关
                 DataJson.totalList OldList = FileMesege.cmds.getListInfos();
                 //把树状图名字分割成IP +设备型号
@@ -338,7 +339,7 @@ namespace eNet编辑器.ThreeView
         private void 删除ToolStripMenuItem1_Click(object sender, EventArgs e)
         {
            
-
+           //删除设备
                 string ip = treeView1.SelectedNode.Parent.Text.Split(' ')[0];
                 bool isip = Regex.IsMatch(ip, @"^[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}$");
                 if (!isip)
@@ -361,6 +362,8 @@ namespace eNet编辑器.ThreeView
 
         #endregion
 
+
+        #region 节点点击 点击后事件 树状图重绘
         /// <summary>
         /// 选中节点 显示DGV的信息
         /// </summary>
@@ -440,13 +443,9 @@ namespace eNet编辑器.ThreeView
 
             }
 
-
-
         }
 
       
-
-
         /// <summary>
         /// 高亮显示选中项 重绘
         /// </summary>
@@ -465,11 +464,57 @@ namespace eNet编辑器.ThreeView
                 e.DrawDefault = true;
             }
             
-            
-
-
 
         }
+        #endregion
+
+        #region 新建网关 新建设备 删除节点（按键）
+
+        //新建网关
+        private void btnAddGw_Click(object sender, EventArgs e)
+        {
+            newTnGateway();
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            if (treeView1.SelectedNode == null)
+            {
+                return;
+            }
+            if (treeView1.SelectedNode.Parent == null)
+            {
+                //添加设备
+                newTnDevice();
+            }
+          
+        }
+
+        private void btnDel_Click(object sender, EventArgs e)
+        {
+            if (treeView1.SelectedNode == null)
+            {
+                return;
+            }
+            if (treeView1.SelectedNode.Parent != null)
+            {
+                //删除设备
+                删除ToolStripMenuItem1_Click(this, EventArgs.Empty);
+
+
+            }
+            else
+            {
+                newitemflag = true;
+                //删除网关              
+                删除ToolStripMenuItem_Click(this, EventArgs.Empty);
+               
+            }
+        }
+        #endregion
+
+
+
 
 
 

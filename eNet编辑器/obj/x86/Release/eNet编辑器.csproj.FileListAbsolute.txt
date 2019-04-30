@@ -107,7 +107,6 @@ C:\Users\Administrator\Desktop\Gitlab\eNet\eNet编辑器\bin\Release\Newtonsoft.
 C:\Users\Administrator\Desktop\Gitlab\eNet\eNet编辑器\obj\x86\Release\eNet编辑器.csprojResolveAssemblyReference.cache
 C:\Users\Administrator\Desktop\Gitlab\eNet\eNet编辑器\obj\x86\Release\eNet编辑器.AddForm.DGVconcrol.resources
 C:\Users\Administrator\Desktop\Gitlab\eNet\eNet编辑器\obj\x86\Release\eNet编辑器.AddForm.DgvNameState.resources
-C:\Users\Administrator\Desktop\Gitlab\eNet\eNet编辑器\obj\x86\Release\eNet编辑器.AddForm.newProject.resources
 C:\Users\Administrator\Desktop\Gitlab\eNet\eNet编辑器\obj\x86\Release\eNet编辑器.AddForm.OnlineSearch.resources
 C:\Users\Administrator\Desktop\Gitlab\eNet\eNet编辑器\obj\x86\Release\eNet编辑器.AddForm.sceneAddress.resources
 C:\Users\Administrator\Desktop\Gitlab\eNet\eNet编辑器\obj\x86\Release\eNet编辑器.AddForm.sceneConcrol.resources
@@ -181,3 +180,8 @@ C:\Users\Administrator\Desktop\Gitlab\eNet\eNet编辑器\bin\Release\Infragistic
 C:\Users\Administrator\Desktop\Gitlab\eNet\eNet编辑器\bin\Release\Infragistics4.Win.UltraWinToolbars.v12.2.xml
 C:\Users\Administrator\Desktop\Gitlab\eNet\eNet编辑器\bin\Release\Infragistics4.Win.UltraWinTree.v12.2.xml
 C:\Users\Administrator\Desktop\Gitlab\eNet\eNet编辑器\bin\Release\Infragistics4.Win.v12.2.xml
+C:\Users\Administrator\Desktop\Gitlab\eNet\eNet编辑器\bin\Release\eNet编辑器.exe.manifest
+C:\Users\Administrator\Desktop\Gitlab\eNet\eNet编辑器\bin\Release\eNet编辑器.application
+C:\Users\Administrator\Desktop\Gitlab\eNet\eNet编辑器\obj\x86\Release\eNet编辑器.TrustInfo.xml
+C:\Users\Administrator\Desktop\Gitlab\eNet\eNet编辑器\obj\x86\Release\eNet编辑器.exe.manifest
+C:\Users\Administrator\Desktop\Gitlab\eNet\eNet编辑器\obj\x86\Release\eNet编辑器.application

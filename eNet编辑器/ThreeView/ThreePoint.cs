@@ -72,6 +72,11 @@ namespace eNet编辑器.ThreeView
             
         }
 
+        /// <summary>
+        /// 点击选中后事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
         {
 

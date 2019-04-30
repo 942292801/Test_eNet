@@ -150,7 +150,7 @@ namespace eNet编辑器
             //调用添加场景
             threetitle.dgvsceneAddItem += new DgvSceneAddItem2(dgvscene.dgvsceneAddItem);
             threetitle.dgvbindAddItem  +=new DgvBindAddItem2(dgvbind.dgvbindAddItem);
-
+            threetitle.addPoint += new Action(dgvpoint.addPoint);
             threename.dgvDeviceAddItem += new DgvDeviceAddItem(dgvdevice.dgvDeviceAddItem);
             threebind.dgvbindAddItem += new DgvBindAddItem(dgvbind.dgvbindAddItem);
 
@@ -367,7 +367,14 @@ namespace eNet编辑器
         {
             //自定义函数加载窗体 CleanRecycle  
             Control_Add(threename, plLeft);
-            Control_Add(dgvname, plDgv);
+            if (FileMesege.tnselectNode != null && FileMesege.tnselectNode.Parent == null)
+            {
+                Control_Add(dgvdevice, plDgv);
+            }
+            else
+            {
+                Control_Add(dgvname, plDgv);
+            }
             //cbtype添加选择项 
             cbtypeName("equipment");
             //界面显示类型 
@@ -891,9 +898,6 @@ namespace eNet编辑器
         }
 
         #endregion
-
-
-  
 
 
         #region 快捷键功能 因为在meustrip设置了快捷键 所以这个快捷键可以删除

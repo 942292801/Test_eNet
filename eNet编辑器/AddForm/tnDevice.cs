@@ -121,8 +121,17 @@ namespace eNet编辑器.AddForm
                     }
                 } 
                 FileMesege.info = string.Format("{0} {1} {2}", lbip.Text, cbDevice.Text, cbVersion.Text);
+                try{
+                    //自动序号加一
+                    cbDevice.SelectedIndex = Convert.ToInt32( cbDevice.Text)+1;
+                }
+                catch
+                {
+
+                }
                 //添加设备回调
                 adddev();
+                
             }
             else
             {

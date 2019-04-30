@@ -257,7 +257,6 @@
             this.sld7.Margin = new System.Windows.Forms.Padding(3, 8, 3, 3);
             this.sld7.Name = "sld7";
             this.sld7.Size = new System.Drawing.Size(190, 18);
-            this.sld7.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.sld7.TabIndex = 29;
             this.sld7.Text = "0";
             this.sld7.Value = 0;

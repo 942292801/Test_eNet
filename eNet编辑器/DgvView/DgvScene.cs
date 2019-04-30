@@ -573,7 +573,7 @@ namespace eNet编辑器.DgvView
 
 
 
-        #region 表格单击双击 操作
+        #region 表格单击双击 操作 高亮显示
         private bool isFirstClick = true;
         private bool isDoubleClick = false;
         private int milliseconds = 0;
@@ -905,6 +905,25 @@ namespace eNet编辑器.DgvView
 
         }
 
+        private void dataGridView1_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            //选中行号
+            int rowNum = e.RowIndex;
+            //选中列号
+            int columnNum = e.ColumnIndex;
+            if (rowNum >= 0 && columnNum >= 0)
+            {
+                switch (dataGridView1.Columns[columnNum].Name)
+                {
+                    case "del":
+                        dataGridView1.ClearSelection();
+                        dataGridView1.Rows[rowNum].Selected = true;//选中行
+                        break;
+
+                    default: break;
+                }
+            }
+        }
        
         #endregion
 
@@ -1029,6 +1048,8 @@ namespace eNet编辑器.DgvView
 
         }
         #endregion
+
+       
 
      
 

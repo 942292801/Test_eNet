@@ -23,7 +23,9 @@ namespace eNet编辑器.ThreeView
         public event DgvBindAddItem2 dgvbindAddItem;
         //public event AddTitleDevCursor addTitleDevCursor;
         //public event AddTitlenNameCursor addTitlenNameCursor;
-        //private bool newflag = false;
+
+        //添加点位
+        public event Action addPoint;
         public ThreeTitle()
         {
             InitializeComponent();
@@ -150,6 +152,10 @@ namespace eNet编辑器.ThreeView
             {
                 //正常加载名称
                 string[] strarr = strs.Split(',');
+                if (strarr[0] == "")
+                {
+                    return;
+                }
                 for (int i = 0; i < strarr.Length; i++)
                 {
                     tm.AddNode1(treeView1, strarr[i]);
@@ -377,25 +383,12 @@ namespace eNet编辑器.ThreeView
         /// <param name="e"></param>
         private void treeView1_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-
-            switch (FileMesege.formType)
+            try
             {
-                case "scene":
-                    dgvNodeAdd(treeView1.SelectedNode);
-                    break;
-                case "timer":
-                    dgvNodeAdd(treeView1.SelectedNode);
-                    break;
-                case "panel":
-                    dgvNodeAdd(treeView1.SelectedNode);
-                    break;
-                case "logic":
-                    dgvNodeAdd(treeView1.SelectedNode);
-                    break;
-                case "reaction":
-                    dgvNodeAdd(treeView1.SelectedNode);
-                    break;
-                default: break;
+                dgvNodeAdd(treeView1.SelectedNode);
+            }
+            catch { 
+            
             }
 
         }
@@ -425,6 +418,11 @@ namespace eNet编辑器.ThreeView
             {
                 case "name":
 
+                    //MessageBox.Show("name");
+                    break;
+                case "point":
+                    //添加点位
+                    addPoint();
                     //MessageBox.Show("name");
                     break;
                 case "scene":

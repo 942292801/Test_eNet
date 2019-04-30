@@ -360,6 +360,8 @@ namespace eNet编辑器.ThreeView
         }
         #endregion
 
+
+        #region 节点点击和点击后事件  树状图重绘
         /// <summary>
         /// 右击选中节点
         /// </summary>
@@ -433,7 +435,7 @@ namespace eNet编辑器.ThreeView
             }
         }
 
-
+        #endregion
 
 
 

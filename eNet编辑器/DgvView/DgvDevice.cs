@@ -657,7 +657,7 @@ namespace eNet编辑器.DgvView
 
         #endregion
 
-        #region Del按键处理  ////////////考虑可以改为backspace键
+        #region Del按键处理  
         /// <summary>
         /// 删除按键
         /// </summary>

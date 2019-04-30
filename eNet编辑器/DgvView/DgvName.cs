@@ -805,7 +805,7 @@ namespace eNet编辑器.DgvView
                 catch
                 {
                     //报错不处理
-                    MessageBox.Show("DgvName处理信息出错869行");
+                    //MessageBox.Show("DgvName处理信息出错869行");
                 }
             });
         }

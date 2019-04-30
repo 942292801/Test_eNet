@@ -37,6 +37,7 @@ namespace eNet编辑器.DgvView
         DataGridViewComboBoxColumn cbObjType;
         DataGridViewComboBoxColumn cbValue;
         HashSet<DataJson.PointInfo> multipleList = new HashSet<DataJson.PointInfo>();
+        
         private void DgvPoint_Load(object sender, EventArgs e)
         {
             //新增对象列 加载
@@ -76,6 +77,7 @@ namespace eNet编辑器.DgvView
             this.dataGridView1.Columns.Insert(5, cbValue);
         }
 
+        #region dgv的数据加载 更新combox的item值
         //根据区域和 类型TYPE（灯。空调。电视。）
         public void dgvPointAddItemByObjType()
         {
@@ -297,6 +299,8 @@ namespace eNet编辑器.DgvView
 
         }
 
+        #endregion
+
         #region 增加 并联按钮
         /// <summary>
         /// 增加按钮 新增一条点位信息
@@ -305,7 +309,13 @@ namespace eNet编辑器.DgvView
         /// <param name="e"></param>
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(FileMesege.sectionNodeCopy)  )
+            addPoint();
+
+        }
+
+        public void addPoint()
+        {
+            if (string.IsNullOrEmpty(FileMesege.sectionNodeCopy))
             {
                 txtAppShow("请选择区域");
                 return;
@@ -343,7 +353,6 @@ namespace eNet编辑器.DgvView
             DataJson.totalList NewList = FileMesege.cmds.getListInfos();
             FileMesege.cmds.DoNewCommand(NewList, OldList);
             dgvPointAddItemBySection();
-
         }
 
         /// <summary>
@@ -404,7 +413,7 @@ namespace eNet编辑器.DgvView
         private void btnMultiple_Click(object sender, EventArgs e)
         {
             
-            if (dataGridView1.RowCount < 1 || multipleList.Count == 0)
+            if (dataGridView1.RowCount < 1 || multipleList.Count < 2)
             {
                 //没有选中数据
                 return;
@@ -433,7 +442,6 @@ namespace eNet编辑器.DgvView
 
         }
         #endregion
-
 
         #region 单击双击 操作DGV表格
         private bool isFirstClick = true;
@@ -529,11 +537,8 @@ namespace eNet编辑器.DgvView
                                 {
                                     break;
                                 }
-                                
                                 //添加名称
-                                changeName();
-                               
-                                   
+                                changeName(); 
                                 break;
 
                             case "pointDel": 
@@ -541,14 +546,11 @@ namespace eNet编辑器.DgvView
                                 delBtn();
                                 
                                 break;
-                            case "pointMultiple":
-                                Multiple();
-                                break;
-                    
                             default: break;
                         }
                     }
                 }
+                
                 isFirstClick = true;
                 isDoubleClick = false;
                 milliseconds = 0;
@@ -645,6 +647,17 @@ namespace eNet编辑器.DgvView
                         }
                         updataValueItem(rowNum, objTypeName);
                         break;
+                    case "pointMultiple":
+                        dataGridView1.Rows[rowNum].Selected = true;//选中行
+                        for (int i = rowCount; i < rowNum + 1; i++)
+                        {
+                            dataGridView1.Rows[i].Cells[7].Value = true;
+                            Multiple(i);
+                        }
+                        //提交编辑
+                        dataGridView1.EndEdit();
+                        break;
+                    
 
                     default: break;
                 }
@@ -728,15 +741,19 @@ namespace eNet编辑器.DgvView
         /// <summary>
         /// 并联节点
         /// </summary>
-        private void Multiple()
+        private void Multiple(int rowNumber)
         {
+            if (!(bool)dataGridView1.Rows[rowNumber].Cells[7].EditedFormattedValue)
+            {
+                return;
+            }
             //区域
-            List<string> section = dataGridView1.Rows[rowCount].Cells[2].Value.ToString().Split(' ').ToList();
+            List<string> section = dataGridView1.Rows[rowNumber].Cells[2].Value.ToString().Split(' ').ToList();
             while (section.Count != 4)
             {
                 section.Add("");
             }
-            oldName = dataGridView1.Rows[rowCount].Cells[3].Value.ToString();
+            oldName = dataGridView1.Rows[rowNumber].Cells[3].Value.ToString();
             foreach (DataJson.PointInfo eq in FileMesege.PointList.equipment)
             {
                 //当地域信息相同
@@ -745,7 +762,7 @@ namespace eNet编辑器.DgvView
                     
                     //合并数据列表添加
                     multipleList.Add(eq);
-                    if (!(bool)dataGridView1.Rows[rowCount].Cells[7].EditedFormattedValue)
+                    if (!(bool)dataGridView1.Rows[rowNumber].Cells[7].EditedFormattedValue)
                     {
                         //非选择的数据
                         multipleList.Remove(eq);
@@ -836,7 +853,7 @@ namespace eNet编辑器.DgvView
             return null;
         }
 
-
+        //点击
         private void dataGridView1_MouseDown(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Right)
@@ -846,8 +863,28 @@ namespace eNet编辑器.DgvView
                 //treetitle名字临时存放
                 FileMesege.titleinfo = "";
                 updateTitleNode();
-                
-                
+
+            }
+        }
+
+        //移动到删除的时候高亮一行
+        private void dataGridView1_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            //选中行号
+            int rowNum = e.RowIndex;
+            //选中列号
+            int columnNum = e.ColumnIndex;
+            if (rowNum >= 0 && columnNum >= 0)
+            {
+                switch (dataGridView1.Columns[columnNum].Name)
+                {
+                    case "pointDel":
+                        dataGridView1.ClearSelection();
+                        dataGridView1.Rows[rowNum].Selected = true;//选中行
+                        break;
+
+                    default: break;
+                }
             }
         }
 
@@ -1010,6 +1047,38 @@ namespace eNet编辑器.DgvView
 
         }
         #endregion
+
+        
+
+        //删除
+        private void btnDel_Click(object sender, EventArgs e)
+        {
+
+            if (dataGridView1.RowCount < 1 || multipleList.Count == 0)
+            {
+                //没有选中数据
+                return;
+            }
+            else
+            {
+                //撤销 
+                DataJson.totalList OldList = FileMesege.cmds.getListInfos();
+                foreach (DataJson.PointInfo point in multipleList)
+                {
+                   
+                    DataListHelper.reMoveAllSceneByPid(point.pid);
+                    FileMesege.PointList.equipment.Remove(point);
+                }
+                DataJson.totalList NewList = FileMesege.cmds.getListInfos();
+                FileMesege.cmds.DoNewCommand(NewList, OldList);
+                multipleList.Clear();
+                updateAllView();
+            }
+        }
+
+      
+
+  
 
  
 
