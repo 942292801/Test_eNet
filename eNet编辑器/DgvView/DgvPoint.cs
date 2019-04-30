@@ -301,7 +301,7 @@ namespace eNet编辑器.DgvView
 
         #endregion
 
-        #region 增加 并联按钮
+        #region 增加 并联按钮 删除
         /// <summary>
         /// 增加按钮 新增一条点位信息
         /// </summary>
@@ -412,7 +412,14 @@ namespace eNet编辑器.DgvView
         /// <param name="e"></param>
         private void btnMultiple_Click(object sender, EventArgs e)
         {
-            
+
+            for (int i = 0; i < dataGridView1.RowCount; i++)
+            {
+                if ((bool)dataGridView1.Rows[i].Cells[7].EditedFormattedValue)
+                {
+                    Multiple(i);
+                }
+            }
             if (dataGridView1.RowCount < 1 || multipleList.Count < 2)
             {
                 //没有选中数据
@@ -440,6 +447,40 @@ namespace eNet编辑器.DgvView
                 updateAllView();
             }
 
+        }
+
+
+        //删除
+        private void btnDel_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < dataGridView1.RowCount; i++)
+            {
+                if ((bool)dataGridView1.Rows[i].Cells[7].EditedFormattedValue)
+                {
+                    Multiple(i);
+                }
+            }
+                
+            if (dataGridView1.RowCount < 1 || multipleList.Count == 0)
+            {
+                //没有选中数据
+                return;
+            }
+            else
+            {
+                //撤销 
+                DataJson.totalList OldList = FileMesege.cmds.getListInfos();
+                foreach (DataJson.PointInfo point in multipleList)
+                {
+
+                    DataListHelper.reMoveAllSceneByPid(point.pid);
+                    FileMesege.PointList.equipment.Remove(point);
+                }
+                DataJson.totalList NewList = FileMesege.cmds.getListInfos();
+                FileMesege.cmds.DoNewCommand(NewList, OldList);
+                multipleList.Clear();
+                updateAllView();
+            }
         }
         #endregion
 
@@ -620,7 +661,13 @@ namespace eNet编辑器.DgvView
                         FileMesege.cmds.DoNewCommand(NewList, OldList);
                         
                         break;
-                    
+                    case "pointMultiple":
+                        if(!(bool)dataGridView1.Rows[rowNum].Cells[7].Value)
+                        {
+                            //Multiple(rowNum);
+                        }
+                        
+                        break;
                     default: break;
                 }
             }
@@ -649,10 +696,11 @@ namespace eNet编辑器.DgvView
                         break;
                     case "pointMultiple":
                         dataGridView1.Rows[rowNum].Selected = true;//选中行
-                        for (int i = rowCount; i < rowNum + 1; i++)
+                        //multipleList.Clear();
+                        for (int i = dataGridView1.SelectedRows.Count; i > 0; i--)
                         {
-                            dataGridView1.Rows[i].Cells[7].Value = true;
-                            Multiple(i);
+                            dataGridView1.SelectedRows[i-1].Cells[7].Value = true;
+                            
                         }
                         //提交编辑
                         dataGridView1.EndEdit();
@@ -743,10 +791,7 @@ namespace eNet编辑器.DgvView
         /// </summary>
         private void Multiple(int rowNumber)
         {
-            if (!(bool)dataGridView1.Rows[rowNumber].Cells[7].EditedFormattedValue)
-            {
-                return;
-            }
+            
             //区域
             List<string> section = dataGridView1.Rows[rowNumber].Cells[2].Value.ToString().Split(' ').ToList();
             while (section.Count != 4)
@@ -758,16 +803,13 @@ namespace eNet编辑器.DgvView
             {
                 //当地域信息相同
                 if (eq.area1 == section[0] && eq.area2 == section[1] && eq.area3 == section[2] && eq.area4 == section[3] && eq.name == oldName)
-                {
-                    
+                { 
                     //合并数据列表添加
                     multipleList.Add(eq);
                     if (!(bool)dataGridView1.Rows[rowNumber].Cells[7].EditedFormattedValue)
                     {
-                        //非选择的数据
-                        multipleList.Remove(eq);
+                        return;
                     }
-                    
                     break;
                 }
             }
@@ -929,55 +971,68 @@ namespace eNet编辑器.DgvView
         {
             try
             {
-                //获取当前选中单元格的列序号
-                int colIndex = dataGridView1.CurrentRow.Cells.IndexOf(dataGridView1.CurrentCell);
-
-                //当粘贴选中单元格为对象和参数
-                if (colIndex == 4 || colIndex == 5)
+                bool ischange = false;
+                //撤销
+                DataJson.totalList OldList = FileMesege.cmds.getListInfos();
+                for (int i = 0; i < dataGridView1.SelectedCells.Count; i++)
                 {
+                    //获取当前选中单元格的列序号
+                    int colIndex = dataGridView1.SelectedCells[i].ColumnIndex;
+                    //当粘贴选中单元格为对象和参数
+                    if (colIndex == 4 || colIndex == 5)
+                    {
 
-                    //区域
-                    List<string> section = dataGridView1.Rows[dataGridView1.CurrentCell.RowIndex].Cells[2].Value.ToString().Split(' ').ToList();
-                    while (section.Count != 4)
-                    {
-                        section.Add("");
-                    }
-                    foreach (DataJson.PointInfo eq in FileMesege.PointList.equipment)
-                    {
-                        //当地域信息相同
-                        if (eq.area1 == section[0] && eq.area2 == section[1] && eq.area3 == section[2] && eq.area4 == section[3] && eq.name == dataGridView1.Rows[dataGridView1.CurrentCell.RowIndex].Cells[3].Value.ToString())
+                        //区域
+                        List<string> section = dataGridView1.Rows[dataGridView1.SelectedCells[i].RowIndex].Cells[2].Value.ToString().Split(' ').ToList();
+                        while (section.Count != 4)
                         {
-                            if (eq.objType == FileMesege.copyPoint.objType && eq.value == FileMesege.copyPoint.value)
-                            {
-                                break; ;
-                            }
-
-                            //撤销
-                            DataJson.totalList OldList = FileMesege.cmds.getListInfos();
-                            eq.objType = FileMesege.copyPoint.objType;
-                            eq.value = FileMesege.copyPoint.value;
-                            eq.type = FileMesege.copyPoint.type;
-                            //解绑IP地址
-                            eq.address = "FFFFFFFF";
-                            eq.ip = "";
-                            DataJson.totalList NewList = FileMesege.cmds.getListInfos();
-                            FileMesege.cmds.DoNewCommand(NewList, OldList);
-
-                            //获取中文类型名
-                            string objTypeName = IniHelper.findObjsDefineName_ByType(eq.objType);
-                            //类型 objType
-                            this.dataGridView1.Rows[dataGridView1.CurrentCell.RowIndex].Cells[4].Value = objTypeName;
-                            if (!string.IsNullOrEmpty(objTypeName))
-                            {
-                                updataValueItem(dataGridView1.CurrentCell.RowIndex, objTypeName);
-                                //参数 value
-                                this.dataGridView1.Rows[dataGridView1.CurrentCell.RowIndex].Cells[5].Value = IniHelper.findObjValueName_ByVal(objTypeName, eq.value);
-                                this.dataGridView1.Rows[dataGridView1.CurrentCell.RowIndex].Cells[5].ReadOnly = true;
-                            } 
-                            break;
+                            section.Add("");
                         }
-                    }
-                }//if
+                        foreach (DataJson.PointInfo eq in FileMesege.PointList.equipment)
+                        {
+                            //当地域信息相同
+                            if (eq.area1 == section[0] && eq.area2 == section[1] && eq.area3 == section[2] && eq.area4 == section[3] && eq.name == dataGridView1.Rows[dataGridView1.SelectedCells[i].RowIndex].Cells[3].Value.ToString())
+                            {
+                                
+                                if (eq.objType == FileMesege.copyPoint.objType && eq.value == FileMesege.copyPoint.value)
+                                {
+                                    break;
+                                }
+                                eq.objType = FileMesege.copyPoint.objType;
+                                eq.value = FileMesege.copyPoint.value;
+                                eq.type = FileMesege.copyPoint.type;
+                                //解绑IP地址
+                                eq.address = "FFFFFFFF";
+                                eq.ip = "";
+                                ischange = true;
+                                //获取中文类型名
+                                string objTypeName = IniHelper.findObjsDefineName_ByType(eq.objType);
+                                //类型 objType
+                                this.dataGridView1.Rows[dataGridView1.SelectedCells[i].RowIndex].Cells[4].Value = objTypeName;
+                                if (!string.IsNullOrEmpty(objTypeName))
+                                {
+                                    updataValueItem(dataGridView1.SelectedCells[i].RowIndex, objTypeName);
+                                    //参数 value
+                                    this.dataGridView1.Rows[dataGridView1.SelectedCells[i].RowIndex].Cells[5].Value = IniHelper.findObjValueName_ByVal(objTypeName, eq.value);
+                                    this.dataGridView1.Rows[dataGridView1.SelectedCells[i].RowIndex].Cells[5].ReadOnly = true;
+                                }
+                                else
+                                {
+                                    this.dataGridView1.Rows[dataGridView1.SelectedCells[i].RowIndex].Cells[5].Value = "";
+                                }
+                                
+                                break;
+                            }
+                        }
+                    }//if
+                }//for
+                if (ischange)
+                {
+                    DataJson.totalList NewList = FileMesege.cmds.getListInfos();
+                    FileMesege.cmds.DoNewCommand(NewList, OldList);
+                }
+               
+
             }//try
             catch {
 
@@ -1050,31 +1105,6 @@ namespace eNet编辑器.DgvView
 
         
 
-        //删除
-        private void btnDel_Click(object sender, EventArgs e)
-        {
-
-            if (dataGridView1.RowCount < 1 || multipleList.Count == 0)
-            {
-                //没有选中数据
-                return;
-            }
-            else
-            {
-                //撤销 
-                DataJson.totalList OldList = FileMesege.cmds.getListInfos();
-                foreach (DataJson.PointInfo point in multipleList)
-                {
-                   
-                    DataListHelper.reMoveAllSceneByPid(point.pid);
-                    FileMesege.PointList.equipment.Remove(point);
-                }
-                DataJson.totalList NewList = FileMesege.cmds.getListInfos();
-                FileMesege.cmds.DoNewCommand(NewList, OldList);
-                multipleList.Clear();
-                updateAllView();
-            }
-        }
 
       
 

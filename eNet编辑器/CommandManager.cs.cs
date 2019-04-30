@@ -74,6 +74,17 @@ namespace eNet编辑器
             cmd.Do();
         }
 
+        /// <summary>
+        /// 把上一个添加的记录 出栈并删除
+        /// </summary> 
+        public void RemoveLast()
+        {
+            if (UnDoActionStack.Count > 0)
+            {
+                UnDoActionStack.Pop();
+            }
+        }
+
         public void UnDo()
         {
             if (!CanUnDo)

@@ -85,9 +85,37 @@ namespace eNet编辑器.ThreeView
 
         #region 新建 修改 删除 展开（收起）节点
 
-        private void 新建ToolStripMenuItem_Click(object sender, EventArgs e)
+  
+
+        private void 新建节点ToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            isAddChild = false;
+            //把窗口向屏幕中间刷新
+            tss.StartPosition = FormStartPosition.CenterParent;
+            tss.Newflag = newflag;
+            //设定开始层级
+            int i = 0;
+            if (treeView1.SelectedNode != null)
+            {
+                i = treeView1.SelectedNode.Level;
+
+            }
+            if (i > 3)
+            {
+                return;
+            }
+            tss.Selectindex = i;
+            tss.ShowDialog();
+        }
+
+        private void 添加子节点ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (treeView1.SelectedNode == null || treeView1.SelectedNode.Text == "全部")
+            {
+                return;
+            }
             isAddChild = true;
+            newflag = true;
             newTsSection();
         }
 
@@ -1621,6 +1649,8 @@ namespace eNet编辑器.ThreeView
             }
         }
         #endregion
+
+       
 
 
     }

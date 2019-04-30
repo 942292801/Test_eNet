@@ -106,6 +106,8 @@ namespace eNet编辑器.ThreeView
             }
             else//右击树状图区域
             {
+                //清除复制的场景
+                copyScene = null;
                 //新建场景
                 newTsScene();
                     
@@ -137,11 +139,22 @@ namespace eNet编辑器.ThreeView
             //展示居中
             tss.StartPosition = FormStartPosition.CenterParent;
             tss.Xflag = false;
-            //获取IP
-            string [] ips = treeView1.SelectedNode.Text.Split(' ');
-            tss.Ip = ips[0];
-            //获取场景号数
-            tss.Num = (treeView1.SelectedNode.GetNodeCount(false)+1).ToString();
+            if (treeView1.SelectedNode.Parent == null)
+            {
+                //获取IP
+                string[] ips = treeView1.SelectedNode.Text.Split(' ');
+                tss.Ip = ips[0];
+                //获取场景号数
+                tss.Num = (treeView1.SelectedNode.GetNodeCount(false) + 1).ToString();
+            }
+            else
+            {
+                //获取IP
+                string[] ips = treeView1.SelectedNode.Parent.Text.Split(' ');
+                tss.Ip = ips[0];
+                //获取场景号数
+                tss.Num = (Convert.ToInt32(Regex.Replace(treeView1.SelectedNode.Text.Split(' ')[0], @"[^\d]*", ""))+1).ToString();
+            }
             tss.ShowDialog();
             
         }
@@ -197,6 +210,11 @@ namespace eNet编辑器.ThreeView
                     scs.pid = randomNum; 
                     scs.address = address;
                     scs.sceneInfo = new List<DataJson.sceneInfo>();
+                    if (copyScene != null)
+                    {
+
+                        scs.sceneInfo = (List<DataJson.sceneInfo>)CommandManager.CloneObject(copyScene);
+                    }
                     sc.scenes.Add(scs);
                     //添加point点
                     DataJson.PointInfo eq = new DataJson.PointInfo();
@@ -358,6 +376,28 @@ namespace eNet编辑器.ThreeView
           
             
         }
+
+        //复制的场景
+        List<DataJson.sceneInfo> copyScene = null;
+        private void 复制ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            
+            string[] ips = FileMesege.sceneSelectNode.Parent.Text.Split(' ');
+            string[] ids = FileMesege.sceneSelectNode.Text.Split(' ');
+            int sceneNum = Convert.ToInt32(Regex.Replace(ids[0], @"[^\d]*", ""));
+            //获取该节点IP地址场景下的 场景信息对象
+            DataJson.scenes sc = DataListHelper.getSceneInfoList(ips[0], sceneNum);
+            //可能存在克隆现象需要解决
+            copyScene = sc.sceneInfo;
+            //新建场景
+            newTsScene();
+            //FileMesege.cmds.RemoveLast();
+
+
+        }
+
+
+
         #endregion
 
 
@@ -436,6 +476,8 @@ namespace eNet编辑器.ThreeView
         }
 
         #endregion
+
+        
 
 
 
