@@ -105,6 +105,10 @@ namespace eNet编辑器.AddForm
             }
             cbname.SelectedIndex = 0;
         }
+
+ 
+
+      
      
     }
 }

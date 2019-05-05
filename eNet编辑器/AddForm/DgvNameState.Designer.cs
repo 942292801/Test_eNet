@@ -315,6 +315,7 @@
             this.Controls.Add(this.lb6);
             this.Controls.Add(this.lb5);
             this.Controls.Add(this.sld5);
+            this.Font = new System.Drawing.Font("黑体", 9F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "DgvNameState";
             this.Text = "DgvNameState";

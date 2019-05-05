@@ -33,16 +33,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DgvScene));
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.doubleClickTimer = new System.Windows.Forms.Timer(this.components);
-            this.plInfoTitle = new System.Windows.Forms.Panel();
-            this.btnClear = new DevComponents.DotNetBar.ButtonX();
-            this.btnAdd = new DevComponents.DotNetBar.ButtonX();
-            this.btnDown = new DevComponents.DotNetBar.ButtonX();
-            this.btnCall = new DevComponents.DotNetBar.ButtonX();
-            this.symbolBox1 = new DevComponents.DotNetBar.Controls.SymbolBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.btnDel = new DevComponents.DotNetBar.ButtonX();
             this.num = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.address = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.section = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -51,6 +41,16 @@
             this.delay = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.del = new System.Windows.Forms.DataGridViewButtonColumn();
             this.checkDel = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.doubleClickTimer = new System.Windows.Forms.Timer(this.components);
+            this.plInfoTitle = new System.Windows.Forms.Panel();
+            this.btnDel = new DevComponents.DotNetBar.ButtonX();
+            this.btnClear = new DevComponents.DotNetBar.ButtonX();
+            this.btnAdd = new DevComponents.DotNetBar.ButtonX();
+            this.btnDown = new DevComponents.DotNetBar.ButtonX();
+            this.btnCall = new DevComponents.DotNetBar.ButtonX();
+            this.symbolBox1 = new DevComponents.DotNetBar.Controls.SymbolBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.plInfoTitle.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -64,7 +64,7 @@
             this.dataGridView1.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableAlwaysIncludeHeaderText;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("黑体", 9F);
             dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -82,7 +82,7 @@
             this.checkDel});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("黑体", 9F);
             dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(235)))), ((int)(((byte)(248)))));
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlText;
@@ -105,6 +105,60 @@
             this.dataGridView1.KeyUp += new System.Windows.Forms.KeyEventHandler(this.dataGridView1_KeyUp);
             this.dataGridView1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.dataGridView1_MouseDown);
             // 
+            // num
+            // 
+            this.num.HeaderText = "序号";
+            this.num.Name = "num";
+            this.num.ReadOnly = true;
+            this.num.Width = 60;
+            // 
+            // address
+            // 
+            this.address.HeaderText = "地址";
+            this.address.Name = "address";
+            this.address.ReadOnly = true;
+            // 
+            // section
+            // 
+            this.section.HeaderText = "区域";
+            this.section.Name = "section";
+            this.section.ReadOnly = true;
+            this.section.Width = 160;
+            // 
+            // name
+            // 
+            this.name.HeaderText = "名称";
+            this.name.Name = "name";
+            this.name.ReadOnly = true;
+            this.name.Width = 80;
+            // 
+            // operation
+            // 
+            this.operation.HeaderText = "操作";
+            this.operation.Name = "operation";
+            this.operation.ReadOnly = true;
+            this.operation.Width = 140;
+            // 
+            // delay
+            // 
+            this.delay.HeaderText = "延时（秒）";
+            this.delay.Name = "delay";
+            // 
+            // del
+            // 
+            this.del.HeaderText = "删除";
+            this.del.Name = "del";
+            this.del.ReadOnly = true;
+            this.del.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.del.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.del.Width = 55;
+            // 
+            // checkDel
+            // 
+            this.checkDel.HeaderText = "";
+            this.checkDel.Name = "checkDel";
+            this.checkDel.Width = 50;
+            // 
             // doubleClickTimer
             // 
             this.doubleClickTimer.Interval = 40;
@@ -125,6 +179,26 @@
             this.plInfoTitle.Name = "plInfoTitle";
             this.plInfoTitle.Size = new System.Drawing.Size(862, 25);
             this.plInfoTitle.TabIndex = 16;
+            // 
+            // btnDel
+            // 
+            this.btnDel.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnDel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnDel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnDel.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
+            this.btnDel.FocusCuesEnabled = false;
+            this.btnDel.Font = new System.Drawing.Font("黑体", 9F);
+            this.btnDel.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.Image;
+            this.btnDel.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnDel.HoverImage")));
+            this.btnDel.Image = ((System.Drawing.Image)(resources.GetObject("btnDel.Image")));
+            this.btnDel.Location = new System.Drawing.Point(842, 0);
+            this.btnDel.Name = "btnDel";
+            this.btnDel.Size = new System.Drawing.Size(17, 22);
+            this.btnDel.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnDel.TabIndex = 6;
+            this.btnDel.Tooltip = "删除选中行";
+            this.btnDel.Click += new System.EventHandler(this.btnDel_Click);
             // 
             // btnClear
             // 
@@ -242,86 +316,13 @@
             this.panel1.Size = new System.Drawing.Size(862, 642);
             this.panel1.TabIndex = 17;
             // 
-            // btnDel
-            // 
-            this.btnDel.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnDel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnDel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btnDel.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
-            this.btnDel.FocusCuesEnabled = false;
-            this.btnDel.Font = new System.Drawing.Font("黑体", 9F);
-            this.btnDel.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.Image;
-            this.btnDel.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnDel.HoverImage")));
-            this.btnDel.Image = ((System.Drawing.Image)(resources.GetObject("btnDel.Image")));
-            this.btnDel.Location = new System.Drawing.Point(842, 0);
-            this.btnDel.Name = "btnDel";
-            this.btnDel.Size = new System.Drawing.Size(17, 22);
-            this.btnDel.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnDel.TabIndex = 6;
-            this.btnDel.Tooltip = "删除选中行";
-            this.btnDel.Click += new System.EventHandler(this.btnDel_Click);
-            // 
-            // num
-            // 
-            this.num.HeaderText = "序号";
-            this.num.Name = "num";
-            this.num.ReadOnly = true;
-            this.num.Width = 60;
-            // 
-            // address
-            // 
-            this.address.HeaderText = "地址";
-            this.address.Name = "address";
-            this.address.ReadOnly = true;
-            // 
-            // section
-            // 
-            this.section.HeaderText = "区域";
-            this.section.Name = "section";
-            this.section.ReadOnly = true;
-            this.section.Width = 160;
-            // 
-            // name
-            // 
-            this.name.HeaderText = "名称";
-            this.name.Name = "name";
-            this.name.ReadOnly = true;
-            this.name.Width = 80;
-            // 
-            // operation
-            // 
-            this.operation.HeaderText = "操作";
-            this.operation.Name = "operation";
-            this.operation.ReadOnly = true;
-            this.operation.Width = 140;
-            // 
-            // delay
-            // 
-            this.delay.HeaderText = "延时（秒）";
-            this.delay.Name = "delay";
-            // 
-            // del
-            // 
-            this.del.HeaderText = "删除";
-            this.del.Name = "del";
-            this.del.ReadOnly = true;
-            this.del.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.del.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.del.Width = 55;
-            // 
-            // checkDel
-            // 
-            this.checkDel.HeaderText = "";
-            this.checkDel.Name = "checkDel";
-            this.checkDel.Width = 50;
-            // 
             // DgvScene
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(862, 642);
             this.Controls.Add(this.panel1);
+            this.Font = new System.Drawing.Font("黑体", 9F);
             this.Name = "DgvScene";
             this.Text = "DgvScene";
             this.Load += new System.EventHandler(this.DgvScene_Load);

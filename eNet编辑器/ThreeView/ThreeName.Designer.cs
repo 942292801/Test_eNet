@@ -43,6 +43,7 @@
             this.修改ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.删除ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.plInfoTitle = new System.Windows.Forms.Panel();
+            this.btnAddGw = new DevComponents.DotNetBar.ButtonX();
             this.btnAddDev = new DevComponents.DotNetBar.ButtonX();
             this.btnDel = new DevComponents.DotNetBar.ButtonX();
             this.symbolBox1 = new DevComponents.DotNetBar.Controls.SymbolBox();
@@ -65,7 +66,6 @@
             this.cell17 = new DevComponents.AdvTree.Cell();
             this.node17 = new DevComponents.AdvTree.Node();
             this.node16 = new DevComponents.AdvTree.Node();
-            this.btnAddGw = new DevComponents.DotNetBar.ButtonX();
             this.contextMenuStrip1.SuspendLayout();
             this.contextMenuStrip2.SuspendLayout();
             this.plInfoTitle.SuspendLayout();
@@ -192,6 +192,26 @@
             this.plInfoTitle.Name = "plInfoTitle";
             this.plInfoTitle.Size = new System.Drawing.Size(241, 25);
             this.plInfoTitle.TabIndex = 2;
+            // 
+            // btnAddGw
+            // 
+            this.btnAddGw.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnAddGw.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAddGw.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnAddGw.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
+            this.btnAddGw.FocusCuesEnabled = false;
+            this.btnAddGw.Font = new System.Drawing.Font("黑体", 9F);
+            this.btnAddGw.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.Image;
+            this.btnAddGw.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnAddGw.HoverImage")));
+            this.btnAddGw.Image = ((System.Drawing.Image)(resources.GetObject("btnAddGw.Image")));
+            this.btnAddGw.Location = new System.Drawing.Point(175, 1);
+            this.btnAddGw.Name = "btnAddGw";
+            this.btnAddGw.Size = new System.Drawing.Size(17, 22);
+            this.btnAddGw.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnAddGw.TabIndex = 5;
+            this.btnAddGw.Tooltip = "新增网关";
+            this.btnAddGw.Click += new System.EventHandler(this.btnAddGw_Click);
             // 
             // btnAddDev
             // 
@@ -390,26 +410,6 @@
             this.node16.CheckState = System.Windows.Forms.CheckState.Indeterminate;
             this.node16.Name = "node16";
             this.node16.Text = "Option 1 with 3-state";
-            // 
-            // btnAddGw
-            // 
-            this.btnAddGw.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnAddGw.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAddGw.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btnAddGw.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
-            this.btnAddGw.FocusCuesEnabled = false;
-            this.btnAddGw.Font = new System.Drawing.Font("黑体", 9F);
-            this.btnAddGw.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.Image;
-            this.btnAddGw.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnAddGw.HoverImage")));
-            this.btnAddGw.Image = ((System.Drawing.Image)(resources.GetObject("btnAddGw.Image")));
-            this.btnAddGw.Location = new System.Drawing.Point(175, 1);
-            this.btnAddGw.Name = "btnAddGw";
-            this.btnAddGw.Size = new System.Drawing.Size(17, 22);
-            this.btnAddGw.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnAddGw.TabIndex = 5;
-            this.btnAddGw.Tooltip = "新增网关";
-            this.btnAddGw.Click += new System.EventHandler(this.btnAddGw_Click);
             // 
             // ThreeName
             // 

@@ -28,89 +28,157 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.buttonPanel = new System.Windows.Forms.Panel();
-            this.btnSearch = new DevComponents.DotNetBar.ButtonX();
-            this.btnImport = new DevComponents.DotNetBar.ButtonX();
-            this.titlePanel = new System.Windows.Forms.Panel();
-            this.labelX1 = new DevComponents.DotNetBar.LabelX();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(OnlineSearch));
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.panel4 = new System.Windows.Forms.Panel();
             this.treeView1 = new System.Windows.Forms.TreeView();
-            this.buttonPanel.SuspendLayout();
-            this.titlePanel.SuspendLayout();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.plInfoTitle = new System.Windows.Forms.Panel();
+            this.btnImport = new DevComponents.DotNetBar.ButtonX();
+            this.btnSearch = new DevComponents.DotNetBar.ButtonX();
+            this.symbolBox1 = new DevComponents.DotNetBar.Controls.SymbolBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
+            this.panel4.SuspendLayout();
+            this.panel3.SuspendLayout();
+            this.plInfoTitle.SuspendLayout();
             this.SuspendLayout();
             // 
-            // buttonPanel
+            // panel1
             // 
-            this.buttonPanel.Controls.Add(this.btnSearch);
-            this.buttonPanel.Controls.Add(this.btnImport);
-            this.buttonPanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.buttonPanel.Location = new System.Drawing.Point(0, 36);
-            this.buttonPanel.Name = "buttonPanel";
-            this.buttonPanel.Size = new System.Drawing.Size(239, 36);
-            this.buttonPanel.TabIndex = 3;
+            this.panel1.Controls.Add(this.panel2);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(239, 479);
+            this.panel1.TabIndex = 4;
             // 
-            // btnSearch
+            // panel2
             // 
-            this.btnSearch.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnSearch.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnSearch.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btnSearch.Location = new System.Drawing.Point(119, 0);
-            this.btnSearch.Margin = new System.Windows.Forms.Padding(0);
-            this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(120, 36);
-            this.btnSearch.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnSearch.TabIndex = 1;
-            this.btnSearch.Text = "搜索";
-            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+            this.panel2.Controls.Add(this.panel4);
+            this.panel2.Controls.Add(this.panel3);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(239, 479);
+            this.panel2.TabIndex = 3;
+            // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.treeView1);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel4.Location = new System.Drawing.Point(0, 32);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(239, 447);
+            this.panel4.TabIndex = 4;
+            // 
+            // treeView1
+            // 
+            this.treeView1.BackColor = System.Drawing.Color.White;
+            this.treeView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.treeView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.treeView1.DrawMode = System.Windows.Forms.TreeViewDrawMode.OwnerDrawText;
+            this.treeView1.Font = new System.Drawing.Font("黑体", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.treeView1.HideSelection = false;
+            this.treeView1.ItemHeight = 20;
+            this.treeView1.Location = new System.Drawing.Point(0, 0);
+            this.treeView1.Margin = new System.Windows.Forms.Padding(0, 5, 0, 0);
+            this.treeView1.Name = "treeView1";
+            this.treeView1.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.treeView1.Size = new System.Drawing.Size(239, 447);
+            this.treeView1.TabIndex = 0;
+            this.treeView1.DrawNode += new System.Windows.Forms.DrawTreeNodeEventHandler(this.treeView1_DrawNode);
+            this.treeView1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.treeView1_MouseDoubleClick);
+            // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.White;
+            this.panel3.Controls.Add(this.plInfoTitle);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel3.Location = new System.Drawing.Point(0, 0);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(239, 32);
+            this.panel3.TabIndex = 3;
+            // 
+            // plInfoTitle
+            // 
+            this.plInfoTitle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(228)))), ((int)(((byte)(228)))));
+            this.plInfoTitle.Controls.Add(this.btnImport);
+            this.plInfoTitle.Controls.Add(this.btnSearch);
+            this.plInfoTitle.Controls.Add(this.symbolBox1);
+            this.plInfoTitle.Controls.Add(this.label1);
+            this.plInfoTitle.Dock = System.Windows.Forms.DockStyle.Top;
+            this.plInfoTitle.Location = new System.Drawing.Point(0, 0);
+            this.plInfoTitle.Name = "plInfoTitle";
+            this.plInfoTitle.Size = new System.Drawing.Size(239, 25);
+            this.plInfoTitle.TabIndex = 2;
             // 
             // btnImport
             // 
             this.btnImport.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnImport.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnImport.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btnImport.Location = new System.Drawing.Point(0, 0);
-            this.btnImport.Margin = new System.Windows.Forms.Padding(0);
+            this.btnImport.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnImport.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnImport.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
+            this.btnImport.FocusCuesEnabled = false;
+            this.btnImport.Font = new System.Drawing.Font("黑体", 9F);
+            this.btnImport.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.Image;
+            this.btnImport.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnImport.HoverImage")));
+            this.btnImport.Image = ((System.Drawing.Image)(resources.GetObject("btnImport.Image")));
+            this.btnImport.Location = new System.Drawing.Point(196, 1);
             this.btnImport.Name = "btnImport";
-            this.btnImport.Size = new System.Drawing.Size(120, 36);
+            this.btnImport.Size = new System.Drawing.Size(17, 22);
             this.btnImport.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnImport.TabIndex = 0;
-            this.btnImport.Text = "导入";
+            this.btnImport.TabIndex = 4;
+            this.btnImport.Tooltip = "导入";
             this.btnImport.Click += new System.EventHandler(this.btnImport_Click);
             // 
-            // titlePanel
+            // btnSearch
             // 
-            this.titlePanel.BackColor = System.Drawing.Color.Lavender;
-            this.titlePanel.Controls.Add(this.labelX1);
-            this.titlePanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.titlePanel.Location = new System.Drawing.Point(0, 0);
-            this.titlePanel.Name = "titlePanel";
-            this.titlePanel.Size = new System.Drawing.Size(239, 36);
-            this.titlePanel.TabIndex = 2;
+            this.btnSearch.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnSearch.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnSearch.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
+            this.btnSearch.FocusCuesEnabled = false;
+            this.btnSearch.Font = new System.Drawing.Font("黑体", 9F);
+            this.btnSearch.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.Image;
+            this.btnSearch.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnSearch.HoverImage")));
+            this.btnSearch.Image = ((System.Drawing.Image)(resources.GetObject("btnSearch.Image")));
+            this.btnSearch.Location = new System.Drawing.Point(219, 1);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(17, 22);
+            this.btnSearch.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnSearch.TabIndex = 3;
+            this.btnSearch.Tooltip = "搜索";
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
-            // labelX1
+            // symbolBox1
             // 
             // 
             // 
             // 
-            this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.labelX1.Location = new System.Drawing.Point(92, 12);
-            this.labelX1.Name = "labelX1";
-            this.labelX1.Size = new System.Drawing.Size(56, 17);
-            this.labelX1.TabIndex = 0;
-            this.labelX1.Text = "在线搜索";
+            this.symbolBox1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.symbolBox1.Location = new System.Drawing.Point(6, 6);
+            this.symbolBox1.Name = "symbolBox1";
+            this.symbolBox1.Size = new System.Drawing.Size(16, 16);
+            this.symbolBox1.Symbol = "";
+            this.symbolBox1.SymbolColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(119)))), ((int)(((byte)(119)))));
+            this.symbolBox1.TabIndex = 2;
+            this.symbolBox1.Text = "symbolBox1";
             // 
-            // treeView1
+            // label1
             // 
-            this.treeView1.BackColor = System.Drawing.Color.Lavender;
-            this.treeView1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.treeView1.DrawMode = System.Windows.Forms.TreeViewDrawMode.OwnerDrawText;
-            this.treeView1.Location = new System.Drawing.Point(0, 72);
-            this.treeView1.Margin = new System.Windows.Forms.Padding(0);
-            this.treeView1.Name = "treeView1";
-            this.treeView1.Size = new System.Drawing.Size(239, 407);
-            this.treeView1.TabIndex = 4;
-            this.treeView1.DrawNode += new System.Windows.Forms.DrawTreeNodeEventHandler(this.treeView1_DrawNode);
-            this.treeView1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.treeView1_MouseDoubleClick);
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("黑体", 9F);
+            this.label1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label1.Location = new System.Drawing.Point(31, 7);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(53, 12);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "在线搜索";
             // 
             // OnlineSearch
             // 
@@ -118,28 +186,36 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Lavender;
             this.ClientSize = new System.Drawing.Size(239, 479);
-            this.Controls.Add(this.treeView1);
-            this.Controls.Add(this.buttonPanel);
-            this.Controls.Add(this.titlePanel);
+            this.Controls.Add(this.panel1);
+            this.Font = new System.Drawing.Font("黑体", 9F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "OnlineSearch";
             this.Text = "OnlineSearch";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.OnlineSearch_FormClosing);
             this.Load += new System.EventHandler(this.OnlineSearch_Load);
-            this.buttonPanel.ResumeLayout(false);
-            this.titlePanel.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
+            this.panel4.ResumeLayout(false);
+            this.panel3.ResumeLayout(false);
+            this.plInfoTitle.ResumeLayout(false);
+            this.plInfoTitle.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Panel buttonPanel;
-        private DevComponents.DotNetBar.ButtonX btnSearch;
-        private DevComponents.DotNetBar.ButtonX btnImport;
-        private System.Windows.Forms.Panel titlePanel;
-        private DevComponents.DotNetBar.LabelX labelX1;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.TreeView treeView1;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Panel plInfoTitle;
+        private DevComponents.DotNetBar.ButtonX btnImport;
+        private DevComponents.DotNetBar.ButtonX btnSearch;
+        private DevComponents.DotNetBar.Controls.SymbolBox symbolBox1;
+        private System.Windows.Forms.Label label1;
+
 
 
     }

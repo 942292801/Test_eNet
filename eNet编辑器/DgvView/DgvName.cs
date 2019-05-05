@@ -551,8 +551,9 @@ namespace eNet编辑器.DgvView
                                 break;
                             case "NameSection":
                                 //添加地域信息
-                                if (FileMesege.sectionNode != null)
+                                if (FileMesege.sectionNode != null && FileMesege.cbTypeIndex != 0)
                                 {
+                                    //选中区域不为空 且不能是点位
                                     if (FileMesege.titleinfo == "")
                                     {
                                         FileMesege.titleinfo = "未定义";

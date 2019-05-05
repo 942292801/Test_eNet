@@ -60,15 +60,26 @@ namespace eNet编辑器.ThreeView
         /// <param name="e"></param>
         private void treeView1_DrawNode(object sender, DrawTreeNodeEventArgs e)
         {
-            if ((e.State & TreeNodeStates.Selected) == TreeNodeStates.Selected)
+            Color foreColor;
+            Color backColor;
+            if ((e.State & TreeNodeStates.Selected) > 0)
             {
-                e.Graphics.FillRectangle(new SolidBrush(Color.FromArgb(204, 235, 248)), e.Bounds);
-                e.Graphics.DrawString(e.Node.Text, treeView1.Font, new SolidBrush(Color.Black), e.Bounds.Location);
+                foreColor = Color.Black;//鼠标点击节点时文字颜色
+                backColor = Color.FromArgb(204, 235, 248);//鼠标点击节点时背景颜色
+            }
+            else if ((e.State & TreeNodeStates.Hot) > 0)
+            {
+                foreColor = Color.Lime;//鼠标经过时文字颜色
+                backColor = Color.Gray;//鼠标经过时背景颜色
             }
             else
             {
-                e.DrawDefault = true;
+                foreColor = this.treeView1.ForeColor;
+                backColor = this.treeView1.BackColor;
             }
+            //e.Graphics.FillRectangle(new SolidBrush(backColor), new Rectangle(e.Bounds.Location, new Size(this.treeView1.Width - e.Bounds.X, e.Bounds.Height)));
+            e.Graphics.FillRectangle(new SolidBrush(backColor), e.Bounds);
+            e.Graphics.DrawString(e.Node.Text, this.treeView1.Font, new SolidBrush(foreColor), e.Bounds.X, e.Bounds.Y + 4);
             
         }
 

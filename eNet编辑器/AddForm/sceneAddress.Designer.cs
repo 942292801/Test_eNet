@@ -162,6 +162,7 @@
             this.Controls.Add(this.cb1);
             this.Controls.Add(this.lb1);
             this.Controls.Add(this.label1);
+            this.Font = new System.Drawing.Font("黑体", 9F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "sceneAddress";
             this.Text = "sceneAddress";

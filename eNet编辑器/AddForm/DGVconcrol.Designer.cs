@@ -177,6 +177,7 @@
             this.Controls.Add(this.lb1);
             this.Controls.Add(this.cbVersion);
             this.Controls.Add(this.label1);
+            this.Font = new System.Drawing.Font("黑体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "DGVconcrol";
             this.Text = "设备操作";

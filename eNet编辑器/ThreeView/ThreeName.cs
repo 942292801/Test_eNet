@@ -251,6 +251,7 @@ namespace eNet编辑器.ThreeView
             else//右击树状图区域
             {
                 newitemflag = false;
+                int Nodeindex = treeView1.SelectedNode.Index;
                 //删除网关
                 DataJson.totalList OldList = FileMesege.cmds.getListInfos();
                 //把树状图名字分割成IP +设备型号
@@ -263,7 +264,19 @@ namespace eNet编辑器.ThreeView
                 DataJson.totalList NewList = FileMesege.cmds.getListInfos();
                 FileMesege.cmds.DoNewCommand(NewList, OldList);
                 FileMesege.tnselectNode = null;
-                //FileMesege.cmds.DoNewCommand(, DataListHelper.delGateway, DataListHelper.delGatewayUndo);
+                ////选中删除节点的下一个节点
+                if (treeView1.Nodes.Count > 0 )
+                {
+                    if (Nodeindex < treeView1.Nodes.Count)
+                    {
+                        treeView1.SelectedNode = treeView1.Nodes[Nodeindex];
+                    }
+                    else
+                    {
+                        treeView1.SelectedNode = treeView1.Nodes[0];
+                    }
+                    
+                }
             }
             
              
@@ -339,13 +352,15 @@ namespace eNet编辑器.ThreeView
         private void 删除ToolStripMenuItem1_Click(object sender, EventArgs e)
         {
            
-           //删除设备
+                 //删除设备
                 string ip = treeView1.SelectedNode.Parent.Text.Split(' ')[0];
                 bool isip = Regex.IsMatch(ip, @"^[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}$");
                 if (!isip)
                 {
                     return;
                 }
+                int Nodeindex = treeView1.SelectedNode.Index;
+                int pNodeindex = treeView1.SelectedNode.Parent.Index;
                 string id = Regex.Replace(treeView1.SelectedNode.Text.Split(' ')[0], @"[^\d]*", "");
                 string version = treeView1.SelectedNode.Text.Split(' ')[1];
                 //修改网关
@@ -357,7 +372,24 @@ namespace eNet编辑器.ThreeView
                 //刷新窗体清空窗体信息
                 dgvNameAddItem();
                 dgvDeviceAddItem();
-            
+
+                //选中删除节点的下一个节点 没有节点就直接选中父节点
+                if (treeView1.Nodes[pNodeindex].Nodes.Count > 0)
+                {
+                    if (Nodeindex < treeView1.Nodes[pNodeindex].Nodes.Count)
+                    {
+                        treeView1.SelectedNode = treeView1.Nodes[pNodeindex].Nodes[Nodeindex];
+                    }
+                    else
+                    {
+                        treeView1.SelectedNode = treeView1.Nodes[pNodeindex].Nodes[0];
+                    }
+
+                }
+                else
+                {
+                    treeView1.SelectedNode = treeView1.Nodes[pNodeindex];
+                }
         }
 
         #endregion
@@ -453,17 +485,26 @@ namespace eNet编辑器.ThreeView
         /// <param name="e"></param>
         private void treeView1_DrawNode(object sender, DrawTreeNodeEventArgs e)
         {
-            
-            if ((e.State & TreeNodeStates.Selected) == TreeNodeStates.Selected)
+            Color foreColor;
+            Color backColor;
+            if ((e.State & TreeNodeStates.Selected) > 0)
             {
-                e.Graphics.FillRectangle(new SolidBrush(Color.FromArgb(204,235,248)), e.Bounds);
-                e.Graphics.DrawString(e.Node.Text, treeView1.Font, new SolidBrush(Color.Black), e.Bounds.Location);
+                foreColor = Color.Black;//鼠标点击节点时文字颜色
+                backColor = Color.FromArgb(204, 235, 248);//鼠标点击节点时背景颜色
+            }
+            else if ((e.State & TreeNodeStates.Hot) > 0)
+            {
+                foreColor = Color.Lime;//鼠标经过时文字颜色
+                backColor = Color.Gray;//鼠标经过时背景颜色
             }
             else
             {
-                e.DrawDefault = true;
+                foreColor = this.treeView1.ForeColor;
+                backColor = this.treeView1.BackColor;
             }
-            
+            //e.Graphics.FillRectangle(new SolidBrush(backColor), new Rectangle(e.Bounds.Location, new Size(this.treeView1.Width - e.Bounds.X, e.Bounds.Height)));
+            e.Graphics.FillRectangle(new SolidBrush(backColor), e.Bounds);
+            e.Graphics.DrawString(e.Node.Text, this.treeView1.Font, new SolidBrush(foreColor), e.Bounds.X, e.Bounds.Y + 4);
 
         }
         #endregion

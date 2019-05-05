@@ -345,6 +345,8 @@ namespace eNet编辑器.ThreeView
                             {
                                 //撤销
                                 DataJson.totalList OldList = FileMesege.cmds.getListInfos();
+                                int Nodeindex = treeView1.SelectedNode.Index;
+                                int pNodeindex = treeView1.SelectedNode.Parent.Index;
                                 //移除pointList 中地址
                                 foreach (DataJson.PointInfo eq in FileMesege.PointList.scene)
                                 {
@@ -362,6 +364,23 @@ namespace eNet编辑器.ThreeView
                                 updateAllView();
                                 DataJson.totalList NewList = FileMesege.cmds.getListInfos();
                                 FileMesege.cmds.DoNewCommand(NewList, OldList);
+                                //选中删除节点的下一个节点 没有节点就直接选中父节点
+                                if (treeView1.Nodes[pNodeindex].Nodes.Count > 0)
+                                {
+                                    if (Nodeindex < treeView1.Nodes[pNodeindex].Nodes.Count)
+                                    {
+                                        treeView1.SelectedNode = treeView1.Nodes[pNodeindex].Nodes[Nodeindex];
+                                    }
+                                    else
+                                    {
+                                        treeView1.SelectedNode = treeView1.Nodes[pNodeindex].Nodes[0];
+                                    }
+
+                                }
+                                else
+                                {
+                                    treeView1.SelectedNode = treeView1.Nodes[pNodeindex];
+                                }
                                 return;
                             }
                         }
@@ -464,15 +483,26 @@ namespace eNet编辑器.ThreeView
         //选中节点高亮不消失
         private void treeView1_DrawNode(object sender, DrawTreeNodeEventArgs e)
         {
-            if ((e.State & TreeNodeStates.Selected) == TreeNodeStates.Selected)
+            Color foreColor;
+            Color backColor;
+            if ((e.State & TreeNodeStates.Selected) > 0)
             {
-                e.Graphics.FillRectangle(new SolidBrush(Color.FromArgb(204, 235, 248)), e.Bounds);
-                e.Graphics.DrawString(e.Node.Text, treeView1.Font, new SolidBrush(Color.Black), e.Bounds.Location);
+                foreColor = Color.Black;//鼠标点击节点时文字颜色
+                backColor = Color.FromArgb(204, 235, 248);//鼠标点击节点时背景颜色
+            }
+            else if ((e.State & TreeNodeStates.Hot) > 0)
+            {
+                foreColor = Color.Lime;//鼠标经过时文字颜色
+                backColor = Color.Gray;//鼠标经过时背景颜色
             }
             else
             {
-                e.DrawDefault = true;
+                foreColor = this.treeView1.ForeColor;
+                backColor = this.treeView1.BackColor;
             }
+            //e.Graphics.FillRectangle(new SolidBrush(backColor), new Rectangle(e.Bounds.Location, new Size(this.treeView1.Width - e.Bounds.X, e.Bounds.Height)));
+            e.Graphics.FillRectangle(new SolidBrush(backColor), e.Bounds);
+            e.Graphics.DrawString(e.Node.Text, this.treeView1.Font, new SolidBrush(foreColor), e.Bounds.X, e.Bounds.Y + 4);
         }
 
         #endregion
