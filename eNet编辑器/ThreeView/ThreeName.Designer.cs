@@ -82,17 +82,17 @@
             this.treeView1.ContextMenuStrip = this.contextMenuStrip1;
             this.treeView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.treeView1.DrawMode = System.Windows.Forms.TreeViewDrawMode.OwnerDrawText;
-            this.treeView1.Font = new System.Drawing.Font("黑体", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.treeView1.Font = new System.Drawing.Font("微软雅黑", 9F);
             this.treeView1.HideSelection = false;
             this.treeView1.ImageIndex = 0;
             this.treeView1.ImageList = this.imgLIst;
-            this.treeView1.ItemHeight = 20;
+            this.treeView1.ItemHeight = 24;
             this.treeView1.Location = new System.Drawing.Point(0, 0);
-            this.treeView1.Margin = new System.Windows.Forms.Padding(0, 5, 0, 0);
+            this.treeView1.Margin = new System.Windows.Forms.Padding(0, 7, 0, 0);
             this.treeView1.Name = "treeView1";
             this.treeView1.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.treeView1.SelectedImageIndex = 1;
-            this.treeView1.Size = new System.Drawing.Size(241, 439);
+            this.treeView1.Size = new System.Drawing.Size(281, 381);
             this.treeView1.TabIndex = 0;
             this.treeView1.DrawNode += new System.Windows.Forms.DrawTreeNodeEventHandler(this.treeView1_DrawNode);
             this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
@@ -189,23 +189,24 @@
             this.plInfoTitle.Controls.Add(this.label1);
             this.plInfoTitle.Dock = System.Windows.Forms.DockStyle.Top;
             this.plInfoTitle.Location = new System.Drawing.Point(0, 0);
+            this.plInfoTitle.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.plInfoTitle.Name = "plInfoTitle";
-            this.plInfoTitle.Size = new System.Drawing.Size(241, 25);
+            this.plInfoTitle.Size = new System.Drawing.Size(281, 25);
             this.plInfoTitle.TabIndex = 2;
             // 
             // btnAddGw
             // 
             this.btnAddGw.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnAddGw.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAddGw.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.btnAddGw.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnAddGw.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
             this.btnAddGw.FocusCuesEnabled = false;
-            this.btnAddGw.Font = new System.Drawing.Font("黑体", 9F);
+            this.btnAddGw.Font = new System.Drawing.Font("微软雅黑", 9F);
             this.btnAddGw.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.Image;
             this.btnAddGw.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnAddGw.HoverImage")));
             this.btnAddGw.Image = ((System.Drawing.Image)(resources.GetObject("btnAddGw.Image")));
-            this.btnAddGw.Location = new System.Drawing.Point(175, 1);
+            this.btnAddGw.Location = new System.Drawing.Point(204, 3);
+            this.btnAddGw.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnAddGw.Name = "btnAddGw";
             this.btnAddGw.Size = new System.Drawing.Size(17, 22);
             this.btnAddGw.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -216,16 +217,16 @@
             // btnAddDev
             // 
             this.btnAddDev.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnAddDev.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAddDev.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.btnAddDev.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnAddDev.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
             this.btnAddDev.FocusCuesEnabled = false;
-            this.btnAddDev.Font = new System.Drawing.Font("黑体", 9F);
+            this.btnAddDev.Font = new System.Drawing.Font("微软雅黑", 9F);
             this.btnAddDev.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.Image;
             this.btnAddDev.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnAddDev.HoverImage")));
             this.btnAddDev.Image = ((System.Drawing.Image)(resources.GetObject("btnAddDev.Image")));
-            this.btnAddDev.Location = new System.Drawing.Point(198, 1);
+            this.btnAddDev.Location = new System.Drawing.Point(231, 3);
+            this.btnAddDev.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnAddDev.Name = "btnAddDev";
             this.btnAddDev.Size = new System.Drawing.Size(17, 22);
             this.btnAddDev.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -236,16 +237,16 @@
             // btnDel
             // 
             this.btnDel.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnDel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnDel.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.btnDel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnDel.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
             this.btnDel.FocusCuesEnabled = false;
-            this.btnDel.Font = new System.Drawing.Font("黑体", 9F);
+            this.btnDel.Font = new System.Drawing.Font("微软雅黑", 9F);
             this.btnDel.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.Image;
             this.btnDel.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnDel.HoverImage")));
             this.btnDel.Image = ((System.Drawing.Image)(resources.GetObject("btnDel.Image")));
-            this.btnDel.Location = new System.Drawing.Point(221, 1);
+            this.btnDel.Location = new System.Drawing.Point(258, 3);
+            this.btnDel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnDel.Name = "btnDel";
             this.btnDel.Size = new System.Drawing.Size(17, 22);
             this.btnDel.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -255,11 +256,13 @@
             // 
             // symbolBox1
             // 
+            this.symbolBox1.Anchor = System.Windows.Forms.AnchorStyles.Left;
             // 
             // 
             // 
             this.symbolBox1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.symbolBox1.Location = new System.Drawing.Point(6, 6);
+            this.symbolBox1.Location = new System.Drawing.Point(3, 5);
+            this.symbolBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.symbolBox1.Name = "symbolBox1";
             this.symbolBox1.Size = new System.Drawing.Size(16, 16);
             this.symbolBox1.Symbol = "";
@@ -269,12 +272,13 @@
             // 
             // label1
             // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("黑体", 9F);
+            this.label1.Font = new System.Drawing.Font("微软雅黑", 9F);
             this.label1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label1.Location = new System.Drawing.Point(31, 7);
+            this.label1.Location = new System.Drawing.Point(25, 3);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(29, 12);
+            this.label1.Size = new System.Drawing.Size(32, 17);
             this.label1.TabIndex = 1;
             this.label1.Text = "导航";
             // 
@@ -283,8 +287,9 @@
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(241, 471);
+            this.panel1.Size = new System.Drawing.Size(281, 413);
             this.panel1.TabIndex = 3;
             // 
             // panel2
@@ -293,8 +298,9 @@
             this.panel2.Controls.Add(this.panel3);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(241, 471);
+            this.panel2.Size = new System.Drawing.Size(281, 413);
             this.panel2.TabIndex = 3;
             // 
             // panel4
@@ -302,8 +308,9 @@
             this.panel4.Controls.Add(this.treeView1);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel4.Location = new System.Drawing.Point(0, 32);
+            this.panel4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(241, 439);
+            this.panel4.Size = new System.Drawing.Size(281, 381);
             this.panel4.TabIndex = 4;
             // 
             // panel3
@@ -312,8 +319,9 @@
             this.panel3.Controls.Add(this.plInfoTitle);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel3.Location = new System.Drawing.Point(0, 0);
+            this.panel3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(241, 32);
+            this.panel3.Size = new System.Drawing.Size(281, 32);
             this.panel3.TabIndex = 3;
             // 
             // progressBarX1
@@ -413,10 +421,12 @@
             // 
             // ThreeName
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(241, 471);
+            this.ClientSize = new System.Drawing.Size(281, 413);
             this.Controls.Add(this.panel1);
+            this.Font = new System.Drawing.Font("微软雅黑", 9F);
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "ThreeName";
             this.Text = "ThreeName";
             this.Load += new System.EventHandler(this.ThreeName_Load);

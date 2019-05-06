@@ -121,7 +121,25 @@ namespace eNet编辑器.AddForm
         private void cbTextChange(ComboBox cb,string info)
         {
             cb.Items.Clear();
-            if(info.Contains("-"))
+            if (info.Contains("\\"))
+            {
+                string[] infos = info.Split('\\');
+                for (int l = 0; l < infos.Length; l++)
+                { 
+                    if(infos[l].Contains('-'))
+                    {
+                        
+                    }
+                }
+
+                int j = Convert.ToInt32(infos[1]);
+                for (int i = Convert.ToInt32(infos[0]); i <= j; i++)
+                {
+                    cb.Items.Add(i.ToString());
+                }
+                cb.Enabled = true;
+            }
+            else if(info.Contains("-"))
             {
                 string [] infos = info.Split('-');        
                 int j = Convert.ToInt32(infos[1]);

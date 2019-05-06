@@ -39,7 +39,6 @@
             this.panel5 = new System.Windows.Forms.Panel();
             this.plInfoTitle = new System.Windows.Forms.Panel();
             this.btnDecid = new DevComponents.DotNetBar.ButtonX();
-            this.btnCancle = new DevComponents.DotNetBar.ButtonX();
             this.symbolBox1 = new DevComponents.DotNetBar.Controls.SymbolBox();
             this.label3 = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
@@ -131,7 +130,6 @@
             // 
             this.plInfoTitle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(228)))), ((int)(((byte)(228)))));
             this.plInfoTitle.Controls.Add(this.btnDecid);
-            this.plInfoTitle.Controls.Add(this.btnCancle);
             this.plInfoTitle.Controls.Add(this.symbolBox1);
             this.plInfoTitle.Controls.Add(this.label3);
             this.plInfoTitle.Dock = System.Windows.Forms.DockStyle.Top;
@@ -152,33 +150,13 @@
             this.btnDecid.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.Image;
             this.btnDecid.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnDecid.HoverImage")));
             this.btnDecid.Image = ((System.Drawing.Image)(resources.GetObject("btnDecid.Image")));
-            this.btnDecid.Location = new System.Drawing.Point(206, 1);
+            this.btnDecid.Location = new System.Drawing.Point(229, 0);
             this.btnDecid.Name = "btnDecid";
             this.btnDecid.Size = new System.Drawing.Size(17, 22);
             this.btnDecid.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnDecid.TabIndex = 4;
             this.btnDecid.Tooltip = "添加";
             this.btnDecid.Click += new System.EventHandler(this.btnDecid_Click);
-            // 
-            // btnCancle
-            // 
-            this.btnCancle.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnCancle.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCancle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btnCancle.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
-            this.btnCancle.FocusCuesEnabled = false;
-            this.btnCancle.Font = new System.Drawing.Font("黑体", 9F);
-            this.btnCancle.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.Image;
-            this.btnCancle.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnCancle.HoverImage")));
-            this.btnCancle.Image = ((System.Drawing.Image)(resources.GetObject("btnCancle.Image")));
-            this.btnCancle.Location = new System.Drawing.Point(229, 1);
-            this.btnCancle.Name = "btnCancle";
-            this.btnCancle.Size = new System.Drawing.Size(17, 22);
-            this.btnCancle.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnCancle.TabIndex = 3;
-            this.btnCancle.Tooltip = "返回";
-            this.btnCancle.Click += new System.EventHandler(this.btnCancle_Click);
             // 
             // symbolBox1
             // 
@@ -216,7 +194,6 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.ImeMode = System.Windows.Forms.ImeMode.HangulFull;
             this.Name = "tsSection";
-            this.Text = "New Nodes";
             this.Load += new System.EventHandler(this.tsSection_Load);
             this.panel2.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
@@ -241,7 +218,6 @@
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Panel plInfoTitle;
         private DevComponents.DotNetBar.ButtonX btnDecid;
-        private DevComponents.DotNetBar.ButtonX btnCancle;
         private DevComponents.DotNetBar.Controls.SymbolBox symbolBox1;
         private System.Windows.Forms.Label label3;
 

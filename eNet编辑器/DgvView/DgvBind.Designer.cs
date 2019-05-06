@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DgvBind));
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.keyid = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -45,9 +45,9 @@
             this.btnAdd = new DevComponents.DotNetBar.ButtonX();
             this.btnRemove = new DevComponents.DotNetBar.ButtonX();
             this.btnSet = new DevComponents.DotNetBar.ButtonX();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.symbolBox1 = new DevComponents.DotNetBar.Controls.SymbolBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.plInfoTitle.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -59,14 +59,14 @@
             this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
             this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridView1.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableAlwaysIncludeHeaderText;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("黑体", 9F);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("微软雅黑", 9F);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.keyid,
@@ -77,23 +77,24 @@
             this.showaddress,
             this.synchronous,
             this.delete});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("黑体", 9F);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(235)))), ((int)(((byte)(248)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("微软雅黑", 9F);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(235)))), ((int)(((byte)(248)))));
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.dataGridView1.Location = new System.Drawing.Point(0, 25);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.RowHeadersWidth = 30;
             this.dataGridView1.RowTemplate.Height = 23;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.ColumnHeaderSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(862, 522);
+            this.dataGridView1.Size = new System.Drawing.Size(1006, 750);
             this.dataGridView1.TabIndex = 5;
             this.dataGridView1.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.dataGridView1_CellBeginEdit);
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
@@ -163,16 +164,17 @@
             // plInfoTitle
             // 
             this.plInfoTitle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.plInfoTitle.Controls.Add(this.symbolBox1);
+            this.plInfoTitle.Controls.Add(this.label1);
             this.plInfoTitle.Controls.Add(this.btnClear);
             this.plInfoTitle.Controls.Add(this.btnAdd);
             this.plInfoTitle.Controls.Add(this.btnRemove);
             this.plInfoTitle.Controls.Add(this.btnSet);
-            this.plInfoTitle.Controls.Add(this.symbolBox1);
-            this.plInfoTitle.Controls.Add(this.label1);
             this.plInfoTitle.Dock = System.Windows.Forms.DockStyle.Top;
             this.plInfoTitle.Location = new System.Drawing.Point(0, 0);
+            this.plInfoTitle.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.plInfoTitle.Name = "plInfoTitle";
-            this.plInfoTitle.Size = new System.Drawing.Size(862, 25);
+            this.plInfoTitle.Size = new System.Drawing.Size(1006, 25);
             this.plInfoTitle.TabIndex = 17;
             // 
             // btnClear
@@ -187,7 +189,8 @@
             this.btnClear.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.Image;
             this.btnClear.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnClear.HoverImage")));
             this.btnClear.Image = ((System.Drawing.Image)(resources.GetObject("btnClear.Image")));
-            this.btnClear.Location = new System.Drawing.Point(795, 3);
+            this.btnClear.Location = new System.Drawing.Point(931, 2);
+            this.btnClear.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(17, 22);
             this.btnClear.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -207,7 +210,8 @@
             this.btnAdd.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.Image;
             this.btnAdd.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnAdd.HoverImage")));
             this.btnAdd.Image = ((System.Drawing.Image)(resources.GetObject("btnAdd.Image")));
-            this.btnAdd.Location = new System.Drawing.Point(772, 3);
+            this.btnAdd.Location = new System.Drawing.Point(905, 2);
+            this.btnAdd.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(17, 22);
             this.btnAdd.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -227,7 +231,8 @@
             this.btnRemove.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.Image;
             this.btnRemove.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnRemove.HoverImage")));
             this.btnRemove.Image = ((System.Drawing.Image)(resources.GetObject("btnRemove.Image")));
-            this.btnRemove.Location = new System.Drawing.Point(818, 3);
+            this.btnRemove.Location = new System.Drawing.Point(958, 2);
+            this.btnRemove.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnRemove.Name = "btnRemove";
             this.btnRemove.Size = new System.Drawing.Size(17, 22);
             this.btnRemove.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -247,7 +252,8 @@
             this.btnSet.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.Image;
             this.btnSet.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnSet.HoverImage")));
             this.btnSet.Image = ((System.Drawing.Image)(resources.GetObject("btnSet.Image")));
-            this.btnSet.Location = new System.Drawing.Point(841, 3);
+            this.btnSet.Location = new System.Drawing.Point(985, 2);
+            this.btnSet.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnSet.Name = "btnSet";
             this.btnSet.Size = new System.Drawing.Size(17, 22);
             this.btnSet.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -255,49 +261,52 @@
             this.btnSet.Tooltip = "设置";
             this.btnSet.Click += new System.EventHandler(this.btnSet_Click);
             // 
-            // symbolBox1
-            // 
-            // 
-            // 
-            // 
-            this.symbolBox1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.symbolBox1.Location = new System.Drawing.Point(6, 6);
-            this.symbolBox1.Name = "symbolBox1";
-            this.symbolBox1.Size = new System.Drawing.Size(16, 16);
-            this.symbolBox1.Symbol = "";
-            this.symbolBox1.SymbolColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(119)))), ((int)(((byte)(119)))));
-            this.symbolBox1.TabIndex = 2;
-            this.symbolBox1.Text = "symbolBox1";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("黑体", 9F);
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.label1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label1.Location = new System.Drawing.Point(31, 7);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(29, 12);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "内容";
-            // 
             // panel1
             // 
             this.panel1.Controls.Add(this.dataGridView1);
             this.panel1.Controls.Add(this.plInfoTitle);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(862, 547);
+            this.panel1.Size = new System.Drawing.Size(1006, 775);
             this.panel1.TabIndex = 18;
+            // 
+            // symbolBox1
+            // 
+            // 
+            // 
+            // 
+            this.symbolBox1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.symbolBox1.Location = new System.Drawing.Point(3, 4);
+            this.symbolBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.symbolBox1.Name = "symbolBox1";
+            this.symbolBox1.Size = new System.Drawing.Size(16, 16);
+            this.symbolBox1.Symbol = "";
+            this.symbolBox1.SymbolColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(119)))), ((int)(((byte)(119)))));
+            this.symbolBox1.TabIndex = 7;
+            this.symbolBox1.Text = "symbolBox1";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("微软雅黑", 9F);
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.label1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label1.Location = new System.Drawing.Point(31, 1);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(32, 17);
+            this.label1.TabIndex = 6;
+            this.label1.Text = "内容";
             // 
             // DgvBind
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(862, 547);
+            this.ClientSize = new System.Drawing.Size(1006, 775);
             this.Controls.Add(this.panel1);
-            this.Font = new System.Drawing.Font("黑体", 9F);
+            this.Font = new System.Drawing.Font("微软雅黑", 9F);
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "DgvBind";
             this.Text = "DgvBind";
             this.Load += new System.EventHandler(this.DgvBind_Load);
@@ -325,8 +334,8 @@
         private DevComponents.DotNetBar.ButtonX btnAdd;
         private DevComponents.DotNetBar.ButtonX btnRemove;
         private DevComponents.DotNetBar.ButtonX btnSet;
+        private System.Windows.Forms.Panel panel1;
         private DevComponents.DotNetBar.Controls.SymbolBox symbolBox1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Panel panel1;
     }
 }

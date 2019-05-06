@@ -48,12 +48,13 @@
             this.treeView1.CheckBoxes = true;
             this.treeView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.treeView1.DrawMode = System.Windows.Forms.TreeViewDrawMode.OwnerDrawText;
-            this.treeView1.Font = new System.Drawing.Font("黑体", 9.75F);
+            this.treeView1.Font = new System.Drawing.Font("微软雅黑", 9F);
             this.treeView1.HideSelection = false;
-            this.treeView1.ItemHeight = 20;
+            this.treeView1.ItemHeight = 24;
             this.treeView1.Location = new System.Drawing.Point(0, 0);
+            this.treeView1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.treeView1.Name = "treeView1";
-            this.treeView1.Size = new System.Drawing.Size(240, 266);
+            this.treeView1.Size = new System.Drawing.Size(280, 377);
             this.treeView1.TabIndex = 1;
             this.treeView1.DrawNode += new System.Windows.Forms.DrawTreeNodeEventHandler(this.treeView1_DrawNode);
             this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
@@ -102,26 +103,30 @@
             this.panel3.BackColor = System.Drawing.Color.White;
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel3.Location = new System.Drawing.Point(0, 0);
+            this.panel3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(240, 7);
+            this.panel3.Size = new System.Drawing.Size(280, 10);
             this.panel3.TabIndex = 7;
             // 
             // panel1
             // 
             this.panel1.Controls.Add(this.treeView1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(0, 7);
+            this.panel1.Location = new System.Drawing.Point(0, 10);
+            this.panel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(240, 266);
+            this.panel1.Size = new System.Drawing.Size(280, 377);
             this.panel1.TabIndex = 8;
             // 
             // ThreeTitle
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(240, 273);
+            this.ClientSize = new System.Drawing.Size(280, 387);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel3);
+            this.Font = new System.Drawing.Font("微软雅黑", 9F);
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "ThreeTitle";
             this.Text = "ThreeTitle";
             this.Load += new System.EventHandler(this.ThreeTitle_Load);

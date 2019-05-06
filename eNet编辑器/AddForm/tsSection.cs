@@ -64,10 +64,7 @@ namespace eNet编辑器.AddForm
             addNode();
         }
 
-        private void btnCancle_Click(object sender, EventArgs e)
-        {
-            this.DialogResult = DialogResult.Cancel;
-        }
+      
 
         private void cbtype_SelectedIndexChanged(object sender, EventArgs e)
         {

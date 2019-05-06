@@ -64,7 +64,7 @@
             this.dataGridView1.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableAlwaysIncludeHeaderText;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("黑体", 9F);
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -80,7 +80,7 @@
             this.NameOperation});
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("黑体", 9F);
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("微软雅黑", 9F);
             dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(235)))), ((int)(((byte)(248)))));
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.ControlText;
@@ -89,12 +89,13 @@
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.RowHeadersWidth = 30;
             this.dataGridView1.RowTemplate.Height = 23;
-            this.dataGridView1.Size = new System.Drawing.Size(862, 617);
+            this.dataGridView1.Size = new System.Drawing.Size(883, 453);
             this.dataGridView1.TabIndex = 1;
             this.dataGridView1.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellEndEdit);
             this.dataGridView1.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_CellMouseDown);
@@ -165,8 +166,9 @@
             this.panel1.Controls.Add(this.plInfoTitle);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(862, 642);
+            this.panel1.Size = new System.Drawing.Size(883, 478);
             this.panel1.TabIndex = 14;
             // 
             // panel2
@@ -174,8 +176,9 @@
             this.panel2.Controls.Add(this.dataGridView1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 25);
+            this.panel2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(862, 617);
+            this.panel2.Size = new System.Drawing.Size(883, 453);
             this.panel2.TabIndex = 15;
             // 
             // plInfoTitle
@@ -186,8 +189,9 @@
             this.plInfoTitle.Controls.Add(this.label1);
             this.plInfoTitle.Dock = System.Windows.Forms.DockStyle.Top;
             this.plInfoTitle.Location = new System.Drawing.Point(0, 0);
+            this.plInfoTitle.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.plInfoTitle.Name = "plInfoTitle";
-            this.plInfoTitle.Size = new System.Drawing.Size(862, 25);
+            this.plInfoTitle.Size = new System.Drawing.Size(883, 25);
             this.plInfoTitle.TabIndex = 14;
             // 
             // btnNew
@@ -202,7 +206,8 @@
             this.btnNew.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.Image;
             this.btnNew.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnNew.HoverImage")));
             this.btnNew.Image = ((System.Drawing.Image)(resources.GetObject("btnNew.Image")));
-            this.btnNew.Location = new System.Drawing.Point(839, 0);
+            this.btnNew.Location = new System.Drawing.Point(863, 3);
+            this.btnNew.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnNew.Name = "btnNew";
             this.btnNew.Size = new System.Drawing.Size(17, 22);
             this.btnNew.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -217,7 +222,8 @@
             // 
             // 
             this.symbolBox1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.symbolBox1.Location = new System.Drawing.Point(6, 6);
+            this.symbolBox1.Location = new System.Drawing.Point(8, 7);
+            this.symbolBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.symbolBox1.Name = "symbolBox1";
             this.symbolBox1.Size = new System.Drawing.Size(16, 16);
             this.symbolBox1.Symbol = "";
@@ -228,23 +234,24 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("黑体", 9F);
+            this.label1.Font = new System.Drawing.Font("微软雅黑", 9F);
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
             this.label1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label1.Location = new System.Drawing.Point(31, 7);
+            this.label1.Location = new System.Drawing.Point(36, 4);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(29, 12);
+            this.label1.Size = new System.Drawing.Size(32, 17);
             this.label1.TabIndex = 1;
             this.label1.Text = "内容";
             // 
             // DgvName
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Lavender;
-            this.ClientSize = new System.Drawing.Size(862, 642);
+            this.ClientSize = new System.Drawing.Size(883, 478);
             this.Controls.Add(this.panel1);
-            this.Font = new System.Drawing.Font("黑体", 9F);
+            this.Font = new System.Drawing.Font("微软雅黑", 9F);
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "DgvName";
             this.Text = "DgvName";
             this.Load += new System.EventHandler(this.DgvName_Load);

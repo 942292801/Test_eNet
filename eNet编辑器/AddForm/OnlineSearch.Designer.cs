@@ -190,7 +190,6 @@
             this.Font = new System.Drawing.Font("黑体", 9F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "OnlineSearch";
-            this.Text = "OnlineSearch";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.OnlineSearch_FormClosing);
             this.Load += new System.EventHandler(this.OnlineSearch_Load);
             this.panel1.ResumeLayout(false);

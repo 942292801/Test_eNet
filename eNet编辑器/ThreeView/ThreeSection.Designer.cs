@@ -65,12 +65,13 @@
             this.treeView1.ContextMenuStrip = this.contextMenuStrip1;
             this.treeView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.treeView1.DrawMode = System.Windows.Forms.TreeViewDrawMode.OwnerDrawText;
-            this.treeView1.Font = new System.Drawing.Font("黑体", 9.75F);
+            this.treeView1.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.treeView1.HideSelection = false;
-            this.treeView1.ItemHeight = 20;
+            this.treeView1.ItemHeight = 24;
             this.treeView1.Location = new System.Drawing.Point(0, 0);
+            this.treeView1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.treeView1.Name = "treeView1";
-            this.treeView1.Size = new System.Drawing.Size(240, 286);
+            this.treeView1.Size = new System.Drawing.Size(280, 418);
             this.treeView1.TabIndex = 1;
             this.treeView1.DrawNode += new System.Windows.Forms.DrawTreeNodeEventHandler(this.treeView1_DrawNode);
             this.treeView1.ItemDrag += new System.Windows.Forms.ItemDragEventHandler(this.treeView1_ItemDrag);
@@ -144,8 +145,9 @@
             this.panel2.Controls.Add(this.panel1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(240, 318);
+            this.panel2.Size = new System.Drawing.Size(280, 450);
             this.panel2.TabIndex = 3;
             // 
             // panel1
@@ -155,8 +157,9 @@
             this.panel1.Controls.Add(this.panel3);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(240, 318);
+            this.panel1.Size = new System.Drawing.Size(280, 450);
             this.panel1.TabIndex = 4;
             // 
             // panel4
@@ -164,8 +167,9 @@
             this.panel4.Controls.Add(this.treeView1);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel4.Location = new System.Drawing.Point(0, 32);
+            this.panel4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(240, 286);
+            this.panel4.Size = new System.Drawing.Size(280, 418);
             this.panel4.TabIndex = 8;
             // 
             // panel3
@@ -174,8 +178,9 @@
             this.panel3.Controls.Add(this.plInfoTitle);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel3.Location = new System.Drawing.Point(0, 0);
+            this.panel3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(240, 32);
+            this.panel3.Size = new System.Drawing.Size(280, 32);
             this.panel3.TabIndex = 7;
             // 
             // plInfoTitle
@@ -188,8 +193,9 @@
             this.plInfoTitle.Controls.Add(this.label1);
             this.plInfoTitle.Dock = System.Windows.Forms.DockStyle.Top;
             this.plInfoTitle.Location = new System.Drawing.Point(0, 0);
+            this.plInfoTitle.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.plInfoTitle.Name = "plInfoTitle";
-            this.plInfoTitle.Size = new System.Drawing.Size(240, 25);
+            this.plInfoTitle.Size = new System.Drawing.Size(280, 25);
             this.plInfoTitle.TabIndex = 3;
             // 
             // btnAddNode
@@ -200,11 +206,12 @@
             this.btnAddNode.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnAddNode.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
             this.btnAddNode.FocusCuesEnabled = false;
-            this.btnAddNode.Font = new System.Drawing.Font("黑体", 9F);
+            this.btnAddNode.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.btnAddNode.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.Image;
             this.btnAddNode.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnAddNode.HoverImage")));
             this.btnAddNode.Image = ((System.Drawing.Image)(resources.GetObject("btnAddNode.Image")));
-            this.btnAddNode.Location = new System.Drawing.Point(174, 0);
+            this.btnAddNode.Location = new System.Drawing.Point(205, 0);
+            this.btnAddNode.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnAddNode.Name = "btnAddNode";
             this.btnAddNode.Size = new System.Drawing.Size(17, 22);
             this.btnAddNode.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -220,11 +227,12 @@
             this.btnAddChild.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnAddChild.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
             this.btnAddChild.FocusCuesEnabled = false;
-            this.btnAddChild.Font = new System.Drawing.Font("黑体", 9F);
+            this.btnAddChild.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.btnAddChild.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.Image;
             this.btnAddChild.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnAddChild.HoverImage")));
             this.btnAddChild.Image = ((System.Drawing.Image)(resources.GetObject("btnAddChild.Image")));
-            this.btnAddChild.Location = new System.Drawing.Point(197, 1);
+            this.btnAddChild.Location = new System.Drawing.Point(232, 1);
+            this.btnAddChild.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnAddChild.Name = "btnAddChild";
             this.btnAddChild.Size = new System.Drawing.Size(17, 22);
             this.btnAddChild.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -240,11 +248,12 @@
             this.btnDel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnDel.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
             this.btnDel.FocusCuesEnabled = false;
-            this.btnDel.Font = new System.Drawing.Font("黑体", 9F);
+            this.btnDel.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.btnDel.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.Image;
             this.btnDel.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnDel.HoverImage")));
             this.btnDel.Image = ((System.Drawing.Image)(resources.GetObject("btnDel.Image")));
-            this.btnDel.Location = new System.Drawing.Point(220, 1);
+            this.btnDel.Location = new System.Drawing.Point(259, 1);
+            this.btnDel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnDel.Name = "btnDel";
             this.btnDel.Size = new System.Drawing.Size(17, 22);
             this.btnDel.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -258,7 +267,8 @@
             // 
             // 
             this.symbolBox1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.symbolBox1.Location = new System.Drawing.Point(6, 6);
+            this.symbolBox1.Location = new System.Drawing.Point(7, 6);
+            this.symbolBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.symbolBox1.Name = "symbolBox1";
             this.symbolBox1.Size = new System.Drawing.Size(16, 16);
             this.symbolBox1.Symbol = "";
@@ -269,24 +279,24 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("黑体", 9F);
+            this.label1.Font = new System.Drawing.Font("微软雅黑", 9F);
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
             this.label1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label1.Location = new System.Drawing.Point(31, 7);
+            this.label1.Location = new System.Drawing.Point(32, 4);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(29, 12);
+            this.label1.Size = new System.Drawing.Size(32, 17);
             this.label1.TabIndex = 1;
             this.label1.Text = "检索";
             // 
             // ThreeSection
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(240, 318);
+            this.ClientSize = new System.Drawing.Size(280, 450);
             this.Controls.Add(this.panel2);
-            this.Font = new System.Drawing.Font("黑体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.Font = new System.Drawing.Font("微软雅黑", 9F);
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "ThreeSection";
-            this.Text = "ThreeSection";
             this.Load += new System.EventHandler(this.ThreeSection_Load);
             this.contextMenuStrip1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);

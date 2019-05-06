@@ -30,9 +30,9 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.文件ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.新建项目ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -116,10 +116,10 @@
             this.PlToolstrip = new Infragistics.Win.Misc.UltraPanel();
             this.PlTabStrip = new Infragistics.Win.Misc.UltraPanel();
             this.tabStrip = new DevComponents.DotNetBar.TabControl();
-            this.tabControlPanel1 = new DevComponents.DotNetBar.TabControlPanel();
-            this.tabName = new DevComponents.DotNetBar.TabItem(this.components);
             this.tabControlPanel2 = new DevComponents.DotNetBar.TabControlPanel();
             this.tabPoint = new DevComponents.DotNetBar.TabItem(this.components);
+            this.tabControlPanel1 = new DevComponents.DotNetBar.TabControlPanel();
+            this.tabName = new DevComponents.DotNetBar.TabItem(this.components);
             this.tabControlPanel7 = new DevComponents.DotNetBar.TabControlPanel();
             this.tabLogic = new DevComponents.DotNetBar.TabItem(this.components);
             this.tabControlPanel6 = new DevComponents.DotNetBar.TabControlPanel();
@@ -130,6 +130,7 @@
             this.tabTimer = new DevComponents.DotNetBar.TabItem(this.components);
             this.tabControlPanel3 = new DevComponents.DotNetBar.TabControlPanel();
             this.tabScene = new DevComponents.DotNetBar.TabItem(this.components);
+            this.imgLIst = new System.Windows.Forms.ImageList(this.components);
             this.plMain = new System.Windows.Forms.Panel();
             this.plCentent = new System.Windows.Forms.Panel();
             this.plDgv = new System.Windows.Forms.Panel();
@@ -698,8 +699,8 @@
             // 
             // PlMeustrip
             // 
-            appearance1.BackColor = System.Drawing.Color.DarkGray;
-            this.PlMeustrip.Appearance = appearance1;
+            appearance4.BackColor = System.Drawing.Color.DarkGray;
+            this.PlMeustrip.Appearance = appearance4;
             // 
             // PlMeustrip.ClientArea
             // 
@@ -709,8 +710,8 @@
             // 
             // PlToolstrip
             // 
-            appearance2.BackColor = System.Drawing.Color.DarkGray;
-            this.PlToolstrip.Appearance = appearance2;
+            appearance1.BackColor = System.Drawing.Color.DarkGray;
+            this.PlToolstrip.Appearance = appearance1;
             // 
             // PlToolstrip.ClientArea
             // 
@@ -720,8 +721,8 @@
             // 
             // PlTabStrip
             // 
-            appearance3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(145)))), ((int)(((byte)(230)))));
-            this.PlTabStrip.Appearance = appearance3;
+            appearance2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(145)))), ((int)(((byte)(230)))));
+            this.PlTabStrip.Appearance = appearance2;
             // 
             // PlTabStrip.ClientArea
             // 
@@ -732,6 +733,7 @@
             // tabStrip
             // 
             this.tabStrip.BackColor = System.Drawing.Color.Gray;
+            resources.ApplyResources(this.tabStrip, "tabStrip");
             this.tabStrip.CanReorderTabs = true;
             this.tabStrip.ColorScheme.TabBackground = System.Drawing.Color.Silver;
             this.tabStrip.ColorScheme.TabBackground2 = System.Drawing.Color.Empty;
@@ -763,10 +765,10 @@
             this.tabStrip.Controls.Add(this.tabControlPanel3);
             this.tabStrip.Controls.Add(this.tabControlPanel2);
             this.tabStrip.Controls.Add(this.tabControlPanel1);
-            resources.ApplyResources(this.tabStrip, "tabStrip");
             this.tabStrip.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.tabStrip.ImageList = this.imgLIst;
             this.tabStrip.Name = "tabStrip";
-            this.tabStrip.SelectedTabFont = new System.Drawing.Font("黑体", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.tabStrip.SelectedTabFont = new System.Drawing.Font("微软雅黑", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.tabStrip.SelectedTabIndex = 0;
             this.tabStrip.Style = DevComponents.DotNetBar.eTabStripStyle.VS2005Document;
             this.tabStrip.TabLayoutType = DevComponents.DotNetBar.eTabLayoutType.FixedWithNavigationBox;
@@ -777,6 +779,30 @@
             this.tabStrip.Tabs.Add(this.tabPanel);
             this.tabStrip.Tabs.Add(this.tabReaction);
             this.tabStrip.Tabs.Add(this.tabLogic);
+            this.tabStrip.Click += new System.EventHandler(this.tabStrip_Click);
+            // 
+            // tabControlPanel2
+            // 
+            resources.ApplyResources(this.tabControlPanel2, "tabControlPanel2");
+            this.tabControlPanel2.DisabledBackColor = System.Drawing.Color.Empty;
+            this.tabControlPanel2.MarkupUsesStyleAlignment = true;
+            this.tabControlPanel2.Name = "tabControlPanel2";
+            this.tabControlPanel2.Style.BackColor2.Color = System.Drawing.Color.Silver;
+            this.tabControlPanel2.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
+            this.tabControlPanel2.Style.BorderColor.Color = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(158)))), ((int)(((byte)(216)))));
+            this.tabControlPanel2.Style.BorderSide = ((DevComponents.DotNetBar.eBorderSide)(((DevComponents.DotNetBar.eBorderSide.Left | DevComponents.DotNetBar.eBorderSide.Right)
+                        | DevComponents.DotNetBar.eBorderSide.Bottom)));
+            this.tabControlPanel2.Style.GradientAngle = 90;
+            this.tabControlPanel2.StyleMouseDown.Alignment = System.Drawing.StringAlignment.Center;
+            this.tabControlPanel2.TabItem = this.tabPoint;
+            // 
+            // tabPoint
+            // 
+            this.tabPoint.AttachedControl = this.tabControlPanel2;
+            this.tabPoint.ImageIndex = 2;
+            this.tabPoint.Name = "tabPoint";
+            resources.ApplyResources(this.tabPoint, "tabPoint");
+            this.tabPoint.Click += new System.EventHandler(this.tabPoint_Click);
             // 
             // tabControlPanel1
             // 
@@ -794,31 +820,10 @@
             // tabName
             // 
             this.tabName.AttachedControl = this.tabControlPanel1;
-            this.tabName.Icon = ((System.Drawing.Icon)(resources.GetObject("tabName.Icon")));
+            this.tabName.ImageIndex = 0;
             this.tabName.Name = "tabName";
             resources.ApplyResources(this.tabName, "tabName");
             this.tabName.Click += new System.EventHandler(this.tabName_Click);
-            // 
-            // tabControlPanel2
-            // 
-            this.tabControlPanel2.DisabledBackColor = System.Drawing.Color.Empty;
-            resources.ApplyResources(this.tabControlPanel2, "tabControlPanel2");
-            this.tabControlPanel2.Name = "tabControlPanel2";
-            this.tabControlPanel2.Style.BackColor2.Color = System.Drawing.Color.Silver;
-            this.tabControlPanel2.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
-            this.tabControlPanel2.Style.BorderColor.Color = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(158)))), ((int)(((byte)(216)))));
-            this.tabControlPanel2.Style.BorderSide = ((DevComponents.DotNetBar.eBorderSide)(((DevComponents.DotNetBar.eBorderSide.Left | DevComponents.DotNetBar.eBorderSide.Right)
-                        | DevComponents.DotNetBar.eBorderSide.Bottom)));
-            this.tabControlPanel2.Style.GradientAngle = 90;
-            this.tabControlPanel2.TabItem = this.tabPoint;
-            // 
-            // tabPoint
-            // 
-            this.tabPoint.AttachedControl = this.tabControlPanel2;
-            this.tabPoint.Icon = ((System.Drawing.Icon)(resources.GetObject("tabPoint.Icon")));
-            this.tabPoint.Name = "tabPoint";
-            resources.ApplyResources(this.tabPoint, "tabPoint");
-            this.tabPoint.Click += new System.EventHandler(this.tabPoint_Click);
             // 
             // tabControlPanel7
             // 
@@ -836,7 +841,7 @@
             // tabLogic
             // 
             this.tabLogic.AttachedControl = this.tabControlPanel7;
-            this.tabLogic.Icon = ((System.Drawing.Icon)(resources.GetObject("tabLogic.Icon")));
+            this.tabLogic.CloseButtonVisible = false;
             this.tabLogic.Name = "tabLogic";
             resources.ApplyResources(this.tabLogic, "tabLogic");
             this.tabLogic.Click += new System.EventHandler(this.tabLogic_Click);
@@ -857,7 +862,6 @@
             // tabReaction
             // 
             this.tabReaction.AttachedControl = this.tabControlPanel6;
-            this.tabReaction.Icon = ((System.Drawing.Icon)(resources.GetObject("tabReaction.Icon")));
             this.tabReaction.Name = "tabReaction";
             resources.ApplyResources(this.tabReaction, "tabReaction");
             this.tabReaction.Click += new System.EventHandler(this.tabReaction_Click);
@@ -878,7 +882,6 @@
             // tabPanel
             // 
             this.tabPanel.AttachedControl = this.tabControlPanel5;
-            this.tabPanel.Icon = ((System.Drawing.Icon)(resources.GetObject("tabPanel.Icon")));
             this.tabPanel.Name = "tabPanel";
             resources.ApplyResources(this.tabPanel, "tabPanel");
             this.tabPanel.Click += new System.EventHandler(this.tabPanel_Click);
@@ -899,7 +902,6 @@
             // tabTimer
             // 
             this.tabTimer.AttachedControl = this.tabControlPanel4;
-            this.tabTimer.Icon = ((System.Drawing.Icon)(resources.GetObject("tabTimer.Icon")));
             this.tabTimer.Name = "tabTimer";
             resources.ApplyResources(this.tabTimer, "tabTimer");
             this.tabTimer.Click += new System.EventHandler(this.tabTimer_Click);
@@ -915,15 +917,24 @@
             this.tabControlPanel3.Style.BorderSide = ((DevComponents.DotNetBar.eBorderSide)(((DevComponents.DotNetBar.eBorderSide.Left | DevComponents.DotNetBar.eBorderSide.Right)
                         | DevComponents.DotNetBar.eBorderSide.Bottom)));
             this.tabControlPanel3.Style.GradientAngle = 90;
+            this.tabControlPanel3.StyleMouseDown.Alignment = System.Drawing.StringAlignment.Center;
+            this.tabControlPanel3.StyleMouseOver.Alignment = System.Drawing.StringAlignment.Center;
             this.tabControlPanel3.TabItem = this.tabScene;
             // 
             // tabScene
             // 
             this.tabScene.AttachedControl = this.tabControlPanel3;
-            this.tabScene.Icon = ((System.Drawing.Icon)(resources.GetObject("tabScene.Icon")));
             this.tabScene.Name = "tabScene";
             resources.ApplyResources(this.tabScene, "tabScene");
             this.tabScene.Click += new System.EventHandler(this.tabScene_Click);
+            // 
+            // imgLIst
+            // 
+            this.imgLIst.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imgLIst.ImageStream")));
+            this.imgLIst.TransparentColor = System.Drawing.Color.White;
+            this.imgLIst.Images.SetKeyName(0, "t1.png");
+            this.imgLIst.Images.SetKeyName(1, "t2.png");
+            this.imgLIst.Images.SetKeyName(2, "设备 (1).png");
             // 
             // plMain
             // 
@@ -1102,6 +1113,7 @@
             this.PlTabStrip.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.tabStrip)).EndInit();
             this.tabStrip.ResumeLayout(false);
+            this.tabStrip.PerformLayout();
             this.plMain.ResumeLayout(false);
             this.plCentent.ResumeLayout(false);
             this.plInfo.ResumeLayout(false);
@@ -1234,6 +1246,7 @@
         private DevComponents.DotNetBar.TabItem tabScene;
         private DevComponents.DotNetBar.TabControlPanel tabControlPanel2;
         private DevComponents.DotNetBar.TabItem tabPoint;
+        private System.Windows.Forms.ImageList imgLIst;
 
     }
 }

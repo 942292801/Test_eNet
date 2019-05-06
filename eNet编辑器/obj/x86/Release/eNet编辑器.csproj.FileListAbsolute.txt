@@ -180,8 +180,3 @@ C:\Users\Administrator\Desktop\Gitlab\eNet\eNet编辑器\bin\Release\Infragistic
 C:\Users\Administrator\Desktop\Gitlab\eNet\eNet编辑器\bin\Release\Infragistics4.Win.UltraWinToolbars.v12.2.xml
 C:\Users\Administrator\Desktop\Gitlab\eNet\eNet编辑器\bin\Release\Infragistics4.Win.UltraWinTree.v12.2.xml
 C:\Users\Administrator\Desktop\Gitlab\eNet\eNet编辑器\bin\Release\Infragistics4.Win.v12.2.xml
-C:\Users\Administrator\Desktop\Gitlab\eNet\eNet编辑器\bin\Release\eNet编辑器.exe.manifest
-C:\Users\Administrator\Desktop\Gitlab\eNet\eNet编辑器\bin\Release\eNet编辑器.application
-C:\Users\Administrator\Desktop\Gitlab\eNet\eNet编辑器\obj\x86\Release\eNet编辑器.TrustInfo.xml
-C:\Users\Administrator\Desktop\Gitlab\eNet\eNet编辑器\obj\x86\Release\eNet编辑器.exe.manifest
-C:\Users\Administrator\Desktop\Gitlab\eNet\eNet编辑器\obj\x86\Release\eNet编辑器.application

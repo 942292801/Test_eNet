@@ -923,6 +923,11 @@ namespace eNet编辑器
 
         #endregion
 
+        private void tabStrip_Click(object sender, EventArgs e)
+        {
+
+        }
+
    
   
 
