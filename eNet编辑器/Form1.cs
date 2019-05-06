@@ -150,7 +150,7 @@ namespace eNet编辑器
             //调用添加场景
             threetitle.dgvsceneAddItem += new DgvSceneAddItem2(dgvscene.dgvsceneAddItem);
             threetitle.dgvbindAddItem  +=new DgvBindAddItem2(dgvbind.dgvbindAddItem);
-            threetitle.addPoint += new Action(dgvpoint.addPoint);
+            threetitle.addPoint += new Action<string>(dgvpoint.addPoint);
             threename.dgvDeviceAddItem += new DgvDeviceAddItem(dgvdevice.dgvDeviceAddItem);
             threebind.dgvbindAddItem += new DgvBindAddItem(dgvbind.dgvbindAddItem);
 
@@ -489,8 +489,27 @@ namespace eNet编辑器
         /// <param name="typeName"></param>
         private void cbtypeName(string typeName)
         {
-            threetitle.inifilepath = Application.StartupPath + "\\names\\commonName.ini";
-            threetitle.keys = IniConfig.ReadKeys(typeName, threetitle.inifilepath);
+            threetitle.keys.Clear();
+            if (typeName == "point")
+            {
+                DirectoryInfo folder = new DirectoryInfo(Application.StartupPath + "\\objs");
+                string name = "";
+                foreach (FileInfo file in folder.GetFiles("*.ini"))
+                {
+
+                    name = IniConfig.GetValue(file.FullName, "define", "name");
+                    if (name != "")
+                    {
+                        threetitle.keys.Add(name);
+                    }
+
+                }
+            }
+            else
+            {
+                threetitle.inifilepath = Application.StartupPath + "\\names\\commonName.ini";
+                threetitle.keys = IniConfig.ReadKeys(typeName, threetitle.inifilepath);
+            }
             cbType.Text = "";
             cbType.Items.Clear();
             for (int i = 0; i < threetitle.keys.Count; i++)
@@ -923,10 +942,7 @@ namespace eNet编辑器
 
         #endregion
 
-        private void tabStrip_Click(object sender, EventArgs e)
-        {
-
-        }
+ 
 
    
   

@@ -124,61 +124,6 @@
   <data name="menuStrip1.Font" type="System.Drawing.Font, System.Drawing">
     <value>微软雅黑, 9pt</value>
   </data>
-  <data name="文件ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>74, 21</value>
-  </data>
-  <data name="文件ToolStripMenuItem.Text" xml:space="preserve">
-    <value>文件（F）</value>
-  </data>
-  <data name="编辑ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 21</value>
-  </data>
-  <data name="编辑ToolStripMenuItem.Text" xml:space="preserve">
-    <value>编辑（E）</value>
-  </data>
-  <data name="功能GToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>77, 21</value>
-  </data>
-  <data name="功能GToolStripMenuItem.Text" xml:space="preserve">
-    <value>功能（G）</value>
-  </data>
-  <data name="工具TToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 21</value>
-  </data>
-  <data name="工具TToolStripMenuItem.Text" xml:space="preserve">
-    <value>工具（T）</value>
-  </data>
-  <data name="帮助HToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>77, 21</value>
-  </data>
-  <data name="帮助HToolStripMenuItem.Text" xml:space="preserve">
-    <value>帮助（H）</value>
-  </data>
-  <data name="menuStrip1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="menuStrip1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1264, 25</value>
-  </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="menuStrip1.TabIndex" type="System.Int32, mscorlib">
-    <value>10</value>
-  </data>
-  <data name="menuStrip1.Text" xml:space="preserve">
-    <value>menuStrip1</value>
-  </data>
-  <data name="&gt;&gt;menuStrip1.Name" xml:space="preserve">
-    <value>menuStrip1</value>
-  </data>
-  <data name="&gt;&gt;menuStrip1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.MenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;menuStrip1.Parent" xml:space="preserve">
-    <value>PlMeustrip.ClientArea</value>
-  </data>
-  <data name="&gt;&gt;menuStrip1.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="新建项目ToolStripMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
     <value>Ctrl+N</value>
@@ -254,6 +199,12 @@
   </data>
   <data name="退出ToolStripMenuItem.Text" xml:space="preserve">
     <value>退出(X)</value>
+  </data>
+  <data name="文件ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>74, 21</value>
+  </data>
+  <data name="文件ToolStripMenuItem.Text" xml:space="preserve">
+    <value>文件（F）</value>
   </data>
   <data name="撤销ToolStripMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
     <value>Ctrl+Z</value>
@@ -354,6 +305,12 @@
   <data name="删除DToolStripMenuItem.Text" xml:space="preserve">
     <value>删除(D)</value>
   </data>
+  <data name="编辑ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 21</value>
+  </data>
+  <data name="编辑ToolStripMenuItem.Text" xml:space="preserve">
+    <value>编辑（E）</value>
+  </data>
   <data name="设备在线搜索ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>148, 22</value>
   </data>
@@ -414,6 +371,12 @@
   <data name="编译下载ToolStripMenuItem.Text" xml:space="preserve">
     <value>编译&amp;&amp;下载</value>
   </data>
+  <data name="功能GToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>77, 21</value>
+  </data>
+  <data name="功能GToolStripMenuItem.Text" xml:space="preserve">
+    <value>功能（G）</value>
+  </data>
   <data name="应急状态设置ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>148, 22</value>
   </data>
@@ -447,6 +410,12 @@
   <data name="节假日设置ToolStripMenuItem.Text" xml:space="preserve">
     <value>节假日设置</value>
   </data>
+  <data name="工具TToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 21</value>
+  </data>
+  <data name="工具TToolStripMenuItem.Text" xml:space="preserve">
+    <value>工具（T）</value>
+  </data>
   <data name="欢迎ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>124, 22</value>
   </data>
@@ -471,6 +440,37 @@
   <data name="关于软件ToolStripMenuItem.Text" xml:space="preserve">
     <value>关于软件</value>
   </data>
+  <data name="帮助HToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>77, 21</value>
+  </data>
+  <data name="帮助HToolStripMenuItem.Text" xml:space="preserve">
+    <value>帮助（H）</value>
+  </data>
+  <data name="menuStrip1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="menuStrip1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1264, 25</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="menuStrip1.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="menuStrip1.Text" xml:space="preserve">
+    <value>menuStrip1</value>
+  </data>
+  <data name="&gt;&gt;menuStrip1.Name" xml:space="preserve">
+    <value>menuStrip1</value>
+  </data>
+  <data name="&gt;&gt;menuStrip1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.MenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;menuStrip1.Parent" xml:space="preserve">
+    <value>PlMeustrip.ClientArea</value>
+  </data>
+  <data name="&gt;&gt;menuStrip1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <metadata name="toolStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>126, 28</value>
   </metadata>
@@ -485,33 +485,6 @@
   </data>
   <data name="toolStrip1.Font" type="System.Drawing.Font, System.Drawing">
     <value>微软雅黑, 9pt</value>
-  </data>
-  <data name="toolStrip1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="toolStrip1.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="toolStrip1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1264, 51</value>
-  </data>
-  <data name="toolStrip1.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="toolStrip1.Text" xml:space="preserve">
-    <value>toolStrip1</value>
-  </data>
-  <data name="&gt;&gt;toolStrip1.Name" xml:space="preserve">
-    <value>toolStrip1</value>
-  </data>
-  <data name="&gt;&gt;toolStrip1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;toolStrip1.Parent" xml:space="preserve">
-    <value>PlToolstrip.ClientArea</value>
-  </data>
-  <data name="&gt;&gt;toolStrip1.ZOrder" xml:space="preserve">
-    <value>0</value>
   </data>
   <data name="tsNewfile.AutoSize" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -973,20 +946,20 @@
   <data name="tsReform.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         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
-        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
+        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
 </value>
   </data>
   <data name="tsReform.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
@@ -1074,20 +1047,20 @@
   <data name="tsTimer.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         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
-        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
+        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
 </value>
   </data>
   <data name="tsTimer.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
@@ -1101,6 +1074,33 @@
   </data>
   <data name="toolStripSeparator4.Size" type="System.Drawing.Size, System.Drawing">
     <value>6, 51</value>
+  </data>
+  <data name="toolStrip1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="toolStrip1.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="toolStrip1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1264, 51</value>
+  </data>
+  <data name="toolStrip1.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="toolStrip1.Text" xml:space="preserve">
+    <value>toolStrip1</value>
+  </data>
+  <data name="&gt;&gt;toolStrip1.Name" xml:space="preserve">
+    <value>toolStrip1</value>
+  </data>
+  <data name="&gt;&gt;toolStrip1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStrip1.Parent" xml:space="preserve">
+    <value>PlToolstrip.ClientArea</value>
+  </data>
+  <data name="&gt;&gt;toolStrip1.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <metadata name="timer1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>238, 27</value>
@@ -1276,203 +1276,11 @@
   <data name="tabStrip.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
     <value>None</value>
   </data>
-  <data name="tabControlPanel7.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="tabControlPanel7.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 33</value>
-  </data>
-  <data name="tabControlPanel7.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>1, 1, 1, 1</value>
-  </data>
-  <data name="tabControlPanel7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1264, 0</value>
-  </data>
-  <data name="tabControlPanel7.TabIndex" type="System.Int32, mscorlib">
-    <value>25</value>
-  </data>
-  <data name="tabLogic.Text" xml:space="preserve">
-    <value>逻辑设置</value>
-  </data>
-  <data name="&gt;&gt;tabControlPanel7.Name" xml:space="preserve">
-    <value>tabControlPanel7</value>
-  </data>
-  <data name="&gt;&gt;tabControlPanel7.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.TabControlPanel, DevComponents.DotNetBar2, Version=14.0.0.3, Culture=neutral, PublicKeyToken=c39c3242a43eee2b</value>
-  </data>
-  <data name="&gt;&gt;tabControlPanel7.Parent" xml:space="preserve">
-    <value>tabStrip</value>
-  </data>
-  <data name="&gt;&gt;tabControlPanel7.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="tabControlPanel6.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="tabControlPanel6.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 33</value>
-  </data>
-  <data name="tabControlPanel6.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>1, 1, 1, 1</value>
-  </data>
-  <data name="tabControlPanel6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1264, 0</value>
-  </data>
-  <data name="tabControlPanel6.TabIndex" type="System.Int32, mscorlib">
-    <value>21</value>
-  </data>
-  <data name="tabReaction.Text" xml:space="preserve">
-    <value>感应设置</value>
-  </data>
-  <data name="&gt;&gt;tabControlPanel6.Name" xml:space="preserve">
-    <value>tabControlPanel6</value>
-  </data>
-  <data name="&gt;&gt;tabControlPanel6.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.TabControlPanel, DevComponents.DotNetBar2, Version=14.0.0.3, Culture=neutral, PublicKeyToken=c39c3242a43eee2b</value>
-  </data>
-  <data name="&gt;&gt;tabControlPanel6.Parent" xml:space="preserve">
-    <value>tabStrip</value>
-  </data>
-  <data name="&gt;&gt;tabControlPanel6.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="tabControlPanel5.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="tabControlPanel5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 33</value>
-  </data>
-  <data name="tabControlPanel5.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>1, 1, 1, 1</value>
-  </data>
-  <data name="tabControlPanel5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1264, 0</value>
-  </data>
-  <data name="tabControlPanel5.TabIndex" type="System.Int32, mscorlib">
-    <value>17</value>
-  </data>
-  <data name="tabPanel.Text" xml:space="preserve">
-    <value>面板设置</value>
-  </data>
-  <data name="&gt;&gt;tabControlPanel5.Name" xml:space="preserve">
-    <value>tabControlPanel5</value>
-  </data>
-  <data name="&gt;&gt;tabControlPanel5.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.TabControlPanel, DevComponents.DotNetBar2, Version=14.0.0.3, Culture=neutral, PublicKeyToken=c39c3242a43eee2b</value>
-  </data>
-  <data name="&gt;&gt;tabControlPanel5.Parent" xml:space="preserve">
-    <value>tabStrip</value>
-  </data>
-  <data name="&gt;&gt;tabControlPanel5.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="tabControlPanel4.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="tabControlPanel4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 33</value>
-  </data>
-  <data name="tabControlPanel4.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>1, 1, 1, 1</value>
-  </data>
-  <data name="tabControlPanel4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1264, 0</value>
-  </data>
-  <data name="tabControlPanel4.TabIndex" type="System.Int32, mscorlib">
-    <value>13</value>
-  </data>
-  <data name="tabTimer.Text" xml:space="preserve">
-    <value>定时设置</value>
-  </data>
-  <data name="&gt;&gt;tabControlPanel4.Name" xml:space="preserve">
-    <value>tabControlPanel4</value>
-  </data>
-  <data name="&gt;&gt;tabControlPanel4.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.TabControlPanel, DevComponents.DotNetBar2, Version=14.0.0.3, Culture=neutral, PublicKeyToken=c39c3242a43eee2b</value>
-  </data>
-  <data name="&gt;&gt;tabControlPanel4.Parent" xml:space="preserve">
-    <value>tabStrip</value>
-  </data>
-  <data name="&gt;&gt;tabControlPanel4.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="tabControlPanel3.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="tabControlPanel3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 33</value>
-  </data>
-  <data name="tabControlPanel3.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>1, 1, 1, 1</value>
-  </data>
-  <data name="tabControlPanel3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1264, 0</value>
-  </data>
-  <data name="tabControlPanel3.TabIndex" type="System.Int32, mscorlib">
-    <value>9</value>
-  </data>
-  <data name="tabScene.Text" xml:space="preserve">
-    <value>场景设置</value>
-  </data>
-  <data name="&gt;&gt;tabControlPanel3.Name" xml:space="preserve">
-    <value>tabControlPanel3</value>
-  </data>
-  <data name="&gt;&gt;tabControlPanel3.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.TabControlPanel, DevComponents.DotNetBar2, Version=14.0.0.3, Culture=neutral, PublicKeyToken=c39c3242a43eee2b</value>
-  </data>
-  <data name="&gt;&gt;tabControlPanel3.Parent" xml:space="preserve">
-    <value>tabStrip</value>
-  </data>
-  <data name="&gt;&gt;tabControlPanel3.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="tabControlPanel2.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="tabControlPanel2.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="tabControlPanel2.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
-    <value>Center</value>
-  </data>
-  <data name="tabControlPanel2.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="tabControlPanel2.Font" type="System.Drawing.Font, System.Drawing">
-    <value>黑体, 10.5pt</value>
-  </data>
-  <data name="tabControlPanel2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 33</value>
-  </data>
-  <data name="tabControlPanel2.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>1, 1, 1, 1</value>
-  </data>
-  <data name="tabControlPanel2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1264, 0</value>
-  </data>
-  <data name="tabControlPanel2.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
-  <data name="tabPoint.Text" xml:space="preserve">
-    <value>点 位</value>
-  </data>
-  <data name="&gt;&gt;tabControlPanel2.Name" xml:space="preserve">
-    <value>tabControlPanel2</value>
-  </data>
-  <data name="&gt;&gt;tabControlPanel2.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.TabControlPanel, DevComponents.DotNetBar2, Version=14.0.0.3, Culture=neutral, PublicKeyToken=c39c3242a43eee2b</value>
-  </data>
-  <data name="&gt;&gt;tabControlPanel2.Parent" xml:space="preserve">
-    <value>tabStrip</value>
-  </data>
-  <data name="&gt;&gt;tabControlPanel2.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
   <data name="tabControlPanel1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
   <data name="tabControlPanel1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 33</value>
+    <value>0, 28</value>
   </data>
   <data name="tabControlPanel1.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>1, 1, 1, 1</value>
@@ -1496,7 +1304,199 @@
     <value>tabStrip</value>
   </data>
   <data name="&gt;&gt;tabControlPanel1.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>0</value>
+  </data>
+  <data name="tabControlPanel2.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="tabControlPanel2.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="tabControlPanel2.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
+    <value>Center</value>
+  </data>
+  <data name="tabControlPanel2.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="tabControlPanel2.Font" type="System.Drawing.Font, System.Drawing">
+    <value>黑体, 10.5pt</value>
+  </data>
+  <data name="tabControlPanel2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 28</value>
+  </data>
+  <data name="tabControlPanel2.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>1, 1, 1, 1</value>
+  </data>
+  <data name="tabControlPanel2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1264, 0</value>
+  </data>
+  <data name="tabControlPanel2.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="tabPoint.Text" xml:space="preserve">
+    <value>点 位</value>
+  </data>
+  <data name="&gt;&gt;tabControlPanel2.Name" xml:space="preserve">
+    <value>tabControlPanel2</value>
+  </data>
+  <data name="&gt;&gt;tabControlPanel2.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.TabControlPanel, DevComponents.DotNetBar2, Version=14.0.0.3, Culture=neutral, PublicKeyToken=c39c3242a43eee2b</value>
+  </data>
+  <data name="&gt;&gt;tabControlPanel2.Parent" xml:space="preserve">
+    <value>tabStrip</value>
+  </data>
+  <data name="&gt;&gt;tabControlPanel2.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="tabControlPanel7.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="tabControlPanel7.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 28</value>
+  </data>
+  <data name="tabControlPanel7.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>1, 1, 1, 1</value>
+  </data>
+  <data name="tabControlPanel7.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1264, 0</value>
+  </data>
+  <data name="tabControlPanel7.TabIndex" type="System.Int32, mscorlib">
+    <value>25</value>
+  </data>
+  <data name="tabLogic.Text" xml:space="preserve">
+    <value>逻辑设置</value>
+  </data>
+  <data name="&gt;&gt;tabControlPanel7.Name" xml:space="preserve">
+    <value>tabControlPanel7</value>
+  </data>
+  <data name="&gt;&gt;tabControlPanel7.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.TabControlPanel, DevComponents.DotNetBar2, Version=14.0.0.3, Culture=neutral, PublicKeyToken=c39c3242a43eee2b</value>
+  </data>
+  <data name="&gt;&gt;tabControlPanel7.Parent" xml:space="preserve">
+    <value>tabStrip</value>
+  </data>
+  <data name="&gt;&gt;tabControlPanel7.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="tabControlPanel6.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="tabControlPanel6.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 28</value>
+  </data>
+  <data name="tabControlPanel6.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>1, 1, 1, 1</value>
+  </data>
+  <data name="tabControlPanel6.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1264, 0</value>
+  </data>
+  <data name="tabControlPanel6.TabIndex" type="System.Int32, mscorlib">
+    <value>21</value>
+  </data>
+  <data name="tabReaction.Text" xml:space="preserve">
+    <value>感应设置</value>
+  </data>
+  <data name="&gt;&gt;tabControlPanel6.Name" xml:space="preserve">
+    <value>tabControlPanel6</value>
+  </data>
+  <data name="&gt;&gt;tabControlPanel6.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.TabControlPanel, DevComponents.DotNetBar2, Version=14.0.0.3, Culture=neutral, PublicKeyToken=c39c3242a43eee2b</value>
+  </data>
+  <data name="&gt;&gt;tabControlPanel6.Parent" xml:space="preserve">
+    <value>tabStrip</value>
+  </data>
+  <data name="&gt;&gt;tabControlPanel6.ZOrder" xml:space="preserve">
+    <value>12</value>
+  </data>
+  <data name="tabControlPanel5.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="tabControlPanel5.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 28</value>
+  </data>
+  <data name="tabControlPanel5.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>1, 1, 1, 1</value>
+  </data>
+  <data name="tabControlPanel5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1264, 0</value>
+  </data>
+  <data name="tabControlPanel5.TabIndex" type="System.Int32, mscorlib">
+    <value>17</value>
+  </data>
+  <data name="tabPanel.Text" xml:space="preserve">
+    <value>面板设置</value>
+  </data>
+  <data name="&gt;&gt;tabControlPanel5.Name" xml:space="preserve">
+    <value>tabControlPanel5</value>
+  </data>
+  <data name="&gt;&gt;tabControlPanel5.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.TabControlPanel, DevComponents.DotNetBar2, Version=14.0.0.3, Culture=neutral, PublicKeyToken=c39c3242a43eee2b</value>
+  </data>
+  <data name="&gt;&gt;tabControlPanel5.Parent" xml:space="preserve">
+    <value>tabStrip</value>
+  </data>
+  <data name="&gt;&gt;tabControlPanel5.ZOrder" xml:space="preserve">
+    <value>16</value>
+  </data>
+  <data name="tabControlPanel4.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="tabControlPanel4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 28</value>
+  </data>
+  <data name="tabControlPanel4.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>1, 1, 1, 1</value>
+  </data>
+  <data name="tabControlPanel4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1264, 0</value>
+  </data>
+  <data name="tabControlPanel4.TabIndex" type="System.Int32, mscorlib">
+    <value>13</value>
+  </data>
+  <data name="tabTimer.Text" xml:space="preserve">
+    <value>定时设置</value>
+  </data>
+  <data name="&gt;&gt;tabControlPanel4.Name" xml:space="preserve">
+    <value>tabControlPanel4</value>
+  </data>
+  <data name="&gt;&gt;tabControlPanel4.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.TabControlPanel, DevComponents.DotNetBar2, Version=14.0.0.3, Culture=neutral, PublicKeyToken=c39c3242a43eee2b</value>
+  </data>
+  <data name="&gt;&gt;tabControlPanel4.Parent" xml:space="preserve">
+    <value>tabStrip</value>
+  </data>
+  <data name="&gt;&gt;tabControlPanel4.ZOrder" xml:space="preserve">
+    <value>20</value>
+  </data>
+  <data name="tabControlPanel3.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="tabControlPanel3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 28</value>
+  </data>
+  <data name="tabControlPanel3.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>1, 1, 1, 1</value>
+  </data>
+  <data name="tabControlPanel3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1264, 0</value>
+  </data>
+  <data name="tabControlPanel3.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="tabScene.Text" xml:space="preserve">
+    <value>场景设置</value>
+  </data>
+  <data name="&gt;&gt;tabControlPanel3.Name" xml:space="preserve">
+    <value>tabControlPanel3</value>
+  </data>
+  <data name="&gt;&gt;tabControlPanel3.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.TabControlPanel, DevComponents.DotNetBar2, Version=14.0.0.3, Culture=neutral, PublicKeyToken=c39c3242a43eee2b</value>
+  </data>
+  <data name="&gt;&gt;tabControlPanel3.Parent" xml:space="preserve">
+    <value>tabStrip</value>
+  </data>
+  <data name="&gt;&gt;tabControlPanel3.ZOrder" xml:space="preserve">
+    <value>24</value>
   </data>
   <data name="tabStrip.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>
@@ -1512,7 +1512,7 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAACm
-        CQAAAk1TRnQBSQFMAgEBAwEAARABAQEQAQEBEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
+        CQAAAk1TRnQBSQFMAgEBAwEAASgBAQEoAQEBEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
         AwABQAMAARADAAEBAQABCAYAAQQYAAGAAgABgAMAAoABAAGAAwABgAEAAYABAAKAAgADwAEAAcAB3AHA
         AQAB8AHKAaYBAAEzBQABMwEAATMBAAEzAQACMwIAAxYBAAMcAQADIgEAAykBAANVAQADTQEAA0IBAAM5
         AQABgAF8Af8BAAJQAf8BAAGTAQAB1gEAAf8B7AHMAQABxgHWAe8BAAHWAucBAAGQAakBrQIAAf8BMwMA
@@ -2493,6 +2493,18 @@
   <data name="&gt;&gt;ultraSplitter1.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
+  <data name="plSection.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="plSection.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="plSection.Size" type="System.Drawing.Size, System.Drawing">
+    <value>204, 274</value>
+  </data>
+  <data name="plSection.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
   <data name="&gt;&gt;plSection.Name" xml:space="preserve">
     <value>plSection</value>
   </data>
@@ -2505,6 +2517,18 @@
   <data name="&gt;&gt;plSection.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="ultraSplitter4.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Bottom</value>
+  </data>
+  <data name="ultraSplitter4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 274</value>
+  </data>
+  <data name="ultraSplitter4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>204, 10</value>
+  </data>
+  <data name="ultraSplitter4.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
   <data name="&gt;&gt;ultraSplitter4.Name" xml:space="preserve">
     <value>ultraSplitter4</value>
   </data>
@@ -2515,6 +2539,90 @@
     <value>plRight</value>
   </data>
   <data name="&gt;&gt;ultraSplitter4.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="plTitleTree.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="plTitleTree.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 25</value>
+  </data>
+  <data name="plTitleTree.Size" type="System.Drawing.Size, System.Drawing">
+    <value>204, 227</value>
+  </data>
+  <data name="plTitleTree.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;plTitleTree.Name" xml:space="preserve">
+    <value>plTitleTree</value>
+  </data>
+  <data name="&gt;&gt;plTitleTree.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;plTitleTree.Parent" xml:space="preserve">
+    <value>plTitle</value>
+  </data>
+  <data name="&gt;&gt;plTitleTree.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="symbolBox2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 6</value>
+  </data>
+  <data name="symbolBox2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>16, 16</value>
+  </data>
+  <data name="symbolBox2.TabIndex" type="System.Int32, mscorlib">
+    <value>52</value>
+  </data>
+  <data name="symbolBox2.Text" xml:space="preserve">
+    <value>symbolBox2</value>
+  </data>
+  <data name="&gt;&gt;symbolBox2.Name" xml:space="preserve">
+    <value>symbolBox2</value>
+  </data>
+  <data name="&gt;&gt;symbolBox2.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.Controls.SymbolBox, DevComponents.DotNetBar2, Version=14.0.0.3, Culture=neutral, PublicKeyToken=c39c3242a43eee2b</value>
+  </data>
+  <data name="&gt;&gt;symbolBox2.Parent" xml:space="preserve">
+    <value>plTitleCbbox</value>
+  </data>
+  <data name="&gt;&gt;symbolBox2.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="plTitleCbbox.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="plTitleCbbox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="plTitleCbbox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>204, 25</value>
+  </data>
+  <data name="plTitleCbbox.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;plTitleCbbox.Name" xml:space="preserve">
+    <value>plTitleCbbox</value>
+  </data>
+  <data name="&gt;&gt;plTitleCbbox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;plTitleCbbox.Parent" xml:space="preserve">
+    <value>plTitle</value>
+  </data>
+  <data name="&gt;&gt;plTitleCbbox.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="plTitle.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Bottom</value>
+  </data>
+  <data name="plTitle.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 284</value>
+  </data>
+  <data name="plTitle.Size" type="System.Drawing.Size, System.Drawing">
+    <value>204, 252</value>
+  </data>
+  <data name="plTitle.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
   <data name="&gt;&gt;plTitle.Name" xml:space="preserve">
@@ -2600,186 +2708,6 @@
   </data>
   <data name="&gt;&gt;plMain.ZOrder" xml:space="preserve">
     <value>0</value>
-  </data>
-  <data name="plSection.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="plSection.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="plSection.Size" type="System.Drawing.Size, System.Drawing">
-    <value>204, 274</value>
-  </data>
-  <data name="plSection.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;plSection.Name" xml:space="preserve">
-    <value>plSection</value>
-  </data>
-  <data name="&gt;&gt;plSection.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;plSection.Parent" xml:space="preserve">
-    <value>plRight</value>
-  </data>
-  <data name="&gt;&gt;plSection.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="ultraSplitter4.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Bottom</value>
-  </data>
-  <data name="ultraSplitter4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 274</value>
-  </data>
-  <data name="ultraSplitter4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>204, 10</value>
-  </data>
-  <data name="ultraSplitter4.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;ultraSplitter4.Name" xml:space="preserve">
-    <value>ultraSplitter4</value>
-  </data>
-  <data name="&gt;&gt;ultraSplitter4.Type" xml:space="preserve">
-    <value>Infragistics.Win.Misc.UltraSplitter, Infragistics4.Win.Misc.v12.2, Version=12.2.20122.2123, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb</value>
-  </data>
-  <data name="&gt;&gt;ultraSplitter4.Parent" xml:space="preserve">
-    <value>plRight</value>
-  </data>
-  <data name="&gt;&gt;ultraSplitter4.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;plTitleTree.Name" xml:space="preserve">
-    <value>plTitleTree</value>
-  </data>
-  <data name="&gt;&gt;plTitleTree.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;plTitleTree.Parent" xml:space="preserve">
-    <value>plTitle</value>
-  </data>
-  <data name="&gt;&gt;plTitleTree.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;plTitleCbbox.Name" xml:space="preserve">
-    <value>plTitleCbbox</value>
-  </data>
-  <data name="&gt;&gt;plTitleCbbox.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;plTitleCbbox.Parent" xml:space="preserve">
-    <value>plTitle</value>
-  </data>
-  <data name="&gt;&gt;plTitleCbbox.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="plTitle.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Bottom</value>
-  </data>
-  <data name="plTitle.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 284</value>
-  </data>
-  <data name="plTitle.Size" type="System.Drawing.Size, System.Drawing">
-    <value>204, 252</value>
-  </data>
-  <data name="plTitle.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;plTitle.Name" xml:space="preserve">
-    <value>plTitle</value>
-  </data>
-  <data name="&gt;&gt;plTitle.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;plTitle.Parent" xml:space="preserve">
-    <value>plRight</value>
-  </data>
-  <data name="&gt;&gt;plTitle.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="plTitleTree.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="plTitleTree.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 25</value>
-  </data>
-  <data name="plTitleTree.Size" type="System.Drawing.Size, System.Drawing">
-    <value>204, 227</value>
-  </data>
-  <data name="plTitleTree.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;plTitleTree.Name" xml:space="preserve">
-    <value>plTitleTree</value>
-  </data>
-  <data name="&gt;&gt;plTitleTree.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;plTitleTree.Parent" xml:space="preserve">
-    <value>plTitle</value>
-  </data>
-  <data name="&gt;&gt;plTitleTree.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;symbolBox2.Name" xml:space="preserve">
-    <value>symbolBox2</value>
-  </data>
-  <data name="&gt;&gt;symbolBox2.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.Controls.SymbolBox, DevComponents.DotNetBar2, Version=14.0.0.3, Culture=neutral, PublicKeyToken=c39c3242a43eee2b</value>
-  </data>
-  <data name="&gt;&gt;symbolBox2.Parent" xml:space="preserve">
-    <value>plTitleCbbox</value>
-  </data>
-  <data name="&gt;&gt;symbolBox2.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="plTitleCbbox.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
-  </data>
-  <data name="plTitleCbbox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="plTitleCbbox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>204, 25</value>
-  </data>
-  <data name="plTitleCbbox.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;plTitleCbbox.Name" xml:space="preserve">
-    <value>plTitleCbbox</value>
-  </data>
-  <data name="&gt;&gt;plTitleCbbox.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;plTitleCbbox.Parent" xml:space="preserve">
-    <value>plTitle</value>
-  </data>
-  <data name="&gt;&gt;plTitleCbbox.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="symbolBox2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 6</value>
-  </data>
-  <data name="symbolBox2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>16, 16</value>
-  </data>
-  <data name="symbolBox2.TabIndex" type="System.Int32, mscorlib">
-    <value>52</value>
-  </data>
-  <data name="symbolBox2.Text" xml:space="preserve">
-    <value>symbolBox2</value>
-  </data>
-  <data name="&gt;&gt;symbolBox2.Name" xml:space="preserve">
-    <value>symbolBox2</value>
-  </data>
-  <data name="&gt;&gt;symbolBox2.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.Controls.SymbolBox, DevComponents.DotNetBar2, Version=14.0.0.3, Culture=neutral, PublicKeyToken=c39c3242a43eee2b</value>
-  </data>
-  <data name="&gt;&gt;symbolBox2.Parent" xml:space="preserve">
-    <value>plTitleCbbox</value>
-  </data>
-  <data name="&gt;&gt;symbolBox2.ZOrder" xml:space="preserve">
-    <value>1</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -3240,16 +3168,16 @@
   <data name="&gt;&gt;timer1.Type" xml:space="preserve">
     <value>System.Windows.Forms.Timer, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;tabPoint.Name" xml:space="preserve">
-    <value>tabPoint</value>
-  </data>
-  <data name="&gt;&gt;tabPoint.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.TabItem, DevComponents.DotNetBar2, Version=14.0.0.3, Culture=neutral, PublicKeyToken=c39c3242a43eee2b</value>
-  </data>
   <data name="&gt;&gt;tabName.Name" xml:space="preserve">
     <value>tabName</value>
   </data>
   <data name="&gt;&gt;tabName.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.TabItem, DevComponents.DotNetBar2, Version=14.0.0.3, Culture=neutral, PublicKeyToken=c39c3242a43eee2b</value>
+  </data>
+  <data name="&gt;&gt;tabPoint.Name" xml:space="preserve">
+    <value>tabPoint</value>
+  </data>
+  <data name="&gt;&gt;tabPoint.Type" xml:space="preserve">
     <value>DevComponents.DotNetBar.TabItem, DevComponents.DotNetBar2, Version=14.0.0.3, Culture=neutral, PublicKeyToken=c39c3242a43eee2b</value>
   </data>
   <data name="&gt;&gt;tabLogic.Name" xml:space="preserve">

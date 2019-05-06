@@ -51,37 +51,39 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("黑体", 9F);
-            this.label1.Location = new System.Drawing.Point(31, 56);
+            this.label1.Font = new System.Drawing.Font("微软雅黑", 9F);
+            this.label1.Location = new System.Drawing.Point(36, 79);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(65, 12);
+            this.label1.Size = new System.Drawing.Size(68, 17);
             this.label1.TabIndex = 57;
             this.label1.Text = "节点名称：";
             // 
             // cbname
             // 
             this.cbname.FormattingEnabled = true;
-            this.cbname.Location = new System.Drawing.Point(102, 53);
+            this.cbname.Location = new System.Drawing.Point(119, 75);
+            this.cbname.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.cbname.Name = "cbname";
-            this.cbname.Size = new System.Drawing.Size(105, 20);
+            this.cbname.Size = new System.Drawing.Size(122, 25);
             this.cbname.TabIndex = 63;
             // 
             // cbtype
             // 
             this.cbtype.FormattingEnabled = true;
-            this.cbtype.Location = new System.Drawing.Point(102, 14);
+            this.cbtype.Location = new System.Drawing.Point(119, 20);
+            this.cbtype.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.cbtype.Name = "cbtype";
-            this.cbtype.Size = new System.Drawing.Size(105, 20);
+            this.cbtype.Size = new System.Drawing.Size(122, 25);
             this.cbtype.TabIndex = 65;
             this.cbtype.SelectedIndexChanged += new System.EventHandler(this.cbtype_SelectedIndexChanged);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("黑体", 9F);
-            this.label2.Location = new System.Drawing.Point(31, 17);
+            this.label2.Font = new System.Drawing.Font("微软雅黑", 9F);
+            this.label2.Location = new System.Drawing.Point(36, 24);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(65, 12);
+            this.label2.Size = new System.Drawing.Size(68, 17);
             this.label2.TabIndex = 64;
             this.label2.Text = "节点类型：";
             // 
@@ -90,8 +92,9 @@
             this.panel2.Controls.Add(this.panel3);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(249, 126);
+            this.panel2.Size = new System.Drawing.Size(290, 156);
             this.panel2.TabIndex = 67;
             // 
             // panel3
@@ -100,8 +103,9 @@
             this.panel3.Controls.Add(this.panel5);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(0, 0);
+            this.panel3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(249, 126);
+            this.panel3.Size = new System.Drawing.Size(290, 156);
             this.panel3.TabIndex = 3;
             // 
             // panel4
@@ -112,8 +116,9 @@
             this.panel4.Controls.Add(this.label1);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel4.Location = new System.Drawing.Point(0, 32);
+            this.panel4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(249, 94);
+            this.panel4.Size = new System.Drawing.Size(290, 124);
             this.panel4.TabIndex = 4;
             // 
             // panel5
@@ -122,8 +127,9 @@
             this.panel5.Controls.Add(this.plInfoTitle);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel5.Location = new System.Drawing.Point(0, 0);
+            this.panel5.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(249, 32);
+            this.panel5.Size = new System.Drawing.Size(290, 32);
             this.panel5.TabIndex = 3;
             // 
             // plInfoTitle
@@ -134,8 +140,9 @@
             this.plInfoTitle.Controls.Add(this.label3);
             this.plInfoTitle.Dock = System.Windows.Forms.DockStyle.Top;
             this.plInfoTitle.Location = new System.Drawing.Point(0, 0);
+            this.plInfoTitle.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.plInfoTitle.Name = "plInfoTitle";
-            this.plInfoTitle.Size = new System.Drawing.Size(249, 25);
+            this.plInfoTitle.Size = new System.Drawing.Size(290, 25);
             this.plInfoTitle.TabIndex = 2;
             // 
             // btnDecid
@@ -150,9 +157,10 @@
             this.btnDecid.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.Image;
             this.btnDecid.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnDecid.HoverImage")));
             this.btnDecid.Image = ((System.Drawing.Image)(resources.GetObject("btnDecid.Image")));
-            this.btnDecid.Location = new System.Drawing.Point(229, 0);
+            this.btnDecid.Location = new System.Drawing.Point(267, 4);
+            this.btnDecid.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnDecid.Name = "btnDecid";
-            this.btnDecid.Size = new System.Drawing.Size(17, 22);
+            this.btnDecid.Size = new System.Drawing.Size(20, 21);
             this.btnDecid.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnDecid.TabIndex = 4;
             this.btnDecid.Tooltip = "添加";
@@ -164,7 +172,8 @@
             // 
             // 
             this.symbolBox1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.symbolBox1.Location = new System.Drawing.Point(6, 6);
+            this.symbolBox1.Location = new System.Drawing.Point(3, 4);
+            this.symbolBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.symbolBox1.Name = "symbolBox1";
             this.symbolBox1.Size = new System.Drawing.Size(16, 16);
             this.symbolBox1.Symbol = "";
@@ -175,24 +184,25 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("黑体", 9F);
+            this.label3.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label3.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label3.Location = new System.Drawing.Point(31, 7);
+            this.label3.Location = new System.Drawing.Point(25, 4);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(29, 12);
+            this.label3.Size = new System.Drawing.Size(32, 17);
             this.label3.TabIndex = 1;
             this.label3.Text = "添加";
             // 
             // tsSection
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.ClientSize = new System.Drawing.Size(249, 126);
+            this.ClientSize = new System.Drawing.Size(290, 156);
             this.Controls.Add(this.panel2);
-            this.Font = new System.Drawing.Font("黑体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.ImeMode = System.Windows.Forms.ImeMode.HangulFull;
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "tsSection";
             this.Load += new System.EventHandler(this.tsSection_Load);
             this.panel2.ResumeLayout(false);

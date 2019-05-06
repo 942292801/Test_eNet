@@ -30,9 +30,9 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.文件ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.新建项目ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -116,10 +116,10 @@
             this.PlToolstrip = new Infragistics.Win.Misc.UltraPanel();
             this.PlTabStrip = new Infragistics.Win.Misc.UltraPanel();
             this.tabStrip = new DevComponents.DotNetBar.TabControl();
-            this.tabControlPanel2 = new DevComponents.DotNetBar.TabControlPanel();
-            this.tabPoint = new DevComponents.DotNetBar.TabItem(this.components);
             this.tabControlPanel1 = new DevComponents.DotNetBar.TabControlPanel();
             this.tabName = new DevComponents.DotNetBar.TabItem(this.components);
+            this.tabControlPanel2 = new DevComponents.DotNetBar.TabControlPanel();
+            this.tabPoint = new DevComponents.DotNetBar.TabItem(this.components);
             this.tabControlPanel7 = new DevComponents.DotNetBar.TabControlPanel();
             this.tabLogic = new DevComponents.DotNetBar.TabItem(this.components);
             this.tabControlPanel6 = new DevComponents.DotNetBar.TabControlPanel();
@@ -699,8 +699,8 @@
             // 
             // PlMeustrip
             // 
-            appearance4.BackColor = System.Drawing.Color.DarkGray;
-            this.PlMeustrip.Appearance = appearance4;
+            appearance1.BackColor = System.Drawing.Color.DarkGray;
+            this.PlMeustrip.Appearance = appearance1;
             // 
             // PlMeustrip.ClientArea
             // 
@@ -710,8 +710,8 @@
             // 
             // PlToolstrip
             // 
-            appearance1.BackColor = System.Drawing.Color.DarkGray;
-            this.PlToolstrip.Appearance = appearance1;
+            appearance2.BackColor = System.Drawing.Color.DarkGray;
+            this.PlToolstrip.Appearance = appearance2;
             // 
             // PlToolstrip.ClientArea
             // 
@@ -721,8 +721,8 @@
             // 
             // PlTabStrip
             // 
-            appearance2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(145)))), ((int)(((byte)(230)))));
-            this.PlTabStrip.Appearance = appearance2;
+            appearance3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(145)))), ((int)(((byte)(230)))));
+            this.PlTabStrip.Appearance = appearance3;
             // 
             // PlTabStrip.ClientArea
             // 
@@ -758,13 +758,13 @@
             this.tabStrip.ColorScheme.TabItemSelectedBorderDark = System.Drawing.Color.Empty;
             this.tabStrip.ColorScheme.TabItemSelectedBorderLight = System.Drawing.Color.Empty;
             this.tabStrip.ColorScheme.TabItemSelectedText = System.Drawing.Color.White;
+            this.tabStrip.Controls.Add(this.tabControlPanel1);
+            this.tabStrip.Controls.Add(this.tabControlPanel2);
             this.tabStrip.Controls.Add(this.tabControlPanel7);
             this.tabStrip.Controls.Add(this.tabControlPanel6);
             this.tabStrip.Controls.Add(this.tabControlPanel5);
             this.tabStrip.Controls.Add(this.tabControlPanel4);
             this.tabStrip.Controls.Add(this.tabControlPanel3);
-            this.tabStrip.Controls.Add(this.tabControlPanel2);
-            this.tabStrip.Controls.Add(this.tabControlPanel1);
             this.tabStrip.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.tabStrip.ImageList = this.imgLIst;
             this.tabStrip.Name = "tabStrip";
@@ -779,7 +779,27 @@
             this.tabStrip.Tabs.Add(this.tabPanel);
             this.tabStrip.Tabs.Add(this.tabReaction);
             this.tabStrip.Tabs.Add(this.tabLogic);
-            this.tabStrip.Click += new System.EventHandler(this.tabStrip_Click);
+            // 
+            // tabControlPanel1
+            // 
+            this.tabControlPanel1.DisabledBackColor = System.Drawing.Color.Empty;
+            resources.ApplyResources(this.tabControlPanel1, "tabControlPanel1");
+            this.tabControlPanel1.Name = "tabControlPanel1";
+            this.tabControlPanel1.Style.BackColor2.Color = System.Drawing.Color.Silver;
+            this.tabControlPanel1.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
+            this.tabControlPanel1.Style.BorderColor.Color = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(158)))), ((int)(((byte)(216)))));
+            this.tabControlPanel1.Style.BorderSide = ((DevComponents.DotNetBar.eBorderSide)(((DevComponents.DotNetBar.eBorderSide.Left | DevComponents.DotNetBar.eBorderSide.Right)
+                        | DevComponents.DotNetBar.eBorderSide.Bottom)));
+            this.tabControlPanel1.Style.GradientAngle = 90;
+            this.tabControlPanel1.TabItem = this.tabName;
+            // 
+            // tabName
+            // 
+            this.tabName.AttachedControl = this.tabControlPanel1;
+            this.tabName.ImageIndex = 0;
+            this.tabName.Name = "tabName";
+            resources.ApplyResources(this.tabName, "tabName");
+            this.tabName.Click += new System.EventHandler(this.tabName_Click);
             // 
             // tabControlPanel2
             // 
@@ -803,27 +823,6 @@
             this.tabPoint.Name = "tabPoint";
             resources.ApplyResources(this.tabPoint, "tabPoint");
             this.tabPoint.Click += new System.EventHandler(this.tabPoint_Click);
-            // 
-            // tabControlPanel1
-            // 
-            this.tabControlPanel1.DisabledBackColor = System.Drawing.Color.Empty;
-            resources.ApplyResources(this.tabControlPanel1, "tabControlPanel1");
-            this.tabControlPanel1.Name = "tabControlPanel1";
-            this.tabControlPanel1.Style.BackColor2.Color = System.Drawing.Color.Silver;
-            this.tabControlPanel1.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
-            this.tabControlPanel1.Style.BorderColor.Color = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(158)))), ((int)(((byte)(216)))));
-            this.tabControlPanel1.Style.BorderSide = ((DevComponents.DotNetBar.eBorderSide)(((DevComponents.DotNetBar.eBorderSide.Left | DevComponents.DotNetBar.eBorderSide.Right)
-                        | DevComponents.DotNetBar.eBorderSide.Bottom)));
-            this.tabControlPanel1.Style.GradientAngle = 90;
-            this.tabControlPanel1.TabItem = this.tabName;
-            // 
-            // tabName
-            // 
-            this.tabName.AttachedControl = this.tabControlPanel1;
-            this.tabName.ImageIndex = 0;
-            this.tabName.Name = "tabName";
-            resources.ApplyResources(this.tabName, "tabName");
-            this.tabName.Click += new System.EventHandler(this.tabName_Click);
             // 
             // tabControlPanel7
             // 

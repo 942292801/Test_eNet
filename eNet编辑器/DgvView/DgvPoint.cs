@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using System.Reflection;
 using System.IO;
 using System.Text.RegularExpressions;
+using eNet编辑器.ThreeView;
 
 namespace eNet编辑器.DgvView
 {
@@ -309,11 +310,11 @@ namespace eNet编辑器.DgvView
         /// <param name="e"></param>
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            addPoint();
+            addPoint("");
 
         }
 
-        public void addPoint()
+        public void addPoint(string typeName)
         {
             if (string.IsNullOrEmpty(FileMesege.sectionNodeCopy))
             {
@@ -342,7 +343,10 @@ namespace eNet编辑器.DgvView
             point.area3 = sect[2];
             point.area4 = sect[3];
             point.ip = "";
-            point.objType = "";
+       
+            point.objType = IniHelper.findObjsFileNae_ByName(typeName);
+      
+            
             //point.range = "";
             point.type = "";
             point.value = "";

@@ -40,7 +40,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("幼圆", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label1.Location = new System.Drawing.Point(17, 21);
+            this.label1.Location = new System.Drawing.Point(20, 30);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(49, 14);
             this.label1.TabIndex = 0;
@@ -50,7 +50,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("幼圆", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label2.Location = new System.Drawing.Point(17, 57);
+            this.label2.Location = new System.Drawing.Point(20, 81);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(49, 14);
             this.label2.TabIndex = 1;
@@ -59,9 +59,10 @@
             // btnDecid
             // 
             this.btnDecid.Font = new System.Drawing.Font("幼圆", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnDecid.Location = new System.Drawing.Point(38, 92);
+            this.btnDecid.Location = new System.Drawing.Point(44, 130);
+            this.btnDecid.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnDecid.Name = "btnDecid";
-            this.btnDecid.Size = new System.Drawing.Size(81, 27);
+            this.btnDecid.Size = new System.Drawing.Size(94, 38);
             this.btnDecid.TabIndex = 3;
             this.btnDecid.Text = "添加";
             this.btnDecid.UseVisualStyleBackColor = true;
@@ -70,9 +71,10 @@
             // btnCancle
             // 
             this.btnCancle.Font = new System.Drawing.Font("幼圆", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnCancle.Location = new System.Drawing.Point(170, 92);
+            this.btnCancle.Location = new System.Drawing.Point(198, 130);
+            this.btnCancle.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnCancle.Name = "btnCancle";
-            this.btnCancle.Size = new System.Drawing.Size(81, 27);
+            this.btnCancle.Size = new System.Drawing.Size(94, 38);
             this.btnCancle.TabIndex = 54;
             this.btnCancle.Text = "返回";
             this.btnCancle.UseVisualStyleBackColor = true;
@@ -80,9 +82,10 @@
             // 
             // txtGateway
             // 
-            this.txtGateway.Location = new System.Drawing.Point(67, 21);
+            this.txtGateway.Location = new System.Drawing.Point(78, 30);
+            this.txtGateway.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtGateway.Name = "txtGateway";
-            this.txtGateway.Size = new System.Drawing.Size(184, 21);
+            this.txtGateway.Size = new System.Drawing.Size(214, 23);
             this.txtGateway.TabIndex = 55;
             this.txtGateway.Text = "192.168.1.230";
             // 
@@ -90,25 +93,28 @@
             // 
             this.cbVersion.Enabled = false;
             this.cbVersion.FormattingEnabled = true;
-            this.cbVersion.Location = new System.Drawing.Point(67, 57);
+            this.cbVersion.Location = new System.Drawing.Point(78, 81);
+            this.cbVersion.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.cbVersion.Name = "cbVersion";
-            this.cbVersion.Size = new System.Drawing.Size(184, 20);
+            this.cbVersion.Size = new System.Drawing.Size(214, 25);
             this.cbVersion.TabIndex = 56;
             this.cbVersion.Text = "GW100A";
             // 
             // tnGateway
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(267, 130);
+            this.ClientSize = new System.Drawing.Size(311, 184);
             this.Controls.Add(this.cbVersion);
             this.Controls.Add(this.txtGateway);
             this.Controls.Add(this.btnCancle);
             this.Controls.Add(this.btnDecid);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.Font = new System.Drawing.Font("微软雅黑", 9F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.ImeMode = System.Windows.Forms.ImeMode.HangulFull;
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "tnGateway";
             this.Text = "Gateway Edit";
             this.Load += new System.EventHandler(this.tnGateway_Load);

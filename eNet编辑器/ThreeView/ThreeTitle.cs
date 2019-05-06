@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using eNet编辑器.AddForm;
 using System.Text.RegularExpressions;
 using eNet编辑器.DgvView;
+using System.IO;
 
 namespace eNet编辑器.ThreeView
 {
@@ -25,7 +26,7 @@ namespace eNet编辑器.ThreeView
         //public event AddTitlenNameCursor addTitlenNameCursor;
 
         //添加点位
-        public event Action addPoint;
+        public event Action<string> addPoint;
         public ThreeTitle()
         {
             InitializeComponent();
@@ -51,7 +52,7 @@ namespace eNet编辑器.ThreeView
         /// <summary>
         /// 存放ini define区域内 读取到的键值
         /// </summary>
-        public List<string> keys = null;
+        public List<string> keys = new List<string>();
         
 
         /// <summary>
@@ -89,7 +90,7 @@ namespace eNet编辑器.ThreeView
                         case "point":
                             treeView1.CheckBoxes = false;
                             treeView1.ContextMenuStrip = null;
-                            nameAdd(num);
+                            pointAdd(num);
                             break;
                         case "scene":
                             treeView1.CheckBoxes = true;
@@ -125,9 +126,9 @@ namespace eNet编辑器.ThreeView
         
         }
 
-        #region 命名加载节点
+        #region 设备加载节点
         /// <summary>
-        /// 命名模式 命名按钮加载树状图节点
+        /// 设备模式 设备按钮加载树状图节点
         /// </summary>
         /// <param name="num"></param>
         private void nameAdd(int num)
@@ -152,7 +153,7 @@ namespace eNet编辑器.ThreeView
             {
                 //正常加载名称
                 string[] strarr = strs.Split(',');
-                if (strarr[0] == "")
+                if (string.IsNullOrEmpty(strarr[0]))
                 {
                     return;
                 }
@@ -167,22 +168,34 @@ namespace eNet编辑器.ThreeView
 
         #region 点位加载节点
         /// <summary>
-        /// 命名模式 命名按钮加载树状图节点
+        /// 点位模式 点位按钮加载树状图节点
         /// </summary>
         /// <param name="num"></param>
         private void pointAdd(int num)
         {
             TreeMesege tm = new TreeMesege();
-            string strs = IniConfig.GetValue(inifilepath, "point", keys[num]);
-            if (strs == null)
+            DirectoryInfo folder = new DirectoryInfo(Application.StartupPath + "//objs");
+            string name = "";
+            foreach (FileInfo file in folder.GetFiles("*.ini"))
             {
-                return;
+                
+                name = IniConfig.GetValue(file.FullName, "define", "name");
+                if (name == keys[num])
+                {
+                    string[] strarr = IniConfig.GetValue(file.FullName, "define", "species").Split(',');
+                    if (string.IsNullOrEmpty( strarr[0]))
+                    {
+                        return;
+                    }
+                    for (int i = 0; i < strarr.Length; i++)
+                    {
+                        tm.AddNode1(treeView1, strarr[i]);
+                    }
+                    break;
+                }
+
             }
-            string[] strarr = strs.Split(',');
-            for (int i = 0; i < strarr.Length; i++)
-            {
-                tm.AddNode1(treeView1, strarr[i]);
-            }
+           
         }
         #endregion
 
@@ -433,7 +446,7 @@ namespace eNet编辑器.ThreeView
                     break;
                 case "point":
                     //添加点位
-                    addPoint();
+                    addPoint(keys[FileMesege.cbTypeIndex]);
                     //MessageBox.Show("name");
                     break;
                 case "scene":

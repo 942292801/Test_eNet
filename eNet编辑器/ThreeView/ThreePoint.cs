@@ -32,7 +32,7 @@ namespace eNet编辑器.ThreeView
                 // List<string> isExpands = tm.treeIsExpandsState(treeView1);
                 treeView1.Nodes.Clear();
                 tm.AddNode1(treeView1, "所有点位");
-                DirectoryInfo folder = new DirectoryInfo(Application.StartupPath + "//objs");
+                DirectoryInfo folder = new DirectoryInfo(Application.StartupPath + "\\objs");
                 string name = "";
                 foreach (FileInfo file in folder.GetFiles("*.ini"))
                 {

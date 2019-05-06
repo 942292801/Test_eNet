@@ -49,18 +49,20 @@
             // txtGateway
             // 
             this.txtGateway.Enabled = false;
-            this.txtGateway.Location = new System.Drawing.Point(65, 13);
+            this.txtGateway.Location = new System.Drawing.Point(76, 18);
+            this.txtGateway.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtGateway.Name = "txtGateway";
-            this.txtGateway.Size = new System.Drawing.Size(164, 21);
+            this.txtGateway.Size = new System.Drawing.Size(191, 23);
             this.txtGateway.TabIndex = 63;
             this.txtGateway.Text = "192.168.1.230";
             // 
             // btnCancle
             // 
             this.btnCancle.Font = new System.Drawing.Font("幼圆", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnCancle.Location = new System.Drawing.Point(145, 224);
+            this.btnCancle.Location = new System.Drawing.Point(169, 317);
+            this.btnCancle.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnCancle.Name = "btnCancle";
-            this.btnCancle.Size = new System.Drawing.Size(81, 27);
+            this.btnCancle.Size = new System.Drawing.Size(94, 38);
             this.btnCancle.TabIndex = 62;
             this.btnCancle.Text = "返回";
             this.btnCancle.UseVisualStyleBackColor = true;
@@ -69,9 +71,10 @@
             // btnDecid
             // 
             this.btnDecid.Font = new System.Drawing.Font("幼圆", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnDecid.Location = new System.Drawing.Point(13, 224);
+            this.btnDecid.Location = new System.Drawing.Point(15, 317);
+            this.btnDecid.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnDecid.Name = "btnDecid";
-            this.btnDecid.Size = new System.Drawing.Size(81, 27);
+            this.btnDecid.Size = new System.Drawing.Size(94, 38);
             this.btnDecid.TabIndex = 59;
             this.btnDecid.Text = "添加";
             this.btnDecid.UseVisualStyleBackColor = true;
@@ -81,7 +84,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("幼圆", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label1.Location = new System.Drawing.Point(10, 13);
+            this.label1.Location = new System.Drawing.Point(12, 18);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(49, 14);
             this.label1.TabIndex = 57;
@@ -89,16 +92,17 @@
             // 
             // txtNum
             // 
-            this.txtNum.Location = new System.Drawing.Point(65, 45);
+            this.txtNum.Location = new System.Drawing.Point(76, 64);
+            this.txtNum.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtNum.Name = "txtNum";
-            this.txtNum.Size = new System.Drawing.Size(164, 21);
+            this.txtNum.Size = new System.Drawing.Size(191, 23);
             this.txtNum.TabIndex = 65;
             // 
             // lbNum
             // 
             this.lbNum.AutoSize = true;
             this.lbNum.Font = new System.Drawing.Font("幼圆", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lbNum.Location = new System.Drawing.Point(10, 45);
+            this.lbNum.Location = new System.Drawing.Point(12, 64);
             this.lbNum.Name = "lbNum";
             this.lbNum.Size = new System.Drawing.Size(63, 14);
             this.lbNum.TabIndex = 64;
@@ -108,7 +112,7 @@
             // 
             this.lbName.AutoSize = true;
             this.lbName.Font = new System.Drawing.Font("幼圆", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lbName.Location = new System.Drawing.Point(10, 193);
+            this.lbName.Location = new System.Drawing.Point(12, 273);
             this.lbName.Name = "lbName";
             this.lbName.Size = new System.Drawing.Size(49, 14);
             this.lbName.TabIndex = 66;
@@ -118,9 +122,10 @@
             // 
             this.cbs1.Enabled = false;
             this.cbs1.FormattingEnabled = true;
-            this.cbs1.Location = new System.Drawing.Point(65, 74);
+            this.cbs1.Location = new System.Drawing.Point(76, 105);
+            this.cbs1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.cbs1.Name = "cbs1";
-            this.cbs1.Size = new System.Drawing.Size(164, 20);
+            this.cbs1.Size = new System.Drawing.Size(191, 25);
             this.cbs1.TabIndex = 69;
             this.cbs1.SelectedIndexChanged += new System.EventHandler(this.cbs1_SelectedIndexChanged);
             // 
@@ -128,7 +133,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("幼圆", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label2.Location = new System.Drawing.Point(10, 75);
+            this.label2.Location = new System.Drawing.Point(12, 106);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(56, 14);
             this.label2.TabIndex = 68;
@@ -138,9 +143,10 @@
             // 
             this.cbs2.Enabled = false;
             this.cbs2.FormattingEnabled = true;
-            this.cbs2.Location = new System.Drawing.Point(65, 104);
+            this.cbs2.Location = new System.Drawing.Point(76, 147);
+            this.cbs2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.cbs2.Name = "cbs2";
-            this.cbs2.Size = new System.Drawing.Size(164, 20);
+            this.cbs2.Size = new System.Drawing.Size(191, 25);
             this.cbs2.TabIndex = 71;
             this.cbs2.SelectedIndexChanged += new System.EventHandler(this.cbs2_SelectedIndexChanged);
             // 
@@ -148,7 +154,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("幼圆", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label3.Location = new System.Drawing.Point(10, 104);
+            this.label3.Location = new System.Drawing.Point(12, 147);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(56, 14);
             this.label3.TabIndex = 70;
@@ -158,9 +164,10 @@
             // 
             this.cbs3.Enabled = false;
             this.cbs3.FormattingEnabled = true;
-            this.cbs3.Location = new System.Drawing.Point(65, 131);
+            this.cbs3.Location = new System.Drawing.Point(76, 186);
+            this.cbs3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.cbs3.Name = "cbs3";
-            this.cbs3.Size = new System.Drawing.Size(164, 20);
+            this.cbs3.Size = new System.Drawing.Size(191, 25);
             this.cbs3.TabIndex = 73;
             this.cbs3.SelectedIndexChanged += new System.EventHandler(this.cbs3_SelectedIndexChanged);
             // 
@@ -168,7 +175,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("幼圆", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label4.Location = new System.Drawing.Point(10, 131);
+            this.label4.Location = new System.Drawing.Point(12, 186);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(56, 14);
             this.label4.TabIndex = 72;
@@ -178,9 +185,10 @@
             // 
             this.cbs4.Enabled = false;
             this.cbs4.FormattingEnabled = true;
-            this.cbs4.Location = new System.Drawing.Point(65, 161);
+            this.cbs4.Location = new System.Drawing.Point(76, 228);
+            this.cbs4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.cbs4.Name = "cbs4";
-            this.cbs4.Size = new System.Drawing.Size(164, 20);
+            this.cbs4.Size = new System.Drawing.Size(191, 25);
             this.cbs4.TabIndex = 75;
             this.cbs4.SelectedIndexChanged += new System.EventHandler(this.cbs4_SelectedIndexChanged);
             // 
@@ -188,7 +196,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("幼圆", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label5.Location = new System.Drawing.Point(10, 161);
+            this.label5.Location = new System.Drawing.Point(12, 228);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(56, 14);
             this.label5.TabIndex = 74;
@@ -197,16 +205,17 @@
             // txtName
             // 
             this.txtName.FormattingEnabled = true;
-            this.txtName.Location = new System.Drawing.Point(65, 192);
+            this.txtName.Location = new System.Drawing.Point(76, 272);
+            this.txtName.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(164, 20);
+            this.txtName.Size = new System.Drawing.Size(191, 25);
             this.txtName.TabIndex = 76;
             // 
             // TsSceneAdd
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(241, 263);
+            this.ClientSize = new System.Drawing.Size(281, 373);
             this.Controls.Add(this.txtName);
             this.Controls.Add(this.cbs4);
             this.Controls.Add(this.label5);
@@ -223,8 +232,10 @@
             this.Controls.Add(this.btnCancle);
             this.Controls.Add(this.btnDecid);
             this.Controls.Add(this.label1);
+            this.Font = new System.Drawing.Font("微软雅黑", 9F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.ImeMode = System.Windows.Forms.ImeMode.HangulFull;
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "TsSceneAdd";
             this.Text = "TsSceneAdd";
             this.Load += new System.EventHandler(this.TsSceneAdd_Load);

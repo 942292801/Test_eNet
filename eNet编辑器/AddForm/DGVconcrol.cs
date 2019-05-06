@@ -121,53 +121,32 @@ namespace eNet编辑器.AddForm
         private void cbTextChange(ComboBox cb,string info)
         {
             cb.Items.Clear();
+            cb.Enabled = true;
             if (info.Contains("\\"))
             {
-                string[] infos = info.Split('\\');
-                for (int l = 0; l < infos.Length; l++)
-                { 
-                    if(infos[l].Contains('-'))
-                    {
-                        
-                    }
-                }
-
-                int j = Convert.ToInt32(infos[1]);
-                for (int i = Convert.ToInt32(infos[0]); i <= j; i++)
-                {
-                    cb.Items.Add(i.ToString());
-                }
-                cb.Enabled = true;
+                dealXiegan(cb, info);
             }
-            else if(info.Contains("-"))
+            else if (info.Contains(":"))
             {
-                string [] infos = info.Split('-');        
-                int j = Convert.ToInt32(infos[1]);
-                for (int i = Convert .ToInt32(infos[0]); i <= j; i++)
-                {
-                    cb.Items.Add(i.ToString());
-                }
-                cb.Enabled = true;
+                dealMaohao(cb, info);
+            }
+            else if (info.Contains("-"))
+            {
+                dealHenggan(cb, info);
             }
             else if (info == "getObj")
             {
-                if (point != null && point.objType != "" && point.value != "" )
+                if (point != null && point.objType != "" && point.value != "")
                 {
-                    string filepath = string.Format("{0}//objs//{1}.ini",path,point.objType);
-                    List<string> keys = IniConfig.ReadKeys(point.value, filepath);
-                    for (int i = 2; i < keys.Count; i++)
-                    {
-                        cb.Items.Add(string.Format("{0} {1}", keys[i],IniConfig.GetValue(filepath, point.value, keys[i]))  );
-                    }
-                    cb.Enabled = true;
+                    dealGetObj(cb, info);
+                    
                 }
                 else
                 {
                     cb.Items.Add("点位：对象和参数未赋值 ");
-                 
                     cb.Enabled = false;
                 }
-               
+
             }
             else
             {
@@ -177,6 +156,66 @@ namespace eNet编辑器.AddForm
             //初始化索引
             cb.SelectedIndex = 0;
             
+        }
+
+        private void dealXiegan(ComboBox cb,string info)
+        {
+            string[] parents = info.Split('\\');
+            for (int l = 0; l < parents.Length; l++)
+            {
+                if (parents[l].Contains(':'))
+                {
+                    dealMaohao(cb, parents[l]);
+                }
+                else if(parents[l].Contains('-'))
+                {
+                    dealHenggan(cb, parents[l]);
+                }
+                else
+                {
+                    cb.Items.Add(parents[l]);
+                }
+            }
+        }
+
+        private void dealMaohao(ComboBox cb, string info)
+        {
+            string[] parents = info.Split(':');
+            if (parents[0].Contains("-"))
+            {
+                string[] child = parents[0].Split('-');
+                int j = Convert.ToInt32(child[1]);
+                for (int i = Convert.ToInt32(child[0]); i <= j; i++)
+                {
+                    cb.Items.Add(i.ToString()+parents[1]);
+                }
+            }
+            else
+            {
+                cb.Items.Add(info);
+            }
+            
+        }
+
+        private void dealHenggan(ComboBox cb, string info)
+        {
+            string[] child = info.Split('-');
+            int j = Convert.ToInt32(child[1]);
+            for (int i = Convert.ToInt32(child[0]); i <= j; i++)
+            {
+                cb.Items.Add(i.ToString());
+            }
+        }
+
+        private void dealGetObj(ComboBox cb, string info)
+        {
+            string filepath = string.Format("{0}//objs//{1}.ini", path, point.objType);
+            List<string> keys = IniConfig.ReadKeys(point.value, filepath);
+            
+            for (int i = 2; i < keys.Count; i++)
+            {
+                cbTextChange(cb, IniConfig.GetValue(filepath, point.value, keys[i]));
+            }
         }
 
         //改变cbversion窗口值改变

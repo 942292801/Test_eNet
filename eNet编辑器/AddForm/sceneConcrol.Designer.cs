@@ -45,9 +45,10 @@
             // btnAffirm
             // 
             this.btnAffirm.Font = new System.Drawing.Font("幼圆", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnAffirm.Location = new System.Drawing.Point(22, 227);
+            this.btnAffirm.Location = new System.Drawing.Point(26, 322);
+            this.btnAffirm.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnAffirm.Name = "btnAffirm";
-            this.btnAffirm.Size = new System.Drawing.Size(60, 27);
+            this.btnAffirm.Size = new System.Drawing.Size(70, 38);
             this.btnAffirm.TabIndex = 81;
             this.btnAffirm.Text = "确认";
             this.btnAffirm.UseVisualStyleBackColor = true;
@@ -56,9 +57,10 @@
             // btnReturn
             // 
             this.btnReturn.Font = new System.Drawing.Font("幼圆", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnReturn.Location = new System.Drawing.Point(99, 227);
+            this.btnReturn.Location = new System.Drawing.Point(115, 322);
+            this.btnReturn.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnReturn.Name = "btnReturn";
-            this.btnReturn.Size = new System.Drawing.Size(60, 27);
+            this.btnReturn.Size = new System.Drawing.Size(70, 38);
             this.btnReturn.TabIndex = 80;
             this.btnReturn.Text = "返回";
             this.btnReturn.UseVisualStyleBackColor = true;
@@ -68,16 +70,17 @@
             // 
             this.cb4.Enabled = false;
             this.cb4.FormattingEnabled = true;
-            this.cb4.Location = new System.Drawing.Point(4, 201);
+            this.cb4.Location = new System.Drawing.Point(5, 285);
+            this.cb4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.cb4.Name = "cb4";
-            this.cb4.Size = new System.Drawing.Size(184, 20);
+            this.cb4.Size = new System.Drawing.Size(214, 25);
             this.cb4.TabIndex = 79;
             // 
             // lb4
             // 
             this.lb4.AutoSize = true;
             this.lb4.Font = new System.Drawing.Font("幼圆", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lb4.Location = new System.Drawing.Point(2, 182);
+            this.lb4.Location = new System.Drawing.Point(2, 258);
             this.lb4.Name = "lb4";
             this.lb4.Size = new System.Drawing.Size(63, 14);
             this.lb4.TabIndex = 78;
@@ -87,7 +90,7 @@
             // 
             this.lb3.AutoSize = true;
             this.lb3.Font = new System.Drawing.Font("幼圆", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lb3.Location = new System.Drawing.Point(2, 138);
+            this.lb3.Location = new System.Drawing.Point(2, 195);
             this.lb3.Name = "lb3";
             this.lb3.Size = new System.Drawing.Size(63, 14);
             this.lb3.TabIndex = 77;
@@ -97,7 +100,7 @@
             // 
             this.lb2.AutoSize = true;
             this.lb2.Font = new System.Drawing.Font("幼圆", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lb2.Location = new System.Drawing.Point(2, 94);
+            this.lb2.Location = new System.Drawing.Point(2, 133);
             this.lb2.Name = "lb2";
             this.lb2.Size = new System.Drawing.Size(63, 14);
             this.lb2.TabIndex = 76;
@@ -107,34 +110,37 @@
             // 
             this.cb3.Enabled = false;
             this.cb3.FormattingEnabled = true;
-            this.cb3.Location = new System.Drawing.Point(4, 157);
+            this.cb3.Location = new System.Drawing.Point(5, 222);
+            this.cb3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.cb3.Name = "cb3";
-            this.cb3.Size = new System.Drawing.Size(184, 20);
+            this.cb3.Size = new System.Drawing.Size(214, 25);
             this.cb3.TabIndex = 75;
             // 
             // cb2
             // 
             this.cb2.Enabled = false;
             this.cb2.FormattingEnabled = true;
-            this.cb2.Location = new System.Drawing.Point(4, 113);
+            this.cb2.Location = new System.Drawing.Point(5, 160);
+            this.cb2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.cb2.Name = "cb2";
-            this.cb2.Size = new System.Drawing.Size(184, 20);
+            this.cb2.Size = new System.Drawing.Size(214, 25);
             this.cb2.TabIndex = 74;
             // 
             // cb1
             // 
             this.cb1.Enabled = false;
             this.cb1.FormattingEnabled = true;
-            this.cb1.Location = new System.Drawing.Point(5, 69);
+            this.cb1.Location = new System.Drawing.Point(6, 98);
+            this.cb1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.cb1.Name = "cb1";
-            this.cb1.Size = new System.Drawing.Size(184, 20);
+            this.cb1.Size = new System.Drawing.Size(214, 25);
             this.cb1.TabIndex = 73;
             // 
             // lb1
             // 
             this.lb1.AutoSize = true;
             this.lb1.Font = new System.Drawing.Font("幼圆", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lb1.Location = new System.Drawing.Point(2, 50);
+            this.lb1.Location = new System.Drawing.Point(2, 71);
             this.lb1.Name = "lb1";
             this.lb1.Size = new System.Drawing.Size(63, 14);
             this.lb1.TabIndex = 72;
@@ -144,9 +150,10 @@
             // 
             this.cbVersion.FormattingEnabled = true;
             this.cbVersion.ImeMode = System.Windows.Forms.ImeMode.Close;
-            this.cbVersion.Location = new System.Drawing.Point(5, 25);
+            this.cbVersion.Location = new System.Drawing.Point(6, 35);
+            this.cbVersion.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.cbVersion.Name = "cbVersion";
-            this.cbVersion.Size = new System.Drawing.Size(184, 20);
+            this.cbVersion.Size = new System.Drawing.Size(214, 25);
             this.cbVersion.TabIndex = 71;
             this.cbVersion.SelectedIndexChanged += new System.EventHandler(this.cbVersion_SelectedIndexChanged);
             // 
@@ -154,7 +161,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("幼圆", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label1.Location = new System.Drawing.Point(64, 5);
+            this.label1.Location = new System.Drawing.Point(75, 7);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(63, 14);
             this.label1.TabIndex = 70;
@@ -162,9 +169,9 @@
             // 
             // sceneConcrol
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(194, 270);
+            this.ClientSize = new System.Drawing.Size(226, 382);
             this.Controls.Add(this.btnAffirm);
             this.Controls.Add(this.btnReturn);
             this.Controls.Add(this.cb4);
@@ -177,7 +184,9 @@
             this.Controls.Add(this.lb1);
             this.Controls.Add(this.cbVersion);
             this.Controls.Add(this.label1);
+            this.Font = new System.Drawing.Font("微软雅黑", 9F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "sceneConcrol";
             this.Text = "sceneConcrol";
             this.Load += new System.EventHandler(this.sceneConcrol_Load);
