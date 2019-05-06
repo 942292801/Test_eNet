@@ -261,19 +261,6 @@
             "type": "13.0_RGB"
         },
         {
-            "pid": 43469,
-            "area1": "北区",
-            "area2": "",
-            "area3": "",
-            "area4": "",
-            "name": "按键",
-            "ip": "",
-            "address": "FFFFFFFF",
-            "objType": "",
-            "value": "",
-            "type": ""
-        },
-        {
             "pid": 70978,
             "area1": "北区",
             "area2": "",
@@ -285,6 +272,32 @@
             "objType": "curtain",
             "value": "value2",
             "type": "14.0_data"
+        },
+        {
+            "pid": 91919,
+            "area1": "北区",
+            "area2": "",
+            "area3": "",
+            "area4": "",
+            "name": "洗碗机1",
+            "ip": "192.168.1.5",
+            "address": "05000106",
+            "objType": "",
+            "value": "",
+            "type": "10.0_key"
+        },
+        {
+            "pid": 50314,
+            "area1": "北区",
+            "area2": "",
+            "area3": "",
+            "area4": "",
+            "name": "酒柜1",
+            "ip": "192.168.1.5",
+            "address": "05000105",
+            "objType": "",
+            "value": "",
+            "type": "8.0_uart"
         }
     ],
     "scene": [
@@ -323,6 +336,19 @@
             "name": "全关",
             "ip": "192.168.1.3",
             "address": "03100002",
+            "objType": "",
+            "value": "",
+            "type": "4.0_scene"
+        },
+        {
+            "pid": 61408,
+            "area1": "北区",
+            "area2": "",
+            "area3": "",
+            "area4": "",
+            "name": "全开",
+            "ip": "192.168.1.5",
+            "address": "05100001",
             "objType": "",
             "value": "",
             "type": "4.0_scene"

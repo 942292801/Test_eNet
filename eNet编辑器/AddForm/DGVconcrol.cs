@@ -136,7 +136,7 @@ namespace eNet编辑器.AddForm
             }
             else if (info == "getObj")
             {
-                if (point != null && point.objType != "" && point.value != "")
+                if (point != null && !string.IsNullOrEmpty(point.objType) && !string.IsNullOrEmpty(point.value))
                 {
                     dealGetObj(cb, info);
                     
@@ -229,20 +229,40 @@ namespace eNet编辑器.AddForm
         {
             if ( client.Connected())
             {
-                string cb4Num = Regex.Replace(cb4.Text, @"[^\d]*", "");
-                if (string.IsNullOrEmpty(cb4Num))
+                string cb1Num = dealNum(cb1.Text);
+                string cb2Num = dealNum(cb2.Text);
+                string cb3Num = dealNum(cb3.Text);
+                string cb4Num = dealNum(cb4.Text);
+                if (string.IsNullOrEmpty(cb1Num) || string.IsNullOrEmpty(cb2Num) || string.IsNullOrEmpty(cb3Num) || string.IsNullOrEmpty(cb4Num))
                 {
                     return;
                 }
                 //1.筛选当前发送内容
                 //获取obj发送的指令    SET; 指令;对象信息  \r\n
-                string content = SocketUtil.strtohexstr(cb1.Text) + SocketUtil.strtohexstr(cb2.Text) + SocketUtil.strtohexstr(cb3.Text) + SocketUtil.strtohexstr(cb4Num);
+                string content = SocketUtil.strtohexstr(cb1Num) + SocketUtil.strtohexstr(cb2Num) + SocketUtil.strtohexstr(cb3Num) + SocketUtil.strtohexstr(cb4Num);
                 string msg = SocketUtil.getObjSet(content, rowindex, FileMesege.tnselectNode);
                 //客户端发送数据
                 client.SendAsync(msg);
             }
         
+        }
 
+        /// <summary>
+        /// 提取 21秒 或 255 ：0.1秒 前面的数字
+        /// </summary>
+        /// <param name="str"></param>
+        /// <returns></returns>
+        private string dealNum(string str) 
+        {
+            string tmp = "";
+            if (str.Contains(":"))
+            { 
+                tmp = Regex.Replace(str.Split(':')[0], @"[^\d]*", "");
+            }else
+            {
+                tmp = Regex.Replace(str, @"[^\d]*", "");
+            }
+            return tmp;
         }
 
         private void btnReturn_Click(object sender, EventArgs e)

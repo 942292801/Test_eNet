@@ -271,21 +271,6 @@ namespace eNet编辑器
 
         #region 操作PointList的管理工具
 
-        //测试新建  注意不能让ip为null address默认为ffffffff
-        public static void newPoint(string ip ,string id ,string num)
-        {
-
-            DataJson.PointInfo item = new DataJson.PointInfo();
-            item.ip = ip;
-            item.address = SocketUtil.GetIPstyle(ip, 4) + "00" + SocketUtil.strtohexstr(id)+SocketUtil.strtohexstr(num);
-            item.name = num;
-
-            if (FileMesege.PointList == null)
-            {
-                FileMesege.PointList = new DataJson.Point();
-            }
-            FileMesege.PointList.equipment.Add(item);
-        }
 
         /// <summary>
         /// 新建point节点
@@ -324,6 +309,8 @@ namespace eNet编辑器
             eq.area4 = sections[3];
             eq.ip = ip;
             eq.address = address;
+            eq.objType = "";
+            eq.value = "";
             eq.type = IniHelper.findTypesIniTypebyName(typeName);
             FileMesege.PointList.equipment.Add(eq);
 

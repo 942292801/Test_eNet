@@ -126,32 +126,29 @@ namespace eNet编辑器.AddForm
         private void cbTextChange(ComboBox cb, string info)
         {
             cb.Items.Clear();
-            if (info.Contains("-"))
+            cb.Enabled = true;
+            if (info.Contains("\\"))
             {
-                string[] infos = info.Split('-');
-                int j = Convert.ToInt32(infos[1]);
-                for (int i = Convert.ToInt32(infos[0]); i <= j; i++)
-                {
-                    cb.Items.Add(i.ToString());
-                }
-                cb.Enabled = true;
+                dealXiegan(cb, info);
+            }
+            else if (info.Contains(":"))
+            {
+                dealMaohao(cb, info);
+            }
+            else if (info.Contains("-"))
+            {
+                dealHenggan(cb, info);
             }
             else if (info == "getObj")
             {
-                if (point != null && point.objType != "" && point.value != "")
+                if (point != null && !string.IsNullOrEmpty(point.objType) && !string.IsNullOrEmpty(point.value) )
                 {
-                    string filepath = string.Format("{0}//objs//{1}.ini", Application.StartupPath, point.objType);
-                    List<string> keys = IniConfig.ReadKeys(point.value, filepath);
-                    for (int i = 2; i < keys.Count; i++)
-                    {
-                        cb.Items.Add(string.Format("{0} {1}", keys[i], IniConfig.GetValue(filepath, point.value, keys[i])));
-                    }
-                    cb.Enabled = true;
+                    dealGetObj(cb, info);
+
                 }
                 else
                 {
                     cb.Items.Add("点位：对象和参数未赋值 ");
-
                     cb.Enabled = false;
                 }
 
@@ -166,17 +163,81 @@ namespace eNet编辑器.AddForm
          
         }
 
+        private void dealXiegan(ComboBox cb, string info)
+        {
+            string[] parents = info.Split('\\');
+            for (int l = 0; l < parents.Length; l++)
+            {
+                if (parents[l].Contains(':'))
+                {
+                    dealMaohao(cb, parents[l]);
+                }
+                else if (parents[l].Contains('-'))
+                {
+                    dealHenggan(cb, parents[l]);
+                }
+                else
+                {
+                    cb.Items.Add(parents[l]);
+                }
+            }
+        }
+
+        private void dealMaohao(ComboBox cb, string info)
+        {
+            string[] parents = info.Split(':');
+            if (parents[0].Contains("-"))
+            {
+                string[] child = parents[0].Split('-');
+                int j = Convert.ToInt32(child[1]);
+                for (int i = Convert.ToInt32(child[0]); i <= j; i++)
+                {
+                    cb.Items.Add(i.ToString()  + parents[1]);
+                }
+            }
+            else
+            {
+                cb.Items.Add(info);
+            }
+
+        }
+
+        private void dealHenggan(ComboBox cb, string info)
+        {
+            string[] child = info.Split('-');
+            int j = Convert.ToInt32(child[1]);
+            for (int i = Convert.ToInt32(child[0]); i <= j; i++)
+            {
+                cb.Items.Add(i.ToString());
+            }
+        }
+
+        private void dealGetObj(ComboBox cb, string info)
+        {
+            string filepath = string.Format("{0}//objs//{1}.ini", Application.StartupPath, point.objType);
+            List<string> keys = IniConfig.ReadKeys(point.value, filepath);
+
+            for (int i = 2; i < keys.Count; i++)
+            {
+                cbTextChange(cb, IniConfig.GetValue(filepath, point.value, keys[i]));
+            }
+        }
+
+
         private void btnAffirm_Click(object sender, EventArgs e)
         {
             //Socket sk = new Socket();
             try
             {
-                string cb4Num = Regex.Replace(cb4.Text, @"[^\d]*", "");
-                if (string.IsNullOrEmpty(cb4Num))
+                string cb1Num = dealNum(cb1.Text);
+                string cb2Num = dealNum(cb2.Text);
+                string cb3Num = dealNum(cb3.Text);
+                string cb4Num = dealNum(cb4.Text);
+                if (string.IsNullOrEmpty(cb1Num) || string.IsNullOrEmpty(cb2Num) || string.IsNullOrEmpty(cb3Num) || string.IsNullOrEmpty(cb4Num))
                 {
                     return;
                 }
-                this.opt = SocketUtil.strtohexstr(cb1.Text) + SocketUtil.strtohexstr(cb2.Text) + SocketUtil.strtohexstr(cb3.Text) + SocketUtil.strtohexstr(cb4Num);
+                this.opt = SocketUtil.strtohexstr(cb1Num) + SocketUtil.strtohexstr(cb2Num) + SocketUtil.strtohexstr(cb3Num) + SocketUtil.strtohexstr(cb4Num);
                 if (cb4.Text.Split(' ').Length >1)
                 {
                     this.ver = cb4.Text.Split(' ')[1];
@@ -200,6 +261,25 @@ namespace eNet编辑器.AddForm
             }
             
             
+        }
+
+        /// <summary>
+        /// 提取 21秒 或 255 ：0.1秒 前面的数字
+        /// </summary>
+        /// <param name="str"></param>
+        /// <returns></returns>
+        private string dealNum(string str)
+        {
+            string tmp = "";
+            if (str.Contains(":"))
+            {
+                tmp = Regex.Replace(str.Split(':')[0], @"[^\d]*", "");
+            }
+            else
+            {
+                tmp = Regex.Replace(str, @"[^\d]*", "");
+            }
+            return tmp;
         }
 
         private void btnReturn_Click(object sender, EventArgs e)
