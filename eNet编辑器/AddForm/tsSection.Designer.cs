@@ -40,7 +40,7 @@
             this.plInfoTitle = new System.Windows.Forms.Panel();
             this.btnDecid = new DevComponents.DotNetBar.ButtonX();
             this.symbolBox1 = new DevComponents.DotNetBar.Controls.SymbolBox();
-            this.label3 = new System.Windows.Forms.Label();
+            this.lbTitle = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -123,7 +123,7 @@
             // 
             // panel5
             // 
-            this.panel5.BackColor = System.Drawing.Color.White;
+            this.panel5.BackColor = System.Drawing.SystemColors.Control;
             this.panel5.Controls.Add(this.plInfoTitle);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel5.Location = new System.Drawing.Point(0, 0);
@@ -137,7 +137,7 @@
             this.plInfoTitle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(228)))), ((int)(((byte)(228)))));
             this.plInfoTitle.Controls.Add(this.btnDecid);
             this.plInfoTitle.Controls.Add(this.symbolBox1);
-            this.plInfoTitle.Controls.Add(this.label3);
+            this.plInfoTitle.Controls.Add(this.lbTitle);
             this.plInfoTitle.Dock = System.Windows.Forms.DockStyle.Top;
             this.plInfoTitle.Location = new System.Drawing.Point(0, 0);
             this.plInfoTitle.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -181,22 +181,22 @@
             this.symbolBox1.TabIndex = 2;
             this.symbolBox1.Text = "symbolBox1";
             // 
-            // label3
+            // lbTitle
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label3.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label3.Location = new System.Drawing.Point(25, 4);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(32, 17);
-            this.label3.TabIndex = 1;
-            this.label3.Text = "添加";
+            this.lbTitle.AutoSize = true;
+            this.lbTitle.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lbTitle.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.lbTitle.Location = new System.Drawing.Point(25, 4);
+            this.lbTitle.Name = "lbTitle";
+            this.lbTitle.Size = new System.Drawing.Size(56, 17);
+            this.lbTitle.TabIndex = 1;
+            this.lbTitle.Text = "添加节点";
             // 
             // tsSection
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(290, 156);
             this.Controls.Add(this.panel2);
             this.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
@@ -229,7 +229,7 @@
         private System.Windows.Forms.Panel plInfoTitle;
         private DevComponents.DotNetBar.ButtonX btnDecid;
         private DevComponents.DotNetBar.Controls.SymbolBox symbolBox1;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lbTitle;
 
     }
 }

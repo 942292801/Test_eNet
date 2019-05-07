@@ -222,11 +222,8 @@ namespace eNet编辑器.AddForm
                 cbTextChange(cb, IniConfig.GetValue(filepath, point.value, keys[i]));
             }
         }
-
-
-        private void btnAffirm_Click(object sender, EventArgs e)
+        private void btnDecid_Click(object sender, EventArgs e)
         {
-            //Socket sk = new Socket();
             try
             {
                 string cb1Num = dealNum(cb1.Text);
@@ -238,7 +235,7 @@ namespace eNet编辑器.AddForm
                     return;
                 }
                 this.opt = SocketUtil.strtohexstr(cb1Num) + SocketUtil.strtohexstr(cb2Num) + SocketUtil.strtohexstr(cb3Num) + SocketUtil.strtohexstr(cb4Num);
-                if (cb4.Text.Split(' ').Length >1)
+                if (cb4.Text.Split(' ').Length > 1)
                 {
                     this.ver = cb4.Text.Split(' ')[1];
                 }
@@ -246,8 +243,8 @@ namespace eNet编辑器.AddForm
                 {
                     this.ver = cbVersion.Text;
                 }
-                
-                
+
+
             }
             catch
             {
@@ -259,8 +256,6 @@ namespace eNet编辑器.AddForm
 
                 this.DialogResult = DialogResult.OK;
             }
-            
-            
         }
 
         /// <summary>
@@ -282,15 +277,14 @@ namespace eNet编辑器.AddForm
             return tmp;
         }
 
-        private void btnReturn_Click(object sender, EventArgs e)
-        {
-            this.DialogResult = DialogResult.Cancel;
-        }
+  
 
         private void cbVersion_SelectedIndexChanged(object sender, EventArgs e)
         {
             cbAndlb(cbVersion.SelectedIndex);
         }
+
+        
 
       
     }

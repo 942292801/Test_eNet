@@ -466,20 +466,8 @@ namespace eNet编辑器.DgvView
                     return;
                 }
             }
-            DataJson.PointInfo eq = new DataJson.PointInfo();
-            if (dataGridView1.Rows[count].Cells[3].Value != null)
-            {
-                eq.name = dataGridView1.Rows[count].Cells[3].Value.ToString();
-            }
-            else
-            {
-                eq.name = "";
-            }           
-            eq.ip = parents[0];
-            eq.address = address;
-            FileMesege.PointList.equipment.Add(eq);
-            DataJson.totalList NewList2 = FileMesege.cmds.getListInfos();
-            FileMesege.cmds.DoNewCommand(NewList2, OldList);
+            dataGridView1.Rows[count].Cells[3].Value = null;
+          
             }//try
             catch (Exception ex) { MessageBox.Show(ex + "临时调试错误信息"); }
         }

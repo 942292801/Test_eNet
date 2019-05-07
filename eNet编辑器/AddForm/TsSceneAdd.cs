@@ -360,10 +360,6 @@ namespace eNet编辑器.AddForm
 
         
 
-        private void btnCancle_Click(object sender, EventArgs e)
-        {
-            this.DialogResult = DialogResult.Cancel;
-        }
 
 
         //当选择框项改变时候 更新数据
@@ -428,6 +424,8 @@ namespace eNet编辑器.AddForm
         {
 
         }
+
+ 
 
 
 

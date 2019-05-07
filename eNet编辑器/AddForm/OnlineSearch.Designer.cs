@@ -53,7 +53,7 @@
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(224, 494);
+            this.panel1.Size = new System.Drawing.Size(224, 473);
             this.panel1.TabIndex = 4;
             // 
             // panel2
@@ -64,7 +64,7 @@
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(224, 494);
+            this.panel2.Size = new System.Drawing.Size(224, 473);
             this.panel2.TabIndex = 3;
             // 
             // panel4
@@ -74,7 +74,7 @@
             this.panel4.Location = new System.Drawing.Point(0, 32);
             this.panel4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(224, 462);
+            this.panel4.Size = new System.Drawing.Size(224, 441);
             this.panel4.TabIndex = 4;
             // 
             // treeView1
@@ -90,7 +90,7 @@
             this.treeView1.Margin = new System.Windows.Forms.Padding(0, 7, 0, 0);
             this.treeView1.Name = "treeView1";
             this.treeView1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.treeView1.Size = new System.Drawing.Size(224, 462);
+            this.treeView1.Size = new System.Drawing.Size(224, 441);
             this.treeView1.TabIndex = 0;
             this.treeView1.DrawNode += new System.Windows.Forms.DrawTreeNodeEventHandler(this.treeView1_DrawNode);
             this.treeView1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.treeView1_MouseDoubleClick);
@@ -142,9 +142,9 @@
             this.label3.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.label3.Location = new System.Drawing.Point(25, 4);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(32, 17);
+            this.label3.Size = new System.Drawing.Size(56, 17);
             this.label3.TabIndex = 5;
-            this.label3.Text = "添加";
+            this.label3.Text = "在线搜索";
             // 
             // btnImport
             // 
@@ -193,7 +193,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Lavender;
-            this.ClientSize = new System.Drawing.Size(224, 494);
+            this.ClientSize = new System.Drawing.Size(224, 473);
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("微软雅黑", 9F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;

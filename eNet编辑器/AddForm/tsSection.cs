@@ -36,10 +36,20 @@ namespace eNet编辑器.AddForm
             set { newflag = value; }
         }
 
+        private string lbText = "";
+
+        public string LbText
+        {
+            get { return lbText; }
+            set { lbText = value; }
+        }
+
+
         //回调添加节点
         public event AddNode addNode;
         private void tsSection_Load(object sender, EventArgs e)
         {
+            lbTitle.Text = lbText;
             addtype(cbtype);
             cbtype.SelectedIndex = selectindex;
            

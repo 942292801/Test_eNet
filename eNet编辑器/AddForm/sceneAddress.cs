@@ -178,10 +178,11 @@ namespace eNet编辑器.AddForm
            
         }
 
-        private void btnAffirm_Click(object sender, EventArgs e)
+        private void btnDecid_Click(object sender, EventArgs e)
         {
+
             string newobj = "";
-            if (cb1.Text != "" && cb2.Text!="")
+            if (cb1.Text != "" && cb2.Text != "")
             {
                 newobj = SocketUtil.strtohexstr(cb1.Text) + SocketUtil.strtohexstr(cb2.Text);
                 if (cb3.Text != "" && cb4.Text != "")
@@ -193,7 +194,7 @@ namespace eNet编辑器.AddForm
                     string tmp = SocketUtil.strtohexstr(cb4.Text);
                     while (tmp.Length < 4)
                     {
-                        tmp =tmp.Insert(0, "0");
+                        tmp = tmp.Insert(0, "0");
                     }
                     newobj = newobj + tmp;
                 }
@@ -204,14 +205,9 @@ namespace eNet编辑器.AddForm
                 this.DialogResult = DialogResult.OK;
             }
             this.DialogResult = DialogResult.OK;
-            
-            
         }
 
-        private void btnReturn_Click(object sender, EventArgs e)
-        {
-            this.DialogResult = DialogResult.Cancel;
-        }
+
 
    
 
@@ -219,6 +215,8 @@ namespace eNet编辑器.AddForm
         {
             findPort(cb3.Text);
         }
+
+      
 
 
         

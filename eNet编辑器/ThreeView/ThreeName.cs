@@ -119,6 +119,7 @@ namespace eNet编辑器.ThreeView
             //把当前选仲树状图网关传递到info里面 给新建设备框网关使用           
             FileMesege.info = treeView1.SelectedNode.Text;
             tnd.isNew = true;
+            tnd.Title = "添加";
             tnd.ShowDialog();
 
         }
@@ -305,6 +306,7 @@ namespace eNet编辑器.ThreeView
             //把当前选仲树状图网关传递到info里面 给新建设备框网关使用
             FileMesege.info = treeView1.SelectedNode.Parent.Text + " " + treeView1.SelectedNode.Text;
             tnd.isNew = false;
+            tnd.Title = "修改";
             tnd.ShowDialog();
             if (tnd.DialogResult == DialogResult.OK)
             {

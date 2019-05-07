@@ -104,6 +104,7 @@ namespace eNet编辑器.ThreeView
             {
                 return;
             }
+            tss.LbText = "添加节点";
             tss.Selectindex = i;
             tss.ShowDialog();
         }
@@ -125,6 +126,7 @@ namespace eNet编辑器.ThreeView
         /// <returns></returns>
         private void newTsSection()
         {
+            tss.LbText = "添加子节点";
             //把窗口向屏幕中间刷新
             tss.StartPosition = FormStartPosition.CenterParent;
             tss.Newflag = true;
@@ -1635,6 +1637,7 @@ namespace eNet编辑器.ThreeView
             {
                 return;
             }
+            tss.LbText = "添加节点";
             tss.Selectindex = i;
             tss.ShowDialog();
         }

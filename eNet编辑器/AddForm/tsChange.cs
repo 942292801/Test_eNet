@@ -27,14 +27,12 @@ namespace eNet编辑器.AddForm
             this.DialogResult = DialogResult.OK;
         }
 
-        private void btnCancle_Click(object sender, EventArgs e)
-        {
-            this.DialogResult = DialogResult.Cancel;
-        }
 
         private void tsChange_Load(object sender, EventArgs e)
         {
             txtName.Text = FileMesege.info;
         }
+
+   
     }
 }

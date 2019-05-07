@@ -28,8 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnAffirm = new System.Windows.Forms.Button();
-            this.btnReturn = new System.Windows.Forms.Button();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(sceneConcrol));
             this.cb4 = new System.Windows.Forms.ComboBox();
             this.lb4 = new System.Windows.Forms.Label();
             this.lb3 = new System.Windows.Forms.Label();
@@ -39,32 +38,12 @@
             this.cb1 = new System.Windows.Forms.ComboBox();
             this.lb1 = new System.Windows.Forms.Label();
             this.cbVersion = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.plInfoTitle = new System.Windows.Forms.Panel();
+            this.btnDecid = new DevComponents.DotNetBar.ButtonX();
+            this.symbolBox1 = new DevComponents.DotNetBar.Controls.SymbolBox();
+            this.lbName = new System.Windows.Forms.Label();
+            this.plInfoTitle.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // btnAffirm
-            // 
-            this.btnAffirm.Font = new System.Drawing.Font("幼圆", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnAffirm.Location = new System.Drawing.Point(26, 322);
-            this.btnAffirm.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnAffirm.Name = "btnAffirm";
-            this.btnAffirm.Size = new System.Drawing.Size(70, 38);
-            this.btnAffirm.TabIndex = 81;
-            this.btnAffirm.Text = "确认";
-            this.btnAffirm.UseVisualStyleBackColor = true;
-            this.btnAffirm.Click += new System.EventHandler(this.btnAffirm_Click);
-            // 
-            // btnReturn
-            // 
-            this.btnReturn.Font = new System.Drawing.Font("幼圆", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnReturn.Location = new System.Drawing.Point(115, 322);
-            this.btnReturn.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnReturn.Name = "btnReturn";
-            this.btnReturn.Size = new System.Drawing.Size(70, 38);
-            this.btnReturn.TabIndex = 80;
-            this.btnReturn.Text = "返回";
-            this.btnReturn.UseVisualStyleBackColor = true;
-            this.btnReturn.Click += new System.EventHandler(this.btnReturn_Click);
             // 
             // cb4
             // 
@@ -79,30 +58,30 @@
             // lb4
             // 
             this.lb4.AutoSize = true;
-            this.lb4.Font = new System.Drawing.Font("幼圆", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lb4.Font = new System.Drawing.Font("微软雅黑", 9F);
             this.lb4.Location = new System.Drawing.Point(2, 258);
             this.lb4.Name = "lb4";
-            this.lb4.Size = new System.Drawing.Size(63, 14);
+            this.lb4.Size = new System.Drawing.Size(56, 17);
             this.lb4.TabIndex = 78;
             this.lb4.Text = "设备操作";
             // 
             // lb3
             // 
             this.lb3.AutoSize = true;
-            this.lb3.Font = new System.Drawing.Font("幼圆", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lb3.Font = new System.Drawing.Font("微软雅黑", 9F);
             this.lb3.Location = new System.Drawing.Point(2, 195);
             this.lb3.Name = "lb3";
-            this.lb3.Size = new System.Drawing.Size(63, 14);
+            this.lb3.Size = new System.Drawing.Size(56, 17);
             this.lb3.TabIndex = 77;
             this.lb3.Text = "设备操作";
             // 
             // lb2
             // 
             this.lb2.AutoSize = true;
-            this.lb2.Font = new System.Drawing.Font("幼圆", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lb2.Font = new System.Drawing.Font("微软雅黑", 9F);
             this.lb2.Location = new System.Drawing.Point(2, 133);
             this.lb2.Name = "lb2";
-            this.lb2.Size = new System.Drawing.Size(63, 14);
+            this.lb2.Size = new System.Drawing.Size(56, 17);
             this.lb2.TabIndex = 76;
             this.lb2.Text = "设备操作";
             // 
@@ -139,10 +118,10 @@
             // lb1
             // 
             this.lb1.AutoSize = true;
-            this.lb1.Font = new System.Drawing.Font("幼圆", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lb1.Font = new System.Drawing.Font("微软雅黑", 9F);
             this.lb1.Location = new System.Drawing.Point(2, 71);
             this.lb1.Name = "lb1";
-            this.lb1.Size = new System.Drawing.Size(63, 14);
+            this.lb1.Size = new System.Drawing.Size(56, 17);
             this.lb1.TabIndex = 72;
             this.lb1.Text = "设备操作";
             // 
@@ -157,23 +136,73 @@
             this.cbVersion.TabIndex = 71;
             this.cbVersion.SelectedIndexChanged += new System.EventHandler(this.cbVersion_SelectedIndexChanged);
             // 
-            // label1
+            // plInfoTitle
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("幼圆", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label1.Location = new System.Drawing.Point(75, 7);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(63, 14);
-            this.label1.TabIndex = 70;
-            this.label1.Text = "设备操作";
+            this.plInfoTitle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(228)))), ((int)(((byte)(228)))));
+            this.plInfoTitle.Controls.Add(this.btnDecid);
+            this.plInfoTitle.Controls.Add(this.symbolBox1);
+            this.plInfoTitle.Controls.Add(this.lbName);
+            this.plInfoTitle.Dock = System.Windows.Forms.DockStyle.Top;
+            this.plInfoTitle.Location = new System.Drawing.Point(0, 0);
+            this.plInfoTitle.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.plInfoTitle.Name = "plInfoTitle";
+            this.plInfoTitle.Size = new System.Drawing.Size(226, 25);
+            this.plInfoTitle.TabIndex = 82;
+            // 
+            // btnDecid
+            // 
+            this.btnDecid.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnDecid.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnDecid.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnDecid.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
+            this.btnDecid.FocusCuesEnabled = false;
+            this.btnDecid.Font = new System.Drawing.Font("黑体", 9F);
+            this.btnDecid.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.Image;
+            this.btnDecid.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnDecid.HoverImage")));
+            this.btnDecid.Image = ((System.Drawing.Image)(resources.GetObject("btnDecid.Image")));
+            this.btnDecid.Location = new System.Drawing.Point(203, 4);
+            this.btnDecid.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnDecid.Name = "btnDecid";
+            this.btnDecid.Size = new System.Drawing.Size(20, 21);
+            this.btnDecid.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnDecid.TabIndex = 4;
+            this.btnDecid.Tooltip = "确认";
+            this.btnDecid.Click += new System.EventHandler(this.btnDecid_Click);
+            // 
+            // symbolBox1
+            // 
+            // 
+            // 
+            // 
+            this.symbolBox1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.symbolBox1.Location = new System.Drawing.Point(3, 4);
+            this.symbolBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.symbolBox1.Name = "symbolBox1";
+            this.symbolBox1.Size = new System.Drawing.Size(16, 16);
+            this.symbolBox1.Symbol = "";
+            this.symbolBox1.SymbolColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(119)))), ((int)(((byte)(119)))));
+            this.symbolBox1.TabIndex = 2;
+            this.symbolBox1.Text = "symbolBox1";
+            // 
+            // lbName
+            // 
+            this.lbName.AutoSize = true;
+            this.lbName.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lbName.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.lbName.Location = new System.Drawing.Point(25, 4);
+            this.lbName.Name = "lbName";
+            this.lbName.Size = new System.Drawing.Size(56, 17);
+            this.lbName.TabIndex = 1;
+            this.lbName.Text = "设备操作";
             // 
             // sceneConcrol
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(226, 382);
-            this.Controls.Add(this.btnAffirm);
-            this.Controls.Add(this.btnReturn);
+            this.BackColor = System.Drawing.SystemColors.Control;
+            this.ClientSize = new System.Drawing.Size(226, 323);
+            this.Controls.Add(this.plInfoTitle);
             this.Controls.Add(this.cb4);
             this.Controls.Add(this.lb4);
             this.Controls.Add(this.lb3);
@@ -183,13 +212,14 @@
             this.Controls.Add(this.cb1);
             this.Controls.Add(this.lb1);
             this.Controls.Add(this.cbVersion);
-            this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("微软雅黑", 9F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "sceneConcrol";
             this.Text = "sceneConcrol";
             this.Load += new System.EventHandler(this.sceneConcrol_Load);
+            this.plInfoTitle.ResumeLayout(false);
+            this.plInfoTitle.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -197,8 +227,6 @@
 
         #endregion
 
-        private System.Windows.Forms.Button btnAffirm;
-        private System.Windows.Forms.Button btnReturn;
         private System.Windows.Forms.ComboBox cb4;
         private System.Windows.Forms.Label lb4;
         private System.Windows.Forms.Label lb3;
@@ -208,6 +236,9 @@
         private System.Windows.Forms.ComboBox cb1;
         private System.Windows.Forms.Label lb1;
         private System.Windows.Forms.ComboBox cbVersion;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Panel plInfoTitle;
+        private DevComponents.DotNetBar.ButtonX btnDecid;
+        private DevComponents.DotNetBar.Controls.SymbolBox symbolBox1;
+        private System.Windows.Forms.Label lbName;
     }
 }

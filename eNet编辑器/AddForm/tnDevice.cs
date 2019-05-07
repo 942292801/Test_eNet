@@ -35,8 +35,20 @@ namespace eNet编辑器.AddForm
             set { isChange = value; }
         }
 
+        private string title = "";
+
+        public string Title
+        {
+            get { return title; }
+            set { title = value; }
+        }
+
+
+
         private void tnDevice_Load(object sender, EventArgs e)
         {
+            lbTitle.Text = title;
+            //btnDecid.Tooltip = title;
             string[] infos = FileMesege.info.Split(' ');
             if (infos.Length > 2)
             {
@@ -68,10 +80,7 @@ namespace eNet编辑器.AddForm
 
         }
 
-        private void btnCancle_Click(object sender, EventArgs e)
-        {
-            this.DialogResult = DialogResult.Cancel;
-        }
+   
 
         private void btnDecid_Click(object sender, EventArgs e)
         {

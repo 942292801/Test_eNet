@@ -224,10 +224,11 @@ namespace eNet编辑器.AddForm
             cbAndlb(cbVersion.SelectedIndex);
         }
 
+        
         //确认 发送代码操作 或把值传输回DGV框内
-        private void btnAffirm_Click(object sender, EventArgs e)
+        private void btnDecid_Click(object sender, EventArgs e)
         {
-            if ( client.Connected())
+            if (client.Connected())
             {
                 string cb1Num = dealNum(cb1.Text);
                 string cb2Num = dealNum(cb2.Text);
@@ -244,7 +245,6 @@ namespace eNet编辑器.AddForm
                 //客户端发送数据
                 client.SendAsync(msg);
             }
-        
         }
 
         /// <summary>
@@ -265,10 +265,7 @@ namespace eNet编辑器.AddForm
             return tmp;
         }
 
-        private void btnReturn_Click(object sender, EventArgs e)
-        {
-            this.DialogResult = DialogResult.Cancel;
-        }
+ 
         private void DGVconcrol_FormClosed(object sender, FormClosedEventArgs e)
         {
             //断开tcp连接
@@ -331,6 +328,8 @@ namespace eNet编辑器.AddForm
             client.ConnectAsync(strip[0], 6003);
             
         }
+
+      
 
  
     }

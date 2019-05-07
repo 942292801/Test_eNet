@@ -66,10 +66,7 @@ namespace eNet编辑器.AddForm
             
         }
 
-        private void btnCancle_Click(object sender, EventArgs e)
-        {
-            this.DialogResult = DialogResult.Cancel;
-        }
+ 
 
         private void tnGateway_Load(object sender, EventArgs e)
         {
@@ -81,10 +78,12 @@ namespace eNet编辑器.AddForm
             if (!isNew)
             { 
                 //修改
-                btnDecid.Text = "修改";
+                lbTitle.Text = "修改网关";
                 oldinfos = string.Format("{0} {1}", txtGateway.Text, cbVersion.Text);
             }
         }
+
+   
 
 
 
