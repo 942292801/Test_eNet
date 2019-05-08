@@ -91,7 +91,7 @@
             this.treeView1.Margin = new System.Windows.Forms.Padding(0, 7, 0, 0);
             this.treeView1.Name = "treeView1";
             this.treeView1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.treeView1.SelectedImageIndex = 1;
+            this.treeView1.SelectedImageIndex = 2;
             this.treeView1.Size = new System.Drawing.Size(281, 381);
             this.treeView1.TabIndex = 0;
             this.treeView1.DrawNode += new System.Windows.Forms.DrawTreeNodeEventHandler(this.treeView1_DrawNode);
@@ -154,8 +154,9 @@
             // 
             this.imgLIst.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imgLIst.ImageStream")));
             this.imgLIst.TransparentColor = System.Drawing.Color.White;
-            this.imgLIst.Images.SetKeyName(0, "t1.png");
-            this.imgLIst.Images.SetKeyName(1, "t2.png");
+            this.imgLIst.Images.SetKeyName(0, "u74.png");
+            this.imgLIst.Images.SetKeyName(1, "u70.png");
+            this.imgLIst.Images.SetKeyName(2, "u73.png");
             // 
             // contextMenuStrip2
             // 
@@ -205,10 +206,10 @@
             this.btnAddGw.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.Image;
             this.btnAddGw.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnAddGw.HoverImage")));
             this.btnAddGw.Image = ((System.Drawing.Image)(resources.GetObject("btnAddGw.Image")));
-            this.btnAddGw.Location = new System.Drawing.Point(204, 3);
-            this.btnAddGw.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnAddGw.Location = new System.Drawing.Point(205, 5);
+            this.btnAddGw.Margin = new System.Windows.Forms.Padding(6);
             this.btnAddGw.Name = "btnAddGw";
-            this.btnAddGw.Size = new System.Drawing.Size(17, 22);
+            this.btnAddGw.Size = new System.Drawing.Size(15, 15);
             this.btnAddGw.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnAddGw.TabIndex = 5;
             this.btnAddGw.Tooltip = "新增网关";
@@ -225,10 +226,10 @@
             this.btnAddDev.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.Image;
             this.btnAddDev.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnAddDev.HoverImage")));
             this.btnAddDev.Image = ((System.Drawing.Image)(resources.GetObject("btnAddDev.Image")));
-            this.btnAddDev.Location = new System.Drawing.Point(231, 3);
-            this.btnAddDev.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnAddDev.Location = new System.Drawing.Point(232, 5);
+            this.btnAddDev.Margin = new System.Windows.Forms.Padding(6);
             this.btnAddDev.Name = "btnAddDev";
-            this.btnAddDev.Size = new System.Drawing.Size(17, 22);
+            this.btnAddDev.Size = new System.Drawing.Size(15, 15);
             this.btnAddDev.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnAddDev.TabIndex = 4;
             this.btnAddDev.Tooltip = "新建设备";
@@ -245,10 +246,10 @@
             this.btnDel.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.Image;
             this.btnDel.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnDel.HoverImage")));
             this.btnDel.Image = ((System.Drawing.Image)(resources.GetObject("btnDel.Image")));
-            this.btnDel.Location = new System.Drawing.Point(258, 3);
-            this.btnDel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnDel.Location = new System.Drawing.Point(259, 5);
+            this.btnDel.Margin = new System.Windows.Forms.Padding(6);
             this.btnDel.Name = "btnDel";
-            this.btnDel.Size = new System.Drawing.Size(17, 22);
+            this.btnDel.Size = new System.Drawing.Size(15, 15);
             this.btnDel.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnDel.TabIndex = 3;
             this.btnDel.Tooltip = "删除";
@@ -260,12 +261,13 @@
             // 
             // 
             // 
+            this.symbolBox1.BackgroundStyle.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("symbolBox1.BackgroundStyle.BackgroundImage")));
             this.symbolBox1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.symbolBox1.Location = new System.Drawing.Point(3, 5);
+            this.symbolBox1.Location = new System.Drawing.Point(5, 5);
             this.symbolBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.symbolBox1.Name = "symbolBox1";
-            this.symbolBox1.Size = new System.Drawing.Size(16, 16);
-            this.symbolBox1.Symbol = "";
+            this.symbolBox1.Size = new System.Drawing.Size(15, 15);
+            this.symbolBox1.Symbol = "";
             this.symbolBox1.SymbolColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(119)))), ((int)(((byte)(119)))));
             this.symbolBox1.TabIndex = 2;
             this.symbolBox1.Text = "symbolBox1";
@@ -276,7 +278,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("微软雅黑", 9F);
             this.label1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label1.Location = new System.Drawing.Point(25, 3);
+            this.label1.Location = new System.Drawing.Point(27, 4);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(32, 17);
             this.label1.TabIndex = 1;

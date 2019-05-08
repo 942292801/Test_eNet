@@ -505,6 +505,9 @@ namespace eNet编辑器.DgvView
  
         }
 
+       
+
+
         //时钟判断函数
         private void doubleClickTimer_Tick_1(object sender, EventArgs e)
         {
@@ -900,6 +903,37 @@ namespace eNet编辑器.DgvView
                 //cursor_default();
                 //dgvDeviceCursorDefault();
             }
+            if (isClick == true)
+            {
+                isClick = false;
+            }
+            else
+            {
+                isClick = true;
+            }
+        }
+
+        bool isClick = false;
+
+        private void dataGridView1_CellMouseMove(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (isClick == true)
+            {
+                return;
+
+            }
+            else
+            {
+                //选中行号
+                int rowNum = e.RowIndex;
+                //选中列号
+                int columnNum = e.ColumnIndex;
+                if (rowNum >= 0 && columnNum >= 0)
+                {
+                    dataGridView1.ClearSelection();
+                    dataGridView1.Rows[rowNum].Selected = true;//选中行
+                }
+            }
         }
 
         /// <summary>
@@ -983,6 +1017,7 @@ namespace eNet编辑器.DgvView
 
         #endregion
 
+      
      
 
     

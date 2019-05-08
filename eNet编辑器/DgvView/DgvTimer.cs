@@ -25,5 +25,11 @@ namespace eNet编辑器.DgvView
             BindingFlags.Instance | BindingFlags.NonPublic);
             pi.SetValue(this.dataGridView1, true, null);*/
         }
+
+        /// <summary>
+        /// 主Form信息显示
+        /// </summary>
+        public event Action<string> AppTxtShow;
+
     }
 }

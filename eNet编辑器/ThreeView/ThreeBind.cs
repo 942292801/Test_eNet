@@ -17,7 +17,7 @@ namespace eNet编辑器.ThreeView
         /// <summary>
         /// 主Form信息显示
         /// </summary>
-        public event Action<string> TxtShow;
+        public event Action<string> clearTxtShow;
 
         public event DgvBindAddItem dgvbindAddItem;
         public ThreeBind()
@@ -180,7 +180,7 @@ namespace eNet编辑器.ThreeView
             {
 
                 //显示设备node
-                TxtShow(Resources.TxtShowDevName + IniConfig.GetValue(filepath, "define", "note") + "\r\n");
+                clearTxtShow(Resources.TxtShowDevName + IniConfig.GetValue(filepath, "define", "note") + "\r\n");
                 //调用dgv的ini配置
                 dgvbindAddItem();
                 //BindList添加信息

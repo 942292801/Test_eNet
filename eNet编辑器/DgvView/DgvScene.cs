@@ -34,7 +34,7 @@ namespace eNet编辑器.DgvView
         /// <summary>
         /// 主Form信息显示
         /// </summary>
-        public event Action<string> TxtShow;
+        public event Action<string> AppTxtShow;
 
         private void DgvScene_Load(object sender, EventArgs e)
         {
@@ -206,6 +206,36 @@ namespace eNet编辑器.DgvView
                 FileMesege.sectionNode = null;
                 //treetitle名字临时存放
                 FileMesege.titleinfo = "";
+            }
+            if (isClick == true)
+            {
+                isClick = false;
+            }
+            else
+            {
+                isClick = true;
+            }
+        }
+        bool isClick = false;
+        //移动到删除的时候高亮一行
+        private void dataGridView1_CellMouseMove(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (isClick == true)
+            {
+                return;
+
+            }
+            else
+            {
+                //选中行号
+                int rowNum = e.RowIndex;
+                //选中列号
+                int columnNum = e.ColumnIndex;
+                if (rowNum >= 0 && columnNum >= 0)
+                {
+                    dataGridView1.ClearSelection();
+                    dataGridView1.Rows[rowNum].Selected = true;//选中行
+                }
             }
         }
 
@@ -459,7 +489,7 @@ namespace eNet编辑器.DgvView
                                 //flag = ts.SendData(sock, "exist /json/s" + sceneNum + ".json$", 1);
                                 if (flag == 0)
                                 {
-                                    TxtShow("加载成功！\r\n");
+                                    AppTxtShow("加载成功！");
                                     break;
                                 }
                                 i++;
@@ -471,20 +501,20 @@ namespace eNet编辑器.DgvView
                             }
                             
                             if (i == 10)
-                            {                           
-                                TxtShow("加载失败！\r\n");
+                            {
+                                AppTxtShow("加载失败");
                             }
                             
                         }//if有场景信息
                         else
                         {
-                            TxtShow("无场景指令！\r\n");
+                            AppTxtShow("无场景指令！");
                         }
 
                     }
                     else
                     {
-                        TxtShow("无场景指令！\r\n");
+                        AppTxtShow("无场景指令！");
                     }
                     
                 }
@@ -527,7 +557,7 @@ namespace eNet编辑器.DgvView
                         sock = ts.ConnectServer(ips[0], 6003, 2);
                         if (sock == null)
                         {
-                            TxtShow("连接失败！");
+                            AppTxtShow("连接失败！");
                             //sock.Close();
                             return;
                         }
@@ -552,7 +582,7 @@ namespace eNet编辑器.DgvView
                     int flag = ts.SendData(sock, oder, 2);
                     if (flag == 0)
                     {
-                        TxtShow("发送指令成功！");
+                        AppTxtShow("发送指令成功！");
                         sock.Close();
                     }
                     else
@@ -989,25 +1019,7 @@ namespace eNet编辑器.DgvView
 
         }
 
-        private void dataGridView1_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
-        {
-            //选中行号
-            int rowNum = e.RowIndex;
-            //选中列号
-            int columnNum = e.ColumnIndex;
-            if (rowNum >= 0 && columnNum >= 0)
-            {
-                switch (dataGridView1.Columns[columnNum].Name)
-                {
-                    case "del":
-                        dataGridView1.ClearSelection();
-                        dataGridView1.Rows[rowNum].Selected = true;//选中行
-                        break;
-
-                    default: break;
-                }
-            }
-        }
+    
        
         #endregion
 
@@ -1142,6 +1154,8 @@ namespace eNet编辑器.DgvView
 
         }
         #endregion
+
+
 
         
 

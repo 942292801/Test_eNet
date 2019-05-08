@@ -39,11 +39,14 @@ namespace eNet编辑器
 
             internal void updateInfos(DataJson.totalList list)
             {
+                ////////////////////////////////后期还需要添加补充完整/////////////////////////////////
                 FileMesege.DeviceList = (List<DataJson.Device>)CloneObject(list.DeviceList);
                 FileMesege.AreaList = (List<DataJson.Area1>)CloneObject(list.AreaList);
                 FileMesege.PointList = (DataJson.Point)CloneObject(list.PointList);
                 FileMesege.sceneList = (List<DataJson.Scene>)CloneObject(list.sceneList);
+                FileMesege.timerList = (List<DataJson.Timer>)CloneObject(list.timerList);
                 FileMesege.bindList = (List<DataJson.Bind>)CloneObject(list.bindList);
+
             }
            
         }
@@ -105,8 +108,10 @@ namespace eNet编辑器
             cmd.Do();
         }
 
+        
         public  DataJson.totalList getListInfos()
         {
+            ////////////////////////////////后期还需要添加补充完整/////////////////////////////////
             DataJson.totalList totalList = new DataJson.totalList();
             if (FileMesege.DeviceList != null)
             {
@@ -124,6 +129,11 @@ namespace eNet编辑器
             if (FileMesege.sceneList != null)
             {
                 totalList.sceneList = (List<DataJson.Scene>)CloneObject(FileMesege.sceneList);
+            }
+
+            if (FileMesege.timerList != null)
+            {
+                totalList.timerList = (List<DataJson.Timer>)CloneObject(FileMesege.timerList);
             }
 
             if (FileMesege.bindList != null)

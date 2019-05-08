@@ -82,7 +82,8 @@ namespace eNet编辑器.AddForm
 
    
 
-        private void btnDecid_Click(object sender, EventArgs e)
+
+        private void btnDecid_Click_1(object sender, EventArgs e)
         {
             //设备号不为空
             if (string.IsNullOrEmpty(cbDevice.Text) || string.IsNullOrEmpty(cbVersion.Text))
@@ -112,7 +113,7 @@ namespace eNet编辑器.AddForm
                 AppTxtShow("设备型号不存在");
                 return;
             }
-            
+
             if (isNew)
             {
                 foreach (DataJson.Device dev in FileMesege.DeviceList)
@@ -121,18 +122,19 @@ namespace eNet编辑器.AddForm
                     {
                         foreach (DataJson.Module m in dev.module)
                         {
-                            if (m.id == cbDevice.Text)
+                            if (m.id.ToString() == cbDevice.Text)
                             {
                                 AppTxtShow("操作失败！请检查设备号！");
                                 return;
                             }
                         }
                     }
-                } 
+                }
                 FileMesege.info = string.Format("{0} {1} {2}", lbip.Text, cbDevice.Text, cbVersion.Text);
-                try{
+                try
+                {
                     //自动序号加一
-                    cbDevice.SelectedIndex = Convert.ToInt32( cbDevice.Text)+1;
+                    cbDevice.SelectedIndex = Convert.ToInt32(cbDevice.Text) + 1;
                 }
                 catch
                 {
@@ -140,7 +142,7 @@ namespace eNet编辑器.AddForm
                 }
                 //添加设备回调
                 adddev();
-                
+
             }
             else
             {
@@ -149,7 +151,7 @@ namespace eNet编辑器.AddForm
                 {
                     isChange = true;
                 }
-                if(cbVersion.Text != oldDevVersion )
+                if (cbVersion.Text != oldDevVersion)
                 {
                     //改设备版本
                     isChange = false;
@@ -158,7 +160,6 @@ namespace eNet编辑器.AddForm
                 //修改模式
                 this.DialogResult = DialogResult.OK;
             }
-            
         }
 
       

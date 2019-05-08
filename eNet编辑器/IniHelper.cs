@@ -196,7 +196,7 @@ namespace eNet编辑器
         {
             try
             {
-                string id = Convert.ToInt32(address.Substring(4, 2), 16).ToString();
+                int id = Convert.ToInt32(address.Substring(4, 2), 16);
                 string port = Convert.ToInt32(address.Substring(6, 2), 16).ToString();
                 DataJson.Device gws = FileMesege.DeviceList.Find(gw => gw.ip == ip);
                 foreach (DataJson.Module md in gws.module)

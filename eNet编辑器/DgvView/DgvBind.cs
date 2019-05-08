@@ -37,7 +37,7 @@ namespace eNet编辑器.DgvView
         /// <summary>
         /// 主Form信息显示
         /// </summary>
-        public event Action<string> TxtShow;
+        public event Action<string> AppTxtShow;
         
         
         
@@ -504,7 +504,7 @@ namespace eNet编辑器.DgvView
                     sock = ts.ConnectServer(commons[0], 6003, 2);
                     if (sock == null)
                     {
-                        TxtShow("连接失败！\r\n");
+                        AppTxtShow("连接失败！");
                         //sock.Close();
                         return;
                     }
@@ -530,17 +530,17 @@ namespace eNet编辑器.DgvView
                 int flag = ts.SendData(sock, oder, 2);
                 if (flag == 0)
                 {
-                    TxtShow("发送指令成功！\r\n");
+                    AppTxtShow("发送指令成功！");
                     sock.Close();
                 }
                 else
                 {
-                    TxtShow("发送指令失败！\r\n");
+                    AppTxtShow("发送指令失败！");
                 }
             }
             catch
             {
-                TxtShow("发送指令失败！\r\n");
+                AppTxtShow("发送指令失败！");
             }
         }
 

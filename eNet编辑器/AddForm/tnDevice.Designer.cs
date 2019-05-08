@@ -133,6 +133,7 @@
             this.btnDecid.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnDecid.TabIndex = 4;
             this.btnDecid.Tooltip = "确认";
+            this.btnDecid.Click += new System.EventHandler(this.btnDecid_Click_1);
             // 
             // symbolBox1
             // 

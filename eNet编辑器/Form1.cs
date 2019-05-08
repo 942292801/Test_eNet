@@ -108,20 +108,23 @@ namespace eNet编辑器
             //txt窗口 信息显示 清空所有
             threename.sendFormContrl += new SendFormContrl(clearTxtShow);
             //txt窗口 信息显示 清空所有
-            threescene.TxtShow += new Action<string>(clearTxtShow);
-            threebind.TxtShow += new Action<string>(clearTxtShow);
+            threescene.clearTxtShow += new Action<string>(clearTxtShow);
+            threebind.clearTxtShow += new Action<string>(clearTxtShow);
             dgvpoint.txtAppShow += new Action<string>(AppTxtShow);
             dgvname.txtAppShow += new Action<string>(AppTxtShow);
-            dgvscene.TxtShow += new Action<string>((msg) =>//TXT窗口显示信息 
+            dgvscene.AppTxtShow += new Action<string>((msg) =>//TXT窗口显示信息 
             {
                 AppTxtShow(msg);//后面直接加 非清空
             });
 
-            dgvbind.TxtShow += new Action<string>((msg) =>//TXT窗口显示信息 
+            dgvbind.AppTxtShow += new Action<string>((msg) =>//TXT窗口显示信息 
             {
                 AppTxtShow(msg);//后面直接加 非清空
             });
-            
+
+            threetimer.clearTxtShow += new Action<string>(clearTxtShow);
+            dgvtimer.AppTxtShow += new Action<string>(AppTxtShow);
+
             tnGateway.AppTxtShow += new Action<string>(AppTxtShow);
             tnDevice.AppTxtShow += new Action<string>(AppTxtShow);
             /////////////////////////////////////////////////////////////
@@ -375,6 +378,7 @@ namespace eNet编辑器
             {
                 Control_Add(dgvname, plDgv);
             }
+            tabName.ImageIndex = 6;
             //cbtype添加选择项 
             cbtypeName("equipment");
             //界面显示类型 

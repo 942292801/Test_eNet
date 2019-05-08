@@ -78,6 +78,20 @@ namespace eNet编辑器
                     break;
                 }
             }
+
+            //timer修改IP
+            foreach (DataJson.Timer timer in FileMesege.timerList)
+            {
+                if (timer.IP == oldip)
+                {
+                    timer.IP = ip;
+                    timer.Dev = master;
+
+                    break;
+                }
+            }
+
+            /////////////////////////////后期完整数据 //////////////////
             changePointIP(ip,oldip);
             GatewaySort();
             UpdateTreeView();
@@ -136,7 +150,7 @@ namespace eNet编辑器
                 if (dev.ip == ip)
                 {
                     DataJson.Module md = new DataJson.Module();
-                    md.id = id;
+                    md.id = Convert.ToInt32(id);
                     md.device = version;
                     md.area1 = "";
                     md.area2 = "";
@@ -173,10 +187,10 @@ namespace eNet编辑器
                 {
                     foreach (DataJson.Module m in dev.module)
                     {
-                        if (m.id == oldid && m.device == oldVersion)
+                        if (m.id.ToString() == oldid && m.device == oldVersion)
                         {
 
-                            m.id = id;
+                            m.id = Convert.ToInt32(id);
                             m.device = version;
                             //按ID号排序
                             DeviceSort(dev);
@@ -205,7 +219,7 @@ namespace eNet编辑器
                 {
                     foreach (DataJson.Module m in dev.module)
                     {
-                        if (m.id == id && m.device == version)
+                        if (m.id.ToString() == id && m.device == version)
                         {
 
                             dev.module.Remove(m);

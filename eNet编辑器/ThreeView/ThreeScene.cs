@@ -20,8 +20,8 @@ namespace eNet编辑器.ThreeView
         /// <summary>
         /// 主Form信息显示
         /// </summary>
-        public event Action<string> TxtShow;
-        TsSceneAdd tss ;
+        public event Action<string> clearTxtShow;
+        sceneAdd tss ;
         public event DgvSceneAddItem dgvsceneAddItem;
         public event Action updateAllView;
         //判断true为选中父节点
@@ -35,7 +35,7 @@ namespace eNet编辑器.ThreeView
         {
             //ThreeSceneAddNode();
             //TxtShow("场景加载");
-            tss = new TsSceneAdd();
+            tss = new sceneAdd();
             tss.addSceneNode += new AddSceneNode(addSceneNodeDelegate);
         }
 
@@ -208,7 +208,7 @@ namespace eNet编辑器.ThreeView
                     DataJson.scenes scs = new DataJson.scenes();
                     scs.id = Convert.ToInt32(tss.Num);                   
                     scs.pid = randomNum; 
-                    scs.address = address;
+                    //scs.address = address;
                     scs.sceneInfo = new List<DataJson.sceneInfo>();
                     if (copyScene != null)
                     {
@@ -265,7 +265,7 @@ namespace eNet编辑器.ThreeView
 
         private void 修改ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            TsSceneAdd tss = new TsSceneAdd();
+            sceneAdd tss = new sceneAdd();
             //展示居中
             tss.StartPosition = FormStartPosition.CenterParent;
             //获取IP
@@ -303,7 +303,7 @@ namespace eNet编辑器.ThreeView
                             eq.area3 = tss.Area3;
                             eq.area4 = tss.Area4;
                             eq.address = address;
-                            scs.address = address;
+                            //scs.address = address;
                             eq.name = tss.SceneName;
                             break;
                         }
@@ -328,68 +328,71 @@ namespace eNet编辑器.ThreeView
 
         private void 删除ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            
+            if (treeView1.SelectedNode == null || treeView1.SelectedNode.Parent == null)
+            {
+                return;
+            }
            
-                string[] ips = treeView1.SelectedNode.Parent.Text.Split(' ');
-                string[] secen = treeView1.SelectedNode.Text.Split(' ');
+            string[] ips = treeView1.SelectedNode.Parent.Text.Split(' ');
+            string[] secen = treeView1.SelectedNode.Text.Split(' ');
 
-                foreach (DataJson.Scene sc in FileMesege.sceneList)
+            foreach (DataJson.Scene sc in FileMesege.sceneList)
+            {
+                //进入IP同一个
+                if (sc.IP == ips[0])
                 {
-                    //进入IP同一个
-                    if (sc.IP == ips[0])
+                    foreach (DataJson.scenes scs in sc.scenes)
                     {
-                        foreach (DataJson.scenes scs in sc.scenes)
+                        //当场景号一样
+                        if (scs.id.ToString() == Regex.Replace(secen[0], @"[^\d]*", ""))
                         {
-                            //当场景号一样
-                            if (scs.id.ToString() == Regex.Replace(secen[0], @"[^\d]*", ""))
+                            //撤销
+                            DataJson.totalList OldList = FileMesege.cmds.getListInfos();
+                            int Nodeindex = treeView1.SelectedNode.Index;
+                            int pNodeindex = treeView1.SelectedNode.Parent.Index;
+                            //移除pointList 中地址
+                            foreach (DataJson.PointInfo eq in FileMesege.PointList.scene)
                             {
-                                //撤销
-                                DataJson.totalList OldList = FileMesege.cmds.getListInfos();
-                                int Nodeindex = treeView1.SelectedNode.Index;
-                                int pNodeindex = treeView1.SelectedNode.Parent.Index;
-                                //移除pointList 中地址
-                                foreach (DataJson.PointInfo eq in FileMesege.PointList.scene)
+                                //获取address与IP地址相同的对象
+                                if ( eq.pid == scs.pid)
                                 {
-                                    //获取address与IP地址相同的对象
-                                    if ( eq.pid == scs.pid)
-                                    {
-                                        //移除Namelist 的对象
-                                        FileMesege.PointList.scene.Remove(eq);
-                                        break;
-                                    }
+                                    //移除Namelist 的对象
+                                    FileMesege.PointList.scene.Remove(eq);
+                                    break;
                                 }
-                                //移除scenelist的对象
-                                sc.scenes.Remove(scs);
-                                //树状图移除选中节点
-                                updateAllView();
-                                DataJson.totalList NewList = FileMesege.cmds.getListInfos();
-                                FileMesege.cmds.DoNewCommand(NewList, OldList);
-                                //选中删除节点的下一个节点 没有节点就直接选中父节点
-                                if (treeView1.Nodes[pNodeindex].Nodes.Count > 0)
+                            }
+                            //移除scenelist的对象
+                            sc.scenes.Remove(scs);
+                            //树状图移除选中节点
+                            updateAllView();
+                            DataJson.totalList NewList = FileMesege.cmds.getListInfos();
+                            FileMesege.cmds.DoNewCommand(NewList, OldList);
+                            //选中删除节点的下一个节点 没有节点就直接选中父节点
+                            if (treeView1.Nodes[pNodeindex].Nodes.Count > 0)
+                            {
+                                if (Nodeindex < treeView1.Nodes[pNodeindex].Nodes.Count)
                                 {
-                                    if (Nodeindex < treeView1.Nodes[pNodeindex].Nodes.Count)
-                                    {
-                                        treeView1.SelectedNode = treeView1.Nodes[pNodeindex].Nodes[Nodeindex];
-                                    }
-                                    else
-                                    {
-                                        treeView1.SelectedNode = treeView1.Nodes[pNodeindex].Nodes[0];
-                                    }
-
+                                    treeView1.SelectedNode = treeView1.Nodes[pNodeindex].Nodes[Nodeindex];
                                 }
                                 else
                                 {
-                                    treeView1.SelectedNode = treeView1.Nodes[pNodeindex];
+                                    treeView1.SelectedNode = treeView1.Nodes[pNodeindex].Nodes[0];
                                 }
-                                return;
+
                             }
+                            else
+                            {
+                                treeView1.SelectedNode = treeView1.Nodes[pNodeindex];
+                            }
+                            return;
                         }
-
-
-
                     }
 
-                }//IP FOREACH
+
+
+                }
+
+            }//IP FOREACH
 
 
           
@@ -415,6 +418,24 @@ namespace eNet编辑器.ThreeView
 
         }
 
+        //添加场景
+        private void btnAddGw_Click(object sender, EventArgs e)
+        {
+            if (treeView1.SelectedNode == null || treeView1.SelectedNode.Parent != null)
+            {
+                return;
+            }
+            //清除复制的场景
+            copyScene = null;
+            //新建场景
+            newTsScene();
+        }
+
+        //删除场景
+        private void btnDel_Click(object sender, EventArgs e)
+        {
+            删除ToolStripMenuItem_Click(this, EventArgs.Empty);
+        }
 
 
         #endregion
@@ -462,19 +483,19 @@ namespace eNet编辑器.ThreeView
         private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
         {
 
-             FileMesege.sceneSelectNode = treeView1.SelectedNode;
+            FileMesege.sceneSelectNode = treeView1.SelectedNode;
             //DGVSceme添加场景
             dgvsceneAddItem();
             string[] names = treeView1.SelectedNode.Text.Split(' ');
             if (treeView1.SelectedNode.Parent != null)
             {
 
-                TxtShow(Resources.TxtShowScnName + treeView1.SelectedNode.Text + "\r\n");
+                clearTxtShow(Resources.TxtShowScnName + treeView1.SelectedNode.Text + "\r\n");
             }
             else
             {
                 string filepath = Application.StartupPath + "\\devices\\" + names[1]+".ini";
-                TxtShow(Resources.TxtShowDevName + IniConfig.GetValue(filepath, "define", "note") + "\r\n");
+                clearTxtShow(Resources.TxtShowDevName + IniConfig.GetValue(filepath, "define", "note") + "\r\n");
             }
            
             
@@ -506,6 +527,8 @@ namespace eNet编辑器.ThreeView
         }
 
         #endregion
+
+       
 
         
 

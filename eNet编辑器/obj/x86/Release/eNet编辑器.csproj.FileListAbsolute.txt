@@ -113,7 +113,6 @@ C:\Users\Administrator\Desktop\Gitlab\eNet\eNet编辑器\obj\x86\Release\eNet编
 C:\Users\Administrator\Desktop\Gitlab\eNet\eNet编辑器\obj\x86\Release\eNet编辑器.AddForm.tnDevice.resources
 C:\Users\Administrator\Desktop\Gitlab\eNet\eNet编辑器\obj\x86\Release\eNet编辑器.AddForm.tnGateway.resources
 C:\Users\Administrator\Desktop\Gitlab\eNet\eNet编辑器\obj\x86\Release\eNet编辑器.AddForm.tsChange.resources
-C:\Users\Administrator\Desktop\Gitlab\eNet\eNet编辑器\obj\x86\Release\eNet编辑器.AddForm.TsSceneAdd.resources
 C:\Users\Administrator\Desktop\Gitlab\eNet\eNet编辑器\obj\x86\Release\eNet编辑器.AddForm.tsSection.resources
 C:\Users\Administrator\Desktop\Gitlab\eNet\eNet编辑器\obj\x86\Release\eNet编辑器.DgvView.DgvBind.resources
 C:\Users\Administrator\Desktop\Gitlab\eNet\eNet编辑器\obj\x86\Release\eNet编辑器.DgvView.DgvDevice.resources
@@ -180,3 +179,5 @@ C:\Users\Administrator\Desktop\Gitlab\eNet\eNet编辑器\bin\Release\Infragistic
 C:\Users\Administrator\Desktop\Gitlab\eNet\eNet编辑器\bin\Release\Infragistics4.Win.UltraWinToolbars.v12.2.xml
 C:\Users\Administrator\Desktop\Gitlab\eNet\eNet编辑器\bin\Release\Infragistics4.Win.UltraWinTree.v12.2.xml
 C:\Users\Administrator\Desktop\Gitlab\eNet\eNet编辑器\bin\Release\Infragistics4.Win.v12.2.xml
+C:\Users\Administrator\Desktop\Gitlab\eNet\eNet编辑器\obj\x86\Release\eNet编辑器.AddForm.sceneAdd.resources
+C:\Users\Administrator\Desktop\Gitlab\eNet\eNet编辑器\obj\x86\Release\eNet编辑器.AddForm.timerAdd.resources

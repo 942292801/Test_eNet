@@ -44,9 +44,10 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.plInfoTitle = new System.Windows.Forms.Panel();
-            this.buttonX3 = new DevComponents.DotNetBar.ButtonX();
             this.symbolBox1 = new DevComponents.DotNetBar.Controls.SymbolBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.btnAddGw = new DevComponents.DotNetBar.ButtonX();
+            this.btnDel = new DevComponents.DotNetBar.ButtonX();
             this.contextMenuStrip1.SuspendLayout();
             this.contextMenuStrip2.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -182,7 +183,8 @@
             // plInfoTitle
             // 
             this.plInfoTitle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.plInfoTitle.Controls.Add(this.buttonX3);
+            this.plInfoTitle.Controls.Add(this.btnAddGw);
+            this.plInfoTitle.Controls.Add(this.btnDel);
             this.plInfoTitle.Controls.Add(this.symbolBox1);
             this.plInfoTitle.Controls.Add(this.label1);
             this.plInfoTitle.Dock = System.Windows.Forms.DockStyle.Top;
@@ -191,26 +193,6 @@
             this.plInfoTitle.Name = "plInfoTitle";
             this.plInfoTitle.Size = new System.Drawing.Size(280, 25);
             this.plInfoTitle.TabIndex = 4;
-            // 
-            // buttonX3
-            // 
-            this.buttonX3.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.buttonX3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonX3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.buttonX3.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
-            this.buttonX3.FocusCuesEnabled = false;
-            this.buttonX3.Font = new System.Drawing.Font("黑体", 9F);
-            this.buttonX3.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.Image;
-            this.buttonX3.HoverImage = ((System.Drawing.Image)(resources.GetObject("buttonX3.HoverImage")));
-            this.buttonX3.Image = ((System.Drawing.Image)(resources.GetObject("buttonX3.Image")));
-            this.buttonX3.Location = new System.Drawing.Point(257, 0);
-            this.buttonX3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.buttonX3.Name = "buttonX3";
-            this.buttonX3.Size = new System.Drawing.Size(17, 22);
-            this.buttonX3.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.buttonX3.TabIndex = 7;
-            this.buttonX3.Tooltip = "清空";
             // 
             // symbolBox1
             // 
@@ -237,6 +219,46 @@
             this.label1.Size = new System.Drawing.Size(32, 17);
             this.label1.TabIndex = 1;
             this.label1.Text = "导航";
+            // 
+            // btnAddGw
+            // 
+            this.btnAddGw.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnAddGw.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.btnAddGw.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnAddGw.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
+            this.btnAddGw.FocusCuesEnabled = false;
+            this.btnAddGw.Font = new System.Drawing.Font("微软雅黑", 9F);
+            this.btnAddGw.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.Image;
+            this.btnAddGw.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnAddGw.HoverImage")));
+            this.btnAddGw.Image = ((System.Drawing.Image)(resources.GetObject("btnAddGw.Image")));
+            this.btnAddGw.Location = new System.Drawing.Point(232, 5);
+            this.btnAddGw.Margin = new System.Windows.Forms.Padding(6);
+            this.btnAddGw.Name = "btnAddGw";
+            this.btnAddGw.Size = new System.Drawing.Size(15, 15);
+            this.btnAddGw.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnAddGw.TabIndex = 8;
+            this.btnAddGw.Tooltip = "新增场景";
+            this.btnAddGw.Click += new System.EventHandler(this.btnAddGw_Click);
+            // 
+            // btnDel
+            // 
+            this.btnDel.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnDel.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.btnDel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnDel.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
+            this.btnDel.FocusCuesEnabled = false;
+            this.btnDel.Font = new System.Drawing.Font("微软雅黑", 9F);
+            this.btnDel.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.Image;
+            this.btnDel.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnDel.HoverImage")));
+            this.btnDel.Image = ((System.Drawing.Image)(resources.GetObject("btnDel.Image")));
+            this.btnDel.Location = new System.Drawing.Point(259, 5);
+            this.btnDel.Margin = new System.Windows.Forms.Padding(6);
+            this.btnDel.Name = "btnDel";
+            this.btnDel.Size = new System.Drawing.Size(15, 15);
+            this.btnDel.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnDel.TabIndex = 6;
+            this.btnDel.Tooltip = "删除";
+            this.btnDel.Click += new System.EventHandler(this.btnDel_Click);
             // 
             // ThreeScene
             // 
@@ -277,8 +299,9 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Panel panel3;
-        private DevComponents.DotNetBar.ButtonX buttonX3;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem 复制ToolStripMenuItem;
+        private DevComponents.DotNetBar.ButtonX btnAddGw;
+        private DevComponents.DotNetBar.ButtonX btnDel;
     }
 }

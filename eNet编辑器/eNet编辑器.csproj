@@ -194,6 +194,12 @@
     <Compile Include="AddForm\sceneConcrol.Designer.cs">
       <DependentUpon>sceneConcrol.cs</DependentUpon>
     </Compile>
+    <Compile Include="AddForm\timerAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddForm\timerAdd.Designer.cs">
+      <DependentUpon>timerAdd.cs</DependentUpon>
+    </Compile>
     <Compile Include="AddForm\tnDevice.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -212,11 +218,11 @@
     <Compile Include="AddForm\tsChange.Designer.cs">
       <DependentUpon>tsChange.cs</DependentUpon>
     </Compile>
-    <Compile Include="AddForm\TsSceneAdd.cs">
+    <Compile Include="AddForm\sceneAdd.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AddForm\TsSceneAdd.Designer.cs">
-      <DependentUpon>TsSceneAdd.cs</DependentUpon>
+    <Compile Include="AddForm\sceneAdd.Designer.cs">
+      <DependentUpon>sceneAdd.cs</DependentUpon>
     </Compile>
     <Compile Include="AddForm\tsSection.cs">
       <SubType>Form</SubType>
@@ -370,6 +376,9 @@
     <EmbeddedResource Include="AddForm\sceneConcrol.resx">
       <DependentUpon>sceneConcrol.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="AddForm\timerAdd.resx">
+      <DependentUpon>timerAdd.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AddForm\tnDevice.resx">
       <DependentUpon>tnDevice.cs</DependentUpon>
     </EmbeddedResource>
@@ -379,8 +388,8 @@
     <EmbeddedResource Include="AddForm\tsChange.resx">
       <DependentUpon>tsChange.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AddForm\TsSceneAdd.resx">
-      <DependentUpon>TsSceneAdd.cs</DependentUpon>
+    <EmbeddedResource Include="AddForm\sceneAdd.resx">
+      <DependentUpon>sceneAdd.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AddForm\tsSection.resx">
       <DependentUpon>tsSection.cs</DependentUpon>

@@ -5,10 +5,10 @@ using System.Text;
 
 namespace eNet编辑器
 {
-    class DataJson 
+    class DataJson
     {
 
-        #region 项目执行文件key k-.json
+        #region 项目执行文件key k-.json 写进主机的项目信息
         [Serializable]
         public class Kn
         {
@@ -32,7 +32,7 @@ namespace eNet编辑器
         }
         #endregion
 
-        #region 项目执行文件scene s-.json
+        #region 项目执行文件scene s-.json 写进主机的项目信息
         [Serializable]
         public class Sn
         {
@@ -57,7 +57,7 @@ namespace eNet编辑器
         }
         #endregion
 
-        #region 项目执行文件 timer t-.json
+        #region 项目执行文件 timer t-.json 写进主机的项目信息
         [Serializable]
         public class Tn
         {
@@ -76,13 +76,13 @@ namespace eNet编辑器
         {
             public int num { get; set; }
             public int year { get; set; }
-            public int mon { get; set; }
-            public int date { get; set; }
+            public int mon { get; set; } 
             public int day { get; set; }
+            public int week { get; set; }
             public int hour { get; set; }
             public int min { get; set; }
             public string obj { get; set; }
-            public string data { get; set; }
+            public string val { get; set; }
 
         }
         #endregion
@@ -227,7 +227,7 @@ namespace eNet编辑器
         }
         [Serializable]
         public class Module {
-            public string  id { get; set; }
+            public int  id { get; set; }
             public string  device { get; set; }
             public string  sn{ get; set; }
             public string  ver{ get; set; }
@@ -281,7 +281,7 @@ namespace eNet编辑器
         public class scenes {
             public int id { get; set; }
             public int pid { get; set; }
-            public string address { get; set; }
+            //public string address { get; set; }
             public List<sceneInfo> sceneInfo = new List<sceneInfo>();
         }
         [Serializable]
@@ -293,6 +293,39 @@ namespace eNet编辑器
             public string opt { get; set; }
             public string optName { get; set; }
             public int Delay { get; set; }
+        }
+        #endregion
+
+        #region 项目辅助文件timer.json
+        [Serializable]
+        public class Timer
+        {
+            public string IP { get; set; }
+            public string Dev { get; set; }
+            public List<timers> timer = new List<timers>();
+        }
+        [Serializable]
+        public class timers
+        {
+            public int id { get; set; }
+            public int pid { get; set; }
+            public string dates { get; set; }
+            public string priorHoloday { get; set; }//假期优先 01000001  非假期优先 00000001
+            public List<timersInfo> timersInfo = new List<timersInfo>();
+        }
+        [Serializable]
+        public class timersInfo
+        {
+
+            public int id { get; set; }
+            public int pid { get; set; }
+            public string type { get; set; }
+            public string address { get; set; }
+            public string opt { get; set; }
+            public string optName { get; set; }
+            public int hour { get; set; }
+            public int min { get; set; }
+            
         }
         #endregion
 
@@ -336,7 +369,9 @@ namespace eNet编辑器
             public DataJson.Point PointList = new Point();//Title表的设备信息
             //public  DataJson.Serial serialList;//命名在线设备文件
             public List<DataJson.Scene> sceneList = new List<Scene>();//场景
+            public List<DataJson.Timer> timerList = new List<Timer>();//定时
             public List<DataJson.Bind> bindList = new List<Bind>();//绑定
+
         }
 
         #endregion

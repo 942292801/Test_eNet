@@ -55,11 +55,14 @@ namespace eNet编辑器
         //复制 粘贴副本
         public static DataJson.PointInfo copyPoint = null;
         public static DataJson.sceneInfo copyScene = null;
+
+
         public static List<DataJson.Device> DeviceList;//工程设备的保存记录
         public static List<DataJson.Area1> AreaList;//
         public static DataJson.Point PointList;//Title表的设备信息
         public static DataJson.Serial serialList;//命名在线设备文件
         public static List<DataJson.Scene> sceneList;//场景
+        public static List<DataJson.Timer> timerList;
         public static List<DataJson.Bind> bindList;//绑定
 
       
@@ -183,7 +186,16 @@ namespace eNet编辑器
             }
             tmpPathClear();
             ZipHelper zipHelp = new ZipHelper();
-            zipHelp.UnZip(localFilePath, TmpFilePath);
+            try
+            {
+                
+                zipHelp.UnZip(localFilePath, TmpFilePath);
+            }
+            catch
+            {
+                return false;
+            }
+            
             if (!System.IO.File.Exists(TmpFilePath + "\\pro\\area.json")
                 || !System.IO.File.Exists(TmpFilePath + "\\pro\\device.json")
                 || !System.IO.File.Exists(TmpFilePath + "\\pro\\point.json")
@@ -255,8 +267,15 @@ namespace eNet编辑器
                 writeAlltoPro(TmpFilePath);
                 ZipHelper zipHelp = new ZipHelper();
                 string[] fileList = {TmpFilePath+"//pro",TmpFilePath+"//objs"};
-                //压缩到选中路径
-                zipHelp.ZipManyFilesOrDictorys(fileList, localFilePath);
+                try
+                {
+                    //压缩到选中路径
+                    zipHelp.ZipManyFilesOrDictorys(fileList, localFilePath);
+                }
+                catch
+                {
+                    return false;
+                }
                 return true;
                 
             }
@@ -303,8 +322,15 @@ namespace eNet编辑器
                     writeAlltoPro(TmpFilePath);
                     ZipHelper zipHelp = new ZipHelper();
                     string[] fileList = { TmpFilePath + "//pro", TmpFilePath + "//objs" };
-                    //压缩到选中路径
-                    zipHelp.ZipManyFilesOrDictorys(fileList, localFilePath);
+                    try
+                    {
+                        //压缩到选中路径
+                        zipHelp.ZipManyFilesOrDictorys(fileList, localFilePath);
+                    }
+                    catch
+                    {
+                        return false;
+                    }
 
                     return true;
 

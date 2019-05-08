@@ -899,6 +899,7 @@ namespace eNet编辑器.DgvView
             return null;
         }
 
+        bool isClick = false;
         //点击
         private void dataGridView1_MouseDown(object sender, MouseEventArgs e)
         {
@@ -909,27 +910,39 @@ namespace eNet编辑器.DgvView
                 //treetitle名字临时存放
                 FileMesege.titleinfo = "";
                 updateTitleNode();
-
+                
             }
+            if (isClick == true)
+            {
+                isClick = false;
+            }
+            else
+            {
+                isClick = true;
+            }
+            
         }
 
-        //移动到删除的时候高亮一行
-        private void dataGridView1_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
-        {
-            //选中行号
-            int rowNum = e.RowIndex;
-            //选中列号
-            int columnNum = e.ColumnIndex;
-            if (rowNum >= 0 && columnNum >= 0)
-            {
-                switch (dataGridView1.Columns[columnNum].Name)
-                {
-                    case "pointDel":
-                        dataGridView1.ClearSelection();
-                        dataGridView1.Rows[rowNum].Selected = true;//选中行
-                        break;
+ 
 
-                    default: break;
+        //移动到删除的时候高亮一行
+        private void dataGridView1_CellMouseMove(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (isClick == true)
+            {
+                return;
+
+            }
+            else
+            {
+                //选中行号
+                int rowNum = e.RowIndex;
+                //选中列号
+                int columnNum = e.ColumnIndex;
+                if (rowNum >= 0 && columnNum >= 0)
+                {
+                    dataGridView1.ClearSelection();
+                    dataGridView1.Rows[rowNum].Selected = true;//选中行
                 }
             }
         }
@@ -1107,6 +1120,13 @@ namespace eNet编辑器.DgvView
         }
         #endregion
 
+       
+
+        
+
+      
+
+       
         
 
 

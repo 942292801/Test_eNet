@@ -203,7 +203,7 @@ namespace eNet编辑器.AddForm
                     foreach (DataJson.Module md in dev.module)
                     {
                         //存在则修改
-                        if (md.id == ID)
+                        if (md.id.ToString() == ID)
                         {
                             //修改网关
                             DataJson.totalList OldList = FileMesege.cmds.getListInfos();

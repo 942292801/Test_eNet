@@ -102,7 +102,7 @@
             this.sld2.Name = "sld2";
             this.sld2.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.sld2.Size = new System.Drawing.Size(222, 25);
-            this.sld2.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.sld2.Style = DevComponents.DotNetBar.eDotNetBarStyle.Office2010;
             this.sld2.TabIndex = 19;
             this.sld2.Text = "0";
             this.sld2.Value = 0;

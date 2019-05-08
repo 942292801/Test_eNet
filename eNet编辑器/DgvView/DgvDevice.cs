@@ -591,7 +591,7 @@ namespace eNet编辑器.DgvView
                                 foreach (DataJson.Module mdl in dev.module)
                                 {
                                     //当设备的号码相同 名字相同  修改序列号 版本号 状态 
-                                    if ( sl.id.ToString() == mdl.id && sl.serial.Trim()== mdl.device)
+                                    if ( sl.id == mdl.id && sl.serial.Trim()== mdl.device)
                                     {
                                         mdl.sn = sl.mac8.Trim().Replace(":","");
                                         mdl.ver = sl.version.Trim();
@@ -633,7 +633,7 @@ namespace eNet编辑器.DgvView
             for (int i = 0; i < dataGridView1.RowCount; i++)
             {
                 //找到该ID 退出循环
-                if (dataGridView1.Rows[i].Cells[0].Value.ToString() == mdl.id)
+                if (dataGridView1.Rows[i].Cells[0].Value.ToString()== mdl.id.ToString())
                 {
                     if (dataGridView1.Rows[i].Cells[2].Value != null && dataGridView1.Rows[i].Cells[3].Value != null)
                     {
@@ -782,8 +782,37 @@ namespace eNet编辑器.DgvView
                 //cursor_default();
                 //dgvNameCursorDefault();
             }
+            if (isClick == true)
+            {
+                isClick = false;
+            }
+            else
+            {
+                isClick = true;
+            }
         }
+        bool isClick = false;
+        //移动到删除的时候高亮一行
+        private void dataGridView1_CellMouseMove(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (isClick == true)
+            {
+                return;
 
+            }
+            else
+            {
+                //选中行号
+                int rowNum = e.RowIndex;
+                //选中列号
+                int columnNum = e.ColumnIndex;
+                if (rowNum >= 0 && columnNum >= 0)
+                {
+                    dataGridView1.ClearSelection();
+                    dataGridView1.Rows[rowNum].Selected = true;//选中行
+                }
+            }
+        }
 
         /// <summary>
         /// 鼠标图标更改为正常图标
@@ -807,6 +836,8 @@ namespace eNet编辑器.DgvView
             
         }
         #endregion
+
+
 
        
 
