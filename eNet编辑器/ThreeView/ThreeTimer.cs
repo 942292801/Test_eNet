@@ -112,7 +112,7 @@ namespace eNet编辑器.ThreeView
         }
 
         /// <summary>
-        /// 新建定时弹框
+        /// 新建定时弹框  true为新建假期时钟  false为新建普通时钟
         /// </summary>
         /// <param name="isHoliday">true为新建假期时钟  false为新建普通时钟</param>
         private void newTimer(bool isHoliday)
@@ -120,20 +120,22 @@ namespace eNet编辑器.ThreeView
             //展示居中
             timeradd.StartPosition = FormStartPosition.CenterParent;
             timeradd.Xflag = false;
+            
             if (treeView1.SelectedNode.Parent == null)
             {
                 //获取IP
                 string[] ips = treeView1.SelectedNode.Text.Split(' ');
                 timeradd.Ip = ips[0];
-                //获取场景号数
+                //获取定时号数
                 timeradd.Num = (treeView1.SelectedNode.GetNodeCount(false) + 1).ToString();
             }
             else
             {
+                //复制的时候调用
                 //获取IP
                 string[] ips = treeView1.SelectedNode.Parent.Text.Split(' ');
                 timeradd.Ip = ips[0];
-                //获取场景号数
+                //获取定时号数
                 timeradd.Num = (Convert.ToInt32(Regex.Replace(treeView1.SelectedNode.Text.Split(' ')[0], @"[^\d]*", "")) + 1).ToString();
             }
             if (isHoliday)
@@ -275,19 +277,153 @@ namespace eNet编辑器.ThreeView
         }
         private void 修改ToolStripMenuItem_Click(object sender, EventArgs e)
         {
+  
+            timerAdd tmadd = new timerAdd();
+            //展示居中
+            tmadd.StartPosition = FormStartPosition.CenterParent;
+            string[] ips = treeView1.SelectedNode.Parent.Text.Split(' ');
+            string[] timerNodeTxt = treeView1.SelectedNode.Text.Split(' ');
+            tmadd.Ip = ips[0];
+            //获取场景号数
+            tmadd.Num = Regex.Replace(timerNodeTxt[0], @"[^\d]*", "");
+            if (tmadd.Num == "10000")
+            {
+                //MessageBox.Show("不能修改节假日定时","警告");
+                return;
+            }
+            tmadd.Xflag = true;
+            timeradd.IsHoliday = false;
+            tmadd.ShowDialog();
+            
+            if (tmadd.DialogResult == DialogResult.OK)
+            {
+                //获取场景号
+                string num = Convert.ToInt32(tmadd.Num).ToString("X");
+                while (num.Length < 4)
+                {
+                    num = num.Insert(0, "0");
+                }
+                //获取IP最后一位
+                string address = SocketUtil.GetIPstyle(tmadd.Ip, 4) + "10" + num;
+                //撤销
+                DataJson.totalList OldList = FileMesege.cmds.getListInfos();
+                //获取该节点IP地址场景下的 场景信息对象
+                DataJson.timers tms = DataListHelper.getTimersInfoList(ips[0], Convert.ToInt32(tmadd.Oldnum));
+                if (tms != null)
+                {
+                    foreach (DataJson.PointInfo eq in FileMesege.PointList.timer)
+                    {
+                        //修改当前的point点信息
+                        if (tms.pid == eq.pid)
+                        {
+                            tms.id = Convert.ToInt32(tmadd.Num);
+                            eq.area1 = tmadd.Area1;
+                            eq.area2 = tmadd.Area2;
+                            eq.area3 = tmadd.Area3;
+                            eq.area4 = tmadd.Area4;
+                            eq.address = address;
+                            eq.name = tmadd.TimerName;
+                            break;
+                        }
 
+                    }
+                    foreach (DataJson.Timer tmIP in FileMesege.timerList)
+                    {
+                        if (tmIP.IP == ips[0])
+                        {
+                            //排序
+                            TimerSort(tmIP);
+                            break;
+                        }
+                    }
+                    updateAllView();
+                }
+
+                DataJson.totalList NewList = FileMesege.cmds.getListInfos();
+                FileMesege.cmds.DoNewCommand(NewList, OldList);
+            }
         }
 
         private void 删除ToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            if (treeView1.SelectedNode == null || treeView1.SelectedNode.Parent == null)
+            {
+                return;
+            }
 
+            string[] ips = treeView1.SelectedNode.Parent.Text.Split(' ');
+            string[] timerNodetxt = treeView1.SelectedNode.Text.Split(' ');
+
+            foreach (DataJson.Timer timer in FileMesege.timerList)
+            {
+                //进入IP同一个
+                if (timer.IP == ips[0])
+                {
+                    foreach (DataJson.timers tms in timer.timers)
+                    {
+                        //当场景号一样
+                        if (tms.id.ToString() == Regex.Replace(timerNodetxt[0], @"[^\d]*", ""))
+                        {
+                            //撤销
+                            DataJson.totalList OldList = FileMesege.cmds.getListInfos();
+                            int Nodeindex = treeView1.SelectedNode.Index;
+                            int pNodeindex = treeView1.SelectedNode.Parent.Index;
+                            //移除pointList 中地址
+                            foreach (DataJson.PointInfo eq in FileMesege.PointList.timer)
+                            {
+                                //获取address与IP地址相同的对象
+                                if (eq.pid == tms.pid)
+                                {
+                                    //移除Namelist 的对象
+                                    FileMesege.PointList.timer.Remove(eq);
+                                    break;
+                                }
+                            }
+                            //移除timerlist的对象
+                            timer.timers.Remove(tms);
+                            //树状图移除选中节点
+                            updateAllView();
+                            DataJson.totalList NewList = FileMesege.cmds.getListInfos();
+                            FileMesege.cmds.DoNewCommand(NewList, OldList);
+                            //选中删除节点的下一个节点 没有节点就直接选中父节点
+                            if (treeView1.Nodes[pNodeindex].Nodes.Count > 0)
+                            {
+                                if (Nodeindex < treeView1.Nodes[pNodeindex].Nodes.Count)
+                                {
+                                    treeView1.SelectedNode = treeView1.Nodes[pNodeindex].Nodes[Nodeindex];
+                                }
+                                else
+                                {
+                                    treeView1.SelectedNode = treeView1.Nodes[pNodeindex].Nodes[0];
+                                }
+
+                            }
+                            else
+                            {
+                                treeView1.SelectedNode = treeView1.Nodes[pNodeindex];
+                            }
+                            return;
+                        }
+                    }
+
+                }
+
+            }//IP FOREACH
         }
 
         //复制的场景
         List<DataJson.timersInfo> copyTimer = null;
         private void 复制ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            string[] ips = FileMesege.sceneSelectNode.Parent.Text.Split(' ');
+            string[] ids = FileMesege.sceneSelectNode.Text.Split(' ');
+            int timerNum = Convert.ToInt32(Regex.Replace(ids[0], @"[^\d]*", ""));
+            //获取该节点IP地址场景下的 场景信息对象
+            DataJson.timers tms = DataListHelper.getTimersInfoList(ips[0], timerNum); 
+            //可能存在克隆现象需要解决
+            copyTimer = tms.timersInfo;
+            //新建场景
+            newTimer(false);
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -311,10 +447,7 @@ namespace eNet编辑器.ThreeView
 
         private void btnDel_Click(object sender, EventArgs e)
         {
-            if (treeView1.SelectedNode == null || treeView1.SelectedNode.Parent == null)
-            {
-                return;
-            }
+            删除ToolStripMenuItem_Click(this, EventArgs.Empty);
         }
 
 

@@ -204,6 +204,7 @@ namespace eNet编辑器
                 || !System.IO.File.Exists(TmpFilePath + "\\pro\\point.json")
                 || !System.IO.File.Exists(TmpFilePath + "\\pro\\scene.json")
                 || !System.IO.File.Exists(TmpFilePath + "\\pro\\bind.json")
+                || !System.IO.File.Exists(TmpFilePath + "\\pro\\timer.json")
                 )
             {
                 MessageBox.Show("操作失败！工程文件缺失！", "提示");
@@ -215,6 +216,7 @@ namespace eNet编辑器
             PointList = JsonConvert.DeserializeObject<DataJson.Point>(File.ReadAllText(TmpFilePath + "\\pro\\point.json"));
             sceneList = JsonConvert.DeserializeObject<List<DataJson.Scene>>(File.ReadAllText(TmpFilePath + "\\pro\\scene.json"));
             bindList = JsonConvert.DeserializeObject<List<DataJson.Bind>>(File.ReadAllText(TmpFilePath + "\\pro\\bind.json"));
+            timerList = JsonConvert.DeserializeObject<List<DataJson.Timer>>(File.ReadAllText(TmpFilePath + "\\pro\\timer.json"));
 
             filePath = localFilePath;
             fileName = fileNameExt;
@@ -398,6 +400,7 @@ namespace eNet编辑器
             File.WriteAllText(path + "\\pro\\device.json", ConvertJsonString(JsonConvert.SerializeObject(DeviceList)));
             File.WriteAllText(path + "\\pro\\scene.json", ConvertJsonString(JsonConvert.SerializeObject(sceneList)));
             File.WriteAllText(path + "\\pro\\bind.json", ConvertJsonString(JsonConvert.SerializeObject(bindList)));
+            File.WriteAllText(path + "\\pro\\timer.json", ConvertJsonString(JsonConvert.SerializeObject(timerList)));
         }
 
         /// <summary>

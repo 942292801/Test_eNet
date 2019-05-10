@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle29 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle30 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DgvTimer));
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -51,7 +51,19 @@
             this.panel7 = new System.Windows.Forms.Panel();
             this.listbox = new DevComponents.DotNetBar.ListBoxAdv();
             this.panel8 = new System.Windows.Forms.Panel();
+            this.checkBoxX10 = new DevComponents.DotNetBar.Controls.CheckBoxX();
+            this.checkBoxX9 = new DevComponents.DotNetBar.Controls.CheckBoxX();
+            this.checkBoxX8 = new DevComponents.DotNetBar.Controls.CheckBoxX();
+            this.checkBoxX7 = new DevComponents.DotNetBar.Controls.CheckBoxX();
+            this.checkBoxX6 = new DevComponents.DotNetBar.Controls.CheckBoxX();
+            this.checkBoxX5 = new DevComponents.DotNetBar.Controls.CheckBoxX();
+            this.checkBoxX4 = new DevComponents.DotNetBar.Controls.CheckBoxX();
+            this.checkBoxX2 = new DevComponents.DotNetBar.Controls.CheckBoxX();
+            this.checkBoxX1 = new DevComponents.DotNetBar.Controls.CheckBoxX();
             this.checkBoxX3 = new DevComponents.DotNetBar.Controls.CheckBoxX();
+            this.panel10 = new System.Windows.Forms.Panel();
+            this.symbolBox3 = new DevComponents.DotNetBar.Controls.SymbolBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.panel9 = new System.Windows.Forms.Panel();
             this.btnAddGw = new DevComponents.DotNetBar.ButtonX();
             this.buttonX1 = new DevComponents.DotNetBar.ButtonX();
@@ -67,24 +79,6 @@
             this.btnCall = new DevComponents.DotNetBar.ButtonX();
             this.styleManager1 = new DevComponents.DotNetBar.StyleManager(this.components);
             this.checkBoxItem1 = new DevComponents.DotNetBar.CheckBoxItem();
-            this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.修改ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.删除ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
-            this.复制ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.checkBoxX1 = new DevComponents.DotNetBar.Controls.CheckBoxX();
-            this.checkBoxX2 = new DevComponents.DotNetBar.Controls.CheckBoxX();
-            this.checkBoxX4 = new DevComponents.DotNetBar.Controls.CheckBoxX();
-            this.checkBoxX5 = new DevComponents.DotNetBar.Controls.CheckBoxX();
-            this.checkBoxX6 = new DevComponents.DotNetBar.Controls.CheckBoxX();
-            this.checkBoxX7 = new DevComponents.DotNetBar.Controls.CheckBoxX();
-            this.checkBoxX8 = new DevComponents.DotNetBar.Controls.CheckBoxX();
-            this.label3 = new System.Windows.Forms.Label();
-            this.symbolBox3 = new DevComponents.DotNetBar.Controls.SymbolBox();
-            this.panel10 = new System.Windows.Forms.Panel();
-            this.checkBoxX9 = new DevComponents.DotNetBar.Controls.CheckBoxX();
-            this.checkBoxX10 = new DevComponents.DotNetBar.Controls.CheckBoxX();
-            this.listBox1 = new System.Windows.Forms.ListBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -94,10 +88,9 @@
             this.panel6.SuspendLayout();
             this.panel7.SuspendLayout();
             this.panel8.SuspendLayout();
+            this.panel10.SuspendLayout();
             this.panel9.SuspendLayout();
             this.plInfoTitle.SuspendLayout();
-            this.contextMenuStrip2.SuspendLayout();
-            this.panel10.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -124,7 +117,6 @@
             // 
             // panel4
             // 
-            this.panel4.Controls.Add(this.listBox1);
             this.panel4.Controls.Add(this.dataGridView1);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel4.Location = new System.Drawing.Point(214, 0);
@@ -138,14 +130,14 @@
             this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
             this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridView1.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableAlwaysIncludeHeaderText;
-            dataGridViewCellStyle29.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle29.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle29.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle29.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle29.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle29.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle29.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle29;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.num,
@@ -156,14 +148,14 @@
             this.delay,
             this.del,
             this.checkDel});
-            dataGridViewCellStyle30.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle30.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle30.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle30.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle30.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(235)))), ((int)(((byte)(248)))));
-            dataGridViewCellStyle30.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle30.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle30;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(235)))), ((int)(((byte)(248)))));
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle6;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
@@ -289,9 +281,7 @@
             this.listbox.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Rounded;
             this.listbox.BackgroundStyle.TextColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarCaptionText;
             this.listbox.BackgroundStyle.TextShadowColor = System.Drawing.Color.Blue;
-            this.listbox.CheckStateMember = null;
             this.listbox.ContainerControlProcessDialogKey = true;
-            this.listbox.ContextMenuStrip = this.contextMenuStrip2;
             this.listbox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.listbox.DragDropSupport = true;
             this.listbox.ImeMode = System.Windows.Forms.ImeMode.NoControl;
@@ -320,7 +310,7 @@
             this.listbox.Location = new System.Drawing.Point(0, 0);
             this.listbox.Name = "listbox";
             this.listbox.Size = new System.Drawing.Size(204, 353);
-            this.listbox.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.listbox.Style = DevComponents.DotNetBar.eDotNetBarStyle.OfficeXP;
             this.listbox.TabIndex = 6;
             this.listbox.Text = "listbox";
             this.listbox.ItemClick += new System.EventHandler(this.listbox_ItemClick);
@@ -347,6 +337,141 @@
             this.panel8.Size = new System.Drawing.Size(204, 199);
             this.panel8.TabIndex = 7;
             // 
+            // checkBoxX10
+            // 
+            this.checkBoxX10.AutoSize = true;
+            this.checkBoxX10.BackColor = System.Drawing.Color.White;
+            // 
+            // 
+            // 
+            this.checkBoxX10.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.checkBoxX10.Location = new System.Drawing.Point(17, 116);
+            this.checkBoxX10.Name = "checkBoxX10";
+            this.checkBoxX10.Size = new System.Drawing.Size(88, 20);
+            this.checkBoxX10.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.checkBoxX10.TabIndex = 26;
+            this.checkBoxX10.Text = "自定义日期";
+            // 
+            // checkBoxX9
+            // 
+            this.checkBoxX9.AutoSize = true;
+            this.checkBoxX9.BackColor = System.Drawing.Color.White;
+            // 
+            // 
+            // 
+            this.checkBoxX9.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.checkBoxX9.Location = new System.Drawing.Point(74, 90);
+            this.checkBoxX9.Name = "checkBoxX9";
+            this.checkBoxX9.Size = new System.Drawing.Size(51, 20);
+            this.checkBoxX9.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.checkBoxX9.TabIndex = 25;
+            this.checkBoxX9.Text = "每天";
+            // 
+            // checkBoxX8
+            // 
+            this.checkBoxX8.AutoSize = true;
+            this.checkBoxX8.BackColor = System.Drawing.Color.White;
+            // 
+            // 
+            // 
+            this.checkBoxX8.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.checkBoxX8.Location = new System.Drawing.Point(17, 142);
+            this.checkBoxX8.Name = "checkBoxX8";
+            this.checkBoxX8.Size = new System.Drawing.Size(88, 20);
+            this.checkBoxX8.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.checkBoxX8.TabIndex = 24;
+            this.checkBoxX8.Text = "跳过节假日";
+            // 
+            // checkBoxX7
+            // 
+            this.checkBoxX7.AutoSize = true;
+            this.checkBoxX7.BackColor = System.Drawing.Color.White;
+            // 
+            // 
+            // 
+            this.checkBoxX7.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.checkBoxX7.Location = new System.Drawing.Point(17, 90);
+            this.checkBoxX7.Name = "checkBoxX7";
+            this.checkBoxX7.Size = new System.Drawing.Size(51, 20);
+            this.checkBoxX7.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.checkBoxX7.TabIndex = 23;
+            this.checkBoxX7.Text = "周一";
+            // 
+            // checkBoxX6
+            // 
+            this.checkBoxX6.AutoSize = true;
+            this.checkBoxX6.BackColor = System.Drawing.Color.White;
+            // 
+            // 
+            // 
+            this.checkBoxX6.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.checkBoxX6.Location = new System.Drawing.Point(131, 64);
+            this.checkBoxX6.Name = "checkBoxX6";
+            this.checkBoxX6.Size = new System.Drawing.Size(51, 20);
+            this.checkBoxX6.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.checkBoxX6.TabIndex = 22;
+            this.checkBoxX6.Text = "周一";
+            // 
+            // checkBoxX5
+            // 
+            this.checkBoxX5.AutoSize = true;
+            this.checkBoxX5.BackColor = System.Drawing.Color.White;
+            // 
+            // 
+            // 
+            this.checkBoxX5.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.checkBoxX5.Location = new System.Drawing.Point(74, 64);
+            this.checkBoxX5.Name = "checkBoxX5";
+            this.checkBoxX5.Size = new System.Drawing.Size(51, 20);
+            this.checkBoxX5.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.checkBoxX5.TabIndex = 21;
+            this.checkBoxX5.Text = "周一";
+            // 
+            // checkBoxX4
+            // 
+            this.checkBoxX4.AutoSize = true;
+            this.checkBoxX4.BackColor = System.Drawing.Color.White;
+            // 
+            // 
+            // 
+            this.checkBoxX4.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.checkBoxX4.Location = new System.Drawing.Point(17, 64);
+            this.checkBoxX4.Name = "checkBoxX4";
+            this.checkBoxX4.Size = new System.Drawing.Size(51, 20);
+            this.checkBoxX4.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.checkBoxX4.TabIndex = 20;
+            this.checkBoxX4.Text = "周一";
+            // 
+            // checkBoxX2
+            // 
+            this.checkBoxX2.AutoSize = true;
+            this.checkBoxX2.BackColor = System.Drawing.Color.White;
+            // 
+            // 
+            // 
+            this.checkBoxX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.checkBoxX2.Location = new System.Drawing.Point(131, 38);
+            this.checkBoxX2.Name = "checkBoxX2";
+            this.checkBoxX2.Size = new System.Drawing.Size(51, 20);
+            this.checkBoxX2.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.checkBoxX2.TabIndex = 19;
+            this.checkBoxX2.Text = "周一";
+            // 
+            // checkBoxX1
+            // 
+            this.checkBoxX1.AutoSize = true;
+            this.checkBoxX1.BackColor = System.Drawing.Color.White;
+            // 
+            // 
+            // 
+            this.checkBoxX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.checkBoxX1.Location = new System.Drawing.Point(74, 38);
+            this.checkBoxX1.Name = "checkBoxX1";
+            this.checkBoxX1.Size = new System.Drawing.Size(51, 20);
+            this.checkBoxX1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.checkBoxX1.TabIndex = 18;
+            this.checkBoxX1.Text = "周二";
+            // 
             // checkBoxX3
             // 
             this.checkBoxX3.AutoSize = true;
@@ -361,6 +486,44 @@
             this.checkBoxX3.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.checkBoxX3.TabIndex = 17;
             this.checkBoxX3.Text = "周一";
+            // 
+            // panel10
+            // 
+            this.panel10.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.panel10.Controls.Add(this.symbolBox3);
+            this.panel10.Controls.Add(this.label3);
+            this.panel10.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel10.Location = new System.Drawing.Point(0, 0);
+            this.panel10.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.panel10.Name = "panel10";
+            this.panel10.Size = new System.Drawing.Size(204, 25);
+            this.panel10.TabIndex = 5;
+            // 
+            // symbolBox3
+            // 
+            // 
+            // 
+            // 
+            this.symbolBox3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.symbolBox3.Location = new System.Drawing.Point(7, 6);
+            this.symbolBox3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.symbolBox3.Name = "symbolBox3";
+            this.symbolBox3.Size = new System.Drawing.Size(16, 16);
+            this.symbolBox3.Symbol = "";
+            this.symbolBox3.SymbolColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(119)))), ((int)(((byte)(119)))));
+            this.symbolBox3.TabIndex = 2;
+            this.symbolBox3.Text = "symbolBox3";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("微软雅黑", 9F);
+            this.label3.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label3.Location = new System.Drawing.Point(35, 4);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(56, 17);
+            this.label3.TabIndex = 1;
+            this.label3.Text = "日期设置";
             // 
             // panel9
             // 
@@ -586,236 +749,13 @@
             // 
             // styleManager1
             // 
-            this.styleManager1.ManagerStyle = DevComponents.DotNetBar.eStyle.Office2016;
+            this.styleManager1.ManagerStyle = DevComponents.DotNetBar.eStyle.Office2007Silver;
             this.styleManager1.MetroColorParameters = new DevComponents.DotNetBar.Metro.ColorTables.MetroColorGeneratorParameters(System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255))))), System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(115)))), ((int)(((byte)(199))))));
             // 
             // checkBoxItem1
             // 
             this.checkBoxItem1.GlobalItem = false;
             this.checkBoxItem1.Name = "checkBoxItem1";
-            // 
-            // contextMenuStrip2
-            // 
-            this.contextMenuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.修改ToolStripMenuItem,
-            this.删除ToolStripMenuItem,
-            this.toolStripMenuItem1,
-            this.复制ToolStripMenuItem});
-            this.contextMenuStrip2.Name = "contextMenuStrip2";
-            this.contextMenuStrip2.Size = new System.Drawing.Size(101, 76);
-            // 
-            // 修改ToolStripMenuItem
-            // 
-            this.修改ToolStripMenuItem.Name = "修改ToolStripMenuItem";
-            this.修改ToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
-            this.修改ToolStripMenuItem.Text = "修改";
-            // 
-            // 删除ToolStripMenuItem
-            // 
-            this.删除ToolStripMenuItem.Name = "删除ToolStripMenuItem";
-            this.删除ToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
-            this.删除ToolStripMenuItem.Text = "删除";
-            // 
-            // toolStripMenuItem1
-            // 
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(97, 6);
-            // 
-            // 复制ToolStripMenuItem
-            // 
-            this.复制ToolStripMenuItem.Name = "复制ToolStripMenuItem";
-            this.复制ToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
-            this.复制ToolStripMenuItem.Text = "复制";
-            // 
-            // checkBoxX1
-            // 
-            this.checkBoxX1.AutoSize = true;
-            this.checkBoxX1.BackColor = System.Drawing.Color.White;
-            // 
-            // 
-            // 
-            this.checkBoxX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.checkBoxX1.Location = new System.Drawing.Point(74, 38);
-            this.checkBoxX1.Name = "checkBoxX1";
-            this.checkBoxX1.Size = new System.Drawing.Size(51, 20);
-            this.checkBoxX1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.checkBoxX1.TabIndex = 18;
-            this.checkBoxX1.Text = "周二";
-            // 
-            // checkBoxX2
-            // 
-            this.checkBoxX2.AutoSize = true;
-            this.checkBoxX2.BackColor = System.Drawing.Color.White;
-            // 
-            // 
-            // 
-            this.checkBoxX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.checkBoxX2.Location = new System.Drawing.Point(131, 38);
-            this.checkBoxX2.Name = "checkBoxX2";
-            this.checkBoxX2.Size = new System.Drawing.Size(51, 20);
-            this.checkBoxX2.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.checkBoxX2.TabIndex = 19;
-            this.checkBoxX2.Text = "周一";
-            // 
-            // checkBoxX4
-            // 
-            this.checkBoxX4.AutoSize = true;
-            this.checkBoxX4.BackColor = System.Drawing.Color.White;
-            // 
-            // 
-            // 
-            this.checkBoxX4.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.checkBoxX4.Location = new System.Drawing.Point(17, 64);
-            this.checkBoxX4.Name = "checkBoxX4";
-            this.checkBoxX4.Size = new System.Drawing.Size(51, 20);
-            this.checkBoxX4.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.checkBoxX4.TabIndex = 20;
-            this.checkBoxX4.Text = "周一";
-            // 
-            // checkBoxX5
-            // 
-            this.checkBoxX5.AutoSize = true;
-            this.checkBoxX5.BackColor = System.Drawing.Color.White;
-            // 
-            // 
-            // 
-            this.checkBoxX5.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.checkBoxX5.Location = new System.Drawing.Point(74, 64);
-            this.checkBoxX5.Name = "checkBoxX5";
-            this.checkBoxX5.Size = new System.Drawing.Size(51, 20);
-            this.checkBoxX5.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.checkBoxX5.TabIndex = 21;
-            this.checkBoxX5.Text = "周一";
-            // 
-            // checkBoxX6
-            // 
-            this.checkBoxX6.AutoSize = true;
-            this.checkBoxX6.BackColor = System.Drawing.Color.White;
-            // 
-            // 
-            // 
-            this.checkBoxX6.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.checkBoxX6.Location = new System.Drawing.Point(131, 64);
-            this.checkBoxX6.Name = "checkBoxX6";
-            this.checkBoxX6.Size = new System.Drawing.Size(51, 20);
-            this.checkBoxX6.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.checkBoxX6.TabIndex = 22;
-            this.checkBoxX6.Text = "周一";
-            // 
-            // checkBoxX7
-            // 
-            this.checkBoxX7.AutoSize = true;
-            this.checkBoxX7.BackColor = System.Drawing.Color.White;
-            // 
-            // 
-            // 
-            this.checkBoxX7.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.checkBoxX7.Location = new System.Drawing.Point(17, 90);
-            this.checkBoxX7.Name = "checkBoxX7";
-            this.checkBoxX7.Size = new System.Drawing.Size(51, 20);
-            this.checkBoxX7.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.checkBoxX7.TabIndex = 23;
-            this.checkBoxX7.Text = "周一";
-            // 
-            // checkBoxX8
-            // 
-            this.checkBoxX8.AutoSize = true;
-            this.checkBoxX8.BackColor = System.Drawing.Color.White;
-            // 
-            // 
-            // 
-            this.checkBoxX8.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.checkBoxX8.Location = new System.Drawing.Point(17, 142);
-            this.checkBoxX8.Name = "checkBoxX8";
-            this.checkBoxX8.Size = new System.Drawing.Size(88, 20);
-            this.checkBoxX8.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.checkBoxX8.TabIndex = 24;
-            this.checkBoxX8.Text = "跳过节假日";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("微软雅黑", 9F);
-            this.label3.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label3.Location = new System.Drawing.Point(35, 4);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(56, 17);
-            this.label3.TabIndex = 1;
-            this.label3.Text = "日期设置";
-            // 
-            // symbolBox3
-            // 
-            // 
-            // 
-            // 
-            this.symbolBox3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.symbolBox3.Location = new System.Drawing.Point(7, 6);
-            this.symbolBox3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.symbolBox3.Name = "symbolBox3";
-            this.symbolBox3.Size = new System.Drawing.Size(16, 16);
-            this.symbolBox3.Symbol = "";
-            this.symbolBox3.SymbolColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(119)))), ((int)(((byte)(119)))));
-            this.symbolBox3.TabIndex = 2;
-            this.symbolBox3.Text = "symbolBox3";
-            // 
-            // panel10
-            // 
-            this.panel10.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.panel10.Controls.Add(this.symbolBox3);
-            this.panel10.Controls.Add(this.label3);
-            this.panel10.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel10.Location = new System.Drawing.Point(0, 0);
-            this.panel10.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.panel10.Name = "panel10";
-            this.panel10.Size = new System.Drawing.Size(204, 25);
-            this.panel10.TabIndex = 5;
-            // 
-            // checkBoxX9
-            // 
-            this.checkBoxX9.AutoSize = true;
-            this.checkBoxX9.BackColor = System.Drawing.Color.White;
-            // 
-            // 
-            // 
-            this.checkBoxX9.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.checkBoxX9.Location = new System.Drawing.Point(74, 90);
-            this.checkBoxX9.Name = "checkBoxX9";
-            this.checkBoxX9.Size = new System.Drawing.Size(51, 20);
-            this.checkBoxX9.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.checkBoxX9.TabIndex = 25;
-            this.checkBoxX9.Text = "每天";
-            // 
-            // checkBoxX10
-            // 
-            this.checkBoxX10.AutoSize = true;
-            this.checkBoxX10.BackColor = System.Drawing.Color.White;
-            // 
-            // 
-            // 
-            this.checkBoxX10.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.checkBoxX10.Location = new System.Drawing.Point(17, 116);
-            this.checkBoxX10.Name = "checkBoxX10";
-            this.checkBoxX10.Size = new System.Drawing.Size(88, 20);
-            this.checkBoxX10.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.checkBoxX10.TabIndex = 26;
-            this.checkBoxX10.Text = "自定义日期";
-            // 
-            // listBox1
-            // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 17;
-            this.listBox1.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7"});
-            this.listBox1.Location = new System.Drawing.Point(225, 114);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(166, 191);
-            this.listBox1.TabIndex = 4;
             // 
             // DgvTimer
             // 
@@ -838,13 +778,12 @@
             this.panel7.ResumeLayout(false);
             this.panel8.ResumeLayout(false);
             this.panel8.PerformLayout();
+            this.panel10.ResumeLayout(false);
+            this.panel10.PerformLayout();
             this.panel9.ResumeLayout(false);
             this.panel9.PerformLayout();
             this.plInfoTitle.ResumeLayout(false);
             this.plInfoTitle.PerformLayout();
-            this.contextMenuStrip2.ResumeLayout(false);
-            this.panel10.ResumeLayout(false);
-            this.panel10.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -886,11 +825,6 @@
         private DevComponents.DotNetBar.StyleManager styleManager1;
         private DevComponents.DotNetBar.ListBoxAdv listbox;
         private DevComponents.DotNetBar.CheckBoxItem checkBoxItem1;
-        private System.Windows.Forms.ContextMenuStrip contextMenuStrip2;
-        private System.Windows.Forms.ToolStripMenuItem 修改ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 删除ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem 复制ToolStripMenuItem;
         private DevComponents.DotNetBar.Controls.CheckBoxX checkBoxX7;
         private DevComponents.DotNetBar.Controls.CheckBoxX checkBoxX6;
         private DevComponents.DotNetBar.Controls.CheckBoxX checkBoxX5;
@@ -903,7 +837,6 @@
         private System.Windows.Forms.Label label3;
         private DevComponents.DotNetBar.Controls.CheckBoxX checkBoxX10;
         private DevComponents.DotNetBar.Controls.CheckBoxX checkBoxX9;
-        private System.Windows.Forms.ListBox listBox1;
 
 
     }

@@ -86,7 +86,7 @@ namespace eNet编辑器
                 {
                     timer.IP = ip;
                     timer.Dev = master;
-
+                    
                     break;
                 }
             }
@@ -362,6 +362,8 @@ namespace eNet编辑器
                 {
                     p.ip = IP;
                     p.address = string.Format("{0}{1}", hexIP, p.address.Substring(2, 6));
+                    //修改定时名称的后缀
+                    p.name = p.name.Replace(Regex.Replace(p.name, @"[^\d]*", ""), "")+IP.Split('.')[3];
                 }
             }
             foreach (DataJson.PointInfo p in FileMesege.PointList.link)

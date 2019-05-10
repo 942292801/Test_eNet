@@ -149,6 +149,7 @@ namespace eNet编辑器.ThreeView
             }
             else
             {
+                //复制功能用的
                 //获取IP
                 string[] ips = treeView1.SelectedNode.Parent.Text.Split(' ');
                 tss.Ip = ips[0];
@@ -270,10 +271,10 @@ namespace eNet编辑器.ThreeView
             tss.StartPosition = FormStartPosition.CenterParent;
             //获取IP
             string[] ips = treeView1.SelectedNode.Parent.Text.Split(' ');
-            string[] secen = treeView1.SelectedNode.Text.Split(' ');
+            string[] secenNodeTxt = treeView1.SelectedNode.Text.Split(' ');
             tss.Ip = ips[0];
             //获取场景号数
-            tss.Num = Regex.Replace(secen[0], @"[^\d]*", "");
+            tss.Num = Regex.Replace(secenNodeTxt[0], @"[^\d]*", "");
             tss.Xflag = true;
             tss.ShowDialog();
             if (tss.DialogResult == DialogResult.OK)

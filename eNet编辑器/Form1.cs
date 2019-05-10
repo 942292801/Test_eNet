@@ -157,7 +157,7 @@ namespace eNet编辑器
             threetitle.addPoint += new Action<string>(dgvpoint.addPoint);
             threename.dgvDeviceAddItem += new DgvDeviceAddItem(dgvdevice.dgvDeviceAddItem);
             threebind.dgvbindAddItem += new DgvBindAddItem(dgvbind.dgvbindAddItem);
-            threetimer.dgvTimerAddItem +=new Action(dgvtimer.dgvsceneAddItem);
+            threetimer.dgvTimerAddItem +=new Action(dgvtimer.dgvTimerAddItem);
             threesection.sectionDgvNameAddItem += new SectionDgvNameAddItem(dgvname.dgvNameAddItem);
             threesection.sectionDgvDevAddItem += new SectionDgvDevAddItem(dgvdevice.dgvDeviceAddItem);
             threesection.updatePointDgv += new Action(dgvpoint.dgvPointAddItemBySection);
@@ -232,7 +232,7 @@ namespace eNet编辑器
             dgvpoint.dgvPointAddItemBySection();
             dgvscene.dgvsceneAddItem();
             dgvbind.dgvbindAddItem();
-
+            dgvtimer.dgvTimerAddItem();
             txtShow.Clear();
         }
         private void updateDgv()

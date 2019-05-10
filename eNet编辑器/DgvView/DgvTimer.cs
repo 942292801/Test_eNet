@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using DevComponents.DotNetBar;
+using System.Reflection;
 
 namespace eNet编辑器.DgvView
 {
@@ -14,7 +15,15 @@ namespace eNet编辑器.DgvView
     {
         public DgvTimer()
         {
+            //设置窗体双缓存
+            this.SetStyle(ControlStyles.OptimizedDoubleBuffer | ControlStyles.ResizeRedraw | ControlStyles.AllPaintingInWmPaint, true);
+            this.UpdateStyles();
             InitializeComponent();
+            //利用反射设置DataGridView的双缓冲
+            Type dgvType = this.dataGridView1.GetType();
+            PropertyInfo pi = dgvType.GetProperty("DoubleBuffered",
+            BindingFlags.Instance | BindingFlags.NonPublic);
+            pi.SetValue(this.dataGridView1, true, null);
         }
 
         /// <summary>
@@ -22,10 +31,26 @@ namespace eNet编辑器.DgvView
         /// </summary>
         public event Action<string> AppTxtShow;
 
-        //加载DgV所有信息
-        public void dgvsceneAddItem()
+        
+
+        private void DgvTimer_Load(object sender, EventArgs e)
         {
+            listbox.DataItemVisualCreated += new DataItemVisualEventHandler(ListBox3DataItemVisualCreated);
+            listbox.ValueMember = "Id"; // Id property will be used as ValueMemeber so SelectedValue will return the Id
+            listbox.DisplayMember = "Text"; // Text property will be used as the item text
+        }
+
+        void ListBox3DataItemVisualCreated(object sender, DataItemVisualEventArgs e)
+        {
+            ListBoxItem item = (ListBoxItem)e.Visual;
+            item.HotTracking = true;
             
+        }
+
+        //加载DgV所有信息
+        public void dgvTimerAddItem()
+        {
+
             /*
             this.dataGridView1.Rows.Clear();
             multipleList.Clear();
@@ -136,25 +161,9 @@ namespace eNet编辑器.DgvView
             */
         }
 
-        private void DgvTimer_Load(object sender, EventArgs e)
-        {
-            listbox.DataItemVisualCreated += new DataItemVisualEventHandler(ListBox3DataItemVisualCreated);
-            listbox.ValueMember = "Id"; // Id property will be used as ValueMemeber so SelectedValue will return the Id
-            listbox.DisplayMember = "Text"; // Text property will be used as the item text
-     
-        }
-
-        void ListBox3DataItemVisualCreated(object sender, DataItemVisualEventArgs e)
-        {
-            ListBoxItem item = (ListBoxItem)e.Visual;
-            
-            item.HotTracking = true;
-            
-        }
-
         private void listbox_ItemClick(object sender, EventArgs e)
         {
-      
+            AppTxtShow(listbox.SelectedItem.ToString());//格式为年月日
         }
     }
 }
