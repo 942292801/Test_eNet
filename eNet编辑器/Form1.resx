@@ -417,25 +417,25 @@
     <value>工具（T）</value>
   </data>
   <data name="欢迎ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>124, 22</value>
+    <value>152, 22</value>
   </data>
   <data name="欢迎ToolStripMenuItem.Text" xml:space="preserve">
     <value>欢迎</value>
   </data>
   <data name="toolStripMenuItem23.Size" type="System.Drawing.Size, System.Drawing">
-    <value>121, 6</value>
+    <value>149, 6</value>
   </data>
   <data name="帮助ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>124, 22</value>
+    <value>152, 22</value>
   </data>
   <data name="帮助ToolStripMenuItem.Text" xml:space="preserve">
     <value>帮助</value>
   </data>
   <data name="toolStripMenuItem24.Size" type="System.Drawing.Size, System.Drawing">
-    <value>121, 6</value>
+    <value>149, 6</value>
   </data>
   <data name="关于软件ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>124, 22</value>
+    <value>152, 22</value>
   </data>
   <data name="关于软件ToolStripMenuItem.Text" xml:space="preserve">
     <value>关于软件</value>
@@ -474,14 +474,11 @@
   <metadata name="toolStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>126, 28</value>
   </metadata>
-  <data name="toolStrip1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Left, Right</value>
-  </data>
   <data name="toolStrip1.AutoSize" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
   <data name="toolStrip1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>None</value>
+    <value>Fill</value>
   </data>
   <data name="toolStrip1.Font" type="System.Drawing.Font, System.Drawing">
     <value>微软雅黑, 9pt</value>
@@ -906,7 +903,7 @@
     <value>另存为</value>
   </data>
   <data name="toolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>6, 51</value>
+    <value>6, 50</value>
   </data>
   <data name="tsBackOut.AutoSize" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -946,20 +943,20 @@
   <data name="tsReform.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         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
-        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
+        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
 </value>
   </data>
   <data name="tsReform.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
@@ -972,7 +969,7 @@
     <value>重做(Ctrl+Y)</value>
   </data>
   <data name="toolStripSeparator2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>6, 51</value>
+    <value>6, 50</value>
   </data>
   <data name="tsCompile.AutoSize" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -1007,7 +1004,7 @@
     <value>编译下载</value>
   </data>
   <data name="toolStripSeparator3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>6, 51</value>
+    <value>6, 50</value>
   </data>
   <data name="tsNet.AutoSize" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -1047,20 +1044,20 @@
   <data name="tsTimer.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         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
-        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
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAMRSURBVGhD7ZnLa1NBFMarLsT6WkldaKuIIGoVFRSE+h+o
+        i5h1SlGUQoSkeTavjZRq1a2uXNgudVFRUFwJLgSxrUtrBSsVtSqNL1Cs1t8JJ+H2ejWNATNX54OPc+/M
+        OZPzzcydmXvTZGFhYWFhYWFh4WdkMpm2fD5/PJfLDfb29o6k0+nXXH9UO5LNZi9Tf6xQKLRqiBcWqTUX
+        KvQ0drK7u/tLKBT6GggEviFyrky5l3Kp5/4p7Ef4Om2iBDpkM+W3sRe1yDyQXBdCH5PoZxFWA8V/nPhO
+        aYc2NnE/BmdjsdiHUuOmgeTOwGnoJWhBZOo/R/Qlru84ZsV7/QlzQFJnk8nkjCY4j6lU6i0irjFqfVhM
+        yV5B3AsvfyijPeu4L+rPmAGZhiTlNbJTiEvxbG6Ha+mQ1dgVYlm4Wrjegs9JOO6I8aI5gkm6lYQmXAnO
+        0Qm3sB0iUF09QX0zfvtkBjjjXTRHMKvxgHsFZqreQMAudakKRG/F/6GzDRfNEKyjOwW/l5NjCk/CA+pS
+        FXTOXvzvEut8Zt00Q7AeKuYlSvLZcDi8VF1+C0a1XcU6xXlSQxoLEh4imYpgOuANi9EOra4KYvYwwvf0
+        8FGUVd5JKUskEu+kUzSksUDwqOv5HUbwGq2uip6enuXEyIJ1BB7i+qCTWnaYTtmtIY2Fnokr046R6JMt
+        R6v/PUSj0U8uwdlq25Cv8d+NcL3PsO+A4LpWad+h3n3Yd/jVSQvboS41gfY2MGva9dZMeJ2lYU1naYHs
+        tcQNy7rAwldT7F+FjvJPb0uM9E1sRzweX6muniC+Gd/9CL1ejkX8mIimbrG6mQWS7XRvUULK5X0Yk91J
+        8pX3YbgK/xbKt+EXxeeJR+z9SCSyTH/CPJDgORItuhMXInSG+vIXjyRlpxjFq9iXTj8HizwqF4LB4BJt
+        3kyQaN3ftOA0nTKgTZoPku2Cj0j8T75aThB7VJvyD5i660m+Hz5b4Hdp2drOE9emTfgTIgAhJxi1ITiq
+        C5v88/CK+wdcD8rhBb+NGmJhYWFhYWFhYWFhNpqafgDN632pMYDbNgAAAABJRU5ErkJggg==
 </value>
   </data>
   <data name="tsTimer.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
@@ -1073,7 +1070,7 @@
     <value>时间校正</value>
   </data>
   <data name="toolStripSeparator4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>6, 51</value>
+    <value>6, 50</value>
   </data>
   <data name="toolStrip1.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
@@ -1082,7 +1079,7 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="toolStrip1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1264, 51</value>
+    <value>1264, 50</value>
   </data>
   <data name="toolStrip1.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -1512,7 +1509,7 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAADY
-        DgAAAk1TRnQBSQFMAgEBBwEAAYABAQGAAQEBEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
+        DgAAAk1TRnQBSQFMAgEBBwEAAYgBAQGIAQEBEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
         AwABQAMAASADAAEBAQABCAYAAQgYAAGAAgABgAMAAoABAAGAAwABgAEAAYABAAKAAgADwAEAAcAB3AHA
         AQAB8AHKAaYBAAEzBQABMwEAATMBAAEzAQACMwIAAxYBAAMcAQADIgEAAykBAANVAQADTQEAA0IBAAM5
         AQABgAF8Af8BAAJQAf8BAAGTAQAB1gEAAf8B7AHMAQABxgHWAe8BAAHWAucBAAGQAakBrQIAAf8BMwMA

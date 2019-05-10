@@ -205,13 +205,14 @@ namespace eNet编辑器.ThreeView
                     DataJson.timers tms = new DataJson.timers();
                     tms.id = Convert.ToInt32(timeradd.Num);
                     tms.pid = randomNum;
+                    tms.dates = "";
+                    tms.priorHoloday = "";
                     tms.timersInfo = new List<DataJson.timersInfo>();
                     if (copyTimer != null)
                     {
-
                         tms.timersInfo = (List<DataJson.timersInfo>)CommandManager.CloneObject(copyTimer);
                     }
-
+                    
                     timer.timers.Add(tms);
                     
                     //添加point点
@@ -411,12 +412,12 @@ namespace eNet编辑器.ThreeView
             }//IP FOREACH
         }
 
-        //复制的场景
+        //复制的定时
         List<DataJson.timersInfo> copyTimer = null;
         private void 复制ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            string[] ips = FileMesege.sceneSelectNode.Parent.Text.Split(' ');
-            string[] ids = FileMesege.sceneSelectNode.Text.Split(' ');
+            string[] ips = FileMesege.timerSelectNode.Parent.Text.Split(' ');
+            string[] ids = FileMesege.timerSelectNode.Text.Split(' ');
             int timerNum = Convert.ToInt32(Regex.Replace(ids[0], @"[^\d]*", ""));
             //获取该节点IP地址场景下的 场景信息对象
             DataJson.timers tms = DataListHelper.getTimersInfoList(ips[0], timerNum); 
@@ -491,7 +492,7 @@ namespace eNet编辑器.ThreeView
         {
             
             FileMesege.timerSelectNode = treeView1.SelectedNode;
-            //DGVSceme添加场景
+            //DGVtimer添加定时
             dgvTimerAddItem();
             string[] names = treeView1.SelectedNode.Text.Split(' ');
             if (treeView1.SelectedNode.Parent != null)
