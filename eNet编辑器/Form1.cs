@@ -150,13 +150,14 @@ namespace eNet编辑器
             threescene.dgvsceneAddItem += new DgvSceneAddItem(dgvscene.dgvsceneAddItem);
             //更新所有View的信息
             threescene.updateAllView += new Action(updataAllView);
+            threetimer.updateAllView += new Action(updataAllView);
             //调用添加场景
             threetitle.dgvsceneAddItem += new DgvSceneAddItem2(dgvscene.dgvsceneAddItem);
             threetitle.dgvbindAddItem  +=new DgvBindAddItem2(dgvbind.dgvbindAddItem);
             threetitle.addPoint += new Action<string>(dgvpoint.addPoint);
             threename.dgvDeviceAddItem += new DgvDeviceAddItem(dgvdevice.dgvDeviceAddItem);
             threebind.dgvbindAddItem += new DgvBindAddItem(dgvbind.dgvbindAddItem);
-
+            threetimer.dgvTimerAddItem +=new Action(dgvtimer.dgvsceneAddItem);
             threesection.sectionDgvNameAddItem += new SectionDgvNameAddItem(dgvname.dgvNameAddItem);
             threesection.sectionDgvDevAddItem += new SectionDgvDevAddItem(dgvdevice.dgvDeviceAddItem);
             threesection.updatePointDgv += new Action(dgvpoint.dgvPointAddItemBySection);

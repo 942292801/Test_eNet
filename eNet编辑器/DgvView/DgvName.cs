@@ -222,7 +222,7 @@ namespace eNet编辑器.DgvView
                         return;
                     }
                     //新建point点
-                    DataListHelper.newPoint(address, parents[0], sections, type);
+                    DataListHelper.newPoint(address, parents[0], sections, type,FileMesege.PointList.equipment);
 
                     try
                     {

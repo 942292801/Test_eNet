@@ -41,6 +41,9 @@ namespace eNet编辑器
 
         //左栏 树状图treename节点选中临时存放
         public static TreeNode sceneSelectNode = null;
+        //左栏 树状图treename节点选中临时存放
+        public static TreeNode timerSelectNode = null;
+
         //左栏 树状图treebind节点选中临时存放
         public static TreeNode bindSelectNode = null;
         /// <summary>
@@ -55,7 +58,7 @@ namespace eNet编辑器
         //复制 粘贴副本
         public static DataJson.PointInfo copyPoint = null;
         public static DataJson.sceneInfo copyScene = null;
-
+        public static DataJson.timersInfo copyTimer = null;
 
         public static List<DataJson.Device> DeviceList;//工程设备的保存记录
         public static List<DataJson.Area1> AreaList;//

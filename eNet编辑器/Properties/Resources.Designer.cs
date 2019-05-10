@@ -133,6 +133,15 @@ namespace eNet编辑器.Properties {
         }
         
         /// <summary>
+        ///   查找类似 定时 的本地化字符串。
+        /// </summary>
+        internal static string Timer {
+            get {
+                return ResourceManager.GetString("Timer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 设备名称： 的本地化字符串。
         /// </summary>
         internal static string TxtShowDevName {
@@ -147,6 +156,15 @@ namespace eNet编辑器.Properties {
         internal static string TxtShowScnName {
             get {
                 return ResourceManager.GetString("TxtShowScnName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 定时名称： 的本地化字符串。
+        /// </summary>
+        internal static string TxtShowTimerName {
+            get {
+                return ResourceManager.GetString("TxtShowTimerName", resourceCulture);
             }
         }
     }

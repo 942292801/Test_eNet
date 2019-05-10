@@ -139,7 +139,6 @@
             // plInfoTitle
             // 
             this.plInfoTitle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(228)))), ((int)(((byte)(228)))));
-            this.plInfoTitle.Controls.Add(this.btnDecid);
             this.plInfoTitle.Controls.Add(this.symbolBox1);
             this.plInfoTitle.Controls.Add(this.lbName);
             this.plInfoTitle.Dock = System.Windows.Forms.DockStyle.Top;
@@ -152,8 +151,7 @@
             // btnDecid
             // 
             this.btnDecid.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnDecid.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnDecid.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.btnDecid.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnDecid.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
             this.btnDecid.FocusCuesEnabled = false;
@@ -161,10 +159,10 @@
             this.btnDecid.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.Image;
             this.btnDecid.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnDecid.HoverImage")));
             this.btnDecid.Image = ((System.Drawing.Image)(resources.GetObject("btnDecid.Image")));
-            this.btnDecid.Location = new System.Drawing.Point(203, 4);
+            this.btnDecid.Location = new System.Drawing.Point(201, 323);
             this.btnDecid.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnDecid.Name = "btnDecid";
-            this.btnDecid.Size = new System.Drawing.Size(20, 21);
+            this.btnDecid.Size = new System.Drawing.Size(20, 22);
             this.btnDecid.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnDecid.TabIndex = 4;
             this.btnDecid.Tooltip = "发送";
@@ -201,7 +199,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(226, 333);
+            this.ClientSize = new System.Drawing.Size(226, 351);
+            this.Controls.Add(this.btnDecid);
             this.Controls.Add(this.plInfoTitle);
             this.Controls.Add(this.cb4);
             this.Controls.Add(this.lb4);

@@ -410,6 +410,8 @@ namespace eNet编辑器.ThreeView
             try
             {
                 dgvNodeAdd(treeView1.SelectedNode);
+                dgvsceneAddItem();
+                dgvbindAddItem();
             }
             catch { 
             
@@ -428,7 +430,8 @@ namespace eNet编辑器.ThreeView
                     dgvNodeAdd(tn);    
                 }
             }//foreach所有节点信息处理完
-            
+            dgvsceneAddItem();
+            dgvbindAddItem();
         }
 
         /// <summary>
@@ -452,14 +455,14 @@ namespace eNet编辑器.ThreeView
                 case "scene":
                     sceneFormtype(tn.Text);
                     //回调更新界面
-                    dgvsceneAddItem();
+                   
                     break;
                 case "timer":
                     break;
                 case "panel":
                     bindFormtype(tn.Text);
                     //回调更新界面
-                    dgvbindAddItem();
+                    
                     break;
                 case "logic":
                     break;

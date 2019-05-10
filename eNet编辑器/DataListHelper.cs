@@ -293,9 +293,9 @@ namespace eNet编辑器
         /// <param name="ip">IP</param>
         /// <param name="sections">四位区域位置 一\\二\\ \\ 或 一\\二\\三\\四</param>
         /// <param name="typeName">类型 TYPES文件下name的名称</param>
-        public static void newPoint(string address, string ip, string[] sections, string typeName)
+        public static void newPoint(string address, string ip, string[] sections, string typeName ,List<DataJson.PointInfo> list)
         {
-            foreach (DataJson.PointInfo e in FileMesege.PointList.equipment)
+            foreach (DataJson.PointInfo e in list)
             {
                 //循环判断 NameList中是否存在该节点
                 if (address == e.address && e.ip == ip)
@@ -326,7 +326,7 @@ namespace eNet编辑器
             eq.objType = "";
             eq.value = "";
             eq.type = IniHelper.findTypesIniTypebyName(typeName);
-            FileMesege.PointList.equipment.Add(eq);
+            list.Add(eq);
 
         }
 
@@ -743,6 +743,53 @@ namespace eNet编辑器
         }
 
         #endregion
+
+
+        #region 操作timerList的管理工具
+        /// <summary>
+        /// 获取某个IP点 某个定时的对象列表 否则返回空
+        /// </summary>
+        /// <param name="IP">IP地址</param>
+        /// <param name="num">定时号</param>
+        /// <returns></returns>
+        public static DataJson.timers getTimersInfoList(string ip, int num)
+        {
+            foreach (DataJson.Timer tmIP in FileMesege.timerList)
+            {
+                if (tmIP.IP == ip)
+                {
+                    foreach (DataJson.timers tms in tmIP.timers)
+                    {
+                        if (tms.id == num)
+                        {
+                            return tms;
+                        }
+                    }
+
+                }
+            }
+            return null;
+        }
+
+        /// <summary>
+        /// 删除定时中所有匹配的PID号
+        /// </summary>
+        /// <param name="pid"></param>
+        public static void reMoveAllTimersByPid(int pid)
+        {
+            if (FileMesege.timerList == null)
+            {
+                return;
+            }
+            for (int i = 0; i < FileMesege.timerList.Count; i++)
+            {
+                FileMesege.timerList[i].timers.RemoveAll(timers => timers.pid == pid);
+            }
+
+        }
+
+        #endregion
+
 
     }
 }

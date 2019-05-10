@@ -50,6 +50,7 @@
             this.添加定时ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
             this.添加节假日定时ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnAddHoliday = new DevComponents.DotNetBar.ButtonX();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -122,6 +123,7 @@
             // plInfoTitle
             // 
             this.plInfoTitle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.plInfoTitle.Controls.Add(this.btnAddHoliday);
             this.plInfoTitle.Controls.Add(this.btnAdd);
             this.plInfoTitle.Controls.Add(this.btnDel);
             this.plInfoTitle.Controls.Add(this.symbolBox1);
@@ -144,13 +146,13 @@
             this.btnAdd.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.Image;
             this.btnAdd.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnAdd.HoverImage")));
             this.btnAdd.Image = ((System.Drawing.Image)(resources.GetObject("btnAdd.Image")));
-            this.btnAdd.Location = new System.Drawing.Point(234, 5);
+            this.btnAdd.Location = new System.Drawing.Point(207, 5);
             this.btnAdd.Margin = new System.Windows.Forms.Padding(6);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(15, 15);
             this.btnAdd.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnAdd.TabIndex = 10;
-            this.btnAdd.Tooltip = "新增场景";
+            this.btnAdd.Tooltip = "添加定时";
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // btnDel
@@ -252,7 +254,7 @@
             this.toolStripMenuItem2,
             this.添加节假日定时ToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(161, 76);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(161, 54);
             // 
             // 添加定时ToolStripMenuItem
             // 
@@ -273,6 +275,26 @@
             this.添加节假日定时ToolStripMenuItem.Text = "添加节假日定时";
             this.添加节假日定时ToolStripMenuItem.Click += new System.EventHandler(this.添加节假日定时ToolStripMenuItem_Click);
             // 
+            // btnAddHoliday
+            // 
+            this.btnAddHoliday.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnAddHoliday.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.btnAddHoliday.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnAddHoliday.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
+            this.btnAddHoliday.FocusCuesEnabled = false;
+            this.btnAddHoliday.Font = new System.Drawing.Font("微软雅黑", 9F);
+            this.btnAddHoliday.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.Image;
+            this.btnAddHoliday.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnAddHoliday.HoverImage")));
+            this.btnAddHoliday.Image = ((System.Drawing.Image)(resources.GetObject("btnAddHoliday.Image")));
+            this.btnAddHoliday.Location = new System.Drawing.Point(234, 4);
+            this.btnAddHoliday.Margin = new System.Windows.Forms.Padding(6);
+            this.btnAddHoliday.Name = "btnAddHoliday";
+            this.btnAddHoliday.Size = new System.Drawing.Size(15, 15);
+            this.btnAddHoliday.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnAddHoliday.TabIndex = 11;
+            this.btnAddHoliday.Tooltip = "添加节假日定时";
+            this.btnAddHoliday.Click += new System.EventHandler(this.btnAddHoliday_Click);
+            // 
             // ThreeTimer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -283,6 +305,7 @@
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "ThreeTimer";
             this.Text = "ThreeTimer";
+            this.Load += new System.EventHandler(this.ThreeTimer_Load);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
@@ -317,5 +340,6 @@
         private System.Windows.Forms.ToolStripMenuItem 添加定时ToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem 添加节假日定时ToolStripMenuItem;
+        private DevComponents.DotNetBar.ButtonX btnAddHoliday;
     }
 }

@@ -157,4 +157,12 @@
     <value>场景名称：</value>
     <comment>主窗信息显示界面 （场景名称：）</comment>
   </data>
+  <data name="Timer" xml:space="preserve">
+    <value>定时</value>
+    <comment>定时树状图节点 名称前部分</comment>
+  </data>
+  <data name="TxtShowTimerName" xml:space="preserve">
+    <value>定时名称：</value>
+    <comment>主窗信息显示界面 （定时名称：）</comment>
+  </data>
 </root>
