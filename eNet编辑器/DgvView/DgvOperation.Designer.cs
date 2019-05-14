@@ -39,11 +39,13 @@
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "DgvOperation";
             this.Text = "DgvOperation";
+            this.Load += new System.EventHandler(this.DgvOperation_Load);
             this.ResumeLayout(false);
 
         }
 
         #endregion
+
 
 
     }

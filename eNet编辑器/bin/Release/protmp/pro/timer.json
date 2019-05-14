@@ -89,7 +89,116 @@
     {
         "timers": [
             {
-                "timersInfo": [],
+                "timersInfo": [
+                    {
+                        "id": 1,
+                        "pid": 0,
+                        "type": "8.0_uart",
+                        "address": "",
+                        "opt": "",
+                        "optName": "",
+                        "shortTime": ""
+                    },
+                    {
+                        "id": 2,
+                        "pid": 0,
+                        "type": "1.0_switch",
+                        "address": "",
+                        "opt": "",
+                        "optName": "",
+                        "shortTime": ""
+                    },
+                    {
+                        "id": 3,
+                        "pid": 0,
+                        "type": "10.0_key",
+                        "address": "",
+                        "opt": "",
+                        "optName": "",
+                        "shortTime": ""
+                    },
+                    {
+                        "id": 4,
+                        "pid": 0,
+                        "type": "13.0_RGB",
+                        "address": "",
+                        "opt": "",
+                        "optName": "",
+                        "shortTime": ""
+                    },
+                    {
+                        "id": 5,
+                        "pid": 0,
+                        "type": "14.0_data",
+                        "address": "",
+                        "opt": "",
+                        "optName": "",
+                        "shortTime": ""
+                    },
+                    {
+                        "id": 6,
+                        "pid": 0,
+                        "type": "2.0_dimmer",
+                        "address": "",
+                        "opt": "",
+                        "optName": "",
+                        "shortTime": ""
+                    },
+                    {
+                        "id": 7,
+                        "pid": 0,
+                        "type": "2.1_dimmer",
+                        "address": "",
+                        "opt": "",
+                        "optName": "",
+                        "shortTime": ""
+                    },
+                    {
+                        "id": 8,
+                        "pid": 0,
+                        "type": "4.0_scene",
+                        "address": "",
+                        "opt": "",
+                        "optName": "",
+                        "shortTime": ""
+                    },
+                    {
+                        "id": 9,
+                        "pid": 0,
+                        "type": "5.0_time",
+                        "address": "",
+                        "opt": "",
+                        "optName": "",
+                        "shortTime": ""
+                    },
+                    {
+                        "id": 10,
+                        "pid": 0,
+                        "type": "6.0_group",
+                        "address": "",
+                        "opt": "",
+                        "optName": "",
+                        "shortTime": ""
+                    },
+                    {
+                        "id": 11,
+                        "pid": 0,
+                        "type": "7.0_ir",
+                        "address": "",
+                        "opt": "",
+                        "optName": "",
+                        "shortTime": ""
+                    },
+                    {
+                        "id": 12,
+                        "pid": 0,
+                        "type": "7.0_ir",
+                        "address": "",
+                        "opt": "",
+                        "optName": "",
+                        "shortTime": ""
+                    }
+                ],
                 "id": 1,
                 "pid": 88260,
                 "dates": null,

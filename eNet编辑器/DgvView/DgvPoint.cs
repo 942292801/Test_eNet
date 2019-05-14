@@ -641,6 +641,7 @@ namespace eNet编辑器.DgvView
                         FileMesege.cmds.DoNewCommand(NewList, OldList);
                         cbObjType.ReadOnly = true;
                         break;
+
                     case "pointValue":
                         //保存当前信息
                         eq = findNowRow(rowNum);

@@ -41,7 +41,8 @@ namespace eNet编辑器.AddForm
             get { return objType; }
             set { objType = value; }
         }
-
+        
+        //getObj用的point  只限equipment用
         private DataJson.PointInfo point = null;
 
         internal DataJson.PointInfo Point

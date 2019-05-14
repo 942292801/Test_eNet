@@ -79,13 +79,40 @@ namespace eNet编辑器.AddForm
                     {
                         if (IniConfig.GetValue(file.FullName, "address", "2").Split(',')[1] == "0")
                         {
+                            string ip = "";
                             devName = new List<string>();
-                            string ip = FileMesege.sceneSelectNode.Parent.Text.Split(' ')[0];
-                            cb3.Items.Clear();
+                            switch (FileMesege.formType)
+                            {
+                                case "name":
+                                   
+                                    break;
+
+                                case "point":
+                                    break;
+                                case "scene":
+                                    ip = FileMesege.sceneSelectNode.Parent.Text.Split(' ')[0];
+                                    break;
+                                case "timer":
+                                    ip = FileMesege.timerSelectNode.Parent.Text.Split(' ')[0];
+                                    break;
+                                case "bind":
+                                    ip = FileMesege.bindSelectNode.Parent.Text.Split(' ')[0];
+                                    break;
+                                case "logic":
+
+                                    break;
+                                case "operation":
+
+                                    break;
+                                default: break;
+                            }
+                            
+                            
                             foreach (DataJson.Device devip in FileMesege.DeviceList)
                             {
                                 if (devip.ip == ip)
                                 {
+                                    cb3.Items.Clear();
                                     foreach (DataJson.Module md in devip.module)
                                     {
                                         devName.Add(md.id +" "+ md.device);
@@ -99,13 +126,24 @@ namespace eNet编辑器.AddForm
                     {
                     
                     }
-                   
-                    break; 
+                    for (int i = 0; i < 4; i++)
+                    {
+                        if (i == 2)
+                        {
+                            continue;
+                        }
+                        if (cbs[i].Items.Count > 0)
+                        { 
+                            cbs[i].SelectedIndex = 0;
+                        }
+                    }
+              
+                    break;
                 }
                 
             }
-            cb1.SelectedIndex = 0;
-            cb2.SelectedIndex = 0;
+            
+            
             if (obj != "" && obj != null)
             {
                 string[] infos = obj.Split('.');

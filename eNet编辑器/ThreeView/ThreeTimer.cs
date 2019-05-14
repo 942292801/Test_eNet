@@ -16,7 +16,9 @@ namespace eNet编辑器.ThreeView
     {
         public ThreeTimer()
         {
+           
             InitializeComponent();
+            
         }
 
         /// <summary>

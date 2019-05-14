@@ -67,6 +67,7 @@ namespace eNet编辑器
             public Tn()
             {
                 this.type = "timer";
+                //描述
                 this.describe = "create by system";
             }
 
@@ -323,8 +324,8 @@ namespace eNet编辑器
             public string address { get; set; }
             public string opt { get; set; }
             public string optName { get; set; }
-            public int hour { get; set; }
-            public int min { get; set; }
+            public string shortTime { get; set; }
+            
             
         }
         #endregion

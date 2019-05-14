@@ -12,7 +12,6 @@ using System.IO;
 using eNet编辑器.AddForm;
 using System.Text.RegularExpressions;
 using eNet编辑器.Properties;
-
 namespace eNet编辑器.ThreeView
 {
     public delegate void SendFormContrl(string msg);
@@ -38,7 +37,9 @@ namespace eNet编辑器.ThreeView
         
         public ThreeName()
         {
+         
             InitializeComponent();
+           
         }
 
         private void ThreeName_Load(object sender, EventArgs e)

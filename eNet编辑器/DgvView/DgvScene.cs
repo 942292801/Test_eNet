@@ -193,51 +193,8 @@ namespace eNet编辑器.DgvView
             return null;
         }
 
-        /// <summary>
-        /// 右击鼠标清位置信息与名字信息
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void dataGridView1_MouseDown(object sender, MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Right)
-            {
-                //treesection临时存放数据处
-                FileMesege.sectionNode = null;
-                //treetitle名字临时存放
-                FileMesege.titleinfo = "";
-            }
-            if (isClick == true)
-            {
-                isClick = false;
-            }
-            else
-            {
-                isClick = true;
-            }
-        }
-        bool isClick = false;
-        //移动到删除的时候高亮一行
-        private void dataGridView1_CellMouseMove(object sender, DataGridViewCellMouseEventArgs e)
-        {
-            if (isClick == true)
-            {
-                return;
-
-            }
-            else
-            {
-                //选中行号
-                int rowNum = e.RowIndex;
-                //选中列号
-                int columnNum = e.ColumnIndex;
-                if (rowNum >= 0 && columnNum >= 0)
-                {
-                    dataGridView1.ClearSelection();
-                    dataGridView1.Rows[rowNum].Selected = true;//选中行
-                }
-            }
-        }
+    
+      
 
         /// <summary>
         /// 场景信息按照ID重新排列顺序
@@ -525,10 +482,7 @@ namespace eNet编辑器.DgvView
                     //TxtShow("加载失败！\r\n");
                 }
             }
-            else
-            {
-                //无场景信息加载
-            }
+          
             
         }
 
@@ -587,7 +541,12 @@ namespace eNet编辑器.DgvView
                     }
                     else
                     {
-                        //TxtShow("发送指令失败！");
+                        flag = ts.SendData(sock, oder, 2);
+                        if (flag == 0)
+                        {
+                            AppTxtShow("发送指令成功！");
+                            sock.Close();
+                        }
                     }
                 }
                 catch
@@ -653,8 +612,29 @@ namespace eNet编辑器.DgvView
         private int columnCount = 0;
         private int oldrowCount = 0;
         private int oldcolumnCount = 0;
-        //临时存放旧的Name名称
-        //private string oldName = "";
+
+        bool isClick = false;
+        //移动到删除的时候高亮一行
+        private void dataGridView1_CellMouseMove(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (isClick == true)
+            {
+                return;
+
+            }
+            else
+            {
+                //选中行号
+                int rowNum = e.RowIndex;
+                //选中列号
+                int columnNum = e.ColumnIndex;
+                if (rowNum >= 0 && columnNum >= 0)
+                {
+                    dataGridView1.ClearSelection();
+                    dataGridView1.Rows[rowNum].Selected = true;//选中行
+                }
+            }
+        }
 
         private void dataGridView1_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
         {
@@ -674,7 +654,17 @@ namespace eNet编辑器.DgvView
 
                 isDoubleClick = true;
             }
+            if (isClick == true)
+            {
+                isClick = false;
+            }
+            else
+            {
+                isClick = true;
+            }
         }
+
+      
 
         private void doubleClickTimer_Tick(object sender, EventArgs e)
         {
@@ -703,7 +693,7 @@ namespace eNet编辑器.DgvView
                                 }
                                 string objType = dataGridView1.Rows[rowCount].Cells[1].EditedFormattedValue.ToString();
                                 //赋值List 并添加地域 名字
-                                string address = dgvAddress(id, objType, obj);
+                                dgvAddress(id, objType, obj);
 
                                 break;
                             case "operation":
@@ -949,6 +939,7 @@ namespace eNet编辑器.DgvView
             }
             
         }
+
         /// <summary>
         /// 获取新的地址 刷新地域 名字
         /// </summary>
@@ -956,7 +947,7 @@ namespace eNet编辑器.DgvView
         /// <param name="objType">当前对象的类型</param>
         /// <param name="obj">当前对象的值</param>
         /// <returns></returns>
-        private string dgvAddress(int id ,string objType,string obj)
+        private void dgvAddress(int id ,string objType,string obj)
         {
             sceneAddress dc = new sceneAddress();
             //把窗口向屏幕中间刷新
@@ -977,6 +968,10 @@ namespace eNet编辑器.DgvView
                 DataJson.sceneInfo info = getSceneID(sc, id);
                 //地址
                 info.address = dc.Obj;
+                if (string.IsNullOrEmpty(info.address))
+                {
+                    return;
+                }
                 //按照地址查找type的类型 
                 string type = IniHelper.findIniTypesByAddress(ips[0],info.address).Split(',')[0];
                 if(string.IsNullOrEmpty(type))
@@ -1015,7 +1010,7 @@ namespace eNet编辑器.DgvView
                 FileMesege.cmds.DoNewCommand(NewList, OldList);
             }
             dgvsceneAddItem();
-            return dc.Obj;
+            
 
         }
 
@@ -1112,13 +1107,15 @@ namespace eNet编辑器.DgvView
                 if (e.KeyData == Keys.Delete)
                 {
 
-                    DelKeySection();
+                    DelKeyOpt();
                     
                 }
             }
             catch (Exception ex) { MessageBox.Show(ex + "临时调试错误信息"); }
         }
-        private void DelKeySection()
+
+        //删除操作
+        private void DelKeyOpt()
         {
             try
             {

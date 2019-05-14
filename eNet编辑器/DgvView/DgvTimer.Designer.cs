@@ -37,14 +37,6 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.num = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.address = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.section = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.operation = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.delay = new DevComponents.DotNetBar.Controls.DataGridViewDateTimeInputColumn();
-            this.del = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.checkDel = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.ultraSplitter1 = new Infragistics.Win.Misc.UltraSplitter();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
@@ -52,9 +44,9 @@
             this.panel7 = new System.Windows.Forms.Panel();
             this.listbox = new DevComponents.DotNetBar.ListBoxAdv();
             this.panel8 = new System.Windows.Forms.Panel();
+            this.cbPriorHoliday = new System.Windows.Forms.RadioButton();
             this.cbCustom = new DevComponents.DotNetBar.Controls.CheckBoxX();
             this.cbEveryday = new DevComponents.DotNetBar.Controls.CheckBoxX();
-            this.cbPriorHoliday = new DevComponents.DotNetBar.Controls.CheckBoxX();
             this.cbSun = new DevComponents.DotNetBar.Controls.CheckBoxX();
             this.cbSat = new DevComponents.DotNetBar.Controls.CheckBoxX();
             this.cbFri = new DevComponents.DotNetBar.Controls.CheckBoxX();
@@ -81,6 +73,15 @@
             this.btnOn = new DevComponents.DotNetBar.ButtonX();
             this.styleManager1 = new DevComponents.DotNetBar.StyleManager(this.components);
             this.checkBoxItem1 = new DevComponents.DotNetBar.CheckBoxItem();
+            this.doubleClickTimer = new System.Windows.Forms.Timer(this.components);
+            this.num = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.address = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.section = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.operation = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.shortTime = new DevComponents.DotNetBar.Controls.DataGridViewDateTimeInputColumn();
+            this.del = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.checkDel = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -147,7 +148,7 @@
             this.section,
             this.name,
             this.operation,
-            this.delay,
+            this.shortTime,
             this.del,
             this.checkDel});
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
@@ -168,93 +169,12 @@
             this.dataGridView1.RowTemplate.Height = 23;
             this.dataGridView1.Size = new System.Drawing.Size(799, 552);
             this.dataGridView1.TabIndex = 3;
-            // 
-            // num
-            // 
-            this.num.HeaderText = "序号";
-            this.num.Name = "num";
-            this.num.ReadOnly = true;
-            this.num.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.num.Width = 60;
-            // 
-            // address
-            // 
-            this.address.HeaderText = "地址";
-            this.address.Name = "address";
-            this.address.ReadOnly = true;
-            // 
-            // section
-            // 
-            this.section.HeaderText = "区域";
-            this.section.Name = "section";
-            this.section.ReadOnly = true;
-            this.section.Width = 160;
-            // 
-            // name
-            // 
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.name.DefaultCellStyle = dataGridViewCellStyle5;
-            this.name.HeaderText = "名称";
-            this.name.Name = "name";
-            this.name.ReadOnly = true;
-            this.name.Width = 80;
-            // 
-            // operation
-            // 
-            this.operation.HeaderText = "操作";
-            this.operation.Name = "operation";
-            this.operation.ReadOnly = true;
-            this.operation.Width = 140;
-            // 
-            // delay
-            // 
-            this.delay.AutoAdvance = true;
-            // 
-            // 
-            // 
-            this.delay.BackgroundStyle.Class = "DataGridViewDateTimeBorder";
-            this.delay.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.delay.ButtonClear.Visible = true;
-            this.delay.ButtonDropDown.Visible = true;
-            this.delay.Format = DevComponents.Editors.eDateTimePickerFormat.ShortTime;
-            this.delay.HeaderText = "定时时间";
-            this.delay.InputHorizontalAlignment = DevComponents.Editors.eHorizontalAlignment.Left;
-            this.delay.MinDate = new System.DateTime(2019, 5, 13, 0, 0, 0, 0);
-            // 
-            // 
-            // 
-            // 
-            // 
-            // 
-            this.delay.MonthCalendar.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.delay.MonthCalendar.CalendarDimensions = new System.Drawing.Size(1, 1);
-            // 
-            // 
-            // 
-            this.delay.MonthCalendar.CommandsBackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.delay.MonthCalendar.DisplayMonth = new System.DateTime(2019, 5, 1, 0, 0, 0, 0);
-            // 
-            // 
-            // 
-            this.delay.MonthCalendar.NavigationBackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.delay.MonthCalendar.Visible = false;
-            this.delay.Name = "delay";
-            this.delay.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // del
-            // 
-            this.del.HeaderText = "删除";
-            this.del.Name = "del";
-            this.del.ReadOnly = true;
-            this.del.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.del.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.del.Width = 55;
-            // 
-            // checkDel
-            // 
-            this.checkDel.HeaderText = "";
-            this.checkDel.Name = "checkDel";
-            this.checkDel.Width = 50;
+            this.dataGridView1.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.dataGridView1_CellBeginEdit);
+            this.dataGridView1.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellEndEdit);
+            this.dataGridView1.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_CellMouseDown);
+            this.dataGridView1.CellMouseMove += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_CellMouseMove);
+            this.dataGridView1.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dataGridView1_DataError);
+            this.dataGridView1.KeyUp += new System.Windows.Forms.KeyEventHandler(this.dataGridView1_KeyUp);
             // 
             // ultraSplitter1
             // 
@@ -298,10 +218,10 @@
             // 
             this.panel7.Controls.Add(this.listbox);
             this.panel7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel7.Location = new System.Drawing.Point(0, 199);
+            this.panel7.Location = new System.Drawing.Point(0, 203);
             this.panel7.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(204, 353);
+            this.panel7.Size = new System.Drawing.Size(204, 349);
             this.panel7.TabIndex = 8;
             // 
             // listbox
@@ -324,7 +244,7 @@
             this.listbox.ItemHeight = 24;
             this.listbox.Location = new System.Drawing.Point(0, 0);
             this.listbox.Name = "listbox";
-            this.listbox.Size = new System.Drawing.Size(204, 353);
+            this.listbox.Size = new System.Drawing.Size(204, 349);
             this.listbox.Style = DevComponents.DotNetBar.eDotNetBarStyle.OfficeXP;
             this.listbox.TabIndex = 6;
             this.listbox.Text = "listbox";
@@ -332,9 +252,9 @@
             // panel8
             // 
             this.panel8.BackColor = System.Drawing.Color.White;
+            this.panel8.Controls.Add(this.cbPriorHoliday);
             this.panel8.Controls.Add(this.cbCustom);
             this.panel8.Controls.Add(this.cbEveryday);
-            this.panel8.Controls.Add(this.cbPriorHoliday);
             this.panel8.Controls.Add(this.cbSun);
             this.panel8.Controls.Add(this.cbSat);
             this.panel8.Controls.Add(this.cbFri);
@@ -348,8 +268,20 @@
             this.panel8.Location = new System.Drawing.Point(0, 0);
             this.panel8.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(204, 199);
+            this.panel8.Size = new System.Drawing.Size(204, 203);
             this.panel8.TabIndex = 7;
+            // 
+            // cbPriorHoliday
+            // 
+            this.cbPriorHoliday.AutoSize = true;
+            this.cbPriorHoliday.Location = new System.Drawing.Point(17, 147);
+            this.cbPriorHoliday.Name = "cbPriorHoliday";
+            this.cbPriorHoliday.Size = new System.Drawing.Size(86, 21);
+            this.cbPriorHoliday.TabIndex = 27;
+            this.cbPriorHoliday.TabStop = true;
+            this.cbPriorHoliday.Text = "跳过节假日";
+            this.cbPriorHoliday.UseVisualStyleBackColor = true;
+            this.cbPriorHoliday.MouseUp += new System.Windows.Forms.MouseEventHandler(this.cbPriorHoliday_MouseUp);
             // 
             // cbCustom
             // 
@@ -382,22 +314,6 @@
             this.cbEveryday.TabIndex = 25;
             this.cbEveryday.Text = "每天";
             this.cbEveryday.MouseUp += new System.Windows.Forms.MouseEventHandler(this.cbEveryday_MouseUp);
-            // 
-            // cbPriorHoliday
-            // 
-            this.cbPriorHoliday.AutoSize = true;
-            this.cbPriorHoliday.BackColor = System.Drawing.Color.White;
-            // 
-            // 
-            // 
-            this.cbPriorHoliday.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.cbPriorHoliday.Location = new System.Drawing.Point(17, 142);
-            this.cbPriorHoliday.Name = "cbPriorHoliday";
-            this.cbPriorHoliday.Size = new System.Drawing.Size(88, 20);
-            this.cbPriorHoliday.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.cbPriorHoliday.TabIndex = 24;
-            this.cbPriorHoliday.Text = "跳过节假日";
-            this.cbPriorHoliday.MouseUp += new System.Windows.Forms.MouseEventHandler(this.cbPriorHoliday_MouseUp);
             // 
             // cbSun
             // 
@@ -558,7 +474,7 @@
             this.panel9.Controls.Add(this.btnDelDay);
             this.panel9.Controls.Add(this.label2);
             this.panel9.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel9.Location = new System.Drawing.Point(0, 174);
+            this.panel9.Location = new System.Drawing.Point(0, 178);
             this.panel9.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel9.Name = "panel9";
             this.panel9.Size = new System.Drawing.Size(204, 25);
@@ -667,7 +583,7 @@
             this.btnOff.Size = new System.Drawing.Size(15, 15);
             this.btnOff.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnOff.TabIndex = 13;
-            this.btnOff.Tooltip = "开启";
+            this.btnOff.Tooltip = "关闭";
             this.btnOff.Click += new System.EventHandler(this.btnOff_Click);
             // 
             // symbolBox1
@@ -813,6 +729,106 @@
             this.checkBoxItem1.GlobalItem = false;
             this.checkBoxItem1.Name = "checkBoxItem1";
             // 
+            // doubleClickTimer
+            // 
+            this.doubleClickTimer.Interval = 40;
+            this.doubleClickTimer.Tick += new System.EventHandler(this.doubleClickTimer_Tick);
+            // 
+            // num
+            // 
+            this.num.HeaderText = "序号";
+            this.num.Name = "num";
+            this.num.ReadOnly = true;
+            this.num.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.num.Width = 60;
+            // 
+            // address
+            // 
+            this.address.HeaderText = "地址";
+            this.address.Name = "address";
+            this.address.ReadOnly = true;
+            // 
+            // section
+            // 
+            this.section.HeaderText = "区域";
+            this.section.Name = "section";
+            this.section.ReadOnly = true;
+            this.section.Width = 160;
+            // 
+            // name
+            // 
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.name.DefaultCellStyle = dataGridViewCellStyle5;
+            this.name.HeaderText = "名称";
+            this.name.Name = "name";
+            this.name.ReadOnly = true;
+            this.name.Width = 80;
+            // 
+            // operation
+            // 
+            this.operation.HeaderText = "操作";
+            this.operation.Name = "operation";
+            this.operation.ReadOnly = true;
+            this.operation.Width = 140;
+            // 
+            // shortTime
+            // 
+            this.shortTime.AutoAdvance = true;
+            // 
+            // 
+            // 
+            this.shortTime.BackgroundStyle.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("shortTime.BackgroundStyle.BackgroundImage")));
+            this.shortTime.BackgroundStyle.BackgroundImagePosition = DevComponents.DotNetBar.eStyleBackgroundImage.Center;
+            this.shortTime.BackgroundStyle.Class = "DataGridViewDateTimeBorder";
+            this.shortTime.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.shortTime.ButtonCustom.Image = ((System.Drawing.Image)(resources.GetObject("shortTime.ButtonCustom.Image")));
+            this.shortTime.ButtonCustom.Visible = true;
+            this.shortTime.ButtonCustom2.Image = ((System.Drawing.Image)(resources.GetObject("shortTime.ButtonCustom2.Image")));
+            this.shortTime.ButtonCustom2.Visible = true;
+            this.shortTime.ButtonDropDown.Visible = true;
+            this.shortTime.Format = DevComponents.Editors.eDateTimePickerFormat.ShortTime;
+            this.shortTime.HeaderText = "定时时间";
+            this.shortTime.InputHorizontalAlignment = DevComponents.Editors.eHorizontalAlignment.Left;
+            this.shortTime.MinDate = new System.DateTime(2019, 5, 13, 0, 0, 0, 0);
+            // 
+            // 
+            // 
+            // 
+            // 
+            // 
+            this.shortTime.MonthCalendar.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.shortTime.MonthCalendar.CalendarDimensions = new System.Drawing.Size(1, 1);
+            // 
+            // 
+            // 
+            this.shortTime.MonthCalendar.CommandsBackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.shortTime.MonthCalendar.DisplayMonth = new System.DateTime(2019, 5, 1, 0, 0, 0, 0);
+            // 
+            // 
+            // 
+            this.shortTime.MonthCalendar.NavigationBackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.shortTime.MonthCalendar.Visible = false;
+            this.shortTime.Name = "shortTime";
+            this.shortTime.ReadOnly = true;
+            this.shortTime.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.shortTime.ShowUpDown = true;
+            this.shortTime.Width = 160;
+            // 
+            // del
+            // 
+            this.del.HeaderText = "删除";
+            this.del.Name = "del";
+            this.del.ReadOnly = true;
+            this.del.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.del.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.del.Width = 55;
+            // 
+            // checkDel
+            // 
+            this.checkDel.HeaderText = "";
+            this.checkDel.Name = "checkDel";
+            this.checkDel.Width = 50;
+            // 
             // DgvTimer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -876,7 +892,6 @@
         private DevComponents.DotNetBar.Controls.CheckBoxX cbThur;
         private DevComponents.DotNetBar.Controls.CheckBoxX cbWed;
         private DevComponents.DotNetBar.Controls.CheckBoxX cbTue;
-        private DevComponents.DotNetBar.Controls.CheckBoxX cbPriorHoliday;
         private System.Windows.Forms.Panel panel10;
         private System.Windows.Forms.Label label3;
         private DevComponents.DotNetBar.Controls.CheckBoxX cbCustom;
@@ -886,12 +901,14 @@
         private DevComponents.DotNetBar.Controls.SymbolBox symbolBox2;
         private DevComponents.DotNetBar.Controls.SymbolBox symbolBox3;
         private DevComponents.DotNetBar.ButtonX btnOff;
+        private System.Windows.Forms.Timer doubleClickTimer;
+        private System.Windows.Forms.RadioButton cbPriorHoliday;
         private System.Windows.Forms.DataGridViewTextBoxColumn num;
         private System.Windows.Forms.DataGridViewTextBoxColumn address;
         private System.Windows.Forms.DataGridViewTextBoxColumn section;
         private System.Windows.Forms.DataGridViewTextBoxColumn name;
         private System.Windows.Forms.DataGridViewTextBoxColumn operation;
-        private DevComponents.DotNetBar.Controls.DataGridViewDateTimeInputColumn delay;
+        private DevComponents.DotNetBar.Controls.DataGridViewDateTimeInputColumn shortTime;
         private System.Windows.Forms.DataGridViewButtonColumn del;
         private System.Windows.Forms.DataGridViewCheckBoxColumn checkDel;
 
