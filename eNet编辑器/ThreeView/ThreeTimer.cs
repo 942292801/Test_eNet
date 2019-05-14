@@ -206,7 +206,8 @@ namespace eNet编辑器.ThreeView
                     tms.id = Convert.ToInt32(timeradd.Num);
                     tms.pid = randomNum;
                     tms.dates = "";
-                    tms.priorHoloday = "";
+                    //默认不跳过节假日
+                    tms.priorHoloday = "01000001";
                     tms.timersInfo = new List<DataJson.timersInfo>();
                     if (copyTimer != null)
                     {
@@ -442,7 +443,7 @@ namespace eNet编辑器.ThreeView
             {
                 return;
             }
-            //新建场景
+            //新建定时
             newTimer(true);
         }
 

@@ -29,8 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle45 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle46 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DgvTimer));
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -41,7 +42,7 @@
             this.section = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.operation = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.delay = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.delay = new DevComponents.DotNetBar.Controls.DataGridViewDateTimeInputColumn();
             this.del = new System.Windows.Forms.DataGridViewButtonColumn();
             this.checkDel = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.ultraSplitter1 = new Infragistics.Win.Misc.UltraSplitter();
@@ -62,21 +63,22 @@
             this.cbTue = new DevComponents.DotNetBar.Controls.CheckBoxX();
             this.cbMon = new DevComponents.DotNetBar.Controls.CheckBoxX();
             this.panel10 = new System.Windows.Forms.Panel();
-            this.symbolBox3 = new DevComponents.DotNetBar.Controls.SymbolBox();
+            this.symbolBox2 = new DevComponents.DotNetBar.Controls.SymbolBox();
             this.label3 = new System.Windows.Forms.Label();
             this.panel9 = new System.Windows.Forms.Panel();
+            this.symbolBox3 = new DevComponents.DotNetBar.Controls.SymbolBox();
             this.btnAddDay = new DevComponents.DotNetBar.ButtonX();
             this.btnDelDay = new DevComponents.DotNetBar.ButtonX();
-            this.symbolBox2 = new DevComponents.DotNetBar.Controls.SymbolBox();
             this.label2 = new System.Windows.Forms.Label();
             this.plInfoTitle = new System.Windows.Forms.Panel();
+            this.btnOff = new DevComponents.DotNetBar.ButtonX();
             this.symbolBox1 = new DevComponents.DotNetBar.Controls.SymbolBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnDel = new DevComponents.DotNetBar.ButtonX();
             this.btnClear = new DevComponents.DotNetBar.ButtonX();
             this.btnAdd = new DevComponents.DotNetBar.ButtonX();
             this.btnDown = new DevComponents.DotNetBar.ButtonX();
-            this.btnCall = new DevComponents.DotNetBar.ButtonX();
+            this.btnOn = new DevComponents.DotNetBar.ButtonX();
             this.styleManager1 = new DevComponents.DotNetBar.StyleManager(this.components);
             this.checkBoxItem1 = new DevComponents.DotNetBar.CheckBoxItem();
             this.panel1.SuspendLayout();
@@ -130,14 +132,14 @@
             this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
             this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridView1.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableAlwaysIncludeHeaderText;
-            dataGridViewCellStyle45.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle45.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle45.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle45.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle45.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle45.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle45.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle45;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.num,
@@ -148,14 +150,14 @@
             this.delay,
             this.del,
             this.checkDel});
-            dataGridViewCellStyle46.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle46.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle46.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle46.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle46.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(235)))), ((int)(((byte)(248)))));
-            dataGridViewCellStyle46.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle46.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle46;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(235)))), ((int)(((byte)(248)))));
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle6;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
@@ -172,6 +174,7 @@
             this.num.HeaderText = "序号";
             this.num.Name = "num";
             this.num.ReadOnly = true;
+            this.num.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.num.Width = 60;
             // 
             // address
@@ -189,6 +192,8 @@
             // 
             // name
             // 
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.name.DefaultCellStyle = dataGridViewCellStyle5;
             this.name.HeaderText = "名称";
             this.name.Name = "name";
             this.name.ReadOnly = true;
@@ -203,8 +208,38 @@
             // 
             // delay
             // 
-            this.delay.HeaderText = "延时（秒）";
+            this.delay.AutoAdvance = true;
+            // 
+            // 
+            // 
+            this.delay.BackgroundStyle.Class = "DataGridViewDateTimeBorder";
+            this.delay.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.delay.ButtonClear.Visible = true;
+            this.delay.ButtonDropDown.Visible = true;
+            this.delay.Format = DevComponents.Editors.eDateTimePickerFormat.ShortTime;
+            this.delay.HeaderText = "定时时间";
+            this.delay.InputHorizontalAlignment = DevComponents.Editors.eHorizontalAlignment.Left;
+            this.delay.MinDate = new System.DateTime(2019, 5, 13, 0, 0, 0, 0);
+            // 
+            // 
+            // 
+            // 
+            // 
+            // 
+            this.delay.MonthCalendar.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.delay.MonthCalendar.CalendarDimensions = new System.Drawing.Size(1, 1);
+            // 
+            // 
+            // 
+            this.delay.MonthCalendar.CommandsBackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.delay.MonthCalendar.DisplayMonth = new System.DateTime(2019, 5, 1, 0, 0, 0, 0);
+            // 
+            // 
+            // 
+            this.delay.MonthCalendar.NavigationBackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.delay.MonthCalendar.Visible = false;
             this.delay.Name = "delay";
+            this.delay.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
             // del
             // 
@@ -281,30 +316,18 @@
             this.listbox.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Rounded;
             this.listbox.BackgroundStyle.TextColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarCaptionText;
             this.listbox.BackgroundStyle.TextShadowColor = System.Drawing.Color.Blue;
+            this.listbox.CheckStateMember = null;
             this.listbox.ContainerControlProcessDialogKey = true;
             this.listbox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.listbox.DragDropSupport = true;
             this.listbox.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.listbox.ItemHeight = 24;
-            this.listbox.Items.Add("2019/11/1");
-            this.listbox.Items.Add("2019/11/2");
-            this.listbox.Items.Add("2019/11/3");
-            this.listbox.Items.Add("2019/11/4");
-            this.listbox.Items.Add("2019/11/5");
-            this.listbox.Items.Add("2019/11/6");
-            this.listbox.Items.Add("2019/11/12");
-            this.listbox.Items.Add("2019/11/23");
-            this.listbox.Items.Add("2019/11/34");
-            this.listbox.Items.Add("2019/11/45");
-            this.listbox.Items.Add("2019/11/55");
-            this.listbox.Items.Add("2019/11/66");
             this.listbox.Location = new System.Drawing.Point(0, 0);
             this.listbox.Name = "listbox";
             this.listbox.Size = new System.Drawing.Size(204, 353);
             this.listbox.Style = DevComponents.DotNetBar.eDotNetBarStyle.OfficeXP;
             this.listbox.TabIndex = 6;
             this.listbox.Text = "listbox";
-            this.listbox.ItemClick += new System.EventHandler(this.listbox_ItemClick);
             // 
             // panel8
             // 
@@ -491,7 +514,7 @@
             // panel10
             // 
             this.panel10.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.panel10.Controls.Add(this.symbolBox3);
+            this.panel10.Controls.Add(this.symbolBox2);
             this.panel10.Controls.Add(this.label3);
             this.panel10.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel10.Location = new System.Drawing.Point(0, 0);
@@ -500,27 +523,28 @@
             this.panel10.Size = new System.Drawing.Size(204, 25);
             this.panel10.TabIndex = 5;
             // 
-            // symbolBox3
+            // symbolBox2
             // 
             // 
             // 
             // 
-            this.symbolBox3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.symbolBox3.Location = new System.Drawing.Point(7, 6);
-            this.symbolBox3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.symbolBox3.Name = "symbolBox3";
-            this.symbolBox3.Size = new System.Drawing.Size(16, 16);
-            this.symbolBox3.Symbol = "";
-            this.symbolBox3.SymbolColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(119)))), ((int)(((byte)(119)))));
-            this.symbolBox3.TabIndex = 2;
-            this.symbolBox3.Text = "symbolBox3";
+            this.symbolBox2.BackgroundStyle.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("symbolBox2.BackgroundStyle.BackgroundImage")));
+            this.symbolBox2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.symbolBox2.Location = new System.Drawing.Point(5, 6);
+            this.symbolBox2.Margin = new System.Windows.Forms.Padding(2, 4, 3, 4);
+            this.symbolBox2.Name = "symbolBox2";
+            this.symbolBox2.Size = new System.Drawing.Size(13, 13);
+            this.symbolBox2.Symbol = "";
+            this.symbolBox2.SymbolColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(119)))), ((int)(((byte)(119)))));
+            this.symbolBox2.TabIndex = 13;
+            this.symbolBox2.Text = "symbolBox2";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("微软雅黑", 9F);
             this.label3.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label3.Location = new System.Drawing.Point(35, 4);
+            this.label3.Location = new System.Drawing.Point(24, 4);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(56, 17);
             this.label3.TabIndex = 1;
@@ -529,9 +553,9 @@
             // panel9
             // 
             this.panel9.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.panel9.Controls.Add(this.symbolBox3);
             this.panel9.Controls.Add(this.btnAddDay);
             this.panel9.Controls.Add(this.btnDelDay);
-            this.panel9.Controls.Add(this.symbolBox2);
             this.panel9.Controls.Add(this.label2);
             this.panel9.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel9.Location = new System.Drawing.Point(0, 174);
@@ -540,11 +564,27 @@
             this.panel9.Size = new System.Drawing.Size(204, 25);
             this.panel9.TabIndex = 4;
             // 
+            // symbolBox3
+            // 
+            // 
+            // 
+            // 
+            this.symbolBox3.BackgroundStyle.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("symbolBox3.BackgroundStyle.BackgroundImage")));
+            this.symbolBox3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.symbolBox3.Location = new System.Drawing.Point(5, 6);
+            this.symbolBox3.Margin = new System.Windows.Forms.Padding(2, 4, 3, 4);
+            this.symbolBox3.Name = "symbolBox3";
+            this.symbolBox3.Size = new System.Drawing.Size(13, 13);
+            this.symbolBox3.Symbol = "";
+            this.symbolBox3.SymbolColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(119)))), ((int)(((byte)(119)))));
+            this.symbolBox3.TabIndex = 13;
+            this.symbolBox3.Text = "symbolBox3";
+            // 
             // btnAddDay
             // 
             this.btnAddDay.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnAddDay.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.btnAddDay.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnAddDay.BackColor = System.Drawing.Color.WhiteSmoke;
             this.btnAddDay.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
             this.btnAddDay.FocusCuesEnabled = false;
             this.btnAddDay.Font = new System.Drawing.Font("微软雅黑", 9F);
@@ -564,7 +604,7 @@
             // 
             this.btnDelDay.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnDelDay.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.btnDelDay.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnDelDay.BackColor = System.Drawing.Color.WhiteSmoke;
             this.btnDelDay.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
             this.btnDelDay.FocusCuesEnabled = false;
             this.btnDelDay.Font = new System.Drawing.Font("微软雅黑", 9F);
@@ -580,27 +620,12 @@
             this.btnDelDay.Tooltip = "删除选中行";
             this.btnDelDay.Click += new System.EventHandler(this.btnDelDay_Click);
             // 
-            // symbolBox2
-            // 
-            // 
-            // 
-            // 
-            this.symbolBox2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.symbolBox2.Location = new System.Drawing.Point(7, 6);
-            this.symbolBox2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.symbolBox2.Name = "symbolBox2";
-            this.symbolBox2.Size = new System.Drawing.Size(16, 16);
-            this.symbolBox2.Symbol = "";
-            this.symbolBox2.SymbolColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(119)))), ((int)(((byte)(119)))));
-            this.symbolBox2.TabIndex = 2;
-            this.symbolBox2.Text = "symbolBox2";
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("微软雅黑", 9F);
             this.label2.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label2.Location = new System.Drawing.Point(35, 4);
+            this.label2.Location = new System.Drawing.Point(24, 4);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(68, 17);
             this.label2.TabIndex = 1;
@@ -609,13 +634,14 @@
             // plInfoTitle
             // 
             this.plInfoTitle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.plInfoTitle.Controls.Add(this.btnOff);
             this.plInfoTitle.Controls.Add(this.symbolBox1);
             this.plInfoTitle.Controls.Add(this.label1);
             this.plInfoTitle.Controls.Add(this.btnDel);
             this.plInfoTitle.Controls.Add(this.btnClear);
             this.plInfoTitle.Controls.Add(this.btnAdd);
             this.plInfoTitle.Controls.Add(this.btnDown);
-            this.plInfoTitle.Controls.Add(this.btnCall);
+            this.plInfoTitle.Controls.Add(this.btnOn);
             this.plInfoTitle.Dock = System.Windows.Forms.DockStyle.Top;
             this.plInfoTitle.Location = new System.Drawing.Point(0, 0);
             this.plInfoTitle.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -623,19 +649,41 @@
             this.plInfoTitle.Size = new System.Drawing.Size(1013, 25);
             this.plInfoTitle.TabIndex = 16;
             // 
+            // btnOff
+            // 
+            this.btnOff.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnOff.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnOff.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnOff.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
+            this.btnOff.FocusCuesEnabled = false;
+            this.btnOff.Font = new System.Drawing.Font("黑体", 9F);
+            this.btnOff.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.Image;
+            this.btnOff.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnOff.HoverImage")));
+            this.btnOff.Image = ((System.Drawing.Image)(resources.GetObject("btnOff.Image")));
+            this.btnOff.Location = new System.Drawing.Point(962, 5);
+            this.btnOff.Margin = new System.Windows.Forms.Padding(6);
+            this.btnOff.Name = "btnOff";
+            this.btnOff.Size = new System.Drawing.Size(15, 15);
+            this.btnOff.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnOff.TabIndex = 13;
+            this.btnOff.Tooltip = "开启";
+            this.btnOff.Click += new System.EventHandler(this.btnOff_Click);
+            // 
             // symbolBox1
             // 
             // 
             // 
             // 
+            this.symbolBox1.BackgroundStyle.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("symbolBox1.BackgroundStyle.BackgroundImage")));
             this.symbolBox1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.symbolBox1.Location = new System.Drawing.Point(12, 4);
-            this.symbolBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.symbolBox1.Location = new System.Drawing.Point(5, 6);
+            this.symbolBox1.Margin = new System.Windows.Forms.Padding(2, 4, 3, 4);
             this.symbolBox1.Name = "symbolBox1";
-            this.symbolBox1.Size = new System.Drawing.Size(16, 16);
-            this.symbolBox1.Symbol = "";
+            this.symbolBox1.Size = new System.Drawing.Size(13, 13);
+            this.symbolBox1.Symbol = "";
             this.symbolBox1.SymbolColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(119)))), ((int)(((byte)(119)))));
-            this.symbolBox1.TabIndex = 8;
+            this.symbolBox1.TabIndex = 12;
             this.symbolBox1.Text = "symbolBox1";
             // 
             // label1
@@ -644,10 +692,10 @@
             this.label1.Font = new System.Drawing.Font("微软雅黑", 9F);
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
             this.label1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label1.Location = new System.Drawing.Point(40, 1);
+            this.label1.Location = new System.Drawing.Point(24, 4);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(32, 17);
-            this.label1.TabIndex = 7;
+            this.label1.TabIndex = 11;
             this.label1.Text = "内容";
             // 
             // btnDel
@@ -662,13 +710,14 @@
             this.btnDel.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.Image;
             this.btnDel.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnDel.HoverImage")));
             this.btnDel.Image = ((System.Drawing.Image)(resources.GetObject("btnDel.Image")));
-            this.btnDel.Location = new System.Drawing.Point(989, 0);
-            this.btnDel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnDel.Location = new System.Drawing.Point(989, 5);
+            this.btnDel.Margin = new System.Windows.Forms.Padding(6);
             this.btnDel.Name = "btnDel";
-            this.btnDel.Size = new System.Drawing.Size(17, 22);
+            this.btnDel.Size = new System.Drawing.Size(15, 15);
             this.btnDel.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnDel.TabIndex = 6;
             this.btnDel.Tooltip = "删除选中行";
+            this.btnDel.Click += new System.EventHandler(this.btnDel_Click);
             // 
             // btnClear
             // 
@@ -682,13 +731,14 @@
             this.btnClear.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.Image;
             this.btnClear.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnClear.HoverImage")));
             this.btnClear.Image = ((System.Drawing.Image)(resources.GetObject("btnClear.Image")));
-            this.btnClear.Location = new System.Drawing.Point(912, 0);
-            this.btnClear.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnClear.Location = new System.Drawing.Point(881, 6);
+            this.btnClear.Margin = new System.Windows.Forms.Padding(6);
             this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(17, 22);
+            this.btnClear.Size = new System.Drawing.Size(15, 15);
             this.btnClear.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnClear.TabIndex = 5;
             this.btnClear.Tooltip = "清空";
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
             // btnAdd
             // 
@@ -702,13 +752,14 @@
             this.btnAdd.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.Image;
             this.btnAdd.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnAdd.HoverImage")));
             this.btnAdd.Image = ((System.Drawing.Image)(resources.GetObject("btnAdd.Image")));
-            this.btnAdd.Location = new System.Drawing.Point(885, 0);
-            this.btnAdd.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnAdd.Location = new System.Drawing.Point(854, 6);
+            this.btnAdd.Margin = new System.Windows.Forms.Padding(6);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(17, 22);
+            this.btnAdd.Size = new System.Drawing.Size(15, 15);
             this.btnAdd.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnAdd.TabIndex = 4;
             this.btnAdd.Tooltip = "增加";
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // btnDown
             // 
@@ -722,33 +773,35 @@
             this.btnDown.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.Image;
             this.btnDown.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnDown.HoverImage")));
             this.btnDown.Image = ((System.Drawing.Image)(resources.GetObject("btnDown.Image")));
-            this.btnDown.Location = new System.Drawing.Point(939, 0);
-            this.btnDown.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnDown.Location = new System.Drawing.Point(908, 5);
+            this.btnDown.Margin = new System.Windows.Forms.Padding(6);
             this.btnDown.Name = "btnDown";
-            this.btnDown.Size = new System.Drawing.Size(17, 22);
+            this.btnDown.Size = new System.Drawing.Size(15, 15);
             this.btnDown.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnDown.TabIndex = 3;
             this.btnDown.Tooltip = "载入";
+            this.btnDown.Click += new System.EventHandler(this.btnDown_Click);
             // 
-            // btnCall
+            // btnOn
             // 
-            this.btnCall.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnCall.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            this.btnOn.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnOn.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCall.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btnCall.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
-            this.btnCall.FocusCuesEnabled = false;
-            this.btnCall.Font = new System.Drawing.Font("黑体", 9F);
-            this.btnCall.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.Image;
-            this.btnCall.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnCall.HoverImage")));
-            this.btnCall.Image = ((System.Drawing.Image)(resources.GetObject("btnCall.Image")));
-            this.btnCall.Location = new System.Drawing.Point(966, 0);
-            this.btnCall.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnCall.Name = "btnCall";
-            this.btnCall.Size = new System.Drawing.Size(17, 22);
-            this.btnCall.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnCall.TabIndex = 0;
-            this.btnCall.Tooltip = "调用";
+            this.btnOn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnOn.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
+            this.btnOn.FocusCuesEnabled = false;
+            this.btnOn.Font = new System.Drawing.Font("黑体", 9F);
+            this.btnOn.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.Image;
+            this.btnOn.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnOn.HoverImage")));
+            this.btnOn.Image = ((System.Drawing.Image)(resources.GetObject("btnOn.Image")));
+            this.btnOn.Location = new System.Drawing.Point(935, 5);
+            this.btnOn.Margin = new System.Windows.Forms.Padding(6);
+            this.btnOn.Name = "btnOn";
+            this.btnOn.Size = new System.Drawing.Size(15, 15);
+            this.btnOn.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnOn.TabIndex = 0;
+            this.btnOn.Tooltip = "开启";
+            this.btnOn.Click += new System.EventHandler(this.btnOn_Click);
             // 
             // styleManager1
             // 
@@ -797,30 +850,19 @@
         private System.Windows.Forms.Panel panel2;
         private Infragistics.Win.Misc.UltraSplitter ultraSplitter1;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn num;
-        private System.Windows.Forms.DataGridViewTextBoxColumn address;
-        private System.Windows.Forms.DataGridViewTextBoxColumn section;
-        private System.Windows.Forms.DataGridViewTextBoxColumn name;
-        private System.Windows.Forms.DataGridViewTextBoxColumn operation;
-        private System.Windows.Forms.DataGridViewTextBoxColumn delay;
-        private System.Windows.Forms.DataGridViewButtonColumn del;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn checkDel;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel plInfoTitle;
-        private DevComponents.DotNetBar.Controls.SymbolBox symbolBox1;
-        private System.Windows.Forms.Label label1;
         private DevComponents.DotNetBar.ButtonX btnDel;
         private DevComponents.DotNetBar.ButtonX btnClear;
         private DevComponents.DotNetBar.ButtonX btnAdd;
         private DevComponents.DotNetBar.ButtonX btnDown;
-        private DevComponents.DotNetBar.ButtonX btnCall;
+        private DevComponents.DotNetBar.ButtonX btnOn;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.Panel panel8;
         private System.Windows.Forms.Panel panel9;
         private DevComponents.DotNetBar.ButtonX btnDelDay;
-        private DevComponents.DotNetBar.Controls.SymbolBox symbolBox2;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel panel4;
         private DevComponents.DotNetBar.ButtonX btnAddDay;
@@ -836,10 +878,22 @@
         private DevComponents.DotNetBar.Controls.CheckBoxX cbTue;
         private DevComponents.DotNetBar.Controls.CheckBoxX cbPriorHoliday;
         private System.Windows.Forms.Panel panel10;
-        private DevComponents.DotNetBar.Controls.SymbolBox symbolBox3;
         private System.Windows.Forms.Label label3;
         private DevComponents.DotNetBar.Controls.CheckBoxX cbCustom;
         private DevComponents.DotNetBar.Controls.CheckBoxX cbEveryday;
+        private DevComponents.DotNetBar.Controls.SymbolBox symbolBox1;
+        private System.Windows.Forms.Label label1;
+        private DevComponents.DotNetBar.Controls.SymbolBox symbolBox2;
+        private DevComponents.DotNetBar.Controls.SymbolBox symbolBox3;
+        private DevComponents.DotNetBar.ButtonX btnOff;
+        private System.Windows.Forms.DataGridViewTextBoxColumn num;
+        private System.Windows.Forms.DataGridViewTextBoxColumn address;
+        private System.Windows.Forms.DataGridViewTextBoxColumn section;
+        private System.Windows.Forms.DataGridViewTextBoxColumn name;
+        private System.Windows.Forms.DataGridViewTextBoxColumn operation;
+        private DevComponents.DotNetBar.Controls.DataGridViewDateTimeInputColumn delay;
+        private System.Windows.Forms.DataGridViewButtonColumn del;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn checkDel;
 
 
     }

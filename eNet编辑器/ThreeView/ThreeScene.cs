@@ -452,6 +452,7 @@ namespace eNet编辑器.ThreeView
         {
             if (e.Button == MouseButtons.Right)
             {
+                
                 Point ClickPoint = new Point(e.X, e.Y);
                 TreeNode CurrentNode = treeView1.GetNodeAt(ClickPoint);
                 newitemflag = false;

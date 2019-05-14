@@ -104,7 +104,7 @@ namespace eNet编辑器
             //显示加载窗口true 为网关 false 为设备
             threename.showDevice += new ShowDeviceDgv(threename_showDgvDevice);
             /////////////////////////////////////////////////////////////
-
+            
             //txt窗口 信息显示 清空所有
             threename.sendFormContrl += new SendFormContrl(clearTxtShow);
             //txt窗口 信息显示 清空所有
@@ -157,7 +157,7 @@ namespace eNet编辑器
             threetitle.addPoint += new Action<string>(dgvpoint.addPoint);
             threename.dgvDeviceAddItem += new DgvDeviceAddItem(dgvdevice.dgvDeviceAddItem);
             threebind.dgvbindAddItem += new DgvBindAddItem(dgvbind.dgvbindAddItem);
-            threetimer.dgvTimerAddItem +=new Action(dgvtimer.dgvTimerAddItem);
+            threetimer.dgvTimerAddItem +=new Action(dgvtimer.TimerAddItem);
             threesection.sectionDgvNameAddItem += new SectionDgvNameAddItem(dgvname.dgvNameAddItem);
             threesection.sectionDgvDevAddItem += new SectionDgvDevAddItem(dgvdevice.dgvDeviceAddItem);
             threesection.updatePointDgv += new Action(dgvpoint.dgvPointAddItemBySection);
@@ -232,7 +232,7 @@ namespace eNet编辑器
             dgvpoint.dgvPointAddItemBySection();
             dgvscene.dgvsceneAddItem();
             dgvbind.dgvbindAddItem();
-            dgvtimer.dgvTimerAddItem();
+            dgvtimer.TimerAddItem();
             txtShow.Clear();
         }
         private void updateDgv()

@@ -43,10 +43,10 @@
             this.修改ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.删除ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.plInfoTitle = new System.Windows.Forms.Panel();
+            this.symbolBox1 = new DevComponents.DotNetBar.Controls.SymbolBox();
             this.btnAddGw = new DevComponents.DotNetBar.ButtonX();
             this.btnAddDev = new DevComponents.DotNetBar.ButtonX();
             this.btnDel = new DevComponents.DotNetBar.ButtonX();
-            this.symbolBox1 = new DevComponents.DotNetBar.Controls.SymbolBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -154,9 +154,10 @@
             // 
             this.imgLIst.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imgLIst.ImageStream")));
             this.imgLIst.TransparentColor = System.Drawing.Color.White;
-            this.imgLIst.Images.SetKeyName(0, "u74.png");
-            this.imgLIst.Images.SetKeyName(1, "u70.png");
-            this.imgLIst.Images.SetKeyName(2, "u73.png");
+            this.imgLIst.Images.SetKeyName(0, "u100.png");
+            this.imgLIst.Images.SetKeyName(1, "u101.png");
+            this.imgLIst.Images.SetKeyName(2, "u100_1.png");
+            this.imgLIst.Images.SetKeyName(3, "u101_1.png");
             // 
             // contextMenuStrip2
             // 
@@ -183,10 +184,10 @@
             // plInfoTitle
             // 
             this.plInfoTitle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(228)))), ((int)(((byte)(228)))));
+            this.plInfoTitle.Controls.Add(this.symbolBox1);
             this.plInfoTitle.Controls.Add(this.btnAddGw);
             this.plInfoTitle.Controls.Add(this.btnAddDev);
             this.plInfoTitle.Controls.Add(this.btnDel);
-            this.plInfoTitle.Controls.Add(this.symbolBox1);
             this.plInfoTitle.Controls.Add(this.label1);
             this.plInfoTitle.Dock = System.Windows.Forms.DockStyle.Top;
             this.plInfoTitle.Location = new System.Drawing.Point(0, 0);
@@ -194,6 +195,22 @@
             this.plInfoTitle.Name = "plInfoTitle";
             this.plInfoTitle.Size = new System.Drawing.Size(281, 25);
             this.plInfoTitle.TabIndex = 2;
+            // 
+            // symbolBox1
+            // 
+            // 
+            // 
+            // 
+            this.symbolBox1.BackgroundStyle.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("symbolBox1.BackgroundStyle.BackgroundImage")));
+            this.symbolBox1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.symbolBox1.Location = new System.Drawing.Point(5, 6);
+            this.symbolBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.symbolBox1.Name = "symbolBox1";
+            this.symbolBox1.Size = new System.Drawing.Size(13, 13);
+            this.symbolBox1.Symbol = "";
+            this.symbolBox1.SymbolColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(119)))), ((int)(((byte)(119)))));
+            this.symbolBox1.TabIndex = 6;
+            this.symbolBox1.Text = "symbolBox1";
             // 
             // btnAddGw
             // 
@@ -255,30 +272,13 @@
             this.btnDel.Tooltip = "删除";
             this.btnDel.Click += new System.EventHandler(this.btnDel_Click);
             // 
-            // symbolBox1
-            // 
-            this.symbolBox1.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            // 
-            // 
-            // 
-            this.symbolBox1.BackgroundStyle.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("symbolBox1.BackgroundStyle.BackgroundImage")));
-            this.symbolBox1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.symbolBox1.Location = new System.Drawing.Point(5, 5);
-            this.symbolBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.symbolBox1.Name = "symbolBox1";
-            this.symbolBox1.Size = new System.Drawing.Size(15, 15);
-            this.symbolBox1.Symbol = "";
-            this.symbolBox1.SymbolColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(119)))), ((int)(((byte)(119)))));
-            this.symbolBox1.TabIndex = 2;
-            this.symbolBox1.Text = "symbolBox1";
-            // 
             // label1
             // 
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("微软雅黑", 9F);
             this.label1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label1.Location = new System.Drawing.Point(27, 4);
+            this.label1.Location = new System.Drawing.Point(24, 4);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(32, 17);
             this.label1.TabIndex = 1;
@@ -459,7 +459,6 @@
         private System.Windows.Forms.ToolStripMenuItem 修改ToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem 删除ToolStripMenuItem1;
         private System.Windows.Forms.Panel plInfoTitle;
-        private DevComponents.DotNetBar.Controls.SymbolBox symbolBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
@@ -482,5 +481,6 @@
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Panel panel3;
         private DevComponents.DotNetBar.ButtonX btnAddGw;
+        private DevComponents.DotNetBar.Controls.SymbolBox symbolBox1;
     }
 }

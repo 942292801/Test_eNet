@@ -34,8 +34,8 @@
             this.txtGateway = new System.Windows.Forms.TextBox();
             this.cbVersion = new System.Windows.Forms.ComboBox();
             this.plInfoTitle = new System.Windows.Forms.Panel();
-            this.btnDecid = new DevComponents.DotNetBar.ButtonX();
             this.symbolBox1 = new DevComponents.DotNetBar.Controls.SymbolBox();
+            this.btnDecid = new DevComponents.DotNetBar.ButtonX();
             this.lbTitle = new System.Windows.Forms.Label();
             this.plInfoTitle.SuspendLayout();
             this.SuspendLayout();
@@ -83,7 +83,6 @@
             // plInfoTitle
             // 
             this.plInfoTitle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(228)))), ((int)(((byte)(228)))));
-            this.plInfoTitle.Controls.Add(this.btnDecid);
             this.plInfoTitle.Controls.Add(this.symbolBox1);
             this.plInfoTitle.Controls.Add(this.lbTitle);
             this.plInfoTitle.Dock = System.Windows.Forms.DockStyle.Top;
@@ -92,6 +91,22 @@
             this.plInfoTitle.Name = "plInfoTitle";
             this.plInfoTitle.Size = new System.Drawing.Size(311, 25);
             this.plInfoTitle.TabIndex = 80;
+            // 
+            // symbolBox1
+            // 
+            // 
+            // 
+            // 
+            this.symbolBox1.BackgroundStyle.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("symbolBox1.BackgroundStyle.BackgroundImage")));
+            this.symbolBox1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.symbolBox1.Location = new System.Drawing.Point(5, 6);
+            this.symbolBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.symbolBox1.Name = "symbolBox1";
+            this.symbolBox1.Size = new System.Drawing.Size(13, 13);
+            this.symbolBox1.Symbol = "";
+            this.symbolBox1.SymbolColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(119)))), ((int)(((byte)(119)))));
+            this.symbolBox1.TabIndex = 7;
+            this.symbolBox1.Text = "symbolBox1";
             // 
             // btnDecid
             // 
@@ -105,29 +120,14 @@
             this.btnDecid.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.Image;
             this.btnDecid.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnDecid.HoverImage")));
             this.btnDecid.Image = ((System.Drawing.Image)(resources.GetObject("btnDecid.Image")));
-            this.btnDecid.Location = new System.Drawing.Point(288, 4);
+            this.btnDecid.Location = new System.Drawing.Point(263, 125);
             this.btnDecid.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnDecid.Name = "btnDecid";
-            this.btnDecid.Size = new System.Drawing.Size(20, 21);
+            this.btnDecid.Size = new System.Drawing.Size(25, 20);
             this.btnDecid.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnDecid.TabIndex = 4;
             this.btnDecid.Tooltip = "确认";
             this.btnDecid.Click += new System.EventHandler(this.btnDecid_Click);
-            // 
-            // symbolBox1
-            // 
-            // 
-            // 
-            // 
-            this.symbolBox1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.symbolBox1.Location = new System.Drawing.Point(3, 4);
-            this.symbolBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.symbolBox1.Name = "symbolBox1";
-            this.symbolBox1.Size = new System.Drawing.Size(16, 16);
-            this.symbolBox1.Symbol = "";
-            this.symbolBox1.SymbolColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(119)))), ((int)(((byte)(119)))));
-            this.symbolBox1.TabIndex = 2;
-            this.symbolBox1.Text = "symbolBox1";
             // 
             // lbTitle
             // 
@@ -144,8 +144,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(311, 143);
+            this.ClientSize = new System.Drawing.Size(311, 159);
             this.Controls.Add(this.plInfoTitle);
+            this.Controls.Add(this.btnDecid);
             this.Controls.Add(this.cbVersion);
             this.Controls.Add(this.txtGateway);
             this.Controls.Add(this.label2);
@@ -171,7 +172,7 @@
         private System.Windows.Forms.ComboBox cbVersion;
         private System.Windows.Forms.Panel plInfoTitle;
         private DevComponents.DotNetBar.ButtonX btnDecid;
-        private DevComponents.DotNetBar.Controls.SymbolBox symbolBox1;
         private System.Windows.Forms.Label lbTitle;
+        private DevComponents.DotNetBar.Controls.SymbolBox symbolBox1;
     }
 }

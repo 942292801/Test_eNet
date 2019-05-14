@@ -31,7 +31,7 @@ namespace eNet编辑器
             TreeNode tn = new TreeNode();
             tn.Text = name;
             tn.ImageIndex = 1;
-            tn.SelectedImageIndex = 1;
+            tn.SelectedImageIndex = 3;
             tn.Expand();
             return treeView1.Nodes[index].Nodes.Add((TreeNode)(tn.Clone()));
         }

@@ -31,16 +31,17 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ThreeTimer));
             this.treeView1 = new System.Windows.Forms.TreeView();
+            this.imgLIst = new System.Windows.Forms.ImageList(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.plInfoTitle = new System.Windows.Forms.Panel();
-            this.btnAdd = new DevComponents.DotNetBar.ButtonX();
-            this.btnDel = new DevComponents.DotNetBar.ButtonX();
             this.symbolBox1 = new DevComponents.DotNetBar.Controls.SymbolBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.imgLIst = new System.Windows.Forms.ImageList(this.components);
+            this.btnAddHoliday = new DevComponents.DotNetBar.ButtonX();
+            this.btnAdd = new DevComponents.DotNetBar.ButtonX();
+            this.btnDel = new DevComponents.DotNetBar.ButtonX();
             this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.修改ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.删除ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -50,7 +51,6 @@
             this.添加定时ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
             this.添加节假日定时ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnAddHoliday = new DevComponents.DotNetBar.ButtonX();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -68,15 +68,26 @@
             this.treeView1.DrawMode = System.Windows.Forms.TreeViewDrawMode.OwnerDrawText;
             this.treeView1.Font = new System.Drawing.Font("微软雅黑", 9F);
             this.treeView1.HideSelection = false;
+            this.treeView1.ImageIndex = 0;
+            this.treeView1.ImageList = this.imgLIst;
             this.treeView1.ItemHeight = 24;
             this.treeView1.Location = new System.Drawing.Point(0, 0);
             this.treeView1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.treeView1.Name = "treeView1";
+            this.treeView1.SelectedImageIndex = 0;
             this.treeView1.Size = new System.Drawing.Size(281, 438);
             this.treeView1.TabIndex = 1;
             this.treeView1.DrawNode += new System.Windows.Forms.DrawTreeNodeEventHandler(this.treeView1_DrawNode);
             this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
             this.treeView1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.treeView1_MouseDown);
+            // 
+            // imgLIst
+            // 
+            this.imgLIst.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imgLIst.ImageStream")));
+            this.imgLIst.TransparentColor = System.Drawing.Color.White;
+            this.imgLIst.Images.SetKeyName(0, "u100.png");
+            this.imgLIst.Images.SetKeyName(1, "u84.png");
+            this.imgLIst.Images.SetKeyName(2, "u100_1.png");
             // 
             // panel1
             // 
@@ -123,17 +134,65 @@
             // plInfoTitle
             // 
             this.plInfoTitle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.plInfoTitle.Controls.Add(this.symbolBox1);
+            this.plInfoTitle.Controls.Add(this.label1);
             this.plInfoTitle.Controls.Add(this.btnAddHoliday);
             this.plInfoTitle.Controls.Add(this.btnAdd);
             this.plInfoTitle.Controls.Add(this.btnDel);
-            this.plInfoTitle.Controls.Add(this.symbolBox1);
-            this.plInfoTitle.Controls.Add(this.label1);
             this.plInfoTitle.Dock = System.Windows.Forms.DockStyle.Top;
             this.plInfoTitle.Location = new System.Drawing.Point(0, 0);
             this.plInfoTitle.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.plInfoTitle.Name = "plInfoTitle";
             this.plInfoTitle.Size = new System.Drawing.Size(281, 25);
             this.plInfoTitle.TabIndex = 5;
+            // 
+            // symbolBox1
+            // 
+            // 
+            // 
+            // 
+            this.symbolBox1.BackgroundStyle.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("symbolBox1.BackgroundStyle.BackgroundImage")));
+            this.symbolBox1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.symbolBox1.Location = new System.Drawing.Point(5, 6);
+            this.symbolBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.symbolBox1.Name = "symbolBox1";
+            this.symbolBox1.Size = new System.Drawing.Size(13, 13);
+            this.symbolBox1.Symbol = "";
+            this.symbolBox1.SymbolColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(119)))), ((int)(((byte)(119)))));
+            this.symbolBox1.TabIndex = 13;
+            this.symbolBox1.Text = "symbolBox1";
+            // 
+            // label1
+            // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("微软雅黑", 9F);
+            this.label1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label1.Location = new System.Drawing.Point(24, 4);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(32, 17);
+            this.label1.TabIndex = 12;
+            this.label1.Text = "导航";
+            // 
+            // btnAddHoliday
+            // 
+            this.btnAddHoliday.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnAddHoliday.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.btnAddHoliday.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnAddHoliday.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
+            this.btnAddHoliday.FocusCuesEnabled = false;
+            this.btnAddHoliday.Font = new System.Drawing.Font("微软雅黑", 9F);
+            this.btnAddHoliday.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.Image;
+            this.btnAddHoliday.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnAddHoliday.HoverImage")));
+            this.btnAddHoliday.Image = ((System.Drawing.Image)(resources.GetObject("btnAddHoliday.Image")));
+            this.btnAddHoliday.Location = new System.Drawing.Point(234, 5);
+            this.btnAddHoliday.Margin = new System.Windows.Forms.Padding(6);
+            this.btnAddHoliday.Name = "btnAddHoliday";
+            this.btnAddHoliday.Size = new System.Drawing.Size(15, 15);
+            this.btnAddHoliday.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnAddHoliday.TabIndex = 11;
+            this.btnAddHoliday.Tooltip = "添加节假日定时";
+            this.btnAddHoliday.Click += new System.EventHandler(this.btnAddHoliday_Click);
             // 
             // btnAdd
             // 
@@ -174,42 +233,6 @@
             this.btnDel.TabIndex = 9;
             this.btnDel.Tooltip = "删除";
             this.btnDel.Click += new System.EventHandler(this.btnDel_Click);
-            // 
-            // symbolBox1
-            // 
-            // 
-            // 
-            // 
-            this.symbolBox1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.symbolBox1.Location = new System.Drawing.Point(7, 7);
-            this.symbolBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.symbolBox1.Name = "symbolBox1";
-            this.symbolBox1.Size = new System.Drawing.Size(16, 16);
-            this.symbolBox1.Symbol = "";
-            this.symbolBox1.SymbolColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(119)))), ((int)(((byte)(119)))));
-            this.symbolBox1.TabIndex = 2;
-            this.symbolBox1.Text = "symbolBox1";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("微软雅黑", 9F);
-            this.label1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label1.Location = new System.Drawing.Point(29, 5);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(32, 17);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "导航";
-            // 
-            // imgLIst
-            // 
-            this.imgLIst.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imgLIst.ImageStream")));
-            this.imgLIst.TransparentColor = System.Drawing.Color.White;
-            this.imgLIst.Images.SetKeyName(0, "0.ico");
-            this.imgLIst.Images.SetKeyName(1, "1.ico");
-            this.imgLIst.Images.SetKeyName(2, "2.ico");
-            this.imgLIst.Images.SetKeyName(3, "offbook.ico");
-            this.imgLIst.Images.SetKeyName(4, "3.16.ico");
             // 
             // contextMenuStrip2
             // 
@@ -275,26 +298,6 @@
             this.添加节假日定时ToolStripMenuItem.Text = "添加节假日定时";
             this.添加节假日定时ToolStripMenuItem.Click += new System.EventHandler(this.添加节假日定时ToolStripMenuItem_Click);
             // 
-            // btnAddHoliday
-            // 
-            this.btnAddHoliday.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnAddHoliday.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.btnAddHoliday.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btnAddHoliday.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
-            this.btnAddHoliday.FocusCuesEnabled = false;
-            this.btnAddHoliday.Font = new System.Drawing.Font("微软雅黑", 9F);
-            this.btnAddHoliday.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.Image;
-            this.btnAddHoliday.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnAddHoliday.HoverImage")));
-            this.btnAddHoliday.Image = ((System.Drawing.Image)(resources.GetObject("btnAddHoliday.Image")));
-            this.btnAddHoliday.Location = new System.Drawing.Point(234, 4);
-            this.btnAddHoliday.Margin = new System.Windows.Forms.Padding(6);
-            this.btnAddHoliday.Name = "btnAddHoliday";
-            this.btnAddHoliday.Size = new System.Drawing.Size(15, 15);
-            this.btnAddHoliday.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnAddHoliday.TabIndex = 11;
-            this.btnAddHoliday.Tooltip = "添加节假日定时";
-            this.btnAddHoliday.Click += new System.EventHandler(this.btnAddHoliday_Click);
-            // 
             // ThreeTimer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -324,8 +327,6 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel plInfoTitle;
-        private DevComponents.DotNetBar.Controls.SymbolBox symbolBox1;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Panel panel3;
         private DevComponents.DotNetBar.ButtonX btnAdd;
@@ -341,5 +342,7 @@
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem 添加节假日定时ToolStripMenuItem;
         private DevComponents.DotNetBar.ButtonX btnAddHoliday;
+        private DevComponents.DotNetBar.Controls.SymbolBox symbolBox1;
+        private System.Windows.Forms.Label label1;
     }
 }

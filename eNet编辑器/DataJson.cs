@@ -309,7 +309,7 @@ namespace eNet编辑器
         {
             public int id { get; set; }
             public int pid { get; set; }
-            public string dates { get; set; }//格式设置 0，1，2，3，4，5，6，年\月\日（255为每天）
+            public string dates { get; set; }//格式设置 0，1，2，3，4，5，6或者 年\月\日，年\月\日，年\月\日，年\月\日，（255为每天）
             public string priorHoloday { get; set; }//假期优先 01000001  非假期优先 00000001
             public List<timersInfo> timersInfo = new List<timersInfo>();
         }

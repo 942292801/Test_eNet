@@ -210,10 +210,10 @@
             this.btnAddNode.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.Image;
             this.btnAddNode.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnAddNode.HoverImage")));
             this.btnAddNode.Image = ((System.Drawing.Image)(resources.GetObject("btnAddNode.Image")));
-            this.btnAddNode.Location = new System.Drawing.Point(195, 4);
+            this.btnAddNode.Location = new System.Drawing.Point(199, 5);
             this.btnAddNode.Margin = new System.Windows.Forms.Padding(6);
             this.btnAddNode.Name = "btnAddNode";
-            this.btnAddNode.Size = new System.Drawing.Size(21, 15);
+            this.btnAddNode.Size = new System.Drawing.Size(15, 15);
             this.btnAddNode.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnAddNode.TabIndex = 7;
             this.btnAddNode.Tooltip = "添加节点";
@@ -231,10 +231,10 @@
             this.btnAddChild.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.Image;
             this.btnAddChild.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnAddChild.HoverImage")));
             this.btnAddChild.Image = ((System.Drawing.Image)(resources.GetObject("btnAddChild.Image")));
-            this.btnAddChild.Location = new System.Drawing.Point(224, 4);
+            this.btnAddChild.Location = new System.Drawing.Point(226, 5);
             this.btnAddChild.Margin = new System.Windows.Forms.Padding(6);
             this.btnAddChild.Name = "btnAddChild";
-            this.btnAddChild.Size = new System.Drawing.Size(21, 15);
+            this.btnAddChild.Size = new System.Drawing.Size(15, 15);
             this.btnAddChild.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnAddChild.TabIndex = 6;
             this.btnAddChild.Tooltip = "添加子节点";
@@ -252,10 +252,10 @@
             this.btnDel.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.Image;
             this.btnDel.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnDel.HoverImage")));
             this.btnDel.Image = ((System.Drawing.Image)(resources.GetObject("btnDel.Image")));
-            this.btnDel.Location = new System.Drawing.Point(253, 4);
+            this.btnDel.Location = new System.Drawing.Point(253, 5);
             this.btnDel.Margin = new System.Windows.Forms.Padding(6);
             this.btnDel.Name = "btnDel";
-            this.btnDel.Size = new System.Drawing.Size(21, 15);
+            this.btnDel.Size = new System.Drawing.Size(15, 15);
             this.btnDel.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnDel.TabIndex = 5;
             this.btnDel.Tooltip = "删除";
@@ -268,10 +268,10 @@
             // 
             this.symbolBox1.BackgroundStyle.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("symbolBox1.BackgroundStyle.BackgroundImage")));
             this.symbolBox1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.symbolBox1.Location = new System.Drawing.Point(7, 5);
-            this.symbolBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.symbolBox1.Location = new System.Drawing.Point(5, 6);
+            this.symbolBox1.Margin = new System.Windows.Forms.Padding(2, 4, 3, 4);
             this.symbolBox1.Name = "symbolBox1";
-            this.symbolBox1.Size = new System.Drawing.Size(15, 15);
+            this.symbolBox1.Size = new System.Drawing.Size(13, 13);
             this.symbolBox1.Symbol = "";
             this.symbolBox1.SymbolColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(119)))), ((int)(((byte)(119)))));
             this.symbolBox1.TabIndex = 2;
@@ -283,7 +283,7 @@
             this.label1.Font = new System.Drawing.Font("微软雅黑", 9F);
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
             this.label1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label1.Location = new System.Drawing.Point(31, 4);
+            this.label1.Location = new System.Drawing.Point(24, 4);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(32, 17);
             this.label1.TabIndex = 1;

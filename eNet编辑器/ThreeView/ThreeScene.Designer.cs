@@ -82,11 +82,10 @@
             // 
             this.imgLIst.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imgLIst.ImageStream")));
             this.imgLIst.TransparentColor = System.Drawing.Color.White;
-            this.imgLIst.Images.SetKeyName(0, "0.ico");
-            this.imgLIst.Images.SetKeyName(1, "1.ico");
-            this.imgLIst.Images.SetKeyName(2, "2.ico");
-            this.imgLIst.Images.SetKeyName(3, "offbook.ico");
-            this.imgLIst.Images.SetKeyName(4, "3.16.ico");
+            this.imgLIst.Images.SetKeyName(0, "u100.png");
+            this.imgLIst.Images.SetKeyName(1, "u82_1.png");
+            this.imgLIst.Images.SetKeyName(2, "u100_1.png");
+            this.imgLIst.Images.SetKeyName(3, "u82_1.png");
             // 
             // contextMenuStrip1
             // 
@@ -183,10 +182,10 @@
             // plInfoTitle
             // 
             this.plInfoTitle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.plInfoTitle.Controls.Add(this.btnAddGw);
-            this.plInfoTitle.Controls.Add(this.btnDel);
             this.plInfoTitle.Controls.Add(this.symbolBox1);
             this.plInfoTitle.Controls.Add(this.label1);
+            this.plInfoTitle.Controls.Add(this.btnAddGw);
+            this.plInfoTitle.Controls.Add(this.btnDel);
             this.plInfoTitle.Dock = System.Windows.Forms.DockStyle.Top;
             this.plInfoTitle.Location = new System.Drawing.Point(0, 0);
             this.plInfoTitle.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -199,25 +198,27 @@
             // 
             // 
             // 
+            this.symbolBox1.BackgroundStyle.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("symbolBox1.BackgroundStyle.BackgroundImage")));
             this.symbolBox1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.symbolBox1.Location = new System.Drawing.Point(7, 6);
+            this.symbolBox1.Location = new System.Drawing.Point(5, 6);
             this.symbolBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.symbolBox1.Name = "symbolBox1";
-            this.symbolBox1.Size = new System.Drawing.Size(16, 16);
-            this.symbolBox1.Symbol = "";
+            this.symbolBox1.Size = new System.Drawing.Size(13, 13);
+            this.symbolBox1.Symbol = "";
             this.symbolBox1.SymbolColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(119)))), ((int)(((byte)(119)))));
-            this.symbolBox1.TabIndex = 2;
+            this.symbolBox1.TabIndex = 10;
             this.symbolBox1.Text = "symbolBox1";
             // 
             // label1
             // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("微软雅黑", 9F);
             this.label1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label1.Location = new System.Drawing.Point(35, 4);
+            this.label1.Location = new System.Drawing.Point(24, 4);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(32, 17);
-            this.label1.TabIndex = 1;
+            this.label1.TabIndex = 9;
             this.label1.Text = "导航";
             // 
             // btnAddGw
@@ -295,13 +296,13 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel plInfoTitle;
-        private DevComponents.DotNetBar.Controls.SymbolBox symbolBox1;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem 复制ToolStripMenuItem;
         private DevComponents.DotNetBar.ButtonX btnAddGw;
         private DevComponents.DotNetBar.ButtonX btnDel;
+        private DevComponents.DotNetBar.Controls.SymbolBox symbolBox1;
+        private System.Windows.Forms.Label label1;
     }
 }

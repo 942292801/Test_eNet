@@ -1,0 +1,109 @@
+[
+    {
+        "timers": [
+            {
+                "timersInfo": [],
+                "id": 1,
+                "pid": 71392,
+                "dates": null,
+                "priorHoloday": null
+            },
+            {
+                "timersInfo": [],
+                "id": 10000,
+                "pid": 77480,
+                "dates": null,
+                "priorHoloday": null
+            }
+        ],
+        "IP": "192.168.1.3",
+        "Dev": "GW100A"
+    },
+    {
+        "timers": [
+            {
+                "timersInfo": [],
+                "id": 1,
+                "pid": 12090,
+                "dates": "2019/11/1,2019/11/2,2019/11/4,2019/11/6,2019/11/12,2019/11/23,2019/11/45,2019/11/55,2019/11/66",
+                "priorHoloday": null
+            },
+            {
+                "timersInfo": [],
+                "id": 10000,
+                "pid": 45986,
+                "dates": null,
+                "priorHoloday": null
+            }
+        ],
+        "IP": "192.168.1.4",
+        "Dev": "GW100A"
+    },
+    {
+        "timers": [
+            {
+                "timersInfo": [],
+                "id": 1,
+                "pid": 80362,
+                "dates": null,
+                "priorHoloday": null
+            },
+            {
+                "timersInfo": [],
+                "id": 10000,
+                "pid": 91113,
+                "dates": null,
+                "priorHoloday": null
+            }
+        ],
+        "IP": "192.168.1.5",
+        "Dev": "GW100A"
+    },
+    {
+        "timers": [
+            {
+                "timersInfo": [],
+                "id": 1,
+                "pid": 89877,
+                "dates": null,
+                "priorHoloday": null
+            },
+            {
+                "timersInfo": [],
+                "id": 3,
+                "pid": 98618,
+                "dates": null,
+                "priorHoloday": null
+            },
+            {
+                "timersInfo": [],
+                "id": 10000,
+                "pid": 87669,
+                "dates": null,
+                "priorHoloday": null
+            }
+        ],
+        "IP": "192.168.1.2",
+        "Dev": "GW100A"
+    },
+    {
+        "timers": [
+            {
+                "timersInfo": [],
+                "id": 1,
+                "pid": 88260,
+                "dates": null,
+                "priorHoloday": null
+            },
+            {
+                "timersInfo": [],
+                "id": 10000,
+                "pid": 64076,
+                "dates": null,
+                "priorHoloday": null
+            }
+        ],
+        "IP": "192.168.1.111",
+        "Dev": "GW100A"
+    }
+]

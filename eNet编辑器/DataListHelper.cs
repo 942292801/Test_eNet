@@ -260,9 +260,6 @@ namespace eNet编辑器
                 return Convert.ToInt32(xip[0]).CompareTo(Convert.ToInt32(yip[0]));
             });
             //ThreeNameAddNode();
-
-
-
         }
 
         /// <summary>
