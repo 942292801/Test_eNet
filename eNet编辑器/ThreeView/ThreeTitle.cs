@@ -22,6 +22,7 @@ namespace eNet编辑器.ThreeView
 
         public event DgvSceneAddItem2 dgvsceneAddItem;
         public event DgvBindAddItem2 dgvbindAddItem;
+        public event Action dgvtimerAddItem;
         //public event AddTitleDevCursor addTitleDevCursor;
         //public event AddTitlenNameCursor addTitlenNameCursor;
 
@@ -96,10 +97,11 @@ namespace eNet编辑器.ThreeView
                             treeView1.CheckBoxes = true;
                             treeView1.ContextMenuStrip = contextMenuStrip2;
                             sceneAdd(num);
-                            // MessageBox.Show("scene");
                             break;
                         case "timer":
-                            // MessageBox.Show("timer");
+                            treeView1.CheckBoxes = true;
+                            treeView1.ContextMenuStrip = contextMenuStrip2;
+                            sceneAdd(num);
                             break;
                         case "bind":
                             treeView1.CheckBoxes = true;
@@ -258,6 +260,14 @@ namespace eNet编辑器.ThreeView
 
         #endregion
 
+        #region 定时加载节点
+        private void timerAdd(int num)
+        {
+            sceneAdd(num);
+
+        }
+        #endregion
+
 
         #region 选中节点高亮  鼠标点击事件
 
@@ -410,8 +420,7 @@ namespace eNet编辑器.ThreeView
             try
             {
                 dgvNodeAdd(treeView1.SelectedNode);
-                dgvsceneAddItem();
-                dgvbindAddItem();
+                updateDgv();
             }
             catch { 
             
@@ -430,9 +439,11 @@ namespace eNet编辑器.ThreeView
                     dgvNodeAdd(tn);    
                 }
             }//foreach所有节点信息处理完
-            dgvsceneAddItem();
-            dgvbindAddItem();
+            //添加完成刷新窗口
+            updateDgv();
         }
+
+
 
         /// <summary>
         /// title节点 添加到dgv表中
@@ -458,6 +469,7 @@ namespace eNet编辑器.ThreeView
                    
                     break;
                 case "timer":
+                    timerFormtype(tn.Text);
                     break;
                 case "panel":
                     bindFormtype(tn.Text);
@@ -473,9 +485,44 @@ namespace eNet编辑器.ThreeView
             //选中添加的类型 搜索Title  NameList中的各种类型
         }
 
+        /// <summary>
+        /// 更新dgv窗口 后续还有添加
+        /// </summary>
+        private void updateDgv()
+        {
+            //区域
+            switch (FileMesege.formType)
+            {
+                case "name":
+
+                    break;
+                case "point":
+                    
+                    break;
+                case "scene":
+                    dgvsceneAddItem();
+      
+                    break;
+                case "timer":
+                    dgvtimerAddItem();
+                    break;
+                case "panel":
+                    dgvbindAddItem();
+                    break;
+                case "logic":
+                    break;
+                case "reaction":
+                    break;
+                default: break;
+            }
+            
+            
+           
+        }
+
         #region 添加功能 场景DGV添加 新增SceneInfo对象
         /// <summary>
-        /// 场景DGV添加 新增设备对象
+        /// 场景DGV添加 新增SceneInfo对象
         /// </summary>
         /// <param name="texts">Title节点 区域--名称--地址</param>
         private void sceneFormtype(string nodeText) 
@@ -504,16 +551,13 @@ namespace eNet编辑器.ThreeView
                 case "link":
                     dgvSceneListAdd(FileMesege.PointList.link, nodeText);
                     break;
-                //3=绑定,link
-                case "logic":
-                    //预留
-                    break;
                 default:
                     dgvSceneListAdd(FileMesege.PointList.equipment, nodeText);
                     break;
 
             }
         }
+
         /// <summary>
         /// scene表中添加新的eq信息
         /// </summary>
@@ -597,6 +641,129 @@ namespace eNet编辑器.ThreeView
             return null;
         }
          #endregion
+
+
+        #region 添加功能 定时DGV添加 新增TimerInfo对象
+        /// <summary>
+        /// 定时DGV添加 新增timerInfo对象
+        /// </summary>
+        /// <param name="nodeText"></param>
+        private void timerFormtype(string nodeText)
+        {
+            if (FileMesege.timerSelectNode == null || FileMesege.timerSelectNode.Parent == null)
+            {
+                return;
+            }
+
+            //根据commandNames的【timer】中的 key->value 决定
+            switch (IniConfig.GetValue(inifilepath, "timer", keys[FileMesege.cbTypeIndex]))
+            {
+                //0=设备,equipment
+                case "equipment":
+                    dgvTimerListAdd(FileMesege.PointList.equipment, nodeText);
+                    break;
+                //1=场景,scene
+                case "scene":
+                    dgvTimerListAdd(FileMesege.PointList.scene, nodeText);
+                    break;
+                //2=定时,timer
+                case "timer":
+                    dgvTimerListAdd(FileMesege.PointList.timer, nodeText);
+                    break;
+                //3=绑定,link
+                case "link":
+                    dgvTimerListAdd(FileMesege.PointList.link, nodeText);
+                    break;
+                
+                default:
+                    dgvTimerListAdd(FileMesege.PointList.equipment, nodeText);
+                    break;
+
+            }
+        }
+
+        /// <summary>
+        /// timerList 下的timers添加新的timerInfo
+        /// </summary>
+        /// <param name="eqList"></param>
+        /// <param name="nodeText"></param>
+        private void dgvTimerListAdd(List<DataJson.PointInfo> eqList, string nodeText)
+        {
+            if (FileMesege.timerList == null)
+            {
+                FileMesege.timerList = new List<DataJson.Timer>();
+            }
+            //选中子节点
+            //循环获取
+            string ip = FileMesege.timerSelectNode.Parent.Text.Split(' ')[0];
+            string[] ids = FileMesege.timerSelectNode.Text.Split(' ');
+            int sceneNum = Convert.ToInt32(Regex.Replace(ids[0], @"[^\d]*", ""));
+            //获取该节点IP地址定时下的 定时信息对象
+            DataJson.timers tms = getTimerInfoList(ip, sceneNum);
+            List<string> section_name = DataListHelper.dealPointInfo(nodeText);
+            if (section_name == null)
+            {
+                return;
+            }
+            foreach (DataJson.PointInfo eq in eqList)
+            {
+                //NameList中查找到匹配的信息
+                if (eq.area1 == section_name[0] && eq.area2 == section_name[1] && eq.area3 == section_name[2] && eq.area4 == section_name[3] && eq.name == section_name[4])
+                {
+                    //撤销
+                    DataJson.totalList OldList = FileMesege.cmds.getListInfos();
+                    //新建表
+                    DataJson.timersInfo tmInfo = new DataJson.timersInfo();
+                    int id = 0;
+                    //获取ID
+                    foreach (DataJson.timersInfo find in tms.timersInfo)
+                    {
+                        if (find.id > id)
+                        {
+                            id = find.id;
+                        }
+                    }
+                    tmInfo.id = id + 1;
+                    tmInfo.shortTime = "";
+                    tmInfo.address = eq.address;
+                    tmInfo.pid = eq.pid;
+                    tmInfo.opt = "";
+                    tmInfo.optName = "";
+                    tmInfo.type = eq.type;
+                    tms.timersInfo.Add(tmInfo);
+                    DataJson.totalList NewList = FileMesege.cmds.getListInfos();
+                    FileMesege.cmds.DoNewCommand(NewList, OldList);
+                    break;
+                }
+            }
+        }
+
+        /// <summary>
+        /// 获取该IP和定时号的 timers 对象
+        /// </summary>
+        /// <param name="ip"></param>
+        /// <param name="num"></param>
+        /// <returns></returns>
+        private DataJson.timers getTimerInfoList(string ip, int num)
+        {
+            foreach (DataJson.Timer tmIP in FileMesege.timerList)
+            {
+                if (tmIP.IP == ip)
+                {
+                    foreach (DataJson.timers tms in tmIP.timers)
+                    {
+                        if (tms.id == num)
+                        {
+                            return tms;
+                        }
+                    }
+
+                }
+            }
+            return null;
+        }
+        #endregion
+
 
         #region 添加功能 绑定DGV添加 新增BindInfo对象
         /// <summary>
@@ -759,6 +926,9 @@ namespace eNet编辑器.ThreeView
             return null;
         }
         #endregion
+
+
+
 
         private void 全选ToolStripMenuItem_Click(object sender, EventArgs e)
         {

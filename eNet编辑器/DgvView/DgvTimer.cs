@@ -1022,17 +1022,17 @@ namespace eNet编辑器.DgvView
         {
             Socket sock = null;
             //产生场景文件写进去
-            if (FileMesege.timerSelectNode == null && FileMesege.timerSelectNode.Parent == null)
+            if (FileMesege.timerSelectNode == null || FileMesege.timerSelectNode.Parent == null)
             {
                 return;
             }
             try
             {
-                string ip = FileMesege.sceneSelectNode.Parent.Text.Split(' ')[0];
-                string[] ids = FileMesege.sceneSelectNode.Text.Split(' ');
+                string ip = FileMesege.timerSelectNode.Parent.Text.Split(' ')[0];
+                string[] ids = FileMesege.timerSelectNode.Text.Split(' ');
                 int sceneNum = Convert.ToInt32(Regex.Replace(ids[0], @"[^\d]*", ""));
                 //发送调用指令
-                string ip4 = SocketUtil.getIP(FileMesege.sceneSelectNode);
+                string ip4 = SocketUtil.getIP(FileMesege.timerSelectNode);
                 TcpSocket ts = new TcpSocket();
 
                 sock = ts.ConnectServer(ip, 6003, 2);
@@ -1042,7 +1042,7 @@ namespace eNet编辑器.DgvView
                     sock = ts.ConnectServer(ip, 6003, 2);
                     if (sock == null)
                     {
-                        AppTxtShow("连接失败！");
+                        AppTxtShow("连接失败！请检查网络");
                         //sock.Close();
                         return;
                     }
@@ -1089,7 +1089,70 @@ namespace eNet编辑器.DgvView
 
         private void btnOff_Click(object sender, EventArgs e)
         {
+            Socket sock = null;
+            //产生场景文件写进去
+            if (FileMesege.timerSelectNode == null || FileMesege.timerSelectNode.Parent == null)
+            {
+                return;
+            }
+            try
+            {
+                string ip = FileMesege.timerSelectNode.Parent.Text.Split(' ')[0];
+                string[] ids = FileMesege.timerSelectNode.Text.Split(' ');
+                int sceneNum = Convert.ToInt32(Regex.Replace(ids[0], @"[^\d]*", ""));
+                //发送调用指令
+                string ip4 = SocketUtil.getIP(FileMesege.timerSelectNode);
+                TcpSocket ts = new TcpSocket();
 
+                sock = ts.ConnectServer(ip, 6003, 2);
+                if (sock == null)
+                {
+                    //防止一连失败
+                    sock = ts.ConnectServer(ip, 6003, 2);
+                    if (sock == null)
+                    {
+                        AppTxtShow("连接失败！请检查网络");
+                        //sock.Close();
+                        return;
+                    }
+
+                }
+                string number = "";
+                if (sceneNum < 256)
+                {
+                    number = String.Format("0.{0}", sceneNum.ToString());
+                }
+                else
+                {
+                    //模除剩下的数
+                    int num = sceneNum % 256;
+                    //有多小个256
+                    sceneNum = (sceneNum - num) / 256;
+                    number = String.Format("{0}.{1}", sceneNum.ToString(), num.ToString());
+                }
+
+
+                string oder = String.Format("SET;00000000;{{{0}.32.{1}}};\r\n", ip4, number);  // "SET;00000001;{" + ip4 + ".16." + number + "};\r\n";
+                int flag = ts.SendData(sock, oder, 2);
+                if (flag == 0)
+                {
+                    AppTxtShow("发送指令成功！");
+                    sock.Close();
+                }
+                else
+                {
+                    flag = ts.SendData(sock, oder, 2);
+                    if (flag == 0)
+                    {
+                        AppTxtShow("发送指令成功！");
+                        sock.Close();
+                    }
+                }
+            }
+            catch
+            {
+                //TxtShow("发送指令失败！\r\n");
+            }
         }
 
         //删除选中行
@@ -1213,7 +1276,7 @@ namespace eNet编辑器.DgvView
         }
         #endregion
 
-        //#region 表格单击双击 操作 高亮显示
+        #region 表格单击双击 操作 高亮显示
         private bool isFirstClick = true;
         private bool isDoubleClick = false;
         private int milliseconds = 0;
@@ -1406,7 +1469,7 @@ namespace eNet编辑器.DgvView
                     {
                         case "shortTime":
                             //改变延时
-                            //dgvDelay(Convert.ToInt32(dataGridView1.Rows[rowNum].Cells[0].Value), Convert.ToDouble(dataGridView1.Rows[rowNum].Cells[6].Value));
+                            dgvShortTimer(Convert.ToInt32(dataGridView1.Rows[rowNum].Cells[0].Value), (DateTime)(dataGridView1.Rows[rowNum].Cells[6].Value));
                             dataGridView1.Columns[columnNum].ReadOnly = true;
                             break;
                         case "type":
@@ -1609,7 +1672,131 @@ namespace eNet编辑器.DgvView
 
             
         }
-  
+
+
+        /// <summary>
+        /// DGV表  定时时间
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="shortTime"></param>
+        private void dgvShortTimer(int id, DateTime shortTime)
+        { 
+            DataJson.timers tms = getTimersInfoList();
+            if (tms == null)
+            {
+                return ;
+            }
+            //获取sceneInfo对象表中对应ID号info对象
+            DataJson.timersInfo tmInfo = getTimerInfo(tms,id);
+            if (tmInfo == null)
+            {
+                return ;
+            }
+            //撤销 
+            DataJson.totalList OldList = FileMesege.cmds.getListInfos();
+            tmInfo.shortTime = shortTime.ToShortTimeString();
+            DataJson.totalList NewList = FileMesege.cmds.getListInfos();
+            FileMesege.cmds.DoNewCommand(NewList, OldList);
+        }
+
+        #endregion
+
+
+        #region 复制 粘贴
+        /// <summary>
+        /// 复制点位的对象 与参数 
+        /// </summary>
+        public void copyData()
+        {
+            //获取当前选中单元格的列序号
+            int colIndex = dataGridView1.CurrentRow.Cells.IndexOf(dataGridView1.CurrentCell);
+            //当粘贴选中单元格为操作
+            if (colIndex == 5 || colIndex == 6)
+            {
+                int id = Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value);
+                DataJson.timers tms = getTimersInfoList();
+                if (tms == null)
+                {
+                    return;
+                }
+                //获取sceneInfo对象表中对应ID号info对象
+                DataJson.timersInfo tmInfo = getTimerInfo(tms, id);
+                if (tmInfo == null)
+                {
+                    return;
+                }
+                //获取sceneInfo对象表中对应ID号info对象
+                FileMesege.copyTimer = tmInfo;
+
+            }
+
+
+        }
+
+        /// <summary>
+        /// 粘贴点位的对象与参数
+        /// </summary>
+        public void pasteData()
+        {
+            
+            try
+            {
+                bool ischange = false;
+                //撤销
+                DataJson.totalList OldList = FileMesege.cmds.getListInfos();
+                DataJson.timers tms = getTimersInfoList();
+                if (tms == null)
+                {
+                    return;
+                }
+                for (int i = 0; i < dataGridView1.SelectedCells.Count; i++)
+                {
+                    int colIndex = dataGridView1.SelectedCells[i].ColumnIndex;
+                    int id = Convert.ToInt32(dataGridView1.Rows[dataGridView1.SelectedCells[i].RowIndex].Cells[0].Value);
+                    DataJson.timersInfo tmInfo = getTimerInfo(tms, id);
+                    if (tmInfo == null)
+                    {
+                        continue;
+                    }
+
+                    if (FileMesege.copyTimer.type == "" || tmInfo.type == "" || tmInfo.type != FileMesege.copyTimer.type)
+                    {
+                        continue;
+                    }
+                    if (colIndex == 5)
+                    {
+                       
+                        ischange = true;
+                        tmInfo.opt = FileMesege.copyTimer.opt;
+                        tmInfo.optName = FileMesege.copyTimer.optName;
+
+                        dataGridView1.Rows[dataGridView1.SelectedCells[i].RowIndex].Cells[5].Value = (tmInfo.optName + " " + tmInfo.opt).Trim();
+                    }//if
+                    else if (colIndex == 6)
+                    {
+                        ischange = true;
+                        tmInfo.shortTime = FileMesege.copyTimer.shortTime;
+
+                        dataGridView1.Rows[dataGridView1.SelectedCells[i].RowIndex].Cells[6].Value = tmInfo.shortTime;
+                    }
+                }
+                if (ischange)
+                {
+                    DataJson.totalList NewList = FileMesege.cmds.getListInfos();
+                    FileMesege.cmds.DoNewCommand(NewList, OldList);
+                }
+
+            }//try
+            catch
+            {
+
+            }
+
+
+        }
+        #endregion
+
+
 
     }
 }

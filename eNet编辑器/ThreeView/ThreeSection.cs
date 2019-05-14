@@ -1137,12 +1137,12 @@ namespace eNet编辑器.ThreeView
                 //刷PointDGV
                 updatePointDgv();
             }
-            if (FileMesege.formType == "scene")
+            if (FileMesege.formType == "scene" || FileMesege.formType == "timer")
             {
                 //刷title新树状图
                 addTitleNode();
             }
-            else if (FileMesege.formType == "name" &&FileMesege.cbTypeIndex ==0 )
+            if (FileMesege.formType == "name" && FileMesege.cbTypeIndex ==0 )
             {
                 //刷title新树状图
                 addTitleNode();

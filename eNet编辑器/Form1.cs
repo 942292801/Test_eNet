@@ -153,6 +153,7 @@ namespace eNet编辑器
             threetimer.updateAllView += new Action(updataAllView);
             //调用添加场景
             threetitle.dgvsceneAddItem += new DgvSceneAddItem2(dgvscene.dgvsceneAddItem);
+            threetitle.dgvtimerAddItem += new Action(dgvtimer.TimerAddItem);
             threetitle.dgvbindAddItem  +=new DgvBindAddItem2(dgvbind.dgvbindAddItem);
             threetitle.addPoint += new Action<string>(dgvpoint.addPoint);
             threename.dgvDeviceAddItem += new DgvDeviceAddItem(dgvdevice.dgvDeviceAddItem);
@@ -744,7 +745,7 @@ namespace eNet编辑器
         #endregion
 
 
-        #region 编辑
+        #region 编辑 快捷键
 
         private void 撤销ToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -789,25 +790,61 @@ namespace eNet编辑器
 
         private void 复制CCtrlCToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (FileMesege.formType == "point")
+       
+            switch (FileMesege.formType)
             {
-                dgvpoint.copyData();
-            }
-            else if (FileMesege.formType == "scene")
-            {
-                dgvscene.copyData();
+                case "name":
+
+                    break;
+
+                case "point":
+                    dgvpoint.copyData();
+                    break;
+                case "scene":
+                    dgvscene.copyData();
+                    break;
+                case "timer":
+                    dgvtimer.copyData();
+                    break;
+                case "bind":
+                    break;
+                case "logic":
+
+                    break;
+                case "operation":
+
+                    break;
+                default: break;
             }
         }
 
         private void 粘贴PCtrlVToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (FileMesege.formType == "point")
+    
+            switch (FileMesege.formType)
             {
-                dgvpoint.pasteData();
-            }
-            else if (FileMesege.formType == "scene")
-            {
-                dgvscene.pasteData();
+                case "name":
+
+                    break;
+
+                case "point":
+                    dgvpoint.pasteData();
+                    break;
+                case "scene":
+                    dgvscene.pasteData();
+                    break;
+                case "timer":
+                    dgvtimer.pasteData();
+                    break;
+                case "bind":
+                    break;
+                case "logic":
+
+                    break;
+                case "operation":
+
+                    break;
+                default: break;
             }
         }
 
