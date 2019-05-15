@@ -943,7 +943,7 @@
   <data name="tsReform.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAADwAAAAwCAYAAABNPhkJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAMPSURBVGhD7ZlNbExRFMcHC1FfK6kFLRGJoAQJiaSW3WFj
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAMPSURBVGhD7ZlNbExRFMcHC1FfK6kFLRGJoAQJiaR2XWJj
         1tM0hExSSafz/bmRphRbVhbaJYsKCbGSWEhEW0tViUoFRTq+EqLU70zOTF6fx3RMYu7j/pN/znv3nnPn
         /O+979773gQsLCwsLCwsLCz8jEwm05rP54/ncrnBdDo9kkqlXnP9Ue1INpu9TP2xQqHQoiFeWKTWXKjQ
         09jJcDj8JRQKfe3o6PiGyLky5V7KpZ77p7Af4eu0iRLokM2U38Ze1CLzQHJdCH1Mop9FWA0U/3HiO6Ud
@@ -956,7 +956,7 @@
         uGFZF1j4aor9q9BR/ultiZG+iW2PxWIr1dUTxDfhux+h18uxiB8T0dQtVjezQLKd7i1KSLm8D2OyO0m+
         8j4MV+HfTPk2/CL4PPGIvd/T07NMf8I8kOA5Ei26ExcidIb68hePBGWnGMWr2JdOPweLPCoXgsHgEm3e
         TJBo3d+04DSdMqBNmg+S7YKPSPxPvlpOEHtUm/IPmLrrSb4fPlvgd2nZ2s4T16pN+BMiACEnGLUhOKoL
-        m/zz8Ir7B1wPyuEFv40aYmFhYWFhYWFhYWE2AoEfqfF8SsivTQoAAAAASUVORK5CYII=
+        m/zz8Ir7B1wPyuEFv40aYmFhYWFhYWFhYWE2AoEfHVx8Lwa2F8sAAAAASUVORK5CYII=
 </value>
   </data>
   <data name="tsReform.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
@@ -1044,7 +1044,7 @@
   <data name="tsTimer.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAADwAAAAwCAYAAABNPhkJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAMPSURBVGhD7ZlNbExRFMcHC1FfK6kFLRGJoAQJiaSW3WFj
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAMPSURBVGhD7ZlNbExRFMcHC1FfK6kFLRGJoAQJiaR2XWJj
         1tM0hExSSafz/bmRphRbVhbaJYsKCbGSWEhEW0tViUoFRTq+EqLU70zOTF6fx3RMYu7j/pN/znv3nnPn
         /O+979773gQsLCwsLCwsLCz8jEwm05rP54/ncrnBdDo9kkqlXnP9Ue1INpu9TP2xQqHQoiFeWKTWXKjQ
         09jJcDj8JRQKfe3o6PiGyLky5V7KpZ77p7Af4eu0iRLokM2U38Ze1CLzQHJdCH1Mop9FWA0U/3HiO6Ud
@@ -1057,7 +1057,7 @@
         uGFZF1j4aor9q9BR/ultiZG+iW2PxWIr1dUTxDfhux+h18uxiB8T0dQtVjezQLKd7i1KSLm8D2OyO0m+
         8j4MV+HfTPk2/CL4PPGIvd/T07NMf8I8kOA5Ei26ExcidIb68hePBGWnGMWr2JdOPweLPCoXgsHgEm3e
         TJBo3d+04DSdMqBNmg+S7YKPSPxPvlpOEHtUm/IPmLrrSb4fPlvgd2nZ2s4T16pN+BMiACEnGLUhOKoL
-        m/zz8Ir7B1wPyuEFv40aYmFhYWFhYWFhYWE2AoEfqfF8SsivTQoAAAAASUVORK5CYII=
+        m/zz8Ir7B1wPyuEFv40aYmFhYWFhYWFhYWE2AoEfHVx8Lwa2F8sAAAAASUVORK5CYII=
 </value>
   </data>
   <data name="tsTimer.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">

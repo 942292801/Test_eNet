@@ -2,9 +2,64 @@
     {
         "timers": [
             {
-                "timersInfo": [],
+                "timersInfo": [
+                    {
+                        "id": 1,
+                        "pid": 0,
+                        "type": "1.0_switch",
+                        "address": "FE000A01",
+                        "opt": "00000001",
+                        "optName": "开启",
+                        "shortTime": "14:45"
+                    },
+                    {
+                        "id": 2,
+                        "pid": 0,
+                        "type": "1.0_switch",
+                        "address": "FE000A02",
+                        "opt": "00000001",
+                        "optName": "开启",
+                        "shortTime": "日出时间"
+                    },
+                    {
+                        "id": 3,
+                        "pid": 0,
+                        "type": "1.0_switch",
+                        "address": "FE000A03",
+                        "opt": "00000001",
+                        "optName": "开启",
+                        "shortTime": "日落时间"
+                    },
+                    {
+                        "id": 4,
+                        "pid": 0,
+                        "type": "1.0_switch",
+                        "address": "FE000A04",
+                        "opt": "00000001",
+                        "optName": "开启",
+                        "shortTime": "**:**"
+                    },
+                    {
+                        "id": 5,
+                        "pid": 0,
+                        "type": "1.0_switch",
+                        "address": "FE000A05",
+                        "opt": "00000001",
+                        "optName": "开启",
+                        "shortTime": "**:22"
+                    },
+                    {
+                        "id": 6,
+                        "pid": 0,
+                        "type": "1.0_switch",
+                        "address": "FE000A06",
+                        "opt": "00000001",
+                        "optName": "开启",
+                        "shortTime": "9:**"
+                    }
+                ],
                 "id": 1,
-                "pid": 28537,
+                "pid": 24051,
                 "dates": "",
                 "priorHoloday": "01000001"
             }

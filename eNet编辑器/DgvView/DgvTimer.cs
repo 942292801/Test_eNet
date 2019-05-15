@@ -31,80 +31,8 @@ namespace eNet编辑器.DgvView
             PropertyInfo pi = dgvType.GetProperty("DoubleBuffered",
             BindingFlags.Instance | BindingFlags.NonPublic);
             pi.SetValue(this.dataGridView1, true, null);
-            X2Date_Initialize();
         }
 
-        #region X2Date_Initialize
-
-        /// <summary>
-        /// Initializes our X2 "Date" environment
-        /// </summary>
-        private void X2Date_Initialize()
-        {
-            DataGridViewDateTimeInputColumn oc =
-                dataGridView1.Columns["shortTime"] as DataGridViewDateTimeInputColumn;
-
-            if (oc != null)
-            {
-                // Hook onto the following events so we can
-                // demonstrate cell click processing
-
-
-                oc.ButtonCustomClick += ButtonCustomClick;
-                oc.ButtonCustom2Click += ButtonCustomClick2;
-            }
-        }
-
-
-        #region ButtonCustomClick
-
-        /// <summary>
-        /// Handles X2 "Date" ButtonClear Clicks
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        void ButtonCustomClick(object sender, EventArgs e)
-        {
-            DataGridViewDateTimeInputCell cell =
-                    dataGridView1.CurrentCell as DataGridViewDateTimeInputCell;
-            //cell.Value = "日落时间";
-            
-        }
-
-        #endregion
-
-        #region ButtonCustomClick2
-
-        /// <summary>
-        /// Handles X2 "Date" ButtonCustom click events
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        void ButtonCustomClick2(object sender, EventArgs e)
-        {
-            DialogResult dr = MessageBox.Show("Set Date to today?", "Set Date",
-                                  MessageBoxButtons.YesNo, MessageBoxIcon.Question,
-                                  MessageBoxDefaultButton.Button1);
-
-            if (dr == DialogResult.Yes)
-            {
-                DataGridViewDateTimeInputCell cell =
-                    dataGridView1.CurrentCell as DataGridViewDateTimeInputCell;
-
-                if (cell != null)
-                {
-                    DataGridViewDateTimeInputEditingControl ec =
-                        cell.DataGridView.EditingControl as DataGridViewDateTimeInputEditingControl;
-
-                    if (ec != null)
-                        ec.Text = DateTime.Today.ToString();
-                }
-            }
-        }
-
-        #endregion
-
-        #endregion
 
         /// <summary>
         /// 主Form信息显示
@@ -816,8 +744,7 @@ namespace eNet编辑器.DgvView
                 DataJson.timersInfo tmInfo = new DataJson.timersInfo();
 
                 int id = 0;
-                string type = "", opt = "", optname = "", add = "";
-                DateTime shortTime = new DateTime();
+                string type = "", opt = "", optname = "", add = "", shortTime = "";
                 //撤销 
                 DataJson.totalList OldList = FileMesege.cmds.getListInfos();
                 HashSet<int> hasharry = new HashSet<int>();
@@ -945,12 +872,37 @@ namespace eNet编辑器.DgvView
                     foreach (DataJson.timersInfo tmInfo in tms.timersInfo)
                     {
                         //确保有信息
-                        if (string.IsNullOrEmpty(tmInfo.opt) || tmInfo.shortTime == null)
+                        if (string.IsNullOrEmpty(tmInfo.opt) || string.IsNullOrEmpty(tmInfo.shortTime))
                         {
                             continue;
                         }
-                        int hour = tmInfo.shortTime.Hour;
-                        int min = tmInfo.shortTime.Minute;
+                        int hour = 255;
+                        int min = 255;
+                        if (tmInfo.shortTime == "日出时间")
+                        {
+                            hour = 253;
+                            min = 253;
+                        }
+                        else if (tmInfo.shortTime == "日落时间")
+                        {
+                            hour = 254;
+                            min = 254;
+                        }
+                        else
+                        {
+                            string tmpHour = tmInfo.shortTime.Split(':')[0];
+                            string tmpMin = tmInfo.shortTime.Split(':')[1];
+                            if (!tmpHour.Contains("*"))
+                            {
+                                hour = Convert.ToInt32(tmpHour);
+                            }
+                            if (!tmpMin.Contains("*"))
+                            {
+                                min = Convert.ToInt32(tmpMin);
+                            }
+
+                        }
+                        
                         string[] dates = tms.dates.Split(',');
                         if (tms.dates.Contains("/"))
                         {
@@ -1457,7 +1409,7 @@ namespace eNet编辑器.DgvView
 
                             case "shortTime":
                                 //改变延时
-                                dataGridView1.Columns[columnCount].ReadOnly = false;
+                                dgvShortTimer(Convert.ToInt32(dataGridView1.Rows[rowCount].Cells[0].Value), dataGridView1.Rows[rowCount].Cells[6].Value.ToString());
                                 break;
                             default: break;
                         }
@@ -1539,12 +1491,7 @@ namespace eNet编辑器.DgvView
                 {
                     switch (dataGridView1.Columns[columnNum].Name)
                     {
-                        case "shortTime":
-                         
-                            //改变延时
-                            dgvShortTimer(Convert.ToInt32(dataGridView1.Rows[rowNum].Cells[0].Value), (DateTime)dataGridView1.Rows[rowNum].Cells[6].Value);
-                            dataGridView1.Columns[columnNum].ReadOnly = true;
-                            break;
+                        
                         case "type":
                             //改变对象  
                             string isChange = dgvObjtype(Convert.ToInt32(dataGridView1.Rows[rowNum].Cells[0].Value), dataGridView1.Rows[rowNum].Cells[1].EditedFormattedValue.ToString());
@@ -1657,6 +1604,7 @@ namespace eNet编辑器.DgvView
                 {
                     return;
                 }
+                DataJson.totalList OldList = FileMesege.cmds.getListInfos();
                 string ip = FileMesege.timerSelectNode.Parent.Text.Split(' ')[0];
                 //地址
                 tmInfo.address = dc.Obj;
@@ -1665,6 +1613,7 @@ namespace eNet编辑器.DgvView
                     //地址为空直接退出
                     return;
                 }
+                
                 //按照地址查找type的类型 
                 string type = IniHelper.findIniTypesByAddress(ip, tmInfo.address).Split(',')[0];
                 if (string.IsNullOrEmpty(type))
@@ -1677,7 +1626,7 @@ namespace eNet编辑器.DgvView
                 //区域加名称
                 DataJson.PointInfo point = DataListHelper.findPointByType_address(type, ad);
                 //撤销 
-                DataJson.totalList OldList = FileMesege.cmds.getListInfos();
+                
                 if (point != null)
                 {
                     tmInfo.pid = point.pid;
@@ -1752,24 +1701,47 @@ namespace eNet编辑器.DgvView
         /// </summary>
         /// <param name="id"></param>
         /// <param name="shortTime"></param>
-        private void dgvShortTimer(int id, DateTime shortTime)
-        { 
+        private void dgvShortTimer(int id, string shortTime)
+        {
+            timerHHMM th = new timerHHMM();
+            selectCellId = id;
+            th.AddShortTime += new Action<string>(th_AddShortTime);
+            Point pt = MousePosition;
+            //把窗口向屏幕中间刷新
+            th.StartPosition = FormStartPosition.Manual;
+            th.Left = pt.X + 10;
+            th.Top = pt.Y + 10;
+            th.Date = shortTime;
+            //把窗口向屏幕中间刷新
+            th.Show();
+
+
+            
+        }
+
+        //选中行的id号
+        int selectCellId = 0;
+
+        //设置shortTime回调函数
+        private void th_AddShortTime(string delShortTime)
+        {
             DataJson.timers tms = getTimersInfoList();
             if (tms == null)
             {
-                return ;
+                return;
             }
             //获取sceneInfo对象表中对应ID号info对象
-            DataJson.timersInfo tmInfo = getTimerInfo(tms,id);
+            DataJson.timersInfo tmInfo = getTimerInfo(tms, selectCellId);
             if (tmInfo == null)
             {
-                return ;
+                return;
             }
             //撤销 
             DataJson.totalList OldList = FileMesege.cmds.getListInfos();
-            tmInfo.shortTime = shortTime;
+            tmInfo.shortTime = delShortTime;
             DataJson.totalList NewList = FileMesege.cmds.getListInfos();
             FileMesege.cmds.DoNewCommand(NewList, OldList);
+            dataGridView1.Rows[rowCount].Cells[6].Value = delShortTime;
         }
 
         #endregion

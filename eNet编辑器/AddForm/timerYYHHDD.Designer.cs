@@ -69,7 +69,7 @@
             this.Calendar.ContainerControlProcessDialogKey = true;
             this.Calendar.DaySize = new System.Drawing.Size(24, 24);
             this.Calendar.DisplayMonth = new System.DateTime(2007, 10, 1, 0, 0, 0, 0);
-            this.Calendar.Location = new System.Drawing.Point(10, 7);
+            this.Calendar.Location = new System.Drawing.Point(8, 7);
             this.Calendar.Name = "Calendar";
             // 
             // 
@@ -104,19 +104,20 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(188, 246);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.Calendar);
             this.Controls.Add(this.cbMonth);
             this.Controls.Add(this.cbYear);
             this.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "timerYYHHDD";
             this.Text = "timerYYHHDD";
             this.Deactivate += new System.EventHandler(this.timerYYHHDD_Deactivate);
             this.Load += new System.EventHandler(this.timerYYHHDD_Load);
+            this.Paint += new System.Windows.Forms.PaintEventHandler(this.timerYYHHDD_Paint);
             this.ResumeLayout(false);
             this.PerformLayout();
 

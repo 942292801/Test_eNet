@@ -324,7 +324,7 @@ namespace eNet编辑器
             public string address { get; set; }
             public string opt { get; set; }
             public string optName { get; set; }
-            public DateTime shortTime { get; set; }
+            public string shortTime { get; set; }
             
             
         }

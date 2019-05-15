@@ -23,6 +23,7 @@ namespace eNet编辑器.AddForm
 
         private void timerYYHHDD_Load(object sender, EventArgs e)
         {
+            //当前时间
             Calendar.DisplayMonth = DateTime.Now;
         }
 
@@ -65,6 +66,18 @@ namespace eNet编辑器.AddForm
             }
             tmp = string.Format("{0}/{1}", tmp, Calendar.SelectedDate.Day.ToString());
             AddCustomDate(tmp);
+        }
+
+        private void timerYYHHDD_Paint(object sender, PaintEventArgs e)
+        {
+            Rectangle myRectangle = new Rectangle(0, 0, this.Width, this.Height);
+            //ControlPaint.DrawBorder(e.Graphics, myRectangle, Color.Blue, ButtonBorderStyle.Solid);//画个边框 
+            ControlPaint.DrawBorder(e.Graphics, myRectangle,
+                Color.DarkGray, 1, ButtonBorderStyle.Solid,
+                Color.DarkGray, 1, ButtonBorderStyle.Solid,
+                Color.DarkGray, 2, ButtonBorderStyle.Solid,
+                Color.DarkGray, 2, ButtonBorderStyle.Solid
+            );
         }
 
        
