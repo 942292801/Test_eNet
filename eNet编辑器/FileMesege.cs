@@ -55,7 +55,7 @@ namespace eNet编辑器
         /// </summary>
         public static int cbTypeIndex = 0;
 
-        //复制 粘贴副本
+        //快捷键的复制 粘贴副本
         public static DataJson.PointInfo copyPoint = null;
         public static DataJson.sceneInfo copyScene = null;
         public static DataJson.timersInfo copyTimer = null;
@@ -256,8 +256,16 @@ namespace eNet编辑器
                     //点了保存按钮进入 
                     if (sfd.ShowDialog() == DialogResult.OK)
                     {
+                        
                         localFilePath = sfd.FileName.ToString(); //获得文件路径 
                         fileNameExt = localFilePath.Substring(localFilePath.LastIndexOf("\\") + 1); //获取文件名，不带路径
+
+                        string historyPath = IniConfig.GetValue(Application.StartupPath + "\\conf.ini", "filepath", "path");
+                        if (!historyPath.Contains(localFilePath))
+                        {
+                            //添加打开过的地址
+                            IniConfig.SetValue(Application.StartupPath + "\\conf.ini", "filepath", "path", localFilePath + "," + historyPath);
+                        }
 
                     }
                     else
@@ -324,6 +332,12 @@ namespace eNet编辑器
                 {
                     localFilePath = sfd.FileName.ToString(); //获得文件路径 
                     fileNameExt = localFilePath.Substring(localFilePath.LastIndexOf("\\") + 1); //获取文件名，不带路径
+                    string historyPath = IniConfig.GetValue(Application.StartupPath + "\\conf.ini", "filepath", "path");
+                    if (!historyPath.Contains(localFilePath))
+                    {
+                        //添加打开过的地址
+                        IniConfig.SetValue(Application.StartupPath + "\\conf.ini", "filepath", "path", localFilePath + "," + historyPath);
+                    }
                     writeAlltoPro(TmpFilePath);
                     ZipHelper zipHelp = new ZipHelper();
                     string[] fileList = { TmpFilePath + "//pro", TmpFilePath + "//objs" };

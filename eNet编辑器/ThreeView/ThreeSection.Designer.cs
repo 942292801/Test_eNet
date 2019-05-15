@@ -207,7 +207,7 @@
             this.btnAddNode.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
             this.btnAddNode.FocusCuesEnabled = false;
             this.btnAddNode.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnAddNode.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.Image;
+            this.btnAddNode.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None;
             this.btnAddNode.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnAddNode.HoverImage")));
             this.btnAddNode.Image = ((System.Drawing.Image)(resources.GetObject("btnAddNode.Image")));
             this.btnAddNode.Location = new System.Drawing.Point(199, 5);
@@ -228,7 +228,7 @@
             this.btnAddChild.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
             this.btnAddChild.FocusCuesEnabled = false;
             this.btnAddChild.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnAddChild.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.Image;
+            this.btnAddChild.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None;
             this.btnAddChild.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnAddChild.HoverImage")));
             this.btnAddChild.Image = ((System.Drawing.Image)(resources.GetObject("btnAddChild.Image")));
             this.btnAddChild.Location = new System.Drawing.Point(226, 5);
@@ -249,7 +249,7 @@
             this.btnDel.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
             this.btnDel.FocusCuesEnabled = false;
             this.btnDel.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnDel.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.Image;
+            this.btnDel.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None;
             this.btnDel.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnDel.HoverImage")));
             this.btnDel.Image = ((System.Drawing.Image)(resources.GetObject("btnDel.Image")));
             this.btnDel.Location = new System.Drawing.Point(253, 5);

@@ -192,7 +192,7 @@
             this.buttonX1.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
             this.buttonX1.FocusCuesEnabled = false;
             this.buttonX1.Font = new System.Drawing.Font("黑体", 9F);
-            this.buttonX1.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.Image;
+            this.buttonX1.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None;
             this.buttonX1.HoverImage = ((System.Drawing.Image)(resources.GetObject("buttonX1.HoverImage")));
             this.buttonX1.Image = ((System.Drawing.Image)(resources.GetObject("buttonX1.Image")));
             this.buttonX1.Location = new System.Drawing.Point(928, 6);
@@ -240,7 +240,7 @@
             this.btnDel.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
             this.btnDel.FocusCuesEnabled = false;
             this.btnDel.Font = new System.Drawing.Font("黑体", 9F);
-            this.btnDel.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.Image;
+            this.btnDel.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None;
             this.btnDel.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnDel.HoverImage")));
             this.btnDel.Image = ((System.Drawing.Image)(resources.GetObject("btnDel.Image")));
             this.btnDel.Location = new System.Drawing.Point(982, 5);
@@ -261,7 +261,7 @@
             this.btnClear.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
             this.btnClear.FocusCuesEnabled = false;
             this.btnClear.Font = new System.Drawing.Font("黑体", 9F);
-            this.btnClear.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.Image;
+            this.btnClear.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None;
             this.btnClear.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnClear.HoverImage")));
             this.btnClear.Image = ((System.Drawing.Image)(resources.GetObject("btnClear.Image")));
             this.btnClear.Location = new System.Drawing.Point(876, 5);
@@ -282,7 +282,7 @@
             this.btnAdd.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
             this.btnAdd.FocusCuesEnabled = false;
             this.btnAdd.Font = new System.Drawing.Font("黑体", 9F);
-            this.btnAdd.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.Image;
+            this.btnAdd.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None;
             this.btnAdd.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnAdd.HoverImage")));
             this.btnAdd.Image = ((System.Drawing.Image)(resources.GetObject("btnAdd.Image")));
             this.btnAdd.Location = new System.Drawing.Point(849, 5);
@@ -303,7 +303,7 @@
             this.btnDown.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
             this.btnDown.FocusCuesEnabled = false;
             this.btnDown.Font = new System.Drawing.Font("黑体", 9F);
-            this.btnDown.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.Image;
+            this.btnDown.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None;
             this.btnDown.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnDown.HoverImage")));
             this.btnDown.Image = ((System.Drawing.Image)(resources.GetObject("btnDown.Image")));
             this.btnDown.Location = new System.Drawing.Point(903, 5);
@@ -324,7 +324,7 @@
             this.btnCall.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
             this.btnCall.FocusCuesEnabled = false;
             this.btnCall.Font = new System.Drawing.Font("黑体", 9F);
-            this.btnCall.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.Image;
+            this.btnCall.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None;
             this.btnCall.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnCall.HoverImage")));
             this.btnCall.Image = ((System.Drawing.Image)(resources.GetObject("btnCall.Image")));
             this.btnCall.Location = new System.Drawing.Point(955, 5);

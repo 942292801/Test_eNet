@@ -75,15 +75,15 @@ namespace eNet编辑器
         [Serializable]
         public class Timernumber
         {
-            public int num { get; set; }
+            //public int num { get; set; }
             public int year { get; set; }
             public int mon { get; set; } 
             public int day { get; set; }
-            public int week { get; set; }
+            public int date { get; set; }
             public int hour { get; set; }
             public int min { get; set; }
             public string obj { get; set; }
-            public string val { get; set; }
+            public string data { get; set; }
 
         }
         #endregion
@@ -324,7 +324,7 @@ namespace eNet编辑器
             public string address { get; set; }
             public string opt { get; set; }
             public string optName { get; set; }
-            public string shortTime { get; set; }
+            public DateTime shortTime { get; set; }
             
             
         }

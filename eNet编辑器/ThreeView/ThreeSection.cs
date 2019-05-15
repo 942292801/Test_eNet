@@ -28,6 +28,7 @@ namespace eNet编辑器.ThreeView
         public ThreeSection()
         {
             InitializeComponent();
+     
         }
         public event AddTitleNode addTitleNode;
         //public event AddSectionDevCursor addSectionDevCursor;
@@ -36,6 +37,9 @@ namespace eNet编辑器.ThreeView
         public event SectionDgvDevAddItem sectionDgvDevAddItem;
 
         public event Action updatePointDgv;
+
+
+
         private void ThreeSection_Load(object sender, EventArgs e)
         {
             //新建

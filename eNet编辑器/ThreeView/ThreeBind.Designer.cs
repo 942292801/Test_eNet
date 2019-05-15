@@ -145,7 +145,7 @@
             this.buttonX3.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
             this.buttonX3.FocusCuesEnabled = false;
             this.buttonX3.Font = new System.Drawing.Font("黑体", 9F);
-            this.buttonX3.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.Image;
+            this.buttonX3.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None;
             this.buttonX3.HoverImage = ((System.Drawing.Image)(resources.GetObject("buttonX3.HoverImage")));
             this.buttonX3.Image = ((System.Drawing.Image)(resources.GetObject("buttonX3.Image")));
             this.buttonX3.Location = new System.Drawing.Point(239, 5);

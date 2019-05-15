@@ -213,7 +213,10 @@ namespace eNet编辑器.ThreeView
                     tms.timersInfo = new List<DataJson.timersInfo>();
                     if (copyTimer != null)
                     {
-                        tms.timersInfo = (List<DataJson.timersInfo>)CommandManager.CloneObject(copyTimer);
+                        //复制副本
+                        tms.timersInfo = (List<DataJson.timersInfo>)CommandManager.CloneObject(copyTimer.timersInfo);
+                        tms.dates = copyTimer.dates;
+                        tms.priorHoloday = copyTimer.priorHoloday;
                     }
                     
                     timer.timers.Add(tms);
@@ -416,7 +419,7 @@ namespace eNet编辑器.ThreeView
         }
 
         //复制的定时
-        List<DataJson.timersInfo> copyTimer = null;
+        DataJson.timers copyTimer = null;
         private void 复制ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             string[] ips = FileMesege.timerSelectNode.Parent.Text.Split(' ');
@@ -425,7 +428,7 @@ namespace eNet编辑器.ThreeView
             //获取该节点IP地址场景下的 场景信息对象
             DataJson.timers tms = DataListHelper.getTimersInfoList(ips[0], timerNum); 
             //可能存在克隆现象需要解决
-            copyTimer = tms.timersInfo;
+            copyTimer = tms;
             //新建场景
             newTimer(false);
         }

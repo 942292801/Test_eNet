@@ -182,7 +182,7 @@
             this.btnAddHoliday.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
             this.btnAddHoliday.FocusCuesEnabled = false;
             this.btnAddHoliday.Font = new System.Drawing.Font("微软雅黑", 9F);
-            this.btnAddHoliday.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.Image;
+            this.btnAddHoliday.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None;
             this.btnAddHoliday.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnAddHoliday.HoverImage")));
             this.btnAddHoliday.Image = ((System.Drawing.Image)(resources.GetObject("btnAddHoliday.Image")));
             this.btnAddHoliday.Location = new System.Drawing.Point(234, 5);
@@ -202,7 +202,7 @@
             this.btnAdd.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
             this.btnAdd.FocusCuesEnabled = false;
             this.btnAdd.Font = new System.Drawing.Font("微软雅黑", 9F);
-            this.btnAdd.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.Image;
+            this.btnAdd.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None;
             this.btnAdd.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnAdd.HoverImage")));
             this.btnAdd.Image = ((System.Drawing.Image)(resources.GetObject("btnAdd.Image")));
             this.btnAdd.Location = new System.Drawing.Point(207, 5);
@@ -222,7 +222,7 @@
             this.btnDel.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
             this.btnDel.FocusCuesEnabled = false;
             this.btnDel.Font = new System.Drawing.Font("微软雅黑", 9F);
-            this.btnDel.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.Image;
+            this.btnDel.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None;
             this.btnDel.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnDel.HoverImage")));
             this.btnDel.Image = ((System.Drawing.Image)(resources.GetObject("btnDel.Image")));
             this.btnDel.Location = new System.Drawing.Point(261, 5);

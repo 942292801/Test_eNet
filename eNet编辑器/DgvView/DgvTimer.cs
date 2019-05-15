@@ -49,37 +49,38 @@ namespace eNet编辑器.DgvView
                 // Hook onto the following events so we can
                 // demonstrate cell click processing
 
-                oc.ButtonCustom2Click += X2Date_ButtonClearClick;
-                oc.ButtonCustomClick += X2Date_ButtonCustomClick;
+
+                oc.ButtonCustomClick += ButtonCustomClick;
+                oc.ButtonCustom2Click += ButtonCustomClick2;
             }
         }
 
 
-        #region X2Date_ButtonClearClick
+        #region ButtonCustomClick
 
         /// <summary>
         /// Handles X2 "Date" ButtonClear Clicks
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        void X2Date_ButtonClearClick(object sender, EventArgs e)
+        void ButtonCustomClick(object sender, EventArgs e)
         {
             DataGridViewDateTimeInputCell cell =
                     dataGridView1.CurrentCell as DataGridViewDateTimeInputCell;
-            cell.Value = "日落时间";
+            //cell.Value = "日落时间";
             
         }
 
         #endregion
 
-        #region X2Date_ButtonCustomClick
+        #region ButtonCustomClick2
 
         /// <summary>
         /// Handles X2 "Date" ButtonCustom click events
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        void X2Date_ButtonCustomClick(object sender, EventArgs e)
+        void ButtonCustomClick2(object sender, EventArgs e)
         {
             DialogResult dr = MessageBox.Show("Set Date to today?", "Set Date",
                                   MessageBoxButtons.YesNo, MessageBoxIcon.Question,
@@ -550,12 +551,18 @@ namespace eNet编辑器.DgvView
                     tmp.Add("6");
                 }
             }
+            //撤销
+            DataJson.totalList OldList = FileMesege.cmds.getListInfos();
+            
             tms.dates = "";
             for (int i = 0; i < tmp.Count; i++)
             {
                 tms.dates = string.Format("{0} {1}", tms.dates, tmp[i]);
             }
+
             tms.dates = tms.dates.Trim().Replace(" ", ",");
+            DataJson.totalList NewList = FileMesege.cmds.getListInfos();
+            FileMesege.cmds.DoNewCommand(NewList, OldList);
             //AppTxtShow(tms.dates);
         }
 
@@ -567,6 +574,8 @@ namespace eNet编辑器.DgvView
             {
                 return;
             }
+            //撤销
+            DataJson.totalList OldList = FileMesege.cmds.getListInfos();
             if (cbPriorHoliday.Checked)
             {
                 tms.priorHoloday = "00000001";
@@ -575,6 +584,9 @@ namespace eNet编辑器.DgvView
             {
                 tms.priorHoloday = "01000001";
             }
+            DataJson.totalList NewList = FileMesege.cmds.getListInfos();
+            FileMesege.cmds.DoNewCommand(NewList, OldList);
+           
         }
 
         #endregion
@@ -613,8 +625,10 @@ namespace eNet编辑器.DgvView
             {
                 return ;
             }
+  
             listbox.Items.Remove(listbox.SelectedItem);
             datesUpdate();
+    
 
 
         }
@@ -632,10 +646,12 @@ namespace eNet编辑器.DgvView
                     return;
                 }
             }
+           
             listbox.Items.Add(date);    
             //排序   
             lisboxSort();
             datesUpdate();
+           
         }
 
         /// <summary>
@@ -648,85 +664,131 @@ namespace eNet编辑器.DgvView
             {
                 tmp.Add(listbox.Items[i].ToString());
             }
+            //-1 为往上排 1为往下排
             //排序
             tmp.Sort(delegate(string x, string y)
             {
                 string[] xip = x.Split('/');
                 string[] yip = y.Split('/');
 
-                //月份为* 
-                if (xip[1].Contains("*"))
+                if (x.Contains("*"))
                 {
-                    //比较项月份为星
-                    if (yip[1].Contains("*"))
+                    //x存在*
+                    if (y.Contains("*"))
                     {
-                        if (xip[0].Contains("*") && yip[0].Contains("*"))
+                        //////////////////////////y存在星  xy同时存在星
+                        if (xip[0].Contains("*"))
                         {
-                            return Convert.ToInt32(xip[2]).CompareTo(Convert.ToInt32(yip[2]));
+                            //x年存在*
+                            if (yip[0].Contains("*"))
+                            {
+                                //y年存在*   （xy年都存在*）
+                                if (xip[1].Contains("*"))
+                                {
+                                    //x月存在*
+                                    if (yip[1].Contains("*"))
+                                    {
+                                        //y月存在* （xy月都存在*）
+                                        return Convert.ToInt32(xip[2]).CompareTo(Convert.ToInt32(yip[2]));
+                                    }
+                                    else
+                                    {
+                                        //y月不存在*
+                                        return -1;
+                                    }
+                                }
+                                else
+                                {
+                                    //x月不存在*
+                                    if (yip[1].Contains("*"))
+                                    {
+                                        //y月存在*
+                                        return 1;
+                                    }
+                                    else
+                                    {
+                                        //y月不存在*
+                                        if (xip[1] == yip[1])
+                                        {
+                                            //年月都相同
+                                            return Convert.ToInt32(xip[2]).CompareTo(Convert.ToInt32(yip[2]));
+                                        }
+                                        else
+                                        {
+                                            //对比月
+                                            return Convert.ToInt32(xip[1]).CompareTo(Convert.ToInt32(yip[1]));
+                                        }
+                                    }
+                                   
+                                }
+                            }
+                            else
+                            {
+                                //y年不存在*
+                                return -1;
+                            }
                         }
-                        if (xip[0].Contains("*") && !yip[0].Contains("*"))
+                        else
                         {
-                            return -1;
-                        }
-                        if (!xip[0].Contains("*") && yip[0].Contains("*"))
-                        {
-                            return 1;
+                            //x年不存在*
+                            if (yip[0].Contains("*"))
+                            {
+                                //y年存在*
+                                return 1;
+                            }
+                            else
+                            {
+                                //y年不存在*
+                                if (xip[0] == yip[0])
+                                {
+                                    //年相同 则*在月 只能比较日期
+                                    return Convert.ToInt32(xip[2]).CompareTo(Convert.ToInt32(yip[2]));
+                                }
+                                else
+                                { 
+                                    //年不相同 则比较年限
+                                    return Convert.ToInt32(xip[0]).CompareTo(Convert.ToInt32(yip[0]));
+                                }
+                            
+                            }
                         }
 
+                        ////////////////////////////////////////
 
                     }
                     else
                     {
-                        //月份不为星
+                        //y不存在星
                         return -1;
                     }
                 }
-
-                //年为* 
-                if (xip[0].Contains("*"))
-                {
-                    //比较项月份为*
-                    if (yip[1].Contains("*"))
+                else
+                { 
+                    //x不存在*
+                    if (y.Contains("*"))
                     {
+                        //y存在星
                         return 1;
                     }
-                    //比较项年份为*
-                    if (yip[0].Contains("*"))
-                    {
-                        //同月份  不同月份
-                        if (xip[1] == yip[1])
+                    else
+                    { 
+                        //y不存在星  正常比较
+                        if (xip[0] == yip[0])
                         {
-                            return Convert.ToInt32(xip[2]).CompareTo(Convert.ToInt32(yip[2]));
-                        }
-                        else
-                        {
+                            if (xip[1] == yip[1])
+                            {
+                                return Convert.ToInt32(xip[2]).CompareTo(Convert.ToInt32(yip[2]));
+                            }
                             return Convert.ToInt32(xip[1]).CompareTo(Convert.ToInt32(yip[1]));
-                        }
-                    }
-                    return -1;
-                }
-
-                try
-                {
-                    if (xip[0] == yip[0])
-                    {
-                        if (xip[1] == yip[1])
-                        {
-
-                            return Convert.ToInt32(xip[2]).CompareTo(Convert.ToInt32(yip[2]));
 
                         }
-
-                        return Convert.ToInt32(xip[1]).CompareTo(Convert.ToInt32(yip[1]));
-
+                        return Convert.ToInt32(xip[0]).CompareTo(Convert.ToInt32(yip[0]));
                     }
 
-                    return Convert.ToInt32(xip[0]).CompareTo(Convert.ToInt32(yip[0]));
                 }
-                catch
-                {
-                    return 1;
-                }
+
+                    
+              
 
             });
             listbox.Items.Clear();
@@ -754,7 +816,8 @@ namespace eNet编辑器.DgvView
                 DataJson.timersInfo tmInfo = new DataJson.timersInfo();
 
                 int id = 0;
-                string type = "", opt = "", optname = "", add = "",shortTime = "";
+                string type = "", opt = "", optname = "", add = "";
+                DateTime shortTime = new DateTime();
                 //撤销 
                 DataJson.totalList OldList = FileMesege.cmds.getListInfos();
                 HashSet<int> hasharry = new HashSet<int>();
@@ -867,7 +930,7 @@ namespace eNet编辑器.DgvView
                 {
                     return;
                 }
-                //场景信息不为空
+                //定时信息不为空
                 if (tms.timersInfo.Count > 0)
                 {
                     DataJson.Tn tn = new DataJson.Tn();
@@ -882,24 +945,25 @@ namespace eNet编辑器.DgvView
                     foreach (DataJson.timersInfo tmInfo in tms.timersInfo)
                     {
                         //确保有信息
-                        if (string.IsNullOrEmpty(tmInfo.opt) || string.IsNullOrEmpty(tmInfo.shortTime))
+                        if (string.IsNullOrEmpty(tmInfo.opt) || tmInfo.shortTime == null)
                         {
                             continue;
                         }
-                        DataJson.Timernumber sb = new DataJson.Timernumber();
-
-                        sb.num = tmInfo.id;
-                        sb.obj = tmInfo.address;
-                        sb.val = tmInfo.opt;
-                        sb.hour =  Convert.ToInt32( tmInfo.shortTime.Split(':')[0]);
-                        sb.min = Convert.ToInt32(tmInfo.shortTime.Split(':')[1]);
-
+                        int hour = tmInfo.shortTime.Hour;
+                        int min = tmInfo.shortTime.Minute;
                         string[] dates = tms.dates.Split(',');
                         if (tms.dates.Contains("/"))
                         {
                             //自定义日期
                             for (int i = 0; i < dates.Length; i++)
                             {
+                                DataJson.Timernumber sb = new DataJson.Timernumber();
+
+                                //sb.num = tmInfo.id;
+                                sb.obj = tmInfo.address;
+                                sb.data = tmInfo.opt;
+                                sb.hour = hour;
+                                sb.min = min;
                                 string[] ymd = dates[i].Split('/');
                                 if (ymd[0].Contains("*"))
                                 {
@@ -919,8 +983,10 @@ namespace eNet编辑器.DgvView
                                 {
                                     sb.mon = Convert.ToInt32(ymd[1]);
                                 }
-                                sb.day = Convert.ToInt32(ymd[2]);
-                                sb.week = 255;
+                                //这个是日
+                                sb.date = Convert.ToInt32(ymd[2]);
+                                //这个是周
+                                sb.day = 255;
                                 tn.timer.Add(sb);
                             }
                         }
@@ -929,10 +995,16 @@ namespace eNet编辑器.DgvView
                             //星期一到日 0-7
                             for (int i = 0; i < dates.Length; i++)
                             {
+                                DataJson.Timernumber sb = new DataJson.Timernumber();
+                                //sb.num = tmInfo.id;
+                                sb.obj = tmInfo.address;
+                                sb.data = tmInfo.opt;
+                                sb.hour = hour;
+                                sb.min = min;
                                 sb.year = 255;
                                 sb.mon = 255;
-                                sb.day = 255;
-                                sb.week = Convert.ToInt32(dates[i]);
+                                sb.date = 255;
+                                sb.day = Convert.ToInt32(dates[i]);
                                 tn.timer.Add(sb);
                             }
                         }
@@ -941,19 +1013,19 @@ namespace eNet编辑器.DgvView
                     if (tn.timer.Count > 0)
                     {
                         //序列化SN对象
-                        string sjson = FileMesege.ConvertJsonString(JsonConvert.SerializeObject(tn));
+                        string sjson = JsonConvert.SerializeObject(tn);
 
                         //写入数据格式
-                        string path = "down /json/s" + tms.id.ToString() + ".json$" + sjson;
+                        string path = "down /json/t" + tms.id + ".json$" + sjson;
                         //测试写出文档
                         //File.WriteAllText(FileMesege.filePath + "\\objs\\s" + sceneNum + ".json", path);
                         //string check = "exist /json/s" + sceneNum + ".json$";
                         TcpSocket ts = new TcpSocket();
                         int i = 0;
-
+                        string ip = FileMesege.timerSelectNode.Parent.Text.Split(' ')[0];
                         while (i < 10)
                         {
-                            sock = ts.ConnectServer(FileMesege.timerSelectNode.Text.Split(' ')[0], 6001, 1);
+                            sock = ts.ConnectServer(ip, 6001, 1);
                             if (sock == null)
                             {
                                 i++;
@@ -1468,8 +1540,9 @@ namespace eNet编辑器.DgvView
                     switch (dataGridView1.Columns[columnNum].Name)
                     {
                         case "shortTime":
+                         
                             //改变延时
-                            dgvShortTimer(Convert.ToInt32(dataGridView1.Rows[rowNum].Cells[0].Value), (DateTime)(dataGridView1.Rows[rowNum].Cells[6].Value));
+                            dgvShortTimer(Convert.ToInt32(dataGridView1.Rows[rowNum].Cells[0].Value), (DateTime)dataGridView1.Rows[rowNum].Cells[6].Value);
                             dataGridView1.Columns[columnNum].ReadOnly = true;
                             break;
                         case "type":
@@ -1694,7 +1767,7 @@ namespace eNet编辑器.DgvView
             }
             //撤销 
             DataJson.totalList OldList = FileMesege.cmds.getListInfos();
-            tmInfo.shortTime = shortTime.ToShortTimeString();
+            tmInfo.shortTime = shortTime;
             DataJson.totalList NewList = FileMesege.cmds.getListInfos();
             FileMesege.cmds.DoNewCommand(NewList, OldList);
         }
@@ -1719,6 +1792,7 @@ namespace eNet编辑器.DgvView
                 {
                     return;
                 }
+                
                 //获取sceneInfo对象表中对应ID号info对象
                 DataJson.timersInfo tmInfo = getTimerInfo(tms, id);
                 if (tmInfo == null)

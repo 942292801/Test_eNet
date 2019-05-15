@@ -156,7 +156,7 @@
             this.btnImport.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
             this.btnImport.FocusCuesEnabled = false;
             this.btnImport.Font = new System.Drawing.Font("黑体", 9F);
-            this.btnImport.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.Image;
+            this.btnImport.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None;
             this.btnImport.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnImport.HoverImage")));
             this.btnImport.Image = ((System.Drawing.Image)(resources.GetObject("btnImport.Image")));
             this.btnImport.Location = new System.Drawing.Point(174, 5);
@@ -177,7 +177,7 @@
             this.btnSearch.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
             this.btnSearch.FocusCuesEnabled = false;
             this.btnSearch.Font = new System.Drawing.Font("黑体", 9F);
-            this.btnSearch.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.Image;
+            this.btnSearch.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None;
             this.btnSearch.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnSearch.HoverImage")));
             this.btnSearch.Image = ((System.Drawing.Image)(resources.GetObject("btnSearch.Image")));
             this.btnSearch.Location = new System.Drawing.Point(200, 5);

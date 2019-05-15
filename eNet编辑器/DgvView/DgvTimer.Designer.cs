@@ -331,6 +331,7 @@
             this.listbox.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Rounded;
             this.listbox.BackgroundStyle.TextColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarCaptionText;
             this.listbox.BackgroundStyle.TextShadowColor = System.Drawing.Color.Blue;
+            this.listbox.CheckStateMember = null;
             this.listbox.ContainerControlProcessDialogKey = true;
             this.listbox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.listbox.DragDropSupport = true;
@@ -385,7 +386,7 @@
             // 
             // 
             this.cbCustom.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.cbCustom.Location = new System.Drawing.Point(17, 116);
+            this.cbCustom.Location = new System.Drawing.Point(74, 121);
             this.cbCustom.Name = "cbCustom";
             this.cbCustom.Size = new System.Drawing.Size(88, 20);
             this.cbCustom.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -401,7 +402,7 @@
             // 
             // 
             this.cbEveryday.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.cbEveryday.Location = new System.Drawing.Point(74, 90);
+            this.cbEveryday.Location = new System.Drawing.Point(17, 121);
             this.cbEveryday.Name = "cbEveryday";
             this.cbEveryday.Size = new System.Drawing.Size(51, 20);
             this.cbEveryday.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -668,7 +669,7 @@
             this.btnOff.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
             this.btnOff.FocusCuesEnabled = false;
             this.btnOff.Font = new System.Drawing.Font("黑体", 9F);
-            this.btnOff.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.Image;
+            this.btnOff.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None;
             this.btnOff.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnOff.HoverImage")));
             this.btnOff.Image = ((System.Drawing.Image)(resources.GetObject("btnOff.Image")));
             this.btnOff.Location = new System.Drawing.Point(962, 5);
@@ -717,7 +718,7 @@
             this.btnDel.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
             this.btnDel.FocusCuesEnabled = false;
             this.btnDel.Font = new System.Drawing.Font("黑体", 9F);
-            this.btnDel.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.Image;
+            this.btnDel.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None;
             this.btnDel.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnDel.HoverImage")));
             this.btnDel.Image = ((System.Drawing.Image)(resources.GetObject("btnDel.Image")));
             this.btnDel.Location = new System.Drawing.Point(989, 5);
@@ -738,7 +739,7 @@
             this.btnClear.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
             this.btnClear.FocusCuesEnabled = false;
             this.btnClear.Font = new System.Drawing.Font("黑体", 9F);
-            this.btnClear.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.Image;
+            this.btnClear.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None;
             this.btnClear.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnClear.HoverImage")));
             this.btnClear.Image = ((System.Drawing.Image)(resources.GetObject("btnClear.Image")));
             this.btnClear.Location = new System.Drawing.Point(881, 6);
@@ -759,7 +760,7 @@
             this.btnAdd.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
             this.btnAdd.FocusCuesEnabled = false;
             this.btnAdd.Font = new System.Drawing.Font("黑体", 9F);
-            this.btnAdd.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.Image;
+            this.btnAdd.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None;
             this.btnAdd.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnAdd.HoverImage")));
             this.btnAdd.Image = ((System.Drawing.Image)(resources.GetObject("btnAdd.Image")));
             this.btnAdd.Location = new System.Drawing.Point(854, 6);
@@ -780,7 +781,7 @@
             this.btnDown.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
             this.btnDown.FocusCuesEnabled = false;
             this.btnDown.Font = new System.Drawing.Font("黑体", 9F);
-            this.btnDown.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.Image;
+            this.btnDown.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None;
             this.btnDown.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnDown.HoverImage")));
             this.btnDown.Image = ((System.Drawing.Image)(resources.GetObject("btnDown.Image")));
             this.btnDown.Location = new System.Drawing.Point(908, 5);
@@ -801,7 +802,7 @@
             this.btnOn.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
             this.btnOn.FocusCuesEnabled = false;
             this.btnOn.Font = new System.Drawing.Font("黑体", 9F);
-            this.btnOn.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.Image;
+            this.btnOn.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None;
             this.btnOn.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnOn.HoverImage")));
             this.btnOn.Image = ((System.Drawing.Image)(resources.GetObject("btnOn.Image")));
             this.btnOn.Location = new System.Drawing.Point(935, 5);

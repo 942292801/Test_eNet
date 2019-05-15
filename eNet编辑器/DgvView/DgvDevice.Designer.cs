@@ -231,7 +231,7 @@
             this.btnNew.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
             this.btnNew.FocusCuesEnabled = false;
             this.btnNew.Font = new System.Drawing.Font("黑体", 9F);
-            this.btnNew.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.Image;
+            this.btnNew.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None;
             this.btnNew.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnNew.HoverImage")));
             this.btnNew.Image = ((System.Drawing.Image)(resources.GetObject("btnNew.Image")));
             this.btnNew.Location = new System.Drawing.Point(986, 5);

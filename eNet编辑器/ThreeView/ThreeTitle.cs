@@ -724,7 +724,7 @@ namespace eNet编辑器.ThreeView
                         }
                     }
                     tmInfo.id = id + 1;
-                    tmInfo.shortTime = "";
+                    tmInfo.shortTime = new DateTime();
                     tmInfo.address = eq.address;
                     tmInfo.pid = eq.pid;
                     tmInfo.opt = "";

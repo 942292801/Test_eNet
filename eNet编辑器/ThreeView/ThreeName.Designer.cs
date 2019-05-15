@@ -220,7 +220,7 @@
             this.btnAddGw.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
             this.btnAddGw.FocusCuesEnabled = false;
             this.btnAddGw.Font = new System.Drawing.Font("微软雅黑", 9F);
-            this.btnAddGw.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.Image;
+            this.btnAddGw.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None;
             this.btnAddGw.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnAddGw.HoverImage")));
             this.btnAddGw.Image = ((System.Drawing.Image)(resources.GetObject("btnAddGw.Image")));
             this.btnAddGw.Location = new System.Drawing.Point(205, 5);
@@ -240,7 +240,7 @@
             this.btnAddDev.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
             this.btnAddDev.FocusCuesEnabled = false;
             this.btnAddDev.Font = new System.Drawing.Font("微软雅黑", 9F);
-            this.btnAddDev.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.Image;
+            this.btnAddDev.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None;
             this.btnAddDev.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnAddDev.HoverImage")));
             this.btnAddDev.Image = ((System.Drawing.Image)(resources.GetObject("btnAddDev.Image")));
             this.btnAddDev.Location = new System.Drawing.Point(232, 5);
@@ -260,7 +260,7 @@
             this.btnDel.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
             this.btnDel.FocusCuesEnabled = false;
             this.btnDel.Font = new System.Drawing.Font("微软雅黑", 9F);
-            this.btnDel.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.Image;
+            this.btnDel.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None;
             this.btnDel.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnDel.HoverImage")));
             this.btnDel.Image = ((System.Drawing.Image)(resources.GetObject("btnDel.Image")));
             this.btnDel.Location = new System.Drawing.Point(259, 5);

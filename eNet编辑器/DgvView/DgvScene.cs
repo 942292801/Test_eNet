@@ -405,7 +405,7 @@ namespace eNet编辑器.DgvView
                         if (sn.action.Count > 0)
                         {
                             //序列化SN对象
-                            string sjson = FileMesege.ConvertJsonString(JsonConvert.SerializeObject(sn));
+                            string sjson = JsonConvert.SerializeObject(sn);
                             
                             //写入数据格式
                             string path = "down /json/s" + sceneNum + ".json$" + sjson;

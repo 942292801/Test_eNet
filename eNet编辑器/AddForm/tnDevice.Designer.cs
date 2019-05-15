@@ -37,8 +37,8 @@
             this.cbDevice = new System.Windows.Forms.ComboBox();
             this.plInfoTitle = new System.Windows.Forms.Panel();
             this.symbolBox1 = new DevComponents.DotNetBar.Controls.SymbolBox();
-            this.btnDecid = new DevComponents.DotNetBar.ButtonX();
             this.lbTitle = new System.Windows.Forms.Label();
+            this.btnDecid = new DevComponents.DotNetBar.ButtonX();
             this.plInfoTitle.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -129,27 +129,6 @@
             this.symbolBox1.TabIndex = 7;
             this.symbolBox1.Text = "symbolBox1";
             // 
-            // btnDecid
-            // 
-            this.btnDecid.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnDecid.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnDecid.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btnDecid.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
-            this.btnDecid.FocusCuesEnabled = false;
-            this.btnDecid.Font = new System.Drawing.Font("黑体", 9F);
-            this.btnDecid.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.Image;
-            this.btnDecid.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnDecid.HoverImage")));
-            this.btnDecid.Image = ((System.Drawing.Image)(resources.GetObject("btnDecid.Image")));
-            this.btnDecid.Location = new System.Drawing.Point(269, 144);
-            this.btnDecid.Margin = new System.Windows.Forms.Padding(6);
-            this.btnDecid.Name = "btnDecid";
-            this.btnDecid.Size = new System.Drawing.Size(25, 20);
-            this.btnDecid.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnDecid.TabIndex = 4;
-            this.btnDecid.Tooltip = "确认";
-            this.btnDecid.Click += new System.EventHandler(this.btnDecid_Click_1);
-            // 
             // lbTitle
             // 
             this.lbTitle.AutoSize = true;
@@ -160,6 +139,27 @@
             this.lbTitle.Size = new System.Drawing.Size(56, 17);
             this.lbTitle.TabIndex = 1;
             this.lbTitle.Text = "设备添加";
+            // 
+            // btnDecid
+            // 
+            this.btnDecid.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnDecid.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnDecid.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnDecid.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
+            this.btnDecid.FocusCuesEnabled = false;
+            this.btnDecid.Font = new System.Drawing.Font("黑体", 9F);
+            this.btnDecid.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None;
+            this.btnDecid.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnDecid.HoverImage")));
+            this.btnDecid.Image = ((System.Drawing.Image)(resources.GetObject("btnDecid.Image")));
+            this.btnDecid.Location = new System.Drawing.Point(269, 144);
+            this.btnDecid.Margin = new System.Windows.Forms.Padding(6);
+            this.btnDecid.Name = "btnDecid";
+            this.btnDecid.Size = new System.Drawing.Size(25, 20);
+            this.btnDecid.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnDecid.TabIndex = 4;
+            this.btnDecid.Tooltip = "确认";
+            this.btnDecid.Click += new System.EventHandler(this.btnDecid_Click_1);
             // 
             // tnDevice
             // 
