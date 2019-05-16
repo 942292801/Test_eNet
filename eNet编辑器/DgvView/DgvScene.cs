@@ -254,10 +254,13 @@ namespace eNet编辑器.DgvView
                     add = find.address;
                 }
             }
-            info.id = polishId(hasharry);
+            info.id = DataChange.polishId(hasharry);
             info.pid = 0;
             info.type = type;
-         
+            
+            info.opt = opt;
+            info.optName = optname;
+            info.Delay = delay; 
             //地址加一处理 并搜索PointList表获取地址 信息
             if (!string.IsNullOrEmpty(add) && add != "FFFFFFFF")
             {
@@ -275,19 +278,40 @@ namespace eNet编辑器.DgvView
                         add = add.Substring(0, 4) + hexnum;
                         break;
                 }
+                //按照地址查找type的类型 
+                type = IniHelper.findIniTypesByAddress(ips[0], add).Split(',')[0];
+                if (string.IsNullOrEmpty(type))
+                {
+                    type = IniHelper.findTypesIniTypebyName(type);
+                }
+                info.type = type;
                 string ip4 = SocketUtil.strtohexstr(SocketUtil.getIP(FileMesege.sceneSelectNode));//16进制
                 //添加地域和名称 在sceneInfo表中
                 DataJson.PointInfo point = DataListHelper.findPointByType_address(type, ip4 + add.Substring(2, 6));
                 if (point != null)
                 {
-                    info.pid = point.pid;
-                 }
-            }
 
+                    info.pid = point.pid;
+                    info.type = point.type;
+                    if (info.type != point.type)
+                    {
+                        info.opt = "";
+                        info.optName = "";
+                    }
+
+
+
+                }
+                else
+                {
+                    info.pid = 0;
+                    //info.type = "";
+                    info.opt = "";
+                    info.optName = "";
+                }
+            }
             info.address = add;
-            info.opt = opt;
-            info.optName = optname;
-            info.Delay = delay; 
+            
             sc.sceneInfo.Add(info);
             //排序
             sceneInfoSort(sc);
@@ -300,38 +324,7 @@ namespace eNet编辑器.DgvView
             
         }
 
-        /// <summary>
-        /// 计算表中ID序号
-        /// </summary>
-        /// <param name="hasharry"></param>
-        /// <returns></returns>
-        private int polishId(HashSet<int> hasharry)
-        {
-            try
-            {
-                List<int> arry = hasharry.ToList<int>();
-                arry.Sort();
-                /*
-                if (arry.Count == 0)
-                {
-                    //该区域节点前面数字不存在
-                    return 1;
-                }
-                //哈希表 不存在序号 直接返回
-                for (int i = 0; i < arry.Count; i++)
-                {
-                    if (arry[i] != i + 1)
-                    {
-                        return  i + 1;
-                    }
-                }
-                return arry[arry.Count - 1] + 1;*/
-                return arry[arry.Count - 1] + 1;
-            }
-            catch {
-                return 1;
-            }
-        }
+     
 
         //清空
         private void btnClear_Click(object sender, EventArgs e)
@@ -703,7 +696,12 @@ namespace eNet编辑器.DgvView
                                 {
                                     dataGridView1.Rows[rowCount].Cells[5].Value = info;
                                 }
-
+                                break;
+                            case "del":
+                                //删除表
+                                dgvDle(id);
+                                //移除该行信息
+                                dataGridView1.Rows.Remove(dataGridView1.Rows[rowCount]);
                                 break;
                             default: break;
                         }
@@ -921,7 +919,9 @@ namespace eNet编辑器.DgvView
             //把窗口向屏幕中间刷新
             dc.StartPosition = FormStartPosition.CenterParent;
             dc.ObjType = type;
-            
+
+            dc.Opt = info.opt;
+            dc.Ver = info.optName;
             dc.ShowDialog();
             if (dc.DialogResult == DialogResult.OK)
             {
@@ -966,6 +966,8 @@ namespace eNet编辑器.DgvView
                 DataJson.scenes sc = DataListHelper.getSceneInfoList(ips[0], sceneNum);
                 //获取sceneInfo对象表中对应ID号info对象
                 DataJson.sceneInfo info = getSceneID(sc, id);
+                //撤销 
+                DataJson.totalList OldList = FileMesege.cmds.getListInfos();
                 //地址
                 info.address = dc.Obj;
                 if (string.IsNullOrEmpty(info.address))
@@ -983,8 +985,7 @@ namespace eNet编辑器.DgvView
                 string ad = SocketUtil.GetIPstyle(ips[0], 4) + info.address.Substring(2, 6);
                 //区域加名称
                 DataJson.PointInfo point = DataListHelper.findPointByType_address(type, ad);
-                //撤销 
-                DataJson.totalList OldList = FileMesege.cmds.getListInfos();
+                
                 if (point != null)
                 {
                    
@@ -1001,6 +1002,8 @@ namespace eNet编辑器.DgvView
                 }
                 else
                 {
+                    //搜索一次dev表 
+
                     info.pid = 0;
                     //info.type = "";
                     info.opt = "";

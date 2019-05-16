@@ -256,6 +256,7 @@ namespace eNet编辑器
         /// <returns></returns>
         public List<string> treeIsExpandsState(TreeView treeView1)
         {
+            treeView1.Visible = false;
             //记录当前节点展开状况
             List<string> isExpands = new List<string>();
             foreach (TreeNode node1 in treeView1.Nodes)
@@ -294,6 +295,7 @@ namespace eNet编辑器
 
             }
             treeView1.Nodes.Clear();
+            
             return isExpands;
         }
 
@@ -351,7 +353,7 @@ namespace eNet编辑器
                 }
 
             }
-            
+            treeView1.Visible = true;
         }
 
 

@@ -88,11 +88,11 @@
             this.treeView1.ImageList = this.imgLIst;
             this.treeView1.ItemHeight = 24;
             this.treeView1.Location = new System.Drawing.Point(0, 0);
-            this.treeView1.Margin = new System.Windows.Forms.Padding(0, 7, 0, 0);
+            this.treeView1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.treeView1.Name = "treeView1";
             this.treeView1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.treeView1.SelectedImageIndex = 2;
-            this.treeView1.Size = new System.Drawing.Size(281, 381);
+            this.treeView1.SelectedImageIndex = 0;
+            this.treeView1.Size = new System.Drawing.Size(234, 381);
             this.treeView1.TabIndex = 0;
             this.treeView1.DrawNode += new System.Windows.Forms.DrawTreeNodeEventHandler(this.treeView1_DrawNode);
             this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
@@ -193,7 +193,7 @@
             this.plInfoTitle.Location = new System.Drawing.Point(0, 0);
             this.plInfoTitle.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.plInfoTitle.Name = "plInfoTitle";
-            this.plInfoTitle.Size = new System.Drawing.Size(281, 25);
+            this.plInfoTitle.Size = new System.Drawing.Size(234, 25);
             this.plInfoTitle.TabIndex = 2;
             // 
             // symbolBox1
@@ -223,7 +223,7 @@
             this.btnAddGw.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None;
             this.btnAddGw.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnAddGw.HoverImage")));
             this.btnAddGw.Image = ((System.Drawing.Image)(resources.GetObject("btnAddGw.Image")));
-            this.btnAddGw.Location = new System.Drawing.Point(205, 5);
+            this.btnAddGw.Location = new System.Drawing.Point(158, 5);
             this.btnAddGw.Margin = new System.Windows.Forms.Padding(6);
             this.btnAddGw.Name = "btnAddGw";
             this.btnAddGw.Size = new System.Drawing.Size(15, 15);
@@ -243,7 +243,7 @@
             this.btnAddDev.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None;
             this.btnAddDev.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnAddDev.HoverImage")));
             this.btnAddDev.Image = ((System.Drawing.Image)(resources.GetObject("btnAddDev.Image")));
-            this.btnAddDev.Location = new System.Drawing.Point(232, 5);
+            this.btnAddDev.Location = new System.Drawing.Point(185, 5);
             this.btnAddDev.Margin = new System.Windows.Forms.Padding(6);
             this.btnAddDev.Name = "btnAddDev";
             this.btnAddDev.Size = new System.Drawing.Size(15, 15);
@@ -263,7 +263,7 @@
             this.btnDel.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None;
             this.btnDel.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnDel.HoverImage")));
             this.btnDel.Image = ((System.Drawing.Image)(resources.GetObject("btnDel.Image")));
-            this.btnDel.Location = new System.Drawing.Point(259, 5);
+            this.btnDel.Location = new System.Drawing.Point(212, 5);
             this.btnDel.Margin = new System.Windows.Forms.Padding(6);
             this.btnDel.Name = "btnDel";
             this.btnDel.Size = new System.Drawing.Size(15, 15);
@@ -291,7 +291,7 @@
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(281, 413);
+            this.panel1.Size = new System.Drawing.Size(234, 413);
             this.panel1.TabIndex = 3;
             // 
             // panel2
@@ -302,7 +302,7 @@
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(281, 413);
+            this.panel2.Size = new System.Drawing.Size(234, 413);
             this.panel2.TabIndex = 3;
             // 
             // panel4
@@ -312,7 +312,7 @@
             this.panel4.Location = new System.Drawing.Point(0, 32);
             this.panel4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(281, 381);
+            this.panel4.Size = new System.Drawing.Size(234, 381);
             this.panel4.TabIndex = 4;
             // 
             // panel3
@@ -323,7 +323,7 @@
             this.panel3.Location = new System.Drawing.Point(0, 0);
             this.panel3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(281, 32);
+            this.panel3.Size = new System.Drawing.Size(234, 32);
             this.panel3.TabIndex = 3;
             // 
             // progressBarX1
@@ -425,7 +425,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(281, 413);
+            this.ClientSize = new System.Drawing.Size(234, 413);
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("微软雅黑", 9F);
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);

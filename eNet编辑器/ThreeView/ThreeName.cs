@@ -12,6 +12,7 @@ using System.IO;
 using eNet编辑器.AddForm;
 using System.Text.RegularExpressions;
 using eNet编辑器.Properties;
+using System.Reflection;
 namespace eNet编辑器.ThreeView
 {
     public delegate void SendFormContrl(string msg);
@@ -37,10 +38,12 @@ namespace eNet编辑器.ThreeView
         
         public ThreeName()
         {
-         
             InitializeComponent();
-           
+
         }
+
+
+
 
         private void ThreeName_Load(object sender, EventArgs e)
         {
@@ -59,14 +62,13 @@ namespace eNet编辑器.ThreeView
         /// </summary>
         public void ThreeNameAddNode()
         {
-
-            TreeMesege tm = new TreeMesege();
-            List<string> isExpands = tm.treeIsExpandsState(treeView1);
-
             if (FileMesege.DeviceList == null)
             {
                 return;
             }
+            
+            TreeMesege tm = new TreeMesege();
+            List<string> isExpands = tm.treeIsExpandsState(treeView1);            
             //记录当前节点展开状况
             int index = 0;
             int index2 = 0;
@@ -82,7 +84,7 @@ namespace eNet编辑器.ThreeView
             }
             //展开记录的节点
             tm.treeIspandsStateRcv(treeView1, isExpands);
-           
+
             
         }
 
@@ -147,7 +149,6 @@ namespace eNet编辑器.ThreeView
             DataListHelper.newDevice(ip,id,version);
             DataJson.totalList NewList = FileMesege.cmds.getListInfos();
             FileMesege.cmds.DoNewCommand(NewList, OldList);
-
             if (FileMesege.tnselectNode != null)
             {
                 try
@@ -406,7 +407,7 @@ namespace eNet编辑器.ThreeView
         /// <param name="e"></param>
         private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
         {
-         
+            
             //判断 ini文件存在不  再判断是父子节点 
             string filepath = string.Format("{0}\\devices\\{1}.ini", Application.StartupPath, treeView1.SelectedNode.Text.Split(' ')[1]); 
             TreeMesege tm = new TreeMesege();
@@ -480,6 +481,8 @@ namespace eNet编辑器.ThreeView
 
         }
 
+
+    
       
         /// <summary>
         /// 高亮显示选中项 重绘
@@ -488,6 +491,7 @@ namespace eNet编辑器.ThreeView
         /// <param name="e"></param>
         private void treeView1_DrawNode(object sender, DrawTreeNodeEventArgs e)
         {
+            
             Color foreColor;
             Color backColor;
             if ((e.State & TreeNodeStates.Selected) > 0)
@@ -497,17 +501,20 @@ namespace eNet编辑器.ThreeView
             }
             else if ((e.State & TreeNodeStates.Hot) > 0)
             {
-                foreColor = Color.Lime;//鼠标经过时文字颜色
-                backColor = Color.Gray;//鼠标经过时背景颜色
+                return;
+                //foreColor = Color.Lime;//鼠标经过时文字颜色
+                //backColor = Color.Gray;//鼠标经过时背景颜色
             }
             else
             {
                 foreColor = this.treeView1.ForeColor;
                 backColor = this.treeView1.BackColor;
             }
-            //e.Graphics.FillRectangle(new SolidBrush(backColor), new Rectangle(e.Bounds.Location, new Size(this.treeView1.Width - e.Bounds.X, e.Bounds.Height)));
+            
             e.Graphics.FillRectangle(new SolidBrush(backColor), e.Bounds);
             e.Graphics.DrawString(e.Node.Text, this.treeView1.Font, new SolidBrush(foreColor), e.Bounds.X, e.Bounds.Y + 4);
+
+
 
         }
         #endregion

@@ -943,7 +943,7 @@
   <data name="tsReform.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAADwAAAAwCAYAAABNPhkJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAMPSURBVGhD7ZlNbExRFMcHC1FfK6kFLRGJoAQJiaR2XWJj
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAMPSURBVGhD7ZlNbExRFMcHC1FfK6kFLRGJoAQJiaQ2XWNj
         1tM0hExSSafz/bmRphRbVhbaJYsKCbGSWEhEW0tViUoFRTq+EqLU70zOTF6fx3RMYu7j/pN/znv3nnPn
         /O+979773gQsLCwsLCwsLCz8jEwm05rP54/ncrnBdDo9kkqlXnP9Ue1INpu9TP2xQqHQoiFeWKTWXKjQ
         09jJcDj8JRQKfe3o6PiGyLky5V7KpZ77p7Af4eu0iRLokM2U38Ze1CLzQHJdCH1Mop9FWA0U/3HiO6Ud
@@ -956,7 +956,7 @@
         uGFZF1j4aor9q9BR/ultiZG+iW2PxWIr1dUTxDfhux+h18uxiB8T0dQtVjezQLKd7i1KSLm8D2OyO0m+
         8j4MV+HfTPk2/CL4PPGIvd/T07NMf8I8kOA5Ei26ExcidIb68hePBGWnGMWr2JdOPweLPCoXgsHgEm3e
         TJBo3d+04DSdMqBNmg+S7YKPSPxPvlpOEHtUm/IPmLrrSb4fPlvgd2nZ2s4T16pN+BMiACEnGLUhOKoL
-        m/zz8Ir7B1wPyuEFv40aYmFhYWFhYWFhYWE2AoEfHVx8Lwa2F8sAAAAASUVORK5CYII=
+        m/zz8Ir7B1wPyuEFv40aYmFhYWFhYWFhYWE2AoEfBCN7+S+2/GUAAAAASUVORK5CYII=
 </value>
   </data>
   <data name="tsReform.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
@@ -1044,7 +1044,7 @@
   <data name="tsTimer.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAADwAAAAwCAYAAABNPhkJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAMPSURBVGhD7ZlNbExRFMcHC1FfK6kFLRGJoAQJiaR2XWJj
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAMPSURBVGhD7ZlNbExRFMcHC1FfK6kFLRGJoAQJiaQ2XWNj
         1tM0hExSSafz/bmRphRbVhbaJYsKCbGSWEhEW0tViUoFRTq+EqLU70zOTF6fx3RMYu7j/pN/znv3nnPn
         /O+979773gQsLCwsLCwsLCz8jEwm05rP54/ncrnBdDo9kkqlXnP9Ue1INpu9TP2xQqHQoiFeWKTWXKjQ
         09jJcDj8JRQKfe3o6PiGyLky5V7KpZ77p7Af4eu0iRLokM2U38Ze1CLzQHJdCH1Mop9FWA0U/3HiO6Ud
@@ -1057,7 +1057,7 @@
         uGFZF1j4aor9q9BR/ultiZG+iW2PxWIr1dUTxDfhux+h18uxiB8T0dQtVjezQLKd7i1KSLm8D2OyO0m+
         8j4MV+HfTPk2/CL4PPGIvd/T07NMf8I8kOA5Ei26ExcidIb68hePBGWnGMWr2JdOPweLPCoXgsHgEm3e
         TJBo3d+04DSdMqBNmg+S7YKPSPxPvlpOEHtUm/IPmLrrSb4fPlvgd2nZ2s4T16pN+BMiACEnGLUhOKoL
-        m/zz8Ir7B1wPyuEFv40aYmFhYWFhYWFhYWE2AoEfHVx8Lwa2F8sAAAAASUVORK5CYII=
+        m/zz8Ir7B1wPyuEFv40aYmFhYWFhYWFhYWE2AoEfBCN7+S+2/GUAAAAASUVORK5CYII=
 </value>
   </data>
   <data name="tsTimer.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
@@ -1417,10 +1417,10 @@
         RudN65tdA8sHzg46DF645Xrr8m2v29fvrLwzMBQydHc4cnjkLvvu5L2key/vZ9yff7DpIfph4SOpR+WP
         lR7X/aj3Y+uI5ciZUdfRvidBTx6Mscae/5T+04fx/Kfkp+UTqhONk2aTp6fcp24+W/1s/Hnq8/npgp+l
         f65+ofviu18cf+mbWTUz/pL/cuHX4lfyr468Xva6e9Z/9vGb5Dfzc4Vv5d8efcd41/s+7P3EfOYH7IeK
-        j3ofuz55f3q4kLyw8Bv3hPP74uYdwgAAAAlwSFlzAAAOvAAADrwBlbxySQAAAKJJREFUKFONjzEOwyAM
-        RT1UraouvQYSEiAITISdpfc/DU2s2DEkijI8ifj/hwnknJl5nh+tNfjV2gRQSnkv2ZojoJRC1vIgdGfn
-        HANaa+REIA4iH4QkBQLnIQQEjDGItZZCLJw9d5omiDHukvf+e/VPS/6R0lPcSlCZZN6cUnrxB0ElCc2p
-        w4ctkBs6tnyXxnBkzOXwUB5hiW64K610q+9R2x+yeCtrESjnBAAAAABJRU5ErkJggg==
+        j3ofuz55f3q4kLyw8Bv3hPP74uYdwgAAAAlwSFlzAAAOwQAADsEBuJFr7QAAAKRJREFUKFOFkLsKAyEQ
+        RacICSFNfkMQVHxVam+T//+SrYJZZccdRTbFgdF7j6IQQujEGG+lFPjkXAiQUnruWc0bwBhr1DIVtu82
+        iEqpDnDOG7OArMQ+oESFSQRjTAOEEA0p5d+brLXgnDslrfX76k17/qLSnXwCMggV7HjvH32BYImC+9jp
+        wxHQGwaO/JRoSD8BofkgrcozXcITVqUZ7F6+Y00uP9nWaBHcy75KAAAAAElFTkSuQmCC
 </value>
   </data>
   <data name="tabLogic.Text" xml:space="preserve">
@@ -1436,7 +1436,7 @@
     <value>tabStrip</value>
   </data>
   <data name="&gt;&gt;tabControlPanel7.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>1</value>
   </data>
   <data name="tabControlPanel6.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -3064,16 +3064,16 @@
   <data name="&gt;&gt;timer1.Type" xml:space="preserve">
     <value>System.Windows.Forms.Timer, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;tabName.Name" xml:space="preserve">
-    <value>tabName</value>
-  </data>
-  <data name="&gt;&gt;tabName.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.TabItem, DevComponents.DotNetBar2, Version=14.0.0.3, Culture=neutral, PublicKeyToken=c39c3242a43eee2b</value>
-  </data>
   <data name="&gt;&gt;tabLogic.Name" xml:space="preserve">
     <value>tabLogic</value>
   </data>
   <data name="&gt;&gt;tabLogic.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.TabItem, DevComponents.DotNetBar2, Version=14.0.0.3, Culture=neutral, PublicKeyToken=c39c3242a43eee2b</value>
+  </data>
+  <data name="&gt;&gt;tabName.Name" xml:space="preserve">
+    <value>tabName</value>
+  </data>
+  <data name="&gt;&gt;tabName.Type" xml:space="preserve">
     <value>DevComponents.DotNetBar.TabItem, DevComponents.DotNetBar2, Version=14.0.0.3, Culture=neutral, PublicKeyToken=c39c3242a43eee2b</value>
   </data>
   <data name="&gt;&gt;tabReaction.Name" xml:space="preserve">

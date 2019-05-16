@@ -28,6 +28,9 @@ namespace eNet编辑器.AddForm
 
         private string ver;
 
+        /// <summary>
+        /// 操作名称
+        /// </summary>
         public string Ver
         {
             get { return ver; }
@@ -99,10 +102,55 @@ namespace eNet编辑器.AddForm
                     break;
                 }//类型一致
             }
+
+            object isExit = null;
+            //窗口恢复
+            if (!string.IsNullOrEmpty(ver) && !string.IsNullOrEmpty(opt))
+            {
+                for (int i = 0; i < cbVersion.Items.Count; i++)
+                {
+                    
+                    if (cbVersion.Items[i].ToString() == ver)
+                    {
+                        //optName存在该名称
+                        cbVersion.SelectedItem = cbVersion.Items[i];
+                        cb1.Text = DataChange.HexStringToString( opt.Substring(0,2));
+                        cb2.Text = DataChange.HexStringToString(opt.Substring(2, 2));
+                        cb3.Text = DataChange.HexStringToString(opt.Substring(4, 2));
+                        cb4.Text = DataChange.HexStringToString(opt.Substring(6, 2));
+                        return;
+                    }
+                    if(cbVersion.Items[i].ToString() == "状态操作")
+                    {
+                        isExit = cbVersion.Items[i];
+                    }
+                }
+                if (isExit != null)
+                { 
+                    //存在状态操作 恢复状态操作
+                    cbVersion.SelectedItem = isExit;
+                    cb1.Text = DataChange.HexStringToString(opt.Substring(0, 2));
+                    cb2.Text = DataChange.HexStringToString(opt.Substring(2, 2));
+                    cb3.Text = DataChange.HexStringToString(opt.Substring(4, 2));
+                    string tmp = DataChange.HexStringToString(opt.Substring(6, 2));
+                    for (int i = 0; i < cb4.Items.Count; i++)
+                    { 
+                        if(cb4.Items[i].ToString().Contains(tmp))
+                        {
+                            cb4.Text = cb4.Items[i].ToString();
+                            return;
+                        }
+                    }
+                        
+                }
+               
+            }
+            
+            
         }
 
         /// <summary>
-        /// 当Version选项改变时 lb信息 和cb信息更新
+        //Version选项改变时 lb信息 和cb信息更新
         /// </summary>
         /// <param name="indexs">version索引</param>
         private void cbAndlb(int indexs)
@@ -236,12 +284,14 @@ namespace eNet编辑器.AddForm
                     return;
                 }
                 this.opt = SocketUtil.strtohexstr(cb1Num) + SocketUtil.strtohexstr(cb2Num) + SocketUtil.strtohexstr(cb3Num) + SocketUtil.strtohexstr(cb4Num);
-                if (cb4.Text.Split(' ').Length > 1)
+                if (cb4.Text.Split(':').Length > 1)
                 {
-                    this.ver = cb4.Text.Split(' ')[1];
+                    //当为getObj的操作的时候
+                    this.ver = cb4.Text.Split(':')[1];
                 }
                 else
                 {
+
                     this.ver = cbVersion.Text;
                 }
 

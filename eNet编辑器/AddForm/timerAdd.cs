@@ -162,7 +162,15 @@ namespace eNet编辑器.AddForm
                 lbTitle.Text = "添加节假日定时";
                 txtName.Enabled = false;
                 txtName.Text = "节假日定时";//string.Format("节假日定时", Ip.Split('.')[3]);//Ip.Split('.')[3]
-                
+                cbs1.Text = "";
+                cbs2.Text = "";
+                cbs3.Text = "";
+                cbs4.Text = "";
+                cbs1.Enabled = false;
+                cbs2.Enabled = false;
+                cbs3.Enabled = false;
+                cbs4.Enabled = false;
+         
             }
             else
             {

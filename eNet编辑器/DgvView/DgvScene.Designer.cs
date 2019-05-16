@@ -201,7 +201,7 @@
             this.buttonX1.Size = new System.Drawing.Size(15, 15);
             this.buttonX1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.buttonX1.TabIndex = 13;
-            this.buttonX1.Tooltip = "调用";
+            this.buttonX1.Tooltip = "载入";
             // 
             // symbolBox1
             // 
@@ -312,7 +312,7 @@
             this.btnDown.Size = new System.Drawing.Size(15, 15);
             this.btnDown.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnDown.TabIndex = 3;
-            this.btnDown.Tooltip = "载入";
+            this.btnDown.Tooltip = "加载";
             this.btnDown.Click += new System.EventHandler(this.btnDown_Click);
             // 
             // btnCall

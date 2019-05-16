@@ -761,10 +761,11 @@ namespace eNet编辑器.DgvView
                         add = find.address;
                     }
                 }
-                tmInfo.id = polishId(hasharry);
+                tmInfo.id = DataChange.polishId(hasharry);
                 tmInfo.pid = 0;
                 tmInfo.type = type;
-
+                tmInfo.opt = opt;
+                tmInfo.optName = optname;
                 //地址加一处理 并搜索PointList表获取地址 信息
                 if (!string.IsNullOrEmpty(add) && add != "FFFFFFFF")
                 {
@@ -783,18 +784,36 @@ namespace eNet编辑器.DgvView
                             add = add.Substring(0, 4) + hexnum;
                             break;
                     }
-                    string ip4 = SocketUtil.strtohexstr(SocketUtil.getIP(FileMesege.sceneSelectNode));//16进制
+                    //按照地址查找type的类型 
+                    type = IniHelper.findIniTypesByAddress(FileMesege.timerSelectNode.Parent.Text.Split(' ')[0], add).Split(',')[0];
+                    if (string.IsNullOrEmpty(type))
+                    {
+                        type = IniHelper.findTypesIniTypebyName(type);
+                    }
+                    tmInfo.type = type;
+                    string ip4 = SocketUtil.strtohexstr(SocketUtil.getIP(FileMesege.timerSelectNode));//16进制
                     //添加地域和名称 在sceneInfo表中
                     DataJson.PointInfo point = DataListHelper.findPointByType_address(type, ip4 + add.Substring(2, 6));
                     if (point != null)
                     {
                         tmInfo.pid = point.pid;
+                        tmInfo.type = point.type;
+                        if (tmInfo.type != point.type)
+                        {
+                            tmInfo.opt = "";
+                            tmInfo.optName = "";
+                        }
+                    }
+                    else
+                    {
+                        tmInfo.pid = 0;
+                        tmInfo.opt = "";
+                        tmInfo.optName = "";
                     }
                 }
 
                 tmInfo.address = add;
-                tmInfo.opt = opt;
-                tmInfo.optName = optname;
+                
                 tmInfo.shortTime = shortTime;
                 tms.timersInfo.Add(tmInfo);
                 //排序
@@ -807,24 +826,7 @@ namespace eNet编辑器.DgvView
             catch (Exception ex) { MessageBox.Show(ex + "临时调试错误信息"); }
         }
 
-        /// <summary>
-        /// 计算表中ID序号
-        /// </summary>
-        /// <param name="hasharry"></param>
-        /// <returns></returns>
-        private int polishId(HashSet<int> hasharry)
-        {
-            try
-            {
-                List<int> arry = hasharry.ToList<int>();
-                arry.Sort();
-                return arry[arry.Count - 1] + 1;
-            }
-            catch
-            {
-                return 1;
-            }
-        }
+        
 
         //清空
         private void btnClear_Click(object sender, EventArgs e)
@@ -880,13 +882,13 @@ namespace eNet编辑器.DgvView
                         int min = 255;
                         if (tmInfo.shortTime == "日出时间")
                         {
-                            hour = 253;
-                            min = 253;
+                            hour = 254;
+                            min = 254;
                         }
                         else if (tmInfo.shortTime == "日落时间")
                         {
-                            hour = 254;
-                            min = 254;
+                            hour = 253;
+                            min = 253;
                         }
                         else
                         {
@@ -1411,6 +1413,12 @@ namespace eNet编辑器.DgvView
                                 //改变延时
                                 dgvShortTimer(Convert.ToInt32(dataGridView1.Rows[rowCount].Cells[0].Value), dataGridView1.Rows[rowCount].Cells[6].Value.ToString());
                                 break;
+                            case "del":
+                                //删除表
+                                dgvDle(id);
+                                //移除该行信息
+                                dataGridView1.Rows.Remove(dataGridView1.Rows[rowCount]);
+                                break;
                             default: break;
                         }
                     }
@@ -1677,7 +1685,8 @@ namespace eNet编辑器.DgvView
             //把窗口向屏幕中间刷新
             dc.StartPosition = FormStartPosition.CenterParent;
             dc.ObjType = type;
-
+            dc.Opt = tmInfo.opt;
+            dc.Ver = tmInfo.optName;
             dc.ShowDialog();
             if (dc.DialogResult == DialogResult.OK)
             {

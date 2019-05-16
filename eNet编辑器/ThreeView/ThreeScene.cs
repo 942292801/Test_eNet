@@ -515,11 +515,13 @@ namespace eNet编辑器.ThreeView
             }
             else if ((e.State & TreeNodeStates.Hot) > 0)
             {
-                foreColor = Color.Lime;//鼠标经过时文字颜色
-                backColor = Color.Gray;//鼠标经过时背景颜色
+                return;
+                //foreColor = Color.Lime;//鼠标经过时文字颜色
+                //backColor = Color.Gray;//鼠标经过时背景颜色
             }
             else
             {
+                
                 foreColor = this.treeView1.ForeColor;
                 backColor = this.treeView1.BackColor;
             }

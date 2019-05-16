@@ -75,6 +75,12 @@ namespace eNet编辑器
             return result;
         }
 
+        //十进制字符串转十六进制字符串
+        public static string HexStringToString(string hexStr)
+        {
+            return Convert.ToInt32(hexStr, 16).ToString();
+        }
+
         /// <summary>
         /// 十六进制字符串转二进制字符串
         /// </summary>
@@ -170,6 +176,44 @@ namespace eNet编辑器
            
            
         }
+
+        /// <summary>
+        /// 计算表中ID序号 (用于dgv添加按钮 增加补缺ID)
+        /// </summary>
+        /// <param name="hasharry"></param>
+        /// <returns></returns>
+        public static int polishId(HashSet<int> hasharry)
+        {
+            try
+            {
+                /*
+                List<int> arry = hasharry.ToList<int>();
+                arry.Sort();
+                return arry[arry.Count - 1] + 1;*/
+                List<int> arry = hasharry.ToList<int>();
+                arry.Sort();
+
+                if (arry.Count == 0)
+                {
+                    //该区域节点前面数字不存在
+                    return 1;
+                }
+                //哈希表 不存在序号 直接返回
+                for (int i = 0; i < arry.Count; i++)
+                {
+                    if (arry[i] != i + 1)
+                    {
+                        return i + 1;
+                    }
+                }
+                return arry[arry.Count - 1] + 1;
+            }
+            catch
+            {
+                return 1;
+            }
+        }
+
 
     }
 }

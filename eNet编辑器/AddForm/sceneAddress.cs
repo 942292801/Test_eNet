@@ -50,12 +50,19 @@ namespace eNet编辑器.AddForm
             DirectoryInfo folder = new DirectoryInfo(Application.StartupPath + "//types");
             string type= "";
             bool Flag = false;
+            //初始默认设备列表信息到cb框
+            iniInfo();
+
             foreach (FileInfo file in folder.GetFiles("*.ini"))
             {
                 type = IniConfig.GetValue(file.FullName, "define", "name");
                 //找到类型一致
                 if (type == objType)
                 {
+                    if (IniConfig.GetValue(file.FullName, "address", "2").Split(',')[1] == "0")
+                    {
+                        break;
+                    }
                     Label[] lbs = { lb1,lb2,lb3,lb4};
                     ComboBox[] cbs = { cb1,cb2,cb3,cb4};
                     //读取【address】1-4信息
@@ -75,57 +82,7 @@ namespace eNet编辑器.AddForm
                             Flag = true;
                         }
                     }
-                    try
-                    {
-                        if (IniConfig.GetValue(file.FullName, "address", "2").Split(',')[1] == "0")
-                        {
-                            string ip = "";
-                            devName = new List<string>();
-                            switch (FileMesege.formType)
-                            {
-                                case "name":
-                                   
-                                    break;
-
-                                case "point":
-                                    break;
-                                case "scene":
-                                    ip = FileMesege.sceneSelectNode.Parent.Text.Split(' ')[0];
-                                    break;
-                                case "timer":
-                                    ip = FileMesege.timerSelectNode.Parent.Text.Split(' ')[0];
-                                    break;
-                                case "bind":
-                                    ip = FileMesege.bindSelectNode.Parent.Text.Split(' ')[0];
-                                    break;
-                                case "logic":
-
-                                    break;
-                                case "operation":
-
-                                    break;
-                                default: break;
-                            }
-                            
-                            
-                            foreach (DataJson.Device devip in FileMesege.DeviceList)
-                            {
-                                if (devip.ip == ip)
-                                {
-                                    cb3.Items.Clear();
-                                    foreach (DataJson.Module md in devip.module)
-                                    {
-                                        devName.Add(md.id +" "+ md.device);
-                                        cb3.Items.Add(md.id);
-                                    }
-                                    break;
-                                }
-                            }
-                        }
-                    }catch
-                    {
-                    
-                    }
+                   
                     for (int i = 0; i < 4; i++)
                     {
                         if (i == 2)
@@ -141,8 +98,9 @@ namespace eNet编辑器.AddForm
                     break;
                 }
                 
-            }
+            }///foreach 
             
+
             
             if (obj != "" && obj != null)
             {
@@ -168,8 +126,76 @@ namespace eNet编辑器.AddForm
             
         }
 
+        /// <summary>
+        /// 初始默认设备列表信息到cb框
+        /// </summary>
+        /// <param name="selectSumNode">选中子节点</param>
+        private void iniInfo()
+        {
+
+            try
+            {
+                string ip = "";
+                devName = new List<string>();
+                switch (FileMesege.formType)
+                {
+                    ////////////////////////////////////还需要后续添加选中节点参数
+                    case "name":
+
+                        break;
+
+                    case "point":
+                        break;
+                    case "scene":
+                        ip = FileMesege.sceneSelectNode.Parent.Text.Split(' ')[0];
+                        break;
+                    case "timer":
+                        ip = FileMesege.timerSelectNode.Parent.Text.Split(' ')[0];
+                        break;
+                    case "bind":
+                        ip = FileMesege.bindSelectNode.Parent.Text.Split(' ')[0];
+                        break;
+                    case "logic":
+
+                        break;
+                    case "operation":
+
+                        break;
+                    default: break;
+                }
+
+                cb1.Enabled = false;
+                cb1.Text = ip.Split('.')[3];
+                cb2.Text = "0";
+                cb2.Enabled = false;
+
+                foreach (DataJson.Device devip in FileMesege.DeviceList)
+                {
+                    if (devip.ip == ip)
+                    {
+                        cb3.Items.Clear();
+                        foreach (DataJson.Module md in devip.module)
+                        {
+                            devName.Add(md.id + " " + md.device);
+                            cb3.Items.Add(md.id);
+                        }
+                        break;
+                    }
+                }
+            }
+            catch
+            {
+
+            }
+           
+        }
+
         public void findPort(string id)
         {
+            if (devName == null)
+            {
+                return;
+            }
             for (int i = 0; i < devName.Count; i++)
             {
                 if (devName[i].Split(' ')[0] == id)

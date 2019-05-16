@@ -4,67 +4,92 @@
             {
                 "timersInfo": [
                     {
-                        "id": 1,
-                        "pid": 0,
-                        "type": "1.0_switch",
-                        "address": "FE000A01",
-                        "opt": "00000001",
-                        "optName": "开启",
-                        "shortTime": "14:45"
-                    },
-                    {
-                        "id": 2,
-                        "pid": 0,
-                        "type": "1.0_switch",
-                        "address": "FE000A02",
-                        "opt": "00000001",
-                        "optName": "开启",
-                        "shortTime": "日出时间"
-                    },
-                    {
                         "id": 3,
-                        "pid": 0,
+                        "pid": 32801,
                         "type": "1.0_switch",
-                        "address": "FE000A03",
-                        "opt": "00000001",
-                        "optName": "开启",
-                        "shortTime": "日落时间"
+                        "address": "E6000101",
+                        "opt": "02026400",
+                        "optName": "短延时反复开关",
+                        "shortTime": "23:50"
                     },
                     {
                         "id": 4,
-                        "pid": 0,
+                        "pid": 95080,
                         "type": "1.0_switch",
-                        "address": "FE000A04",
-                        "opt": "00000001",
-                        "optName": "开启",
-                        "shortTime": "**:**"
+                        "address": "E6000102",
+                        "opt": "00000000",
+                        "optName": "关闭",
+                        "shortTime": "23:35"
                     },
                     {
                         "id": 5,
-                        "pid": 0,
+                        "pid": 91348,
                         "type": "1.0_switch",
-                        "address": "FE000A05",
-                        "opt": "00000001",
-                        "optName": "开启",
-                        "shortTime": "**:22"
+                        "address": "E6000103",
+                        "opt": "00000000",
+                        "optName": "关闭",
+                        "shortTime": "5:50"
                     },
                     {
                         "id": 6,
-                        "pid": 0,
-                        "type": "1.0_switch",
-                        "address": "FE000A06",
+                        "pid": 43278,
+                        "type": "4.0_scene",
+                        "address": "E6100001",
                         "opt": "00000001",
-                        "optName": "开启",
-                        "shortTime": "9:**"
+                        "optName": "场景调用",
+                        "shortTime": "9:50"
+                    },
+                    {
+                        "id": 7,
+                        "pid": 0,
+                        "type": "4.0_scene",
+                        "address": "E6100002",
+                        "opt": "00000001",
+                        "optName": "场景调用",
+                        "shortTime": "10:50"
+                    },
+                    {
+                        "id": 8,
+                        "pid": 0,
+                        "type": "4.0_scene",
+                        "address": "E6100003",
+                        "opt": "00000001",
+                        "optName": "场景调用",
+                        "shortTime": "9:50"
+                    },
+                    {
+                        "id": 9,
+                        "pid": 0,
+                        "type": "4.0_scene",
+                        "address": "E6100004",
+                        "opt": "00000001",
+                        "optName": "场景调用",
+                        "shortTime": "11:50"
+                    },
+                    {
+                        "id": 10,
+                        "pid": 0,
+                        "type": "4.0_scene",
+                        "address": "E6100005",
+                        "opt": "00000001",
+                        "optName": "场景调用",
+                        "shortTime": "11:0"
                     }
                 ],
                 "id": 1,
-                "pid": 24051,
+                "pid": 73638,
+                "dates": "1",
+                "priorHoloday": "01000001"
+            },
+            {
+                "timersInfo": [],
+                "id": 10000,
+                "pid": 69824,
                 "dates": "",
                 "priorHoloday": "01000001"
             }
         ],
-        "IP": "192.168.1.111",
+        "IP": "192.168.1.230",
         "Dev": "GW100A"
     }
 ]

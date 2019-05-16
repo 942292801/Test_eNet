@@ -33,18 +33,13 @@
             this.cbname = new System.Windows.Forms.ComboBox();
             this.cbtype = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.btnDecid = new DevComponents.DotNetBar.ButtonX();
-            this.panel5 = new System.Windows.Forms.Panel();
             this.plInfoTitle = new System.Windows.Forms.Panel();
             this.symbolBox1 = new DevComponents.DotNetBar.Controls.SymbolBox();
             this.lbTitle = new System.Windows.Forms.Label();
-            this.panel2.SuspendLayout();
-            this.panel3.SuspendLayout();
+            this.btnClose = new DevComponents.DotNetBar.ButtonX();
             this.panel4.SuspendLayout();
-            this.panel5.SuspendLayout();
             this.plInfoTitle.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -52,7 +47,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("微软雅黑", 9F);
-            this.label1.Location = new System.Drawing.Point(22, 67);
+            this.label1.Location = new System.Drawing.Point(8, 67);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(68, 17);
             this.label1.TabIndex = 57;
@@ -61,7 +56,7 @@
             // cbname
             // 
             this.cbname.FormattingEnabled = true;
-            this.cbname.Location = new System.Drawing.Point(105, 63);
+            this.cbname.Location = new System.Drawing.Point(91, 63);
             this.cbname.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.cbname.Name = "cbname";
             this.cbname.Size = new System.Drawing.Size(122, 25);
@@ -70,7 +65,7 @@
             // cbtype
             // 
             this.cbtype.FormattingEnabled = true;
-            this.cbtype.Location = new System.Drawing.Point(105, 20);
+            this.cbtype.Location = new System.Drawing.Point(91, 20);
             this.cbtype.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.cbtype.Name = "cbtype";
             this.cbtype.Size = new System.Drawing.Size(122, 25);
@@ -81,45 +76,24 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("微软雅黑", 9F);
-            this.label2.Location = new System.Drawing.Point(22, 24);
+            this.label2.Location = new System.Drawing.Point(8, 24);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(68, 17);
             this.label2.TabIndex = 64;
             this.label2.Text = "节点类型：";
             // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.panel3);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(251, 165);
-            this.panel2.TabIndex = 67;
-            // 
-            // panel3
-            // 
-            this.panel3.Controls.Add(this.panel4);
-            this.panel3.Controls.Add(this.panel5);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(0, 0);
-            this.panel3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(251, 165);
-            this.panel3.TabIndex = 3;
-            // 
             // panel4
             // 
+            this.panel4.BackColor = System.Drawing.Color.White;
             this.panel4.Controls.Add(this.cbtype);
             this.panel4.Controls.Add(this.btnDecid);
             this.panel4.Controls.Add(this.label2);
             this.panel4.Controls.Add(this.cbname);
             this.panel4.Controls.Add(this.label1);
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel4.Location = new System.Drawing.Point(0, 32);
+            this.panel4.Location = new System.Drawing.Point(1, 27);
             this.panel4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(251, 133);
+            this.panel4.Size = new System.Drawing.Size(221, 131);
             this.panel4.TabIndex = 4;
             // 
             // btnDecid
@@ -133,7 +107,7 @@
             this.btnDecid.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None;
             this.btnDecid.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnDecid.HoverImage")));
             this.btnDecid.Image = ((System.Drawing.Image)(resources.GetObject("btnDecid.Image")));
-            this.btnDecid.Location = new System.Drawing.Point(199, 101);
+            this.btnDecid.Location = new System.Drawing.Point(184, 101);
             this.btnDecid.Margin = new System.Windows.Forms.Padding(6);
             this.btnDecid.Name = "btnDecid";
             this.btnDecid.Size = new System.Drawing.Size(25, 20);
@@ -142,28 +116,19 @@
             this.btnDecid.Tooltip = "添加";
             this.btnDecid.Click += new System.EventHandler(this.btnDecid_Click);
             // 
-            // panel5
-            // 
-            this.panel5.BackColor = System.Drawing.SystemColors.Control;
-            this.panel5.Controls.Add(this.plInfoTitle);
-            this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel5.Location = new System.Drawing.Point(0, 0);
-            this.panel5.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(251, 32);
-            this.panel5.TabIndex = 3;
-            // 
             // plInfoTitle
             // 
             this.plInfoTitle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(228)))), ((int)(((byte)(228)))));
+            this.plInfoTitle.Controls.Add(this.btnClose);
             this.plInfoTitle.Controls.Add(this.symbolBox1);
             this.plInfoTitle.Controls.Add(this.lbTitle);
-            this.plInfoTitle.Dock = System.Windows.Forms.DockStyle.Top;
-            this.plInfoTitle.Location = new System.Drawing.Point(0, 0);
+            this.plInfoTitle.Location = new System.Drawing.Point(1, 1);
             this.plInfoTitle.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.plInfoTitle.Name = "plInfoTitle";
-            this.plInfoTitle.Size = new System.Drawing.Size(251, 25);
+            this.plInfoTitle.Size = new System.Drawing.Size(221, 25);
             this.plInfoTitle.TabIndex = 2;
+            this.plInfoTitle.MouseDown += new System.Windows.Forms.MouseEventHandler(this.plInfoTitle_MouseDown);
+            this.plInfoTitle.MouseMove += new System.Windows.Forms.MouseEventHandler(this.plInfoTitle_MouseMove);
             // 
             // symbolBox1
             // 
@@ -192,24 +157,43 @@
             this.lbTitle.TabIndex = 1;
             this.lbTitle.Text = "添加节点";
             // 
+            // btnClose
+            // 
+            this.btnClose.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnClose.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnClose.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnClose.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
+            this.btnClose.FocusCuesEnabled = false;
+            this.btnClose.Font = new System.Drawing.Font("黑体", 9F);
+            this.btnClose.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None;
+            this.btnClose.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnClose.HoverImage")));
+            this.btnClose.Image = ((System.Drawing.Image)(resources.GetObject("btnClose.Image")));
+            this.btnClose.Location = new System.Drawing.Point(190, 2);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(6);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(25, 20);
+            this.btnClose.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnClose.TabIndex = 8;
+            this.btnClose.Tooltip = "关闭";
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
             // tsSection
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(251, 165);
-            this.Controls.Add(this.panel2);
+            this.BackColor = System.Drawing.Color.DimGray;
+            this.ClientSize = new System.Drawing.Size(224, 160);
+            this.Controls.Add(this.plInfoTitle);
+            this.Controls.Add(this.panel4);
             this.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.ImeMode = System.Windows.Forms.ImeMode.HangulFull;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "tsSection";
             this.Load += new System.EventHandler(this.tsSection_Load);
-            this.panel2.ResumeLayout(false);
-            this.panel3.ResumeLayout(false);
+            this.Paint += new System.Windows.Forms.PaintEventHandler(this.tsSection_Paint);
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
-            this.panel5.ResumeLayout(false);
             this.plInfoTitle.ResumeLayout(false);
             this.plInfoTitle.PerformLayout();
             this.ResumeLayout(false);
@@ -222,14 +206,12 @@
         private System.Windows.Forms.ComboBox cbname;
         private System.Windows.Forms.ComboBox cbtype;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Panel plInfoTitle;
         private DevComponents.DotNetBar.ButtonX btnDecid;
         private System.Windows.Forms.Label lbTitle;
         private DevComponents.DotNetBar.Controls.SymbolBox symbolBox1;
+        private DevComponents.DotNetBar.ButtonX btnClose;
 
     }
 }

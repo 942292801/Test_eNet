@@ -5,7 +5,7 @@
                 "bindInfo": [
                     {
                         "keyId": 1,
-                        "groupId": 16,
+                        "groupId": 10,
                         "objType": "开关",
                         "address": null,
                         "mode": null,
@@ -15,7 +15,7 @@
                     },
                     {
                         "keyId": 2,
-                        "groupId": 16,
+                        "groupId": 10,
                         "objType": "开关",
                         "address": null,
                         "mode": null,
@@ -25,7 +25,7 @@
                     },
                     {
                         "keyId": 3,
-                        "groupId": 16,
+                        "groupId": 10,
                         "objType": "开关",
                         "address": null,
                         "mode": null,
@@ -35,7 +35,7 @@
                     },
                     {
                         "keyId": 4,
-                        "groupId": 16,
+                        "groupId": 10,
                         "objType": "开关",
                         "address": null,
                         "mode": null,
@@ -45,7 +45,7 @@
                     },
                     {
                         "keyId": 5,
-                        "groupId": 16,
+                        "groupId": 10,
                         "objType": "开关",
                         "address": null,
                         "mode": null,
@@ -55,7 +55,7 @@
                     },
                     {
                         "keyId": 6,
-                        "groupId": 16,
+                        "groupId": 10,
                         "objType": "开关",
                         "address": null,
                         "mode": null,
@@ -64,11 +64,11 @@
                         "showMode": "无"
                     }
                 ],
-                "id": 16,
-                "bindName": "KP06A"
+                "id": 10,
+                "bindName": "TEST01"
             }
         ],
-        "IP": "192.168.1.111",
+        "IP": "192.168.1.230",
         "Dev": "GW100A"
     }
 ]

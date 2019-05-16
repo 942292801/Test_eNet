@@ -560,7 +560,11 @@ namespace eNet编辑器.DgvView
                                 cbValue.ReadOnly = false;
                                 
                                 break;
+                            case "pointDel":
+                                //删除当前行点位信息
+                                delBtn();
 
+                                break;
                             default: break;
                         }
                     }

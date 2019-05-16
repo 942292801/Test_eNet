@@ -85,7 +85,7 @@
             this.imgLIst.Images.SetKeyName(0, "u100.png");
             this.imgLIst.Images.SetKeyName(1, "u82_1.png");
             this.imgLIst.Images.SetKeyName(2, "u100_1.png");
-            this.imgLIst.Images.SetKeyName(3, "u82_1.png");
+            this.imgLIst.Images.SetKeyName(3, "u82_3.png");
             // 
             // contextMenuStrip1
             // 

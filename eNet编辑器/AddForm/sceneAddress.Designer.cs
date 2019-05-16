@@ -59,9 +59,9 @@
             this.lb4.Font = new System.Drawing.Font("微软雅黑", 9F);
             this.lb4.Location = new System.Drawing.Point(3, 225);
             this.lb4.Name = "lb4";
-            this.lb4.Size = new System.Drawing.Size(56, 17);
+            this.lb4.Size = new System.Drawing.Size(32, 17);
             this.lb4.TabIndex = 78;
-            this.lb4.Text = "设备操作";
+            this.lb4.Text = "端口";
             // 
             // lb3
             // 
@@ -69,9 +69,9 @@
             this.lb3.Font = new System.Drawing.Font("微软雅黑", 9F);
             this.lb3.Location = new System.Drawing.Point(3, 163);
             this.lb3.Name = "lb3";
-            this.lb3.Size = new System.Drawing.Size(56, 17);
+            this.lb3.Size = new System.Drawing.Size(32, 17);
             this.lb3.TabIndex = 77;
-            this.lb3.Text = "设备操作";
+            this.lb3.Text = "设备";
             // 
             // lb2
             // 
@@ -79,9 +79,9 @@
             this.lb2.Font = new System.Drawing.Font("微软雅黑", 9F);
             this.lb2.Location = new System.Drawing.Point(3, 101);
             this.lb2.Name = "lb2";
-            this.lb2.Size = new System.Drawing.Size(56, 17);
+            this.lb2.Size = new System.Drawing.Size(32, 17);
             this.lb2.TabIndex = 76;
-            this.lb2.Text = "设备操作";
+            this.lb2.Text = "链路";
             // 
             // cb3
             // 
@@ -117,9 +117,9 @@
             this.lb1.Font = new System.Drawing.Font("微软雅黑", 9F);
             this.lb1.Location = new System.Drawing.Point(3, 38);
             this.lb1.Name = "lb1";
-            this.lb1.Size = new System.Drawing.Size(56, 17);
+            this.lb1.Size = new System.Drawing.Size(32, 17);
             this.lb1.TabIndex = 72;
-            this.lb1.Text = "设备操作";
+            this.lb1.Text = "主机";
             // 
             // plInfoTitle
             // 
