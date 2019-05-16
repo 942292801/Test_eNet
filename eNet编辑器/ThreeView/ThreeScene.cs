@@ -95,6 +95,15 @@ namespace eNet编辑器.ThreeView
             }
         }
 
+        /// <summary>
+        /// 根据point点 选中树节点
+        /// </summary>
+        /// <param name="point"></param>
+        public void FindNodeSelect(DataJson.PointInfo point)
+        {
+            TreeMesege.SelectNodeByPoint(treeView1, point);
+        }
+
         #region 树状图新建 删除 修改 排序
         private void 新建ToolStripMenuItem_Click(object sender, EventArgs e)
         {

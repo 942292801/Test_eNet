@@ -5,7 +5,7 @@ using System.Text;
 
 namespace eNet编辑器
 {
-    class DataJson
+    public class DataJson
     {
 
         #region 项目执行文件key k-.json 写进主机的项目信息

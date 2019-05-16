@@ -192,13 +192,17 @@ namespace eNet编辑器
             //dgvname.dgvDeviceCursorDefault +=new DgvDeviceCursorDefault(dgvdevice.cursor_default);
             //dgvdevice.dgvNameCursorDefault += new DgvNameCursorDefault(dgvname.cursor_default);
             /////////////////////////////////////////////////////////////
+            //dgv窗体跳转
+            dgvscene.jumpSetInfo += new Action<DataJson.PointInfo>(dgv_jumpSetInfo);
 
+            /////////////////////////////////////////////////////
             //初始化类型表
-            IniCbType();                
+            cbtypeName("equipment");//初始化title类型表               
             timer1.Enabled = false; //开启清除内存时钟
             this.Text = Resources.SoftName + "Edit New Project";
         }
 
+        #region 刷新窗口
         /// <summary>
         /// 刷新左栏树状图的节点
         /// </summary>
@@ -236,6 +240,7 @@ namespace eNet编辑器
             dgvtimer.TimerAddItem();
             txtShow.Clear();
         }
+
         private void updateDgv()
         {
             switch (FileMesege.formType)
@@ -272,18 +277,44 @@ namespace eNet编辑器
                 default: break;
             }
         }
+        #endregion
 
 
         /// <summary>
-        /// 初始化title类型表
+        /// 跳转窗口  
         /// </summary>
-        private void IniCbType()
+        /// <param name="point"></param>
+        private void dgv_jumpSetInfo(DataJson.PointInfo point)
         {
-            cbtypeName("equipment");
-            
+            ///////////////////////后续还要补充
+            switch (point.type.Split('_')[1])
+            {
+                case "scene":
+                    tabScene_Click(this, EventArgs.Empty);
+                    tabStrip.SelectedTab = tabScene;
+                    threescene.FindNodeSelect(point);
+                    break;
+
+                case "time":
+                    tabTimer_Click(this, EventArgs.Empty);
+                    tabStrip.SelectedTab = tabTimer;
+                    threetimer.FindNodeSelect(point);
+                    break;
+
+                case "group":
+                    tabPanel_Click(this, EventArgs.Empty);
+                    tabStrip.SelectedTab = tabPanel;
+                    threebind.FindNodeSelect(point);
+                    break;
+
+                default:
+
+                    break;
+            }
         }
 
         
+
         /// <summary>
         /// DgvName和DgvDevice两个框改变
         /// </summary>

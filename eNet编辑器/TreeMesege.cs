@@ -391,6 +391,43 @@ namespace eNet编辑器
             return null;
         }
 
+
+        /// <summary>
+        /// 根据Point信息 在树状图选中改节点
+        /// </summary>
+        /// <param name="tv"></param>
+        /// <param name="point"></param>
+        public static void SelectNodeByPoint(TreeView tv, DataJson.PointInfo point)
+        {
+            try
+            {
+                foreach (TreeNode node1 in tv.Nodes)
+                {
+                    //寻找第一层 IP匹配节点
+                    if (node1.Text.Contains(point.ip))
+                    {
+                        string section = string.Format("{0} {1} {2} {3}", point.area1, point.area2, point.area3, point.area4).Trim().Replace(" ", "\\");
+                        string pointName = string.Format("{0} {1}", section, point.name).Trim();
+                        string nodeName = "";
+                        foreach (TreeNode node2 in node1.Nodes)
+                        {
+                            nodeName = node2.Text.Replace(node2.Text.Split(' ')[0], "").Trim();
+                            if (nodeName == pointName)
+                            {
+                                tv.SelectedNode = node2;
+                                break;
+                            }
+                        }
+                        break;
+                    }
+                }
+            }
+            catch
+            {
+                MessageBox.Show("窗口跳转出问题 请检查treeMessage.SelectNodeByPoint");
+            }
+        }
+
     }
 
 

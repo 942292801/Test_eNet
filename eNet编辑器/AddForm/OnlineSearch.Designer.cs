@@ -193,7 +193,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Lavender;
+            this.BackColor = System.Drawing.Color.DarkGray;
             this.ClientSize = new System.Drawing.Size(224, 473);
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("微软雅黑", 9F);

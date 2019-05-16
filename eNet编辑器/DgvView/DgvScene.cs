@@ -36,6 +36,11 @@ namespace eNet编辑器.DgvView
         /// </summary>
         public event Action<string> AppTxtShow;
 
+        /// <summary>
+        /// 传输point点跳转窗口
+        /// </summary>
+        public event Action<DataJson.PointInfo> jumpSetInfo;
+
         private void DgvScene_Load(object sender, EventArgs e)
         {
 
@@ -282,12 +287,25 @@ namespace eNet编辑器.DgvView
                 type = IniHelper.findIniTypesByAddress(ips[0], add).Split(',')[0];
                 if (string.IsNullOrEmpty(type))
                 {
-                    type = IniHelper.findTypesIniTypebyName(type);
+                    switch (add.Substring(2, 2))
+                    {
+                        case "10":
+                            type = "4.0_scene";
+                            break;
+                        case "20":
+                            type = "5.0_time";
+                            break;
+                        case "30":
+                            type = "6.0_group";
+                            break;
+                        default: 
+                            break;
+                    }
                 }
                 info.type = type;
                 string ip4 = SocketUtil.strtohexstr(SocketUtil.getIP(FileMesege.sceneSelectNode));//16进制
                 //添加地域和名称 在sceneInfo表中
-                DataJson.PointInfo point = DataListHelper.findPointByType_address(type, ip4 + add.Substring(2, 6));
+                DataJson.PointInfo point = DataListHelper.findPointByType_address("", ip4 + add.Substring(2, 6));
                 if (point != null)
                 {
 
@@ -703,6 +721,16 @@ namespace eNet编辑器.DgvView
                                 //移除该行信息
                                 dataGridView1.Rows.Remove(dataGridView1.Rows[rowCount]);
                                 break;
+                            case "num":
+                                //设置对象跳转
+                                DataJson.PointInfo point = dgvJumpSet(id);
+                                if (point != null)
+                                { 
+                                    //传输到form窗口控制
+                                    //AppTxtShow("传输到主窗口"+DateTime.Now);
+                                    jumpSetInfo(point);
+                                }
+                                break;
                             default: break;
                         }
                     }
@@ -839,6 +867,35 @@ namespace eNet编辑器.DgvView
             DataJson.totalList NewList = FileMesege.cmds.getListInfos();
             FileMesege.cmds.DoNewCommand(NewList, OldList);
         }
+
+        /// <summary>
+        /// 对象跳转获取 场景 定时 编组 point点
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        private DataJson.PointInfo dgvJumpSet(int id )
+        {
+            string[] ips = FileMesege.sceneSelectNode.Parent.Text.Split(' ');
+            string[] ids = FileMesege.sceneSelectNode.Text.Split(' ');
+            int sceneNum = Convert.ToInt32(Regex.Replace(ids[0], @"[^\d]*", ""));
+            //获取该节点IP地址场景下的 场景信息对象
+            DataJson.scenes sc = DataListHelper.getSceneInfoList(ips[0], sceneNum);
+            //获取sceneInfo对象表中对应ID号info对象
+            DataJson.sceneInfo info = getSceneID(sc, id);
+
+            if (string.IsNullOrEmpty(info.address))
+            {
+                return null;
+            }
+            if (info.type == "4.0_scene" || info.type == "5.0_time" || info.type == "6.0_group")
+            {
+                return DataListHelper.findPointByType_address(info.type,info.address);
+            }
+
+            return null;
+
+        }
+
 
         /// <summary>
         /// 修改DGV表中 延时时间

@@ -72,6 +72,15 @@ namespace eNet编辑器.ThreeView
         }
 
         /// <summary>
+        /// 根据point点 选中树节点
+        /// </summary>
+        /// <param name="point"></param>
+        public void FindNodeSelect(DataJson.PointInfo point)
+        {
+            TreeMesege.SelectNodeByPoint(treeView1, point);
+        }
+
+        /// <summary>
         /// 判断IP信息 设备 信息 按键信息在 List是否存在  按键信息没有就自动添加ini表中key数
         /// </summary>
         /// <param name="ip">IP地址</param>

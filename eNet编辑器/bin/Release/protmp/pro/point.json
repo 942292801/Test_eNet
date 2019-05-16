@@ -395,27 +395,14 @@
     ],
     "timer": [
         {
-            "pid": 73638,
+            "pid": 46857,
             "area1": "",
             "area2": "",
             "area3": "",
             "area4": "",
             "name": "工作日_230",
             "ip": "192.168.1.230",
-            "address": "E6100001",
-            "objType": "",
-            "value": "",
-            "type": "5.0_time"
-        },
-        {
-            "pid": 69824,
-            "area1": "",
-            "area2": "",
-            "area3": "",
-            "area4": "",
-            "name": "节假日定时_230",
-            "ip": "192.168.1.230",
-            "address": "E6102710",
+            "address": "E6200001",
             "objType": "",
             "value": "",
             "type": "5.0_time"

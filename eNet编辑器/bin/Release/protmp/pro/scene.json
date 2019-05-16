@@ -68,9 +68,9 @@
                     },
                     {
                         "id": 8,
-                        "pid": 69824,
+                        "pid": 0,
                         "type": "5.0_time",
-                        "address": "E6102710",
+                        "address": "E6200004",
                         "opt": "",
                         "optName": "",
                         "Delay": 0
@@ -80,6 +80,24 @@
                         "pid": 53978,
                         "type": "4.0_scene",
                         "address": "E9100001",
+                        "opt": "",
+                        "optName": "",
+                        "Delay": 0
+                    },
+                    {
+                        "id": 12,
+                        "pid": 0,
+                        "type": "4.0_scene",
+                        "address": "E6102711",
+                        "opt": "",
+                        "optName": "",
+                        "Delay": 0
+                    },
+                    {
+                        "id": 13,
+                        "pid": 46857,
+                        "type": "5.0_time",
+                        "address": "E6200001",
                         "opt": "",
                         "optName": "",
                         "Delay": 0

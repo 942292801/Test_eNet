@@ -95,6 +95,15 @@ namespace eNet编辑器.ThreeView
             }
         }
 
+        /// <summary>
+        /// 根据point点 选中树节点
+        /// </summary>
+        /// <param name="point"></param>
+        public void FindNodeSelect(DataJson.PointInfo point)
+        {
+            TreeMesege.SelectNodeByPoint(treeView1,point);
+        }
+
         #region  新建 修改 删除 复制
         private void 添加定时ToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -174,8 +183,8 @@ namespace eNet编辑器.ThreeView
             {
                 num = num.Insert(0, "0");
             }
-            //获取IP最后一位
-            string address = SocketUtil.GetIPstyle(timeradd.Ip, 4) + "10" + num;
+            //获取IP最后一位 定时为20
+            string address = SocketUtil.GetIPstyle(timeradd.Ip, 4) + "20" + num;
             if (FileMesege.timerList == null)
             {
                 FileMesege.timerList = new List<DataJson.Timer>();

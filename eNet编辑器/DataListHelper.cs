@@ -558,18 +558,55 @@ namespace eNet编辑器
         }
 
         /// <summary>
-        /// 根据1.0_switch类型 和 address 获取该点位 返回DataJson.PointInfo 否则 null
+        /// 根据1.0_switch类型 和 address 获取该点位 返回DataJson.PointInfo 否则 null (type可以为空)
         /// </summary>
-        /// <param name="type"></param>
+        /// <param name="type">type为空则搜索全部list表的</param>
         /// <param name="address"></param>
         /// <returns></returns>
         public static DataJson.PointInfo findPointByType_address(string type, string address)
         {
             try
             {
+                
                 //区域加名称
                 DataJson.PointInfo pointInfo = null;
-
+                //如果type为空就搜索全表
+                if (string.IsNullOrEmpty(type))
+                {
+                    if (FileMesege.PointList.equipment != null)
+                    {
+                        pointInfo = findPointByList_add(FileMesege.PointList.equipment, address);
+                        if (pointInfo != null)
+                        {
+                            return pointInfo;
+                        }
+                    }
+                    if (FileMesege.PointList.timer != null)
+                    {
+                        pointInfo = findPointByList_add(FileMesege.PointList.timer, address);
+                        if (pointInfo != null)
+                        {
+                            return pointInfo;
+                        }
+                    }
+                    if (FileMesege.PointList.scene != null)
+                    {
+                        pointInfo = findPointByList_add(FileMesege.PointList.scene, address);
+                        if (pointInfo != null)
+                        {
+                            return pointInfo;
+                        }
+                    }
+                    if (FileMesege.PointList.link != null)
+                    {
+                        pointInfo = findPointByList_add(FileMesege.PointList.link, address);
+                        if (pointInfo != null)
+                        {
+                            return pointInfo;
+                        }
+                    }
+                    return pointInfo;
+                }
                 // version_type 分割成
                 switch (type.Split('_')[1])
                 {
@@ -586,11 +623,6 @@ namespace eNet编辑器
                     case "group":
                         pointInfo = findPointByList_add(FileMesege.PointList.link, address);
 
-                        break;
-
-
-                    case "logic":
-                        //待定 后期添加
                         break;
 
                     //为设备00 扫equipment

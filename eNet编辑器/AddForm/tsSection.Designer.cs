@@ -36,9 +36,9 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.btnDecid = new DevComponents.DotNetBar.ButtonX();
             this.plInfoTitle = new System.Windows.Forms.Panel();
+            this.btnClose = new DevComponents.DotNetBar.ButtonX();
             this.symbolBox1 = new DevComponents.DotNetBar.Controls.SymbolBox();
             this.lbTitle = new System.Windows.Forms.Label();
-            this.btnClose = new DevComponents.DotNetBar.ButtonX();
             this.panel4.SuspendLayout();
             this.plInfoTitle.SuspendLayout();
             this.SuspendLayout();
@@ -130,6 +130,26 @@
             this.plInfoTitle.MouseDown += new System.Windows.Forms.MouseEventHandler(this.plInfoTitle_MouseDown);
             this.plInfoTitle.MouseMove += new System.Windows.Forms.MouseEventHandler(this.plInfoTitle_MouseMove);
             // 
+            // btnClose
+            // 
+            this.btnClose.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnClose.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnClose.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(228)))), ((int)(((byte)(228)))));
+            this.btnClose.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
+            this.btnClose.FocusCuesEnabled = false;
+            this.btnClose.Font = new System.Drawing.Font("黑体", 9F);
+            this.btnClose.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None;
+            this.btnClose.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnClose.HoverImage")));
+            this.btnClose.Image = ((System.Drawing.Image)(resources.GetObject("btnClose.Image")));
+            this.btnClose.Location = new System.Drawing.Point(200, 6);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(6);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(13, 13);
+            this.btnClose.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnClose.TabIndex = 8;
+            this.btnClose.Tooltip = "关闭";
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
             // symbolBox1
             // 
             // 
@@ -157,31 +177,11 @@
             this.lbTitle.TabIndex = 1;
             this.lbTitle.Text = "添加节点";
             // 
-            // btnClose
-            // 
-            this.btnClose.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnClose.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnClose.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btnClose.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
-            this.btnClose.FocusCuesEnabled = false;
-            this.btnClose.Font = new System.Drawing.Font("黑体", 9F);
-            this.btnClose.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None;
-            this.btnClose.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnClose.HoverImage")));
-            this.btnClose.Image = ((System.Drawing.Image)(resources.GetObject("btnClose.Image")));
-            this.btnClose.Location = new System.Drawing.Point(190, 2);
-            this.btnClose.Margin = new System.Windows.Forms.Padding(6);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(25, 20);
-            this.btnClose.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnClose.TabIndex = 8;
-            this.btnClose.Tooltip = "关闭";
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
-            // 
             // tsSection
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.DimGray;
+            this.BackColor = System.Drawing.Color.DarkGray;
             this.ClientSize = new System.Drawing.Size(224, 160);
             this.Controls.Add(this.plInfoTitle);
             this.Controls.Add(this.panel4);

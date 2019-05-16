@@ -788,7 +788,20 @@ namespace eNet编辑器.DgvView
                     type = IniHelper.findIniTypesByAddress(FileMesege.timerSelectNode.Parent.Text.Split(' ')[0], add).Split(',')[0];
                     if (string.IsNullOrEmpty(type))
                     {
-                        type = IniHelper.findTypesIniTypebyName(type);
+                        switch (add.Substring(2, 2))
+                        {
+                            case "10":
+                                type = "4.0_scene";
+                                break;
+                            case "20":
+                                type = "5.0_time";
+                                break;
+                            case "30":
+                                type = "6.0_group";
+                                break;
+                            default:
+                                break;
+                        }
                     }
                     tmInfo.type = type;
                     string ip4 = SocketUtil.strtohexstr(SocketUtil.getIP(FileMesege.timerSelectNode));//16进制
