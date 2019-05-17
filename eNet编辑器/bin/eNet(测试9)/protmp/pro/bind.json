@@ -1,0 +1,74 @@
+[
+    {
+        "Binds": [
+            {
+                "bindInfo": [
+                    {
+                        "keyId": 1,
+                        "groupId": 10,
+                        "objType": "开关",
+                        "address": null,
+                        "mode": null,
+                        "showType": "开关",
+                        "showAddress": null,
+                        "showMode": "无"
+                    },
+                    {
+                        "keyId": 2,
+                        "groupId": 10,
+                        "objType": "开关",
+                        "address": null,
+                        "mode": null,
+                        "showType": "开关",
+                        "showAddress": null,
+                        "showMode": "无"
+                    },
+                    {
+                        "keyId": 3,
+                        "groupId": 10,
+                        "objType": "开关",
+                        "address": null,
+                        "mode": null,
+                        "showType": "开关",
+                        "showAddress": null,
+                        "showMode": "无"
+                    },
+                    {
+                        "keyId": 4,
+                        "groupId": 10,
+                        "objType": "开关",
+                        "address": null,
+                        "mode": null,
+                        "showType": "开关",
+                        "showAddress": null,
+                        "showMode": "无"
+                    },
+                    {
+                        "keyId": 5,
+                        "groupId": 10,
+                        "objType": "开关",
+                        "address": null,
+                        "mode": null,
+                        "showType": "开关",
+                        "showAddress": null,
+                        "showMode": "无"
+                    },
+                    {
+                        "keyId": 6,
+                        "groupId": 10,
+                        "objType": "开关",
+                        "address": null,
+                        "mode": null,
+                        "showType": "开关",
+                        "showAddress": null,
+                        "showMode": "无"
+                    }
+                ],
+                "id": 10,
+                "bindName": "TEST01"
+            }
+        ],
+        "IP": "192.168.1.230",
+        "Dev": "GW100A"
+    }
+]

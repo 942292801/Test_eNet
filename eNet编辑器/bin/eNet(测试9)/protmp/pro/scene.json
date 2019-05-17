@@ -1,0 +1,171 @@
+[
+    {
+        "scenes": [
+            {
+                "sceneInfo": [
+                    {
+                        "id": 1,
+                        "pid": 50697,
+                        "type": "1.0_switch",
+                        "address": "E6000204",
+                        "opt": "00000001",
+                        "optName": "开启",
+                        "Delay": 0
+                    },
+                    {
+                        "id": 2,
+                        "pid": 40769,
+                        "type": "1.0_switch",
+                        "address": "E6000205",
+                        "opt": "02010001",
+                        "optName": "短延时反复开关",
+                        "Delay": 0
+                    },
+                    {
+                        "id": 3,
+                        "pid": 12262,
+                        "type": "7.0_ir",
+                        "address": "E6000A04",
+                        "opt": "0000000F",
+                        "optName": "频道加",
+                        "Delay": 0
+                    },
+                    {
+                        "id": 4,
+                        "pid": 0,
+                        "type": "13.0_RGB",
+                        "address": "E6000A07",
+                        "opt": "00000000",
+                        "optName": "调色",
+                        "Delay": 0
+                    },
+                    {
+                        "id": 5,
+                        "pid": 0,
+                        "type": "13.0_RGB",
+                        "address": "E6000A08",
+                        "opt": "00000000",
+                        "optName": "调色",
+                        "Delay": 0
+                    },
+                    {
+                        "id": 6,
+                        "pid": 0,
+                        "type": "13.0_RGB",
+                        "address": "E6000A09",
+                        "opt": "00000000",
+                        "optName": "调色",
+                        "Delay": 0
+                    },
+                    {
+                        "id": 7,
+                        "pid": 43278,
+                        "type": "4.0_scene",
+                        "address": "E6100001",
+                        "opt": "",
+                        "optName": "",
+                        "Delay": 0
+                    },
+                    {
+                        "id": 8,
+                        "pid": 0,
+                        "type": "5.0_time",
+                        "address": "E6200004",
+                        "opt": "",
+                        "optName": "",
+                        "Delay": 0
+                    },
+                    {
+                        "id": 9,
+                        "pid": 53978,
+                        "type": "4.0_scene",
+                        "address": "E9100001",
+                        "opt": "",
+                        "optName": "",
+                        "Delay": 0
+                    },
+                    {
+                        "id": 12,
+                        "pid": 0,
+                        "type": "4.0_scene",
+                        "address": "E6102711",
+                        "opt": "",
+                        "optName": "",
+                        "Delay": 0
+                    },
+                    {
+                        "id": 13,
+                        "pid": 46857,
+                        "type": "5.0_time",
+                        "address": "E6200001",
+                        "opt": "",
+                        "optName": "",
+                        "Delay": 0
+                    }
+                ],
+                "id": 1,
+                "pid": 43278
+            },
+            {
+                "sceneInfo": [],
+                "id": 2,
+                "pid": 14898
+            }
+        ],
+        "IP": "192.168.1.230",
+        "Dev": "GW100A"
+    },
+    {
+        "scenes": [
+            {
+                "sceneInfo": [
+                    {
+                        "id": 1,
+                        "pid": 32801,
+                        "type": "1.0_switch",
+                        "address": "E6000101",
+                        "opt": "",
+                        "optName": "",
+                        "Delay": 0
+                    },
+                    {
+                        "id": 2,
+                        "pid": 52569,
+                        "type": "1.0_switch",
+                        "address": "E6000104",
+                        "opt": "",
+                        "optName": "",
+                        "Delay": 0
+                    },
+                    {
+                        "id": 3,
+                        "pid": 98550,
+                        "type": "1.0_switch",
+                        "address": "E6000107",
+                        "opt": "",
+                        "optName": "",
+                        "Delay": 0
+                    },
+                    {
+                        "id": 4,
+                        "pid": 38445,
+                        "type": "1.0_switch",
+                        "address": "E6000105",
+                        "opt": "",
+                        "optName": "",
+                        "Delay": 0
+                    }
+                ],
+                "id": 1,
+                "pid": 53978
+            },
+            {
+                "sceneInfo": [],
+                "id": 2,
+                "pid": 63209
+            }
+        ],
+        "IP": "192.168.1.233",
+        "Dev": "GW100A"
+    }
+]

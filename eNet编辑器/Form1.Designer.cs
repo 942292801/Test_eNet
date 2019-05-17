@@ -94,20 +94,6 @@
             this.帮助ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem24 = new System.Windows.Forms.ToolStripSeparator();
             this.关于软件ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.tsNewfile = new System.Windows.Forms.ToolStripButton();
-            this.tsOpenfile = new System.Windows.Forms.ToolStripButton();
-            this.tsSave = new System.Windows.Forms.ToolStripButton();
-            this.tsOtherSave = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.tsBackOut = new System.Windows.Forms.ToolStripButton();
-            this.tsReform = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.tsCompile = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            this.tsNet = new System.Windows.Forms.ToolStripButton();
-            this.tsTimer = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.LbTitleName = new System.Windows.Forms.Label();
             this.cbType = new System.Windows.Forms.ComboBox();
@@ -149,8 +135,21 @@
             this.plTitleCbbox = new System.Windows.Forms.Panel();
             this.symbolBox2 = new DevComponents.DotNetBar.Controls.SymbolBox();
             this.plLeft = new System.Windows.Forms.Panel();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.tsNewfile = new System.Windows.Forms.ToolStripButton();
+            this.tsOpenfile = new System.Windows.Forms.ToolStripButton();
+            this.tsSave = new System.Windows.Forms.ToolStripButton();
+            this.tsOtherSave = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsBackOut = new System.Windows.Forms.ToolStripButton();
+            this.tsReform = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsCompile = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsNet = new System.Windows.Forms.ToolStripButton();
+            this.tsTimer = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.menuStrip1.SuspendLayout();
-            this.toolStrip1.SuspendLayout();
             this.PlMeustrip.ClientArea.SuspendLayout();
             this.PlMeustrip.SuspendLayout();
             this.PlToolstrip.ClientArea.SuspendLayout();
@@ -166,6 +165,7 @@
             this.plRight.SuspendLayout();
             this.plTitle.SuspendLayout();
             this.plTitleCbbox.SuspendLayout();
+            this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -571,108 +571,6 @@
             this.关于软件ToolStripMenuItem.Name = "关于软件ToolStripMenuItem";
             resources.ApplyResources(this.关于软件ToolStripMenuItem, "关于软件ToolStripMenuItem");
             this.关于软件ToolStripMenuItem.Click += new System.EventHandler(this.关于软件ToolStripMenuItem_Click);
-            // 
-            // toolStrip1
-            // 
-            resources.ApplyResources(this.toolStrip1, "toolStrip1");
-            this.toolStrip1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(216)))), ((int)(((byte)(216)))));
-            this.toolStrip1.GripMargin = new System.Windows.Forms.Padding(0);
-            this.toolStrip1.ImageScalingSize = new System.Drawing.Size(48, 48);
-            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsNewfile,
-            this.tsOpenfile,
-            this.tsSave,
-            this.tsOtherSave,
-            this.toolStripSeparator1,
-            this.tsBackOut,
-            this.tsReform,
-            this.toolStripSeparator2,
-            this.tsCompile,
-            this.toolStripSeparator3,
-            this.tsNet,
-            this.tsTimer,
-            this.toolStripSeparator4});
-            this.toolStrip1.Name = "toolStrip1";
-            // 
-            // tsNewfile
-            // 
-            resources.ApplyResources(this.tsNewfile, "tsNewfile");
-            this.tsNewfile.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsNewfile.Name = "tsNewfile";
-            this.tsNewfile.Click += new System.EventHandler(this.tsNewfile_Click);
-            // 
-            // tsOpenfile
-            // 
-            resources.ApplyResources(this.tsOpenfile, "tsOpenfile");
-            this.tsOpenfile.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsOpenfile.Name = "tsOpenfile";
-            this.tsOpenfile.Click += new System.EventHandler(this.tsOpenfile_Click);
-            // 
-            // tsSave
-            // 
-            resources.ApplyResources(this.tsSave, "tsSave");
-            this.tsSave.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsSave.Name = "tsSave";
-            this.tsSave.Click += new System.EventHandler(this.tsSave_Click);
-            // 
-            // tsOtherSave
-            // 
-            resources.ApplyResources(this.tsOtherSave, "tsOtherSave");
-            this.tsOtherSave.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsOtherSave.Name = "tsOtherSave";
-            this.tsOtherSave.Click += new System.EventHandler(this.tsOtherSave_Click);
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            resources.ApplyResources(this.toolStripSeparator1, "toolStripSeparator1");
-            // 
-            // tsBackOut
-            // 
-            resources.ApplyResources(this.tsBackOut, "tsBackOut");
-            this.tsBackOut.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsBackOut.Name = "tsBackOut";
-            this.tsBackOut.Click += new System.EventHandler(this.tsBackOut_Click);
-            // 
-            // tsReform
-            // 
-            resources.ApplyResources(this.tsReform, "tsReform");
-            this.tsReform.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsReform.Name = "tsReform";
-            this.tsReform.Click += new System.EventHandler(this.tsReform_Click);
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            resources.ApplyResources(this.toolStripSeparator2, "toolStripSeparator2");
-            // 
-            // tsCompile
-            // 
-            resources.ApplyResources(this.tsCompile, "tsCompile");
-            this.tsCompile.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsCompile.Name = "tsCompile";
-            // 
-            // toolStripSeparator3
-            // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            resources.ApplyResources(this.toolStripSeparator3, "toolStripSeparator3");
-            // 
-            // tsNet
-            // 
-            resources.ApplyResources(this.tsNet, "tsNet");
-            this.tsNet.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsNet.Name = "tsNet";
-            // 
-            // tsTimer
-            // 
-            resources.ApplyResources(this.tsTimer, "tsTimer");
-            this.tsTimer.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsTimer.Name = "tsTimer";
-            // 
-            // toolStripSeparator4
-            // 
-            this.toolStripSeparator4.Name = "toolStripSeparator4";
-            resources.ApplyResources(this.toolStripSeparator4, "toolStripSeparator4");
             // 
             // timer1
             // 
@@ -1081,6 +979,108 @@
             resources.ApplyResources(this.plLeft, "plLeft");
             this.plLeft.Name = "plLeft";
             // 
+            // toolStrip1
+            // 
+            resources.ApplyResources(this.toolStrip1, "toolStrip1");
+            this.toolStrip1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(216)))), ((int)(((byte)(216)))));
+            this.toolStrip1.GripMargin = new System.Windows.Forms.Padding(0);
+            this.toolStrip1.ImageScalingSize = new System.Drawing.Size(48, 48);
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsNewfile,
+            this.tsOpenfile,
+            this.tsSave,
+            this.tsOtherSave,
+            this.toolStripSeparator1,
+            this.tsBackOut,
+            this.tsReform,
+            this.toolStripSeparator2,
+            this.tsCompile,
+            this.toolStripSeparator3,
+            this.tsNet,
+            this.tsTimer,
+            this.toolStripSeparator4});
+            this.toolStrip1.Name = "toolStrip1";
+            // 
+            // tsNewfile
+            // 
+            resources.ApplyResources(this.tsNewfile, "tsNewfile");
+            this.tsNewfile.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsNewfile.Name = "tsNewfile";
+            this.tsNewfile.Click += new System.EventHandler(this.tsNewfile_Click);
+            // 
+            // tsOpenfile
+            // 
+            resources.ApplyResources(this.tsOpenfile, "tsOpenfile");
+            this.tsOpenfile.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsOpenfile.Name = "tsOpenfile";
+            this.tsOpenfile.Click += new System.EventHandler(this.tsOpenfile_Click);
+            // 
+            // tsSave
+            // 
+            resources.ApplyResources(this.tsSave, "tsSave");
+            this.tsSave.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsSave.Name = "tsSave";
+            this.tsSave.Click += new System.EventHandler(this.tsSave_Click);
+            // 
+            // tsOtherSave
+            // 
+            resources.ApplyResources(this.tsOtherSave, "tsOtherSave");
+            this.tsOtherSave.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsOtherSave.Name = "tsOtherSave";
+            this.tsOtherSave.Click += new System.EventHandler(this.tsOtherSave_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            resources.ApplyResources(this.toolStripSeparator1, "toolStripSeparator1");
+            // 
+            // tsBackOut
+            // 
+            resources.ApplyResources(this.tsBackOut, "tsBackOut");
+            this.tsBackOut.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsBackOut.Name = "tsBackOut";
+            this.tsBackOut.Click += new System.EventHandler(this.tsBackOut_Click);
+            // 
+            // tsReform
+            // 
+            resources.ApplyResources(this.tsReform, "tsReform");
+            this.tsReform.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsReform.Name = "tsReform";
+            this.tsReform.Click += new System.EventHandler(this.tsReform_Click);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            resources.ApplyResources(this.toolStripSeparator2, "toolStripSeparator2");
+            // 
+            // tsCompile
+            // 
+            resources.ApplyResources(this.tsCompile, "tsCompile");
+            this.tsCompile.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsCompile.Name = "tsCompile";
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            resources.ApplyResources(this.toolStripSeparator3, "toolStripSeparator3");
+            // 
+            // tsNet
+            // 
+            resources.ApplyResources(this.tsNet, "tsNet");
+            this.tsNet.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsNet.Name = "tsNet";
+            // 
+            // tsTimer
+            // 
+            resources.ApplyResources(this.tsTimer, "tsTimer");
+            this.tsTimer.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsTimer.Name = "tsTimer";
+            // 
+            // toolStripSeparator4
+            // 
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            resources.ApplyResources(this.toolStripSeparator4, "toolStripSeparator4");
+            // 
             // Form1
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -1098,8 +1098,6 @@
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            this.toolStrip1.ResumeLayout(false);
-            this.toolStrip1.PerformLayout();
             this.PlMeustrip.ClientArea.ResumeLayout(false);
             this.PlMeustrip.ClientArea.PerformLayout();
             this.PlMeustrip.ResumeLayout(false);
@@ -1120,6 +1118,8 @@
             this.plTitle.ResumeLayout(false);
             this.plTitleCbbox.ResumeLayout(false);
             this.plTitleCbbox.PerformLayout();
+            this.toolStrip1.ResumeLayout(false);
+            this.toolStrip1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1138,20 +1138,6 @@
         private System.Windows.Forms.ToolStripMenuItem 编辑ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 撤销ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 重做ToolStripMenuItem;
-        private System.Windows.Forms.ToolStrip toolStrip1;
-        private System.Windows.Forms.ToolStripButton tsOtherSave;
-        private System.Windows.Forms.ToolStripButton tsNewfile;
-        private System.Windows.Forms.ToolStripButton tsOpenfile;
-        private System.Windows.Forms.ToolStripButton tsSave;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripButton tsBackOut;
-        private System.Windows.Forms.ToolStripButton tsReform;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
-        private System.Windows.Forms.ToolStripButton tsCompile;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
-        private System.Windows.Forms.ToolStripButton tsNet;
-        private System.Windows.Forms.ToolStripButton tsTimer;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.ToolStripMenuItem 功能GToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 设备在线搜索ToolStripMenuItem;
@@ -1242,6 +1228,20 @@
         private DevComponents.DotNetBar.TabItem tabPoint;
         private DevComponents.DotNetBar.Controls.SymbolBox symbolBox1;
         private DevComponents.DotNetBar.Controls.SymbolBox symbolBox2;
+        private System.Windows.Forms.ToolStrip toolStrip1;
+        private System.Windows.Forms.ToolStripButton tsNewfile;
+        private System.Windows.Forms.ToolStripButton tsOpenfile;
+        private System.Windows.Forms.ToolStripButton tsSave;
+        private System.Windows.Forms.ToolStripButton tsOtherSave;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripButton tsBackOut;
+        private System.Windows.Forms.ToolStripButton tsReform;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripButton tsCompile;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+        private System.Windows.Forms.ToolStripButton tsNet;
+        private System.Windows.Forms.ToolStripButton tsTimer;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
 
     }
 }

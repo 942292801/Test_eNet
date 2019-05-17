@@ -471,8 +471,143 @@
   <data name="&gt;&gt;menuStrip1.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <metadata name="timer1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>238, 27</value>
+  </metadata>
+  <data name="LbTitleName.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left</value>
+  </data>
+  <data name="LbTitleName.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="LbTitleName.Font" type="System.Drawing.Font, System.Drawing">
+    <value>微软雅黑, 9pt</value>
+  </data>
+  <data name="LbTitleName.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="LbTitleName.Location" type="System.Drawing.Point, System.Drawing">
+    <value>28, 4</value>
+  </data>
+  <data name="LbTitleName.Size" type="System.Drawing.Size, System.Drawing">
+    <value>44, 17</value>
+  </data>
+  <data name="LbTitleName.TabIndex" type="System.Int32, mscorlib">
+    <value>51</value>
+  </data>
+  <data name="LbTitleName.Text" xml:space="preserve">
+    <value>设备：</value>
+  </data>
+  <data name="&gt;&gt;LbTitleName.Name" xml:space="preserve">
+    <value>LbTitleName</value>
+  </data>
+  <data name="&gt;&gt;LbTitleName.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;LbTitleName.Parent" xml:space="preserve">
+    <value>plTitleCbbox</value>
+  </data>
+  <data name="&gt;&gt;LbTitleName.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="cbType.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left</value>
+  </data>
+  <data name="cbType.Font" type="System.Drawing.Font, System.Drawing">
+    <value>微软雅黑, 9pt</value>
+  </data>
+  <data name="cbType.Location" type="System.Drawing.Point, System.Drawing">
+    <value>78, 0</value>
+  </data>
+  <data name="cbType.Size" type="System.Drawing.Size, System.Drawing">
+    <value>74, 25</value>
+  </data>
+  <data name="cbType.TabIndex" type="System.Int32, mscorlib">
+    <value>50</value>
+  </data>
+  <data name="&gt;&gt;cbType.Name" xml:space="preserve">
+    <value>cbType</value>
+  </data>
+  <data name="&gt;&gt;cbType.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cbType.Parent" xml:space="preserve">
+    <value>plTitleCbbox</value>
+  </data>
+  <data name="&gt;&gt;cbType.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="txtShow.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="txtShow.Font" type="System.Drawing.Font, System.Drawing">
+    <value>微软雅黑, 9pt</value>
+  </data>
+  <data name="txtShow.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 25</value>
+  </data>
+  <data name="txtShow.Multiline" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="txtShow.ScrollBars" type="System.Windows.Forms.ScrollBars, System.Windows.Forms">
+    <value>Vertical</value>
+  </data>
+  <data name="txtShow.Size" type="System.Drawing.Size, System.Drawing">
+    <value>836, 68</value>
+  </data>
+  <data name="txtShow.TabIndex" type="System.Int32, mscorlib">
+    <value>52</value>
+  </data>
+  <data name="&gt;&gt;txtShow.Name" xml:space="preserve">
+    <value>txtShow</value>
+  </data>
+  <data name="&gt;&gt;txtShow.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtShow.Parent" xml:space="preserve">
+    <value>plInfo</value>
+  </data>
+  <data name="&gt;&gt;txtShow.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;PlMeustrip.ClientArea.Name" xml:space="preserve">
+    <value>PlMeustrip.ClientArea</value>
+  </data>
+  <data name="&gt;&gt;PlMeustrip.ClientArea.Type" xml:space="preserve">
+    <value>Infragistics.Win.Misc.UltraPanelClientAreaUnsafe, Infragistics4.Win.Misc.v12.2, Version=12.2.20122.2123, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb</value>
+  </data>
+  <data name="&gt;&gt;PlMeustrip.ClientArea.Parent" xml:space="preserve">
+    <value>PlMeustrip</value>
+  </data>
+  <data name="&gt;&gt;PlMeustrip.ClientArea.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="PlMeustrip.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="PlMeustrip.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="PlMeustrip.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1264, 26</value>
+  </data>
+  <data name="PlMeustrip.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;PlMeustrip.Name" xml:space="preserve">
+    <value>PlMeustrip</value>
+  </data>
+  <data name="&gt;&gt;PlMeustrip.Type" xml:space="preserve">
+    <value>Infragistics.Win.Misc.UltraPanel, Infragistics4.Win.Misc.v12.2, Version=12.2.20122.2123, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb</value>
+  </data>
+  <data name="&gt;&gt;PlMeustrip.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;PlMeustrip.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
   <metadata name="toolStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>126, 28</value>
+    <value>328, 27</value>
   </metadata>
   <data name="toolStrip1.AutoSize" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -943,20 +1078,20 @@
   <data name="tsReform.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         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
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAMQSURBVGhD7ZnPb0xRFMcHC1G/VlILWiISQQkSEkml/wA2
-        Zj1NQ8gklXQ6v39upCnFlpWFdsmiQkKsJBYS0dZSVaJSQZGOXwlR6nMmZyavz2M6JjH3cb/JN+e9e8+5
-        c7733nfvfW8CFhYWFhYWFhYWfkYmk2nN5/PHc7ncYDqdHkmlUq+5/qh2JJvNXqb+WKFQaNEQLyxSay5U
-        6GnsZDgc/hIKhb52dHR8Q+RcmXIv5VLP/VPYj/B12kQJdMhmym9jL2qReSC5LoQ+JtHPIqwGiv848Z3S
-        Dm1s4n4Mzkaj0Q+lxk0DyZ2B09BL0ILI1H+O6Etc33HMivf6E+aApM4mEokZTXAek8nkW0RcY9T6sJiS
-        vYK4F17+UEZ71nFf1J8xAzINScprZKcQl+TZ3A7X0iGrsSvEsnA1c70Fn5Nw3BHjRXMEk3QLCU24Epyj
-        E25h20WgunqC+ib89skMcMa7aI5gVuMB9wrMVL2BgF3qUhWI3or/Q2cbLpohWEd3Cn4vJ8cUnoQH1KUq
-        6Jy9+N8l1vnMummGYD1UzEuU5LPd3d1L1eW3YFTbVKxTnCc1pLEg4SGSqQimA96wGO3Q6qogZg8jfE8P
-        H0VZ5Z2Usng8/k46RUMaCwSPup7fYQSv0eqq6O3tXU6MLFhH4CGuDzqpZYfplN0a0ljombgy7RiJPtly
-        tPrfQyQS+eQSnK22Dfka/90I1/sM+w4IrmuV9h3q3Yd9h1+dtLDt6lITaG8Ds6ZNb82E11ka1nSWFshe
-        S9ywrAssfDXF/lXoKP/0tsRI38S2x2KxlerqCeKb8N2P0OvlWMSPiWjqFqubWSDZTvcWJaRc3ocx2Z0k
-        X3kfhqvwb6Z8G34RfJ54xN7v6elZpj9hHkjwHIkW3YkLETpDffmLR4KyU4ziVexLp5+DRR6VC8FgcIk2
-        byZItO5vWnCaThnQJs0HyXbBRyT+J18tJ4g9qk35B0zd9STfD58t8Lu0bG3niWvVJvwJEYCQE4zaEBzV
-        hU3+eXjF/QOuB+Xwgt9GDbGwsLCwsLCwsLAwG4HAD15Ge6gXs6QAAAAAAElFTkSuQmCC
+        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
 </value>
   </data>
   <data name="tsReform.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
@@ -1044,20 +1179,20 @@
   <data name="tsTimer.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         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
-        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
+        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
 </value>
   </data>
   <data name="tsTimer.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
@@ -1082,7 +1217,7 @@
     <value>1264, 50</value>
   </data>
   <data name="toolStrip1.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="toolStrip1.Text" xml:space="preserve">
     <value>toolStrip1</value>
@@ -1098,141 +1233,6 @@
   </data>
   <data name="&gt;&gt;toolStrip1.ZOrder" xml:space="preserve">
     <value>0</value>
-  </data>
-  <metadata name="timer1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>238, 27</value>
-  </metadata>
-  <data name="LbTitleName.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Bottom, Left</value>
-  </data>
-  <data name="LbTitleName.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="LbTitleName.Font" type="System.Drawing.Font, System.Drawing">
-    <value>微软雅黑, 9pt</value>
-  </data>
-  <data name="LbTitleName.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="LbTitleName.Location" type="System.Drawing.Point, System.Drawing">
-    <value>28, 4</value>
-  </data>
-  <data name="LbTitleName.Size" type="System.Drawing.Size, System.Drawing">
-    <value>44, 17</value>
-  </data>
-  <data name="LbTitleName.TabIndex" type="System.Int32, mscorlib">
-    <value>51</value>
-  </data>
-  <data name="LbTitleName.Text" xml:space="preserve">
-    <value>设备：</value>
-  </data>
-  <data name="&gt;&gt;LbTitleName.Name" xml:space="preserve">
-    <value>LbTitleName</value>
-  </data>
-  <data name="&gt;&gt;LbTitleName.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;LbTitleName.Parent" xml:space="preserve">
-    <value>plTitleCbbox</value>
-  </data>
-  <data name="&gt;&gt;LbTitleName.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="cbType.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Bottom, Left</value>
-  </data>
-  <data name="cbType.Font" type="System.Drawing.Font, System.Drawing">
-    <value>微软雅黑, 9pt</value>
-  </data>
-  <data name="cbType.Location" type="System.Drawing.Point, System.Drawing">
-    <value>78, 0</value>
-  </data>
-  <data name="cbType.Size" type="System.Drawing.Size, System.Drawing">
-    <value>74, 25</value>
-  </data>
-  <data name="cbType.TabIndex" type="System.Int32, mscorlib">
-    <value>50</value>
-  </data>
-  <data name="&gt;&gt;cbType.Name" xml:space="preserve">
-    <value>cbType</value>
-  </data>
-  <data name="&gt;&gt;cbType.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;cbType.Parent" xml:space="preserve">
-    <value>plTitleCbbox</value>
-  </data>
-  <data name="&gt;&gt;cbType.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="txtShow.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="txtShow.Font" type="System.Drawing.Font, System.Drawing">
-    <value>微软雅黑, 9pt</value>
-  </data>
-  <data name="txtShow.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 25</value>
-  </data>
-  <data name="txtShow.Multiline" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="txtShow.ScrollBars" type="System.Windows.Forms.ScrollBars, System.Windows.Forms">
-    <value>Vertical</value>
-  </data>
-  <data name="txtShow.Size" type="System.Drawing.Size, System.Drawing">
-    <value>836, 68</value>
-  </data>
-  <data name="txtShow.TabIndex" type="System.Int32, mscorlib">
-    <value>52</value>
-  </data>
-  <data name="&gt;&gt;txtShow.Name" xml:space="preserve">
-    <value>txtShow</value>
-  </data>
-  <data name="&gt;&gt;txtShow.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtShow.Parent" xml:space="preserve">
-    <value>plInfo</value>
-  </data>
-  <data name="&gt;&gt;txtShow.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;PlMeustrip.ClientArea.Name" xml:space="preserve">
-    <value>PlMeustrip.ClientArea</value>
-  </data>
-  <data name="&gt;&gt;PlMeustrip.ClientArea.Type" xml:space="preserve">
-    <value>Infragistics.Win.Misc.UltraPanelClientAreaUnsafe, Infragistics4.Win.Misc.v12.2, Version=12.2.20122.2123, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb</value>
-  </data>
-  <data name="&gt;&gt;PlMeustrip.ClientArea.Parent" xml:space="preserve">
-    <value>PlMeustrip</value>
-  </data>
-  <data name="&gt;&gt;PlMeustrip.ClientArea.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="PlMeustrip.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
-  </data>
-  <data name="PlMeustrip.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="PlMeustrip.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1264, 26</value>
-  </data>
-  <data name="PlMeustrip.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;PlMeustrip.Name" xml:space="preserve">
-    <value>PlMeustrip</value>
-  </data>
-  <data name="&gt;&gt;PlMeustrip.Type" xml:space="preserve">
-    <value>Infragistics.Win.Misc.UltraPanel, Infragistics4.Win.Misc.v12.2, Version=12.2.20122.2123, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb</value>
-  </data>
-  <data name="&gt;&gt;PlMeustrip.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;PlMeustrip.ZOrder" xml:space="preserve">
-    <value>3</value>
   </data>
   <data name="&gt;&gt;PlToolstrip.ClientArea.Name" xml:space="preserve">
     <value>PlToolstrip.ClientArea</value>
@@ -1500,7 +1500,7 @@
         RudN65tdA8sHzg46DF645Xrr8m2v29fvrLwzMBQydHc4cnjkLvvu5L2key/vZ9yff7DpIfph4SOpR+WP
         lR7X/aj3Y+uI5ciZUdfRvidBTx6Mscae/5T+04fx/Kfkp+UTqhONk2aTp6fcp24+W/1s/Hnq8/npgp+l
         f65+ofviu18cf+mbWTUz/pL/cuHX4lfyr468Xva6e9Z/9vGb5Dfzc4Vv5d8efcd41/s+7P3EfOYH7IeK
-        j3ofuz55f3q4kLyw8Bv3hPP74uYdwgAAAAlwSFlzAAAOvgAADr4B6kKxwAAAAKRJREFUKFOFkLsKAyEQ
+        j3ofuz55f3q4kLyw8Bv3hPP74uYdwgAAAAlwSFlzAAAOvAAADrwBlbxySQAAAKRJREFUKFOFkLsKAyEQ
         RacICSFNfkMQVHxVam+T//+SrYJZZccdRTbFgdF7j6IQQujEGG+lFPjkXAiQUnruWc0bwBhr1DIVtu82
         iEqpDnDOG7OArMQ+oESFSQRjTAOEEA0p5d+brLXgnDslrfX76k17/qLSnXwCMggV7HjvH32BYImC+9jp
         wxHQGwaO/JRoSD8BofkgrcozXcITVqUZ7F6+Y00uP9nWaBHcy75KAAAAAElFTkSuQmCC
@@ -2980,6 +2980,54 @@
   <data name="&gt;&gt;关于软件ToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;timer1.Name" xml:space="preserve">
+    <value>timer1</value>
+  </data>
+  <data name="&gt;&gt;timer1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Timer, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabName.Name" xml:space="preserve">
+    <value>tabName</value>
+  </data>
+  <data name="&gt;&gt;tabName.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.TabItem, DevComponents.DotNetBar2, Version=14.0.0.3, Culture=neutral, PublicKeyToken=c39c3242a43eee2b</value>
+  </data>
+  <data name="&gt;&gt;tabTimer.Name" xml:space="preserve">
+    <value>tabTimer</value>
+  </data>
+  <data name="&gt;&gt;tabTimer.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.TabItem, DevComponents.DotNetBar2, Version=14.0.0.3, Culture=neutral, PublicKeyToken=c39c3242a43eee2b</value>
+  </data>
+  <data name="&gt;&gt;tabLogic.Name" xml:space="preserve">
+    <value>tabLogic</value>
+  </data>
+  <data name="&gt;&gt;tabLogic.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.TabItem, DevComponents.DotNetBar2, Version=14.0.0.3, Culture=neutral, PublicKeyToken=c39c3242a43eee2b</value>
+  </data>
+  <data name="&gt;&gt;tabReaction.Name" xml:space="preserve">
+    <value>tabReaction</value>
+  </data>
+  <data name="&gt;&gt;tabReaction.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.TabItem, DevComponents.DotNetBar2, Version=14.0.0.3, Culture=neutral, PublicKeyToken=c39c3242a43eee2b</value>
+  </data>
+  <data name="&gt;&gt;tabPanel.Name" xml:space="preserve">
+    <value>tabPanel</value>
+  </data>
+  <data name="&gt;&gt;tabPanel.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.TabItem, DevComponents.DotNetBar2, Version=14.0.0.3, Culture=neutral, PublicKeyToken=c39c3242a43eee2b</value>
+  </data>
+  <data name="&gt;&gt;tabScene.Name" xml:space="preserve">
+    <value>tabScene</value>
+  </data>
+  <data name="&gt;&gt;tabScene.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.TabItem, DevComponents.DotNetBar2, Version=14.0.0.3, Culture=neutral, PublicKeyToken=c39c3242a43eee2b</value>
+  </data>
+  <data name="&gt;&gt;tabPoint.Name" xml:space="preserve">
+    <value>tabPoint</value>
+  </data>
+  <data name="&gt;&gt;tabPoint.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.TabItem, DevComponents.DotNetBar2, Version=14.0.0.3, Culture=neutral, PublicKeyToken=c39c3242a43eee2b</value>
+  </data>
   <data name="&gt;&gt;tsNewfile.Name" xml:space="preserve">
     <value>tsNewfile</value>
   </data>
@@ -3057,54 +3105,6 @@
   </data>
   <data name="&gt;&gt;toolStripSeparator4.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;timer1.Name" xml:space="preserve">
-    <value>timer1</value>
-  </data>
-  <data name="&gt;&gt;timer1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Timer, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tabName.Name" xml:space="preserve">
-    <value>tabName</value>
-  </data>
-  <data name="&gt;&gt;tabName.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.TabItem, DevComponents.DotNetBar2, Version=14.0.0.3, Culture=neutral, PublicKeyToken=c39c3242a43eee2b</value>
-  </data>
-  <data name="&gt;&gt;tabTimer.Name" xml:space="preserve">
-    <value>tabTimer</value>
-  </data>
-  <data name="&gt;&gt;tabTimer.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.TabItem, DevComponents.DotNetBar2, Version=14.0.0.3, Culture=neutral, PublicKeyToken=c39c3242a43eee2b</value>
-  </data>
-  <data name="&gt;&gt;tabLogic.Name" xml:space="preserve">
-    <value>tabLogic</value>
-  </data>
-  <data name="&gt;&gt;tabLogic.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.TabItem, DevComponents.DotNetBar2, Version=14.0.0.3, Culture=neutral, PublicKeyToken=c39c3242a43eee2b</value>
-  </data>
-  <data name="&gt;&gt;tabReaction.Name" xml:space="preserve">
-    <value>tabReaction</value>
-  </data>
-  <data name="&gt;&gt;tabReaction.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.TabItem, DevComponents.DotNetBar2, Version=14.0.0.3, Culture=neutral, PublicKeyToken=c39c3242a43eee2b</value>
-  </data>
-  <data name="&gt;&gt;tabPanel.Name" xml:space="preserve">
-    <value>tabPanel</value>
-  </data>
-  <data name="&gt;&gt;tabPanel.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.TabItem, DevComponents.DotNetBar2, Version=14.0.0.3, Culture=neutral, PublicKeyToken=c39c3242a43eee2b</value>
-  </data>
-  <data name="&gt;&gt;tabScene.Name" xml:space="preserve">
-    <value>tabScene</value>
-  </data>
-  <data name="&gt;&gt;tabScene.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.TabItem, DevComponents.DotNetBar2, Version=14.0.0.3, Culture=neutral, PublicKeyToken=c39c3242a43eee2b</value>
-  </data>
-  <data name="&gt;&gt;tabPoint.Name" xml:space="preserve">
-    <value>tabPoint</value>
-  </data>
-  <data name="&gt;&gt;tabPoint.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.TabItem, DevComponents.DotNetBar2, Version=14.0.0.3, Culture=neutral, PublicKeyToken=c39c3242a43eee2b</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>Form1</value>

@@ -183,3 +183,9 @@ C:\Users\Administrator\Desktop\Gitlab\eNet\eNet编辑器\obj\x86\Release\eNet编
 C:\Users\Administrator\Desktop\Gitlab\eNet\eNet编辑器\obj\x86\Release\eNet编辑器.AddForm.timerHHMM.resources
 C:\Users\Administrator\Desktop\Gitlab\eNet\eNet编辑器\obj\x86\Release\eNet编辑器.ThreeView.ThreePanel.resources
 C:\Users\Administrator\Desktop\Gitlab\eNet\eNet编辑器\obj\x86\Release\eNet编辑器.DgvView.DgvPanel.resources
+C:\Users\Administrator\Desktop\Gitlab\eNet\eNet编辑器\bin\Release\Properties\Resources.resx
+C:\Users\Administrator\Desktop\Gitlab\eNet\eNet编辑器\bin\Release\Properties\AssemblyInfo.cs
+C:\Users\Administrator\Desktop\Gitlab\eNet\eNet编辑器\bin\Release\Properties\Resources.Designer.cs
+C:\Users\Administrator\Desktop\Gitlab\eNet\eNet编辑器\bin\Release\Properties\Settings.Designer.cs
+C:\Users\Administrator\Desktop\Gitlab\eNet\eNet编辑器\bin\Release\Properties\app.manifest
+C:\Users\Administrator\Desktop\Gitlab\eNet\eNet编辑器\bin\Release\Properties\Settings.settings

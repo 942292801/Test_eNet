@@ -669,25 +669,7 @@ namespace eNet编辑器
             this.Close();
         }
 
-        private void tsNewfile_Click(object sender, EventArgs e)
-        {
-            新建项目ToolStripMenuItem_Click(this,EventArgs.Empty);
-        }
 
-        private void tsOpenfile_Click(object sender, EventArgs e)
-        {
-            打开项目ToolStripMenuItem_Click(this, EventArgs.Empty);
-        }
-
-        private void tsSave_Click(object sender, EventArgs e)
-        {
-            保存ToolStripMenuItem_Click(this, EventArgs.Empty);
-        }
-
-        private void tsOtherSave_Click(object sender, EventArgs e)
-        {
-            另存为ToolStripMenuItem_Click(this, EventArgs.Empty);
-        }
 
 
     
@@ -774,6 +756,26 @@ namespace eNet编辑器
             fm.formclosing(e);
             
         }
+
+        private void tsNewfile_Click(object sender, EventArgs e)
+        {
+            新建项目ToolStripMenuItem_Click(this, EventArgs.Empty);
+        }
+
+        private void tsOpenfile_Click(object sender, EventArgs e)
+        {
+            打开项目ToolStripMenuItem_Click(this, EventArgs.Empty);
+        }
+
+        private void tsSave_Click(object sender, EventArgs e)
+        {
+            保存ToolStripMenuItem_Click(this, EventArgs.Empty);
+        }
+
+        private void tsOtherSave_Click(object sender, EventArgs e)
+        {
+            另存为ToolStripMenuItem_Click(this, EventArgs.Empty);
+        }
         #endregion
 
 
@@ -788,14 +790,7 @@ namespace eNet编辑器
             updataAllView();
         }
 
-        private void tsBackOut_Click(object sender, EventArgs e)
-        {
-            if (FileMesege.cmds == null || !FileMesege.cmds.CanUnDo)
-                return;
 
-            FileMesege.cmds.UnDo();
-            updataAllView();
-        }
 
         private void 重做ToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -803,6 +798,15 @@ namespace eNet编辑器
                 return;
 
             FileMesege.cmds.ReDo();
+            updataAllView();
+        }
+
+        private void tsBackOut_Click(object sender, EventArgs e)
+        {
+            if (FileMesege.cmds == null || !FileMesege.cmds.CanUnDo)
+                return;
+
+            FileMesege.cmds.UnDo();
             updataAllView();
         }
 
@@ -814,6 +818,7 @@ namespace eNet编辑器
             FileMesege.cmds.ReDo();
             updataAllView();
         }
+
 
         private void 剪切ToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -1015,6 +1020,9 @@ namespace eNet编辑器
         }
 
         #endregion
+
+      
+    
 
       
 
