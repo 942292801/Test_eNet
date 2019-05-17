@@ -1078,7 +1078,7 @@
   <data name="tsReform.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAADwAAAAwCAYAAABNPhkJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAMPSURBVGhD7ZlNbExRFMcHC1FfK6kFLRGJoAQJiaQ2XWNj
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAMPSURBVGhD7ZlNbExRFMcHC1FfK6kFLRGJoAQJiaQW3WNj
         1tM0hExSSafz/bmRphRbVhbaJYsKCbGSWEhEW0tViUoFRTq+EqLU70zOTF6fx3RMYu7j/pN/znv3nnPn
         /O+979773gQsLCwsLCwsLCz8jEwm05rP54/ncrnBdDo9kkqlXnP9Ue1INpu9TP2xQqHQoiFeWKTWXKjQ
         09jJcDj8JRQKfe3o6PiGyLky5V7KpZ77p7Af4eu0iRLokM2U38Ze1CLzQHJdCH1Mop9FWA0U/3HiO6Ud
@@ -1091,7 +1091,7 @@
         uGFZF1j4aor9q9BR/ultiZG+iW2PxWIr1dUTxDfhux+h18uxiB8T0dQtVjezQLKd7i1KSLm8D2OyO0m+
         8j4MV+HfTPk2/CL4PPGIvd/T07NMf8I8kOA5Ei26ExcidIb68hePBGWnGMWr2JdOPweLPCoXgsHgEm3e
         TJBo3d+04DSdMqBNmg+S7YKPSPxPvlpOEHtUm/IPmLrrSb4fPlvgd2nZ2s4T16pN+BMiACEnGLUhOKoL
-        m/zz8Ir7B1wPyuEFv40aYmFhYWFhYWFhYWE2AoEfBCN7+S+2/GUAAAAASUVORK5CYII=
+        m/zz8Ir7B1wPyuEFv40aYmFhYWFhYWFhYWE2AoEfd3973qs2D1AAAAAASUVORK5CYII=
 </value>
   </data>
   <data name="tsReform.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
@@ -1179,7 +1179,7 @@
   <data name="tsTimer.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAADwAAAAwCAYAAABNPhkJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAMPSURBVGhD7ZlNbExRFMcHC1FfK6kFLRGJoAQJiaQ2XWNj
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAMPSURBVGhD7ZlNbExRFMcHC1FfK6kFLRGJoAQJiaQW3WNj
         1tM0hExSSafz/bmRphRbVhbaJYsKCbGSWEhEW0tViUoFRTq+EqLU70zOTF6fx3RMYu7j/pN/znv3nnPn
         /O+979773gQsLCwsLCwsLCz8jEwm05rP54/ncrnBdDo9kkqlXnP9Ue1INpu9TP2xQqHQoiFeWKTWXKjQ
         09jJcDj8JRQKfe3o6PiGyLky5V7KpZ77p7Af4eu0iRLokM2U38Ze1CLzQHJdCH1Mop9FWA0U/3HiO6Ud
@@ -1192,7 +1192,7 @@
         uGFZF1j4aor9q9BR/ultiZG+iW2PxWIr1dUTxDfhux+h18uxiB8T0dQtVjezQLKd7i1KSLm8D2OyO0m+
         8j4MV+HfTPk2/CL4PPGIvd/T07NMf8I8kOA5Ei26ExcidIb68hePBGWnGMWr2JdOPweLPCoXgsHgEm3e
         TJBo3d+04DSdMqBNmg+S7YKPSPxPvlpOEHtUm/IPmLrrSb4fPlvgd2nZ2s4T16pN+BMiACEnGLUhOKoL
-        m/zz8Ir7B1wPyuEFv40aYmFhYWFhYWFhYWE2AoEfBCN7+S+2/GUAAAAASUVORK5CYII=
+        m/zz8Ir7B1wPyuEFv40aYmFhYWFhYWFhYWE2AoEfd3973qs2D1AAAAAASUVORK5CYII=
 </value>
   </data>
   <data name="tsTimer.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
@@ -2986,48 +2986,6 @@
   <data name="&gt;&gt;timer1.Type" xml:space="preserve">
     <value>System.Windows.Forms.Timer, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;tabName.Name" xml:space="preserve">
-    <value>tabName</value>
-  </data>
-  <data name="&gt;&gt;tabName.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.TabItem, DevComponents.DotNetBar2, Version=14.0.0.3, Culture=neutral, PublicKeyToken=c39c3242a43eee2b</value>
-  </data>
-  <data name="&gt;&gt;tabTimer.Name" xml:space="preserve">
-    <value>tabTimer</value>
-  </data>
-  <data name="&gt;&gt;tabTimer.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.TabItem, DevComponents.DotNetBar2, Version=14.0.0.3, Culture=neutral, PublicKeyToken=c39c3242a43eee2b</value>
-  </data>
-  <data name="&gt;&gt;tabLogic.Name" xml:space="preserve">
-    <value>tabLogic</value>
-  </data>
-  <data name="&gt;&gt;tabLogic.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.TabItem, DevComponents.DotNetBar2, Version=14.0.0.3, Culture=neutral, PublicKeyToken=c39c3242a43eee2b</value>
-  </data>
-  <data name="&gt;&gt;tabReaction.Name" xml:space="preserve">
-    <value>tabReaction</value>
-  </data>
-  <data name="&gt;&gt;tabReaction.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.TabItem, DevComponents.DotNetBar2, Version=14.0.0.3, Culture=neutral, PublicKeyToken=c39c3242a43eee2b</value>
-  </data>
-  <data name="&gt;&gt;tabPanel.Name" xml:space="preserve">
-    <value>tabPanel</value>
-  </data>
-  <data name="&gt;&gt;tabPanel.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.TabItem, DevComponents.DotNetBar2, Version=14.0.0.3, Culture=neutral, PublicKeyToken=c39c3242a43eee2b</value>
-  </data>
-  <data name="&gt;&gt;tabScene.Name" xml:space="preserve">
-    <value>tabScene</value>
-  </data>
-  <data name="&gt;&gt;tabScene.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.TabItem, DevComponents.DotNetBar2, Version=14.0.0.3, Culture=neutral, PublicKeyToken=c39c3242a43eee2b</value>
-  </data>
-  <data name="&gt;&gt;tabPoint.Name" xml:space="preserve">
-    <value>tabPoint</value>
-  </data>
-  <data name="&gt;&gt;tabPoint.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.TabItem, DevComponents.DotNetBar2, Version=14.0.0.3, Culture=neutral, PublicKeyToken=c39c3242a43eee2b</value>
-  </data>
   <data name="&gt;&gt;tsNewfile.Name" xml:space="preserve">
     <value>tsNewfile</value>
   </data>
@@ -3105,6 +3063,48 @@
   </data>
   <data name="&gt;&gt;toolStripSeparator4.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabName.Name" xml:space="preserve">
+    <value>tabName</value>
+  </data>
+  <data name="&gt;&gt;tabName.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.TabItem, DevComponents.DotNetBar2, Version=14.0.0.3, Culture=neutral, PublicKeyToken=c39c3242a43eee2b</value>
+  </data>
+  <data name="&gt;&gt;tabTimer.Name" xml:space="preserve">
+    <value>tabTimer</value>
+  </data>
+  <data name="&gt;&gt;tabTimer.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.TabItem, DevComponents.DotNetBar2, Version=14.0.0.3, Culture=neutral, PublicKeyToken=c39c3242a43eee2b</value>
+  </data>
+  <data name="&gt;&gt;tabLogic.Name" xml:space="preserve">
+    <value>tabLogic</value>
+  </data>
+  <data name="&gt;&gt;tabLogic.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.TabItem, DevComponents.DotNetBar2, Version=14.0.0.3, Culture=neutral, PublicKeyToken=c39c3242a43eee2b</value>
+  </data>
+  <data name="&gt;&gt;tabReaction.Name" xml:space="preserve">
+    <value>tabReaction</value>
+  </data>
+  <data name="&gt;&gt;tabReaction.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.TabItem, DevComponents.DotNetBar2, Version=14.0.0.3, Culture=neutral, PublicKeyToken=c39c3242a43eee2b</value>
+  </data>
+  <data name="&gt;&gt;tabPanel.Name" xml:space="preserve">
+    <value>tabPanel</value>
+  </data>
+  <data name="&gt;&gt;tabPanel.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.TabItem, DevComponents.DotNetBar2, Version=14.0.0.3, Culture=neutral, PublicKeyToken=c39c3242a43eee2b</value>
+  </data>
+  <data name="&gt;&gt;tabScene.Name" xml:space="preserve">
+    <value>tabScene</value>
+  </data>
+  <data name="&gt;&gt;tabScene.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.TabItem, DevComponents.DotNetBar2, Version=14.0.0.3, Culture=neutral, PublicKeyToken=c39c3242a43eee2b</value>
+  </data>
+  <data name="&gt;&gt;tabPoint.Name" xml:space="preserve">
+    <value>tabPoint</value>
+  </data>
+  <data name="&gt;&gt;tabPoint.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.TabItem, DevComponents.DotNetBar2, Version=14.0.0.3, Culture=neutral, PublicKeyToken=c39c3242a43eee2b</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>Form1</value>
