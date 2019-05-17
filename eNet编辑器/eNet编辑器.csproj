@@ -251,11 +251,11 @@
     <Compile Include="DataJson.cs" />
     <Compile Include="DataListHelper.cs" />
     <Compile Include="DgvMesege.cs" />
-    <Compile Include="DgvView\DgvBind.cs">
+    <Compile Include="DgvView\DgvPanel.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DgvView\DgvBind.Designer.cs">
-      <DependentUpon>DgvBind.cs</DependentUpon>
+    <Compile Include="DgvView\DgvPanel.Designer.cs">
+      <DependentUpon>DgvPanel.cs</DependentUpon>
     </Compile>
     <Compile Include="DgvView\DgvDevice.cs">
       <SubType>Form</SubType>
@@ -318,11 +318,11 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SocketUtil.cs" />
     <Compile Include="TcpSocket.cs" />
-    <Compile Include="ThreeView\ThreeBind.cs">
+    <Compile Include="ThreeView\ThreePanel.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ThreeView\ThreeBind.Designer.cs">
-      <DependentUpon>ThreeBind.cs</DependentUpon>
+    <Compile Include="ThreeView\ThreePanel.Designer.cs">
+      <DependentUpon>ThreePanel.cs</DependentUpon>
     </Compile>
     <Compile Include="ThreeView\ThreeLogic.cs">
       <SubType>Form</SubType>
@@ -415,8 +415,8 @@
     <EmbeddedResource Include="AddForm\tsSection.resx">
       <DependentUpon>tsSection.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DgvView\DgvBind.resx">
-      <DependentUpon>DgvBind.cs</DependentUpon>
+    <EmbeddedResource Include="DgvView\DgvPanel.resx">
+      <DependentUpon>DgvPanel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DgvView\DgvDevice.resx">
       <DependentUpon>DgvDevice.cs</DependentUpon>
@@ -462,8 +462,8 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="ThreeView\ThreeBind.resx">
-      <DependentUpon>ThreeBind.cs</DependentUpon>
+    <EmbeddedResource Include="ThreeView\ThreePanel.resx">
+      <DependentUpon>ThreePanel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ThreeView\ThreeLogic.resx">
       <DependentUpon>ThreeLogic.cs</DependentUpon>

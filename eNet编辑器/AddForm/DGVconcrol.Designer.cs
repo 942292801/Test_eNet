@@ -39,10 +39,10 @@
             this.lb4 = new System.Windows.Forms.Label();
             this.cb4 = new System.Windows.Forms.ComboBox();
             this.plInfoTitle = new System.Windows.Forms.Panel();
+            this.btnClose = new DevComponents.DotNetBar.ButtonX();
             this.symbolBox1 = new DevComponents.DotNetBar.Controls.SymbolBox();
             this.lbName = new System.Windows.Forms.Label();
             this.btnDecid = new DevComponents.DotNetBar.ButtonX();
-            this.btnClose = new DevComponents.DotNetBar.ButtonX();
             this.panel1 = new System.Windows.Forms.Panel();
             this.plInfoTitle.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -150,55 +150,8 @@
             this.plInfoTitle.Name = "plInfoTitle";
             this.plInfoTitle.Size = new System.Drawing.Size(211, 25);
             this.plInfoTitle.TabIndex = 70;
-            this.plInfoTitle.MouseDown += new System.Windows.Forms.MouseEventHandler(this.plInfoTitle_MouseDown);
-            this.plInfoTitle.MouseMove += new System.Windows.Forms.MouseEventHandler(this.plInfoTitle_MouseMove);
-            // 
-            // symbolBox1
-            // 
-            // 
-            // 
-            // 
-            this.symbolBox1.BackgroundStyle.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("symbolBox1.BackgroundStyle.BackgroundImage")));
-            this.symbolBox1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.symbolBox1.Location = new System.Drawing.Point(6, 6);
-            this.symbolBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.symbolBox1.Name = "symbolBox1";
-            this.symbolBox1.Size = new System.Drawing.Size(13, 13);
-            this.symbolBox1.Symbol = "";
-            this.symbolBox1.SymbolColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(119)))), ((int)(((byte)(119)))));
-            this.symbolBox1.TabIndex = 7;
-            this.symbolBox1.Text = "symbolBox1";
-            // 
-            // lbName
-            // 
-            this.lbName.AutoSize = true;
-            this.lbName.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lbName.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.lbName.Location = new System.Drawing.Point(25, 4);
-            this.lbName.Name = "lbName";
-            this.lbName.Size = new System.Drawing.Size(56, 17);
-            this.lbName.TabIndex = 1;
-            this.lbName.Text = "设备操作";
-            // 
-            // btnDecid
-            // 
-            this.btnDecid.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnDecid.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnDecid.BackColor = System.Drawing.Color.White;
-            this.btnDecid.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
-            this.btnDecid.FocusCuesEnabled = false;
-            this.btnDecid.Font = new System.Drawing.Font("黑体", 9F);
-            this.btnDecid.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None;
-            this.btnDecid.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnDecid.HoverImage")));
-            this.btnDecid.Image = ((System.Drawing.Image)(resources.GetObject("btnDecid.Image")));
-            this.btnDecid.Location = new System.Drawing.Point(175, 298);
-            this.btnDecid.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnDecid.Name = "btnDecid";
-            this.btnDecid.Size = new System.Drawing.Size(25, 20);
-            this.btnDecid.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnDecid.TabIndex = 4;
-            this.btnDecid.Tooltip = "确认";
-            this.btnDecid.Click += new System.EventHandler(this.btnDecid_Click);
+            this.plInfoTitle.MouseDown += new System.Windows.Forms.MouseEventHandler(this.lbName_MouseDown);
+            this.plInfoTitle.MouseMove += new System.Windows.Forms.MouseEventHandler(this.lbName_MouseMove);
             // 
             // btnClose
             // 
@@ -219,6 +172,57 @@
             this.btnClose.TabIndex = 9;
             this.btnClose.Tooltip = "关闭";
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
+            // symbolBox1
+            // 
+            // 
+            // 
+            // 
+            this.symbolBox1.BackgroundStyle.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("symbolBox1.BackgroundStyle.BackgroundImage")));
+            this.symbolBox1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.symbolBox1.Location = new System.Drawing.Point(6, 6);
+            this.symbolBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.symbolBox1.Name = "symbolBox1";
+            this.symbolBox1.Size = new System.Drawing.Size(13, 13);
+            this.symbolBox1.Symbol = "";
+            this.symbolBox1.SymbolColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(119)))), ((int)(((byte)(119)))));
+            this.symbolBox1.TabIndex = 7;
+            this.symbolBox1.Text = "symbolBox1";
+            this.symbolBox1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.lbName_MouseDown);
+            this.symbolBox1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.lbName_MouseMove);
+            // 
+            // lbName
+            // 
+            this.lbName.AutoSize = true;
+            this.lbName.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lbName.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.lbName.Location = new System.Drawing.Point(25, 4);
+            this.lbName.Name = "lbName";
+            this.lbName.Size = new System.Drawing.Size(56, 17);
+            this.lbName.TabIndex = 1;
+            this.lbName.Text = "设备操作";
+            this.lbName.MouseDown += new System.Windows.Forms.MouseEventHandler(this.lbName_MouseDown);
+            this.lbName.MouseMove += new System.Windows.Forms.MouseEventHandler(this.lbName_MouseMove);
+            // 
+            // btnDecid
+            // 
+            this.btnDecid.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnDecid.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnDecid.BackColor = System.Drawing.Color.White;
+            this.btnDecid.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
+            this.btnDecid.FocusCuesEnabled = false;
+            this.btnDecid.Font = new System.Drawing.Font("黑体", 9F);
+            this.btnDecid.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None;
+            this.btnDecid.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnDecid.HoverImage")));
+            this.btnDecid.Image = ((System.Drawing.Image)(resources.GetObject("btnDecid.Image")));
+            this.btnDecid.Location = new System.Drawing.Point(175, 298);
+            this.btnDecid.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnDecid.Name = "btnDecid";
+            this.btnDecid.Size = new System.Drawing.Size(25, 20);
+            this.btnDecid.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnDecid.TabIndex = 4;
+            this.btnDecid.Tooltip = "确认";
+            this.btnDecid.Click += new System.EventHandler(this.btnDecid_Click);
             // 
             // panel1
             // 

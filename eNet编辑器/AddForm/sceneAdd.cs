@@ -431,23 +431,24 @@ namespace eNet编辑器.AddForm
 
         private Point mPoint;
 
-        private void plInfoTitle_MouseDown(object sender, MouseEventArgs e)
+ 
+
+        private void btnClose_Click(object sender, EventArgs e)
         {
-            mPoint = new Point(e.X, e.Y);
-          
+            this.Close();
         }
 
-        private void plInfoTitle_MouseMove(object sender, MouseEventArgs e)
+        private void label6_MouseDown(object sender, MouseEventArgs e)
+        {
+            mPoint = new Point(e.X, e.Y);
+        }
+
+        private void label6_MouseMove(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
             {
                 this.Location = new Point(this.Location.X + e.X - mPoint.X, this.Location.Y + e.Y - mPoint.Y);
             }
-        }
-
-        private void btnClose_Click(object sender, EventArgs e)
-        {
-            this.Close();
         }
 
  

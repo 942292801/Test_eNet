@@ -22,7 +22,7 @@ namespace eNet编辑器
         public ThreePoint threepoint;
         public ThreeScene threescene;
         public ThreeTimer threetimer;
-        public ThreeBind threebind;
+        public ThreePanel threebind;
         public ThreeLogic threelogic;
         public ThreeOperation threeoperation;
         public ThreeSection threesection;
@@ -34,7 +34,7 @@ namespace eNet编辑器
         public DgvDevice dgvdevice;
         public DgvScene dgvscene;
         public DgvTimer dgvtimer;
-        public DgvBind dgvbind;
+        public DgvPanel dgvbind;
         public DgvLogic dgvlogic;
         public DgvOperation dgvoperation;
         //在线搜索窗体
@@ -77,7 +77,7 @@ namespace eNet编辑器
             threepoint = new ThreePoint();
             threescene = new ThreeScene();
             threetimer = new ThreeTimer();
-            threebind = new ThreeBind();
+            threebind = new ThreePanel();
             threelogic = new ThreeLogic();
             threeoperation = new ThreeOperation();
             threesection = new ThreeSection();
@@ -89,7 +89,7 @@ namespace eNet编辑器
             
             dgvscene = new DgvScene();
             dgvtimer = new DgvTimer();
-            dgvbind = new DgvBind();
+            dgvbind = new DgvPanel();
             dgvlogic = new DgvLogic();
             dgvoperation = new DgvOperation();
 
@@ -194,7 +194,7 @@ namespace eNet编辑器
             /////////////////////////////////////////////////////////////
             //dgv窗体跳转
             dgvscene.jumpSetInfo += new Action<DataJson.PointInfo>(dgv_jumpSetInfo);
-
+            dgvtimer.jumpSetInfo += new Action<DataJson.PointInfo>(dgv_jumpSetInfo);
             /////////////////////////////////////////////////////
             //初始化类型表
             cbtypeName("equipment");//初始化title类型表               
@@ -595,6 +595,7 @@ namespace eNet编辑器
 
 
         #region Muilt 新建文件 打开文件 另存为 保存 退出 窗体关闭
+
         private void 新建项目ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FileMesege fm = new FileMesege();
@@ -1014,6 +1015,8 @@ namespace eNet编辑器
         }
 
         #endregion
+
+      
 
  
 

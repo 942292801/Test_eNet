@@ -39,7 +39,10 @@ namespace eNet编辑器.DgvView
         /// </summary>
         public event Action<string> AppTxtShow;
 
-        
+        /// <summary>
+        /// 传输point点跳转窗口
+        /// </summary>
+        public event Action<DataJson.PointInfo> jumpSetInfo;
 
         private void DgvTimer_Load(object sender, EventArgs e)
         {
@@ -1432,6 +1435,16 @@ namespace eNet编辑器.DgvView
                                 //移除该行信息
                                 dataGridView1.Rows.Remove(dataGridView1.Rows[rowCount]);
                                 break;
+                            case "num":
+                                //设置对象跳转
+                                DataJson.PointInfo point = dgvJumpSet(id);
+                                if (point != null)
+                                {
+                                    //传输到form窗口控制
+                                    //AppTxtShow("传输到主窗口"+DateTime.Now);
+                                    jumpSetInfo(point);
+                                }
+                                break;
                             default: break;
                         }
                     }
@@ -1527,6 +1540,38 @@ namespace eNet编辑器.DgvView
                 }
             }
             catch (Exception ex) { MessageBox.Show(ex + "临时调试错误信息"); }
+        }
+
+
+        /// <summary>
+        /// 对象跳转获取 场景 定时 编组 point点
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        private DataJson.PointInfo dgvJumpSet(int id)
+        {
+            DataJson.timers tms = getTimersInfoList();
+            if (tms == null)
+            {
+                return null;
+            }
+            //获取sceneInfo对象表中对应ID号info对象
+            DataJson.timersInfo tmInfo = getTimerInfo(tms, id);
+            if (tmInfo == null)
+            {
+                return null;
+            }
+            if (string.IsNullOrEmpty(tmInfo.address))
+            {
+                return null;
+            }
+            if (tmInfo.type == "4.0_scene" || tmInfo.type == "5.0_time" || tmInfo.type == "6.0_group")
+            {
+                return DataListHelper.findPointByType_address(tmInfo.type, tmInfo.address);
+            }
+
+            return null;
+
         }
 
         /// <summary>

@@ -104,23 +104,56 @@ namespace eNet编辑器.AddForm
             }
 
             object isExit = null;
+            string itmeTxt = "";
             //窗口恢复
             if (!string.IsNullOrEmpty(ver) && !string.IsNullOrEmpty(opt))
             {
                 for (int i = 0; i < cbVersion.Items.Count; i++)
                 {
-                    
-                    if (cbVersion.Items[i].ToString() == ver)
+                    itmeTxt = cbVersion.Items[i].ToString();
+                    if (itmeTxt == ver)
                     {
                         //optName存在该名称
                         cbVersion.SelectedItem = cbVersion.Items[i];
-                        cb1.Text = DataChange.HexStringToString( opt.Substring(0,2));
-                        cb2.Text = DataChange.HexStringToString(opt.Substring(2, 2));
-                        cb3.Text = DataChange.HexStringToString(opt.Substring(4, 2));
-                        cb4.Text = DataChange.HexStringToString(opt.Substring(6, 2));
+                        string tmp1 = DataChange.HexStringToString( opt.Substring(0,2));
+                        for (int j = 0; j < cb1.Items.Count; j++)
+                        {
+                            if (cb1.Items[j].ToString().Contains(tmp1))
+                            {
+                                cb1.Text = cb1.Items[j].ToString();
+                                break;
+                            }
+                        }
+                        string tmp2 = DataChange.HexStringToString(opt.Substring(2, 2));
+                        for (int j = 0; j < cb2.Items.Count; j++)
+                        {
+                            if (cb2.Items[j].ToString().Contains(tmp2))
+                            {
+                                cb2.Text = cb2.Items[j].ToString();
+                                break;
+                            }
+                        }
+                        string tmp3 = DataChange.HexStringToString(opt.Substring(4, 2));
+                        for (int j = 0; j < cb3.Items.Count; j++)
+                        {
+                            if (cb3.Items[j].ToString().Contains(tmp3))
+                            {
+                                cb3.Text = cb3.Items[j].ToString();
+                                break;
+                            }
+                        }
+                        string tmp4 = DataChange.HexStringToString(opt.Substring(6, 2));
+                        for (int j = 0; j < cb4.Items.Count; j++)
+                        {
+                            if (cb4.Items[j].ToString().Contains(tmp4))
+                            {
+                                cb4.Text = cb4.Items[j].ToString();
+                                break;
+                            }
+                        }
                         return;
                     }
-                    if(cbVersion.Items[i].ToString() == "状态操作")
+                    if (itmeTxt == "状态操作")
                     {
                         isExit = cbVersion.Items[i];
                     }
@@ -137,7 +170,7 @@ namespace eNet编辑器.AddForm
                     { 
                         if(cb4.Items[i].ToString().Contains(tmp))
                         {
-                            cb4.Text = cb4.Items[i].ToString();
+                            cb4.SelectedItem = cb4.Items[i];
                             return;
                         }
                     }
@@ -286,8 +319,16 @@ namespace eNet编辑器.AddForm
                 this.opt = SocketUtil.strtohexstr(cb1Num) + SocketUtil.strtohexstr(cb2Num) + SocketUtil.strtohexstr(cb3Num) + SocketUtil.strtohexstr(cb4Num);
                 if (cb4.Text.Split(':').Length > 1)
                 {
-                    //当为getObj的操作的时候
-                    this.ver = cb4.Text.Split(':')[1];
+                    if (cbVersion.Text == "状态操作")
+                    {
+                        //当为getObj的操作的时候
+                        this.ver = cb4.Text.Split(':')[1];
+                    }
+                    else
+                    {
+                        this.ver = cbVersion.Text;
+                    }
+                   
                 }
                 else
                 {
@@ -337,6 +378,7 @@ namespace eNet编辑器.AddForm
 
         private void sceneConcrol_Paint(object sender, PaintEventArgs e)
         {
+            
             Rectangle myRectangle = new Rectangle(0, 0, this.Width, this.Height);
             //ControlPaint.DrawBorder(e.Graphics, myRectangle, Color.Blue, ButtonBorderStyle.Solid);//画个边框 
             ControlPaint.DrawBorder(e.Graphics, myRectangle,
@@ -349,6 +391,13 @@ namespace eNet编辑器.AddForm
 
         private Point mPoint;
 
+    
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
         private void plInfoTitle_MouseDown(object sender, MouseEventArgs e)
         {
             mPoint = new Point(e.X, e.Y);
@@ -360,11 +409,6 @@ namespace eNet编辑器.AddForm
             {
                 this.Location = new Point(this.Location.X + e.X - mPoint.X, this.Location.Y + e.Y - mPoint.Y);
             }
-        }
-
-        private void btnClose_Click(object sender, EventArgs e)
-        {
-            this.Close();
         }
 
         

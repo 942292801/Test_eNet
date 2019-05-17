@@ -165,6 +165,8 @@
             this.symbolBox1.SymbolColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(119)))), ((int)(((byte)(119)))));
             this.symbolBox1.TabIndex = 7;
             this.symbolBox1.Text = "symbolBox1";
+            this.symbolBox1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.plInfoTitle_MouseDown);
+            this.symbolBox1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.plInfoTitle_MouseMove);
             // 
             // lbTitle
             // 
@@ -176,6 +178,8 @@
             this.lbTitle.Size = new System.Drawing.Size(56, 17);
             this.lbTitle.TabIndex = 1;
             this.lbTitle.Text = "添加节点";
+            this.lbTitle.MouseDown += new System.Windows.Forms.MouseEventHandler(this.plInfoTitle_MouseDown);
+            this.lbTitle.MouseMove += new System.Windows.Forms.MouseEventHandler(this.plInfoTitle_MouseMove);
             // 
             // tsSection
             // 

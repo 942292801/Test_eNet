@@ -17,8 +17,8 @@
                         "pid": 40769,
                         "type": "1.0_switch",
                         "address": "E6000205",
-                        "opt": "00000001",
-                        "optName": "开启",
+                        "opt": "02010001",
+                        "optName": "短延时反复开关",
                         "Delay": 0
                     },
                     {
@@ -26,8 +26,8 @@
                         "pid": 12262,
                         "type": "7.0_ir",
                         "address": "E6000A04",
-                        "opt": "00000001",
-                        "optName": "状态操作",
+                        "opt": "0000000F",
+                        "optName": "频道加",
                         "Delay": 0
                     },
                     {

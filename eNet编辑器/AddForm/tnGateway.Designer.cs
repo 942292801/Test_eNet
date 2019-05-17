@@ -30,15 +30,15 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(tnGateway));
             this.plInfoTitle = new System.Windows.Forms.Panel();
+            this.btnClose = new DevComponents.DotNetBar.ButtonX();
             this.symbolBox1 = new DevComponents.DotNetBar.Controls.SymbolBox();
             this.lbTitle = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.btnDecid = new DevComponents.DotNetBar.ButtonX();
             this.txtGateway = new System.Windows.Forms.TextBox();
             this.cbVersion = new System.Windows.Forms.ComboBox();
-            this.btnDecid = new DevComponents.DotNetBar.ButtonX();
-            this.btnClose = new DevComponents.DotNetBar.ButtonX();
             this.plInfoTitle.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -57,6 +57,26 @@
             this.plInfoTitle.MouseDown += new System.Windows.Forms.MouseEventHandler(this.plInfoTitle_MouseDown);
             this.plInfoTitle.MouseMove += new System.Windows.Forms.MouseEventHandler(this.plInfoTitle_MouseMove);
             // 
+            // btnClose
+            // 
+            this.btnClose.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnClose.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnClose.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(228)))), ((int)(((byte)(228)))));
+            this.btnClose.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
+            this.btnClose.FocusCuesEnabled = false;
+            this.btnClose.Font = new System.Drawing.Font("黑体", 9F);
+            this.btnClose.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None;
+            this.btnClose.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnClose.HoverImage")));
+            this.btnClose.Image = ((System.Drawing.Image)(resources.GetObject("btnClose.Image")));
+            this.btnClose.Location = new System.Drawing.Point(192, 6);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(6);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(13, 13);
+            this.btnClose.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnClose.TabIndex = 9;
+            this.btnClose.Tooltip = "关闭";
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
             // symbolBox1
             // 
             // 
@@ -72,6 +92,8 @@
             this.symbolBox1.SymbolColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(119)))), ((int)(((byte)(119)))));
             this.symbolBox1.TabIndex = 7;
             this.symbolBox1.Text = "symbolBox1";
+            this.symbolBox1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.plInfoTitle_MouseDown);
+            this.symbolBox1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.plInfoTitle_MouseMove);
             // 
             // lbTitle
             // 
@@ -83,6 +105,8 @@
             this.lbTitle.Size = new System.Drawing.Size(56, 17);
             this.lbTitle.TabIndex = 1;
             this.lbTitle.Text = "添加网关";
+            this.lbTitle.MouseDown += new System.Windows.Forms.MouseEventHandler(this.plInfoTitle_MouseDown);
+            this.lbTitle.MouseMove += new System.Windows.Forms.MouseEventHandler(this.plInfoTitle_MouseMove);
             // 
             // panel1
             // 
@@ -117,26 +141,6 @@
             this.label2.TabIndex = 1;
             this.label2.Text = "型号：";
             // 
-            // txtGateway
-            // 
-            this.txtGateway.Location = new System.Drawing.Point(77, 15);
-            this.txtGateway.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txtGateway.Name = "txtGateway";
-            this.txtGateway.Size = new System.Drawing.Size(111, 23);
-            this.txtGateway.TabIndex = 55;
-            this.txtGateway.Text = "192.168.1.230";
-            // 
-            // cbVersion
-            // 
-            this.cbVersion.Enabled = false;
-            this.cbVersion.FormattingEnabled = true;
-            this.cbVersion.Location = new System.Drawing.Point(77, 58);
-            this.cbVersion.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.cbVersion.Name = "cbVersion";
-            this.cbVersion.Size = new System.Drawing.Size(111, 25);
-            this.cbVersion.TabIndex = 56;
-            this.cbVersion.Text = "GW100A";
-            // 
             // btnDecid
             // 
             this.btnDecid.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
@@ -157,25 +161,25 @@
             this.btnDecid.Tooltip = "确认";
             this.btnDecid.Click += new System.EventHandler(this.btnDecid_Click);
             // 
-            // btnClose
+            // txtGateway
             // 
-            this.btnClose.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnClose.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnClose.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(228)))), ((int)(((byte)(228)))));
-            this.btnClose.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
-            this.btnClose.FocusCuesEnabled = false;
-            this.btnClose.Font = new System.Drawing.Font("黑体", 9F);
-            this.btnClose.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None;
-            this.btnClose.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnClose.HoverImage")));
-            this.btnClose.Image = ((System.Drawing.Image)(resources.GetObject("btnClose.Image")));
-            this.btnClose.Location = new System.Drawing.Point(192, 6);
-            this.btnClose.Margin = new System.Windows.Forms.Padding(6);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(13, 13);
-            this.btnClose.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnClose.TabIndex = 9;
-            this.btnClose.Tooltip = "关闭";
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            this.txtGateway.Location = new System.Drawing.Point(77, 15);
+            this.txtGateway.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtGateway.Name = "txtGateway";
+            this.txtGateway.Size = new System.Drawing.Size(111, 23);
+            this.txtGateway.TabIndex = 55;
+            this.txtGateway.Text = "192.168.1.230";
+            // 
+            // cbVersion
+            // 
+            this.cbVersion.Enabled = false;
+            this.cbVersion.FormattingEnabled = true;
+            this.cbVersion.Location = new System.Drawing.Point(77, 58);
+            this.cbVersion.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.cbVersion.Name = "cbVersion";
+            this.cbVersion.Size = new System.Drawing.Size(111, 25);
+            this.cbVersion.TabIndex = 56;
+            this.cbVersion.Text = "GW100A";
             // 
             // tnGateway
             // 
