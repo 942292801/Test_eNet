@@ -200,7 +200,7 @@ namespace eNet编辑器.DgvView
 
     
       
-
+        /*
         /// <summary>
         /// 场景信息按照ID重新排列顺序
         /// </summary>
@@ -211,6 +211,19 @@ namespace eNet编辑器.DgvView
             {
                 return (x.id).CompareTo(y.id);
             });
+        }*/
+
+        /// <summary>
+        /// 场景信息 scenInfo 序号重新排序赋值
+        /// </summary>
+        private void sceneInfoSort(DataJson.scenes sc)
+        {
+            int i = 1;
+            foreach (DataJson.sceneInfo scinfo in sc.sceneInfo)
+            {
+                scinfo.id = i;
+                i++;
+            }
         }
 
         #endregion
@@ -245,22 +258,17 @@ namespace eNet编辑器.DgvView
             //撤销 
             DataJson.totalList OldList = FileMesege.cmds.getListInfos();
             int delay = 0;
-            HashSet<int> hasharry = new HashSet<int>();
-
-            //寻找最大的ID值
-            foreach (DataJson.sceneInfo find in sc.sceneInfo)
-            { 
-                if(find.id > id)
-                {
-                    hasharry.Add(find.id);
-                    type = find.type;
-                    opt = find.opt;
-                    optname = find.optName;
-                    delay = find.Delay;
-                    add = find.address;
-                }
+            if (sc.sceneInfo.Count > 0)
+            {
+                id = sc.sceneInfo[sc.sceneInfo.Count - 1].id;
+                type = sc.sceneInfo[sc.sceneInfo.Count - 1].type;
+                opt = sc.sceneInfo[sc.sceneInfo.Count - 1].opt;
+                optname = sc.sceneInfo[sc.sceneInfo.Count - 1].optName;
+                delay = sc.sceneInfo[sc.sceneInfo.Count - 1].Delay;
+                add = sc.sceneInfo[sc.sceneInfo.Count - 1].address;
             }
-            info.id = DataChange.polishId(hasharry);
+            
+            info.id = id +1 ;
             info.pid = 0;
             info.type = type;
             
@@ -333,7 +341,7 @@ namespace eNet编辑器.DgvView
             
             sc.sceneInfo.Add(info);
             //排序
-            sceneInfoSort(sc);
+            //sceneInfoSort(sc);
             DataJson.totalList NewList = FileMesege.cmds.getListInfos();
             FileMesege.cmds.DoNewCommand(NewList, OldList);
             //重新刷新
@@ -602,6 +610,7 @@ namespace eNet编辑器.DgvView
                 DataJson.totalList NewList = FileMesege.cmds.getListInfos();
                 FileMesege.cmds.DoNewCommand(NewList, OldList);
                 multipleList.Clear();
+                sceneInfoSort(sc);
                 dgvsceneAddItem();
             }
         }
@@ -726,8 +735,7 @@ namespace eNet编辑器.DgvView
                             case "del":
                                 //删除表
                                 dgvDle(id);
-                                //移除该行信息
-                                dataGridView1.Rows.Remove(dataGridView1.Rows[rowCount]);
+                           
                                 break;
                             case "num":
                                 //设置对象跳转
@@ -756,8 +764,7 @@ namespace eNet编辑器.DgvView
                             case "del":
                                 //删除表
                                 dgvDle(id);
-                                //移除该行信息
-                                dataGridView1.Rows.Remove(dataGridView1.Rows[rowCount]);
+                              
                                 break;
                             default: break;
                             
@@ -872,8 +879,10 @@ namespace eNet编辑器.DgvView
             //获取sceneInfo对象表中对应ID号info对象
             DataJson.sceneInfo info = getSceneID(sc, id);
             sc.sceneInfo.Remove(info);
+            sceneInfoSort(sc);
             DataJson.totalList NewList = FileMesege.cmds.getListInfos();
             FileMesege.cmds.DoNewCommand(NewList, OldList);
+            dgvsceneAddItem();
         }
 
         /// <summary>

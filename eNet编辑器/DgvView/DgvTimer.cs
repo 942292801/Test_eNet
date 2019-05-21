@@ -102,7 +102,7 @@ namespace eNet编辑器.DgvView
                 dealtmsDates_prior(tms);
                 List<DataJson.timersInfo> delTimer = new List<DataJson.timersInfo>();
                 string ip4 = SocketUtil.strtohexstr(SocketUtil.getIP(FileMesege.timerSelectNode));//16进制
-                //循环加载该场景号的所有信息
+                //循环加载该定时号的所有信息
                 foreach (DataJson.timersInfo tmInfo in tms.timersInfo)
                 {
                         
@@ -321,6 +321,7 @@ namespace eNet编辑器.DgvView
             return null;
         }
 
+        /*
         /// <summary>
         /// 定时信息按id号排序
         /// </summary>
@@ -331,6 +332,20 @@ namespace eNet编辑器.DgvView
             {
                 return (x.id).CompareTo(y.id);
             });
+        }*/
+
+        /// <summary>
+        /// 定时信息 timerInfo重新赋值排序
+        /// </summary>
+        /// <param name="tms"></param>
+        private void timerInfoSort(DataJson.timers tms)
+        {
+            int i = 1;
+            foreach(DataJson.timersInfo tmInfo in tms.timersInfo )
+            {
+                tmInfo.id = i;
+                i++;
+            }
         }
 
         #endregion
@@ -788,21 +803,16 @@ namespace eNet编辑器.DgvView
                 string type = "", opt = "", optname = "", add = "", shortTime = "";
                 //撤销 
                 DataJson.totalList OldList = FileMesege.cmds.getListInfos();
-                HashSet<int> hasharry = new HashSet<int>();
-                //寻找最大的ID值
-                foreach (DataJson.timersInfo find in tms.timersInfo)
+                if (tms.timersInfo.Count > 0)
                 {
-                    if (find.id > id)
-                    {
-                        hasharry.Add(find.id);
-                        type = find.type;
-                        opt = find.opt;
-                        optname = find.optName;
-                        shortTime = find.shortTime;
-                        add = find.address;
-                    }
+                    id = tms.timersInfo[tms.timersInfo.Count - 1].id;
+                    type = tms.timersInfo[tms.timersInfo.Count - 1].type;
+                    opt = tms.timersInfo[tms.timersInfo.Count - 1].opt;
+                    optname = tms.timersInfo[tms.timersInfo.Count - 1].optName;
+                    shortTime = tms.timersInfo[tms.timersInfo.Count - 1].shortTime;
+                    add = tms.timersInfo[tms.timersInfo.Count - 1].address;
                 }
-                tmInfo.id = DataChange.polishId(hasharry);
+                tmInfo.id = id +1;
                 tmInfo.pid = 0;
                 tmInfo.type = type;
                 tmInfo.opt = opt;
@@ -871,7 +881,7 @@ namespace eNet编辑器.DgvView
                 tmInfo.shortTime = shortTime;
                 tms.timersInfo.Add(tmInfo);
                 //排序
-                timerInfoSort(tms);
+                //timerInfoSort(tms);
                 DataJson.totalList NewList = FileMesege.cmds.getListInfos();
                 FileMesege.cmds.DoNewCommand(NewList, OldList);
                 //重新刷新
@@ -1267,6 +1277,7 @@ namespace eNet编辑器.DgvView
                 DataJson.totalList NewList = FileMesege.cmds.getListInfos();
                 FileMesege.cmds.DoNewCommand(NewList, OldList);
                 multipleList.Clear();
+                timerInfoSort(tms);
                 TimerAddItem();
             }
         }
@@ -1492,8 +1503,7 @@ namespace eNet编辑器.DgvView
                             case "del":
                                 //删除表
                                 dgvDle(id);
-                                //移除该行信息
-                                dataGridView1.Rows.Remove(dataGridView1.Rows[rowCount]);
+                     
                                 break;
                             case "num":
                                 //设置对象跳转
@@ -1522,8 +1532,7 @@ namespace eNet编辑器.DgvView
                             case "del":
                                 //删除表
                                 dgvDle(id);
-                                //移除该行信息
-                                dataGridView1.Rows.Remove(dataGridView1.Rows[rowCount]);
+                           
                                 break;
                             default: break;
 
@@ -1694,8 +1703,10 @@ namespace eNet编辑器.DgvView
             //撤销 
             DataJson.totalList OldList = FileMesege.cmds.getListInfos();
             tms.timersInfo.Remove(tmInfo);
+            timerInfoSort(tms);
             DataJson.totalList NewList = FileMesege.cmds.getListInfos();
             FileMesege.cmds.DoNewCommand(NewList, OldList);
+            TimerAddItem();
         }
 
 
