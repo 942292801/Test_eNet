@@ -84,7 +84,7 @@
             this.lb2.Name = "lb2";
             this.lb2.Size = new System.Drawing.Size(32, 17);
             this.lb2.TabIndex = 76;
-            this.lb2.Text = "链路";
+            this.lb2.Text = "设备";
             // 
             // cb3
             // 
@@ -104,6 +104,7 @@
             this.cb2.Name = "cb2";
             this.cb2.Size = new System.Drawing.Size(175, 25);
             this.cb2.TabIndex = 74;
+            this.cb2.TextChanged += new System.EventHandler(this.cb2_TextChanged);
             // 
             // cb1
             // 
