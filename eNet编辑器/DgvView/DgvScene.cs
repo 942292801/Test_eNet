@@ -246,6 +246,7 @@ namespace eNet编辑器.DgvView
             DataJson.totalList OldList = FileMesege.cmds.getListInfos();
             int delay = 0;
             HashSet<int> hasharry = new HashSet<int>();
+
             //寻找最大的ID值
             foreach (DataJson.sceneInfo find in sc.sceneInfo)
             { 
@@ -628,6 +629,7 @@ namespace eNet编辑器.DgvView
         //移动到删除的时候高亮一行
         private void dataGridView1_CellMouseMove(object sender, DataGridViewCellMouseEventArgs e)
         {
+            
             if (isClick == true)
             {
                 return;
@@ -665,8 +667,14 @@ namespace eNet编辑器.DgvView
 
                 isDoubleClick = true;
             }
-            if (isClick == true)
+            
+            if (isClick)
             {
+                if (dataGridView1.SelectedCells.Count == 1 && rowCount == oldrowCount && columnCount == oldcolumnCount)
+                {
+                    return;
+
+                }
                 isClick = false;
             }
             else
@@ -1179,30 +1187,39 @@ namespace eNet编辑器.DgvView
         {
             try
             {
-                //获取当前选中单元格的列序号
-                int colIndex = dataGridView1.CurrentRow.Cells.IndexOf(dataGridView1.CurrentCell);
-
-                //当粘贴选中单元格为操作
-                if (colIndex == 5)
+                bool ischange = false;
+                //撤销
+                DataJson.totalList OldList = FileMesege.cmds.getListInfos();
+                for (int i = 0; i < dataGridView1.SelectedCells.Count; i++)
                 {
-                    int id = Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value);
-                    string[] ips = FileMesege.sceneSelectNode.Parent.Text.Split(' ');
-                    string[] ids = FileMesege.sceneSelectNode.Text.Split(' ');
-                    int sceneNum = Convert.ToInt32(Regex.Replace(ids[0], @"[^\d]*", ""));
-                 
-                    //获取该节点IP地址场景下的 场景信息对象
-                    DataJson.scenes sc = DataListHelper.getSceneInfoList(ips[0], sceneNum);
-                    //获取sceneInfo对象表中对应ID号info对象
-                    DataJson.sceneInfo sceneInfo = getSceneID(sc, id);
-                    
-                    //撤销
-                    DataJson.totalList OldList = FileMesege.cmds.getListInfos();
-                    sceneInfo.opt = "";
-                    sceneInfo.optName = "";
+                    //获取当前选中单元格的列序号
+                    int colIndex = dataGridView1.SelectedCells[i].ColumnIndex;
+
+                    //当粘贴选中单元格为操作
+                    if (colIndex == 5)
+                    {
+                        int id = Convert.ToInt32(dataGridView1.Rows[dataGridView1.SelectedCells[i].RowIndex].Cells[0].Value);
+                        string[] ips = FileMesege.sceneSelectNode.Parent.Text.Split(' ');
+                        string[] ids = FileMesege.sceneSelectNode.Text.Split(' ');
+                        int sceneNum = Convert.ToInt32(Regex.Replace(ids[0], @"[^\d]*", ""));
+                        //撤销 
+                        //获取该节点IP地址场景下的 场景信息对象
+                        DataJson.scenes sc = DataListHelper.getSceneInfoList(ips[0], sceneNum);
+                        //获取sceneInfo对象表中对应ID号info对象
+                        DataJson.sceneInfo sceneInfo = getSceneID(sc, id);
+      
+                        ischange = true;
+                        sceneInfo.opt = "";
+                        sceneInfo.optName = "";
+
+                        dataGridView1.Rows[dataGridView1.SelectedCells[i].RowIndex].Cells[5].Value = null;
+                    }//if
+                }
+                if (ischange)
+                {
                     DataJson.totalList NewList = FileMesege.cmds.getListInfos();
                     FileMesege.cmds.DoNewCommand(NewList, OldList);
-                    dataGridView1.Rows[dataGridView1.CurrentCell.RowIndex].Cells[5].Value = null;
-                }//if
+                }
             }//try
             catch
             {

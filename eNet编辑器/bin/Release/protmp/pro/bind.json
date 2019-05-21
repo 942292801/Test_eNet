@@ -70,5 +70,77 @@
         ],
         "IP": "192.168.1.230",
         "Dev": "GW100A"
+    },
+    {
+        "Binds": [
+            {
+                "bindInfo": [
+                    {
+                        "keyId": 1,
+                        "groupId": 16,
+                        "objType": "开关",
+                        "address": null,
+                        "mode": null,
+                        "showType": "开关",
+                        "showAddress": null,
+                        "showMode": "无"
+                    },
+                    {
+                        "keyId": 2,
+                        "groupId": 16,
+                        "objType": "开关",
+                        "address": null,
+                        "mode": null,
+                        "showType": "开关",
+                        "showAddress": null,
+                        "showMode": "无"
+                    },
+                    {
+                        "keyId": 3,
+                        "groupId": 16,
+                        "objType": "开关",
+                        "address": null,
+                        "mode": null,
+                        "showType": "开关",
+                        "showAddress": null,
+                        "showMode": "无"
+                    },
+                    {
+                        "keyId": 4,
+                        "groupId": 16,
+                        "objType": "开关",
+                        "address": null,
+                        "mode": null,
+                        "showType": "开关",
+                        "showAddress": null,
+                        "showMode": "无"
+                    },
+                    {
+                        "keyId": 5,
+                        "groupId": 16,
+                        "objType": "开关",
+                        "address": null,
+                        "mode": null,
+                        "showType": "开关",
+                        "showAddress": null,
+                        "showMode": "无"
+                    },
+                    {
+                        "keyId": 6,
+                        "groupId": 16,
+                        "objType": "开关",
+                        "address": null,
+                        "mode": null,
+                        "showType": "开关",
+                        "showAddress": null,
+                        "showMode": "无"
+                    }
+                ],
+                "id": 16,
+                "bindName": "KP06A"
+            }
+        ],
+        "IP": "192.168.1.111",
+        "Dev": "GW100A"
     }
 ]

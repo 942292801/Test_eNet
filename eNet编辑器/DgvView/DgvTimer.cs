@@ -90,11 +90,8 @@ namespace eNet编辑器.DgvView
            
             try
             {
-                clear1_7Check();
-                clearVery_customCheck();
-                cbPriorHoliday.Checked = false;
-                listbox.Items.Clear();
-                this.dataGridView1.Rows.Clear();
+                IniForm();
+                
                 //multipleList.Clear();
                 //查看获取对象是否存在
                 DataJson.timers tms = getTimersInfoList();
@@ -190,6 +187,20 @@ namespace eNet编辑器.DgvView
         }
 
         /// <summary>
+        /// 清空初始化窗体
+        /// </summary>
+        private void IniForm()
+        {
+            clear1_7Check();
+            clearVery_customCheck();
+            cbPriorHoliday.Checked = false;
+            panel9.Visible = false;
+            listbox.Visible = false;
+            listbox.Items.Clear();
+            this.dataGridView1.Rows.Clear();
+        }
+
+        /// <summary>
         /// 处理基本日期信息
         /// </summary>
         /// <param name="tms"></param>
@@ -201,6 +212,8 @@ namespace eNet编辑器.DgvView
                 {
                     //为自定义日期
                     cbCustom.Checked = true;
+                    panel9.Visible = true;
+                    listbox.Visible = true;
                     string[] dates = tms.dates.Split(',');
                     for (int i = 0; i < dates.Length; i++)
                     {
@@ -370,6 +383,16 @@ namespace eNet编辑器.DgvView
         {
             clear1_7Check();
             cbCustom.Checked = false;
+            if (cbCustom.Checked)
+            {
+                panel9.Visible = true;
+                listbox.Visible = true;
+            }
+            else
+            {
+                panel9.Visible = false;
+                listbox.Visible = false;
+            }
             datesUpdate();
         }
 
@@ -378,6 +401,16 @@ namespace eNet编辑器.DgvView
         {
             clear1_7Check();
             cbEveryday.Checked = false;
+            if (cbCustom.Checked)
+            {
+                panel9.Visible = true;
+                listbox.Visible = true;
+            }
+            else
+            {
+                panel9.Visible = false;
+                listbox.Visible = false;
+            }
             datesUpdate();
 
         }
@@ -407,6 +440,10 @@ namespace eNet编辑器.DgvView
         {
             cbEveryday.Checked = false;
             cbCustom.Checked = false;
+
+            panel9.Visible = false;
+            listbox.Visible = false;
+            
         }
 
         //清除星期一 至 星期日的选中
@@ -494,6 +531,7 @@ namespace eNet编辑器.DgvView
             tms.dates = tms.dates.Trim().Replace(" ", ",");
             DataJson.totalList NewList = FileMesege.cmds.getListInfos();
             FileMesege.cmds.DoNewCommand(NewList, OldList);
+            
             //AppTxtShow(tms.dates);
         }
 
@@ -1283,32 +1321,49 @@ namespace eNet编辑器.DgvView
         {
             try
             {
-                //获取当前选中单元格的列序号
-                int colIndex = dataGridView1.CurrentRow.Cells.IndexOf(dataGridView1.CurrentCell);
 
-                //当粘贴选中单元格为操作
-                if (colIndex == 5)
+
+                bool ischange = false;
+                //撤销
+                DataJson.totalList OldList = FileMesege.cmds.getListInfos();
+                DataJson.timers tms = getTimersInfoList();
+                if (tms == null)
                 {
-
-                    DataJson.timers tms = getTimersInfoList();
-                    if (tms == null)
-                    {
-                        return;
-                    }
-                    //获取sceneInfo对象表中对应ID号info对象
-                    DataJson.timersInfo tmInfo = getTimerInfo(tms, Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value));
+                    return;
+                }
+                for (int i = 0; i < dataGridView1.SelectedCells.Count; i++)
+                {
+                    int colIndex = dataGridView1.SelectedCells[i].ColumnIndex;
+                    int id = Convert.ToInt32(dataGridView1.Rows[dataGridView1.SelectedCells[i].RowIndex].Cells[0].Value);
+                    DataJson.timersInfo tmInfo = getTimerInfo(tms, id);
                     if (tmInfo == null)
                     {
-                        return;
+                        continue;
                     }
-                    //撤销
-                    DataJson.totalList OldList = FileMesege.cmds.getListInfos();
-                    tmInfo.opt = "";
-                    tmInfo.optName = "";
+                    if (colIndex == 5)
+                    {
+
+                        ischange = true;
+                        tmInfo.opt = "";
+                        tmInfo.optName = "";
+
+                        dataGridView1.Rows[dataGridView1.SelectedCells[i].RowIndex].Cells[5].Value = null;
+                    }//if
+                    if (colIndex == 6)
+                    {
+
+                        ischange = true;
+                        tmInfo.shortTime = "";
+
+                        dataGridView1.Rows[dataGridView1.SelectedCells[i].RowIndex].Cells[6].Value = null;
+                    }//if
+                   
+                }
+                if (ischange)
+                {
                     DataJson.totalList NewList = FileMesege.cmds.getListInfos();
                     FileMesege.cmds.DoNewCommand(NewList, OldList);
-                    dataGridView1.Rows[dataGridView1.CurrentCell.RowIndex].Cells[5].Value = null;
-                }//if
+                }
             }//try
             catch
             {
@@ -1374,8 +1429,13 @@ namespace eNet编辑器.DgvView
 
                 isDoubleClick = true;
             }
-            if (isClick == true)
+            if (isClick)
             {
+                if (dataGridView1.SelectedCells.Count == 1 && rowCount == oldrowCount && columnCount == oldcolumnCount)
+                {
+                    return;
+
+                }
                 isClick = false;
             }
             else

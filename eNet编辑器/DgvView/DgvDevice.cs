@@ -417,10 +417,12 @@ namespace eNet编辑器.DgvView
         private bool isDoubleClick = false;
         private int milliseconds = 0;
 
+        int oldrowCount = 0;
+
         /// <summary>
         /// 选中行索引
         /// </summary>
-        private int count = 0;
+        private int rowcount = 0;
         /// <summary>
         /// 选中列索引
         /// </summary>
@@ -447,7 +449,7 @@ namespace eNet编辑器.DgvView
 
                     //DGV的行号
                     
-                    if (count >= 0)
+                    if (rowcount >= 0)
                     {
                         switch (dataGridView1.Columns[ind].Name)
                         {
@@ -457,11 +459,11 @@ namespace eNet编辑器.DgvView
                                 break;
                             case "DeviceSection":
                                 //添加地域信息
-                                sectionAdd(count);
+                                sectionAdd(rowcount);
                                 break;
                             case "DeviceTitle":
                                 //添加名称
-                                nameAdd(count);
+                                nameAdd(rowcount);
                                 break;
                             default: break;
                         }
@@ -477,7 +479,8 @@ namespace eNet编辑器.DgvView
 
         private void dataGridView1_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
         {
-            count = e.RowIndex;
+            oldrowCount = rowcount;
+            rowcount = e.RowIndex;
             ind = e.ColumnIndex;
             // 鼠标单击.
             if (isFirstClick)
@@ -490,6 +493,20 @@ namespace eNet编辑器.DgvView
             {
 
                 isDoubleClick = true;
+            }
+            
+            if (isClick)
+            {
+                if (dataGridView1.SelectedCells.Count == 1 && rowcount == oldrowCount)
+                {
+                    return;
+
+                }
+                isClick = false;
+            }
+            else
+            {
+                isClick = true;
             }
            
         }
@@ -672,97 +689,99 @@ namespace eNet编辑器.DgvView
                 {
                     return;
                 }
-                switch (dataGridView1.CurrentCell.ColumnIndex)
-                { 
-                    case 4:
-                        //区域 清空区域
-                        DelKeySection(dataGridView1.CurrentCell.RowIndex);
-                        break;
-                    case 5:
-                        //名称 清空名称
-                        DelKeyName(dataGridView1.CurrentCell.RowIndex);
-                        break;
-                    default: return;
-                }
-                dataGridView1.CurrentCell.Value = null;
+                delInfo();
+               
+             
             
             }
         }
 
-        //删除名称信息
-        private void DelKeyName(int count)
+        private void delInfo()
         {
-            //撤销
-            DataJson.totalList OldList = FileMesege.cmds.getListInfos();
-            string[] parents = FileMesege.tnselectNode.Text.Split(' ');
-            foreach (DataJson.Device dev in FileMesege.DeviceList)
+            try
             {
-                //判断IP地址
-                if (dev.ip == parents[0])
+                bool ischange = false;
+                string[] parents = FileMesege.tnselectNode.Text.Split(' ');
+                //撤销
+                DataJson.totalList OldList = FileMesege.cmds.getListInfos();
+                for (int i = 0; i < dataGridView1.SelectedCells.Count; i++)
                 {
-                    if (count > 0)
-                    {
-                        //为设备
-                        dev.module[count - 1].name= "";
-                    }
-                    else
-                    {
-                        //为网关
-                        dev.name = "";
-                    }
-                    //撤销
+                    //获取当前选中单元格的列序号
+                    int colIndex = dataGridView1.SelectedCells[i].ColumnIndex;
+                    //获取当前选中单元格的行序号
+                    int countIndex = dataGridView1.SelectedCells[i].RowIndex;
+                    //当粘贴选中单元格为对象和参数
 
+                    foreach (DataJson.Device dev in FileMesege.DeviceList)
+                    {
+                        //判断IP地址
+                        if (dev.ip == parents[0])
+                        {
+
+                            if (colIndex == 4)
+                            {
+                                if (countIndex > 0)
+                                {
+                                    //为设备
+                                    dev.module[countIndex - 1].area1 = "";
+                                    dev.module[countIndex - 1].area2 = "";
+                                    dev.module[countIndex - 1].area3 = "";
+                                    dev.module[countIndex - 1].area4 = "";
+
+                                }
+                                else
+                                {
+                                    //为网关
+                                    dev.area1 = "";
+                                    dev.area2 = "";
+                                    dev.area3 = "";
+                                    dev.area4 = "";
+                                }
+                                this.dataGridView1.Rows[dataGridView1.SelectedCells[i].RowIndex].Cells[4].Value = null;
+                            }
+                            if (colIndex == 5)
+                            {
+                                if (countIndex > 0)
+                                {
+                                    //为设备
+                                    dev.module[countIndex - 1].name = "";
+                                }
+                                else
+                                {
+                                    //为网关
+                                    dev.name = "";
+                                }
+                                this.dataGridView1.Rows[dataGridView1.SelectedCells[i].RowIndex].Cells[5].Value = null;
+                            }
+                            
+                         
+
+                         
+                        }
+
+
+                    }
+
+                }//for
+                if (ischange)
+                {
                     DataJson.totalList NewList = FileMesege.cmds.getListInfos();
                     FileMesege.cmds.DoNewCommand(NewList, OldList);
-                    return;
+                    updateSectionTitleNode();
                 }
-
+            }//try
+            catch
+            {
 
             }
         }
 
-        //删除区域信息
-        private void DelKeySection(int count)
-        {
-            //撤销
-            DataJson.totalList OldList = FileMesege.cmds.getListInfos();
-            string[] parents = FileMesege.tnselectNode.Text.Split(' ');
-            foreach (DataJson.Device dev in FileMesege.DeviceList)
-            {
-                //判断IP地址
-                if (dev.ip == parents[0])
-                {
-                    if (count > 0)
-                    {
-                        //为设备
-                        dev.module[count - 1].area1 = "";
-                        dev.module[count - 1].area2 = "";
-                        dev.module[count - 1].area3 = "";
-                        dev.module[count - 1].area4 = "";
-
-                    }
-                    else
-                    {
-                        //为网关
-                        dev.area1 = "";
-                        dev.area2 = "";
-                        dev.area3 = "";
-                        dev.area4 = "";
-                    }
-                    //撤销
-                    DataJson.totalList NewList = FileMesege.cmds.getListInfos();
-                    FileMesege.cmds.DoNewCommand(NewList, OldList);
-                    return;
-                }
-
-
-            }
-        }
+   
         #endregion
 
 
         #region 鼠标右击 和鼠标图标更改
-
+        
         /// <summary>
         /// 右击鼠标清位置信息与名字信息
         /// </summary>
@@ -782,15 +801,9 @@ namespace eNet编辑器.DgvView
                 //cursor_default();
                 //dgvNameCursorDefault();
             }
-            if (isClick == true)
-            {
-                isClick = false;
-            }
-            else
-            {
-                isClick = true;
-            }
+            
         }
+
         bool isClick = false;
         //移动到删除的时候高亮一行
         private void dataGridView1_CellMouseMove(object sender, DataGridViewCellMouseEventArgs e)

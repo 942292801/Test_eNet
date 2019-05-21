@@ -56,6 +56,7 @@
             // dataGridView1
             // 
             this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
             this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridView1.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableAlwaysIncludeHeaderText;
@@ -301,7 +302,7 @@
             this.panel1.Size = new System.Drawing.Size(1006, 775);
             this.panel1.TabIndex = 18;
             // 
-            // DgvBind
+            // DgvPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -309,7 +310,7 @@
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("微软雅黑", 9F);
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Name = "DgvBind";
+            this.Name = "DgvPanel";
             this.Text = "DgvBind";
             this.Load += new System.EventHandler(this.DgvBind_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

@@ -198,7 +198,7 @@ namespace eNet编辑器.AddForm
                     if (FileMesege.sectionNodeCopy != null)
                     {
                         string[] sections = FileMesege.sectionNodeCopy.Split('\\');
-                        if (sections[0] != "全部")
+                        if (sections[0] != "全部" && !isHoliday)
                         {
                             
                             ComboBox[] cbs = { cbs1, cbs2, cbs3, cbs4 };

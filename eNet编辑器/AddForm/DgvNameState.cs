@@ -115,16 +115,18 @@ namespace eNet编辑器.AddForm
                             //开启Enable
                             slds[keyIndex - 1].Visible = true;
                             lbs[keyIndex - 1].Visible = true;
-                            this.Size = new Size(326, this.Size.Height + 32);
+                            
+                            //显示大小
+                            //this.Size = new Size(254, this.Size.Height + 38);
                         }
-                        slds[keyIndex - 1].TextColor = Color.Red;
+                        //slds[keyIndex - 1].TextColor = Color.Red;
                     }
 
 
 
                     //lbs控件处理
                     lbs[keyIndex - 1].Text = infos[4];
-                    lbs[keyIndex - 1].ForeColor = Color.Red;
+                    //lbs[keyIndex - 1].ForeColor = Color.Red;
 
                 }
                 //连接tcp
@@ -280,6 +282,55 @@ namespace eNet编辑器.AddForm
                 client.SendAsync(msg);
                 
             }
+        }
+
+        #region 窗口样色
+        private void DgvNameState_Deactivate(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void DgvNameState_Paint(object sender, PaintEventArgs e)
+        {
+            Rectangle myRectangle = new Rectangle(0, 0, this.Width, this.Height);
+            //ControlPaint.DrawBorder(e.Graphics, myRectangle, Color.Blue, ButtonBorderStyle.Solid);//画个边框 
+            ControlPaint.DrawBorder(e.Graphics, myRectangle,
+                Color.DarkGray, 1, ButtonBorderStyle.Solid,
+                Color.DarkGray, 1, ButtonBorderStyle.Solid,
+                Color.DarkGray, 2, ButtonBorderStyle.Solid,
+                Color.DarkGray, 2, ButtonBorderStyle.Solid
+            );
+        }
+
+        private Point mPoint;
+        private void plInfoTitle_MouseDown(object sender, MouseEventArgs e)
+        {
+            mPoint = new Point(e.X, e.Y);
+        }
+
+        private void plInfoTitle_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                this.Location = new Point(this.Location.X + e.X - mPoint.X, this.Location.Y + e.Y - mPoint.Y);
+            }
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        #endregion
+
+        private void sld1_DecreaseButtonClick(object sender, EventArgs e)
+        {
+
+        }
+
+        private void sld1_IncreaseButtonClick(object sender, EventArgs e)
+        {
+
         }
 
        

@@ -523,6 +523,19 @@ namespace eNet编辑器.DgvView
 
                 isDoubleClick = true;
             }
+            if (isClick)
+            {
+                if (dataGridView1.SelectedCells.Count == 1 && rowCount == oldrowCount && columnCount == oldcolumnCount)
+                {
+                    return;
+
+                }
+                isClick = false;
+            }
+            else
+            {
+                isClick = true;
+            }
         }
 
         private void doubleClickTimer_Tick(object sender, EventArgs e)
@@ -917,14 +930,7 @@ namespace eNet编辑器.DgvView
                 updateTitleNode();
                 
             }
-            if (isClick == true)
-            {
-                isClick = false;
-            }
-            else
-            {
-                isClick = true;
-            }
+       
             
         }
 
@@ -1084,15 +1090,17 @@ namespace eNet编辑器.DgvView
         {
             try
             {
-                //获取当前选中单元格的列序号
-                int colIndex = dataGridView1.CurrentRow.Cells.IndexOf(dataGridView1.CurrentCell);
-
-                //当粘贴选中单元格为操作
-                if (colIndex == 4 || colIndex == 5)
+                bool ischange = false;
+                //撤销
+                DataJson.totalList OldList = FileMesege.cmds.getListInfos();
+                for (int i = 0; i < dataGridView1.SelectedCells.Count; i++)
                 {
-
+                    //获取当前选中单元格的列序号
+                    int colIndex = dataGridView1.SelectedCells[i].ColumnIndex;
+                    //当粘贴选中单元格为对象和参数
+                  
                     //区域
-                    List<string> section = dataGridView1.Rows[dataGridView1.CurrentCell.RowIndex].Cells[2].Value.ToString().Split(' ').ToList();
+                    List<string> section = dataGridView1.Rows[dataGridView1.SelectedCells[i].RowIndex].Cells[2].Value.ToString().Split(' ').ToList();
                     while (section.Count != 4)
                     {
                         section.Add("");
@@ -1100,22 +1108,36 @@ namespace eNet编辑器.DgvView
                     foreach (DataJson.PointInfo eq in FileMesege.PointList.equipment)
                     {
                         //当地域信息相同
-                        if (eq.area1 == section[0] && eq.area2 == section[1] && eq.area3 == section[2] && eq.area4 == section[3] && eq.name == dataGridView1.Rows[dataGridView1.CurrentCell.RowIndex].Cells[3].Value.ToString())
-                        { 
-                            //撤销
-                            DataJson.totalList OldList = FileMesege.cmds.getListInfos();
-                            eq.value = "";
-                            eq.objType = "";
-                            DataJson.totalList NewList = FileMesege.cmds.getListInfos();
-                            FileMesege.cmds.DoNewCommand(NewList, OldList);
-                            dataGridView1.Rows[dataGridView1.CurrentCell.RowIndex].Cells[4].Value = null;
-                            dataGridView1.Rows[dataGridView1.CurrentCell.RowIndex].Cells[5].Value = null;
-                            break;
+                        if (eq.area1 == section[0] && eq.area2 == section[1] && eq.area3 == section[2] && eq.area4 == section[3] && eq.name == dataGridView1.Rows[dataGridView1.SelectedCells[i].RowIndex].Cells[3].Value.ToString())
+                        {
+                            if (colIndex == 4 )
+                            {
+                                eq.objType = "";
+                                eq.value = "";
+                                ischange = true;
+                                this.dataGridView1.Rows[dataGridView1.SelectedCells[i].RowIndex].Cells[4].Value = null;
+                                this.dataGridView1.Rows[dataGridView1.SelectedCells[i].RowIndex].Cells[5].Value = null;
+                                
+                            }
+                            if (colIndex == 5)
+                            {
+                                eq.value = "";
+                                ischange = true;
+                                this.dataGridView1.Rows[dataGridView1.SelectedCells[i].RowIndex].Cells[5].Value = null;
+                                
+
+                            }
+                            break; 
+                           
                         }
                     }
-                   
-                
-                }//if
+                    
+                }//for
+                if (ischange)
+                {
+                    DataJson.totalList NewList = FileMesege.cmds.getListInfos();
+                    FileMesege.cmds.DoNewCommand(NewList, OldList);
+                }
             }//try
             catch
             {
