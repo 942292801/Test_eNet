@@ -1048,21 +1048,21 @@ namespace eNet编辑器.DgvView
                 {
                     return;
                 }
-                //按照地址查找type的类型 
+                //按照地址查找type的类型 只限制于设备
                 string type = IniHelper.findIniTypesByAddress(ips[0],info.address).Split(',')[0];
                 if(string.IsNullOrEmpty(type))
                 {
-                    type = IniHelper.findTypesIniTypebyName(objType);
+                    type = dc.RtType; 
+                    
                 }
                 info.type = type;
                 //获取树状图的IP第四位  + Address地址的 后六位
                 string ad = SocketUtil.GetIPstyle(ips[0], 4) + info.address.Substring(2, 6);
                 //区域加名称
-                DataJson.PointInfo point = DataListHelper.findPointByType_address(type, ad);
+                DataJson.PointInfo point = DataListHelper.findPointByType_address("", ad);
                 
                 if (point != null)
                 {
-                   
                     info.pid = point.pid;
                     info.type = point.type;
                     if (info.type != point.type)
@@ -1070,16 +1070,13 @@ namespace eNet编辑器.DgvView
                         info.opt = "";
                         info.optName = "";
                     }
-                   
-
 
                 }
                 else
                 {
                     //搜索一次dev表 
-
                     info.pid = 0;
-                    //info.type = "";
+                    //info.type = dc.ObjType;
                     info.opt = "";
                     info.optName = "";
                 }

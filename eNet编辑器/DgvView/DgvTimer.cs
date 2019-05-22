@@ -1755,7 +1755,7 @@ namespace eNet编辑器.DgvView
                 string type = IniHelper.findIniTypesByAddress(ip, tmInfo.address).Split(',')[0];
                 if (string.IsNullOrEmpty(type))
                 {
-                    type = IniHelper.findTypesIniTypebyName(objType);
+                    type = dc.RtType; 
                 }
                 tmInfo.type = type;
                 //获取树状图的IP第四位  + Address地址的 后六位

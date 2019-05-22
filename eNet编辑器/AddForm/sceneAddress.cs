@@ -40,6 +40,17 @@ namespace eNet编辑器.AddForm
         }
 
         /// <summary>
+        /// 返回 类型（英文4.0_scene）
+        /// </summary>
+        private string rtType;
+
+        public string RtType
+        {
+            get { return rtType; }
+            set { rtType = value; }
+        }
+
+        /// <summary>
         /// 存放当前dev表中读取到的 ID+设备
         /// </summary>
         List<string> devName = null;
@@ -355,6 +366,8 @@ namespace eNet编辑器.AddForm
                 //找到类型一致
                 if (type == cbType)
                 {
+                    //记录当前类型 场景 定时 面板 人感
+                    rtType = file.Name.Replace(".ini","");
                     Label[] lbs = { lb1, lb2, lb3, lb4 };
                     ComboBox[] cbs = { cb1, cb2, cb3, cb4 };
                     //读取【address】1-4信息
@@ -376,6 +389,8 @@ namespace eNet编辑器.AddForm
                     }
                     break;
                 }
+                //不存在该个类型
+                rtType = "";
             }///foreach 
              
         }
