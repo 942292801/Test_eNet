@@ -14,76 +14,6 @@
                         "showMode": ""
                     },
                     {
-                        "id": 1,
-                        "pid": 0,
-                        "keyAddress": "",
-                        "objAddress": "",
-                        "objType": "",
-                        "opt": 0,
-                        "showAddress": "",
-                        "showMode": ""
-                    },
-                    {
-                        "id": 1,
-                        "pid": 0,
-                        "keyAddress": "",
-                        "objAddress": "",
-                        "objType": "",
-                        "opt": 0,
-                        "showAddress": "",
-                        "showMode": ""
-                    },
-                    {
-                        "id": 1,
-                        "pid": 0,
-                        "keyAddress": "",
-                        "objAddress": "",
-                        "objType": "",
-                        "opt": 0,
-                        "showAddress": "",
-                        "showMode": ""
-                    },
-                    {
-                        "id": 1,
-                        "pid": 0,
-                        "keyAddress": "",
-                        "objAddress": "",
-                        "objType": "",
-                        "opt": 0,
-                        "showAddress": "",
-                        "showMode": ""
-                    },
-                    {
-                        "id": 1,
-                        "pid": 0,
-                        "keyAddress": "",
-                        "objAddress": "",
-                        "objType": "",
-                        "opt": 0,
-                        "showAddress": "",
-                        "showMode": ""
-                    },
-                    {
-                        "id": 1,
-                        "pid": 0,
-                        "keyAddress": "",
-                        "objAddress": "",
-                        "objType": "",
-                        "opt": 0,
-                        "showAddress": "",
-                        "showMode": ""
-                    },
-                    {
-                        "id": 1,
-                        "pid": 0,
-                        "keyAddress": "",
-                        "objAddress": "",
-                        "objType": "",
-                        "opt": 0,
-                        "showAddress": "",
-                        "showMode": ""
-                    },
-                    {
                         "id": 2,
                         "pid": 0,
                         "keyAddress": "",
@@ -115,7 +45,7 @@
                     }
                 ],
                 "id": 1,
-                "pid": 14907,
+                "pid": 74397,
                 "keyNum": 4
             }
         ],

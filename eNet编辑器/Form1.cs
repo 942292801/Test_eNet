@@ -233,7 +233,6 @@ namespace eNet编辑器
             threesection.ThreeSEctionAddNode();
             threetitle.ThreeTitleAddNode(cbType.SelectedIndex); 
 
-            //dgvdevice.dgvDeviceAddItem();
             dgvname.dgvNameAddItem();
             dgvpoint.dgvPointAddItemBySection();
             dgvscene.dgvsceneAddItem();
@@ -606,9 +605,6 @@ namespace eNet编辑器
                     this.Text = Resources.SoftName + "Edit New Project";
                     txtShow.AppendText("新建工程\r\n");
                     updataAllView();
-                    threesection.ThreeSEctionAddNode();
-                    //添加对象树状图
-                    threetitle.ThreeTitleAddNode(cbType.SelectedIndex);  
                
             }
             else

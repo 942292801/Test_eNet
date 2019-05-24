@@ -82,6 +82,7 @@ namespace eNet编辑器.AddForm
                     //不为设备类型
                     cb1.Text = infos[0];
                     cb4.Text = (Convert.ToInt32(infos[2]) * 256 + Convert.ToInt32(infos[3])).ToString();
+                    findNum();
                 }
                 else
                 {
@@ -219,35 +220,7 @@ namespace eNet编辑器.AddForm
             }
         }
 
-        /// <summary>
-        /// 寻找该设备的端口数目
-        /// </summary>
-        /// <param name="id"></param>
-        public void findPort(string id)
-        {
-            if (devName == null)
-            {
-                return;
-            }
-            for (int i = 0; i < devName.Count; i++)
-            {
-                if (devName[i].Split(' ')[0] == id)
-                {
-                    string filepath = string.Format("{0}\\devices\\{1}.ini", Application.StartupPath, devName[i].Split(' ')[1]); 
-                    //获取全部Section下的Key
-                    List<string> list = IniConfig.ReadKeys("ports", filepath);
-                    cb4.Items.Clear();
-                    //循环添加行信息
-                    for (int j = 0; j < list.Count; j++)
-                    {
-
-                        cb4.Items.Add(list[j]);
-                    }
-                    break;
-                }
-            }
-            
-        }
+       
 
         /// <summary>
         /// cb信息内容的判断1-9 或 1,2,3  或数字（链路类型）
@@ -357,6 +330,10 @@ namespace eNet编辑器.AddForm
             {
                 addIp();
             }
+            else
+            {
+                findNum();
+            }
             
         }
 
@@ -409,8 +386,90 @@ namespace eNet编辑器.AddForm
 
         private void cb3_TextChanged(object sender, EventArgs e)
         {
-            findPort(cb3.Text);
+            if (cb3.Enabled)
+            {
+                findPort(cb3.Text);
+            }
+ 
+            
         }
+
+        /// <summary>
+        /// 寻找该设备的端口数目
+        /// </summary>
+        /// <param name="id"></param>
+        private void findPort(string id)
+        {
+            if (devName == null)
+            {
+                return;
+            }
+            for (int i = 0; i < devName.Count; i++)
+            {
+                if (devName[i].Split(' ')[0] == id)
+                {
+                    string filepath = string.Format("{0}\\devices\\{1}.ini", Application.StartupPath, devName[i].Split(' ')[1]);
+                    //获取全部Section下的Key
+                    List<string> list = IniConfig.ReadKeys("ports", filepath);
+                    cb4.Items.Clear();
+                    //循环添加行信息
+                    for (int j = 0; j < list.Count; j++)
+                    {
+
+                        cb4.Items.Add(list[j]);
+                    }
+                    break;
+                }
+            }
+
+        }
+
+        /// <summary>
+        /// 查找当前ip的存在场景 定时 面板 号
+        /// </summary>
+        private void findNum()
+        {
+            try
+            {
+                
+                cb4.Items.Clear();
+                switch (cb2.Text)
+                {
+                    case "场景":
+                        DataJson.Scene scene = DataListHelper.getSceneList(ip);
+
+                        foreach (DataJson.scenes scenes in scene.scenes)
+                        {
+                            cb4.Items.Add(scenes.id);
+                        }
+                        break;
+                    case "定时":
+                        DataJson.Timer timer = DataListHelper.getTimerList(ip);
+
+                        foreach (DataJson.timers tms in timer.timers)
+                        {
+                            cb4.Items.Add(tms.id);
+                        }
+                        break;
+                    case "面板":
+                        DataJson.Panel panel = DataListHelper.getPanelList(ip);
+
+                        foreach (DataJson.panels pls in panel.panels)
+                        {
+                            cb4.Items.Add(pls.id);
+                        }
+                        break;
+                    case "人感":
+                        break;
+                    case "":
+                        break;
+                    default:
+                        break;
+                }
+            }
+            catch { }
+        }
+        
 
         private void sceneAddress_Paint(object sender, PaintEventArgs e)
         {

@@ -146,7 +146,7 @@ namespace eNet编辑器.AddForm
             }
             string filepath = Application.StartupPath + "\\names\\commonName.ini";
             //名称 加入新的元素
-            string strs = IniConfig.GetValue(filepath, "treeNode", "scene");
+            string strs = IniConfig.GetValue(filepath, "treeNode", "panel");
             if (!String.IsNullOrWhiteSpace(strs))
             {
                 string[] strarr = strs.Split(',');

@@ -88,7 +88,7 @@ namespace eNet编辑器.DgvView
             showmode.DisplayStyle = DataGridViewComboBoxDisplayStyle.Nothing;
             //或者这样设置 默认选择第一项
             showmode.DefaultCellStyle.NullValue = showmode.Items[0];
-            showmode.Name = "showmode";
+            showmode.Name = "showMode";
 
             //插入执行对象类型
             this.dataGridView1.Columns.Insert(3, objType);
@@ -107,36 +107,17 @@ namespace eNet编辑器.DgvView
            
             try
             {
-                this.dataGridView1.Rows.Clear();
-                rbThree.Checked = false;
-                rbFour.Checked = false;
-                rbSix.Checked = false;
-                rbEight.Checked = false;
+                
+                
                 int tmpId = -1;
                 DataJson.panels pls = DataListHelper.getPanelsInfoListByNode();
                 if (pls == null)
                 {
                     return;
                 }
-                switch (pls.keyNum)
-                { 
-                    case 3:
-                        rbThree.Checked = true;
-                        break;
-                    case 4:
-                        rbFour.Checked = true;
-                        break;
-                    case 6:
-                        rbSix.Checked = true;
-                        break;
-                    case 8:
-                        rbEight.Checked = true;
-                        break;
-                    default:
-                        AppTxtShow("请选择该面板键数！");
-                        return;
-                        
-                }
+                cbKeyNum.SelectedIndex = pls.keyNum - 1;
+                this.dataGridView1.Rows.Clear();
+               
                 
                 List<DataJson.panelsInfo> delPanel = new List<DataJson.panelsInfo>();
                 string ip4 = SocketUtil.strtohexstr(SocketUtil.getIP(FileMesege.timerSelectNode));//16进制
@@ -453,9 +434,23 @@ namespace eNet编辑器.DgvView
                 //撤销 
                 DataJson.totalList OldList = FileMesege.cmds.getListInfos();
                 pls.panelsInfo.Clear();
+                for (int i = 1; i <= pls.keyNum; i++)
+                {
+                    //添加改id的按键
+                    DataJson.panelsInfo plInfo = new DataJson.panelsInfo();
+                    plInfo.id = i;
+                    plInfo.pid = 0;
+                    plInfo.keyAddress = "";
+                    plInfo.objAddress = "";
+                    plInfo.objType = "";
+                    plInfo.opt = 0;
+                    plInfo.showAddress = "";
+                    plInfo.showMode = "";
+                    pls.panelsInfo.Add(plInfo);
+                }
                 DataJson.totalList NewList = FileMesege.cmds.getListInfos();
                 FileMesege.cmds.DoNewCommand(NewList, OldList);
-                this.dataGridView1.Rows.Clear();
+                dgvPanelAddItem();
             }
             catch (Exception ex) { MessageBox.Show(ex + "临时调试错误信息"); }
         }
@@ -662,11 +657,11 @@ namespace eNet编辑器.DgvView
                                 break;
                             case "del":
                                 //删除
-
+                                dgvDel();
                                 break;
                             case "add":
                                 //添加
-
+                                addInfo();
                                 break;
                             default: break;
                         }
@@ -683,7 +678,7 @@ namespace eNet编辑器.DgvView
                         switch (dataGridView1.Columns[columnCount].Name)
                         {
                             case "del":
-                                
+                                dgvDel();
 
                                 break;
                             case "add":
@@ -752,8 +747,8 @@ namespace eNet编辑器.DgvView
                     switch (dataGridView1.Columns[columnNum].Name)
                     {
 
-                        case "objType":
-                          
+                        case "showMode":
+                            dgvShowMode();
                             break;
 
                         default: break;
@@ -769,16 +764,25 @@ namespace eNet编辑器.DgvView
             
         }
 
+        /// <summary>
+        /// 添加新面板
+        /// </summary>
         private void addInfo()
         {
+            if (dataGridView1.Rows[rowCount].Cells[10].Value == null)
+            {
+                return;
+            }
             DataJson.panels pls = DataListHelper.getPanelsInfoListByNode();
             if (pls == null)
             {
                 return ;
             }
+            //撤销 
+            DataJson.totalList OldList = FileMesege.cmds.getListInfos();
             //添加改id的按键
             DataJson.panelsInfo plInfo = new DataJson.panelsInfo();
-            plInfo.id = 1;
+            plInfo.id =  Convert.ToInt32(dataGridView1.Rows[rowCount].Cells[0].Value);
             plInfo.pid = 0;
             plInfo.keyAddress = "";
             plInfo.objAddress = "";
@@ -789,44 +793,84 @@ namespace eNet编辑器.DgvView
             pls.panelsInfo.Add(plInfo);
             //排序
             panelInfoSort(pls);
+            DataJson.totalList NewList = FileMesege.cmds.getListInfos();
+            FileMesege.cmds.DoNewCommand(NewList, OldList);
             dgvPanelAddItem();
         }
 
+        /// <summary>
+        /// 删除 或者清空
+        /// </summary>
+        private void dgvDel()
+        {
+            DataJson.panels pls = DataListHelper.getPanelsInfoListByNode();
+            if (pls == null)
+            {
+                return;
+            }
+            
+            //撤销 
+            DataJson.totalList OldList = FileMesege.cmds.getListInfos();
+            if (dataGridView1.Rows[rowCount].Cells[10].Value == null)
+            {
+                //直接删除
+                pls.panelsInfo.Remove( pls.panelsInfo[rowCount]);
+                dataGridView1.Rows.Remove(dataGridView1.Rows[rowCount]);
+            }
+            else
+            { 
+                //清空当条信息
+                pls.panelsInfo[rowCount].keyAddress = "";
+                pls.panelsInfo[rowCount].objAddress = "";
+                pls.panelsInfo[rowCount].objType = "";
+                pls.panelsInfo[rowCount].opt = 0;
+                pls.panelsInfo[rowCount].pid = 0;
+                pls.panelsInfo[rowCount].showAddress = "";
+                pls.panelsInfo[rowCount].showMode = "";
+                
+                dataGridView1.Rows[rowCount].Cells[1].Value = null;
+                dataGridView1.Rows[rowCount].Cells[2].Value = null;
+                dataGridView1.Rows[rowCount].Cells[3].Value = null;
+                dataGridView1.Rows[rowCount].Cells[4].Value = null;
+                dataGridView1.Rows[rowCount].Cells[5].Value = null;
+                dataGridView1.Rows[rowCount].Cells[6].Value = "";
+                dataGridView1.Rows[rowCount].Cells[7].Value = null;
+                dataGridView1.Rows[rowCount].Cells[8].Value = "";
+            }
+            DataJson.totalList NewList = FileMesege.cmds.getListInfos();
+            FileMesege.cmds.DoNewCommand(NewList, OldList);
+            
+        }
 
+        /// <summary>
+        /// 设置显示模式 无 同步 反显
+        /// </summary>
+        private void dgvShowMode()
+        {
+            DataJson.panels pls = DataListHelper.getPanelsInfoListByNode();
+            if (pls == null)
+            {
+                return;
+            }
+
+        }
         #endregion
 
         #region 面板键选择
-        private void rbThree_MouseUp(object sender, MouseEventArgs e)
+        private void cbKeyNum_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (setKeyNum(3))
-            {
-                dgvPanelAddItem();
-            }
-            
+           
         }
-        private void rbFour_MouseUp(object sender, MouseEventArgs e)
+
+        private void cbKeyNum_TextChanged(object sender, EventArgs e)
         {
-            if (setKeyNum(4))
+            if (setKeyNum(Convert.ToInt32(cbKeyNum.Text)))
             {
                 dgvPanelAddItem();
             }
         }
 
-        private void rbSix_MouseUp(object sender, MouseEventArgs e)
-        {
-            if (setKeyNum(6))
-            {
-                dgvPanelAddItem();
-            }
-        }
-
-        private void rbEight_MouseUp(object sender, MouseEventArgs e)
-        {
-            if (setKeyNum(8))
-            {
-                dgvPanelAddItem();
-            }
-        }
+       
 
         /// <summary>
         /// 设置当前面板为 几键面板 成功返回true
@@ -910,6 +954,11 @@ namespace eNet编辑器.DgvView
 
         #endregion
 
+      
+
+ 
+
+    
 
 
 

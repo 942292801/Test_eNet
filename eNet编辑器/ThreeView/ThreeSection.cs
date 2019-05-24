@@ -55,6 +55,8 @@ namespace eNet编辑器.ThreeView
             List<string> isExpands = tm.treeIsExpandsState(treeView1);
             if (FileMesege.AreaList == null)
             {
+                //展开记录的节点
+                tm.treeIspandsStateRcv(treeView1, isExpands);
                 tm.AddNode1(treeView1, "全部");             
                 return;
             }

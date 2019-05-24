@@ -92,7 +92,7 @@ namespace eNet编辑器.DgvView
             {
                 IniForm();
                 //查看获取对象是否存在
-                DataJson.timers tms = getTimersInfoList();
+                DataJson.timers tms = DataListHelper.getTimersInfoList();
                 if (tms == null)
                 {
                     return;
@@ -285,41 +285,7 @@ namespace eNet编辑器.DgvView
         #endregion
 
         #region 数据操作工具
-        /// <summary>
-        /// 在选中节点的基础上 按IP和定时号ID 寻找timerList表中是timers
-        /// </summary>
-        /// <returns></returns>
-        private DataJson.timers getTimersInfoList()
-        {
-            if (FileMesege.timerSelectNode == null || FileMesege.timerSelectNode.Parent == null)
-            {
-                return null;
-            }
-          
-            string ip = FileMesege.timerSelectNode.Parent.Text.Split(' ')[0];
-            string[] timerNodetxt = FileMesege.timerSelectNode.Text.Split(' ');
-            int timerNum = Convert.ToInt32(Regex.Replace(timerNodetxt[0], @"[^\d]*", ""));
-            return DataListHelper.getTimersInfoList(ip, timerNum);
-        }
-
-        /// <summary>
-        /// 获取某个Timers列表中对应ID号的TiInfo 否则返回空
-        /// </summary>
-        /// <param name="sc"></param>
-        /// <param name="id"></param>
-        /// <returns></returns>
-        private DataJson.timersInfo getTimerInfo(DataJson.timers tms, int id)
-        {
-            foreach (DataJson.timersInfo info in tms.timersInfo)
-            {
-                if (info.id == id)
-                {
-                    return info;
-                }
-            }
-            return null;
-        }
-
+       
 
         /// <summary>
         /// 定时信息 timerInfo重新赋值排序
@@ -463,7 +429,7 @@ namespace eNet编辑器.DgvView
         //更新timerList日期dates
         private void datesUpdate()
         {
-            DataJson.timers tms = getTimersInfoList();
+            DataJson.timers tms = DataListHelper.getTimersInfoList();
             if (tms == null)
             {
                 return;
@@ -540,7 +506,7 @@ namespace eNet编辑器.DgvView
         //更新timerList是否为网关priorHoliday
         private void priorHolidayUpdate()
         {
-            DataJson.timers tms = getTimersInfoList();
+            DataJson.timers tms = DataListHelper.getTimersInfoList();
             if (tms == null)
             {
                 return;
@@ -777,7 +743,7 @@ namespace eNet编辑器.DgvView
         {
             try
             {
-                DataJson.timers tms = getTimersInfoList();
+                DataJson.timers tms = DataListHelper.getTimersInfoList();
                 if (tms == null)
                 {
                     return;
@@ -884,7 +850,7 @@ namespace eNet编辑器.DgvView
         {
             try
             {
-                DataJson.timers tms = getTimersInfoList();
+                DataJson.timers tms = DataListHelper.getTimersInfoList();
                 if (tms == null)
                 {
                     return;
@@ -905,7 +871,7 @@ namespace eNet编辑器.DgvView
             Socket sock = null;
             try
             {
-                DataJson.timers tms = getTimersInfoList();
+                DataJson.timers tms = DataListHelper.getTimersInfoList();
                 if (tms == null)
                 {
                     return;
@@ -1249,7 +1215,7 @@ namespace eNet编辑器.DgvView
             }
             else
             {
-                DataJson.timers tms = getTimersInfoList();
+                DataJson.timers tms = DataListHelper.getTimersInfoList();
                 if (tms == null)
                 {
                     return;
@@ -1281,13 +1247,13 @@ namespace eNet编辑器.DgvView
             {
                 return;
             }
-            DataJson.timers tms = getTimersInfoList();
+            DataJson.timers tms = DataListHelper.getTimersInfoList();
             if (tms == null)
             {
                 return;
             }
             //获取sceneInfo对象表中对应ID号info对象
-            DataJson.timersInfo info = getTimerInfo(tms, Convert.ToInt32(dataGridView1.Rows[rowNumber].Cells[0].Value));
+            DataJson.timersInfo info = DataListHelper.getTimerInfo(tms, Convert.ToInt32(dataGridView1.Rows[rowNumber].Cells[0].Value));
             if (info == null)
             {
                 return;
@@ -1324,7 +1290,7 @@ namespace eNet编辑器.DgvView
                 bool ischange = false;
                 //撤销
                 DataJson.totalList OldList = FileMesege.cmds.getListInfos();
-                DataJson.timers tms = getTimersInfoList();
+                DataJson.timers tms = DataListHelper.getTimersInfoList();
                 if (tms == null)
                 {
                     return;
@@ -1333,7 +1299,7 @@ namespace eNet编辑器.DgvView
                 {
                     int colIndex = dataGridView1.SelectedCells[i].ColumnIndex;
                     int id = Convert.ToInt32(dataGridView1.Rows[dataGridView1.SelectedCells[i].RowIndex].Cells[0].Value);
-                    DataJson.timersInfo tmInfo = getTimerInfo(tms, id);
+                    DataJson.timersInfo tmInfo = DataListHelper.getTimerInfo(tms, id);
                     if (tmInfo == null)
                     {
                         continue;
@@ -1605,13 +1571,13 @@ namespace eNet编辑器.DgvView
         /// <returns></returns>
         private DataJson.PointInfo dgvJumpSet(int id)
         {
-            DataJson.timers tms = getTimersInfoList();
+            DataJson.timers tms = DataListHelper.getTimersInfoList();
             if (tms == null)
             {
                 return null;
             }
             //获取sceneInfo对象表中对应ID号info对象
-            DataJson.timersInfo tmInfo = getTimerInfo(tms, id);
+            DataJson.timersInfo tmInfo = DataListHelper.getTimerInfo(tms, id);
             if (tmInfo == null)
             {
                 return null;
@@ -1637,13 +1603,13 @@ namespace eNet编辑器.DgvView
         private string dgvObjtype(int id, string type)
         {
 
-            DataJson.timers tms = getTimersInfoList();
+            DataJson.timers tms = DataListHelper.getTimersInfoList();
             if (tms == null)
             {
                 return null;
             }
             //获取sceneInfo对象表中对应ID号info对象
-            DataJson.timersInfo tmInfo = getTimerInfo(tms, id);
+            DataJson.timersInfo tmInfo = DataListHelper.getTimerInfo(tms, id);
             if (tmInfo == null)
             {
                 return null;
@@ -1675,13 +1641,13 @@ namespace eNet编辑器.DgvView
         private void dgvDle(int id)
         {
 
-            DataJson.timers tms = getTimersInfoList();
+            DataJson.timers tms = DataListHelper.getTimersInfoList();
             if (tms == null)
             {
                 return ;
             }
             //获取sceneInfo对象表中对应ID号info对象
-            DataJson.timersInfo tmInfo = getTimerInfo(tms,id);
+            DataJson.timersInfo tmInfo = DataListHelper.getTimerInfo(tms, id);
             if (tmInfo == null)
             {
                 return ;
@@ -1716,13 +1682,13 @@ namespace eNet编辑器.DgvView
             dc.ShowDialog();
             if (dc.DialogResult == DialogResult.OK)
             {
-                DataJson.timers tms = getTimersInfoList();
+                DataJson.timers tms = DataListHelper.getTimersInfoList();
                 if (tms == null)
                 {
                     return;
                 }
                 //获取sceneInfo对象表中对应ID号info对象
-                DataJson.timersInfo tmInfo = getTimerInfo(tms, id);
+                DataJson.timersInfo tmInfo = DataListHelper.getTimerInfo(tms, id);
                 if (tmInfo == null)
                 {
                     return;
@@ -1785,13 +1751,13 @@ namespace eNet编辑器.DgvView
 
             
             sceneConcrol dc = new sceneConcrol();
-            DataJson.timers tms = getTimersInfoList();
+            DataJson.timers tms = DataListHelper.getTimersInfoList();
             if (tms == null)
             {
                 return null;
             }
             //获取sceneInfo对象表中对应ID号info对象
-            DataJson.timersInfo tmInfo = getTimerInfo(tms, id);
+            DataJson.timersInfo tmInfo = DataListHelper.getTimerInfo(tms, id);
             if (tmInfo == null)
             {
                 return null;
@@ -1849,13 +1815,13 @@ namespace eNet编辑器.DgvView
         //设置shortTime回调函数
         private void th_AddShortTime(string delShortTime)
         {
-            DataJson.timers tms = getTimersInfoList();
+            DataJson.timers tms = DataListHelper.getTimersInfoList();
             if (tms == null)
             {
                 return;
             }
             //获取sceneInfo对象表中对应ID号info对象
-            DataJson.timersInfo tmInfo = getTimerInfo(tms, selectCellId);
+            DataJson.timersInfo tmInfo = DataListHelper.getTimerInfo(tms, selectCellId);
             if (tmInfo == null)
             {
                 return;
@@ -1883,14 +1849,14 @@ namespace eNet编辑器.DgvView
             if (colIndex == 5 || colIndex == 6)
             {
                 int id = Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value);
-                DataJson.timers tms = getTimersInfoList();
+                DataJson.timers tms = DataListHelper.getTimersInfoList();
                 if (tms == null)
                 {
                     return;
                 }
                 
                 //获取sceneInfo对象表中对应ID号info对象
-                DataJson.timersInfo tmInfo = getTimerInfo(tms, id);
+                DataJson.timersInfo tmInfo = DataListHelper.getTimerInfo(tms, id);
                 if (tmInfo == null)
                 {
                     return;
@@ -1914,7 +1880,7 @@ namespace eNet编辑器.DgvView
                 bool ischange = false;
                 //撤销
                 DataJson.totalList OldList = FileMesege.cmds.getListInfos();
-                DataJson.timers tms = getTimersInfoList();
+                DataJson.timers tms = DataListHelper.getTimersInfoList();
                 if (tms == null)
                 {
                     return;
@@ -1923,7 +1889,7 @@ namespace eNet编辑器.DgvView
                 {
                     int colIndex = dataGridView1.SelectedCells[i].ColumnIndex;
                     int id = Convert.ToInt32(dataGridView1.Rows[dataGridView1.SelectedCells[i].RowIndex].Cells[0].Value);
-                    DataJson.timersInfo tmInfo = getTimerInfo(tms, id);
+                    DataJson.timersInfo tmInfo = DataListHelper.getTimerInfo(tms, id);
                     if (tmInfo == null)
                     {
                         continue;

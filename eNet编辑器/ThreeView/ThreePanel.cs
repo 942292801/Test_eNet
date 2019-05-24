@@ -290,7 +290,7 @@ namespace eNet编辑器.ThreeView
                     DataJson.panels pls = new DataJson.panels();
                     pls.id = Convert.ToInt32(pladd.Num);
                     pls.pid = randomNum;
-                   
+                    pls.keyNum = 6;
                     pls.panelsInfo = new List<DataJson.panelsInfo>();
                     if (copyPanel != null)
                     {

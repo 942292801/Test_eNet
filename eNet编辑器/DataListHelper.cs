@@ -743,6 +743,42 @@ namespace eNet编辑器
 
 
         #region 操作sceneList的管理工具
+
+        /// <summary>
+        /// 在选中节点的基础上 按IP和定时号ID 寻找scenesList表中是scenes
+        /// </summary>
+        /// <returns></returns>
+        public static DataJson.scenes getScenesInfoList()
+        {
+            if (FileMesege.sceneSelectNode == null || FileMesege.sceneSelectNode.Parent == null)
+            {
+                return null;
+            }
+
+            string ip = FileMesege.sceneSelectNode.Parent.Text.Split(' ')[0];
+            string[] timerNodetxt = FileMesege.sceneSelectNode.Text.Split(' ');
+            int timerNum = Convert.ToInt32(Regex.Replace(timerNodetxt[0], @"[^\d]*", ""));
+            return getSceneInfoList(ip, timerNum);
+        }
+
+        /// <summary>
+        /// 获取某个scenes列表中对应ID号的scenesInfo 否则返回空
+        /// </summary>
+        /// <param name="sc"></param>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public static DataJson.sceneInfo getSceneInfo(DataJson.scenes ses, int id)
+        {
+            foreach (DataJson.sceneInfo info in ses.sceneInfo)
+            {
+                if (info.id == id)
+                {
+                    return info;
+                }
+            }
+            return null;
+        }
+
         /// <summary>
         /// 获取某个IP点 某个场景的对象列表 否则返回空
         /// </summary>
@@ -762,6 +798,24 @@ namespace eNet编辑器
                             return sc;
                         }
                     }
+
+                }
+            }
+            return null;
+        }
+
+        /// <summary>
+        /// 获取某个IP点 的所有scene
+        /// </summary>
+        /// <param name="IP">IP地址</param>
+        /// <returns></returns>
+        public static DataJson.Scene getSceneList(string ip)
+        {
+            foreach (DataJson.Scene scIP in FileMesege.sceneList)
+            {
+                if (scIP.IP == ip)
+                {
+                    return scIP;
 
                 }
             }
@@ -789,6 +843,43 @@ namespace eNet编辑器
 
 
         #region 操作timerList的管理工具
+
+        /// <summary>
+        /// 在选中节点的基础上 按IP和定时号ID 寻找timerList表中是timers
+        /// </summary>
+        /// <returns></returns>
+        public static DataJson.timers getTimersInfoList()
+        {
+            if (FileMesege.timerSelectNode == null || FileMesege.timerSelectNode.Parent == null)
+            {
+                return null;
+            }
+
+            string ip = FileMesege.timerSelectNode.Parent.Text.Split(' ')[0];
+            string[] timerNodetxt = FileMesege.timerSelectNode.Text.Split(' ');
+            int timerNum = Convert.ToInt32(Regex.Replace(timerNodetxt[0], @"[^\d]*", ""));
+            return getTimersInfoList(ip, timerNum);
+        }
+
+        /// <summary>
+        /// 获取某个Timers列表中对应ID号的TiInfo 否则返回空
+        /// </summary>
+        /// <param name="sc"></param>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public static DataJson.timersInfo getTimerInfo(DataJson.timers tms, int id)
+        {
+            foreach (DataJson.timersInfo info in tms.timersInfo)
+            {
+                if (info.id == id)
+                {
+                    return info;
+                }
+            }
+            return null;
+        }
+
+
         /// <summary>
         /// 获取某个IP点 某个定时的对象列表 否则返回空
         /// </summary>
@@ -808,6 +899,24 @@ namespace eNet编辑器
                             return tms;
                         }
                     }
+
+                }
+            }
+            return null;
+        }
+
+        /// <summary>
+        /// 获取某个IP点 的所有scene
+        /// </summary>
+        /// <param name="IP">IP地址</param>
+        /// <returns></returns>
+        public static DataJson.Timer getTimerList(string ip)
+        {
+            foreach (DataJson.Timer tmlIP in FileMesege.timerList)
+            {
+                if (tmlIP.IP == ip)
+                {
+                    return tmlIP;
 
                 }
             }
@@ -898,6 +1007,23 @@ namespace eNet编辑器
             return null;
         }
 
+        /// <summary>
+        /// 获取某个IP点 的所有scene
+        /// </summary>
+        /// <param name="IP">IP地址</param>
+        /// <returns></returns>
+        public static DataJson.Panel getPanelList(string ip)
+        {
+            foreach (DataJson.Panel plIP in FileMesege.panelList)
+            {
+                if (plIP.IP == ip)
+                {
+                    return plIP;
+
+                }
+            }
+            return null;
+        }
 
         /// <summary>
         /// 删除面板中所有匹配的PID号

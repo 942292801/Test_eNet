@@ -121,6 +121,7 @@ namespace eNet编辑器
              sectionNode = null;
             //四个区域点 补齐 分割\\
             sectionNodeCopy = "";//备份 不清除
+            
             //点位区域 英文ini文件名称 tv_ir
             objType = "";
             titleinfo = "";
