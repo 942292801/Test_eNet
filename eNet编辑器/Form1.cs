@@ -22,7 +22,7 @@ namespace eNet编辑器
         public ThreePoint threepoint;
         public ThreeScene threescene;
         public ThreeTimer threetimer;
-        public ThreePanel threebind;
+        public ThreePanel threepanel;
         public ThreeLogic threelogic;
         public ThreeOperation threeoperation;
         public ThreeSection threesection;
@@ -34,7 +34,7 @@ namespace eNet编辑器
         public DgvDevice dgvdevice;
         public DgvScene dgvscene;
         public DgvTimer dgvtimer;
-        public DgvPanel dgvbind;
+        public DgvPanel dgvpanel;
         public DgvLogic dgvlogic;
         public DgvOperation dgvoperation;
         //在线搜索窗体
@@ -77,7 +77,7 @@ namespace eNet编辑器
             threepoint = new ThreePoint();
             threescene = new ThreeScene();
             threetimer = new ThreeTimer();
-            threebind = new ThreePanel();
+            threepanel = new ThreePanel();
             threelogic = new ThreeLogic();
             threeoperation = new ThreeOperation();
             threesection = new ThreeSection();
@@ -89,7 +89,7 @@ namespace eNet编辑器
             
             dgvscene = new DgvScene();
             dgvtimer = new DgvTimer();
-            dgvbind = new DgvPanel();
+            dgvpanel = new DgvPanel();
             dgvlogic = new DgvLogic();
             dgvoperation = new DgvOperation();
 
@@ -109,7 +109,7 @@ namespace eNet编辑器
             threename.sendFormContrl += new SendFormContrl(clearTxtShow);
             //txt窗口 信息显示 清空所有
             threescene.clearTxtShow += new Action<string>(clearTxtShow);
-            threebind.clearTxtShow += new Action<string>(clearTxtShow);
+            threepanel.clearTxtShow += new Action<string>(clearTxtShow);
             dgvpoint.txtAppShow += new Action<string>(AppTxtShow);
             dgvname.txtAppShow += new Action<string>(AppTxtShow);
             dgvscene.AppTxtShow += new Action<string>((msg) =>//TXT窗口显示信息 
@@ -117,7 +117,7 @@ namespace eNet编辑器
                 AppTxtShow(msg);//后面直接加 非清空
             });
 
-            dgvbind.AppTxtShow += new Action<string>((msg) =>//TXT窗口显示信息 
+            dgvpanel.AppTxtShow += new Action<string>((msg) =>//TXT窗口显示信息 
             {
                 AppTxtShow(msg);//后面直接加 非清空
             });
@@ -151,13 +151,14 @@ namespace eNet编辑器
             //更新所有View的信息
             threescene.updateAllView += new Action(updataAllView);
             threetimer.updateAllView += new Action(updataAllView);
+            threepanel.updateAllView += new Action(updataAllView);
             //调用添加场景
             threetitle.dgvsceneAddItem += new DgvSceneAddItem2(dgvscene.dgvsceneAddItem);
             threetitle.dgvtimerAddItem += new Action(dgvtimer.TimerAddItem);
-            threetitle.dgvbindAddItem  +=new DgvBindAddItem2(dgvbind.dgvbindAddItem);
+            threetitle.dgvPanelAddItem += new DgvPanelAddItem2(dgvpanel.dgvPanelAddItem);
             threetitle.addPoint += new Action<string>(dgvpoint.addPoint);
             threename.dgvDeviceAddItem += new DgvDeviceAddItem(dgvdevice.dgvDeviceAddItem);
-            threebind.dgvbindAddItem += new DgvBindAddItem(dgvbind.dgvbindAddItem);
+            threepanel.dgvpanelAddItem += new DgvPanelAddItem(dgvpanel.dgvPanelAddItem);
             threetimer.dgvTimerAddItem +=new Action(dgvtimer.TimerAddItem);
             threesection.sectionDgvNameAddItem += new SectionDgvNameAddItem(dgvname.dgvNameAddItem);
             threesection.sectionDgvDevAddItem += new SectionDgvDevAddItem(dgvdevice.dgvDeviceAddItem);
@@ -211,7 +212,7 @@ namespace eNet编辑器
             threename.ThreeNameAddNode();
             threescene.ThreeSceneAddNode();
             threetimer.ThreeTimerAddNode();
-            threebind.ThreeBindAddNode();
+            threepanel.ThreePanelAddNode();
             threeoperation.ThreeOperationAddNode();
             threelogic.ThreeLogicAddNode();
             threesection.ThreeSEctionAddNode();
@@ -226,7 +227,7 @@ namespace eNet编辑器
             threename.ThreeNameAddNode();
             threescene.ThreeSceneAddNode();
             threetimer.ThreeTimerAddNode();
-            threebind.ThreeBindAddNode();
+            threepanel.ThreePanelAddNode();
             threeoperation.ThreeOperationAddNode();
             threelogic.ThreeLogicAddNode();
             threesection.ThreeSEctionAddNode();
@@ -236,7 +237,7 @@ namespace eNet编辑器
             dgvname.dgvNameAddItem();
             dgvpoint.dgvPointAddItemBySection();
             dgvscene.dgvsceneAddItem();
-            dgvbind.dgvbindAddItem();
+            dgvpanel.dgvPanelAddItem();
             dgvtimer.TimerAddItem();
             txtShow.Clear();
         }
@@ -265,8 +266,8 @@ namespace eNet编辑器
                 case "timer":
                    
                     break;
-                case "bind":
-                    dgvbind.dgvbindAddItem();
+                case "panel":
+                    dgvpanel.dgvPanelAddItem();
                     break;
                 case "logic":
                    
@@ -304,7 +305,7 @@ namespace eNet编辑器
                 case "group":
                     tabPanel_Click(this, EventArgs.Empty);
                     tabStrip.SelectedTab = tabPanel;
-                    threebind.FindNodeSelect(point);
+                    threepanel.FindNodeSelect(point);
                     break;
 
                 default:
@@ -476,12 +477,12 @@ namespace eNet编辑器
         private void tabPanel_Click(object sender, EventArgs e)
         {
             //自定义函数加载窗体 CleanRecycle  
-            Control_Add(threebind, plLeft);
-            Control_Add(dgvbind, plDgv);
+            Control_Add(threepanel, plLeft);
+            Control_Add(dgvpanel, plDgv);
             //界面显示类型 
             FileMesege.formType = "panel";
             //cbtype添加选择项 
-            cbtypeName("panel");
+            cbtypeName("link");
             //添加对象树状图
             threetitle.ThreeTitleAddNode(cbType.SelectedIndex);
             //更改Title 小标题
@@ -843,7 +844,7 @@ namespace eNet编辑器
                 case "timer":
                     dgvtimer.copyData();
                     break;
-                case "bind":
+                case "panel":
                     break;
                 case "logic":
 
@@ -873,7 +874,7 @@ namespace eNet编辑器
                 case "timer":
                     dgvtimer.pasteData();
                     break;
-                case "bind":
+                case "panel":
                     break;
                 case "logic":
 

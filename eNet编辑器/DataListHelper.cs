@@ -90,6 +90,18 @@ namespace eNet编辑器
                     break;
                 }
             }
+            /////////////////////////////后期完整数据 //////////////////
+            //panel修改IP
+            foreach (DataJson.Panel panel in FileMesege.panelList)
+            {
+                if (panel.IP == oldip)
+                {
+                    panel.IP = ip;
+                    panel.Dev = master;
+
+                    break;
+                }
+            }
 
             /////////////////////////////后期完整数据 //////////////////
             changePointIP(ip,oldip);
@@ -815,6 +827,91 @@ namespace eNet编辑器
             for (int i = 0; i < FileMesege.timerList.Count; i++)
             {
                 FileMesege.timerList[i].timers.RemoveAll(timers => timers.pid == pid);
+            }
+
+        }
+
+        #endregion
+
+
+        #region 操作panelList的管理工具
+   
+
+        /// <summary>
+        /// 在选中节点的基础上 按IP和定时号ID 寻找panelList表中是panels
+        /// </summary>
+        /// <returns></returns>
+        public static DataJson.panels getPanelsInfoListByNode()
+        {
+            if (FileMesege.panelSelectNode == null || FileMesege.panelSelectNode.Parent == null)
+            {
+                return null;
+            }
+
+            string ip = FileMesege.panelSelectNode.Parent.Text.Split(' ')[0];
+            string[] panelNodetxt = FileMesege.panelSelectNode.Text.Split(' ');
+            int panelNum = Convert.ToInt32(Regex.Replace(panelNodetxt[0], @"[^\d]*", ""));
+            return getPanelsInfoList(ip, panelNum);
+        }
+
+        /// <summary>
+        /// 获取某个Panels列表中对应ID号的panelsInfo 否则返回空
+        /// </summary>
+        /// <param name="sc"></param>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public static DataJson.panelsInfo getPanelInfo(DataJson.panels pls, int id)
+        {
+            foreach (DataJson.panelsInfo info in pls.panelsInfo)
+            {
+                if (info.id == id)
+                {
+                    return info;
+                }
+            }
+            return null;
+        }
+
+
+        /// <summary>
+        /// 获取某个IP点 某个面板的对象列表 否则返回空
+        /// </summary>
+        /// <param name="IP">IP地址</param>
+        /// <param name="num">面板号</param>
+        /// <returns></returns>
+        public static DataJson.panels getPanelsInfoList(string ip, int num)
+        {
+            foreach (DataJson.Panel plIp in FileMesege.panelList)
+            {
+                if (plIp.IP == ip)
+                {
+                    foreach (DataJson.panels pls in plIp.panels)
+                    {
+                        if (pls.id == num)
+                        {
+                            return pls;
+                        }
+                    }
+
+                }
+            }
+            return null;
+        }
+
+
+        /// <summary>
+        /// 删除面板中所有匹配的PID号
+        /// </summary>
+        /// <param name="pid"></param>
+        public static void reMoveAllPanelsByPid(int pid)
+        {
+            if (FileMesege.panelList == null)
+            {
+                return;
+            }
+            for (int i = 0; i < FileMesege.panelList.Count; i++)
+            {
+                FileMesege.panelList[i].panels.RemoveAll(panels => panels.pid == pid);
             }
 
         }

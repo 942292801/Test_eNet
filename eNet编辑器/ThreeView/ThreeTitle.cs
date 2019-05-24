@@ -14,14 +14,14 @@ using System.IO;
 namespace eNet编辑器.ThreeView
 {
     public delegate void DgvSceneAddItem2();
-    public delegate void DgvBindAddItem2();
+    public delegate void DgvPanelAddItem2();
     //public delegate void AddTitleDevCursor();
    // public delegate void AddTitlenNameCursor();
     public partial class ThreeTitle : Form
     {
 
         public event DgvSceneAddItem2 dgvsceneAddItem;
-        public event DgvBindAddItem2 dgvbindAddItem;
+        public event DgvPanelAddItem2 dgvPanelAddItem;
         public event Action dgvtimerAddItem;
         //public event AddTitleDevCursor addTitleDevCursor;
         //public event AddTitlenNameCursor addTitlenNameCursor;
@@ -101,12 +101,12 @@ namespace eNet编辑器.ThreeView
                         case "timer":
                             treeView1.CheckBoxes = true;
                             treeView1.ContextMenuStrip = contextMenuStrip2;
-                            sceneAdd(num);
+                            timerAdd(num);
                             break;
-                        case "bind":
+                        case "panel":
                             treeView1.CheckBoxes = true;
                             treeView1.ContextMenuStrip = contextMenuStrip2;
-                            sceneAdd(num);
+                            panelAdd(num);
                             // MessageBox.Show("bind");
                             break;
                         case "logic":
@@ -216,19 +216,19 @@ namespace eNet编辑器.ThreeView
                     switch (IniConfig.GetValue(inifilepath, "scene", keys[num]))
                     {
                         case "equipment":
-                            getNametree(FileMesege.PointList.equipment);
+                            getNametree(FileMesege.PointList.equipment, "equipment");
                             break;
                         case "scene":
-                            getNametree(FileMesege.PointList.scene);
+                            getNametree(FileMesege.PointList.scene, "scene");
                             break;
                         case "timer":
-                            getNametree(FileMesege.PointList.timer);
+                            getNametree(FileMesege.PointList.timer, "timer");
                             break;
                         case "link":
-                            getNametree(FileMesege.PointList.link);
+                            getNametree(FileMesege.PointList.link, "link");
                             break;
                         case "operation":
-
+                            getNametree(FileMesege.PointList.link, "operation");
                             break;
                         default: break;
                     }
@@ -243,16 +243,38 @@ namespace eNet编辑器.ThreeView
         /// 由section  获取PointList节点 添加到title列表中
         /// </summary>
         /// <param name="list">Namelist相对应的子项表</param>
-        private void getNametree(List<DataJson.PointInfo> Jsonlist)
+        private void getNametree(List<DataJson.PointInfo> Jsonlist ,string type)
         {
             TreeMesege tm = new TreeMesege();
+            
             //加载选中位置的Point节点
             List<string> infolist = DataListHelper.GetPointNodeBySectionName(Jsonlist);
             if (infolist != null)
             {
                 for (int i = 0; i < infolist.Count; i++)
                 {
-                    tm.AddNode1(treeView1, infolist[i]);
+                    if (type == "link")
+                    {
+                        //加载面板
+                        if (infolist[i].Contains("面板"))
+                        {
+                            tm.AddNode1(treeView1, infolist[i]);
+                        }
+                    }
+                    else if (type == "operation")
+                    {
+                        //加载人感
+                        //加载面板
+                        if (infolist[i].Contains("人感"))
+                        {
+                            tm.AddNode1(treeView1, infolist[i]);
+                        }
+                    }
+                    else
+                    {
+                        tm.AddNode1(treeView1, infolist[i]);
+                    }
+                    
                 }
             }
             
@@ -268,6 +290,14 @@ namespace eNet编辑器.ThreeView
         }
         #endregion
 
+
+        #region 面板加载节点
+        private void panelAdd(int num)
+        {
+            sceneAdd(num);
+
+        }
+        #endregion
 
         #region 选中节点高亮  鼠标点击事件
 
@@ -472,7 +502,7 @@ namespace eNet编辑器.ThreeView
                     timerFormtype(tn.Text);
                     break;
                 case "panel":
-                    bindFormtype(tn.Text);
+                    
                     //回调更新界面
                     
                     break;
@@ -507,7 +537,7 @@ namespace eNet编辑器.ThreeView
                     dgvtimerAddItem();
                     break;
                 case "panel":
-                    dgvbindAddItem();
+                    dgvPanelAddItem();
                     break;
                 case "logic":
                     break;
@@ -765,166 +795,103 @@ namespace eNet编辑器.ThreeView
         #endregion
 
 
-        #region 添加功能 绑定DGV添加 新增BindInfo对象
+        #region 添加功能 绑定DGV添加 新增panelsInfo对象
+
         /// <summary>
-        /// 绑定DGV添加 新增设备对象
+        /// 面板DGV添加 新增timerInfo对象
         /// </summary>
-        /// <param name="texts">Title节点 区域--名称--地址</param>
-        private void bindFormtype(string nodeText)
+        /// <param name="nodeText"></param>
+        private void panelFormtype(string nodeText)
         {
-            /** 修改Mapper数据源 暂时屏蔽代码
-            if (FileMesege.bindSelectNode == null || FileMesege.bindSelectNode.Parent == null)
+            if (FileMesege.panelSelectNode == null || FileMesege.panelSelectNode.Parent == null)
             {
                 return;
             }
-            //提高查询效率 定位到那个NameList的分区
-            switch (FileMesege.cbTypeIndex)
+
+            //根据commandNames的【link】中的 key->value 决定
+            switch (IniConfig.GetValue(inifilepath, "link", keys[FileMesege.cbTypeIndex]))
             {
-                //0=设备,equipment 
-                case 0:
-                    dgvBindListAdd(FileMesege.MapperList.equipment, texts[2]);
-                    //FileMesege.NameList.equipment;
+                //0=设备,equipment
+                case "equipment":
+                    dgvPanelListAdd(FileMesege.PointList.equipment, nodeText);
                     break;
-                //1=按键,key
-                case 1:
-                    //有问题！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
-                    //dgvBindListAdd(FileMesege.NameList.equipment, texts[2]);
-                    //FileMesege.NameList.key;
+                //1=场景,scene
+                case "scene":
+                    dgvPanelListAdd(FileMesege.PointList.scene, nodeText);
                     break;
-                //2=场景,scene
-                case 2:
-                    dgvBindListAdd(FileMesege.MapperList.scene, texts[2]);
-                    //FileMesege.NameList.scene;
+                //2=定时,timer
+                case "timer":
+                    dgvPanelListAdd(FileMesege.PointList.timer, nodeText);
                     break;
-                //3=定时,timer
-                case 3:
-                    dgvBindListAdd(FileMesege.MapperList.timer, texts[2]);
-                    //FileMesege.NameList.timer;
+                //3=绑定,link
+                case "link":
+                    dgvPanelListAdd(FileMesege.PointList.link, nodeText);
                     break;
-                //4=绑定,link
-                case 4:
-                    dgvBindListAdd(FileMesege.MapperList.link, texts[2]);
-                    //FileMesege.NameList.link;
-                    break;
-                //5=电箱
-                case 5:
-                    break;
+
                 default:
-                    dgvBindListAdd(FileMesege.MapperList.equipment, texts[2]);
+                    dgvPanelListAdd(FileMesege.PointList.equipment, nodeText);
                     break;
 
             }
-             **/
         }
 
         /// <summary>
-        /// bind表中添加新的bingInfo信息
+        /// panelList 下的panel添加新的panelInfo
         /// </summary>
         /// <param name="eqList"></param>
-        /// <param name="address"></param>
-        private void dgvBindListAdd(List<DataJson.PointInfo> eqList, string address)
+        /// <param name="nodeText"></param>
+        private void dgvPanelListAdd(List<DataJson.PointInfo> eqList, string nodeText)
         {
-            /** 修改Mapper数据源 暂时屏蔽代码
-            if (FileMesege.bindList == null)
+            if (FileMesege.panelSelectNode == null)
             {
-                FileMesege.bindList = new List<DataJson.Bind>();
+                FileMesege.panelList = new List<DataJson.Panel>();
             }
-            //ip + 网关名称+设备号+设备名称
-            string[] commons = getNodeInfo(FileMesege.bindSelectNode);
-            //获取节点信息失败
-            if (commons == null)
+     
+            DataJson.panels pls =  DataListHelper.getPanelsInfoListByNode();
+            if (pls == null)
             {
-                return ;
+                return;
             }
-            DataJson.binds binds = getBindInfoList(commons[0], Convert.ToInt32(commons[2]));
+            //获取该节点IP地址定时下的 定时信息对象
 
-            foreach (DataJson.Equipment eq in eqList)
+            List<string> section_name = DataListHelper.dealPointInfo(nodeText);
+            if (section_name == null)
+            {
+                return;
+            }
+            foreach (DataJson.PointInfo eq in eqList)
             {
                 //NameList中查找到匹配的信息
-                if (eq.address == address)
+                if (eq.area1 == section_name[0] && eq.area2 == section_name[1] && eq.area3 == section_name[2] && eq.area4 == section_name[3] && eq.name == section_name[4])
                 {
+                    //撤销
+                    DataJson.totalList OldList = FileMesege.cmds.getListInfos();
                     //新建表
-                    DataJson.bindInfo binfo = new DataJson.bindInfo();
-                    //有信息的表
-                    if (binds.bindInfo.Count > 0)
+                    DataJson.panelsInfo plInfo = new DataJson.panelsInfo();
+                    int id = 0;
+                    //获取ID
+                    foreach (DataJson.panelsInfo find in pls.panelsInfo)
                     {
-                        binfo.keyId = binds.bindInfo[binds.bindInfo.Count - 1].keyId + 1;
-                        binfo.groupId = binds.bindInfo[binds.bindInfo.Count - 1].groupId;
-                        //binfo.mode = binds.bindInfo[binds.bindInfo.Count - 1].mode;
-                        
-                       
-                        //binfo.showType = binds.bindInfo[count].showType;
-                        //binfo.showMode = binds.bindInfo[binds.bindInfo.Count - 1].showMode;
+                        if (find.id > id)
+                        {
+                            id = find.id;
+                        }
                     }
-                    //无信息的表 空白页
-                    else 
-                    {
-                        
-                        binfo.groupId = Convert.ToInt32(commons[2]);
-                        binfo.keyId = 1;
-                    }
+                    plInfo.id = id + 1;
 
-                    binfo.objType = eq.objType;
-                    binfo.showType = "1.0_switch";
-                    binfo.showMode = "无";
-                    binfo.address = "FE" + eq.address.Substring(2, 6);
-                    //插入到 bindList
-                    binds.bindInfo.Add(binfo);
+                    plInfo.objAddress = eq.address;
+                    plInfo.pid = eq.pid;
+                    plInfo.opt = 0;
+                    plInfo.objType = eq.type;
+                    pls.panelsInfo.Add(plInfo);
+                    DataJson.totalList NewList = FileMesege.cmds.getListInfos();
+                    FileMesege.cmds.DoNewCommand(NewList, OldList);
                     break;
                 }
             }
-             **/
         }
 
-
-
-        /// <summary>
-        /// 获取节点信息  return 十进制  全ip + 网关名称+设备号+设备名称
-        /// </summary>
-        /// <param name="selectNode">选中的节点 且为子节点</param>
-        /// <returns></returns>
-        private string[] getNodeInfo(TreeNode SelectNode)
-        {
-            try
-            {
-                //选中子节点
-                string[] ips = SelectNode.Parent.Text.Split(' ');
-                string[] ids = SelectNode.Text.Split(' ');
-                string sceneNum = Regex.Replace(ids[0], @"[^\d]*", "");
-                //ip + 网关名称+设备号+设备名称
-                string[] commons = { ips[0], ips[1], sceneNum, ids[1] };
-                return commons;
-            }
-            catch
-            {
-                return null;
-            }
-        }
-
-        /// <summary>
-        /// 获取某个IP点 某个面板的对象列表 否则返回空
-        /// </summary>
-        /// <param name="IP">IP地址</param>
-        /// <param name="num">设备号</param>
-        /// <returns></returns>
-        private DataJson.binds getBindInfoList(string ip, int num)
-        {
-            foreach (DataJson.Bind bdIP in FileMesege.bindList)
-            {
-                if (bdIP.IP == ip)
-                {
-                    foreach (DataJson.binds bd in bdIP.Binds)
-                    {
-                        if (bd.id == num)
-                        {
-                            return bd;
-                        }
-                    }
-
-                }
-            }
-            return null;
-        }
+ 
         #endregion
 
 

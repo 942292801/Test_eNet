@@ -904,7 +904,7 @@ namespace eNet编辑器.DgvView
             {
                 return null;
             }
-            if (info.type == "4.0_scene" || info.type == "5.0_time" || info.type == "6.0_group")
+            if (info.type == "4.0_scene" || info.type == "5.0_time" || info.type == "6.1_keypad" || info.type == "6.2_io")
             {
                 return DataListHelper.findPointByType_address(info.type,info.address);
             }

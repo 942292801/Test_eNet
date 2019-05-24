@@ -45,7 +45,7 @@ namespace eNet编辑器
                 FileMesege.PointList = (DataJson.Point)CloneObject(list.PointList);
                 FileMesege.sceneList = (List<DataJson.Scene>)CloneObject(list.sceneList);
                 FileMesege.timerList = (List<DataJson.Timer>)CloneObject(list.timerList);
-                FileMesege.bindList = (List<DataJson.Bind>)CloneObject(list.bindList);
+                FileMesege.panelList = (List<DataJson.Panel>)CloneObject(list.panelList);
 
             }
            
@@ -136,9 +136,9 @@ namespace eNet编辑器
                 totalList.timerList = (List<DataJson.Timer>)CloneObject(FileMesege.timerList);
             }
 
-            if (FileMesege.bindList != null)
+            if (FileMesege.panelList != null)
             {
-                totalList.bindList = (List<DataJson.Bind>)CloneObject(FileMesege.bindList);
+                totalList.panelList = (List<DataJson.Panel>)CloneObject(FileMesege.panelList);
 
             }
             return totalList;

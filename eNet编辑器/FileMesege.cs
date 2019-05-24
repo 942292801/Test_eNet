@@ -45,7 +45,7 @@ namespace eNet编辑器
         public static TreeNode timerSelectNode = null;
 
         //左栏 树状图treebind节点选中临时存放
-        public static TreeNode bindSelectNode = null;
+        public static TreeNode panelSelectNode = null;
         /// <summary>
         /// form下按钮的选择命名、场景。。。。  默认为命名 用来设置treetitle的显示功能 name,point,scene,timer,panel,reaction,logic
         /// </summary>
@@ -59,6 +59,7 @@ namespace eNet编辑器
         public static DataJson.PointInfo copyPoint = null;
         public static DataJson.sceneInfo copyScene = null;
         public static DataJson.timersInfo copyTimer = null;
+        public static DataJson.panelsInfo copyPanel = null;
 
         public static List<DataJson.Device> DeviceList;//工程设备的保存记录
         public static List<DataJson.Area1> AreaList;//
@@ -66,7 +67,7 @@ namespace eNet编辑器
         public static DataJson.Serial serialList;//命名在线设备文件
         public static List<DataJson.Scene> sceneList;//场景
         public static List<DataJson.Timer> timerList;
-        public static List<DataJson.Bind> bindList;//绑定
+        public static List<DataJson.Panel> panelList;//绑定
 
       
      
@@ -100,7 +101,7 @@ namespace eNet编辑器
             //左栏 树状图treename节点选中临时存放
             sceneSelectNode = null;
             //左栏 树状图treebind节点选中临时存放
-            bindSelectNode = null;
+            panelSelectNode = null;
             //工程设备的保存记录
             DeviceList = null;
             //工程位置树状图
@@ -112,7 +113,7 @@ namespace eNet编辑器
             //场景
             sceneList = null;
             //绑定
-            bindList = null;
+            panelList = null;
             //undo redo
             cmds = new CommandManager();
             filePath = "";
@@ -203,7 +204,7 @@ namespace eNet编辑器
                 || !System.IO.File.Exists(TmpFilePath + "\\pro\\device.json")
                 || !System.IO.File.Exists(TmpFilePath + "\\pro\\point.json")
                 || !System.IO.File.Exists(TmpFilePath + "\\pro\\scene.json")
-                || !System.IO.File.Exists(TmpFilePath + "\\pro\\bind.json")
+                || !System.IO.File.Exists(TmpFilePath + "\\pro\\panel.json")
                 || !System.IO.File.Exists(TmpFilePath + "\\pro\\timer.json")
                 )
             {
@@ -215,7 +216,7 @@ namespace eNet编辑器
             AreaList = JsonConvert.DeserializeObject<List<DataJson.Area1>>(File.ReadAllText(TmpFilePath + "\\pro\\area.json"));
             PointList = JsonConvert.DeserializeObject<DataJson.Point>(File.ReadAllText(TmpFilePath + "\\pro\\point.json"));
             sceneList = JsonConvert.DeserializeObject<List<DataJson.Scene>>(File.ReadAllText(TmpFilePath + "\\pro\\scene.json"));
-            bindList = JsonConvert.DeserializeObject<List<DataJson.Bind>>(File.ReadAllText(TmpFilePath + "\\pro\\bind.json"));
+            panelList = JsonConvert.DeserializeObject<List<DataJson.Panel>>(File.ReadAllText(TmpFilePath + "\\pro\\panel.json"));
             timerList = JsonConvert.DeserializeObject<List<DataJson.Timer>>(File.ReadAllText(TmpFilePath + "\\pro\\timer.json"));
 
             filePath = localFilePath;
@@ -413,7 +414,7 @@ namespace eNet编辑器
             File.WriteAllText(path + "\\pro\\area.json", ConvertJsonString(JsonConvert.SerializeObject(AreaList)));
             File.WriteAllText(path + "\\pro\\device.json", ConvertJsonString(JsonConvert.SerializeObject(DeviceList)));
             File.WriteAllText(path + "\\pro\\scene.json", ConvertJsonString(JsonConvert.SerializeObject(sceneList)));
-            File.WriteAllText(path + "\\pro\\bind.json", ConvertJsonString(JsonConvert.SerializeObject(bindList)));
+            File.WriteAllText(path + "\\pro\\panel.json", ConvertJsonString(JsonConvert.SerializeObject(panelList)));
             File.WriteAllText(path + "\\pro\\timer.json", ConvertJsonString(JsonConvert.SerializeObject(timerList)));
         }
 

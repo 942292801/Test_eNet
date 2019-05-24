@@ -8,71 +8,95 @@ using System.Text;
 using System.Windows.Forms;
 using System.IO;
 using eNet编辑器.Properties;
+using eNet编辑器.AddForm;
+using System.Text.RegularExpressions;
 
 namespace eNet编辑器.ThreeView
 {
-    public delegate void DgvBindAddItem();
+    public delegate void DgvPanelAddItem();
     public partial class ThreePanel : Form
     {
         /// <summary>
         /// 主Form信息显示
         /// </summary>
         public event Action<string> clearTxtShow;
-
-        public event DgvBindAddItem dgvbindAddItem;
+        public event Action updateAllView;
+        public event DgvPanelAddItem dgvpanelAddItem;
         public ThreePanel()
         {
             InitializeComponent();
         }
 
+        private panelAdd pladd;
+
+        //判断true为选中父节点
+        bool isSelectParetnNode = false;
+
+        private void ThreePanel_Load(object sender, EventArgs e)
+        {
+            pladd = new panelAdd();
+            pladd.addPanelNode += new Action(addPanelNode);
+        }
+
         /// <summary>
         /// 初始化添加device名字树状图 根据JsonList文件重新加载子节点
         /// </summary>
-        public void ThreeBindAddNode()
+        public void ThreePanelAddNode()
         {
-            TreeMesege tm = new TreeMesege();
-            if (FileMesege.DeviceList == null)
-            {
-               
-                return;
-            }
             try
             {
-                //devices 里面ini的名字
-                string keyVal = "";
-                string path = Application.StartupPath + "\\devices\\";
+                TreeMesege tm = new TreeMesege();
+
+                //记录当前节点展开状况 
+                List<string> isExpands = tm.treeIsExpandsState(treeView1);
+
+                if (FileMesege.DeviceList == null)
+                {
+                    return;
+                }
+                string section = "";
                 //从设备加载网关信息
                 foreach (DataJson.Device d in FileMesege.DeviceList)
                 {
-                    //新建网关节点
                     int index = tm.AddNode1(treeView1, d.ip + " " + d.master);
-                    
-                    //加载设备
-                    foreach (DataJson.Module m in d.module)
-                    {
-                        keyVal = IniConfig.GetValue(path + m.device + ".ini", "input", "key");
-                        if (keyVal != "null" )
-                        {
-                            //判断加英文
-                            int index2 = tm.AddNode2(treeView1, Resources.Device + m.id + " " + m.device, index);
-                            //节点加载的时候 判断Binglist里面是否存在该节点设备信息 不存在则写入新的
-                            bindListMesage(d.ip,d.master,Convert.ToInt32(m.id),m.device,keyVal);
 
+                    if (FileMesege.timerList != null)
+                    {
+                        foreach (DataJson.Panel pl in FileMesege.panelList)
+                        {
+                            //  添加该网关IP的子节点
+                            if (pl.IP == d.ip)
+                            {
+                                foreach (DataJson.panels pls in pl.panels)
+                                {
+                                    DataJson.PointInfo point = DataListHelper.findPointByPid(pls.pid, FileMesege.PointList.link);
+                                    if (point != null)
+                                    {
+                                        section = string.Format("{0} {1} {2} {3}", point.area1, point.area2, point.area3, point.area4).Trim().Replace(" ", "\\");
+                                        int index2 = tm.AddNode2(treeView1, string.Format("{0}{1} {2} {3}", Resources.Panel, pls.id, section, point.name), index);
+
+                                    }
+
+                                }
+
+                            }
                         }
-                            
                     }
-                    
+
                 }
+                //展开记录的节点
+                tm.treeIspandsStateRcv(treeView1, isExpands);
+
             }
             catch
             {
                 //错误处理
-                MessageBox.Show("场景添加节点初始化失败,请检查scene.json文件");
+                MessageBox.Show("场景添加节点初始化失败,请检查timer.json文件");
             }
         }
 
         /// <summary>
-        /// 根据point点 选中树节点
+        /// 根据point点信息 定位到树节点 用于窗口跳转
         /// </summary>
         /// <param name="point"></param>
         public void FindNodeSelect(DataJson.PointInfo point)
@@ -80,93 +104,7 @@ namespace eNet编辑器.ThreeView
             TreeMesege.SelectNodeByPoint(treeView1, point);
         }
 
-        /// <summary>
-        /// 判断IP信息 设备 信息 按键信息在 List是否存在  按键信息没有就自动添加ini表中key数
-        /// </summary>
-        /// <param name="ip">IP地址</param>
-        /// <param name="master">网关名称</param>
-        /// <param name="id">ID号</param>
-        /// <param name="device">设备名称</param>
-        /// <param name="keyVal">按键数量</param>
-        private void bindListMesage(string ip, string master,int id,string device,string keyVal)
-        {
-            
-            if (FileMesege.bindList == null)
-            {
-                FileMesege.bindList = new List<DataJson.Bind>();
-            }
-            //判断是否存在在IP的信息
-            DataJson.Bind B = FileMesege.bindList.Find(delegate(DataJson.Bind b) { return b.IP == ip; });
-            if (B == null)
-            {
-                //不存在IP信息
-                B = new DataJson.Bind();
-                B.Dev = master;
-                B.IP = ip;
-                B.Binds = new List<DataJson.binds>();
-                //列表添加新IP的信息
-                FileMesege.bindList.Add(B);
-
-            }
-            //判断设备信息
-            DataJson.binds bs = B.Binds.Find(delegate(DataJson.binds b) { return b.id == id; });
-            if (bs == null)
-            {
-                bs = new DataJson.binds();
-                bs.id = id;
-                bs.bindName = device;
-                bs.bindInfo = new List<DataJson.bindInfo>();
-                //IP信息 添加新的设备信息
-                B.Binds.Add(bs);
-            }
-            //判断按键信息
-            if (bs.bindInfo.Count < 1)
-            { 
-                DataJson.bindInfo binfo;
-                //解析KeyVal  -->ini读取的key = keyVal
-                //数据格式为num - num
-                if (keyVal.Contains("-"))
-                {
-                   
-                    string[] infos = keyVal.Split('-');
-                    int j = Convert.ToInt32(infos[1]);
-                    for (int i = Convert.ToInt32(infos[0]); i <= j; i++)
-                    {
-                        binfo = new DataJson.bindInfo();
-                        binfo.groupId = id;
-                        binfo.objType = "开关";
-                        //binfo.Address
-                        binfo.showType = "开关";
-                        
-                        binfo.showMode = "无";
-                        binfo.keyId = i;
-                        bs.bindInfo.Add(binfo);
-                    }
-                   
-                }
-                else
-                {
-                    int j = Convert.ToInt32(keyVal);
-                    //纯数字 添加
-                    for(int i =1;i<=j;i++)
-                    {
-                        binfo = new DataJson.bindInfo();
-                        binfo.groupId = id;
-                        binfo.objType = "开关";
-                        //binfo.Address
-                        binfo.showType = "开关";
-                        binfo.showMode = "无";
-                        binfo.keyId = i;
-                        
-                        bs.bindInfo.Add(binfo);
-                    }
-                }
-               
-            }
-
-
-        }
-
+       
 
         #region 节点点击 点击后事件 树状图重绘
         /// <summary>
@@ -176,33 +114,20 @@ namespace eNet编辑器.ThreeView
         /// <param name="e"></param>
         private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
         {
-            FileMesege.bindSelectNode = treeView1.SelectedNode;
-            //txtTest.Text = new TreeMesege().GetTopNode(treeView1.SelectedNode);
-            //判断 ini文件存在不  再判断是父子节点 
-            string[] arr = treeView1.SelectedNode.Text.Split(' ');
-            string filename = arr[1] + ".ini";
-            string filepath = Application.StartupPath + "\\devices\\" + filename;
-            TreeMesege tm = new TreeMesege();
-            string[] num = tm.GetNodeNum(treeView1.SelectedNode).Split(' ');
-            //判断ini文件存在不存在
-            if (File.Exists(filepath))
+
+            FileMesege.panelSelectNode = treeView1.SelectedNode;
+            //DGVtimer添加定时
+            dgvpanelAddItem();
+            string[] names = treeView1.SelectedNode.Text.Split(' ');
+            if (treeView1.SelectedNode.Parent != null)
             {
 
-                //显示设备node
-                clearTxtShow(Resources.TxtShowDevName + IniConfig.GetValue(filepath, "define", "note") + "\r\n");
-                //调用dgv的ini配置
-                dgvbindAddItem();
-                //BindList添加信息
-
-
+                clearTxtShow(Resources.TxtShowPanelName + treeView1.SelectedNode.Text + "\r\n");
             }
             else
             {
-                //不存在文件
-                //sendFormContrl("");
-                return;
-                //MessageBox.Show("bu存在文件夹");
-
+                string filepath = Application.StartupPath + "\\devices\\" + names[1] + ".ini";
+                clearTxtShow(Resources.TxtShowPanelName + IniConfig.GetValue(filepath, "define", "note") + "\r\n");
             }
         }
 
@@ -219,18 +144,21 @@ namespace eNet编辑器.ThreeView
             {
                 Point ClickPoint = new Point(e.X, e.Y);
                 TreeNode CurrentNode = treeView1.GetNodeAt(ClickPoint);
-
+                isSelectParetnNode = false;
                 if (CurrentNode != null)
                 {
                     treeView1.SelectedNode = CurrentNode;//选中这个节点
                     if (CurrentNode.Parent != null)
                     {
-
+                        //右击选择为子节点 显示菜单2
+                        CurrentNode.ContextMenuStrip = contextMenuStrip2;
                     }
                     else
                     {
 
-
+                        //右击选择为父节点 显示示菜单1
+                        CurrentNode.ContextMenuStrip = contextMenuStrip1;
+                        isSelectParetnNode = true;
                     }
                 }
             }
@@ -265,6 +193,334 @@ namespace eNet编辑器.ThreeView
         #endregion
 
 
+        #region 新建 修改 删除 复制
+        private void 新建ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //右击树状图外面区域
+            if (!isSelectParetnNode)
+            {
+
+            }
+            else//右击树状图区域
+            {
+                //清除复制的定时
+                copyPanel = null;
+                //新建场景
+                newPanel();
+
+            }
+        }
+
+        /// <summary>
+        /// 面板新建 修改弹框
+        /// </summary>
+        private void newPanel()
+        {
+            //展示居中
+            pladd.StartPosition = FormStartPosition.CenterParent;
+            pladd.Xflag = false;
+
+            if (treeView1.SelectedNode.Parent == null)
+            {
+                //获取IP
+                string[] ips = treeView1.SelectedNode.Text.Split(' ');
+                pladd.Ip = ips[0];
+                //获取定面板数
+                pladd.Num = (treeView1.SelectedNode.GetNodeCount(false) + 1).ToString();
+            }
+            else
+            {
+                //复制的时候调用
+                //获取IP
+                string[] ips = treeView1.SelectedNode.Parent.Text.Split(' ');
+                pladd.Ip = ips[0];
+                //获取面板数
+                pladd.Num = (Convert.ToInt32(Regex.Replace(treeView1.SelectedNode.Text.Split(' ')[0], @"[^\d]*", "")) + 1).ToString();
+            }
+
+            pladd.ShowDialog();
+        }
+
+        /// <summary>
+        /// 新建面板回调操作
+        /// </summary>
+        private void addPanelNode()
+        {
+            if (treeView1.SelectedNode != null && treeView1.SelectedNode.Parent == null)
+            {
+                treeView1.SelectedNode.Expand();
+
+            }
+            //获取定时号
+            string num = Convert.ToInt32(pladd.Num).ToString("X");
+            while (num.Length < 4)
+            {
+                num = num.Insert(0, "0");
+            }
+            //获取IP最后一位 定时为20
+            string address = SocketUtil.GetIPstyle(pladd.Ip, 4) + "30" + num;
+            if (FileMesege.panelList == null)
+            {
+                FileMesege.panelList = new List<DataJson.Panel>();
+
+            }
+            //撤销
+            DataJson.totalList OldList = FileMesege.cmds.getListInfos();
+            //添加timerList 表中
+            //该IP在timerList里面是否存在  
+            if (!FileMesege.panelList.Exists(x => x.IP == pladd.Ip))
+            {
+                //不存在新建List
+                DataJson.Panel pl = new DataJson.Panel();
+                pl.IP = pladd.Ip;
+                pl.Dev = "GW100A";
+                pl.panels = new List<DataJson.panels>();
+                FileMesege.panelList.Add(pl);
+
+            }
+
+            //判断是否已经存在该点位信息
+            int randomNum = DataChange.randomNum();
+
+            foreach (DataJson.Panel pl in FileMesege.panelList)
+            {
+                //节点的IP相等 进入创建 不会存在相同ID号新建信息
+                if (pl.IP == pladd.Ip)
+                {
+                    DataJson.panels pls = new DataJson.panels();
+                    pls.id = Convert.ToInt32(pladd.Num);
+                    pls.pid = randomNum;
+                   
+                    pls.panelsInfo = new List<DataJson.panelsInfo>();
+                    if (copyPanel != null)
+                    {
+                        //复制副本
+                        pls.panelsInfo = (List<DataJson.panelsInfo>)CommandManager.CloneObject(copyPanel.panelsInfo);
+             
+                    }
+
+                    pl.panels.Add(pls);
+                    //添加point点
+                    DataJson.PointInfo eq = new DataJson.PointInfo();
+                    eq.area1 = pladd.Area1;
+                    eq.area2 = pladd.Area2;
+                    eq.area3 = pladd.Area3;
+                    eq.area4 = pladd.Area4;
+                    eq.address = address;
+                    eq.pid = randomNum;
+                    eq.ip = pladd.Ip;
+                    eq.name = pladd.PanelName ;
+                    eq.type = "6.1_keypad";
+                    eq.objType = "";
+                    eq.value = "";
+                    FileMesege.PointList.link.Add(eq);
+
+                    //排序
+                    PanelSort(pl);
+                    string parentNodePath = "";
+                    if (treeView1.SelectedNode != null)
+                    {
+                        parentNodePath = treeView1.SelectedNode.FullPath;
+                    }
+                    updateAllView();
+                    if (FileMesege.panelSelectNode != null)
+                    {
+                        try
+                        {
+                            TreeMesege.findNodeByName(treeView1, parentNodePath).Expand();
+                        }
+                        catch
+                        {
+
+                        }
+
+                    }
+
+                    break;
+                }
+
+            }
+            DataJson.totalList NewList = FileMesege.cmds.getListInfos();
+            FileMesege.cmds.DoNewCommand(NewList, OldList);
+        }
+
+        /// <summary>
+        /// 在选中的该网关里面 面板按照ID重新排列顺序
+        /// </summary>
+        /// <param name="sc">当前对象排序</param>
+        private void PanelSort(DataJson.Panel pl)
+        {
+            pl.panels.Sort(delegate(DataJson.panels x, DataJson.panels y)
+            {
+                return Convert.ToInt32(x.id).CompareTo(Convert.ToInt32(y.id));
+            });
+        }
+
+
+        private void 修改ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            panelAdd paneladd = new panelAdd();
+            //展示居中
+            paneladd.StartPosition = FormStartPosition.CenterParent;
+            string[] ips = treeView1.SelectedNode.Parent.Text.Split(' ');
+            string[] timerNodeTxt = treeView1.SelectedNode.Text.Split(' ');
+            paneladd.Ip = ips[0];
+            //获取面板号数
+            paneladd.Num = Regex.Replace(timerNodeTxt[0], @"[^\d]*", "");
+
+            paneladd.Xflag = true;
+
+            paneladd.ShowDialog();
+
+            if (paneladd.DialogResult == DialogResult.OK)
+            {
+                //获取面板号
+                string num = Convert.ToInt32(paneladd.Num).ToString("X");
+                while (num.Length < 4)
+                {
+                    num = num.Insert(0, "0");
+                }
+                //获取IP最后一位
+                string address = SocketUtil.GetIPstyle(paneladd.Ip, 4) + "30" + num;
+                //撤销
+                DataJson.totalList OldList = FileMesege.cmds.getListInfos();
+                //获取该节点IP地址面板下的 面板信息对象
+                DataJson.panels pls = DataListHelper.getPanelsInfoList(ips[0], Convert.ToInt32(paneladd.Oldnum));
+                if (pls != null)
+                {
+                    foreach (DataJson.PointInfo eq in FileMesege.PointList.link)
+                    {
+                        //修改当前的point点信息
+                        if (pls.pid == eq.pid)
+                        {
+                            pls.id = Convert.ToInt32(paneladd.Num);
+                            eq.area1 = paneladd.Area1;
+                            eq.area2 = paneladd.Area2;
+                            eq.area3 = paneladd.Area3;
+                            eq.area4 = paneladd.Area4;
+                            eq.address = address;
+                            eq.name = paneladd.PanelName;
+                            break;
+                        }
+
+                    }
+                    foreach (DataJson.Panel plIP in FileMesege.panelList)
+                    {
+                        if (plIP.IP == ips[0])
+                        {
+                            //排序
+                            PanelSort(plIP);
+                            break;
+                        }
+                    }
+                    updateAllView();
+                }
+
+                DataJson.totalList NewList = FileMesege.cmds.getListInfos();
+                FileMesege.cmds.DoNewCommand(NewList, OldList);
+            }
+        }
+
+        private void 删除ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (treeView1.SelectedNode == null || treeView1.SelectedNode.Parent == null)
+            {
+                return;
+            }
+
+            string[] ips = treeView1.SelectedNode.Parent.Text.Split(' ');
+            string[] panelNodetxt = treeView1.SelectedNode.Text.Split(' ');
+
+            foreach (DataJson.Panel pl in FileMesege.panelList)
+            {
+                //进入IP同一个
+                if (pl.IP == ips[0])
+                {
+                    foreach (DataJson.panels pls in pl.panels)
+                    {
+                        //当场景号一样
+                        if (pls.id.ToString() == Regex.Replace(panelNodetxt[0], @"[^\d]*", ""))
+                        {
+                            //撤销
+                            DataJson.totalList OldList = FileMesege.cmds.getListInfos();
+                            int Nodeindex = treeView1.SelectedNode.Index;
+                            int pNodeindex = treeView1.SelectedNode.Parent.Index;
+                            //移除pointList 中地址
+                            foreach (DataJson.PointInfo eq in FileMesege.PointList.link)
+                            {
+                                //获取address与IP地址相同的对象
+                                if (eq.pid == pls.pid)
+                                {
+                                    //移除Namelist 的对象
+                                    FileMesege.PointList.link.Remove(eq);
+                                    break;
+                                }
+                            }
+                            //移除panellist的对象
+                            pl.panels.Remove(pls);
+                            //树状图移除选中节点
+                            updateAllView();
+                            DataJson.totalList NewList = FileMesege.cmds.getListInfos();
+                            FileMesege.cmds.DoNewCommand(NewList, OldList);
+                            //选中删除节点的下一个节点 没有节点就直接选中父节点
+                            if (treeView1.Nodes[pNodeindex].Nodes.Count > 0)
+                            {
+                                if (Nodeindex < treeView1.Nodes[pNodeindex].Nodes.Count)
+                                {
+                                    treeView1.SelectedNode = treeView1.Nodes[pNodeindex].Nodes[Nodeindex];
+                                }
+                                else
+                                {
+                                    treeView1.SelectedNode = treeView1.Nodes[pNodeindex].Nodes[0];
+                                }
+
+                            }
+                            else
+                            {
+                                treeView1.SelectedNode = treeView1.Nodes[pNodeindex];
+                            }
+                            return;
+                        }
+                    }
+
+                }
+
+            }//IP FOREACH
+        }
+
+        //复制的定时
+        DataJson.panels copyPanel = null;
+        private void 复制ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string[] ips = FileMesege.panelSelectNode.Parent.Text.Split(' ');
+            string[] ids = FileMesege.panelSelectNode.Text.Split(' ');
+            int panelNum = Convert.ToInt32(Regex.Replace(ids[0], @"[^\d]*", ""));
+            //获取该节点IP地址面板下的 面板信息对象
+            DataJson.panels pls = DataListHelper.getPanelsInfoList(ips[0], panelNum);
+            //可能存在克隆现象需要解决
+            copyPanel = pls;
+            //新建面板
+            newPanel();
+            
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            if (treeView1.SelectedNode == null || treeView1.SelectedNode.Parent != null)
+            {
+                return;
+            }
+            newPanel();
+        }
+
+        private void btnDel_Click(object sender, EventArgs e)
+        {
+            删除ToolStripMenuItem_Click(this, EventArgs.Empty);
+        }
+
+        #endregion
+
+       
 
 
 

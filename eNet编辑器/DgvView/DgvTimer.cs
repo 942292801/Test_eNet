@@ -91,8 +91,6 @@ namespace eNet编辑器.DgvView
             try
             {
                 IniForm();
-                
-                //multipleList.Clear();
                 //查看获取对象是否存在
                 DataJson.timers tms = getTimersInfoList();
                 if (tms == null)
@@ -197,6 +195,7 @@ namespace eNet编辑器.DgvView
             panel9.Visible = false;
             listbox.Visible = false;
             listbox.Items.Clear();
+            multipleList.Clear();
             this.dataGridView1.Rows.Clear();
         }
 
@@ -321,18 +320,6 @@ namespace eNet编辑器.DgvView
             return null;
         }
 
-        /*
-        /// <summary>
-        /// 定时信息按id号排序
-        /// </summary>
-        /// <param name="tms"></param>
-        private void timerInfoSort(DataJson.timers tms)
-        {
-            tms.timersInfo.Sort(delegate(DataJson.timersInfo x, DataJson.timersInfo y)
-            {
-                return (x.id).CompareTo(y.id);
-            });
-        }*/
 
         /// <summary>
         /// 定时信息 timerInfo重新赋值排序
@@ -1532,7 +1519,6 @@ namespace eNet编辑器.DgvView
                             case "del":
                                 //删除表
                                 dgvDle(id);
-                           
                                 break;
                             default: break;
 
@@ -1634,7 +1620,7 @@ namespace eNet编辑器.DgvView
             {
                 return null;
             }
-            if (tmInfo.type == "4.0_scene" || tmInfo.type == "5.0_time" || tmInfo.type == "6.0_group")
+            if (tmInfo.type == "4.0_scene" || tmInfo.type == "5.0_time" || tmInfo.type == "6.1_keypad" || tmInfo.type == "6.2_io")
             {
                 return DataListHelper.findPointByType_address(tmInfo.type, tmInfo.address);
             }

@@ -27,10 +27,10 @@ namespace eNet编辑器.ThreeView
         public event Action<string> clearTxtShow;
         public event Action updateAllView;
         public event Action dgvTimerAddItem;
-        timerAdd timeradd = null;
+        private timerAdd timeradd = null;
 
         //判断true为选中父节点
-        bool newitemflag = false;
+        bool isSelectParetnNode = false;
 
         private void ThreeTimer_Load(object sender, EventArgs e)
         {
@@ -108,7 +108,7 @@ namespace eNet编辑器.ThreeView
         private void 添加定时ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //右击树状图外面区域
-            if (newitemflag != true)
+            if (!isSelectParetnNode)
             {
 
             }
@@ -300,7 +300,7 @@ namespace eNet编辑器.ThreeView
             string[] ips = treeView1.SelectedNode.Parent.Text.Split(' ');
             string[] timerNodeTxt = treeView1.SelectedNode.Text.Split(' ');
             tmadd.Ip = ips[0];
-            //获取场景号数
+            //获取定时号数
             tmadd.Num = Regex.Replace(timerNodeTxt[0], @"[^\d]*", "");
             if (tmadd.Num == "10000")
             {
@@ -320,7 +320,7 @@ namespace eNet编辑器.ThreeView
                     num = num.Insert(0, "0");
                 }
                 //获取IP最后一位
-                string address = SocketUtil.GetIPstyle(tmadd.Ip, 4) + "10" + num;
+                string address = SocketUtil.GetIPstyle(tmadd.Ip, 4) + "20" + num;
                 //撤销
                 DataJson.totalList OldList = FileMesege.cmds.getListInfos();
                 //获取该节点IP地址场景下的 场景信息对象
@@ -434,11 +434,11 @@ namespace eNet编辑器.ThreeView
             string[] ips = FileMesege.timerSelectNode.Parent.Text.Split(' ');
             string[] ids = FileMesege.timerSelectNode.Text.Split(' ');
             int timerNum = Convert.ToInt32(Regex.Replace(ids[0], @"[^\d]*", ""));
-            //获取该节点IP地址场景下的 场景信息对象
+            //获取该节点IP地址定时下的 定时信息对象
             DataJson.timers tms = DataListHelper.getTimersInfoList(ips[0], timerNum); 
             //可能存在克隆现象需要解决
             copyTimer = tms;
-            //新建场景
+            //新建定时
             newTimer(false);
         }
 
@@ -533,7 +533,7 @@ namespace eNet编辑器.ThreeView
             {
                 Point ClickPoint = new Point(e.X, e.Y);
                 TreeNode CurrentNode = treeView1.GetNodeAt(ClickPoint);
-                newitemflag = false;
+                isSelectParetnNode = false;
                 if (CurrentNode != null)
                 {
                     treeView1.SelectedNode = CurrentNode;//选中这个节点
@@ -547,7 +547,7 @@ namespace eNet编辑器.ThreeView
 
                         //右击选择为父节点 显示示菜单1
                         CurrentNode.ContextMenuStrip = contextMenuStrip1;
-                        newitemflag = true;
+                        isSelectParetnNode = true;
                     }
                 }
             }

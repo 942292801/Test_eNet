@@ -216,6 +216,8 @@ namespace eNet编辑器
         }
 
 
+        //public static 
+
         #endregion
     }
 }

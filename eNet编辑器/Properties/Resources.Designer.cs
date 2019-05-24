@@ -106,6 +106,15 @@ namespace eNet编辑器.Properties {
         }
         
         /// <summary>
+        ///   查找类似 面板 的本地化字符串。
+        /// </summary>
+        internal static string Panel {
+            get {
+                return ResourceManager.GetString("Panel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 场景 的本地化字符串。
         /// </summary>
         internal static string Scene {
@@ -147,6 +156,15 @@ namespace eNet编辑器.Properties {
         internal static string TxtShowDevName {
             get {
                 return ResourceManager.GetString("TxtShowDevName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 面板名称： 的本地化字符串。
+        /// </summary>
+        internal static string TxtShowPanelName {
+            get {
+                return ResourceManager.GetString("TxtShowPanelName", resourceCulture);
             }
         }
         

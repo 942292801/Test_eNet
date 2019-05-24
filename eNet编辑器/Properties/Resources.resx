@@ -165,4 +165,12 @@
     <value>定时名称：</value>
     <comment>主窗信息显示界面 （定时名称：）</comment>
   </data>
+  <data name="Panel" xml:space="preserve">
+    <value>面板</value>
+    <comment>面板树状图节点 名称前部分</comment>
+  </data>
+  <data name="TxtShowPanelName" xml:space="preserve">
+    <value>面板名称：</value>
+    <comment>主窗口信息显示界面（面板名称：）</comment>
+  </data>
 </root>

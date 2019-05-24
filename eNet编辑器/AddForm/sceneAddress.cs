@@ -64,6 +64,7 @@ namespace eNet编辑器.AddForm
             cb2.Items.Add("设备");
             cb2.Items.Add("场景");
             cb2.Items.Add("定时");
+            cb2.Items.Add("编组");
             cb2.Items.Add("面板");
             cb2.Items.Add("传感");
             //加载默认的类型到cb中
@@ -141,6 +142,7 @@ namespace eNet编辑器.AddForm
                         string[] infos = IniConfig.GetValue(file.FullName, "address", (i + 1).ToString()).Split(',');
                         lbs[i].Text = infos[0];
                         cbTextChange(cbs[i], infos[1]);
+                        
                     }
                     break;
                 }
@@ -173,8 +175,8 @@ namespace eNet编辑器.AddForm
                     case "timer":
                         ip = FileMesege.timerSelectNode.Parent.Text.Split(' ')[0];
                         break;
-                    case "bind":
-                        ip = FileMesege.bindSelectNode.Parent.Text.Split(' ')[0];
+                    case "panel":
+                        ip = FileMesege.panelSelectNode.Parent.Text.Split(' ')[0];
                         break;
                     case "logic":
 
@@ -268,8 +270,7 @@ namespace eNet编辑器.AddForm
             }
             else
             {
-
-                if (info == "设备" || info == "场景" || info == "定时" || info == "面板" || info == "传感")
+                if (cb == cb2)
                 {
                     cb.Text = info;
                     cb.Enabled = true;
@@ -278,7 +279,15 @@ namespace eNet编辑器.AddForm
                 {
                     cb.Items.Clear();
                     cb.Items.Add(info);
-                    cb.Enabled = false;
+                    if (cb == cb4)
+                    {
+                        cb.Enabled = true;
+                    }
+                    else
+                    {
+                        cb.Enabled = false;
+                    }
+                    
                 }
                 
             }
@@ -306,6 +315,9 @@ namespace eNet编辑器.AddForm
                         newobj = SocketUtil.strtohexstr(cb1.Text) + SocketUtil.strtohexstr("48");
                         break;
                     case "面板":
+                        newobj = SocketUtil.strtohexstr(cb1.Text) + SocketUtil.strtohexstr("48");
+                        break;
+                    case "编组":
                         newobj = SocketUtil.strtohexstr(cb1.Text) + SocketUtil.strtohexstr("48");
                         break;
                     default:
@@ -366,7 +378,7 @@ namespace eNet编辑器.AddForm
                 //找到类型一致
                 if (type == cbType)
                 {
-                    //记录当前类型 场景 定时 面板 人感
+                    //记录当前类型 场景 定时 面板 人感 编组
                     rtType = file.Name.Replace(".ini","");
                     Label[] lbs = { lb1, lb2, lb3, lb4 };
                     ComboBox[] cbs = { cb1, cb2, cb3, cb4 };

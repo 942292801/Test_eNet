@@ -50,7 +50,7 @@ namespace eNet编辑器
         public class Scenenumber
         {
             public int num { get; set; }
-            public string obj { get; set; }//改FE开头
+            public string obj { get; set; }
             public string val { get; set; }
             public int delay { get; set; }
 
@@ -330,31 +330,32 @@ namespace eNet编辑器
         }
         #endregion
 
-        #region 项目辅助文件bind.json
+        #region 项目辅助文件panel.json
         [Serializable]
-        public class Bind
+        public class Panel
         {
             public string IP { get; set; }
             public string Dev { get; set; }
-            public List<binds> Binds = new List<binds>();
+            public List<panels> panels = new List<panels>();
         }
         [Serializable]
-        public class binds
+        public class panels
         {
             public int id { get; set; }
-            public string bindName { get; set; }
-            public List<bindInfo> bindInfo = new List<bindInfo>();
+            public int pid { get; set; }
+            public int keyNum { get; set; }
+            public List<panelsInfo> panelsInfo = new List<panelsInfo>();
         }
         [Serializable]
-        public class bindInfo
+        public class panelsInfo
         {
-            //public int num { get; set; }
-            public int keyId { get; set; }
-            public int groupId { get; set; }
+            public int id { get; set; }
+            public int pid { get; set; }
+            public string keyAddress { get; set; }
+            public string objAddress { get; set; }
             public string objType { get; set; }
-            public string address { get; set; }
-            public string mode { get; set; }
-            public string showType { get; set; }
+            public int opt { get; set; }
+
             public string showAddress { get; set; }
             public string showMode { get; set; }
         }
@@ -371,7 +372,7 @@ namespace eNet编辑器
             //public  DataJson.Serial serialList;//命名在线设备文件
             public List<DataJson.Scene> sceneList = new List<Scene>();//场景
             public List<DataJson.Timer> timerList = new List<Timer>();//定时
-            public List<DataJson.Bind> bindList = new List<Bind>();//绑定
+            public List<DataJson.Panel> panelList = new List<Panel>();//绑定
 
         }
 
