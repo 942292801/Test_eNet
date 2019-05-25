@@ -64,6 +64,7 @@ namespace eNet编辑器.ThreeView
         {
             if (FileMesege.DeviceList == null)
             {
+                treeView1.Nodes.Clear();
                 return;
             }
             

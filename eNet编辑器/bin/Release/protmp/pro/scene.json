@@ -20,6 +20,15 @@
                         "opt": "00000001",
                         "optName": "开启",
                         "Delay": 0
+                    },
+                    {
+                        "id": 5,
+                        "pid": 23640,
+                        "type": "4.0_scene",
+                        "address": "6F100001",
+                        "opt": "",
+                        "optName": "",
+                        "Delay": 0
                     }
                 ],
                 "id": 1,

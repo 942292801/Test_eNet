@@ -51,15 +51,15 @@ namespace eNet编辑器.ThreeView
            
            
             TreeMesege tm = new TreeMesege();
-            //记录当前节点展开状况
-            List<string> isExpands = tm.treeIsExpandsState(treeView1);
+            
             if (FileMesege.AreaList == null)
             {
-                //展开记录的节点
-                tm.treeIspandsStateRcv(treeView1, isExpands);
+                treeView1.Nodes.Clear();
                 tm.AddNode1(treeView1, "全部");             
                 return;
             }
+            //记录当前节点展开状况
+            List<string> isExpands = tm.treeIsExpandsState(treeView1);
             //区域一
             foreach (DataJson.Area1 a1 in FileMesege.AreaList)
             {

@@ -601,11 +601,10 @@ namespace eNet编辑器
             FileMesege fm = new FileMesege();
             if (fm.newfile())
             {
-                
                     this.Text = Resources.SoftName + "Edit New Project";
                     txtShow.AppendText("新建工程\r\n");
                     updataAllView();
-               
+                    txtShow.Clear();
             }
             else
             {

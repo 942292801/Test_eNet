@@ -107,18 +107,18 @@ namespace eNet编辑器.DgvView
            
             try
             {
-                
-                
+                this.dataGridView1.Rows.Clear();
                 int tmpId = -1;
                 DataJson.panels pls = DataListHelper.getPanelsInfoListByNode();
                 if (pls == null)
                 {
+                    cbKeyNum.Text = "";
+                    
                     return;
                 }
-                cbKeyNum.SelectedIndex = pls.keyNum - 1;
+                cbKeyNum.Text = pls.keyNum.ToString();
+                //防止二次刷新
                 this.dataGridView1.Rows.Clear();
-               
-                
                 List<DataJson.panelsInfo> delPanel = new List<DataJson.panelsInfo>();
                 string ip4 = SocketUtil.strtohexstr(SocketUtil.getIP(FileMesege.timerSelectNode));//16进制
                 //循环加载该定时号的所有信息
@@ -190,7 +190,7 @@ namespace eNet编辑器.DgvView
                     }
                     tmpId = plInfo.id;
                     
-                    dataGridView1.Rows[dex].Cells[1].Value = plInfo.keyAddress;
+                    dataGridView1.Rows[dex].Cells[1].Value = keyAddressTransform(plInfo.keyAddress);
                     dataGridView1.Rows[dex].Cells[2].Value = DgvMesege.addressTransform(plInfo.objAddress);
                     dataGridView1.Rows[dex].Cells[3].Value = IniHelper.findTypesIniNamebyType(plInfo.objType);
                     //执行模式  
@@ -229,7 +229,8 @@ namespace eNet编辑器.DgvView
         {
             pls.panelsInfo.Sort(delegate(DataJson.panelsInfo x, DataJson.panelsInfo y)
             {
-                return Convert.ToInt32(x.id).CompareTo(Convert.ToInt32(y.id));
+       
+                return x.id.CompareTo(y.id);
             });
            
         }
@@ -266,7 +267,25 @@ namespace eNet编辑器.DgvView
             }
             return "";
         }
-       
+
+
+        /// <summary>
+        /// 地址转换
+        /// </summary>
+        /// <returns></returns>
+        public static string keyAddressTransform(string address)
+        {
+            if (string.IsNullOrEmpty(address))
+            {
+                return "";
+            }
+            //string ip = Convert.ToInt32(address.Substring(0, 2), 16).ToString();
+            string ID = Convert.ToInt32(address.Substring(2, 2), 16).ToString();
+            string num =( Convert.ToInt32(address.Substring(4, 2), 16)* 256 + Convert.ToInt32(address.Substring(6, 2), 16)).ToString();
+
+            return string.Format("{0}.{1}", ID, num);
+        }
+
         public class feedlist
         {
             public List<keyMode> list = null;
@@ -641,11 +660,30 @@ namespace eNet编辑器.DgvView
                     if (rowCount >= 0 && columnCount >= 0)
                     {
                         int id = Convert.ToInt32(dataGridView1.Rows[rowCount].Cells[0].Value);
+                        string add = "";
                         switch (dataGridView1.Columns[columnCount].Name)
                         {
+                            case "keyAddress":
+                                //键地址
+                                if (dataGridView1.Rows[rowCount].Cells[1].Value != null)
+                                {
+                                    //原地址
+                                    add = dataGridView1.Rows[rowCount].Cells[1].Value.ToString();
+                                }
+                                dgvKeyAddress(add);
+                                break;
                             case "objAddress":
                                //对象地址
-
+                                //改变地址
+                                
+                                if (dataGridView1.Rows[rowCount].Cells[2].Value != null)
+                                {
+                                    //原地址
+                                    add = dataGridView1.Rows[rowCount].Cells[2].Value.ToString();
+                                }
+                                string objType = dataGridView1.Rows[rowCount].Cells[3].EditedFormattedValue.ToString();
+                                //赋值List 并添加地域 名字
+                                dgvObjAddress( objType, add);
                                 break;
                             case "operation":
                                 //操作
@@ -714,17 +752,7 @@ namespace eNet编辑器.DgvView
                 switch (dataGridView1.Columns[columnNum].Name)
                 {
 
-                    case "checkDel":
-                        dataGridView1.Rows[rowNum].Selected = true;//选中行
-
-                        for (int i = dataGridView1.SelectedRows.Count; i > 0; i--)
-                        {
-                            dataGridView1.SelectedRows[i - 1].Cells[8].Value = true;
-
-                        }
-                        //提交编辑
-                        dataGridView1.EndEdit();
-                        break;
+           
 
 
                     default: break;
@@ -778,21 +806,37 @@ namespace eNet编辑器.DgvView
             {
                 return ;
             }
+            int id = Convert.ToInt32(dataGridView1.Rows[rowCount].Cells[0].Value);
+            string keyAddress = "";
+      
+            foreach (DataJson.panelsInfo find in pls.panelsInfo)
+            {
+                if (find.id == id)
+                {
+                    
+                    if (!string.IsNullOrEmpty(find.keyAddress))
+                    {
+                        keyAddress = find.keyAddress;
+                        break;
+                    }
+                }
+            }
             //撤销 
             DataJson.totalList OldList = FileMesege.cmds.getListInfos();
             //添加改id的按键
             DataJson.panelsInfo plInfo = new DataJson.panelsInfo();
-            plInfo.id =  Convert.ToInt32(dataGridView1.Rows[rowCount].Cells[0].Value);
+            plInfo.id = id;
             plInfo.pid = 0;
-            plInfo.keyAddress = "";
+            plInfo.keyAddress = keyAddress;
             plInfo.objAddress = "";
             plInfo.objType = "";
             plInfo.opt = 0;
             plInfo.showAddress = "";
             plInfo.showMode = "";
-            pls.panelsInfo.Add(plInfo);
+            pls.panelsInfo.Insert(rowCount+1,plInfo);
+            
             //排序
-            panelInfoSort(pls);
+            //panelInfoSort(pls);
             DataJson.totalList NewList = FileMesege.cmds.getListInfos();
             FileMesege.cmds.DoNewCommand(NewList, OldList);
             dgvPanelAddItem();
@@ -820,7 +864,7 @@ namespace eNet编辑器.DgvView
             else
             { 
                 //清空当条信息
-                pls.panelsInfo[rowCount].keyAddress = "";
+                //pls.panelsInfo[rowCount].keyAddress = "";
                 pls.panelsInfo[rowCount].objAddress = "";
                 pls.panelsInfo[rowCount].objType = "";
                 pls.panelsInfo[rowCount].opt = 0;
@@ -828,9 +872,9 @@ namespace eNet编辑器.DgvView
                 pls.panelsInfo[rowCount].showAddress = "";
                 pls.panelsInfo[rowCount].showMode = "";
                 
-                dataGridView1.Rows[rowCount].Cells[1].Value = null;
+                //dataGridView1.Rows[rowCount].Cells[1].Value = null;
                 dataGridView1.Rows[rowCount].Cells[2].Value = null;
-                dataGridView1.Rows[rowCount].Cells[3].Value = null;
+                dataGridView1.Rows[rowCount].Cells[3].Value = "";
                 dataGridView1.Rows[rowCount].Cells[4].Value = null;
                 dataGridView1.Rows[rowCount].Cells[5].Value = null;
                 dataGridView1.Rows[rowCount].Cells[6].Value = "";
@@ -841,6 +885,119 @@ namespace eNet编辑器.DgvView
             FileMesege.cmds.DoNewCommand(NewList, OldList);
             
         }
+
+        /// <summary>
+        /// 按键地址选择
+        /// </summary>
+        private void dgvKeyAddress(string address)
+        {
+            if (dataGridView1.Rows[rowCount].Cells[10].Value == null)
+            {
+                return;
+            }
+            panelCheck plc = new panelCheck();
+            //把窗口向屏幕中间刷新
+            plc.StartPosition = FormStartPosition.CenterParent;
+            //把当前选仲树状图网关传递到info里面 给新建设备框网关使用  
+            plc.Address = address;
+            plc.ShowDialog();
+            if (plc.DialogResult == DialogResult.OK)
+            {
+                DataJson.panels pls = DataListHelper.getPanelsInfoListByNode();
+                if (pls == null)
+                {
+                    return;
+                }
+                //撤销 
+                DataJson.totalList OldList = FileMesege.cmds.getListInfos();
+                int id = Convert.ToInt32( dataGridView1.Rows[rowCount].Cells[0].Value);
+                foreach (DataJson.panelsInfo plInfo in pls.panelsInfo)
+                {
+                    if (plInfo.id == id)
+                    {
+                        plInfo.keyAddress = plc.RtAddress;
+                    }
+                }
+                DataJson.totalList NewList = FileMesege.cmds.getListInfos();
+                FileMesege.cmds.DoNewCommand(NewList, OldList);
+            
+                dgvPanelAddItem();
+            }
+        }
+
+        /// <summary>
+        /// 获取新的地址 刷新地域 名字
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="objType">当前对象的类型</param>
+        /// <param name="obj">当前对象的地址</param>
+        /// <returns></returns>
+        private void dgvObjAddress(string objType, string obj)
+        {
+            sceneAddress dc = new sceneAddress();
+            //把窗口向屏幕中间刷新
+            dc.StartPosition = FormStartPosition.CenterParent;
+            //把当前选仲树状图网关传递到info里面 给新建设备框网关使用  
+            //dc.Obj = obj;
+            dc.ObjType = objType;
+            dc.Obj = obj;
+            dc.ShowDialog();
+            if (dc.DialogResult == DialogResult.OK)
+            {
+                string ip = FileMesege.panelSelectNode.Parent.Text.Split(' ')[0];
+                DataJson.panels pls = DataListHelper.getPanelsInfoListByNode();
+                if (pls == null)
+                {
+                    return;
+                }
+                //撤销 
+                DataJson.totalList OldList = FileMesege.cmds.getListInfos();
+                //地址
+                pls.panelsInfo[rowCount].objAddress = dc.Obj;
+                if (string.IsNullOrEmpty(dc.Obj))
+                {
+                    return;
+                }
+                //按照地址查找type的类型 只限制于设备
+                string type = IniHelper.findIniTypesByAddress(ip, dc.Obj).Split(',')[0];
+                if (string.IsNullOrEmpty(type))
+                {
+                    type = dc.RtType;
+
+                }
+                pls.panelsInfo[rowCount].objType = type;
+                //获取树状图的IP第四位  + Address地址的 后六位
+                string ad = SocketUtil.GetIPstyle(ip, 4) + dc.Obj.Substring(2, 6);
+                //区域加名称
+                DataJson.PointInfo point = DataListHelper.findPointByType_address("", ad);
+
+                if (point != null)
+                {
+                    pls.panelsInfo[rowCount].pid = point.pid;
+                    pls.panelsInfo[rowCount].objType = point.type;
+                    if (pls.panelsInfo[rowCount].objType != point.type)
+                    {
+                        pls.panelsInfo[rowCount].opt = 0;
+                    }
+
+                }
+                else
+                {
+                    //搜索一次dev表 
+                    pls.panelsInfo[rowCount].pid = 0;
+                    //info.type = dc.ObjType;
+                    pls.panelsInfo[rowCount].opt = 0;
+                  
+                }
+                DataJson.totalList NewList = FileMesege.cmds.getListInfos();
+                FileMesege.cmds.DoNewCommand(NewList, OldList);
+            }
+            dgvPanelAddItem();
+
+
+        }
+
+
 
         /// <summary>
         /// 设置显示模式 无 同步 反显
@@ -856,14 +1013,15 @@ namespace eNet编辑器.DgvView
         }
         #endregion
 
-        #region 面板键选择
-        private void cbKeyNum_SelectedIndexChanged(object sender, EventArgs e)
-        {
-           
-        }
 
+        #region 面板键选择
         private void cbKeyNum_TextChanged(object sender, EventArgs e)
         {
+
+            if (string.IsNullOrEmpty(cbKeyNum.Text))
+            {
+                return;
+            }
             if (setKeyNum(Convert.ToInt32(cbKeyNum.Text)))
             {
                 dgvPanelAddItem();
@@ -884,6 +1042,7 @@ namespace eNet编辑器.DgvView
             {
                 return false;
             }
+      
             //撤销 
             DataJson.totalList OldList = FileMesege.cmds.getListInfos();
             pls.keyNum = keyNum;
@@ -929,10 +1088,11 @@ namespace eNet编辑器.DgvView
                     plInfo.showAddress = "";
                     plInfo.showMode = "";
                     pls.panelsInfo.Add(plInfo);
+                    //排序
+                    panelInfoSort(pls);
                 }
             }
-            //排序
-            panelInfoSort(pls);
+           
            
          
             DataJson.totalList NewList = FileMesege.cmds.getListInfos();

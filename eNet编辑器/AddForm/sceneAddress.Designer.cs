@@ -104,7 +104,7 @@
             this.cb2.Name = "cb2";
             this.cb2.Size = new System.Drawing.Size(175, 25);
             this.cb2.TabIndex = 74;
-            this.cb2.TextChanged += new System.EventHandler(this.cb2_TextChanged);
+            this.cb2.SelectedIndexChanged += new System.EventHandler(this.cb2_SelectedIndexChanged);
             // 
             // cb1
             // 

@@ -33,8 +33,7 @@ namespace eNet编辑器.ThreeView
 
         private void ThreeScene_Load(object sender, EventArgs e)
         {
-            //ThreeSceneAddNode();
-            //TxtShow("场景加载");
+
             tss = new sceneAdd();
             tss.addSceneNode += new AddSceneNode(addSceneNodeDelegate);
         }
@@ -47,15 +46,14 @@ namespace eNet编辑器.ThreeView
             
             try
             {
-                TreeMesege tm = new TreeMesege();
-
-                //记录当前节点展开状况 
-                List<string> isExpands = tm.treeIsExpandsState(treeView1);
-
                 if (FileMesege.DeviceList == null)
                 {
+                    treeView1.Nodes.Clear();
                     return;
                 }
+                TreeMesege tm = new TreeMesege();
+                //记录当前节点展开状况 
+                List<string> isExpands = tm.treeIsExpandsState(treeView1);
                 string section = "";
                 //从设备加载网关信息
                 foreach (DataJson.Device d in FileMesege.DeviceList)

@@ -24,6 +24,7 @@ namespace eNet编辑器.ThreeView
             treeView1.Nodes.Clear();
             if (FileMesege.DeviceList == null)
             {
+                treeView1.Nodes.Clear();
                 return;
             }
             try

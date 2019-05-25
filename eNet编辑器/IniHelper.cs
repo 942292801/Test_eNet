@@ -14,7 +14,7 @@ namespace eNet编辑器
     {
         #region 读取ini内容
         /// <summary>
-        /// 根据类型的名称 返回 ini名称  例如 开关1.0 返回 1.0_switch 否则返回空""
+        /// 根据类型的名称 返回 ini名称  例如 开关 返回 1.0_switch 否则返回空""
         /// </summary>
         /// <param name="typeName">开关</param>
         /// <returns>1.0_switch types下的文件名1.0_switch 去掉后缀</returns>
@@ -196,6 +196,10 @@ namespace eNet编辑器
         {
             try
             {
+                if (address.Substring(2, 2) != "00")
+                {
+                    return "";
+                }
                 int id = Convert.ToInt32(address.Substring(4, 2), 16);
                 string port = Convert.ToInt32(address.Substring(6, 2), 16).ToString();
                 DataJson.Device gws = FileMesege.DeviceList.Find(gw => gw.ip == ip);

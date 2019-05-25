@@ -288,6 +288,10 @@ namespace eNet编辑器.AddForm
         {
             string[] child = info.Split('-');
             int j = Convert.ToInt32(child[1]);
+            if (j > 100)
+            {
+                j = 100;
+            }
             for (int i = Convert.ToInt32(child[0]); i <= j; i++)
             {
                 cb.Items.Add(i.ToString());

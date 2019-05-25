@@ -5,10 +5,10 @@
                 "panelsInfo": [
                     {
                         "id": 1,
-                        "pid": 0,
+                        "pid": 80760,
                         "keyAddress": "",
-                        "objAddress": "",
-                        "objType": "",
+                        "objAddress": "6F300001",
+                        "objType": "6.1_panel",
                         "opt": 0,
                         "showAddress": "",
                         "showMode": ""
@@ -32,21 +32,11 @@
                         "opt": 0,
                         "showAddress": "",
                         "showMode": ""
-                    },
-                    {
-                        "id": 4,
-                        "pid": 0,
-                        "keyAddress": "",
-                        "objAddress": "",
-                        "objType": "",
-                        "opt": 0,
-                        "showAddress": "",
-                        "showMode": ""
                     }
                 ],
                 "id": 1,
-                "pid": 74397,
-                "keyNum": 4
+                "pid": 80760,
+                "keyNum": 3
             }
         ],
         "IP": "192.168.1.111",

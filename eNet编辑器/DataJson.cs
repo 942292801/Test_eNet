@@ -351,6 +351,7 @@ namespace eNet编辑器
         {
             public int id { get; set; }
             public int pid { get; set; }
+            //ip + id + ye + num
             public string keyAddress { get; set; }
             public string objAddress { get; set; }
             public string objType { get; set; }

@@ -1019,7 +1019,7 @@ namespace eNet编辑器.DgvView
         /// </summary>
         /// <param name="id"></param>
         /// <param name="objType">当前对象的类型</param>
-        /// <param name="obj">当前对象的值</param>
+        /// <param name="obj">当前对象的地址值</param>
         /// <returns></returns>
         private void dgvAddress(int id ,string objType,string obj)
         {
@@ -1052,7 +1052,7 @@ namespace eNet编辑器.DgvView
                 string type = IniHelper.findIniTypesByAddress(ips[0],info.address).Split(',')[0];
                 if(string.IsNullOrEmpty(type))
                 {
-                    type = dc.RtType; 
+                    type = dc.RtType;
                     
                 }
                 info.type = type;

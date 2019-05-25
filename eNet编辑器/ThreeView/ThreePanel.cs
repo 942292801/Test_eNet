@@ -45,15 +45,16 @@ namespace eNet编辑器.ThreeView
         {
             try
             {
+              
+                if (FileMesege.DeviceList == null)
+                {
+                    treeView1.Nodes.Clear();
+                    return;
+                }
                 TreeMesege tm = new TreeMesege();
-
                 //记录当前节点展开状况 
                 List<string> isExpands = tm.treeIsExpandsState(treeView1);
 
-                if (FileMesege.DeviceList == null)
-                {
-                    return;
-                }
                 string section = "";
                 //从设备加载网关信息
                 foreach (DataJson.Device d in FileMesege.DeviceList)
@@ -310,7 +311,7 @@ namespace eNet编辑器.ThreeView
                     eq.pid = randomNum;
                     eq.ip = pladd.Ip;
                     eq.name = pladd.PanelName ;
-                    eq.type = "6.1_keypad";
+                    eq.type = "6.1_panel";
                     eq.objType = "";
                     eq.value = "";
                     FileMesege.PointList.link.Add(eq);

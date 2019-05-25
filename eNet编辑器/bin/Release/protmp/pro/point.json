@@ -137,17 +137,17 @@
     ],
     "link": [
         {
-            "pid": 74397,
-            "area1": "C区",
-            "area2": "B栋",
-            "area3": "-2F",
-            "area4": "大堂",
-            "name": "4键面板_111",
+            "pid": 80760,
+            "area1": "B区",
+            "area2": "",
+            "area3": "",
+            "area4": "",
+            "name": "一键面板_111",
             "ip": "192.168.1.111",
             "address": "6F300001",
             "objType": "",
             "value": "",
-            "type": "6.1_keypad"
+            "type": "6.1_panel"
         }
     ]
 }
