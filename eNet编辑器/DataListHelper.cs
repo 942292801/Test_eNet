@@ -632,7 +632,7 @@ namespace eNet编辑器
 
                         break;
 
-                    case "group":
+                    case "panel":
                         pointInfo = findPointByList_add(FileMesege.PointList.link, address);
 
                         break;

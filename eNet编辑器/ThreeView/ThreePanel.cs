@@ -297,7 +297,7 @@ namespace eNet编辑器.ThreeView
                     {
                         //复制副本
                         pls.panelsInfo = (List<DataJson.panelsInfo>)CommandManager.CloneObject(copyPanel.panelsInfo);
-             
+                        pls.keyNum = copyPanel.keyNum;
                     }
 
                     pl.panels.Add(pls);

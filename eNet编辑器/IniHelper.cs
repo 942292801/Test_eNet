@@ -196,9 +196,22 @@ namespace eNet编辑器
         {
             try
             {
-                if (address.Substring(2, 2) != "00")
+                string addressType = address.Substring(2, 2);
+                if (addressType != "00")
                 {
-                    return "";
+                    switch (addressType)
+                    {
+                        //这个类型现在地址确认不了类型
+                        case "10":
+                            return"4.0_scene";
+                        case "20":
+                            return "5.0_time";
+                        case "30":
+                            //objType = "6.0_group";
+                            return "";
+                        default:
+                            return "";
+                    }
                 }
                 int id = Convert.ToInt32(address.Substring(4, 2), 16);
                 string port = Convert.ToInt32(address.Substring(6, 2), 16).ToString();

@@ -647,15 +647,20 @@ namespace eNet编辑器.DgvView
                         //保存当前信息
                         eq = findNowRow(rowNum);
                         OldList = FileMesege.cmds.getListInfos();
-                        eq.objType = IniHelper.findObjsFileNae_ByName(dataGridView1.Rows[rowNum].Cells[4].EditedFormattedValue.ToString());
-                        eq.type = "";
-                        eq.address = "FFFFFFFF";
-                        eq.ip = "";
-                        eq.value = "";
-                        dataGridView1.Rows[rowNum].Cells[1].Value = "255.255.255.255";
-                        dataGridView1.Rows[rowNum].Cells[5].Value = null;
-                        NewList = FileMesege.cmds.getListInfos();
-                        FileMesege.cmds.DoNewCommand(NewList, OldList);
+                        string objtype = IniHelper.findObjsFileNae_ByName(dataGridView1.Rows[rowNum].Cells[4].EditedFormattedValue.ToString());
+                        if( eq.objType != objtype)
+                        {
+                            eq.value = "";
+                            eq.objType = objtype;
+                            eq.type = "";
+                            eq.address = "FFFFFFFF";
+                            eq.ip = "";
+                            dataGridView1.Rows[rowNum].Cells[1].Value = "255.255.255.255";
+                            dataGridView1.Rows[rowNum].Cells[5].Value = null;
+                            NewList = FileMesege.cmds.getListInfos();
+                            FileMesege.cmds.DoNewCommand(NewList, OldList);
+                        }
+                        
                         cbObjType.ReadOnly = true;
                         break;
 

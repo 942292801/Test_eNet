@@ -196,6 +196,7 @@ namespace eNet编辑器
             //dgv窗体跳转
             dgvscene.jumpSetInfo += new Action<DataJson.PointInfo>(dgv_jumpSetInfo);
             dgvtimer.jumpSetInfo += new Action<DataJson.PointInfo>(dgv_jumpSetInfo);
+            dgvpanel.jumpSetInfo += new Action<DataJson.PointInfo>(dgv_jumpSetInfo);
             /////////////////////////////////////////////////////
             //初始化类型表
             cbtypeName("equipment");//初始化title类型表               
@@ -301,7 +302,7 @@ namespace eNet编辑器
                     threetimer.FindNodeSelect(point);
                     break;
 
-                case "group":
+                case "panel":
                     tabPanel_Click(this, EventArgs.Empty);
                     tabStrip.SelectedTab = tabPanel;
                     threepanel.FindNodeSelect(point);
@@ -823,61 +824,75 @@ namespace eNet编辑器
 
         private void 复制CCtrlCToolStripMenuItem_Click(object sender, EventArgs e)
         {
-       
-            switch (FileMesege.formType)
+            try
             {
-                case "name":
+                switch (FileMesege.formType)
+                {
+                    case "name":
 
-                    break;
+                        break;
 
-                case "point":
-                    dgvpoint.copyData();
-                    break;
-                case "scene":
-                    dgvscene.copyData();
-                    break;
-                case "timer":
-                    dgvtimer.copyData();
-                    break;
-                case "panel":
-                    break;
-                case "logic":
+                    case "point":
+                        dgvpoint.copyData();
+                        break;
+                    case "scene":
+                        dgvscene.copyData();
+                        break;
+                    case "timer":
+                        dgvtimer.copyData();
+                        break;
+                    case "panel":
+                        dgvpanel.copyData();
+                        break;
+                    case "logic":
 
-                    break;
-                case "operation":
+                        break;
+                    case "operation":
 
-                    break;
-                default: break;
+                        break;
+                    default: break;
+                }
+            }
+            catch
+            {
+                MessageBox.Show("复制出现问题错误号858");
             }
         }
 
         private void 粘贴PCtrlVToolStripMenuItem_Click(object sender, EventArgs e)
         {
-    
-            switch (FileMesege.formType)
+            try
             {
-                case "name":
+                switch (FileMesege.formType)
+                {
+                    case "name":
 
-                    break;
+                        break;
 
-                case "point":
-                    dgvpoint.pasteData();
-                    break;
-                case "scene":
-                    dgvscene.pasteData();
-                    break;
-                case "timer":
-                    dgvtimer.pasteData();
-                    break;
-                case "panel":
-                    break;
-                case "logic":
+                    case "point":
+                        dgvpoint.pasteData();
+                        break;
+                    case "scene":
+                        dgvscene.pasteData();
+                        break;
+                    case "timer":
+                        dgvtimer.pasteData();
+                        break;
+                    case "panel":
+                        dgvpanel.pasteData();
+                        break;
+                    case "logic":
 
-                    break;
-                case "operation":
+                        break;
+                    case "operation":
 
-                    break;
-                default: break;
+                        break;
+                    default: break;
+                }
+            }
+            catch
+            {
+                MessageBox.Show("粘贴出现问题错误号895");
             }
         }
 

@@ -12,6 +12,7 @@ using System.Net.Sockets;
 using System.Threading;
 using eNet编辑器.AddForm;
 using System.Reflection;
+using Newtonsoft.Json;
 
 namespace eNet编辑器.DgvView
 {
@@ -38,9 +39,12 @@ namespace eNet编辑器.DgvView
         /// 主Form信息显示
         /// </summary>
         public event Action<string> AppTxtShow;
-        
-        
-        
+
+
+        /// <summary>
+        /// 传输point点跳转窗口
+        /// </summary>
+        public event Action<DataJson.PointInfo> jumpSetInfo;
 
 
         private void DgvBind_Load(object sender, EventArgs e)
@@ -77,7 +81,8 @@ namespace eNet编辑器.DgvView
             mode.HeaderText = "操作";
             //设置下拉列表的默认值 
             mode.DisplayStyle = DataGridViewComboBoxDisplayStyle.Nothing;
-         
+            mode.Width = 130;
+            mode.ReadOnly = true;
             //或者这样设置 默认选择第一项
             //mode.DefaultCellStyle.NullValue = null;
             mode.Name = "operation";
@@ -220,6 +225,7 @@ namespace eNet编辑器.DgvView
 
 
 
+
         #region 工具类
         /// <summary>
         /// bindinfo信息按照ID重新排列顺序
@@ -236,18 +242,21 @@ namespace eNet编辑器.DgvView
         }
 
 
-        /// <summary>
-        /// 更改combox的items信息
-        /// </summary>
-        /// <param name="objtype"></param>
-        private string updataMode(string objtype, int rownum,int mode)
+       /// <summary>
+        /// 更改combox的items信息   操作可以为空
+       /// </summary>
+       /// <param name="type">类型</param>
+       /// <param name="rownum">行号</param>
+       /// <param name="opt">操作</param>
+       /// <returns></returns>
+        private string updataMode(string type, int rownum,int opt)
         {
             //敲黑板 重点  重新在某一列上添加combox
             DataGridViewComboBoxCell combox = dataGridView1.Rows[rownum].Cells["operation"] as DataGridViewComboBoxCell;
             combox.Items.Clear();
             //修改mode的combox列表
-            string filepath = string.Format("{0}\\types\\{1}.ini", Application.StartupPath, objType);
-            //获取ini所有keyMode的Key  mode根据TYPE决定
+            string filepath = string.Format("{0}\\types\\{1}.ini", Application.StartupPath, type);
+            //获取ini所有keyMode的Key  opt根据TYPE决定
             List<string> keys = IniConfig.ReadKeys("keyMode", filepath);
             if (keys == null)
             {
@@ -260,7 +269,7 @@ namespace eNet编辑器.DgvView
             }
             for (int i = 0; i < keys.Count; i++)
             {
-                if (keys[i] == mode.ToString())
+                if (keys[i] == opt.ToString())
                 {
                     return IniConfig.GetValue(filepath, "keyMode", keys[i]);
                 }
@@ -286,159 +295,13 @@ namespace eNet编辑器.DgvView
             return string.Format("{0}.{1}", ID, num);
         }
 
-        public class feedlist
-        {
-            public List<keyMode> list = null;
-        }
-
-         public class keyMode 
-        {
-            public string key { get; set; }
-            public string val { get; set; }
-           
-        }
-        /// <summary>
-         /// 获取所有的INI信息
-        /// </summary>
-        /// <returns></returns>
-         private List<keyMode> getkeyMode()
-        {
-            //修改mode的combox列表
-            DirectoryInfo folder = new DirectoryInfo(Application.StartupPath + "//types");
-            string name = "";
-            //循环扫所有的ini文件
-            foreach (FileInfo file in folder.GetFiles("*.ini"))
-            {
-
-                name = IniConfig.GetValue(file.FullName, "define", "name");
-                //获取ini所有keyMode的Key  mode根据TYPE决定
-                List<string> keys = IniConfig.ReadKeys("keyMode", file.FullName);
-                if (keys == null)
-                {
-                    return null;
-                }
-                for (int i = 0; i < keys.Count; i++)
-                {
-                    string tmp = IniConfig.GetValue(file.FullName, "keyMode", keys[i]);
-
-                }
-
-            } return null;
-        }
+   
 
         #endregion
 
         #region 增加 清空  清除 设置 按键
 
-
-         /*增加
-        
-        private void btnAdd_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                DataJson.panels pls = DataListHelper.getPanelsInfoListByNode();
-                if (pls == null)
-                {
-                    return;
-                }
-
-                //新建表
-                DataJson.panelsInfo plInfo = new DataJson.panelsInfo();
-
-                int id = 0;
-                string objType = "", keyAddress = "", objAddress = "", opt = "", showAddress = "", showMode = "";
-                //撤销 
-                DataJson.totalList OldList = FileMesege.cmds.getListInfos();
-                if (pls.panelsInfo.Count > 0)
-                {
-                    id = pls.panelsInfo[pls.panelsInfo.Count - 1].id;
-                    objType = pls.panelsInfo[pls.panelsInfo.Count - 1].objType;
-                    keyAddress = pls.panelsInfo[pls.panelsInfo.Count - 1].keyAddress;
-                    objAddress = pls.panelsInfo[pls.panelsInfo.Count - 1].objAddress;
-                    opt = pls.panelsInfo[pls.panelsInfo.Count - 1].opt;
-                    showAddress = pls.panelsInfo[pls.panelsInfo.Count - 1].showAddress;
-                    showMode = pls.panelsInfo[pls.panelsInfo.Count - 1].showMode;
-               
-                }
-                plInfo.id = id + 1;
-                plInfo.pid = 0;
-                plInfo.objType = objType;
-                plInfo.opt = opt;
-                plInfo.keyAddress = keyAddress;
-                plInfo.showAddress = showAddress;
-                plInfo.showMode = showMode;
-                //地址加一处理 并搜索PointList表获取地址 信息
-                if (!string.IsNullOrEmpty(objAddress) && objAddress != "FFFFFFFF")
-                {
-                    switch (objAddress.Substring(2, 2))
-                    {
-                        case "00":
-                            //设备类地址
-                            objAddress = objAddress.Substring(0, 6) + SocketUtil.strtohexstr((Convert.ToInt32(objAddress.Substring(6, 2), 16) + 1).ToString());
-                            break;
-                        default:
-                            string hexnum = SocketUtil.strtohexstr((Convert.ToInt32(objAddress.Substring(4, 4), 16) + 1).ToString());
-                            while (hexnum.Length < 4)
-                            {
-                                hexnum = hexnum.Insert(0, "0");
-                            }
-                            objAddress = objAddress.Substring(0, 4) + hexnum;
-                            break;
-                    }
-                    //按照地址查找type的类型 
-                    objType = IniHelper.findIniTypesByAddress(FileMesege.timerSelectNode.Parent.Text.Split(' ')[0], objAddress).Split(',')[0];
-                    if (string.IsNullOrEmpty(objType))
-                    {
-                        switch (objAddress.Substring(2, 2))
-                        {
-                            case "10":
-                                objType = "4.0_scene";
-                                break;
-                            case "20":
-                                objType = "5.0_time";
-                                break;
-                            case "30":
-                                objType = "6.0_group";
-                                break;
-                            default:
-                                break;
-                        }
-                    }
-                    plInfo.objType = objType;
-                    string ip4 = SocketUtil.strtohexstr(SocketUtil.getIP(FileMesege.panelSelectNode));//16进制
-                    //添加地域和名称 在sceneInfo表中
-                    DataJson.PointInfo point = DataListHelper.findPointByType_address(objType, ip4 + objAddress.Substring(2, 6));
-                    if (point != null)
-                    {
-                        plInfo.pid = point.pid;
-                        plInfo.objType = objType;
-                        if (plInfo.objType != point.type)
-                        {
-                            //清空执行模式（操作）
-                            plInfo.opt = "";
-                        }
-                    }
-                    else
-                    {
-                        plInfo.pid = 0;
-                        plInfo.opt = "";
-                    }
-                }
-
-                plInfo.objAddress = objAddress;
-
-                pls.panelsInfo.Add(plInfo);
-                //排序
-                //timerInfoSort(tms);
-                DataJson.totalList NewList = FileMesege.cmds.getListInfos();
-                FileMesege.cmds.DoNewCommand(NewList, OldList);
-                //重新刷新
-                dgvPanelAddItem();
-            }
-            catch (Exception ex) { MessageBox.Show(ex + "临时调试错误信息"); }
-
-        }*/
+      
 
         //清空
         private void btnClear_Click(object sender, EventArgs e)
@@ -477,7 +340,139 @@ namespace eNet编辑器.DgvView
         //载入
         private void btnDown_Click(object sender, EventArgs e)
         {
+            Socket sock = null;
+            try
+            {
+                DataJson.panels pls = DataListHelper.getPanelsInfoListByNode();
+                if (pls == null)
+                {
+                    return;
+                }
+                //面板信息不为空
+                if (pls.panelsInfo.Count > 0)
+                {
+                    DataJson.Kn kn = new DataJson.Kn();
+                    kn.key = new List<DataJson.Keynumber>();
 
+                    //把有效的对象操作 放到kN对象里面
+                    foreach (DataJson.panelsInfo plInfo in pls.panelsInfo)
+                    {
+                        //确保有信息
+                        if (string.IsNullOrEmpty(plInfo.keyAddress) || string.IsNullOrEmpty(plInfo.objAddress) || plInfo.opt == 0 || string.IsNullOrEmpty(plInfo.objType))
+                        {
+                            continue;
+                        }
+
+                        DataJson.Keynumber keyInfo = new DataJson.Keynumber();
+                        keyInfo.num = plInfo.id;
+                        keyInfo.key = "00"+plInfo.keyAddress.Substring(2,6);
+                        keyInfo.obj = plInfo.objAddress;
+                        keyInfo.mode = plInfo.opt;
+                        if (string.IsNullOrEmpty(plInfo.showAddress))
+                        {
+                            keyInfo.fback = "00000000";
+                        }
+                        else
+                        {
+                            keyInfo.fback = plInfo.showAddress;
+                        }
+                        //显示模式
+                        if (plInfo.showMode == "同步")
+                        {
+                            keyInfo.fbmode = 1;
+                        }
+                        else if (plInfo.showMode == "反显")
+                        {
+                            keyInfo.fbmode = 128;
+                        }
+                        else
+                        { 
+                            //无
+                            keyInfo.fbmode = 128;
+                        }
+                        kn.key.Add(keyInfo);
+                       
+                       
+
+                    }
+                    if (kn.key.Count > 0)
+                    {
+                        //序列化SN对象
+                        string sjson = JsonConvert.SerializeObject(kn);
+
+                        //写入数据格式
+                        string path = "down /json/k" + pls.id + ".json$" + sjson;
+                        //测试写出文档
+                        //File.WriteAllText(FileMesege.filePath + "\\objs\\s" + sceneNum + ".json", path);
+                        //string check = "exist /json/s" + sceneNum + ".json$";
+                        TcpSocket ts = new TcpSocket();
+                        int i = 0;
+                        string ip = FileMesege.panelSelectNode.Parent.Text.Split(' ')[0];
+                        while (i < 10)
+                        {
+                            sock = ts.ConnectServer(ip, 6001, 1);
+                            if (sock == null)
+                            {
+                                i++;
+                            }
+                            else
+                            {
+                                i = 0;
+                                break;
+                            }
+                        }
+
+                        int flag = -1;
+                        while (sock != null)
+                        {
+                            if (sock == null)
+                            {
+                                break;
+                            }
+                            if (i == 10)
+                            {
+                                break;
+                            }
+                            //重连
+                            //0:发送数据成功；-1:超时；-2:发送数据出现错误；-3:发送数据时出现异常
+                            flag = ts.SendData(sock, path, 1);
+                            //flag = ts.SendData(sock, "exist /json/s" + sceneNum + ".json$", 1);
+                            if (flag == 0)
+                            {
+                                AppTxtShow("加载成功！");
+                                break;
+                            }
+                            i++;
+
+                        }
+                        if (sock != null)
+                        {
+                            sock.Close();
+                        }
+
+                        if (i == 10)
+                        {
+                            AppTxtShow("加载失败");
+                        }
+
+                    }//if有场景信息
+                    else
+                    {
+                        AppTxtShow("无定时指令！");
+                    }
+
+                }
+                else
+                {
+                    AppTxtShow("无定时指令！");
+                }
+
+            }
+            catch
+            {
+                //Exception ex
+                //TxtShow("加载失败！\r\n");
+            }
         }
 
         //下载
@@ -489,19 +484,6 @@ namespace eNet编辑器.DgvView
         //开启
         private void btnOn_Click(object sender, EventArgs e)
         {
-
-        }
-
-        //关闭
-        private void btnOff_Click(object sender, EventArgs e)
-        {
-
-        }
-        
-        /*清除
-        private void btnRemove_Click(object sender, EventArgs e)
-        {
-            
             Socket sock = null;
             //产生场景文件写进去
             if (FileMesege.panelSelectNode == null || FileMesege.panelSelectNode.Parent == null)
@@ -512,11 +494,11 @@ namespace eNet编辑器.DgvView
             {
                 string ip = FileMesege.panelSelectNode.Parent.Text.Split(' ')[0];
                 string[] ids = FileMesege.panelSelectNode.Text.Split(' ');
-                int panelNum = Convert.ToInt32(Regex.Replace(ids[0], @"[^\d]*", ""));
+                int sceneNum = Convert.ToInt32(Regex.Replace(ids[0], @"[^\d]*", ""));
                 //发送调用指令
                 string ip4 = SocketUtil.getIP(FileMesege.panelSelectNode);
-
                 TcpSocket ts = new TcpSocket();
+
                 sock = ts.ConnectServer(ip, 6003, 2);
                 if (sock == null)
                 {
@@ -524,27 +506,28 @@ namespace eNet编辑器.DgvView
                     sock = ts.ConnectServer(ip, 6003, 2);
                     if (sock == null)
                     {
-                        AppTxtShow("连接失败！");
+                        AppTxtShow("连接失败！请检查网络");
+                        //sock.Close();
                         return;
                     }
 
                 }
-        
                 string number = "";
-                if (panelNum < 256)
+                if (sceneNum < 256)
                 {
-                    number = String.Format("0.{0}", panelNum.ToString());
+                    number = String.Format("0.{0}", sceneNum.ToString());
                 }
                 else
                 {
                     //模除剩下的数
-                    int num = panelNum % 256;
+                    int num = sceneNum % 256;
                     //有多小个256
-                    panelNum = (panelNum - num) / 256;
-                    number = String.Format("{0}.{1}", panelNum.ToString(), num.ToString());
+                    sceneNum = (sceneNum - num) / 256;
+                    number = String.Format("{0}.{1}", sceneNum.ToString(), num.ToString());
                 }
-                //编组号为设备号 清除该编组的信息
-                string oder = String.Format("SET;00000005;{{{0}.48.{1}}};\r\n", ip4, number);// "SET;00000005;{" + ip4 + ".48." + number + "};\r\n";
+
+
+                string oder = String.Format("SET;00000001;{{{0}.48.{1}}};\r\n", ip4, number);  // "SET;00000001;{" + ip4 + ".16." + number + "};\r\n";
                 int flag = ts.SendData(sock, oder, 2);
                 if (flag == 0)
                 {
@@ -563,12 +546,80 @@ namespace eNet编辑器.DgvView
             }
             catch
             {
-                AppTxtShow("发送指令失败！");
+                //TxtShow("发送指令失败！\r\n");
             }
         }
 
-      */
+        //关闭
+        private void btnOff_Click(object sender, EventArgs e)
+        {
+            Socket sock = null;
+            //产生场景文件写进去
+            if (FileMesege.panelSelectNode == null || FileMesege.panelSelectNode.Parent == null)
+            {
+                return;
+            }
+            try
+            {
+                string ip = FileMesege.panelSelectNode.Parent.Text.Split(' ')[0];
+                string[] ids = FileMesege.panelSelectNode.Text.Split(' ');
+                int sceneNum = Convert.ToInt32(Regex.Replace(ids[0], @"[^\d]*", ""));
+                //发送调用指令
+                string ip4 = SocketUtil.getIP(FileMesege.panelSelectNode);
+                TcpSocket ts = new TcpSocket();
 
+                sock = ts.ConnectServer(ip, 6003, 2);
+                if (sock == null)
+                {
+                    //防止一连失败
+                    sock = ts.ConnectServer(ip, 6003, 2);
+                    if (sock == null)
+                    {
+                        AppTxtShow("连接失败！请检查网络");
+                        //sock.Close();
+                        return;
+                    }
+
+                }
+                string number = "";
+                if (sceneNum < 256)
+                {
+                    number = String.Format("0.{0}", sceneNum.ToString());
+                }
+                else
+                {
+                    //模除剩下的数
+                    int num = sceneNum % 256;
+                    //有多小个256
+                    sceneNum = (sceneNum - num) / 256;
+                    number = String.Format("{0}.{1}", sceneNum.ToString(), num.ToString());
+                }
+
+
+                string oder = String.Format("SET;00000000;{{{0}.48.{1}}};\r\n", ip4, number);  // "SET;00000001;{" + ip4 + ".16." + number + "};\r\n";
+                int flag = ts.SendData(sock, oder, 2);
+                if (flag == 0)
+                {
+                    AppTxtShow("发送指令成功！");
+                    sock.Close();
+                }
+                else
+                {
+                    flag = ts.SendData(sock, oder, 2);
+                    if (flag == 0)
+                    {
+                        AppTxtShow("发送指令成功！");
+                        sock.Close();
+                    }
+                }
+            }
+            catch
+            {
+                //TxtShow("发送指令失败！\r\n");
+            }
+        }
+        
+     
 
 
         #endregion
@@ -661,6 +712,7 @@ namespace eNet编辑器.DgvView
                     {
                         int id = Convert.ToInt32(dataGridView1.Rows[rowCount].Cells[0].Value);
                         string add = "";
+                        string objType = "";
                         switch (dataGridView1.Columns[columnCount].Name)
                         {
                             case "keyAddress":
@@ -673,7 +725,6 @@ namespace eNet编辑器.DgvView
                                 dgvKeyAddress(add);
                                 break;
                             case "objAddress":
-                               //对象地址
                                 //改变地址
                                 
                                 if (dataGridView1.Rows[rowCount].Cells[2].Value != null)
@@ -681,17 +732,20 @@ namespace eNet编辑器.DgvView
                                     //原地址
                                     add = dataGridView1.Rows[rowCount].Cells[2].Value.ToString();
                                 }
-                                string objType = dataGridView1.Rows[rowCount].Cells[3].EditedFormattedValue.ToString();
+                                objType = dataGridView1.Rows[rowCount].Cells[3].EditedFormattedValue.ToString();
                                 //赋值List 并添加地域 名字
                                 dgvObjAddress( objType, add);
                                 break;
-                            case "operation":
-                                //操作
-                                break;
-                           
+                       
                             case "showAddress":
-                                //对象地址
-
+                                //显示地址
+                                if (dataGridView1.Rows[rowCount].Cells[7].Value != null)
+                                {
+                                    //原地址
+                                    add = dataGridView1.Rows[rowCount].Cells[7].Value.ToString();
+                                }
+                                //赋值List 并添加地域 名字
+                                dgvShowAddress( "", add);
                                 break;
                             case "del":
                                 //删除
@@ -701,6 +755,22 @@ namespace eNet编辑器.DgvView
                                 //添加
                                 addInfo();
                                 break;
+                            case "id":
+                                //设置对象跳转
+                                DataJson.PointInfo point = dgvJumpSet();
+                                if (point != null)
+                                {
+                                    //传输到form窗口控制
+                                    //AppTxtShow("传输到主窗口"+DateTime.Now);
+                                    jumpSetInfo(point);
+                                }
+                                break;
+                            case "operation":
+                                //操作
+                                mode.ReadOnly = false;
+                                break;
+                           
+                             
                             default: break;
                         }
                     }
@@ -722,6 +792,10 @@ namespace eNet编辑器.DgvView
                             case "add":
                                 //添加
                                 addInfo();
+                                break;
+                            case "showAddress":
+                                dgvShowToolTip();
+                              
                                 break;
                             default: break;
 
@@ -752,7 +826,11 @@ namespace eNet编辑器.DgvView
                 switch (dataGridView1.Columns[columnNum].Name)
                 {
 
-           
+                    case "operation":
+                        //操作 更新
+                        updataOpt( rowNum);
+
+                        break;
 
 
                     default: break;
@@ -774,9 +852,22 @@ namespace eNet编辑器.DgvView
                 {
                     switch (dataGridView1.Columns[columnNum].Name)
                     {
-
+                        case "objType":
+                            //改变对象  
+                            string isChange = dgvObjtype(rowNum);
+                            if (!string.IsNullOrEmpty(isChange))
+                            {
+                                dataGridView1.Rows[rowNum].Cells[3].Value = IniHelper.findTypesIniNamebyType(isChange);
+                            }
+                            break;
+                        case "operation":
+                            //操作
+                            dgvOperation(rowNum);
+                            mode.ReadOnly = true;
+                            break;
+                           
                         case "showMode":
-                            dgvShowMode();
+                            dgvShowMode(rowNum);
                             break;
 
                         default: break;
@@ -793,11 +884,43 @@ namespace eNet编辑器.DgvView
         }
 
         /// <summary>
+        /// 对象跳转获取 场景 定时 编组 point点
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        private DataJson.PointInfo dgvJumpSet()
+        {
+            DataJson.panels pls = DataListHelper.getPanelsInfoListByNode();
+            if (pls == null)
+            {
+                return null;
+            }
+            //获取sceneInfo对象表中对应ID号info对象
+            DataJson.panelsInfo plInfo = pls.panelsInfo[rowCount];
+            if (plInfo == null)
+            {
+                return null;
+            }
+            if (string.IsNullOrEmpty(plInfo.objAddress))
+            {
+                return null;
+            }
+            if (plInfo.objType == "4.0_scene" || plInfo.objType == "5.0_time" || plInfo.objType == "6.1_panel" || plInfo.objType == "10.2_io")
+            {
+                return DataListHelper.findPointByType_address(plInfo.objType, plInfo.objAddress);
+            }
+
+            return null;
+
+        }
+
+
+        /// <summary>
         /// 添加新面板
         /// </summary>
         private void addInfo()
         {
-            if (dataGridView1.Rows[rowCount].Cells[10].Value == null)
+             if (dataGridView1.Rows[rowCount].Cells[10].Value == null)
             {
                 return;
             }
@@ -806,34 +929,86 @@ namespace eNet编辑器.DgvView
             {
                 return ;
             }
+            
             int id = Convert.ToInt32(dataGridView1.Rows[rowCount].Cells[0].Value);
-            string keyAddress = "";
-      
+            int opt = 0;
+            string objType = "", keyAddress = "", objAddress = "";
+            //计算往哪个位置插入
+            int inserNum = 0;
             foreach (DataJson.panelsInfo find in pls.panelsInfo)
             {
+                inserNum++;
                 if (find.id == id)
                 {
-                    
                     if (!string.IsNullOrEmpty(find.keyAddress))
                     {
+                        objType = find.objType;
                         keyAddress = find.keyAddress;
-                        break;
+                        objAddress = find.objAddress;
+                        opt = find.opt;
                     }
+
                 }
+                if (find.id == id + 1)
+                {
+                    break;
+                }
+
+            }
+            if (pls.panelsInfo.Count == inserNum)
+            {
+                inserNum++;
             }
             //撤销 
             DataJson.totalList OldList = FileMesege.cmds.getListInfos();
             //添加改id的按键
             DataJson.panelsInfo plInfo = new DataJson.panelsInfo();
+            //地址加一处理 并搜索PointList表获取地址 信息
+            if (!string.IsNullOrEmpty(objAddress) && objAddress != "FFFFFFFF")
+            {
+                switch (objAddress.Substring(2, 2))
+                {
+                    case "00":
+                        //设备类地址
+                        objAddress = objAddress.Substring(0, 6) + SocketUtil.strtohexstr((Convert.ToInt32(objAddress.Substring(6, 2), 16) + 1).ToString());
+                        break;
+                    default:
+                        string hexnum = SocketUtil.strtohexstr((Convert.ToInt32(objAddress.Substring(4, 4), 16) + 1).ToString());
+                        while (hexnum.Length < 4)
+                        {
+                            hexnum = hexnum.Insert(0, "0");
+                        }
+                        objAddress = objAddress.Substring(0, 4) + hexnum;
+                        break;
+                }
+                //按照地址查找type的类型 
+                objType = IniHelper.findIniTypesByAddress(FileMesege.panelSelectNode.Parent.Text.Split(' ')[0], objAddress).Split(',')[0];
+                plInfo.objType = objType;
+                string ip4 = SocketUtil.strtohexstr(SocketUtil.getIP(FileMesege.panelSelectNode));//16进制
+                //添加地域和名称 在sceneInfo表中
+                DataJson.PointInfo point = DataListHelper.findPointByType_address(objType, ip4 + objAddress.Substring(2, 6));
+                if (point != null)
+                {
+                    plInfo.pid = point.pid;
+                    plInfo.objType = objType;
+                    if (plInfo.objType != point.type)
+                    {
+                        //清空执行模式（操作）
+                        plInfo.opt = 0;
+                    }
+                }
+                else
+                {
+                    plInfo.pid = 0;
+                    plInfo.opt = 0;
+                }
+            }
             plInfo.id = id;
-            plInfo.pid = 0;
             plInfo.keyAddress = keyAddress;
-            plInfo.objAddress = "";
-            plInfo.objType = "";
-            plInfo.opt = 0;
+            plInfo.objAddress = objAddress;
             plInfo.showAddress = "";
             plInfo.showMode = "";
-            pls.panelsInfo.Insert(rowCount+1,plInfo);
+            pls.panelsInfo.Insert(inserNum-1 , plInfo);
             
             //排序
             //panelInfoSort(pls);
@@ -997,20 +1172,206 @@ namespace eNet编辑器.DgvView
 
         }
 
+        /// <summary>
+        /// 获取新的地址 刷新地域 名字
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="objType">当前对象的类型</param>
+        /// <param name="obj">当前对象的地址</param>
+        /// <returns></returns>
+        private void dgvShowAddress(string objType, string obj)
+        {
+            sceneAddress dc = new sceneAddress();
+            //把窗口向屏幕中间刷新
+            dc.StartPosition = FormStartPosition.CenterParent;
+            //把当前选仲树状图网关传递到info里面 给新建设备框网关使用  
+            //dc.Obj = obj;
+            dc.ObjType = objType;
+            dc.Obj = obj;
+            dc.ShowDialog();
+            if (dc.DialogResult == DialogResult.OK)
+            {
+                string ip = FileMesege.panelSelectNode.Parent.Text.Split(' ')[0];
+                DataJson.panels pls = DataListHelper.getPanelsInfoListByNode();
+                if (pls == null)
+                {
+                    return;
+                }
+                //撤销 
+                DataJson.totalList OldList = FileMesege.cmds.getListInfos();
+                //地址
+                pls.panelsInfo[rowCount].showAddress = dc.Obj;
+                if (string.IsNullOrEmpty(dc.Obj))
+                {
+                    return;
+                }
+           
+                DataJson.totalList NewList = FileMesege.cmds.getListInfos();
+                FileMesege.cmds.DoNewCommand(NewList, OldList);
+            }
+            dgvPanelAddItem();
 
+
+        }
+
+        private void dgvShowToolTip()
+        {
+            DataJson.panels pls = DataListHelper.getPanelsInfoListByNode();
+            if (pls == null)
+            {
+                dataGridView1.Rows[rowCount].Cells[7].ToolTipText = null;
+                return;
+            }
+            //区域加名称
+            DataJson.PointInfo point = DataListHelper.findPointByType_address("", pls.panelsInfo[rowCount].showAddress);
+            if (point == null)
+            {
+                dataGridView1.Rows[rowCount].Cells[7].ToolTipText = null;
+                return ;
+            }
+            dataGridView1.Rows[rowCount].Cells[7].ToolTipText = (string.Format("{0} {1} {2} {3}", point.area1, point.area2, point.area3, point.area4).Trim() + " " + point.name).Trim();//改根据地址从信息里面获取
+        }
+
+        /// <summary>
+        /// 修改DGV表类型
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="type"></param>
+        private string dgvObjtype(int id)
+        {
+
+            DataJson.panels pls = DataListHelper.getPanelsInfoListByNode();
+            if (pls == null)
+            {
+                return null;
+            }
+
+
+            if (pls.panelsInfo[id].pid != 0)
+            {
+                DataJson.PointInfo point = DataListHelper.findPointByPid(pls.panelsInfo[id].pid);
+                if (point.type != "")
+                {
+
+                    return point.type;
+                }
+
+            }
+            //撤销 
+            DataJson.totalList OldList = FileMesege.cmds.getListInfos();
+            pls.panelsInfo[id].objType = IniHelper.findTypesIniTypebyName(dataGridView1.Rows[id].Cells[3].EditedFormattedValue.ToString());
+            pls.panelsInfo[id].opt = 0;
+
+            DataJson.totalList NewList = FileMesege.cmds.getListInfos();
+            FileMesege.cmds.DoNewCommand(NewList, OldList);
+            return null;
+        }
+
+        //tmp 临时存放该类型的地址
+        string filepath = "";
+        /// <summary>
+        /// 更改combox的items信息  
+        /// </summary>
+        /// <param name="type">类型</param>
+        /// <param name="rownum">行号</param>
+        /// <param name="opt">操作</param>
+        /// <returns></returns>
+        private void updataOpt(int rownum)
+        {
+            try
+            {
+                //敲黑板 重点  重新在某一列上添加combox
+                DataGridViewComboBoxCell combox = dataGridView1.Rows[rownum].Cells["operation"] as DataGridViewComboBoxCell;
+                combox.Items.Clear();
+                string type = IniHelper.findTypesIniTypebyName(dataGridView1.Rows[rownum].Cells[3].Value.ToString());
+                if (string.IsNullOrEmpty(type))
+                {
+                    return;
+                }
+                //修改mode的combox列表
+                filepath = string.Format("{0}\\types\\{1}.ini", Application.StartupPath, type);
+                //获取ini所有keyMode的Key  opt根据TYPE决定
+                List<string> keys = IniConfig.ReadKeys("keyMode", filepath);
+                if (keys == null)
+                {
+                    return;
+                }
+                for (int i = 0; i < keys.Count; i++)
+                {
+                    string tmp = IniConfig.GetValue(filepath, "keyMode", keys[i]);
+                    combox.Items.Add(tmp);
+                }
+            }
+            catch 
+            {
+            }
+        }
+
+        
+        /// <summary>
+        /// 修改dgv下的执行模式 （操作）
+        /// </summary>
+        /// <param name="id"></param>
+        private void dgvOperation(int id)
+        {
+            DataJson.panels pls = DataListHelper.getPanelsInfoListByNode();
+            if (pls == null)
+            {
+                dataGridView1.Rows[rowCount].Cells[7].ToolTipText = null;
+                return;
+            }
+            List<string> keys = IniConfig.ReadKeys("keyMode", filepath);
+            if (keys == null)
+            {
+                return;
+            }
+            string opt = dataGridView1.Rows[id].Cells[6].EditedFormattedValue.ToString();
+            for (int i = 0; i < keys.Count; i++)
+            {
+                if(opt ==  IniConfig.GetValue(filepath, "keyMode", keys[i]))
+                {
+                    //撤销 
+                    DataJson.totalList OldList = FileMesege.cmds.getListInfos();
+                    pls.panelsInfo[id].opt = Convert.ToInt32(keys[i]);
+                    DataJson.totalList NewList = FileMesege.cmds.getListInfos();
+                    FileMesege.cmds.DoNewCommand(NewList, OldList);
+                    
+                    return;
+                }
+            }
+        }
 
         /// <summary>
         /// 设置显示模式 无 同步 反显
         /// </summary>
-        private void dgvShowMode()
+        private void dgvShowMode(int id)
         {
             DataJson.panels pls = DataListHelper.getPanelsInfoListByNode();
             if (pls == null)
             {
                 return;
             }
+            //撤销 
+            DataJson.totalList OldList = FileMesege.cmds.getListInfos();
+            string mode = dataGridView1.Rows[id].Cells[8].EditedFormattedValue.ToString();
+            pls.panelsInfo[id].showMode = mode;
+            if (mode == "同步" || mode == "反显")
+            {
+                if (!string.IsNullOrEmpty(pls.panelsInfo[id].objAddress))
+                {
+                    //对象地址不为空进行复制
+                    pls.panelsInfo[id].showAddress = pls.panelsInfo[id].objAddress;
+                    dataGridView1.Rows[id].Cells[7].Value = dataGridView1.Rows[id].Cells[2].Value;
+                }
+
+            }
+            DataJson.totalList NewList = FileMesege.cmds.getListInfos();
+            FileMesege.cmds.DoNewCommand(NewList, OldList);
+            
 
         }
+
+
         #endregion
 
 
@@ -1109,14 +1470,169 @@ namespace eNet编辑器.DgvView
 
         private void dataGridView1_KeyUp(object sender, KeyEventArgs e)
         {
+            try
+            {
+                if (e.KeyData == Keys.Delete)
+                {
+
+                    DelKeyOpt();
+
+                }
+            }
+            catch (Exception ex) { MessageBox.Show(ex + "临时调试错误信息"); }
+        }
+
+        //删除操作
+        private void DelKeyOpt()
+        {
+            try
+            {
+
+
+                bool ischange = false;
+                //撤销
+                DataJson.totalList OldList = FileMesege.cmds.getListInfos();
+                DataJson.panels pls = DataListHelper.getPanelsInfoListByNode();
+                if (pls == null)
+                {
+                    return;
+                }
+                for (int i = 0; i < dataGridView1.SelectedCells.Count; i++)
+                {
+                    int colIndex = dataGridView1.SelectedCells[i].ColumnIndex;
+                    DataJson.panelsInfo plInfo = pls.panelsInfo[dataGridView1.SelectedCells[i].RowIndex];
+                    if (plInfo == null)
+                    {
+                        continue;
+                    }
+                    if (colIndex == 6)
+                    {
+
+                        ischange = true;
+                        plInfo.opt = 0;
+
+                        dataGridView1.Rows[dataGridView1.SelectedCells[i].RowIndex].Cells[6].Value = null;
+                    }//if
+                    if (colIndex == 7)
+                    {
+
+                        ischange = true;
+                        plInfo.showAddress = "";
+
+                        dataGridView1.Rows[dataGridView1.SelectedCells[i].RowIndex].Cells[7].Value = null;
+                    }//if
+
+                }
+                if (ischange)
+                {
+                    DataJson.totalList NewList = FileMesege.cmds.getListInfos();
+                    FileMesege.cmds.DoNewCommand(NewList, OldList);
+                }
+            }//try
+            catch
+            {
+
+            }
 
         }
 
         #endregion
 
-      
 
- 
+
+        #region 复制 粘贴
+        /// <summary>
+        /// 复制点位的对象 与参数 
+        /// </summary>
+        public void copyData()
+        {
+            //获取当前选中单元格的列序号
+            int colIndex = dataGridView1.CurrentRow.Cells.IndexOf(dataGridView1.CurrentCell);
+            //当粘贴选中单元格为操作
+            if (colIndex == 6 || colIndex == 7)
+            {
+                int id = dataGridView1.CurrentRow.Index;
+                DataJson.panels pls = DataListHelper.getPanelsInfoListByNode();
+                if (pls == null)
+                {
+                    return;
+                }
+
+                //获取sceneInfo对象表中对应ID号info对象
+                DataJson.panelsInfo plInfo = pls.panelsInfo[id];
+                if (plInfo == null)
+                {
+                    return;
+                }
+                //获取sceneInfo对象表中对应ID号info对象
+                FileMesege.copyPanel = plInfo;
+
+            }
+
+
+        }
+
+        /// <summary>
+        /// 粘贴点位的对象与参数
+        /// </summary>
+        public void pasteData()
+        {
+
+            try
+            {
+                bool ischange = false;
+                //撤销
+                DataJson.totalList OldList = FileMesege.cmds.getListInfos();
+                DataJson.panels pls = DataListHelper.getPanelsInfoListByNode();
+                if (pls == null)
+                {
+                    return;
+                }
+                for (int i = 0; i < dataGridView1.SelectedCells.Count; i++)
+                {
+                    int colIndex = dataGridView1.SelectedCells[i].ColumnIndex;
+                    int id = dataGridView1.SelectedCells[i].RowIndex;
+                    DataJson.panelsInfo plInfo = pls.panelsInfo[id];
+                    if (plInfo == null)
+                    {
+                        return;
+                    }
+
+                    if (FileMesege.copyPanel.objType == "" || plInfo.objType == "" || plInfo.objType != FileMesege.copyPanel.objType)
+                    {
+                        continue;
+                    }
+                    if (colIndex == 6)
+                    {
+
+                        ischange = true;
+                        plInfo.opt = FileMesege.copyPanel.opt;
+
+                        dataGridView1.Rows[dataGridView1.SelectedCells[i].RowIndex].Cells[6].Value = updataMode(plInfo.objType, id, plInfo.opt); ;
+                    }//if
+                    else if (colIndex == 7)
+                    {
+                        ischange = true;
+                        plInfo.showAddress = FileMesege.copyPanel.showAddress;
+
+                        dataGridView1.Rows[dataGridView1.SelectedCells[i].RowIndex].Cells[7].Value = DgvMesege.addressTransform(plInfo.showAddress);
+                    }
+                }
+                if (ischange)
+                {
+                    DataJson.totalList NewList = FileMesege.cmds.getListInfos();
+                    FileMesege.cmds.DoNewCommand(NewList, OldList);
+                }
+
+            }//try
+            catch
+            {
+
+            }
+
+
+        }
+        #endregion
 
     
 

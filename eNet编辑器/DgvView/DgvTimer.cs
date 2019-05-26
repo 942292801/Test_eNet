@@ -790,23 +790,7 @@ namespace eNet编辑器.DgvView
                     }
                     //按照地址查找type的类型 
                     type = IniHelper.findIniTypesByAddress(FileMesege.timerSelectNode.Parent.Text.Split(' ')[0], add).Split(',')[0];
-                    if (string.IsNullOrEmpty(type))
-                    {
-                        switch (add.Substring(2, 2))
-                        {
-                            case "10":
-                                type = "4.0_scene";
-                                break;
-                            case "20":
-                                type = "5.0_time";
-                                break;
-                            case "30":
-                                type = "6.0_group";
-                                break;
-                            default:
-                                break;
-                        }
-                    }
+                
                     tmInfo.type = type;
                     string ip4 = SocketUtil.strtohexstr(SocketUtil.getIP(FileMesege.timerSelectNode));//16进制
                     //添加地域和名称 在sceneInfo表中
@@ -1586,7 +1570,7 @@ namespace eNet编辑器.DgvView
             {
                 return null;
             }
-            if (tmInfo.type == "4.0_scene" || tmInfo.type == "5.0_time" || tmInfo.type == "6.1_keypad" || tmInfo.type == "6.2_io")
+            if (tmInfo.type == "4.0_scene" || tmInfo.type == "5.0_time" || tmInfo.type == "6.1_panel" || tmInfo.type == "10.2_io")
             {
                 return DataListHelper.findPointByType_address(tmInfo.type, tmInfo.address);
             }
