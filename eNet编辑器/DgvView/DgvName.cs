@@ -545,50 +545,51 @@ namespace eNet编辑器.DgvView
 
                     if (rowcount >= 0 && ind>=0)
                     {
-                        try{
-                        bool isConcrol = false;
-                        switch (dataGridView1.Columns[ind].Name)
+                        try
                         {
-                            case "NameOperation":
-                                //弹出操作对话框
-                                //dataGridView1.Rows[count].Cells[4].Style.BackColor = Color.Red;
-                                isConcrol = true;
-                                concrolAdd(rowcount);
-                                break;
-                            case "NameSection":
-                                //添加地域信息
-                                if (FileMesege.sectionNode != null && FileMesege.cbTypeIndex != 0)
-                                {
-                                    //选中区域不为空 且不能是点位
-                                    if (FileMesege.titleinfo == "")
+                            bool isConcrol = false;
+                            switch (dataGridView1.Columns[ind].Name)
+                            {
+                                case "NameOperation":
+                                    //弹出操作对话框
+                                    //dataGridView1.Rows[count].Cells[4].Style.BackColor = Color.Red;
+                                    isConcrol = true;
+                                    concrolAdd(rowcount);
+                                    break;
+                                case "NameSection":
+                                    //添加地域信息
+                                    if (FileMesege.sectionNode != null && FileMesege.cbTypeIndex != 0)
                                     {
-                                        FileMesege.titleinfo = "未定义";
-                                    }
-                                    //撤销
-                                    DataJson.totalList OldList = FileMesege.cmds.getListInfos();
-                                    sectionAdd();
-                                    DataJson.totalList NewList = FileMesege.cmds.getListInfos();
-                                    FileMesege.cmds.DoNewCommand(NewList, OldList);
-                                }                             
-                                break;
-                            case "NameName":
-                                //不能单独赋值name
-                                break;
+                                        //选中区域不为空 且不能是点位
+                                        if (FileMesege.titleinfo == "")
+                                        {
+                                            FileMesege.titleinfo = "未定义";
+                                        }
+                                        //撤销
+                                        DataJson.totalList OldList = FileMesege.cmds.getListInfos();
+                                        sectionAdd();
+                                        DataJson.totalList NewList = FileMesege.cmds.getListInfos();
+                                        FileMesege.cmds.DoNewCommand(NewList, OldList);
+                                    }                             
+                                    break;
+                                case "NameName":
+                                    //不能单独赋值name
+                                    break;
                                    
-                            case "NameState":
-                                isConcrol = true;
-                                //展示状态窗口
-                                DgvStateShow();
-                                break;
-                            default: break;
-                        }
-                        // 点位地址赋值
-                        if (!isConcrol && !string.IsNullOrEmpty( FileMesege.titlePointSection ))
-                        { 
-                            //添加地址区域 名称 point添加地址  device添加                            
-                            pointAddAddress();
+                                case "NameState":
+                                    isConcrol = true;
+                                    //展示状态窗口
+                                    DgvStateShow();
+                                    break;
+                                default: break;
+                            }
+                            // 点位地址赋值
+                            if (!isConcrol && !string.IsNullOrEmpty( FileMesege.titlePointSection ))
+                            { 
+                                //添加地址区域 名称 point添加地址  device添加                            
+                                pointAddAddress();
                            
-                        }
+                            }
                         }//try
                         catch (Exception ex) { MessageBox.Show(ex + "临时调试错误信息"); }
                     }
@@ -910,8 +911,6 @@ namespace eNet编辑器.DgvView
             {
                 //treesection临时存放数据处
                 FileMesege.sectionNode = null;
-                //treetitle名字临时存放
-                FileMesege.titleinfo = "";
                 updateSectionTitleNode();
 
                 //鼠标图标改变

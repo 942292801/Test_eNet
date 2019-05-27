@@ -28,7 +28,8 @@ namespace eNet编辑器.ThreeView
         public ThreeSection()
         {
             InitializeComponent();
-     
+            
+            
         }
         public event AddTitleNode addTitleNode;
         //public event AddSectionDevCursor addSectionDevCursor;
@@ -1143,7 +1144,7 @@ namespace eNet编辑器.ThreeView
                 //刷PointDGV
                 updatePointDgv();
             }
-            if (FileMesege.formType == "scene" || FileMesege.formType == "timer")
+            if (FileMesege.formType == "scene" || FileMesege.formType == "timer" || FileMesege.formType == "panel")
             {
                 //刷title新树状图
                 addTitleNode();
@@ -1153,6 +1154,7 @@ namespace eNet编辑器.ThreeView
                 //刷title新树状图
                 addTitleNode();
             }
+
             //修改光标为加号
             //addSectionDevCursor();
             //addSectionNameCursor();

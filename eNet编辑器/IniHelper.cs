@@ -208,7 +208,19 @@ namespace eNet编辑器
                             return "5.0_time";
                         case "30":
                             //objType = "6.0_group";
-                            return "";
+                            int num = Convert.ToInt32(address.Substring(4, 2)) * 256 + Convert.ToInt32(address.Substring(6, 2));
+                            if (num <= 999)
+                            {
+                                return "6.1_panel";
+                            }
+                            else if (num <= 1999)
+                            {
+                                return "6.2_sensor";
+                            }
+                            else
+                            {
+                                return "";
+                            }
                         default:
                             return "";
                     }

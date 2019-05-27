@@ -44,6 +44,7 @@ namespace eNet编辑器
         public Form1()
         {
             InitializeComponent();
+
         }
         /// <summary>
         /// 解决窗体闪烁问题
@@ -183,12 +184,19 @@ namespace eNet编辑器
                 threetitle.ThreeTitleAddNode(cbType.SelectedIndex);
             });
 
+
             dgvpoint.updateTitleNode += new Action(() =>//刷新右边title状图 取消选中状态 
             {
                 threetitle.ThreeTitleAddNode(cbType.SelectedIndex);
             });
 
             dgvpoint.updateAllView += new Action(updataAllView);
+
+            dgvpanel.updateSectionTitleNode += new Action(() =>//刷新右边两树状图 取消选中状态 
+            {
+                //threesection.ThreeSEctionAddNode();
+                threetitle.ThreeTitleAddNode(cbType.SelectedIndex);
+            });
             //默认光标
             //dgvname.dgvDeviceCursorDefault +=new DgvDeviceCursorDefault(dgvdevice.cursor_default);
             //dgvdevice.dgvNameCursorDefault += new DgvNameCursorDefault(dgvname.cursor_default);
@@ -1031,6 +1039,8 @@ namespace eNet编辑器
         }
 
         #endregion
+
+ 
 
       
     

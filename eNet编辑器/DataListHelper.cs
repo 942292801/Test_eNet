@@ -738,6 +738,47 @@ namespace eNet编辑器
             return null;
         }
 
+        /// <summary>
+        /// 根据PointList的 地域和名称 section---name---type或者section --- name  获取area1 area12 area3 area4 name  type（可以无）获取point点 配合dealPointInfo（）用
+        /// </summary>
+        /// <param name="section_name"></param>
+        /// <returns></returns>
+        public static DataJson.PointInfo findPointBySection_name(List<string> section_name)
+        {
+            if (section_name.Count < 5)
+            {
+                return null;
+            }
+            foreach (DataJson.PointInfo eq in FileMesege.PointList.equipment)
+            {
+                if (eq.area1 == section_name[0] && eq.area2 == section_name[1] && eq.area3 == section_name[2] && eq.area4 == section_name[3] && eq.name == section_name[4])
+                {
+                    return eq;
+                }
+            }
+            foreach (DataJson.PointInfo eq in FileMesege.PointList.scene)
+            {
+                if (eq.area1 == section_name[0] && eq.area2 == section_name[1] && eq.area3 == section_name[2] && eq.area4 == section_name[3] && eq.name == section_name[4])
+                {
+                    return eq;
+                }
+            }
+            foreach (DataJson.PointInfo eq in FileMesege.PointList.timer)
+            {
+                if (eq.area1 == section_name[0] && eq.area2 == section_name[1] && eq.area3 == section_name[2] && eq.area4 == section_name[3] && eq.name == section_name[4])
+                {
+                    return eq;
+                }
+            }
+            foreach (DataJson.PointInfo eq in FileMesege.PointList.link)
+            {
+                if (eq.area1 == section_name[0] && eq.area2 == section_name[1] && eq.area3 == section_name[2] && eq.area4 == section_name[3] && eq.name == section_name[4])
+                {
+                    return eq;
+                }
+            }
+            return null;
+        }
 
         #endregion
 

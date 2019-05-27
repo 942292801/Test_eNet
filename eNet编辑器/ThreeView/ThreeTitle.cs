@@ -319,7 +319,12 @@ namespace eNet编辑器.ThreeView
                 FileMesege.titlePointSection = treeView1.SelectedNode.Text;
                 FileMesege.titleinfo = "";
             }
-            
+            if (FileMesege.formType == "panel")
+            {
+                FileMesege.titlePointSection = treeView1.SelectedNode.Text;
+                FileMesege.titleinfo = "";
+            }
+
             //鼠标光标改变
             //addTitleDevCursor();
             //addTitlenNameCursor();
@@ -537,7 +542,7 @@ namespace eNet编辑器.ThreeView
                     dgvtimerAddItem();
                     break;
                 case "panel":
-                    dgvPanelAddItem();
+                    //dgvPanelAddItem();
                     break;
                 case "logic":
                     break;
@@ -794,7 +799,7 @@ namespace eNet编辑器.ThreeView
         }
         #endregion
 
-
+        /*
         #region 添加功能 绑定DGV添加 新增panelsInfo对象
 
         /// <summary>
@@ -893,7 +898,7 @@ namespace eNet编辑器.ThreeView
 
  
         #endregion
-
+        */
 
 
 
