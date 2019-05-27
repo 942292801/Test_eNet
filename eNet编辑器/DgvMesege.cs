@@ -151,8 +151,49 @@ namespace eNet编辑器
 
 
 
+      
 
+        #region  判断DGV是否点击空白
 
-
+        /// <summary>
+        /// 点击空白处取消dataGridView1的选中  y为e.Y坐标
+        /// </summary>
+        /// <param name="dataGridView1"></param>
+        /// <param name="y"></param>
+        public static void endDataViewCurrent(DataGridView dataGridView1,int y)
+        {
+            if (GetRowIndexAt(dataGridView1,y) == -1)
+            {
+                dataGridView1.CurrentCell = null;
+            }
+        }
+        public static int GetRowIndexAt(DataGridView dataGridView1, int mouseLocation_Y)
+        {
+            if (dataGridView1.FirstDisplayedScrollingRowIndex < 0)
+            {
+                return -1;
+            }
+            if (dataGridView1.ColumnHeadersVisible == true && mouseLocation_Y <= dataGridView1.ColumnHeadersHeight)
+            {
+                return -1;
+            }
+            int index = dataGridView1.FirstDisplayedScrollingRowIndex;
+            int displayedCount = dataGridView1.DisplayedRowCount(true);
+            for (int k = 1; k <= displayedCount; )
+            {
+                if (dataGridView1.Rows[index].Visible == true)
+                {
+                    Rectangle rect = dataGridView1.GetRowDisplayRectangle(index, true);  // 取该区域的显示部分区域   
+                    if (rect.Top <= mouseLocation_Y && mouseLocation_Y < rect.Bottom)
+                    {
+                        return index;
+                    }
+                    k++;
+                }
+                index++;
+            }
+            return -1;
+        }
+        #endregion
     }//class
 }

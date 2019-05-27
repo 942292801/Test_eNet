@@ -1337,6 +1337,12 @@ namespace eNet编辑器.DgvView
         private int oldcolumnCount = 0;
 
         bool isClick = false;
+
+        private void dataGridView1_MouseDown(object sender, MouseEventArgs e)
+        {
+            DgvMesege.endDataViewCurrent(dataGridView1, e.Y);
+        }
+
         //移动到删除的时候高亮一行
         private void dataGridView1_CellMouseMove(object sender, DataGridViewCellMouseEventArgs e)
         {
@@ -1915,6 +1921,8 @@ namespace eNet编辑器.DgvView
 
         }
         #endregion
+
+        
 
 
 

@@ -145,7 +145,7 @@ namespace eNet编辑器.DgvView
                 this.dataGridView1.Rows.Clear();
                 findKeyPanel();
                 List<DataJson.panelsInfo> delPanel = new List<DataJson.panelsInfo>();
-                string ip4 = SocketUtil.strtohexstr(SocketUtil.getIP(FileMesege.timerSelectNode));//16进制
+                string ip4 = SocketUtil.strtohexstr(SocketUtil.getIP(FileMesege.panelSelectNode));//16进制
                 //循环加载该定时号的所有信息
                 foreach (DataJson.panelsInfo plInfo in pls.panelsInfo)
                 {
@@ -382,9 +382,81 @@ namespace eNet编辑器.DgvView
                 }
                 DataJson.totalList NewList = FileMesege.cmds.getListInfos();
                 FileMesege.cmds.DoNewCommand(NewList, OldList);
+                clearPanelInfo();
                 dgvPanelAddItem();
             }
             catch (Exception ex) { MessageBox.Show(ex + "临时调试错误信息"); }
+        }
+
+        /// <summary>
+        /// 清除主机信息
+        /// </summary>
+        private void clearPanelInfo()
+        {
+            Socket sock = null;
+            //产生场景文件写进去
+            if (FileMesege.panelSelectNode == null || FileMesege.panelSelectNode.Parent == null)
+            {
+                return;
+            }
+            try
+            {
+                string ip = FileMesege.panelSelectNode.Parent.Text.Split(' ')[0];
+                string[] ids = FileMesege.panelSelectNode.Text.Split(' ');
+                int sceneNum = Convert.ToInt32(Regex.Replace(ids[0], @"[^\d]*", ""));
+                //发送调用指令
+                string ip4 = SocketUtil.getIP(FileMesege.panelSelectNode);
+                TcpSocket ts = new TcpSocket();
+
+                sock = ts.ConnectServer(ip, 6003, 2);
+                if (sock == null)
+                {
+                    //防止一连失败
+                    sock = ts.ConnectServer(ip, 6003, 2);
+                    if (sock == null)
+                    {
+                        AppTxtShow("连接失败！请检查网络");
+                        //sock.Close();
+                        return;
+                    }
+
+                }
+                string number = "";
+                if (sceneNum < 256)
+                {
+                    number = String.Format("0.{0}", sceneNum.ToString());
+                }
+                else
+                {
+                    //模除剩下的数
+                    int num = sceneNum % 256;
+                    //有多小个256
+                    sceneNum = (sceneNum - num) / 256;
+                    number = String.Format("{0}.{1}", sceneNum.ToString(), num.ToString());
+                }
+
+
+                string oder = String.Format("SET;00000005;{{{0}.48.{1}}};\r\n", ip4, number);  // "SET;00000001;{" + ip4 + ".16." + number + "};\r\n";
+                int flag = ts.SendData(sock, oder, 2);
+                if (flag == 0)
+                {
+                    AppTxtShow("发送指令成功！");
+                    sock.Close();
+                }
+                else
+                {
+                    flag = ts.SendData(sock, oder, 2);
+                    if (flag == 0)
+                    {
+                        AppTxtShow("发送指令成功！");
+                        sock.Close();
+                    }
+                }
+            }
+            catch
+            {
+                //TxtShow("发送指令失败！\r\n");
+            }
         }
 
         //载入
@@ -415,7 +487,7 @@ namespace eNet编辑器.DgvView
 
                         DataJson.Keynumber keyInfo = new DataJson.Keynumber();
                         keyInfo.num = plInfo.id;
-                        keyInfo.key = "00"+plInfo.keyAddress.Substring(2,6);
+                        keyInfo.key = "00"+ plInfo.keyAddress.Substring(2,6);
                         keyInfo.obj = plInfo.objAddress;
                         keyInfo.mode = plInfo.opt;
                         if (string.IsNullOrEmpty(plInfo.showAddress))
@@ -424,8 +496,9 @@ namespace eNet编辑器.DgvView
                         }
                         else
                         {
-                            keyInfo.fback = plInfo.showAddress;
+                            keyInfo.fback = "00" + plInfo.showAddress.Substring(2, 6);
                         }
+                        //显示模式
                         keyInfo.fbmode = getShowMode(plInfo.showMode);
                         
                         kn.key.Add(keyInfo);
@@ -518,7 +591,7 @@ namespace eNet编辑器.DgvView
             switch (mode)
             { 
                 case "同步":
-                    return 0;
+                    return 1;
                 case "反显":
                     return 128;
                 case "图形按键":
@@ -716,6 +789,7 @@ namespace eNet编辑器.DgvView
                 updateSectionTitleNode();
 
             }
+            DgvMesege.endDataViewCurrent(dataGridView1,e.Y);
         }
 
         private void dataGridView1_CellMouseMove(object sender, DataGridViewCellMouseEventArgs e)
@@ -770,6 +844,7 @@ namespace eNet编辑器.DgvView
             {
                 isClick = true;
             }
+           
         }
 
         private void doubleClickTimer_Tick(object sender, EventArgs e)
@@ -845,8 +920,8 @@ namespace eNet编辑器.DgvView
                                 //操作
                                 mode.ReadOnly = false;
                                 break;
+
                            
-                             
                             default: break;
                         }
                     }
@@ -873,9 +948,15 @@ namespace eNet编辑器.DgvView
                                 setTitleAddress();
                                 break;
                             case "showAddress":
+                                if (dataGridView1.Rows[rowCount].Cells[10].Value == null)
+                                {
+                                    dgvShowToolTip();
+                                    return;
+                                }
                                 setTitleAddress();
                                 dgvShowToolTip();
                                 break;
+               
                             default: break;
 
 
@@ -948,6 +1029,7 @@ namespace eNet编辑器.DgvView
                            
                         case "showMode":
                             dgvShowMode(rowNum);
+                           
                             break;
 
                         default: break;
@@ -962,6 +1044,9 @@ namespace eNet编辑器.DgvView
         {
             
         }
+
+       
+
 
         /// <summary>
         /// 对象跳转获取 场景 定时 编组 point点
@@ -1261,6 +1346,10 @@ namespace eNet编辑器.DgvView
         /// <returns></returns>
         private void dgvShowAddress(string objType, string obj)
         {
+            if (dataGridView1.Rows[rowCount].Cells[10].Value == null)
+            {
+                return;
+            }
             sceneAddress dc = new sceneAddress();
             //把窗口向屏幕中间刷新
             dc.StartPosition = FormStartPosition.CenterParent;
@@ -1426,6 +1515,11 @@ namespace eNet编辑器.DgvView
         /// </summary>
         private void dgvShowMode(int id)
         {
+            if (dataGridView1.Rows[id].Cells[10].Value == null)
+            {
+                dataGridView1.Rows[id].Cells[8].Value = "";
+                return;
+            }
             DataJson.panels pls = DataListHelper.getPanelsInfoListByNode();
             if (pls == null)
             {
@@ -1456,6 +1550,7 @@ namespace eNet编辑器.DgvView
         /// </summary>
         private void setTitleAddress()
         {
+           
             if (dataGridView1.SelectedCells.Count != 1)
             {
                 return;

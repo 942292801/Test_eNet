@@ -28,8 +28,11 @@ namespace eNet编辑器.ThreeView
         public ThreeSection()
         {
             InitializeComponent();
-            
-            
+            SetStyle(ControlStyles.UserPaint, true);
+            SetStyle(ControlStyles.AllPaintingInWmPaint, true); // 禁止擦除背景.
+            SetStyle(ControlStyles.DoubleBuffer, true); // 双缓冲
+            this.SetStyle(ControlStyles.DoubleBuffer | ControlStyles.UserPaint | ControlStyles.AllPaintingInWmPaint, true);
+            this.UpdateStyles();
         }
         public event AddTitleNode addTitleNode;
         //public event AddSectionDevCursor addSectionDevCursor;
