@@ -35,6 +35,17 @@ namespace eNet编辑器.AddForm
             set { rtAddress = value; }
         }
 
+        /// <summary>
+        /// 是否为感应打开 是则读取ini里面的io
+        /// </summary>
+        private bool isIO = false;
+
+        public bool IsIO
+        {
+            get { return isIO; }
+            set { isIO = value; }
+        }
+
         public event Action<string> msghandleCallBack;
 
         //private delegate void MsgHandleCallBack(string msg);
@@ -46,23 +57,37 @@ namespace eNet编辑器.AddForm
         {
             client = new ClientAsync();
             msghandleCallBack += new Action<string>(dealDeletega);
-            ip = FileMesege.panelSelectNode.Parent.Text.Split(' ')[0];
-            lbip.Text = ip;
+            
+            
             if (!string.IsNullOrEmpty(address))
             {
                 string[] info = address.Split('.');
                 cbDevNum.Text = info[0];
                 cbKeyNum.Text = info[1];
             }
-            //扫ini添加item信息
-            findKeyPanel();
-            findKeyNum();
-            //扫描设备在线
-            Init();
-            //异步连接
-            client.ConnectAsync(ip, 6003);
-            string hearMsg = "SET;0000000A;{" + ip.Split('.')[3] + ".251.0.1};\r\n";
-            client.SendAsync(hearMsg);
+            if (IsIO)
+            {
+                ip = FileMesege.sensorSelectNode.Parent.Text.Split(' ')[0];
+                //扫ini添加item信息io
+                findIOPanel();
+                findIONum();
+              
+            }
+            else
+            {
+                ip = FileMesege.panelSelectNode.Parent.Text.Split(' ')[0];
+                //扫ini添加item信息key
+                findKeyPanel();
+                findKeyNum();
+                //扫描设备在线
+                Init();
+                //异步连接
+                client.ConnectAsync(ip, 6003);
+                string hearMsg = "SET;0000000A;{" + ip.Split('.')[3] + ".251.0.1};\r\n";
+                client.SendAsync(hearMsg);
+            }
+            lbip.Text = ip;
+            
         }
 
         /// <summary>
@@ -83,6 +108,34 @@ namespace eNet编辑器.AddForm
                     {
                         keyVal = IniConfig.GetValue(path + m.device + ".ini", "input", "key");
                         if (keyVal != "null")
+                        {
+                            cbDevNum.Items.Add(m.id);
+
+                        }
+                    }
+                }
+
+            }
+        }
+
+        /// <summary>
+        /// 寻找有io的panel
+        /// </summary>
+        private void findIOPanel()
+        {
+            //devices 里面ini的名字
+            string ioVal = "";
+            string path = Application.StartupPath + "\\devices\\";
+            //从设备加载网关信息
+            foreach (DataJson.Device d in FileMesege.DeviceList)
+            {
+                if (d.ip == ip)
+                {
+                    //加载设备
+                    foreach (DataJson.Module m in d.module)
+                    {
+                        ioVal = IniConfig.GetValue(path + m.device + ".ini", "input", "io");
+                        if (ioVal != "null")
                         {
                             cbDevNum.Items.Add(m.id);
 
@@ -216,12 +269,21 @@ namespace eNet编辑器.AddForm
 
         private void cbDevNum_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //按照设备号 去搜索ini里面key值
-            findKeyNum();
+            if (IsIO)
+            {
+                //按照设备号 去搜索ini里面io值
+                findIONum();
+            }
+            else
+            {
+                //按照设备号 去搜索ini里面key值
+                findKeyNum();
+            }
+           
         }
 
         /// <summary>
-        /// 寻找有key的panel
+        /// 寻找该设备号的信息按键数
         /// </summary>
         private void findKeyNum()
         {
@@ -249,6 +311,42 @@ namespace eNet编辑器.AddForm
                             
                         }
                         
+                    }
+                }
+
+            }
+        }
+
+
+        /// <summary>
+        /// 寻找该设备号的信息按键数
+        /// </summary>
+        private void findIONum()
+        {
+            //devices 里面ini的名字
+            string ioVal = "";
+            string path = Application.StartupPath + "\\devices\\";
+            //从设备加载网关信息
+            foreach (DataJson.Device d in FileMesege.DeviceList)
+            {
+                if (d.ip == ip)
+                {
+                    //加载设备
+                    foreach (DataJson.Module m in d.module)
+                    {
+                        if (m.id.ToString() == cbDevNum.Text)
+                        {
+                            ioVal = IniConfig.GetValue(path + m.device + ".ini", "input", "io");
+                            //iniKEY的内容不为字符 null
+                            if (ioVal != "null")
+                            {
+                                //keyVal不为空
+                                dealInfoNum(cbKeyNum, ioVal);
+                                return;
+                            }
+
+                        }
+
                     }
                 }
 

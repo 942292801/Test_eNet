@@ -223,7 +223,7 @@ namespace eNet编辑器.ThreeView
                 string[] ips = treeView1.SelectedNode.Parent.Text.Split(' ');
                 sradd.Ip = ips[0];
                 //获取面板数
-                sradd.Num = (Convert.ToInt32(Regex.Replace(treeView1.SelectedNode.Text.Split(' ')[0], @"[^\d]*", "")) + 1001).ToString();
+                sradd.Num = (Convert.ToInt32(Regex.Replace(treeView1.SelectedNode.Text.Split(' ')[0], @"[^\d]*", "")) + 1).ToString();
             }
 
             sradd.ShowDialog();

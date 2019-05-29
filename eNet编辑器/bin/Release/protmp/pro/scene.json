@@ -1,1 +1,55 @@
-[]
+[
+    {
+        "scenes": [
+            {
+                "sceneInfo": [
+                    {
+                        "id": 1,
+                        "pid": 62467,
+                        "type": "4.0_scene",
+                        "address": "6F100002",
+                        "opt": "",
+                        "optName": "",
+                        "Delay": 0
+                    },
+                    {
+                        "id": 2,
+                        "pid": 88149,
+                        "type": "5.0_time",
+                        "address": "6F202710",
+                        "opt": "",
+                        "optName": "",
+                        "Delay": 0
+                    },
+                    {
+                        "id": 3,
+                        "pid": 61530,
+                        "type": "6.1_panel",
+                        "address": "6F300002",
+                        "opt": "",
+                        "optName": "",
+                        "Delay": 0
+                    },
+                    {
+                        "id": 4,
+                        "pid": 98661,
+                        "type": "6.2_sensor",
+                        "address": "6F3003EA",
+                        "opt": "",
+                        "optName": "",
+                        "Delay": 0
+                    }
+                ],
+                "id": 1,
+                "pid": 54431
+            },
+            {
+                "sceneInfo": [],
+                "id": 2,
+                "pid": 62467
+            }
+        ],
+        "IP": "192.168.1.111",
+        "Dev": "GW100A"
+    }
+]

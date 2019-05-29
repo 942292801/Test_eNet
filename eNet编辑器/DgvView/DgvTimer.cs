@@ -1390,6 +1390,10 @@ namespace eNet编辑器.DgvView
                     return;
 
                 }
+                else if (oldcolumnCount == columnCount)
+                {
+                    return;
+                }
                 isClick = false;
             }
             else
@@ -1576,7 +1580,7 @@ namespace eNet编辑器.DgvView
             {
                 return null;
             }
-            if (tmInfo.type == "4.0_scene" || tmInfo.type == "5.0_time" || tmInfo.type == "6.1_panel" || tmInfo.type == "10.2_io")
+            if (tmInfo.type == "4.0_scene" || tmInfo.type == "5.0_time" || tmInfo.type == "6.1_panel" || tmInfo.type == "6.2_sensor")
             {
                 return DataListHelper.findPointByType_address(tmInfo.type, tmInfo.address);
             }

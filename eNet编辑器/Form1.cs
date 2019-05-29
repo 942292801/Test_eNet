@@ -123,7 +123,7 @@ namespace eNet编辑器
             {
                 AppTxtShow(msg);//后面直接加 非清空
             });
-
+            dgvsensor.AppTxtShow += new Action<string>(AppTxtShow);
             threetimer.clearTxtShow += new Action<string>(clearTxtShow);
             dgvtimer.AppTxtShow += new Action<string>(AppTxtShow);
 
@@ -199,6 +199,11 @@ namespace eNet编辑器
                 //threesection.ThreeSEctionAddNode();
                 threetitle.ThreeTitleAddNode(cbType.SelectedIndex);
             });
+            dgvsensor.updateSectionTitleNode += new Action(() =>//刷新右边两树状图 取消选中状态 
+            {
+                //threesection.ThreeSEctionAddNode();
+                threetitle.ThreeTitleAddNode(cbType.SelectedIndex);
+            });
             //默认光标
             //dgvname.dgvDeviceCursorDefault +=new DgvDeviceCursorDefault(dgvdevice.cursor_default);
             //dgvdevice.dgvNameCursorDefault += new DgvNameCursorDefault(dgvname.cursor_default);
@@ -207,6 +212,7 @@ namespace eNet编辑器
             dgvscene.jumpSetInfo += new Action<DataJson.PointInfo>(dgv_jumpSetInfo);
             dgvtimer.jumpSetInfo += new Action<DataJson.PointInfo>(dgv_jumpSetInfo);
             dgvpanel.jumpSetInfo += new Action<DataJson.PointInfo>(dgv_jumpSetInfo);
+            dgvsensor.jumpSetInfo += new Action<DataJson.PointInfo>(dgv_jumpSetInfo);
             /////////////////////////////////////////////////////
             //初始化类型表
             cbtypeName("equipment");//初始化title类型表               
@@ -300,7 +306,7 @@ namespace eNet编辑器
         /// <param name="point"></param>
         private void dgv_jumpSetInfo(DataJson.PointInfo point)
         {
-            ///////////////////////后续还要补充
+            //////////////////////////////////////////后续还要补充
             switch (point.type.Split('_')[1])
             {
                 case "scene":
@@ -367,12 +373,14 @@ namespace eNet编辑器
             form.Show();                      //窗体运行  
         }
 
+        #region 文本框操作信息
         /// <summary>
         /// 窗体显示信息 清空信息后显示
         /// </summary>
         /// <param name="msg"></param>
         public void clearTxtShow(string msg)
         {
+
             txtShow.Clear();
             txtShow.AppendText(msg);
         }
@@ -383,7 +391,11 @@ namespace eNet编辑器
         /// <param name="msg"></param>
         public void AppTxtShow(string msg)
         {
+            
+            this.txtShow.SelectAll();
+            this.txtShow.SelectionColor = Color.Black;
             txtShow.AppendText(string.Format("{0}\r\n", msg));
+            this.txtShow.ScrollToCaret();
         }
 
         //清除txt信息
@@ -391,7 +403,7 @@ namespace eNet编辑器
         {
             txtShow.Clear();
         }
-
+        #endregion
 
         /// <summary>
         /// treetitle对象选择框改变
@@ -416,7 +428,7 @@ namespace eNet编辑器
         #endregion
 
 
-        #region 左栏按钮 命名 场景 时钟 绑定 逻辑 运算 cbtype 读取
+        #region 按钮 设备 场景 时钟 绑定 逻辑 运算 cbtype 读取
 
         private void tabName_Click(object sender, EventArgs e)
         {
@@ -489,6 +501,7 @@ namespace eNet编辑器
             threetitle.ThreeTitleAddNode(cbType.SelectedIndex);
             //更改Title 小标题
             LbTitleName.Text = Resources.lbTitleObj;
+            dgvtimer.TimerAddItem();
         }
 
         //面板绑定
@@ -505,6 +518,7 @@ namespace eNet编辑器
             threetitle.ThreeTitleAddNode(cbType.SelectedIndex);
             //更改Title 小标题
             LbTitleName.Text = Resources.lbTitleObj;
+            dgvpanel.dgvPanelAddItem();
         }
 
         //感应设置
@@ -523,7 +537,7 @@ namespace eNet编辑器
             threetitle.ThreeTitleAddNode(cbType.SelectedIndex);
             //更改Title 小标题
             LbTitleName.Text = Resources.lbTitleObj;
-        
+            dgvsensor.dgvSensorAddItem();
         }
 
         private void tabLogic_Click(object sender, EventArgs e)
@@ -624,14 +638,14 @@ namespace eNet编辑器
             if (fm.newfile())
             {
                     this.Text = Resources.SoftName + "Edit New Project";
-                    txtShow.AppendText("新建工程\r\n");
+                    AppTxtShow("新建工程");
                     updataAllView();
                     txtShow.Clear();
             }
             else
             {
-                
-                txtShow.AppendText("新建工程失败\r\n");
+
+                AppTxtShow("新建工程失败");
             }           
         }
 
@@ -640,8 +654,8 @@ namespace eNet编辑器
             FileMesege fm = new FileMesege();
             if (fm.openfile())
             {
-                
-                    txtShow.AppendText("打开工程成功\r\n");
+
+                    AppTxtShow("打开工程成功");
                     this.Text = Resources.SoftName + FileMesege.filePath;
                     //刷新所有窗口
                     updataAllView();                
@@ -650,7 +664,7 @@ namespace eNet编辑器
             }
             else
             {
-                txtShow.AppendText("打开工程失败\r\n");
+                AppTxtShow("打开工程失败");
             }            
         }
 
@@ -661,11 +675,11 @@ namespace eNet编辑器
             if ( fm.savefile())
             {
 
-                txtShow.AppendText("保存工程成功\r\n");
+                AppTxtShow("保存工程成功");
             }
             else
             {
-                txtShow.AppendText("保存工程失败\r\n");
+                AppTxtShow("保存工程失败");
             }
         }
 
@@ -674,11 +688,11 @@ namespace eNet编辑器
             FileMesege fm = new FileMesege();
             if (fm.othersavefile())
             {
-                txtShow.AppendText("另存为工程成功\r\n");
+                AppTxtShow("另存为工程成功");
             }
             else
             {
-                txtShow.AppendText("另存为工程失败\r\n");
+                AppTxtShow("另存为工程失败");
             }
         }
 
@@ -1052,6 +1066,8 @@ namespace eNet编辑器
         }
 
         #endregion
+
+ 
 
        
 

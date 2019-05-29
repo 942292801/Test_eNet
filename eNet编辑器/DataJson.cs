@@ -391,6 +391,8 @@ namespace eNet编辑器
             public string objType { get; set; }
             public string opt { get; set; }
             public string optName { get; set; }
+            //输入状态
+            public int fbmode { get; set; }
         }
         #endregion
 

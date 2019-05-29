@@ -418,11 +418,12 @@ namespace eNet编辑器.DgvView
         private int milliseconds = 0;
 
         int oldrowCount = 0;
-
+        int oldcolumnCount = 0;
         /// <summary>
         /// 选中行索引
         /// </summary>
         private int rowcount = 0;
+
         /// <summary>
         /// 选中列索引
         /// </summary>
@@ -480,6 +481,7 @@ namespace eNet编辑器.DgvView
         private void dataGridView1_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
         {
             oldrowCount = rowcount;
+            oldcolumnCount = ind;
             rowcount = e.RowIndex;
             ind = e.ColumnIndex;
             // 鼠标单击.
@@ -501,6 +503,10 @@ namespace eNet编辑器.DgvView
                 {
                     return;
 
+                }
+                else if (oldcolumnCount == ind)
+                {
+                    return;
                 }
                 isClick = false;
             }
@@ -801,7 +807,7 @@ namespace eNet编辑器.DgvView
                 //cursor_default();
                 //dgvNameCursorDefault();
             }
-            
+            DgvMesege.endDataViewCurrent(dataGridView1, e.Y);
         }
 
         bool isClick = false;

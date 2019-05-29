@@ -646,7 +646,10 @@ namespace eNet编辑器
                         pointInfo = findPointByList_add(FileMesege.PointList.link, address);
 
                         break;
+                    case "sensor":
+                        pointInfo = findPointByList_add(FileMesege.PointList.link, address);
 
+                        break;
                     //为设备00 扫equipment
                     default:
                         pointInfo = findPointByList_add(FileMesege.PointList.equipment, address);

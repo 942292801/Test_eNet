@@ -122,6 +122,7 @@ namespace eNet编辑器.DgvView
            
             try
             {
+                this.dataGridView1.Rows.Clear();
                 cbDevNum.Items.Clear();
                 cbDevNum.Text = "";
                 int tmpId = -1;
@@ -129,7 +130,7 @@ namespace eNet编辑器.DgvView
                 if (pls == null)
                 {
                     cbKeyNum.Text = "";
-                    this.dataGridView1.Rows.Clear();
+                    
                     return;
                 }
                 if (pls.panelsInfo.Count == 0)
@@ -388,76 +389,7 @@ namespace eNet编辑器.DgvView
             catch (Exception ex) { MessageBox.Show(ex + "临时调试错误信息"); }
         }
 
-        /// <summary>
-        /// 清除主机信息
-        /// </summary>
-        private void clearPanelInfo()
-        {
-            Socket sock = null;
-            //产生场景文件写进去
-            if (FileMesege.panelSelectNode == null || FileMesege.panelSelectNode.Parent == null)
-            {
-                return;
-            }
-            try
-            {
-                string ip = FileMesege.panelSelectNode.Parent.Text.Split(' ')[0];
-                string[] ids = FileMesege.panelSelectNode.Text.Split(' ');
-                int sceneNum = Convert.ToInt32(Regex.Replace(ids[0], @"[^\d]*", ""));
-                //发送调用指令
-                string ip4 = SocketUtil.getIP(FileMesege.panelSelectNode);
-                TcpSocket ts = new TcpSocket();
-
-                sock = ts.ConnectServer(ip, 6003, 2);
-                if (sock == null)
-                {
-                    //防止一连失败
-                    sock = ts.ConnectServer(ip, 6003, 2);
-                    if (sock == null)
-                    {
-                        AppTxtShow("连接失败！请检查网络");
-                        //sock.Close();
-                        return;
-                    }
-
-                }
-                string number = "";
-                if (sceneNum < 256)
-                {
-                    number = String.Format("0.{0}", sceneNum.ToString());
-                }
-                else
-                {
-                    //模除剩下的数
-                    int num = sceneNum % 256;
-                    //有多小个256
-                    sceneNum = (sceneNum - num) / 256;
-                    number = String.Format("{0}.{1}", sceneNum.ToString(), num.ToString());
-                }
-
-
-                string oder = String.Format("SET;00000005;{{{0}.48.{1}}};\r\n", ip4, number);  // "SET;00000001;{" + ip4 + ".16." + number + "};\r\n";
-                int flag = ts.SendData(sock, oder, 2);
-                if (flag == 0)
-                {
-                    AppTxtShow("发送指令成功！");
-                    sock.Close();
-                }
-                else
-                {
-                    flag = ts.SendData(sock, oder, 2);
-                    if (flag == 0)
-                    {
-                        AppTxtShow("发送指令成功！");
-                        sock.Close();
-                    }
-                }
-            }
-            catch
-            {
-                //TxtShow("发送指令失败！\r\n");
-            }
-        }
+       
 
         //载入
         private void btnDown_Click(object sender, EventArgs e)
@@ -764,6 +696,76 @@ namespace eNet编辑器.DgvView
             clearPanelInfo();
 
         }
+        /// <summary>
+        /// 清除主机k#.json信息
+        /// </summary>
+        private void clearPanelInfo()
+        {
+            Socket sock = null;
+            //产生场景文件写进去
+            if (FileMesege.panelSelectNode == null || FileMesege.panelSelectNode.Parent == null)
+            {
+                return;
+            }
+            try
+            {
+                string ip = FileMesege.panelSelectNode.Parent.Text.Split(' ')[0];
+                string[] ids = FileMesege.panelSelectNode.Text.Split(' ');
+                int sceneNum = Convert.ToInt32(Regex.Replace(ids[0], @"[^\d]*", ""));
+                //发送调用指令
+                string ip4 = SocketUtil.getIP(FileMesege.panelSelectNode);
+                TcpSocket ts = new TcpSocket();
+
+                sock = ts.ConnectServer(ip, 6003, 2);
+                if (sock == null)
+                {
+                    //防止一连失败
+                    sock = ts.ConnectServer(ip, 6003, 2);
+                    if (sock == null)
+                    {
+                        AppTxtShow("连接失败！请检查网络");
+                        //sock.Close();
+                        return;
+                    }
+
+                }
+                string number = "";
+                if (sceneNum < 256)
+                {
+                    number = String.Format("0.{0}", sceneNum.ToString());
+                }
+                else
+                {
+                    //模除剩下的数
+                    int num = sceneNum % 256;
+                    //有多小个256
+                    sceneNum = (sceneNum - num) / 256;
+                    number = String.Format("{0}.{1}", sceneNum.ToString(), num.ToString());
+                }
+
+
+                string oder = String.Format("SET;00000005;{{{0}.48.{1}}};\r\n", ip4, number);  // "SET;00000001;{" + ip4 + ".16." + number + "};\r\n";
+                int flag = ts.SendData(sock, oder, 2);
+                if (flag == 0)
+                {
+                    AppTxtShow("发送指令成功！");
+                    sock.Close();
+                }
+                else
+                {
+                    flag = ts.SendData(sock, oder, 2);
+                    if (flag == 0)
+                    {
+                        AppTxtShow("发送指令成功！");
+                        sock.Close();
+                    }
+                }
+            }
+            catch
+            {
+                //TxtShow("发送指令失败！\r\n");
+            }
+        }
 
         #endregion
 
@@ -841,6 +843,10 @@ namespace eNet编辑器.DgvView
                 {
                     return;
 
+                }
+                else if (oldcolumnCount == columnCount)
+                {
+                    return;
                 }
                 isClick = false;
             }
@@ -954,11 +960,11 @@ namespace eNet编辑器.DgvView
                             case "showAddress":
                                 if (dataGridView1.Rows[rowCount].Cells[10].Value == null)
                                 {
-                                    dgvShowToolTip();
-                                    return;
+                                    dgvShowTxt();
+                                    break;
                                 }
                                 setTitleAddress();
-                                dgvShowToolTip();
+                                dgvShowTxt();
                                 break;
                
                             default: break;
@@ -1074,7 +1080,7 @@ namespace eNet编辑器.DgvView
             {
                 return null;
             }
-            if (plInfo.objType == "4.0_scene" || plInfo.objType == "5.0_time" || plInfo.objType == "6.1_panel" || plInfo.objType == "10.2_io")
+            if (plInfo.objType == "4.0_scene" || plInfo.objType == "5.0_time" || plInfo.objType == "6.1_panel" || plInfo.objType == "6.2_sensor")
             {
                 return DataListHelper.findPointByType_address(plInfo.objType, plInfo.objAddress);
             }
@@ -1104,6 +1110,7 @@ namespace eNet编辑器.DgvView
             string objType = "", keyAddress = "", objAddress = "";
             //计算往哪个位置插入
             int inserNum = 0;
+            bool isbreak = false;
             foreach (DataJson.panelsInfo find in pls.panelsInfo)
             {
                 inserNum++;
@@ -1120,11 +1127,12 @@ namespace eNet编辑器.DgvView
                 }
                 if (find.id == id + 1)
                 {
+                    isbreak = true;
                     break;
                 }
 
             }
-            if (pls.panelsInfo.Count == inserNum)
+            if (!isbreak && pls.panelsInfo.Count == inserNum)
             {
                 inserNum++;
             }
@@ -1387,22 +1395,24 @@ namespace eNet编辑器.DgvView
 
         }
 
-        private void dgvShowToolTip()
+        /// <summary>
+        /// 展示该节点的信息到txt中
+        /// </summary>
+        private void dgvShowTxt()
         {
             DataJson.panels pls = DataListHelper.getPanelsInfoListByNode();
             if (pls == null)
             {
-                dataGridView1.Rows[rowCount].Cells[7].ToolTipText = null;
                 return;
             }
             //区域加名称
             DataJson.PointInfo point = DataListHelper.findPointByType_address("", pls.panelsInfo[rowCount].showAddress);
             if (point == null)
             {
-                dataGridView1.Rows[rowCount].Cells[7].ToolTipText = null;
                 return ;
             }
-            dataGridView1.Rows[rowCount].Cells[7].ToolTipText = (string.Format("{0} {1} {2} {3}", point.area1, point.area2, point.area3, point.area4).Trim() + " " + point.name).Trim();//改根据地址从信息里面获取
+            string section = string.Format("{0} {1} {2} {3}", point.area1, point.area2, point.area3, point.area4).Trim().Replace(" ", "\\");
+            AppTxtShow(string.Format("显示地址信息 ：{0} {1} ", section , point.name));//改根据地址从信息里面获取
         }
 
         /// <summary>
@@ -1726,6 +1736,7 @@ namespace eNet编辑器.DgvView
             string ip =  SocketUtil.strtohexstr(SocketUtil.getIP(FileMesege.panelSelectNode));
             string id = SocketUtil.strtohexstr(cbDevNum.Text);
             string tmpNum = "";
+            DataJson.totalList OldList = FileMesege.cmds.getListInfos();
             foreach (DataJson.panelsInfo plInfo in pls.panelsInfo)
             { 
                 //非设备类
@@ -1736,6 +1747,8 @@ namespace eNet编辑器.DgvView
                 }
                 plInfo.keyAddress = string.Format("{0}{1}{2}", ip, id, tmpNum);
             }
+            DataJson.totalList NewList = FileMesege.cmds.getListInfos();
+            FileMesege.cmds.DoNewCommand(NewList, OldList);
             dgvPanelAddItem();
         }
 

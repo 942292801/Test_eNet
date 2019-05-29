@@ -530,6 +530,10 @@ namespace eNet编辑器.DgvView
                     return;
 
                 }
+                else if (oldcolumnCount == columnCount)
+                {
+                    return;
+                }
                 isClick = false;
             }
             else

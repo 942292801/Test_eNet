@@ -103,13 +103,13 @@ namespace eNet编辑器.ThreeView
                             break;
                         case "panel":
                             treeView1.CheckBoxes = true;
-                            //treeView1.ContextMenuStrip = contextMenuStrip2;
+                            treeView1.ContextMenuStrip = null;
                             panelAdd(num);
                             // MessageBox.Show("bind");
                             break;
                         case "sensor":
                              treeView1.CheckBoxes = true;
-                            //treeView1.ContextMenuStrip = contextMenuStrip2;
+                             treeView1.ContextMenuStrip = null;
                             sensorAdd(num);
                             break;
                         case "logic":

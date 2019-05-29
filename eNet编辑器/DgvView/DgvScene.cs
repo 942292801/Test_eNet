@@ -624,11 +624,13 @@ namespace eNet编辑器.DgvView
         {
             DgvMesege.endDataViewCurrent(dataGridView1, e.Y);
         }
+
+        
         //移动到删除的时候高亮一行
         private void dataGridView1_CellMouseMove(object sender, DataGridViewCellMouseEventArgs e)
         {
             
-            if (isClick == true)
+            if (isClick)
             {
                 return;
 
@@ -639,10 +641,13 @@ namespace eNet编辑器.DgvView
                 int rowNum = e.RowIndex;
                 //选中列号
                 int columnNum = e.ColumnIndex;
+                
                 if (rowNum >= 0 && columnNum >= 0)
                 {
+                
                     dataGridView1.ClearSelection();
                     dataGridView1.Rows[rowNum].Selected = true;//选中行
+                 
                 }
             }
         }
@@ -672,6 +677,10 @@ namespace eNet编辑器.DgvView
                 {
                     return;
 
+                }
+                else if (oldcolumnCount == columnCount)
+                {
+                    return;
                 }
                 isClick = false;
             }
@@ -893,7 +902,7 @@ namespace eNet编辑器.DgvView
             {
                 return null;
             }
-            if (info.type == "4.0_scene" || info.type == "5.0_time" || info.type == "6.1_panel" || info.type == "10.2_io")
+            if (info.type == "4.0_scene" || info.type == "5.0_time" || info.type == "6.1_panel" || info.type == "6.2_sensor")
             {
                 return DataListHelper.findPointByType_address(info.type,info.address);
             }
@@ -978,7 +987,7 @@ namespace eNet编辑器.DgvView
             DataJson.scenes sc = DataListHelper.getSceneInfoList(ips[0], sceneNum);
             //获取sceneInfo对象表中对应ID号info对象
             DataJson.sceneInfo info = getSceneID(sc, id);
-            dc.Point = DataListHelper.findPointByPid(info.pid,FileMesege.PointList.equipment);
+            dc.Point = DataListHelper.findPointByPid(info.pid);
             //把窗口向屏幕中间刷新
             dc.StartPosition = FormStartPosition.CenterParent;
             dc.ObjType = type;

@@ -512,6 +512,10 @@ namespace eNet编辑器.DgvView
                     return;
 
                 }
+                else if (oldind == ind)
+                {
+                    return;
+                }
                 isClick = false;
             }
             else
@@ -917,7 +921,7 @@ namespace eNet编辑器.DgvView
                 //cursor_default();
                 //dgvDeviceCursorDefault();
             }
-           
+            DgvMesege.endDataViewCurrent(dataGridView1, e.Y);
         }
 
         bool isClick = false;

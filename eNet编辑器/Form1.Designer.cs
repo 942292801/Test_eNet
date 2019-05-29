@@ -30,9 +30,9 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.文件ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.新建项目ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -97,7 +97,6 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.LbTitleName = new System.Windows.Forms.Label();
             this.cbType = new System.Windows.Forms.ComboBox();
-            this.txtShow = new System.Windows.Forms.TextBox();
             this.PlMeustrip = new Infragistics.Win.Misc.UltraPanel();
             this.PlToolstrip = new Infragistics.Win.Misc.UltraPanel();
             this.line4 = new DevComponents.DotNetBar.Controls.Line();
@@ -156,6 +155,7 @@
             this.plTitleCbbox = new System.Windows.Forms.Panel();
             this.symbolBox2 = new DevComponents.DotNetBar.Controls.SymbolBox();
             this.plLeft = new System.Windows.Forms.Panel();
+            this.txtShow = new System.Windows.Forms.RichTextBox();
             this.menuStrip1.SuspendLayout();
             this.PlMeustrip.ClientArea.SuspendLayout();
             this.PlMeustrip.SuspendLayout();
@@ -595,15 +595,10 @@
             this.cbType.Name = "cbType";
             this.cbType.SelectedIndexChanged += new System.EventHandler(this.cbType_SelectedIndexChanged);
             // 
-            // txtShow
-            // 
-            resources.ApplyResources(this.txtShow, "txtShow");
-            this.txtShow.Name = "txtShow";
-            // 
             // PlMeustrip
             // 
-            appearance1.BackColor = System.Drawing.Color.DarkGray;
-            this.PlMeustrip.Appearance = appearance1;
+            appearance4.BackColor = System.Drawing.Color.DarkGray;
+            this.PlMeustrip.Appearance = appearance4;
             // 
             // PlMeustrip.ClientArea
             // 
@@ -613,8 +608,8 @@
             // 
             // PlToolstrip
             // 
-            appearance2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.PlToolstrip.Appearance = appearance2;
+            appearance1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.PlToolstrip.Appearance = appearance1;
             // 
             // PlToolstrip.ClientArea
             // 
@@ -904,8 +899,8 @@
             // 
             // PlTabStrip
             // 
-            appearance3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(145)))), ((int)(((byte)(230)))));
-            this.PlTabStrip.Appearance = appearance3;
+            appearance2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(145)))), ((int)(((byte)(230)))));
+            this.PlTabStrip.Appearance = appearance2;
             // 
             // PlTabStrip.ClientArea
             // 
@@ -941,8 +936,8 @@
             this.tabStrip.ColorScheme.TabItemSelectedBorderDark = System.Drawing.Color.Empty;
             this.tabStrip.ColorScheme.TabItemSelectedBorderLight = System.Drawing.Color.Empty;
             this.tabStrip.ColorScheme.TabItemSelectedText = System.Drawing.Color.White;
-            this.tabStrip.Controls.Add(this.tabControlPanel6);
             this.tabStrip.Controls.Add(this.tabControlPanel1);
+            this.tabStrip.Controls.Add(this.tabControlPanel6);
             this.tabStrip.Controls.Add(this.tabControlPanel4);
             this.tabStrip.Controls.Add(this.tabControlPanel7);
             this.tabStrip.Controls.Add(this.tabControlPanel5);
@@ -1265,6 +1260,15 @@
             resources.ApplyResources(this.plLeft, "plLeft");
             this.plLeft.Name = "plLeft";
             // 
+            // txtShow
+            // 
+            this.txtShow.BackColor = System.Drawing.Color.White;
+            this.txtShow.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            resources.ApplyResources(this.txtShow, "txtShow");
+            this.txtShow.ForeColor = System.Drawing.Color.Red;
+            this.txtShow.Name = "txtShow";
+            this.txtShow.ReadOnly = true;
+            // 
             // Form1
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -1295,7 +1299,6 @@
             this.plMain.ResumeLayout(false);
             this.plCentent.ResumeLayout(false);
             this.plInfo.ResumeLayout(false);
-            this.plInfo.PerformLayout();
             this.plInfoTitle.ResumeLayout(false);
             this.plInfoTitle.PerformLayout();
             this.plRight.ResumeLayout(false);
@@ -1371,7 +1374,6 @@
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem24;
         private System.Windows.Forms.ToolStripMenuItem 关于软件ToolStripMenuItem;
         private System.Windows.Forms.ComboBox cbType;
-        private System.Windows.Forms.TextBox txtShow;
         private Infragistics.Win.Misc.UltraPanel PlMeustrip;
         private Infragistics.Win.Misc.UltraPanel PlToolstrip;
         private System.Windows.Forms.Label LbTitleName;
@@ -1431,6 +1433,7 @@
         private DevComponents.DotNetBar.Controls.Line line3;
         private DevComponents.DotNetBar.Controls.Line line2;
         private DevComponents.DotNetBar.Controls.Line line1;
+        private System.Windows.Forms.RichTextBox txtShow;
 
     }
 }

@@ -225,12 +225,13 @@ namespace eNet编辑器.AddForm
                     case "panel":
                         ip = FileMesege.panelSelectNode.Parent.Text.Split(' ')[0];
                         break;
+                    case "sensor":
+                        ip = FileMesege.sensorSelectNode.Parent.Text.Split(' ')[0];
+                        break;
                     case "logic":
 
                         break;
-                    case "sensor":
-
-                        break;
+                    
                     default: break;
                 }
 
@@ -391,7 +392,7 @@ namespace eNet编辑器.AddForm
             try
             {
                 
-                
+                //////////////////////////////////后期还需要添加
                 switch (cb2.Text)
                 {
                     case "场景":
@@ -421,7 +422,14 @@ namespace eNet编辑器.AddForm
                             cb4.Items.Add(pls.id);
                         }
                         break;
-                    case "传感":
+                    case "感应编组":
+                         cb4.Items.Clear();
+                        DataJson.Sensor sensor = DataListHelper.getSensorList(ip);
+
+                        foreach (DataJson.sensors srs in sensor.sensors)
+                        {
+                            cb4.Items.Add(srs.id);
+                        }
                         break;
                     case "按键":
                         break;

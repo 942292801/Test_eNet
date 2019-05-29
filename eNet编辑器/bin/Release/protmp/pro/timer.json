@@ -5,36 +5,18 @@
                 "timersInfo": [
                     {
                         "id": 1,
-                        "pid": 93279,
-                        "type": "6.2_sensor",
-                        "address": "6F3003E9",
+                        "pid": 79386,
+                        "type": "1.0_switch",
+                        "address": "6F000A01",
                         "opt": "",
                         "optName": "",
                         "shortTime": ""
                     },
                     {
                         "id": 2,
-                        "pid": 12766,
-                        "type": "6.2_sensor",
-                        "address": "6F3003EA",
-                        "opt": "",
-                        "optName": "",
-                        "shortTime": ""
-                    },
-                    {
-                        "id": 3,
-                        "pid": 16077,
-                        "type": "6.2_sensor",
-                        "address": "6F3003EB",
-                        "opt": "",
-                        "optName": "",
-                        "shortTime": ""
-                    },
-                    {
-                        "id": 4,
-                        "pid": 93279,
-                        "type": "6.2_sensor",
-                        "address": "6F3003E9",
+                        "pid": 91351,
+                        "type": "1.0_switch",
+                        "address": "6F000A02",
                         "opt": "",
                         "optName": "",
                         "shortTime": ""
@@ -42,6 +24,13 @@
                 ],
                 "id": 1,
                 "pid": 42056,
+                "dates": "",
+                "priorHoloday": "01000001"
+            },
+            {
+                "timersInfo": [],
+                "id": 10000,
+                "pid": 88149,
                 "dates": "",
                 "priorHoloday": "01000001"
             }

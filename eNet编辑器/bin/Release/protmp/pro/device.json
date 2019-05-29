@@ -2,6 +2,17 @@
     {
         "module": [
             {
+                "id": 1,
+                "device": "TEST01",
+                "sn": "",
+                "ver": "",
+                "area1": "",
+                "area2": "",
+                "area3": "",
+                "area4": "",
+                "name": ""
+            },
+            {
                 "id": 10,
                 "device": "ET-R0816A",
                 "sn": "ffffffffffffffff",
