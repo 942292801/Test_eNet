@@ -100,30 +100,37 @@
             this.txtShow = new System.Windows.Forms.TextBox();
             this.PlMeustrip = new Infragistics.Win.Misc.UltraPanel();
             this.PlToolstrip = new Infragistics.Win.Misc.UltraPanel();
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.tsNewfile = new System.Windows.Forms.ToolStripButton();
-            this.tsOpenfile = new System.Windows.Forms.ToolStripButton();
-            this.tsSave = new System.Windows.Forms.ToolStripButton();
-            this.tsOtherSave = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.tsBackOut = new System.Windows.Forms.ToolStripButton();
-            this.tsReform = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.tsCompile = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            this.tsNet = new System.Windows.Forms.ToolStripButton();
-            this.tsTimer = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+            this.line4 = new DevComponents.DotNetBar.Controls.Line();
+            this.line3 = new DevComponents.DotNetBar.Controls.Line();
+            this.line2 = new DevComponents.DotNetBar.Controls.Line();
+            this.line1 = new DevComponents.DotNetBar.Controls.Line();
+            this.buttonX13 = new DevComponents.DotNetBar.ButtonX();
+            this.buttonX14 = new DevComponents.DotNetBar.ButtonX();
+            this.buttonX15 = new DevComponents.DotNetBar.ButtonX();
+            this.buttonX16 = new DevComponents.DotNetBar.ButtonX();
+            this.buttonX9 = new DevComponents.DotNetBar.ButtonX();
+            this.buttonX10 = new DevComponents.DotNetBar.ButtonX();
+            this.buttonX11 = new DevComponents.DotNetBar.ButtonX();
+            this.buttonX12 = new DevComponents.DotNetBar.ButtonX();
+            this.buttonX7 = new DevComponents.DotNetBar.ButtonX();
+            this.buttonX8 = new DevComponents.DotNetBar.ButtonX();
+            this.btnRedo = new DevComponents.DotNetBar.ButtonX();
+            this.btnUndo = new DevComponents.DotNetBar.ButtonX();
+            this.btnPast = new DevComponents.DotNetBar.ButtonX();
+            this.btnCopy = new DevComponents.DotNetBar.ButtonX();
+            this.buttonX2 = new DevComponents.DotNetBar.ButtonX();
+            this.btnSave = new DevComponents.DotNetBar.ButtonX();
+            this.btnOpen = new DevComponents.DotNetBar.ButtonX();
             this.PlTabStrip = new Infragistics.Win.Misc.UltraPanel();
             this.tabStrip = new DevComponents.DotNetBar.TabControl();
             this.tabControlPanel1 = new DevComponents.DotNetBar.TabControlPanel();
             this.tabName = new DevComponents.DotNetBar.TabItem(this.components);
+            this.tabControlPanel6 = new DevComponents.DotNetBar.TabControlPanel();
+            this.tabSensor = new DevComponents.DotNetBar.TabItem(this.components);
             this.tabControlPanel4 = new DevComponents.DotNetBar.TabControlPanel();
             this.tabTimer = new DevComponents.DotNetBar.TabItem(this.components);
             this.tabControlPanel7 = new DevComponents.DotNetBar.TabControlPanel();
             this.tabLogic = new DevComponents.DotNetBar.TabItem(this.components);
-            this.tabControlPanel6 = new DevComponents.DotNetBar.TabControlPanel();
-            this.tabReaction = new DevComponents.DotNetBar.TabItem(this.components);
             this.tabControlPanel5 = new DevComponents.DotNetBar.TabControlPanel();
             this.tabPanel = new DevComponents.DotNetBar.TabItem(this.components);
             this.tabControlPanel3 = new DevComponents.DotNetBar.TabControlPanel();
@@ -154,7 +161,6 @@
             this.PlMeustrip.SuspendLayout();
             this.PlToolstrip.ClientArea.SuspendLayout();
             this.PlToolstrip.SuspendLayout();
-            this.toolStrip1.SuspendLayout();
             this.PlTabStrip.ClientArea.SuspendLayout();
             this.PlTabStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tabStrip)).BeginInit();
@@ -170,7 +176,7 @@
             // 
             // menuStrip1
             // 
-            this.menuStrip1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(216)))), ((int)(((byte)(216)))));
+            this.menuStrip1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             resources.ApplyResources(this.menuStrip1, "menuStrip1");
             this.menuStrip1.GripMargin = new System.Windows.Forms.Padding(0);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -607,116 +613,294 @@
             // 
             // PlToolstrip
             // 
-            appearance2.BackColor = System.Drawing.Color.DarkGray;
+            appearance2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.PlToolstrip.Appearance = appearance2;
             // 
             // PlToolstrip.ClientArea
             // 
-            this.PlToolstrip.ClientArea.Controls.Add(this.toolStrip1);
+            this.PlToolstrip.ClientArea.Controls.Add(this.line4);
+            this.PlToolstrip.ClientArea.Controls.Add(this.line3);
+            this.PlToolstrip.ClientArea.Controls.Add(this.line2);
+            this.PlToolstrip.ClientArea.Controls.Add(this.line1);
+            this.PlToolstrip.ClientArea.Controls.Add(this.buttonX13);
+            this.PlToolstrip.ClientArea.Controls.Add(this.buttonX14);
+            this.PlToolstrip.ClientArea.Controls.Add(this.buttonX15);
+            this.PlToolstrip.ClientArea.Controls.Add(this.buttonX16);
+            this.PlToolstrip.ClientArea.Controls.Add(this.buttonX9);
+            this.PlToolstrip.ClientArea.Controls.Add(this.buttonX10);
+            this.PlToolstrip.ClientArea.Controls.Add(this.buttonX11);
+            this.PlToolstrip.ClientArea.Controls.Add(this.buttonX12);
+            this.PlToolstrip.ClientArea.Controls.Add(this.buttonX7);
+            this.PlToolstrip.ClientArea.Controls.Add(this.buttonX8);
+            this.PlToolstrip.ClientArea.Controls.Add(this.btnRedo);
+            this.PlToolstrip.ClientArea.Controls.Add(this.btnUndo);
+            this.PlToolstrip.ClientArea.Controls.Add(this.btnPast);
+            this.PlToolstrip.ClientArea.Controls.Add(this.btnCopy);
+            this.PlToolstrip.ClientArea.Controls.Add(this.buttonX2);
+            this.PlToolstrip.ClientArea.Controls.Add(this.btnSave);
+            this.PlToolstrip.ClientArea.Controls.Add(this.btnOpen);
             resources.ApplyResources(this.PlToolstrip, "PlToolstrip");
+            this.PlToolstrip.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.PlToolstrip.Name = "PlToolstrip";
             // 
-            // toolStrip1
+            // line4
             // 
-            resources.ApplyResources(this.toolStrip1, "toolStrip1");
-            this.toolStrip1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(216)))), ((int)(((byte)(216)))));
-            this.toolStrip1.GripMargin = new System.Windows.Forms.Padding(0);
-            this.toolStrip1.ImageScalingSize = new System.Drawing.Size(48, 48);
-            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsNewfile,
-            this.tsOpenfile,
-            this.tsSave,
-            this.tsOtherSave,
-            this.toolStripSeparator1,
-            this.tsBackOut,
-            this.tsReform,
-            this.toolStripSeparator2,
-            this.tsCompile,
-            this.toolStripSeparator3,
-            this.tsNet,
-            this.tsTimer,
-            this.toolStripSeparator4});
-            this.toolStrip1.Name = "toolStrip1";
+            this.line4.BackColor = System.Drawing.Color.Silver;
+            this.line4.EndLineCapSize = new System.Drawing.Size(10, 10);
+            this.line4.ForeColor = System.Drawing.Color.Gray;
+            resources.ApplyResources(this.line4, "line4");
+            this.line4.Name = "line4";
             // 
-            // tsNewfile
+            // line3
             // 
-            resources.ApplyResources(this.tsNewfile, "tsNewfile");
-            this.tsNewfile.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsNewfile.Name = "tsNewfile";
-            this.tsNewfile.Click += new System.EventHandler(this.tsNewfile_Click);
+            this.line3.BackColor = System.Drawing.Color.Silver;
+            this.line3.EndLineCapSize = new System.Drawing.Size(10, 10);
+            this.line3.ForeColor = System.Drawing.Color.Gray;
+            resources.ApplyResources(this.line3, "line3");
+            this.line3.Name = "line3";
             // 
-            // tsOpenfile
+            // line2
             // 
-            resources.ApplyResources(this.tsOpenfile, "tsOpenfile");
-            this.tsOpenfile.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsOpenfile.Name = "tsOpenfile";
-            this.tsOpenfile.Click += new System.EventHandler(this.tsOpenfile_Click);
+            this.line2.BackColor = System.Drawing.Color.Silver;
+            this.line2.EndLineCapSize = new System.Drawing.Size(10, 10);
+            this.line2.ForeColor = System.Drawing.Color.Gray;
+            resources.ApplyResources(this.line2, "line2");
+            this.line2.Name = "line2";
             // 
-            // tsSave
+            // line1
             // 
-            resources.ApplyResources(this.tsSave, "tsSave");
-            this.tsSave.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsSave.Name = "tsSave";
-            this.tsSave.Click += new System.EventHandler(this.tsSave_Click);
+            this.line1.BackColor = System.Drawing.Color.Silver;
+            this.line1.EndLineCapSize = new System.Drawing.Size(10, 10);
+            this.line1.ForeColor = System.Drawing.Color.Gray;
+            resources.ApplyResources(this.line1, "line1");
+            this.line1.Name = "line1";
             // 
-            // tsOtherSave
+            // buttonX13
             // 
-            resources.ApplyResources(this.tsOtherSave, "tsOtherSave");
-            this.tsOtherSave.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsOtherSave.Name = "tsOtherSave";
-            this.tsOtherSave.Click += new System.EventHandler(this.tsOtherSave_Click);
+            this.buttonX13.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            resources.ApplyResources(this.buttonX13, "buttonX13");
+            this.buttonX13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.buttonX13.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
+            this.buttonX13.FocusCuesEnabled = false;
+            this.buttonX13.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None;
+            this.buttonX13.HoverImage = ((System.Drawing.Image)(resources.GetObject("buttonX13.HoverImage")));
+            this.buttonX13.Image = ((System.Drawing.Image)(resources.GetObject("buttonX13.Image")));
+            this.buttonX13.Name = "buttonX13";
+            this.buttonX13.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             // 
-            // toolStripSeparator1
+            // buttonX14
             // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            resources.ApplyResources(this.toolStripSeparator1, "toolStripSeparator1");
+            this.buttonX14.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            resources.ApplyResources(this.buttonX14, "buttonX14");
+            this.buttonX14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.buttonX14.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
+            this.buttonX14.FocusCuesEnabled = false;
+            this.buttonX14.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None;
+            this.buttonX14.HoverImage = ((System.Drawing.Image)(resources.GetObject("buttonX14.HoverImage")));
+            this.buttonX14.Image = ((System.Drawing.Image)(resources.GetObject("buttonX14.Image")));
+            this.buttonX14.Name = "buttonX14";
+            this.buttonX14.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             // 
-            // tsBackOut
+            // buttonX15
             // 
-            resources.ApplyResources(this.tsBackOut, "tsBackOut");
-            this.tsBackOut.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsBackOut.Name = "tsBackOut";
-            this.tsBackOut.Click += new System.EventHandler(this.tsBackOut_Click);
+            this.buttonX15.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            resources.ApplyResources(this.buttonX15, "buttonX15");
+            this.buttonX15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.buttonX15.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
+            this.buttonX15.FocusCuesEnabled = false;
+            this.buttonX15.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None;
+            this.buttonX15.HoverImage = ((System.Drawing.Image)(resources.GetObject("buttonX15.HoverImage")));
+            this.buttonX15.Image = ((System.Drawing.Image)(resources.GetObject("buttonX15.Image")));
+            this.buttonX15.Name = "buttonX15";
+            this.buttonX15.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             // 
-            // tsReform
+            // buttonX16
             // 
-            resources.ApplyResources(this.tsReform, "tsReform");
-            this.tsReform.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsReform.Name = "tsReform";
-            this.tsReform.Click += new System.EventHandler(this.tsReform_Click);
+            this.buttonX16.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            resources.ApplyResources(this.buttonX16, "buttonX16");
+            this.buttonX16.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.buttonX16.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
+            this.buttonX16.FocusCuesEnabled = false;
+            this.buttonX16.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None;
+            this.buttonX16.HoverImage = ((System.Drawing.Image)(resources.GetObject("buttonX16.HoverImage")));
+            this.buttonX16.Image = ((System.Drawing.Image)(resources.GetObject("buttonX16.Image")));
+            this.buttonX16.Name = "buttonX16";
+            this.buttonX16.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             // 
-            // toolStripSeparator2
+            // buttonX9
             // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            resources.ApplyResources(this.toolStripSeparator2, "toolStripSeparator2");
+            this.buttonX9.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            resources.ApplyResources(this.buttonX9, "buttonX9");
+            this.buttonX9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.buttonX9.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
+            this.buttonX9.FocusCuesEnabled = false;
+            this.buttonX9.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None;
+            this.buttonX9.HoverImage = ((System.Drawing.Image)(resources.GetObject("buttonX9.HoverImage")));
+            this.buttonX9.Image = ((System.Drawing.Image)(resources.GetObject("buttonX9.Image")));
+            this.buttonX9.Name = "buttonX9";
+            this.buttonX9.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             // 
-            // tsCompile
+            // buttonX10
             // 
-            resources.ApplyResources(this.tsCompile, "tsCompile");
-            this.tsCompile.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsCompile.Name = "tsCompile";
+            this.buttonX10.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            resources.ApplyResources(this.buttonX10, "buttonX10");
+            this.buttonX10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.buttonX10.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
+            this.buttonX10.FocusCuesEnabled = false;
+            this.buttonX10.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None;
+            this.buttonX10.HoverImage = ((System.Drawing.Image)(resources.GetObject("buttonX10.HoverImage")));
+            this.buttonX10.Image = ((System.Drawing.Image)(resources.GetObject("buttonX10.Image")));
+            this.buttonX10.Name = "buttonX10";
+            this.buttonX10.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             // 
-            // toolStripSeparator3
+            // buttonX11
             // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            resources.ApplyResources(this.toolStripSeparator3, "toolStripSeparator3");
+            this.buttonX11.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            resources.ApplyResources(this.buttonX11, "buttonX11");
+            this.buttonX11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.buttonX11.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
+            this.buttonX11.FocusCuesEnabled = false;
+            this.buttonX11.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None;
+            this.buttonX11.HoverImage = ((System.Drawing.Image)(resources.GetObject("buttonX11.HoverImage")));
+            this.buttonX11.Image = ((System.Drawing.Image)(resources.GetObject("buttonX11.Image")));
+            this.buttonX11.Name = "buttonX11";
+            this.buttonX11.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             // 
-            // tsNet
+            // buttonX12
             // 
-            resources.ApplyResources(this.tsNet, "tsNet");
-            this.tsNet.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsNet.Name = "tsNet";
+            this.buttonX12.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            resources.ApplyResources(this.buttonX12, "buttonX12");
+            this.buttonX12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.buttonX12.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
+            this.buttonX12.FocusCuesEnabled = false;
+            this.buttonX12.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None;
+            this.buttonX12.HoverImage = ((System.Drawing.Image)(resources.GetObject("buttonX12.HoverImage")));
+            this.buttonX12.Image = ((System.Drawing.Image)(resources.GetObject("buttonX12.Image")));
+            this.buttonX12.Name = "buttonX12";
+            this.buttonX12.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             // 
-            // tsTimer
+            // buttonX7
             // 
-            resources.ApplyResources(this.tsTimer, "tsTimer");
-            this.tsTimer.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsTimer.Name = "tsTimer";
+            this.buttonX7.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            resources.ApplyResources(this.buttonX7, "buttonX7");
+            this.buttonX7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.buttonX7.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
+            this.buttonX7.FocusCuesEnabled = false;
+            this.buttonX7.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None;
+            this.buttonX7.HoverImage = ((System.Drawing.Image)(resources.GetObject("buttonX7.HoverImage")));
+            this.buttonX7.Image = ((System.Drawing.Image)(resources.GetObject("buttonX7.Image")));
+            this.buttonX7.Name = "buttonX7";
+            this.buttonX7.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             // 
-            // toolStripSeparator4
+            // buttonX8
             // 
-            this.toolStripSeparator4.Name = "toolStripSeparator4";
-            resources.ApplyResources(this.toolStripSeparator4, "toolStripSeparator4");
+            this.buttonX8.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            resources.ApplyResources(this.buttonX8, "buttonX8");
+            this.buttonX8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.buttonX8.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
+            this.buttonX8.FocusCuesEnabled = false;
+            this.buttonX8.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None;
+            this.buttonX8.HoverImage = ((System.Drawing.Image)(resources.GetObject("buttonX8.HoverImage")));
+            this.buttonX8.Image = ((System.Drawing.Image)(resources.GetObject("buttonX8.Image")));
+            this.buttonX8.Name = "buttonX8";
+            this.buttonX8.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            // 
+            // btnRedo
+            // 
+            this.btnRedo.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            resources.ApplyResources(this.btnRedo, "btnRedo");
+            this.btnRedo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnRedo.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
+            this.btnRedo.FocusCuesEnabled = false;
+            this.btnRedo.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None;
+            this.btnRedo.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnRedo.HoverImage")));
+            this.btnRedo.Image = ((System.Drawing.Image)(resources.GetObject("btnRedo.Image")));
+            this.btnRedo.Name = "btnRedo";
+            this.btnRedo.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnRedo.Click += new System.EventHandler(this.btnRedo_Click);
+            // 
+            // btnUndo
+            // 
+            this.btnUndo.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            resources.ApplyResources(this.btnUndo, "btnUndo");
+            this.btnUndo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnUndo.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
+            this.btnUndo.FocusCuesEnabled = false;
+            this.btnUndo.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None;
+            this.btnUndo.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnUndo.HoverImage")));
+            this.btnUndo.Image = ((System.Drawing.Image)(resources.GetObject("btnUndo.Image")));
+            this.btnUndo.Name = "btnUndo";
+            this.btnUndo.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnUndo.Click += new System.EventHandler(this.btnUndo_Click);
+            // 
+            // btnPast
+            // 
+            this.btnPast.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            resources.ApplyResources(this.btnPast, "btnPast");
+            this.btnPast.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnPast.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
+            this.btnPast.FocusCuesEnabled = false;
+            this.btnPast.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None;
+            this.btnPast.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnPast.HoverImage")));
+            this.btnPast.Image = ((System.Drawing.Image)(resources.GetObject("btnPast.Image")));
+            this.btnPast.Name = "btnPast";
+            this.btnPast.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnPast.Click += new System.EventHandler(this.btnPast_Click);
+            // 
+            // btnCopy
+            // 
+            this.btnCopy.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            resources.ApplyResources(this.btnCopy, "btnCopy");
+            this.btnCopy.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnCopy.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
+            this.btnCopy.FocusCuesEnabled = false;
+            this.btnCopy.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None;
+            this.btnCopy.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnCopy.HoverImage")));
+            this.btnCopy.Image = ((System.Drawing.Image)(resources.GetObject("btnCopy.Image")));
+            this.btnCopy.Name = "btnCopy";
+            this.btnCopy.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnCopy.Click += new System.EventHandler(this.btnCopy_Click);
+            // 
+            // buttonX2
+            // 
+            this.buttonX2.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            resources.ApplyResources(this.buttonX2, "buttonX2");
+            this.buttonX2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.buttonX2.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
+            this.buttonX2.FocusCuesEnabled = false;
+            this.buttonX2.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None;
+            this.buttonX2.HoverImage = ((System.Drawing.Image)(resources.GetObject("buttonX2.HoverImage")));
+            this.buttonX2.Image = ((System.Drawing.Image)(resources.GetObject("buttonX2.Image")));
+            this.buttonX2.Name = "buttonX2";
+            this.buttonX2.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            // 
+            // btnSave
+            // 
+            this.btnSave.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            resources.ApplyResources(this.btnSave, "btnSave");
+            this.btnSave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnSave.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
+            this.btnSave.FocusCuesEnabled = false;
+            this.btnSave.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None;
+            this.btnSave.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnSave.HoverImage")));
+            this.btnSave.Image = ((System.Drawing.Image)(resources.GetObject("btnSave.Image")));
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
+            // btnOpen
+            // 
+            this.btnOpen.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            resources.ApplyResources(this.btnOpen, "btnOpen");
+            this.btnOpen.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnOpen.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
+            this.btnOpen.FocusCuesEnabled = false;
+            this.btnOpen.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None;
+            this.btnOpen.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnOpen.HoverImage")));
+            this.btnOpen.Image = ((System.Drawing.Image)(resources.GetObject("btnOpen.Image")));
+            this.btnOpen.Name = "btnOpen";
+            this.btnOpen.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnOpen.Click += new System.EventHandler(this.btnOpen_Click);
             // 
             // PlTabStrip
             // 
@@ -757,10 +941,10 @@
             this.tabStrip.ColorScheme.TabItemSelectedBorderDark = System.Drawing.Color.Empty;
             this.tabStrip.ColorScheme.TabItemSelectedBorderLight = System.Drawing.Color.Empty;
             this.tabStrip.ColorScheme.TabItemSelectedText = System.Drawing.Color.White;
+            this.tabStrip.Controls.Add(this.tabControlPanel6);
             this.tabStrip.Controls.Add(this.tabControlPanel1);
             this.tabStrip.Controls.Add(this.tabControlPanel4);
             this.tabStrip.Controls.Add(this.tabControlPanel7);
-            this.tabStrip.Controls.Add(this.tabControlPanel6);
             this.tabStrip.Controls.Add(this.tabControlPanel5);
             this.tabStrip.Controls.Add(this.tabControlPanel3);
             this.tabStrip.Controls.Add(this.tabControlPanel2);
@@ -775,7 +959,7 @@
             this.tabStrip.Tabs.Add(this.tabScene);
             this.tabStrip.Tabs.Add(this.tabTimer);
             this.tabStrip.Tabs.Add(this.tabPanel);
-            this.tabStrip.Tabs.Add(this.tabReaction);
+            this.tabStrip.Tabs.Add(this.tabSensor);
             this.tabStrip.Tabs.Add(this.tabLogic);
             // 
             // tabControlPanel1
@@ -798,6 +982,27 @@
             this.tabName.Name = "tabName";
             resources.ApplyResources(this.tabName, "tabName");
             this.tabName.Click += new System.EventHandler(this.tabName_Click);
+            // 
+            // tabControlPanel6
+            // 
+            this.tabControlPanel6.DisabledBackColor = System.Drawing.Color.Empty;
+            resources.ApplyResources(this.tabControlPanel6, "tabControlPanel6");
+            this.tabControlPanel6.Name = "tabControlPanel6";
+            this.tabControlPanel6.Style.BackColor2.Color = System.Drawing.Color.Silver;
+            this.tabControlPanel6.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
+            this.tabControlPanel6.Style.BorderColor.Color = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(158)))), ((int)(((byte)(216)))));
+            this.tabControlPanel6.Style.BorderSide = ((DevComponents.DotNetBar.eBorderSide)(((DevComponents.DotNetBar.eBorderSide.Left | DevComponents.DotNetBar.eBorderSide.Right)
+                        | DevComponents.DotNetBar.eBorderSide.Bottom)));
+            this.tabControlPanel6.Style.GradientAngle = 90;
+            this.tabControlPanel6.TabItem = this.tabSensor;
+            // 
+            // tabSensor
+            // 
+            this.tabSensor.AttachedControl = this.tabControlPanel6;
+            this.tabSensor.Image = ((System.Drawing.Image)(resources.GetObject("tabSensor.Image")));
+            this.tabSensor.Name = "tabSensor";
+            resources.ApplyResources(this.tabSensor, "tabSensor");
+            this.tabSensor.Click += new System.EventHandler(this.tabSensor_Click);
             // 
             // tabControlPanel4
             // 
@@ -841,27 +1046,6 @@
             this.tabLogic.Name = "tabLogic";
             resources.ApplyResources(this.tabLogic, "tabLogic");
             this.tabLogic.Click += new System.EventHandler(this.tabLogic_Click);
-            // 
-            // tabControlPanel6
-            // 
-            this.tabControlPanel6.DisabledBackColor = System.Drawing.Color.Empty;
-            resources.ApplyResources(this.tabControlPanel6, "tabControlPanel6");
-            this.tabControlPanel6.Name = "tabControlPanel6";
-            this.tabControlPanel6.Style.BackColor2.Color = System.Drawing.Color.Silver;
-            this.tabControlPanel6.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
-            this.tabControlPanel6.Style.BorderColor.Color = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(158)))), ((int)(((byte)(216)))));
-            this.tabControlPanel6.Style.BorderSide = ((DevComponents.DotNetBar.eBorderSide)(((DevComponents.DotNetBar.eBorderSide.Left | DevComponents.DotNetBar.eBorderSide.Right)
-                        | DevComponents.DotNetBar.eBorderSide.Bottom)));
-            this.tabControlPanel6.Style.GradientAngle = 90;
-            this.tabControlPanel6.TabItem = this.tabReaction;
-            // 
-            // tabReaction
-            // 
-            this.tabReaction.AttachedControl = this.tabControlPanel6;
-            this.tabReaction.Image = ((System.Drawing.Image)(resources.GetObject("tabReaction.Image")));
-            this.tabReaction.Name = "tabReaction";
-            resources.ApplyResources(this.tabReaction, "tabReaction");
-            this.tabReaction.Click += new System.EventHandler(this.tabReaction_Click);
             // 
             // tabControlPanel5
             // 
@@ -1103,8 +1287,6 @@
             this.PlMeustrip.ResumeLayout(false);
             this.PlToolstrip.ClientArea.ResumeLayout(false);
             this.PlToolstrip.ResumeLayout(false);
-            this.toolStrip1.ResumeLayout(false);
-            this.toolStrip1.PerformLayout();
             this.PlTabStrip.ClientArea.ResumeLayout(false);
             this.PlTabStrip.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.tabStrip)).EndInit();
@@ -1217,7 +1399,7 @@
         private DevComponents.DotNetBar.TabControlPanel tabControlPanel7;
         private DevComponents.DotNetBar.TabItem tabLogic;
         private DevComponents.DotNetBar.TabControlPanel tabControlPanel6;
-        private DevComponents.DotNetBar.TabItem tabReaction;
+        private DevComponents.DotNetBar.TabItem tabSensor;
         private DevComponents.DotNetBar.TabControlPanel tabControlPanel5;
         private DevComponents.DotNetBar.TabItem tabPanel;
         private DevComponents.DotNetBar.TabControlPanel tabControlPanel4;
@@ -1228,20 +1410,27 @@
         private DevComponents.DotNetBar.TabItem tabPoint;
         private DevComponents.DotNetBar.Controls.SymbolBox symbolBox1;
         private DevComponents.DotNetBar.Controls.SymbolBox symbolBox2;
-        private System.Windows.Forms.ToolStrip toolStrip1;
-        private System.Windows.Forms.ToolStripButton tsNewfile;
-        private System.Windows.Forms.ToolStripButton tsOpenfile;
-        private System.Windows.Forms.ToolStripButton tsSave;
-        private System.Windows.Forms.ToolStripButton tsOtherSave;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripButton tsBackOut;
-        private System.Windows.Forms.ToolStripButton tsReform;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
-        private System.Windows.Forms.ToolStripButton tsCompile;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
-        private System.Windows.Forms.ToolStripButton tsNet;
-        private System.Windows.Forms.ToolStripButton tsTimer;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
+        private DevComponents.DotNetBar.ButtonX btnOpen;
+        private DevComponents.DotNetBar.ButtonX buttonX2;
+        private DevComponents.DotNetBar.ButtonX btnSave;
+        private DevComponents.DotNetBar.ButtonX buttonX13;
+        private DevComponents.DotNetBar.ButtonX buttonX14;
+        private DevComponents.DotNetBar.ButtonX buttonX15;
+        private DevComponents.DotNetBar.ButtonX buttonX16;
+        private DevComponents.DotNetBar.ButtonX buttonX9;
+        private DevComponents.DotNetBar.ButtonX buttonX10;
+        private DevComponents.DotNetBar.ButtonX buttonX11;
+        private DevComponents.DotNetBar.ButtonX buttonX12;
+        private DevComponents.DotNetBar.ButtonX buttonX7;
+        private DevComponents.DotNetBar.ButtonX buttonX8;
+        private DevComponents.DotNetBar.ButtonX btnRedo;
+        private DevComponents.DotNetBar.ButtonX btnUndo;
+        private DevComponents.DotNetBar.ButtonX btnPast;
+        private DevComponents.DotNetBar.ButtonX btnCopy;
+        private DevComponents.DotNetBar.Controls.Line line4;
+        private DevComponents.DotNetBar.Controls.Line line3;
+        private DevComponents.DotNetBar.Controls.Line line2;
+        private DevComponents.DotNetBar.Controls.Line line1;
 
     }
 }

@@ -61,7 +61,7 @@ namespace eNet编辑器.ThreeView
                 {
                     int index = tm.AddNode1(treeView1, d.ip + " " + d.master);
 
-                    if (FileMesege.timerList != null)
+                    if (FileMesege.panelList != null)
                     {
                         foreach (DataJson.Panel pl in FileMesege.panelList)
                         {
@@ -128,7 +128,7 @@ namespace eNet编辑器.ThreeView
             else
             {
                 string filepath = Application.StartupPath + "\\devices\\" + names[1] + ".ini";
-                clearTxtShow(Resources.TxtShowPanelName + IniConfig.GetValue(filepath, "define", "note") + "\r\n");
+                clearTxtShow(Resources.TxtShowDevName + IniConfig.GetValue(filepath, "define", "note") + "\r\n");
             }
         }
 
@@ -415,10 +415,11 @@ namespace eNet编辑器.ThreeView
                         }
                     }
                     updateAllView();
+                    DataJson.totalList NewList = FileMesege.cmds.getListInfos();
+                    FileMesege.cmds.DoNewCommand(NewList, OldList);
                 }
 
-                DataJson.totalList NewList = FileMesege.cmds.getListInfos();
-                FileMesege.cmds.DoNewCommand(NewList, OldList);
+               
             }
         }
 

@@ -228,7 +228,7 @@ namespace eNet编辑器.AddForm
                     case "logic":
 
                         break;
-                    case "operation":
+                    case "sensor":
 
                         break;
                     default: break;

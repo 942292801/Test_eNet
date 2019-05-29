@@ -519,7 +519,7 @@ namespace eNet编辑器.ThreeView
             else
             {
                 string filepath = Application.StartupPath + "\\devices\\" + names[1]+".ini";
-                clearTxtShow(Resources.TxtShowTimerName + IniConfig.GetValue(filepath, "define", "note") + "\r\n");
+                clearTxtShow(Resources.TxtShowDevName + IniConfig.GetValue(filepath, "define", "note") + "\r\n");
             }
         }
 

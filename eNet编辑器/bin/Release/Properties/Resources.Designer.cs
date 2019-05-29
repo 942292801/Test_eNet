@@ -124,6 +124,15 @@ namespace eNet编辑器.Properties {
         }
         
         /// <summary>
+        ///   查找类似 感应编组 的本地化字符串。
+        /// </summary>
+        internal static string Sensor {
+            get {
+                return ResourceManager.GetString("Sensor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 eNet编辑器 -  的本地化字符串。
         /// </summary>
         internal static string SoftName {
@@ -174,6 +183,15 @@ namespace eNet编辑器.Properties {
         internal static string TxtShowScnName {
             get {
                 return ResourceManager.GetString("TxtShowScnName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 感应编组名称： 的本地化字符串。
+        /// </summary>
+        internal static string TxtShowSensorName {
+            get {
+                return ResourceManager.GetString("TxtShowSensorName", resourceCulture);
             }
         }
         

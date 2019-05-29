@@ -82,6 +82,7 @@ namespace eNet编辑器.DgvView
             objType.DisplayStyle = DataGridViewComboBoxDisplayStyle.Nothing;
             //或者这样设置 默认选择第一项
             objType.DefaultCellStyle.NullValue = objType.Items[0];
+            objType.ReadOnly = true;
             objType.Name = "objType";
 
             //设置列名
@@ -128,7 +129,7 @@ namespace eNet编辑器.DgvView
                 if (pls == null)
                 {
                     cbKeyNum.Text = "";
-                    
+                    this.dataGridView1.Rows.Clear();
                     return;
                 }
                 if (pls.panelsInfo.Count == 0)
@@ -382,7 +383,6 @@ namespace eNet编辑器.DgvView
                 }
                 DataJson.totalList NewList = FileMesege.cmds.getListInfos();
                 FileMesege.cmds.DoNewCommand(NewList, OldList);
-                clearPanelInfo();
                 dgvPanelAddItem();
             }
             catch (Exception ex) { MessageBox.Show(ex + "临时调试错误信息"); }
@@ -496,7 +496,7 @@ namespace eNet编辑器.DgvView
                         }
                         else
                         {
-                            keyInfo.fback = "00" + plInfo.showAddress.Substring(2, 6);
+                            keyInfo.fback = "FE" + plInfo.showAddress.Substring(2, 6);
                         }
                         //显示模式
                         keyInfo.fbmode = getShowMode(plInfo.showMode);
@@ -757,9 +757,13 @@ namespace eNet编辑器.DgvView
                 //TxtShow("发送指令失败！\r\n");
             }
         }
-        
-     
 
+        //删除
+        private void btnDel_Click(object sender, EventArgs e)
+        {
+            clearPanelInfo();
+
+        }
 
         #endregion
 
@@ -1905,6 +1909,8 @@ namespace eNet编辑器.DgvView
 
         }
         #endregion
+
+      
 
     
 

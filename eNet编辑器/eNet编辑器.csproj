@@ -210,6 +210,12 @@
     <Compile Include="AddForm\sceneConcrol.Designer.cs">
       <DependentUpon>sceneConcrol.cs</DependentUpon>
     </Compile>
+    <Compile Include="AddForm\sensorAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddForm\sensorAdd.Designer.cs">
+      <DependentUpon>sensorAdd.cs</DependentUpon>
+    </Compile>
     <Compile Include="AddForm\timerAdd.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -288,12 +294,6 @@
     <Compile Include="DgvView\DgvName.Designer.cs">
       <DependentUpon>DgvName.cs</DependentUpon>
     </Compile>
-    <Compile Include="DgvView\DgvOperation.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="DgvView\DgvOperation.Designer.cs">
-      <DependentUpon>DgvOperation.cs</DependentUpon>
-    </Compile>
     <Compile Include="DgvView\DgvPoint.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -305,6 +305,12 @@
     </Compile>
     <Compile Include="DgvView\DgvScene.Designer.cs">
       <DependentUpon>DgvScene.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DgvView\DgvSensor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DgvView\DgvSensor.Designer.cs">
+      <DependentUpon>DgvSensor.cs</DependentUpon>
     </Compile>
     <Compile Include="DgvView\DgvTimer.cs">
       <SubType>Form</SubType>
@@ -351,11 +357,11 @@
     <Compile Include="ThreeView\ThreeName.Designer.cs">
       <DependentUpon>ThreeName.cs</DependentUpon>
     </Compile>
-    <Compile Include="ThreeView\ThreeOperation.cs">
+    <Compile Include="ThreeView\ThreeSensor.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ThreeView\ThreeOperation.Designer.cs">
-      <DependentUpon>ThreeOperation.cs</DependentUpon>
+    <Compile Include="ThreeView\ThreeSensor.Designer.cs">
+      <DependentUpon>ThreeSensor.cs</DependentUpon>
     </Compile>
     <Compile Include="ThreeView\ThreePoint.cs">
       <SubType>Form</SubType>
@@ -412,6 +418,9 @@
     <EmbeddedResource Include="AddForm\sceneConcrol.resx">
       <DependentUpon>sceneConcrol.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="AddForm\sensorAdd.resx">
+      <DependentUpon>sensorAdd.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AddForm\timerAdd.resx">
       <DependentUpon>timerAdd.cs</DependentUpon>
     </EmbeddedResource>
@@ -447,15 +456,16 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DgvView\DgvName.resx">
       <DependentUpon>DgvName.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="DgvView\DgvOperation.resx">
-      <DependentUpon>DgvOperation.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="DgvView\DgvPoint.resx">
       <DependentUpon>DgvPoint.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DgvView\DgvScene.resx">
       <DependentUpon>DgvScene.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DgvView\DgvSensor.resx">
+      <DependentUpon>DgvSensor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DgvView\DgvTimer.resx">
       <DependentUpon>DgvTimer.cs</DependentUpon>
@@ -496,8 +506,8 @@
     <EmbeddedResource Include="ThreeView\ThreeName.resx">
       <DependentUpon>ThreeName.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ThreeView\ThreeOperation.resx">
-      <DependentUpon>ThreeOperation.cs</DependentUpon>
+    <EmbeddedResource Include="ThreeView\ThreeSensor.resx">
+      <DependentUpon>ThreeSensor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ThreeView\ThreePoint.resx">
       <DependentUpon>ThreePoint.cs</DependentUpon>

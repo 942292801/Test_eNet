@@ -32,11 +32,11 @@
             this.treeView1 = new System.Windows.Forms.TreeView();
             this.panel3 = new System.Windows.Forms.Panel();
             this.plInfoTitle = new System.Windows.Forms.Panel();
+            this.btnClose = new DevComponents.DotNetBar.ButtonX();
             this.symbolBox1 = new DevComponents.DotNetBar.Controls.SymbolBox();
             this.label3 = new System.Windows.Forms.Label();
             this.btnImport = new DevComponents.DotNetBar.ButtonX();
             this.btnSearch = new DevComponents.DotNetBar.ButtonX();
-            this.btnClose = new DevComponents.DotNetBar.ButtonX();
             this.panel3.SuspendLayout();
             this.plInfoTitle.SuspendLayout();
             this.SuspendLayout();
@@ -84,6 +84,26 @@
             this.plInfoTitle.MouseDown += new System.Windows.Forms.MouseEventHandler(this.plInfoTitle_MouseDown);
             this.plInfoTitle.MouseMove += new System.Windows.Forms.MouseEventHandler(this.plInfoTitle_MouseMove);
             // 
+            // btnClose
+            // 
+            this.btnClose.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnClose.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnClose.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(228)))), ((int)(((byte)(228)))));
+            this.btnClose.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
+            this.btnClose.FocusCuesEnabled = false;
+            this.btnClose.Font = new System.Drawing.Font("黑体", 9F);
+            this.btnClose.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None;
+            this.btnClose.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnClose.HoverImage")));
+            this.btnClose.Image = ((System.Drawing.Image)(resources.GetObject("btnClose.Image")));
+            this.btnClose.Location = new System.Drawing.Point(205, 6);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(6);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(13, 13);
+            this.btnClose.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnClose.TabIndex = 10;
+            this.btnClose.Tooltip = "关闭";
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
             // symbolBox1
             // 
             // 
@@ -127,7 +147,7 @@
             this.btnImport.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None;
             this.btnImport.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnImport.HoverImage")));
             this.btnImport.Image = ((System.Drawing.Image)(resources.GetObject("btnImport.Image")));
-            this.btnImport.Location = new System.Drawing.Point(156, 5);
+            this.btnImport.Location = new System.Drawing.Point(181, 5);
             this.btnImport.Margin = new System.Windows.Forms.Padding(6);
             this.btnImport.Name = "btnImport";
             this.btnImport.Size = new System.Drawing.Size(15, 15);
@@ -148,7 +168,7 @@
             this.btnSearch.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None;
             this.btnSearch.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnSearch.HoverImage")));
             this.btnSearch.Image = ((System.Drawing.Image)(resources.GetObject("btnSearch.Image")));
-            this.btnSearch.Location = new System.Drawing.Point(183, 5);
+            this.btnSearch.Location = new System.Drawing.Point(154, 5);
             this.btnSearch.Margin = new System.Windows.Forms.Padding(6);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(15, 15);
@@ -156,26 +176,6 @@
             this.btnSearch.TabIndex = 3;
             this.btnSearch.Tooltip = "搜索";
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
-            // 
-            // btnClose
-            // 
-            this.btnClose.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnClose.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnClose.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(228)))), ((int)(((byte)(228)))));
-            this.btnClose.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
-            this.btnClose.FocusCuesEnabled = false;
-            this.btnClose.Font = new System.Drawing.Font("黑体", 9F);
-            this.btnClose.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None;
-            this.btnClose.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnClose.HoverImage")));
-            this.btnClose.Image = ((System.Drawing.Image)(resources.GetObject("btnClose.Image")));
-            this.btnClose.Location = new System.Drawing.Point(205, 6);
-            this.btnClose.Margin = new System.Windows.Forms.Padding(6);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(13, 13);
-            this.btnClose.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnClose.TabIndex = 10;
-            this.btnClose.Tooltip = "关闭";
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // OnlineSearch
             // 

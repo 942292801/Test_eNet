@@ -14,14 +14,12 @@ using System.IO;
 namespace eNet编辑器.ThreeView
 {
     public delegate void DgvSceneAddItem2();
-    public delegate void DgvPanelAddItem2();
     //public delegate void AddTitleDevCursor();
    // public delegate void AddTitlenNameCursor();
     public partial class ThreeTitle : Form
     {
 
         public event DgvSceneAddItem2 dgvsceneAddItem;
-        public event DgvPanelAddItem2 dgvPanelAddItem;
         public event Action dgvtimerAddItem;
         //public event AddTitleDevCursor addTitleDevCursor;
         //public event AddTitlenNameCursor addTitlenNameCursor;
@@ -105,16 +103,19 @@ namespace eNet编辑器.ThreeView
                             break;
                         case "panel":
                             treeView1.CheckBoxes = true;
-                            treeView1.ContextMenuStrip = contextMenuStrip2;
+                            //treeView1.ContextMenuStrip = contextMenuStrip2;
                             panelAdd(num);
                             // MessageBox.Show("bind");
+                            break;
+                        case "sensor":
+                             treeView1.CheckBoxes = true;
+                            //treeView1.ContextMenuStrip = contextMenuStrip2;
+                            sensorAdd(num);
                             break;
                         case "logic":
                             // MessageBox.Show("logic");
                             break;
-                        case "operation":
-                            // MessageBox.Show("operation");
-                            break;
+                      
                         default: break;
                     }
                 }
@@ -227,8 +228,8 @@ namespace eNet编辑器.ThreeView
                         case "link":
                             getNametree(FileMesege.PointList.link, "link");
                             break;
-                        case "operation":
-                            getNametree(FileMesege.PointList.link, "operation");
+                        case "sensor":
+                            getNametree(FileMesege.PointList.link, "sensor");
                             break;
                         default: break;
                     }
@@ -261,11 +262,11 @@ namespace eNet编辑器.ThreeView
                             tm.AddNode1(treeView1, infolist[i]);
                         }
                     }
-                    else if (type == "operation")
+                    else if (type == "sensor")
                     {
-                        //加载人感
+                        //加载感应
                         //加载面板
-                        if (infolist[i].Contains("人感"))
+                        if (infolist[i].Contains("感应编组"))
                         {
                             tm.AddNode1(treeView1, infolist[i]);
                         }
@@ -299,6 +300,15 @@ namespace eNet编辑器.ThreeView
         }
         #endregion
 
+        #region 感应加载节点
+        private void sensorAdd(int num)
+        {
+            sceneAdd(num);
+
+        }
+        #endregion
+
+
         #region 选中节点高亮  鼠标点击事件
 
         private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
@@ -319,7 +329,7 @@ namespace eNet编辑器.ThreeView
                 FileMesege.titlePointSection = treeView1.SelectedNode.Text;
                 FileMesege.titleinfo = "";
             }
-            if (FileMesege.formType == "panel")
+            if (FileMesege.formType == "panel" || FileMesege.formType == "sensor")
             {
                 FileMesege.titlePointSection = treeView1.SelectedNode.Text;
                 FileMesege.titleinfo = "";
@@ -507,13 +517,11 @@ namespace eNet编辑器.ThreeView
                     timerFormtype(tn.Text);
                     break;
                 case "panel":
-                    
                     //回调更新界面
-                    
                     break;
                 case "logic":
                     break;
-                case "reaction":
+                case "sensor":
                     break;
                 default: break;
             }
@@ -546,7 +554,7 @@ namespace eNet编辑器.ThreeView
                     break;
                 case "logic":
                     break;
-                case "reaction":
+                case "sensor":
                     break;
                 default: break;
             }
@@ -584,6 +592,9 @@ namespace eNet编辑器.ThreeView
                     break;
                 //3=绑定,link
                 case "link":
+                    dgvSceneListAdd(FileMesege.PointList.link, nodeText);
+                    break;
+                case "sensor":
                     dgvSceneListAdd(FileMesege.PointList.link, nodeText);
                     break;
                 default:
@@ -709,7 +720,9 @@ namespace eNet编辑器.ThreeView
                 case "link":
                     dgvTimerListAdd(FileMesege.PointList.link, nodeText);
                     break;
-                
+                case "sensor":
+                    dgvTimerListAdd(FileMesege.PointList.link, nodeText);
+                    break;
                 default:
                     dgvTimerListAdd(FileMesege.PointList.equipment, nodeText);
                     break;

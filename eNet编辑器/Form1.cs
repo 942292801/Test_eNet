@@ -24,7 +24,7 @@ namespace eNet编辑器
         public ThreeTimer threetimer;
         public ThreePanel threepanel;
         public ThreeLogic threelogic;
-        public ThreeOperation threeoperation;
+        public ThreeSensor threesensor;
         public ThreeSection threesection;
         public ThreeTitle threetitle;
 
@@ -36,7 +36,7 @@ namespace eNet编辑器
         public DgvTimer dgvtimer;
         public DgvPanel dgvpanel;
         public DgvLogic dgvlogic;
-        public DgvOperation dgvoperation;
+        public DgvSensor dgvsensor;
         //在线搜索窗体
         public OnlineSearch os;
         //检索栏号码 右侧两个树状图号码
@@ -80,7 +80,7 @@ namespace eNet编辑器
             threetimer = new ThreeTimer();
             threepanel = new ThreePanel();
             threelogic = new ThreeLogic();
-            threeoperation = new ThreeOperation();
+            threesensor = new ThreeSensor();
             threesection = new ThreeSection();
             threetitle = new ThreeTitle();
 
@@ -92,7 +92,7 @@ namespace eNet编辑器
             dgvtimer = new DgvTimer();
             dgvpanel = new DgvPanel();
             dgvlogic = new DgvLogic();
-            dgvoperation = new DgvOperation();
+            dgvsensor = new DgvSensor();
 
             //第一次加载基本窗口
             Control_Add(threename, plLeft);//默认添加窗口一
@@ -111,6 +111,7 @@ namespace eNet编辑器
             //txt窗口 信息显示 清空所有
             threescene.clearTxtShow += new Action<string>(clearTxtShow);
             threepanel.clearTxtShow += new Action<string>(clearTxtShow);
+            threesensor.clearTxtShow += new Action<string>(clearTxtShow);
             dgvpoint.txtAppShow += new Action<string>(AppTxtShow);
             dgvname.txtAppShow += new Action<string>(AppTxtShow);
             dgvscene.AppTxtShow += new Action<string>((msg) =>//TXT窗口显示信息 
@@ -153,14 +154,15 @@ namespace eNet编辑器
             threescene.updateAllView += new Action(updataAllView);
             threetimer.updateAllView += new Action(updataAllView);
             threepanel.updateAllView += new Action(updataAllView);
+            threesensor.updateAllView += new Action(updataAllView);
             //调用添加场景
             threetitle.dgvsceneAddItem += new DgvSceneAddItem2(dgvscene.dgvsceneAddItem);
             threetitle.dgvtimerAddItem += new Action(dgvtimer.TimerAddItem);
-            threetitle.dgvPanelAddItem += new DgvPanelAddItem2(dgvpanel.dgvPanelAddItem);
             threetitle.addPoint += new Action<string>(dgvpoint.addPoint);
             threename.dgvDeviceAddItem += new DgvDeviceAddItem(dgvdevice.dgvDeviceAddItem);
             threepanel.dgvpanelAddItem += new DgvPanelAddItem(dgvpanel.dgvPanelAddItem);
             threetimer.dgvTimerAddItem +=new Action(dgvtimer.TimerAddItem);
+            threesensor.dgvSensorAddItem +=new Action(dgvsensor.dgvSensorAddItem);
             threesection.sectionDgvNameAddItem += new SectionDgvNameAddItem(dgvname.dgvNameAddItem);
             threesection.sectionDgvDevAddItem += new SectionDgvDevAddItem(dgvdevice.dgvDeviceAddItem);
             threesection.updatePointDgv += new Action(dgvpoint.dgvPointAddItemBySection);
@@ -222,7 +224,7 @@ namespace eNet编辑器
             threescene.ThreeSceneAddNode();
             threetimer.ThreeTimerAddNode();
             threepanel.ThreePanelAddNode();
-            threeoperation.ThreeOperationAddNode();
+            threesensor.ThreeSensorAddNode();
             threelogic.ThreeLogicAddNode();
             threesection.ThreeSEctionAddNode();
             //threepoint.ThreePointAddNode();
@@ -237,7 +239,8 @@ namespace eNet编辑器
             threescene.ThreeSceneAddNode();
             threetimer.ThreeTimerAddNode();
             threepanel.ThreePanelAddNode();
-            threeoperation.ThreeOperationAddNode();
+            threesensor.ThreeSensorAddNode();
+            
             threelogic.ThreeLogicAddNode();
             threesection.ThreeSEctionAddNode();
             threetitle.ThreeTitleAddNode(cbType.SelectedIndex); 
@@ -247,6 +250,7 @@ namespace eNet编辑器
             dgvscene.dgvsceneAddItem();
             dgvpanel.dgvPanelAddItem();
             dgvtimer.TimerAddItem();
+            dgvsensor.dgvSensorAddItem();
             txtShow.Clear();
         }
 
@@ -277,12 +281,13 @@ namespace eNet编辑器
                 case "panel":
                     dgvpanel.dgvPanelAddItem();
                     break;
+                case "sensor":
+                    dgvsensor.dgvSensorAddItem();
+                    break;
                 case "logic":
                    
                     break;
-                case "operation":
-                    
-                    break;
+                
                 default: break;
             }
         }
@@ -314,6 +319,11 @@ namespace eNet编辑器
                     tabPanel_Click(this, EventArgs.Empty);
                     tabStrip.SelectedTab = tabPanel;
                     threepanel.FindNodeSelect(point);
+                    break;
+                case "sensor":
+                    tabSensor_Click(this, EventArgs.Empty);
+                    tabStrip.SelectedTab = tabSensor;
+                    threesensor.FindNodeSelect(point);
                     break;
 
                 default:
@@ -498,19 +508,22 @@ namespace eNet编辑器
         }
 
         //感应设置
-        private void tabReaction_Click(object sender, EventArgs e)
+        private void tabSensor_Click(object sender, EventArgs e)
         {
+            
+   
             //自定义函数加载窗体 CleanRecycle  
-            Control_Add(threeoperation, plLeft);
-            Control_Add(dgvoperation, plDgv);
+            Control_Add(threesensor, plLeft);
+            Control_Add(dgvsensor, plDgv);
             //界面显示类型 
-            FileMesege.formType = "reaction";
+            FileMesege.formType = "sensor";
             //cbtype添加选择项 
-            cbtypeName("reaction");
+            cbtypeName("sensor");
             //添加对象树状图
             threetitle.ThreeTitleAddNode(cbType.SelectedIndex);
             //更改Title 小标题
             LbTitleName.Text = Resources.lbTitleObj;
+        
         }
 
         private void tabLogic_Click(object sender, EventArgs e)
@@ -761,26 +774,16 @@ namespace eNet编辑器
             fm.formclosing(e);
             
         }
-
-        private void tsNewfile_Click(object sender, EventArgs e)
-        {
-            新建项目ToolStripMenuItem_Click(this, EventArgs.Empty);
-        }
-
-        private void tsOpenfile_Click(object sender, EventArgs e)
+        private void btnOpen_Click(object sender, EventArgs e)
         {
             打开项目ToolStripMenuItem_Click(this, EventArgs.Empty);
         }
 
-        private void tsSave_Click(object sender, EventArgs e)
+        private void btnSave_Click(object sender, EventArgs e)
         {
             保存ToolStripMenuItem_Click(this, EventArgs.Empty);
         }
 
-        private void tsOtherSave_Click(object sender, EventArgs e)
-        {
-            另存为ToolStripMenuItem_Click(this, EventArgs.Empty);
-        }
         #endregion
 
 
@@ -806,7 +809,7 @@ namespace eNet编辑器
             updataAllView();
         }
 
-        private void tsBackOut_Click(object sender, EventArgs e)
+        private void btnUndo_Click(object sender, EventArgs e)
         {
             if (FileMesege.cmds == null || !FileMesege.cmds.CanUnDo)
                 return;
@@ -815,7 +818,7 @@ namespace eNet编辑器
             updataAllView();
         }
 
-        private void tsReform_Click(object sender, EventArgs e)
+        private void btnRedo_Click(object sender, EventArgs e)
         {
             if (FileMesege.cmds == null || !FileMesege.cmds.CanReDo)
                 return;
@@ -825,11 +828,21 @@ namespace eNet编辑器
         }
 
 
+
         private void 剪切ToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
         }
 
+        private void btnCopy_Click(object sender, EventArgs e)
+        {
+            复制CCtrlCToolStripMenuItem_Click(this, EventArgs.Empty);
+        }
+
+        private void btnPast_Click(object sender, EventArgs e)
+        {
+            粘贴PCtrlVToolStripMenuItem_Click(this, EventArgs.Empty);
+        }
         private void 复制CCtrlCToolStripMenuItem_Click(object sender, EventArgs e)
         {
             try
@@ -855,7 +868,7 @@ namespace eNet编辑器
                     case "logic":
 
                         break;
-                    case "operation":
+                    case "sensor":
 
                         break;
                     default: break;
@@ -892,7 +905,7 @@ namespace eNet编辑器
                     case "logic":
 
                         break;
-                    case "operation":
+                    case "sensor":
 
                         break;
                     default: break;
@@ -1039,6 +1052,13 @@ namespace eNet编辑器
         }
 
         #endregion
+
+       
+
+       
+
+      
+        
 
  
 

@@ -66,7 +66,7 @@ namespace eNet编辑器.DgvView
 
             //或者这样设置 默认选择第一项
             dgvc.DefaultCellStyle.NullValue = dgvc.Items[0];
-
+            dgvc.ReadOnly = true;
             dgvc.Name = "type";
 
             //插入

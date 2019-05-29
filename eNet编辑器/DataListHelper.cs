@@ -103,6 +103,16 @@ namespace eNet编辑器
                 }
             }
 
+            foreach (DataJson.Sensor sensor in FileMesege.sensorList)
+            {
+                if (sensor.IP == oldip)
+                {
+                    sensor.IP = ip;
+                    sensor.Dev = master;
+
+                    break;
+                }
+            }
             /////////////////////////////后期完整数据 //////////////////
             changePointIP(ip,oldip);
             GatewaySort();
@@ -433,7 +443,7 @@ namespace eNet编辑器
                 FileMesege.PointList.timer.Remove(dellisttimer);
                 dellisttimer = FileMesege.PointList.timer.Find(mach => mach.ip == IP);
             }
-            //绑定
+            //面板 感应
             DataJson.PointInfo dellistlink = FileMesege.PointList.link.Find(mach => mach.ip.Equals(IP));
             while (dellistlink != null)
             {
@@ -1085,6 +1095,107 @@ namespace eNet编辑器
 
         #endregion
 
+
+        #region 操作sensorList的管理工具
+
+
+        /// <summary>
+        /// 在选中节点的基础上 按IP和定时号ID 寻找sensorList表中是panels
+        /// </summary>
+        /// <returns></returns>
+        public static DataJson.sensors getSensorInfoListByNode()
+        {
+            if (FileMesege.sensorSelectNode == null || FileMesege.sensorSelectNode.Parent == null)
+            {
+                return null;
+            }
+
+            string ip = FileMesege.sensorSelectNode.Parent.Text.Split(' ')[0];
+            string[] panelNodetxt = FileMesege.sensorSelectNode.Text.Split(' ');
+            int panelNum = Convert.ToInt32(Regex.Replace(panelNodetxt[0], @"[^\d]*", ""));
+            return getSensorsInfoList(ip, panelNum);
+        }
+
+        /// <summary>
+        /// 获取某个Sensors列表中对应ID号的sensorsInfo 否则返回空
+        /// </summary>
+        /// <param name="sc"></param>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public static DataJson.sensorsInfo getSensorInfo(DataJson.sensors srs, int id)
+        {
+            foreach (DataJson.sensorsInfo info in srs.sensorsInfo)
+            {
+                if (info.id == id)
+                {
+                    return info;
+                }
+            }
+            return null;
+        }
+
+
+        /// <summary>
+        /// 获取某个IP点 某个感应的对象列表 否则返回空
+        /// </summary>
+        /// <param name="IP">IP地址</param>
+        /// <param name="num">感应号</param>
+        /// <returns></returns>
+        public static DataJson.sensors getSensorsInfoList(string ip, int num)
+        {
+            foreach (DataJson.Sensor srIp in FileMesege.sensorList)
+            {
+                if (srIp.IP == ip)
+                {
+                    foreach (DataJson.sensors srs in srIp.sensors)
+                    {
+                        if (srs.id == num)
+                        {
+                            return srs;
+                        }
+                    }
+
+                }
+            }
+            return null;
+        }
+
+        /// <summary>
+        /// 获取某个IP点 的所有sensor
+        /// </summary>
+        /// <param name="IP">IP地址</param>
+        /// <returns></returns>
+        public static DataJson.Sensor getSensorList(string ip)
+        {
+            foreach (DataJson.Sensor sr in FileMesege.sensorList)
+            {
+                if (sr.IP == ip)
+                {
+                    return sr;
+
+                }
+            }
+            return null;
+        }
+
+        /// <summary>
+        /// 删除感应中所有匹配的PID号
+        /// </summary>
+        /// <param name="pid"></param>
+        public static void reMoveAllSensorsByPid(int pid)
+        {
+            if (FileMesege.sensorList == null)
+            {
+                return;
+            }
+            for (int i = 0; i < FileMesege.sensorList.Count; i++)
+            {
+                FileMesege.sensorList[i].sensors.RemoveAll(sensors => sensors.pid == pid);
+            }
+
+        }
+
+        #endregion
 
     }
 }

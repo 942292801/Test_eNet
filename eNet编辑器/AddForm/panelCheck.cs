@@ -56,6 +56,7 @@ namespace eNet编辑器.AddForm
             }
             //扫ini添加item信息
             findKeyPanel();
+            findKeyNum();
             //扫描设备在线
             Init();
             //异步连接

@@ -44,10 +44,13 @@ namespace eNet编辑器
         //左栏 树状图treename节点选中临时存放
         public static TreeNode timerSelectNode = null;
 
-        //左栏 树状图treebind节点选中临时存放
+        //左栏 树状图treepanel节点选中临时存放
         public static TreeNode panelSelectNode = null;
+
+        //左栏 树状图treeSensor节点选中临时存放
+        public static TreeNode sensorSelectNode = null;
         /// <summary>
-        /// form下按钮的选择命名、场景。。。。  默认为命名 用来设置treetitle的显示功能 name,point,scene,timer,panel,reaction,logic
+        /// form下按钮的选择命名、场景。。。。  默认为命名 用来设置treetitle的显示功能 name,point,scene,timer,panel,sensor,logic
         /// </summary>
         public static string formType = "name";
         /// <summary>
@@ -60,6 +63,7 @@ namespace eNet编辑器
         public static DataJson.sceneInfo copyScene = null;
         public static DataJson.timersInfo copyTimer = null;
         public static DataJson.panelsInfo copyPanel = null;
+        public static DataJson.sensorsInfo copySensor = null;
 
         public static List<DataJson.Device> DeviceList;//工程设备的保存记录
         public static List<DataJson.Area1> AreaList;//
@@ -67,7 +71,8 @@ namespace eNet编辑器
         public static DataJson.Serial serialList;//命名在线设备文件
         public static List<DataJson.Scene> sceneList;//场景
         public static List<DataJson.Timer> timerList;
-        public static List<DataJson.Panel> panelList;//绑定
+        public static List<DataJson.Panel> panelList;//面板
+        public static List<DataJson.Sensor> sensorList;//感应
 
       
      
@@ -100,8 +105,12 @@ namespace eNet编辑器
             tnselectNode = null;
             //左栏 树状图treename节点选中临时存放
             sceneSelectNode = null;
-            //左栏 树状图treebind节点选中临时存放
+            //左栏 树状图treetimer节点选中临时存放
+            timerSelectNode = null;
+            //左栏 树状图treepanel节点选中临时存放
             panelSelectNode = null;
+            //左栏 树状图treesensor节点选中临时存放
+            sensorSelectNode = null;
             //工程设备的保存记录
             DeviceList = null;
             //工程位置树状图
@@ -114,6 +123,8 @@ namespace eNet编辑器
             sceneList = null;
             //绑定
             panelList = null;
+            //感应
+            sensorList = null;
             //undo redo
             cmds = new CommandManager();
             filePath = "";
@@ -207,6 +218,7 @@ namespace eNet编辑器
                 || !System.IO.File.Exists(TmpFilePath + "\\pro\\scene.json")
                 || !System.IO.File.Exists(TmpFilePath + "\\pro\\panel.json")
                 || !System.IO.File.Exists(TmpFilePath + "\\pro\\timer.json")
+                || !System.IO.File.Exists(TmpFilePath + "\\pro\\sensor.json")
                 )
             {
                 MessageBox.Show("操作失败！工程文件缺失！", "提示");
@@ -219,7 +231,7 @@ namespace eNet编辑器
             sceneList = JsonConvert.DeserializeObject<List<DataJson.Scene>>(File.ReadAllText(TmpFilePath + "\\pro\\scene.json"));
             panelList = JsonConvert.DeserializeObject<List<DataJson.Panel>>(File.ReadAllText(TmpFilePath + "\\pro\\panel.json"));
             timerList = JsonConvert.DeserializeObject<List<DataJson.Timer>>(File.ReadAllText(TmpFilePath + "\\pro\\timer.json"));
-
+            sensorList = JsonConvert.DeserializeObject<List<DataJson.Sensor>>(File.ReadAllText(TmpFilePath + "\\pro\\sensor.json"));
             filePath = localFilePath;
             fileName = fileNameExt;
             return true;
@@ -417,6 +429,7 @@ namespace eNet编辑器
             File.WriteAllText(path + "\\pro\\scene.json", ConvertJsonString(JsonConvert.SerializeObject(sceneList)));
             File.WriteAllText(path + "\\pro\\panel.json", ConvertJsonString(JsonConvert.SerializeObject(panelList)));
             File.WriteAllText(path + "\\pro\\timer.json", ConvertJsonString(JsonConvert.SerializeObject(timerList)));
+            File.WriteAllText(path + "\\pro\\sensor.json", ConvertJsonString(JsonConvert.SerializeObject(sensorList)));
         }
 
         /// <summary>

@@ -5,62 +5,43 @@
                 "timersInfo": [
                     {
                         "id": 1,
-                        "pid": 0,
-                        "type": "2.0_dimmer",
-                        "address": "6F000B01",
-                        "opt": "10000000",
-                        "optName": "调光",
-                        "shortTime": "日落时间"
+                        "pid": 93279,
+                        "type": "6.2_sensor",
+                        "address": "6F3003E9",
+                        "opt": "",
+                        "optName": "",
+                        "shortTime": ""
                     },
                     {
                         "id": 2,
-                        "pid": 0,
-                        "type": "2.0_dimmer",
-                        "address": "6F000B02",
-                        "opt": "10000000",
-                        "optName": "调光",
-                        "shortTime": "00:35"
+                        "pid": 12766,
+                        "type": "6.2_sensor",
+                        "address": "6F3003EA",
+                        "opt": "",
+                        "optName": "",
+                        "shortTime": ""
                     },
                     {
                         "id": 3,
-                        "pid": 0,
-                        "type": "",
-                        "address": "6F000B03",
+                        "pid": 16077,
+                        "type": "6.2_sensor",
+                        "address": "6F3003EB",
                         "opt": "",
                         "optName": "",
-                        "shortTime": "19:50"
+                        "shortTime": ""
+                    },
+                    {
+                        "id": 4,
+                        "pid": 93279,
+                        "type": "6.2_sensor",
+                        "address": "6F3003E9",
+                        "opt": "",
+                        "optName": "",
+                        "shortTime": ""
                     }
                 ],
                 "id": 1,
-                "pid": 61609,
-                "dates": "2019/5/15,2019/6/14,2019/6/20",
-                "priorHoloday": "01000001"
-            },
-            {
-                "timersInfo": [],
-                "id": 2,
-                "pid": 86813,
-                "dates": "",
-                "priorHoloday": "01000001"
-            },
-            {
-                "timersInfo": [],
-                "id": 5,
-                "pid": 83856,
-                "dates": "",
-                "priorHoloday": "01000001"
-            },
-            {
-                "timersInfo": [],
-                "id": 60,
-                "pid": 63266,
-                "dates": "",
-                "priorHoloday": "01000001"
-            },
-            {
-                "timersInfo": [],
-                "id": 10000,
-                "pid": 31539,
+                "pid": 42056,
                 "dates": "",
                 "priorHoloday": "01000001"
             }

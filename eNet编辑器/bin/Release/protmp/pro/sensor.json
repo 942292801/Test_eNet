@@ -1,0 +1,78 @@
+[
+    {
+        "sensors": [
+            {
+                "sensorsInfo": [
+                    {
+                        "id": 1,
+                        "pid": 0,
+                        "keyAddress": "",
+                        "objAddress": "",
+                        "objType": "",
+                        "opt": "",
+                        "optName": ""
+                    },
+                    {
+                        "id": 2,
+                        "pid": 0,
+                        "keyAddress": "",
+                        "objAddress": "",
+                        "objType": "",
+                        "opt": "",
+                        "optName": ""
+                    },
+                    {
+                        "id": 3,
+                        "pid": 0,
+                        "keyAddress": "",
+                        "objAddress": "",
+                        "objType": "",
+                        "opt": "",
+                        "optName": ""
+                    },
+                    {
+                        "id": 4,
+                        "pid": 0,
+                        "keyAddress": "",
+                        "objAddress": "",
+                        "objType": "",
+                        "opt": "",
+                        "optName": ""
+                    },
+                    {
+                        "id": 5,
+                        "pid": 0,
+                        "keyAddress": "",
+                        "objAddress": "",
+                        "objType": "",
+                        "opt": "",
+                        "optName": ""
+                    },
+                    {
+                        "id": 6,
+                        "pid": 0,
+                        "keyAddress": "",
+                        "objAddress": "",
+                        "objType": "",
+                        "opt": "",
+                        "optName": ""
+                    },
+                    {
+                        "id": 7,
+                        "pid": 0,
+                        "keyAddress": "",
+                        "objAddress": "",
+                        "objType": "",
+                        "opt": "",
+                        "optName": ""
+                    }
+                ],
+                "id": 1001,
+                "pid": 51365,
+                "ioNum": 7
+            }
+        ],
+        "IP": "192.168.1.111",
+        "Dev": "GW100A"
+    }
+]

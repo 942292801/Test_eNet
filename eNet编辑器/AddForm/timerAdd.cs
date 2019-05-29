@@ -281,6 +281,7 @@ namespace eNet编辑器.AddForm
             catch
             {
                 MessageBox.Show("定时号格式错误");
+                return;
             }
 
             if (!xflag)

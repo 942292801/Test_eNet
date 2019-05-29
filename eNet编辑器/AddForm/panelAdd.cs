@@ -222,39 +222,7 @@ namespace eNet编辑器.AddForm
             }
         }
 
-        #region 重绘窗体
-        private void panelAdd_Paint(object sender, PaintEventArgs e)
-        {
-            Rectangle myRectangle = new Rectangle(0, 0, this.Width, this.Height);
-            //ControlPaint.DrawBorder(e.Graphics, myRectangle, Color.Blue, ButtonBorderStyle.Solid);//画个边框 
-            ControlPaint.DrawBorder(e.Graphics, myRectangle,
-                Color.DarkGray, 1, ButtonBorderStyle.Solid,
-                Color.DarkGray, 1, ButtonBorderStyle.Solid,
-                Color.DarkGray, 2, ButtonBorderStyle.Solid,
-                Color.DarkGray, 2, ButtonBorderStyle.Solid
-            );
-        }
-
-        private Point mPoint;
-        private void plInfoTitle_MouseDown(object sender, MouseEventArgs e)
-        {
-            mPoint = new Point(e.X, e.Y);
-        }
-
-        private void plInfoTitle_MouseMove(object sender, MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Left)
-            {
-                this.Location = new Point(this.Location.X + e.X - mPoint.X, this.Location.Y + e.Y - mPoint.Y);
-            }
-        }
-
-        private void btnClose_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        #endregion
+      
 
         private void cbs1_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -327,15 +295,16 @@ namespace eNet编辑器.AddForm
             }
             try
             {
-                if (Convert.ToInt32(txtNum.Text) > 65535)
+                if (Convert.ToInt32(txtNum.Text) > 999)
                 {
-                    MessageBox.Show("面板号不能大于65535");
+                    MessageBox.Show("面板号不能大于999");
                     return;
                 }
             }
             catch
             {
                 MessageBox.Show("面板号格式错误");
+                return;
             }
 
             if (xflag == false)
@@ -434,5 +403,39 @@ namespace eNet编辑器.AddForm
                 this.DialogResult = DialogResult.OK;
             }
         }
+
+        #region 重绘窗体
+        private void panelAdd_Paint(object sender, PaintEventArgs e)
+        {
+            Rectangle myRectangle = new Rectangle(0, 0, this.Width, this.Height);
+            //ControlPaint.DrawBorder(e.Graphics, myRectangle, Color.Blue, ButtonBorderStyle.Solid);//画个边框 
+            ControlPaint.DrawBorder(e.Graphics, myRectangle,
+                Color.DarkGray, 1, ButtonBorderStyle.Solid,
+                Color.DarkGray, 1, ButtonBorderStyle.Solid,
+                Color.DarkGray, 2, ButtonBorderStyle.Solid,
+                Color.DarkGray, 2, ButtonBorderStyle.Solid
+            );
+        }
+
+        private Point mPoint;
+        private void plInfoTitle_MouseDown(object sender, MouseEventArgs e)
+        {
+            mPoint = new Point(e.X, e.Y);
+        }
+
+        private void plInfoTitle_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                this.Location = new Point(this.Location.X + e.X - mPoint.X, this.Location.Y + e.Y - mPoint.Y);
+            }
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        #endregion
     }
 }

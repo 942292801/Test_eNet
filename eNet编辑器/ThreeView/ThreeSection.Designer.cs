@@ -97,14 +97,14 @@
             // 
             this.新建节点ToolStripMenuItem.Name = "新建节点ToolStripMenuItem";
             this.新建节点ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
-            this.新建节点ToolStripMenuItem.Text = "添加节点";
+            this.新建节点ToolStripMenuItem.Text = "添加区域";
             this.新建节点ToolStripMenuItem.Click += new System.EventHandler(this.新建节点ToolStripMenuItem_Click);
             // 
             // 添加子节点ToolStripMenuItem
             // 
             this.添加子节点ToolStripMenuItem.Name = "添加子节点ToolStripMenuItem";
             this.添加子节点ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
-            this.添加子节点ToolStripMenuItem.Text = "添加子节点";
+            this.添加子节点ToolStripMenuItem.Text = "添加子区域";
             this.添加子节点ToolStripMenuItem.Click += new System.EventHandler(this.添加子节点ToolStripMenuItem_Click);
             // 
             // 修改ToolStripMenuItem
@@ -216,7 +216,7 @@
             this.btnAddNode.Size = new System.Drawing.Size(15, 15);
             this.btnAddNode.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnAddNode.TabIndex = 7;
-            this.btnAddNode.Tooltip = "添加节点";
+            this.btnAddNode.Tooltip = "添加区域";
             this.btnAddNode.Click += new System.EventHandler(this.btnAddNode_Click);
             // 
             // btnAddChild
@@ -237,7 +237,7 @@
             this.btnAddChild.Size = new System.Drawing.Size(15, 15);
             this.btnAddChild.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnAddChild.TabIndex = 6;
-            this.btnAddChild.Tooltip = "添加子节点";
+            this.btnAddChild.Tooltip = "添加子区域";
             this.btnAddChild.Click += new System.EventHandler(this.btnAddChild_Click);
             // 
             // btnDel

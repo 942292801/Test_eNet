@@ -341,6 +341,7 @@ namespace eNet编辑器
         [Serializable]
         public class panels
         {
+            //ID号限制为1-999
             public int id { get; set; }
             public int pid { get; set; }
             public int keyNum { get; set; }
@@ -362,6 +363,37 @@ namespace eNet编辑器
         }
         #endregion
 
+        #region 项目辅助文件Sensor.json
+        [Serializable]
+        public class Sensor
+        {
+            public string IP { get; set; }
+            public string Dev { get; set; }
+            public List<sensors> sensors = new List<sensors>();
+        }
+        [Serializable]
+        public class sensors
+        {
+            //ID号限制为1001-1999
+            public int id { get; set; }
+            public int pid { get; set; }
+            public int ioNum { get; set; }
+            public List<sensorsInfo> sensorsInfo = new List<sensorsInfo>();
+        }
+        [Serializable]
+        public class sensorsInfo
+        {
+            public int id { get; set; }
+            public int pid { get; set; }
+            //ip + id + ye + num
+            public string keyAddress { get; set; }
+            public string objAddress { get; set; }
+            public string objType { get; set; }
+            public string opt { get; set; }
+            public string optName { get; set; }
+        }
+        #endregion
+
         #region 项目总文件  还需要添加
         [Serializable]
         public class totalList
@@ -374,7 +406,7 @@ namespace eNet编辑器
             public List<DataJson.Scene> sceneList = new List<Scene>();//场景
             public List<DataJson.Timer> timerList = new List<Timer>();//定时
             public List<DataJson.Panel> panelList = new List<Panel>();//绑定
-
+            public List<DataJson.Sensor> sensorList = new List<Sensor>();//感应
         }
 
         #endregion

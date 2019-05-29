@@ -42,6 +42,7 @@
             this.del = new System.Windows.Forms.DataGridViewButtonColumn();
             this.add = new DevComponents.DotNetBar.Controls.DataGridViewButtonXColumn();
             this.plInfoTitle = new System.Windows.Forms.Panel();
+            this.btnDel = new DevComponents.DotNetBar.ButtonX();
             this.btnImport = new DevComponents.DotNetBar.ButtonX();
             this.btnClear = new DevComponents.DotNetBar.ButtonX();
             this.btnOff = new DevComponents.DotNetBar.ButtonX();
@@ -58,6 +59,8 @@
             this.panel6 = new System.Windows.Forms.Panel();
             this.panel8 = new System.Windows.Forms.Panel();
             this.panel7 = new System.Windows.Forms.Panel();
+            this.cbDevNum = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.cbKeyNum = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -65,8 +68,6 @@
             this.symbolBox2 = new DevComponents.DotNetBar.Controls.SymbolBox();
             this.label3 = new System.Windows.Forms.Label();
             this.doubleClickTimer = new System.Windows.Forms.Timer(this.components);
-            this.cbDevNum = new System.Windows.Forms.ComboBox();
-            this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.plInfoTitle.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -199,6 +200,7 @@
             // plInfoTitle
             // 
             this.plInfoTitle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.plInfoTitle.Controls.Add(this.btnDel);
             this.plInfoTitle.Controls.Add(this.btnImport);
             this.plInfoTitle.Controls.Add(this.btnClear);
             this.plInfoTitle.Controls.Add(this.btnOff);
@@ -213,6 +215,27 @@
             this.plInfoTitle.Size = new System.Drawing.Size(1006, 25);
             this.plInfoTitle.TabIndex = 17;
             // 
+            // btnDel
+            // 
+            this.btnDel.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnDel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnDel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnDel.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
+            this.btnDel.FocusCuesEnabled = false;
+            this.btnDel.Font = new System.Drawing.Font("黑体", 9F);
+            this.btnDel.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None;
+            this.btnDel.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnDel.HoverImage")));
+            this.btnDel.Image = ((System.Drawing.Image)(resources.GetObject("btnDel.Image")));
+            this.btnDel.Location = new System.Drawing.Point(985, 4);
+            this.btnDel.Margin = new System.Windows.Forms.Padding(6);
+            this.btnDel.Name = "btnDel";
+            this.btnDel.Size = new System.Drawing.Size(15, 15);
+            this.btnDel.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnDel.TabIndex = 19;
+            this.btnDel.Tooltip = "清空加载";
+            this.btnDel.Click += new System.EventHandler(this.btnDel_Click);
+            // 
             // btnImport
             // 
             this.btnImport.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
@@ -225,7 +248,7 @@
             this.btnImport.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None;
             this.btnImport.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnImport.HoverImage")));
             this.btnImport.Image = ((System.Drawing.Image)(resources.GetObject("btnImport.Image")));
-            this.btnImport.Location = new System.Drawing.Point(904, 4);
+            this.btnImport.Location = new System.Drawing.Point(879, 4);
             this.btnImport.Margin = new System.Windows.Forms.Padding(6);
             this.btnImport.Name = "btnImport";
             this.btnImport.Size = new System.Drawing.Size(15, 15);
@@ -246,7 +269,7 @@
             this.btnClear.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None;
             this.btnClear.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnClear.HoverImage")));
             this.btnClear.Image = ((System.Drawing.Image)(resources.GetObject("btnClear.Image")));
-            this.btnClear.Location = new System.Drawing.Point(985, 4);
+            this.btnClear.Location = new System.Drawing.Point(960, 4);
             this.btnClear.Margin = new System.Windows.Forms.Padding(6);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(15, 15);
@@ -267,7 +290,7 @@
             this.btnOff.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None;
             this.btnOff.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnOff.HoverImage")));
             this.btnOff.Image = ((System.Drawing.Image)(resources.GetObject("btnOff.Image")));
-            this.btnOff.Location = new System.Drawing.Point(958, 4);
+            this.btnOff.Location = new System.Drawing.Point(933, 4);
             this.btnOff.Margin = new System.Windows.Forms.Padding(6);
             this.btnOff.Name = "btnOff";
             this.btnOff.Size = new System.Drawing.Size(15, 15);
@@ -288,7 +311,7 @@
             this.btnDown.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None;
             this.btnDown.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnDown.HoverImage")));
             this.btnDown.Image = ((System.Drawing.Image)(resources.GetObject("btnDown.Image")));
-            this.btnDown.Location = new System.Drawing.Point(876, 4);
+            this.btnDown.Location = new System.Drawing.Point(851, 4);
             this.btnDown.Margin = new System.Windows.Forms.Padding(6);
             this.btnDown.Name = "btnDown";
             this.btnDown.Size = new System.Drawing.Size(15, 15);
@@ -309,7 +332,7 @@
             this.btnOn.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None;
             this.btnOn.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnOn.HoverImage")));
             this.btnOn.Image = ((System.Drawing.Image)(resources.GetObject("btnOn.Image")));
-            this.btnOn.Location = new System.Drawing.Point(931, 4);
+            this.btnOn.Location = new System.Drawing.Point(906, 4);
             this.btnOn.Margin = new System.Windows.Forms.Padding(6);
             this.btnOn.Name = "btnOn";
             this.btnOn.Size = new System.Drawing.Size(15, 15);
@@ -440,6 +463,24 @@
             this.panel7.Size = new System.Drawing.Size(204, 479);
             this.panel7.TabIndex = 31;
             // 
+            // cbDevNum
+            // 
+            this.cbDevNum.FormattingEnabled = true;
+            this.cbDevNum.Location = new System.Drawing.Point(108, 64);
+            this.cbDevNum.Name = "cbDevNum";
+            this.cbDevNum.Size = new System.Drawing.Size(46, 25);
+            this.cbDevNum.TabIndex = 34;
+            this.cbDevNum.SelectedIndexChanged += new System.EventHandler(this.cbDevNum_SelectedIndexChanged);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(12, 67);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(68, 17);
+            this.label4.TabIndex = 33;
+            this.label4.Text = "默认设备：";
+            // 
             // cbKeyNum
             // 
             this.cbKeyNum.FormattingEnabled = true;
@@ -520,24 +561,6 @@
             this.doubleClickTimer.Interval = 40;
             this.doubleClickTimer.Tick += new System.EventHandler(this.doubleClickTimer_Tick);
             // 
-            // cbDevNum
-            // 
-            this.cbDevNum.FormattingEnabled = true;
-            this.cbDevNum.Location = new System.Drawing.Point(108, 64);
-            this.cbDevNum.Name = "cbDevNum";
-            this.cbDevNum.Size = new System.Drawing.Size(46, 25);
-            this.cbDevNum.TabIndex = 34;
-            this.cbDevNum.SelectedIndexChanged += new System.EventHandler(this.cbDevNum_SelectedIndexChanged);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(12, 67);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(68, 17);
-            this.label4.TabIndex = 33;
-            this.label4.Text = "默认设备：";
-            // 
             // DgvPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -605,5 +628,6 @@
         private DevComponents.DotNetBar.Controls.DataGridViewButtonXColumn add;
         private System.Windows.Forms.ComboBox cbDevNum;
         private System.Windows.Forms.Label label4;
+        private DevComponents.DotNetBar.ButtonX btnDel;
     }
 }

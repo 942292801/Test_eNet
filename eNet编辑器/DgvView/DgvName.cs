@@ -254,8 +254,8 @@ namespace eNet编辑器.DgvView
                     }
                 }
             }//try
-            catch (Exception ex) {
-                //MessageBox.Show(ex + "临时调试错误信息"); 
+            catch {
+                //Exception ex MessageBox.Show(ex + "临时调试错误信息"); 
             }
          
         }

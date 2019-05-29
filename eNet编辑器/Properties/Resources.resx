@@ -173,4 +173,12 @@
     <value>面板名称：</value>
     <comment>主窗口信息显示界面（面板名称：）</comment>
   </data>
+  <data name="Sensor" xml:space="preserve">
+    <value>感应编组</value>
+    <comment>感应树状图节点 名称前部分</comment>
+  </data>
+  <data name="TxtShowSensorName" xml:space="preserve">
+    <value>感应编组名称：</value>
+    <comment>主窗信息显示界面 （感应编组名称：）</comment>
+  </data>
 </root>
