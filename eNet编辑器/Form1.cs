@@ -857,6 +857,7 @@ namespace eNet编辑器
         {
             粘贴PCtrlVToolStripMenuItem_Click(this, EventArgs.Empty);
         }
+
         private void 复制CCtrlCToolStripMenuItem_Click(object sender, EventArgs e)
         {
             try
@@ -883,7 +884,7 @@ namespace eNet编辑器
 
                         break;
                     case "sensor":
-
+                        dgvsensor.copyData();
                         break;
                     default: break;
                 }
@@ -920,7 +921,7 @@ namespace eNet编辑器
 
                         break;
                     case "sensor":
-
+                        dgvsensor.pasteData();
                         break;
                     default: break;
                 }

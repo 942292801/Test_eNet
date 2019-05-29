@@ -501,13 +501,13 @@ namespace eNet编辑器.DgvView
                     }//if有场景信息
                     else
                     {
-                        AppTxtShow("无定时指令！");
+                        AppTxtShow("加载失败！无面板指令！");
                     }
 
                 }
                 else
                 {
-                    AppTxtShow("无定时指令！");
+                    AppTxtShow("加载失败！无面板指令！");
                 }
 
             }
@@ -1597,6 +1597,8 @@ namespace eNet编辑器.DgvView
                 {
                     plInfo.objAddress = eq.address;
                     dataGridView1.Rows[id].Cells[2].Value = DgvMesege.addressTransform(plInfo.objAddress);
+                    dataGridView1.Rows[id].Cells[4].Value = string.Format("{0} {1} {2} {3}", eq.area1, eq.area2, eq.area3, eq.area4).Trim();//改根据地址从信息里面获取
+                    dataGridView1.Rows[id].Cells[5].Value = eq.name;
                 }
                 else
                 {
@@ -1605,6 +1607,8 @@ namespace eNet编辑器.DgvView
                     plInfo.opt = 0;
                     dataGridView1.Rows[id].Cells[2].Value = DgvMesege.addressTransform(plInfo.objAddress);
                     dataGridView1.Rows[id].Cells[3].Value = IniHelper.findTypesIniNamebyType(plInfo.objType);
+                    dataGridView1.Rows[id].Cells[4].Value = string.Format("{0} {1} {2} {3}", eq.area1, eq.area2, eq.area3, eq.area4).Trim();//改根据地址从信息里面获取
+                    dataGridView1.Rows[id].Cells[5].Value = eq.name;
                     dataGridView1.Rows[id].Cells[6].Value = updataMode(plInfo.objType, id, plInfo.opt);
                             
                 }

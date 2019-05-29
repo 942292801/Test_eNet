@@ -82,7 +82,7 @@ namespace eNet编辑器.DgvView
 
             this.dataGridView1.Columns.Insert(2, showmode);
             //插入执行对象类型
-            this.dataGridView1.Columns.Insert(3, objType);
+            this.dataGridView1.Columns.Insert(4, objType);
         }
 
         private string tmpIONum = "";
@@ -526,13 +526,13 @@ namespace eNet编辑器.DgvView
                     }//if有场景信息
                     else
                     {
-                        AppTxtShow("无定时指令！");
+                        AppTxtShow("加载失败！无感应指令！");
                     }
 
                 }
                 else
                 {
-                    AppTxtShow("无定时指令！");
+                    AppTxtShow("加载失败！无感应指令！！");
                 }
 
             }
@@ -982,7 +982,7 @@ namespace eNet编辑器.DgvView
                                 addInfo();
                                 break;
                             case "objAddress":
-
+                                setTitleAddress();
                                 break;
  
 
@@ -1418,11 +1418,225 @@ namespace eNet编辑器.DgvView
         #region del删除快捷键
         private void dataGridView1_KeyUp(object sender, KeyEventArgs e)
         {
+            try
+            {
+                if (e.KeyData == Keys.Delete)
+                {
+
+                    DelKeyOpt();
+
+                }
+            }
+            catch (Exception ex) { MessageBox.Show(ex + "临时调试错误信息"); }
+        }
+
+         //删除操作
+        private void DelKeyOpt()
+        {
+            try
+            {
+
+
+                bool ischange = false;
+                //撤销
+                DataJson.totalList OldList = FileMesege.cmds.getListInfos();
+                DataJson.sensors srs = DataListHelper.getSensorInfoListByNode();
+                if (srs == null)
+                {
+                    return;
+                }
+                for (int i = 0; i < dataGridView1.SelectedCells.Count; i++)
+                {
+                    int colIndex = dataGridView1.SelectedCells[i].ColumnIndex;
+                    DataJson.sensorsInfo srInfo = srs.sensorsInfo[dataGridView1.SelectedCells[i].RowIndex];
+                    if (srInfo == null)
+                    {
+                        continue;
+                    }
+
+                    if (colIndex == 7)
+                    {
+
+                        ischange = true;
+                        srInfo.opt = "";
+                        srInfo.optName = "";
+
+                        dataGridView1.Rows[dataGridView1.SelectedCells[i].RowIndex].Cells[7].Value = null;
+                    }//if
+
+                }
+                if (ischange)
+                {
+                    DataJson.totalList NewList = FileMesege.cmds.getListInfos();
+                    FileMesege.cmds.DoNewCommand(NewList, OldList);
+                }
+            }//try
+            catch
+            {
+
+            }
+        }
+
+        /// <summary>
+        /// 复制title选中的节点 赋地址给ObjAddress
+        /// </summary>
+        private void setTitleAddress()
+        {
+
+            if (dataGridView1.SelectedCells.Count != 1)
+            {
+                return;
+            }
+            int colIndex = dataGridView1.SelectedCells[0].ColumnIndex;
+            if (colIndex != 3 )
+            {
+                return;
+            }
+            DataJson.sensors srs = DataListHelper.getSensorInfoListByNode();
+            if (srs == null)
+            {
+                return;
+            }
+            int id = dataGridView1.CurrentCell.RowIndex;
+            //获取sceneInfo对象表中对应ID号info对象
+            DataJson.sensorsInfo srInfo = srs.sensorsInfo[id];
+            if (srInfo == null)
+            {
+                return;
+            }
+            List<string> section_name = DataListHelper.dealPointInfo(FileMesege.titlePointSection);
+
+            DataJson.PointInfo eq = DataListHelper.findPointBySection_name(section_name);
+            if (eq == null)
+            {
+                return;
+            }
+            //撤销
+            DataJson.totalList OldList = FileMesege.cmds.getListInfos();
+            if (colIndex == 3)
+            {
+                if (eq.type == srInfo.objType)
+                {
+                    srInfo.objAddress = eq.address;
+                    dataGridView1.Rows[id].Cells[3].Value = DgvMesege.addressTransform(srInfo.objAddress);
+                    dataGridView1.Rows[id].Cells[5].Value = string.Format("{0} {1} {2} {3}", eq.area1, eq.area2, eq.area3, eq.area4).Trim();//改根据地址从信息里面获取
+                    dataGridView1.Rows[id].Cells[6].Value = eq.name;
+                }
+                else
+                {
+                    srInfo.objAddress = eq.address;
+                    srInfo.objType = eq.type;
+                    srInfo.opt = "";
+                    srInfo.optName = "";
+                    dataGridView1.Rows[id].Cells[3].Value = DgvMesege.addressTransform(srInfo.objAddress);
+                    dataGridView1.Rows[id].Cells[4].Value = IniHelper.findTypesIniNamebyType(srInfo.objType);
+                    dataGridView1.Rows[id].Cells[5].Value = string.Format("{0} {1} {2} {3}", eq.area1, eq.area2, eq.area3, eq.area4).Trim();//改根据地址从信息里面获取
+                    dataGridView1.Rows[id].Cells[6].Value = eq.name;
+                    dataGridView1.Rows[id].Cells[7].Value = "";
+
+                }
+
+
+            }//if
+  
+
+            DataJson.totalList NewList = FileMesege.cmds.getListInfos();
+            FileMesege.cmds.DoNewCommand(NewList, OldList);
+
+
+        }
+
+        #endregion
+
+        #region 复制 粘贴
+        /// <summary>
+        /// 复制点位的对象 与参数 
+        /// </summary>
+        public void copyData()
+        {
+            //获取当前选中单元格的列序号
+            int colIndex = dataGridView1.CurrentRow.Cells.IndexOf(dataGridView1.CurrentCell);
+            //当粘贴选中单元格为操作
+            if (colIndex == 7 )
+            {
+                int id = dataGridView1.CurrentRow.Index;
+                DataJson.sensors srs = DataListHelper.getSensorInfoListByNode();
+                if (srs == null)
+                {
+                    return;
+                }
+
+                //获取sceneInfo对象表中对应ID号info对象
+                DataJson.sensorsInfo srInfo = srs.sensorsInfo[id];
+                if (srInfo == null)
+                {
+                    return;
+                }
+                //获取sceneInfo对象表中对应ID号info对象
+                FileMesege.copySensor = srInfo;
+
+            }
+
+
+        }
+
+        /// <summary>
+        /// 粘贴点位的对象与参数
+        /// </summary>
+        public void pasteData()
+        {
+
+            try
+            {
+                bool ischange = false;
+                //撤销
+                DataJson.totalList OldList = FileMesege.cmds.getListInfos();
+                DataJson.sensors srs = DataListHelper.getSensorInfoListByNode();
+                if (srs == null)
+                {
+                    return;
+                }
+                for (int i = 0; i < dataGridView1.SelectedCells.Count; i++)
+                {
+                    int colIndex = dataGridView1.SelectedCells[i].ColumnIndex;
+                    int id = dataGridView1.SelectedCells[i].RowIndex;
+                    DataJson.sensorsInfo srInfo = srs.sensorsInfo[id];
+                    if (srInfo == null)
+                    {
+                        return;
+                    }
+
+                    if (FileMesege.copySensor.objType == "" || srInfo.objType == "" || srInfo.objType != FileMesege.copySensor.objType)
+                    {
+                        continue;
+                    }
+                    if (colIndex == 7)
+                    {
+
+                        ischange = true;
+                        srInfo.opt = FileMesege.copySensor.opt;
+                        srInfo.optName = FileMesege.copySensor.optName;
+                        dataGridView1.Rows[dataGridView1.SelectedCells[i].RowIndex].Cells[7].Value = (srInfo.optName + " " + srInfo.opt).Trim();
+                    }//if
+        
+                }
+                if (ischange)
+                {
+                    DataJson.totalList NewList = FileMesege.cmds.getListInfos();
+                    FileMesege.cmds.DoNewCommand(NewList, OldList);
+                }
+
+            }//try
+            catch
+            {
+
+            }
+
 
         }
         #endregion
 
-    
+      
 
 
 
