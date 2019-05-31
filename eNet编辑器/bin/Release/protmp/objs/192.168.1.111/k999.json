@@ -1,0 +1,21 @@
+{
+    "key": [
+        {
+            "num": 1,
+            "key": "00010001",
+            "obj": "6F000A06",
+            "mode": 3,
+            "fback": "FE000A06",
+            "fbmode": 1
+        },
+        {
+            "num": 6,
+            "key": "00010006",
+            "obj": "6F000A03",
+            "mode": 3,
+            "fback": "FE000A03",
+            "fbmode": 128
+        }
+    ],
+    "type": "key"
+}

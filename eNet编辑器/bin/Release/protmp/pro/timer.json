@@ -8,30 +8,40 @@
                         "pid": 79386,
                         "type": "1.0_switch",
                         "address": "6F000A01",
-                        "opt": "",
-                        "optName": "",
-                        "shortTime": ""
+                        "opt": "00000001",
+                        "optName": "开启",
+                        "shortTime": "日出时间"
                     },
                     {
                         "id": 2,
                         "pid": 91351,
                         "type": "1.0_switch",
                         "address": "6F000A02",
-                        "opt": "",
-                        "optName": "",
-                        "shortTime": ""
+                        "opt": "00000001",
+                        "optName": "开启",
+                        "shortTime": "15:15"
                     }
                 ],
                 "id": 1,
                 "pid": 42056,
-                "dates": "",
+                "dates": "1",
                 "priorHoloday": "01000001"
             },
             {
-                "timersInfo": [],
+                "timersInfo": [
+                    {
+                        "id": 1,
+                        "pid": 59602,
+                        "type": "1.0_switch",
+                        "address": "6F000A05",
+                        "opt": "00000001",
+                        "optName": "开启",
+                        "shortTime": "日落时间"
+                    }
+                ],
                 "id": 10000,
                 "pid": 88149,
-                "dates": "",
+                "dates": "2",
                 "priorHoloday": "01000001"
             }
         ],

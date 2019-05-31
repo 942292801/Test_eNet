@@ -168,6 +168,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddForm\compileDownload.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddForm\compileDownload.Designer.cs">
+      <DependentUpon>compileDownload.cs</DependentUpon>
+    </Compile>
     <Compile Include="AddForm\DGVconcrol.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -396,6 +402,9 @@
     <Compile Include="TreeMesege.cs" />
     <Compile Include="UdpSocket.cs" />
     <Compile Include="ZipHelper.cs" />
+    <EmbeddedResource Include="AddForm\compileDownload.resx">
+      <DependentUpon>compileDownload.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AddForm\DGVconcrol.resx">
       <DependentUpon>DGVconcrol.cs</DependentUpon>
       <SubType>Designer</SubType>

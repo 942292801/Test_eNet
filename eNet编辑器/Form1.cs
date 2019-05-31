@@ -984,6 +984,11 @@ namespace eNet编辑器
 
         }
 
+        /// <summary>
+        /// 编译下载
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void 编译ToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
@@ -996,7 +1001,11 @@ namespace eNet编辑器
 
         private void 编译下载ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            compileDownload cpdown = new compileDownload();
+            cpdown.AppTxtShow += new Action<string>(AppTxtShow);
+            //展示居中
+            cpdown.StartPosition = FormStartPosition.CenterParent;
+            cpdown.ShowDialog();
         }
 
         #endregion

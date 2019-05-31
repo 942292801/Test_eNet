@@ -431,7 +431,7 @@ namespace eNet编辑器.DgvView
                             keyInfo.fback = "FE" + plInfo.showAddress.Substring(2, 6);
                         }
                         //显示模式
-                        keyInfo.fbmode = getShowMode(plInfo.showMode);
+                        keyInfo.fbmode = FileMesege.getShowMode(plInfo.showMode);
                         
                         kn.key.Add(keyInfo);
                        
@@ -518,33 +518,7 @@ namespace eNet编辑器.DgvView
             }
         }
 
-        private int getShowMode(string mode)
-        {
-            switch (mode)
-            { 
-                case "同步":
-                    return 1;
-                case "反显":
-                    return 128;
-                case "图形按键":
-                    return 2;
-                case "图形滑动条":
-                    return 4;
-                case "图形图标":
-                    return 5;
-                case "图形数值1":
-                    return 80;
-                case "图形数值0.1":
-                    return 81;
-                case "图形数值0.01":
-                    return 82;
-                case "图形数值0.001":
-                    return 83;
-                case "图形数值0.0001":
-                    return 84;
-                default: return 255;
-            }
-        }
+        
 
         //下载
         private void btnImport_Click(object sender, EventArgs e)

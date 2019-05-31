@@ -1,0 +1,17 @@
+{
+    "timer": [
+        {
+            "num": 0,
+            "year": 255,
+            "mon": 255,
+            "day": 2,
+            "date": 255,
+            "hour": 253,
+            "min": 253,
+            "obj": "6F000A05",
+            "data": "00000001"
+        }
+    ],
+    "type": "timer",
+    "describe": "create by system"
+}

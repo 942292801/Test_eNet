@@ -17,31 +17,31 @@
                 "device": "ET-R0816A",
                 "sn": "ffffffffffffffff",
                 "ver": "D20150804V1.11",
-                "area1": "",
-                "area2": "",
-                "area3": "",
+                "area1": "A区",
+                "area2": "A栋",
+                "area3": "-3F",
                 "area4": "",
-                "name": ""
+                "name": "窗帘1"
             },
             {
                 "id": 11,
                 "device": "ET-D0201A",
                 "sn": "ffffffffffffffff",
                 "ver": "D20180614V1.05",
-                "area1": "",
-                "area2": "",
-                "area3": "",
+                "area1": "A区",
+                "area2": "A栋",
+                "area3": "-3F",
                 "area4": "",
-                "name": ""
+                "name": "窗帘2"
             },
             {
                 "id": 16,
                 "device": "KP06A",
                 "sn": "0000000000000000",
                 "ver": "D141021V1.1",
-                "area1": "",
-                "area2": "",
-                "area3": "",
+                "area1": "A区",
+                "area2": "A栋",
+                "area3": "-3F",
                 "area4": "",
                 "name": ""
             }

@@ -1,0 +1,30 @@
+{
+    "action": [
+        {
+            "num": 1,
+            "obj": "6F100002",
+            "val": "00000001",
+            "delay": 0
+        },
+        {
+            "num": 2,
+            "obj": "6F202710",
+            "val": "00000000",
+            "delay": 0
+        },
+        {
+            "num": 3,
+            "obj": "6F300002",
+            "val": "00000000",
+            "delay": 0
+        },
+        {
+            "num": 4,
+            "obj": "6F3003EA",
+            "val": "00000000",
+            "delay": 0
+        }
+    ],
+    "type": "scene",
+    "describe": "create by system"
+}

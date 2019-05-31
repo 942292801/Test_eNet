@@ -1,0 +1,12 @@
+{
+    "action": [
+        {
+            "num": 1,
+            "obj": "6F000A01",
+            "val": "02010000",
+            "delay": 0
+        }
+    ],
+    "type": "scene",
+    "describe": "create by system"
+}

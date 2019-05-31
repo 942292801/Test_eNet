@@ -100,7 +100,7 @@
             // 
             this.btnDecid.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnDecid.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnDecid.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnDecid.BackColor = System.Drawing.Color.White;
             this.btnDecid.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
             this.btnDecid.FocusCuesEnabled = false;
             this.btnDecid.Font = new System.Drawing.Font("黑体", 9F);

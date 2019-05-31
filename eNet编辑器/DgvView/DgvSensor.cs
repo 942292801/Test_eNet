@@ -456,8 +456,7 @@ namespace eNet编辑器.DgvView
                         keyInfo.fback = srInfo.opt;
 
                         keyInfo.fbmode = srInfo.fbmode;
-                        //keyInfo.mode = plInfo.opt;/////////////////有问题这里
-                        //////////////////////////////////////////////////////
+
                         kn.key.Add(keyInfo);
 
 

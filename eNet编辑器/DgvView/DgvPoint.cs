@@ -612,6 +612,9 @@ namespace eNet编辑器.DgvView
                                 delBtn();
                                 
                                 break;
+                            case "pointAdd":
+                                dgvShowTxt();
+                                break;
                             default: break;
                         }
                     }
@@ -748,6 +751,39 @@ namespace eNet编辑器.DgvView
         private void dataGridView1_DataError(object sender, DataGridViewDataErrorEventArgs e)
         {
 
+        }
+
+
+        /// <summary>
+        /// 展示该节点的信息到txt中
+        /// </summary>
+        private void dgvShowTxt()
+        {
+            
+            //区域加名称
+            DataJson.PointInfo point = findNowRow(rowCount);
+            if (point == null)
+            {
+                return;
+            }
+            int id = Convert.ToInt32( point.address.Substring(4,2),16);
+            foreach (DataJson.Device dev in FileMesege.DeviceList)
+            {
+                if (dev.ip == point.ip)
+                {
+                    foreach (DataJson.Module md in dev.module)
+                    {
+                        if (md.id == id)
+                        {
+                            string section = string.Format("{0} {1} {2} {3}", md.area1, md.area2, md.area3, md.area4).Trim().Replace(" ", "\\");
+                            txtAppShow(string.Format("当前地址信息 ：{0}--->{1}--->{2}--->{3} ", dev.ip, md.device, section, md.name));//改根据地址从信息里面获取
+                            break;
+                        }
+                    }
+                    break;
+                }
+            }
+            
         }
 
 

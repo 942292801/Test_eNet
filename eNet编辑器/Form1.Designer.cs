@@ -30,9 +30,9 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.文件ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.新建项目ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -141,6 +141,7 @@
             this.plDgv = new System.Windows.Forms.Panel();
             this.ultraSplitter3 = new Infragistics.Win.Misc.UltraSplitter();
             this.plInfo = new System.Windows.Forms.Panel();
+            this.txtShow = new System.Windows.Forms.RichTextBox();
             this.plInfoTitle = new System.Windows.Forms.Panel();
             this.symbolBox1 = new DevComponents.DotNetBar.Controls.SymbolBox();
             this.btnInfoClear = new DevComponents.DotNetBar.ButtonX();
@@ -155,7 +156,6 @@
             this.plTitleCbbox = new System.Windows.Forms.Panel();
             this.symbolBox2 = new DevComponents.DotNetBar.Controls.SymbolBox();
             this.plLeft = new System.Windows.Forms.Panel();
-            this.txtShow = new System.Windows.Forms.RichTextBox();
             this.menuStrip1.SuspendLayout();
             this.PlMeustrip.ClientArea.SuspendLayout();
             this.PlMeustrip.SuspendLayout();
@@ -597,8 +597,8 @@
             // 
             // PlMeustrip
             // 
-            appearance4.BackColor = System.Drawing.Color.DarkGray;
-            this.PlMeustrip.Appearance = appearance4;
+            appearance1.BackColor = System.Drawing.Color.DarkGray;
+            this.PlMeustrip.Appearance = appearance1;
             // 
             // PlMeustrip.ClientArea
             // 
@@ -608,8 +608,8 @@
             // 
             // PlToolstrip
             // 
-            appearance1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.PlToolstrip.Appearance = appearance1;
+            appearance2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.PlToolstrip.Appearance = appearance2;
             // 
             // PlToolstrip.ClientArea
             // 
@@ -899,8 +899,8 @@
             // 
             // PlTabStrip
             // 
-            appearance2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(145)))), ((int)(((byte)(230)))));
-            this.PlTabStrip.Appearance = appearance2;
+            appearance3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(145)))), ((int)(((byte)(230)))));
+            this.PlTabStrip.Appearance = appearance3;
             // 
             // PlTabStrip.ClientArea
             // 
@@ -936,11 +936,11 @@
             this.tabStrip.ColorScheme.TabItemSelectedBorderDark = System.Drawing.Color.Empty;
             this.tabStrip.ColorScheme.TabItemSelectedBorderLight = System.Drawing.Color.Empty;
             this.tabStrip.ColorScheme.TabItemSelectedText = System.Drawing.Color.White;
-            this.tabStrip.Controls.Add(this.tabControlPanel1);
-            this.tabStrip.Controls.Add(this.tabControlPanel6);
             this.tabStrip.Controls.Add(this.tabControlPanel4);
-            this.tabStrip.Controls.Add(this.tabControlPanel7);
             this.tabStrip.Controls.Add(this.tabControlPanel5);
+            this.tabStrip.Controls.Add(this.tabControlPanel6);
+            this.tabStrip.Controls.Add(this.tabControlPanel7);
+            this.tabStrip.Controls.Add(this.tabControlPanel1);
             this.tabStrip.Controls.Add(this.tabControlPanel3);
             this.tabStrip.Controls.Add(this.tabControlPanel2);
             this.tabStrip.ForeColor = System.Drawing.SystemColors.ControlLightLight;
@@ -1148,6 +1148,15 @@
             resources.ApplyResources(this.plInfo, "plInfo");
             this.plInfo.Name = "plInfo";
             // 
+            // txtShow
+            // 
+            this.txtShow.BackColor = System.Drawing.Color.White;
+            this.txtShow.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            resources.ApplyResources(this.txtShow, "txtShow");
+            this.txtShow.ForeColor = System.Drawing.Color.Red;
+            this.txtShow.Name = "txtShow";
+            this.txtShow.ReadOnly = true;
+            // 
             // plInfoTitle
             // 
             this.plInfoTitle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
@@ -1259,15 +1268,6 @@
             // 
             resources.ApplyResources(this.plLeft, "plLeft");
             this.plLeft.Name = "plLeft";
-            // 
-            // txtShow
-            // 
-            this.txtShow.BackColor = System.Drawing.Color.White;
-            this.txtShow.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            resources.ApplyResources(this.txtShow, "txtShow");
-            this.txtShow.ForeColor = System.Drawing.Color.Red;
-            this.txtShow.Name = "txtShow";
-            this.txtShow.ReadOnly = true;
             // 
             // Form1
             // 

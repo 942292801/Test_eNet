@@ -96,6 +96,7 @@ namespace eNet编辑器
             }
         }
 
+        #region 项目的新建 打开 保存 另存为
         //初始化 清空所有值 
         public static void iniPath()
        {
@@ -438,20 +439,536 @@ namespace eNet编辑器
         /// <param name="path"></param>
         public void tmpPathClear()
         {
-            if (System.IO.Directory.Exists(TmpFilePath + "\\objs"))
+            try
             {
-                Directory.Delete(TmpFilePath + "\\objs", true);
+                if (System.IO.Directory.Exists(TmpFilePath + "\\objs"))
+                {
+                    Directory.Delete(TmpFilePath + "\\objs", true);
+                }
+                if (System.IO.Directory.Exists(TmpFilePath + "\\pro"))
+                {
+                    Directory.Delete(TmpFilePath + "\\pro", true);
+                }
+                Directory.CreateDirectory(TmpFilePath + "\\objs");
+                Directory.CreateDirectory(TmpFilePath + "\\pro");
             }
-            if (System.IO.Directory.Exists(TmpFilePath + "\\pro"))
+            catch { 
+                
+            }
+        }
+
+        #endregion
+
+
+        #region 编译 下载
+        /// <summary>
+        /// 把该ip名称的文件夹删除 再重新建立该文件夹 并把旧IP.zip包删除
+        /// </summary>
+        /// <param name="ip"></param>
+        public bool ObjDirClearByIP(string ip)
+        {
+            try
             {
-                Directory.Delete(TmpFilePath + "\\pro", true);
+                string tmpPath = string.Format("{0}\\objs\\{1}", TmpFilePath, ip);
+                if (System.IO.Directory.Exists(tmpPath))
+                {
+                    Directory.Delete(tmpPath, true);
+                }
+                //if (System.IO.File.Exists(TmpFilePath + "\\objs" + ip + ".zip"))
+                //{
+                //}
+                File.Delete(tmpPath + ".zip");
+                Directory.CreateDirectory(tmpPath);
+                return true;
             }
-            Directory.CreateDirectory(TmpFilePath + "\\objs");
-            Directory.CreateDirectory(TmpFilePath + "\\pro");
+            catch
+            {
+                return false;
+            }
         }
 
 
+        /// <summary>
+        /// 在point.json总文件中抽取该网关ip的信息并写进 所有点位信息 成功：true 失败：false
+        /// </summary>
+        /// <param name="ip"></param>
+        /// <returns></returns>
+        public bool getPointJsonByIP(string ip)
+        {
+            try
+            {
+                //找到该ip的目录 然后在List表中把该ip的节点抽离出来并写进去该文件夹
+                DataJson.Point gwPoint = new DataJson.Point();
+                if (PointList != null)
+                {
+                    if (PointList.equipment != null)
+                    {
+                        foreach (DataJson.PointInfo point in PointList.equipment)
+                        {
+                            if (point.ip == ip)
+                            {
+                                gwPoint.equipment.Add(point);
+                            }
+                        }
+                    }
+                    if (PointList.scene != null)
+                    {
+                        foreach (DataJson.PointInfo point in PointList.scene)
+                        {
+                            if (point.ip == ip)
+                            {
+                                gwPoint.scene.Add(point);
+                            }
+                        }
+                    }
+                    if (PointList.timer != null)
+                    {
+                        foreach (DataJson.PointInfo point in PointList.timer)
+                        {
+                            if (point.ip == ip)
+                            {
+                                gwPoint.timer.Add(point);
+                            }
+                        }
+                    }
+                    if (PointList.link != null)
+                    {
+                        foreach (DataJson.PointInfo point in PointList.link)
+                        {
+                            if (point.ip == ip)
+                            {
+                                gwPoint.link.Add(point);
+                            }
+                        }
+                    }
+                }
+                File.WriteAllText(string.Format("{0}\\objs\\{1}\\point.json", TmpFilePath, ip), ConvertJsonString(JsonConvert.SerializeObject(gwPoint)));
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
 
+        /// <summary>
+        /// 把area.json总文件写入该ip  成功：true 失败：false
+        /// </summary>
+        /// <param name="ip"></param>
+        /// <returns></returns>
+        public bool getAreaJsonByIP(string ip)
+        {
+            try
+            {
+               
+                if (AreaList == null)
+                {
+                    AreaList = new List<DataJson.Area1>();
+                }
+                File.WriteAllText(string.Format("{0}\\objs\\{1}\\area.json", TmpFilePath, ip), ConvertJsonString(JsonConvert.SerializeObject(AreaList)));
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// 把device.json总文件中抽取该网关ip的设备信息并写进 所有点位信息  成功：true 失败：false
+        /// </summary>
+        /// <param name="ip"></param>
+        /// <returns></returns>
+        public bool getDeviceJsonByIP(string ip)
+        {
+            try
+            {
+
+                if (DeviceList == null)
+                {
+                    DeviceList = new List<DataJson.Device>();
+                }
+                DataJson.Device tmp = new DataJson.Device();
+                foreach (DataJson.Device info in DeviceList)
+                {
+                    if (info.ip == ip)
+                    {
+                        tmp = info;
+                        break;
+                    }
+                }
+                File.WriteAllText(string.Format("{0}\\objs\\{1}\\device.json", TmpFilePath, ip), ConvertJsonString(JsonConvert.SerializeObject(tmp)));
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// 把scene.json该ip地址的下的场景 全部抽离 产生s1.json,s2.json,sX.json
+        /// </summary>
+        /// <param name="ip"></param>
+        /// <returns></returns>
+        public bool getSceneJsonByIP(string ip)
+        {
+            try
+            {
+                DataJson.Scene sc = DataListHelper.getSceneList(ip);
+
+                //获取该IP下的所有场景
+                if( sc == null || sc.scenes.Count == 0)
+                {
+                    return true;
+                }
+                foreach (DataJson.scenes scs in sc.scenes)
+                {
+                    //场景信息为空
+                    if (scs.sceneInfo.Count == 0)
+                    {
+                        continue;
+                    }
+                    DataJson.Sn sn = new DataJson.Sn();
+                    sn.action = new List<DataJson.Scenenumber>();
+                    //把有效的对象操作 放到SN对象里面
+                    foreach (DataJson.sceneInfo info in scs.sceneInfo)
+                    {
+                        //确保有信息
+                        if (string.IsNullOrEmpty(info.opt))
+                        {
+                            
+                            continue;
+                        }
+                        DataJson.Scenenumber sb = new DataJson.Scenenumber();
+
+                        sb.num = info.id;
+                        sb.obj = info.address;
+                        sb.val = info.opt;
+                        sb.delay = info.Delay;
+                        sn.action.Add(sb);
+
+                    }
+                    if (sn.action.Count > 0)
+                    {
+                        File.WriteAllText(string.Format("{0}\\objs\\{1}\\s{2}.json", TmpFilePath, ip, scs.id), ConvertJsonString(JsonConvert.SerializeObject(sn)));
+                    }
+                    
+
+                }
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// 把timer.json该ip地址的下的定时 全部抽离 产生t1.json,t2.json,tX.json
+        /// </summary>
+        /// <param name="ip"></param>
+        /// <returns></returns>
+        public bool getTimerJsonByIP(string ip)
+        {
+            try
+            {
+                DataJson.Timer tm = DataListHelper.getTimerList(ip);
+
+                //获取该IP下的所有定时
+                if (tm == null || tm.timers.Count == 0)
+                {
+                    return true;
+                }
+                foreach (DataJson.timers tms in tm.timers)
+                {
+                    //定时信息为空
+                    if (tms.timersInfo.Count == 0)
+                    {
+                        continue;
+                    }
+                    DataJson.Tn tn = new DataJson.Tn();
+                    tn.timer = new List<DataJson.Timernumber>();
+                    if (string.IsNullOrEmpty(tms.dates))
+                    {
+                        continue;
+                    }
+                    //把有效的对象操作 放到SN对象里面
+                    foreach (DataJson.timersInfo tmInfo in tms.timersInfo)
+                    {
+                        //确保有信息
+                        if (string.IsNullOrEmpty(tmInfo.opt) || string.IsNullOrEmpty(tmInfo.shortTime))
+                        {
+                            continue;
+                        }
+                        int hour = 255;
+                        int min = 255;
+                        if (tmInfo.shortTime == "日出时间")
+                        {
+                            hour = 254;
+                            min = 254;
+                        }
+                        else if (tmInfo.shortTime == "日落时间")
+                        {
+                            hour = 253;
+                            min = 253;
+                        }
+                        else
+                        {
+                            string tmpHour = tmInfo.shortTime.Split(':')[0];
+                            string tmpMin = tmInfo.shortTime.Split(':')[1];
+                            if (!tmpHour.Contains("*"))
+                            {
+                                hour = Convert.ToInt32(tmpHour);
+                            }
+                            if (!tmpMin.Contains("*"))
+                            {
+                                min = Convert.ToInt32(tmpMin);
+                            }
+
+                        }
+
+                        string[] dates = tms.dates.Split(',');
+                        if (tms.dates.Contains("/"))
+                        {
+                            //自定义日期
+                            for (int i = 0; i < dates.Length; i++)
+                            {
+                                DataJson.Timernumber sb = new DataJson.Timernumber();
+
+                                //sb.num = tmInfo.id;
+                                sb.obj = tmInfo.address;
+                                sb.data = tmInfo.opt;
+                                sb.hour = hour;
+                                sb.min = min;
+                                string[] ymd = dates[i].Split('/');
+                                if (ymd[0].Contains("*"))
+                                {
+                                    //年为255
+                                    sb.year = 255;
+                                }
+                                else
+                                {
+                                    sb.year = Convert.ToInt32(ymd[0]);
+                                }
+                                if (ymd[1].Contains("*"))
+                                {
+                                    //月为255
+                                    sb.mon = 255;
+                                }
+                                else
+                                {
+                                    sb.mon = Convert.ToInt32(ymd[1]);
+                                }
+                                //这个是日
+                                sb.date = Convert.ToInt32(ymd[2]);
+                                //这个是周
+                                sb.day = 255;
+                                tn.timer.Add(sb);
+                            }
+                        }
+                        else
+                        {
+                            //星期一到日 0-7
+                            for (int i = 0; i < dates.Length; i++)
+                            {
+                                DataJson.Timernumber sb = new DataJson.Timernumber();
+                                //sb.num = tmInfo.id;
+                                sb.obj = tmInfo.address;
+                                sb.data = tmInfo.opt;
+                                sb.hour = hour;
+                                sb.min = min;
+                                sb.year = 255;
+                                sb.mon = 255;
+                                sb.date = 255;
+                                sb.day = Convert.ToInt32(dates[i]);
+                                tn.timer.Add(sb);
+                            }
+                        }
+
+                    }
+                    if (tn.timer.Count > 0)
+                    {
+                        File.WriteAllText(string.Format("{0}\\objs\\{1}\\t{2}.json", TmpFilePath, ip, tms.id), ConvertJsonString(JsonConvert.SerializeObject(tn)));
+                    }
+
+
+                }
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+
+        /// <summary>
+        /// 把panel.json该ip地址的下的面板 全部抽离 产生k1.json,k2.json,kX.json 1-999号
+        /// </summary>
+        /// <param name="ip"></param>
+        /// <returns></returns>
+        public bool getPanelJsonByIP(string ip)
+        {
+            try
+            {
+                DataJson.Panel pl = DataListHelper.getPanelList(ip);
+
+                //获取该IP下的所有场景
+                if (pl == null || pl.panels.Count == 0)
+                {
+                    return true;
+                }
+                foreach (DataJson.panels pls in pl.panels)
+                {
+                    //场景信息为空
+                    if (pls.panelsInfo.Count == 0)
+                    {
+                        continue;
+                    }
+                    DataJson.Kn kn = new DataJson.Kn();
+                    kn.key = new List<DataJson.Keynumber>();
+
+                    //把有效的对象操作 放到kN对象里面
+                    foreach (DataJson.panelsInfo plInfo in pls.panelsInfo)
+                    {
+                        //确保有信息
+                        if (string.IsNullOrEmpty(plInfo.keyAddress) || string.IsNullOrEmpty(plInfo.objAddress) || plInfo.opt == 0 || string.IsNullOrEmpty(plInfo.objType))
+                        {
+                            continue;
+                        }
+
+                        DataJson.Keynumber keyInfo = new DataJson.Keynumber();
+                        keyInfo.num = plInfo.id;
+                        keyInfo.key = "00" + plInfo.keyAddress.Substring(2, 6);
+                        keyInfo.obj = plInfo.objAddress;
+                        keyInfo.mode = plInfo.opt;
+                        if (string.IsNullOrEmpty(plInfo.showAddress))
+                        {
+                            keyInfo.fback = "00000000";
+                        }
+                        else
+                        {
+                            keyInfo.fback = "FE" + plInfo.showAddress.Substring(2, 6);
+                        }
+                        //显示模式
+                        keyInfo.fbmode = getShowMode(plInfo.showMode);
+
+                        kn.key.Add(keyInfo);
+
+
+
+                    }
+                    if (kn.key.Count > 0)
+                    {
+                        File.WriteAllText(string.Format("{0}\\objs\\{1}\\k{2}.json", TmpFilePath, ip, pls.id), ConvertJsonString(JsonConvert.SerializeObject(kn)));
+                    }
+
+
+                }
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        public static int getShowMode(string mode)
+        {
+            switch (mode)
+            {
+                case "同步":
+                    return 1;
+                case "反显":
+                    return 128;
+                case "图形按键":
+                    return 2;
+                case "图形滑动条":
+                    return 4;
+                case "图形图标":
+                    return 5;
+                case "图形数值1":
+                    return 80;
+                case "图形数值0.1":
+                    return 81;
+                case "图形数值0.01":
+                    return 82;
+                case "图形数值0.001":
+                    return 83;
+                case "图形数值0.0001":
+                    return 84;
+                default: return 255;
+            }
+        }
+
+        /// <summary>
+        /// 把sensor.json该ip地址的下的感应 全部抽离 产生k1001.json,k1002.json,kX.json 1001-1999号
+        /// </summary>
+        /// <param name="ip"></param>
+        /// <returns></returns>
+        public bool getSensorJsonByIP(string ip)
+        {
+            try
+            {
+                DataJson.Sensor sr = DataListHelper.getSensorList(ip);
+
+                //获取该IP下的所有场景
+                if (sr == null || sr.sensors.Count == 0)
+                {
+                    return true;
+                }
+                foreach (DataJson.sensors srs in sr.sensors)
+                {
+                    //场景信息为空
+                    if (srs.sensorsInfo.Count == 0)
+                    {
+                        continue;
+                    }
+                     DataJson.Kn kn = new DataJson.Kn();
+                    kn.key = new List<DataJson.Keynumber>();
+
+                    //把有效的对象操作 放到kN对象里面
+                    foreach (DataJson.sensorsInfo srInfo in srs.sensorsInfo)
+                    {
+                        //确保有信息
+                        if (string.IsNullOrEmpty(srInfo.keyAddress)
+                            || string.IsNullOrEmpty(srInfo.objAddress)
+                            || string.IsNullOrEmpty(srInfo.opt)
+                            || string.IsNullOrEmpty(srInfo.objType)
+                            || srInfo.fbmode == 0
+                            )
+                        {
+                            continue;
+                        }
+
+                        DataJson.Keynumber keyInfo = new DataJson.Keynumber();
+                        keyInfo.num = srInfo.id;
+                        keyInfo.key = "00" + srInfo.keyAddress.Substring(2, 6);
+                        keyInfo.obj = srInfo.objAddress;
+                        keyInfo.mode = 255;
+                        keyInfo.fback = srInfo.opt;
+
+                        keyInfo.fbmode = srInfo.fbmode;
+
+                        kn.key.Add(keyInfo);
+                    }
+                    if (kn.key.Count > 0)
+                    {
+                        File.WriteAllText(string.Format("{0}\\objs\\{1}\\k{2}.json", TmpFilePath, ip, srs.id), ConvertJsonString(JsonConvert.SerializeObject(kn)));
+                    }
+
+
+                }
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        #endregion
 
 
         //end

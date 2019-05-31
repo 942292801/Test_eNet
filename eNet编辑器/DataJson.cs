@@ -75,7 +75,7 @@ namespace eNet编辑器
         [Serializable]
         public class Timernumber
         {
-            //public int num { get; set; }
+            public int num { get; set; }
             public int year { get; set; }
             public int mon { get; set; } 
             public int day { get; set; }
@@ -88,7 +88,8 @@ namespace eNet编辑器
         }
         #endregion
 
-        #region 项目主文件Point_GW.json 写进主机的项目信息
+        
+        #region 项目主文件Point_GW.json 写进主机的项目信息    暂时不要因为想添加ip地址进去
         [Serializable]
         public class Point_GW
         {
@@ -101,6 +102,7 @@ namespace eNet编辑器
         [Serializable]
         public class PointInfo_GW
         {
+            //和总工程point相比少了ip
             public int pid { get; set; }
             public string area1 { get; set; }
             public string area2 { get; set; }
@@ -118,17 +120,21 @@ namespace eNet编辑器
 
         #endregion
 
-        #region 项目主文件device_GW.json 写进主机的项目信息
+        #region 项目主文件device_GW.json 写进主机的项目信息  暂时不要因为想添加ip地址进去
         [Serializable]
         public class Device_GW
         {
+            //少了ip
             public string master { get; set; }
             public string mask { get; set; }
             public string gateway { get; set; }
             public string mac { get; set; }
             public string sn { get; set; }
             public string ver { get; set; }
-            public string location { get; set; }
+            public string area1 { get; set; }
+            public string area2 { get; set; }
+            public string area3 { get; set; }
+            public string area4 { get; set; }
             public string name { get; set; }
             public List<Module> module = new List<Module>();
         }

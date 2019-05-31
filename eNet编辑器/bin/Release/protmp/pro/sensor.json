@@ -11,7 +11,7 @@
                         "objType": "1.0_switch",
                         "opt": "02010000",
                         "optName": "短延时反复开关",
-                        "fbmode": 0
+                        "fbmode": 1
                     },
                     {
                         "id": 1,
@@ -51,7 +51,7 @@
                         "objType": "1.0_switch",
                         "opt": null,
                         "optName": null,
-                        "fbmode": 0
+                        "fbmode": 2
                     },
                     {
                         "id": 1,
@@ -71,7 +71,7 @@
                         "objType": "2.0_dimmer",
                         "opt": "10000000",
                         "optName": "调光",
-                        "fbmode": 0
+                        "fbmode": 2
                     },
                     {
                         "id": 2,
