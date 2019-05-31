@@ -77,6 +77,7 @@
             this.btnCompile.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnCompile.TabIndex = 21;
             this.btnCompile.Tooltip = "编译";
+            this.btnCompile.Visible = false;
             this.btnCompile.Click += new System.EventHandler(this.btnCompile_Click);
             // 
             // btnSend
@@ -97,7 +98,7 @@
             this.btnSend.Size = new System.Drawing.Size(15, 15);
             this.btnSend.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnSend.TabIndex = 20;
-            this.btnSend.Tooltip = "载入主机";
+            this.btnSend.Tooltip = "编译下载";
             this.btnSend.Click += new System.EventHandler(this.btnSend_Click);
             // 
             // btnClose

@@ -5,190 +5,55 @@
                 "sceneInfo": [
                     {
                         "id": 1,
-                        "pid": 62467,
-                        "type": "4.0_scene",
-                        "address": "6F100002",
+                        "pid": 69152,
+                        "type": "1.0_switch",
+                        "address": "6F000A01",
                         "opt": "00000001",
-                        "optName": "场景调用",
+                        "optName": "开启",
                         "Delay": 0
                     },
                     {
                         "id": 2,
-                        "pid": 88149,
-                        "type": "5.0_time",
-                        "address": "6F202710",
-                        "opt": "00000000",
-                        "optName": "定时关闭",
-                        "Delay": 0
-                    },
-                    {
-                        "id": 3,
-                        "pid": 61530,
-                        "type": "6.1_panel",
-                        "address": "6F300002",
-                        "opt": "00000000",
-                        "optName": "禁止面板触发",
-                        "Delay": 0
-                    },
-                    {
-                        "id": 4,
-                        "pid": 98661,
-                        "type": "6.2_sensor",
-                        "address": "6F3003EA",
-                        "opt": "00000000",
-                        "optName": "禁止感应编组触发",
-                        "Delay": 0
-                    }
-                ],
-                "id": 1,
-                "pid": 54431
-            },
-            {
-                "sceneInfo": [
-                    {
-                        "id": 1,
-                        "pid": 79386,
-                        "type": "1.0_switch",
-                        "address": "6F000A01",
-                        "opt": "02010000",
-                        "optName": "短延时反复开关",
-                        "Delay": 0
-                    }
-                ],
-                "id": 2,
-                "pid": 62467
-            },
-            {
-                "sceneInfo": [
-                    {
-                        "id": 1,
-                        "pid": 79386,
-                        "type": "1.0_switch",
-                        "address": "6F000A01",
-                        "opt": "02010000",
-                        "optName": "短延时反复开关",
-                        "Delay": 0
-                    },
-                    {
-                        "id": 2,
-                        "pid": 66533,
-                        "type": "2.0_dimmer",
-                        "address": "6F000B01",
-                        "opt": "10000000",
-                        "optName": "调光",
-                        "Delay": 0
-                    }
-                ],
-                "id": 3,
-                "pid": 93058
-            },
-            {
-                "sceneInfo": [
-                    {
-                        "id": 1,
-                        "pid": 79386,
-                        "type": "1.0_switch",
-                        "address": "6F000A01",
-                        "opt": "02010000",
-                        "optName": "短延时反复开关",
-                        "Delay": 0
-                    }
-                ],
-                "id": 8,
-                "pid": 27253
-            },
-            {
-                "sceneInfo": [
-                    {
-                        "id": 1,
-                        "pid": 79386,
-                        "type": "1.0_switch",
-                        "address": "6F000A01",
-                        "opt": "02010000",
-                        "optName": "短延时反复开关",
-                        "Delay": 0
-                    },
-                    {
-                        "id": 2,
-                        "pid": 66533,
-                        "type": "2.0_dimmer",
-                        "address": "6F000B01",
-                        "opt": "01000002",
-                        "optName": "关闭",
-                        "Delay": 0
-                    }
-                ],
-                "id": 20,
-                "pid": 63407
-            }
-        ],
-        "IP": "192.168.1.111",
-        "Dev": "GW100A"
-    },
-    {
-        "scenes": [
-            {
-                "sceneInfo": [
-                    {
-                        "id": 1,
-                        "pid": 91351,
+                        "pid": 49796,
                         "type": "1.0_switch",
                         "address": "6F000A02",
-                        "opt": "01000000",
-                        "optName": "开关",
-                        "Delay": 0
-                    },
-                    {
-                        "id": 2,
-                        "pid": 55188,
-                        "type": "1.0_switch",
-                        "address": "6F000A04",
-                        "opt": "01000000",
-                        "optName": "开关",
+                        "opt": "00000001",
+                        "optName": "开启",
                         "Delay": 0
                     },
                     {
                         "id": 3,
-                        "pid": 59602,
+                        "pid": 64898,
                         "type": "1.0_switch",
-                        "address": "6F000A05",
-                        "opt": "01000000",
-                        "optName": "开关",
+                        "address": "6F000A03",
+                        "opt": "00000001",
+                        "optName": "开启",
                         "Delay": 0
                     },
                     {
                         "id": 4,
-                        "pid": 23107,
+                        "pid": 21547,
                         "type": "1.0_switch",
-                        "address": "6F000A03",
-                        "opt": "01000000",
-                        "optName": "开关",
+                        "address": "6F000A05",
+                        "opt": "00000001",
+                        "optName": "开启",
                         "Delay": 0
                     },
                     {
                         "id": 5,
-                        "pid": 91421,
+                        "pid": 98545,
                         "type": "1.0_switch",
-                        "address": "6F000A07",
-                        "opt": "01000000",
-                        "optName": "开关",
-                        "Delay": 0
-                    },
-                    {
-                        "id": 6,
-                        "pid": 90602,
-                        "type": "1.0_switch",
-                        "address": "6F000A08",
-                        "opt": "01000000",
-                        "optName": "开关",
+                        "address": "6F000A04",
+                        "opt": "00000001",
+                        "optName": "开启",
                         "Delay": 0
                     }
                 ],
-                "id": 100,
-                "pid": 97653
+                "id": 1,
+                "pid": 33039
             }
         ],
-        "IP": "192.168.1.230",
+        "IP": "192.168.1.111",
         "Dev": "GW100A"
     }
 ]

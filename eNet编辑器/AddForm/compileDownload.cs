@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Net.Sockets;
 
 namespace eNet编辑器.AddForm
 {
@@ -75,69 +76,68 @@ namespace eNet编辑器.AddForm
         //编译
         private void btnCompile_Click(object sender, EventArgs e)
         {
-            
+
+            compile(cbIP.Text);
+        }
+
+        //下载到主机
+        private void btnSend_Click(object sender, EventArgs e)
+        {
+            btnSend.Enabled = false;
+            //编译s.json k.json t.json 并压缩
+            if (!compile(cbIP.Text))
+            {
+                btnSend.Enabled = true;
+                return;
+            }
+            //
+            if (!sendBackUp(cbIP.Text))
+            {
+                btnSend.Enabled = true;
+                return;
+            }
+            download(cbIP.Text);
+            btnSend.Enabled = true;
+        }
+
+        /// <summary>
+        /// //编译s.json k.json t.json 并压缩
+        /// </summary>
+        /// <param name="ip"></param>
+        private bool compile(string ip)
+        {
+         
             for (int i = 0; i < cbIP.Items.Count; i++)
             {
-                if (cbIP.Items[i].ToString() == cbIP.Text)
+                if (cbIP.Items[i].ToString() == ip)
                 {
                     //存在该Ip的信息 可以进行编译
                     FileMesege fm = new FileMesege();
                     if (fm.ObjDirClearByIP(cbIP.Text))
                     {
-                        AppTxtShow(string.Format("({0})工程文件初始化成功！", cbIP.Text));
+                        AppTxtShow(string.Format("({0})工程文件初始化成功！", ip));
 
                     }
                     else
                     {
-                        AppTxtShow(string.Format("({0})工程文件初始化失败！", cbIP.Text));
-                        return;
+                        AppTxtShow(string.Format("({0})工程文件初始化失败！", ip));
+                        return false;
                     }
                     
-                    //抽离point 信息
-                    if (fm.getPointJsonByIP(cbIP.Text))
-                    {
-                        AppTxtShow("point.json编译通过！");
-                    }
-                    else
-                    {
-                        AppTxtShow("point.json编译失败！");
-                        return;
-                    }
-
-                    //获取area 信息
-                    if (fm.getAreaJsonByIP(cbIP.Text))
-                    {
-                        AppTxtShow("area.json编译通过！");
-                    }
-                    else
-                    {
-                        AppTxtShow("area.json编译失败！");
-                        return;
-                    }
-
-                    //获取device 信息
-                    if (fm.getDeviceJsonByIP(cbIP.Text))
-                    {
-                        AppTxtShow("device.json编译通过！");
-                    }
-                    else
-                    {
-                        AppTxtShow("device.json编译失败！");
-                        return;
-                    }
+                  
                     
                     //编译场景
-                    if (fm.getSceneJsonByIP(cbIP.Text))
+                    if (fm.getSceneJsonByIP(ip))
                     {
                         AppTxtShow("scene.json编译通过！");
                     }
                     else
                     {
                         AppTxtShow("scene.json编译失败！");
-                        
+
                     }
                     //编译定时
-                    if (fm.getTimerJsonByIP(cbIP.Text))
+                    if (fm.getTimerJsonByIP(ip))
                     {
                         AppTxtShow("timer.json编译通过！");
                     }
@@ -147,7 +147,7 @@ namespace eNet编辑器.AddForm
 
                     }
                     //编译面板
-                    if (fm.getPanelJsonByIP(cbIP.Text))
+                    if (fm.getPanelJsonByIP(ip))
                     {
                         AppTxtShow("panel.json编译通过！");
                     }
@@ -157,7 +157,7 @@ namespace eNet编辑器.AddForm
 
                     }
                     //编译感应
-                    if (fm.getSensorJsonByIP(cbIP.Text))
+                    if (fm.getSensorJsonByIP(ip))
                     {
                         AppTxtShow("sensor.json编译通过！");
                     }
@@ -167,31 +167,227 @@ namespace eNet编辑器.AddForm
 
                     }
                     ZipHelper zipHelp = new ZipHelper();
-                    string file = string.Format("{0}\\objs\\{1}",FileMesege.TmpFilePath,cbIP.Text);
+                    string file = string.Format("{0}\\objs\\{1}", FileMesege.TmpFilePath, ip);
                     try
                     {
+                        string msg;
                         //压缩到选中路径
-                        //zipHelp.ZipManyFilesOrDictorys();
-                        zipHelp.ZipDir(file, string.Format("{0}.zip", file), 9);
+                        zipHelp.ZipFolder(file, string.Format("{0}.zip", file),out msg);
+                        AppTxtShow(string.Format("({0})工程文件编译成功！", ip));
+                        return true;
                     }
                     catch
                     {
-                        
+                        AppTxtShow(string.Format("({0})工程文件编译失败！", ip));
+
+                        return false;
                     }
-                    break;
-                }
-            }
+                    
+                }// if(ip)
+            }//for
+            return false;
             
         }
 
-        //下载到主机
-        private void btnSend_Click(object sender, EventArgs e)
+
+        /// <summary>
+        /// 编译并下载 point.json area.json device.json 
+        /// </summary>
+        /// <param name="ip"></param>
+        /// <returns></returns>
+        private bool sendBackUp(string ip)
         {
-            //编译 然后通过就可以发送到各个主机
+            try
+            {
+              
+                FileMesege fm = new FileMesege();
+                
+                //抽离point 信息
+                string point  = fm.getPointJsonByIP(ip);
+                if (!string.IsNullOrEmpty(point))
+                {
+                    AppTxtShow("point.json编译通过！");
+                }
+                else
+                {
+                    AppTxtShow("point.json编译失败！");
+                    return false;
+                }
+
+                //获取area 信息
+                string area = fm.getAreaJsonByIP(ip);
+                if (!string.IsNullOrEmpty(area))
+                {
+                    AppTxtShow("area.json编译通过！");
+                }
+                else
+                {
+                    AppTxtShow("area.json编译失败！");
+                    return false;
+                }
+
+                //获取device 信息
+                string device = fm.getDeviceJsonByIP(ip);
+                if (!string.IsNullOrEmpty(device))
+                {
+                    AppTxtShow("device.json编译通过！");
+                }
+                else
+                {
+                    AppTxtShow("device.json编译失败！");
+                    return false;
+                }
+
+                if (sendData(ip, point, "point.json"))
+                {
+                    AppTxtShow("point.json载入完成！");
+                 
+                }
+                else
+                {
+                    AppTxtShow("point.json载入失败！");
+                    return false;
+                }
+
+                if (sendData(ip, area, "area.json"))
+                {
+                    AppTxtShow("area.json载入完成！");
+
+                }
+                else
+                {
+                    AppTxtShow("area.json载入失败！");
+                    return false;
+                }
+
+                if (sendData(ip, device, "device.json"))
+                {
+                    AppTxtShow("device.json载入完成！");
+
+                }
+                else
+                {
+                    AppTxtShow("device.json载入失败！");
+                    return false;
+                }
+
+                return true;
+            }
+            catch 
+            {
+                return false;
+            }
+
+          
+        }
+
+        /// <summary>
+        /// 把ip.zip压缩包下载到主机里面
+        /// </summary>
+        /// <param name="ip"></param>
+        private void download(string ip)
+        { 
+            //连接网络 发送当前IP的压缩包到里面
+            Socket sock = null;
+            try
+            {
+
+                //写入数据格式
+                string data = "down /enet.prj$";
+                string filepath = string.Format("{0}\\objs\\{1}.zip",FileMesege.TmpFilePath,ip);
+                TcpSocket ts = new TcpSocket();
+
+                sock = ts.ConnectServer(ip, 6001, 1);
+                SocketUtil.Delay(1);
+                if (sock == null)
+                {
+                    AppTxtShow("文件载入主机失败");
+                    return ;
+                }
+
+                int flag = -1;
+
+                //0:发送数据成功；-1:超时；-2:发送数据出现错误；-3:发送数据时出现异常
+                flag = ts.SendData(sock, data, 1);
+                if (flag == 0)
+                {
+                    flag = ts.SendFile(sock, filepath);
+                    
+                    if (flag == 0)
+                    {
+                        AppTxtShow("文件载入主机成功");
+                    }
+                    else
+                    {
+                         AppTxtShow("文件载入主机失败");
+                    }
+
+                }
+                else
+                {
+                    AppTxtShow("文件载入主机失败");
+                }
+
+                if (sock != null)
+                {
+
+                    sock.Close();
+                }
+                
+            }
+            catch(Exception e)
+            {
+                MessageBox.Show(e.ToString());
+            }
+        }//private
+
+
+        /// <summary>
+        /// 发送 文件到backup下面
+        /// </summary>
+        /// <param name="ip">ip网关</param>
+        /// <param name="json">工程信息</param>
+        /// <param name="name">写进backup的文件名</param>
+        private bool sendData(string ip, string json, string fileName)
+        {
+            //连接网络 发送当前IP的压缩包到里面
+            Socket sock = null;
+            try
+            {
+                //写入数据格式
+                string data = string.Format("down /backup/{0}${1}",fileName,json);
+                TcpSocket ts = new TcpSocket();
+                sock = ts.ConnectServer(ip, 6001, 1);
+                SocketUtil.Delay(1);
+                if (sock == null)
+                {
+                   
+                    return false;
+                }
+                int flag = 0;
+                //0:发送数据成功；-1:超时；-2:发送数据出现错误；-3:发送数据时出现异常
+                flag = ts.SendData(sock, data, 1);
+                if (sock != null)
+                {
+                    sock.Close();
+                    sock.Dispose();
+                }
+                if (flag != 0)
+                {
+
+                    return false;
+                }
+                return true;
+
+                
+            }
+            catch(Exception e )
+            {
+                MessageBox.Show(e.ToString());
+                return false;
+            }
         }
 
 
-
-
-    }
+    }//class
 }

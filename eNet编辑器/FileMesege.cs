@@ -202,11 +202,13 @@ namespace eNet编辑器
                 return false;
             }
             tmpPathClear();
-            ZipHelper zipHelp = new ZipHelper();
+            
             try
             {
-                
-                zipHelp.UnZip(localFilePath, TmpFilePath);
+                string msg;
+                ZipHelper ziphelp = new ZipHelper();
+                bool isUnzip = ziphelp.UnZipFile(localFilePath, TmpFilePath, out msg);
+     
             }
             catch
             {
@@ -293,12 +295,13 @@ namespace eNet编辑器
                 filePath = localFilePath;
                 fileName = fileNameExt;
                 writeAlltoPro(TmpFilePath);
-                ZipHelper zipHelp = new ZipHelper();
                 string[] fileList = {TmpFilePath+"//pro",TmpFilePath+"//objs"};
                 try
                 {
+                    string msg;
+                    ZipHelper zipHelper = new ZipHelper();
                     //压缩到选中路径
-                    zipHelp.ZipManyFilesOrDictorys(fileList, localFilePath);
+                    zipHelper.ZipFolder(TmpFilePath, localFilePath, out msg);
                 }
                 catch
                 {
@@ -354,12 +357,15 @@ namespace eNet编辑器
                         IniConfig.SetValue(Application.StartupPath + "\\conf.ini", "filepath", "path", localFilePath + "," + historyPath);
                     }
                     writeAlltoPro(TmpFilePath);
-                    ZipHelper zipHelp = new ZipHelper();
                     string[] fileList = { TmpFilePath + "//pro", TmpFilePath + "//objs" };
                     try
                     {
+
+                        string msg;
+                        ZipHelper zipHelper = new ZipHelper();
                         //压缩到选中路径
-                        zipHelp.ZipManyFilesOrDictorys(fileList, localFilePath);
+                        zipHelper.ZipFolder(TmpFilePath, localFilePath, out msg);
+     
                     }
                     catch
                     {
@@ -489,11 +495,11 @@ namespace eNet编辑器
 
 
         /// <summary>
-        /// 在point.json总文件中抽取该网关ip的信息并写进 所有点位信息 成功：true 失败：false
+        /// 在point.json总文件中抽取该网关ip的信息并写进 所有点位信息 成功：返回json字符串 失败：返回""
         /// </summary>
         /// <param name="ip"></param>
         /// <returns></returns>
-        public bool getPointJsonByIP(string ip)
+        public string getPointJsonByIP(string ip)
         {
             try
             {
@@ -542,21 +548,22 @@ namespace eNet编辑器
                         }
                     }
                 }
-                File.WriteAllText(string.Format("{0}\\objs\\{1}\\point.json", TmpFilePath, ip), ConvertJsonString(JsonConvert.SerializeObject(gwPoint)));
-                return true;
+                //File.WriteAllText(string.Format("{0}\\objs\\{1}\\point.json", TmpFilePath, ip), ConvertJsonString(JsonConvert.SerializeObject(gwPoint)));
+                return JsonConvert.SerializeObject(gwPoint);
             }
-            catch
+            catch(Exception e)
             {
-                return false;
+                MessageBox.Show(e.ToString());
+                return "";
             }
         }
 
         /// <summary>
-        /// 把area.json总文件写入该ip  成功：true 失败：false
+        /// 把area.json总文件写入该ip  成功：返回json字符串 失败：返回""
         /// </summary>
         /// <param name="ip"></param>
         /// <returns></returns>
-        public bool getAreaJsonByIP(string ip)
+        public string getAreaJsonByIP(string ip)
         {
             try
             {
@@ -565,21 +572,22 @@ namespace eNet编辑器
                 {
                     AreaList = new List<DataJson.Area1>();
                 }
-                File.WriteAllText(string.Format("{0}\\objs\\{1}\\area.json", TmpFilePath, ip), ConvertJsonString(JsonConvert.SerializeObject(AreaList)));
-                return true;
+                //File.WriteAllText(string.Format("{0}\\objs\\{1}\\area.json", TmpFilePath, ip), ConvertJsonString(JsonConvert.SerializeObject(AreaList)));
+                return JsonConvert.SerializeObject(AreaList);
             }
-            catch
+            catch (Exception e)
             {
-                return false;
+                MessageBox.Show(e.ToString());
+                return "";
             }
         }
 
         /// <summary>
-        /// 把device.json总文件中抽取该网关ip的设备信息并写进 所有点位信息  成功：true 失败：false
+        /// 把device.json总文件中抽取该网关ip的设备信息并写进 所有点位信息  成功：返回json字符串 失败：返回""
         /// </summary>
         /// <param name="ip"></param>
         /// <returns></returns>
-        public bool getDeviceJsonByIP(string ip)
+        public string getDeviceJsonByIP(string ip)
         {
             try
             {
@@ -597,12 +605,13 @@ namespace eNet编辑器
                         break;
                     }
                 }
-                File.WriteAllText(string.Format("{0}\\objs\\{1}\\device.json", TmpFilePath, ip), ConvertJsonString(JsonConvert.SerializeObject(tmp)));
-                return true;
+                //File.WriteAllText(string.Format("{0}\\objs\\{1}\\device.json", TmpFilePath, ip), ConvertJsonString(JsonConvert.SerializeObject(tmp)));
+                return JsonConvert.SerializeObject(tmp);
             }
-            catch
+            catch (Exception e)
             {
-                return false;
+                MessageBox.Show(e.ToString());
+                return "";
             }
         }
 
@@ -658,8 +667,9 @@ namespace eNet编辑器
                 }
                 return true;
             }
-            catch
+            catch (Exception e)
             {
+                MessageBox.Show(e.ToString());
                 return false;
             }
         }
@@ -773,7 +783,7 @@ namespace eNet编辑器
                             for (int i = 0; i < dates.Length; i++)
                             {
                                 DataJson.Timernumber sb = new DataJson.Timernumber();
-                                //sb.num = tmInfo.id;
+                                sb.num = tmInfo.id;
                                 sb.obj = tmInfo.address;
                                 sb.data = tmInfo.opt;
                                 sb.hour = hour;
@@ -796,8 +806,9 @@ namespace eNet编辑器
                 }
                 return true;
             }
-            catch
+            catch (Exception e)
             {
+                MessageBox.Show(e.ToString());
                 return false;
             }
         }
@@ -868,8 +879,9 @@ namespace eNet编辑器
                 }
                 return true;
             }
-            catch
+            catch (Exception e)
             {
+                MessageBox.Show(e.ToString());
                 return false;
             }
         }
@@ -962,8 +974,9 @@ namespace eNet编辑器
                 }
                 return true;
             }
-            catch
+            catch (Exception e)
             {
+                MessageBox.Show(e.ToString());
                 return false;
             }
         }
