@@ -136,7 +136,14 @@ namespace eNet编辑器.AddForm
             for (int i = 0; i < 4; i++)
             {
                 string[] infos = IniConfig.GetValue(path, "address", (i + 1).ToString()).Split(',');
-                if (infos.Length == 2)
+                if (infos[0] == "固定" && infos.Length == 2)
+                {
+                    lbs[i].Text = infos[0];
+                    cbs[i].Text = infos[1];
+                    cb1.Text = "254";
+                    cb3.Enabled = false;
+                }
+                else if (infos.Length == 2)
                 {
                     lbs[i].Text = infos[0];
                     dealInfoNum(cbs[i], infos[1]);
@@ -153,7 +160,7 @@ namespace eNet编辑器.AddForm
                     lb3.Text = "";
                     cb3.Text = "";
                     cb3.Enabled = false;
-                    isDev = false; 
+                    isDev = false;
                 }
             }///foreach 
             
@@ -272,16 +279,18 @@ namespace eNet编辑器.AddForm
 
         private void cb2_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
+            cb3.Enabled = true;
+            addIp();
             typeChange(cb2.Text);
             if (isDev)
             {
-                addIp();
-                cb3.Enabled = true;
+                
+                
             }
             else
             {
                 findNum();
+                cb3.Enabled = false;
             }
           
             
@@ -315,14 +324,24 @@ namespace eNet编辑器.AddForm
                     for (int i = 0; i < 4; i++)
                     {
                         string[] infos = IniConfig.GetValue(file.FullName, "address", (i + 1).ToString()).Split(',');
-                        if (infos.Length == 2)
+                        if (infos[0] == "固定" && infos.Length == 2)
+                        {
+                            lbs[i].Text = infos[0];
+                            cbs[i].Text = infos[1];
+                            cb1.Text = "254";
+                            cb3.Enabled = false;
+
+                        }
+                        else if (infos.Length == 2)
                         {
                             lbs[i].Text = infos[0];
                             dealInfoNum(cbs[i], infos[1]);
                         }
                         else if (infos.Length == 3)
-                        { 
-                        
+                        {
+                            //类型信息
+                           //cb2.Text = infos[1];
+
                         }
                         else
                         {

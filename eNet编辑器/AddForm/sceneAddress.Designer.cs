@@ -84,7 +84,7 @@
             this.lb2.Name = "lb2";
             this.lb2.Size = new System.Drawing.Size(32, 17);
             this.lb2.TabIndex = 76;
-            this.lb2.Text = "设备";
+            this.lb2.Text = "类型";
             // 
             // cb3
             // 

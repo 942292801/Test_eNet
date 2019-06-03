@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(compileDownload));
             this.plInfoTitle = new System.Windows.Forms.Panel();
             this.btnCompile = new DevComponents.DotNetBar.ButtonX();
@@ -37,7 +38,10 @@
             this.lbTitle = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.cbIP = new System.Windows.Forms.ComboBox();
-            this.label2 = new System.Windows.Forms.Label();
+            this.lbName = new System.Windows.Forms.Label();
+            this.pgBar = new DevComponents.DotNetBar.Controls.ProgressBarX();
+            this.lbTip = new System.Windows.Forms.Label();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.plInfoTitle.SuspendLayout();
             this.panel4.SuspendLayout();
             this.SuspendLayout();
@@ -155,12 +159,14 @@
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.White;
+            this.panel4.Controls.Add(this.lbTip);
+            this.panel4.Controls.Add(this.pgBar);
             this.panel4.Controls.Add(this.cbIP);
-            this.panel4.Controls.Add(this.label2);
+            this.panel4.Controls.Add(this.lbName);
             this.panel4.Location = new System.Drawing.Point(1, 27);
             this.panel4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(200, 53);
+            this.panel4.Size = new System.Drawing.Size(200, 60);
             this.panel4.TabIndex = 5;
             // 
             // cbIP
@@ -171,23 +177,55 @@
             this.cbIP.Name = "cbIP";
             this.cbIP.Size = new System.Drawing.Size(122, 25);
             this.cbIP.TabIndex = 65;
+            this.cbIP.Visible = false;
             // 
-            // label2
+            // lbName
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("微软雅黑", 9F);
-            this.label2.Location = new System.Drawing.Point(13, 17);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(44, 17);
-            this.label2.TabIndex = 64;
-            this.label2.Text = "主机：";
+            this.lbName.AutoSize = true;
+            this.lbName.Font = new System.Drawing.Font("微软雅黑", 9F);
+            this.lbName.Location = new System.Drawing.Point(13, 17);
+            this.lbName.Name = "lbName";
+            this.lbName.Size = new System.Drawing.Size(44, 17);
+            this.lbName.TabIndex = 64;
+            this.lbName.Text = "主机：";
+            this.lbName.Visible = false;
+            // 
+            // pgBar
+            // 
+            // 
+            // 
+            // 
+            this.pgBar.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.pgBar.Location = new System.Drawing.Point(17, 16);
+            this.pgBar.Name = "pgBar";
+            this.pgBar.Size = new System.Drawing.Size(167, 17);
+            this.pgBar.Style = DevComponents.DotNetBar.eDotNetBarStyle.OfficeXP;
+            this.pgBar.TabIndex = 66;
+            this.pgBar.Visible = false;
+            // 
+            // lbTip
+            // 
+            this.lbTip.AutoSize = true;
+            this.lbTip.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lbTip.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.lbTip.Location = new System.Drawing.Point(122, 38);
+            this.lbTip.Name = "lbTip";
+            this.lbTip.Size = new System.Drawing.Size(61, 17);
+            this.lbTip.TabIndex = 67;
+            this.lbTip.Text = "请稍后. . .";
+            this.lbTip.Visible = false;
+            // 
+            // timer1
+            // 
+            this.timer1.Interval = 570;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // compileDownload
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkGray;
-            this.ClientSize = new System.Drawing.Size(203, 82);
+            this.ClientSize = new System.Drawing.Size(203, 89);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.plInfoTitle);
             this.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
@@ -213,8 +251,11 @@
         private System.Windows.Forms.Label lbTitle;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.ComboBox cbIP;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lbName;
         private DevComponents.DotNetBar.ButtonX btnSend;
         private DevComponents.DotNetBar.ButtonX btnCompile;
+        private System.Windows.Forms.Label lbTip;
+        private DevComponents.DotNetBar.Controls.ProgressBarX pgBar;
+        private System.Windows.Forms.Timer timer1;
     }
 }

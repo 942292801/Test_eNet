@@ -36,6 +36,32 @@ namespace eNet编辑器.AddForm
             {
                 cbIP.SelectedIndex = 0;
             }
+
+            showIp();
+        }
+
+        private void showPgBar()
+        {
+            pgBar.Value = 0;
+            pgBar.Visible = true;
+            lbTip.Visible = true;
+            lbName.Visible = false;
+            cbIP.Visible = false;
+            btnClose.Enabled = false;
+            btnSend.Enabled = false;
+            timer1.Stop();
+        }
+
+        private void showIp()
+        {
+            pgBar.Value = 0;
+            pgBar.Visible = false;
+            lbTip.Visible = false;
+            lbName.Visible = true;
+            cbIP.Visible = true;
+            btnClose.Enabled = true;
+            btnSend.Enabled = true;
+            timer1.Stop();
         }
 
         #region 重绘
@@ -83,21 +109,21 @@ namespace eNet编辑器.AddForm
         //下载到主机
         private void btnSend_Click(object sender, EventArgs e)
         {
-            btnSend.Enabled = false;
+            showPgBar();
             //编译s.json k.json t.json 并压缩
             if (!compile(cbIP.Text))
             {
-                btnSend.Enabled = true;
+                showIp();
                 return;
             }
             //
             if (!sendBackUp(cbIP.Text))
             {
-                btnSend.Enabled = true;
+                showIp();
                 return;
             }
             download(cbIP.Text);
-            btnSend.Enabled = true;
+            
         }
 
         /// <summary>
@@ -116,7 +142,7 @@ namespace eNet编辑器.AddForm
                     if (fm.ObjDirClearByIP(cbIP.Text))
                     {
                         AppTxtShow(string.Format("({0})工程文件初始化成功！", ip));
-
+                        pgBar.Value += 4;
                     }
                     else
                     {
@@ -130,6 +156,7 @@ namespace eNet编辑器.AddForm
                     if (fm.getSceneJsonByIP(ip))
                     {
                         AppTxtShow("scene.json编译通过！");
+                        pgBar.Value += 2;
                     }
                     else
                     {
@@ -140,6 +167,7 @@ namespace eNet编辑器.AddForm
                     if (fm.getTimerJsonByIP(ip))
                     {
                         AppTxtShow("timer.json编译通过！");
+                        pgBar.Value += 2;
                     }
                     else
                     {
@@ -150,6 +178,7 @@ namespace eNet编辑器.AddForm
                     if (fm.getPanelJsonByIP(ip))
                     {
                         AppTxtShow("panel.json编译通过！");
+                        pgBar.Value += 2;
                     }
                     else
                     {
@@ -160,6 +189,7 @@ namespace eNet编辑器.AddForm
                     if (fm.getSensorJsonByIP(ip))
                     {
                         AppTxtShow("sensor.json编译通过！");
+                        pgBar.Value += 2;
                     }
                     else
                     {
@@ -173,12 +203,13 @@ namespace eNet编辑器.AddForm
                         string msg;
                         //压缩到选中路径
                         zipHelp.ZipFolder(file, string.Format("{0}.zip", file),out msg);
-                        AppTxtShow(string.Format("({0})工程文件编译成功！", ip));
+                        //AppTxtShow(string.Format("({0})工程文件编译成功！", ip));
+                        pgBar.Value += 2;
                         return true;
                     }
                     catch
                     {
-                        AppTxtShow(string.Format("({0})工程文件编译失败！", ip));
+                        //AppTxtShow(string.Format("({0})工程文件编译失败！", ip));
 
                         return false;
                     }
@@ -207,6 +238,7 @@ namespace eNet编辑器.AddForm
                 if (!string.IsNullOrEmpty(point))
                 {
                     AppTxtShow("point.json编译通过！");
+                    pgBar.Value += 2;
                 }
                 else
                 {
@@ -219,6 +251,7 @@ namespace eNet编辑器.AddForm
                 if (!string.IsNullOrEmpty(area))
                 {
                     AppTxtShow("area.json编译通过！");
+                    pgBar.Value += 2;
                 }
                 else
                 {
@@ -231,6 +264,7 @@ namespace eNet编辑器.AddForm
                 if (!string.IsNullOrEmpty(device))
                 {
                     AppTxtShow("device.json编译通过！");
+                    pgBar.Value += 2;
                 }
                 else
                 {
@@ -241,6 +275,7 @@ namespace eNet编辑器.AddForm
                 if (sendData(ip, point, "point.json"))
                 {
                     AppTxtShow("point.json载入完成！");
+                    pgBar.Value += 4;
                  
                 }
                 else
@@ -252,6 +287,7 @@ namespace eNet编辑器.AddForm
                 if (sendData(ip, area, "area.json"))
                 {
                     AppTxtShow("area.json载入完成！");
+                    pgBar.Value += 4;
 
                 }
                 else
@@ -263,6 +299,7 @@ namespace eNet编辑器.AddForm
                 if (sendData(ip, device, "device.json"))
                 {
                     AppTxtShow("device.json载入完成！");
+                    pgBar.Value += 4;
 
                 }
                 else
@@ -301,9 +338,12 @@ namespace eNet编辑器.AddForm
                 SocketUtil.Delay(1);
                 if (sock == null)
                 {
+                    
                     AppTxtShow("文件载入主机失败");
-                    return ;
+                    showIp();
+                    return;
                 }
+
 
                 int flag = -1;
 
@@ -315,17 +355,20 @@ namespace eNet编辑器.AddForm
                     
                     if (flag == 0)
                     {
-                        AppTxtShow("文件载入主机成功");
+                        AppTxtShow("文件载入主机成功！请等待主机重启程序！");
+                        timer1.Start();
                     }
                     else
                     {
                          AppTxtShow("文件载入主机失败");
+                         showIp();
                     }
 
                 }
                 else
                 {
                     AppTxtShow("文件载入主机失败");
+                    showIp();
                 }
 
                 if (sock != null)
@@ -338,6 +381,7 @@ namespace eNet编辑器.AddForm
             catch(Exception e)
             {
                 MessageBox.Show(e.ToString());
+                showIp();
             }
         }//private
 
@@ -361,7 +405,7 @@ namespace eNet编辑器.AddForm
                 SocketUtil.Delay(1);
                 if (sock == null)
                 {
-                   
+                    AppTxtShow("连接主机失败，请检查网络！");
                     return false;
                 }
                 int flag = 0;
@@ -387,6 +431,16 @@ namespace eNet编辑器.AddForm
                 return false;
             }
         }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            pgBar.Value += 1;
+            if (pgBar.Value > 98)
+            {
+                showIp();
+            }
+        }
+
 
 
     }//class
