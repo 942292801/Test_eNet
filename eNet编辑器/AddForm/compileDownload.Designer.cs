@@ -37,10 +37,10 @@
             this.symbolBox1 = new DevComponents.DotNetBar.Controls.SymbolBox();
             this.lbTitle = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.lbTip = new System.Windows.Forms.Label();
+            this.pgBar = new DevComponents.DotNetBar.Controls.ProgressBarX();
             this.cbIP = new System.Windows.Forms.ComboBox();
             this.lbName = new System.Windows.Forms.Label();
-            this.pgBar = new DevComponents.DotNetBar.Controls.ProgressBarX();
-            this.lbTip = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.plInfoTitle.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -169,26 +169,17 @@
             this.panel4.Size = new System.Drawing.Size(200, 60);
             this.panel4.TabIndex = 5;
             // 
-            // cbIP
+            // lbTip
             // 
-            this.cbIP.FormattingEnabled = true;
-            this.cbIP.Location = new System.Drawing.Point(63, 14);
-            this.cbIP.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.cbIP.Name = "cbIP";
-            this.cbIP.Size = new System.Drawing.Size(122, 25);
-            this.cbIP.TabIndex = 65;
-            this.cbIP.Visible = false;
-            // 
-            // lbName
-            // 
-            this.lbName.AutoSize = true;
-            this.lbName.Font = new System.Drawing.Font("微软雅黑", 9F);
-            this.lbName.Location = new System.Drawing.Point(13, 17);
-            this.lbName.Name = "lbName";
-            this.lbName.Size = new System.Drawing.Size(44, 17);
-            this.lbName.TabIndex = 64;
-            this.lbName.Text = "主机：";
-            this.lbName.Visible = false;
+            this.lbTip.AutoSize = true;
+            this.lbTip.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lbTip.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.lbTip.Location = new System.Drawing.Point(122, 38);
+            this.lbTip.Name = "lbTip";
+            this.lbTip.Size = new System.Drawing.Size(61, 17);
+            this.lbTip.TabIndex = 67;
+            this.lbTip.Text = "请稍后. . .";
+            this.lbTip.Visible = false;
             // 
             // pgBar
             // 
@@ -203,17 +194,24 @@
             this.pgBar.TabIndex = 66;
             this.pgBar.Visible = false;
             // 
-            // lbTip
+            // cbIP
             // 
-            this.lbTip.AutoSize = true;
-            this.lbTip.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lbTip.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.lbTip.Location = new System.Drawing.Point(122, 38);
-            this.lbTip.Name = "lbTip";
-            this.lbTip.Size = new System.Drawing.Size(61, 17);
-            this.lbTip.TabIndex = 67;
-            this.lbTip.Text = "请稍后. . .";
-            this.lbTip.Visible = false;
+            this.cbIP.FormattingEnabled = true;
+            this.cbIP.Location = new System.Drawing.Point(63, 14);
+            this.cbIP.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.cbIP.Name = "cbIP";
+            this.cbIP.Size = new System.Drawing.Size(122, 25);
+            this.cbIP.TabIndex = 65;
+            // 
+            // lbName
+            // 
+            this.lbName.AutoSize = true;
+            this.lbName.Font = new System.Drawing.Font("微软雅黑", 9F);
+            this.lbName.Location = new System.Drawing.Point(13, 17);
+            this.lbName.Name = "lbName";
+            this.lbName.Size = new System.Drawing.Size(44, 17);
+            this.lbName.TabIndex = 64;
+            this.lbName.Text = "主机：";
             // 
             // timer1
             // 

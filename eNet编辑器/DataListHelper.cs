@@ -102,7 +102,7 @@ namespace eNet编辑器
                     break;
                 }
             }
-
+            //感应修改IP
             foreach (DataJson.Sensor sensor in FileMesege.sensorList)
             {
                 if (sensor.IP == oldip)
@@ -393,6 +393,15 @@ namespace eNet编辑器
                     p.address = string.Format("{0}{1}", hexIP, p.address.Substring(2, 6));
                 }
             }
+            foreach (DataJson.PointInfo p in FileMesege.PointList.variable)
+            {
+                if (p.ip == oldIP)
+                {
+                    p.ip = IP;
+                    //address的为 254开头 254.251.3.X格式 所以不修改 
+                    //p.address = string.Format("{0}{1}", hexIP, p.address.Substring(2, 6));
+                }
+            }
 
         }
 
@@ -451,7 +460,13 @@ namespace eNet编辑器
                 dellistlink = FileMesege.PointList.link.Find(mach => mach.ip == IP);
             }
 
-       
+            //变量
+            DataJson.PointInfo dellistvariable = FileMesege.PointList.variable.Find(mach => mach.ip.Equals(IP));
+            while (dellistvariable != null)
+            {
+                FileMesege.PointList.variable.Remove(dellistvariable);
+                dellistvariable = FileMesege.PointList.variable.Find(mach => mach.ip == IP);
+            }
             
         }
 
@@ -627,6 +642,14 @@ namespace eNet编辑器
                             return pointInfo;
                         }
                     }
+                    if (FileMesege.PointList.variable != null)
+                    {
+                        pointInfo = findPointByList_add(FileMesege.PointList.variable, address);
+                        if (pointInfo != null)
+                        {
+                            return pointInfo;
+                        }
+                    }
                     return pointInfo;
                 }
                 // version_type 分割成
@@ -648,6 +671,10 @@ namespace eNet编辑器
                         break;
                     case "sensor":
                         pointInfo = findPointByList_add(FileMesege.PointList.link, address);
+
+                        break;
+                    case "variable":
+                        pointInfo = findPointByList_add(FileMesege.PointList.variable, address);
 
                         break;
                     //为设备00 扫equipment
@@ -744,6 +771,14 @@ namespace eNet编辑器
                         return point;
                     }
                 }
+                foreach (DataJson.PointInfo point in FileMesege.PointList.variable)
+                {
+                    if (point.pid == pid)
+                    {
+
+                        return point;
+                    }
+                }
             }
             catch{
                 return null;
@@ -784,6 +819,13 @@ namespace eNet编辑器
                 }
             }
             foreach (DataJson.PointInfo eq in FileMesege.PointList.link)
+            {
+                if (eq.area1 == section_name[0] && eq.area2 == section_name[1] && eq.area3 == section_name[2] && eq.area4 == section_name[3] && eq.name == section_name[4])
+                {
+                    return eq;
+                }
+            }
+            foreach (DataJson.PointInfo eq in FileMesege.PointList.variable)
             {
                 if (eq.area1 == section_name[0] && eq.area2 == section_name[1] && eq.area3 == section_name[2] && eq.area4 == section_name[3] && eq.name == section_name[4])
                 {
@@ -1199,6 +1241,10 @@ namespace eNet编辑器
         }
 
         #endregion
+
+
+
+
 
     }
 }

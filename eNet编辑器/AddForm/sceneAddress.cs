@@ -284,7 +284,7 @@ namespace eNet编辑器.AddForm
             typeChange(cb2.Text);
             if (isDev)
             {
-                
+                addNumForDevList();
                 
             }
             else

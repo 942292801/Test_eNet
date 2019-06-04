@@ -52,9 +52,11 @@
             this.btnDown = new DevComponents.DotNetBar.ButtonX();
             this.btnCall = new DevComponents.DotNetBar.ButtonX();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.plInfoTitle.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // dataGridView1
@@ -170,14 +172,9 @@
             // plInfoTitle
             // 
             this.plInfoTitle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.plInfoTitle.Controls.Add(this.buttonX1);
+            this.plInfoTitle.Controls.Add(this.flowLayoutPanel1);
             this.plInfoTitle.Controls.Add(this.symbolBox1);
             this.plInfoTitle.Controls.Add(this.label1);
-            this.plInfoTitle.Controls.Add(this.btnDel);
-            this.plInfoTitle.Controls.Add(this.btnClear);
-            this.plInfoTitle.Controls.Add(this.btnAdd);
-            this.plInfoTitle.Controls.Add(this.btnDown);
-            this.plInfoTitle.Controls.Add(this.btnCall);
             this.plInfoTitle.Dock = System.Windows.Forms.DockStyle.Top;
             this.plInfoTitle.Location = new System.Drawing.Point(0, 0);
             this.plInfoTitle.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -188,8 +185,7 @@
             // buttonX1
             // 
             this.buttonX1.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.buttonX1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonX1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.buttonX1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.buttonX1.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
             this.buttonX1.FocusCuesEnabled = false;
@@ -197,7 +193,7 @@
             this.buttonX1.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None;
             this.buttonX1.HoverImage = ((System.Drawing.Image)(resources.GetObject("buttonX1.HoverImage")));
             this.buttonX1.Image = ((System.Drawing.Image)(resources.GetObject("buttonX1.Image")));
-            this.buttonX1.Location = new System.Drawing.Point(928, 6);
+            this.buttonX1.Location = new System.Drawing.Point(141, 6);
             this.buttonX1.Margin = new System.Windows.Forms.Padding(6);
             this.buttonX1.Name = "buttonX1";
             this.buttonX1.Size = new System.Drawing.Size(15, 15);
@@ -236,8 +232,7 @@
             // btnDel
             // 
             this.btnDel.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnDel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnDel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnDel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnDel.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
             this.btnDel.FocusCuesEnabled = false;
@@ -245,7 +240,7 @@
             this.btnDel.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None;
             this.btnDel.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnDel.HoverImage")));
             this.btnDel.Image = ((System.Drawing.Image)(resources.GetObject("btnDel.Image")));
-            this.btnDel.Location = new System.Drawing.Point(982, 5);
+            this.btnDel.Location = new System.Drawing.Point(114, 6);
             this.btnDel.Margin = new System.Windows.Forms.Padding(6);
             this.btnDel.Name = "btnDel";
             this.btnDel.Size = new System.Drawing.Size(15, 15);
@@ -257,8 +252,7 @@
             // btnClear
             // 
             this.btnClear.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnClear.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnClear.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnClear.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnClear.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
             this.btnClear.FocusCuesEnabled = false;
@@ -266,7 +260,7 @@
             this.btnClear.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None;
             this.btnClear.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnClear.HoverImage")));
             this.btnClear.Image = ((System.Drawing.Image)(resources.GetObject("btnClear.Image")));
-            this.btnClear.Location = new System.Drawing.Point(876, 5);
+            this.btnClear.Location = new System.Drawing.Point(87, 6);
             this.btnClear.Margin = new System.Windows.Forms.Padding(6);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(15, 15);
@@ -278,8 +272,7 @@
             // btnAdd
             // 
             this.btnAdd.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnAdd.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAdd.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnAdd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnAdd.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
             this.btnAdd.FocusCuesEnabled = false;
@@ -287,7 +280,7 @@
             this.btnAdd.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None;
             this.btnAdd.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnAdd.HoverImage")));
             this.btnAdd.Image = ((System.Drawing.Image)(resources.GetObject("btnAdd.Image")));
-            this.btnAdd.Location = new System.Drawing.Point(849, 5);
+            this.btnAdd.Location = new System.Drawing.Point(6, 6);
             this.btnAdd.Margin = new System.Windows.Forms.Padding(6);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(15, 15);
@@ -299,8 +292,7 @@
             // btnDown
             // 
             this.btnDown.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnDown.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnDown.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnDown.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnDown.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
             this.btnDown.FocusCuesEnabled = false;
@@ -308,7 +300,7 @@
             this.btnDown.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None;
             this.btnDown.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnDown.HoverImage")));
             this.btnDown.Image = ((System.Drawing.Image)(resources.GetObject("btnDown.Image")));
-            this.btnDown.Location = new System.Drawing.Point(903, 5);
+            this.btnDown.Location = new System.Drawing.Point(60, 6);
             this.btnDown.Margin = new System.Windows.Forms.Padding(6);
             this.btnDown.Name = "btnDown";
             this.btnDown.Size = new System.Drawing.Size(15, 15);
@@ -320,8 +312,7 @@
             // btnCall
             // 
             this.btnCall.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnCall.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCall.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnCall.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnCall.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
             this.btnCall.FocusCuesEnabled = false;
@@ -329,7 +320,7 @@
             this.btnCall.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None;
             this.btnCall.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnCall.HoverImage")));
             this.btnCall.Image = ((System.Drawing.Image)(resources.GetObject("btnCall.Image")));
-            this.btnCall.Location = new System.Drawing.Point(955, 5);
+            this.btnCall.Location = new System.Drawing.Point(33, 6);
             this.btnCall.Margin = new System.Windows.Forms.Padding(6);
             this.btnCall.Name = "btnCall";
             this.btnCall.Size = new System.Drawing.Size(15, 15);
@@ -349,6 +340,20 @@
             this.panel1.Size = new System.Drawing.Size(1006, 909);
             this.panel1.TabIndex = 17;
             // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.flowLayoutPanel1.Controls.Add(this.btnAdd);
+            this.flowLayoutPanel1.Controls.Add(this.btnCall);
+            this.flowLayoutPanel1.Controls.Add(this.btnDown);
+            this.flowLayoutPanel1.Controls.Add(this.btnClear);
+            this.flowLayoutPanel1.Controls.Add(this.btnDel);
+            this.flowLayoutPanel1.Controls.Add(this.buttonX1);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(843, 0);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(163, 25);
+            this.flowLayoutPanel1.TabIndex = 15;
+            // 
             // DgvScene
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -364,6 +369,7 @@
             this.plInfoTitle.ResumeLayout(false);
             this.plInfoTitle.PerformLayout();
             this.panel1.ResumeLayout(false);
+            this.flowLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -390,5 +396,6 @@
         private DevComponents.DotNetBar.Controls.SymbolBox symbolBox1;
         private System.Windows.Forms.Label label1;
         private DevComponents.DotNetBar.ButtonX buttonX1;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
     }
 }

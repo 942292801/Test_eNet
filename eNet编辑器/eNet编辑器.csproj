@@ -324,6 +324,12 @@
     <Compile Include="DgvView\DgvTimer.Designer.cs">
       <DependentUpon>DgvTimer.cs</DependentUpon>
     </Compile>
+    <Compile Include="DgvView\DgvVar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DgvView\DgvVar.Designer.cs">
+      <DependentUpon>DgvVar.cs</DependentUpon>
+    </Compile>
     <Compile Include="FileMesege.cs" />
     <Compile Include="FolderSelectDialog.cs" />
     <Compile Include="Form1.cs">
@@ -398,6 +404,12 @@
     </Compile>
     <Compile Include="ThreeView\ThreeTitle.Designer.cs">
       <DependentUpon>ThreeTitle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ThreeView\ThreeVar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ThreeView\ThreeVar.Designer.cs">
+      <DependentUpon>ThreeVar.cs</DependentUpon>
     </Compile>
     <Compile Include="TreeMesege.cs" />
     <Compile Include="UdpSocket.cs" />
@@ -479,6 +491,9 @@
     <EmbeddedResource Include="DgvView\DgvTimer.resx">
       <DependentUpon>DgvTimer.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="DgvView\DgvVar.resx">
+      <DependentUpon>DgvVar.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.en-US.resx">
       <DependentUpon>Form1.cs</DependentUpon>
       <Generator>ResXFileCodeGenerator</Generator>
@@ -532,6 +547,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ThreeView\ThreeTitle.resx">
       <DependentUpon>ThreeTitle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ThreeView\ThreeVar.resx">
+      <DependentUpon>ThreeVar.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\app.manifest">
       <SubType>Designer</SubType>

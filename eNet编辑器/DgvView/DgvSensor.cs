@@ -85,7 +85,7 @@ namespace eNet编辑器.DgvView
             this.dataGridView1.Columns.Insert(4, objType);
         }
 
-        private string tmpIONum = "";
+
         /// <summary>
         /// 加载DgV所有信息
         /// </summary>
@@ -97,26 +97,30 @@ namespace eNet编辑器.DgvView
                 cbDevNum.Items.Clear();
                 cbDevNum.Text = "";
                 this.dataGridView1.Rows.Clear();
+                this.cbIONum.TextChanged -= new System.EventHandler(this.cbIoNum_TextChanged);
+                cbIONum.Text = "";
+                this.cbIONum.TextChanged += new System.EventHandler(this.cbIoNum_TextChanged);
                 int tmpId = -1;
                 DataJson.sensors srs = DataListHelper.getSensorInfoListByNode();
                 if (srs == null)
                 {
                     cbIONum.Text = "";
-                    this.dataGridView1.Rows.Clear();
                     return;
                 }
                 if (srs.sensorsInfo.Count == 0)
                 {
                     //新建面板 不存在信息则让 cbIoNumCHnageText事件加载
-                    tmpIONum = "";
                     cbIONum.Text = srs.ioNum.ToString();
                     return;
                 }
-                tmpIONum = srs.ioNum.ToString();
-                cbIONum.Text = tmpIONum;
-
-                //防止二次刷新
-                this.dataGridView1.Rows.Clear();
+                else
+                {
+                    this.cbIONum.TextChanged -= new System.EventHandler(this.cbIoNum_TextChanged);
+                    cbIONum.Text = srs.ioNum.ToString();
+                    this.cbIONum.TextChanged += new System.EventHandler(this.cbIoNum_TextChanged);
+                }
+                
+           
                 findKeyPanel();
                 List<DataJson.sensorsInfo> delSensor = new List<DataJson.sensorsInfo>();
                 string ip4 = SocketUtil.strtohexstr(SocketUtil.getIP(FileMesege.sensorSelectNode));//16进制
@@ -298,19 +302,24 @@ namespace eNet编辑器.DgvView
         #endregion
 
         #region IO键选择
+
         private void cbIoNum_TextChanged(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(cbIONum.Text))
+            try
             {
-                return;
+                if (string.IsNullOrEmpty(cbIONum.Text))
+                {
+                    return;
+                }
+                if (setKeyNum(Convert.ToInt32(cbIONum.Text)))
+                {
+                    dgvSensorAddItem();
+                    cbIONum.SelectionStart = cbIONum.Text.Length;
+                }
             }
-            if (tmpIONum == cbIONum.Text)
+            catch
             {
-                return;
-            }
-            if (setKeyNum(Convert.ToInt32(cbIONum.Text)))
-            {
-                dgvSensorAddItem();
+
             }
         }
 
@@ -1634,6 +1643,10 @@ namespace eNet编辑器.DgvView
 
         }
         #endregion
+
+       
+
+       
 
       
 

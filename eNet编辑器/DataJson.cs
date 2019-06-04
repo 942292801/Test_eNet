@@ -255,7 +255,7 @@ namespace eNet编辑器
             public List<PointInfo> scene = new List<PointInfo>() ;
             public List<PointInfo> timer  = new List<PointInfo>();
             public List<PointInfo> link = new List<PointInfo>();
-            
+            public List<PointInfo> variable = new List<PointInfo>();
         }
         [Serializable]
         public class PointInfo {

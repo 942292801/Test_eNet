@@ -112,7 +112,6 @@ namespace eNet编辑器.DgvView
             
         }
 
-        private string tmpKeyNum = "";
 
         /// <summary>
         /// 加载DgV所有信息
@@ -125,6 +124,9 @@ namespace eNet编辑器.DgvView
                 this.dataGridView1.Rows.Clear();
                 cbDevNum.Items.Clear();
                 cbDevNum.Text = "";
+                this.cbKeyNum.TextChanged -= new System.EventHandler(this.cbKeyNum_TextChanged);
+                cbKeyNum.Text = "";
+                this.cbKeyNum.TextChanged += new System.EventHandler(this.cbKeyNum_TextChanged);
                 int tmpId = -1;
                 DataJson.panels pls = DataListHelper.getPanelsInfoListByNode();
                 if (pls == null)
@@ -136,15 +138,16 @@ namespace eNet编辑器.DgvView
                 if (pls.panelsInfo.Count == 0)
                 {
                     //新建面板 不存在信息则让 cbkeyNumCHnageText事件加载
-                    tmpKeyNum = "";
                     cbKeyNum.Text = pls.keyNum.ToString();
                     return;
                 }
-                tmpKeyNum = pls.keyNum.ToString();
-                cbKeyNum.Text = tmpKeyNum;
+                else
+                {
+                    this.cbKeyNum.TextChanged -= new System.EventHandler(this.cbKeyNum_TextChanged);
+                    cbKeyNum.Text = pls.keyNum.ToString();
+                    this.cbKeyNum.TextChanged += new System.EventHandler(this.cbKeyNum_TextChanged);
+                }
                 
-                //防止二次刷新
-                this.dataGridView1.Rows.Clear();
                 findKeyPanel();
                 List<DataJson.panelsInfo> delPanel = new List<DataJson.panelsInfo>();
                 string ip4 = SocketUtil.strtohexstr(SocketUtil.getIP(FileMesege.panelSelectNode));//16进制
@@ -1607,18 +1610,21 @@ namespace eNet编辑器.DgvView
         #region 面板键选择
         private void cbKeyNum_TextChanged(object sender, EventArgs e)
         {
-
-            if (string.IsNullOrEmpty(cbKeyNum.Text))
+            try
             {
-                return;
+                if (string.IsNullOrEmpty(cbKeyNum.Text))
+                {
+                    return;
+                }
+                if (setKeyNum(Convert.ToInt32(cbKeyNum.Text)))
+                {
+                    dgvPanelAddItem();
+                    cbKeyNum.SelectionStart = cbKeyNum.Text.Length;
+                }
             }
-            if (tmpKeyNum == cbKeyNum.Text)
-            {
-                return;
-            }
-            if (setKeyNum(Convert.ToInt32(cbKeyNum.Text)))
-            {
-                dgvPanelAddItem();
+            catch
+            { 
+            
             }
         }
 

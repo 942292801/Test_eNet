@@ -1,1 +1,58 @@
-[]
+[
+    {
+        "sensors": [
+            {
+                "sensorsInfo": [
+                    {
+                        "id": 1,
+                        "pid": 0,
+                        "keyAddress": "",
+                        "objAddress": "",
+                        "objType": "",
+                        "opt": "",
+                        "optName": "",
+                        "fbmode": 0
+                    },
+                    {
+                        "id": 2,
+                        "pid": 0,
+                        "keyAddress": "",
+                        "objAddress": "",
+                        "objType": "",
+                        "opt": "",
+                        "optName": "",
+                        "fbmode": 0
+                    }
+                ],
+                "id": 1001,
+                "pid": 78806,
+                "ioNum": 2
+            },
+            {
+                "sensorsInfo": [],
+                "id": 1002,
+                "pid": 74322,
+                "ioNum": 2
+            },
+            {
+                "sensorsInfo": [
+                    {
+                        "id": 1,
+                        "pid": 0,
+                        "keyAddress": "",
+                        "objAddress": "",
+                        "objType": "",
+                        "opt": "",
+                        "optName": "",
+                        "fbmode": 0
+                    }
+                ],
+                "id": 1003,
+                "pid": 86374,
+                "ioNum": 1
+            }
+        ],
+        "IP": "192.168.1.111",
+        "Dev": "GW100A"
+    }
+]

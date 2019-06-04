@@ -47,5 +47,20 @@
         "area3": "",
         "area4": "",
         "name": ""
+    },
+    {
+        "module": [],
+        "master": "GW100A",
+        "ip": "192.168.1.230",
+        "mask": "",
+        "gateway": "",
+        "mac": "",
+        "sn": "",
+        "ver": "",
+        "area1": "",
+        "area2": "",
+        "area3": "",
+        "area4": "",
+        "name": ""
     }
 ]

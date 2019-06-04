@@ -115,6 +115,11 @@ namespace eNet编辑器.ThreeView
                         case "logic":
                             // MessageBox.Show("logic");
                             break;
+                        case "variable":
+                            treeView1.CheckBoxes = false;
+                            treeView1.ContextMenuStrip = null;
+                            variableAdd(num);
+                            break;
                       
                         default: break;
                     }
@@ -308,6 +313,46 @@ namespace eNet编辑器.ThreeView
         }
         #endregion
 
+        #region 变量加载节点
+        /// <summary>
+        /// 变量模式 变量按钮加载树状图节点
+        /// </summary>
+        /// <param name="num"></param>
+        private void variableAdd(int num)
+        {
+            TreeMesege tm = new TreeMesege();
+            string strs = IniConfig.GetValue(inifilepath, "variable", keys[num]);
+            //读取到的ini值为空 则加载当前选中节点的地址
+            if (string.IsNullOrEmpty(strs) && FileMesege.PointList != null)
+            {
+                /*
+                //加载选中位置的Point节点
+                List<string> infolist = DataListHelper.GetPointNodeBySectionName(FileMesege.PointList.equipment);
+                if (infolist != null)
+                {
+                    for (int i = 0; i < infolist.Count; i++)
+                    {
+                        tm.AddNode1(treeView1, infolist[i]);
+                    }
+                }
+                */
+            }
+            else
+            {
+                //正常加载名称
+                string[] strarr = strs.Split(',');
+                if (string.IsNullOrEmpty(strarr[0]))
+                {
+                    return;
+                }
+                for (int i = 0; i < strarr.Length; i++)
+                {
+                    tm.AddNode1(treeView1, strarr[i]);
+                }
+            }
+
+        }
+        #endregion
 
         #region 选中节点高亮  鼠标点击事件
 
@@ -523,6 +568,8 @@ namespace eNet编辑器.ThreeView
                     break;
                 case "sensor":
                     break;
+                case "variable":
+                    break;
                 default: break;
             }
             //选中添加的类型 搜索Title  NameList中的各种类型
@@ -555,6 +602,8 @@ namespace eNet编辑器.ThreeView
                 case "logic":
                     break;
                 case "sensor":
+                    break;
+                case "variable":
                     break;
                 default: break;
             }

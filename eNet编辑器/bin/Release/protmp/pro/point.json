@@ -82,5 +82,85 @@
         }
     ],
     "timer": [],
-    "link": []
+    "link": [
+        {
+            "pid": 78806,
+            "area1": "",
+            "area2": "",
+            "area3": "",
+            "area4": "",
+            "name": "湿度感应器_111",
+            "ip": "192.168.1.111",
+            "address": "6F3003E9",
+            "objType": "",
+            "value": "",
+            "type": "6.2_sensor"
+        },
+        {
+            "pid": 74322,
+            "area1": "",
+            "area2": "",
+            "area3": "",
+            "area4": "",
+            "name": "空气感应器_111",
+            "ip": "192.168.1.111",
+            "address": "6F3003EA",
+            "objType": "",
+            "value": "",
+            "type": "6.2_sensor"
+        },
+        {
+            "pid": 86374,
+            "area1": "",
+            "area2": "",
+            "area3": "",
+            "area4": "",
+            "name": "温度感应器_111",
+            "ip": "192.168.1.111",
+            "address": "6F3003EB",
+            "objType": "",
+            "value": "",
+            "type": "6.2_sensor"
+        },
+        {
+            "pid": 18560,
+            "area1": "",
+            "area2": "",
+            "area3": "",
+            "area4": "",
+            "name": "一键面板_111",
+            "ip": "192.168.1.111",
+            "address": "6F300001",
+            "objType": "",
+            "value": "",
+            "type": "6.1_panel"
+        },
+        {
+            "pid": 81209,
+            "area1": "",
+            "area2": "",
+            "area3": "",
+            "area4": "",
+            "name": "二键面板_111",
+            "ip": "192.168.1.111",
+            "address": "6F300002",
+            "objType": "",
+            "value": "",
+            "type": "6.1_panel"
+        },
+        {
+            "pid": 66418,
+            "area1": "",
+            "area2": "",
+            "area3": "",
+            "area4": "",
+            "name": "三键面板_111",
+            "ip": "192.168.1.111",
+            "address": "6F300003",
+            "objType": "",
+            "value": "",
+            "type": "6.1_panel"
+        }
+    ],
+    "variable": []
 }

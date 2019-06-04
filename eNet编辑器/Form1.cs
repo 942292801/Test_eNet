@@ -27,6 +27,7 @@ namespace eNet编辑器
         public ThreeSensor threesensor;
         public ThreeSection threesection;
         public ThreeTitle threetitle;
+        public ThreeVar threevar;
 
 
         public DgvName dgvname;
@@ -37,6 +38,7 @@ namespace eNet编辑器
         public DgvPanel dgvpanel;
         public DgvLogic dgvlogic;
         public DgvSensor dgvsensor;
+        public DgvVar dgvvar;
         //在线搜索窗体
         public OnlineSearch os;
         //检索栏号码 右侧两个树状图号码
@@ -83,6 +85,7 @@ namespace eNet编辑器
             threesensor = new ThreeSensor();
             threesection = new ThreeSection();
             threetitle = new ThreeTitle();
+            threevar = new ThreeVar();
 
             dgvname = new DgvName();
             dgvpoint = new DgvPoint();
@@ -93,6 +96,7 @@ namespace eNet编辑器
             dgvpanel = new DgvPanel();
             dgvlogic = new DgvLogic();
             dgvsensor = new DgvSensor();
+            dgvvar = new DgvVar();
 
             //第一次加载基本窗口
             Control_Add(threename, plLeft);//默认添加窗口一
@@ -112,6 +116,7 @@ namespace eNet编辑器
             threescene.clearTxtShow += new Action<string>(clearTxtShow);
             threepanel.clearTxtShow += new Action<string>(clearTxtShow);
             threesensor.clearTxtShow += new Action<string>(clearTxtShow);
+            threevar.clearTxtShow += new Action<string>(clearTxtShow);
             dgvpoint.txtAppShow += new Action<string>(AppTxtShow);
             dgvname.txtAppShow += new Action<string>(AppTxtShow);
             dgvscene.AppTxtShow += new Action<string>((msg) =>//TXT窗口显示信息 
@@ -163,6 +168,8 @@ namespace eNet编辑器
             threepanel.dgvpanelAddItem += new DgvPanelAddItem(dgvpanel.dgvPanelAddItem);
             threetimer.dgvTimerAddItem +=new Action(dgvtimer.TimerAddItem);
             threesensor.dgvSensorAddItem +=new Action(dgvsensor.dgvSensorAddItem);
+            threevar.dgvVarAddItem +=new Action(dgvvar.dgvVarAddItem);
+
             threesection.sectionDgvNameAddItem += new SectionDgvNameAddItem(dgvname.dgvNameAddItem);
             threesection.sectionDgvDevAddItem += new SectionDgvDevAddItem(dgvdevice.dgvDeviceAddItem);
             threesection.updatePointDgv += new Action(dgvpoint.dgvPointAddItemBySection);
@@ -233,6 +240,7 @@ namespace eNet编辑器
             threesensor.ThreeSensorAddNode();
             threelogic.ThreeLogicAddNode();
             threesection.ThreeSEctionAddNode();
+            threevar.ThreeVarAddNode();
             //threepoint.ThreePointAddNode();
         }
 
@@ -246,7 +254,8 @@ namespace eNet编辑器
             threetimer.ThreeTimerAddNode();
             threepanel.ThreePanelAddNode();
             threesensor.ThreeSensorAddNode();
-            
+            threevar.ThreeVarAddNode();
+
             threelogic.ThreeLogicAddNode();
             threesection.ThreeSEctionAddNode();
             threetitle.ThreeTitleAddNode(cbType.SelectedIndex); 
@@ -257,6 +266,7 @@ namespace eNet编辑器
             dgvpanel.dgvPanelAddItem();
             dgvtimer.TimerAddItem();
             dgvsensor.dgvSensorAddItem();
+            dgvvar.dgvVarAddItem();
             txtShow.Clear();
         }
 
@@ -292,6 +302,9 @@ namespace eNet编辑器
                     break;
                 case "logic":
                    
+                    break;
+                case "variable":
+                    dgvvar.dgvVarAddItem();
                     break;
                 
                 default: break;
@@ -556,6 +569,22 @@ namespace eNet编辑器
         }
 
 
+        private void tabVar_Click(object sender, EventArgs e)
+        {
+            //自定义函数加载窗体 CleanRecycle  
+            Control_Add(threevar, plLeft);
+            Control_Add(dgvvar, plDgv);
+            //界面显示类型 
+            FileMesege.formType = "variable";
+            //cbtype添加选择项 
+            cbtypeName("variable");
+            //添加对象树状图
+            threetitle.ThreeTitleAddNode(cbType.SelectedIndex);
+            //更改Title 小标题
+            LbTitleName.Text = Resources.lbTitleObj;
+            dgvvar.dgvVarAddItem();
+        }
+
         /// <summary>
         /// cb框添加命名的信息 typeName参数为ini文件名
         /// </summary>
@@ -599,11 +628,7 @@ namespace eNet编辑器
            
         }
 
-        private void btnStyleIni()
-        {
-           
-            
-        }
+
         #endregion
 
 
@@ -886,6 +911,8 @@ namespace eNet编辑器
                     case "sensor":
                         dgvsensor.copyData();
                         break;
+                    case "variable":
+                        break;
                     default: break;
                 }
             }
@@ -922,6 +949,8 @@ namespace eNet编辑器
                         break;
                     case "sensor":
                         dgvsensor.pasteData();
+                        break;
+                    case "variable":
                         break;
                     default: break;
                 }
@@ -1054,28 +1083,8 @@ namespace eNet编辑器
         #endregion
 
 
-        #region 快捷键功能 因为在meustrip设置了快捷键 所以这个快捷键可以删除
-        private void Form1_KeyDown(object sender, KeyEventArgs e)
-        {
 
-            if (e.Control )
-            {
-                switch (e.KeyCode)
-                {
-
-                    case Keys.N:
-                       // 新建项目ToolStripMenuItem_Click(this, EventArgs.Empty);
-                        break;
-                    case Keys.S:
-                    //    保存ToolStripMenuItem_Click(this, EventArgs.Empty);
-                        break;
-          
-                    
-                }
-            }
-        }
-
-        #endregion
+     
 
  
 
