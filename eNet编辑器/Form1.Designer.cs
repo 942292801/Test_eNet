@@ -1178,7 +1178,7 @@
             this.txtShow.BackColor = System.Drawing.Color.White;
             this.txtShow.BorderStyle = System.Windows.Forms.BorderStyle.None;
             resources.ApplyResources(this.txtShow, "txtShow");
-            this.txtShow.ForeColor = System.Drawing.Color.Red;
+            this.txtShow.ForeColor = System.Drawing.Color.Black;
             this.txtShow.Name = "txtShow";
             this.txtShow.ReadOnly = true;
             // 

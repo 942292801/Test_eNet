@@ -26,6 +26,9 @@ namespace eNet编辑器.ThreeView
 
         //添加点位
         public event Action<string> addPoint;
+        //添加变量
+        public event Action<string> addVariable;
+
         public ThreeTitle()
         {
             InitializeComponent();
@@ -235,6 +238,9 @@ namespace eNet编辑器.ThreeView
                             break;
                         case "sensor":
                             getNametree(FileMesege.PointList.link, "sensor");
+                            break;
+                        case "variable":
+                            getNametree(FileMesege.PointList.variable, "variable");
                             break;
                         default: break;
                     }
@@ -569,6 +575,8 @@ namespace eNet编辑器.ThreeView
                 case "sensor":
                     break;
                 case "variable":
+                    //添加变量
+                    addVariable(keys[FileMesege.cbTypeIndex]);
                     break;
                 default: break;
             }
@@ -646,6 +654,9 @@ namespace eNet编辑器.ThreeView
                 case "sensor":
                     dgvSceneListAdd(FileMesege.PointList.link, nodeText);
                     break;
+                case "variable":
+                    dgvSceneListAdd(FileMesege.PointList.variable, nodeText);
+                    break;
                 default:
                     dgvSceneListAdd(FileMesege.PointList.equipment, nodeText);
                     break;
@@ -666,11 +677,11 @@ namespace eNet编辑器.ThreeView
             }
             //选中子节点
             //循环获取
-            string[] ips = FileMesege.sceneSelectNode.Parent.Text.Split(' ');
+            string ip = FileMesege.sceneSelectNode.Parent.Text.Split(' ')[0];
             string[] ids = FileMesege.sceneSelectNode.Text.Split(' ');
             int sceneNum = Convert.ToInt32(Regex.Replace(ids[0], @"[^\d]*", ""));
             //获取该节点IP地址场景下的 场景信息对象
-            DataJson.scenes sc = getSceneInfoList(ips[0], sceneNum);
+            DataJson.scenes sc = getSceneInfoList(ip, sceneNum);
             List<string> section_name = DataListHelper.dealPointInfo(nodeText);
             if(section_name == null)
             {
@@ -681,6 +692,12 @@ namespace eNet编辑器.ThreeView
                 //NameList中查找到匹配的信息
                 if (eq.area1 == section_name[0] && eq.area2 == section_name[1] &&eq.area3 == section_name[2] &&eq.area4 == section_name[3] && eq.name == section_name[4])
                 {
+                    if (eq.type != IniHelper.findTypesIniTypebyName("场景") && eq.ip != ip)
+                    {
+                        //不同ip地址的不能添加
+                        return;
+                    }
+                    
                     //撤销
                     DataJson.totalList OldList = FileMesege.cmds.getListInfos();
                     //新建表
@@ -772,6 +789,9 @@ namespace eNet编辑器.ThreeView
                 case "sensor":
                     dgvTimerListAdd(FileMesege.PointList.link, nodeText);
                     break;
+                case "variable":
+                    dgvTimerListAdd(FileMesege.PointList.variable, nodeText);
+                    break;
                 default:
                     dgvTimerListAdd(FileMesege.PointList.equipment, nodeText);
                     break;
@@ -807,6 +827,11 @@ namespace eNet编辑器.ThreeView
                 //NameList中查找到匹配的信息
                 if (eq.area1 == section_name[0] && eq.area2 == section_name[1] && eq.area3 == section_name[2] && eq.area4 == section_name[3] && eq.name == section_name[4])
                 {
+                    if (eq.ip != ip)
+                    {
+                        //不同ip地址的不能添加
+                        return;
+                    }
                     //撤销
                     DataJson.totalList OldList = FileMesege.cmds.getListInfos();
                     //新建表

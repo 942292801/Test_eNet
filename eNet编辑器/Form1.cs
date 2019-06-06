@@ -164,6 +164,7 @@ namespace eNet编辑器
             threetitle.dgvsceneAddItem += new DgvSceneAddItem2(dgvscene.dgvsceneAddItem);
             threetitle.dgvtimerAddItem += new Action(dgvtimer.TimerAddItem);
             threetitle.addPoint += new Action<string>(dgvpoint.addPoint);
+            threetitle.addVariable += new Action<string>(dgvvar.addVariable);
             threename.dgvDeviceAddItem += new DgvDeviceAddItem(dgvdevice.dgvDeviceAddItem);
             threepanel.dgvpanelAddItem += new DgvPanelAddItem(dgvpanel.dgvPanelAddItem);
             threetimer.dgvTimerAddItem +=new Action(dgvtimer.TimerAddItem);
@@ -387,13 +388,15 @@ namespace eNet编辑器
         }
 
         #region 文本框操作信息
+
+        int clearNum = 0;
         /// <summary>
         /// 窗体显示信息 清空信息后显示
         /// </summary>
         /// <param name="msg"></param>
         public void clearTxtShow(string msg)
         {
-
+            clearNum = 0;
             txtShow.Clear();
             txtShow.AppendText(msg);
         }
@@ -404,11 +407,28 @@ namespace eNet编辑器
         /// <param name="msg"></param>
         public void AppTxtShow(string msg)
         {
+
+            string tmp = string.Format("({1}) {0}\r\n", msg, DateTime.Now.ToLongTimeString());
             
-            this.txtShow.SelectAll();
+            if (clearNum == 2)
+            {
+                txtShow.AppendText(tmp);
+                this.txtShow.ScrollToCaret();
+            }
+            else
+            {
+                this.txtShow.ScrollToCaret();
+                txtShow.AppendText(tmp);
+            }
+            //来一个延时
+            SocketUtil.DelayMilli(300);
+            txtShow.SelectAll();
             this.txtShow.SelectionColor = Color.Black;
-            txtShow.AppendText(string.Format("({1}) {0}\r\n", msg, DateTime.Now.ToLongTimeString()));
-            this.txtShow.ScrollToCaret();
+     
+            txtShow.Select(txtShow.Text.Length - tmp.Length + 1,tmp.Length);
+            this.txtShow.SelectionColor = Color.Blue;
+            clearNum++;
+            
         }
 
         //清除txt信息

@@ -273,9 +273,9 @@ namespace eNet编辑器.DgvView
             {
                 return;
             }
-            /**************************************************************************
+            /**********************************************************************************
              重点  在某一列上添加新combox  重点注意 需要屏蔽出错提示dataGridView1_DataError事件
-            **************************************************************************/
+            ***********************************************************************************/
             DataGridViewComboBoxCell combox = dataGridView1.Rows[rownum].Cells["pointValue"] as DataGridViewComboBoxCell;
             combox.ReadOnly = true;
             combox.Items.Clear();
@@ -851,10 +851,11 @@ namespace eNet编辑器.DgvView
                     FileMesege.PointList.equipment.Remove(eq);
                     DataJson.totalList NewList = FileMesege.cmds.getListInfos();
                     FileMesege.cmds.DoNewCommand(NewList, OldList);
+                    dgvPointAddItemBySection();
                     break;
                 }
             }
-            dgvPointAddItemBySection();
+            
 
         }
         

@@ -221,5 +221,18 @@ namespace eNet编辑器
             return true;
         }
 
+        /// <summary>
+        /// 延时毫秒
+        /// </summary>
+        /// <param name="milliSecond"></param>
+        public static void DelayMilli(int milliSecond)
+        {
+            int start = Environment.TickCount;
+            while (Math.Abs(Environment.TickCount - start) < milliSecond)//毫秒
+            {
+                Application.DoEvents();//可执行某无聊的操作
+            }
+        }
+
     }
 }

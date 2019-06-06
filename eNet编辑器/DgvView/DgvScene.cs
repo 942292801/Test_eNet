@@ -732,7 +732,7 @@ namespace eNet编辑器.DgvView
                                 break;
                             case "del":
                                 //删除表
-                                dgvDle(id);
+                                dgvDel(id);
                            
                                 break;
                             case "num":
@@ -761,7 +761,7 @@ namespace eNet编辑器.DgvView
                         {
                             case "del":
                                 //删除表
-                                dgvDle(id);
+                                dgvDel(id);
                               
                                 break;
                             default: break;
@@ -864,7 +864,7 @@ namespace eNet编辑器.DgvView
         }
 
         //ID= 选中行的序号
-        private void dgvDle(int id)
+        private void dgvDel(int id)
         {
     
             string[] ips = FileMesege.sceneSelectNode.Parent.Text.Split(' ');

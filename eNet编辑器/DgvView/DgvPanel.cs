@@ -354,7 +354,7 @@ namespace eNet编辑器.DgvView
 
         #endregion
 
-        #region 增加 清空  清除 设置 按键
+        #region  清空  清除 设置 按键
 
       
 
@@ -673,6 +673,7 @@ namespace eNet编辑器.DgvView
             clearPanelInfo();
 
         }
+
         /// <summary>
         /// 清除主机k#.json信息
         /// </summary>
@@ -1564,6 +1565,12 @@ namespace eNet编辑器.DgvView
             DataJson.PointInfo eq  =  DataListHelper.findPointBySection_name(section_name);
             if (eq == null)
             {
+                return;
+            }
+            if ( eq.ip != FileMesege.panelSelectNode.Parent.Text.Split(' ')[0])
+            {
+                //不同ip地址的不能添加
+                AppTxtShow("注意!IP地址相同才能赋值!");
                 return;
             }
             //撤销
