@@ -298,7 +298,7 @@ namespace eNet编辑器.ThreeView
                     eq.pid = randomNum;
                     eq.ip = sradd.Ip;
                     eq.name = sradd.PanelName;
-                    eq.type = "6.2_sensor";
+                    eq.type = IniHelper.findTypesIniTypebyName("感应编组");
                     eq.objType = "";
                     eq.value = "";
                     FileMesege.PointList.link.Add(eq);

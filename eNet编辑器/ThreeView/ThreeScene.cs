@@ -234,7 +234,7 @@ namespace eNet编辑器.ThreeView
                     eq.pid = randomNum;
                     eq.ip = tss.Ip;
                     eq.name = tss.SceneName;
-                    eq.type = "4.0_scene";
+                    eq.type = IniHelper.findTypesIniTypebyName("场景");
                     eq.objType = "";
                     //eq.range = "";
                     eq.value = "";

@@ -914,7 +914,7 @@ namespace eNet编辑器.DgvView
                             {
                                 DataJson.Timernumber sb = new DataJson.Timernumber();
 
-                                //sb.num = tmInfo.id;
+                                sb.num = tmInfo.id;
                                 sb.obj = tmInfo.address;
                                 sb.data = tmInfo.opt;
                                 sb.hour = hour;

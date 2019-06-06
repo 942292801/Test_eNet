@@ -131,7 +131,7 @@ namespace eNet编辑器
             dgvsensor.AppTxtShow += new Action<string>(AppTxtShow);
             threetimer.clearTxtShow += new Action<string>(clearTxtShow);
             dgvtimer.AppTxtShow += new Action<string>(AppTxtShow);
-
+            dgvvar.AppTxtShow += new Action<string>(AppTxtShow);
             tnGateway.AppTxtShow += new Action<string>(AppTxtShow);
             tnDevice.AppTxtShow += new Action<string>(AppTxtShow);
             /////////////////////////////////////////////////////////////
@@ -407,7 +407,7 @@ namespace eNet编辑器
             
             this.txtShow.SelectAll();
             this.txtShow.SelectionColor = Color.Black;
-            txtShow.AppendText(string.Format("{0}\r\n", msg));
+            txtShow.AppendText(string.Format("({1}) {0}\r\n", msg, DateTime.Now.ToLongTimeString()));
             this.txtShow.ScrollToCaret();
         }
 

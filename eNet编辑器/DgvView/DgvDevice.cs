@@ -241,37 +241,7 @@ namespace eNet编辑器.DgvView
                             {
                                 //为设备
                                 dev.module[count - 1].name = name;
-                                /** 暂时屏蔽 做Bind面板的时候再考虑
-                                //判断设备是否为key面板 是就添加设备信息
-                                keyVal = IniConfig.GetValue(path + dataGridView1.Rows[count].Cells[1].Value + ".ini", "input", "key");
-                                if (keyVal != "null")
-                                {
-                                    //获取IP最后一位
-                                    string IP = SocketUtil.GetIPstyle(parents[0], 4);
-                                    //获取10进制的设备ID号
-                                    string idstr = dataGridView1.Rows[count].Cells[0].Value.ToString(); //Regex.Replace(devs[0], @"[^\d]*", "");
-                                    //十六进制的ID号
-                                    string ID = SocketUtil.strtohexstr(idstr);
-                                    string address = IP + "00" + ID + "00";
-                                    //TreeMesege tm = new TreeMesege();
-                                    //获取id1 - id4
-                                    //string[] tmID = tm.GetSectionId(FileMesege.sectionNode.FullPath.Split('\\'));
-                                    foreach (DataJson.Equipment e in FileMesege.MapperList.equipment)
-                                    {
-                                        //循环判断 NameList中是否存在该节点
-                                        if (address == e.address && e.ip == parents[0])
-                                        {
-                                            e.name = name;
-
-                                            return;
-                                        }
-                                    }
-                                    DataJson.Equipment eq = new DataJson.Equipment();
-                                    eq.name = name;
-                                    eq.ip = parents[0];
-                                    eq.address = address;
-                                    FileMesege.MapperList.equipment.Add(eq);
-                                }**/
+                            
                             }
                             else
                             {

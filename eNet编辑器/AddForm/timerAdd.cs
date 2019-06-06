@@ -161,7 +161,7 @@ namespace eNet编辑器.AddForm
                 txtNum.Enabled = false;
                 lbTitle.Text = "添加节假日定时";
                 txtName.Enabled = false;
-                txtName.Text = "节假日定时";//string.Format("节假日定时", Ip.Split('.')[3]);//Ip.Split('.')[3]
+                txtName.Text = "节假日定时";
                 cbs1.Text = "";
                 cbs2.Text = "";
                 cbs3.Text = "";
@@ -231,7 +231,7 @@ namespace eNet编辑器.AddForm
                                 DataJson.PointInfo point = DataListHelper.findPointByPid(tms.pid, FileMesege.PointList.timer);
                                 if (point != null)
                                 {
-                                    txtName.Text = point.name.Split('_')[0];
+                                    txtName.Text = point.name.Split('@')[0];
                                     ComboBox[] cbs = { cbs1, cbs2, cbs3, cbs4 };
                                     cbs[0].Text = point.area1;
                                     cbs[1].Text = point.area2;
@@ -329,7 +329,7 @@ namespace eNet编辑器.AddForm
             }
           
             this.Num = txtNum.Text;
-            this.TimerName = string.Format("{0}_{1}", txtName.Text, Ip.Split('.')[3]);
+            this.TimerName = string.Format("{0}@{1}", txtName.Text, Ip.Split('.')[3]);
             this.Area1 = cbs1.Text;
             this.Area2 = cbs2.Text;
             this.Area3 = cbs3.Text;

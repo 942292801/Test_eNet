@@ -239,7 +239,7 @@ namespace eNet编辑器.DgvView
             //区域
             this.dataGridView1.Rows[rowNum].Cells[2].Value = string.Format("{0} {1} {2} {3}", eq.area1, eq.area2, eq.area3, eq.area4).Trim();
             //名字
-            this.dataGridView1.Rows[rowNum].Cells[3].Value = eq.name;
+            this.dataGridView1.Rows[rowNum].Cells[3].Value = eq.name.Split('@')[0];
             //获取中文类型名
             string objTypeName = IniHelper.findObjsDefineName_ByType(eq.objType);
             //类型 objType
@@ -314,6 +314,10 @@ namespace eNet编辑器.DgvView
 
         }
 
+        /// <summary>
+        /// 添加点位 
+        /// </summary>
+        /// <param name="typeName">类型名</param>
         public void addPoint(string typeName)
         {
             if (string.IsNullOrEmpty(FileMesege.sectionNodeCopy))
@@ -336,7 +340,7 @@ namespace eNet编辑器.DgvView
             //计算name的排序
             DataJson.PointInfo point = new DataJson.PointInfo();
             point.pid = DataChange.randomNum();
-            point.name = sortName(sect);
+            point.name = string.Format("{0}@255", sortName(sect));
             point.address = "FFFFFFFF";
             point.area1 = sect[0];
             point.area2 = sect[1];
@@ -380,7 +384,7 @@ namespace eNet编辑器.DgvView
                     if (eq.name != null && eq.name.Contains(FileMesege.titleinfo))
                     {
                         //获取序号
-                        num = Regex.Replace(eq.name, @"[^\d]*", "");
+                        num = Regex.Replace(eq.name.Split('@')[0], @"[^\d]*", "");
                         if (num != "")
                         {
                             hasharry.Add(Convert.ToInt32(num));
@@ -808,12 +812,13 @@ namespace eNet编辑器.DgvView
             foreach (DataJson.PointInfo eq in FileMesege.PointList.equipment)
             {
                 //当地域信息相同
-                if (eq.area1 == section[0] && eq.area2 == section[1] && eq.area3 == section[2] && eq.area4 == section[3] && eq.name == oldName)
+                if (eq.area1 == section[0] && eq.area2 == section[1] && eq.area3 == section[2] && eq.area4 == section[3] && eq.name.Split('@')[0] == oldName)
                 {
                     //撤销
                     DataJson.totalList OldList = FileMesege.cmds.getListInfos();
-                    eq.name = sortName(section.ToArray());
-                    dataGridView1.Rows[rowCount].Cells[3].Value = eq.name;
+                    string name = sortName(section.ToArray());
+                    eq.name = string.Format("{0}@{1}", name, eq.name.Split('@')[1]);
+                    dataGridView1.Rows[rowCount].Cells[3].Value = name;
                     DataJson.totalList NewList = FileMesege.cmds.getListInfos();
                     FileMesege.cmds.DoNewCommand(NewList, OldList);
                     break;
@@ -839,7 +844,7 @@ namespace eNet编辑器.DgvView
             foreach (DataJson.PointInfo eq in FileMesege.PointList.equipment)
             {
                 //当地域信息相同
-                if (eq.area1 == section[0] && eq.area2 == section[1] && eq.area3 == section[2] && eq.area4 == section[3] && eq.name == oldName)
+                if (eq.area1 == section[0] && eq.area2 == section[1] && eq.area3 == section[2] && eq.area4 == section[3] && eq.name.Split('@')[0] == oldName)
                 {
                     //撤销
                     DataJson.totalList OldList = FileMesege.cmds.getListInfos();
@@ -869,7 +874,7 @@ namespace eNet编辑器.DgvView
             foreach (DataJson.PointInfo eq in FileMesege.PointList.equipment)
             {
                 //当地域信息相同
-                if (eq.area1 == section[0] && eq.area2 == section[1] && eq.area3 == section[2] && eq.area4 == section[3] && eq.name == oldName)
+                if (eq.area1 == section[0] && eq.area2 == section[1] && eq.area3 == section[2] && eq.area4 == section[3] && eq.name.Split('@')[0] == oldName)
                 { 
                     //合并数据列表添加
                     multipleList.Add(eq);
@@ -913,12 +918,12 @@ namespace eNet编辑器.DgvView
             foreach (DataJson.PointInfo eq in FileMesege.PointList.equipment)
             {
                 //当地域信息相同
-                if (eq.area1 == section[0] && eq.area2 == section[1] && eq.area3 == section[2] && eq.area4 == section[3] && eq.name == oldName)
+                if (eq.area1 == section[0] && eq.area2 == section[1] && eq.area3 == section[2] && eq.area4 == section[3] && eq.name.Split('@')[0] == oldName)
                 {
                     //剔除名字相同 
                     foreach (DataJson.PointInfo et in FileMesege.PointList.equipment)
                     {
-                        if (et.area1 == eq.area1 && et.area2 == eq.area2 && et.area3 == eq.area3 && et.area4 == eq.area4 && et.name == nowName)
+                        if (et.area1 == eq.area1 && et.area2 == eq.area2 && et.area3 == eq.area3 && et.area4 == eq.area4 && et.name.Split('@')[0] == nowName)
                         {
 
                             dataGridView1.Rows[rowNum].Cells[3].Value = oldName;
@@ -928,7 +933,7 @@ namespace eNet编辑器.DgvView
                     }
                     //撤销
                     DataJson.totalList OldList = FileMesege.cmds.getListInfos();
-                    eq.name = nowName;
+                    eq.name = string.Format("{0}@{1}", nowName, eq.name.Split('@')[1]);
                     dataGridView1.Rows[rowNum].Cells[3].Value = nowName;
                     DataJson.totalList NewList = FileMesege.cmds.getListInfos();
                     FileMesege.cmds.DoNewCommand(NewList, OldList);
@@ -953,7 +958,7 @@ namespace eNet编辑器.DgvView
             foreach (DataJson.PointInfo eq in FileMesege.PointList.equipment)
             {
                 //当地域信息相同
-                if (eq.area1 == section[0] && eq.area2 == section[1] && eq.area3 == section[2] && eq.area4 == section[3] && eq.name == oldName)
+                if (eq.area1 == section[0] && eq.area2 == section[1] && eq.area3 == section[2] && eq.area4 == section[3] && eq.name.Split('@')[0] == oldName)
                 {
                     return eq;
                 }
@@ -1025,7 +1030,7 @@ namespace eNet编辑器.DgvView
                 foreach (DataJson.PointInfo eq in FileMesege.PointList.equipment)
                 {
                     //当地域信息相同
-                    if (eq.area1 == section[0] && eq.area2 == section[1] && eq.area3 == section[2] && eq.area4 == section[3] && eq.name == dataGridView1.Rows[dataGridView1.CurrentCell.RowIndex].Cells[3].Value.ToString())
+                    if (eq.area1 == section[0] && eq.area2 == section[1] && eq.area3 == section[2] && eq.area4 == section[3] && eq.name.Split('@')[0] == dataGridView1.Rows[dataGridView1.CurrentCell.RowIndex].Cells[3].Value.ToString())
                     {
                         FileMesege.copyPoint = eq;
                         break;
@@ -1063,7 +1068,7 @@ namespace eNet编辑器.DgvView
                         foreach (DataJson.PointInfo eq in FileMesege.PointList.equipment)
                         {
                             //当地域信息相同
-                            if (eq.area1 == section[0] && eq.area2 == section[1] && eq.area3 == section[2] && eq.area4 == section[3] && eq.name == dataGridView1.Rows[dataGridView1.SelectedCells[i].RowIndex].Cells[3].Value.ToString())
+                            if (eq.area1 == section[0] && eq.area2 == section[1] && eq.area3 == section[2] && eq.area4 == section[3] && eq.name.Split('@')[0] == dataGridView1.Rows[dataGridView1.SelectedCells[i].RowIndex].Cells[3].Value.ToString())
                             {
                                 
                                 if (eq.objType == FileMesege.copyPoint.objType && eq.value == FileMesege.copyPoint.value)
@@ -1152,7 +1157,7 @@ namespace eNet编辑器.DgvView
                     foreach (DataJson.PointInfo eq in FileMesege.PointList.equipment)
                     {
                         //当地域信息相同
-                        if (eq.area1 == section[0] && eq.area2 == section[1] && eq.area3 == section[2] && eq.area4 == section[3] && eq.name == dataGridView1.Rows[dataGridView1.SelectedCells[i].RowIndex].Cells[3].Value.ToString())
+                        if (eq.area1 == section[0] && eq.area2 == section[1] && eq.area3 == section[2] && eq.area4 == section[3] && eq.name.Split('@')[0] == dataGridView1.Rows[dataGridView1.SelectedCells[i].RowIndex].Cells[3].Value.ToString())
                         {
                             if (colIndex == 4 )
                             {

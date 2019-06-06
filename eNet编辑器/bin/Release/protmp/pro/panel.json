@@ -7,28 +7,28 @@
                         "id": 1,
                         "pid": 0,
                         "keyAddress": "",
-                        "objAddress": "",
-                        "objType": "",
+                        "objAddress": "6F000A01",
+                        "objType": "1.0_switch",
                         "opt": 0,
-                        "showAddress": "",
+                        "showAddress": "FFFFFFFF",
                         "showMode": ""
                     },
                     {
                         "id": 2,
                         "pid": 0,
                         "keyAddress": "",
-                        "objAddress": "",
+                        "objAddress": "FFFFFFFF",
                         "objType": "",
                         "opt": 0,
-                        "showAddress": "",
+                        "showAddress": "FFFFFFFF",
                         "showMode": ""
                     },
                     {
                         "id": 3,
                         "pid": 0,
                         "keyAddress": "",
-                        "objAddress": "",
-                        "objType": "",
+                        "objAddress": "6F000A01",
+                        "objType": "1.0_switch",
                         "opt": 0,
                         "showAddress": "",
                         "showMode": ""
@@ -37,8 +37,8 @@
                         "id": 4,
                         "pid": 0,
                         "keyAddress": "",
-                        "objAddress": "",
-                        "objType": "",
+                        "objAddress": "6F000A01",
+                        "objType": "1.0_switch",
                         "opt": 0,
                         "showAddress": "",
                         "showMode": ""
@@ -65,23 +65,11 @@
                     }
                 ],
                 "id": 1,
-                "pid": 18560,
-                "keyNum": 6
-            },
-            {
-                "panelsInfo": [],
-                "id": 2,
-                "pid": 81209,
-                "keyNum": 6
-            },
-            {
-                "panelsInfo": [],
-                "id": 3,
-                "pid": 66418,
+                "pid": 85756,
                 "keyNum": 6
             }
         ],
-        "IP": "192.168.1.111",
+        "IP": "192.168.1.230",
         "Dev": "GW100A"
     }
 ]

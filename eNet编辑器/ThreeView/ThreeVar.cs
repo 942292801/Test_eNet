@@ -91,7 +91,7 @@ namespace eNet编辑器.ThreeView
 
         private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
         {
-            //FileMesege.timerSelectNode = treeView1.SelectedNode;
+            FileMesege.varSelectNode = treeView1.SelectedNode;
             //DGVVar添加变量
             dgvVarAddItem();
             string[] names = treeView1.SelectedNode.Text.Split(' ');

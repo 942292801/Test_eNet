@@ -311,7 +311,7 @@ namespace eNet编辑器.ThreeView
                     eq.pid = randomNum;
                     eq.ip = pladd.Ip;
                     eq.name = pladd.PanelName ;
-                    eq.type = "6.1_panel";
+                    eq.type = IniHelper.findTypesIniTypebyName("面板");
                     eq.objType = "";
                     eq.value = "";
                     FileMesege.PointList.link.Add(eq);

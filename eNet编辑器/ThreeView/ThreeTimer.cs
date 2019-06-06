@@ -241,7 +241,7 @@ namespace eNet编辑器.ThreeView
                     eq.pid = randomNum;
                     eq.ip = timeradd.Ip;
                     eq.name = timeradd.TimerName;
-                    eq.type = "5.0_time";
+                    eq.type = IniHelper.findTypesIniTypebyName("定时");
                     eq.objType = "";
                     eq.value = "";
                     FileMesege.PointList.timer.Add(eq);

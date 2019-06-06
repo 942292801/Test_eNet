@@ -340,6 +340,7 @@ namespace eNet编辑器
             eq.area2 = sections[1];
             eq.area3 = sections[2];
             eq.area4 = sections[3];
+            //eq.name = "";
             eq.ip = ip;
             eq.address = address;
             eq.objType = "";
@@ -364,7 +365,8 @@ namespace eNet编辑器
                 if (p.ip == oldIP)
                 {
                     p.ip = IP;
-                    p.address = string.Format("{0}{1}",hexIP,p.address.Substring(2,6)); 
+                    p.address = string.Format("{0}{1}",hexIP,p.address.Substring(2,6));
+                    p.name = string.Format("{0}@{1}", p.name.Split('@')[0], IP.Split('.')[3]);
                 }
             }
             foreach (DataJson.PointInfo p in FileMesege.PointList.scene)
@@ -373,6 +375,7 @@ namespace eNet编辑器
                 {
                     p.ip = IP;
                     p.address = string.Format("{0}{1}", hexIP, p.address.Substring(2, 6));
+                    p.name = string.Format("{0}@{1}", p.name.Split('@')[0], IP.Split('.')[3]);
                 }
             }
             foreach (DataJson.PointInfo p in FileMesege.PointList.timer)
@@ -382,7 +385,8 @@ namespace eNet编辑器
                     p.ip = IP;
                     p.address = string.Format("{0}{1}", hexIP, p.address.Substring(2, 6));
                     //修改定时名称的后缀
-                    p.name = p.name.Replace(Regex.Replace(p.name, @"[^\d]*", ""), "")+IP.Split('.')[3];
+                    //p.name =  p.name.Replace(Regex.Replace(p.name, @"[^\d]*", ""), "")+IP.Split('.')[3];
+                    p.name = string.Format("{0}@{1}", p.name.Split('@')[0] , IP.Split('.')[3]);
                 }
             }
             foreach (DataJson.PointInfo p in FileMesege.PointList.link)
@@ -391,6 +395,7 @@ namespace eNet编辑器
                 {
                     p.ip = IP;
                     p.address = string.Format("{0}{1}", hexIP, p.address.Substring(2, 6));
+                    p.name = string.Format("{0}@{1}", p.name.Split('@')[0], IP.Split('.')[3]);
                 }
             }
             foreach (DataJson.PointInfo p in FileMesege.PointList.variable)
@@ -400,6 +405,7 @@ namespace eNet编辑器
                     p.ip = IP;
                     //address的为 254开头 254.251.3.X格式 所以不修改 
                     //p.address = string.Format("{0}{1}", hexIP, p.address.Substring(2, 6));
+                    p.name = string.Format("{0}@{1}", p.name.Split('@')[0], IP.Split('.')[3]);
                 }
             }
 
