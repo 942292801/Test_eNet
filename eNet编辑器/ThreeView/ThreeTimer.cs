@@ -27,6 +27,8 @@ namespace eNet编辑器.ThreeView
         public event Action<string> clearTxtShow;
         public event Action updateAllView;
         public event Action dgvTimerAddItem;
+        public event Action addTitleNode;
+
         private timerAdd timeradd = null;
 
         //判断true为选中父节点
@@ -510,6 +512,7 @@ namespace eNet编辑器.ThreeView
             FileMesege.timerSelectNode = treeView1.SelectedNode;
             //DGVtimer添加定时
             dgvTimerAddItem();
+            addTitleNode();
             string[] names = treeView1.SelectedNode.Text.Split(' ');
             if (treeView1.SelectedNode.Parent != null)
             {

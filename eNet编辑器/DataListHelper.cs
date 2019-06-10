@@ -299,6 +299,34 @@ namespace eNet编辑器
 
         }
 
+        /// <summary>
+        /// 在deviceList寻找某个IP下的ID的设备 否则返回空
+        /// </summary>
+        /// <param name="ip"></param>
+        /// <param name="strid"></param>
+        /// <returns></returns>
+        public static DataJson.Module findDeviceByIP_ID(string ip, int id)
+        {
+      
+            //修改某IP下某ID 型号的设备信息
+            foreach (DataJson.Device dev in FileMesege.DeviceList)
+            {
+                if (dev.ip == ip)
+                {
+                    foreach (DataJson.Module m in dev.module)
+                    {
+                        if (m.id  == id )
+                        {
+
+                            return m;
+                        }
+                    }
+                    break;
+                }
+            }
+            return null;
+        }
+
         #endregion
 
 

@@ -1519,12 +1519,7 @@ namespace eNet编辑器.DgvView
             {
                 return;
             }
-            if (eq.ip != FileMesege.sensorSelectNode.Parent.Text.Split(' ')[0])
-            {
-                //不同ip地址的不能添加
-                AppTxtShow("注意!IP地址相同才能赋值!");
-                return;
-            }
+
             //撤销
             DataJson.totalList OldList = FileMesege.cmds.getListInfos();
             if (colIndex == 3)

@@ -22,6 +22,7 @@ namespace eNet编辑器.ThreeView
         public event Action<string> clearTxtShow;
         public event Action updateAllView;
         public event DgvPanelAddItem dgvpanelAddItem;
+        public event Action addTitleNode;
         public ThreePanel()
         {
             InitializeComponent();
@@ -119,6 +120,7 @@ namespace eNet编辑器.ThreeView
             FileMesege.panelSelectNode = treeView1.SelectedNode;
             //DGVtimer添加定时
             dgvpanelAddItem();
+            addTitleNode();
             string[] names = treeView1.SelectedNode.Text.Split(' ');
             if (treeView1.SelectedNode.Parent != null)
             {

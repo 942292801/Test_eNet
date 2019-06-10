@@ -109,106 +109,67 @@ namespace eNet编辑器.DgvView
         /// <param name="count">行号</param>
         private void sectionAdd(int count)
         {
-            
-            //位置的信息是否为空 
-            if (FileMesege.sectionNode != null)
+            try
             {
-                //区域信息 选中节点非空
+                //位置的信息是否为空 
                 if (FileMesege.sectionNode != null)
                 {
-                    //devices 里面ini的名字
-                    //string keyVal = "";
-                    string path = Application.StartupPath + "\\devices\\";
-                    string[] parents = FileMesege.tnselectNode.Text.Split(' ');
-                    //把选中节点保存至文档中 
-                    TreeMesege tm = new TreeMesege();
-                    string[] sections = tm.GetSectionByNode(FileMesege.sectionNode).Split('\\');
-                    //撤销
-                    DataJson.totalList OldList = FileMesege.cmds.getListInfos();
-
-                    foreach (DataJson.Device dev in FileMesege.DeviceList)
+                    //区域信息 选中节点非空
+                    if (FileMesege.sectionNode != null)
                     {
-                        //判断IP地址
-                        if (dev.ip == parents[0])
+                        //devices 里面ini的名字
+                        //string keyVal = "";
+                        string path = Application.StartupPath + "\\devices\\";
+                        string[] parents = FileMesege.tnselectNode.Text.Split(' ');
+                        //把选中节点保存至文档中 
+                        TreeMesege tm = new TreeMesege();
+                        string[] sections = tm.GetSectionByNode(FileMesege.sectionNode).Split('\\');
+                        //撤销
+                        DataJson.totalList OldList = FileMesege.cmds.getListInfos();
+
+                        foreach (DataJson.Device dev in FileMesege.DeviceList)
                         {
-                            dataGridView1.Rows[count].Cells[4].Value = FileMesege.sectionNode.FullPath.Replace("\\", " ");
-                            if (count > 0)
+                            //判断IP地址
+                            if (dev.ip == parents[0])
                             {
-                                
-                                //为设备
-                                dev.module[count - 1].area1 = sections[0];
-                                dev.module[count - 1].area2 = sections[1];
-                                dev.module[count - 1].area3 = sections[2];
-                                dev.module[count - 1].area4 = sections[3];
-                                /*  暂时屏蔽  做Bind面板的时候再考虑
-                                //判断设备是否为key面板 是就添加设备信息
-                                keyVal = IniConfig.GetValue(path + dataGridView1.Rows[count].Cells[1].Value + ".ini", "input", "key");
-                                if (keyVal != "null")
+                                dataGridView1.Rows[count].Cells[4].Value = FileMesege.sectionNode.FullPath.Replace("\\", " ");
+                                if (count > 0)
                                 {
 
-                                    //获取IP最后一位
-                                    string IP = SocketUtil.GetIPstyle(parents[0], 4);
-                                    //获取10进制的设备ID号
-                                    string idstr = dataGridView1.Rows[count].Cells[0].Value.ToString(); //Regex.Replace(devs[0], @"[^\d]*", "");
-                                    //十六进制的ID号
-                                    string ID = SocketUtil.strtohexstr(idstr);
-                                    string address = IP + "00" + ID + "00";
-                                    TreeMesege tm = new TreeMesege();
-                                    //获取id1 - id4
-                                    string[] tmID = tm.GetSectionId(FileMesege.sectionNode.FullPath.Split('\\'));
-                                    foreach (DataJson.PointInfo e in FileMesege.PointList.equipment)
-                                    {
-                                        //循环判断 NameList中是否存在该节点
-                                        if (address == e.address && e.ip == parents[0])
-                                        {
-                                            e.id1 = tmID[0];
-                                            e.id2 = tmID[1];
-                                            e.id3 = tmID[2];
-                                            e.id4 = tmID[3];
-                                            //存在
-                                            //更新NameList里面的类型信息 
-                                            e.objType = "10.0_key";
-                                            return;
+                                    //为设备
+                                    dev.module[count - 1].area1 = sections[0];
+                                    dev.module[count - 1].area2 = sections[1];
+                                    dev.module[count - 1].area3 = sections[2];
+                                    dev.module[count - 1].area4 = sections[3];
+                                   
 
-                                        }
+                                }
+                                else
+                                {
+                                    //为网关
+                                    dev.area1 = sections[0];
+                                    dev.area2 = sections[1];
+                                    dev.area3 = sections[2];
+                                    dev.area4 = sections[3];
+                                    //dev.name = 
+                                }
 
-                                    }
-                                    //不存在 插入新信息
-                                    DataJson.Equipment eq = new DataJson.Equipment();
-                                    eq.id1 = tmID[0];
-                                    eq.id2 = tmID[1];
-                                    eq.id3 = tmID[2];
-                                    eq.id4 = tmID[3];
-                                    eq.ip = parents[0];
-                                    eq.address = address;
-                                    eq.objType = "10.0_key";
-                                    FileMesege.MapperList.equipment.Add(eq);
-                                }*/
-                                
+                                //撤销
+                                DataJson.totalList NewList = FileMesege.cmds.getListInfos();
+                                FileMesege.cmds.DoNewCommand(NewList, OldList);
+
                             }
-                            else
-                            {
-                                //为网关
-                                dev.area1 = sections[0];
-                                dev.area2 = sections[1];
-                                dev.area3 = sections[2];
-                                dev.area4 = sections[3];
-                                //dev.name = 
-                            }
-
-                            //撤销
-                            DataJson.totalList NewList = FileMesege.cmds.getListInfos();
-                            FileMesege.cmds.DoNewCommand(NewList, OldList);
-                            
                         }
+
+                        //FileMesege.DeviceList
                     }
 
-                    //FileMesege.DeviceList
+
                 }
-
-
             }
-           
+            catch { 
+            
+            }
            
         }
 
@@ -729,10 +690,6 @@ namespace eNet编辑器.DgvView
                                 }
                                 this.dataGridView1.Rows[dataGridView1.SelectedCells[i].RowIndex].Cells[5].Value = null;
                             }
-                            
-                         
-
-                         
                         }
 
 
@@ -826,6 +783,138 @@ namespace eNet编辑器.DgvView
         }
         #endregion
 
+        #region 复制 粘贴
+        /// <summary>
+        /// 复制设备的区域和名称
+        /// </summary>
+        public void copyData()
+        {
+            //获取当前选中单元格的列序号
+            int colIndex = dataGridView1.CurrentRow.Cells.IndexOf(dataGridView1.CurrentCell);
+            //当粘贴选中单元格为操作
+            if (colIndex == 4 || colIndex == 5)
+            {
+                string ip = FileMesege.tnselectNode.Text.Split(' ')[0];
+                if (dataGridView1.CurrentRow.Cells[0].Value.ToString() == "网关")
+                {
+                    //修改某IP下某ID 型号的设备信息
+                    foreach (DataJson.Device dev in FileMesege.DeviceList)
+                    {
+                        if (dev.ip == ip)
+                        {
+                            DataJson.Module md = new DataJson.Module();
+                            md.area1 = dev.area1;
+                            md.area2 = dev.area2;
+                            md.area3 = dev.area3;
+                            md.area4 = dev.area4;
+                            md.name = dev.name;
+                            FileMesege.copyDevice = md;
+                            break;
+                        }
+                    }
+                }
+                else
+                {
+                    int id = Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value);
+                    DataJson.Module md = DataListHelper.findDeviceByIP_ID(ip, id);
+                    if (md == null)
+                    {
+                        return;
+                    }
+                    FileMesege.copyDevice = md;
+                }
+                
+            }
+
+
+        }
+
+        /// <summary>
+        /// 粘贴点位的对象与参数
+        /// </summary>
+        public void pasteData()
+        {
+
+            try
+            {
+                bool ischange = false;
+                //撤销
+                DataJson.totalList OldList = FileMesege.cmds.getListInfos();
+                string ip = FileMesege.tnselectNode.Text.Split(' ')[0];
+                for (int i = 0; i < dataGridView1.SelectedCells.Count; i++)
+                {
+                    int colIndex = dataGridView1.SelectedCells[i].ColumnIndex;
+                    if (dataGridView1.Rows[dataGridView1.SelectedCells[i].RowIndex].Cells[0].Value.ToString() == "网关")
+                    {
+                        //修改某IP下某ID 型号的设备信息
+                        foreach (DataJson.Device dev in FileMesege.DeviceList)
+                        {
+                            if (dev.ip == ip)
+                            {
+                                if (colIndex == 4)
+                                {
+                                    ischange = true;
+                                    dev.area1 = FileMesege.copyDevice.area1;
+                                    dev.area2 = FileMesege.copyDevice.area2;
+                                    dev.area3 = FileMesege.copyDevice.area3;
+                                    dev.area4 = FileMesege.copyDevice.area4;
+                                    dataGridView1.Rows[dataGridView1.SelectedCells[i].RowIndex].Cells[4].Value = string.Format("{0} {1} {2} {3}", dev.area1, dev.area2, dev.area3, dev.area4).Trim();
+
+                                }//if
+                                else if (colIndex == 5)
+                                {
+                                    ischange = true;
+                                    dev.name = FileMesege.copyDevice.name;
+                                    dataGridView1.Rows[dataGridView1.SelectedCells[i].RowIndex].Cells[5].Value = FileMesege.copyDevice.name;
+                                }
+                                
+                            }
+                        }
+                    }
+                    else
+                    {
+                        int id = Convert.ToInt32(dataGridView1.Rows[dataGridView1.SelectedCells[i].RowIndex].Cells[0].Value);
+                        DataJson.Module md = DataListHelper.findDeviceByIP_ID(ip, id);
+                        if (md == null)
+                        {
+                            return;
+                        }
+                        if (colIndex == 4)
+                        {
+                            ischange = true;
+                            md.area1 = FileMesege.copyDevice.area1;
+                            md.area2 = FileMesege.copyDevice.area2;
+                            md.area3 = FileMesege.copyDevice.area3;
+                            md.area4 = FileMesege.copyDevice.area4;
+                            dataGridView1.Rows[dataGridView1.SelectedCells[i].RowIndex].Cells[4].Value = string.Format("{0} {1} {2} {3}", md.area1, md.area2, md.area3, md.area4).Trim();
+
+                        }//if
+                        else if (colIndex == 5)
+                        {
+                            ischange = true;
+                            md.name = FileMesege.copyDevice.name;
+                            dataGridView1.Rows[dataGridView1.SelectedCells[i].RowIndex].Cells[5].Value = FileMesege.copyDevice.name;
+                        }
+                    }
+                    
+                }
+                if (ischange)
+                {
+                    DataJson.totalList NewList = FileMesege.cmds.getListInfos();
+                    FileMesege.cmds.DoNewCommand(NewList, OldList);
+                }
+
+            }//try
+            catch
+            {
+
+            }
+
+
+        }
+
+
+        #endregion
 
 
        

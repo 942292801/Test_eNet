@@ -27,7 +27,7 @@ namespace eNet编辑器.ThreeView
         public event Action<string> clearTxtShow;
         public event Action updateAllView;
         public event Action dgvSensorAddItem;
-
+        public event Action addTitleNode;
         //判断true为选中父节点
         bool isSelectParetnNode = false;
 
@@ -135,6 +135,7 @@ namespace eNet编辑器.ThreeView
             FileMesege.sensorSelectNode = treeView1.SelectedNode;
             //DGVtimer添加定时
             dgvSensorAddItem();
+            addTitleNode();
             string[] names = treeView1.SelectedNode.Text.Split(' ');
             if (treeView1.SelectedNode.Parent != null)
             {

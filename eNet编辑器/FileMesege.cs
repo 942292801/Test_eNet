@@ -62,6 +62,7 @@ namespace eNet编辑器
         public static int cbTypeIndex = 0;
 
         //快捷键的复制 粘贴副本
+        public static DataJson.Module copyDevice = null;
         public static DataJson.PointInfo copyPoint = null;
         public static DataJson.sceneInfo copyScene = null;
         public static DataJson.timersInfo copyTimer = null;

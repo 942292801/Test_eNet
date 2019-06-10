@@ -21,6 +21,7 @@ namespace eNet编辑器.ThreeView
 
         public event DgvSceneAddItem2 dgvsceneAddItem;
         public event Action dgvtimerAddItem;
+        public event Action dgvVariableAddItem;
         //public event AddTitleDevCursor addTitleDevCursor;
         //public event AddTitlenNameCursor addTitlenNameCursor;
 
@@ -28,6 +29,7 @@ namespace eNet编辑器.ThreeView
         public event Action<string> addPoint;
         //添加变量
         public event Action<string> addVariable;
+
 
         public ThreeTitle()
         {
@@ -86,7 +88,7 @@ namespace eNet编辑器.ThreeView
                         case "name":
                             treeView1.CheckBoxes = false;
                             treeView1.ContextMenuStrip = null;
-                            nameAdd(num);
+                            nameAdd(num, SocketUtil.getIP(FileMesege.tnselectNode));
                             //MessageBox.Show("name");
                             break;
                         case "point":
@@ -97,23 +99,23 @@ namespace eNet编辑器.ThreeView
                         case "scene":
                             treeView1.CheckBoxes = true;
                             treeView1.ContextMenuStrip = contextMenuStrip2;
-                            sceneAdd(num);
+                            sceneAdd(num, SocketUtil.getIP(FileMesege.sceneSelectNode));
                             break;
                         case "timer":
                             treeView1.CheckBoxes = true;
                             treeView1.ContextMenuStrip = contextMenuStrip2;
-                            timerAdd(num);
+                            timerAdd(num, SocketUtil.getIP(FileMesege.timerSelectNode));
                             break;
                         case "panel":
                             treeView1.CheckBoxes = true;
                             treeView1.ContextMenuStrip = null;
-                            panelAdd(num);
+                            panelAdd(num, SocketUtil.getIP(FileMesege.panelSelectNode));
                             // MessageBox.Show("bind");
                             break;
                         case "sensor":
                              treeView1.CheckBoxes = true;
                              treeView1.ContextMenuStrip = null;
-                            sensorAdd(num);
+                            sensorAdd(num,SocketUtil.getIP(FileMesege.sensorSelectNode));
                             break;
                         case "logic":
                             // MessageBox.Show("logic");
@@ -142,9 +144,10 @@ namespace eNet编辑器.ThreeView
         /// 设备模式 设备按钮加载树状图节点
         /// </summary>
         /// <param name="num"></param>
-        private void nameAdd(int num)
+        private void nameAdd(int num,string ipLast)
         {
             TreeMesege tm = new TreeMesege();
+            ipLast = "@" + ipLast;
             string strs = IniConfig.GetValue(inifilepath, "equipment", keys[num]);
             //读取到的ini值为空 则加载当前选中节点的地址
             if (string.IsNullOrEmpty(strs) && FileMesege.PointList != null)
@@ -155,6 +158,10 @@ namespace eNet编辑器.ThreeView
                 {
                     for (int i = 0; i < infolist.Count; i++)
                     {
+                        if (!infolist[i].Contains(ipLast) && !infolist[i].Contains("@255"))
+                        {
+                            continue;
+                        }
                         tm.AddNode1(treeView1, infolist[i]);
                     }
                 }
@@ -215,32 +222,30 @@ namespace eNet编辑器.ThreeView
         /// 场景模式 按cbtype类型 来加载title节点
         /// </summary>
         /// <param name="num"></param>
-        private void sceneAdd(int num)
+        private void sceneAdd(int num,string ipLast)
         {
-           
-
                 try
                 {
                     //按cbtype类型 来加载title节点
                     switch (IniConfig.GetValue(inifilepath, "scene", keys[num]))
                     {
                         case "equipment":
-                            getNametree(FileMesege.PointList.equipment, "equipment");
+                            getNametree(FileMesege.PointList.equipment, "equipment", ipLast);
                             break;
                         case "scene":
-                            getNametree(FileMesege.PointList.scene, "scene");
+                            getNametree(FileMesege.PointList.scene, "scene", ipLast);
                             break;
                         case "timer":
-                            getNametree(FileMesege.PointList.timer, "timer");
+                            getNametree(FileMesege.PointList.timer, "timer", ipLast);
                             break;
                         case "link":
-                            getNametree(FileMesege.PointList.link, "link");
+                            getNametree(FileMesege.PointList.link, "link", ipLast);
                             break;
                         case "sensor":
-                            getNametree(FileMesege.PointList.link, "sensor");
+                            getNametree(FileMesege.PointList.link, "sensor", ipLast);
                             break;
                         case "variable":
-                            getNametree(FileMesege.PointList.variable, "variable");
+                            getNametree(FileMesege.PointList.variable, "variable", ipLast);
                             break;
                         default: break;
                     }
@@ -255,16 +260,31 @@ namespace eNet编辑器.ThreeView
         /// 由section  获取PointList节点 添加到title列表中
         /// </summary>
         /// <param name="list">Namelist相对应的子项表</param>
-        private void getNametree(List<DataJson.PointInfo> Jsonlist ,string type)
+        private void getNametree(List<DataJson.PointInfo> Jsonlist, string type, string ipLast)
         {
             TreeMesege tm = new TreeMesege();
-            
+            bool isScene = false;
+            if (type == "scene")
+            {
+                isScene = true;
+            }
+            else
+            {
+                ipLast = "@" + ipLast;
+                isScene = false;
+            }
             //加载选中位置的Point节点
             List<string> infolist = DataListHelper.GetPointNodeBySectionName(Jsonlist);
             if (infolist != null)
             {
                 for (int i = 0; i < infolist.Count; i++)
                 {
+                    if (!isScene && !infolist[i].Contains(ipLast) && !infolist[i].Contains("@255"))
+                    {
+                        //过滤ip地址
+                        continue;
+                    }
+
                     if (type == "link")
                     {
                         //加载面板
@@ -295,26 +315,26 @@ namespace eNet编辑器.ThreeView
         #endregion
 
         #region 定时加载节点
-        private void timerAdd(int num)
+        private void timerAdd(int num,string ipLast)
         {
-            sceneAdd(num);
+            sceneAdd(num, ipLast);
 
         }
         #endregion
 
 
         #region 面板加载节点
-        private void panelAdd(int num)
+        private void panelAdd(int num, string ipLast)
         {
-            sceneAdd(num);
+            sceneAdd(num, ipLast);
 
         }
         #endregion
 
         #region 感应加载节点
-        private void sensorAdd(int num)
+        private void sensorAdd(int num, string ipLast)
         {
-            sceneAdd(num);
+            sceneAdd(num, ipLast);
 
         }
         #endregion
@@ -575,12 +595,36 @@ namespace eNet编辑器.ThreeView
                 case "sensor":
                     break;
                 case "variable":
-                    //添加变量
-                    addVariable(keys[FileMesege.cbTypeIndex]);
+                    addVar(tn.Text);
+                    
                     break;
                 default: break;
             }
             //选中添加的类型 搜索Title  NameList中的各种类型
+        }
+
+        private void addVar(string nodeTxt)
+        {
+            try
+            {
+                
+                int number = Convert.ToInt32( Regex.Replace(nodeTxt, @"[^\d]*", ""));
+                FileMesege.titleinfo = nodeTxt.Split('+')[0];
+                //撤销
+                DataJson.totalList OldList = FileMesege.cmds.getListInfos();
+                for (int i = 0; i < number; i++)
+                {
+                    //添加变量
+                    addVariable(keys[FileMesege.cbTypeIndex]);
+                }
+                dgvVariableAddItem();
+                DataJson.totalList NewList = FileMesege.cmds.getListInfos();
+                FileMesege.cmds.DoNewCommand(NewList, OldList);
+                    
+            }
+            catch { 
+            
+            }
         }
 
         /// <summary>
@@ -692,11 +736,7 @@ namespace eNet编辑器.ThreeView
                 //NameList中查找到匹配的信息
                 if (eq.area1 == section_name[0] && eq.area2 == section_name[1] &&eq.area3 == section_name[2] &&eq.area4 == section_name[3] && eq.name == section_name[4])
                 {
-                    if (eq.type != IniHelper.findTypesIniTypebyName("场景") && eq.ip != ip)
-                    {
-                        //不同ip地址的不能添加
-                        return;
-                    }
+          
                     
                     //撤销
                     DataJson.totalList OldList = FileMesege.cmds.getListInfos();
@@ -827,11 +867,7 @@ namespace eNet编辑器.ThreeView
                 //NameList中查找到匹配的信息
                 if (eq.area1 == section_name[0] && eq.area2 == section_name[1] && eq.area3 == section_name[2] && eq.area4 == section_name[3] && eq.name == section_name[4])
                 {
-                    if (eq.ip != ip)
-                    {
-                        //不同ip地址的不能添加
-                        return;
-                    }
+
                     //撤销
                     DataJson.totalList OldList = FileMesege.cmds.getListInfos();
                     //新建表

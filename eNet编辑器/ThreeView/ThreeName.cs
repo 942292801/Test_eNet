@@ -29,11 +29,14 @@ namespace eNet编辑器.ThreeView
         public event DgvDeviceAddItem dgvDeviceAddItem;
         //显示那个加载网关框或者设备框
         public event ShowDeviceDgv showDevice;
+
+        public event Action addTitleNode;
+
         //添加新网关框定义
         tnGateway tng;
         //添加新的设备框定义
         tnDevice tnd;
-   
+        
         bool newitemflag = false;
         
         public ThreeName()
@@ -413,6 +416,7 @@ namespace eNet编辑器.ThreeView
             string filepath = string.Format("{0}\\devices\\{1}.ini", Application.StartupPath, treeView1.SelectedNode.Text.Split(' ')[1]); 
             TreeMesege tm = new TreeMesege();
             FileMesege.tnselectNode = treeView1.SelectedNode;
+            addTitleNode();
             //判断ini文件存在不存在
             if (File.Exists(filepath))
             {

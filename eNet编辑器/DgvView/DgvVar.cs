@@ -108,7 +108,14 @@ namespace eNet编辑器.DgvView
             {
                 return;
             }
+            //撤销
+            DataJson.totalList OldList = FileMesege.cmds.getListInfos();
             addVariable("变量");
+            //按照address最后一位重新排序
+            dgvVarAddItem();
+            DataJson.totalList NewList = FileMesege.cmds.getListInfos();
+            FileMesege.cmds.DoNewCommand(NewList, OldList);
+           
             
         }
 
@@ -157,14 +164,10 @@ namespace eNet编辑器.DgvView
             point.type = IniHelper.findTypesIniTypebyName(typeName);
             point.value = "";
 
-            //撤销
-            DataJson.totalList OldList = FileMesege.cmds.getListInfos();
+
             FileMesege.PointList.variable.Add(point);
-            DataJson.totalList NewList = FileMesege.cmds.getListInfos();
-            FileMesege.cmds.DoNewCommand(NewList, OldList);
-            //按照address最后一位重新排序
-            //variableSort();
-            dgvVarAddItem();
+
+           
         }
 
         /// <summary>

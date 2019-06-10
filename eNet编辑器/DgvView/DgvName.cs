@@ -1026,7 +1026,11 @@ namespace eNet编辑器.DgvView
                             {
                                 eq.address = "FFFFFFFF";
                                 eq.ip = "";
-                                eq.type = "";
+                                if (string.IsNullOrEmpty(eq.objType))
+                                {
+                                    eq.type = "";
+                                }
+                                eq.name = eq.name.Split('@')[0] + "@255";
                                 ischange = true;
                                 this.dataGridView1.Rows[dataGridView1.SelectedCells[i].RowIndex].Cells[2].Value = null;
                                 this.dataGridView1.Rows[dataGridView1.SelectedCells[i].RowIndex].Cells[3].Value = null;

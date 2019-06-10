@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DgvPanel));
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -42,12 +42,13 @@
             this.del = new System.Windows.Forms.DataGridViewButtonColumn();
             this.add = new DevComponents.DotNetBar.Controls.DataGridViewButtonXColumn();
             this.plInfoTitle = new System.Windows.Forms.Panel();
-            this.btnDel = new DevComponents.DotNetBar.ButtonX();
-            this.btnImport = new DevComponents.DotNetBar.ButtonX();
-            this.btnClear = new DevComponents.DotNetBar.ButtonX();
-            this.btnOff = new DevComponents.DotNetBar.ButtonX();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.btnDown = new DevComponents.DotNetBar.ButtonX();
+            this.btnImport = new DevComponents.DotNetBar.ButtonX();
             this.btnOn = new DevComponents.DotNetBar.ButtonX();
+            this.btnOff = new DevComponents.DotNetBar.ButtonX();
+            this.btnClear = new DevComponents.DotNetBar.ButtonX();
+            this.btnDel = new DevComponents.DotNetBar.ButtonX();
             this.symbolBox1 = new DevComponents.DotNetBar.Controls.SymbolBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -59,18 +60,27 @@
             this.panel6 = new System.Windows.Forms.Panel();
             this.panel8 = new System.Windows.Forms.Panel();
             this.panel7 = new System.Windows.Forms.Panel();
+            this.label5 = new System.Windows.Forms.Label();
+            this.imgSlider = new DevExpress.XtraEditors.Controls.ImageSlider();
             this.cbDevNum = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.cbKeyNum = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel10 = new System.Windows.Forms.Panel();
             this.symbolBox2 = new DevComponents.DotNetBar.Controls.SymbolBox();
             this.label3 = new System.Windows.Forms.Label();
             this.doubleClickTimer = new System.Windows.Forms.Timer(this.components);
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.imgList1 = new DevExpress.Utils.ImageCollection(this.components);
+            this.imgList2 = new DevExpress.Utils.ImageCollection(this.components);
+            this.imgList3 = new DevExpress.Utils.ImageCollection(this.components);
+            this.imgList4 = new DevExpress.Utils.ImageCollection(this.components);
+            this.imgList5 = new DevExpress.Utils.ImageCollection(this.components);
+            this.imgList6 = new DevExpress.Utils.ImageCollection(this.components);
+            this.imgList7 = new DevExpress.Utils.ImageCollection(this.components);
+            this.imgList8 = new DevExpress.Utils.ImageCollection(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.plInfoTitle.SuspendLayout();
+            this.flowLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -79,9 +89,16 @@
             this.panel6.SuspendLayout();
             this.panel8.SuspendLayout();
             this.panel7.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgSlider)).BeginInit();
             this.panel10.SuspendLayout();
-            this.flowLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.imgList1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgList2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgList3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgList4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgList5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgList6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgList7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgList8)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridView1
@@ -91,14 +108,14 @@
             this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
             this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridView1.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableAlwaysIncludeHeaderText;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("微软雅黑", 9F);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("微软雅黑", 9F);
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.id,
@@ -109,14 +126,14 @@
             this.showAddress,
             this.del,
             this.add});
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("微软雅黑", 9F);
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(235)))), ((int)(((byte)(248)))));
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("微软雅黑", 9F);
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(235)))), ((int)(((byte)(248)))));
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle6;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
@@ -212,26 +229,40 @@
             this.plInfoTitle.Size = new System.Drawing.Size(1006, 25);
             this.plInfoTitle.TabIndex = 17;
             // 
-            // btnDel
+            // flowLayoutPanel1
             // 
-            this.btnDel.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnDel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnDel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btnDel.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
-            this.btnDel.FocusCuesEnabled = false;
-            this.btnDel.Font = new System.Drawing.Font("黑体", 9F);
-            this.btnDel.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None;
-            this.btnDel.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnDel.HoverImage")));
-            this.btnDel.Image = ((System.Drawing.Image)(resources.GetObject("btnDel.Image")));
-            this.btnDel.Location = new System.Drawing.Point(141, 6);
-            this.btnDel.Margin = new System.Windows.Forms.Padding(6);
-            this.btnDel.Name = "btnDel";
-            this.btnDel.Size = new System.Drawing.Size(15, 15);
-            this.btnDel.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnDel.TabIndex = 19;
-            this.btnDel.Tooltip = "清空加载";
-            this.btnDel.Click += new System.EventHandler(this.btnDel_Click);
+            this.flowLayoutPanel1.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.flowLayoutPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.flowLayoutPanel1.Controls.Add(this.btnDown);
+            this.flowLayoutPanel1.Controls.Add(this.btnImport);
+            this.flowLayoutPanel1.Controls.Add(this.btnOn);
+            this.flowLayoutPanel1.Controls.Add(this.btnOff);
+            this.flowLayoutPanel1.Controls.Add(this.btnClear);
+            this.flowLayoutPanel1.Controls.Add(this.btnDel);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(843, 0);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(163, 25);
+            this.flowLayoutPanel1.TabIndex = 20;
+            // 
+            // btnDown
+            // 
+            this.btnDown.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnDown.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnDown.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnDown.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
+            this.btnDown.FocusCuesEnabled = false;
+            this.btnDown.Font = new System.Drawing.Font("黑体", 9F);
+            this.btnDown.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None;
+            this.btnDown.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnDown.HoverImage")));
+            this.btnDown.Image = ((System.Drawing.Image)(resources.GetObject("btnDown.Image")));
+            this.btnDown.Location = new System.Drawing.Point(6, 6);
+            this.btnDown.Margin = new System.Windows.Forms.Padding(6);
+            this.btnDown.Name = "btnDown";
+            this.btnDown.Size = new System.Drawing.Size(15, 15);
+            this.btnDown.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnDown.TabIndex = 16;
+            this.btnDown.Tooltip = "加载";
+            this.btnDown.Click += new System.EventHandler(this.btnDown_Click);
             // 
             // btnImport
             // 
@@ -254,26 +285,26 @@
             this.btnImport.Tooltip = "载入";
             this.btnImport.Click += new System.EventHandler(this.btnImport_Click);
             // 
-            // btnClear
+            // btnOn
             // 
-            this.btnClear.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnClear.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            this.btnOn.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnOn.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnClear.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btnClear.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
-            this.btnClear.FocusCuesEnabled = false;
-            this.btnClear.Font = new System.Drawing.Font("黑体", 9F);
-            this.btnClear.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None;
-            this.btnClear.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnClear.HoverImage")));
-            this.btnClear.Image = ((System.Drawing.Image)(resources.GetObject("btnClear.Image")));
-            this.btnClear.Location = new System.Drawing.Point(114, 6);
-            this.btnClear.Margin = new System.Windows.Forms.Padding(6);
-            this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(15, 15);
-            this.btnClear.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnClear.TabIndex = 5;
-            this.btnClear.Tooltip = "清空";
-            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
+            this.btnOn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnOn.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
+            this.btnOn.FocusCuesEnabled = false;
+            this.btnOn.Font = new System.Drawing.Font("黑体", 9F);
+            this.btnOn.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None;
+            this.btnOn.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnOn.HoverImage")));
+            this.btnOn.Image = ((System.Drawing.Image)(resources.GetObject("btnOn.Image")));
+            this.btnOn.Location = new System.Drawing.Point(60, 6);
+            this.btnOn.Margin = new System.Windows.Forms.Padding(6);
+            this.btnOn.Name = "btnOn";
+            this.btnOn.Size = new System.Drawing.Size(15, 15);
+            this.btnOn.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnOn.TabIndex = 15;
+            this.btnOn.Tooltip = "开启";
+            this.btnOn.Click += new System.EventHandler(this.btnOn_Click);
             // 
             // btnOff
             // 
@@ -296,46 +327,47 @@
             this.btnOff.Tooltip = "关闭";
             this.btnOff.Click += new System.EventHandler(this.btnOff_Click);
             // 
-            // btnDown
+            // btnClear
             // 
-            this.btnDown.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnDown.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnDown.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btnDown.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
-            this.btnDown.FocusCuesEnabled = false;
-            this.btnDown.Font = new System.Drawing.Font("黑体", 9F);
-            this.btnDown.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None;
-            this.btnDown.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnDown.HoverImage")));
-            this.btnDown.Image = ((System.Drawing.Image)(resources.GetObject("btnDown.Image")));
-            this.btnDown.Location = new System.Drawing.Point(6, 6);
-            this.btnDown.Margin = new System.Windows.Forms.Padding(6);
-            this.btnDown.Name = "btnDown";
-            this.btnDown.Size = new System.Drawing.Size(15, 15);
-            this.btnDown.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnDown.TabIndex = 16;
-            this.btnDown.Tooltip = "加载";
-            this.btnDown.Click += new System.EventHandler(this.btnDown_Click);
-            // 
-            // btnOn
-            // 
-            this.btnOn.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnOn.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            this.btnClear.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnClear.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnOn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btnOn.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
-            this.btnOn.FocusCuesEnabled = false;
-            this.btnOn.Font = new System.Drawing.Font("黑体", 9F);
-            this.btnOn.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None;
-            this.btnOn.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnOn.HoverImage")));
-            this.btnOn.Image = ((System.Drawing.Image)(resources.GetObject("btnOn.Image")));
-            this.btnOn.Location = new System.Drawing.Point(60, 6);
-            this.btnOn.Margin = new System.Windows.Forms.Padding(6);
-            this.btnOn.Name = "btnOn";
-            this.btnOn.Size = new System.Drawing.Size(15, 15);
-            this.btnOn.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnOn.TabIndex = 15;
-            this.btnOn.Tooltip = "开启";
-            this.btnOn.Click += new System.EventHandler(this.btnOn_Click);
+            this.btnClear.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnClear.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
+            this.btnClear.FocusCuesEnabled = false;
+            this.btnClear.Font = new System.Drawing.Font("黑体", 9F);
+            this.btnClear.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None;
+            this.btnClear.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnClear.HoverImage")));
+            this.btnClear.Image = ((System.Drawing.Image)(resources.GetObject("btnClear.Image")));
+            this.btnClear.Location = new System.Drawing.Point(114, 6);
+            this.btnClear.Margin = new System.Windows.Forms.Padding(6);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(15, 15);
+            this.btnClear.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnClear.TabIndex = 5;
+            this.btnClear.Tooltip = "清空";
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
+            // 
+            // btnDel
+            // 
+            this.btnDel.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnDel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnDel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnDel.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
+            this.btnDel.FocusCuesEnabled = false;
+            this.btnDel.Font = new System.Drawing.Font("黑体", 9F);
+            this.btnDel.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None;
+            this.btnDel.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnDel.HoverImage")));
+            this.btnDel.Image = ((System.Drawing.Image)(resources.GetObject("btnDel.Image")));
+            this.btnDel.Location = new System.Drawing.Point(141, 6);
+            this.btnDel.Margin = new System.Windows.Forms.Padding(6);
+            this.btnDel.Name = "btnDel";
+            this.btnDel.Size = new System.Drawing.Size(15, 15);
+            this.btnDel.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnDel.TabIndex = 19;
+            this.btnDel.Tooltip = "清空加载";
+            this.btnDel.Click += new System.EventHandler(this.btnDel_Click);
             // 
             // symbolBox1
             // 
@@ -448,16 +480,35 @@
             // panel7
             // 
             this.panel7.AutoScroll = true;
+            this.panel7.Controls.Add(this.label5);
+            this.panel7.Controls.Add(this.imgSlider);
             this.panel7.Controls.Add(this.cbDevNum);
             this.panel7.Controls.Add(this.label4);
             this.panel7.Controls.Add(this.cbKeyNum);
             this.panel7.Controls.Add(this.label2);
-            this.panel7.Controls.Add(this.pictureBox1);
             this.panel7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel7.Location = new System.Drawing.Point(0, 25);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(204, 479);
             this.panel7.TabIndex = 31;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(12, 115);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(68, 17);
+            this.label5.TabIndex = 36;
+            this.label5.Text = "面板样式：";
+            // 
+            // imgSlider
+            // 
+            this.imgSlider.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.imgSlider.Location = new System.Drawing.Point(34, 157);
+            this.imgSlider.Name = "imgSlider";
+            this.imgSlider.Size = new System.Drawing.Size(120, 120);
+            this.imgSlider.TabIndex = 35;
+            this.imgSlider.Text = "imageSlider1";
             // 
             // cbDevNum
             // 
@@ -504,15 +555,6 @@
             this.label2.TabIndex = 31;
             this.label2.Text = "面板按键数：";
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.pictureBox1.Location = new System.Drawing.Point(41, 134);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(124, 342);
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
-            // 
             // panel10
             // 
             this.panel10.BackColor = System.Drawing.Color.WhiteSmoke;
@@ -557,20 +599,78 @@
             this.doubleClickTimer.Interval = 40;
             this.doubleClickTimer.Tick += new System.EventHandler(this.doubleClickTimer_Tick);
             // 
-            // flowLayoutPanel1
+            // imgList1
             // 
-            this.flowLayoutPanel1.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.flowLayoutPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.flowLayoutPanel1.Controls.Add(this.btnDown);
-            this.flowLayoutPanel1.Controls.Add(this.btnImport);
-            this.flowLayoutPanel1.Controls.Add(this.btnOn);
-            this.flowLayoutPanel1.Controls.Add(this.btnOff);
-            this.flowLayoutPanel1.Controls.Add(this.btnClear);
-            this.flowLayoutPanel1.Controls.Add(this.btnDel);
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(843, 0);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(163, 25);
-            this.flowLayoutPanel1.TabIndex = 20;
+            this.imgList1.ImageSize = new System.Drawing.Size(120, 120);
+            this.imgList1.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("imgList1.ImageStream")));
+            this.imgList1.Images.SetKeyName(0, "button1_1.png");
+            this.imgList1.Images.SetKeyName(1, "button1_2.png");
+            // 
+            // imgList2
+            // 
+            this.imgList2.ImageSize = new System.Drawing.Size(120, 120);
+            this.imgList2.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("imgList2.ImageStream")));
+            this.imgList2.Images.SetKeyName(0, "button2_1.png");
+            this.imgList2.Images.SetKeyName(1, "button2_2.png");
+            this.imgList2.Images.SetKeyName(2, "button2_3.png");
+            this.imgList2.Images.SetKeyName(3, "button2_4.png");
+            // 
+            // imgList3
+            // 
+            this.imgList3.ImageSize = new System.Drawing.Size(120, 120);
+            this.imgList3.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("imgList3.ImageStream")));
+            this.imgList3.Images.SetKeyName(0, "button3_1.png");
+            this.imgList3.Images.SetKeyName(1, "button3_2.png");
+            this.imgList3.Images.SetKeyName(2, "button3_3.png");
+            // 
+            // imgList4
+            // 
+            this.imgList4.ImageSize = new System.Drawing.Size(120, 120);
+            this.imgList4.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("imgList4.ImageStream")));
+            this.imgList4.Images.SetKeyName(0, "button4_1.png");
+            this.imgList4.Images.SetKeyName(1, "button4_2.png");
+            this.imgList4.Images.SetKeyName(2, "button4_3.png");
+            this.imgList4.Images.SetKeyName(3, "button4_4.png");
+            this.imgList4.Images.SetKeyName(4, "button4_5.png");
+            this.imgList4.Images.SetKeyName(5, "button4_6.png");
+            // 
+            // imgList5
+            // 
+            this.imgList5.ImageSize = new System.Drawing.Size(120, 120);
+            this.imgList5.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("imgList5.ImageStream")));
+            this.imgList5.Images.SetKeyName(0, "button5_1.png");
+            this.imgList5.Images.SetKeyName(1, "button5_2.png");
+            this.imgList5.Images.SetKeyName(2, "button5_3.png");
+            this.imgList5.Images.SetKeyName(3, "button5_4.png");
+            // 
+            // imgList6
+            // 
+            this.imgList6.ImageSize = new System.Drawing.Size(120, 120);
+            this.imgList6.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("imgList6.ImageStream")));
+            this.imgList6.Images.SetKeyName(0, "button6_1.png");
+            this.imgList6.Images.SetKeyName(1, "button6_2.png");
+            this.imgList6.Images.SetKeyName(2, "button6_3.png");
+            this.imgList6.Images.SetKeyName(3, "button6_4.png");
+            this.imgList6.Images.SetKeyName(4, "button6_5.png");
+            // 
+            // imgList7
+            // 
+            this.imgList7.ImageSize = new System.Drawing.Size(120, 120);
+            this.imgList7.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("imgList7.ImageStream")));
+            this.imgList7.Images.SetKeyName(0, "button7_1.png");
+            this.imgList7.Images.SetKeyName(1, "button7_2.png");
+            this.imgList7.Images.SetKeyName(2, "button7_3.png");
+            // 
+            // imgList8
+            // 
+            this.imgList8.ImageSize = new System.Drawing.Size(120, 120);
+            this.imgList8.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("imgList8.ImageStream")));
+            this.imgList8.Images.SetKeyName(0, "button8_1.png");
+            this.imgList8.Images.SetKeyName(1, "button8_2.png");
+            this.imgList8.Images.SetKeyName(2, "button8_3.png");
+            this.imgList8.Images.SetKeyName(3, "button8_4.png");
+            this.imgList8.Images.SetKeyName(4, "button8_5.png");
+            this.imgList8.Images.SetKeyName(5, "button8_6.png");
             // 
             // DgvPanel
             // 
@@ -586,6 +686,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.plInfoTitle.ResumeLayout(false);
             this.plInfoTitle.PerformLayout();
+            this.flowLayoutPanel1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
@@ -595,10 +696,17 @@
             this.panel8.ResumeLayout(false);
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgSlider)).EndInit();
             this.panel10.ResumeLayout(false);
             this.panel10.PerformLayout();
-            this.flowLayoutPanel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.imgList1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgList2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgList3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgList4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgList5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgList6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgList7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgList8)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -626,7 +734,6 @@
         private DevComponents.DotNetBar.Controls.SymbolBox symbolBox2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Panel panel7;
-        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Timer doubleClickTimer;
         private System.Windows.Forms.ComboBox cbKeyNum;
         private System.Windows.Forms.Label label2;
@@ -642,5 +749,15 @@
         private System.Windows.Forms.Label label4;
         private DevComponents.DotNetBar.ButtonX btnDel;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private DevExpress.XtraEditors.Controls.ImageSlider imgSlider;
+        private DevExpress.Utils.ImageCollection imgList1;
+        private System.Windows.Forms.Label label5;
+        private DevExpress.Utils.ImageCollection imgList2;
+        private DevExpress.Utils.ImageCollection imgList3;
+        private DevExpress.Utils.ImageCollection imgList4;
+        private DevExpress.Utils.ImageCollection imgList5;
+        private DevExpress.Utils.ImageCollection imgList6;
+        private DevExpress.Utils.ImageCollection imgList7;
+        private DevExpress.Utils.ImageCollection imgList8;
     }
 }

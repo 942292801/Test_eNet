@@ -24,6 +24,8 @@ namespace eNet编辑器.ThreeView
         sceneAdd tss ;
         public event DgvSceneAddItem dgvsceneAddItem;
         public event Action updateAllView;
+
+        public event Action addTitleNode;
         //判断true为选中父节点
         bool newitemflag = false;
         public ThreeScene()
@@ -495,6 +497,7 @@ namespace eNet编辑器.ThreeView
             FileMesege.sceneSelectNode = treeView1.SelectedNode;
             //DGVSceme添加场景
             dgvsceneAddItem();
+            addTitleNode();
             string[] names = treeView1.SelectedNode.Text.Split(' ');
             if (treeView1.SelectedNode.Parent != null)
             {

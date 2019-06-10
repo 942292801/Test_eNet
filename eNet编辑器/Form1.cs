@@ -104,8 +104,12 @@ namespace eNet编辑器
             Control_Add(dgvname, plDgv);
             Control_Add(threetitle, plTitleTree);
 
-            //对象选择框调用
+            //刷新titleNode节点
             threesection.addTitleNode += new AddTitleNode(threesection_addTitleNode);
+            threepanel.addTitleNode += new Action(threesection_addTitleNode);
+            threescene.addTitleNode += new Action(threesection_addTitleNode);
+            threetimer.addTitleNode += new Action(threesection_addTitleNode);
+            threesensor.addTitleNode += new Action(threesection_addTitleNode);
             //显示加载窗口true 为网关 false 为设备
             threename.showDevice += new ShowDeviceDgv(threename_showDgvDevice);
             /////////////////////////////////////////////////////////////
@@ -163,6 +167,7 @@ namespace eNet编辑器
             //调用添加场景
             threetitle.dgvsceneAddItem += new DgvSceneAddItem2(dgvscene.dgvsceneAddItem);
             threetitle.dgvtimerAddItem += new Action(dgvtimer.TimerAddItem);
+            threetitle.dgvVariableAddItem += new Action(dgvvar.dgvVarAddItem);
             threetitle.addPoint += new Action<string>(dgvpoint.addPoint);
             threetitle.addVariable += new Action<string>(dgvvar.addVariable);
             threename.dgvDeviceAddItem += new DgvDeviceAddItem(dgvdevice.dgvDeviceAddItem);
@@ -259,8 +264,9 @@ namespace eNet编辑器
 
             threelogic.ThreeLogicAddNode();
             threesection.ThreeSEctionAddNode();
-            threetitle.ThreeTitleAddNode(cbType.SelectedIndex); 
+            threetitle.ThreeTitleAddNode(cbType.SelectedIndex);
 
+            dgvdevice.dgvDeviceAddItem();
             dgvname.dgvNameAddItem();
             dgvpoint.dgvPointAddItemBySection();
             dgvscene.dgvsceneAddItem();
@@ -352,8 +358,8 @@ namespace eNet编辑器
             }
         }
 
-        
 
+        bool isGwDgv = false;
         /// <summary>
         /// DgvName和DgvDevice两个框改变
         /// </summary>
@@ -363,10 +369,12 @@ namespace eNet编辑器
             if (flag)
             {
                 Control_Add(dgvdevice, plDgv);
+                isGwDgv = true;
             }
             else
             {
                 Control_Add(dgvname, plDgv);
+                isGwDgv = false;
             }
             
         }
@@ -426,7 +434,7 @@ namespace eNet编辑器
             this.txtShow.SelectionColor = Color.Black;
      
             txtShow.Select(txtShow.Text.Length - tmp.Length + 1,tmp.Length);
-            this.txtShow.SelectionColor = Color.Blue;
+            this.txtShow.SelectionColor = Color.Red;
             clearNum++;
             
         }
@@ -910,7 +918,11 @@ namespace eNet编辑器
                 switch (FileMesege.formType)
                 {
                     case "name":
-
+                        if (isGwDgv)
+                        {
+                            dgvdevice.copyData();
+                        }
+                        
                         break;
 
                     case "point":
@@ -949,7 +961,10 @@ namespace eNet编辑器
                 switch (FileMesege.formType)
                 {
                     case "name":
-
+                        if (isGwDgv)
+                        {
+                            dgvdevice.pasteData();
+                        }
                         break;
 
                     case "point":
