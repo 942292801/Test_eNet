@@ -1,0 +1,89 @@
+[
+    {
+        "module": [
+            {
+                "id": 1,
+                "device": "ET-R0816A",
+                "sn": "",
+                "ver": "",
+                "area1": "",
+                "area2": "",
+                "area3": "",
+                "area4": "",
+                "name": ""
+            }
+        ],
+        "master": "GW100A",
+        "ip": "192.168.1.230",
+        "mask": "",
+        "gateway": "",
+        "mac": "",
+        "sn": "",
+        "ver": "",
+        "area1": "",
+        "area2": "",
+        "area3": "",
+        "area4": "",
+        "name": ""
+    },
+    {
+        "module": [
+            {
+                "id": 1,
+                "device": "ET-R0816A",
+                "sn": "",
+                "ver": "",
+                "area1": "A区",
+                "area2": "A栋",
+                "area3": "1F",
+                "area4": "",
+                "name": ""
+            },
+            {
+                "id": 2,
+                "device": "ET-D0201A",
+                "sn": "",
+                "ver": "",
+                "area1": "A区",
+                "area2": "A栋",
+                "area3": "1F",
+                "area4": "",
+                "name": ""
+            },
+            {
+                "id": 3,
+                "device": "KP06A",
+                "sn": "",
+                "ver": "",
+                "area1": "A区",
+                "area2": "A栋",
+                "area3": "1F",
+                "area4": "",
+                "name": ""
+            },
+            {
+                "id": 4,
+                "device": "TEST01",
+                "sn": "",
+                "ver": "",
+                "area1": "A区",
+                "area2": "A栋",
+                "area3": "1F",
+                "area4": "",
+                "name": ""
+            }
+        ],
+        "master": "GW100A",
+        "ip": "192.168.1.231",
+        "mask": "",
+        "gateway": "",
+        "mac": "",
+        "sn": "",
+        "ver": "",
+        "area1": "A区",
+        "area2": "A栋",
+        "area3": "1F",
+        "area4": "",
+        "name": "配电箱#1_1"
+    }
+]

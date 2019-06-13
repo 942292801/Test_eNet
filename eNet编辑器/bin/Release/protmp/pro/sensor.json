@@ -1,1 +1,95 @@
-[]
+[
+    {
+        "sensors": [
+            {
+                "sensorsInfo": [
+                    {
+                        "id": 1,
+                        "pid": 0,
+                        "keyAddress": "",
+                        "objAddress": "",
+                        "objType": "",
+                        "opt": "",
+                        "optName": "",
+                        "fbmode": 0
+                    },
+                    {
+                        "id": 2,
+                        "pid": 0,
+                        "keyAddress": "E6020004",
+                        "objAddress": "",
+                        "objType": "",
+                        "opt": "",
+                        "optName": "",
+                        "fbmode": 0
+                    },
+                    {
+                        "id": 3,
+                        "pid": 0,
+                        "keyAddress": "E6020003",
+                        "objAddress": "",
+                        "objType": "",
+                        "opt": "",
+                        "optName": "",
+                        "fbmode": 0
+                    },
+                    {
+                        "id": 4,
+                        "pid": 0,
+                        "keyAddress": "E6020002",
+                        "objAddress": "",
+                        "objType": "",
+                        "opt": "",
+                        "optName": "",
+                        "fbmode": 0
+                    },
+                    {
+                        "id": 5,
+                        "pid": 0,
+                        "keyAddress": "E6020001",
+                        "objAddress": "",
+                        "objType": "",
+                        "opt": "",
+                        "optName": "",
+                        "fbmode": 0
+                    },
+                    {
+                        "id": 6,
+                        "pid": 0,
+                        "keyAddress": "E6030001",
+                        "objAddress": "",
+                        "objType": "",
+                        "opt": "",
+                        "optName": "",
+                        "fbmode": 0
+                    },
+                    {
+                        "id": 7,
+                        "pid": 0,
+                        "keyAddress": "E6030002",
+                        "objAddress": "",
+                        "objType": "",
+                        "opt": "",
+                        "optName": "",
+                        "fbmode": 0
+                    },
+                    {
+                        "id": 8,
+                        "pid": 0,
+                        "keyAddress": "",
+                        "objAddress": "",
+                        "objType": "",
+                        "opt": "",
+                        "optName": "",
+                        "fbmode": 0
+                    }
+                ],
+                "id": 1001,
+                "pid": 78789,
+                "ioNum": 8
+            }
+        ],
+        "IP": "192.168.1.230",
+        "Dev": "GW100A"
+    }
+]

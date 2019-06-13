@@ -106,6 +106,7 @@ namespace eNet编辑器
 
             //刷新titleNode节点
             threesection.addTitleNode += new AddTitleNode(threesection_addTitleNode);
+            threename.addTitleNode += new Action(threesection_addTitleNode);
             threepanel.addTitleNode += new Action(threesection_addTitleNode);
             threescene.addTitleNode += new Action(threesection_addTitleNode);
             threetimer.addTitleNode += new Action(threesection_addTitleNode);
@@ -135,7 +136,6 @@ namespace eNet编辑器
             dgvsensor.AppTxtShow += new Action<string>(AppTxtShow);
             threetimer.clearTxtShow += new Action<string>(clearTxtShow);
             dgvtimer.AppTxtShow += new Action<string>(AppTxtShow);
-            dgvvar.AppTxtShow += new Action<string>(AppTxtShow);
             tnGateway.AppTxtShow += new Action<string>(AppTxtShow);
             tnDevice.AppTxtShow += new Action<string>(AppTxtShow);
             /////////////////////////////////////////////////////////////
@@ -160,10 +160,10 @@ namespace eNet编辑器
             //TreeScene委托给Dgvscene窗口做
             threescene.dgvsceneAddItem += new DgvSceneAddItem(dgvscene.dgvsceneAddItem);
             //更新所有View的信息
-            threescene.updateAllView += new Action(updataAllView);
-            threetimer.updateAllView += new Action(updataAllView);
-            threepanel.updateAllView += new Action(updataAllView);
-            threesensor.updateAllView += new Action(updataAllView);
+            threescene.updateSceneView += new Action(updateDgvTreeByFormType);
+            threetimer.updateTimerView += new Action(updateDgvTreeByFormType);
+            threepanel.updatePanelView += new Action(updateDgvTreeByFormType);
+            threesensor.updateSensorView += new Action(updateDgvTreeByFormType);
             //调用添加场景
             threetitle.dgvsceneAddItem += new DgvSceneAddItem2(dgvscene.dgvsceneAddItem);
             threetitle.dgvtimerAddItem += new Action(dgvtimer.TimerAddItem);
@@ -205,7 +205,7 @@ namespace eNet编辑器
                 threetitle.ThreeTitleAddNode(cbType.SelectedIndex);
             });
 
-            dgvpoint.updateAllView += new Action(updataAllView);
+            dgvpoint.updatePointView += new Action(updateDgvTreeByFormType);
 
             dgvpanel.updateSectionTitleNode += new Action(() =>//刷新右边两树状图 取消选中状态 
             {
@@ -234,6 +234,7 @@ namespace eNet编辑器
         }
 
         #region 刷新窗口
+        
         /// <summary>
         /// 刷新左栏树状图的节点
         /// </summary>
@@ -250,6 +251,7 @@ namespace eNet编辑器
             //threepoint.ThreePointAddNode();
         }
 
+        
         /// <summary>
         /// 更新窗口所有信息
         /// </summary>
@@ -277,7 +279,10 @@ namespace eNet编辑器
             txtShow.Clear();
         }
 
-        private void updateDgv()
+        /// <summary>
+        /// 根据选择窗口类型更新窗口
+        /// </summary>
+        private void updateDgvTreeByFormType()
         {
             switch (FileMesege.formType)
             {
@@ -290,33 +295,44 @@ namespace eNet编辑器
                     {
                         dgvname.dgvNameAddItem();
                     }
+                    threename.ThreeNameAddNode();
                     break;
 
                 case "point":
                     dgvpoint.dgvPointAddItemBySection();
                     break;
                 case "scene":
+                    threescene.ThreeSceneAddNode();
                     dgvscene.dgvsceneAddItem();
                     break;
                 case "timer":
-                   
+                    threetimer.ThreeTimerAddNode();
+                    dgvtimer.TimerAddItem();
                     break;
                 case "panel":
+                    threepanel.ThreePanelAddNode();
                     dgvpanel.dgvPanelAddItem();
                     break;
                 case "sensor":
+                    threesensor.ThreeSensorAddNode();
                     dgvsensor.dgvSensorAddItem();
                     break;
                 case "logic":
-                   
+
                     break;
                 case "variable":
+                    threevar.ThreeVarAddNode();
                     dgvvar.dgvVarAddItem();
                     break;
-                
+
                 default: break;
             }
+
+            threesection.ThreeSEctionAddNode();
+            threetitle.ThreeTitleAddNode(cbType.SelectedIndex);
+            txtShow.Clear();
         }
+
         #endregion
 
 
@@ -619,7 +635,8 @@ namespace eNet编辑器
         /// <param name="typeName"></param>
         private void cbtypeName(string typeName)
         {
-            threetitle.keys.Clear();
+
+            ThreeTitle.keys.Clear();
             if (typeName == "point")
             {
                 DirectoryInfo folder = new DirectoryInfo(Application.StartupPath + "\\objs");
@@ -630,7 +647,7 @@ namespace eNet编辑器
                     name = IniConfig.GetValue(file.FullName, "define", "name");
                     if (name != "")
                     {
-                        threetitle.keys.Add(name);
+                        ThreeTitle.keys.Add(name);
                     }
 
                 }
@@ -638,14 +655,14 @@ namespace eNet编辑器
             else
             {
                 threetitle.inifilepath = Application.StartupPath + "\\names\\commonName.ini";
-                threetitle.keys = IniConfig.ReadKeys(typeName, threetitle.inifilepath);
+                ThreeTitle.keys = IniConfig.ReadKeys(typeName, threetitle.inifilepath);
             }
             cbType.Text = "";
             cbType.Items.Clear();
-            for (int i = 0; i < threetitle.keys.Count; i++)
+            for (int i = 0; i < ThreeTitle.keys.Count; i++)
             {
                 //添加所有的keys项
-                cbType.Items.Add(threetitle.keys[i]);
+                cbType.Items.Add(ThreeTitle.keys[i]);
             }
             if (cbType.Items.Count > 0)
             {
@@ -862,7 +879,7 @@ namespace eNet编辑器
                 return;
 
             FileMesege.cmds.UnDo();
-            updataAllView();
+            updateDgvTreeByFormType();
         }
 
 
@@ -873,7 +890,7 @@ namespace eNet编辑器
                 return;
 
             FileMesege.cmds.ReDo();
-            updataAllView();
+            updateDgvTreeByFormType();
         }
 
         private void btnUndo_Click(object sender, EventArgs e)
@@ -882,7 +899,7 @@ namespace eNet编辑器
                 return;
 
             FileMesege.cmds.UnDo();
-            updataAllView();
+            updateDgvTreeByFormType();
         }
 
         private void btnRedo_Click(object sender, EventArgs e)
@@ -891,7 +908,7 @@ namespace eNet编辑器
                 return;
 
             FileMesege.cmds.ReDo();
-            updataAllView();
+            updateDgvTreeByFormType();
         }
 
 

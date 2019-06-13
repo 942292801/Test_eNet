@@ -56,7 +56,7 @@ namespace eNet编辑器.ThreeView
         /// <summary>
         /// 存放ini define区域内 读取到的键值
         /// </summary>
-        public List<string> keys = new List<string>();
+        public static List<string> keys = new List<string>();
         
 
         /// <summary>
@@ -603,6 +603,10 @@ namespace eNet编辑器.ThreeView
             //选中添加的类型 搜索Title  NameList中的各种类型
         }
 
+        /// <summary>
+        /// 添加变量 根据变量后面 +？
+        /// </summary>
+        /// <param name="nodeTxt"></param>
         private void addVar(string nodeTxt)
         {
             try

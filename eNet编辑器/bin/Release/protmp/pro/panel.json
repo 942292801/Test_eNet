@@ -5,53 +5,53 @@
                 "panelsInfo": [
                     {
                         "id": 1,
-                        "pid": 0,
+                        "pid": 96299,
                         "keyAddress": "",
-                        "objAddress": "",
-                        "objType": "",
+                        "objAddress": "E6000101",
+                        "objType": "1.0_switch",
                         "opt": 0,
-                        "showAddress": "",
-                        "showMode": ""
+                        "showAddress": "E6000101",
+                        "showMode": "同步"
                     },
                     {
                         "id": 2,
-                        "pid": 0,
+                        "pid": 32244,
                         "keyAddress": "",
-                        "objAddress": "",
-                        "objType": "",
+                        "objAddress": "FFFFFFFF",
+                        "objType": "2.1_dimmer",
                         "opt": 0,
                         "showAddress": "",
                         "showMode": ""
                     },
                     {
                         "id": 3,
-                        "pid": 0,
+                        "pid": 96299,
                         "keyAddress": "",
-                        "objAddress": "",
-                        "objType": "",
+                        "objAddress": "E6000101",
+                        "objType": "1.0_switch",
                         "opt": 0,
-                        "showAddress": "",
-                        "showMode": ""
+                        "showAddress": "E6000101",
+                        "showMode": "同步"
                     },
                     {
                         "id": 4,
-                        "pid": 0,
+                        "pid": 96299,
                         "keyAddress": "",
-                        "objAddress": "",
-                        "objType": "",
+                        "objAddress": "E6000101",
+                        "objType": "1.0_switch",
                         "opt": 0,
-                        "showAddress": "",
-                        "showMode": ""
+                        "showAddress": "E6000101",
+                        "showMode": "同步"
                     },
                     {
                         "id": 5,
-                        "pid": 0,
+                        "pid": 96299,
                         "keyAddress": "",
-                        "objAddress": "",
-                        "objType": "",
+                        "objAddress": "E6000101",
+                        "objType": "1.0_switch",
                         "opt": 0,
-                        "showAddress": "",
-                        "showMode": ""
+                        "showAddress": "E6000101",
+                        "showMode": "同步"
                     },
                     {
                         "id": 6,
@@ -65,165 +65,11 @@
                     }
                 ],
                 "id": 1,
-                "pid": 92913,
-                "keyNum": 6
-            },
-            {
-                "panelsInfo": [
-                    {
-                        "id": 1,
-                        "pid": 95158,
-                        "keyAddress": "E7030001",
-                        "objAddress": "E7000101",
-                        "objType": "1.0_switch",
-                        "opt": 1,
-                        "showAddress": "E7000101",
-                        "showMode": "同步"
-                    },
-                    {
-                        "id": 2,
-                        "pid": 77671,
-                        "keyAddress": "E7030002",
-                        "objAddress": "E7000102",
-                        "objType": "1.0_switch",
-                        "opt": 1,
-                        "showAddress": "E7000102",
-                        "showMode": "同步"
-                    },
-                    {
-                        "id": 3,
-                        "pid": 92145,
-                        "keyAddress": "E7030003",
-                        "objAddress": "E7100001",
-                        "objType": "4.0_scene",
-                        "opt": 129,
-                        "showAddress": "E7100004",
-                        "showMode": "同步"
-                    },
-                    {
-                        "id": 3,
-                        "pid": 98370,
-                        "keyAddress": "E7030003",
-                        "objAddress": "E7100002",
-                        "objType": "4.0_scene",
-                        "opt": 145,
-                        "showAddress": "",
-                        "showMode": ""
-                    },
-                    {
-                        "id": 3,
-                        "pid": 35719,
-                        "keyAddress": "E7030003",
-                        "objAddress": "E7100003",
-                        "objType": "4.0_scene",
-                        "opt": 161,
-                        "showAddress": "",
-                        "showMode": ""
-                    },
-                    {
-                        "id": 4,
-                        "pid": 0,
-                        "keyAddress": "E7030004",
-                        "objAddress": "",
-                        "objType": "",
-                        "opt": 0,
-                        "showAddress": "",
-                        "showMode": ""
-                    },
-                    {
-                        "id": 5,
-                        "pid": 0,
-                        "keyAddress": "E7030005",
-                        "objAddress": "",
-                        "objType": "",
-                        "opt": 0,
-                        "showAddress": "",
-                        "showMode": ""
-                    },
-                    {
-                        "id": 6,
-                        "pid": 0,
-                        "keyAddress": "E7030006",
-                        "objAddress": "",
-                        "objType": "",
-                        "opt": 0,
-                        "showAddress": "",
-                        "showMode": ""
-                    }
-                ],
-                "id": 2,
-                "pid": 55293,
-                "keyNum": 6
-            },
-            {
-                "panelsInfo": [
-                    {
-                        "id": 1,
-                        "pid": 0,
-                        "keyAddress": "",
-                        "objAddress": "",
-                        "objType": "",
-                        "opt": 0,
-                        "showAddress": "",
-                        "showMode": ""
-                    },
-                    {
-                        "id": 2,
-                        "pid": 0,
-                        "keyAddress": "",
-                        "objAddress": "",
-                        "objType": "",
-                        "opt": 0,
-                        "showAddress": "",
-                        "showMode": ""
-                    },
-                    {
-                        "id": 3,
-                        "pid": 0,
-                        "keyAddress": "",
-                        "objAddress": "",
-                        "objType": "",
-                        "opt": 0,
-                        "showAddress": "",
-                        "showMode": ""
-                    },
-                    {
-                        "id": 4,
-                        "pid": 0,
-                        "keyAddress": "",
-                        "objAddress": "",
-                        "objType": "",
-                        "opt": 0,
-                        "showAddress": "",
-                        "showMode": ""
-                    },
-                    {
-                        "id": 5,
-                        "pid": 0,
-                        "keyAddress": "",
-                        "objAddress": "",
-                        "objType": "",
-                        "opt": 0,
-                        "showAddress": "",
-                        "showMode": ""
-                    },
-                    {
-                        "id": 6,
-                        "pid": 0,
-                        "keyAddress": "",
-                        "objAddress": "",
-                        "objType": "",
-                        "opt": 0,
-                        "showAddress": "",
-                        "showMode": ""
-                    }
-                ],
-                "id": 3,
-                "pid": 57930,
+                "pid": 55346,
                 "keyNum": 6
             }
         ],
-        "IP": "192.168.1.231",
+        "IP": "192.168.1.230",
         "Dev": "GW100A"
     }
 ]

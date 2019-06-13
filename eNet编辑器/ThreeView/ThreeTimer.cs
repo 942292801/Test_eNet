@@ -25,7 +25,7 @@ namespace eNet编辑器.ThreeView
         /// 主Form信息显示
         /// </summary>
         public event Action<string> clearTxtShow;
-        public event Action updateAllView;
+        public event Action updateTimerView;
         public event Action dgvTimerAddItem;
         public event Action addTitleNode;
 
@@ -255,7 +255,7 @@ namespace eNet编辑器.ThreeView
                     {
                         parentNodePath = treeView1.SelectedNode.FullPath;
                     }
-                    updateAllView();
+                    updateTimerView();
                     if (FileMesege.timerSelectNode != null)
                     {
                         try
@@ -355,7 +355,7 @@ namespace eNet编辑器.ThreeView
                             break;
                         }
                     }
-                    updateAllView();
+                    updateTimerView();
                 }
 
                 DataJson.totalList NewList = FileMesege.cmds.getListInfos();
@@ -401,7 +401,7 @@ namespace eNet编辑器.ThreeView
                             //移除timerlist的对象
                             timer.timers.Remove(tms);
                             //树状图移除选中节点
-                            updateAllView();
+                            updateTimerView();
                             DataJson.totalList NewList = FileMesege.cmds.getListInfos();
                             FileMesege.cmds.DoNewCommand(NewList, OldList);
                             //选中删除节点的下一个节点 没有节点就直接选中父节点

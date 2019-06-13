@@ -20,7 +20,7 @@ namespace eNet编辑器.DgvView
         public event Action updateTitleNode;
 
         //更新所有窗口
-        public event Action updateAllView;
+        public event Action updatePointView;
         public DgvPoint()
         {
             //设置窗体双缓存
@@ -310,8 +310,7 @@ namespace eNet编辑器.DgvView
         /// <param name="e"></param>
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            addPoint("");
-
+            addPoint(ThreeTitle.keys[FileMesege.cbTypeIndex]);
         }
 
         /// <summary>
@@ -335,6 +334,7 @@ namespace eNet编辑器.DgvView
             string[] sect = FileMesege.sectionNodeCopy.Split('\\');
             if (sect[0] == "全部")
             {
+                txtAppShow("选择区域不能为 <全部>");
                 return;
             }
             //计算name的排序
@@ -349,11 +349,17 @@ namespace eNet编辑器.DgvView
             point.ip = "";
        
             point.objType = IniHelper.findObjsFileNae_ByName(typeName);
-      
+
+            point.type = IniHelper.findObjValueType_ByobjTypeValue(point.objType, "value1");
+            if (string.IsNullOrEmpty(point.type))
+            {
+                point.value = "";
+            }
+            else
+            {
+                point.value = "value1";
+            }
             
-            //point.range = "";
-            point.type = "";
-            point.value = "";
 
             //撤销
             DataJson.totalList OldList = FileMesege.cmds.getListInfos();
@@ -384,7 +390,7 @@ namespace eNet编辑器.DgvView
                     if (eq.name != null && eq.name.Contains(FileMesege.titleinfo))
                     {
                         //获取序号
-                        num = Regex.Replace(eq.name.Split('@')[0], @"[^\d]*", "");
+                        num = eq.name.Split('@')[0].Replace(FileMesege.titleinfo, ""); //Regex.Replace(eq.name.Split('@')[0], @"[^\d]*", "");
                         if (num != "")
                         {
                             hasharry.Add(Convert.ToInt32(num));
@@ -452,7 +458,7 @@ namespace eNet编辑器.DgvView
                 DataJson.totalList NewList = FileMesege.cmds.getListInfos();
                 FileMesege.cmds.DoNewCommand(NewList, OldList);
                 multipleList.Clear();
-                updateAllView();
+                updatePointView();
             }
 
         }
@@ -487,7 +493,7 @@ namespace eNet编辑器.DgvView
                 DataJson.totalList NewList = FileMesege.cmds.getListInfos();
                 FileMesege.cmds.DoNewCommand(NewList, OldList);
                 multipleList.Clear();
-                updateAllView();
+                updatePointView();
             }
         }
         #endregion

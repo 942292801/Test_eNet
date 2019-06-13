@@ -27,7 +27,6 @@ namespace eNet编辑器.DgvView
             pi.SetValue(this.dataGridView1, true, null);
         }
 
-        public event Action<string> AppTxtShow;
 
         //临时存放旧的Name名称
         private string oldName = "";
@@ -110,6 +109,7 @@ namespace eNet编辑器.DgvView
             }
             //撤销
             DataJson.totalList OldList = FileMesege.cmds.getListInfos();
+            FileMesege.titleinfo = "变量";
             addVariable("变量");
             //按照address最后一位重新排序
             dgvVarAddItem();

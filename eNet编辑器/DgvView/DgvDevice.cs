@@ -10,6 +10,7 @@ using Newtonsoft.Json;
 using System.Net;
 using System.Reflection;
 using eNet编辑器.Properties;
+using System.Text.RegularExpressions;
 
 
 namespace eNet编辑器.DgvView
@@ -230,29 +231,24 @@ namespace eNet编辑器.DgvView
         private string infoindex()
         {
             
-            //string [] strs=null;
             string title = FileMesege.titleinfo;
+            //纯文字title
+            string strTitle = Regex.Replace(title, @"[\d]$", "");
+            HashSet<int> hasharry = new HashSet<int>();
             string num = "";
-            int count = 0;//判断当前是否有匹配
-            int old =0 , now = 0;
             foreach (DataJson.Device dev in FileMesege.DeviceList)
             {
                 if (dev.name != null)
                 {
                     //titleinfo与当前数组名相同
-                    if (dev.name.Contains(title))
+                    if (dev.name.Contains(strTitle))
                     {
-                        count++;
                         //去除当前名字
-                        num = dev.name.Replace(title, "");
-                        if (num != "" )
+                        num = dev.name.Replace(strTitle, "");
+                        if (num != "")
                         {
-                            now = Convert.ToInt32(num);
-                            if (now > old)
-                            {
-                                old = now;
-                            }
-                                                            
+                            hasharry.Add(Convert.ToInt32(num));
+
                         }
                     }
                     
@@ -261,35 +257,38 @@ namespace eNet编辑器.DgvView
                 {
                     if (md.name != null)
                     {
-                        //strs = md.location.Split('/');
-                        //表示当前有name
-     
-                            //sts的长度为2 且titleinfo与当前数组名相同 
-                            if ( md.name.Contains(title))
+                        //sts的长度为2 且titleinfo与当前数组名相同 
+                        if ( md.name.Contains(strTitle))
+                        {
+                            //去除当前名字
+                            num = md.name.Replace(strTitle, "");
+                            if (num != "")
                             {
-                                count++;
-                                //去除当前名字
-                                num = md.name.Replace(title, "");
-                                if (num != "")
-                                {
-                                    now = Convert.ToInt32(num);
-                                    if (now > old)
-                                    {
-                                        old = now;
-                                    }
+                                hasharry.Add(Convert.ToInt32(num));
 
-                                }
                             }
+                        }
                         
                     }//if
                 }
             }
-            if (count == 0)
+            //哈希表 同一个区域的所有序号都在里面
+            List<int> arry = hasharry.ToList<int>();
+            arry.Sort();
+            if (arry.Count == 0)
             {
-                return title;
+                //该区域节点前面数字不存在
+                return strTitle + "1";
             }
-            
-            return title + (old+1).ToString();
+            //哈希表 不存在序号 直接返回
+            for (int i = 0; i < arry.Count; i++)
+            {
+                if (arry[i] != i + 1)
+                {
+                    return strTitle + (i + 1).ToString();
+                }
+            }
+            return strTitle + (arry[arry.Count - 1] + 1).ToString();
         }
 
    

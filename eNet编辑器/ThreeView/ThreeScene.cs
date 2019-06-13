@@ -23,7 +23,7 @@ namespace eNet编辑器.ThreeView
         public event Action<string> clearTxtShow;
         sceneAdd tss ;
         public event DgvSceneAddItem dgvsceneAddItem;
-        public event Action updateAllView;
+        public event Action updateSceneView;
 
         public event Action addTitleNode;
         //判断true为选中父节点
@@ -249,7 +249,7 @@ namespace eNet编辑器.ThreeView
                     {
                         parentNodePath = treeView1.SelectedNode.FullPath;
                     }
-                    updateAllView();
+                    updateSceneView();
                     if (FileMesege.sceneSelectNode != null)
                     {
                         try
@@ -328,7 +328,7 @@ namespace eNet编辑器.ThreeView
                             break;
                         }
                     }
-                    updateAllView();
+                    updateSceneView();
                 }            
                
                 DataJson.totalList NewList = FileMesege.cmds.getListInfos();
@@ -374,7 +374,7 @@ namespace eNet编辑器.ThreeView
                             //移除scenelist的对象
                             sc.scenes.Remove(scs);
                             //树状图移除选中节点
-                            updateAllView();
+                            updateSceneView();
                             DataJson.totalList NewList = FileMesege.cmds.getListInfos();
                             FileMesege.cmds.DoNewCommand(NewList, OldList);
                             //选中删除节点的下一个节点 没有节点就直接选中父节点

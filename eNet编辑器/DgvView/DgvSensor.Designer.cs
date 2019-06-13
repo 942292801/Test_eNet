@@ -58,16 +58,16 @@
             this.symbolBox2 = new DevComponents.DotNetBar.Controls.SymbolBox();
             this.label3 = new System.Windows.Forms.Label();
             this.plInfoTitle = new System.Windows.Forms.Panel();
-            this.btnDel = new DevComponents.DotNetBar.ButtonX();
-            this.btnImport = new DevComponents.DotNetBar.ButtonX();
-            this.btnClear = new DevComponents.DotNetBar.ButtonX();
-            this.btnOff = new DevComponents.DotNetBar.ButtonX();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.btnDown = new DevComponents.DotNetBar.ButtonX();
             this.btnOn = new DevComponents.DotNetBar.ButtonX();
+            this.btnOff = new DevComponents.DotNetBar.ButtonX();
+            this.btnClear = new DevComponents.DotNetBar.ButtonX();
+            this.btnImport = new DevComponents.DotNetBar.ButtonX();
+            this.btnDel = new DevComponents.DotNetBar.ButtonX();
             this.symbolBox1 = new DevComponents.DotNetBar.Controls.SymbolBox();
             this.label1 = new System.Windows.Forms.Label();
             this.doubleClickTimer = new System.Windows.Forms.Timer(this.components);
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -388,85 +388,19 @@
             this.plInfoTitle.Size = new System.Drawing.Size(994, 25);
             this.plInfoTitle.TabIndex = 17;
             // 
-            // btnDel
+            // flowLayoutPanel1
             // 
-            this.btnDel.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnDel.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnDel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btnDel.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
-            this.btnDel.FocusCuesEnabled = false;
-            this.btnDel.Font = new System.Drawing.Font("黑体", 9F);
-            this.btnDel.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None;
-            this.btnDel.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnDel.HoverImage")));
-            this.btnDel.Image = ((System.Drawing.Image)(resources.GetObject("btnDel.Image")));
-            this.btnDel.Location = new System.Drawing.Point(141, 6);
-            this.btnDel.Margin = new System.Windows.Forms.Padding(6);
-            this.btnDel.Name = "btnDel";
-            this.btnDel.Size = new System.Drawing.Size(15, 15);
-            this.btnDel.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnDel.TabIndex = 19;
-            this.btnDel.Tooltip = "清空加载";
-            this.btnDel.Click += new System.EventHandler(this.btnDel_Click);
-            // 
-            // btnImport
-            // 
-            this.btnImport.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnImport.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnImport.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btnImport.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
-            this.btnImport.FocusCuesEnabled = false;
-            this.btnImport.Font = new System.Drawing.Font("黑体", 9F);
-            this.btnImport.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None;
-            this.btnImport.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnImport.HoverImage")));
-            this.btnImport.Image = ((System.Drawing.Image)(resources.GetObject("btnImport.Image")));
-            this.btnImport.Location = new System.Drawing.Point(114, 6);
-            this.btnImport.Margin = new System.Windows.Forms.Padding(6);
-            this.btnImport.Name = "btnImport";
-            this.btnImport.Size = new System.Drawing.Size(15, 15);
-            this.btnImport.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnImport.TabIndex = 18;
-            this.btnImport.Tooltip = "载入";
-            this.btnImport.Click += new System.EventHandler(this.btnImport_Click);
-            // 
-            // btnClear
-            // 
-            this.btnClear.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnClear.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnClear.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btnClear.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
-            this.btnClear.FocusCuesEnabled = false;
-            this.btnClear.Font = new System.Drawing.Font("黑体", 9F);
-            this.btnClear.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None;
-            this.btnClear.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnClear.HoverImage")));
-            this.btnClear.Image = ((System.Drawing.Image)(resources.GetObject("btnClear.Image")));
-            this.btnClear.Location = new System.Drawing.Point(87, 6);
-            this.btnClear.Margin = new System.Windows.Forms.Padding(6);
-            this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(15, 15);
-            this.btnClear.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnClear.TabIndex = 5;
-            this.btnClear.Tooltip = "清空";
-            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
-            // 
-            // btnOff
-            // 
-            this.btnOff.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnOff.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnOff.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btnOff.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
-            this.btnOff.FocusCuesEnabled = false;
-            this.btnOff.Font = new System.Drawing.Font("黑体", 9F);
-            this.btnOff.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None;
-            this.btnOff.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnOff.HoverImage")));
-            this.btnOff.Image = ((System.Drawing.Image)(resources.GetObject("btnOff.Image")));
-            this.btnOff.Location = new System.Drawing.Point(60, 6);
-            this.btnOff.Margin = new System.Windows.Forms.Padding(6);
-            this.btnOff.Name = "btnOff";
-            this.btnOff.Size = new System.Drawing.Size(15, 15);
-            this.btnOff.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnOff.TabIndex = 17;
-            this.btnOff.Tooltip = "关闭";
-            this.btnOff.Click += new System.EventHandler(this.btnOff_Click);
+            this.flowLayoutPanel1.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.flowLayoutPanel1.Controls.Add(this.btnDown);
+            this.flowLayoutPanel1.Controls.Add(this.btnImport);
+            this.flowLayoutPanel1.Controls.Add(this.btnOn);
+            this.flowLayoutPanel1.Controls.Add(this.btnOff);
+            this.flowLayoutPanel1.Controls.Add(this.btnClear);
+            this.flowLayoutPanel1.Controls.Add(this.btnDel);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(831, 0);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(163, 25);
+            this.flowLayoutPanel1.TabIndex = 20;
             // 
             // btnDown
             // 
@@ -499,7 +433,7 @@
             this.btnOn.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None;
             this.btnOn.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnOn.HoverImage")));
             this.btnOn.Image = ((System.Drawing.Image)(resources.GetObject("btnOn.Image")));
-            this.btnOn.Location = new System.Drawing.Point(33, 6);
+            this.btnOn.Location = new System.Drawing.Point(60, 6);
             this.btnOn.Margin = new System.Windows.Forms.Padding(6);
             this.btnOn.Name = "btnOn";
             this.btnOn.Size = new System.Drawing.Size(15, 15);
@@ -507,6 +441,86 @@
             this.btnOn.TabIndex = 15;
             this.btnOn.Tooltip = "开启";
             this.btnOn.Click += new System.EventHandler(this.btnOn_Click);
+            // 
+            // btnOff
+            // 
+            this.btnOff.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnOff.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnOff.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnOff.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
+            this.btnOff.FocusCuesEnabled = false;
+            this.btnOff.Font = new System.Drawing.Font("黑体", 9F);
+            this.btnOff.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None;
+            this.btnOff.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnOff.HoverImage")));
+            this.btnOff.Image = ((System.Drawing.Image)(resources.GetObject("btnOff.Image")));
+            this.btnOff.Location = new System.Drawing.Point(87, 6);
+            this.btnOff.Margin = new System.Windows.Forms.Padding(6);
+            this.btnOff.Name = "btnOff";
+            this.btnOff.Size = new System.Drawing.Size(15, 15);
+            this.btnOff.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnOff.TabIndex = 17;
+            this.btnOff.Tooltip = "关闭";
+            this.btnOff.Click += new System.EventHandler(this.btnOff_Click);
+            // 
+            // btnClear
+            // 
+            this.btnClear.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnClear.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnClear.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnClear.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
+            this.btnClear.FocusCuesEnabled = false;
+            this.btnClear.Font = new System.Drawing.Font("黑体", 9F);
+            this.btnClear.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None;
+            this.btnClear.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnClear.HoverImage")));
+            this.btnClear.Image = ((System.Drawing.Image)(resources.GetObject("btnClear.Image")));
+            this.btnClear.Location = new System.Drawing.Point(114, 6);
+            this.btnClear.Margin = new System.Windows.Forms.Padding(6);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(15, 15);
+            this.btnClear.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnClear.TabIndex = 5;
+            this.btnClear.Tooltip = "清空";
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
+            // 
+            // btnImport
+            // 
+            this.btnImport.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnImport.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnImport.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnImport.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
+            this.btnImport.FocusCuesEnabled = false;
+            this.btnImport.Font = new System.Drawing.Font("黑体", 9F);
+            this.btnImport.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None;
+            this.btnImport.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnImport.HoverImage")));
+            this.btnImport.Image = ((System.Drawing.Image)(resources.GetObject("btnImport.Image")));
+            this.btnImport.Location = new System.Drawing.Point(33, 6);
+            this.btnImport.Margin = new System.Windows.Forms.Padding(6);
+            this.btnImport.Name = "btnImport";
+            this.btnImport.Size = new System.Drawing.Size(15, 15);
+            this.btnImport.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnImport.TabIndex = 18;
+            this.btnImport.Tooltip = "载入";
+            this.btnImport.Click += new System.EventHandler(this.btnImport_Click);
+            // 
+            // btnDel
+            // 
+            this.btnDel.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnDel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnDel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnDel.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
+            this.btnDel.FocusCuesEnabled = false;
+            this.btnDel.Font = new System.Drawing.Font("黑体", 9F);
+            this.btnDel.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None;
+            this.btnDel.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnDel.HoverImage")));
+            this.btnDel.Image = ((System.Drawing.Image)(resources.GetObject("btnDel.Image")));
+            this.btnDel.Location = new System.Drawing.Point(141, 6);
+            this.btnDel.Margin = new System.Windows.Forms.Padding(6);
+            this.btnDel.Name = "btnDel";
+            this.btnDel.Size = new System.Drawing.Size(15, 15);
+            this.btnDel.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnDel.TabIndex = 19;
+            this.btnDel.Tooltip = "清空加载";
+            this.btnDel.Click += new System.EventHandler(this.btnDel_Click);
             // 
             // symbolBox1
             // 
@@ -540,20 +554,6 @@
             // 
             this.doubleClickTimer.Interval = 40;
             this.doubleClickTimer.Tick += new System.EventHandler(this.doubleClickTimer_Tick);
-            // 
-            // flowLayoutPanel1
-            // 
-            this.flowLayoutPanel1.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.flowLayoutPanel1.Controls.Add(this.btnDown);
-            this.flowLayoutPanel1.Controls.Add(this.btnOn);
-            this.flowLayoutPanel1.Controls.Add(this.btnOff);
-            this.flowLayoutPanel1.Controls.Add(this.btnClear);
-            this.flowLayoutPanel1.Controls.Add(this.btnImport);
-            this.flowLayoutPanel1.Controls.Add(this.btnDel);
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(831, 0);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(163, 25);
-            this.flowLayoutPanel1.TabIndex = 20;
             // 
             // DgvSensor
             // 

@@ -219,6 +219,7 @@ namespace eNet编辑器.DgvView
                     string section = FileMesege.sectionNode.FullPath.Replace("\\", " ");
                     if (section.Contains("全部"))
                     {
+                        txtAppShow("请正确选择区域或名称");
                         return;
                     }
                     //新建point点
@@ -280,7 +281,7 @@ namespace eNet编辑器.DgvView
                 title = title.Split('@')[0];
             }
             //纯文字title
-            string strTitle = Regex.Replace(title, @"\d", "");
+            string strTitle = Regex.Replace(title, @"[\d]$", "");
             HashSet<int> hasharry = new HashSet<int>();
             string num = "";
             //判断当前是否有匹配
@@ -297,7 +298,7 @@ namespace eNet编辑器.DgvView
                     if (eq.name != null && eq.name.Contains(strTitle))
                     {
                         //获取序号
-                        num = Regex.Replace(eq.name.Split('@')[0], @"[^\d]*", "");
+                        num = eq.name.Split('@')[0].Replace(strTitle,"");
                         if (num != "")
                         {
                             hasharry.Add(Convert.ToInt32(num));
@@ -569,16 +570,33 @@ namespace eNet编辑器.DgvView
                                     if (FileMesege.sectionNode != null && FileMesege.cbTypeIndex != 0)
                                     {
                                         //选中区域不为空 且不能是点位
-              
+
                                         //撤销
                                         DataJson.totalList OldList = FileMesege.cmds.getListInfos();
                                         sectionAdd();
                                         DataJson.totalList NewList = FileMesege.cmds.getListInfos();
                                         FileMesege.cmds.DoNewCommand(NewList, OldList);
-                                    }                             
+                                    }
+                                    else
+                                    {
+                                        txtAppShow("请正确选择区域或名称");
+                                    }
                                     break;
                                 case "NameName":
-                                    //不能单独赋值name
+                                    if (FileMesege.sectionNode != null && FileMesege.cbTypeIndex != 0)
+                                    {
+                                        //选中区域不为空 且不能是点位
+
+                                        //撤销
+                                        DataJson.totalList OldList = FileMesege.cmds.getListInfos();
+                                        sectionAdd();
+                                        DataJson.totalList NewList = FileMesege.cmds.getListInfos();
+                                        FileMesege.cmds.DoNewCommand(NewList, OldList);
+                                    }
+                                    else
+                                    {
+                                        txtAppShow("请正确选择区域或名称");
+                                    }
                                     break;
                                    
                                 case "NameState":

@@ -20,7 +20,7 @@ namespace eNet编辑器.ThreeView
         /// 主Form信息显示
         /// </summary>
         public event Action<string> clearTxtShow;
-        public event Action updateAllView;
+        public event Action updatePanelView;
         public event DgvPanelAddItem dgvpanelAddItem;
         public event Action addTitleNode;
         public ThreePanel()
@@ -325,7 +325,7 @@ namespace eNet编辑器.ThreeView
                     {
                         parentNodePath = treeView1.SelectedNode.FullPath;
                     }
-                    updateAllView();
+                    updatePanelView();
                     if (FileMesege.panelSelectNode != null)
                     {
                         try
@@ -416,7 +416,7 @@ namespace eNet编辑器.ThreeView
                             break;
                         }
                     }
-                    updateAllView();
+                    updatePanelView();
                     DataJson.totalList NewList = FileMesege.cmds.getListInfos();
                     FileMesege.cmds.DoNewCommand(NewList, OldList);
                 }
@@ -463,7 +463,7 @@ namespace eNet编辑器.ThreeView
                             //移除panellist的对象
                             pl.panels.Remove(pls);
                             //树状图移除选中节点
-                            updateAllView();
+                            updatePanelView();
                             DataJson.totalList NewList = FileMesege.cmds.getListInfos();
                             FileMesege.cmds.DoNewCommand(NewList, OldList);
                             //选中删除节点的下一个节点 没有节点就直接选中父节点

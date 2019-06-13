@@ -99,10 +99,14 @@ namespace eNet编辑器.AddForm
         #endregion
 
 
-        //编译
+        /// <summary>
+        /// 已经隐藏该按钮功能
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnCompile_Click(object sender, EventArgs e)
         {
-
+            //编译
             compile(cbIP.Text);
         }
 

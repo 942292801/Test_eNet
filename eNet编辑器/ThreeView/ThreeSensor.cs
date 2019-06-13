@@ -25,7 +25,7 @@ namespace eNet编辑器.ThreeView
         /// 主Form信息显示
         /// </summary>
         public event Action<string> clearTxtShow;
-        public event Action updateAllView;
+        public event Action updateSensorView;
         public event Action dgvSensorAddItem;
         public event Action addTitleNode;
         //判断true为选中父节点
@@ -311,7 +311,7 @@ namespace eNet编辑器.ThreeView
                     {
                         parentNodePath = treeView1.SelectedNode.FullPath;
                     }
-                    updateAllView();
+                    updateSensorView();
                     
                     if (FileMesege.sensorSelectNode != null)
                     {
@@ -402,7 +402,7 @@ namespace eNet编辑器.ThreeView
                             break;
                         }
                     }
-                    updateAllView();
+                    updateSensorView();
                     DataJson.totalList NewList = FileMesege.cmds.getListInfos();
                     FileMesege.cmds.DoNewCommand(NewList, OldList);
                 }
@@ -449,7 +449,7 @@ namespace eNet编辑器.ThreeView
                             //移除sensorlist的对象
                             sr.sensors.Remove(srs);
                             //树状图移除选中节点
-                            updateAllView();
+                            updateSensorView();
                             DataJson.totalList NewList = FileMesege.cmds.getListInfos();
                             FileMesege.cmds.DoNewCommand(NewList, OldList);
                             //选中删除节点的下一个节点 没有节点就直接选中父节点

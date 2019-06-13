@@ -404,24 +404,117 @@ namespace eNet编辑器.DgvView
             string ip = SocketUtil.strtohexstr(SocketUtil.getIP(FileMesege.sensorSelectNode));
             string id = SocketUtil.strtohexstr(cbDevNum.Text);
             string tmpNum = "";
+            //devices 里面ini的名字
+            List<int> ioNumList = findIONum();
+            
             DataJson.totalList OldList = FileMesege.cmds.getListInfos();
-            foreach (DataJson.sensorsInfo srInfo in srs.sensorsInfo)
+            int i = 0;
+            for (int j = dataGridView1.SelectedCells.Count -1; j >= 0; j--)
             {
-                //非设备类
-                tmpNum = SocketUtil.strtohexstr(srInfo.id.ToString());
-                while (tmpNum.Length < 4)
-                {
-                    tmpNum = tmpNum.Insert(0, "0");
-                }
-                //撤销 
+
                 
-                srInfo.keyAddress = string.Format("{0}{1}{2}", ip, id, tmpNum);
+                int colIndex = dataGridView1.SelectedCells[j].ColumnIndex;
+                if (colIndex != 1)
+                {
+                    continue;
+                }
+                int num = dataGridView1.SelectedCells[j].RowIndex;
+                DataJson.sensorsInfo srInfo = srs.sensorsInfo[num];
+                if (srInfo == null)
+                {
+                    return;
+                }
+                if (i >= ioNumList.Count)
+                {
+       
+                    srInfo.keyAddress = "";
+                    dataGridView1.Rows[dataGridView1.SelectedCells[j].RowIndex].Cells[1].Value = null;
+                }
+                else
+                {
+                    tmpNum = SocketUtil.strtohexstr(ioNumList[i].ToString());
+                    while (tmpNum.Length < 4)
+                    {
+                        tmpNum = tmpNum.Insert(0, "0");
+                    }
+                    srInfo.keyAddress = string.Format("{0}{1}{2}", ip, id, tmpNum);
+                    dataGridView1.Rows[dataGridView1.SelectedCells[j].RowIndex].Cells[1].Value = keyAddressTransform(srInfo.keyAddress);
+                }
+                
+                i++;
                 
             }
+
             DataJson.totalList NewList = FileMesege.cmds.getListInfos();
             FileMesege.cmds.DoNewCommand(NewList, OldList);
-            dgvSensorAddItem();
+            cbDevNum.SelectedItem = null;
+            //dgvSensorAddItem();
         }
+
+        /// <summary>
+        /// 寻找该设备号的信息IO数
+        /// </summary>
+        private List<int> findIONum()
+        {
+            List<int> ioNumList = new List<int>();
+            string ip = FileMesege.sensorSelectNode.Parent.Text.Split(' ')[0];
+            //devices 里面ini的名字
+            string ioVal = "";
+            string path = Application.StartupPath + "\\devices\\";
+            //从设备加载网关信息
+            foreach (DataJson.Device d in FileMesege.DeviceList)
+            {
+                if (d.ip == ip)
+                {
+                    //加载设备
+                    foreach (DataJson.Module m in d.module)
+                    {
+                        if (m.id.ToString() == cbDevNum.Text)
+                        {
+                            ioVal = IniConfig.GetValue(path + m.device + ".ini", "input", "io");
+                            //iniKEY的内容不为字符 null
+                            if (ioVal != "null")
+                            {
+                                if (ioVal.Contains("-"))
+                                {
+                                    string[] infos = ioVal.Split('-');
+                                    int j = Convert.ToInt32(infos[1]);
+                                    if (j > 100)
+                                    {
+                                        j = 100;
+                                    }
+                                    for (int i = Convert.ToInt32(infos[0]); i <= j; i++)
+                                    {
+                                        ioNumList.Add(i);
+                                    }
+                                }
+                                else if (ioVal.Contains(","))
+                                {
+                                    string[] infos = ioVal.Split(',');
+
+                                    for (int i = 0; i < infos.Length; i++)
+                                    {
+                                        ioNumList.Add(Convert.ToInt32( infos[i]));
+                                    }
+                                }
+                                else
+                                {
+                                    ioNumList.Add(Convert.ToInt32(ioVal));
+             
+                                }
+
+                            }
+                            break;
+                        }
+
+                    }
+                }
+
+            }
+            return ioNumList;
+        }
+
+
         #endregion
 
 
@@ -992,6 +1085,15 @@ namespace eNet编辑器.DgvView
                             case "objAddress":
                                 setTitleAddress();
                                 break;
+                            case "objType":
+                                setTitleAddress();
+                                break;
+                            case "section":
+                                setTitleAddress();
+                                break;
+                            case "name":
+                                setTitleAddress();
+                                break;
  
 
                             default: break;
@@ -1293,14 +1395,14 @@ namespace eNet编辑器.DgvView
             else
             {
                 //清空当条信息
-                //pls.panelsInfo[rowCount].keyAddress = "";
+                srsInfo.keyAddress = "";
                 srsInfo.objAddress = "";
                 srsInfo.objType = "";
                 srsInfo.opt = "";
                 srsInfo.optName = "";
                 srsInfo.pid = 0;
                 srsInfo.fbmode = 0;
-                //dataGridView1.Rows[rowCount].Cells[1].Value = null;
+                dataGridView1.Rows[rowCount].Cells[1].Value = null;
                 dataGridView1.Rows[rowCount].Cells[2].Value = "";
                 dataGridView1.Rows[rowCount].Cells[3].Value = null;
                 dataGridView1.Rows[rowCount].Cells[4].Value = "";
@@ -1490,16 +1592,7 @@ namespace eNet编辑器.DgvView
         /// </summary>
         private void setTitleAddress()
         {
-
-            if (dataGridView1.SelectedCells.Count != 1)
-            {
-                return;
-            }
-            int colIndex = dataGridView1.SelectedCells[0].ColumnIndex;
-            if (colIndex != 3 )
-            {
-                return;
-            }
+            //int colIndex = dataGridView1.SelectedCells[0].ColumnIndex;
             DataJson.sensors srs = DataListHelper.getSensorInfoListByNode();
             if (srs == null)
             {
@@ -1522,10 +1615,11 @@ namespace eNet编辑器.DgvView
 
             //撤销
             DataJson.totalList OldList = FileMesege.cmds.getListInfos();
-            if (colIndex == 3)
-            {
+            //if (colIndex == 3 || colIndex == 4 || colIndex == 5 || colIndex == 6 || !isClick)
+            //{
                 if (eq.type == srInfo.objType)
                 {
+                    srInfo.pid = eq.pid;
                     srInfo.objAddress = eq.address;
                     dataGridView1.Rows[id].Cells[3].Value = DgvMesege.addressTransform(srInfo.objAddress);
                     dataGridView1.Rows[id].Cells[5].Value = string.Format("{0} {1} {2} {3}", eq.area1, eq.area2, eq.area3, eq.area4).Trim();//改根据地址从信息里面获取
@@ -1533,6 +1627,7 @@ namespace eNet编辑器.DgvView
                 }
                 else
                 {
+                    srInfo.pid = eq.pid;
                     srInfo.objAddress = eq.address;
                     srInfo.objType = eq.type;
                     srInfo.opt = "";
@@ -1546,7 +1641,7 @@ namespace eNet编辑器.DgvView
                 }
 
 
-            }//if
+            //}//if
   
 
             DataJson.totalList NewList = FileMesege.cmds.getListInfos();
