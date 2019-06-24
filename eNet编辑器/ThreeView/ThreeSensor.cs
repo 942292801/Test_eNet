@@ -241,11 +241,8 @@ namespace eNet编辑器.ThreeView
 
             }
             //获取定时号
-            string num = Convert.ToInt32(sradd.Num).ToString("X");
-            while (num.Length < 4)
-            {
-                num = num.Insert(0, "0");
-            }
+            string num = Convert.ToInt32(sradd.Num).ToString("X4");
+
             //获取IP最后一位 定时为20
             string address = SocketUtil.GetIPstyle(sradd.Ip, 4) + "30" + num;
             if (FileMesege.sensorList == null)
@@ -364,11 +361,8 @@ namespace eNet编辑器.ThreeView
             if (sensoradd.DialogResult == DialogResult.OK)
             {
                 //获取面板号
-                string num = Convert.ToInt32(sensoradd.Num).ToString("X");
-                while (num.Length < 4)
-                {
-                    num = num.Insert(0, "0");
-                }
+                string num = Convert.ToInt32(sensoradd.Num).ToString("X4");
+
                 //获取IP最后一位
                 string address = SocketUtil.GetIPstyle(sensoradd.Ip, 4) + "30" + num;
                 //撤销

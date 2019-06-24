@@ -181,11 +181,8 @@ namespace eNet编辑器.ThreeView
 
             }
             //获取定时号
-            string num = Convert.ToInt32(timeradd.Num).ToString("X");
-            while (num.Length < 4)
-            {
-                num = num.Insert(0, "0");
-            }
+            string num = Convert.ToInt32(timeradd.Num).ToString("X4");
+
             //获取IP最后一位 定时为20
             string address = SocketUtil.GetIPstyle(timeradd.Ip, 4) + "20" + num;
             if (FileMesege.timerList == null)
@@ -317,11 +314,8 @@ namespace eNet编辑器.ThreeView
             if (tmadd.DialogResult == DialogResult.OK)
             {
                 //获取场景号
-                string num = Convert.ToInt32(tmadd.Num).ToString("X");
-                while (num.Length < 4)
-                {
-                    num = num.Insert(0, "0");
-                }
+                string num = Convert.ToInt32(tmadd.Num).ToString("X4");
+
                 //获取IP最后一位
                 string address = SocketUtil.GetIPstyle(tmadd.Ip, 4) + "20" + num;
                 //撤销

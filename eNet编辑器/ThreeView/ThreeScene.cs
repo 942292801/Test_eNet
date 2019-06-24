@@ -180,11 +180,7 @@ namespace eNet编辑器.ThreeView
                 
             }
             //获取场景号
-            string num = Convert.ToInt32(tss.Num).ToString("X");
-            while (num.Length < 4)
-            {
-                num = num.Insert(0, "0");
-            }
+            string num = Convert.ToInt32(tss.Num).ToString("X4");
             //获取IP最后一位
             string address = SocketUtil.GetIPstyle(tss.Ip, 4) + "10" + num;
             if (FileMesege.sceneList == null)
@@ -289,11 +285,8 @@ namespace eNet编辑器.ThreeView
             if (tss.DialogResult == DialogResult.OK)
             {
                 //获取场景号
-                string num = Convert.ToInt32(tss.Num).ToString("X");
-                while (num.Length < 4)
-                {
-                    num = num.Insert(0, "0");
-                }
+                string num = Convert.ToInt32(tss.Num).ToString("X4");
+
                 //获取IP最后一位
                 string address = SocketUtil.GetIPstyle(tss.Ip, 4) + "10" + num;
                 //撤销

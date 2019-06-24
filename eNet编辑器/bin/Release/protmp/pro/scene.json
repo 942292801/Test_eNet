@@ -2,17 +2,94 @@
     {
         "scenes": [
             {
-                "sceneInfo": [],
+                "sceneInfo": [
+                    {
+                        "id": 1,
+                        "pid": 92913,
+                        "type": "6.1_panel",
+                        "address": "E7300001",
+                        "opt": "00000000",
+                        "optName": "禁止面板触发",
+                        "Delay": 0
+                    }
+                ],
                 "id": 1,
-                "pid": 26523
+                "pid": 92145
             },
             {
                 "sceneInfo": [],
                 "id": 2,
-                "pid": 56136
+                "pid": 98370
+            },
+            {
+                "sceneInfo": [
+                    {
+                        "id": 1,
+                        "pid": 38806,
+                        "type": "9.0_variable",
+                        "address": "FEFB0301",
+                        "opt": "FE000101",
+                        "optName": "间接赋值",
+                        "Delay": 0
+                    }
+                ],
+                "id": 3,
+                "pid": 35719
+            },
+            {
+                "sceneInfo": [],
+                "id": 4,
+                "pid": 38646
+            },
+            {
+                "sceneInfo": [],
+                "id": 5,
+                "pid": 29195
+            },
+            {
+                "sceneInfo": [
+                    {
+                        "id": 1,
+                        "pid": 92913,
+                        "type": "6.1_panel",
+                        "address": "E7300001",
+                        "opt": "00000000",
+                        "optName": "禁止面板触发",
+                        "Delay": 10
+                    },
+                    {
+                        "id": 2,
+                        "pid": 55293,
+                        "type": "6.1_panel",
+                        "address": "E7300002",
+                        "opt": "00000000",
+                        "optName": "禁止面板触发",
+                        "Delay": 10
+                    },
+                    {
+                        "id": 3,
+                        "pid": 29195,
+                        "type": "4.0_scene",
+                        "address": "E7100005",
+                        "opt": "00000001",
+                        "optName": "场景调用",
+                        "Delay": 10
+                    },
+                    {
+                        "id": 4,
+                        "pid": 38646,
+                        "type": "4.0_scene",
+                        "address": "E7100004",
+                        "opt": "00000001",
+                        "optName": "场景调用",
+                        "Delay": 10
+                    }
+                ],
+                "id": 6,
+                "pid": 63893
             }
         ],
-        "IP": "192.168.1.230",
+        "IP": "192.168.1.231",
         "Dev": "GW100A"
     }
 ]

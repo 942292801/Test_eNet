@@ -62,6 +62,7 @@ namespace eNet编辑器
         }
         private void Form1_Load(object sender, EventArgs e)
         {
+            this.MaximumSize = new Size(Screen.PrimaryScreen.WorkingArea.Width, Screen.PrimaryScreen.WorkingArea.Height);
             LoadIni();
         }
 
@@ -1133,6 +1134,8 @@ namespace eNet编辑器
         }
 
         #endregion
+
+
 
 
 

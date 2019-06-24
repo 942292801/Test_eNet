@@ -279,6 +279,7 @@ namespace eNet编辑器.AddForm
         }
         //本地IP
         string Localip = "";
+
         /// <summary>
         /// 搜索按钮
         /// </summary>
@@ -288,15 +289,12 @@ namespace eNet编辑器.AddForm
         {
             //每次搜索清空树状图
             treeView1.Nodes.Clear();
-            
-            
-           
             udp.udpClose();
             udpIni();
             //获取本地IP
             Localip = SocketUtil.GetLocalIP();
             //udp 绑定
-            udp.udpBing(Localip, "6004");              
+            udp.udpBing(Localip, SocketUtil.GetFreePort().ToString());              
             
             //绑定成功
             if (udp.isbing)

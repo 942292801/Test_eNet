@@ -7,6 +7,7 @@ using System.Net.Sockets;
 using System.Threading;
 using System.Net;
 using System.Windows.Forms;
+using System.Net.NetworkInformation;
 
 namespace eNet编辑器
 {
@@ -27,11 +28,7 @@ namespace eNet编辑器
         {
             Regex reg = new Regex(@"(\d+)\.(\d+)\.(\d+)\.(\d+)");
             Match match = reg.Match(str);
-            string str2 = Convert.ToInt32(match.Groups[nub].Value).ToString("X");
-            if (str2.Length == 1)
-            {
-                str2 = str2.Insert(0, "0");
-            }
+            string str2 = Convert.ToInt32(match.Groups[nub].Value).ToString("X2");
             return str2;
         }
 
@@ -56,11 +53,8 @@ namespace eNet编辑器
         /// <returns></returns>
         public static string strtohexstr(string PortIP)
         {
-            PortIP = Convert.ToInt32(PortIP).ToString("X");
-            if (PortIP.Length == 1)
-            {
-                PortIP = PortIP.Insert(0, "0");
-            }
+            PortIP = Convert.ToInt32(PortIP).ToString("X2");
+
             return PortIP;
         }
 
@@ -200,6 +194,51 @@ namespace eNet编辑器
             {
                 return ex.Message;
             }
+        }
+
+        /// <summary>
+        /// 获取第一个可用的端口号
+        /// </summary>
+        /// <returns></returns>
+        public static int GetFreePort(int min = 1024, string address = null)
+        {
+            int freePort = -1;
+            Random random = new Random();
+            int[] freePorts = GetInUsedPort(address)
+                .Where(x => x >= (min = min <= 0 ? 1 : min))
+                .ToArray();
+            while (freePort < 0)
+            {
+                freePort = random.Next(min, 65536);
+                foreach (var item in freePorts)
+                {
+                    if (freePort == item)
+                        freePort = -1;
+                }
+            }
+            return freePort;
+        }
+
+        /// <summary>
+        /// 获取正在使用中的端口
+        /// </summary>
+        /// <param name="address">指定IP地址,默认全部地址</param>
+        /// <returns></returns>
+        public static int[] GetInUsedPort(string address = null)
+        {
+            List<IPEndPoint> localEP = new List<IPEndPoint>();
+            List<int> localPort = new List<int>();
+            IPGlobalProperties ipGlobalProperties = IPGlobalProperties.GetIPGlobalProperties();
+            localEP.AddRange(ipGlobalProperties.GetActiveTcpListeners());
+            localEP.AddRange(ipGlobalProperties.GetActiveUdpListeners());
+            localEP.AddRange(ipGlobalProperties.GetActiveTcpConnections().Select(item => item.LocalEndPoint));
+            foreach (var item in localEP.Distinct())
+            {
+                if (address == null || item.Address.ToString() == address)
+                    localPort.Add(item.Port);
+            }
+            localPort.Sort();
+            return localPort.Distinct().ToArray();
         }
 
         /// <summary>

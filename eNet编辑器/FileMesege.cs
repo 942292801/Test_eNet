@@ -168,7 +168,7 @@ namespace eNet编辑器
                 op.Filter = "项目文件（*.yc）|*.yc|压缩文件（*.zip）|*.zip|All files(*.*)|*.*";
                 if (op.ShowDialog() == DialogResult.OK)
                 {
-                    if (readProject(op.FileName.ToString()))
+                    if (readProject(op.FileName))
                     {
                         if (!historyPath.Contains(filePath))
                         {

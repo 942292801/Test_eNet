@@ -56,8 +56,28 @@ namespace eNet编辑器.AddForm
         List<string> devName = null;
 
         private string ip = "";
-        //是否为设备类型
-        private bool isDev = false;
+
+        LinkType linkType = LinkType.Dev;
+
+        /// <summary>
+        /// 链路的类型
+        /// </summary>
+        public enum LinkType
+        {
+            /// <summary>
+            /// 设备类型
+            /// </summary>
+            Dev = 1,
+            /// <summary>
+            /// 变量类型
+            /// </summary>
+            Var = 2,
+            /// <summary>
+            /// 场景 定时 面板 类型
+            /// </summary>
+            Com = 3
+            
+        }
 
         /// <summary>
         /// address下 2 的内容（ 类型，xx,0 ）
@@ -76,7 +96,7 @@ namespace eNet编辑器.AddForm
             if (obj != "" && obj != null)
             {
                 string[] infos = obj.Split('.');
-                if (!isDev)
+                if (linkType == LinkType.Com)
                 {
                     //不为设备类型
                     cb1.Text = infos[0];
@@ -84,12 +104,20 @@ namespace eNet编辑器.AddForm
                     cb4.Text = (Convert.ToInt32(infos[2]) * 256 + Convert.ToInt32(infos[3])).ToString();
                     findNum();
                 }
-                else
+                else if(linkType == LinkType.Dev)
                 {
                     cb1.Text = infos[0];
                     cb3.Text = infos[2];
                     cb4.Text = infos[3];
                     findPort(infos[2]);
+                }
+                else if (linkType == LinkType.Var)
+                {
+                    cb1.Text = infos[0];
+                    cb3.Text = infos[2];
+                    cb4.Text = infos[3];
+                    findVarNum();
+                    cb3.Enabled = false;
                 }
                    
             }
@@ -106,7 +134,7 @@ namespace eNet编辑器.AddForm
             
             //循环读取INI里面的信息
             DirectoryInfo folder = new DirectoryInfo(Application.StartupPath + "//types");
-            isDev = true;
+            
             HashSet<string> nameList = new HashSet<string>();
             foreach (FileInfo file in folder.GetFiles("*.ini"))
             {
@@ -124,9 +152,9 @@ namespace eNet编辑器.AddForm
         /// </summary>
         private void iniInfo(string findType)
         {
-         
-            isDev = true;
-  
+
+
+            linkType = LinkType.Dev;
             string fileName = IniHelper.findTypesIniTypebyName(findType);
             string path = string.Format("{0}//types//{1}.ini", Application.StartupPath, fileName);
        
@@ -142,6 +170,7 @@ namespace eNet编辑器.AddForm
                     cbs[i].Text = infos[1];
                     cb1.Text = "254";
                     cb3.Enabled = false;
+                    linkType = LinkType.Var;
                 }
                 else if (infos.Length == 2)
                 {
@@ -160,7 +189,7 @@ namespace eNet编辑器.AddForm
                     lb3.Text = "";
                     cb3.Text = "";
                     cb3.Enabled = false;
-                    isDev = false;
+                    linkType = LinkType.Com;
                 }
             }///foreach 
             
@@ -282,14 +311,19 @@ namespace eNet编辑器.AddForm
             cb3.Enabled = true;
             addIp();
             typeChange(cb2.Text);
-            if (isDev)
+            if (linkType == LinkType.Dev)
             {
                 addNumForDevList();
                 
             }
-            else
+            else if (linkType == LinkType.Com)
             {
                 findNum();
+                cb3.Enabled = false;
+            }
+            else if (linkType == LinkType.Var)
+            {
+                findVarNum();
                 cb3.Enabled = false;
             }
           
@@ -309,7 +343,7 @@ namespace eNet编辑器.AddForm
             string type = "";
             cb3.Text = "";
             cb4.Text = "";
-            isDev = true;
+            linkType = LinkType.Dev;
             foreach (FileInfo file in folder.GetFiles("*.ini"))
             {
                 type = IniConfig.GetValue(file.FullName, "address", "2").Split(',')[1];
@@ -330,6 +364,7 @@ namespace eNet编辑器.AddForm
                             cbs[i].Text = infos[1];
                             cb1.Text = "254";
                             cb3.Enabled = false;
+                            linkType = LinkType.Var;
 
                         }
                         else if (infos.Length == 2)
@@ -350,7 +385,7 @@ namespace eNet编辑器.AddForm
                             cb3.Items.Clear();
                             cb3.Text = "";
                             cb3.Enabled = false;
-                            isDev = false;
+                            linkType = LinkType.Com;
                         }
 
                     }
@@ -459,6 +494,26 @@ namespace eNet编辑器.AddForm
             catch { }
         }
 
+        /// <summary>
+        /// 查找当前ip的存在变量
+        /// </summary>
+        private void findVarNum()
+        {
+            try
+            {
+                cb4.Items.Clear();
+                foreach (DataJson.PointInfo point in FileMesege.PointList.variable)
+                {
+                    if (point.ip == ip)
+                    {
+
+                        cb4.Items.Add(Convert.ToInt32(point.address.Substring(6, 2), 16));
+                    }
+                }
+
+            }
+            catch { }
+        }
 
         private void btnDecid_Click(object sender, EventArgs e)
         {
