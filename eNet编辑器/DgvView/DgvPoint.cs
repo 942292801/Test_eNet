@@ -706,10 +706,7 @@ namespace eNet编辑器.DgvView
                         
                         break;
                     case "pointMultiple":
-                        if(!(bool)dataGridView1.Rows[rowNum].Cells[7].Value)
-                        {
-                            //Multiple(rowNum);
-                        }
+                 
                         
                         break;
                     default: break;
@@ -740,11 +737,12 @@ namespace eNet编辑器.DgvView
                         break;
                     case "pointMultiple":
                         dataGridView1.Rows[rowNum].Selected = true;//选中行
+     
                         //multipleList.Clear();
                         for (int i = dataGridView1.SelectedRows.Count; i > 0; i--)
                         {
-                            dataGridView1.SelectedRows[i-1].Cells[7].Value = true;
-                            
+                    
+                             dataGridView1.SelectedRows[i - 1].Cells[7].Value = true;                         
                         }
                         //提交编辑
                         dataGridView1.EndEdit();

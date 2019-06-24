@@ -54,7 +54,6 @@ namespace eNet编辑器
         public static string strtohexstr(string PortIP)
         {
             PortIP = Convert.ToInt32(PortIP).ToString("X2");
-
             return PortIP;
         }
 

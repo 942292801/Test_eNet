@@ -36,14 +36,6 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.keyAddress = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.objAddress = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.section = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.operation = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.del = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.add = new DevComponents.DotNetBar.Controls.DataGridViewButtonXColumn();
             this.ultraSplitter1 = new Infragistics.Win.Misc.UltraSplitter();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
@@ -60,14 +52,22 @@
             this.plInfoTitle = new System.Windows.Forms.Panel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.btnDown = new DevComponents.DotNetBar.ButtonX();
+            this.btnImport = new DevComponents.DotNetBar.ButtonX();
             this.btnOn = new DevComponents.DotNetBar.ButtonX();
             this.btnOff = new DevComponents.DotNetBar.ButtonX();
             this.btnClear = new DevComponents.DotNetBar.ButtonX();
-            this.btnImport = new DevComponents.DotNetBar.ButtonX();
             this.btnDel = new DevComponents.DotNetBar.ButtonX();
             this.symbolBox1 = new DevComponents.DotNetBar.Controls.SymbolBox();
             this.label1 = new System.Windows.Forms.Label();
             this.doubleClickTimer = new System.Windows.Forms.Timer(this.components);
+            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.keyAddress = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.objAddress = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.section = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.operation = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.del = new DevComponents.DotNetBar.Controls.DataGridViewButtonXColumn();
+            this.add = new DevComponents.DotNetBar.Controls.DataGridViewButtonXColumn();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -163,71 +163,6 @@
             this.dataGridView1.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dataGridView1_DataError);
             this.dataGridView1.KeyUp += new System.Windows.Forms.KeyEventHandler(this.dataGridView1_KeyUp);
             this.dataGridView1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.dataGridView1_MouseDown);
-            // 
-            // id
-            // 
-            this.id.HeaderText = "感应";
-            this.id.Name = "id";
-            this.id.ReadOnly = true;
-            this.id.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.id.Width = 60;
-            // 
-            // keyAddress
-            // 
-            this.keyAddress.HeaderText = "输入地址";
-            this.keyAddress.Name = "keyAddress";
-            this.keyAddress.ReadOnly = true;
-            this.keyAddress.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.keyAddress.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.keyAddress.Width = 80;
-            // 
-            // objAddress
-            // 
-            this.objAddress.HeaderText = "执行地址";
-            this.objAddress.Name = "objAddress";
-            this.objAddress.ReadOnly = true;
-            this.objAddress.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // section
-            // 
-            this.section.HeaderText = "区域";
-            this.section.Name = "section";
-            this.section.ReadOnly = true;
-            this.section.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.section.Width = 160;
-            // 
-            // name
-            // 
-            this.name.HeaderText = "名称";
-            this.name.Name = "name";
-            this.name.ReadOnly = true;
-            this.name.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.name.Width = 80;
-            // 
-            // operation
-            // 
-            this.operation.HeaderText = "操作";
-            this.operation.Name = "operation";
-            this.operation.ReadOnly = true;
-            this.operation.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.operation.Width = 140;
-            // 
-            // del
-            // 
-            this.del.HeaderText = "删除";
-            this.del.Name = "del";
-            this.del.ReadOnly = true;
-            this.del.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.del.Width = 55;
-            // 
-            // add
-            // 
-            this.add.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
-            this.add.HeaderText = "添加";
-            this.add.Name = "add";
-            this.add.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.add.Text = null;
-            this.add.Width = 60;
             // 
             // ultraSplitter1
             // 
@@ -422,6 +357,26 @@
             this.btnDown.Tooltip = "加载";
             this.btnDown.Click += new System.EventHandler(this.btnDown_Click);
             // 
+            // btnImport
+            // 
+            this.btnImport.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnImport.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnImport.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnImport.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
+            this.btnImport.FocusCuesEnabled = false;
+            this.btnImport.Font = new System.Drawing.Font("黑体", 9F);
+            this.btnImport.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None;
+            this.btnImport.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnImport.HoverImage")));
+            this.btnImport.Image = ((System.Drawing.Image)(resources.GetObject("btnImport.Image")));
+            this.btnImport.Location = new System.Drawing.Point(33, 6);
+            this.btnImport.Margin = new System.Windows.Forms.Padding(6);
+            this.btnImport.Name = "btnImport";
+            this.btnImport.Size = new System.Drawing.Size(15, 15);
+            this.btnImport.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnImport.TabIndex = 18;
+            this.btnImport.Tooltip = "载入";
+            this.btnImport.Click += new System.EventHandler(this.btnImport_Click);
+            // 
             // btnOn
             // 
             this.btnOn.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
@@ -482,26 +437,6 @@
             this.btnClear.Tooltip = "清空";
             this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
-            // btnImport
-            // 
-            this.btnImport.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnImport.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnImport.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btnImport.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
-            this.btnImport.FocusCuesEnabled = false;
-            this.btnImport.Font = new System.Drawing.Font("黑体", 9F);
-            this.btnImport.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None;
-            this.btnImport.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnImport.HoverImage")));
-            this.btnImport.Image = ((System.Drawing.Image)(resources.GetObject("btnImport.Image")));
-            this.btnImport.Location = new System.Drawing.Point(33, 6);
-            this.btnImport.Margin = new System.Windows.Forms.Padding(6);
-            this.btnImport.Name = "btnImport";
-            this.btnImport.Size = new System.Drawing.Size(15, 15);
-            this.btnImport.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnImport.TabIndex = 18;
-            this.btnImport.Tooltip = "载入";
-            this.btnImport.Click += new System.EventHandler(this.btnImport_Click);
-            // 
             // btnDel
             // 
             this.btnDel.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
@@ -554,6 +489,74 @@
             // 
             this.doubleClickTimer.Interval = 40;
             this.doubleClickTimer.Tick += new System.EventHandler(this.doubleClickTimer_Tick);
+            // 
+            // id
+            // 
+            this.id.HeaderText = "感应";
+            this.id.Name = "id";
+            this.id.ReadOnly = true;
+            this.id.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.id.Width = 60;
+            // 
+            // keyAddress
+            // 
+            this.keyAddress.HeaderText = "输入地址";
+            this.keyAddress.Name = "keyAddress";
+            this.keyAddress.ReadOnly = true;
+            this.keyAddress.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.keyAddress.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.keyAddress.Width = 80;
+            // 
+            // objAddress
+            // 
+            this.objAddress.HeaderText = "执行地址";
+            this.objAddress.Name = "objAddress";
+            this.objAddress.ReadOnly = true;
+            this.objAddress.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // section
+            // 
+            this.section.HeaderText = "区域";
+            this.section.Name = "section";
+            this.section.ReadOnly = true;
+            this.section.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.section.Width = 160;
+            // 
+            // name
+            // 
+            this.name.HeaderText = "名称";
+            this.name.Name = "name";
+            this.name.ReadOnly = true;
+            this.name.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.name.Width = 80;
+            // 
+            // operation
+            // 
+            this.operation.HeaderText = "操作";
+            this.operation.Name = "operation";
+            this.operation.ReadOnly = true;
+            this.operation.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.operation.Width = 140;
+            // 
+            // del
+            // 
+            this.del.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
+            this.del.HeaderText = "删除";
+            this.del.Name = "del";
+            this.del.ReadOnly = true;
+            this.del.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.del.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.del.Text = null;
+            this.del.Width = 55;
+            // 
+            // add
+            // 
+            this.add.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
+            this.add.HeaderText = "添加";
+            this.add.Name = "add";
+            this.add.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.add.Text = null;
+            this.add.Width = 60;
             // 
             // DgvSensor
             // 
@@ -614,14 +617,14 @@
         private DevComponents.DotNetBar.Controls.SymbolBox symbolBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Timer doubleClickTimer;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.DataGridViewTextBoxColumn id;
         private System.Windows.Forms.DataGridViewTextBoxColumn keyAddress;
         private System.Windows.Forms.DataGridViewTextBoxColumn objAddress;
         private System.Windows.Forms.DataGridViewTextBoxColumn section;
         private System.Windows.Forms.DataGridViewTextBoxColumn name;
         private System.Windows.Forms.DataGridViewTextBoxColumn operation;
-        private System.Windows.Forms.DataGridViewButtonColumn del;
+        private DevComponents.DotNetBar.Controls.DataGridViewButtonXColumn del;
         private DevComponents.DotNetBar.Controls.DataGridViewButtonXColumn add;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
     }
 }

@@ -34,13 +34,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DgvDevice));
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.DeviceNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DeviceName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DeviceSn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DeviceVer = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DeviceSection = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DeviceTitle = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NameState = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.plInfoTitle = new System.Windows.Forms.Panel();
@@ -48,6 +41,14 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btnNew = new DevComponents.DotNetBar.ButtonX();
             this.doubleClickTimer = new System.Windows.Forms.Timer(this.components);
+            this.DeviceNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DeviceName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DeviceSn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DeviceVer = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DeviceSection = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DeviceTitle = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NameState = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DeviceSet = new DevComponents.DotNetBar.Controls.DataGridViewButtonXColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -79,7 +80,8 @@
             this.DeviceVer,
             this.DeviceSection,
             this.DeviceTitle,
-            this.NameState});
+            this.NameState,
+            this.DeviceSet});
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("微软雅黑", 9F);
@@ -103,62 +105,6 @@
             this.dataGridView1.CellMouseMove += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_CellMouseMove);
             this.dataGridView1.KeyUp += new System.Windows.Forms.KeyEventHandler(this.dataGridView1_KeyUp);
             this.dataGridView1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.dataGridView1_MouseDown);
-            // 
-            // DeviceNum
-            // 
-            this.DeviceNum.HeaderText = "设备号";
-            this.DeviceNum.Name = "DeviceNum";
-            this.DeviceNum.ReadOnly = true;
-            this.DeviceNum.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.DeviceNum.Width = 80;
-            // 
-            // DeviceName
-            // 
-            this.DeviceName.HeaderText = "设备名";
-            this.DeviceName.Name = "DeviceName";
-            this.DeviceName.ReadOnly = true;
-            this.DeviceName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.DeviceName.Width = 80;
-            // 
-            // DeviceSn
-            // 
-            this.DeviceSn.HeaderText = "序列号";
-            this.DeviceSn.Name = "DeviceSn";
-            this.DeviceSn.ReadOnly = true;
-            this.DeviceSn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.DeviceSn.Width = 140;
-            // 
-            // DeviceVer
-            // 
-            this.DeviceVer.HeaderText = "版本号";
-            this.DeviceVer.Name = "DeviceVer";
-            this.DeviceVer.ReadOnly = true;
-            this.DeviceVer.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.DeviceVer.Width = 140;
-            // 
-            // DeviceSection
-            // 
-            this.DeviceSection.HeaderText = "区域";
-            this.DeviceSection.Name = "DeviceSection";
-            this.DeviceSection.ReadOnly = true;
-            this.DeviceSection.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.DeviceSection.Width = 180;
-            // 
-            // DeviceTitle
-            // 
-            this.DeviceTitle.HeaderText = "位置";
-            this.DeviceTitle.Name = "DeviceTitle";
-            this.DeviceTitle.ReadOnly = true;
-            this.DeviceTitle.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.DeviceTitle.Width = 60;
-            // 
-            // NameState
-            // 
-            this.NameState.HeaderText = "状态";
-            this.NameState.Name = "NameState";
-            this.NameState.ReadOnly = true;
-            this.NameState.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.NameState.Width = 60;
             // 
             // panel1
             // 
@@ -250,6 +196,71 @@
             this.doubleClickTimer.Interval = 40;
             this.doubleClickTimer.Tick += new System.EventHandler(this.doubleClickTimer_Tick);
             // 
+            // DeviceNum
+            // 
+            this.DeviceNum.HeaderText = "设备号";
+            this.DeviceNum.Name = "DeviceNum";
+            this.DeviceNum.ReadOnly = true;
+            this.DeviceNum.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.DeviceNum.Width = 80;
+            // 
+            // DeviceName
+            // 
+            this.DeviceName.HeaderText = "设备名";
+            this.DeviceName.Name = "DeviceName";
+            this.DeviceName.ReadOnly = true;
+            this.DeviceName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.DeviceName.Width = 80;
+            // 
+            // DeviceSn
+            // 
+            this.DeviceSn.HeaderText = "序列号";
+            this.DeviceSn.Name = "DeviceSn";
+            this.DeviceSn.ReadOnly = true;
+            this.DeviceSn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.DeviceSn.Width = 140;
+            // 
+            // DeviceVer
+            // 
+            this.DeviceVer.HeaderText = "版本号";
+            this.DeviceVer.Name = "DeviceVer";
+            this.DeviceVer.ReadOnly = true;
+            this.DeviceVer.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.DeviceVer.Width = 140;
+            // 
+            // DeviceSection
+            // 
+            this.DeviceSection.HeaderText = "区域";
+            this.DeviceSection.Name = "DeviceSection";
+            this.DeviceSection.ReadOnly = true;
+            this.DeviceSection.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.DeviceSection.Width = 180;
+            // 
+            // DeviceTitle
+            // 
+            this.DeviceTitle.HeaderText = "位置";
+            this.DeviceTitle.Name = "DeviceTitle";
+            this.DeviceTitle.ReadOnly = true;
+            this.DeviceTitle.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.DeviceTitle.Width = 60;
+            // 
+            // NameState
+            // 
+            this.NameState.HeaderText = "状态";
+            this.NameState.Name = "NameState";
+            this.NameState.ReadOnly = true;
+            this.NameState.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.NameState.Width = 60;
+            // 
+            // DeviceSet
+            // 
+            this.DeviceSet.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
+            this.DeviceSet.HeaderText = "设置";
+            this.DeviceSet.Name = "DeviceSet";
+            this.DeviceSet.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.DeviceSet.Text = null;
+            this.DeviceSet.Width = 60;
+            // 
             // DgvDevice
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -275,6 +286,11 @@
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Timer doubleClickTimer;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel plInfoTitle;
+        private DevComponents.DotNetBar.ButtonX btnNew;
+        private DevComponents.DotNetBar.Controls.SymbolBox symbolBox1;
+        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridViewTextBoxColumn DeviceNum;
         private System.Windows.Forms.DataGridViewTextBoxColumn DeviceName;
         private System.Windows.Forms.DataGridViewTextBoxColumn DeviceSn;
@@ -282,10 +298,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn DeviceSection;
         private System.Windows.Forms.DataGridViewTextBoxColumn DeviceTitle;
         private System.Windows.Forms.DataGridViewTextBoxColumn NameState;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Panel plInfoTitle;
-        private DevComponents.DotNetBar.ButtonX btnNew;
-        private DevComponents.DotNetBar.Controls.SymbolBox symbolBox1;
-        private System.Windows.Forms.Label label1;
+        private DevComponents.DotNetBar.Controls.DataGridViewButtonXColumn DeviceSet;
     }
 }

@@ -31,20 +31,12 @@
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DgvTimer));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.num = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.address = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.section = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.operation = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.shortTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.del = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.checkDel = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.ultraSplitter1 = new Infragistics.Win.Misc.UltraSplitter();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
@@ -74,16 +66,24 @@
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.btnAdd = new DevComponents.DotNetBar.ButtonX();
             this.btnOn = new DevComponents.DotNetBar.ButtonX();
+            this.btnOff = new DevComponents.DotNetBar.ButtonX();
             this.btnDown = new DevComponents.DotNetBar.ButtonX();
+            this.btnImport = new DevComponents.DotNetBar.ButtonX();
             this.btnClear = new DevComponents.DotNetBar.ButtonX();
             this.btnDel = new DevComponents.DotNetBar.ButtonX();
-            this.btnOff = new DevComponents.DotNetBar.ButtonX();
-            this.btnImport = new DevComponents.DotNetBar.ButtonX();
             this.symbolBox1 = new DevComponents.DotNetBar.Controls.SymbolBox();
             this.label1 = new System.Windows.Forms.Label();
             this.styleManager1 = new DevComponents.DotNetBar.StyleManager(this.components);
             this.checkBoxItem1 = new DevComponents.DotNetBar.CheckBoxItem();
             this.doubleClickTimer = new System.Windows.Forms.Timer(this.components);
+            this.num = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.address = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.section = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.operation = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.shortTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.del = new DevComponents.DotNetBar.Controls.DataGridViewButtonXColumn();
+            this.checkDel = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -181,66 +181,6 @@
             this.dataGridView1.KeyUp += new System.Windows.Forms.KeyEventHandler(this.dataGridView1_KeyUp);
             this.dataGridView1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.dataGridView1_MouseDown);
             // 
-            // num
-            // 
-            this.num.HeaderText = "序号";
-            this.num.Name = "num";
-            this.num.ReadOnly = true;
-            this.num.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.num.Width = 60;
-            // 
-            // address
-            // 
-            this.address.HeaderText = "地址";
-            this.address.Name = "address";
-            this.address.ReadOnly = true;
-            // 
-            // section
-            // 
-            this.section.HeaderText = "区域";
-            this.section.Name = "section";
-            this.section.ReadOnly = true;
-            this.section.Width = 160;
-            // 
-            // name
-            // 
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.name.DefaultCellStyle = dataGridViewCellStyle2;
-            this.name.HeaderText = "名称";
-            this.name.Name = "name";
-            this.name.ReadOnly = true;
-            this.name.Width = 80;
-            // 
-            // operation
-            // 
-            this.operation.HeaderText = "操作";
-            this.operation.Name = "operation";
-            this.operation.ReadOnly = true;
-            this.operation.Width = 140;
-            // 
-            // shortTime
-            // 
-            this.shortTime.HeaderText = "定时时间";
-            this.shortTime.Name = "shortTime";
-            this.shortTime.ReadOnly = true;
-            this.shortTime.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.shortTime.Width = 160;
-            // 
-            // del
-            // 
-            this.del.HeaderText = "删除";
-            this.del.Name = "del";
-            this.del.ReadOnly = true;
-            this.del.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.del.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.del.Width = 55;
-            // 
-            // checkDel
-            // 
-            this.checkDel.HeaderText = "";
-            this.checkDel.Name = "checkDel";
-            this.checkDel.Width = 50;
-            // 
             // ultraSplitter1
             // 
             this.ultraSplitter1.Location = new System.Drawing.Point(204, 0);
@@ -302,6 +242,7 @@
             this.listbox.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Rounded;
             this.listbox.BackgroundStyle.TextColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarCaptionText;
             this.listbox.BackgroundStyle.TextShadowColor = System.Drawing.Color.Blue;
+            this.listbox.CheckStateMember = null;
             this.listbox.ContainerControlProcessDialogKey = true;
             this.listbox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.listbox.DragDropSupport = true;
@@ -682,6 +623,26 @@
             this.btnOn.Tooltip = "开启";
             this.btnOn.Click += new System.EventHandler(this.btnOn_Click);
             // 
+            // btnOff
+            // 
+            this.btnOff.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnOff.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnOff.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnOff.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
+            this.btnOff.FocusCuesEnabled = false;
+            this.btnOff.Font = new System.Drawing.Font("黑体", 9F);
+            this.btnOff.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None;
+            this.btnOff.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnOff.HoverImage")));
+            this.btnOff.Image = ((System.Drawing.Image)(resources.GetObject("btnOff.Image")));
+            this.btnOff.Location = new System.Drawing.Point(60, 6);
+            this.btnOff.Margin = new System.Windows.Forms.Padding(6);
+            this.btnOff.Name = "btnOff";
+            this.btnOff.Size = new System.Drawing.Size(15, 15);
+            this.btnOff.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnOff.TabIndex = 13;
+            this.btnOff.Tooltip = "关闭";
+            this.btnOff.Click += new System.EventHandler(this.btnOff_Click);
+            // 
             // btnDown
             // 
             this.btnDown.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
@@ -701,6 +662,25 @@
             this.btnDown.TabIndex = 3;
             this.btnDown.Tooltip = "加载";
             this.btnDown.Click += new System.EventHandler(this.btnDown_Click);
+            // 
+            // btnImport
+            // 
+            this.btnImport.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnImport.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnImport.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnImport.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
+            this.btnImport.FocusCuesEnabled = false;
+            this.btnImport.Font = new System.Drawing.Font("黑体", 9F);
+            this.btnImport.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None;
+            this.btnImport.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnImport.HoverImage")));
+            this.btnImport.Image = ((System.Drawing.Image)(resources.GetObject("btnImport.Image")));
+            this.btnImport.Location = new System.Drawing.Point(114, 6);
+            this.btnImport.Margin = new System.Windows.Forms.Padding(6);
+            this.btnImport.Name = "btnImport";
+            this.btnImport.Size = new System.Drawing.Size(15, 15);
+            this.btnImport.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnImport.TabIndex = 14;
+            this.btnImport.Tooltip = "载入";
             // 
             // btnClear
             // 
@@ -741,45 +721,6 @@
             this.btnDel.TabIndex = 6;
             this.btnDel.Tooltip = "删除选中行";
             this.btnDel.Click += new System.EventHandler(this.btnDel_Click);
-            // 
-            // btnOff
-            // 
-            this.btnOff.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnOff.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnOff.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btnOff.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
-            this.btnOff.FocusCuesEnabled = false;
-            this.btnOff.Font = new System.Drawing.Font("黑体", 9F);
-            this.btnOff.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None;
-            this.btnOff.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnOff.HoverImage")));
-            this.btnOff.Image = ((System.Drawing.Image)(resources.GetObject("btnOff.Image")));
-            this.btnOff.Location = new System.Drawing.Point(60, 6);
-            this.btnOff.Margin = new System.Windows.Forms.Padding(6);
-            this.btnOff.Name = "btnOff";
-            this.btnOff.Size = new System.Drawing.Size(15, 15);
-            this.btnOff.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnOff.TabIndex = 13;
-            this.btnOff.Tooltip = "关闭";
-            this.btnOff.Click += new System.EventHandler(this.btnOff_Click);
-            // 
-            // btnImport
-            // 
-            this.btnImport.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnImport.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnImport.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btnImport.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
-            this.btnImport.FocusCuesEnabled = false;
-            this.btnImport.Font = new System.Drawing.Font("黑体", 9F);
-            this.btnImport.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None;
-            this.btnImport.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnImport.HoverImage")));
-            this.btnImport.Image = ((System.Drawing.Image)(resources.GetObject("btnImport.Image")));
-            this.btnImport.Location = new System.Drawing.Point(114, 6);
-            this.btnImport.Margin = new System.Windows.Forms.Padding(6);
-            this.btnImport.Name = "btnImport";
-            this.btnImport.Size = new System.Drawing.Size(15, 15);
-            this.btnImport.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnImport.TabIndex = 14;
-            this.btnImport.Tooltip = "载入";
             // 
             // symbolBox1
             // 
@@ -823,6 +764,69 @@
             // 
             this.doubleClickTimer.Interval = 40;
             this.doubleClickTimer.Tick += new System.EventHandler(this.doubleClickTimer_Tick);
+            // 
+            // num
+            // 
+            this.num.HeaderText = "序号";
+            this.num.Name = "num";
+            this.num.ReadOnly = true;
+            this.num.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.num.Width = 60;
+            // 
+            // address
+            // 
+            this.address.HeaderText = "地址";
+            this.address.Name = "address";
+            this.address.ReadOnly = true;
+            // 
+            // section
+            // 
+            this.section.HeaderText = "区域";
+            this.section.Name = "section";
+            this.section.ReadOnly = true;
+            this.section.Width = 160;
+            // 
+            // name
+            // 
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.name.DefaultCellStyle = dataGridViewCellStyle2;
+            this.name.HeaderText = "名称";
+            this.name.Name = "name";
+            this.name.ReadOnly = true;
+            this.name.Width = 80;
+            // 
+            // operation
+            // 
+            this.operation.HeaderText = "操作";
+            this.operation.Name = "operation";
+            this.operation.ReadOnly = true;
+            this.operation.Width = 140;
+            // 
+            // shortTime
+            // 
+            this.shortTime.HeaderText = "定时时间";
+            this.shortTime.Name = "shortTime";
+            this.shortTime.ReadOnly = true;
+            this.shortTime.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.shortTime.Width = 160;
+            // 
+            // del
+            // 
+            this.del.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
+            this.del.HeaderText = "删除";
+            this.del.Name = "del";
+            this.del.ReadOnly = true;
+            this.del.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.del.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.del.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.del.Text = null;
+            this.del.Width = 55;
+            // 
+            // checkDel
+            // 
+            this.checkDel.HeaderText = "";
+            this.checkDel.Name = "checkDel";
+            this.checkDel.Width = 50;
             // 
             // DgvTimer
             // 
@@ -899,16 +903,16 @@
         private DevComponents.DotNetBar.ButtonX btnOff;
         private System.Windows.Forms.Timer doubleClickTimer;
         private System.Windows.Forms.RadioButton cbPriorHoliday;
+        private DevComponents.DotNetBar.ButtonX btnImport;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.DataGridViewTextBoxColumn num;
         private System.Windows.Forms.DataGridViewTextBoxColumn address;
         private System.Windows.Forms.DataGridViewTextBoxColumn section;
         private System.Windows.Forms.DataGridViewTextBoxColumn name;
         private System.Windows.Forms.DataGridViewTextBoxColumn operation;
         private System.Windows.Forms.DataGridViewTextBoxColumn shortTime;
-        private System.Windows.Forms.DataGridViewButtonColumn del;
+        private DevComponents.DotNetBar.Controls.DataGridViewButtonXColumn del;
         private System.Windows.Forms.DataGridViewCheckBoxColumn checkDel;
-        private DevComponents.DotNetBar.ButtonX btnImport;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
 
 
     }

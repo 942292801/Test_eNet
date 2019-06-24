@@ -81,7 +81,7 @@ namespace eNet编辑器.DgvView
                     this.dataGridView1.Rows[index].Cells[1].Value = dec.master;
                     this.dataGridView1.Rows[index].Cells[2].Value = dec.sn;
                     this.dataGridView1.Rows[index].Cells[3].Value = dec.ver;
-                    
+                    //this.dataGridView1.Rows[index].Cells[7].Value = "设置";
 
                     //添加区域名称和操作
                     foreach (DataJson.Module m in dec.module)
@@ -93,7 +93,7 @@ namespace eNet编辑器.DgvView
                         this.dataGridView1.Rows[index].Cells[3].Value = m.ver;
                         this.dataGridView1.Rows[index].Cells[4].Value = string.Format("{0} {1} {2} {3}", m.area1, m.area2, m.area3, m.area4).Trim();
                         this.dataGridView1.Rows[index].Cells[5].Value = m.name;
-                    
+                        this.dataGridView1.Rows[index].Cells[7].Value = "设置";
                     }
                     break;
                 }//eq.ip == ips
@@ -395,6 +395,10 @@ namespace eNet编辑器.DgvView
                             case "DeviceTitle":
                                 //添加名称
                                 nameAdd(rowcount);
+                                break;
+                            case "DeviceSet":
+                                //添加设置弹框
+
                                 break;
                             default: break;
                         }

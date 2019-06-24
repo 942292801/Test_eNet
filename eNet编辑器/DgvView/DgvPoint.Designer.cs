@@ -33,22 +33,22 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DgvPoint));
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.pointNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.pointAdd = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.pointSection = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.pointName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.pointDel = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.pointMultiple = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.doubleClickTimer = new System.Windows.Forms.Timer(this.components);
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.plInfoTitle = new System.Windows.Forms.Panel();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.btnAdd = new DevComponents.DotNetBar.ButtonX();
+            this.btnMultiple = new DevComponents.DotNetBar.ButtonX();
+            this.btnDel = new DevComponents.DotNetBar.ButtonX();
             this.symbolBox1 = new DevComponents.DotNetBar.Controls.SymbolBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.btnDel = new DevComponents.DotNetBar.ButtonX();
-            this.btnMultiple = new DevComponents.DotNetBar.ButtonX();
-            this.btnAdd = new DevComponents.DotNetBar.ButtonX();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.pointNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pointAdd = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pointSection = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pointName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pointDel = new DevComponents.DotNetBar.Controls.DataGridViewButtonXColumn();
+            this.pointMultiple = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -105,50 +105,6 @@
             this.dataGridView1.KeyUp += new System.Windows.Forms.KeyEventHandler(this.dataGridView1_KeyUp);
             this.dataGridView1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.dataGridView1_MouseDown);
             // 
-            // pointNum
-            // 
-            this.pointNum.HeaderText = "序号";
-            this.pointNum.Name = "pointNum";
-            this.pointNum.ReadOnly = true;
-            this.pointNum.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.pointNum.Width = 60;
-            // 
-            // pointAdd
-            // 
-            this.pointAdd.HeaderText = "地址";
-            this.pointAdd.Name = "pointAdd";
-            this.pointAdd.ReadOnly = true;
-            this.pointAdd.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // pointSection
-            // 
-            this.pointSection.HeaderText = "区域";
-            this.pointSection.Name = "pointSection";
-            this.pointSection.ReadOnly = true;
-            this.pointSection.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.pointSection.Width = 160;
-            // 
-            // pointName
-            // 
-            this.pointName.HeaderText = "名称";
-            this.pointName.Name = "pointName";
-            this.pointName.ReadOnly = true;
-            this.pointName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.pointName.Width = 80;
-            // 
-            // pointDel
-            // 
-            this.pointDel.HeaderText = "删除";
-            this.pointDel.Name = "pointDel";
-            this.pointDel.Width = 55;
-            // 
-            // pointMultiple
-            // 
-            this.pointMultiple.HeaderText = "";
-            this.pointMultiple.Name = "pointMultiple";
-            this.pointMultiple.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.pointMultiple.Width = 50;
-            // 
             // doubleClickTimer
             // 
             this.doubleClickTimer.Interval = 40;
@@ -188,6 +144,77 @@
             this.plInfoTitle.Size = new System.Drawing.Size(1006, 25);
             this.plInfoTitle.TabIndex = 15;
             // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.flowLayoutPanel1.Controls.Add(this.btnAdd);
+            this.flowLayoutPanel1.Controls.Add(this.btnMultiple);
+            this.flowLayoutPanel1.Controls.Add(this.btnDel);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(924, 0);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(82, 25);
+            this.flowLayoutPanel1.TabIndex = 13;
+            // 
+            // btnAdd
+            // 
+            this.btnAdd.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnAdd.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnAdd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnAdd.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
+            this.btnAdd.FocusCuesEnabled = false;
+            this.btnAdd.Font = new System.Drawing.Font("黑体", 9F);
+            this.btnAdd.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None;
+            this.btnAdd.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnAdd.HoverImage")));
+            this.btnAdd.Image = ((System.Drawing.Image)(resources.GetObject("btnAdd.Image")));
+            this.btnAdd.Location = new System.Drawing.Point(6, 6);
+            this.btnAdd.Margin = new System.Windows.Forms.Padding(6);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(15, 15);
+            this.btnAdd.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnAdd.TabIndex = 0;
+            this.btnAdd.Tooltip = "增加";
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            // 
+            // btnMultiple
+            // 
+            this.btnMultiple.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnMultiple.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnMultiple.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnMultiple.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
+            this.btnMultiple.FocusCuesEnabled = false;
+            this.btnMultiple.Font = new System.Drawing.Font("黑体", 9F);
+            this.btnMultiple.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None;
+            this.btnMultiple.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnMultiple.HoverImage")));
+            this.btnMultiple.Image = ((System.Drawing.Image)(resources.GetObject("btnMultiple.Image")));
+            this.btnMultiple.Location = new System.Drawing.Point(33, 6);
+            this.btnMultiple.Margin = new System.Windows.Forms.Padding(6);
+            this.btnMultiple.Name = "btnMultiple";
+            this.btnMultiple.Size = new System.Drawing.Size(15, 15);
+            this.btnMultiple.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnMultiple.TabIndex = 3;
+            this.btnMultiple.Tooltip = "合并";
+            this.btnMultiple.Click += new System.EventHandler(this.btnMultiple_Click);
+            // 
+            // btnDel
+            // 
+            this.btnDel.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnDel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnDel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnDel.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
+            this.btnDel.FocusCuesEnabled = false;
+            this.btnDel.Font = new System.Drawing.Font("黑体", 9F);
+            this.btnDel.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None;
+            this.btnDel.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnDel.HoverImage")));
+            this.btnDel.Image = ((System.Drawing.Image)(resources.GetObject("btnDel.Image")));
+            this.btnDel.Location = new System.Drawing.Point(60, 6);
+            this.btnDel.Margin = new System.Windows.Forms.Padding(6);
+            this.btnDel.Name = "btnDel";
+            this.btnDel.Size = new System.Drawing.Size(15, 15);
+            this.btnDel.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnDel.TabIndex = 4;
+            this.btnDel.Tooltip = "删除选中行";
+            this.btnDel.Click += new System.EventHandler(this.btnDel_Click);
+            // 
             // symbolBox1
             // 
             // 
@@ -216,76 +243,53 @@
             this.label1.TabIndex = 11;
             this.label1.Text = "内容";
             // 
-            // btnDel
+            // pointNum
             // 
-            this.btnDel.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnDel.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnDel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btnDel.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
-            this.btnDel.FocusCuesEnabled = false;
-            this.btnDel.Font = new System.Drawing.Font("黑体", 9F);
-            this.btnDel.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None;
-            this.btnDel.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnDel.HoverImage")));
-            this.btnDel.Image = ((System.Drawing.Image)(resources.GetObject("btnDel.Image")));
-            this.btnDel.Location = new System.Drawing.Point(60, 6);
-            this.btnDel.Margin = new System.Windows.Forms.Padding(6);
-            this.btnDel.Name = "btnDel";
-            this.btnDel.Size = new System.Drawing.Size(15, 15);
-            this.btnDel.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnDel.TabIndex = 4;
-            this.btnDel.Tooltip = "删除选中行";
-            this.btnDel.Click += new System.EventHandler(this.btnDel_Click);
+            this.pointNum.HeaderText = "序号";
+            this.pointNum.Name = "pointNum";
+            this.pointNum.ReadOnly = true;
+            this.pointNum.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.pointNum.Width = 60;
             // 
-            // btnMultiple
+            // pointAdd
             // 
-            this.btnMultiple.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnMultiple.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnMultiple.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btnMultiple.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
-            this.btnMultiple.FocusCuesEnabled = false;
-            this.btnMultiple.Font = new System.Drawing.Font("黑体", 9F);
-            this.btnMultiple.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None;
-            this.btnMultiple.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnMultiple.HoverImage")));
-            this.btnMultiple.Image = ((System.Drawing.Image)(resources.GetObject("btnMultiple.Image")));
-            this.btnMultiple.Location = new System.Drawing.Point(33, 6);
-            this.btnMultiple.Margin = new System.Windows.Forms.Padding(6);
-            this.btnMultiple.Name = "btnMultiple";
-            this.btnMultiple.Size = new System.Drawing.Size(15, 15);
-            this.btnMultiple.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnMultiple.TabIndex = 3;
-            this.btnMultiple.Tooltip = "合并";
-            this.btnMultiple.Click += new System.EventHandler(this.btnMultiple_Click);
+            this.pointAdd.HeaderText = "地址";
+            this.pointAdd.Name = "pointAdd";
+            this.pointAdd.ReadOnly = true;
+            this.pointAdd.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
-            // btnAdd
+            // pointSection
             // 
-            this.btnAdd.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnAdd.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnAdd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btnAdd.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
-            this.btnAdd.FocusCuesEnabled = false;
-            this.btnAdd.Font = new System.Drawing.Font("黑体", 9F);
-            this.btnAdd.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None;
-            this.btnAdd.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnAdd.HoverImage")));
-            this.btnAdd.Image = ((System.Drawing.Image)(resources.GetObject("btnAdd.Image")));
-            this.btnAdd.Location = new System.Drawing.Point(6, 6);
-            this.btnAdd.Margin = new System.Windows.Forms.Padding(6);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(15, 15);
-            this.btnAdd.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnAdd.TabIndex = 0;
-            this.btnAdd.Tooltip = "增加";
-            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            this.pointSection.HeaderText = "区域";
+            this.pointSection.Name = "pointSection";
+            this.pointSection.ReadOnly = true;
+            this.pointSection.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.pointSection.Width = 160;
             // 
-            // flowLayoutPanel1
+            // pointName
             // 
-            this.flowLayoutPanel1.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.flowLayoutPanel1.Controls.Add(this.btnAdd);
-            this.flowLayoutPanel1.Controls.Add(this.btnMultiple);
-            this.flowLayoutPanel1.Controls.Add(this.btnDel);
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(924, 0);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(82, 25);
-            this.flowLayoutPanel1.TabIndex = 13;
+            this.pointName.HeaderText = "名称";
+            this.pointName.Name = "pointName";
+            this.pointName.ReadOnly = true;
+            this.pointName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.pointName.Width = 80;
+            // 
+            // pointDel
+            // 
+            this.pointDel.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
+            this.pointDel.HeaderText = "删除";
+            this.pointDel.Name = "pointDel";
+            this.pointDel.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.pointDel.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.pointDel.Text = null;
+            this.pointDel.Width = 55;
+            // 
+            // pointMultiple
+            // 
+            this.pointMultiple.HeaderText = "";
+            this.pointMultiple.Name = "pointMultiple";
+            this.pointMultiple.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.pointMultiple.Width = 50;
             // 
             // DgvPoint
             // 
@@ -313,12 +317,6 @@
 
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Timer doubleClickTimer;
-        private System.Windows.Forms.DataGridViewTextBoxColumn pointNum;
-        private System.Windows.Forms.DataGridViewTextBoxColumn pointAdd;
-        private System.Windows.Forms.DataGridViewTextBoxColumn pointSection;
-        private System.Windows.Forms.DataGridViewTextBoxColumn pointName;
-        private System.Windows.Forms.DataGridViewButtonColumn pointDel;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn pointMultiple;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel plInfoTitle;
@@ -328,5 +326,11 @@
         private DevComponents.DotNetBar.Controls.SymbolBox symbolBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn pointNum;
+        private System.Windows.Forms.DataGridViewTextBoxColumn pointAdd;
+        private System.Windows.Forms.DataGridViewTextBoxColumn pointSection;
+        private System.Windows.Forms.DataGridViewTextBoxColumn pointName;
+        private DevComponents.DotNetBar.Controls.DataGridViewButtonXColumn pointDel;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn pointMultiple;
     }
 }
