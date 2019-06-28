@@ -181,6 +181,7 @@ namespace eNet编辑器
                     md.name = "";
                     md.sn = "";
                     md.ver = "";
+                    
                     //插入新设备信息
                     dev.module.Add(md);
                     //按ID号排序

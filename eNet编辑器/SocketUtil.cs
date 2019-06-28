@@ -8,6 +8,7 @@ using System.Threading;
 using System.Net;
 using System.Windows.Forms;
 using System.Net.NetworkInformation;
+using System.IO;
 
 namespace eNet编辑器
 {
@@ -269,6 +270,34 @@ namespace eNet编辑器
             while (Math.Abs(Environment.TickCount - start) < milliSecond)//毫秒
             {
                 Application.DoEvents();//可执行某无聊的操作
+            }
+        }
+
+
+        /// <summary>
+        /// 写入日志 在运行目录下创建logs文件夹每分钟来个
+        /// </summary>
+        /// <param name="text"></param>
+        public static void WriteLog(string text)
+        {
+
+            string path = AppDomain.CurrentDomain.BaseDirectory;
+            path = System.IO.Path.Combine(path
+            , "Logs\\");
+
+            if (!System.IO.Directory.Exists(path))
+            {
+                System.IO.Directory.CreateDirectory(path);
+            }
+            string fileFullName = System.IO.Path.Combine(path
+            , string.Format("{0}.txt", DateTime.Now.ToString("yyyyMMdd-HHmm")));
+
+
+            using (StreamWriter output = System.IO.File.AppendText(fileFullName))
+            {
+                output.WriteLine(text);
+
+                output.Close();
             }
         }
 

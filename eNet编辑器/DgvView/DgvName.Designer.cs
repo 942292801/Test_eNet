@@ -48,6 +48,7 @@
             this.NameName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NameState = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NameOperation = new DevComponents.DotNetBar.Controls.DataGridViewButtonXColumn();
+            this.NameSet = new DevComponents.DotNetBar.Controls.DataGridViewButtonXColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -78,7 +79,8 @@
             this.NameSection,
             this.NameName,
             this.NameState,
-            this.NameOperation});
+            this.NameOperation,
+            this.NameSet});
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("微软雅黑", 9F);
@@ -247,6 +249,14 @@
             this.NameOperation.Text = null;
             this.NameOperation.Width = 60;
             // 
+            // NameSet
+            // 
+            this.NameSet.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
+            this.NameSet.HeaderText = "设置";
+            this.NameSet.Name = "NameSet";
+            this.NameSet.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.NameSet.Width = 60;
+            // 
             // DgvName
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -285,5 +295,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn NameName;
         private System.Windows.Forms.DataGridViewTextBoxColumn NameState;
         private DevComponents.DotNetBar.Controls.DataGridViewButtonXColumn NameOperation;
+        private DevComponents.DotNetBar.Controls.DataGridViewButtonXColumn NameSet;
     }
 }

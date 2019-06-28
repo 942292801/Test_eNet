@@ -13,6 +13,8 @@ using eNet编辑器.AddForm;
 using System.Net;
 using System.Text.RegularExpressions;
 using System.Reflection;
+using eNet编辑器.Controller;
+using eNet编辑器.Properties;
 
 namespace eNet编辑器.DgvView
 {
@@ -123,8 +125,9 @@ namespace eNet编辑器.DgvView
                 this.dataGridView1.Rows[index].Cells[0].Value = list[i].ToString();
                 //类型
                 this.dataGridView1.Rows[index].Cells[1].Value = IniHelper.findTypesIniNamebyType(value);
-                this.dataGridView1.Rows[index].Cells[4].Value = "离线";
+                this.dataGridView1.Rows[index].Cells[4].Value = Resources.DevStateOff;
                 this.dataGridView1.Rows[index].Cells[5].Value = "操作";
+                this.dataGridView1.Rows[index].Cells[6].Value = "设置";
                 //this.dataGridView1.Rows[index].Cells[3].Value =arr[arr.Length-1];
             }
             //分割的DeviceList 里面ip地址
@@ -422,6 +425,22 @@ namespace eNet编辑器.DgvView
             }
         }
 
+        /// <summary>
+        /// 设置 弹框
+        /// </summary>
+        private void devSet()
+        {
+            comForm comform = new comForm();
+            //把窗口向屏幕中间刷新
+            comform.StartPosition = FormStartPosition.CenterParent;
+            comform.ShowDialog();
+            if (comform.DialogResult == DialogResult.OK)
+            {
+
+            }
+
+        }
+
         //单元格结束编辑
         private void dataGridView1_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
@@ -603,6 +622,10 @@ namespace eNet编辑器.DgvView
                                     isConcrol = true;
                                     //展示状态窗口
                                     DgvStateShow();
+                                    break;
+
+                                case "NameSet":
+                                    devSet();
                                     break;
                                 default: break;
                             }
@@ -819,6 +842,7 @@ namespace eNet编辑器.DgvView
             {
                 try
                 {
+                    
                     //获取FB开头的信息
                     string[] strArray = msg.Split(new string[] { "FB", "ACK" }, StringSplitOptions.RemoveEmptyEntries);
                     //MessageBox.Show(msg);

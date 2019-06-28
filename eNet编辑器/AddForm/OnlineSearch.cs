@@ -68,6 +68,10 @@ namespace eNet编辑器.AddForm
             });
         }
 
+
+        //接收区信息缓存buffer
+        string bufferMsg = "";
+
         /// <summary>
         /// udp信息 回调处理函数
         /// </summary>
@@ -77,30 +81,8 @@ namespace eNet编辑器.AddForm
 
             try
             {
-                if (msg.Contains("serial"))
-                {
-                    // 序列化接收信息
-                    FileMesege.serialList = JsonConvert.DeserializeObject<DataJson.Serial>(msg);
-
-
-                    //当前选中节点和IP相等时  
-                    if (treeView1.SelectedNode.Text == selectIP)
-                    {
-                        //选中索引
-                        int indexs = treeView1.SelectedNode.Index;
-                        foreach (DataJson.serials sl in FileMesege.serialList.serial)
-                        {
-                            tm.AddNode2(treeView1, Resources.Device + sl.id + " " + sl.serial, indexs);
-
-                        }
-                        //展开所有节点
-                        treeView1.ExpandAll();
-
-                    }
-
-
-                }
-                else if (msg.Contains("devIP"))
+                
+                if (msg.Contains("devIP"))
                 {
 
                     //网关加载
@@ -120,6 +102,37 @@ namespace eNet编辑器.AddForm
                         //添加网关
                         tm.AddNode1(treeView1, devIP[1]);
                     }
+
+                }
+                else //(msg.Contains("serial"))
+                {
+                    bufferMsg = bufferMsg + msg;
+                    if (msg.Length == 1024)
+                    {
+                        return;
+                    }
+                    if (bufferMsg.Contains("serial"))
+                    {
+                        // 序列化接收信息
+                        FileMesege.serialList = JsonConvert.DeserializeObject<DataJson.Serial>(bufferMsg);
+                        bufferMsg = "";
+
+                        //当前选中节点和IP相等时  
+                        if (treeView1.SelectedNode.Text == selectIP)
+                        {
+                            //选中索引
+                            int indexs = treeView1.SelectedNode.Index;
+                            foreach (DataJson.serials sl in FileMesege.serialList.serial)
+                            {
+                                tm.AddNode2(treeView1, Resources.Device + sl.id + " " + sl.serial, indexs);
+
+                            }
+                            //展开所有节点
+                            treeView1.ExpandAll();
+
+                        }
+                    }
+
 
                 }
             }
@@ -367,15 +380,14 @@ namespace eNet编辑器.AddForm
             //信息接收处理
             client.Received += new Action<string, string>((key, msg) =>
             {
-                if (msg.Contains("serial"))
-                {
+           
                     if (!String.IsNullOrWhiteSpace(msg))
                     {
                         //跨线程调用
                         this.Invoke(receviceDelegate, msg);
                     }
 
-                }//if msg 
+            
 
             });
 

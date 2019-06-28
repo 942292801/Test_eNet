@@ -1,0 +1,30 @@
+{
+	"type":"serial",
+	"serial":[
+		{"nid":230,"lid":0,"id":1,"portnum":17,"serial":"ET-DMX16A       ","version":"D20190323V3.00  ","mac8":"00:00:00:00:00:00:00:00"}
+,		{"nid":230,"lid":0,"id":2,"portnum":61,"serial":"ET-RS2000A      ","version":"D20190617V2.03  ","mac8":"00:00:00:00:00:00:00:00"}
+,		{"nid":230,"lid":0,"id":3,"portnum":61,"serial":"ET-RS2000A      ","version":"D20190617V2.03  ","mac8":"00:00:00:00:00:00:00:00"}
+,		{"nid":230,"lid":0,"id":4,"portnum":2,"serial":"ET-RS3000A      ","version":"D20190617V2.02  ","mac8":"00:00:00:00:00:00:00:00"}
+,		{"nid":230,"lid":0,"id":5,"portnum":2,"serial":"ET-RS1000A      ","version":"D201900617V2.03 ","mac8":"00:00:00:00:00:00:00:00"}
+,		{"nid":230,"lid":0,"id":6,"portnum":2,"serial":"ET-RS1000A      ","version":"D201900617V2.03 ","mac8":"00:00:00:00:00:00:00:00"}
+,		{"nid":230,"lid":0,"id":7,"portnum":2,"serial":"ET-RS1000A      ","version":"D201900617V2.03 ","mac8":"00:00:00:00:00:00:00:00"}
+,		{"nid":230,"lid":0,"id":8,"portnum":2,"serial":"ET-RS1000A      ","version":"D201900617V2.03 ","mac8":"00:00:00:00:00:00:00:00"}
+,		{"nid":230,"lid":0,"id":9,"portnum":3,"serial":"ET-IR06A        ","version":"D20190411V2.02  ","mac8":"00:00:00:00:00:00:00:00"}
+	]
+}
+
+{
+	"type":"serial",
+	"serial":[
+		{"nid":230,"lid":0,"id":1,"portnum":17,"serial":"ET-DMX16A       ","version":"D20190323V3.00  ","mac8":"00:00:00:00:00:00:00:00"}
+,		{"nid":230,"lid":0,"id":2,"portnum":61,"serial":"ET-RS2000A      ","version":"D20190617V2.03  ","mac8":"00:00:00:00:00:00:00:00"}
+,		{"nid":230,"lid":0,"id":3,"portnum":61,"serial":"ET-RS2000A      ","version":"D20190617V2.03  ","mac8":"00:00:00:00:00:00:00:00"}
+,		{"nid":230,"lid":0,"id":4,"portnum":2,"serial":"ET-RS3000A      ","version":"D20190617V2.02  ","mac8":"00:00:00:00:00:00:00:00"}
+,		{"nid":230,"lid":0,"id":5,"portnum":2,"serial":"ET-RS1000A      ","version":"D201900617V2.03 ","mac8":"00:00:00:00:00:00:00:00"}
+,		{"nid":230,"lid":0,"id":6,"portnum":2,"serial":"ET-RS1000A      ","version":"D201900617V2.03 ","mac8":"00:00:00:00:00:00:00:00"}
+,		{"nid":230,"lid":0,"id":7,"portnum":2,"serial":"ET-RS1000A      ","version":"D201900617V2.03 ","mac8":"00:00:00:00:00:00:00:00"}
+,		{"nid":230,"lid":0,"id":8,"portnum":2,"serial":"ET-RS1000A      ","version":"D201900617V2.03 ","mac8":"00:00:00:00:00:00:00:00"}
+,		{"nid":230,"lid":0,"id":9,"portnum":3,"serial":"ET-IR06A        ","version":"D20190411V2.02  ","mac8":"00:00:00:00:00:00:00:00"}
+	]
+}
+

@@ -11,6 +11,8 @@ using System.Net;
 using System.Reflection;
 using eNet编辑器.Properties;
 using System.Text.RegularExpressions;
+using eNet编辑器.Controller;
+using System.Net.Sockets;
 
 
 namespace eNet编辑器.DgvView
@@ -81,7 +83,7 @@ namespace eNet编辑器.DgvView
                     this.dataGridView1.Rows[index].Cells[1].Value = dec.master;
                     this.dataGridView1.Rows[index].Cells[2].Value = dec.sn;
                     this.dataGridView1.Rows[index].Cells[3].Value = dec.ver;
-                    //this.dataGridView1.Rows[index].Cells[7].Value = "设置";
+                    
 
                     //添加区域名称和操作
                     foreach (DataJson.Module m in dec.module)
@@ -93,7 +95,7 @@ namespace eNet编辑器.DgvView
                         this.dataGridView1.Rows[index].Cells[3].Value = m.ver;
                         this.dataGridView1.Rows[index].Cells[4].Value = string.Format("{0} {1} {2} {3}", m.area1, m.area2, m.area3, m.area4).Trim();
                         this.dataGridView1.Rows[index].Cells[5].Value = m.name;
-                        this.dataGridView1.Rows[index].Cells[7].Value = "设置";
+                        this.dataGridView1.Rows[index].Cells[7].Value = "初始化";
                     }
                     break;
                 }//eq.ip == ips
@@ -291,7 +293,70 @@ namespace eNet编辑器.DgvView
             return strTitle + (arry[arry.Count - 1] + 1).ToString();
         }
 
-   
+       
+
+        private void devIni()
+        {
+            if (dataGridView1.Rows[rowcount].Cells[6].Value.ToString() == Resources.DevStateOff)
+            {
+                return;
+            }
+            IniForm iniform = new IniForm();
+            //把窗口向屏幕中间刷新
+            iniform.StartPosition = FormStartPosition.CenterParent;
+            iniform.ShowDialog();
+            if (iniform.DialogResult == DialogResult.Yes)
+            {
+                /*
+                //链接ini发信息
+                Socket sock = null;
+                try
+                {
+
+                    //写入数据格式
+                    string data = "down /enet.prj$";
+
+                    TcpSocket ts = new TcpSocket();
+
+                    sock = ts.ConnectServer(ip, 6001, 1);
+
+                    SocketUtil.DelayMilli(1000);
+                    if (sock == null)
+                    {
+                        return ;
+                    }
+
+
+                    int flag = -1;
+
+                    //0:发送数据成功；-1:超时；-2:发送数据出现错误；-3:发送数据时出现异常
+                    flag = ts.SendData(sock, data, 1);
+                    if (sock != null)
+                    {
+
+                        sock.Dispose();
+                    }
+                    if (flag == 0)
+                    {
+                        
+
+                    }
+                    else
+                    { 
+                    
+                    }
+
+                    
+                    
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show(e.ToString());
+                    
+
+                }*/
+            }
+        }
 
         //编辑离开
         private void dataGridView1_CellEndEdit(object sender, DataGridViewCellEventArgs e)
@@ -396,9 +461,9 @@ namespace eNet编辑器.DgvView
                                 //添加名称
                                 nameAdd(rowcount);
                                 break;
-                            case "DeviceSet":
-                                //添加设置弹框
-
+                            case "DeviceIni":
+                                //初始化弹框
+                                devIni();
                                 break;
                             default: break;
                         }
@@ -486,6 +551,10 @@ namespace eNet编辑器.DgvView
             }
         }
 
+        //接收区信息缓存buffer
+        string bufferMsg = "";
+
+
         /// <summary>
         /// 刷新按钮  获取serial设备信息 并处理
         /// </summary>
@@ -531,15 +600,21 @@ namespace eNet编辑器.DgvView
             //信息接收处理
             client.Received += new Action<string, string>((key, msg) =>
             {
-                if (msg.Contains("serial"))
+                bufferMsg = bufferMsg + msg;
+                if (msg.Length == 1024)
                 {
-                   // 序列化接收信息
-                    FileMesege.serialList = JsonConvert.DeserializeObject<DataJson.Serial>(msg);
-                    
+                    return;
+                }
+                //SocketUtil.WriteLog(bufferMsg);
+                if (bufferMsg.Contains("serial"))
+                {
+                    // 序列化接收信息
+                    FileMesege.serialList = JsonConvert.DeserializeObject<DataJson.Serial>(bufferMsg);
+                    bufferMsg = "";
                     foreach (DataJson.Device dev in FileMesege.DeviceList)
                     {
                         //当IP相等时候进入module里面 
-                        if(dev.ip ==  strip[0] )
+                        if (dev.ip == strip[0])
                         {
 
                             foreach (DataJson.serials sl in FileMesege.serialList.serial)
@@ -548,9 +623,9 @@ namespace eNet编辑器.DgvView
                                 foreach (DataJson.Module mdl in dev.module)
                                 {
                                     //当设备的号码相同 名字相同  修改序列号 版本号 状态 
-                                    if ( sl.id == mdl.id && sl.serial.Trim()== mdl.device)
+                                    if (sl.id == mdl.id && sl.serial.Trim() == mdl.device)
                                     {
-                                        mdl.sn = sl.mac8.Trim().Replace(":","");
+                                        mdl.sn = sl.mac8.Trim().Replace(":", "");
                                         mdl.ver = sl.version.Trim();
                                         changeSn_ver(mdl);
                                         //寻找到该信息就退出当前循环
@@ -558,16 +633,16 @@ namespace eNet编辑器.DgvView
                                     }
 
                                 }//for 
-                                
+
                             }
-                    
+
                         }
 
                     }//for dev
 
-                    
-                    
-                }//if msg 
+
+                }//ifserial
+            
                 
             });
             //异步连接
@@ -785,6 +860,7 @@ namespace eNet编辑器.DgvView
             
         }
         #endregion
+
 
         #region 复制 粘贴
         /// <summary>

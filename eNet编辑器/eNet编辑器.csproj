@@ -304,6 +304,18 @@
     </Compile>
     <Compile Include="ClientAsync.cs" />
     <Compile Include="CommandManager.cs.cs" />
+    <Compile Include="Controller\comForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controller\comForm.Designer.cs">
+      <DependentUpon>comForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controller\IniForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controller\IniForm.Designer.cs">
+      <DependentUpon>IniForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="DataChange.cs" />
     <Compile Include="DataJson.cs" />
     <Compile Include="DataListHelper.cs" />
@@ -500,6 +512,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AddForm\variableAddress.resx">
       <DependentUpon>variableAddress.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controller\comForm.resx">
+      <DependentUpon>comForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controller\IniForm.resx">
+      <DependentUpon>IniForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DgvView\DgvPanel.resx">
       <DependentUpon>DgvPanel.cs</DependentUpon>

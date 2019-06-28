@@ -171,7 +171,7 @@ namespace eNet编辑器
         {
             Random r = new Random(int.Parse(DateTime.Now.ToString("HHmmssfff")));
             int num = r.Next(10000, 99999);//随机生成一个5位整数
-
+            
             return num;
            
            

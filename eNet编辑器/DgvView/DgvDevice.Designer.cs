@@ -48,7 +48,7 @@
             this.DeviceSection = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DeviceTitle = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NameState = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DeviceSet = new DevComponents.DotNetBar.Controls.DataGridViewButtonXColumn();
+            this.DeviceIni = new DevComponents.DotNetBar.Controls.DataGridViewButtonXColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -81,7 +81,7 @@
             this.DeviceSection,
             this.DeviceTitle,
             this.NameState,
-            this.DeviceSet});
+            this.DeviceIni});
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("微软雅黑", 9F);
@@ -252,14 +252,14 @@
             this.NameState.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.NameState.Width = 60;
             // 
-            // DeviceSet
+            // DeviceIni
             // 
-            this.DeviceSet.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
-            this.DeviceSet.HeaderText = "设置";
-            this.DeviceSet.Name = "DeviceSet";
-            this.DeviceSet.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.DeviceSet.Text = null;
-            this.DeviceSet.Width = 60;
+            this.DeviceIni.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
+            this.DeviceIni.HeaderText = "操作";
+            this.DeviceIni.Name = "DeviceIni";
+            this.DeviceIni.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.DeviceIni.Text = null;
+            this.DeviceIni.Width = 60;
             // 
             // DgvDevice
             // 
@@ -298,6 +298,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn DeviceSection;
         private System.Windows.Forms.DataGridViewTextBoxColumn DeviceTitle;
         private System.Windows.Forms.DataGridViewTextBoxColumn NameState;
-        private DevComponents.DotNetBar.Controls.DataGridViewButtonXColumn DeviceSet;
+        private DevComponents.DotNetBar.Controls.DataGridViewButtonXColumn DeviceIni;
     }
 }

@@ -243,11 +243,47 @@ namespace eNet编辑器
             public string area3 { get; set; }
             public string area4 { get; set; }
             public string name { get; set; }
+            public List<DevPort> devPortList = new List<DevPort>();
+        }
+
+        [Serializable]
+        public class DevPort
+        {
+            public int portID { get; set; }
+            public string portType { get; set; }
+            public object portContent { get; set; }
+
+        }
+
+        #region 端口内容 开关 调光 串口1000 串口2000 温感 光感
+        
+        [Serializable]
+        public class PortSwitch
+        {
+            // 01 00 ff 断电恢复
+            public string powerState { get; set; }
+            // 00 11 12  21 22 23  31 32 33 34  
+            public string interLock { get; set; }
+            
+        }
+
+        [Serializable]
+        public class PortDimmer
+        {
+            public string powerState { get; set; }
+            public string onState { get; set; }
+            public string changeState { get; set; }
+            public string max { get; set; }
+            public string min { get; set; }
+            public string spline { get; set; }
         }
 
         #endregion
 
-        #region 项目辅助文件Point.json 
+
+        #endregion
+
+        #region 项目辅助文件Point.json
         [Serializable]
         public class Point
         {
@@ -421,4 +457,6 @@ namespace eNet编辑器
 
 
     }
+
+
 }
