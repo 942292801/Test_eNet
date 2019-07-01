@@ -191,7 +191,7 @@ namespace eNet编辑器
             }
             catch  {
                 //Log.WriteLog ( e ); SocketException e 
-                socket.Close();
+                socket.Dispose();
                 flag = -3;
             }
             return flag;

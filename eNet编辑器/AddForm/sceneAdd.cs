@@ -438,6 +438,7 @@ namespace eNet编辑器.AddForm
 
         private void btnClose_Click(object sender, EventArgs e)
         {
+            this.DialogResult = System.Windows.Forms.DialogResult.No;
             this.Close();
         }
 

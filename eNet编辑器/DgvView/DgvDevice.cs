@@ -36,6 +36,9 @@ namespace eNet编辑器.DgvView
         //public event DgvNameCursorDefault dgvNameCursorDefault;
 
         public event Action updateSectionTitleNode;
+
+        public event Action<string> AppTxtShow;
+
         /// <summary>
         /// 解决窗体闪烁问题
         /// </summary>
@@ -307,14 +310,16 @@ namespace eNet编辑器.DgvView
             iniform.ShowDialog();
             if (iniform.DialogResult == DialogResult.Yes)
             {
-                /*
+                
                 //链接ini发信息
                 Socket sock = null;
                 try
                 {
-
-                    //写入数据格式
-                    string data = "down /enet.prj$";
+                    string ip = FileMesege.tnselectNode.Text.Split(' ')[0];
+                    string dataIP = ip.Split('.')[3];
+                    string dataID = dataGridView1.Rows[rowcount].Cells[0].Value.ToString();
+                    //发送查询指令  
+                    string data = "set;{" + dataIP + ".0." + dataID + ".255:255};acac;\r\n";
 
                     TcpSocket ts = new TcpSocket();
 
@@ -338,12 +343,12 @@ namespace eNet编辑器.DgvView
                     }
                     if (flag == 0)
                     {
-                        
+                        AppTxtShow(string.Format("初始化设备（{0}）成功", dataID));
 
                     }
                     else
-                    { 
-                    
+                    {
+                        AppTxtShow(string.Format("初始化设备（{0}）失败", dataID));
                     }
 
                     
@@ -351,10 +356,10 @@ namespace eNet编辑器.DgvView
                 }
                 catch (Exception e)
                 {
-                    MessageBox.Show(e.ToString());
+                    AppTxtShow(e.ToString());
                     
 
-                }*/
+                }
             }
         }
 

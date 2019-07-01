@@ -117,6 +117,7 @@ namespace eNet编辑器.ThreeView
             tss.LbText = "添加节点";
             tss.Selectindex = i;
             tss.ShowDialog();
+            
         }
 
         private void 添加子节点ToolStripMenuItem_Click(object sender, EventArgs e)

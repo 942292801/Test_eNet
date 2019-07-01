@@ -1,6 +1,6 @@
 ﻿namespace eNet编辑器.Controller
 {
-    partial class comForm
+    partial class setSwitch
     {
         /// <summary>
         /// Required designer variable.
@@ -28,28 +28,26 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(comForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(setSwitch));
             this.plInfoTitle = new System.Windows.Forms.Panel();
             this.btnClose = new DevComponents.DotNetBar.ButtonX();
             this.symbolBox1 = new DevComponents.DotNetBar.Controls.SymbolBox();
-            this.lbTitle = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
             this.plInfoTitle.SuspendLayout();
             this.SuspendLayout();
             // 
             // plInfoTitle
             // 
             this.plInfoTitle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(228)))), ((int)(((byte)(228)))));
-            this.plInfoTitle.Controls.Add(this.label1);
             this.plInfoTitle.Controls.Add(this.btnClose);
             this.plInfoTitle.Controls.Add(this.symbolBox1);
-            this.plInfoTitle.Controls.Add(this.lbTitle);
+            this.plInfoTitle.Controls.Add(this.label6);
             this.plInfoTitle.Location = new System.Drawing.Point(1, 1);
             this.plInfoTitle.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.plInfoTitle.Name = "plInfoTitle";
-            this.plInfoTitle.Size = new System.Drawing.Size(998, 25);
-            this.plInfoTitle.TabIndex = 80;
+            this.plInfoTitle.Size = new System.Drawing.Size(211, 25);
+            this.plInfoTitle.TabIndex = 79;
             this.plInfoTitle.MouseDown += new System.Windows.Forms.MouseEventHandler(this.plInfoTitle_MouseDown);
             this.plInfoTitle.MouseMove += new System.Windows.Forms.MouseEventHandler(this.plInfoTitle_MouseMove);
             // 
@@ -64,7 +62,7 @@
             this.btnClose.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None;
             this.btnClose.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnClose.HoverImage")));
             this.btnClose.Image = ((System.Drawing.Image)(resources.GetObject("btnClose.Image")));
-            this.btnClose.Location = new System.Drawing.Point(979, 6);
+            this.btnClose.Location = new System.Drawing.Point(193, 6);
             this.btnClose.Margin = new System.Windows.Forms.Padding(6);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(13, 13);
@@ -80,7 +78,7 @@
             // 
             this.symbolBox1.BackgroundStyle.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("symbolBox1.BackgroundStyle.BackgroundImage")));
             this.symbolBox1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.symbolBox1.Location = new System.Drawing.Point(5, 6);
+            this.symbolBox1.Location = new System.Drawing.Point(4, 6);
             this.symbolBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.symbolBox1.Name = "symbolBox1";
             this.symbolBox1.Size = new System.Drawing.Size(13, 13);
@@ -91,52 +89,42 @@
             this.symbolBox1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.plInfoTitle_MouseDown);
             this.symbolBox1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.plInfoTitle_MouseMove);
             // 
-            // lbTitle
+            // label6
             // 
-            this.lbTitle.AutoSize = true;
-            this.lbTitle.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lbTitle.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.lbTitle.Location = new System.Drawing.Point(25, 4);
-            this.lbTitle.Name = "lbTitle";
-            this.lbTitle.Size = new System.Drawing.Size(0, 17);
-            this.lbTitle.TabIndex = 1;
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label6.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label6.Location = new System.Drawing.Point(25, 4);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(56, 17);
+            this.label6.TabIndex = 1;
+            this.label6.Text = "开关设置";
+            this.label6.MouseDown += new System.Windows.Forms.MouseEventHandler(this.plInfoTitle_MouseDown);
+            this.label6.MouseMove += new System.Windows.Forms.MouseEventHandler(this.plInfoTitle_MouseMove);
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
             this.panel1.Location = new System.Drawing.Point(1, 27);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(998, 491);
-            this.panel1.TabIndex = 81;
+            this.panel1.Size = new System.Drawing.Size(211, 68);
+            this.panel1.TabIndex = 80;
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label1.Location = new System.Drawing.Point(25, 4);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(32, 17);
-            this.label1.TabIndex = 10;
-            this.label1.Text = "设置";
-            this.label1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.plInfoTitle_MouseDown);
-            this.label1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.plInfoTitle_MouseMove);
-            // 
-            // comForm
+            // setSwitch
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkGray;
-            this.ClientSize = new System.Drawing.Size(1000, 520);
+            this.ClientSize = new System.Drawing.Size(214, 98);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.plInfoTitle);
             this.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Name = "comForm";
-            this.Text = "comForm";
-            this.Load += new System.EventHandler(this.comForm_Load);
-            this.Paint += new System.Windows.Forms.PaintEventHandler(this.comForm_Paint);
+            this.Name = "setSwitch";
+            this.Text = "setSwitch";
+            this.Load += new System.EventHandler(this.setSwitch_Load);
+            this.Paint += new System.Windows.Forms.PaintEventHandler(this.setSwitch_Paint);
             this.plInfoTitle.ResumeLayout(false);
             this.plInfoTitle.PerformLayout();
             this.ResumeLayout(false);
@@ -148,8 +136,7 @@
         private System.Windows.Forms.Panel plInfoTitle;
         private DevComponents.DotNetBar.ButtonX btnClose;
         private DevComponents.DotNetBar.Controls.SymbolBox symbolBox1;
-        private System.Windows.Forms.Label lbTitle;
+        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label label1;
     }
 }

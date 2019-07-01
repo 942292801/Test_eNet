@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 using eNet编辑器.AddForm;
+using eNet编辑器.Controller;
 
 namespace eNet编辑器
 {
@@ -17,7 +18,7 @@ namespace eNet编辑器
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());
-            //Application.Run(new newProject());
+            //Application.Run(new setDimmer());
         }
     }
 }

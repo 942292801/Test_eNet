@@ -425,21 +425,72 @@ namespace eNet编辑器.DgvView
             }
         }
 
+        #region  设置弹框
         /// <summary>
         /// 设置 弹框
         /// </summary>
         private void devSet()
         {
-            comForm comform = new comForm();
+            string ip = FileMesege.tnselectNode.Parent.Text.Split(' ')[0];
+            string id = Regex.Replace(FileMesege.tnselectNode.Text.Split(' ')[0], @"[^\d]*", "");
+            string port = dataGridView1.Rows[rowcount].Cells[0].Value.ToString();
+            string type = IniHelper.findTypesIniTypebyName(dataGridView1.Rows[rowcount].Cells[1].Value.ToString());
+            DataJson.Module devModuel = DataListHelper.findDeviceByIP_ID(ip,Convert.ToInt32(id));
+            if (devModuel == null)
+            { 
+                return;
+            }
+            DataJson.DevPort devPort = DataListHelper.findPortByModule_Port(devModuel, Convert.ToInt32(port));
+            if (devPort == null)
+            {
+                return;
+            }
+            switch (devPort.portType)
+            {
+                case "1.0_switch":
+                    showSwitch(devPort);
+                    break;
+                case "2.0_dimmer":
+                    showDimmer(devModuel,devPort,ip);
+                    break;
+                //////////////后续还需要添加////////
+                default:
+                    break;
+            }
+            
+
+           
+
+        }
+
+        private void showDimmer(DataJson.Module devModuel,DataJson.DevPort devPort, string ip)
+        {
+            setDimmer setdimmer = new setDimmer();
             //把窗口向屏幕中间刷新
-            comform.StartPosition = FormStartPosition.CenterParent;
-            comform.ShowDialog();
-            if (comform.DialogResult == DialogResult.OK)
+            setdimmer.StartPosition = FormStartPosition.CenterParent;
+            setdimmer.DevModuel = devModuel;
+            setdimmer.DevPort = devPort;
+            setdimmer.Ip = ip;
+            setdimmer.ShowDialog();
+            if (setdimmer.DialogResult == DialogResult.OK)
             {
 
             }
-
         }
+
+        private void showSwitch(DataJson.DevPort devPort)
+        {
+            setSwitch setswitch = new setSwitch();
+            //把窗口向屏幕中间刷新
+            setswitch.StartPosition = FormStartPosition.CenterParent;
+            setswitch.ShowDialog();
+            if (setswitch.DialogResult == DialogResult.OK)
+            {
+
+            }
+        }
+
+        #endregion
 
         //单元格结束编辑
         private void dataGridView1_CellEndEdit(object sender, DataGridViewCellEventArgs e)

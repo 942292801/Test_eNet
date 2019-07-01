@@ -66,6 +66,7 @@ namespace eNet编辑器.AddForm
 
         private void timerHHMM_Deactivate(object sender, EventArgs e)
         {
+            this.DialogResult = System.Windows.Forms.DialogResult.No;
             this.Close();
         }
 

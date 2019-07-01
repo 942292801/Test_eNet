@@ -125,6 +125,7 @@ namespace eNet编辑器
             threevar.clearTxtShow += new Action<string>(clearTxtShow);
             dgvpoint.txtAppShow += new Action<string>(AppTxtShow);
             dgvname.txtAppShow += new Action<string>(AppTxtShow);
+            dgvdevice.AppTxtShow += new Action<string>(AppTxtShow);
             dgvscene.AppTxtShow += new Action<string>((msg) =>//TXT窗口显示信息 
             {
                 AppTxtShow(msg);//后面直接加 非清空
@@ -769,7 +770,7 @@ namespace eNet编辑器
 
         private void 退出ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.Close();
+            this.Dispose();
         }
 
 

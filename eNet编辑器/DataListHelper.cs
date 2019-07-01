@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Windows.Forms;
 
 namespace eNet编辑器
 {
@@ -181,7 +182,7 @@ namespace eNet编辑器
                     md.name = "";
                     md.sn = "";
                     md.ver = "";
-                    
+                    addPortType(md.devPortList,version);
                     //插入新设备信息
                     dev.module.Add(md);
                     //按ID号排序
@@ -215,6 +216,7 @@ namespace eNet编辑器
 
                             m.id = Convert.ToInt32(id);
                             m.device = version;
+                            addPortType(m.devPortList, version);
                             //按ID号排序
                             DeviceSort(dev);
                             //刷新所有Tree的节点
@@ -257,6 +259,40 @@ namespace eNet编辑器
             }
         }
 
+
+        /// <summary>
+        /// 添加端口的类型 
+        /// </summary>
+        /// <param name="portList"></param>
+        /// <param name="version"></param>
+        public static void addPortType( List<DataJson.DevPort> portList,string version)
+        {
+            string filepath = Application.StartupPath + "\\devices\\" + version + ".ini";
+            //获取全部Section下的Key
+            List<string> list = IniConfig.ReadKeys("ports", filepath);
+            string value = "";
+            portList.Clear();
+            //循环添加行信息
+            for (int i = 0; i < list.Count; i++)
+            {
+                if (list[i] == "0")
+                {
+                    continue;
+                }
+                //获取类型版本类型版本
+                value = IniConfig.GetValue(filepath, "ports", list[i]);
+                if (value == "")
+                {
+                    break;
+                }
+                DataJson.DevPort portInfo = new DataJson.DevPort();
+                portInfo.portID = Convert.ToInt32( list[i]);
+                portInfo.portType = value.Split(',')[0];
+                //portInfo.portContent =???
+                portList.Add(portInfo);
+              
+            }
+        }
 
 
         /// <summary>
@@ -323,6 +359,19 @@ namespace eNet编辑器
                         }
                     }
                     break;
+                }
+            }
+            return null;
+        }
+
+
+        public static DataJson.DevPort findPortByModule_Port(DataJson.Module md, int port)
+        {
+            foreach (DataJson.DevPort dp in md.devPortList)
+            {
+                if (dp.portID == port)
+                {
+                    return dp;
                 }
             }
             return null;

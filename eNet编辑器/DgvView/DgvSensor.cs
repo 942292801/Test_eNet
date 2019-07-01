@@ -616,7 +616,7 @@ namespace eNet编辑器.DgvView
                         }
                         if (sock != null)
                         {
-                            sock.Close();
+                            sock.Dispose();
                         }
 
                         if (i == 10)
@@ -699,7 +699,7 @@ namespace eNet编辑器.DgvView
                 if (flag == 0)
                 {
                     AppTxtShow("发送指令成功！");
-                    sock.Close();
+                    sock.Dispose();
                 }
                 else
                 {
@@ -707,7 +707,7 @@ namespace eNet编辑器.DgvView
                     if (flag == 0)
                     {
                         AppTxtShow("发送指令成功！");
-                        sock.Close();
+                        sock.Dispose();
                     }
                 }
             }
@@ -768,7 +768,7 @@ namespace eNet编辑器.DgvView
                 if (flag == 0)
                 {
                     AppTxtShow("发送指令成功！");
-                    sock.Close();
+                    sock.Dispose();
                 }
                 else
                 {
@@ -776,7 +776,7 @@ namespace eNet编辑器.DgvView
                     if (flag == 0)
                     {
                         AppTxtShow("发送指令成功！");
-                        sock.Close();
+                        sock.Dispose();
                     }
                 }
             }
@@ -879,7 +879,7 @@ namespace eNet编辑器.DgvView
                 if (flag == 0)
                 {
                     AppTxtShow("发送指令成功！");
-                    sock.Close();
+                    sock.Dispose();
                 }
                 else
                 {
@@ -887,7 +887,7 @@ namespace eNet编辑器.DgvView
                     if (flag == 0)
                     {
                         AppTxtShow("发送指令成功！");
-                        sock.Close();
+                        sock.Dispose();
                     }
                 }
             }

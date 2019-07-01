@@ -136,6 +136,7 @@ namespace eNet编辑器.AddForm
             }
             catch
             {
+                this.DialogResult = System.Windows.Forms.DialogResult.No;
                 this.Close();
                 //MessageBox.Show("界面初始化出错");
             }
@@ -287,6 +288,7 @@ namespace eNet编辑器.AddForm
         #region 窗口样色
         private void DgvNameState_Deactivate(object sender, EventArgs e)
         {
+            this.DialogResult = System.Windows.Forms.DialogResult.No;
             this.Close();
         }
 
@@ -318,6 +320,7 @@ namespace eNet编辑器.AddForm
 
         private void btnClose_Click(object sender, EventArgs e)
         {
+            this.DialogResult = System.Windows.Forms.DialogResult.No;
             this.Close();
         }
 

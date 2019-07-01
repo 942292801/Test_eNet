@@ -45,6 +45,8 @@ namespace eNet编辑器.Controller
         }
 
         #region 重绘
+        private Point mPoint;
+
         private void plInfoTitle_MouseDown(object sender, MouseEventArgs e)
         {
             mPoint = new Point(e.X, e.Y);
@@ -60,6 +62,7 @@ namespace eNet编辑器.Controller
 
         private void btnClose_Click(object sender, EventArgs e)
         {
+            this.DialogResult = System.Windows.Forms.DialogResult.No;
             this.Close();
         }
 
@@ -76,7 +79,7 @@ namespace eNet编辑器.Controller
             );
         }
 
-        private Point mPoint;
+        
         #endregion
 
 

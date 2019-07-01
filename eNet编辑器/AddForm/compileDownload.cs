@@ -93,6 +93,7 @@ namespace eNet编辑器.AddForm
 
         private void btnClose_Click(object sender, EventArgs e)
         {
+            this.DialogResult = System.Windows.Forms.DialogResult.No;
             this.Close();
         }
 
@@ -378,7 +379,7 @@ namespace eNet编辑器.AddForm
                 if (sock != null)
                 {
 
-                    sock.Close();
+                    sock.Dispose();
                 }
                 
             }
@@ -417,7 +418,7 @@ namespace eNet编辑器.AddForm
                 flag = ts.SendData(sock, data, 1);
                 if (sock != null)
                 {
-                    sock.Close();
+                  
                     sock.Dispose();
                 }
                 if (flag != 0)

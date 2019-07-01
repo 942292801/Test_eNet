@@ -252,5 +252,6 @@ C:\Users\Administrator\Desktop\Gitlab\eNet\eNet编辑器\bin\Release\de\DevExpre
 C:\Users\Administrator\Desktop\Gitlab\eNet\eNet编辑器\bin\Release\es\DevExpress.XtraTreeList.v18.1.resources.dll
 C:\Users\Administrator\Desktop\Gitlab\eNet\eNet编辑器\bin\Release\ja\DevExpress.XtraTreeList.v18.1.resources.dll
 C:\Users\Administrator\Desktop\Gitlab\eNet\eNet编辑器\bin\Release\ru\DevExpress.XtraTreeList.v18.1.resources.dll
-C:\Users\Administrator\Desktop\Gitlab\eNet\eNet编辑器\obj\x86\Release\eNet编辑器.Controller.comForm.resources
 C:\Users\Administrator\Desktop\Gitlab\eNet\eNet编辑器\obj\x86\Release\eNet编辑器.Controller.IniForm.resources
+C:\Users\Administrator\Desktop\Gitlab\eNet\eNet编辑器\obj\x86\Release\eNet编辑器.Controller.setDimmer.resources
+C:\Users\Administrator\Desktop\Gitlab\eNet\eNet编辑器\obj\x86\Release\eNet编辑器.Controller.setSwitch.resources
