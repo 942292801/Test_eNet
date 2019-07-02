@@ -8,12 +8,13 @@ using System.Text;
 using System.Windows.Forms;
 using System.Net;
 using System.Windows.Forms.DataVisualization.Charting;
+using System.Text.RegularExpressions;
 
 namespace eNet编辑器.Controller
 {
     public partial class setDimmer : Form
     {
-        private string ip;
+        private string ip ;
 
         public string Ip
         {
@@ -57,9 +58,11 @@ namespace eNet编辑器.Controller
             tcp6003receviceDelegate += new Action<string>(tcp6003ReceviceDelegateMsg);
             //图表初始化
             chart1Init();
+            updateTable();
             //链接tcp
             Connet6003Tcp(ip);
             lastIP = ip.Split('.')[3];
+      
         }
 
 
@@ -100,25 +103,27 @@ namespace eNet编辑器.Controller
             chart1.Series[0].Points.DataBindXY(xData, yData);
 
             chart1.Series[0].ShadowOffset = 1;
+            chart1.Series[0].MarkerStep = 3;
+              
             chart1.ChartAreas[0].AxisX.IsLabelAutoFit = false;
+            //chart1.ChartAreas[0].AxisX.Title = "百分点(0-100%)";
+            //chart1.ChartAreas[0].AxisY.Title = "TEMPERATURE";
+           
+ 
 
             //改变X轴刻度间隔
-            chart1.ChartAreas[0].AxisX.Interval = 5;
+            chart1.ChartAreas[0].AxisX.Interval = 25;
             chart1.ChartAreas[0].AxisX.Maximum = 100;
             chart1.ChartAreas[0].AxisX.Minimum = 0;
+            //改变Y轴刻度间隔
             chart1.ChartAreas[0].AxisY.Interval = 1000;
             chart1.ChartAreas[0].AxisY.Maximum = 10010;
             chart1.ChartAreas[0].AxisY.Minimum = 0;
             //设置游标
             chart1.ChartAreas[0].CursorX.IsUserEnabled = true;
             chart1.ChartAreas[0].CursorY.IsUserEnabled = true;
-            //chart1.ChartAreas[0].CursorX.SetCursorPosition(10);
-            //txtlmNo.Text = chart1.ChartAreas[0].CursorX.Position.ToString();
-            //chart1.ChartAreas[0].CursorX.AutoScroll = true;
-            //chart1.ChartAreas[0].CursorX.IsUserSelectionEnabled = true;
-
-            //chart1.ChartAreas[0].AxisX.IntervalOffset = 1.00D;  
-            chart1.Series[0].MarkerStep = 3;
+            
+            
         }
 
 
@@ -344,7 +349,7 @@ namespace eNet编辑器.Controller
         {
             try
             {
-                timer1.Interval = 2000;
+                timer1.Interval = 1000;
                 if (btnlmTest.BackColor == Color.White)
                 {
                     btnlmTest.BackColor = Color.FromArgb(204, 235, 248);
@@ -366,6 +371,7 @@ namespace eNet编辑器.Controller
             }
         }
 
+        
         private void timer1_Tick(object sender, EventArgs e)
         {
             try
@@ -381,16 +387,23 @@ namespace eNet编辑器.Controller
 
         #endregion
 
-
+        #region 曲线图 
         private void chart1_Click(object sender, EventArgs e)
         {
-            Point p = chart1.PointToClient(MousePosition);
-
-            double XVal = chart1.ChartAreas[0].CursorX.Position;//获取X轴
-            int x = Convert.ToInt32(XVal);
-            if (0 < XVal && XVal <= 100)
+            try
             {
-                sendliangdu(x);
+                //用来注册键盘焦点
+                panel1.Focus();
+                Point p = chart1.PointToClient(MousePosition);
+                double XVal = chart1.ChartAreas[0].CursorX.Position;//获取X轴
+
+                if (0 < XVal && XVal <= 100)
+                {
+                    sendliangdu(Convert.ToInt32(XVal));
+                }
+            }
+            catch { 
+            
             }
         }
 
@@ -408,6 +421,7 @@ namespace eNet编辑器.Controller
                 double XVal = chart1.ChartAreas[0].CursorX.Position;//获取X轴
                 double YVal = chart1.ChartAreas[0].CursorY.Position;//获取Y轴
                 int x = Convert.ToInt32(XVal);
+                //确保xy的值为正常值
                 if (0 < XVal && XVal <= 100)
                 {
                     if (YVal < 100 ) 
@@ -421,7 +435,7 @@ namespace eNet编辑器.Controller
                     switch(x)
                     {
                         case 1:
-                            getLinespA(XVal, YVal, 25, yData[24]);
+                            getLinespA(XVal, YVal, 100, yData[99]);
                             break;
                         case 25:
                             getLinespA(1, yData[0], XVal, YVal);
@@ -436,16 +450,37 @@ namespace eNet编辑器.Controller
                             getLinespA(XVal, YVal, 100, yData[99]);
                             break;
                         case 100:
-                            getLinespA(75, yData[74], XVal, YVal);
+                            getLinespA(1, yData[0], XVal, YVal);
                             break;
+
                         default:
+                            if (75 < x && x < 100)
+                            {
+                                getLinespA(75, yData[74], XVal, YVal);
+                                getLinespA(XVal, YVal, 100, yData[99]);
+                            }
+                            else if (50 < x && x < 75)
+                            {
+                                getLinespA(50, yData[49], XVal, YVal);
+                                getLinespA(XVal, YVal, 75, yData[74]);
+                            }
+                            else if (25 < x && x < 50)
+                            {
+                                getLinespA(25, yData[24], XVal, YVal);
+                                getLinespA(XVal, YVal, 50, yData[49]);
+                            }
+                            else
+                            {
+                                getLinespA(1, yData[0], XVal, YVal);
+                                getLinespA(XVal, YVal, 25, yData[24]);
+                            }
                             break;
 
                     }
                     chart1.Series[0].Points.DataBindXY(xData, yData);
                     //当连接时候发送当前亮度代码
                     sendliangdu(x);
-                    //updateSelectData();
+                    updateTable();
                 }
                 
                 
@@ -458,7 +493,7 @@ namespace eNet编辑器.Controller
         }
 
         /// <summary>
-        /// 获取二次函数的 a  以 最左边点为交点
+        /// 获取二次函数的 a  以 (x1,y1)点为定点产生
         /// </summary>
         /// <param name="x1"></param>
         /// <param name="y1"></param>
@@ -468,120 +503,79 @@ namespace eNet编辑器.Controller
         private void getLinespA(double x1, double y1, double x2, double y2)
         {
             double a;
+            //左边是否存在高于的y1值
+            bool isMax = false;
+            bool isMin = false;
+            int maxIndex = 0;
+            //找左边y1小过y2 没有就以y2为标准
+            for (int i = Convert.ToInt32(x2); i > 0 ; i--)
+            {
+                if (yData[i - 1] > y2)
+                {
+                    isMax = true;
+                    maxIndex = i;
+                    break;
+                }
+            }
+            if (isMax)
+            {
+                //寻找左边小于y2的值 是属于哪个区间 
+                for (int i = maxIndex; i > 0; i--)
+                {
+                    if (yData[i - 1] <= y2)
+                    {
+                        if (i >= 75)
+                        {
+                            x1 = 75;
+                            y1 = yData[74];
+                        }
+                        else if (i >= 50)
+                        {
+                            x1 = 50;
+                            y1 = yData[49];
+                        }
+                        else if (i >= 25)
+                        {
+                            x1 = 25;
+                            y1 = yData[24];
+                        }
+                        else
+                        {
+                            x1 = 1;
+                            y1 = yData[0];
+                        }
+                        isMin = true;
+                        break;
+                    }
+
+                }//for
+
+                //左边的y值都比y2大
+                if (!isMin)
+                {
+                    x1 = 1;
+                    yData[0] = Convert.ToInt32(y2);
+                }
+
+            }
             if (y1 < y2)
             {
                 a = (y2 - y1) / Math.Pow(x2 - x1, 2);
             }
             else
             {
-               a = 0.0;
-               y1 = y2;
+                a = 0;
+                y1 = y2;
             }
-            for (int i = Convert.ToInt32(x1); i < Convert.ToInt32(x2); i++)
+            
+   
+            for (int i = Convert.ToInt32(x1); i <= Convert.ToInt32(x2); i++)
             {
 
                 yData[i - 1] = Convert.ToInt32(a * Math.Pow(i - x1, 2) + y1);
             }
             
             
-        }
-
-
-
-
-        /// <summary>
-        /// 自动计算更新数据点函数
-        /// </summary>
-        /// <param name="x"></param>
-        /// <param name="y"></param>
-        private void updatePointData(int x, int y)
-        {
-            //计算出Y的值的比例
-            if (y < 18 && y > 238)
-            {
-                return;
-            }
-            if (x <= 3)
-            {
-                return;
-            }
-            else
-            {
-                if (x % 5 > 3)
-                {
-                    while (x % 5 != 0)
-                    {
-                        x++;
-                    }
-                }
-                else
-                {
-                    while (x % 5 != 0)
-                    {
-                        x--;
-                    }
-                }
-
-                yData[x - 1] = (240 - y) * 45;
-               
-
-
-                int k1 = 0, b1 = 0, k2 = 0, b2 = 0, flag = 0;
-                if (x <= 5)
-                {
-                    k1 = ((yData[4]) - (yData[0])) / 5;
-                    b1 = (5 * yData[0] - yData[4]) / 5;
-                }
-                else
-                {
-                    k1 = ((yData[x - 1]) - (yData[x - 6])) / 5;
-                    b1 = (x * yData[x - 6] - (x - 5) * yData[x - 1]) / 5;
-                }
-
-                if (x > 95)
-                {
-                    //k2 = (yData[94] - yData[99]) / 5;
-                    //b2 = (100 * yData[99] - yData[94] * 95) / 5;
-                    flag = 1;
-                }
-                else
-                {
-                    k2 = (yData[x + 4] - yData[x - 1]) / 5;
-                    b2 = ((x + 5) * yData[x - 1] - yData[x + 4] * x) / 5;
-                }
-
-
-                //左边的点
-                for (int i = 1; i < 5; i++)
-                {
-                    if (x - i == 1)
-                    {
-                        continue;
-                    }
-                    yData[x - i - 1] = k1 * (x - i) + b1;
-
-
-                }
-                //右边的点当为100时不计算
-                if (flag == 0)
-                {
-                    for (int i = 1; i < 5; i++)
-                    {
-                        if (x + i == 100)
-                        {
-                            continue;
-                        }
-                        yData[x + i - 1] = k2 * (x + i) + b2;
-
-
-                    }
-                }
-
-                chart1.Series[0].Points.DataBindXY(xData, yData);
-
-
-            }
-
         }
 
         //发送当前亮度
@@ -593,8 +587,174 @@ namespace eNet编辑器.Controller
   
         }
 
-       
+
+
+
+        /// <summary>
+        /// 曲线图按键
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void setDimmer_KeyDown(object sender, KeyEventArgs e)
+        {
+            try
+            {
+                if (!panel1.Focused)
+                {
+                    return;
+                }
+                int x = (int)chart1.ChartAreas[0].CursorX.Position;//获取X轴
+                switch (e.KeyCode)
+                {
+                    case Keys.Left:
+
+                        chart1.ChartAreas[0].CursorX.Position = x - 1;
+                        sendliangdu(x-1);
+                        break;
+                    case Keys.Right:
+                        chart1.ChartAreas[0].CursorX.Position = x + 1;
+                        sendliangdu(x + 1);
+                        break;
+                    default:
+                        break;
+                }
+
+
+            }
+            catch
+            {
+
+            }
+        }
+        #endregion
+
+
+        #region 图表
+        private void btnLeft_Click(object sender, EventArgs e)
+        {
+            TextBox[] txtunits = new TextBox[] { txtunit1, txtunit2, txtunit3, txtunit4, txtunit5, txtunit6, txtunit7, txtunit8, txtunit9, txtunit10 };
+            if (txtunits[0].Text == "1%")
+            {
+                return;
+            }
+            //获取数字
+            int start = Convert.ToInt32(Regex.Replace(txtunit1.Text, @"[^\d]*", "")) - 10;
+            for (int i = 0; i < txtunits.Length; i++)
+            {
+                txtunits[i].Text = string.Format("{0}%", start + i);
+            }
+            updateTable();
+        }
+
+        private void btnRight_Click(object sender, EventArgs e)
+        {
+            TextBox[] txtunits = new TextBox[] { txtunit1, txtunit2, txtunit3, txtunit4, txtunit5, txtunit6, txtunit7, txtunit8, txtunit9, txtunit10 };
+            if (txtunits[0].Text == "91%")
+            {
+                return;
+            }
+            //获取数字
+            int start = Convert.ToInt32(Regex.Replace(txtunit1.Text, @"[^\d]*", "")) + 10;
+            for (int i = 0; i < txtunits.Length; i++)
+            {
+                txtunits[i].Text = string.Format("{0}%", start + i);
+            }
+            updateTable();
+            
+        }
+
+        /// <summary>
+        /// 更新表格上面的数值
+        /// </summary>
+        private void updateTable()
+        {
+            TextBox[] txtabs = new TextBox[] { txtabs1, txtabs2, txtabs3, txtabs4, txtabs5, txtabs6, txtabs7, txtabs8, txtabs9, txtabs10 };
+
+            //获取数字
+            int start = Convert.ToInt32(Regex.Replace(txtunit1.Text, @"[^\d]*", ""));
+            int end = start + 9;
+            int j = 0;
+            for (int i = start; i <= end; i++)
+            {
+                txtabs[j].Text = yData[i - 1].ToString();
+                j++;
+            }
+
+        }
+
+        /// <summary>
+        /// txt值改变并失去焦点后
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void txtabs1_Leave(object sender, EventArgs e)
+        {
+            ChangeNum();
+        }
+
+        private void txtabs1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //如果输入的不是数字键，也不是、Backspace键，则取消该输入
+            if (!(Char.IsNumber(e.KeyChar)) && e.KeyChar != (char)8)
+            {
+                e.Handled = true;
+            }
+        }
+
+        /// <summary>
+        /// 更新表格上面的数值
+        /// </summary>
+        private void ChangeNum()
+        {
+            try
+            {
+                TextBox[] txtabs = new TextBox[] { txtabs1, txtabs2, txtabs3, txtabs4, txtabs5, txtabs6, txtabs7, txtabs8, txtabs9, txtabs10 };
+
+                //获取数字
+                int start = Convert.ToInt32(Regex.Replace(txtunit1.Text, @"[^\d]*", ""));
+                int end = start + 9;
+                int j = 0;
+                int data = 0;
+                for (int i = start; i <= end; i++)
+                {
+                    data = Convert.ToInt32(Regex.Replace(txtabs[j].Text, @"[^\d]*", ""));
+                    if (data > 10000)
+                    {
+                        data = 10000;
+                    }
+                    else if (data < 0)
+                    {
+                        data = 1;
+                    }
+                    yData[i - 1] = data;
+                    j++;
+                }
+                //更新曲线
+                chart1.Series[0].Points.DataBindXY(xData, yData);
+            }
+            catch {
+                updateTable();
+            }
+
+        }
+
+        #endregion
+
+      
+
+
+
      
+
+      
+
+
+
+   
+
+        
+
+  
 
 
 

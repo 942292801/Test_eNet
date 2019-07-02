@@ -40,6 +40,8 @@
             this.btnAllWrite = new DevComponents.DotNetBar.ButtonX();
             this.btnWrite = new DevComponents.DotNetBar.ButtonX();
             this.btnRead = new DevComponents.DotNetBar.ButtonX();
+            this.btnImport = new DevComponents.DotNetBar.ButtonX();
+            this.btnOutput = new DevComponents.DotNetBar.ButtonX();
             this.label1 = new System.Windows.Forms.Label();
             this.btnClose = new DevComponents.DotNetBar.ButtonX();
             this.symbolBox1 = new DevComponents.DotNetBar.Controls.SymbolBox();
@@ -125,9 +127,11 @@
             this.flowLayoutPanel1.Controls.Add(this.btnAllWrite);
             this.flowLayoutPanel1.Controls.Add(this.btnWrite);
             this.flowLayoutPanel1.Controls.Add(this.btnRead);
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(836, 0);
+            this.flowLayoutPanel1.Controls.Add(this.btnImport);
+            this.flowLayoutPanel1.Controls.Add(this.btnOutput);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(782, 0);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(135, 25);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(191, 25);
             this.flowLayoutPanel1.TabIndex = 21;
             // 
             // btnRefresh
@@ -226,6 +230,46 @@
             this.btnRead.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnRead.TabIndex = 18;
             this.btnRead.Tooltip = "读取";
+            // 
+            // btnImport
+            // 
+            this.btnImport.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnImport.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnImport.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnImport.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
+            this.btnImport.FocusCuesEnabled = false;
+            this.btnImport.Font = new System.Drawing.Font("黑体", 9F);
+            this.btnImport.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None;
+            this.btnImport.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnImport.HoverImage")));
+            this.btnImport.Image = ((System.Drawing.Image)(resources.GetObject("btnImport.Image")));
+            this.btnImport.Location = new System.Drawing.Point(141, 6);
+            this.btnImport.Margin = new System.Windows.Forms.Padding(6);
+            this.btnImport.Name = "btnImport";
+            this.btnImport.Size = new System.Drawing.Size(15, 15);
+            this.btnImport.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnImport.TabIndex = 25;
+            this.btnImport.Tooltip = "导入";
+            // 
+            // btnOutput
+            // 
+            this.btnOutput.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnOutput.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnOutput.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnOutput.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
+            this.btnOutput.FocusCuesEnabled = false;
+            this.btnOutput.Font = new System.Drawing.Font("黑体", 9F);
+            this.btnOutput.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None;
+            this.btnOutput.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnOutput.HoverImage")));
+            this.btnOutput.Image = ((System.Drawing.Image)(resources.GetObject("btnOutput.Image")));
+            this.btnOutput.Location = new System.Drawing.Point(168, 6);
+            this.btnOutput.Margin = new System.Windows.Forms.Padding(6);
+            this.btnOutput.Name = "btnOutput";
+            this.btnOutput.Size = new System.Drawing.Size(15, 15);
+            this.btnOutput.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnOutput.TabIndex = 22;
+            this.btnOutput.Tooltip = "导出";
             // 
             // label1
             // 
@@ -378,6 +422,7 @@
             this.btnLeft.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnLeft.TabIndex = 31;
             this.btnLeft.Tooltip = "调用";
+            this.btnLeft.Click += new System.EventHandler(this.btnLeft_Click);
             // 
             // btnRight
             // 
@@ -397,6 +442,7 @@
             this.btnRight.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnRight.TabIndex = 30;
             this.btnRight.Tooltip = "调用";
+            this.btnRight.Click += new System.EventHandler(this.btnRight_Click);
             // 
             // flowLayoutPanel2
             // 
@@ -600,6 +646,8 @@
             this.txtabs1.Size = new System.Drawing.Size(59, 23);
             this.txtabs1.TabIndex = 26;
             this.txtabs1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtabs1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtabs1_KeyPress);
+            this.txtabs1.Leave += new System.EventHandler(this.txtabs1_Leave);
             // 
             // txtabs2
             // 
@@ -613,6 +661,8 @@
             this.txtabs2.Size = new System.Drawing.Size(59, 23);
             this.txtabs2.TabIndex = 27;
             this.txtabs2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtabs2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtabs1_KeyPress);
+            this.txtabs2.Leave += new System.EventHandler(this.txtabs1_Leave);
             // 
             // txtabs3
             // 
@@ -626,6 +676,8 @@
             this.txtabs3.Size = new System.Drawing.Size(59, 23);
             this.txtabs3.TabIndex = 28;
             this.txtabs3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtabs3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtabs1_KeyPress);
+            this.txtabs3.Leave += new System.EventHandler(this.txtabs1_Leave);
             // 
             // txtabs4
             // 
@@ -639,6 +691,8 @@
             this.txtabs4.Size = new System.Drawing.Size(59, 23);
             this.txtabs4.TabIndex = 29;
             this.txtabs4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtabs4.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtabs1_KeyPress);
+            this.txtabs4.Leave += new System.EventHandler(this.txtabs1_Leave);
             // 
             // txtabs5
             // 
@@ -652,6 +706,8 @@
             this.txtabs5.Size = new System.Drawing.Size(59, 23);
             this.txtabs5.TabIndex = 30;
             this.txtabs5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtabs5.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtabs1_KeyPress);
+            this.txtabs5.Leave += new System.EventHandler(this.txtabs1_Leave);
             // 
             // txtabs6
             // 
@@ -665,6 +721,8 @@
             this.txtabs6.Size = new System.Drawing.Size(59, 23);
             this.txtabs6.TabIndex = 31;
             this.txtabs6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtabs6.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtabs1_KeyPress);
+            this.txtabs6.Leave += new System.EventHandler(this.txtabs1_Leave);
             // 
             // txtabs7
             // 
@@ -678,6 +736,8 @@
             this.txtabs7.Size = new System.Drawing.Size(59, 23);
             this.txtabs7.TabIndex = 32;
             this.txtabs7.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtabs7.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtabs1_KeyPress);
+            this.txtabs7.Leave += new System.EventHandler(this.txtabs1_Leave);
             // 
             // txtabs8
             // 
@@ -691,6 +751,8 @@
             this.txtabs8.Size = new System.Drawing.Size(59, 23);
             this.txtabs8.TabIndex = 39;
             this.txtabs8.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtabs8.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtabs1_KeyPress);
+            this.txtabs8.Leave += new System.EventHandler(this.txtabs1_Leave);
             // 
             // txtabs9
             // 
@@ -704,6 +766,8 @@
             this.txtabs9.Size = new System.Drawing.Size(59, 23);
             this.txtabs9.TabIndex = 40;
             this.txtabs9.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtabs9.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtabs1_KeyPress);
+            this.txtabs9.Leave += new System.EventHandler(this.txtabs1_Leave);
             // 
             // txtabs10
             // 
@@ -717,6 +781,8 @@
             this.txtabs10.Size = new System.Drawing.Size(59, 23);
             this.txtabs10.TabIndex = 41;
             this.txtabs10.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtabs10.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtabs1_KeyPress);
+            this.txtabs10.Leave += new System.EventHandler(this.txtabs1_Leave);
             // 
             // chart1
             // 
@@ -1002,11 +1068,13 @@
             this.Controls.Add(this.plInfoTitle);
             this.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.KeyPreview = true;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "setDimmer";
             this.Text = "setDimmer";
             this.Load += new System.EventHandler(this.setDimmer_Load);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.setDimmer_Paint);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.setDimmer_KeyDown);
             this.plInfoTitle.ResumeLayout(false);
             this.plInfoTitle.PerformLayout();
             this.flowLayoutPanel1.ResumeLayout(false);
@@ -1079,9 +1147,11 @@
         private System.Windows.Forms.TextBox txtabs10;
         private DevComponents.DotNetBar.ButtonX btnRight;
         private DevComponents.DotNetBar.ButtonX btnLeft;
-        private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Label label19;
+        private DevComponents.DotNetBar.ButtonX btnImport;
+        private DevComponents.DotNetBar.ButtonX btnOutput;
     }
 }
