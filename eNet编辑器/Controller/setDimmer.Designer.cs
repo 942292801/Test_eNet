@@ -76,16 +76,16 @@
             this.txtabs10 = new System.Windows.Forms.TextBox();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.label14 = new System.Windows.Forms.Label();
-            this.txtlmMin = new System.Windows.Forms.TextBox();
+            this.txtMin = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
-            this.cblmChange = new System.Windows.Forms.ComboBox();
+            this.cbChangeState = new System.Windows.Forms.ComboBox();
             this.label11 = new System.Windows.Forms.Label();
-            this.cblmSwitch = new System.Windows.Forms.ComboBox();
+            this.cbOnState = new System.Windows.Forms.ComboBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.cblmStart = new System.Windows.Forms.ComboBox();
-            this.txtlmMax = new System.Windows.Forms.TextBox();
+            this.cbPowerState = new System.Windows.Forms.ComboBox();
+            this.txtMax = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.tblmTiao = new Infragistics.Win.UltraWinEditors.UltraTrackBar();
@@ -151,7 +151,8 @@
             this.btnRefresh.Size = new System.Drawing.Size(15, 15);
             this.btnRefresh.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnRefresh.TabIndex = 22;
-            this.btnRefresh.Tooltip = "恢复上次";
+            this.btnRefresh.Tooltip = "恢复上次窗体关闭状态";
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
             // btnIni
             // 
@@ -172,6 +173,7 @@
             this.btnIni.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnIni.TabIndex = 24;
             this.btnIni.Tooltip = "出厂默认";
+            this.btnIni.Click += new System.EventHandler(this.btnIni_Click);
             // 
             // btnAllWrite
             // 
@@ -192,6 +194,7 @@
             this.btnAllWrite.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnAllWrite.TabIndex = 23;
             this.btnAllWrite.Tooltip = "同类型端口写入";
+            this.btnAllWrite.Click += new System.EventHandler(this.btnAllWrite_Click);
             // 
             // btnWrite
             // 
@@ -211,6 +214,7 @@
             this.btnWrite.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnWrite.TabIndex = 16;
             this.btnWrite.Tooltip = "写入";
+            this.btnWrite.Click += new System.EventHandler(this.btnWrite_Click);
             // 
             // btnRead
             // 
@@ -230,6 +234,7 @@
             this.btnRead.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnRead.TabIndex = 18;
             this.btnRead.Tooltip = "读取";
+            this.btnRead.Click += new System.EventHandler(this.btnRead_Click);
             // 
             // btnImport
             // 
@@ -249,7 +254,8 @@
             this.btnImport.Size = new System.Drawing.Size(15, 15);
             this.btnImport.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnImport.TabIndex = 25;
-            this.btnImport.Tooltip = "导入";
+            this.btnImport.Tooltip = "导入曲线";
+            this.btnImport.Click += new System.EventHandler(this.btnImport_Click);
             // 
             // btnOutput
             // 
@@ -269,7 +275,8 @@
             this.btnOutput.Size = new System.Drawing.Size(15, 15);
             this.btnOutput.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnOutput.TabIndex = 22;
-            this.btnOutput.Tooltip = "导出";
+            this.btnOutput.Tooltip = "导出曲线";
+            this.btnOutput.Click += new System.EventHandler(this.btnOutput_Click);
             // 
             // label1
             // 
@@ -352,16 +359,16 @@
             this.groupBox2.Controls.Add(this.flowLayoutPanel2);
             this.groupBox2.Controls.Add(this.chart1);
             this.groupBox2.Controls.Add(this.label14);
-            this.groupBox2.Controls.Add(this.txtlmMin);
+            this.groupBox2.Controls.Add(this.txtMin);
             this.groupBox2.Controls.Add(this.label15);
             this.groupBox2.Controls.Add(this.label13);
             this.groupBox2.Controls.Add(this.label12);
-            this.groupBox2.Controls.Add(this.cblmChange);
+            this.groupBox2.Controls.Add(this.cbChangeState);
             this.groupBox2.Controls.Add(this.label11);
-            this.groupBox2.Controls.Add(this.cblmSwitch);
+            this.groupBox2.Controls.Add(this.cbOnState);
             this.groupBox2.Controls.Add(this.label10);
-            this.groupBox2.Controls.Add(this.cblmStart);
-            this.groupBox2.Controls.Add(this.txtlmMax);
+            this.groupBox2.Controls.Add(this.cbPowerState);
+            this.groupBox2.Controls.Add(this.txtMax);
             this.groupBox2.Controls.Add(this.label9);
             this.groupBox2.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.groupBox2.Location = new System.Drawing.Point(11, 80);
@@ -823,13 +830,14 @@
             this.label14.TabIndex = 26;
             this.label14.Text = "亮度%";
             // 
-            // txtlmMin
+            // txtMin
             // 
-            this.txtlmMin.Location = new System.Drawing.Point(121, 311);
-            this.txtlmMin.Name = "txtlmMin";
-            this.txtlmMin.Size = new System.Drawing.Size(55, 26);
-            this.txtlmMin.TabIndex = 25;
-            this.txtlmMin.Text = "10";
+            this.txtMin.Location = new System.Drawing.Point(121, 311);
+            this.txtMin.Name = "txtMin";
+            this.txtMin.Size = new System.Drawing.Size(55, 26);
+            this.txtMin.TabIndex = 25;
+            this.txtMin.Text = "10";
+            this.txtMin.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtabs1_KeyPress);
             // 
             // label15
             // 
@@ -861,10 +869,10 @@
             this.label12.TabIndex = 22;
             this.label12.Text = "渐变状态设置：";
             // 
-            // cblmChange
+            // cbChangeState
             // 
-            this.cblmChange.FormattingEnabled = true;
-            this.cblmChange.Items.AddRange(new object[] {
+            this.cbChangeState.FormattingEnabled = true;
+            this.cbChangeState.Items.AddRange(new object[] {
             "立即",
             "0.1s",
             "0.2s",
@@ -917,11 +925,11 @@
             "220s",
             "230s",
             "240s"});
-            this.cblmChange.Location = new System.Drawing.Point(121, 182);
-            this.cblmChange.Name = "cblmChange";
-            this.cblmChange.Size = new System.Drawing.Size(107, 28);
-            this.cblmChange.TabIndex = 21;
-            this.cblmChange.Text = "立即";
+            this.cbChangeState.Location = new System.Drawing.Point(121, 182);
+            this.cbChangeState.Name = "cbChangeState";
+            this.cbChangeState.Size = new System.Drawing.Size(107, 28);
+            this.cbChangeState.TabIndex = 21;
+            this.cbChangeState.Text = "立即";
             // 
             // label11
             // 
@@ -933,10 +941,10 @@
             this.label11.TabIndex = 20;
             this.label11.Text = "开启状态设置：";
             // 
-            // cblmSwitch
+            // cbOnState
             // 
-            this.cblmSwitch.FormattingEnabled = true;
-            this.cblmSwitch.Items.AddRange(new object[] {
+            this.cbOnState.FormattingEnabled = true;
+            this.cbOnState.Items.AddRange(new object[] {
             "10%",
             "20%",
             "30%",
@@ -948,11 +956,11 @@
             "90%",
             "100%",
             "恢复上次亮度"});
-            this.cblmSwitch.Location = new System.Drawing.Point(121, 114);
-            this.cblmSwitch.Name = "cblmSwitch";
-            this.cblmSwitch.Size = new System.Drawing.Size(107, 28);
-            this.cblmSwitch.TabIndex = 19;
-            this.cblmSwitch.Text = "10%";
+            this.cbOnState.Location = new System.Drawing.Point(121, 114);
+            this.cbOnState.Name = "cbOnState";
+            this.cbOnState.Size = new System.Drawing.Size(107, 28);
+            this.cbOnState.TabIndex = 19;
+            this.cbOnState.Text = "10%";
             // 
             // label10
             // 
@@ -964,26 +972,27 @@
             this.label10.TabIndex = 18;
             this.label10.Text = "上电状态设置：";
             // 
-            // cblmStart
+            // cbPowerState
             // 
-            this.cblmStart.FormattingEnabled = true;
-            this.cblmStart.Items.AddRange(new object[] {
+            this.cbPowerState.FormattingEnabled = true;
+            this.cbPowerState.Items.AddRange(new object[] {
             "开启",
             "关闭",
             "恢复断电状态"});
-            this.cblmStart.Location = new System.Drawing.Point(121, 50);
-            this.cblmStart.Name = "cblmStart";
-            this.cblmStart.Size = new System.Drawing.Size(107, 28);
-            this.cblmStart.TabIndex = 17;
-            this.cblmStart.Text = "开启";
+            this.cbPowerState.Location = new System.Drawing.Point(121, 50);
+            this.cbPowerState.Name = "cbPowerState";
+            this.cbPowerState.Size = new System.Drawing.Size(107, 28);
+            this.cbPowerState.TabIndex = 17;
+            this.cbPowerState.Text = "开启";
             // 
-            // txtlmMax
+            // txtMax
             // 
-            this.txtlmMax.Location = new System.Drawing.Point(121, 246);
-            this.txtlmMax.Name = "txtlmMax";
-            this.txtlmMax.Size = new System.Drawing.Size(55, 26);
-            this.txtlmMax.TabIndex = 16;
-            this.txtlmMax.Text = "90";
+            this.txtMax.Location = new System.Drawing.Point(121, 246);
+            this.txtMax.Name = "txtMax";
+            this.txtMax.Size = new System.Drawing.Size(55, 26);
+            this.txtMax.TabIndex = 16;
+            this.txtMax.Text = "90";
+            this.txtMax.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtabs1_KeyPress);
             // 
             // label9
             // 
@@ -1112,16 +1121,16 @@
         private DevComponents.DotNetBar.ButtonX btnAllWrite;
         private DevComponents.DotNetBar.ButtonX btnIni;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.TextBox txtlmMin;
+        private System.Windows.Forms.TextBox txtMin;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.ComboBox cblmChange;
+        private System.Windows.Forms.ComboBox cbChangeState;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.ComboBox cblmSwitch;
+        private System.Windows.Forms.ComboBox cbOnState;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.ComboBox cblmStart;
-        private System.Windows.Forms.TextBox txtlmMax;
+        private System.Windows.Forms.ComboBox cbPowerState;
+        private System.Windows.Forms.TextBox txtMax;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;

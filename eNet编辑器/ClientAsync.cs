@@ -200,7 +200,7 @@ namespace eNet编辑器
                 TcpClient cl = ar.AsyncState as TcpClient;
                 //cl.Client.EndConnect(ar);
                 //cl.Client.EndDisconnect(ar);
-                cl.Client.Dispose();
+                cl.Client.Close();
             }
             catch
             {

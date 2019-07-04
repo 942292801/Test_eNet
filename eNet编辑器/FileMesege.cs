@@ -61,6 +61,9 @@ namespace eNet编辑器
         /// </summary>
         public static int cbTypeIndex = 0;
 
+        //undo redo
+        public static CommandManager cmds = new CommandManager();
+
         //快捷键的复制 粘贴副本
         public static DataJson.Module copyDevice = null;
         public static DataJson.PointInfo copyPoint = null;
@@ -78,10 +81,9 @@ namespace eNet编辑器
         public static List<DataJson.Panel> panelList;//面板
         public static List<DataJson.Sensor> sensorList;//感应
 
-      
-     
-        //undo redo
-        public static CommandManager cmds = new CommandManager();
+        //设置窗口恢复上一次信息状态
+        public static DataJson.PortDimmer portDimmer = null;
+        public static DataJson.PortSwitch portSwitch = null;
 
         /// <summary>
         /// 窗体关闭发生事件
@@ -126,6 +128,8 @@ namespace eNet编辑器
             serialList = null;
             //场景
             sceneList = null;
+            //定时
+            timerList = null;
             //绑定
             panelList = null;
             //感应
