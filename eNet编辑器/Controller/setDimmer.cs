@@ -60,19 +60,17 @@ namespace eNet编辑器.Controller
             //链接tcp
             Connet6003Tcp(ip);
             lastIP = ip.Split('.')[3];
+            timer2.Start();
             //图表初始化
             chart1Init();
             //获取表格数字
             updateTable();
             //窗口状态初始化
             getFormState((DataJson.PortDimmer)devPort.portContent);
-  
-            
-      
         }
 
 
-        #region 初始化函数
+        #region  图形初始化函数
 
         /// <summary>
         /// 图表初始化
@@ -138,17 +136,30 @@ namespace eNet编辑器.Controller
 
         #endregion
 
-
+       
         #region tcp6003 链接 以及处理反馈信息 发送信息
+
+        private void timer2_Tick(object sender, EventArgs e)
+        {
+            if (client6003 != null && !client6003.Connected())
+            {
+                
+                //链接tcp
+                Connet6003Tcp(ip);
+            }
+
+        }
+
         private void Connet6003Tcp(string ip)
         {
             try
             {
-                if (client6003 != null && client6003.Connected())
+
+                if (client6003 != null )
                 {
                     client6003.Dispoes();
                 }
-
+                pictureBox1.Image = Properties.Resources.OutLine;
                 client6003 = new ClientAsync();
                 client6003Ini();
                 if (string.IsNullOrEmpty(ip))
@@ -157,12 +168,11 @@ namespace eNet编辑器.Controller
                 }
                 //异步连接
                 client6003.ConnectAsync(ip, 6003);
-
-                SocketUtil.Delay(1);
                 if (client6003 != null && client6003.Connected())
                 {
+                    pictureBox1.Image = Properties.Resources.Online;
                     //开启心跳 
-                    client6003.SendAsync("SET;00000003;{254.251.0.1};\r\n");
+                    client6003.SendAsync("SET;00000001;{254.251.0.1};\r\n");
                     return;
                 }
                 else
@@ -171,8 +181,9 @@ namespace eNet编辑器.Controller
                     client6003.ConnectAsync(ip, 6003);
                     if (client6003 != null && client6003.Connected())
                     {
+                        pictureBox1.Image = Properties.Resources.Online;
                         //开启心跳 
-                        client6003.SendAsync("SET;00000003;{254.251.0.1};\r\n");
+                        client6003.SendAsync("SET;00000001;{254.251.0.1};\r\n");
                         return;
                     }
                 }
@@ -180,7 +191,7 @@ namespace eNet编辑器.Controller
             }
             catch
             {
-                //client6003 = null;
+         
                 return;
             }
         }
@@ -200,28 +211,31 @@ namespace eNet编辑器.Controller
                         IPEndPoint iep = c.Client.RemoteEndPoint as IPEndPoint;
                         key = string.Format("{0}:{1}", iep.Address.ToString(), iep.Port);
                     }
+               
+                    switch (enAction)
+                    {
+                        case ClientAsync.EnSocketAction.Connect:
+                            // MessageBox.Show("已经与" + key + "建立连接");
+                            break;
+                        case ClientAsync.EnSocketAction.SendMsg:
+
+                            //MessageBox.Show(DateTime.Now + "：向" + key + "发送了一条消息");
+                            break;
+                        case ClientAsync.EnSocketAction.Close:
+                            //跨线程调用
+                            this.Invoke(tcp6003receviceDelegate, "outline");
+                            //MessageBox.Show("服务端连接关闭");
+                            break;
+                        case ClientAsync.EnSocketAction.Error:
+                            //MessageBox.Show("连接发生错误,请检查网络连接");
+                            //跨线程调用
+                            this.Invoke(tcp6003receviceDelegate, "outline");
+                            break;
+                        default:
+                            break;
+                    }
                 }
                 catch { }
-                switch (enAction)
-                {
-                    case ClientAsync.EnSocketAction.Connect:
-                        // MessageBox.Show("已经与" + key + "建立连接");
-                        break;
-                    case ClientAsync.EnSocketAction.SendMsg:
-
-                        //MessageBox.Show(DateTime.Now + "：向" + key + "发送了一条消息");
-                        break;
-                    case ClientAsync.EnSocketAction.Close:
-
-                        //MessageBox.Show("服务端连接关闭");
-                        break;
-                    case ClientAsync.EnSocketAction.Error:
-                        MessageBox.Show("连接发生错误,请检查网络连接");
-                        
-                        break;
-                    default:
-                        break;
-                }
             });
             //信息接收处理
             client6003.Received += new Action<string, string>((key, msg) =>
@@ -255,7 +269,16 @@ namespace eNet编辑器.Controller
         /// <param name="msg"></param>
         private void tcp6003ReceviceDelegateMsg(string msg)
         {
-
+            //离线处理
+            if (msg == "outline")
+            {
+                if (client6003 != null)
+                {
+                    client6003.Dispoes();
+                }
+                pictureBox1.Image = Properties.Resources.OutLine;
+                return;
+            }
             bufferMsg = bufferMsg + msg;
             if (msg.Length == 1024)
             {
@@ -340,7 +363,7 @@ namespace eNet编辑器.Controller
                 string tmp = string.Format("set;{{{1}.0.{2}.{3}:{4}}};{0};\r\n", dataOrder, lastIP, DevModuel.id, portID, reg);
                 //发送
                 client6003.SendAsync(tmp);
-                //SocketUtil.WriteLog(tmp);
+               
             }
         }
 
@@ -360,7 +383,7 @@ namespace eNet编辑器.Controller
                 string tmp = string.Format("set;{{{1}.0.{2}.{3}:{4}}};{0};\r\n", dataOrder, lastIP, DevModuel.id, DevPort.portID, reg);
                 //发送
                 client6003.SendAsync(tmp);
-               
+                 //SocketUtil.WriteLog(tmp);
             }
         }
 
@@ -435,7 +458,13 @@ namespace eNet编辑器.Controller
             //关闭的时候 保存
             FileMesege.portDimmer = SaveFormState();
             this.DialogResult = System.Windows.Forms.DialogResult.No;
-            this.Dispose();
+            timer1.Stop();
+            timer2.Stop();
+            if (client6003 != null)
+            {
+                client6003.Dispoes();
+            }
+            this.Close();
         
         }
 
@@ -853,7 +882,7 @@ namespace eNet编辑器.Controller
         #endregion
 
 
-
+        #region 菜单栏 按钮
         private void btnRefresh_Click(object sender, EventArgs e)
         {
             getFormState(FileMesege.portDimmer);
@@ -861,7 +890,7 @@ namespace eNet编辑器.Controller
 
         private void btnIni_Click(object sender, EventArgs e)
         {
-            getFormState("32", "64", "01", "64", "00", "");
+            getFormState("64", "64", "01", "64", "00", "");
         }
 
         private void btnAllWrite_Click(object sender, EventArgs e)
@@ -875,6 +904,8 @@ namespace eNet编辑器.Controller
                 }
                 string id = "";
                 string msg = "";
+                
+               
                 foreach (DataJson.DevPort dp  in devModuel.devPortList)
                 {
                     if (dp.portType == DevPort.portType)
@@ -1063,8 +1094,10 @@ namespace eNet编辑器.Controller
             }  
         }
 
+        #endregion
 
-        #region 获取界面设置
+
+        #region 把十六进制参数 展现在窗体中
 
         /// <summary>
         /// 解释对象 在窗体展示对象参数
@@ -1125,24 +1158,24 @@ namespace eNet编辑器.Controller
         /// <param name="info"></param>
         private void GetPowerState(string info)
         {
-            switch (info)
+            if (string.IsNullOrEmpty(info))
             {
-                case "00":
-                    cbPowerState.SelectedItem = cbPowerState.Items[1];
-                    
-                    break;
-                case "32":
-                    cbPowerState.SelectedItem = cbPowerState.Items[0];
-                    break;
-                case "ff":
-                    cbPowerState.SelectedItem = cbPowerState.Items[2];
-                    break;
-                default:
-                    cbPowerState.SelectedItem = null;
-                    break;
+                cbPowerState.SelectedItem = null;
+                return;
             }
-            
-       
+            if (info == "00")
+            {
+                cbPowerState.SelectedItem = cbPowerState.Items[0];
+            }
+            else if (info == "ff")
+            {
+                cbPowerState.SelectedItem = cbPowerState.Items[11];
+            }
+            else
+            {
+                cbPowerState.Text = string.Format("{0}%", Convert.ToInt32(info, 16));
+            }
+
         }
 
         /// <summary>
@@ -1151,46 +1184,21 @@ namespace eNet编辑器.Controller
         /// <param name="info"></param>
         private void GetOnState(string info)
         {
-            switch (info)
+            if (string.IsNullOrEmpty(info))
             {
-                case "00":
-                    cbOnState.SelectedItem = cbOnState.Items[10];
-                    break;
-                case "0a":
-                    cbOnState.SelectedItem = cbOnState.Items[0];
-                    break;
-                case "14":
-                    cbOnState.SelectedItem = cbOnState.Items[1];
-                    break;
-                case "1e":
-                    cbOnState.SelectedItem = cbOnState.Items[2];
-                    break;
-                case "28":
-                    cbOnState.SelectedItem = cbOnState.Items[3];
-                    break;
-                case "32":
-                    cbOnState.SelectedItem = cbOnState.Items[4];
-                    break;
-                case "3c":
-                    cbOnState.SelectedItem = cbOnState.Items[5];
-                    break;
-                case "46":
-                    cbOnState.SelectedItem = cbOnState.Items[6];
-                    break;
-                case "50":
-                    cbOnState.SelectedItem = cbOnState.Items[7];
-                    break;
-                case "5a":
-                    cbOnState.SelectedItem = cbOnState.Items[8];
-                    break;
-                case "64":
-                    cbOnState.SelectedItem = cbOnState.Items[9];
-                    break;
-
-                default:
-                    cbOnState.SelectedItem = null;
-                    break;
+                cbOnState.SelectedItem = null;
+                return;
             }
+            if (info == "00")
+            {
+                cbOnState.SelectedItem = cbOnState.Items[10];
+            }
+            else
+            {
+
+                cbOnState.Text = string.Format("{0}%", Convert.ToInt32(info, 16));
+            }
+  
         }
 
 
@@ -1342,7 +1350,7 @@ namespace eNet编辑器.Controller
         #endregion
 
 
-        #region 保存界面参数
+        #region 把窗体参数 存储起来
         private DataJson.PortDimmer SaveFormState()
         {
             DataJson.PortDimmer tmp = new DataJson.PortDimmer();
@@ -1362,23 +1370,29 @@ namespace eNet编辑器.Controller
         /// <returns></returns>
         private string SavePowerState(string info)
         {
-
             if (info == cbPowerState.Items[0].ToString())
-            {
-                info = "32";
-            }
-            else if (info == cbPowerState.Items[1].ToString())
             {
                 info = "00";
             }
-            else if (info == cbPowerState.Items[2].ToString())
+            else if (info == cbPowerState.Items[11].ToString())
             {
                 info = "ff";
             }
             else
-            {
-                info = "";
+            { 
+                info  = Regex.Replace(info, @"[^\d]*", "");
+                if (string.IsNullOrEmpty(info))
+                {
+                    info = "";
+                }
+                else
+                {
+                    
+                    info = Convert.ToInt32(info).ToString("X2");
+                }
+                
             }
+            
             return info;
 
 
@@ -1389,53 +1403,28 @@ namespace eNet编辑器.Controller
         /// </summary>
         /// <param name="str"></param>
         /// <returns></returns>
-        private string SaveOnState(string str)
+        private string SaveOnState(string info)
         {
-            if (str == cbOnState.Items[0].ToString())
+            if (info == cbOnState.Items[10].ToString())
             {
-                return "0a";
+                info = "00";
             }
-            else if (str == cbOnState.Items[1].ToString())
+            else
             {
-                return "14";
+                info = Regex.Replace(info, @"[^\d]*", "");
+                if (string.IsNullOrEmpty(info))
+                {
+                    info = "";
+                }
+                else
+                {
+
+                    info = Convert.ToInt32(info).ToString("X2");
+                }
+
             }
-            else if (str == cbOnState.Items[2].ToString())
-            {
-                return "1e";
-            }
-            else if (str == cbOnState.Items[3].ToString())
-            {
-                return "28";
-            }
-            else if (str == cbOnState.Items[4].ToString())
-            {
-                return "32";
-            }
-            else if (str == cbOnState.Items[5].ToString())
-            {
-                return "3c";
-            }
-            else if (str == cbOnState.Items[6].ToString())
-            {
-                return "46";
-            }
-            else if (str == cbOnState.Items[7].ToString())
-            {
-                return "50";
-            }
-            else if (str == cbOnState.Items[8].ToString())
-            {
-                return "5a";
-            }
-            else if (str == cbOnState.Items[9].ToString())
-            {
-                return "64";
-            }
-            else if (str == cbOnState.Items[10].ToString())
-            {
-                return "00";
-            }
-            return "";
+
+            return info;
 
         }
 
@@ -1576,6 +1565,8 @@ namespace eNet编辑器.Controller
 
 
         #endregion
+
+      
 
 
 

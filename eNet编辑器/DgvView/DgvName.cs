@@ -448,7 +448,7 @@ namespace eNet编辑器.DgvView
             switch (devPort.portType)
             {
                 case "1.0_switch":
-                    showSwitch(devPort);
+                    showSwitch(devModuel, devPort, ip);
                     break;
                 case "2.0_dimmer":
                     showDimmer(devModuel,devPort,ip);
@@ -478,11 +478,14 @@ namespace eNet编辑器.DgvView
             }
         }
 
-        private void showSwitch(DataJson.DevPort devPort)
+        private void showSwitch(DataJson.Module devModuel, DataJson.DevPort devPort, string ip)
         {
             setSwitch setswitch = new setSwitch();
             //把窗口向屏幕中间刷新
             setswitch.StartPosition = FormStartPosition.CenterParent;
+            setswitch.DevModuel = devModuel;
+            setswitch.DevPort = devPort;
+            setswitch.Ip = ip;
             setswitch.ShowDialog();
             if (setswitch.DialogResult == DialogResult.OK)
             {
@@ -788,7 +791,7 @@ namespace eNet编辑器.DgvView
 
             try
             {
-                if (client != null && client.Connected())
+                if (client != null )
                 {
                     client.Dispoes();
                 }

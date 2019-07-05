@@ -264,7 +264,17 @@ namespace eNet编辑器
             public string powerState { get; set; }
             // 00 11 12  21 22 23  31 32 33 34  
             public string interLock { get; set; }
-            
+
+            public string powerStateReg { get; set; }
+            public string interLockReg { get; set; }
+
+            public PortSwitch()
+            {
+                powerStateReg = "40";
+                interLockReg = "60";
+                powerState = "00";
+                interLock = "00";
+            }
         }
 
         [Serializable]
@@ -276,6 +286,27 @@ namespace eNet编辑器
             public string max { get; set; }
             public string min { get; set; }
             public string spline { get; set; }
+
+            public string powerStateReg { get; set; }
+            public string onStateReg { get; set; }
+            public string changeStateReg { get; set; }
+            public string maxReg { get; set; }
+            public string minReg { get; set; }
+            public string splineReg { get; set; }
+
+            /// <summary>
+            /// 寄存器通道
+            /// </summary>
+            public PortDimmer()
+            {
+                powerStateReg = "40";
+                onStateReg = "60";
+                changeStateReg = "61";
+                maxReg = "62";
+                minReg = "63";
+                splineReg = "65";
+
+            }
         }
 
         #endregion

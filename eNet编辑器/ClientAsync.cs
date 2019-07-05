@@ -89,10 +89,19 @@ namespace eNet编辑器
         /// <param name="msg"></param>
         public void SendAsync(string msg)
         {
-            if (client.Connected)
+            try
             {
-                byte[] listData = Encoding.UTF8.GetBytes(msg);
-                client.Client.BeginSend(listData, 0, listData.Length, SocketFlags.None, SendCallBack, client);
+                if (client.Connected)
+                {
+                    byte[] listData = Encoding.UTF8.GetBytes(msg);
+                    client.Client.BeginSend(listData, 0, listData.Length, SocketFlags.None, SendCallBack, client);
+                }
+            }
+            catch
+            {
+                Close();
+                OnComplete(client, EnSocketAction.Close);
+
             }
         }
         /// <summary>
@@ -220,8 +229,14 @@ namespace eNet编辑器
         /// </summary>
         public void Dispoes()
         {
-            
-            client.Client.BeginDisconnect(false, DisConnectCallBack, client);        
+            try
+            {
+                client.Client.BeginDisconnect(false, DisConnectCallBack, client);
+            }
+            catch
+            {
+                
+            }
 
         }
         public bool Connected()

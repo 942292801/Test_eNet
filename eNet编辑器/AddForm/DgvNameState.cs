@@ -199,7 +199,7 @@ namespace eNet编辑器.AddForm
         private void DgvNameState_FormClosed(object sender, FormClosedEventArgs e)
         {
             //断开tcp连接
-            if (client.Connected())
+            if (client != null)
             {
                 client.Dispoes();
             }

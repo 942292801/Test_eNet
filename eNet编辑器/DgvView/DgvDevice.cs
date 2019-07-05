@@ -536,7 +536,7 @@ namespace eNet编辑器.DgvView
         {
             try
             {
-                if (client != null && client.Connected())
+                if (client != null )
                 {
                     client.Dispoes();
                 }
