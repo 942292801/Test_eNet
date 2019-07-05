@@ -34,7 +34,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>0.ico</ApplicationIcon>
+    <ApplicationIcon>mouse.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <TargetZone>LocalIntranet</TargetZone>
@@ -156,7 +156,9 @@
     <Reference Include="System.Runtime.Serialization.Formatters.Soap">
       <Private>True</Private>
     </Reference>
-    <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Include="System.Windows.Forms.DataVisualization">
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Xml.Linq">
       <Private>True</Private>
     </Reference>
@@ -631,9 +633,13 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="0.ico" />
-    <None Include="Resources\离线.png" />
-    <None Include="Resources\在线.png" />
+    <Content Include="mouse.ico" />
+    <None Include="Resources\离线.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\在线.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
