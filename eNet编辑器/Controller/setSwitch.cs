@@ -495,6 +495,7 @@ namespace eNet编辑器.Controller
                         else
                         {
                             tmpPW = (DataJson.PortSwitch)CommandManager.CloneObject(dp.portContent);
+                            //tmpPW = TransExpV2<DataJson.PortSwitch, DataJson.PortSwitch>.Trans((DataJson.PortSwitch)dp.portContent);
                         }
                         tmpPW.powerState = pw.powerState;
                         //复制对象
@@ -684,6 +685,7 @@ namespace eNet编辑器.Controller
             else
             {
                 tmpPW = (DataJson.PortSwitch)CommandManager.CloneObject(devPort.portContent);
+                //tmpPW = TransExpV2<DataJson.PortSwitch, DataJson.PortSwitch>.Trans((DataJson.PortSwitch)devPort.portContent);
             }
             tmpPW.powerState = info;
 
@@ -727,6 +729,7 @@ namespace eNet编辑器.Controller
                         else
                         {
                             tmpPW = (DataJson.PortSwitch)CommandManager.CloneObject(devModuel.devPortList[i].portContent);
+                            //tmpPW = TransExpV2<DataJson.PortSwitch, DataJson.PortSwitch>.Trans((DataJson.PortSwitch)devModuel.devPortList[i].portContent);
                         }
                         tmpPW.interLock = "00";
                         devModuel.devPortList[i].portContent = tmpPW;
@@ -755,6 +758,7 @@ namespace eNet编辑器.Controller
                         else
                         {
                             tmpPW = (DataJson.PortSwitch)CommandManager.CloneObject(devModuel.devPortList[i].portContent);
+                            //tmpPW = TransExpV2<DataJson.PortSwitch, DataJson.PortSwitch>.Trans((DataJson.PortSwitch)devModuel.devPortList[i].portContent);
                         }
                         
                         tmpPW.interLock = string.Format("{0}{1}", newLockNum, newLockPort);

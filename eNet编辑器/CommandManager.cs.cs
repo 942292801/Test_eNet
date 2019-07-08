@@ -5,6 +5,7 @@ using System.Text;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Runtime.Serialization;
+using Newtonsoft.Json;
 
 namespace eNet编辑器
 {
@@ -40,13 +41,14 @@ namespace eNet编辑器
             internal void updateInfos(DataJson.totalList list)
             {
                 ////////////////////////////////后期还需要添加补充完整/////////////////////////////////
-                FileMesege.DeviceList = (List<DataJson.Device>)CloneObject(list.DeviceList);
-                FileMesege.AreaList = (List<DataJson.Area1>)CloneObject(list.AreaList);
-                FileMesege.PointList = (DataJson.Point)CloneObject(list.PointList);
-                FileMesege.sceneList = (List<DataJson.Scene>)CloneObject(list.sceneList);
-                FileMesege.timerList = (List<DataJson.Timer>)CloneObject(list.timerList);
-                FileMesege.panelList = (List<DataJson.Panel>)CloneObject(list.panelList);
-                FileMesege.sensorList = (List<DataJson.Sensor>)CloneObject(list.sensorList);
+                FileMesege.DeviceList = JsonConvert.DeserializeObject<List<DataJson.Device>>(list.DeviceList);
+                FileMesege.AreaList = JsonConvert.DeserializeObject<List<DataJson.Area1>>(list.AreaList);
+                FileMesege.PointList = JsonConvert.DeserializeObject<DataJson.Point>(list.PointList);
+                FileMesege.sceneList = JsonConvert.DeserializeObject<List<DataJson.Scene>>(list.sceneList);
+                FileMesege.timerList = JsonConvert.DeserializeObject<List<DataJson.Timer>>(list.timerList);
+                FileMesege.panelList = JsonConvert.DeserializeObject<List<DataJson.Panel>>(list.panelList);
+                FileMesege.sensorList = JsonConvert.DeserializeObject<List<DataJson.Sensor>>(list.sensorList);
+       
             }
            
         }
@@ -115,40 +117,47 @@ namespace eNet编辑器
             DataJson.totalList totalList = new DataJson.totalList();
             if (FileMesege.DeviceList != null)
             {
-                totalList.DeviceList = (List<DataJson.Device>)CloneObject(FileMesege.DeviceList);
+                totalList.DeviceList = JsonConvert.SerializeObject(FileMesege.DeviceList);
+               
             }
             if (FileMesege.AreaList != null)
             {
-                totalList.AreaList = (List<DataJson.Area1>)CloneObject(FileMesege.AreaList);
+                totalList.AreaList = JsonConvert.SerializeObject(FileMesege.AreaList);
             }
             if (FileMesege.PointList != null)
             {
-                totalList.PointList = (DataJson.Point )CloneObject(FileMesege.PointList);
+                totalList.PointList = JsonConvert.SerializeObject(FileMesege.PointList);
             
             }
             if (FileMesege.sceneList != null)
             {
-                totalList.sceneList = (List<DataJson.Scene>)CloneObject(FileMesege.sceneList);
+                totalList.sceneList = JsonConvert.SerializeObject(FileMesege.sceneList);
             }
 
             if (FileMesege.timerList != null)
             {
-                totalList.timerList = (List<DataJson.Timer>)CloneObject(FileMesege.timerList);
+                totalList.timerList = JsonConvert.SerializeObject(FileMesege.timerList);
             }
 
             if (FileMesege.panelList != null)
             {
-                totalList.panelList = (List<DataJson.Panel>)CloneObject(FileMesege.panelList);
+                totalList.panelList = JsonConvert.SerializeObject(FileMesege.panelList);
 
             }
             if (FileMesege.sensorList != null)
             {
-                totalList.sensorList = (List<DataJson.Sensor>)CloneObject(FileMesege.sensorList);
+                totalList.sensorList = JsonConvert.SerializeObject(FileMesege.sensorList);
 
             }
             return totalList;
         }
 
+        
+       /// <summary>
+       /// 普通的对象可以克隆 有object的不行
+       /// </summary>
+       /// <param name="obj"></param>
+       /// <returns></returns>
         public static object CloneObject(object obj)
         {
             using (MemoryStream memStream = new MemoryStream())
@@ -161,6 +170,9 @@ namespace eNet编辑器
             }
         }
 
+
+
+       
 
         public bool CanUnDo { get { return UnDoActionStack.Count != 0; } }
         public bool CanReDo { get { return ReDoActionStack.Count != 0; } }

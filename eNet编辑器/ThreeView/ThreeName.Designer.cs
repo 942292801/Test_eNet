@@ -108,45 +108,45 @@
             this.展开所有节点ToolStripMenuItem,
             this.收起所有节点ToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(149, 120);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(153, 142);
             // 
             // 新建ToolStripMenuItem
             // 
             this.新建ToolStripMenuItem.Name = "新建ToolStripMenuItem";
-            this.新建ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.新建ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.新建ToolStripMenuItem.Text = "添加";
             this.新建ToolStripMenuItem.Click += new System.EventHandler(this.新建ToolStripMenuItem_Click);
             // 
             // 修改ToolStripMenuItem
             // 
             this.修改ToolStripMenuItem.Name = "修改ToolStripMenuItem";
-            this.修改ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.修改ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.修改ToolStripMenuItem.Text = "修改";
             this.修改ToolStripMenuItem.Click += new System.EventHandler(this.修改ToolStripMenuItem_Click);
             // 
             // 删除ToolStripMenuItem
             // 
             this.删除ToolStripMenuItem.Name = "删除ToolStripMenuItem";
-            this.删除ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.删除ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.删除ToolStripMenuItem.Text = "删除";
             this.删除ToolStripMenuItem.Click += new System.EventHandler(this.删除ToolStripMenuItem_Click);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(145, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(149, 6);
             // 
             // 展开所有节点ToolStripMenuItem
             // 
             this.展开所有节点ToolStripMenuItem.Name = "展开所有节点ToolStripMenuItem";
-            this.展开所有节点ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.展开所有节点ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.展开所有节点ToolStripMenuItem.Text = "展开所有节点";
             this.展开所有节点ToolStripMenuItem.Click += new System.EventHandler(this.展开所有节点ToolStripMenuItem_Click);
             // 
             // 收起所有节点ToolStripMenuItem
             // 
             this.收起所有节点ToolStripMenuItem.Name = "收起所有节点ToolStripMenuItem";
-            this.收起所有节点ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.收起所有节点ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.收起所有节点ToolStripMenuItem.Text = "收起所有节点";
             this.收起所有节点ToolStripMenuItem.Click += new System.EventHandler(this.收起所有节点ToolStripMenuItem_Click);
             // 

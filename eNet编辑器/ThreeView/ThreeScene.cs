@@ -220,6 +220,7 @@ namespace eNet编辑器.ThreeView
                     {
 
                         scs.sceneInfo = (List<DataJson.sceneInfo>)CommandManager.CloneObject(copyScene);
+                        //scs.sceneInfo = TransExpV2<List<DataJson.sceneInfo>, List<DataJson.sceneInfo>>.Trans(copyScene);
                     }
                     sc.scenes.Add(scs);
                     //添加point点

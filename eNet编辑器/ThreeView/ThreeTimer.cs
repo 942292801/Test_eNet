@@ -224,6 +224,7 @@ namespace eNet编辑器.ThreeView
                     {
                         //复制副本
                         tms.timersInfo = (List<DataJson.timersInfo>)CommandManager.CloneObject(copyTimer.timersInfo);
+                        //tms.timersInfo = TransExpV2<List<DataJson.timersInfo>, List<DataJson.timersInfo>>.Trans(copyTimer.timersInfo);
                         tms.dates = copyTimer.dates;
                         tms.priorHoloday = copyTimer.priorHoloday;
                     }

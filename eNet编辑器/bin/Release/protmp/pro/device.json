@@ -6,42 +6,82 @@
                     {
                         "portID": 1,
                         "portType": "1.0_switch",
-                        "portContent": null
+                        "portContent": {
+                            "powerState": "00",
+                            "interLock": "21",
+                            "powerStateReg": "40",
+                            "interLockReg": "60"
+                        }
                     },
                     {
                         "portID": 2,
                         "portType": "1.0_switch",
-                        "portContent": null
+                        "portContent": {
+                            "powerState": "00",
+                            "interLock": "22",
+                            "powerStateReg": "40",
+                            "interLockReg": "60"
+                        }
                     },
                     {
                         "portID": 3,
                         "portType": "1.0_switch",
-                        "portContent": null
+                        "portContent": {
+                            "powerState": "00",
+                            "interLock": "23",
+                            "powerStateReg": "40",
+                            "interLockReg": "60"
+                        }
                     },
                     {
                         "portID": 4,
                         "portType": "1.0_switch",
-                        "portContent": null
+                        "portContent": {
+                            "powerState": "00",
+                            "interLock": "00",
+                            "powerStateReg": "40",
+                            "interLockReg": "60"
+                        }
                     },
                     {
                         "portID": 5,
                         "portType": "1.0_switch",
-                        "portContent": null
+                        "portContent": {
+                            "powerState": "00",
+                            "interLock": "00",
+                            "powerStateReg": "40",
+                            "interLockReg": "60"
+                        }
                     },
                     {
                         "portID": 6,
                         "portType": "1.0_switch",
-                        "portContent": null
+                        "portContent": {
+                            "powerState": "00",
+                            "interLock": "00",
+                            "powerStateReg": "40",
+                            "interLockReg": "60"
+                        }
                     },
                     {
                         "portID": 7,
                         "portType": "1.0_switch",
-                        "portContent": null
+                        "portContent": {
+                            "powerState": "00",
+                            "interLock": "00",
+                            "powerStateReg": "40",
+                            "interLockReg": "60"
+                        }
                     },
                     {
                         "portID": 8,
                         "portType": "1.0_switch",
-                        "portContent": null
+                        "portContent": {
+                            "powerState": "00",
+                            "interLock": "00",
+                            "powerStateReg": "40",
+                            "interLockReg": "60"
+                        }
                     }
                 ],
                 "id": 10,
@@ -61,51 +101,27 @@
                         "portType": "2.0_dimmer",
                         "portContent": {
                             "powerState": "32",
-                            "onState": "0a",
-                            "changeState": "00",
-                            "max": "5A",
-                            "min": "0A",
-                            "spline": "006400C8012C019001F4025802BC0320038403E8044C04B00514057805DC064006A40708076C07D00834089808FC096009C40A280A8C0AF00B540BB80C1C0C800CE40D480DAC0E100E740ED80F3C0FA01004106810CC1130119411F8125C12C01324138813EC145014B41518157C15E0164416A8170C177017D41838189C1900196419C81A2C1A901AF41B581BBC1C201C841CE81D4C1DB01E141E781EDC1F401FA42008206C20D02134219821FC226022C42328238C23F0245424B8251C258025E4264826AC2710"
+                            "onState": "32",
+                            "changeState": "5",
+                            "max": "32",
+                            "min": "5",
+                            "spline": "00640066006C00760085009700AD00C800E701090130015B018A01BD01F4022F026E02B202F90345039403E80440049C04FC04FC04FE04FF05020506050A050F0515051B0522052A0533053D05470552055E056B05780587059605A505B605C705D905EC060006140629063F0656066D0685069E06B806D206EE070A072607440762078207A107C207E308060829084C0871089608BC08C808EE092C098309F30A7B0B1D0BD70CAA0D960E9B0FB910EF123F13A7152816C218751A401C251E222038226724AF2710",
+                            "powerStateReg": "40",
+                            "onStateReg": "60",
+                            "changeStateReg": "61",
+                            "maxReg": "62",
+                            "minReg": "63",
+                            "splineReg": "65"
                         }
                     },
                     {
                         "portID": 2,
                         "portType": "2.0_dimmer",
-                        "portContent": {
-                            "powerState": "ff",
-                            "onState": "50",
-                            "changeState": "8",
-                            "max": "58",
-                            "min": "08",
-                            "spline": "006400C8012C019001F4025802BC0320038403E8044C04B00514057805DC064006A40708076C07D00834089808FC096009C409CB09E10A050A370A780AC70B240B900C0A0C930D2A0DCF0E830F45101610F511E212DE13E815001627175C18A019F21B521B531B551B591B5F1B661B6F1B7A1B861B941BA31BB41BC71BDB1BF11C081C211C3C1C581C761C961CB71CDA1CFE1D241D4C1DB01E141E781EDC1F401FA42008206C20D02134219821FC226022C42328238C23F0245424B8251C258025E4264826AC2710"
-                        }
+                        "portContent": null
                     }
                 ],
                 "id": 11,
                 "device": "ET-D0201A",
-                "sn": "",
-                "ver": "",
-                "area1": "",
-                "area2": "",
-                "area3": "",
-                "area4": "",
-                "name": ""
-            },
-            {
-                "devPortList": [
-                    {
-                        "portID": 1,
-                        "portType": "1.0_switch",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 2,
-                        "portType": "2.0_dimmer",
-                        "portContent": null
-                    }
-                ],
-                "id": 16,
-                "device": "KP06A",
                 "sn": "",
                 "ver": "",
                 "area1": "",

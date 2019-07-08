@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Runtime.Serialization;
 
 namespace eNet编辑器
 {
+    [Serializable]
     public class DataJson
     {
 
@@ -216,6 +218,7 @@ namespace eNet编辑器
         #endregion
 
         #region 项目辅助和主文件device.json   
+
         [Serializable]
         public class Device {
             public string master { get; set; }
@@ -232,6 +235,7 @@ namespace eNet编辑器
             public string name { get; set; }
             public List<Module> module = new List<Module>();
         }
+
         [Serializable]
         public class Module {
             public int  id { get; set; }
@@ -251,14 +255,14 @@ namespace eNet编辑器
         {
             public int portID { get; set; }
             public string portType { get; set; }
-            public object portContent { get; set; }
+            public object  portContent { get; set; }
 
         }
 
         #region 端口内容 开关 调光 串口1000 串口2000 温感 光感
         
         [Serializable]
-        public class PortSwitch
+        public class PortSwitch 
         {
             // 01 00 ff 断电恢复
             public string powerState { get; set; }
@@ -267,7 +271,7 @@ namespace eNet编辑器
 
             public string powerStateReg { get; set; }
             public string interLockReg { get; set; }
-
+            
             public PortSwitch()
             {
                 powerStateReg = "40";
@@ -278,7 +282,7 @@ namespace eNet编辑器
         }
 
         [Serializable]
-        public class PortDimmer
+        public class PortDimmer 
         {
             public string powerState { get; set; }
             public string onState { get; set; }
@@ -294,6 +298,7 @@ namespace eNet编辑器
             public string minReg { get; set; }
             public string splineReg { get; set; }
 
+            
             /// <summary>
             /// 寄存器通道
             /// </summary>
@@ -473,7 +478,7 @@ namespace eNet编辑器
         [Serializable]
         public class totalList
         {
-           
+           /*
             public  List<DataJson.Device> DeviceList = new List<Device>();//工程设备的保存记录
             public  List<DataJson.Area1> AreaList = new List<Area1>();//
             public DataJson.Point PointList = new Point();//Title表的设备信息
@@ -482,6 +487,14 @@ namespace eNet编辑器
             public List<DataJson.Timer> timerList = new List<Timer>();//定时
             public List<DataJson.Panel> panelList = new List<Panel>();//绑定
             public List<DataJson.Sensor> sensorList = new List<Sensor>();//感应
+            */
+            public string DeviceList { get; set; }//工程设备的保存记录
+            public string AreaList { get; set; }//
+            public string PointList { get; set; }//Title表的设备信息
+            public string sceneList { get; set; }//场景
+            public string timerList { get; set; }//定时
+            public string panelList { get; set; }//绑定
+            public string sensorList { get; set; }//感应
         }
 
         #endregion

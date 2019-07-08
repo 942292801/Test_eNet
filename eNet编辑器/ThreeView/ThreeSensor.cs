@@ -282,6 +282,8 @@ namespace eNet编辑器.ThreeView
                     {
                         //复制副本
                         srs.sensorsInfo = (List<DataJson.sensorsInfo>)CommandManager.CloneObject(copySensor.sensorsInfo);
+                        
+                        //srs.sensorsInfo = TransExpV2<List<DataJson.sensorsInfo>, List<DataJson.sensorsInfo>>.Trans(copySensor.sensorsInfo);
                         srs.ioNum = copySensor.ioNum;
                     }
                     sr.sensors.Add(srs);
