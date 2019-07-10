@@ -1,1 +1,122 @@
-[]
+[
+    {
+        "panels": [
+            {
+                "panelsInfo": [
+                    {
+                        "id": 1,
+                        "pid": 55898,
+                        "keyAddress": "7D100001",
+                        "objAddress": "7D000A01",
+                        "objType": "1.0_switch",
+                        "opt": 1,
+                        "showAddress": "7D000A01",
+                        "showMode": "同步"
+                    },
+                    {
+                        "id": 2,
+                        "pid": 34078,
+                        "keyAddress": "7D100002",
+                        "objAddress": "7D000A02",
+                        "objType": "1.0_switch",
+                        "opt": 1,
+                        "showAddress": "7D000A02",
+                        "showMode": "同步"
+                    },
+                    {
+                        "id": 3,
+                        "pid": 56209,
+                        "keyAddress": "7D100003",
+                        "objAddress": "7D000A03",
+                        "objType": "1.0_switch",
+                        "opt": 1,
+                        "showAddress": "FFFFFFFF",
+                        "showMode": "同步"
+                    },
+                    {
+                        "id": 4,
+                        "pid": 81695,
+                        "keyAddress": "7D100004",
+                        "objAddress": "7D000A04",
+                        "objType": "1.0_switch",
+                        "opt": 1,
+                        "showAddress": "FFFFFFFF",
+                        "showMode": "同步"
+                    },
+                    {
+                        "id": 5,
+                        "pid": 19516,
+                        "keyAddress": "7D100005",
+                        "objAddress": "7D000A05",
+                        "objType": "1.0_switch",
+                        "opt": 1,
+                        "showAddress": "FFFFFFFF",
+                        "showMode": "同步"
+                    },
+                    {
+                        "id": 6,
+                        "pid": 50858,
+                        "keyAddress": "7D100006",
+                        "objAddress": "FFFFFFFF",
+                        "objType": "1.0_switch",
+                        "opt": 1,
+                        "showAddress": "FFFFFFFF",
+                        "showMode": "同步"
+                    }
+                ],
+                "id": 1,
+                "pid": 10824,
+                "keyNum": 6
+            },
+            {
+                "panelsInfo": [
+                    {
+                        "id": 1,
+                        "pid": 0,
+                        "keyAddress": "",
+                        "objAddress": "",
+                        "objType": "",
+                        "opt": 0,
+                        "showAddress": "",
+                        "showMode": ""
+                    },
+                    {
+                        "id": 2,
+                        "pid": 0,
+                        "keyAddress": "",
+                        "objAddress": "",
+                        "objType": "",
+                        "opt": 0,
+                        "showAddress": "",
+                        "showMode": ""
+                    },
+                    {
+                        "id": 3,
+                        "pid": 0,
+                        "keyAddress": "",
+                        "objAddress": "",
+                        "objType": "",
+                        "opt": 0,
+                        "showAddress": "",
+                        "showMode": ""
+                    },
+                    {
+                        "id": 4,
+                        "pid": 0,
+                        "keyAddress": "",
+                        "objAddress": "",
+                        "objType": "",
+                        "opt": 0,
+                        "showAddress": "",
+                        "showMode": ""
+                    }
+                ],
+                "id": 2,
+                "pid": 81905,
+                "keyNum": 4
+            }
+        ],
+        "IP": "192.168.1.125",
+        "Dev": "GW100A"
+    }
+]

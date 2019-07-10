@@ -30,9 +30,9 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(setDimmer));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.plInfoTitle = new System.Windows.Forms.Panel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.btnRefresh = new DevComponents.DotNetBar.ButtonX();
@@ -797,27 +797,27 @@
             // chart1
             // 
             this.chart1.BackColor = System.Drawing.Color.Transparent;
-            chartArea2.Name = "ChartArea1";
-            chartArea2.Position.Auto = false;
-            chartArea2.Position.Height = 97F;
-            chartArea2.Position.Width = 100F;
-            chartArea2.Position.Y = 3F;
-            this.chart1.ChartAreas.Add(chartArea2);
-            legend2.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Top;
-            legend2.Enabled = false;
-            legend2.MaximumAutoSize = 40F;
-            legend2.Name = "Legend1";
-            this.chart1.Legends.Add(legend2);
+            chartArea1.Name = "ChartArea1";
+            chartArea1.Position.Auto = false;
+            chartArea1.Position.Height = 97F;
+            chartArea1.Position.Width = 100F;
+            chartArea1.Position.Y = 3F;
+            this.chart1.ChartAreas.Add(chartArea1);
+            legend1.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Top;
+            legend1.Enabled = false;
+            legend1.MaximumAutoSize = 40F;
+            legend1.Name = "Legend1";
+            this.chart1.Legends.Add(legend1);
             this.chart1.Location = new System.Drawing.Point(235, 39);
             this.chart1.Name = "chart1";
             this.chart1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series2.Legend = "Legend1";
-            series2.Name = "Series1";
-            series2.ToolTip = "#VALX #VAL";
-            series2.YValuesPerPoint = 6;
-            this.chart1.Series.Add(series2);
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            series1.ToolTip = "#VALX #VAL";
+            series1.YValuesPerPoint = 6;
+            this.chart1.Series.Add(series1);
             this.chart1.Size = new System.Drawing.Size(739, 266);
             this.chart1.TabIndex = 28;
             this.chart1.Click += new System.EventHandler(this.chart1_Click);
@@ -1106,7 +1106,6 @@
             this.KeyPreview = true;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "setDimmer";
-            this.Text = "setDimmer";
             this.Load += new System.EventHandler(this.setDimmer_Load);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.setDimmer_Paint);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.setDimmer_KeyDown);

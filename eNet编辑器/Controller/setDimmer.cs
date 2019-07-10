@@ -139,6 +139,11 @@ namespace eNet编辑器.Controller
        
         #region tcp6003 链接 以及处理反馈信息 发送信息
 
+        /// <summary>
+        /// 定时5秒链接tcp
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void timer2_Tick(object sender, EventArgs e)
         {
             if (client6003 != null && !client6003.Connected())

@@ -270,7 +270,7 @@ namespace eNet编辑器
             string filepath = Application.StartupPath + "\\devices\\" + version + ".ini";
             //获取全部Section下的Key
             List<string> list = IniConfig.ReadKeys("ports", filepath);
-            string value = "";
+            string[] value ;
             portList.Clear();
             //循环添加行信息
             for (int i = 0; i < list.Count; i++)
@@ -280,14 +280,15 @@ namespace eNet编辑器
                     continue;
                 }
                 //获取类型版本类型版本
-                value = IniConfig.GetValue(filepath, "ports", list[i]);
-                if (value == "")
+                value = IniConfig.GetValue(filepath, "ports", list[i]).Split(',');
+                if (value.Length<2)
                 {
                     break;
                 }
                 DataJson.DevPort portInfo = new DataJson.DevPort();
                 portInfo.portID = Convert.ToInt32( list[i]);
-                portInfo.portType = value.Split(',')[0];
+                portInfo.portType = value[0];
+                portInfo.portInterface = value[1];
                 //portInfo.portContent =???
                 portList.Add(portInfo);
               

@@ -22,10 +22,11 @@ namespace eNet编辑器.DgvView
     {
         public DgvDevice()
         {
-            //设置窗体双缓存
-            this.SetStyle(ControlStyles.OptimizedDoubleBuffer | ControlStyles.ResizeRedraw | ControlStyles.AllPaintingInWmPaint, true);
-            this.UpdateStyles();
+
             InitializeComponent();
+            SetStyle(ControlStyles.UserPaint, true);
+            SetStyle(ControlStyles.AllPaintingInWmPaint, true); // 禁止擦除背景.
+            SetStyle(ControlStyles.DoubleBuffer, true); // 双缓冲
             //利用反射设置DataGridView的双缓冲
             Type dgvType = this.dataGridView1.GetType();
             PropertyInfo pi = dgvType.GetProperty("DoubleBuffered",

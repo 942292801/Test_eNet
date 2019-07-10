@@ -42,6 +42,14 @@ namespace eNet编辑器.ThreeView
         public ThreeName()
         {
             InitializeComponent();
+            SetStyle(ControlStyles.UserPaint, true);
+            SetStyle(ControlStyles.AllPaintingInWmPaint, true); // 禁止擦除背景.
+            SetStyle(ControlStyles.DoubleBuffer, true); // 双缓冲
+            //利用反射设置DataGridView的双缓冲
+            Type dgvType = this.treeView1.GetType();
+            PropertyInfo pi = dgvType.GetProperty("DoubleBuffered",
+            BindingFlags.Instance | BindingFlags.NonPublic);
+            pi.SetValue(this.treeView1, true, null);
 
         }
 

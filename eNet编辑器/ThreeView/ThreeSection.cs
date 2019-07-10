@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using eNet编辑器.AddForm;
+using System.Reflection;
 
 namespace eNet编辑器.ThreeView
 {
@@ -29,10 +30,14 @@ namespace eNet编辑器.ThreeView
         {
             InitializeComponent();
             SetStyle(ControlStyles.UserPaint, true);
-            SetStyle(ControlStyles.AllPaintingInWmPaint, true); // 禁止擦除背景.
-            SetStyle(ControlStyles.DoubleBuffer, true); // 双缓冲
-            this.SetStyle(ControlStyles.DoubleBuffer | ControlStyles.UserPaint | ControlStyles.AllPaintingInWmPaint, true);
-            this.UpdateStyles();
+            SetStyle(ControlStyles.AllPaintingInWmPaint, true); // 禁止擦除背景.
+            SetStyle(ControlStyles.DoubleBuffer, true); // 双缓冲
+            //利用反射设置DataGridView的双缓冲
+            Type dgvType = this.treeView1.GetType();
+            PropertyInfo pi = dgvType.GetProperty("DoubleBuffered",
+            BindingFlags.Instance | BindingFlags.NonPublic);
+            pi.SetValue(this.treeView1, true, null);   
+           
         }
         public event AddTitleNode addTitleNode;
         //public event AddSectionDevCursor addSectionDevCursor;

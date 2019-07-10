@@ -24,10 +24,10 @@ namespace eNet编辑器.DgvView
        
         public DgvName()
         {
-            //设置窗体双缓存
-            this.SetStyle(ControlStyles.OptimizedDoubleBuffer | ControlStyles.ResizeRedraw | ControlStyles.AllPaintingInWmPaint, true);
-            this.UpdateStyles();
             InitializeComponent();
+            SetStyle(ControlStyles.UserPaint, true);
+            SetStyle(ControlStyles.AllPaintingInWmPaint, true); // 禁止擦除背景.
+            SetStyle(ControlStyles.DoubleBuffer, true); // 双缓冲
             //利用反射设置DataGridView的双缓冲
             Type dgvType = this.dataGridView1.GetType();
             PropertyInfo pi = dgvType.GetProperty("DoubleBuffered",
@@ -445,14 +445,35 @@ namespace eNet编辑器.DgvView
             {
                 return;
             }
-            switch (devPort.portType)
+            switch (devPort.portInterface)
             {
-                case "1.0_switch":
+                //开关
+                case "Switch":
                     showSwitch(devModuel, devPort, ip);
                     break;
-                case "2.0_dimmer":
-                    showDimmer(devModuel,devPort,ip);
+                case "SwitchMeter":
+                    showSwitch(devModuel, devPort, ip);
                     break;
+                //调光
+                case "DaLi":
+                    showDimmer(devModuel, devPort, ip);
+                    break;
+                case "0-10V":
+                    showDimmer(devModuel, devPort, ip);
+                    break;
+                case "PWM":
+                    showDimmer(devModuel, devPort, ip);
+                    break;
+                case "DMX512":
+                    showDimmer(devModuel, devPort, ip);
+                    break;
+                case "LeadingEdge":
+                    showDimmer(devModuel, devPort, ip);
+                    break;
+                case "TrailingEdge":
+                    showDimmer(devModuel, devPort, ip);
+                    break;
+    
                 //////////////后续还需要添加////////
                 default:
                     break;

@@ -1,1 +1,35 @@
-[]
+[
+    {
+        "sensors": [
+            {
+                "sensorsInfo": [
+                    {
+                        "id": 1,
+                        "pid": 55898,
+                        "keyAddress": "7D0D0001",
+                        "objAddress": "7D000A01",
+                        "objType": "1.0_switch",
+                        "opt": "00000001",
+                        "optName": "开启",
+                        "fbmode": 1
+                    },
+                    {
+                        "id": 2,
+                        "pid": 34078,
+                        "keyAddress": "7D0D0002",
+                        "objAddress": "7D000A02",
+                        "objType": "1.0_switch",
+                        "opt": "00000000",
+                        "optName": "关闭",
+                        "fbmode": 2
+                    }
+                ],
+                "id": 1001,
+                "pid": 11840,
+                "ioNum": 2
+            }
+        ],
+        "IP": "192.168.1.125",
+        "Dev": "GW100A"
+    }
+]

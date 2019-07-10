@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Reflection;
 
 namespace eNet编辑器.ThreeView
 {
@@ -14,6 +15,14 @@ namespace eNet编辑器.ThreeView
         public ThreeLogic()
         {
             InitializeComponent();
+            SetStyle(ControlStyles.UserPaint, true);
+            SetStyle(ControlStyles.AllPaintingInWmPaint, true); // 禁止擦除背景.
+            SetStyle(ControlStyles.DoubleBuffer, true); // 双缓冲
+            //利用反射设置DataGridView的双缓冲
+            Type dgvType = this.treeView1.GetType();
+            PropertyInfo pi = dgvType.GetProperty("DoubleBuffered",
+            BindingFlags.Instance | BindingFlags.NonPublic);
+            pi.SetValue(this.treeView1, true, null);
         }
         /// <summary>
         /// 初始化添加device名字树状图 根据JsonList文件重新加载子节点
