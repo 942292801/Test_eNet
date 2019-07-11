@@ -134,14 +134,14 @@ namespace eNet编辑器.DgvView
             string iplast = FileMesege.DeviceList[master].ip;
             string str = null;
             int count = 0;
-            
-           
+
+     
             //添加区域和名称
             foreach (DataJson.PointInfo e in FileMesege.PointList.equipment)
             {
                 //需要更改IP不是唯一的
                 //判断与选中网关节点IP是否相同
-                if (e.ip == iplast )
+                if (e.ip == iplast)
                 {
 
                     str = e.address;
@@ -163,17 +163,18 @@ namespace eNet编辑器.DgvView
                                 count++;
                             }
                             //解析ID获取行数
-                            this.dataGridView1.Rows[count - 1].Cells[2].Value = string.Format("{0} {1} {2} {3}", e.area1, e.area2, e.area3, e.area4).Trim(); 
+                            this.dataGridView1.Rows[count - 1].Cells[2].Value = string.Format("{0} {1} {2} {3}", e.area1, e.area2, e.area3, e.area4).Trim();
                             //添加DGV名称
-                            this.dataGridView1.Rows[count -1].Cells[3].Value = e.name.Split('@')[0];
+                            this.dataGridView1.Rows[count - 1].Cells[3].Value = e.name.Split('@')[0];
 
                         }
                     }
 
 
                 }
-                
+
             }
+           
             shuaxinBtn();
             }//try
             catch (Exception ex) { MessageBox.Show(ex + "临时调试错误信息"); }

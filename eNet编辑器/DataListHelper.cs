@@ -145,13 +145,16 @@ namespace eNet编辑器
                     break;
                 }
             }
-            //Scene修改IP
-            foreach (DataJson.Scene scene in FileMesege.sceneList)
+            if (FileMesege.sceneList != null)
             {
-                if (scene.IP == ip)
+                //Scene修改IP
+                foreach (DataJson.Scene scene in FileMesege.sceneList)
                 {
-                    FileMesege.sceneList.Remove(scene);
-                    break;
+                    if (scene.IP == ip)
+                    {
+                        FileMesege.sceneList.Remove(scene);
+                        break;
+                    }
                 }
             }
             delPointIP(ip);

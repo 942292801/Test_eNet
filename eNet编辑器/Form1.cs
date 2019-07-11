@@ -270,7 +270,7 @@ namespace eNet编辑器
             threesection.ThreeSEctionAddNode();
             threetitle.ThreeTitleAddNode(cbType.SelectedIndex);
 
-            dgvdevice.dgvDeviceAddItem();
+            dgvdevice.dgvDeviceAddItem(true);
             dgvname.dgvNameAddItem();
             dgvpoint.dgvPointAddItemBySection();
             dgvscene.dgvsceneAddItem();
@@ -291,7 +291,7 @@ namespace eNet编辑器
                 case "name":
                     if (FileMesege.tnselectNode != null && FileMesege.tnselectNode.Parent == null)
                     {
-                        dgvdevice.dgvDeviceAddItem();
+                        dgvdevice.dgvDeviceAddItem(true);
                     }
                     else
                     {

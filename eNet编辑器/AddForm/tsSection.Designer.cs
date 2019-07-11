@@ -107,10 +107,10 @@
             this.btnDecid.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None;
             this.btnDecid.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnDecid.HoverImage")));
             this.btnDecid.Image = ((System.Drawing.Image)(resources.GetObject("btnDecid.Image")));
-            this.btnDecid.Location = new System.Drawing.Point(184, 101);
+            this.btnDecid.Location = new System.Drawing.Point(189, 99);
             this.btnDecid.Margin = new System.Windows.Forms.Padding(6);
             this.btnDecid.Name = "btnDecid";
-            this.btnDecid.Size = new System.Drawing.Size(25, 20);
+            this.btnDecid.Size = new System.Drawing.Size(24, 24);
             this.btnDecid.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnDecid.TabIndex = 4;
             this.btnDecid.Tooltip = "添加";

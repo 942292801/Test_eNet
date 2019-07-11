@@ -135,10 +135,10 @@
             this.btnDecid.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None;
             this.btnDecid.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnDecid.HoverImage")));
             this.btnDecid.Image = ((System.Drawing.Image)(resources.GetObject("btnDecid.Image")));
-            this.btnDecid.Location = new System.Drawing.Point(177, 42);
+            this.btnDecid.Location = new System.Drawing.Point(170, 43);
             this.btnDecid.Margin = new System.Windows.Forms.Padding(6);
             this.btnDecid.Name = "btnDecid";
-            this.btnDecid.Size = new System.Drawing.Size(25, 20);
+            this.btnDecid.Size = new System.Drawing.Size(24, 24);
             this.btnDecid.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnDecid.TabIndex = 4;
             this.btnDecid.Tooltip = "确认";
@@ -152,7 +152,7 @@
             this.panel1.Controls.Add(this.label1);
             this.panel1.Location = new System.Drawing.Point(1, 27);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(211, 68);
+            this.panel1.Size = new System.Drawing.Size(211, 73);
             this.panel1.TabIndex = 79;
             // 
             // tsChange
@@ -160,7 +160,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkGray;
-            this.ClientSize = new System.Drawing.Size(214, 97);
+            this.ClientSize = new System.Drawing.Size(214, 102);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.plInfoTitle);
             this.Font = new System.Drawing.Font("微软雅黑", 9F);

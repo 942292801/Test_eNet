@@ -34,13 +34,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DgvDevice));
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.plInfoTitle = new System.Windows.Forms.Panel();
-            this.symbolBox1 = new DevComponents.DotNetBar.Controls.SymbolBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.btnNew = new DevComponents.DotNetBar.ButtonX();
-            this.doubleClickTimer = new System.Windows.Forms.Timer(this.components);
             this.DeviceNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DeviceName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DeviceSn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -49,6 +42,12 @@
             this.DeviceTitle = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NameState = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DeviceIni = new DevComponents.DotNetBar.Controls.DataGridViewButtonXColumn();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.plInfoTitle = new System.Windows.Forms.Panel();
+            this.symbolBox1 = new DevComponents.DotNetBar.Controls.SymbolBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.doubleClickTimer = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -105,96 +104,6 @@
             this.dataGridView1.CellMouseMove += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_CellMouseMove);
             this.dataGridView1.KeyUp += new System.Windows.Forms.KeyEventHandler(this.dataGridView1_KeyUp);
             this.dataGridView1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.dataGridView1_MouseDown);
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.DarkGray;
-            this.panel1.Controls.Add(this.panel2);
-            this.panel1.Controls.Add(this.plInfoTitle);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1006, 909);
-            this.panel1.TabIndex = 2;
-            // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.dataGridView1);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(0, 25);
-            this.panel2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1006, 884);
-            this.panel2.TabIndex = 16;
-            // 
-            // plInfoTitle
-            // 
-            this.plInfoTitle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.plInfoTitle.Controls.Add(this.symbolBox1);
-            this.plInfoTitle.Controls.Add(this.label1);
-            this.plInfoTitle.Controls.Add(this.btnNew);
-            this.plInfoTitle.Dock = System.Windows.Forms.DockStyle.Top;
-            this.plInfoTitle.Location = new System.Drawing.Point(0, 0);
-            this.plInfoTitle.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.plInfoTitle.Name = "plInfoTitle";
-            this.plInfoTitle.Size = new System.Drawing.Size(1006, 25);
-            this.plInfoTitle.TabIndex = 15;
-            // 
-            // symbolBox1
-            // 
-            // 
-            // 
-            // 
-            this.symbolBox1.BackgroundStyle.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("symbolBox1.BackgroundStyle.BackgroundImage")));
-            this.symbolBox1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.symbolBox1.Location = new System.Drawing.Point(5, 6);
-            this.symbolBox1.Margin = new System.Windows.Forms.Padding(2, 4, 3, 4);
-            this.symbolBox1.Name = "symbolBox1";
-            this.symbolBox1.Size = new System.Drawing.Size(13, 13);
-            this.symbolBox1.Symbol = "";
-            this.symbolBox1.SymbolColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(119)))), ((int)(((byte)(119)))));
-            this.symbolBox1.TabIndex = 12;
-            this.symbolBox1.Text = "symbolBox1";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("微软雅黑", 9F);
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.label1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label1.Location = new System.Drawing.Point(24, 4);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(32, 17);
-            this.label1.TabIndex = 11;
-            this.label1.Text = "内容";
-            // 
-            // btnNew
-            // 
-            this.btnNew.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnNew.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnNew.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btnNew.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
-            this.btnNew.FocusCuesEnabled = false;
-            this.btnNew.Font = new System.Drawing.Font("黑体", 9F);
-            this.btnNew.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None;
-            this.btnNew.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnNew.HoverImage")));
-            this.btnNew.Image = ((System.Drawing.Image)(resources.GetObject("btnNew.Image")));
-            this.btnNew.Location = new System.Drawing.Point(986, 5);
-            this.btnNew.Margin = new System.Windows.Forms.Padding(6);
-            this.btnNew.Name = "btnNew";
-            this.btnNew.Size = new System.Drawing.Size(15, 15);
-            this.btnNew.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnNew.TabIndex = 0;
-            this.btnNew.Tooltip = "清空";
-            this.btnNew.Visible = false;
-            this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
-            // 
-            // doubleClickTimer
-            // 
-            this.doubleClickTimer.Interval = 40;
-            this.doubleClickTimer.Tick += new System.EventHandler(this.doubleClickTimer_Tick);
             // 
             // DeviceNum
             // 
@@ -261,6 +170,73 @@
             this.DeviceIni.Text = null;
             this.DeviceIni.Width = 60;
             // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.DarkGray;
+            this.panel1.Controls.Add(this.panel2);
+            this.panel1.Controls.Add(this.plInfoTitle);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1006, 909);
+            this.panel1.TabIndex = 2;
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.dataGridView1);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(0, 25);
+            this.panel2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(1006, 884);
+            this.panel2.TabIndex = 16;
+            // 
+            // plInfoTitle
+            // 
+            this.plInfoTitle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.plInfoTitle.Controls.Add(this.symbolBox1);
+            this.plInfoTitle.Controls.Add(this.label1);
+            this.plInfoTitle.Dock = System.Windows.Forms.DockStyle.Top;
+            this.plInfoTitle.Location = new System.Drawing.Point(0, 0);
+            this.plInfoTitle.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.plInfoTitle.Name = "plInfoTitle";
+            this.plInfoTitle.Size = new System.Drawing.Size(1006, 25);
+            this.plInfoTitle.TabIndex = 15;
+            // 
+            // symbolBox1
+            // 
+            // 
+            // 
+            // 
+            this.symbolBox1.BackgroundStyle.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("symbolBox1.BackgroundStyle.BackgroundImage")));
+            this.symbolBox1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.symbolBox1.Location = new System.Drawing.Point(5, 6);
+            this.symbolBox1.Margin = new System.Windows.Forms.Padding(2, 4, 3, 4);
+            this.symbolBox1.Name = "symbolBox1";
+            this.symbolBox1.Size = new System.Drawing.Size(13, 13);
+            this.symbolBox1.Symbol = "";
+            this.symbolBox1.SymbolColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(119)))), ((int)(((byte)(119)))));
+            this.symbolBox1.TabIndex = 12;
+            this.symbolBox1.Text = "symbolBox1";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("微软雅黑", 9F);
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.label1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label1.Location = new System.Drawing.Point(24, 4);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(32, 17);
+            this.label1.TabIndex = 11;
+            this.label1.Text = "内容";
+            // 
+            // doubleClickTimer
+            // 
+            this.doubleClickTimer.Interval = 40;
+            this.doubleClickTimer.Tick += new System.EventHandler(this.doubleClickTimer_Tick);
+            // 
             // DgvDevice
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -288,7 +264,6 @@
         private System.Windows.Forms.Timer doubleClickTimer;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel plInfoTitle;
-        private DevComponents.DotNetBar.ButtonX btnNew;
         private DevComponents.DotNetBar.Controls.SymbolBox symbolBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridViewTextBoxColumn DeviceNum;

@@ -62,7 +62,7 @@ namespace eNet编辑器.DgvView
         /// 网关加载到DGV表格信息
         /// </summary>
         /// <param name="num">树状图索引号</param>
-        public void dgvDeviceAddItem()
+        public void dgvDeviceAddItem(bool isConnet)
         {
             this.dataGridView1.Rows.Clear();
             if (FileMesege.tnselectNode == null)
@@ -99,12 +99,19 @@ namespace eNet编辑器.DgvView
                         this.dataGridView1.Rows[index].Cells[3].Value = m.ver;
                         this.dataGridView1.Rows[index].Cells[4].Value = string.Format("{0} {1} {2} {3}", m.area1, m.area2, m.area3, m.area4).Trim();
                         this.dataGridView1.Rows[index].Cells[5].Value = m.name;
+                        this.dataGridView1.Rows[index].Cells[6].Style.ForeColor = Color.Red;
+                        this.dataGridView1.Rows[index].Cells[6].Value = Resources.DevStateOff;
                         this.dataGridView1.Rows[index].Cells[7].Value = "初始化";
                     }
                     break;
                 }//eq.ip == ips
             }//foreach DeviceList表
-            btnNew_Click(this,EventArgs.Empty);
+            if (isConnet)
+            {
+                clientConnet();
+            }
+            
+
             
         }
 
@@ -301,7 +308,7 @@ namespace eNet编辑器.DgvView
 
         private void devIni()
         {
-            if (dataGridView1.Rows[rowcount].Cells[6].Value.ToString() == Resources.DevStateOff)
+            if (dataGridView1.Rows[rowcount].Cells[6].Value == null || dataGridView1.Rows[rowcount].Cells[6].Value.ToString() == Resources.DevStateOff)
             {
                 return;
             }
@@ -528,27 +535,30 @@ namespace eNet编辑器.DgvView
         #region 按钮刷新处理
 
         ClientAsync client;
-        /// <summary>
-        /// 刷新在线按钮
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void btnNew_Click(object sender, EventArgs e)
+
+  
+
+ 
+
+        private void clientConnet()
         {
             try
             {
-                if (client != null )
+   
+                string strip = FileMesege.tnselectNode.Text.Split(' ')[0];
+                if (client != null)
                 {
                     client.Dispoes();
                 }
-
-                //清空在线标志 
-                for (int i = 0; i < dataGridView1.RowCount; i++)
-                {
-                    dataGridView1.Rows[i].Cells[6].Value = Resources.DevStateOff;
-                }
+   
                 client = new ClientAsync();
-                selectHandle();
+                ClientIni();
+                //异步连接
+                client.ConnectAsync(strip, 6001);
+                if (client != null && client.Connected())
+                {
+                    client.SendAsync("read serial.json$");
+                }
             }
             catch
             {
@@ -564,10 +574,10 @@ namespace eNet编辑器.DgvView
         /// <summary>
         /// 刷新按钮  获取serial设备信息 并处理
         /// </summary>
-        private void selectHandle()
+        private void ClientIni()
         {
             
-            string[] strip = FileMesege.tnselectNode.Text.Split(' ');
+            string strip = FileMesege.tnselectNode.Text.Split(' ')[0];
             client.Completed += new Action<System.Net.Sockets.TcpClient, ClientAsync.EnSocketAction>((c, enAction) =>
             {
                  string key = "";
@@ -620,7 +630,7 @@ namespace eNet编辑器.DgvView
                     foreach (DataJson.Device dev in FileMesege.DeviceList)
                     {
                         //当IP相等时候进入module里面 
-                        if (dev.ip == strip[0])
+                        if (dev.ip == strip)
                         {
 
                             foreach (DataJson.serials sl in FileMesege.serialList.serial)
@@ -651,12 +661,7 @@ namespace eNet编辑器.DgvView
             
                 
             });
-            //异步连接
-            client.ConnectAsync(strip[0], 6001);
-            if (client != null && client.Connected())
-            {
-                client.SendAsync("read serial.json$");
-            }
+          
            
             
         }
@@ -686,6 +691,7 @@ namespace eNet编辑器.DgvView
                     dataGridView1.Rows[i].Cells[3].Value = mdl.ver;
                     dataGridView1.Rows[i].Cells[6].Value = Resources.DevStateOn;
                     dataGridView1.Rows[i].Cells[6].Style.BackColor = Color.Lime;
+                    dataGridView1.Rows[i].Cells[6].Style.ForeColor = Color.Black;
                     break;
                 }
                 
@@ -1000,6 +1006,10 @@ namespace eNet编辑器.DgvView
 
 
         #endregion
+
+
+
+      
 
 
        

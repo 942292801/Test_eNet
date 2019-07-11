@@ -218,7 +218,7 @@
             this.btnDecid.Location = new System.Drawing.Point(175, 298);
             this.btnDecid.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnDecid.Name = "btnDecid";
-            this.btnDecid.Size = new System.Drawing.Size(25, 20);
+            this.btnDecid.Size = new System.Drawing.Size(24, 24);
             this.btnDecid.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnDecid.TabIndex = 4;
             this.btnDecid.Tooltip = "确认";

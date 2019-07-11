@@ -18,7 +18,7 @@ namespace eNet编辑器.ThreeView
     public delegate void SendFormContrl(string msg);
     public delegate void ShowDeviceDgv(bool flag);
     public delegate void DgvNameAddItem();
-    public delegate void DgvDeviceAddItem();
+    public delegate void DgvDeviceAddItem(bool isConnet);
     public partial class ThreeName : Form
     {
         //主窗口显示信息
@@ -174,8 +174,7 @@ namespace eNet编辑器.ThreeView
                 }
 
             }
-            dgvNameAddItem();
-            dgvDeviceAddItem();
+            dgvDeviceAddItem(false);
             
         }
 
@@ -293,6 +292,7 @@ namespace eNet编辑器.ThreeView
                     
                 }
             }
+            dgvDeviceAddItem(false);
             
              
         }
@@ -356,7 +356,6 @@ namespace eNet编辑器.ThreeView
                 FileMesege.cmds.DoNewCommand(NewList, OldList);
                 //刷新窗体清空窗体信息
                 dgvNameAddItem();
-                dgvDeviceAddItem();
 
             }
 
@@ -387,7 +386,6 @@ namespace eNet编辑器.ThreeView
                 FileMesege.tnselectNode = null;
                 //刷新窗体清空窗体信息
                 dgvNameAddItem();
-                dgvDeviceAddItem();
 
                 //选中删除节点的下一个节点 没有节点就直接选中父节点
                 if (treeView1.Nodes[pNodeindex].Nodes.Count > 0)
@@ -437,7 +435,7 @@ namespace eNet编辑器.ThreeView
                     //显示网关设备DGV框                
                     showDevice(true);
                     //选中为父节点显示DGVDevice  
-                    dgvDeviceAddItem();
+                    dgvDeviceAddItem(false);
                     
 
                 }

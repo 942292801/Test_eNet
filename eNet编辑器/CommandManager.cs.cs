@@ -41,13 +41,70 @@ namespace eNet编辑器
             internal void updateInfos(DataJson.totalList list)
             {
                 ////////////////////////////////后期还需要添加补充完整/////////////////////////////////
-                FileMesege.DeviceList = JsonConvert.DeserializeObject<List<DataJson.Device>>(list.DeviceList);
-                FileMesege.AreaList = JsonConvert.DeserializeObject<List<DataJson.Area1>>(list.AreaList);
-                FileMesege.PointList = JsonConvert.DeserializeObject<DataJson.Point>(list.PointList);
-                FileMesege.sceneList = JsonConvert.DeserializeObject<List<DataJson.Scene>>(list.sceneList);
-                FileMesege.timerList = JsonConvert.DeserializeObject<List<DataJson.Timer>>(list.timerList);
-                FileMesege.panelList = JsonConvert.DeserializeObject<List<DataJson.Panel>>(list.panelList);
-                FileMesege.sensorList = JsonConvert.DeserializeObject<List<DataJson.Sensor>>(list.sensorList);
+
+                if (!string.IsNullOrEmpty(list.DeviceList))
+                {
+                    FileMesege.DeviceList = JsonConvert.DeserializeObject<List<DataJson.Device>>(list.DeviceList);
+                }
+                else
+                {
+                    FileMesege.DeviceList = new List<DataJson.Device>();
+                }
+                if (!string.IsNullOrEmpty(list.AreaList))
+                {
+                    FileMesege.AreaList = JsonConvert.DeserializeObject<List<DataJson.Area1>>(list.AreaList);
+
+                }
+                else
+                {
+                    FileMesege.AreaList = new List<DataJson.Area1>();
+                }
+                if (!string.IsNullOrEmpty(list.PointList))
+                {
+                    FileMesege.PointList = JsonConvert.DeserializeObject<DataJson.Point>(list.PointList);
+
+                }
+                else
+                {
+                    FileMesege.PointList = new DataJson.Point();
+                }
+                if (!string.IsNullOrEmpty(list.sceneList))
+                {
+                    FileMesege.sceneList = JsonConvert.DeserializeObject<List<DataJson.Scene>>(list.sceneList);
+
+                }
+                else
+                {
+                    FileMesege.sceneList = new List<DataJson.Scene>();
+                }
+                if (!string.IsNullOrEmpty(list.timerList))
+                {
+                    FileMesege.timerList = JsonConvert.DeserializeObject<List<DataJson.Timer>>(list.timerList);
+
+                }
+                else
+                {
+                    FileMesege.timerList = new List<DataJson.Timer>();
+                }
+                if (!string.IsNullOrEmpty(list.panelList))
+                {
+                    FileMesege.panelList = JsonConvert.DeserializeObject<List<DataJson.Panel>>(list.panelList);
+
+                }
+                else
+                {
+                    FileMesege.panelList = new List<DataJson.Panel>();
+                }
+                if (!string.IsNullOrEmpty(list.sensorList))
+                {
+                    FileMesege.sensorList = JsonConvert.DeserializeObject<List<DataJson.Sensor>>(list.sensorList);
+
+                }
+                else
+                {
+                    FileMesege.sensorList = new List<DataJson.Sensor>();
+                }
+               
        
             }
            

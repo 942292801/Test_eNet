@@ -114,10 +114,10 @@
             this.buttonX13 = new DevComponents.DotNetBar.ButtonX();
             this.PlTabStrip = new Infragistics.Win.Misc.UltraPanel();
             this.tabStrip = new DevComponents.DotNetBar.TabControl();
-            this.tabControlPanel8 = new DevComponents.DotNetBar.TabControlPanel();
-            this.tabVar = new DevComponents.DotNetBar.TabItem(this.components);
             this.tabControlPanel1 = new DevComponents.DotNetBar.TabControlPanel();
             this.tabName = new DevComponents.DotNetBar.TabItem(this.components);
+            this.tabControlPanel8 = new DevComponents.DotNetBar.TabControlPanel();
+            this.tabVar = new DevComponents.DotNetBar.TabItem(this.components);
             this.tabControlPanel5 = new DevComponents.DotNetBar.TabControlPanel();
             this.tabPanel = new DevComponents.DotNetBar.TabItem(this.components);
             this.tabControlPanel4 = new DevComponents.DotNetBar.TabControlPanel();
@@ -901,27 +901,6 @@
             this.tabStrip.Tabs.Add(this.tabLogic);
             this.tabStrip.Tabs.Add(this.tabVar);
             // 
-            // tabControlPanel8
-            // 
-            this.tabControlPanel8.DisabledBackColor = System.Drawing.Color.Empty;
-            resources.ApplyResources(this.tabControlPanel8, "tabControlPanel8");
-            this.tabControlPanel8.Name = "tabControlPanel8";
-            this.tabControlPanel8.Style.BackColor2.Color = System.Drawing.Color.Silver;
-            this.tabControlPanel8.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
-            this.tabControlPanel8.Style.BorderColor.Color = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(158)))), ((int)(((byte)(216)))));
-            this.tabControlPanel8.Style.BorderSide = ((DevComponents.DotNetBar.eBorderSide)(((DevComponents.DotNetBar.eBorderSide.Left | DevComponents.DotNetBar.eBorderSide.Right)
-                        | DevComponents.DotNetBar.eBorderSide.Bottom)));
-            this.tabControlPanel8.Style.GradientAngle = 90;
-            this.tabControlPanel8.TabItem = this.tabVar;
-            // 
-            // tabVar
-            // 
-            this.tabVar.AttachedControl = this.tabControlPanel8;
-            this.tabVar.Image = ((System.Drawing.Image)(resources.GetObject("tabVar.Image")));
-            this.tabVar.Name = "tabVar";
-            resources.ApplyResources(this.tabVar, "tabVar");
-            this.tabVar.Click += new System.EventHandler(this.tabVar_Click);
-            // 
             // tabControlPanel1
             // 
             this.tabControlPanel1.DisabledBackColor = System.Drawing.Color.Empty;
@@ -942,6 +921,27 @@
             this.tabName.Name = "tabName";
             resources.ApplyResources(this.tabName, "tabName");
             this.tabName.Click += new System.EventHandler(this.tabName_Click);
+            // 
+            // tabControlPanel8
+            // 
+            this.tabControlPanel8.DisabledBackColor = System.Drawing.Color.Empty;
+            resources.ApplyResources(this.tabControlPanel8, "tabControlPanel8");
+            this.tabControlPanel8.Name = "tabControlPanel8";
+            this.tabControlPanel8.Style.BackColor2.Color = System.Drawing.Color.Silver;
+            this.tabControlPanel8.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
+            this.tabControlPanel8.Style.BorderColor.Color = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(158)))), ((int)(((byte)(216)))));
+            this.tabControlPanel8.Style.BorderSide = ((DevComponents.DotNetBar.eBorderSide)(((DevComponents.DotNetBar.eBorderSide.Left | DevComponents.DotNetBar.eBorderSide.Right)
+                        | DevComponents.DotNetBar.eBorderSide.Bottom)));
+            this.tabControlPanel8.Style.GradientAngle = 90;
+            this.tabControlPanel8.TabItem = this.tabVar;
+            // 
+            // tabVar
+            // 
+            this.tabVar.AttachedControl = this.tabControlPanel8;
+            this.tabVar.Image = ((System.Drawing.Image)(resources.GetObject("tabVar.Image")));
+            this.tabVar.Name = "tabVar";
+            resources.ApplyResources(this.tabVar, "tabVar");
+            this.tabVar.Click += new System.EventHandler(this.tabVar_Click);
             // 
             // tabControlPanel5
             // 

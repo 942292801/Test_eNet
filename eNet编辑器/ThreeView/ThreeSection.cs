@@ -16,7 +16,7 @@ namespace eNet编辑器.ThreeView
     //public delegate void AddSectionNameCursor();
     //刷新窗口
     public delegate void SectionDgvNameAddItem();
-    public delegate void SectionDgvDevAddItem();
+    public delegate void SectionDgvDevAddItem(bool isConnet);
     public partial class ThreeSection : Form
     {
         
@@ -306,7 +306,7 @@ namespace eNet编辑器.ThreeView
                             default: break;
                         }
                         sectionDgvNameAddItem();
-                        sectionDgvDevAddItem();
+                        sectionDgvDevAddItem(true);
                     }
                     
                 }
@@ -571,7 +571,7 @@ namespace eNet编辑器.ThreeView
                 default: return false;
             }
             sectionDgvNameAddItem();
-            sectionDgvDevAddItem();
+            sectionDgvDevAddItem(true);
             DataJson.totalList NewList = FileMesege.cmds.getListInfos();
             FileMesege.cmds.DoNewCommand(NewList, OldList);
             return true;
@@ -1365,7 +1365,7 @@ namespace eNet编辑器.ThreeView
                     FileMesege.cmds.DoNewCommand(NewList, OldList);
                     //刷新窗口
                     sectionDgvNameAddItem();
-                    sectionDgvDevAddItem();
+                    sectionDgvDevAddItem(true);
                    
                     
                    

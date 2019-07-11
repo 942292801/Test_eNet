@@ -102,8 +102,6 @@ C:\Users\Administrator\Desktop\Gitlab\eNet\eNet编辑器\bin\Release\DevComponen
 C:\Users\Administrator\Desktop\Gitlab\eNet\eNet编辑器\bin\Release\Microsoft.CSharp.dll
 C:\Users\Administrator\Desktop\Gitlab\eNet\eNet编辑器\bin\Release\Microsoft.VisualBasic.dll
 C:\Users\Administrator\Desktop\Gitlab\eNet\eNet编辑器\bin\Release\DevComponents.DotNetBar2.xml
-C:\Users\Administrator\Desktop\Gitlab\eNet\eNet编辑器\bin\Release\Newtonsoft.Json.pdb
-C:\Users\Administrator\Desktop\Gitlab\eNet\eNet编辑器\bin\Release\Newtonsoft.Json.xml
 C:\Users\Administrator\Desktop\Gitlab\eNet\eNet编辑器\obj\x86\Release\eNet编辑器.csprojResolveAssemblyReference.cache
 C:\Users\Administrator\Desktop\Gitlab\eNet\eNet编辑器\obj\x86\Release\eNet编辑器.AddForm.DGVconcrol.resources
 C:\Users\Administrator\Desktop\Gitlab\eNet\eNet编辑器\obj\x86\Release\eNet编辑器.AddForm.DgvNameState.resources
@@ -258,3 +256,5 @@ C:\Users\Administrator\Desktop\Gitlab\eNet\eNet编辑器\obj\x86\Release\eNet编
 C:\Users\Administrator\Desktop\Gitlab\eNet\eNet编辑器\bin\Release\Resources\离线.png
 C:\Users\Administrator\Desktop\Gitlab\eNet\eNet编辑器\bin\Release\Resources\在线.png
 C:\Users\Administrator\Desktop\Gitlab\eNet\eNet编辑器\bin\Release\System.Windows.Forms.DataVisualization.dll
+C:\Users\Administrator\Desktop\Gitlab\eNet\eNet编辑器\bin\Release\ICSharpCode.SharpZipLib.dll
+C:\Users\Administrator\Desktop\Gitlab\eNet\eNet编辑器\bin\Release\Newtonsoft.Json.dll
