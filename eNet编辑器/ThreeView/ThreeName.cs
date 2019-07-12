@@ -18,7 +18,7 @@ namespace eNet编辑器.ThreeView
     public delegate void SendFormContrl(string msg);
     public delegate void ShowDeviceDgv(bool flag);
     public delegate void DgvNameAddItem();
-    public delegate void DgvDeviceAddItem(bool isConnet);
+    public delegate void DgvDeviceAddItem(bool isConnect);
     public partial class ThreeName : Form
     {
         //主窗口显示信息
@@ -435,7 +435,7 @@ namespace eNet编辑器.ThreeView
                     //显示网关设备DGV框                
                     showDevice(true);
                     //选中为父节点显示DGVDevice  
-                    dgvDeviceAddItem(false);
+                    dgvDeviceAddItem(true);
                     
 
                 }

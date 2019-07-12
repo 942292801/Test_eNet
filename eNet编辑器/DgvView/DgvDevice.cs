@@ -62,7 +62,7 @@ namespace eNet编辑器.DgvView
         /// 网关加载到DGV表格信息
         /// </summary>
         /// <param name="num">树状图索引号</param>
-        public void dgvDeviceAddItem(bool isConnet)
+        public void dgvDeviceAddItem(bool isConnect)
         {
             this.dataGridView1.Rows.Clear();
             if (FileMesege.tnselectNode == null)
@@ -106,9 +106,9 @@ namespace eNet编辑器.DgvView
                     break;
                 }//eq.ip == ips
             }//foreach DeviceList表
-            if (isConnet)
+            if (isConnect)
             {
-                clientConnet();
+                clientConnect();
             }
             
 
@@ -540,7 +540,7 @@ namespace eNet编辑器.DgvView
 
  
 
-        private void clientConnet()
+        private void clientConnect()
         {
             try
             {

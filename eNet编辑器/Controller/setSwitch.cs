@@ -54,7 +54,7 @@ namespace eNet编辑器.Controller
 
             tcp6003receviceDelegate += new Action<string>(tcp6003ReceviceDelegateMsg);
             //链接tcp
-            Connet6003Tcp(ip);
+            Connect6003Tcp(ip);
             lastIP = ip.Split('.')[3];
             timer2.Start();
             LockIni();
@@ -150,11 +150,11 @@ namespace eNet编辑器.Controller
             {
 
                 //链接tcp
-                Connet6003Tcp(ip);
+                Connect6003Tcp(ip);
             }
         }
 
-        private void Connet6003Tcp(string ip)
+        private void Connect6003Tcp(string ip)
         {
             try
             {

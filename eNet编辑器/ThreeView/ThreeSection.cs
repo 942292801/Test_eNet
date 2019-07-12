@@ -16,7 +16,7 @@ namespace eNet编辑器.ThreeView
     //public delegate void AddSectionNameCursor();
     //刷新窗口
     public delegate void SectionDgvNameAddItem();
-    public delegate void SectionDgvDevAddItem(bool isConnet);
+    public delegate void SectionDgvDevAddItem(bool isConnect);
     public partial class ThreeSection : Form
     {
         
