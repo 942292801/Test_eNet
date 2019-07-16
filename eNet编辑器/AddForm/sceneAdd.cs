@@ -320,16 +320,22 @@ namespace eNet编辑器.AddForm
             {
                 if (oldnum != num)
                 {
-                   //修改了编号
-                   this.DialogResult = DialogResult.OK;
-                   return;
-                    
+                    //修改了编号
+                    if (area1 == OldArea1 && area2 == OldArea2 && area3 == OldArea3 && area4 == OldArea4 && sceneName == OldName)
+                    {
+                        this.DialogResult = DialogResult.No;
+                        return;
+                    }
                 }
-                if (area1 == OldArea1 && area2 == OldArea2 && area3 == OldArea3 && area4 == OldArea4 && sceneName == OldName)
+                else
                 {
-                    this.DialogResult = DialogResult.No;
-                    return ;
+                    if (area1 == OldArea1 && area2 == OldArea2 && area3 == OldArea3 && area4 == OldArea4 && sceneName == OldName)
+                    {
+                        this.DialogResult = DialogResult.No;
+                        return;
+                    }
                 }
+                
               
                 //修改区域  场景号没更改
                 foreach (DataJson.PointInfo pi in FileMesege.PointList.scene)

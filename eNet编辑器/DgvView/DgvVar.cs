@@ -293,7 +293,7 @@ namespace eNet编辑器.DgvView
 
         private void dataGridView1_MouseDown(object sender, MouseEventArgs e)
         {
-            DgvMesege.endDataViewCurrent(dataGridView1, e.Y);
+            DgvMesege.endDataViewCurrent(dataGridView1, e.Y, e.X);
         }
 
 

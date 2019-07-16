@@ -436,12 +436,9 @@ namespace eNet编辑器.ThreeView
                     showDevice(true);
                     //选中为父节点显示DGVDevice  
                     dgvDeviceAddItem(true);
-                    
-
                 }
                 else
                 {
-                    
                     //显示端口DGV框
                     showDevice(false);
                     //处理点击名字函数

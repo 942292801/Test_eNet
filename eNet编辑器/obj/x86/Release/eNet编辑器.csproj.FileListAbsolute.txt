@@ -258,3 +258,4 @@ C:\Users\Administrator\Desktop\Gitlab\eNet\eNet编辑器\bin\Release\Resources\�
 C:\Users\Administrator\Desktop\Gitlab\eNet\eNet编辑器\bin\Release\System.Windows.Forms.DataVisualization.dll
 C:\Users\Administrator\Desktop\Gitlab\eNet\eNet编辑器\bin\Release\ICSharpCode.SharpZipLib.dll
 C:\Users\Administrator\Desktop\Gitlab\eNet\eNet编辑器\bin\Release\Newtonsoft.Json.dll
+C:\Users\Administrator\Desktop\Gitlab\eNet\eNet编辑器\obj\x86\Release\eNet编辑器.Controller.setDali.resources

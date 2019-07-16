@@ -141,7 +141,7 @@
             this.btnDel.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None;
             this.btnDel.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnDel.HoverImage")));
             this.btnDel.Image = ((System.Drawing.Image)(resources.GetObject("btnDel.Image")));
-            this.btnDel.Location = new System.Drawing.Point(239, 4);
+            this.btnDel.Location = new System.Drawing.Point(239, 5);
             this.btnDel.Margin = new System.Windows.Forms.Padding(6);
             this.btnDel.Name = "btnDel";
             this.btnDel.Size = new System.Drawing.Size(15, 15);
@@ -161,7 +161,7 @@
             this.btnAdd.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None;
             this.btnAdd.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnAdd.HoverImage")));
             this.btnAdd.Image = ((System.Drawing.Image)(resources.GetObject("btnAdd.Image")));
-            this.btnAdd.Location = new System.Drawing.Point(212, 4);
+            this.btnAdd.Location = new System.Drawing.Point(212, 5);
             this.btnAdd.Margin = new System.Windows.Forms.Padding(6);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(15, 15);

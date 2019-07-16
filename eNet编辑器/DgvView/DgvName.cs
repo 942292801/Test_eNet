@@ -457,7 +457,7 @@ namespace eNet编辑器.DgvView
                     break;
                 //调光
                 case "DaLi":
-                    showDimmer(devModuel, devPort, ip);
+                    showDali(devModuel, devPort, ip);
                     break;
                 case "0-10V":
                     showDimmer(devModuel, devPort, ip);
@@ -485,6 +485,12 @@ namespace eNet编辑器.DgvView
 
         }
 
+        /// <summary>
+        /// 0-10V调光
+        /// </summary>
+        /// <param name="devModuel"></param>
+        /// <param name="devPort"></param>
+        /// <param name="ip"></param>
         private void showDimmer(DataJson.Module devModuel,DataJson.DevPort devPort, string ip)
         {
             setDimmer setdimmer = new setDimmer();
@@ -500,6 +506,33 @@ namespace eNet编辑器.DgvView
             }
         }
 
+        /// <summary>
+        /// Dali调光
+        /// </summary>
+        /// <param name="devModuel"></param>
+        /// <param name="devPort"></param>
+        /// <param name="ip"></param>
+        private void showDali(DataJson.Module devModuel, DataJson.DevPort devPort, string ip)
+        {
+            setDali setdali= new setDali();
+            //把窗口向屏幕中间刷新
+            setdali.StartPosition = FormStartPosition.CenterParent;
+            setdali.DevModuel = devModuel;
+            setdali.DevPort = devPort;
+            setdali.Ip = ip;
+            setdali.ShowDialog();
+            if (setdali.DialogResult == DialogResult.OK)
+            {
+
+            }
+        }
+
+        /// <summary>
+        /// 开关
+        /// </summary>
+        /// <param name="devModuel"></param>
+        /// <param name="devPort"></param>
+        /// <param name="ip"></param>
         private void showSwitch(DataJson.Module devModuel, DataJson.DevPort devPort, string ip)
         {
             setSwitch setswitch = new setSwitch();
@@ -1041,7 +1074,7 @@ namespace eNet编辑器.DgvView
                 //cursor_default();
                 //dgvDeviceCursorDefault();
             }
-            DgvMesege.endDataViewCurrent(dataGridView1, e.Y);
+            DgvMesege.endDataViewCurrent(dataGridView1, e.Y, e.X);
         }
 
         bool isClick = false;

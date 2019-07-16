@@ -84,6 +84,8 @@ namespace eNet编辑器
         //设置窗口恢复上一次信息状态
         public static DataJson.PortDimmer portDimmer = null;
 
+        public static DataJson.PortDimmer portDali = null;
+
         /// <summary>
         /// 窗体关闭发生事件
         /// </summary>

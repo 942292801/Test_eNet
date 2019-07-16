@@ -311,6 +311,12 @@
     <Compile Include="Controller\IniForm.Designer.cs">
       <DependentUpon>IniForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controller\setDali.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controller\setDali.Designer.cs">
+      <DependentUpon>setDali.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controller\setDimmer.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -522,6 +528,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Controller\IniForm.resx">
       <DependentUpon>IniForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controller\setDali.resx">
+      <DependentUpon>setDali.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controller\setDimmer.resx">
       <DependentUpon>setDimmer.cs</DependentUpon>

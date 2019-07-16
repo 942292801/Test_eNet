@@ -824,7 +824,7 @@ namespace eNet编辑器.DgvView
                 //cursor_default();
                 //dgvNameCursorDefault();
             }
-            DgvMesege.endDataViewCurrent(dataGridView1, e.Y);
+            DgvMesege.endDataViewCurrent(dataGridView1, e.Y, e.X);
         }
 
         bool isClick = false;

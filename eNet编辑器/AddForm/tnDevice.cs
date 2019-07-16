@@ -156,7 +156,7 @@ namespace eNet编辑器.AddForm
                     //改设备版本
                     isChange = false;
                 }
-                FileMesege.info = string.Format("{0} {1} {2} {3} {4}", lbip.Text, cbDevice.Text, cbVersion.Text, oldDevNum, oldDevVersion);
+                FileMesege.info = string.Format("{0} {1} {2} {3} {4}", lbip.Text.Trim(), cbDevice.Text.Trim(), cbVersion.Text.Trim(), oldDevNum, oldDevVersion);
                 //修改模式
                 this.DialogResult = DialogResult.OK;
             }

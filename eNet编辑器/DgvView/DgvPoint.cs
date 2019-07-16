@@ -985,7 +985,7 @@ namespace eNet编辑器.DgvView
                 updateTitleNode();
                 
             }
-            DgvMesege.endDataViewCurrent(dataGridView1, e.Y);
+            DgvMesege.endDataViewCurrent(dataGridView1, e.Y,e.X);
         }
 
  

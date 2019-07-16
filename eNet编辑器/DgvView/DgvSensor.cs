@@ -926,7 +926,7 @@ namespace eNet编辑器.DgvView
                 updateSectionTitleNode();
 
             }
-            DgvMesege.endDataViewCurrent(dataGridView1, e.Y);
+            DgvMesege.endDataViewCurrent(dataGridView1, e.Y, e.X);
         }
 
         private void dataGridView1_CellMouseMove(object sender, DataGridViewCellMouseEventArgs e)

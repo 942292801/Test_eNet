@@ -160,14 +160,14 @@ namespace eNet编辑器
         /// </summary>
         /// <param name="dataGridView1"></param>
         /// <param name="y"></param>
-        public static void endDataViewCurrent(DataGridView dataGridView1,int y)
+        public static void endDataViewCurrent(DataGridView dataGridView1,int y,int x)
         {
-            if (GetRowIndexAt(dataGridView1,y) == -1)
+            if (GetRowIndexAt(dataGridView1,y,x) == -1)
             {
                 dataGridView1.CurrentCell = null;
             }
         }
-        public static int GetRowIndexAt(DataGridView dataGridView1, int mouseLocation_Y)
+        public static int GetRowIndexAt(DataGridView dataGridView1, int mouseLocation_Y, int mouseLocation_X)
         {
             if (dataGridView1.FirstDisplayedScrollingRowIndex < 0)
             {
@@ -186,7 +186,16 @@ namespace eNet编辑器
                     Rectangle rect = dataGridView1.GetRowDisplayRectangle(index, true);  // 取该区域的显示部分区域   
                     if (rect.Top <= mouseLocation_Y && mouseLocation_Y < rect.Bottom)
                     {
-                        return index;
+                        int width = 1;
+                        for (int i = 0; i < dataGridView1.ColumnCount; i++)
+                        {
+                            width += dataGridView1.Columns[i].Width;
+                        }
+                        if (width> mouseLocation_X && mouseLocation_X > 1)
+                        {
+                            return index;
+                        }
+                        
                     }
                     k++;
                 }

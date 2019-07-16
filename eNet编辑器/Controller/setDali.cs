@@ -6,16 +6,16 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Text.RegularExpressions;
 using System.Net;
 using System.Windows.Forms.DataVisualization.Charting;
-using System.Text.RegularExpressions;
-using System.IO;
 
 namespace eNet编辑器.Controller
 {
-    public partial class setDimmer : Form
+    public partial class setDali : Form
     {
-        private string ip ;
+
+        private string ip;
 
         public string Ip
         {
@@ -41,7 +41,6 @@ namespace eNet编辑器.Controller
             set { devPort = value; }
         }
 
-
         ClientAsync client6003;
         private event Action<string> tcp6003receviceDelegate;
 
@@ -49,12 +48,13 @@ namespace eNet编辑器.Controller
         List<string> xData = new List<string>();
         List<int> yData = new List<int>();
 
-        public setDimmer()
+        public setDali()
         {
             InitializeComponent();
         }
 
-        private void setDimmer_Load(object sender, EventArgs e)
+
+        private void setDali_Load(object sender, EventArgs e)
         {
             tcp6003receviceDelegate += new Action<string>(tcp6003ReceviceDelegateMsg);
             //链接tcp
@@ -63,12 +63,9 @@ namespace eNet编辑器.Controller
             timer2.Start();
             //图表初始化
             chart1Init();
-            //获取表格数字
-            updateTable();
             //窗口状态初始化
             getFormState((DataJson.PortDimmer)devPort.portContent);
         }
-
 
         #region  图形初始化函数
 
@@ -82,9 +79,10 @@ namespace eNet编辑器.Controller
             for (int i = 1; i <= 100; i++)
             {
                 xData.Add(i.ToString() + "%");
-                yData.Add(i * 100);
+                yData.Add(i * 2);
 
             }
+            getLinespA(1, 0, 100, 255);
             //线条颜色
             chart1.Series[0].Color = Color.Green;
             //线条粗细
@@ -105,38 +103,168 @@ namespace eNet编辑器.Controller
             chart1.Series[0]["PieLabelStyle"] = "Outside";
             //绘制黑色的连线
             chart1.Series[0]["PieSplineColor"] = "Black";
-
+            
             chart1.Series[0].Points.DataBindXY(xData, yData);
 
             chart1.Series[0].ShadowOffset = 1;
             chart1.Series[0].MarkerStep = 3;
-              
+
             chart1.ChartAreas[0].AxisX.IsLabelAutoFit = false;
             //chart1.ChartAreas[0].AxisX.Title = "百分点(0-100%)";
             //chart1.ChartAreas[0].AxisY.Title = "TEMPERATURE";
-           
- 
+
+
 
             //改变X轴刻度间隔
             chart1.ChartAreas[0].AxisX.Interval = 25;
             chart1.ChartAreas[0].AxisX.Maximum = 100;
             chart1.ChartAreas[0].AxisX.Minimum = 0;
             //改变Y轴刻度间隔
-            chart1.ChartAreas[0].AxisY.Interval = 1000;
-            chart1.ChartAreas[0].AxisY.Maximum = 10010;
+            chart1.ChartAreas[0].AxisY.Interval = 17;
+            chart1.ChartAreas[0].AxisY.Maximum = 255;
             chart1.ChartAreas[0].AxisY.Minimum = 0;
             //设置游标
             chart1.ChartAreas[0].CursorX.IsUserEnabled = true;
             chart1.ChartAreas[0].CursorY.IsUserEnabled = true;
-            
+
             
         }
 
 
+        /// <summary>
+        /// 获取二次函数的 a  以 (x1,y1)点为定点产生
+        /// </summary>
+        /// <param name="x1"></param>
+        /// <param name="y1"></param>
+        /// <param name="x2"></param>
+        /// <param name="y2"></param>
+        /// <returns></returns>
+        private void getLinespA(double x1, double y1, double x2, double y2)
+        {
+            double a;
+            //左边是否存在高于的y1值
+            bool isMax = false;
+            bool isMin = false;
+            int maxIndex = 0;
+            //找左边y1小过y2 没有就以y2为标准
+            for (int i = Convert.ToInt32(x2); i > 0; i--)
+            {
+                if (yData[i - 1] > y2)
+                {
+                    isMax = true;
+                    maxIndex = i;
+                    break;
+                }
+            }
+            if (isMax)
+            {
+                //寻找左边小于y2的值 是属于哪个区间 
+                for (int i = maxIndex; i > 0; i--)
+                {
+                    if (yData[i - 1] <= y2)
+                    {
+                        if (i >= 75)
+                        {
+                            x1 = 75;
+                            y1 = yData[74];
+                        }
+                        else if (i >= 50)
+                        {
+                            x1 = 50;
+                            y1 = yData[49];
+                        }
+                        else if (i >= 25)
+                        {
+                            x1 = 25;
+                            y1 = yData[24];
+                        }
+                        else
+                        {
+                            x1 = 1;
+                            y1 = yData[0];
+                        }
+                        isMin = true;
+                        break;
+                    }
+
+                }//for
+
+                //左边的y值都比y2大
+                if (!isMin)
+                {
+                    x1 = 1;
+                    yData[0] = Convert.ToInt32(y2);
+                }
+
+            }
+            if (y1 < y2)
+            {
+                a = (y2 - y1) / Math.Pow(x2 - x1, 2);
+            }
+            else
+            {
+                a = 0;
+                y1 = y2;
+            }
+
+
+            for (int i = Convert.ToInt32(x1); i <= Convert.ToInt32(x2); i++)
+            {
+
+                yData[i - 1] = Convert.ToInt32(a * Math.Pow(i - x1, 2) + y1);
+            }
+
+
+        }
 
         #endregion
 
-       
+
+        #region 重绘
+        private void setDali_Paint(object sender, PaintEventArgs e)
+        {
+            Rectangle myRectangle = new Rectangle(0, 0, this.Width, this.Height);
+            //ControlPaint.DrawBorder(e.Graphics, myRectangle, Color.Blue, ButtonBorderStyle.Solid);//画个边框 
+            ControlPaint.DrawBorder(e.Graphics, myRectangle,
+                Color.DarkGray, 1, ButtonBorderStyle.Solid,
+                Color.DarkGray, 1, ButtonBorderStyle.Solid,
+                Color.DarkGray, 2, ButtonBorderStyle.Solid,
+                Color.DarkGray, 2, ButtonBorderStyle.Solid
+            );
+        }
+
+
+        private Point mPoint;
+
+        private void plInfoTitle_MouseDown(object sender, MouseEventArgs e)
+        {
+            mPoint = new Point(e.X, e.Y);
+        }
+
+        private void plInfoTitle_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                this.Location = new Point(this.Location.X + e.X - mPoint.X, this.Location.Y + e.Y - mPoint.Y);
+            }
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            //关闭的时候 保存
+            FileMesege.portDali= SaveFormState();
+            this.DialogResult = System.Windows.Forms.DialogResult.No;
+            timer1.Stop();
+            timer2.Stop();
+            if (client6003 != null)
+            {
+                client6003.Dispoes();
+            }
+            this.Close();
+        }
+        #endregion
+
+
         #region tcp6003 链接 以及处理反馈信息 发送信息
 
         /// <summary>
@@ -148,7 +276,7 @@ namespace eNet编辑器.Controller
         {
             if (client6003 != null && !client6003.Connected())
             {
-                
+
                 //链接tcp
                 Connect6003Tcp(ip);
             }
@@ -160,7 +288,7 @@ namespace eNet编辑器.Controller
             try
             {
 
-                if (client6003 != null )
+                if (client6003 != null)
                 {
                     client6003.Dispoes();
                 }
@@ -192,11 +320,11 @@ namespace eNet编辑器.Controller
                         return;
                     }
                 }
-                
+
             }
             catch
             {
-         
+
                 return;
             }
         }
@@ -216,7 +344,7 @@ namespace eNet编辑器.Controller
                         IPEndPoint iep = c.Client.RemoteEndPoint as IPEndPoint;
                         key = string.Format("{0}:{1}", iep.Address.ToString(), iep.Port);
                     }
-               
+
                     switch (enAction)
                     {
                         case ClientAsync.EnSocketAction.Connect:
@@ -289,7 +417,7 @@ namespace eNet编辑器.Controller
             {
                 return;
             }
-            
+
             string[] strArray = bufferMsg.Split(new string[] { "FB", "ACK" }, StringSplitOptions.RemoveEmptyEntries);
             string dataID = DevModuel.id.ToString();
             Regex reg = new Regex(@"(\d+)\.(\d+)\.(\d+)\.(\d+):(\d+)");
@@ -306,7 +434,7 @@ namespace eNet编辑器.Controller
                 {
 
                     GetPowerState(data);
-                   
+
                 }
                 else if (match.Groups[3].Value == dataID && match.Groups[5].Value == "96")//60开启状态
                 {
@@ -319,20 +447,25 @@ namespace eNet编辑器.Controller
                 else if (match.Groups[3].Value == dataID && match.Groups[5].Value == "98")//62最大值
                 {
                     GetMax(data);
+                    getLinespA(1, yData[0], 100, Convert.ToInt32(data, 16));
+                    chart1.Series[0].Points.DataBindXY(xData, yData);
+                   
                 }
                 else if (match.Groups[3].Value == dataID && match.Groups[5].Value == "99")//63最小值
                 {
                     GetMin(data);
+                    getLinespA(1, Convert.ToInt32(data, 16), 100, yData[99]);
+                    chart1.Series[0].Points.DataBindXY(xData, yData);
                 }
                 else if (match.Groups[3].Value == dataID && match.Groups[5].Value == "101")//67 LED曲线
                 {
-                    GetLinesp(data);
+                    //GetLinesp(data);
                 }
 
             }//for
             bufferMsg = "";
 
-        
+
         }
 
 
@@ -340,19 +473,14 @@ namespace eNet编辑器.Controller
         /// 普通发送函数
         /// </summary>
         /// <param name="dataOrder"></param>
-        private bool sendOrder(string dataOrder)
+        private void sendOrder(string dataOrder)
         {
             if (client6003 != null && client6003.Connected())
             {
                 string tmp = string.Format("SET;{0};{{{1}.0.{2}.{3}}};\r\n", dataOrder, lastIP, DevModuel.id, DevPort.portID);
                 //发送
                 client6003.SendAsync(tmp);
-                return true;
 
-            }
-            else
-            {
-                return false;
             }
         }
 
@@ -361,11 +489,11 @@ namespace eNet编辑器.Controller
         /// </summary>
         /// <param name="dataOrder"></param>
         /// <param name="portID"></param>
-        private bool sendRegOrder(string dataOrder, string portID, string reg)
+        private void sendRegOrder(string dataOrder, string portID, string reg)
         {
             if (string.IsNullOrEmpty(dataOrder) || string.IsNullOrEmpty(portID) || string.IsNullOrEmpty(reg))
             {
-                return false;
+                return;
             }
             if (client6003 != null && client6003.Connected())
             {
@@ -373,20 +501,19 @@ namespace eNet编辑器.Controller
                 string tmp = string.Format("set;{{{1}.0.{2}.{3}:{4}}};{0};\r\n", dataOrder, lastIP, DevModuel.id, portID, reg);
                 //发送
                 client6003.SendAsync(tmp);
-                return true;
+
             }
-            return false;
         }
 
         /// <summary>
         /// 发送信息函数 发送到寄存器寄存器
         /// </summary>
         /// <param name="dataOrder"></param>
-        private bool  sendRegOrder(string dataOrder, string reg)
+        private void sendRegOrder(string dataOrder, string reg)
         {
             if (string.IsNullOrEmpty(dataOrder) || string.IsNullOrEmpty(reg))
             {
-                return false;
+                return;
             }
             if (client6003 != null && client6003.Connected())
             {
@@ -394,21 +521,19 @@ namespace eNet编辑器.Controller
                 string tmp = string.Format("set;{{{1}.0.{2}.{3}:{4}}};{0};\r\n", dataOrder, lastIP, DevModuel.id, DevPort.portID, reg);
                 //发送
                 client6003.SendAsync(tmp);
-                 //SocketUtil.WriteLog(tmp);
-                return true;
+                //SocketUtil.WriteLog(tmp);
             }
-            return false;
         }
 
         /// <summary>
         /// 发送读取指令 发送到寄存器寄存器
         /// </summary>
         /// <param name="dataOrder"></param>
-        private bool sendGetOrder( string reg)
+        private void sendGetOrder(string reg)
         {
             if (string.IsNullOrEmpty(reg))
             {
-                return false;
+                return;
             }
             if (client6003 != null && client6003.Connected())
             {
@@ -416,9 +541,8 @@ namespace eNet编辑器.Controller
                 string tmp = string.Format("get;{{{0}.0.{1}.{2}:{3}}};\r\n", lastIP, DevModuel.id, DevPort.portID, reg);
                 //发送
                 client6003.SendAsync(tmp);
-                return true;
+
             }
-            return false;
         }
 
         /// <summary>
@@ -438,53 +562,6 @@ namespace eNet编辑器.Controller
         #endregion
 
 
-        #region 重绘
-        private void setDimmer_Paint(object sender, PaintEventArgs e)
-        {
-            Rectangle myRectangle = new Rectangle(0, 0, this.Width, this.Height);
-            //ControlPaint.DrawBorder(e.Graphics, myRectangle, Color.Blue, ButtonBorderStyle.Solid);//画个边框 
-            ControlPaint.DrawBorder(e.Graphics, myRectangle,
-                Color.DarkGray, 1, ButtonBorderStyle.Solid,
-                Color.DarkGray, 1, ButtonBorderStyle.Solid,
-                Color.DarkGray, 2, ButtonBorderStyle.Solid,
-                Color.DarkGray, 2, ButtonBorderStyle.Solid
-            );
-        }
-
-     
-        private Point mPoint;
-
-        private void plInfoTitle_MouseDown(object sender, MouseEventArgs e)
-        {
-            mPoint = new Point(e.X, e.Y);
-        }
-
-        private void plInfoTitle_MouseMove(object sender, MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Left)
-            {
-                this.Location = new Point(this.Location.X + e.X - mPoint.X, this.Location.Y + e.Y - mPoint.Y);
-            }
-        }
-
-        private void btnClose_Click(object sender, EventArgs e)
-        {
-            //关闭的时候 保存
-            FileMesege.portDimmer = SaveFormState();
-            this.DialogResult = System.Windows.Forms.DialogResult.No;
-            timer1.Stop();
-            timer2.Stop();
-            if (client6003 != null)
-            {
-                client6003.Dispoes();
-            }
-            this.Close();
-        
-        }
-
-        #endregion
-
-
         #region 操作框
 
         /// <summary>
@@ -492,7 +569,7 @@ namespace eNet编辑器.Controller
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void ultraTrackBar1_ValueChanged(object sender, EventArgs e)
+        private void tblmTiao_ValueChanged(object sender, EventArgs e)
         {
             lblmTiao.Text = tblmTiao.Value.ToString() + "%";
             string order = string.Format("100000{0}", tblmTiao.Value.ToString("X2"));
@@ -525,7 +602,7 @@ namespace eNet编辑器.Controller
             }
         }
 
-        
+
         private void timer1_Tick(object sender, EventArgs e)
         {
             try
@@ -542,570 +619,7 @@ namespace eNet编辑器.Controller
         #endregion
 
 
-        #region 曲线图 
-        private void chart1_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                //用来注册键盘焦点
-                panel1.Focus();
-                Point p = chart1.PointToClient(MousePosition);
-                double XVal = chart1.ChartAreas[0].CursorX.Position;//获取X轴
-
-                if (0 < XVal && XVal <= 100)
-                {
-                    sendliangdu(Convert.ToInt32(XVal));
-                }
-            }
-            catch { 
-            
-            }
-        }
-
-        /// <summary>
-        /// 双击曲线图修改数据点
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void chart1_DoubleClick(object sender, EventArgs e)
-        {
-            try
-            {
-                Point p = chart1.PointToClient(MousePosition);
-                
-                double XVal = chart1.ChartAreas[0].CursorX.Position;//获取X轴
-                double YVal = chart1.ChartAreas[0].CursorY.Position;//获取Y轴
-                int x = Convert.ToInt32(XVal);
-                //确保xy的值为正常值
-                if (0 < XVal && XVal <= 100)
-                {
-                    if (YVal < 100 ) 
-                    {
-                        YVal = 0.0;
-                    }
-                    if (YVal > 9900)
-                    {
-                        YVal = 10000.0;
-                    }
-                    switch(x)
-                    {
-                        case 1:
-                            getLinespA(XVal, YVal, 100, yData[99]);
-                            break;
-                        case 25:
-                            getLinespA(1, yData[0], XVal, YVal);
-                            getLinespA(XVal, YVal, 50, yData[49]);
-                            break;
-                        case 50:
-                            getLinespA(25, yData[24], XVal, YVal);
-                            getLinespA(XVal, YVal, 75, yData[74]);
-                            break;
-                        case 75:
-                            getLinespA(50, yData[49], XVal, YVal);
-                            getLinespA(XVal, YVal, 100, yData[99]);
-                            break;
-                        case 100:
-                            getLinespA(1, yData[0], XVal, YVal);
-                            break;
-
-                        default:
-                            if (75 < x && x < 100)
-                            {
-                                getLinespA(75, yData[74], XVal, YVal);
-                                getLinespA(XVal, YVal, 100, yData[99]);
-                            }
-                            else if (50 < x && x < 75)
-                            {
-                                getLinespA(50, yData[49], XVal, YVal);
-                                getLinespA(XVal, YVal, 75, yData[74]);
-                            }
-                            else if (25 < x && x < 50)
-                            {
-                                getLinespA(25, yData[24], XVal, YVal);
-                                getLinespA(XVal, YVal, 50, yData[49]);
-                            }
-                            else
-                            {
-                                getLinespA(1, yData[0], XVal, YVal);
-                                getLinespA(XVal, YVal, 25, yData[24]);
-                            }
-                            break;
-
-                    }
-                    chart1.Series[0].Points.DataBindXY(xData, yData);
-                    //当连接时候发送当前亮度代码
-                    sendliangdu(x);
-                    updateTable();
-                }
-                
-                
-            }
-            catch 
-            {
-                //接收信息发生异常
-                //MessageBox.Show(ex.Message);
-            }
-        }
-
-        /// <summary>
-        /// 获取二次函数的 a  以 (x1,y1)点为定点产生
-        /// </summary>
-        /// <param name="x1"></param>
-        /// <param name="y1"></param>
-        /// <param name="x2"></param>
-        /// <param name="y2"></param>
-        /// <returns></returns>
-        private void getLinespA(double x1, double y1, double x2, double y2)
-        {
-            double a;
-            //左边是否存在高于的y1值
-            bool isMax = false;
-            bool isMin = false;
-            int maxIndex = 0;
-            //找左边y1小过y2 没有就以y2为标准
-            for (int i = Convert.ToInt32(x2); i > 0 ; i--)
-            {
-                if (yData[i - 1] > y2)
-                {
-                    isMax = true;
-                    maxIndex = i;
-                    break;
-                }
-            }
-            if (isMax)
-            {
-                //寻找左边小于y2的值 是属于哪个区间 
-                for (int i = maxIndex; i > 0; i--)
-                {
-                    if (yData[i - 1] <= y2)
-                    {
-                        if (i >= 75)
-                        {
-                            x1 = 75;
-                            y1 = yData[74];
-                        }
-                        else if (i >= 50)
-                        {
-                            x1 = 50;
-                            y1 = yData[49];
-                        }
-                        else if (i >= 25)
-                        {
-                            x1 = 25;
-                            y1 = yData[24];
-                        }
-                        else
-                        {
-                            x1 = 1;
-                            y1 = yData[0];
-                        }
-                        isMin = true;
-                        break;
-                    }
-
-                }//for
-
-                //左边的y值都比y2大
-                if (!isMin)
-                {
-                    x1 = 1;
-                    yData[0] = Convert.ToInt32(y2);
-                }
-
-            }
-            if (y1 < y2)
-            {
-                a = (y2 - y1) / Math.Pow(x2 - x1, 2);
-            }
-            else
-            {
-                a = 0;
-                y1 = y2;
-            }
-            
-   
-            for (int i = Convert.ToInt32(x1); i <= Convert.ToInt32(x2); i++)
-            {
-
-                yData[i - 1] = Convert.ToInt32(a * Math.Pow(i - x1, 2) + y1);
-            }
-            
-            
-        }
-
-        //发送当前亮度
-        private void sendliangdu(int x)
-        {
-            //当连接时候发送当前亮度代码
-            string str = yData[x - 1].ToString("X8");
-            sendRegOrder(str, "03");
-  
-        }
-
-
-
-
-        /// <summary>
-        /// 曲线图按键
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void setDimmer_KeyDown(object sender, KeyEventArgs e)
-        {
-            try
-            {
-                if (!panel1.Focused)
-                {
-                    return;
-                }
-                int x = (int)chart1.ChartAreas[0].CursorX.Position;//获取X轴
-                switch (e.KeyCode)
-                {
-                    case Keys.Left:
-
-                        chart1.ChartAreas[0].CursorX.Position = x - 1;
-                        sendliangdu(x-1);
-                        break;
-                    case Keys.Right:
-                        chart1.ChartAreas[0].CursorX.Position = x + 1;
-                        sendliangdu(x + 1);
-                        break;
-                    default:
-                        break;
-                }
-
-
-            }
-            catch
-            {
-
-            }
-        }
-        #endregion
-
-
-        #region 图表
-        private void btnLeft_Click(object sender, EventArgs e)
-        {
-            TextBox[] txtunits = new TextBox[] { txtunit1, txtunit2, txtunit3, txtunit4, txtunit5, txtunit6, txtunit7, txtunit8, txtunit9, txtunit10 };
-            if (txtunits[0].Text == "1%")
-            {
-                return;
-            }
-            //获取数字
-            int start = Convert.ToInt32(Regex.Replace(txtunit1.Text, @"[^\d]*", "")) - 10;
-            for (int i = 0; i < txtunits.Length; i++)
-            {
-                txtunits[i].Text = string.Format("{0}%", start + i);
-            }
-            updateTable();
-        }
-
-        private void btnRight_Click(object sender, EventArgs e)
-        {
-            TextBox[] txtunits = new TextBox[] { txtunit1, txtunit2, txtunit3, txtunit4, txtunit5, txtunit6, txtunit7, txtunit8, txtunit9, txtunit10 };
-            if (txtunits[0].Text == "91%")
-            {
-                return;
-            }
-            //获取数字
-            int start = Convert.ToInt32(Regex.Replace(txtunit1.Text, @"[^\d]*", "")) + 10;
-            for (int i = 0; i < txtunits.Length; i++)
-            {
-                txtunits[i].Text = string.Format("{0}%", start + i);
-            }
-            updateTable();
-            
-        }
-
-        /// <summary>
-        /// 更新表格上面的数值
-        /// </summary>
-        private void updateTable()
-        {
-            TextBox[] txtabs = new TextBox[] { txtabs1, txtabs2, txtabs3, txtabs4, txtabs5, txtabs6, txtabs7, txtabs8, txtabs9, txtabs10 };
-
-            //获取数字
-            int start = Convert.ToInt32(Regex.Replace(txtunit1.Text, @"[^\d]*", ""));
-            int end = start + 9;
-            int j = 0;
-            for (int i = start; i <= end; i++)
-            {
-                txtabs[j].Text = yData[i - 1].ToString();
-                j++;
-            }
-
-        }
-
-        /// <summary>
-        /// txt值改变并失去焦点后
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void txtabs1_Leave(object sender, EventArgs e)
-        {
-            ChangeNum();
-        }
-
-        private void txtabs1_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            //如果输入的不是数字键，也不是wu、Backspace键，则取消该输入
-            if (!(Char.IsNumber(e.KeyChar)) && e.KeyChar != (char)8)
-            {
-                e.Handled = true;
-            }
-        }
-
-        /// <summary>
-        /// 更新表格上面的数值
-        /// </summary>
-        private void ChangeNum()
-        {
-            try
-            {
-                TextBox[] txtabs = new TextBox[] { txtabs1, txtabs2, txtabs3, txtabs4, txtabs5, txtabs6, txtabs7, txtabs8, txtabs9, txtabs10 };
-
-                //获取数字
-                int start = Convert.ToInt32(Regex.Replace(txtunit1.Text, @"[^\d]*", ""));
-                int end = start + 9;
-                int j = 0;
-                int data = 0;
-                for (int i = start; i <= end; i++)
-                {
-                    data = Convert.ToInt32(Regex.Replace(txtabs[j].Text, @"[^\d]*", ""));
-                    if (data > 10000)
-                    {
-                        data = 10000;
-                    }
-                    else if (data < 0)
-                    {
-                        data = 1;
-                    }
-                    yData[i - 1] = data;
-                    j++;
-                }
-                //更新曲线
-                chart1.Series[0].Points.DataBindXY(xData, yData);
-            }
-            catch {
-                updateTable();
-            }
-
-        }
-
-        #endregion
-
-
-        #region 菜单栏 按钮
-        private void btnRefresh_Click(object sender, EventArgs e)
-        {
-            getFormState(FileMesege.portDimmer);
-        }
-
-        private void btnIni_Click(object sender, EventArgs e)
-        {
-            getFormState("64", "64", "01", "64", "00", "");
-        }
-
-        private void btnAllWrite_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                DataJson.PortDimmer portDimmer = SaveFormState();
-                if (portDimmer == null)
-                {
-                    return;
-                }
-                string id = "";
-                string msg = "";
-                
-               
-                foreach (DataJson.DevPort dp  in devModuel.devPortList)
-                {
-                    if (dp.portType == DevPort.portType)
-                    {
-                        dp.portContent = portDimmer;
-                        id = dp.portID.ToString();
-                        sendRegOrder("01", id, "64");//设置为线性模式 00自定义 01曲线 02废除了 
-                        SocketUtil.DelayMilli(1000);
-                        sendRegOrder(portDimmer.powerState,id, "40");
-                        SocketUtil.DelayMilli(1000);
-                        sendRegOrder(portDimmer.onState, id, "60");
-                        SocketUtil.DelayMilli(1000);
-                        sendRegOrder(portDimmer.changeState, id, "61");
-                        SocketUtil.DelayMilli(1000);
-                        sendRegOrder(portDimmer.max, id, "62");
-                        SocketUtil.DelayMilli(1000);
-                        sendRegOrder(portDimmer.min, id, "63");
-                        SocketUtil.DelayMilli(1000);
-                        sendRegOrder(portDimmer.spline, id, "65");
-                        SocketUtil.DelayMilli(1000);
-                        msg += string.Format( "成功写入至模块端口{0}！\r\n",dp.portID);
-                       
-                    }
-                }
-
-                
-                if (sendResetdriver())//重启设备
-                {
-                    MessageBox.Show(msg+"设备重启中请稍候", "提示");
-                }
-                else
-                {
-                    MessageBox.Show("写入失败！\r\n请检查网络连接或参数", "提示");
-                }
-
-
-
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("操作失败！\n" + ex.Message, "提示", MessageBoxButtons.OK,
-                    MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
-            }
-        }
-
-        private void btnWrite_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                DataJson.PortDimmer portDimmer = SaveFormState();
-                if (portDimmer == null)
-                {
-                    return;
-                }
-                devPort.portContent = portDimmer;
-                sendRegOrder("01", "64");//设置为线性模式 00自定义 01曲线 02废除了 
-                SocketUtil.DelayMilli(400);
-                sendRegOrder(portDimmer.powerState,"40");
-                SocketUtil.DelayMilli(400);
-                sendRegOrder(portDimmer.onState,"60");
-                SocketUtil.DelayMilli(400);
-                sendRegOrder(portDimmer.changeState, "61");
-                SocketUtil.DelayMilli(400);
-                sendRegOrder(portDimmer.max, "62");
-                SocketUtil.DelayMilli(400);
-                sendRegOrder(portDimmer.min, "63");
-                SocketUtil.DelayMilli(400);
-                sendRegOrder(portDimmer.spline, "65");
-                SocketUtil.DelayMilli(2000);
-                if (sendResetdriver())//重启设备
-                {
-                    MessageBox.Show("成功写入至模块,设备重启中请稍候！", "提示");
-                }
-                else
-                {
-                    MessageBox.Show("写入失败！\r\n请检查网络连接或参数", "提示");
-                    
-                }
-                
-                 
-
-               
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("操作失败！\n" + ex.Message, "提示", MessageBoxButtons.OK,
-                    MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
-            }
-        }
-
-        private void btnRead_Click(object sender, EventArgs e)
-        {
-            sendGetOrder("40");//上电状态
-            SocketUtil.DelayMilli(200);
-            sendGetOrder("60");//开启状态
-            SocketUtil.DelayMilli(200);
-            sendGetOrder("61");
-            SocketUtil.DelayMilli(200);
-            sendGetOrder("62");
-            SocketUtil.DelayMilli(200);
-            sendGetOrder("63");
-            SocketUtil.DelayMilli(200);
-            sendGetOrder("65");
-
-        }
-
-        private void btnImport_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                OpenFileDialog op = new OpenFileDialog();
-                string newPath = IniConfig.GetValue(Application.StartupPath + "\\conf.ini", "filepath", "softPath");
-                if (System.IO.File.Exists(newPath))
-                {
-                    //设置此次默认目录为上一次选中目录  
-                    op.InitialDirectory = newPath;
-
-                }
-                op.Title = "请打开工程文件";
-                op.Filter = "项目文件（*.line）|*.line|压缩文件（*.json）|*.json|All files(*.*)|*.*";
-                if (op.ShowDialog() == DialogResult.OK)
-                {
-                    GetLinesp(File.ReadAllText(op.FileName));
-                    //获取表格数字
-                    updateTable();
-                    //添加打开过的地址
-                    IniConfig.SetValue(Application.StartupPath + "\\conf.ini", "filepath", "softPath", op.FileName);
-
-                }
-       
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("操作失败！\n" + ex.Message, "提示", MessageBoxButtons.OK,
-                    MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
-          
-            } 
-        }
-
-        private void btnOutput_Click(object sender, EventArgs e)
-        {
-            try
-            {
-       
-                SaveFileDialog sfd = new SaveFileDialog();
-                sfd.Title = "请选择保存路径";
-                //设置文件类型 
-                sfd.Filter = "曲线文件（*.line）|*.line|JSON文件（*.json）|*.json|All files(*.*)|*.*";
-                //设置默认文件类型显示顺序 
-                sfd.FilterIndex = 1;
-                //保存对话框是否记忆上次打开的目录 
-                sfd.RestoreDirectory = true;
-                //设置默认的文件名
-
-                sfd.FileName = "Linesp";// in wpf is  sfd.FileName = "YourFileName";
-
-                string newPath = IniConfig.GetValue(Application.StartupPath + "\\conf.ini", "filepath", "softPath");
-                if (System.IO.File.Exists(newPath))
-                {
-                    //设置此次默认目录为上一次选中目录  
-                    sfd.InitialDirectory = newPath;
-
-                }
-                //点了保存按钮进入 
-                if (sfd.ShowDialog() == DialogResult.OK)
-                {
-
-                    string localFilePath = sfd.FileName.ToString(); //获得文件路径 
-                    IniConfig.SetValue(Application.StartupPath + "\\conf.ini", "filepath", "softPath", localFilePath);
-                    File.WriteAllText(localFilePath,SaveLinesp());
-                        
-                }
-                
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("操作失败！\n" + ex.Message, "提示", MessageBoxButtons.OK,
-                    MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
-            
-            }  
-        }
-
-        #endregion
+    
 
 
         #region 把十六进制参数 展现在窗体中
@@ -1114,7 +628,7 @@ namespace eNet编辑器.Controller
         /// 解释对象 在窗体展示对象参数
         /// </summary>
         /// <param name="portDimmer"></param>
-        private void getFormState(DataJson.PortDimmer portDimmer )
+        private void getFormState(DataJson.PortDimmer portDimmer)
         {
             if (FileMesege.portDimmer == null)
             {
@@ -1132,8 +646,7 @@ namespace eNet编辑器.Controller
             GetMin(portDimmer.min);
             //获取曲线
             GetLinesp(portDimmer.spline);
-            //获取表格数字
-            updateTable();
+    
         }
 
         /// <summary>
@@ -1145,7 +658,7 @@ namespace eNet编辑器.Controller
         /// <param name="max"></param>
         /// <param name="min"></param>
         /// <param name="spline"></param>
-        private void getFormState(string powerState,string onState,string changeState,string max,string min,string spline)
+        private void getFormState(string powerState, string onState, string changeState, string max, string min, string spline)
         {
             //上电状态
             GetPowerState(powerState);
@@ -1159,8 +672,7 @@ namespace eNet编辑器.Controller
             GetMin(min);
             //获取曲线
             GetLinesp(spline);
-            //获取表格数字
-            updateTable();
+           
         }
 
         /// <summary>
@@ -1209,7 +721,7 @@ namespace eNet编辑器.Controller
 
                 cbOnState.Text = string.Format("{0}%", Convert.ToInt32(info, 16));
             }
-  
+
         }
 
 
@@ -1303,7 +815,7 @@ namespace eNet编辑器.Controller
                 }
             }
             catch { }
-            
+
         }
 
 
@@ -1323,7 +835,7 @@ namespace eNet编辑器.Controller
                 {
                     txtMin.Text = Convert.ToInt32(info, 16).ToString();
                 }
-             }
+            }
             catch { }
         }
 
@@ -1336,23 +848,23 @@ namespace eNet编辑器.Controller
         {
             try
             {
-            if (string.IsNullOrEmpty(info))
-            {
-                chart1Init();
-                return;
-            }
-            info = info.Replace(" ", "");
-            for (int i = 0; i < 100; i++)
-            {
-                string tmp = info.Substring((i * 4), 4);
-                while (tmp.Substring(0, 1) == "0")
+                if (string.IsNullOrEmpty(info))
                 {
-                    tmp = tmp.Substring(1, tmp.Length - 1);
+                    chart1Init();
+                    return;
                 }
-                yData[i] = Convert.ToInt32(tmp, 16);
+                info = info.Replace(" ", "");
+                for (int i = 0; i < 100; i++)
+                {
+                    string tmp = info.Substring((i * 4), 4);
+                    while (tmp.Substring(0, 1) == "0")
+                    {
+                        tmp = tmp.Substring(1, tmp.Length - 1);
+                    }
+                    yData[i] = Convert.ToInt32(tmp, 16);
 
-            }
-            chart1.Series[0].Points.DataBindXY(xData, yData);
+                }
+                chart1.Series[0].Points.DataBindXY(xData, yData);
             }
             catch { }
         }
@@ -1390,20 +902,20 @@ namespace eNet编辑器.Controller
                 info = "ff";
             }
             else
-            { 
-                info  = Regex.Replace(info, @"[^\d]*", "");
+            {
+                info = Regex.Replace(info, @"[^\d]*", "");
                 if (string.IsNullOrEmpty(info))
                 {
                     info = "";
                 }
                 else
                 {
-                    
+
                     info = Convert.ToInt32(info).ToString("X2");
                 }
-                
+
             }
-            
+
             return info;
 
 
@@ -1509,11 +1021,11 @@ namespace eNet编辑器.Controller
             try
             {
                 int tmp = Convert.ToInt32(txtMax.Text);
-                if(tmp>100)
+                if (tmp > 255)
                 {
-                    tmp = 100;
+                    tmp = 255;
                 }
-                if(tmp <0)
+                if (tmp < 0)
                 {
                     tmp = 0;
                 }
@@ -1521,9 +1033,9 @@ namespace eNet编辑器.Controller
             }
             catch
             {
-                return "64";
+                return "FF";
             }
-            
+
         }
 
         /// <summary>
@@ -1537,15 +1049,15 @@ namespace eNet编辑器.Controller
             {
                 int min = Convert.ToInt32(txtMin.Text);
                 int max = Convert.ToInt32(txtMax.Text);
-                if(max>100)
+                if (max > 255)
                 {
-                    max = 100;
+                    max = 255;
                 }
-                if(max <0)
+                if (max < 0)
                 {
                     max = 0;
                 }
-                if (min > max )
+                if (min > max)
                 {
                     min = 0;
                 }
@@ -1577,10 +1089,200 @@ namespace eNet编辑器.Controller
 
         #endregion
 
-      
+
+        #region 菜单栏 按钮
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            getFormState(FileMesege.portDimmer);
+        }
+
+        private void btnIni_Click(object sender, EventArgs e)
+        {
+            getFormState("64", "64", "01", "FF", "00", "");
+        }
+
+        private void btnAllWrite_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DataJson.PortDimmer portDimmer = SaveFormState();
+                if (portDimmer == null)
+                {
+                    return;
+                }
+                string id = "";
+                string msg = "";
 
 
+                foreach (DataJson.DevPort dp in devModuel.devPortList)
+                {
+                    if (dp.portType == DevPort.portType)
+                    {
+                        dp.portContent = portDimmer;
+                        id = dp.portID.ToString();
+                        //sendRegOrder("01", id, "64");//设置为线性模式 00自定义 01曲线 02废除了 
+                        //SocketUtil.DelayMilli(1000);
+                        sendRegOrder(portDimmer.powerState, id, "40");
+                        SocketUtil.DelayMilli(1000);
+                        sendRegOrder(portDimmer.onState, id, "60");
+                        SocketUtil.DelayMilli(1000);
+                        sendRegOrder(portDimmer.changeState, id, "61");
+                        SocketUtil.DelayMilli(1000);
+                        sendRegOrder(portDimmer.max, id, "62");
+                        SocketUtil.DelayMilli(1000);
+                        sendRegOrder(portDimmer.min, id, "63");
+                        SocketUtil.DelayMilli(1000);
+                        //sendRegOrder(portDimmer.spline, id, "65");
+                        //SocketUtil.DelayMilli(1000);
+                        msg += string.Format("成功写入至模块端口{0}！\r\n", dp.portID);
+
+                    }
+                }
+
+                if (string.IsNullOrEmpty(msg))
+                {
+                    MessageBox.Show("写入失败！\r\n请检查网络连接或参数", "提示");
+                }
+                else
+                {
+                    MessageBox.Show(msg + "设备重启中请稍候", "提示");
+                }
 
 
-    }//endClass
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("操作失败！\n" + ex.Message, "提示", MessageBoxButtons.OK,
+                    MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
+            }
+        }
+
+        private void btnWrite_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DataJson.PortDimmer portDimmer = SaveFormState();
+                if (portDimmer == null)
+                {
+                    return;
+                }
+                devPort.portContent = portDimmer;
+                //sendRegOrder("01", "64");//设置为线性模式 00自定义 01曲线 02废除了 
+                //SocketUtil.DelayMilli(400);
+                sendRegOrder(portDimmer.powerState, "40");
+                SocketUtil.DelayMilli(400);
+                sendRegOrder(portDimmer.onState, "60");
+                SocketUtil.DelayMilli(400);
+                sendRegOrder(portDimmer.changeState, "61");
+                SocketUtil.DelayMilli(400);
+                sendRegOrder(portDimmer.max, "62");
+                SocketUtil.DelayMilli(400);
+                sendRegOrder(portDimmer.min, "63");
+                SocketUtil.DelayMilli(400);
+                /*sendRegOrder(portDimmer.spline, "65");
+                SocketUtil.DelayMilli(2000);
+                if (sendResetdriver())//重启设备
+                {
+                    MessageBox.Show("成功写入至模块,设备重启中请稍候！", "提示");
+                }
+                else
+                {
+                    MessageBox.Show("写入失败！\r\n请检查网络连接或参数", "提示");
+
+                }*/
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("操作失败！\n" + ex.Message, "提示", MessageBoxButtons.OK,
+                    MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
+            }
+        }
+
+        private void btnRead_Click(object sender, EventArgs e)
+        {
+            sendGetOrder("40");//上电状态
+            SocketUtil.DelayMilli(200);
+            sendGetOrder("60");//开启状态
+            SocketUtil.DelayMilli(200);
+            sendGetOrder("61");
+            SocketUtil.DelayMilli(200);
+            sendGetOrder("62");
+            SocketUtil.DelayMilli(200);
+            sendGetOrder("63");
+            
+     
+
+        }
+
+        private void btnImport_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnOutput_Click(object sender, EventArgs e)
+        {
+
+        }
+        #endregion
+
+        #region 亮度值变化更改曲线 限制只允许输入数字
+        private void txtMax_Leave(object sender, EventArgs e)
+        {
+            getMaxspline();
+        }
+
+        private void txtMin_Leave(object sender, EventArgs e)
+        {
+            getMinspline();
+        }
+
+        private void getMaxspline()
+        {
+            try
+            {
+
+                int max = Convert.ToInt32(txtMax.Text);
+                getLinespA(1, yData[0], 100, max);
+                chart1.Series[0].Points.DataBindXY(xData, yData);
+
+            }
+            catch
+            {
+                getLinespA(1, yData[0], 100, 255);
+                chart1.Series[0].Points.DataBindXY(xData, yData);
+
+            }
+        }
+
+        private void getMinspline()
+        {
+            try
+            {
+                int min = Convert.ToInt32(txtMin.Text);
+                getLinespA(1, min, 100, yData[99]);
+                chart1.Series[0].Points.DataBindXY(xData, yData);
+
+            }
+            catch
+            {
+                getLinespA(1, 0, 100, yData[99]);
+                chart1.Series[0].Points.DataBindXY(xData, yData);
+
+            }
+        }
+
+        private void txtMax_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //如果输入的不是数字键，也不是wu、Backspace键，则取消该输入
+            if (!(Char.IsNumber(e.KeyChar)) && e.KeyChar != (char)8)
+            {
+                e.Handled = true;
+            }
+        }
+        #endregion
+
+
+    }//class
 }
