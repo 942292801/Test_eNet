@@ -6,114 +6,32 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using eNet编辑器.Properties;
 using System.Runtime.InteropServices;
 
 namespace eNet编辑器.AddForm
 {
-    public delegate void AddNode();
-    public partial class tsSection : Form
+    public partial class versionInfo : Form
     {
-        public tsSection()
+        public versionInfo()
         {
             InitializeComponent();
         }
 
-        //记录上次关闭的选中点
-        private int selectindex = 0;
-
-        public int Selectindex
+        private void versionInfo_Load(object sender, EventArgs e)
         {
-            get { return selectindex; }
-            set { selectindex = value; }
-        }
-        /// <summary>
-        /// 新建第一个节点标志
-        /// </summary>
-        private bool newflag = false;
-
-        public bool Newflag
-        {
-            get { return newflag; }
-            set { newflag = value; }
+            lbVersion.Text = Resources.SoftVersion;
+            lbreserved.Text = "©2019-2020 Easyctrl Intelligent Technology Co., Ltd.";
+            lbpt.Text = "eNet Editor Share may be covered under one or more of the following United States Patents : 888888.";
         }
 
-        private string lbText = "";
-
-        public string LbText
+        private void versionInfo_Deactivate(object sender, EventArgs e)
         {
-            get { return lbText; }
-            set { lbText = value; }
-        }
-
-
-        //回调添加节点
-        public event AddNode addNode;
-        private void tsSection_Load(object sender, EventArgs e)
-        {
-            lbTitle.Text = lbText;
-            addtype(cbtype);
-            cbtype.SelectedIndex = selectindex;
-           
-        }
-
-        private void btnDecid_Click(object sender, EventArgs e)
-        {
-            if (cbname.Text == "" || cbname.Text == null)
-            {
-                MessageBox.Show("新建节点名称不能为空");
-                return;
-            }
-            FileMesege.info = cbname.Text;
-            try
-            {
-                cbname.SelectedIndex = cbname.SelectedIndex + 1;
-            }
-            catch { 
-            
-            }
-            //利用回调机制 
-            addNode();
+            this.DialogResult = System.Windows.Forms.DialogResult.No;
+            this.Close();
         }
 
       
-
-        private void cbtype_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            addname(cbname, cbtype.Text);
-        }
-
-        /// <summary>
-        /// 获取Ini文件所有key值
-        /// </summary>
-        /// <param name="cbtype"></param>
-        private void addtype(ComboBox cbtype) 
-        {
-            List<string> keys = IniConfig.ReadKeys("sectionNode", String.Format("{0}{1}", Application.StartupPath, "\\names\\commonName.ini"));
-            cbtype.Items.Clear();
-            for (int i = 0; i < keys.Count; i++)
-            {
-                cbtype.Items.Add(keys[i]);
-            }
-            cbtype.SelectedIndex = 0;
-        }
-
-        /// <summary>
-        /// 获取key值类型下的所有名称
-        /// </summary>
-        /// <param name="cbname"></param>
-        /// <param name="type"></param>
-        private void addname(ComboBox cbname,string type)
-        {
-            string[] node = IniConfig.GetValue(String.Format("{0}{1}", Application.StartupPath, "\\names\\commonName.ini"), "sectionNode", type).Split(',');
-            cbname.Items.Clear();
-            cbname.Text = "";
-            for (int i = 0; i < node.Length; i++)
-            {
-                cbname.Items.Add(node[i]);
-            }
-            cbname.SelectedIndex = 0;
-        }
-
         #region 窗体样色
 
 
@@ -210,7 +128,7 @@ namespace eNet编辑器.AddForm
 
         }
         #endregion
-        private void tsSection_Paint(object sender, PaintEventArgs e)
+        private void versionInfo_Paint(object sender, PaintEventArgs e)
         {
             Rectangle myRectangle = new Rectangle(0, 0, this.Width, this.Height);
             //ControlPaint.DrawBorder(e.Graphics, myRectangle, Color.Blue, ButtonBorderStyle.Solid);//画个边框 
@@ -223,31 +141,7 @@ namespace eNet编辑器.AddForm
         }
 
 
-        private Point mPoint;
-
-
-
-        private void btnClose_Click(object sender, EventArgs e)
-        {
-            this.DialogResult = System.Windows.Forms.DialogResult.No;
-            this.Close();
-        }
-
-        private void plInfoTitle_MouseDown(object sender, MouseEventArgs e)
-        {
-            mPoint = new Point(e.X, e.Y);
-        }
-
-        private void plInfoTitle_MouseMove(object sender, MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Left)
-            {
-                this.Location = new Point(this.Location.X + e.X - mPoint.X, this.Location.Y + e.Y - mPoint.Y);
-            }
-        }
-
         #endregion
-
 
 
     }

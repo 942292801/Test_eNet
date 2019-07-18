@@ -1067,20 +1067,7 @@ namespace eNet编辑器
 
         }
 
-        /// <summary>
-        /// 编译下载
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void 编译ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void 下载ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
+ 
 
         private void 编译下载ToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -1090,6 +1077,16 @@ namespace eNet编辑器
             cpdown.StartPosition = FormStartPosition.CenterParent;
             cpdown.ShowDialog();
         }
+
+        private void btnCompileDownload_Click_1(object sender, EventArgs e)
+        {
+            compileDownload cpdown = new compileDownload();
+            cpdown.AppTxtShow += new Action<string>(AppTxtShow);
+            //展示居中
+            cpdown.StartPosition = FormStartPosition.CenterParent;
+            cpdown.ShowDialog();
+        }
+
 
         #endregion
 
@@ -1131,10 +1128,18 @@ namespace eNet编辑器
 
         private void 关于软件ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            versionInfo ver = new versionInfo();
+            //把窗口向屏幕中间刷新
+            ver.StartPosition = FormStartPosition.CenterScreen;
+            ver.Show();
+            
         }
 
         #endregion
+
+     
+
+     
 
 
 

@@ -239,11 +239,19 @@ namespace eNet编辑器
             }
 
         }
+
+        /// <summary>
+        /// 链接状态
+        /// </summary>
+        /// <returns></returns>
         public bool Connected()
         {
             return client.Connected;
             
         }
+
+
+
         /// <summary>
         /// 接收socket的行为
         /// </summary>

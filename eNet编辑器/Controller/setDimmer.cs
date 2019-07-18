@@ -10,6 +10,7 @@ using System.Net;
 using System.Windows.Forms.DataVisualization.Charting;
 using System.Text.RegularExpressions;
 using System.IO;
+using System.Runtime.InteropServices;
 
 namespace eNet编辑器.Controller
 {
@@ -153,6 +154,7 @@ namespace eNet编辑器.Controller
                 Connect6003Tcp(ip);
             }
 
+           
         }
 
         private void Connect6003Tcp(string ip)
@@ -438,7 +440,103 @@ namespace eNet编辑器.Controller
         #endregion
 
 
-        #region 重绘
+        #region 窗体样色
+
+
+        #region 窗体样色2
+        [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
+        private static extern IntPtr CreateRoundRectRgn
+        (
+            int nLeftRect, // x-coordinate of upper-left corner
+            int nTopRect, // y-coordinate of upper-left corner
+            int nRightRect, // x-coordinate of lower-right corner
+            int nBottomRect, // y-coordinate of lower-right corner
+            int nWidthEllipse, // height of ellipse
+            int nHeightEllipse // width of ellipse
+         );
+
+        [DllImport("dwmapi.dll")]
+        public static extern int DwmExtendFrameIntoClientArea(IntPtr hWnd, ref MARGINS pMarInset);
+
+        [DllImport("dwmapi.dll")]
+        public static extern int DwmSetWindowAttribute(IntPtr hwnd, int attr, ref int attrValue, int attrSize);
+
+        [DllImport("dwmapi.dll")]
+        public static extern int DwmIsCompositionEnabled(ref int pfEnabled);
+
+        private bool m_aeroEnabled;                     // variables for box shadow
+        private const int CS_DROPSHADOW = 0x00020000;
+        private const int WM_NCPAINT = 0x0085;
+        private const int WM_ACTIVATEAPP = 0x001C;
+
+        public struct MARGINS                           // struct for box shadow
+        {
+            public int leftWidth;
+            public int rightWidth;
+            public int topHeight;
+            public int bottomHeight;
+        }
+
+        private const int WM_NCHITTEST = 0x84;          // variables for dragging the form
+        private const int HTCLIENT = 0x1;
+        private const int HTCAPTION = 0x2;
+
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                m_aeroEnabled = CheckAeroEnabled();
+
+                CreateParams cp = base.CreateParams;
+                if (!m_aeroEnabled)
+                    cp.ClassStyle |= CS_DROPSHADOW;
+
+                return cp;
+            }
+        }
+
+        private bool CheckAeroEnabled()
+        {
+            if (Environment.OSVersion.Version.Major >= 6)
+            {
+                int enabled = 0;
+                DwmIsCompositionEnabled(ref enabled);
+                return (enabled == 1) ? true : false;
+            }
+            return false;
+        }
+
+        protected override void WndProc(ref Message m)
+        {
+            switch (m.Msg)
+            {
+                case WM_NCPAINT:                        // box shadow
+                    if (m_aeroEnabled)
+                    {
+                        var v = 2;
+                        DwmSetWindowAttribute(this.Handle, 2, ref v, 4);
+                        MARGINS margins = new MARGINS()
+                        {
+                            bottomHeight = 1,
+                            leftWidth = 1,
+                            rightWidth = 1,
+                            topHeight = 1
+                        };
+                        DwmExtendFrameIntoClientArea(this.Handle, ref margins);
+
+                    }
+                    break;
+                default:
+                    break;
+            }
+            base.WndProc(ref m);
+
+            if (m.Msg == WM_NCHITTEST && (int)m.Result == HTCLIENT)     // drag the form
+                m.Result = (IntPtr)HTCAPTION;
+
+        }
+        #endregion
+
         private void setDimmer_Paint(object sender, PaintEventArgs e)
         {
             Rectangle myRectangle = new Rectangle(0, 0, this.Width, this.Height);
@@ -473,6 +571,7 @@ namespace eNet编辑器.Controller
             FileMesege.portDimmer = SaveFormState();
             this.DialogResult = System.Windows.Forms.DialogResult.No;
             timer1.Stop();
+            sendOrder("10000000");
             timer2.Stop();
             if (client6003 != null)
             {
@@ -918,7 +1017,7 @@ namespace eNet编辑器.Controller
                 }
                 string id = "";
                 string msg = "";
-                
+                bool isSend = true;
                
                 foreach (DataJson.DevPort dp  in devModuel.devPortList)
                 {
@@ -926,21 +1025,31 @@ namespace eNet编辑器.Controller
                     {
                         dp.portContent = portDimmer;
                         id = dp.portID.ToString();
-                        sendRegOrder("01", id, "64");//设置为线性模式 00自定义 01曲线 02废除了 
+                        isSend = sendRegOrder("01", id, "64");//设置为线性模式 00自定义 01曲线 02废除了 
                         SocketUtil.DelayMilli(1000);
-                        sendRegOrder(portDimmer.powerState,id, "40");
+                        isSend = sendRegOrder(portDimmer.powerState, id, "40");
                         SocketUtil.DelayMilli(1000);
-                        sendRegOrder(portDimmer.onState, id, "60");
+                        isSend = sendRegOrder(portDimmer.onState, id, "60");
                         SocketUtil.DelayMilli(1000);
-                        sendRegOrder(portDimmer.changeState, id, "61");
+                        isSend = sendRegOrder(portDimmer.changeState, id, "61");
                         SocketUtil.DelayMilli(1000);
-                        sendRegOrder(portDimmer.max, id, "62");
+                        isSend = sendRegOrder(portDimmer.max, id, "62");
                         SocketUtil.DelayMilli(1000);
-                        sendRegOrder(portDimmer.min, id, "63");
+                        isSend = sendRegOrder(portDimmer.min, id, "63");
                         SocketUtil.DelayMilli(1000);
-                        sendRegOrder(portDimmer.spline, id, "65");
+                        isSend = sendRegOrder(portDimmer.spline, id, "65");
                         SocketUtil.DelayMilli(1000);
-                        msg += string.Format( "成功写入至模块端口{0}！\r\n",dp.portID);
+                   
+
+                        if (isSend)
+                        {
+                            msg += string.Format("写入至模块端口{0}成功！\r\n", dp.portID);
+                        }
+                        else
+                        {
+                            msg += string.Format("写入至模块端口{0}失败！\r\n", dp.portID);
+                            break;
+                        }
                        
                     }
                 }
@@ -971,24 +1080,60 @@ namespace eNet编辑器.Controller
             try
             {
                 DataJson.PortDimmer portDimmer = SaveFormState();
+                bool isSend = true;
                 if (portDimmer == null)
                 {
                     return;
                 }
                 devPort.portContent = portDimmer;
-                sendRegOrder("01", "64");//设置为线性模式 00自定义 01曲线 02废除了 
+                isSend = sendRegOrder("01", "64");//设置为线性模式 00自定义 01曲线 02废除了 
+                if (!isSend)
+                {
+                    MessageBox.Show("写入失败！\r\n请检查网络连接或参数", "提示");
+                    return;
+                }
                 SocketUtil.DelayMilli(400);
                 sendRegOrder(portDimmer.powerState,"40");
+                if (!isSend)
+                {
+                    MessageBox.Show("写入失败！\r\n请检查网络连接或参数", "提示");
+                    return;
+                }
                 SocketUtil.DelayMilli(400);
                 sendRegOrder(portDimmer.onState,"60");
+                if (!isSend)
+                {
+                    MessageBox.Show("写入失败！\r\n请检查网络连接或参数", "提示");
+                    return;
+                }
                 SocketUtil.DelayMilli(400);
                 sendRegOrder(portDimmer.changeState, "61");
+                if (!isSend)
+                {
+                    MessageBox.Show("写入失败！\r\n请检查网络连接或参数", "提示");
+                    return;
+                }
                 SocketUtil.DelayMilli(400);
                 sendRegOrder(portDimmer.max, "62");
+                if (!isSend)
+                {
+                    MessageBox.Show("写入失败！\r\n请检查网络连接或参数", "提示");
+                    return;
+                }
                 SocketUtil.DelayMilli(400);
                 sendRegOrder(portDimmer.min, "63");
+                if (!isSend)
+                {
+                    MessageBox.Show("写入失败！\r\n请检查网络连接或参数", "提示");
+                    return;
+                }
                 SocketUtil.DelayMilli(400);
                 sendRegOrder(portDimmer.spline, "65");
+                if (!isSend)
+                {
+                    MessageBox.Show("写入失败！\r\n请检查网络连接或参数", "提示");
+                    return;
+                }
                 SocketUtil.DelayMilli(2000);
                 if (sendResetdriver())//重启设备
                 {
@@ -1178,7 +1323,7 @@ namespace eNet编辑器.Controller
             {
                 cbPowerState.SelectedItem = cbPowerState.Items[0];
             }
-            else if (info == "ff")
+            else if (info == "ff" || info == "FF")
             {
                 cbPowerState.SelectedItem = cbPowerState.Items[11];
             }
@@ -1228,6 +1373,36 @@ namespace eNet编辑器.Controller
                 }
                 switch (info)
                 {
+                    case "f6":
+                        cbChangeState.SelectedItem = cbChangeState.Items[1];
+                        break;
+                    case "f7":
+                        cbChangeState.SelectedItem = cbChangeState.Items[2];
+                        break;
+                    case "f8":
+                        cbChangeState.SelectedItem = cbChangeState.Items[3];
+                        break;
+                    case "f9":
+                        cbChangeState.SelectedItem = cbChangeState.Items[4];
+                        break;
+                    case "fa":
+                        cbChangeState.SelectedItem = cbChangeState.Items[5];
+                        break;
+                    case "fb":
+                        cbChangeState.SelectedItem = cbChangeState.Items[6];
+                        break;
+                    case "fc":
+                        cbChangeState.SelectedItem = cbChangeState.Items[7];
+                        break;
+                    case "fd":
+                        cbChangeState.SelectedItem = cbChangeState.Items[8];
+                        break;
+                    case "fe":
+                        cbChangeState.SelectedItem = cbChangeState.Items[9];
+                        break;
+                    case "00":
+                        cbChangeState.SelectedItem = cbChangeState.Items[0];
+                        break;
                     case "F6":
                         cbChangeState.SelectedItem = cbChangeState.Items[1];
                         break;
@@ -1255,10 +1430,6 @@ namespace eNet编辑器.Controller
                     case "FE":
                         cbChangeState.SelectedItem = cbChangeState.Items[9];
                         break;
-                    case "00":
-                        cbChangeState.SelectedItem = cbChangeState.Items[0];
-                        break;
-
                     default:
 
                         Regex reg2 = new Regex(@"([\d]+)");
@@ -1347,6 +1518,10 @@ namespace eNet编辑器.Controller
                 string tmp = info.Substring((i * 4), 4);
                 while (tmp.Substring(0, 1) == "0")
                 {
+                    if (tmp.Length == 1)
+                    {
+                        break;
+                    }
                     tmp = tmp.Substring(1, tmp.Length - 1);
                 }
                 yData[i] = Convert.ToInt32(tmp, 16);
@@ -1387,7 +1562,7 @@ namespace eNet编辑器.Controller
             }
             else if (info == cbPowerState.Items[11].ToString())
             {
-                info = "ff";
+                info = "FF";
             }
             else
             { 

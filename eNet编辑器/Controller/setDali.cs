@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using System.Text.RegularExpressions;
 using System.Net;
 using System.Windows.Forms.DataVisualization.Charting;
+using System.Runtime.InteropServices;
 
 namespace eNet编辑器.Controller
 {
@@ -50,9 +51,12 @@ namespace eNet编辑器.Controller
 
         public setDali()
         {
+            m_aeroEnabled = false;//样色2
             InitializeComponent();
         }
 
+
+       
 
         private void setDali_Load(object sender, EventArgs e)
         {
@@ -220,7 +224,103 @@ namespace eNet编辑器.Controller
         #endregion
 
 
-        #region 重绘
+        #region 窗体样色
+
+
+        #region 窗体样色2
+        [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
+        private static extern IntPtr CreateRoundRectRgn
+        (
+            int nLeftRect, // x-coordinate of upper-left corner
+            int nTopRect, // y-coordinate of upper-left corner
+            int nRightRect, // x-coordinate of lower-right corner
+            int nBottomRect, // y-coordinate of lower-right corner
+            int nWidthEllipse, // height of ellipse
+            int nHeightEllipse // width of ellipse
+         );
+
+        [DllImport("dwmapi.dll")]
+        public static extern int DwmExtendFrameIntoClientArea(IntPtr hWnd, ref MARGINS pMarInset);
+
+        [DllImport("dwmapi.dll")]
+        public static extern int DwmSetWindowAttribute(IntPtr hwnd, int attr, ref int attrValue, int attrSize);
+
+        [DllImport("dwmapi.dll")]
+        public static extern int DwmIsCompositionEnabled(ref int pfEnabled);
+
+        private bool m_aeroEnabled;                     // variables for box shadow
+        private const int CS_DROPSHADOW = 0x00020000;
+        private const int WM_NCPAINT = 0x0085;
+        private const int WM_ACTIVATEAPP = 0x001C;
+
+        public struct MARGINS                           // struct for box shadow
+        {
+            public int leftWidth;
+            public int rightWidth;
+            public int topHeight;
+            public int bottomHeight;
+        }
+
+        private const int WM_NCHITTEST = 0x84;          // variables for dragging the form
+        private const int HTCLIENT = 0x1;
+        private const int HTCAPTION = 0x2;
+
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                m_aeroEnabled = CheckAeroEnabled();
+
+                CreateParams cp = base.CreateParams;
+                if (!m_aeroEnabled)
+                    cp.ClassStyle |= CS_DROPSHADOW;
+
+                return cp;
+            }
+        }
+
+        private bool CheckAeroEnabled()
+        {
+            if (Environment.OSVersion.Version.Major >= 6)
+            {
+                int enabled = 0;
+                DwmIsCompositionEnabled(ref enabled);
+                return (enabled == 1) ? true : false;
+            }
+            return false;
+        }
+
+        protected override void WndProc(ref Message m)
+        {
+            switch (m.Msg)
+            {
+                case WM_NCPAINT:                        // box shadow
+                    if (m_aeroEnabled)
+                    {
+                        var v = 2;
+                        DwmSetWindowAttribute(this.Handle, 2, ref v, 4);
+                        MARGINS margins = new MARGINS()
+                        {
+                            bottomHeight = 1,
+                            leftWidth = 1,
+                            rightWidth = 1,
+                            topHeight = 1
+                        };
+                        DwmExtendFrameIntoClientArea(this.Handle, ref margins);
+
+                    }
+                    break;
+                default:
+                    break;
+            }
+            base.WndProc(ref m);
+
+            if (m.Msg == WM_NCHITTEST && (int)m.Result == HTCLIENT)     // drag the form
+                m.Result = (IntPtr)HTCAPTION;
+
+        }
+        #endregion
+
         private void setDali_Paint(object sender, PaintEventArgs e)
         {
             Rectangle myRectangle = new Rectangle(0, 0, this.Width, this.Height);
@@ -232,7 +332,6 @@ namespace eNet编辑器.Controller
                 Color.DarkGray, 2, ButtonBorderStyle.Solid
             );
         }
-
 
         private Point mPoint;
 
@@ -255,6 +354,7 @@ namespace eNet编辑器.Controller
             FileMesege.portDali= SaveFormState();
             this.DialogResult = System.Windows.Forms.DialogResult.No;
             timer1.Stop();
+            sendOrder("10000000");
             timer2.Stop();
             if (client6003 != null)
             {
@@ -473,27 +573,33 @@ namespace eNet编辑器.Controller
         /// 普通发送函数
         /// </summary>
         /// <param name="dataOrder"></param>
-        private void sendOrder(string dataOrder)
+        private bool sendOrder(string dataOrder)
         {
             if (client6003 != null && client6003.Connected())
             {
                 string tmp = string.Format("SET;{0};{{{1}.0.{2}.{3}}};\r\n", dataOrder, lastIP, DevModuel.id, DevPort.portID);
                 //发送
                 client6003.SendAsync(tmp);
+                return true;
 
             }
+            else
+            {
+                return false;
+            }
         }
+
 
         /// <summary>
         /// 普通发送函数  加端口
         /// </summary>
         /// <param name="dataOrder"></param>
         /// <param name="portID"></param>
-        private void sendRegOrder(string dataOrder, string portID, string reg)
+        private bool sendRegOrder(string dataOrder, string portID, string reg)
         {
             if (string.IsNullOrEmpty(dataOrder) || string.IsNullOrEmpty(portID) || string.IsNullOrEmpty(reg))
             {
-                return;
+                return false;
             }
             if (client6003 != null && client6003.Connected())
             {
@@ -501,19 +607,20 @@ namespace eNet编辑器.Controller
                 string tmp = string.Format("set;{{{1}.0.{2}.{3}:{4}}};{0};\r\n", dataOrder, lastIP, DevModuel.id, portID, reg);
                 //发送
                 client6003.SendAsync(tmp);
-
+                return true;
             }
+            return false;
         }
 
         /// <summary>
         /// 发送信息函数 发送到寄存器寄存器
         /// </summary>
         /// <param name="dataOrder"></param>
-        private void sendRegOrder(string dataOrder, string reg)
+        private bool sendRegOrder(string dataOrder, string reg)
         {
             if (string.IsNullOrEmpty(dataOrder) || string.IsNullOrEmpty(reg))
             {
-                return;
+                return false;
             }
             if (client6003 != null && client6003.Connected())
             {
@@ -522,18 +629,20 @@ namespace eNet编辑器.Controller
                 //发送
                 client6003.SendAsync(tmp);
                 //SocketUtil.WriteLog(tmp);
+                return true;
             }
+            return false;
         }
 
         /// <summary>
         /// 发送读取指令 发送到寄存器寄存器
         /// </summary>
         /// <param name="dataOrder"></param>
-        private void sendGetOrder(string reg)
+        private bool sendGetOrder(string reg)
         {
             if (string.IsNullOrEmpty(reg))
             {
-                return;
+                return false;
             }
             if (client6003 != null && client6003.Connected())
             {
@@ -541,19 +650,6 @@ namespace eNet编辑器.Controller
                 string tmp = string.Format("get;{{{0}.0.{1}.{2}:{3}}};\r\n", lastIP, DevModuel.id, DevPort.portID, reg);
                 //发送
                 client6003.SendAsync(tmp);
-
-            }
-        }
-
-        /// <summary>
-        /// 重启设备
-        /// </summary>
-        private bool sendResetdriver()
-        {
-            if (client6003 != null && client6003.Connected())
-            {
-                string str = "set;{" + lastIP + ".0." + DevModuel.id + ".255:254};acac;\r\n";
-                client6003.SendAsync(str);
                 return true;
             }
             return false;
@@ -585,12 +681,20 @@ namespace eNet编辑器.Controller
                 {
                     btnlmTest.BackColor = Color.FromArgb(204, 235, 248);
                     timer1.Start();
+                    if (ClickBtn != null)
+                    {
+                        //把单id闪停止
+                        string ord = string.Format("{0}000000", (Convert.ToInt32(ClickBtn.Text) - 1).ToString("X2"));
+                        //发送闪烁代码
+                        sendRegOrder(ord, "17", "41");
+                    }
                 }
                 else
                 {
                     btnlmTest.BackColor = Color.White;
                     timer1.Stop();
                     sendOrder("10000000");
+                   
                 }
 
 
@@ -618,7 +722,169 @@ namespace eNet编辑器.Controller
 
         #endregion
 
+        #region 菜单栏 按钮
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            getFormState(FileMesege.portDali);
+        }
 
+        private void btnIni_Click(object sender, EventArgs e)
+        {
+            getFormState("64", "64", "00", "FF", "00", "");
+        }
+
+        private void btnAllWrite_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DataJson.PortDimmer portDimmer = SaveFormState();
+                if (portDimmer == null)
+                {
+                    return;
+                }
+                string id = "";
+                string msg = "";
+
+                bool isSend = true;
+                foreach (DataJson.DevPort dp in devModuel.devPortList)
+                {
+                    if (dp.portType == DevPort.portType)
+                    {
+                        dp.portContent = portDimmer;
+                        id = dp.portID.ToString();
+                        //sendRegOrder("01", id, "64");//设置为线性模式 00自定义 01曲线 02废除了 
+                        //SocketUtil.DelayMilli(1000);
+                        isSend = sendRegOrder(portDimmer.powerState, id, "40");
+                        SocketUtil.DelayMilli(1000);
+                        isSend = sendRegOrder(portDimmer.onState, id, "60");
+                        SocketUtil.DelayMilli(1000);
+                        isSend = sendRegOrder(portDimmer.changeState, id, "61");
+                        SocketUtil.DelayMilli(1000);
+                        isSend = sendRegOrder(portDimmer.max, id, "62");
+                        SocketUtil.DelayMilli(1000);
+                        isSend = sendRegOrder(portDimmer.min, id, "63");
+                        SocketUtil.DelayMilli(1000);
+                        //sendRegOrder(portDimmer.spline, id, "65");
+                        //SocketUtil.DelayMilli(1000);
+
+                        if (isSend)
+                        {
+                            msg += string.Format("写入至模块端口{0}成功！\r\n", dp.portID);
+                        }
+                        else
+                        {
+                            msg += string.Format("写入至模块端口{0}失败！\r\n", dp.portID);
+                            break;
+                        }
+                    }
+                }
+
+                if (string.IsNullOrEmpty(msg))
+                {
+                    MessageBox.Show("写入失败！\r\n请检查网络连接或参数", "提示");
+                }
+                else
+                {
+                    MessageBox.Show(msg, "提示");
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("操作失败！\n" + ex.Message, "提示", MessageBoxButtons.OK,
+                    MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
+            }
+        }
+
+        private void btnWrite_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DataJson.PortDimmer portDimmer = SaveFormState();
+                bool isSend = true;
+
+                if (portDimmer == null)
+                {
+                    return;
+                }
+                devPort.portContent = portDimmer;
+                //sendRegOrder("01", "64");//设置为线性模式 00自定义 01曲线 02废除了 
+                //SocketUtil.DelayMilli(400);
+                isSend = sendRegOrder(portDimmer.powerState, "40");
+                if (!isSend)
+                {
+                    MessageBox.Show("写入失败！\r\n请检查网络连接或参数", "提示");
+                    return;
+                }
+                SocketUtil.DelayMilli(400);
+                isSend = sendRegOrder(portDimmer.onState, "60");
+                if (!isSend)
+                {
+                    MessageBox.Show("写入失败！\r\n请检查网络连接或参数", "提示");
+                    return;
+                }
+                SocketUtil.DelayMilli(400);
+                isSend = sendRegOrder(portDimmer.changeState, "61");
+                if (!isSend)
+                {
+                    MessageBox.Show("写入失败！\r\n请检查网络连接或参数", "提示");
+                    return;
+                }
+                SocketUtil.DelayMilli(400);
+                isSend = sendRegOrder(portDimmer.max, "62");
+                if (!isSend)
+                {
+                    MessageBox.Show("写入失败！\r\n请检查网络连接或参数", "提示");
+                    return;
+                }
+                SocketUtil.DelayMilli(400);
+                isSend = sendRegOrder(portDimmer.min, "63");
+                if (!isSend)
+                {
+                    MessageBox.Show("写入失败！\r\n请检查网络连接或参数", "提示");
+                    return;
+                }
+                SocketUtil.DelayMilli(400);
+                /*sendRegOrder(portDimmer.spline, "65");
+                SocketUtil.DelayMilli(2000);*/
+                MessageBox.Show("成功写入至模块！", "提示");
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("操作失败！\n" + ex.Message, "提示", MessageBoxButtons.OK,
+                    MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
+            }
+        }
+
+        private void btnRead_Click(object sender, EventArgs e)
+        {
+            sendGetOrder("40");//上电状态
+            SocketUtil.DelayMilli(200);
+            sendGetOrder("60");//开启状态
+            SocketUtil.DelayMilli(200);
+            sendGetOrder("61");
+            SocketUtil.DelayMilli(200);
+            sendGetOrder("62");
+            SocketUtil.DelayMilli(200);
+            sendGetOrder("63");
+
+
+
+        }
+
+        private void btnImport_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnOutput_Click(object sender, EventArgs e)
+        {
+
+        }
+        #endregion
     
 
 
@@ -630,7 +896,7 @@ namespace eNet编辑器.Controller
         /// <param name="portDimmer"></param>
         private void getFormState(DataJson.PortDimmer portDimmer)
         {
-            if (FileMesege.portDimmer == null)
+            if (FileMesege.portDali == null)
             {
                 return;
             }
@@ -690,7 +956,7 @@ namespace eNet编辑器.Controller
             {
                 cbPowerState.SelectedItem = cbPowerState.Items[0];
             }
-            else if (info == "ff")
+            else if (info == "ff" || info == "FF")
             {
                 cbPowerState.SelectedItem = cbPowerState.Items[11];
             }
@@ -740,41 +1006,15 @@ namespace eNet编辑器.Controller
                 }
                 switch (info)
                 {
-                    case "F6":
-                        cbChangeState.SelectedItem = cbChangeState.Items[1];
-                        break;
-                    case "F7":
-                        cbChangeState.SelectedItem = cbChangeState.Items[2];
-                        break;
-                    case "F8":
-                        cbChangeState.SelectedItem = cbChangeState.Items[3];
-                        break;
-                    case "F9":
-                        cbChangeState.SelectedItem = cbChangeState.Items[4];
-                        break;
-                    case "FA":
-                        cbChangeState.SelectedItem = cbChangeState.Items[5];
-                        break;
-                    case "FB":
-                        cbChangeState.SelectedItem = cbChangeState.Items[6];
-                        break;
-                    case "FC":
-                        cbChangeState.SelectedItem = cbChangeState.Items[7];
-                        break;
-                    case "FD":
-                        cbChangeState.SelectedItem = cbChangeState.Items[8];
-                        break;
-                    case "FE":
-                        cbChangeState.SelectedItem = cbChangeState.Items[9];
-                        break;
+
                     case "00":
                         cbChangeState.SelectedItem = cbChangeState.Items[0];
                         break;
-
+            
                     default:
 
                         Regex reg2 = new Regex(@"([\d]+)");
-                        for (int i = 10; i < 52; i++)
+                        for (int i = 1; i < 16; i++)
                         {
 
                             Match match = reg2.Match(cbChangeState.Items[i].ToString());
@@ -853,20 +1093,27 @@ namespace eNet编辑器.Controller
                     chart1Init();
                     return;
                 }
+
                 info = info.Replace(" ", "");
                 for (int i = 0; i < 100; i++)
                 {
                     string tmp = info.Substring((i * 4), 4);
                     while (tmp.Substring(0, 1) == "0")
                     {
+                        if (tmp.Length == 1)
+                        {
+                            break;
+                        }
                         tmp = tmp.Substring(1, tmp.Length - 1);
+                        
                     }
                     yData[i] = Convert.ToInt32(tmp, 16);
 
                 }
                 chart1.Series[0].Points.DataBindXY(xData, yData);
             }
-            catch { }
+            catch (Exception e) 
+            { MessageBox.Show(e.ToString()); }
         }
 
 
@@ -899,7 +1146,7 @@ namespace eNet编辑器.Controller
             }
             else if (info == cbPowerState.Items[11].ToString())
             {
-                info = "ff";
+                info = "FF";
             }
             else
             {
@@ -962,43 +1209,7 @@ namespace eNet编辑器.Controller
             {
                 return "00";
             }
-            else if (str == cbChangeState.Items[1].ToString())
-            {
-                return "F6";
-            }
-            else if (str == cbChangeState.Items[2].ToString())
-            {
-                return "F7";
-            }
-            else if (str == cbChangeState.Items[3].ToString())
-            {
-                return "F8";
-            }
-            else if (str == cbChangeState.Items[4].ToString())
-            {
-                return "F9";
-            }
-            else if (str == cbChangeState.Items[5].ToString())
-            {
-                return "FA";
-            }
-            else if (str == cbChangeState.Items[6].ToString())
-            {
-                return "FB";
-            }
-            else if (str == cbChangeState.Items[7].ToString())
-            {
-                return "FC";
-            }
-            else if (str == cbChangeState.Items[8].ToString())
-            {
-                return "FD";
-            }
-            else if (str == cbChangeState.Items[9].ToString())
-            {
-                return "FE";
-            }
-            for (int i = 10; i < 52; i++)
+            for (int i = 1; i < 16; i++)
             {
                 if (str == cbChangeState.Items[i].ToString())
                 {
@@ -1090,142 +1301,7 @@ namespace eNet编辑器.Controller
         #endregion
 
 
-        #region 菜单栏 按钮
-        private void btnRefresh_Click(object sender, EventArgs e)
-        {
-            getFormState(FileMesege.portDimmer);
-        }
-
-        private void btnIni_Click(object sender, EventArgs e)
-        {
-            getFormState("64", "64", "01", "FF", "00", "");
-        }
-
-        private void btnAllWrite_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                DataJson.PortDimmer portDimmer = SaveFormState();
-                if (portDimmer == null)
-                {
-                    return;
-                }
-                string id = "";
-                string msg = "";
-
-
-                foreach (DataJson.DevPort dp in devModuel.devPortList)
-                {
-                    if (dp.portType == DevPort.portType)
-                    {
-                        dp.portContent = portDimmer;
-                        id = dp.portID.ToString();
-                        //sendRegOrder("01", id, "64");//设置为线性模式 00自定义 01曲线 02废除了 
-                        //SocketUtil.DelayMilli(1000);
-                        sendRegOrder(portDimmer.powerState, id, "40");
-                        SocketUtil.DelayMilli(1000);
-                        sendRegOrder(portDimmer.onState, id, "60");
-                        SocketUtil.DelayMilli(1000);
-                        sendRegOrder(portDimmer.changeState, id, "61");
-                        SocketUtil.DelayMilli(1000);
-                        sendRegOrder(portDimmer.max, id, "62");
-                        SocketUtil.DelayMilli(1000);
-                        sendRegOrder(portDimmer.min, id, "63");
-                        SocketUtil.DelayMilli(1000);
-                        //sendRegOrder(portDimmer.spline, id, "65");
-                        //SocketUtil.DelayMilli(1000);
-                        msg += string.Format("成功写入至模块端口{0}！\r\n", dp.portID);
-
-                    }
-                }
-
-                if (string.IsNullOrEmpty(msg))
-                {
-                    MessageBox.Show("写入失败！\r\n请检查网络连接或参数", "提示");
-                }
-                else
-                {
-                    MessageBox.Show(msg + "设备重启中请稍候", "提示");
-                }
-
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("操作失败！\n" + ex.Message, "提示", MessageBoxButtons.OK,
-                    MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
-            }
-        }
-
-        private void btnWrite_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                DataJson.PortDimmer portDimmer = SaveFormState();
-                if (portDimmer == null)
-                {
-                    return;
-                }
-                devPort.portContent = portDimmer;
-                //sendRegOrder("01", "64");//设置为线性模式 00自定义 01曲线 02废除了 
-                //SocketUtil.DelayMilli(400);
-                sendRegOrder(portDimmer.powerState, "40");
-                SocketUtil.DelayMilli(400);
-                sendRegOrder(portDimmer.onState, "60");
-                SocketUtil.DelayMilli(400);
-                sendRegOrder(portDimmer.changeState, "61");
-                SocketUtil.DelayMilli(400);
-                sendRegOrder(portDimmer.max, "62");
-                SocketUtil.DelayMilli(400);
-                sendRegOrder(portDimmer.min, "63");
-                SocketUtil.DelayMilli(400);
-                /*sendRegOrder(portDimmer.spline, "65");
-                SocketUtil.DelayMilli(2000);
-                if (sendResetdriver())//重启设备
-                {
-                    MessageBox.Show("成功写入至模块,设备重启中请稍候！", "提示");
-                }
-                else
-                {
-                    MessageBox.Show("写入失败！\r\n请检查网络连接或参数", "提示");
-
-                }*/
-
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("操作失败！\n" + ex.Message, "提示", MessageBoxButtons.OK,
-                    MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
-            }
-        }
-
-        private void btnRead_Click(object sender, EventArgs e)
-        {
-            sendGetOrder("40");//上电状态
-            SocketUtil.DelayMilli(200);
-            sendGetOrder("60");//开启状态
-            SocketUtil.DelayMilli(200);
-            sendGetOrder("61");
-            SocketUtil.DelayMilli(200);
-            sendGetOrder("62");
-            SocketUtil.DelayMilli(200);
-            sendGetOrder("63");
-            
-     
-
-        }
-
-        private void btnImport_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnOutput_Click(object sender, EventArgs e)
-        {
-
-        }
-        #endregion
+    
 
         #region 亮度值变化更改曲线 限制只允许输入数字
         private void txtMax_Leave(object sender, EventArgs e)
@@ -1244,13 +1320,17 @@ namespace eNet编辑器.Controller
             {
 
                 int max = Convert.ToInt32(txtMax.Text);
-                getLinespA(1, yData[0], 100, max);
+                yData[99] = max;
+                getLinespA(1, yData[0], 100, yData[99]);
+                getLinespA(1, yData[0], 100, yData[99]);
                 chart1.Series[0].Points.DataBindXY(xData, yData);
 
             }
             catch
             {
-                getLinespA(1, yData[0], 100, 255);
+                yData[99] = 255;
+                getLinespA(1, yData[0], 100, yData[99]);
+                getLinespA(1, yData[0], 100, yData[99]);
                 chart1.Series[0].Points.DataBindXY(xData, yData);
 
             }
@@ -1261,13 +1341,15 @@ namespace eNet编辑器.Controller
             try
             {
                 int min = Convert.ToInt32(txtMin.Text);
-                getLinespA(1, min, 100, yData[99]);
+                yData[0] = min;
+                getLinespA(1, yData[0], 100, yData[99]);
                 chart1.Series[0].Points.DataBindXY(xData, yData);
 
             }
             catch
             {
-                getLinespA(1, 0, 100, yData[99]);
+                yData[0] = 0;
+                getLinespA(1, yData[0], 100, yData[99]);
                 chart1.Series[0].Points.DataBindXY(xData, yData);
 
             }
@@ -1282,6 +1364,81 @@ namespace eNet编辑器.Controller
             }
         }
         #endregion
+
+
+        //点击的按钮DaliID
+        Button ClickBtn = null;
+
+        /// <summary>
+        /// dali按键闪烁
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void button13_Click(object sender, EventArgs e)
+        {
+            //取消组闪
+            btnlmTest.BackColor = Color.White;
+            timer1.Stop();
+            sendOrder("10000000");
+            SocketUtil.DelayMilli(500);
+            ClickBtn = (Button)sender;
+            string ord = string.Format("{0}000002", (Convert.ToInt32(ClickBtn.Text) - 1).ToString("X2"));
+            //发送闪烁代码
+            sendRegOrder(ord,"17","41");
+        }
+
+        /// <summary>
+        /// DaliID绑定组
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnBind_Click(object sender, EventArgs e)
+        {
+            if (ClickBtn != null )
+            {
+                //取消组闪
+                btnlmTest.BackColor = Color.White;
+                timer1.Stop();
+                sendOrder("10000000");
+                SocketUtil.DelayMilli(1000);
+                ClickBtn.BackColor = Color.FromArgb(204, 235, 248);
+                string ord = string.Format("{0}{1}0003", (Convert.ToInt32(ClickBtn.Text) - 1).ToString("X2"),DevPort.portID.ToString("X2"));
+                //发送闪烁代码
+                sendRegOrder(ord, "17", "41");
+            }
+        }
+
+        private void btnClearBind_Click(object sender, EventArgs e)
+        {
+            /*
+            foreach (Control ctl in this.flowLayoutPanel2.Controls)
+            {
+   
+                    Button btn = ctl as Button;
+                    if (btn.BackColor == Color.FromArgb(204, 235, 248) && btn.Name != "btnlmTest")
+                    {
+                        
+                    }
+                
+            }*/
+            if (ClickBtn != null)
+            {
+                //取消组闪
+                btnlmTest.BackColor = Color.White;
+                timer1.Stop();
+                sendOrder("10000000");
+                SocketUtil.DelayMilli(1000);
+                ClickBtn.BackColor = Color.White;
+                //从对应Group1中清除对应ID
+                string ord = string.Format("{0}{1}0005", (Convert.ToInt32(ClickBtn.Text) - 1).ToString("X2"), SocketUtil.strtohexstr(DevPort.portID.ToString()));
+                //发送闪烁代码
+                sendRegOrder(ord, "17", "41");
+            }
+        }
+
+      
+
+
 
 
     }//class

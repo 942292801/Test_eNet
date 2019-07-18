@@ -56,7 +56,6 @@
             this.复制CCtrlCToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem15 = new System.Windows.Forms.ToolStripSeparator();
             this.粘贴PCtrlVToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem16 = new System.Windows.Forms.ToolStripSeparator();
             this.功能GToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.设备在线搜索ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripSeparator();
@@ -65,10 +64,6 @@
             this.按键检测ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripSeparator();
             this.固件更新ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripSeparator();
-            this.编译ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem7 = new System.Windows.Forms.ToolStripSeparator();
-            this.下载ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem8 = new System.Windows.Forms.ToolStripSeparator();
             this.编译下载ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.工具TToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -100,8 +95,7 @@
             this.btnUndo = new DevComponents.DotNetBar.ButtonX();
             this.btnRedo = new DevComponents.DotNetBar.ButtonX();
             this.line3 = new DevComponents.DotNetBar.Controls.Line();
-            this.buttonX8 = new DevComponents.DotNetBar.ButtonX();
-            this.buttonX7 = new DevComponents.DotNetBar.ButtonX();
+            this.btnCompileDownload = new DevComponents.DotNetBar.ButtonX();
             this.line4 = new DevComponents.DotNetBar.Controls.Line();
             this.buttonX12 = new DevComponents.DotNetBar.ButtonX();
             this.buttonX2 = new DevComponents.DotNetBar.ButtonX();
@@ -150,6 +144,7 @@
             this.plTitleCbbox = new System.Windows.Forms.Panel();
             this.symbolBox2 = new DevComponents.DotNetBar.Controls.SymbolBox();
             this.plLeft = new System.Windows.Forms.Panel();
+            this.buttonX8 = new DevComponents.DotNetBar.ButtonX();
             this.menuStrip1.SuspendLayout();
             this.PlMeustrip.ClientArea.SuspendLayout();
             this.PlMeustrip.SuspendLayout();
@@ -283,8 +278,7 @@
             this.toolStripMenuItem10,
             this.复制CCtrlCToolStripMenuItem,
             this.toolStripMenuItem15,
-            this.粘贴PCtrlVToolStripMenuItem,
-            this.toolStripMenuItem16});
+            this.粘贴PCtrlVToolStripMenuItem});
             this.编辑ToolStripMenuItem.Name = "编辑ToolStripMenuItem";
             resources.ApplyResources(this.编辑ToolStripMenuItem, "编辑ToolStripMenuItem");
             // 
@@ -327,11 +321,6 @@
             resources.ApplyResources(this.粘贴PCtrlVToolStripMenuItem, "粘贴PCtrlVToolStripMenuItem");
             this.粘贴PCtrlVToolStripMenuItem.Click += new System.EventHandler(this.粘贴PCtrlVToolStripMenuItem_Click);
             // 
-            // toolStripMenuItem16
-            // 
-            this.toolStripMenuItem16.Name = "toolStripMenuItem16";
-            resources.ApplyResources(this.toolStripMenuItem16, "toolStripMenuItem16");
-            // 
             // 功能GToolStripMenuItem
             // 
             this.功能GToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -342,10 +331,6 @@
             this.按键检测ToolStripMenuItem,
             this.toolStripMenuItem5,
             this.固件更新ToolStripMenuItem,
-            this.toolStripMenuItem6,
-            this.编译ToolStripMenuItem,
-            this.toolStripMenuItem7,
-            this.下载ToolStripMenuItem,
             this.toolStripMenuItem8,
             this.编译下载ToolStripMenuItem});
             this.功能GToolStripMenuItem.Name = "功能GToolStripMenuItem";
@@ -389,28 +374,6 @@
             this.固件更新ToolStripMenuItem.Name = "固件更新ToolStripMenuItem";
             resources.ApplyResources(this.固件更新ToolStripMenuItem, "固件更新ToolStripMenuItem");
             this.固件更新ToolStripMenuItem.Click += new System.EventHandler(this.固件更新ToolStripMenuItem_Click);
-            // 
-            // toolStripMenuItem6
-            // 
-            this.toolStripMenuItem6.Name = "toolStripMenuItem6";
-            resources.ApplyResources(this.toolStripMenuItem6, "toolStripMenuItem6");
-            // 
-            // 编译ToolStripMenuItem
-            // 
-            this.编译ToolStripMenuItem.Name = "编译ToolStripMenuItem";
-            resources.ApplyResources(this.编译ToolStripMenuItem, "编译ToolStripMenuItem");
-            this.编译ToolStripMenuItem.Click += new System.EventHandler(this.编译ToolStripMenuItem_Click);
-            // 
-            // toolStripMenuItem7
-            // 
-            this.toolStripMenuItem7.Name = "toolStripMenuItem7";
-            resources.ApplyResources(this.toolStripMenuItem7, "toolStripMenuItem7");
-            // 
-            // 下载ToolStripMenuItem
-            // 
-            this.下载ToolStripMenuItem.Name = "下载ToolStripMenuItem";
-            resources.ApplyResources(this.下载ToolStripMenuItem, "下载ToolStripMenuItem");
-            this.下载ToolStripMenuItem.Click += new System.EventHandler(this.下载ToolStripMenuItem_Click);
             // 
             // toolStripMenuItem8
             // 
@@ -565,8 +528,7 @@
             this.flowLayoutPanel1.Controls.Add(this.btnUndo);
             this.flowLayoutPanel1.Controls.Add(this.btnRedo);
             this.flowLayoutPanel1.Controls.Add(this.line3);
-            this.flowLayoutPanel1.Controls.Add(this.buttonX8);
-            this.flowLayoutPanel1.Controls.Add(this.buttonX7);
+            this.flowLayoutPanel1.Controls.Add(this.btnCompileDownload);
             this.flowLayoutPanel1.Controls.Add(this.line4);
             this.flowLayoutPanel1.Controls.Add(this.buttonX12);
             this.flowLayoutPanel1.Controls.Add(this.buttonX2);
@@ -577,6 +539,7 @@
             this.flowLayoutPanel1.Controls.Add(this.buttonX15);
             this.flowLayoutPanel1.Controls.Add(this.buttonX14);
             this.flowLayoutPanel1.Controls.Add(this.buttonX13);
+            this.flowLayoutPanel1.Controls.Add(this.buttonX8);
             resources.ApplyResources(this.flowLayoutPanel1, "flowLayoutPanel1");
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             // 
@@ -688,31 +651,19 @@
             resources.ApplyResources(this.line3, "line3");
             this.line3.Name = "line3";
             // 
-            // buttonX8
+            // btnCompileDownload
             // 
-            this.buttonX8.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            resources.ApplyResources(this.buttonX8, "buttonX8");
-            this.buttonX8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.buttonX8.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
-            this.buttonX8.FocusCuesEnabled = false;
-            this.buttonX8.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None;
-            this.buttonX8.HoverImage = ((System.Drawing.Image)(resources.GetObject("buttonX8.HoverImage")));
-            this.buttonX8.Image = ((System.Drawing.Image)(resources.GetObject("buttonX8.Image")));
-            this.buttonX8.Name = "buttonX8";
-            this.buttonX8.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            // 
-            // buttonX7
-            // 
-            this.buttonX7.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            resources.ApplyResources(this.buttonX7, "buttonX7");
-            this.buttonX7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.buttonX7.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
-            this.buttonX7.FocusCuesEnabled = false;
-            this.buttonX7.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None;
-            this.buttonX7.HoverImage = ((System.Drawing.Image)(resources.GetObject("buttonX7.HoverImage")));
-            this.buttonX7.Image = ((System.Drawing.Image)(resources.GetObject("buttonX7.Image")));
-            this.buttonX7.Name = "buttonX7";
-            this.buttonX7.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnCompileDownload.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            resources.ApplyResources(this.btnCompileDownload, "btnCompileDownload");
+            this.btnCompileDownload.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnCompileDownload.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
+            this.btnCompileDownload.FocusCuesEnabled = false;
+            this.btnCompileDownload.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None;
+            this.btnCompileDownload.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnCompileDownload.HoverImage")));
+            this.btnCompileDownload.Image = ((System.Drawing.Image)(resources.GetObject("btnCompileDownload.Image")));
+            this.btnCompileDownload.Name = "btnCompileDownload";
+            this.btnCompileDownload.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnCompileDownload.Click += new System.EventHandler(this.btnCompileDownload_Click_1);
             // 
             // line4
             // 
@@ -1234,6 +1185,19 @@
             resources.ApplyResources(this.plLeft, "plLeft");
             this.plLeft.Name = "plLeft";
             // 
+            // buttonX8
+            // 
+            this.buttonX8.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            resources.ApplyResources(this.buttonX8, "buttonX8");
+            this.buttonX8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.buttonX8.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
+            this.buttonX8.FocusCuesEnabled = false;
+            this.buttonX8.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None;
+            this.buttonX8.HoverImage = ((System.Drawing.Image)(resources.GetObject("buttonX8.HoverImage")));
+            this.buttonX8.Image = ((System.Drawing.Image)(resources.GetObject("buttonX8.Image")));
+            this.buttonX8.Name = "buttonX8";
+            this.buttonX8.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            // 
             // Form1
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -1298,10 +1262,6 @@
         private System.Windows.Forms.ToolStripMenuItem 按键检测ToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem5;
         private System.Windows.Forms.ToolStripMenuItem 固件更新ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem6;
-        private System.Windows.Forms.ToolStripMenuItem 编译ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem7;
-        private System.Windows.Forms.ToolStripMenuItem 下载ToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem8;
         private System.Windows.Forms.ToolStripMenuItem 编译下载ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 工具TToolStripMenuItem;
@@ -1317,7 +1277,6 @@
         private System.Windows.Forms.ToolStripMenuItem 复制CCtrlCToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem15;
         private System.Windows.Forms.ToolStripMenuItem 粘贴PCtrlVToolStripMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem16;
         private System.Windows.Forms.ToolStripMenuItem 应急状态设置ToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem20;
         private System.Windows.Forms.ToolStripMenuItem 天文时钟设置ToolStripMenuItem;
@@ -1380,8 +1339,7 @@
         private DevComponents.DotNetBar.ButtonX buttonX10;
         private DevComponents.DotNetBar.ButtonX buttonX11;
         private DevComponents.DotNetBar.ButtonX buttonX12;
-        private DevComponents.DotNetBar.ButtonX buttonX7;
-        private DevComponents.DotNetBar.ButtonX buttonX8;
+        private DevComponents.DotNetBar.ButtonX btnCompileDownload;
         private DevComponents.DotNetBar.ButtonX btnRedo;
         private DevComponents.DotNetBar.ButtonX btnUndo;
         private DevComponents.DotNetBar.ButtonX btnPast;
@@ -1394,6 +1352,7 @@
         private DevComponents.DotNetBar.TabControlPanel tabControlPanel8;
         private DevComponents.DotNetBar.TabItem tabVar;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private DevComponents.DotNetBar.ButtonX buttonX8;
 
     }
 }
