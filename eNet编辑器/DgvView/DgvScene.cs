@@ -316,8 +316,8 @@ namespace eNet编辑器.DgvView
                 {
                     info.pid = 0;
                     //info.type = "";
-                    info.opt = "";
-                    info.optName = "";
+                    //info.opt = "";
+                    //info.optName = "";
                 }
             }
             info.address = add;

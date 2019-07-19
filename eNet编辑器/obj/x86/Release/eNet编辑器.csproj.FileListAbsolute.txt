@@ -102,7 +102,6 @@ C:\Users\Administrator\Desktop\Gitlab\eNet\eNet编辑器\bin\Release\DevComponen
 C:\Users\Administrator\Desktop\Gitlab\eNet\eNet编辑器\bin\Release\Microsoft.CSharp.dll
 C:\Users\Administrator\Desktop\Gitlab\eNet\eNet编辑器\bin\Release\Microsoft.VisualBasic.dll
 C:\Users\Administrator\Desktop\Gitlab\eNet\eNet编辑器\bin\Release\DevComponents.DotNetBar2.xml
-C:\Users\Administrator\Desktop\Gitlab\eNet\eNet编辑器\obj\x86\Release\eNet编辑器.csprojResolveAssemblyReference.cache
 C:\Users\Administrator\Desktop\Gitlab\eNet\eNet编辑器\obj\x86\Release\eNet编辑器.AddForm.DGVconcrol.resources
 C:\Users\Administrator\Desktop\Gitlab\eNet\eNet编辑器\obj\x86\Release\eNet编辑器.AddForm.DgvNameState.resources
 C:\Users\Administrator\Desktop\Gitlab\eNet\eNet编辑器\obj\x86\Release\eNet编辑器.AddForm.OnlineSearch.resources
@@ -260,3 +259,9 @@ C:\Users\Administrator\Desktop\Gitlab\eNet\eNet编辑器\bin\Release\ICSharpCode
 C:\Users\Administrator\Desktop\Gitlab\eNet\eNet编辑器\bin\Release\Newtonsoft.Json.dll
 C:\Users\Administrator\Desktop\Gitlab\eNet\eNet编辑器\obj\x86\Release\eNet编辑器.Controller.setDali.resources
 C:\Users\Administrator\Desktop\Gitlab\eNet\eNet编辑器\obj\x86\Release\eNet编辑器.AddForm.versionInfo.resources
+C:\Users\Administrator\Desktop\Gitlab\eNet\eNet编辑器\bin\Release\eNet编辑器.exe.manifest
+C:\Users\Administrator\Desktop\Gitlab\eNet\eNet编辑器\bin\Release\eNet编辑器.application
+C:\Users\Administrator\Desktop\Gitlab\eNet\eNet编辑器\obj\x86\Release\eNet编辑器.TrustInfo.xml
+C:\Users\Administrator\Desktop\Gitlab\eNet\eNet编辑器\obj\x86\Release\eNet编辑器.exe.manifest
+C:\Users\Administrator\Desktop\Gitlab\eNet\eNet编辑器\obj\x86\Release\eNet编辑器.application
+C:\Users\Administrator\Desktop\Gitlab\eNet\eNet编辑器\obj\x86\Release\eNet编辑器.csprojResolveAssemblyReference.cache

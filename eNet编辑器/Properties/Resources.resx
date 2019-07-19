@@ -145,10 +145,6 @@
     <value>eNet编辑器 - </value>
     <comment>软件名前缀 (eNet编辑器 -)</comment>
   </data>
-  <data name="SoftVersion" xml:space="preserve">
-    <value>1.0.0</value>
-    <comment>软件版本号</comment>
-  </data>
   <data name="TxtShowDevName" xml:space="preserve">
     <value>设备名称：</value>
     <comment>主窗信息显示界面 ( 设备名称：)</comment>

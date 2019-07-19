@@ -808,8 +808,8 @@ namespace eNet编辑器.DgvView
                     else
                     {
                         tmInfo.pid = 0;
-                        tmInfo.opt = "";
-                        tmInfo.optName = "";
+                        //tmInfo.opt = "";
+                        //tmInfo.optName = "";
                     }
                 }
 

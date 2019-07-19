@@ -693,7 +693,9 @@ namespace eNet编辑器.Controller
                 {
                     btnlmTest.BackColor = Color.White;
                     timer1.Stop();
-                    sendOrder("10000000");
+                    //停止组闪
+                    string ord = string.Format("ff{0}0000", DevPort.portID.ToString("X2"));
+                    sendRegOrder(ord, "17", "41");
                    
                 }
 
@@ -711,7 +713,9 @@ namespace eNet编辑器.Controller
         {
             try
             {
-                sendOrder("01000000");
+                //开启组闪
+                string ord = string.Format("ff{0}0001", DevPort.portID.ToString("X2"));
+                sendRegOrder(ord, "17", "41");
             }
             catch (Exception ex)
             {
@@ -1379,10 +1383,12 @@ namespace eNet编辑器.Controller
             //取消组闪
             btnlmTest.BackColor = Color.White;
             timer1.Stop();
-            sendOrder("10000000");
+            //停止组闪
+            string ord = string.Format("ff{0}0000", DevPort.portID.ToString("X2"));
+            sendRegOrder(ord, "17", "41");
             SocketUtil.DelayMilli(500);
             ClickBtn = (Button)sender;
-            string ord = string.Format("{0}000002", (Convert.ToInt32(ClickBtn.Text) - 1).ToString("X2"));
+            ord = string.Format("{0}000002", (Convert.ToInt32(ClickBtn.Text) - 1).ToString("X2"));
             //发送闪烁代码
             sendRegOrder(ord,"17","41");
         }
@@ -1396,13 +1402,15 @@ namespace eNet编辑器.Controller
         {
             if (ClickBtn != null )
             {
-                //取消组闪
+                string Hexid = DevPort.portID.ToString("X2");
                 btnlmTest.BackColor = Color.White;
                 timer1.Stop();
-                sendOrder("10000000");
-                SocketUtil.DelayMilli(1000);
+                //停止组闪
+                //string ord = string.Format("ff{0}0000", Hexid);
+                //sendRegOrder(ord, "17", "41");
+                //SocketUtil.DelayMilli(1000);
                 ClickBtn.BackColor = Color.FromArgb(204, 235, 248);
-                string ord = string.Format("{0}{1}0003", (Convert.ToInt32(ClickBtn.Text) - 1).ToString("X2"),DevPort.portID.ToString("X2"));
+                string ord = string.Format("{0}{1}0003", (Convert.ToInt32(ClickBtn.Text) - 1).ToString("X2"), Hexid);
                 //发送闪烁代码
                 sendRegOrder(ord, "17", "41");
             }
@@ -1410,27 +1418,19 @@ namespace eNet编辑器.Controller
 
         private void btnClearBind_Click(object sender, EventArgs e)
         {
-            /*
-            foreach (Control ctl in this.flowLayoutPanel2.Controls)
-            {
-   
-                    Button btn = ctl as Button;
-                    if (btn.BackColor == Color.FromArgb(204, 235, 248) && btn.Name != "btnlmTest")
-                    {
-                        
-                    }
-                
-            }*/
+
             if (ClickBtn != null)
             {
-                //取消组闪
+               string Hexid = DevPort.portID.ToString("X2");
                 btnlmTest.BackColor = Color.White;
                 timer1.Stop();
-                sendOrder("10000000");
-                SocketUtil.DelayMilli(1000);
+                //停止组闪
+                // ord = string.Format("ff{0}0000",Hexid);
+                //sendRegOrder(ord, "17", "41");
+                //SocketUtil.DelayMilli(1000);
                 ClickBtn.BackColor = Color.White;
                 //从对应Group1中清除对应ID
-                string ord = string.Format("{0}{1}0005", (Convert.ToInt32(ClickBtn.Text) - 1).ToString("X2"), SocketUtil.strtohexstr(DevPort.portID.ToString()));
+                string ord = string.Format("{0}{1}0005", (Convert.ToInt32(ClickBtn.Text) - 1).ToString("X2"), Hexid);
                 //发送闪烁代码
                 sendRegOrder(ord, "17", "41");
             }

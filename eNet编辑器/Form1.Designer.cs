@@ -106,6 +106,7 @@
             this.buttonX15 = new DevComponents.DotNetBar.ButtonX();
             this.buttonX14 = new DevComponents.DotNetBar.ButtonX();
             this.buttonX13 = new DevComponents.DotNetBar.ButtonX();
+            this.buttonX8 = new DevComponents.DotNetBar.ButtonX();
             this.PlTabStrip = new Infragistics.Win.Misc.UltraPanel();
             this.tabStrip = new DevComponents.DotNetBar.TabControl();
             this.tabControlPanel1 = new DevComponents.DotNetBar.TabControlPanel();
@@ -144,7 +145,6 @@
             this.plTitleCbbox = new System.Windows.Forms.Panel();
             this.symbolBox2 = new DevComponents.DotNetBar.Controls.SymbolBox();
             this.plLeft = new System.Windows.Forms.Panel();
-            this.buttonX8 = new DevComponents.DotNetBar.ButtonX();
             this.menuStrip1.SuspendLayout();
             this.PlMeustrip.ClientArea.SuspendLayout();
             this.PlMeustrip.SuspendLayout();
@@ -790,6 +790,19 @@
             this.buttonX13.Name = "buttonX13";
             this.buttonX13.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             // 
+            // buttonX8
+            // 
+            this.buttonX8.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            resources.ApplyResources(this.buttonX8, "buttonX8");
+            this.buttonX8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.buttonX8.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
+            this.buttonX8.FocusCuesEnabled = false;
+            this.buttonX8.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None;
+            this.buttonX8.HoverImage = ((System.Drawing.Image)(resources.GetObject("buttonX8.HoverImage")));
+            this.buttonX8.Image = ((System.Drawing.Image)(resources.GetObject("buttonX8.Image")));
+            this.buttonX8.Name = "buttonX8";
+            this.buttonX8.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            // 
             // PlTabStrip
             // 
             appearance3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(145)))), ((int)(((byte)(230)))));
@@ -1184,19 +1197,6 @@
             // 
             resources.ApplyResources(this.plLeft, "plLeft");
             this.plLeft.Name = "plLeft";
-            // 
-            // buttonX8
-            // 
-            this.buttonX8.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            resources.ApplyResources(this.buttonX8, "buttonX8");
-            this.buttonX8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.buttonX8.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
-            this.buttonX8.FocusCuesEnabled = false;
-            this.buttonX8.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None;
-            this.buttonX8.HoverImage = ((System.Drawing.Image)(resources.GetObject("buttonX8.HoverImage")));
-            this.buttonX8.Image = ((System.Drawing.Image)(resources.GetObject("buttonX8.Image")));
-            this.buttonX8.Name = "buttonX8";
-            this.buttonX8.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             // 
             // Form1
             // 

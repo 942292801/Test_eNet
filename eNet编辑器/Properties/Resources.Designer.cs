@@ -162,15 +162,6 @@ namespace eNet编辑器.Properties {
         }
         
         /// <summary>
-        ///   查找类似 1.0.0 的本地化字符串。
-        /// </summary>
-        internal static string SoftVersion {
-            get {
-                return ResourceManager.GetString("SoftVersion", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   查找类似 定时 的本地化字符串。
         /// </summary>
         internal static string Timer {
