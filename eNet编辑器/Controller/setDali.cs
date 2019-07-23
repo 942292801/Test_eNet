@@ -353,8 +353,20 @@ namespace eNet编辑器.Controller
             //关闭的时候 保存
             FileMesege.portDali= SaveFormState();
             this.DialogResult = System.Windows.Forms.DialogResult.No;
-            timer1.Stop();
-            sendOrder("10000000");
+            string Hexid = DevPort.portID.ToString("X2");
+            if (ClickBtn != null)
+            {
+                //清除对应ID闪和组闪
+                string ord = string.Format("{0}{1}0000", (Convert.ToInt32(ClickBtn.Text) - 1).ToString("X2"), Hexid);
+                sendRegOrder(ord, "17", "41");
+            }
+            else
+            {
+                //清除组闪
+                string ord = string.Format("ff{0}0000",  Hexid);
+                sendRegOrder(ord, "17", "41");
+            }
+
             timer2.Stop();
             if (client6003 != null)
             {
@@ -676,23 +688,18 @@ namespace eNet编辑器.Controller
         {
             try
             {
-                timer1.Interval = 1000;
                 if (btnlmTest.BackColor == Color.White)
                 {
                     btnlmTest.BackColor = Color.FromArgb(204, 235, 248);
-                    timer1.Start();
-                    if (ClickBtn != null)
-                    {
-                        //把单id闪停止
-                        string ord = string.Format("{0}000000", (Convert.ToInt32(ClickBtn.Text) - 1).ToString("X2"));
-                        //发送闪烁代码
-                        sendRegOrder(ord, "17", "41");
-                    }
+                    //if (ClickBtn != null)
+      
+                    //开启组闪
+                    string ord = string.Format("ff{0}0001", DevPort.portID.ToString("X2"));
+                    sendRegOrder(ord, "17", "41");
                 }
                 else
                 {
                     btnlmTest.BackColor = Color.White;
-                    timer1.Stop();
                     //停止组闪
                     string ord = string.Format("ff{0}0000", DevPort.portID.ToString("X2"));
                     sendRegOrder(ord, "17", "41");
@@ -709,20 +716,7 @@ namespace eNet编辑器.Controller
         }
 
 
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-            try
-            {
-                //开启组闪
-                string ord = string.Format("ff{0}0001", DevPort.portID.ToString("X2"));
-                sendRegOrder(ord, "17", "41");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("操作失败！\n" + ex.Message, "提示", MessageBoxButtons.OK,
-                    MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
-            }
-        }
+ 
 
         #endregion
 
@@ -1382,13 +1376,8 @@ namespace eNet编辑器.Controller
         {
             //取消组闪
             btnlmTest.BackColor = Color.White;
-            timer1.Stop();
-            //停止组闪
-            string ord = string.Format("ff{0}0000", DevPort.portID.ToString("X2"));
-            sendRegOrder(ord, "17", "41");
-            SocketUtil.DelayMilli(500);
             ClickBtn = (Button)sender;
-            ord = string.Format("{0}000002", (Convert.ToInt32(ClickBtn.Text) - 1).ToString("X2"));
+            string ord = string.Format("{0}000002", (Convert.ToInt32(ClickBtn.Text) - 1).ToString("X2"));
             //发送闪烁代码
             sendRegOrder(ord,"17","41");
         }
@@ -1403,12 +1392,7 @@ namespace eNet编辑器.Controller
             if (ClickBtn != null )
             {
                 string Hexid = DevPort.portID.ToString("X2");
-                btnlmTest.BackColor = Color.White;
-                timer1.Stop();
-                //停止组闪
-                //string ord = string.Format("ff{0}0000", Hexid);
-                //sendRegOrder(ord, "17", "41");
-                //SocketUtil.DelayMilli(1000);
+                btnlmTest.BackColor = Color.FromArgb(204, 235, 248);
                 ClickBtn.BackColor = Color.FromArgb(204, 235, 248);
                 string ord = string.Format("{0}{1}0003", (Convert.ToInt32(ClickBtn.Text) - 1).ToString("X2"), Hexid);
                 //发送闪烁代码
@@ -1423,11 +1407,6 @@ namespace eNet编辑器.Controller
             {
                string Hexid = DevPort.portID.ToString("X2");
                 btnlmTest.BackColor = Color.White;
-                timer1.Stop();
-                //停止组闪
-                // ord = string.Format("ff{0}0000",Hexid);
-                //sendRegOrder(ord, "17", "41");
-                //SocketUtil.DelayMilli(1000);
                 ClickBtn.BackColor = Color.White;
                 //从对应Group1中清除对应ID
                 string ord = string.Format("{0}{1}0005", (Convert.ToInt32(ClickBtn.Text) - 1).ToString("X2"), Hexid);

@@ -30,9 +30,9 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(setDali));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.plInfoTitle = new System.Windows.Forms.Panel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.btnRefresh = new DevComponents.DotNetBar.ButtonX();
@@ -136,7 +136,6 @@
             this.btnlmTest = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.lblmTiao = new System.Windows.Forms.Label();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.plInfoTitle.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
@@ -1532,27 +1531,27 @@
             // chart1
             // 
             this.chart1.BackColor = System.Drawing.Color.Transparent;
-            chartArea1.Name = "ChartArea1";
-            chartArea1.Position.Auto = false;
-            chartArea1.Position.Height = 97F;
-            chartArea1.Position.Width = 100F;
-            chartArea1.Position.Y = 3F;
-            this.chart1.ChartAreas.Add(chartArea1);
-            legend1.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Top;
-            legend1.Enabled = false;
-            legend1.MaximumAutoSize = 40F;
-            legend1.Name = "Legend1";
-            this.chart1.Legends.Add(legend1);
+            chartArea2.Name = "ChartArea1";
+            chartArea2.Position.Auto = false;
+            chartArea2.Position.Height = 97F;
+            chartArea2.Position.Width = 100F;
+            chartArea2.Position.Y = 3F;
+            this.chart1.ChartAreas.Add(chartArea2);
+            legend2.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Top;
+            legend2.Enabled = false;
+            legend2.MaximumAutoSize = 40F;
+            legend2.Name = "Legend1";
+            this.chart1.Legends.Add(legend2);
             this.chart1.Location = new System.Drawing.Point(235, 46);
             this.chart1.Name = "chart1";
             this.chart1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            series1.ToolTip = "#VALX #VAL";
-            series1.YValuesPerPoint = 6;
-            this.chart1.Series.Add(series1);
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            series2.ToolTip = "#VALX #VAL";
+            series2.YValuesPerPoint = 6;
+            this.chart1.Series.Add(series2);
             this.chart1.Size = new System.Drawing.Size(739, 266);
             this.chart1.TabIndex = 28;
             // 
@@ -1562,7 +1561,7 @@
             this.txtMin.Name = "txtMin";
             this.txtMin.Size = new System.Drawing.Size(55, 26);
             this.txtMin.TabIndex = 25;
-            this.txtMin.Text = "10";
+            this.txtMin.Text = "0";
             this.txtMin.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMax_KeyPress);
             this.txtMin.Leave += new System.EventHandler(this.txtMin_Leave);
             // 
@@ -1641,7 +1640,7 @@
             this.cbOnState.Name = "cbOnState";
             this.cbOnState.Size = new System.Drawing.Size(107, 28);
             this.cbOnState.TabIndex = 19;
-            this.cbOnState.Text = "10%";
+            this.cbOnState.Text = "100%";
             // 
             // label10
             // 
@@ -1673,7 +1672,7 @@
             this.cbPowerState.Name = "cbPowerState";
             this.cbPowerState.Size = new System.Drawing.Size(107, 28);
             this.cbPowerState.TabIndex = 17;
-            this.cbPowerState.Text = "关闭";
+            this.cbPowerState.Text = "100%";
             // 
             // txtMax
             // 
@@ -1681,7 +1680,7 @@
             this.txtMax.Name = "txtMax";
             this.txtMax.Size = new System.Drawing.Size(55, 26);
             this.txtMax.TabIndex = 16;
-            this.txtMax.Text = "90";
+            this.txtMax.Text = "255";
             this.txtMax.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMax_KeyPress);
             this.txtMax.Leave += new System.EventHandler(this.txtMax_Leave);
             // 
@@ -1763,10 +1762,6 @@
             this.lblmTiao.TabIndex = 11;
             this.lblmTiao.Text = "0%";
             // 
-            // timer1
-            // 
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
             // timer2
             // 
             this.timer2.Interval = 5000;
@@ -1844,7 +1839,6 @@
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Button btnClearBind;
         private System.Windows.Forms.Button btnBind;
-        private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Timer timer2;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
         private System.Windows.Forms.Button button13;
