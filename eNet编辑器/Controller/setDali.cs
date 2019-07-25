@@ -894,7 +894,7 @@ namespace eNet编辑器.Controller
         /// <param name="portDimmer"></param>
         private void getFormState(DataJson.PortDimmer portDimmer)
         {
-            if (FileMesege.portDali == null)
+            if (portDimmer == null)
             {
                 return;
             }

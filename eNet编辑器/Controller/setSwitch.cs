@@ -672,6 +672,10 @@ namespace eNet编辑器.Controller
         private void getFormState(DataJson.PortSwitch portSwitch)
         {
 
+            if (portSwitch == null)
+            {
+                return;
+            }
             //上电状态
             GetPowerState(portSwitch.powerState);
             //互锁状态

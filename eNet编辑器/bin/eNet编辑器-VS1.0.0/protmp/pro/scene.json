@@ -1,0 +1,80 @@
+[
+    {
+        "scenes": [
+            {
+                "sceneInfo": [
+                    {
+                        "id": 1,
+                        "pid": 85712,
+                        "type": "1.0_switch",
+                        "address": "FFFFFFFF",
+                        "opt": "00000001",
+                        "optName": "开启",
+                        "Delay": 0
+                    }
+                ],
+                "id": 1,
+                "pid": 89336
+            },
+            {
+                "sceneInfo": [
+                    {
+                        "id": 1,
+                        "pid": 85712,
+                        "type": "1.0_switch",
+                        "address": "FFFFFFFF",
+                        "opt": "00000000",
+                        "optName": "关闭",
+                        "Delay": 0
+                    },
+                    {
+                        "id": 2,
+                        "pid": 97227,
+                        "type": "1.0_switch",
+                        "address": "FFFFFFFF",
+                        "opt": "00000000",
+                        "optName": "关闭",
+                        "Delay": 0
+                    },
+                    {
+                        "id": 3,
+                        "pid": 32048,
+                        "type": "1.0_switch",
+                        "address": "FFFFFFFF",
+                        "opt": "00000000",
+                        "optName": "关闭",
+                        "Delay": 0
+                    },
+                    {
+                        "id": 4,
+                        "pid": 96038,
+                        "type": "1.0_switch",
+                        "address": "FFFFFFFF",
+                        "opt": "00000000",
+                        "optName": "关闭",
+                        "Delay": 0
+                    }
+                ],
+                "id": 2,
+                "pid": 43786
+            },
+            {
+                "sceneInfo": [
+                    {
+                        "id": 1,
+                        "pid": 0,
+                        "type": "2.0_dimmer",
+                        "address": "7D000101",
+                        "opt": "10000000",
+                        "optName": "调光",
+                        "Delay": 0
+                    }
+                ],
+                "id": 3,
+                "pid": 42347
+            }
+        ],
+        "IP": "192.168.1.125",
+        "Dev": "GW100A"
+    }
+]

@@ -242,7 +242,6 @@
             this.listbox.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Rounded;
             this.listbox.BackgroundStyle.TextColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarCaptionText;
             this.listbox.BackgroundStyle.TextShadowColor = System.Drawing.Color.Blue;
-            this.listbox.CheckStateMember = null;
             this.listbox.ContainerControlProcessDialogKey = true;
             this.listbox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.listbox.DragDropSupport = true;
@@ -771,6 +770,7 @@
             this.num.Name = "num";
             this.num.ReadOnly = true;
             this.num.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.num.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.num.Width = 60;
             // 
             // address
