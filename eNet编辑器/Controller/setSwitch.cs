@@ -53,13 +53,20 @@ namespace eNet编辑器.Controller
         private void setSwitch_Load(object sender, EventArgs e)
         {
 
-            tcp6003receviceDelegate += new Action<string>(tcp6003ReceviceDelegateMsg);
-            //链接tcp
-            Connect6003Tcp(ip);
-            lastIP = ip.Split('.')[3];
-            timer2.Start();
-            LockIni();
-            getFormState((DataJson.PortSwitch)devPort.portContent);
+            try
+            {
+                tcp6003receviceDelegate += new Action<string>(tcp6003ReceviceDelegateMsg);
+                //链接tcp
+                Connect6003Tcp(ip);
+                lastIP = ip.Split('.')[3];
+                timer2.Start();
+                LockIni();
+                getFormState((DataJson.PortSwitch)devPort.portContent);
+            }
+            catch (Exception x)
+            {
+                MessageBox.Show("临时调试信息" + x.ToString());
+            }
         }
 
         /// <summary>

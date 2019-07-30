@@ -707,7 +707,14 @@ namespace eNet编辑器.DgvView
                                     }
                                     else
                                     {
-                                        txtAppShow("请正确选择区域或名称");
+                                        if (!isConcrol && !string.IsNullOrEmpty(FileMesege.titlePointSection))
+                                        {
+
+                                        }
+                                        else
+                                        {
+                                            txtAppShow("请正确选择区域或名称");
+                                        }
                                     }
                                     break;
                                 case "NameName":
@@ -723,7 +730,15 @@ namespace eNet编辑器.DgvView
                                     }
                                     else
                                     {
-                                        txtAppShow("请正确选择区域或名称");
+                                        if (!isConcrol && !string.IsNullOrEmpty(FileMesege.titlePointSection))
+                                        {
+
+                                        }
+                                        else
+                                        {
+                                            txtAppShow("请正确选择区域或名称");
+                                        }
+                                        
                                     }
                                     break;
                                    

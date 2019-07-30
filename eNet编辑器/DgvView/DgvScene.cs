@@ -653,6 +653,8 @@ namespace eNet编辑器.DgvView
 
         private void dataGridView1_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
         {
+            try
+            {
             oldrowCount = rowCount;
             oldcolumnCount = columnCount;
             rowCount = e.RowIndex;
@@ -687,12 +689,15 @@ namespace eNet编辑器.DgvView
             {
                 isClick = true;
             }
+            }
+            catch (Exception ex) { MessageBox.Show(ex + "临时调试错误信息"); }
         }
 
       
 
         private void doubleClickTimer_Tick(object sender, EventArgs e)
         {
+            try{
             milliseconds += 100;
             // 第二次鼠标点击超出双击事件间隔
             if (milliseconds >= SystemInformation.DoubleClickTime)
@@ -774,6 +779,8 @@ namespace eNet编辑器.DgvView
                 isDoubleClick = false;
                 milliseconds = 0;
             }
+            }
+            catch (Exception ex) { MessageBox.Show(ex + "临时调试错误信息"); }
         }
 
         private void dataGridView1_DataError(object sender, DataGridViewDataErrorEventArgs e)

@@ -1,1 +1,62 @@
-[]
+[
+    {
+        "sensors": [
+            {
+                "sensorsInfo": [
+                    {
+                        "id": 1,
+                        "pid": 95840,
+                        "keyAddress": "7D100007",
+                        "objAddress": "7D100001",
+                        "objType": "4.0_scene",
+                        "opt": "00000001",
+                        "optName": "场景调用",
+                        "fbmode": 1
+                    },
+                    {
+                        "id": 2,
+                        "pid": 47686,
+                        "keyAddress": "7D100008",
+                        "objAddress": "7D000A01",
+                        "objType": "1.0_switch",
+                        "opt": "00000001",
+                        "optName": "开启",
+                        "fbmode": 1
+                    }
+                ],
+                "id": 1001,
+                "pid": 14449,
+                "ioNum": 2
+            },
+            {
+                "sensorsInfo": [
+                    {
+                        "id": 1,
+                        "pid": 47686,
+                        "keyAddress": "7D100007",
+                        "objAddress": "7D000A01",
+                        "objType": "1.0_switch",
+                        "opt": "00000000",
+                        "optName": "关闭",
+                        "fbmode": 2
+                    },
+                    {
+                        "id": 2,
+                        "pid": 25793,
+                        "keyAddress": "7D100008",
+                        "objAddress": "7D000A02",
+                        "objType": "1.0_switch",
+                        "opt": "00000000",
+                        "optName": "关闭",
+                        "fbmode": 2
+                    }
+                ],
+                "id": 1002,
+                "pid": 16354,
+                "ioNum": 2
+            }
+        ],
+        "IP": "192.168.1.125",
+        "Dev": "GW100A"
+    }
+]

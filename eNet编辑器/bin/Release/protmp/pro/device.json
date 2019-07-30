@@ -26,7 +26,20 @@
                         "portID": 2,
                         "portType": "2.0_dimmer",
                         "portInterface": "DaLi",
-                        "portContent": null
+                        "portContent": {
+                            "powerState": "FF",
+                            "onState": "64",
+                            "changeState": "00",
+                            "max": "FF",
+                            "min": "0",
+                            "spline": "00000000000000000000000100010001000200020003000300040004000500060007000800080009000A000B000D000E000F0010001200130014001600170019001B001C001E00200022002400260028002A002C002E00300032003500370039003C003E0041004400460049004C004F005200550058005B005E006100640067006B006E007100750078007C007F00830087008B008E00920096009A009E00A200A700AB00AF00B300B800BC00C000C500C900CE00D300D700DC00E100E600EB00F000F500FA00FF",
+                            "powerStateReg": "40",
+                            "onStateReg": "60",
+                            "changeStateReg": "61",
+                            "maxReg": "62",
+                            "minReg": "63",
+                            "splineReg": "65"
+                        }
                     },
                     {
                         "portID": 3,
@@ -117,11 +130,11 @@
                 "device": "ET-DALI16A",
                 "sn": "0000000000000000",
                 "ver": "D20190716V2.07",
-                "area1": "",
-                "area2": "",
-                "area3": "",
-                "area4": "",
-                "name": ""
+                "area1": "东区",
+                "area2": "B栋",
+                "area3": "1F",
+                "area4": "总裁室",
+                "name": "配电箱#1_1"
             },
             {
                 "devPortList": [
@@ -129,19 +142,34 @@
                         "portID": 1,
                         "portType": "1.0_switch",
                         "portInterface": "Switch",
-                        "portContent": null
+                        "portContent": {
+                            "powerState": "ff",
+                            "interLock": "21",
+                            "powerStateReg": "40",
+                            "interLockReg": "60"
+                        }
                     },
                     {
                         "portID": 2,
                         "portType": "1.0_switch",
                         "portInterface": "Switch",
-                        "portContent": null
+                        "portContent": {
+                            "powerState": "00",
+                            "interLock": "22",
+                            "powerStateReg": "40",
+                            "interLockReg": "60"
+                        }
                     },
                     {
                         "portID": 3,
                         "portType": "1.0_switch",
                         "portInterface": "Switch",
-                        "portContent": null
+                        "portContent": {
+                            "powerState": "00",
+                            "interLock": "23",
+                            "powerStateReg": "40",
+                            "interLockReg": "60"
+                        }
                     },
                     {
                         "portID": 4,
@@ -178,11 +206,11 @@
                 "device": "ET-R0816A",
                 "sn": "ffffffffffffffff",
                 "ver": "D20150804V1.11",
-                "area1": "",
-                "area2": "",
-                "area3": "",
-                "area4": "",
-                "name": ""
+                "area1": "东区",
+                "area2": "B栋",
+                "area3": "1F",
+                "area4": "研发部",
+                "name": "配电箱#2_1"
             },
             {
                 "devPortList": [
@@ -190,7 +218,20 @@
                         "portID": 1,
                         "portType": "2.0_dimmer",
                         "portInterface": "0-10V",
-                        "portContent": null
+                        "portContent": {
+                            "powerState": "00",
+                            "onState": "0A",
+                            "changeState": "00",
+                            "max": "5A",
+                            "min": "A",
+                            "spline": "006400C8012C019001F4025802BC0320038403E8044C04B00514057805DC064006A40708076C07D00834089808FC096009C40A280A8C0AF00B540BB80C1C0C800CE40D480DAC0E100E740ED80F3C0FA01004106810CC1130119411F8125C12C01324138813EC145014B41518157C15E0164416A8170C177017D41838189C1900196419C81A2C1A901AF41B581BBC1C201C841CE81D4C1DB01E141E781EDC1F401FA42008206C20D02134219821FC226022C42328238C23F0245424B8251C258025E4264826AC2710",
+                            "powerStateReg": "40",
+                            "onStateReg": "60",
+                            "changeStateReg": "61",
+                            "maxReg": "62",
+                            "minReg": "63",
+                            "splineReg": "65"
+                        }
                     },
                     {
                         "portID": 2,

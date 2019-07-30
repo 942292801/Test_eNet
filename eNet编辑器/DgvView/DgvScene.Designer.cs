@@ -339,6 +339,7 @@
             // 
             this.delay.HeaderText = "延时（秒）";
             this.delay.Name = "delay";
+            this.delay.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // del
             // 
@@ -347,7 +348,6 @@
             this.del.Name = "del";
             this.del.ReadOnly = true;
             this.del.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.del.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.del.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.del.Text = null;
             this.del.Width = 55;
