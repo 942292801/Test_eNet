@@ -10,6 +10,7 @@ using System.Text.RegularExpressions;
 using System.Net;
 using System.Windows.Forms.DataVisualization.Charting;
 using System.Runtime.InteropServices;
+using Newtonsoft.Json;
 
 namespace eNet编辑器.Controller
 {
@@ -68,7 +69,7 @@ namespace eNet编辑器.Controller
             //图表初始化
             chart1Init();
             //窗口状态初始化
-            getFormState((DataJson.PortDimmer)devPort.portContent);
+            getFormState(devPort.portContent);
         }
 
         #region  图形初始化函数
@@ -723,7 +724,7 @@ namespace eNet编辑器.Controller
         #region 菜单栏 按钮
         private void btnRefresh_Click(object sender, EventArgs e)
         {
-            getFormState(FileMesege.portDali);
+            getFormState(JsonConvert.SerializeObject(FileMesege.portDali));
         }
 
         private void btnIni_Click(object sender, EventArgs e)
@@ -748,7 +749,7 @@ namespace eNet编辑器.Controller
                 {
                     if (dp.portType == DevPort.portType)
                     {
-                        dp.portContent = portDimmer;
+                        dp.portContent = JsonConvert.SerializeObject(portDimmer);
                         id = dp.portID.ToString();
                         //sendRegOrder("01", id, "64");//设置为线性模式 00自定义 01曲线 02废除了 
                         //SocketUtil.DelayMilli(1000);
@@ -806,7 +807,7 @@ namespace eNet编辑器.Controller
                 {
                     return;
                 }
-                devPort.portContent = portDimmer;
+                devPort.portContent = JsonConvert.SerializeObject(portDimmer);
                 //sendRegOrder("01", "64");//设置为线性模式 00自定义 01曲线 02废除了 
                 //SocketUtil.DelayMilli(400);
                 isSend = sendRegOrder(portDimmer.powerState, "40");
@@ -892,8 +893,13 @@ namespace eNet编辑器.Controller
         /// 解释对象 在窗体展示对象参数
         /// </summary>
         /// <param name="portDimmer"></param>
-        private void getFormState(DataJson.PortDimmer portDimmer)
+        private void getFormState(string info)
         {
+            if(string.IsNullOrEmpty(info))
+            {
+                return;
+            }
+            DataJson.PortDimmer portDimmer = JsonConvert.DeserializeObject<DataJson.PortDimmer>(info);
             if (portDimmer == null)
             {
                 return;

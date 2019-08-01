@@ -770,7 +770,16 @@ namespace eNet编辑器
 
         private void 退出ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.Dispose();
+
+            if (MessageBox.Show("若未保存工程，窗口关闭后，数据即将丢失！是否现在关闭窗口", "提示", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) != DialogResult.OK)
+            {
+               
+                return;
+            }
+            else
+            {
+                System.Environment.Exit(0);
+            }
         }
 
 
@@ -1116,10 +1125,6 @@ namespace eNet编辑器
 
 
         #region 帮助
-        private void 欢迎ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void 帮助ToolStripMenuItem_Click(object sender, EventArgs e)
         {

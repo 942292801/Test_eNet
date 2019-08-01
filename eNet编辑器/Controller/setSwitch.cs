@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using System.Text.RegularExpressions;
 using System.Net;
 using System.Runtime.InteropServices;
+using Newtonsoft.Json;
 
 namespace eNet编辑器.Controller
 {
@@ -61,7 +62,7 @@ namespace eNet编辑器.Controller
                 lastIP = ip.Split('.')[3];
                 timer2.Start();
                 LockIni();
-                getFormState((DataJson.PortSwitch)devPort.portContent);
+                getFormState(devPort.portContent);
             }
             catch (Exception x)
             {
@@ -585,7 +586,7 @@ namespace eNet编辑器.Controller
                 string id = "";
                 string msg = "";
                 //当前参数对象 
-                DataJson.PortSwitch pw = (DataJson.PortSwitch)devPort.portContent;
+                DataJson.PortSwitch pw = JsonConvert.DeserializeObject<DataJson.PortSwitch>(devPort.portContent);
                 foreach (DataJson.DevPort dp in devModuel.devPortList)
                 {
                     if (dp.portType == DevPort.portType)
@@ -593,18 +594,18 @@ namespace eNet编辑器.Controller
                         id = dp.portID.ToString();
                         
                         DataJson.PortSwitch tmpPW = null;
-                        if (dp.portContent == null)
+                        if (string.IsNullOrEmpty(dp.portContent))
                         {
                             tmpPW = new DataJson.PortSwitch();
                         }
                         else
                         {
-                            tmpPW = (DataJson.PortSwitch)CommandManager.CloneObject(dp.portContent);
+                            tmpPW = JsonConvert.DeserializeObject<DataJson.PortSwitch>(dp.portContent);
                             //tmpPW = TransExpV2<DataJson.PortSwitch, DataJson.PortSwitch>.Trans((DataJson.PortSwitch)dp.portContent);
                         }
                         tmpPW.powerState = pw.powerState;
                         //复制对象
-                        dp.portContent = tmpPW;
+                        dp.portContent = JsonConvert.SerializeObject(tmpPW);
 
                         sendRegOrder(pw.powerState, id, "40");
                         SocketUtil.DelayMilli(500);
@@ -637,7 +638,7 @@ namespace eNet编辑器.Controller
             try
             {
                 SaveFormState();
-                DataJson.PortSwitch pw = (DataJson.PortSwitch)devPort.portContent;
+                DataJson.PortSwitch pw = JsonConvert.DeserializeObject<DataJson.PortSwitch>(devPort.portContent);
                 sendRegOrder(pw.powerState, "40");
                 SocketUtil.DelayMilli(400);
                 sendRegOrder(pw.interLock, "60");
@@ -676,9 +677,13 @@ namespace eNet编辑器.Controller
         /// 解释对象 在窗体展示对象参数
         /// </summary>
         /// <param name="portSwitch"></param>
-        private void getFormState(DataJson.PortSwitch portSwitch)
+        private void getFormState(string info)
         {
-
+            if(string.IsNullOrEmpty(info))
+            {
+                return;
+            }
+            DataJson.PortSwitch portSwitch = JsonConvert.DeserializeObject<DataJson.PortSwitch>(info);
             if (portSwitch == null)
             {
                 return;
@@ -787,18 +792,19 @@ namespace eNet编辑器.Controller
             }
 
             DataJson.PortSwitch tmpPW = null;
-            if (devPort.portContent == null)
+            if (string.IsNullOrEmpty( devPort.portContent ))
             {
                 tmpPW = new DataJson.PortSwitch();
             }
             else
             {
-                tmpPW = (DataJson.PortSwitch)CommandManager.CloneObject(devPort.portContent);
+
+                tmpPW = JsonConvert.DeserializeObject<DataJson.PortSwitch>(devPort.portContent);
                 //tmpPW = TransExpV2<DataJson.PortSwitch, DataJson.PortSwitch>.Trans((DataJson.PortSwitch)devPort.portContent);
             }
             tmpPW.powerState = info;
 
-            DevPort.portContent = tmpPW;
+            DevPort.portContent = JsonConvert.SerializeObject(tmpPW);
          
            
         }
@@ -811,7 +817,7 @@ namespace eNet编辑器.Controller
         private void SaveLock(string info)
         {
             //读取这个端口是什么互锁 然后这次设置什么互锁  
-            DataJson.PortSwitch pw = (DataJson.PortSwitch)devPort.portContent;
+            DataJson.PortSwitch pw = JsonConvert.DeserializeObject<DataJson.PortSwitch>(devPort.portContent);
             if (pw.interLock != "00")
             {
                 //几路互锁0-3
@@ -837,11 +843,11 @@ namespace eNet编辑器.Controller
                         }
                         else
                         {
-                            tmpPW = (DataJson.PortSwitch)CommandManager.CloneObject(devModuel.devPortList[i].portContent);
+                            tmpPW = JsonConvert.DeserializeObject<DataJson.PortSwitch>(devModuel.devPortList[i].portContent);
                             //tmpPW = TransExpV2<DataJson.PortSwitch, DataJson.PortSwitch>.Trans((DataJson.PortSwitch)devModuel.devPortList[i].portContent);
                         }
                         tmpPW.interLock = "00";
-                        devModuel.devPortList[i].portContent = tmpPW;
+                        devModuel.devPortList[i].portContent = JsonConvert.SerializeObject(tmpPW);
                     }
                 }
             }
@@ -860,18 +866,19 @@ namespace eNet编辑器.Controller
                     if (devModuel.devPortList[i].portType == DevPort.portType)
                     {
                         DataJson.PortSwitch tmpPW = null;
-                        if (devModuel.devPortList[i].portContent == null)
+                        if (string.IsNullOrEmpty( devModuel.devPortList[i].portContent))
                         {
                             tmpPW = new DataJson.PortSwitch();
                         }
                         else
                         {
-                            tmpPW = (DataJson.PortSwitch)CommandManager.CloneObject(devModuel.devPortList[i].portContent);
+                            tmpPW = JsonConvert.DeserializeObject<DataJson.PortSwitch>(devModuel.devPortList[i].portContent);
+       
                             //tmpPW = TransExpV2<DataJson.PortSwitch, DataJson.PortSwitch>.Trans((DataJson.PortSwitch)devModuel.devPortList[i].portContent);
                         }
                         
                         tmpPW.interLock = string.Format("{0}{1}", newLockNum, newLockPort);
-                        devModuel.devPortList[i].portContent = tmpPW;
+                        devModuel.devPortList[i].portContent = JsonConvert.SerializeObject(tmpPW);
                         newLockPort++;
                     }
                 }

@@ -61,8 +61,6 @@
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripSeparator();
             this.时钟校时ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripSeparator();
-            this.按键检测ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripSeparator();
             this.固件更新ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem8 = new System.Windows.Forms.ToolStripSeparator();
             this.编译下载ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -75,8 +73,6 @@
             this.toolStripMenuItem22 = new System.Windows.Forms.ToolStripSeparator();
             this.节假日设置ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.帮助HToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.欢迎ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem23 = new System.Windows.Forms.ToolStripSeparator();
             this.帮助ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem24 = new System.Windows.Forms.ToolStripSeparator();
             this.关于软件ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -328,8 +324,6 @@
             this.toolStripMenuItem3,
             this.时钟校时ToolStripMenuItem,
             this.toolStripMenuItem4,
-            this.按键检测ToolStripMenuItem,
-            this.toolStripMenuItem5,
             this.固件更新ToolStripMenuItem,
             this.toolStripMenuItem8,
             this.编译下载ToolStripMenuItem});
@@ -357,17 +351,6 @@
             // 
             this.toolStripMenuItem4.Name = "toolStripMenuItem4";
             resources.ApplyResources(this.toolStripMenuItem4, "toolStripMenuItem4");
-            // 
-            // 按键检测ToolStripMenuItem
-            // 
-            this.按键检测ToolStripMenuItem.Name = "按键检测ToolStripMenuItem";
-            resources.ApplyResources(this.按键检测ToolStripMenuItem, "按键检测ToolStripMenuItem");
-            this.按键检测ToolStripMenuItem.Click += new System.EventHandler(this.按键检测ToolStripMenuItem_Click);
-            // 
-            // toolStripMenuItem5
-            // 
-            this.toolStripMenuItem5.Name = "toolStripMenuItem5";
-            resources.ApplyResources(this.toolStripMenuItem5, "toolStripMenuItem5");
             // 
             // 固件更新ToolStripMenuItem
             // 
@@ -441,24 +424,11 @@
             // 帮助HToolStripMenuItem
             // 
             this.帮助HToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.欢迎ToolStripMenuItem,
-            this.toolStripMenuItem23,
             this.帮助ToolStripMenuItem,
             this.toolStripMenuItem24,
             this.关于软件ToolStripMenuItem});
             this.帮助HToolStripMenuItem.Name = "帮助HToolStripMenuItem";
             resources.ApplyResources(this.帮助HToolStripMenuItem, "帮助HToolStripMenuItem");
-            // 
-            // 欢迎ToolStripMenuItem
-            // 
-            this.欢迎ToolStripMenuItem.Name = "欢迎ToolStripMenuItem";
-            resources.ApplyResources(this.欢迎ToolStripMenuItem, "欢迎ToolStripMenuItem");
-            this.欢迎ToolStripMenuItem.Click += new System.EventHandler(this.欢迎ToolStripMenuItem_Click);
-            // 
-            // toolStripMenuItem23
-            // 
-            this.toolStripMenuItem23.Name = "toolStripMenuItem23";
-            resources.ApplyResources(this.toolStripMenuItem23, "toolStripMenuItem23");
             // 
             // 帮助ToolStripMenuItem
             // 
@@ -1259,8 +1229,6 @@
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem3;
         private System.Windows.Forms.ToolStripMenuItem 时钟校时ToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem4;
-        private System.Windows.Forms.ToolStripMenuItem 按键检测ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem5;
         private System.Windows.Forms.ToolStripMenuItem 固件更新ToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem8;
         private System.Windows.Forms.ToolStripMenuItem 编译下载ToolStripMenuItem;
@@ -1284,8 +1252,6 @@
         private System.Windows.Forms.ToolStripMenuItem 管理密码设置ToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem22;
         private System.Windows.Forms.ToolStripMenuItem 节假日设置ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 欢迎ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem23;
         private System.Windows.Forms.ToolStripMenuItem 帮助ToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem24;
         private System.Windows.Forms.ToolStripMenuItem 关于软件ToolStripMenuItem;

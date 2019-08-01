@@ -274,6 +274,12 @@
     <Compile Include="AddForm\sensorAdd.Designer.cs">
       <DependentUpon>sensorAdd.cs</DependentUpon>
     </Compile>
+    <Compile Include="AddForm\systemPrjUpdate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddForm\systemPrjUpdate.Designer.cs">
+      <DependentUpon>systemPrjUpdate.cs</DependentUpon>
+    </Compile>
     <Compile Include="AddForm\timerAdd.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -529,6 +535,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AddForm\sensorAdd.resx">
       <DependentUpon>sensorAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddForm\systemPrjUpdate.resx">
+      <DependentUpon>systemPrjUpdate.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AddForm\timerAdd.resx">
       <DependentUpon>timerAdd.cs</DependentUpon>

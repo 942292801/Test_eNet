@@ -217,6 +217,11 @@ namespace eNet编辑器
                 string msg;
                 ZipHelper ziphelp = new ZipHelper();
                 bool isUnzip = ziphelp.UnZipFile(localFilePath, TmpFilePath, out msg);
+                if(!isUnzip)
+                {
+                    MessageBox.Show("打开失败，文件不存在！", "提示");
+                    return false;
+                }
      
             }
             catch
@@ -233,7 +238,7 @@ namespace eNet编辑器
                 || !System.IO.File.Exists(TmpFilePath + "\\pro\\sensor.json")
                 )
             {
-                MessageBox.Show("操作失败！工程文件缺失！", "提示");
+                MessageBox.Show("打开文件失败！", "提示");
                 return false;
             }
             iniPath();

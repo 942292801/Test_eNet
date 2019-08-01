@@ -256,7 +256,7 @@ namespace eNet编辑器
             public int portID { get; set; }
             public string portType { get; set; }
             public string portInterface { get; set; }
-            public object  portContent { get; set; }
+            public string  portContent { get; set; }
 
         }
 
