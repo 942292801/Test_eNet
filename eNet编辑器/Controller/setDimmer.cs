@@ -1179,7 +1179,7 @@ namespace eNet编辑器.Controller
             try
             {
                 OpenFileDialog op = new OpenFileDialog();
-                string newPath = IniConfig.GetValue(Application.StartupPath + "\\conf.ini", "filepath", "softPath");
+                string newPath = IniConfig.GetValue(Application.StartupPath + "\\conf.ini", "filepath", "splinePath");
                 if (System.IO.File.Exists(newPath))
                 {
                     //设置此次默认目录为上一次选中目录  
@@ -1194,7 +1194,7 @@ namespace eNet编辑器.Controller
                     //获取表格数字
                     updateTable();
                     //添加打开过的地址
-                    IniConfig.SetValue(Application.StartupPath + "\\conf.ini", "filepath", "softPath", op.FileName);
+                    IniConfig.SetValue(Application.StartupPath + "\\conf.ini", "filepath", "splinePath", op.FileName);
 
                 }
        
@@ -1225,7 +1225,7 @@ namespace eNet编辑器.Controller
 
                 sfd.FileName = "Linesp";// in wpf is  sfd.FileName = "YourFileName";
 
-                string newPath = IniConfig.GetValue(Application.StartupPath + "\\conf.ini", "filepath", "softPath");
+                string newPath = IniConfig.GetValue(Application.StartupPath + "\\conf.ini", "filepath", "splinePath");
                 if (System.IO.File.Exists(newPath))
                 {
                     //设置此次默认目录为上一次选中目录  
@@ -1237,7 +1237,7 @@ namespace eNet编辑器.Controller
                 {
 
                     string localFilePath = sfd.FileName.ToString(); //获得文件路径 
-                    IniConfig.SetValue(Application.StartupPath + "\\conf.ini", "filepath", "softPath", localFilePath);
+                    IniConfig.SetValue(Application.StartupPath + "\\conf.ini", "filepath", "splinePath", localFilePath);
                     File.WriteAllText(localFilePath,SaveLinesp());
                         
                 }

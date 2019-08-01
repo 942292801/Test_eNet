@@ -1073,7 +1073,11 @@ namespace eNet编辑器
 
         private void 固件更新ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            systemPrjUpdate prjUpdate = new systemPrjUpdate();
+            prjUpdate.AppTxtShow += new Action<string>(AppTxtShow);
+            //展示居中
+            prjUpdate.StartPosition = FormStartPosition.CenterParent;
+            prjUpdate.ShowDialog();
         }
 
  
