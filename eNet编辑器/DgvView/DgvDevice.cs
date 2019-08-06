@@ -435,7 +435,7 @@ namespace eNet编辑器.DgvView
         /// <summary>
         /// 选中列索引
         /// </summary>
-        private int ind = 0;
+        private int columnCount = 0;
 
         private void doubleClickTimer_Tick(object sender, EventArgs e)
         {
@@ -460,7 +460,7 @@ namespace eNet编辑器.DgvView
                     
                     if (rowcount >= 0)
                     {
-                        switch (dataGridView1.Columns[ind].Name)
+                        switch (dataGridView1.Columns[columnCount].Name)
                         {
                             case "DeviceState":
                                 //弹出操作对话框
@@ -480,6 +480,8 @@ namespace eNet编辑器.DgvView
                                 break;
                             default: break;
                         }
+                        //更改内容回自动刷新到第一行
+                        dataGridView1.CurrentCell = dataGridView1.Rows[rowcount].Cells[columnCount];
                     }
 
                    
@@ -493,9 +495,9 @@ namespace eNet编辑器.DgvView
         private void dataGridView1_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
         {
             oldrowCount = rowcount;
-            oldcolumnCount = ind;
+            oldcolumnCount = columnCount;
             rowcount = e.RowIndex;
-            ind = e.ColumnIndex;
+            columnCount = e.ColumnIndex;
             // 鼠标单击.
             if (isFirstClick)
             {
@@ -516,7 +518,7 @@ namespace eNet编辑器.DgvView
                     return;
 
                 }
-                else if (oldcolumnCount == ind)
+                else if (oldcolumnCount == columnCount)
                 {
                     return;
                 }

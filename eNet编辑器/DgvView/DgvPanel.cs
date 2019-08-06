@@ -915,6 +915,8 @@ namespace eNet编辑器.DgvView
                            
                             default: break;
                         }
+                        //更改内容回自动刷新到第一行
+                        dataGridView1.CurrentCell = dataGridView1.Rows[rowCount].Cells[columnCount];
                     }
                 }
                 else
@@ -959,9 +961,9 @@ namespace eNet编辑器.DgvView
                
                             default: break;
 
-
-
                         }
+                        //更改内容回自动刷新到第一行
+                        dataGridView1.CurrentCell = dataGridView1.Rows[rowCount].Cells[columnCount];
 
                     }
                 }

@@ -14,9 +14,7 @@ namespace eNet编辑器.ThreeView
     public delegate void AddTitleNode();
     //public delegate void AddSectionDevCursor();
     //public delegate void AddSectionNameCursor();
-    //刷新窗口
-    public delegate void SectionDgvNameAddItem();
-    public delegate void SectionDgvDevAddItem(bool isConnect);
+  
     public partial class ThreeSection : Form
     {
         
@@ -42,12 +40,12 @@ namespace eNet编辑器.ThreeView
         public event AddTitleNode addTitleNode;
         //public event AddSectionDevCursor addSectionDevCursor;
         //public event AddSectionNameCursor addSectionNameCursor;
-        public event SectionDgvNameAddItem sectionDgvNameAddItem;
-        public event SectionDgvDevAddItem sectionDgvDevAddItem;
-
+   
+        //按窗口类型来更新窗口
+        public event Action sectionUpdateDgvTreeByFormType;
         public event Action updatePointDgv;
 
-
+        
 
         private void ThreeSection_Load(object sender, EventArgs e)
         {
@@ -55,6 +53,7 @@ namespace eNet编辑器.ThreeView
             tss = new tsSection();
             tss.addNode += new AddNode(addNodeDelegate);
         }
+
         public void ThreeSEctionAddNode()
         {
            
@@ -64,7 +63,7 @@ namespace eNet编辑器.ThreeView
             if (FileMesege.AreaList == null)
             {
                 treeView1.Nodes.Clear();
-                tm.AddNode1(treeView1, "全部");             
+                tm.AddNode1(treeView1, "查看所有区域");             
                 return;
             }
             //记录当前节点展开状况
@@ -94,7 +93,7 @@ namespace eNet编辑器.ThreeView
             }
             //展开记录的节点
             tm.treeIspandsStateRcv(treeView1, isExpands);
-            tm.AddNode1(treeView1,"全部");
+            tm.AddNode1(treeView1, "查看所有区域");
             
         }
 
@@ -127,7 +126,7 @@ namespace eNet编辑器.ThreeView
 
         private void 添加子节点ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (treeView1.SelectedNode == null || treeView1.SelectedNode.Text == "全部")
+            if (treeView1.SelectedNode == null || treeView1.SelectedNode.Text == "查看所有区域")
             {
                 return;
             }
@@ -151,7 +150,7 @@ namespace eNet编辑器.ThreeView
             if (treeView1.SelectedNode != null)
             {
                 i = treeView1.SelectedNode.Level + 1;
-                if (treeView1.SelectedNode.Text == "全部")
+                if (treeView1.SelectedNode.Text == "查看所有区域")
                 {
                     isAddChild = false;
                     i = 0;
@@ -171,7 +170,7 @@ namespace eNet编辑器.ThreeView
         {
 
             sectionname = FileMesege.info;
-            if (sectionname == "全部")
+            if (sectionname == "查看所有区域")
             {
                 return;
             }
@@ -185,7 +184,7 @@ namespace eNet编辑器.ThreeView
                 TreeMesege tm = new TreeMesege();
                 if (isAddChild)
                 {
-                    if (FileMesege.sectionNode != null && FileMesege.sectionNode.Text == "全部")
+                    if (FileMesege.sectionNode != null && FileMesege.sectionNode.Text == "查看所有区域")
                     {
                         return;
                     }
@@ -260,8 +259,8 @@ namespace eNet编辑器.ThreeView
 
         private void 修改ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            
-                if (treeView1.SelectedNode == null || treeView1.SelectedNode.Text == "全部")
+
+            if (treeView1.SelectedNode == null || treeView1.SelectedNode.Text == "查看所有区域")
                 {
                     return;
                 }
@@ -305,8 +304,8 @@ namespace eNet编辑器.ThreeView
                                 break;
                             default: break;
                         }
-                        sectionDgvNameAddItem();
-                        sectionDgvDevAddItem(true);
+                        sectionUpdateDgvTreeByFormType();
+                    
                     }
                     
                 }
@@ -517,7 +516,7 @@ namespace eNet编辑器.ThreeView
 
         private void 删除ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (treeView1.SelectedNode!=null && FileMesege.sectionNode.Text != "全部")
+            if (treeView1.SelectedNode != null && FileMesege.sectionNode.Text != "查看所有区域")
             {
               
                 //右击树状图外面区域
@@ -570,8 +569,8 @@ namespace eNet编辑器.ThreeView
                     break;
                 default: return false;
             }
-            sectionDgvNameAddItem();
-            sectionDgvDevAddItem(true);
+            sectionUpdateDgvTreeByFormType();
+        
             DataJson.totalList NewList = FileMesege.cmds.getListInfos();
             FileMesege.cmds.DoNewCommand(NewList, OldList);
             return true;
@@ -1230,7 +1229,7 @@ namespace eNet编辑器.ThreeView
             {
                 MessageBox.Show("error");
             }
-            if (myNode != null && myNode.Text == "全部")
+            if (myNode != null && myNode.Text == "查看所有区域")
             {
                 return;
             }
@@ -1239,7 +1238,7 @@ namespace eNet编辑器.ThreeView
             Position = treeView1.PointToClient(Position);
             //目标节点
             TreeNode DropNode = this.treeView1.GetNodeAt(Position);
-            if (DropNode != null && DropNode.Text == "全部")
+            if (DropNode != null && DropNode.Text == "查看所有区域")
             {
                 return;
             }
@@ -1364,9 +1363,8 @@ namespace eNet编辑器.ThreeView
                     DataJson.totalList NewList = FileMesege.cmds.getListInfos();
                     FileMesege.cmds.DoNewCommand(NewList, OldList);
                     //刷新窗口
-                    sectionDgvNameAddItem();
-                    sectionDgvDevAddItem(true);
-                   
+                    sectionUpdateDgvTreeByFormType();
+                 
                     
                    
                     
@@ -1661,7 +1659,7 @@ namespace eNet编辑器.ThreeView
 
         private void btnAddChild_Click(object sender, EventArgs e)
         {
-            if (treeView1.SelectedNode == null || treeView1.SelectedNode.Text == "全部")
+            if (treeView1.SelectedNode == null || treeView1.SelectedNode.Text == "查看所有区域")
             {
                 return;
             }
@@ -1672,7 +1670,7 @@ namespace eNet编辑器.ThreeView
 
         private void btnDel_Click(object sender, EventArgs e)
         {
-            if (treeView1.SelectedNode != null && FileMesege.sectionNode.Text != "全部")
+            if (treeView1.SelectedNode != null && FileMesege.sectionNode.Text != "查看所有区域")
             {
 
                 bool flag = deleteNode(treeView1.SelectedNode);

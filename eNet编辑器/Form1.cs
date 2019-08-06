@@ -178,8 +178,8 @@ namespace eNet编辑器
             threesensor.dgvSensorAddItem +=new Action(dgvsensor.dgvSensorAddItem);
             threevar.dgvVarAddItem +=new Action(dgvvar.dgvVarAddItem);
 
-            threesection.sectionDgvNameAddItem += new SectionDgvNameAddItem(dgvname.dgvNameAddItem);
-            threesection.sectionDgvDevAddItem += new SectionDgvDevAddItem(dgvdevice.dgvDeviceAddItem);
+            //区域按当前窗口来更新
+            threesection.sectionUpdateDgvTreeByFormType += new Action(updateDgvTreeByFormType);
             threesection.updatePointDgv += new Action(dgvpoint.dgvPointAddItemBySection);
             threepoint.updateDgvPoint += new Action(dgvpoint.dgvPointAddItemByObjType);
             /////////////////////////////////////////////////////////////
@@ -710,9 +710,9 @@ namespace eNet编辑器
             if (fm.newfile())
             {
                     this.Text = Resources.SoftName + "Edit New Project";
-                    AppTxtShow("新建工程");
                     updataAllView();
                     txtShow.Clear();
+                    AppTxtShow("新建工程");
             }
             else
             {

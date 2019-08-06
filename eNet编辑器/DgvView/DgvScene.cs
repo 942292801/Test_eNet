@@ -621,7 +621,9 @@ namespace eNet编辑器.DgvView
 
         private void dataGridView1_MouseDown(object sender, MouseEventArgs e)
         {
+          
             DgvMesege.endDataViewCurrent(dataGridView1, e.Y, e.X);
+
         }
 
         
@@ -659,6 +661,8 @@ namespace eNet编辑器.DgvView
             oldcolumnCount = columnCount;
             rowCount = e.RowIndex;
             columnCount = e.ColumnIndex;
+            
+
             // 鼠标单击.
             if (isFirstClick)
             {
@@ -672,6 +676,7 @@ namespace eNet编辑器.DgvView
                 isDoubleClick = true;
             }
             
+
             if (isClick)
             {
                 if (dataGridView1.SelectedCells.Count == 1 && rowCount == oldrowCount && columnCount == oldcolumnCount)
@@ -710,6 +715,7 @@ namespace eNet编辑器.DgvView
                     
                     if (rowCount >= 0 && columnCount >= 0)
                     {
+                        
                         int id = Convert.ToInt32(dataGridView1.Rows[rowCount].Cells[0].Value);
                         switch (dataGridView1.Columns[columnCount].Name)
                         {
@@ -751,12 +757,13 @@ namespace eNet编辑器.DgvView
                                 break;
                             default: break;
                         }
+                        //更改内容回自动刷新到第一行
+                        dataGridView1.CurrentCell = dataGridView1.Rows[rowCount].Cells[columnCount];
                     }
                 }
                 else
                 {
                     //处理单击事件操作
-                    
                     if (rowCount >= 0 && columnCount >= 0)
                     {
                         //DGV的行号
@@ -773,8 +780,11 @@ namespace eNet编辑器.DgvView
 
                             
                         }
+                        //更改内容回自动刷新到第一行
+                        dataGridView1.CurrentCell = dataGridView1.Rows[rowCount].Cells[columnCount];
                     }
                 }
+
                 isFirstClick = true;
                 isDoubleClick = false;
                 milliseconds = 0;

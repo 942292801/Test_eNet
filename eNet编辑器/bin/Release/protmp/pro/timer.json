@@ -1,1 +1,34 @@
-[]
+[
+    {
+        "timers": [
+            {
+                "timersInfo": [
+                    {
+                        "id": 1,
+                        "pid": 14809,
+                        "type": "4.0_scene",
+                        "address": "E6100001",
+                        "opt": "00000001",
+                        "optName": "场景调用",
+                        "shortTime": "09:00"
+                    },
+                    {
+                        "id": 2,
+                        "pid": 26211,
+                        "type": "4.0_scene",
+                        "address": "E6100002",
+                        "opt": "00000001",
+                        "optName": "场景调用",
+                        "shortTime": "18:00"
+                    }
+                ],
+                "id": 1,
+                "pid": 80073,
+                "dates": "1,2,3,4,5",
+                "priorHoloday": "01000001"
+            }
+        ],
+        "IP": "192.168.1.230",
+        "Dev": "GW100A"
+    }
+]

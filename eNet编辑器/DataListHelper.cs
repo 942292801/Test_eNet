@@ -588,7 +588,7 @@ namespace eNet编辑器
             List<string> infoList = new List<string>();
             //区域
             string[] sections = FileMesege.sectionNodeCopy.Split('\\');
-            if (sections[0] == "全部")
+            if (sections[0] == "查看所有区域")
             {
                 foreach (DataJson.PointInfo eq in pointlist)
                 {

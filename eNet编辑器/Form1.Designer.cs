@@ -239,8 +239,8 @@
             // 
             // 导出ToolStripMenuItem
             // 
-            this.导出ToolStripMenuItem.Name = "导出ToolStripMenuItem";
             resources.ApplyResources(this.导出ToolStripMenuItem, "导出ToolStripMenuItem");
+            this.导出ToolStripMenuItem.Name = "导出ToolStripMenuItem";
             this.导出ToolStripMenuItem.Click += new System.EventHandler(this.导出ToolStripMenuItem_Click);
             // 
             // toolStripMenuItem11
@@ -250,8 +250,8 @@
             // 
             // 打印ToolStripMenuItem
             // 
-            this.打印ToolStripMenuItem.Name = "打印ToolStripMenuItem";
             resources.ApplyResources(this.打印ToolStripMenuItem, "打印ToolStripMenuItem");
+            this.打印ToolStripMenuItem.Name = "打印ToolStripMenuItem";
             this.打印ToolStripMenuItem.Click += new System.EventHandler(this.打印ToolStripMenuItem_Click);
             // 
             // toolStripMenuItem12
@@ -343,8 +343,8 @@
             // 
             // 时钟校时ToolStripMenuItem
             // 
-            this.时钟校时ToolStripMenuItem.Name = "时钟校时ToolStripMenuItem";
             resources.ApplyResources(this.时钟校时ToolStripMenuItem, "时钟校时ToolStripMenuItem");
+            this.时钟校时ToolStripMenuItem.Name = "时钟校时ToolStripMenuItem";
             this.时钟校时ToolStripMenuItem.Click += new System.EventHandler(this.时钟校时ToolStripMenuItem_Click);
             // 
             // toolStripMenuItem4
@@ -379,8 +379,8 @@
             this.管理密码设置ToolStripMenuItem,
             this.toolStripMenuItem22,
             this.节假日设置ToolStripMenuItem});
-            this.工具TToolStripMenuItem.Name = "工具TToolStripMenuItem";
             resources.ApplyResources(this.工具TToolStripMenuItem, "工具TToolStripMenuItem");
+            this.工具TToolStripMenuItem.Name = "工具TToolStripMenuItem";
             // 
             // 应急状态设置ToolStripMenuItem
             // 
@@ -432,8 +432,8 @@
             // 
             // 帮助ToolStripMenuItem
             // 
-            this.帮助ToolStripMenuItem.Name = "帮助ToolStripMenuItem";
             resources.ApplyResources(this.帮助ToolStripMenuItem, "帮助ToolStripMenuItem");
+            this.帮助ToolStripMenuItem.Name = "帮助ToolStripMenuItem";
             this.帮助ToolStripMenuItem.Click += new System.EventHandler(this.帮助ToolStripMenuItem_Click);
             // 
             // toolStripMenuItem24

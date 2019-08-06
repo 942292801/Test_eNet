@@ -238,7 +238,7 @@
             this.btnAddGw.Size = new System.Drawing.Size(15, 15);
             this.btnAddGw.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnAddGw.TabIndex = 8;
-            this.btnAddGw.Tooltip = "新增场景";
+            this.btnAddGw.Tooltip = "添加场景";
             this.btnAddGw.Click += new System.EventHandler(this.btnAddGw_Click);
             // 
             // btnDel

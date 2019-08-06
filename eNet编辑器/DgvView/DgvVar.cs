@@ -144,7 +144,7 @@ namespace eNet编辑器.DgvView
             {
                 sect = FileMesege.sectionNodeCopy.Split('\\');
             }
-            if (sect[0] == "全部")
+            if (sect[0] == "查看所有区域")
             {
                 sect = new string[] { "", "", "", "" };
             }
@@ -409,6 +409,8 @@ namespace eNet编辑器.DgvView
                                 break;
                             default: break;
                         }
+                        //更改内容回自动刷新到第一行
+                        dataGridView1.CurrentCell = dataGridView1.Rows[rowCount].Cells[columnCount];
                     }
                 }
                 else
@@ -430,6 +432,8 @@ namespace eNet编辑器.DgvView
 
 
                         }
+                        //更改内容回自动刷新到第一行
+                        dataGridView1.CurrentCell = dataGridView1.Rows[rowCount].Cells[columnCount];
                     }
                 }
                 isFirstClick = true;

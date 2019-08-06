@@ -95,7 +95,7 @@ namespace eNet编辑器.DgvView
                 //搜索选中区域  加载所有同区域的节点
                 //区域
                 string[] sections = FileMesege.sectionNodeCopy.Split('\\');
-                if (sections[0] == "全部")
+                if (sections[0] == "查看所有区域")
                 {
                     foreach (DataJson.PointInfo eq in FileMesege.PointList.equipment)
                     {
@@ -175,7 +175,7 @@ namespace eNet编辑器.DgvView
                 //搜索选中区域  加载所有同区域的节点
                 //区域
                 string[] sections = FileMesege.sectionNodeCopy.Split('\\');
-                if (sections[0] == "全部")
+                if (sections[0] == "查看所有区域")
                 {
                     foreach (DataJson.PointInfo eq in FileMesege.PointList.equipment)
                     {
@@ -332,9 +332,9 @@ namespace eNet编辑器.DgvView
             //搜索选中区域  加载所有同区域的节点
             //区域
             string[] sect = FileMesege.sectionNodeCopy.Split('\\');
-            if (sect[0] == "全部")
+            if (sect[0] == "查看所有区域")
             {
-                txtAppShow("选择区域不能为 <全部>");
+                txtAppShow("请选择区域！");
                 return;
             }
             //计算name的排序
@@ -594,6 +594,8 @@ namespace eNet编辑器.DgvView
                                 break;
                             default: break;
                         }
+                        //更改内容回自动刷新到第一行
+                        dataGridView1.CurrentCell = dataGridView1.Rows[rowCount].Cells[columnCount];
                     }
                     
                     
@@ -627,6 +629,8 @@ namespace eNet编辑器.DgvView
                                 break;
                             default: break;
                         }
+                        //更改内容回自动刷新到第一行
+                        dataGridView1.CurrentCell = dataGridView1.Rows[rowCount].Cells[columnCount];
                     }
                 }
                 

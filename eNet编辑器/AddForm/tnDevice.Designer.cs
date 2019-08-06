@@ -61,9 +61,9 @@
             this.label2.Font = new System.Drawing.Font("微软雅黑", 9F);
             this.label2.Location = new System.Drawing.Point(21, 52);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(44, 17);
+            this.label2.Size = new System.Drawing.Size(56, 17);
             this.label2.TabIndex = 2;
-            this.label2.Text = "设备：";
+            this.label2.Text = "设备号：";
             // 
             // lbip
             // 

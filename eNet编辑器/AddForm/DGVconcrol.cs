@@ -326,7 +326,7 @@ namespace eNet编辑器.AddForm
             //信息接收处理
             client.Received += new Action<string, string>((key, msg) =>
             {
-                MessageBox.Show(key + msg);
+                //MessageBox.Show(key + msg);
             });
             string[] strip = FileMesege.tnselectNode.Parent.Text.Split(' ');
             //异步连接
