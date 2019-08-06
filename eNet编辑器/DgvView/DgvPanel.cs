@@ -865,6 +865,7 @@ namespace eNet编辑器.DgvView
                                     add = dataGridView1.Rows[rowCount].Cells[1].Value.ToString();
                                 }
                                 dgvKeyAddress(add);
+                            
                                 break;
                             case "objAddress":
                                 //改变地址
@@ -877,6 +878,7 @@ namespace eNet编辑器.DgvView
                                 objType = dataGridView1.Rows[rowCount].Cells[3].EditedFormattedValue.ToString();
                                 //赋值List 并添加地域 名字
                                 dgvObjAddress( objType, add);
+                             
                                 break;
                        
                             case "showAddress":
@@ -888,6 +890,7 @@ namespace eNet编辑器.DgvView
                                 }
                                 //赋值List 并添加地域 名字
                                 dgvShowAddress( add);
+                           
                                 break;
                             case "del":
                                 //删除
@@ -896,6 +899,7 @@ namespace eNet编辑器.DgvView
                             case "add":
                                 //添加
                                 addInfo();
+                        
                                 break;
                             case "id":
                                 //设置对象跳转
@@ -915,8 +919,19 @@ namespace eNet编辑器.DgvView
                            
                             default: break;
                         }
-                        //更改内容回自动刷新到第一行
-                        dataGridView1.CurrentCell = dataGridView1.Rows[rowCount].Cells[columnCount];
+                        try
+                        {
+                            //更改内容回自动刷新到第一行
+                            dataGridView1.CurrentCell = dataGridView1.Rows[rowCount].Cells[columnCount];
+                        }
+                        catch
+                        {
+                            if (dataGridView1.Rows.Count > 0)
+                            {
+                                dataGridView1.CurrentCell = dataGridView1.Rows[dataGridView1.Rows.Count - 1].Cells[columnCount];
+                            }
+
+                        }
                     }
                 }
                 else
@@ -936,6 +951,7 @@ namespace eNet编辑器.DgvView
                             case "add":
                                 //添加
                                 addInfo();
+                              
                                 break;
                             case "objAddress":
                                 setTitleObjAddress();
@@ -962,8 +978,19 @@ namespace eNet编辑器.DgvView
                             default: break;
 
                         }
-                        //更改内容回自动刷新到第一行
-                        dataGridView1.CurrentCell = dataGridView1.Rows[rowCount].Cells[columnCount];
+                        try
+                        {
+                            //更改内容回自动刷新到第一行
+                            dataGridView1.CurrentCell = dataGridView1.Rows[rowCount].Cells[columnCount];
+                        }
+                        catch
+                        {
+                            if (dataGridView1.Rows.Count > 0)
+                            {
+                                dataGridView1.CurrentCell = dataGridView1.Rows[dataGridView1.Rows.Count - 1].Cells[columnCount];
+                            }
+
+                        }
 
                     }
                 }

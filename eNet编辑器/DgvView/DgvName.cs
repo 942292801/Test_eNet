@@ -675,8 +675,6 @@ namespace eNet编辑器.DgvView
                 {
                     //处理双击事件操作
                     dataGridView1.Columns[3].ReadOnly = false;
-                    //更改内容回自动刷新到第一行
-                    dataGridView1.CurrentCell = dataGridView1.Rows[rowCount].Cells[columnCount];
                 }
                 else
                 {
@@ -762,8 +760,19 @@ namespace eNet编辑器.DgvView
                                 pointAddAddress();
                            
                             }
-                            //更改内容回自动刷新到第一行
-                            dataGridView1.CurrentCell = dataGridView1.Rows[rowCount].Cells[columnCount];
+                            try
+                            {
+                                //更改内容回自动刷新到第一行
+                                dataGridView1.CurrentCell = dataGridView1.Rows[rowCount].Cells[columnCount];
+                            }
+                            catch
+                            {
+                                if (dataGridView1.Rows.Count > 0)
+                                {
+                                    dataGridView1.CurrentCell = dataGridView1.Rows[dataGridView1.Rows.Count - 1].Cells[columnCount];
+                                }
+
+                            }
                         }//try
                         catch (Exception ex) { MessageBox.Show(ex + "临时调试错误信息"); }
                     }

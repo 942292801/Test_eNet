@@ -419,6 +419,10 @@ namespace eNet编辑器.DgvView
                     continue;
                 }
                 int num = dataGridView1.SelectedCells[j].RowIndex;
+                if (dataGridView1.Rows[num].Cells[0].Value == null)
+                {
+                    continue;
+                }
                 DataJson.sensorsInfo srInfo = srs.sensorsInfo[num];
                 if (srInfo == null)
                 {
@@ -428,7 +432,6 @@ namespace eNet编辑器.DgvView
                 {
        
                     srInfo.keyAddress = "";
-                    dataGridView1.Rows[dataGridView1.SelectedCells[j].RowIndex].Cells[1].Value = null;
                 }
                 else
                 {
@@ -438,7 +441,14 @@ namespace eNet编辑器.DgvView
                         tmpNum = tmpNum.Insert(0, "0");
                     }
                     srInfo.keyAddress = string.Format("{0}{1}{2}", ip, id, tmpNum);
-                    dataGridView1.Rows[dataGridView1.SelectedCells[j].RowIndex].Cells[1].Value = keyAddressTransform(srInfo.keyAddress);
+
+                    foreach (DataJson.sensorsInfo info in srs.sensorsInfo)
+                    {
+                        if (srInfo.id == info.id)
+                        {
+                            info.keyAddress = srInfo.keyAddress;
+                        }
+                    }
                 }
                 
                 i++;
@@ -447,6 +457,7 @@ namespace eNet编辑器.DgvView
 
             DataJson.totalList NewList = FileMesege.cmds.getListInfos();
             FileMesege.cmds.DoNewCommand(NewList, OldList);
+            dgvSensorAddItem();
             cbDevNum.SelectedItem = null;
             //dgvSensorAddItem();
         }
@@ -1063,8 +1074,19 @@ namespace eNet编辑器.DgvView
 
                             default: break;
                         }
-                        //更改内容回自动刷新到第一行
-                        dataGridView1.CurrentCell = dataGridView1.Rows[rowCount].Cells[columnCount];
+                        try
+                        {
+                            //更改内容回自动刷新到第一行
+                            dataGridView1.CurrentCell = dataGridView1.Rows[rowCount].Cells[columnCount];
+                        }
+                        catch
+                        {
+                            if (dataGridView1.Rows.Count > 0)
+                            {
+                                dataGridView1.CurrentCell = dataGridView1.Rows[dataGridView1.Rows.Count - 1].Cells[columnCount];
+                            }
+
+                        }
                     }
                 }
                 else
@@ -1103,8 +1125,19 @@ namespace eNet编辑器.DgvView
 
 
                         }
-                        //更改内容回自动刷新到第一行
-                        dataGridView1.CurrentCell = dataGridView1.Rows[rowCount].Cells[columnCount];
+                        try
+                        {
+                            //更改内容回自动刷新到第一行
+                            dataGridView1.CurrentCell = dataGridView1.Rows[rowCount].Cells[columnCount];
+                        }
+                        catch
+                        {
+                            if (dataGridView1.Rows.Count > 0)
+                            {
+                                dataGridView1.CurrentCell = dataGridView1.Rows[dataGridView1.Rows.Count - 1].Cells[columnCount];
+                            }
+
+                        }
 
                     }
                 }

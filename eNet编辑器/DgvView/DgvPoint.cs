@@ -594,8 +594,19 @@ namespace eNet编辑器.DgvView
                                 break;
                             default: break;
                         }
-                        //更改内容回自动刷新到第一行
-                        dataGridView1.CurrentCell = dataGridView1.Rows[rowCount].Cells[columnCount];
+                        try
+                        {
+                            //更改内容回自动刷新到第一行
+                            dataGridView1.CurrentCell = dataGridView1.Rows[rowCount].Cells[columnCount];
+                        }
+                        catch
+                        {
+                            if (dataGridView1.Rows.Count > 0)
+                            {
+                                dataGridView1.CurrentCell = dataGridView1.Rows[dataGridView1.Rows.Count - 1].Cells[columnCount];
+                            }
+
+                        }
                     }
                     
                     
@@ -629,8 +640,19 @@ namespace eNet编辑器.DgvView
                                 break;
                             default: break;
                         }
-                        //更改内容回自动刷新到第一行
-                        dataGridView1.CurrentCell = dataGridView1.Rows[rowCount].Cells[columnCount];
+                        try
+                        {
+                            //更改内容回自动刷新到第一行
+                            dataGridView1.CurrentCell = dataGridView1.Rows[rowCount].Cells[columnCount];
+                        }
+                        catch
+                        {
+                            if (dataGridView1.Rows.Count > 0)
+                            {
+                                dataGridView1.CurrentCell = dataGridView1.Rows[dataGridView1.Rows.Count - 1].Cells[columnCount];
+                            }
+                            
+                        }
                     }
                 }
                 
