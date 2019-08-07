@@ -61,38 +61,44 @@ namespace eNet编辑器.AddForm
 
         private void DGVconcrol_Load(object sender, EventArgs e)
         {
-            //1.获取当前设备的名字信息 读一次device .ini 该行的类型 
-            string[] names = FileMesege.tnselectNode.Text.Split(' ');
-            string[] type = IniConfig.GetValue(path + "//devices//" + names[1] + ".ini", "ports", (rowindex + 1).ToString()).Split(',');
-
-            //2.打开对应类型的type.ini文件加载
-            string tmp = "";
-            //循环读取command 1= 2= 3= 信息
-            for (int i = 1; i < 30; i++)
+            try
             {
-                tmp = IniConfig.GetValue(path + "//types//" + type[0] + ".ini", "command", i.ToString());
-                if (tmp == "")
+                //1.获取当前设备的名字信息 读一次device .ini 该行的类型 
+                string[] names = FileMesege.tnselectNode.Text.Split(' ');
+                string[] type = IniConfig.GetValue(path + "//devices//" + names[1] + ".ini", "ports", (rowindex + 1).ToString()).Split(',');
+
+                //2.打开对应类型的type.ini文件加载
+                string tmp = "";
+                //循环读取command 1= 2= 3= 信息
+                for (int i = 1; i < 30; i++)
                 {
-                    break;
-                }
-                data a = new data();
-                
-                a.list = tmp.Split(',');
-                
-                //把命令存放到信息
-                comdsList.Add(a);
-            }
+                    tmp = IniConfig.GetValue(path + "//types//" + type[0] + ".ini", "command", i.ToString());
+                    if (tmp == "")
+                    {
+                        break;
+                    }
+                    data a = new data();
 
-            //2.1 cb1 加载 type.ini信息的头一个信息 
-            foreach (data comd in comdsList)
-            {
-                cbVersion.Items.Add(comd.list[0]);
+                    a.list = tmp.Split(',');
+
+                    //把命令存放到信息
+                    comdsList.Add(a);
+                }
+
+                //2.1 cb1 加载 type.ini信息的头一个信息 
+                foreach (data comd in comdsList)
+                {
+                    cbVersion.Items.Add(comd.list[0]);
+                }
+                //默认加载cbversion第一个选项信息
+                cbVersion.SelectedIndex = 0;
+                cbAndlb(0);
+                Init();
             }
-            //默认加载cbversion第一个选项信息
-            cbVersion.SelectedIndex = 0;
-            cbAndlb(0);
-            Init();
-           
+            catch
+            { 
+            
+            }
              
         }
 
