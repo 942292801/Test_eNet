@@ -7,25 +7,25 @@
                         "portID": 1,
                         "portType": "1.0_switch",
                         "portInterface": "Switch",
-                        "portContent": null
+                        "portContent": "{\"powerState\":\"ff\",\"interLock\":\"31\",\"powerStateReg\":\"40\",\"interLockReg\":\"60\"}"
                     },
                     {
                         "portID": 2,
                         "portType": "1.0_switch",
                         "portInterface": "Switch",
-                        "portContent": null
+                        "portContent": "{\"powerState\":\"00\",\"interLock\":\"32\",\"powerStateReg\":\"40\",\"interLockReg\":\"60\"}"
                     },
                     {
                         "portID": 3,
                         "portType": "1.0_switch",
                         "portInterface": "Switch",
-                        "portContent": null
+                        "portContent": "{\"powerState\":\"00\",\"interLock\":\"33\",\"powerStateReg\":\"40\",\"interLockReg\":\"60\"}"
                     },
                     {
                         "portID": 4,
                         "portType": "1.0_switch",
                         "portInterface": "Switch",
-                        "portContent": null
+                        "portContent": "{\"powerState\":\"00\",\"interLock\":\"34\",\"powerStateReg\":\"40\",\"interLockReg\":\"60\"}"
                     },
                     {
                         "portID": 5,
@@ -52,10 +52,10 @@
                         "portContent": null
                     }
                 ],
-                "id": 1,
+                "id": 10,
                 "device": "ET-R0816A",
-                "sn": "",
-                "ver": "",
+                "sn": "ffffffffffffffff",
+                "ver": "D20150804V1.11",
                 "area1": "",
                 "area2": "",
                 "area3": "",
@@ -68,7 +68,7 @@
                         "portID": 1,
                         "portType": "2.0_dimmer",
                         "portInterface": "0-10V",
-                        "portContent": null
+                        "portContent": "{\"powerState\":\"00\",\"onState\":\"0A\",\"changeState\":\"00\",\"max\":\"5A\",\"min\":\"A\",\"spline\":\"006400C8012C019001F4025802BC0320038403E8044C04B00514057805DC064006A40708076C07D00834089808FC096009C40A280A8C0AF00B540BB80C1C0C800CE40D480DAC0E100E740ED80F3C0FA01004106810CC1130119411F8125C12C01324138813EC145014B41518157C15E0164416A8170C177017D41838189C1900196419C81A2C1A901AF41B581BBC1C201C841CE81D4C1DB01E141E781EDC1F401FA42008206C20D02134219821FC226022C42328238C23F0245424B8251C258025E4264826AC2710\",\"powerStateReg\":\"40\",\"onStateReg\":\"60\",\"changeStateReg\":\"61\",\"maxReg\":\"62\",\"minReg\":\"63\",\"splineReg\":\"65\"}"
                     },
                     {
                         "portID": 2,
@@ -77,470 +77,10 @@
                         "portContent": null
                     }
                 ],
-                "id": 2,
+                "id": 11,
                 "device": "ET-D0201A",
-                "sn": "",
-                "ver": "",
-                "area1": "",
-                "area2": "",
-                "area3": "",
-                "area4": "",
-                "name": ""
-            },
-            {
-                "devPortList": [
-                    {
-                        "portID": 1,
-                        "portType": "2.0_dimmer",
-                        "portInterface": "0-10V",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 2,
-                        "portType": "2.0_dimmer",
-                        "portInterface": "0-10V",
-                        "portContent": null
-                    }
-                ],
-                "id": 3,
-                "device": "ET-D0201A",
-                "sn": "",
-                "ver": "",
-                "area1": "",
-                "area2": "",
-                "area3": "",
-                "area4": "",
-                "name": ""
-            },
-            {
-                "devPortList": [
-                    {
-                        "portID": 1,
-                        "portType": "1.0_switch",
-                        "portInterface": "Switch",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 2,
-                        "portType": "2.0_dimmer",
-                        "portInterface": "0-10V",
-                        "portContent": null
-                    }
-                ],
-                "id": 4,
-                "device": "KP06A",
-                "sn": "",
-                "ver": "",
-                "area1": "",
-                "area2": "",
-                "area3": "",
-                "area4": "",
-                "name": ""
-            },
-            {
-                "devPortList": [
-                    {
-                        "portID": 1,
-                        "portType": "1.0_switch",
-                        "portInterface": "Switch",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 2,
-                        "portType": "12.0_light",
-                        "portInterface": "光感值",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 3,
-                        "portType": "1.0_switch",
-                        "portInterface": "Switch",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 4,
-                        "portType": "11.0_temperature",
-                        "portInterface": "温感值",
-                        "portContent": null
-                    }
-                ],
-                "id": 5,
-                "device": "SL01A",
-                "sn": "",
-                "ver": "",
-                "area1": "",
-                "area2": "",
-                "area3": "",
-                "area4": "",
-                "name": ""
-            },
-            {
-                "devPortList": [
-                    {
-                        "portID": 1,
-                        "portType": "2.0_dimmer",
-                        "portInterface": "0-10V",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 2,
-                        "portType": "13.0_RGB",
-                        "portInterface": "调色1",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 3,
-                        "portType": "2.0_dimmer",
-                        "portInterface": "0-10V",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 4,
-                        "portType": "13.0_RGB",
-                        "portInterface": "调色2",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 5,
-                        "portType": "2.0_dimmer",
-                        "portInterface": "0-10V",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 6,
-                        "portType": "13.0_RGB",
-                        "portInterface": "调色3",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 7,
-                        "portType": "2.0_dimmer",
-                        "portInterface": "0-10V",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 8,
-                        "portType": "13.0_RGB",
-                        "portInterface": "调色4",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 9,
-                        "portType": "2.0_dimmer",
-                        "portInterface": "0-10V",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 10,
-                        "portType": "13.0_RGB",
-                        "portInterface": "调色5",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 11,
-                        "portType": "2.0_dimmer",
-                        "portInterface": "0-10V",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 12,
-                        "portType": "13.0_RGB",
-                        "portInterface": "调色6",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 13,
-                        "portType": "2.0_dimmer",
-                        "portInterface": "0-10V",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 14,
-                        "portType": "13.0_RGB",
-                        "portInterface": "调色7",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 15,
-                        "portType": "2.0_dimmer",
-                        "portInterface": "0-10V",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 16,
-                        "portType": "13.0_RGB",
-                        "portInterface": "调色8",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 17,
-                        "portType": "2.0_dimmer",
-                        "portInterface": "0-10V",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 18,
-                        "portType": "13.0_RGB",
-                        "portInterface": "调色9",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 19,
-                        "portType": "2.0_dimmer",
-                        "portInterface": "0-10V",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 20,
-                        "portType": "13.0_RGB",
-                        "portInterface": "调色10",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 21,
-                        "portType": "2.0_dimmer",
-                        "portInterface": "0-10V",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 22,
-                        "portType": "13.0_RGB",
-                        "portInterface": "调色11",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 23,
-                        "portType": "2.0_dimmer",
-                        "portInterface": "0-10V",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 24,
-                        "portType": "13.0_RGB",
-                        "portInterface": "调色12",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 25,
-                        "portType": "2.0_dimmer",
-                        "portInterface": "0-10V",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 26,
-                        "portType": "13.0_RGB",
-                        "portInterface": "调色13",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 27,
-                        "portType": "2.0_dimmer",
-                        "portInterface": "0-10V",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 28,
-                        "portType": "13.0_RGB",
-                        "portInterface": "调色14",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 29,
-                        "portType": "2.0_dimmer",
-                        "portInterface": "0-10V",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 30,
-                        "portType": "13.0_RGB",
-                        "portInterface": "调色15",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 31,
-                        "portType": "2.0_dimmer",
-                        "portInterface": "0-10V",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 32,
-                        "portType": "13.0_RGB",
-                        "portInterface": "调色16",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 33,
-                        "portType": "2.0_dimmer",
-                        "portInterface": "0-10V",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 34,
-                        "portType": "13.0_RGB",
-                        "portInterface": "调色17",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 35,
-                        "portType": "2.0_dimmer",
-                        "portInterface": "0-10V",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 36,
-                        "portType": "13.0_RGB",
-                        "portInterface": "调色18",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 37,
-                        "portType": "2.0_dimmer",
-                        "portInterface": "0-10V",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 38,
-                        "portType": "13.0_RGB",
-                        "portInterface": "调色19",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 39,
-                        "portType": "2.0_dimmer",
-                        "portInterface": "0-10V",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 40,
-                        "portType": "13.0_RGB",
-                        "portInterface": "调色20",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 41,
-                        "portType": "2.0_dimmer",
-                        "portInterface": "0-10V",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 42,
-                        "portType": "13.0_RGB",
-                        "portInterface": "调色21",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 43,
-                        "portType": "2.0_dimmer",
-                        "portInterface": "0-10V",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 44,
-                        "portType": "13.0_RGB",
-                        "portInterface": "调色22",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 45,
-                        "portType": "2.0_dimmer",
-                        "portInterface": "0-10V",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 46,
-                        "portType": "13.0_RGB",
-                        "portInterface": "调色23",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 47,
-                        "portType": "2.0_dimmer",
-                        "portInterface": "0-10V",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 48,
-                        "portType": "13.0_RGB",
-                        "portInterface": "调色24",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 49,
-                        "portType": "2.0_dimmer",
-                        "portInterface": "0-10V",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 50,
-                        "portType": "13.0_RGB",
-                        "portInterface": "调色25",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 51,
-                        "portType": "2.0_dimmer",
-                        "portInterface": "0-10V",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 52,
-                        "portType": "13.0_RGB",
-                        "portInterface": "调色26",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 53,
-                        "portType": "2.0_dimmer",
-                        "portInterface": "0-10V",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 54,
-                        "portType": "13.0_RGB",
-                        "portInterface": "调色27",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 55,
-                        "portType": "2.0_dimmer",
-                        "portInterface": "0-10V",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 56,
-                        "portType": "13.0_RGB",
-                        "portInterface": "调色28",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 57,
-                        "portType": "2.0_dimmer",
-                        "portInterface": "0-10V",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 58,
-                        "portType": "13.0_RGB",
-                        "portInterface": "调色29",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 59,
-                        "portType": "2.0_dimmer",
-                        "portInterface": "0-10V",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 60,
-                        "portType": "13.0_RGB",
-                        "portInterface": "调色30",
-                        "portContent": null
-                    }
-                ],
-                "id": 6,
-                "device": "ET-D6001A",
-                "sn": "",
-                "ver": "",
+                "sn": "ffffffffffffffff",
+                "ver": "D20180614V1.05",
                 "area1": "",
                 "area2": "",
                 "area3": "",
@@ -549,7 +89,7 @@
             }
         ],
         "master": "GW100A",
-        "ip": "192.168.1.230",
+        "ip": "192.168.1.125",
         "mask": "",
         "gateway": "",
         "mac": "",

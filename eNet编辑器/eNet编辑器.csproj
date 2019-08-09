@@ -119,7 +119,8 @@
     <Reference Include="DevExpress.XtraTreeList.v18.1, Version=18.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
       <Private>True</Private>
     </Reference>
-    <Reference Include="ICSharpCode.SharpZipLib">
+    <Reference Include="ICSharpCode.SharpZipLib, Version=0.86.0.518, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>E:\c#资源文件\ICSharpCode.SharpZipLib.dll</HintPath>
     </Reference>
     <Reference Include="Infragistics4.Shared.v12.2, Version=12.2.20122.2123, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb">
@@ -151,6 +152,9 @@
     </Reference>
     <Reference Include="Infragistics4.Win.v12.2, Version=12.2.20122.2123, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb">
       <Private>True</Private>
+    </Reference>
+    <Reference Include="Ionic.Zip">
+      <HintPath>E:\c#资源文件\Ionic.Zip.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.VisualBasic">
       <Private>True</Private>
@@ -225,6 +229,12 @@
     </Compile>
     <Compile Include="AddForm\compileDownload.Designer.cs">
       <DependentUpon>compileDownload.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AddForm\correctionTime.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddForm\correctionTime.Designer.cs">
+      <DependentUpon>correctionTime.cs</DependentUpon>
     </Compile>
     <Compile Include="AddForm\DGVconcrol.cs">
       <SubType>Form</SubType>
@@ -510,6 +520,9 @@
     <Compile Include="ZipHelper.cs" />
     <EmbeddedResource Include="AddForm\compileDownload.resx">
       <DependentUpon>compileDownload.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddForm\correctionTime.resx">
+      <DependentUpon>correctionTime.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AddForm\DGVconcrol.resx">
       <DependentUpon>DGVconcrol.cs</DependentUpon>

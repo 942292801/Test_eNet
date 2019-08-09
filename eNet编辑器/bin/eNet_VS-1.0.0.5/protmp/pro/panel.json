@@ -1,0 +1,155 @@
+[
+    {
+        "panels": [
+            {
+                "panelsInfo": [
+                    {
+                        "id": 1,
+                        "pid": 14809,
+                        "keyAddress": "E6040001",
+                        "objAddress": "E6100001",
+                        "objType": "4.0_scene",
+                        "opt": 17,
+                        "showAddress": "E6100001",
+                        "showMode": "同步"
+                    },
+                    {
+                        "id": 1,
+                        "pid": 10758,
+                        "keyAddress": "E6040001",
+                        "objAddress": "E6100003",
+                        "objType": "4.0_scene",
+                        "opt": 17,
+                        "showAddress": "E6100003",
+                        "showMode": "同步"
+                    },
+                    {
+                        "id": 2,
+                        "pid": 26211,
+                        "keyAddress": "E6040002",
+                        "objAddress": "E6100002",
+                        "objType": "4.0_scene",
+                        "opt": 17,
+                        "showAddress": "E6100002",
+                        "showMode": "同步"
+                    },
+                    {
+                        "id": 2,
+                        "pid": 26776,
+                        "keyAddress": "E6040002",
+                        "objAddress": "E6100004",
+                        "objType": "4.0_scene",
+                        "opt": 17,
+                        "showAddress": "E6100004",
+                        "showMode": "同步"
+                    },
+                    {
+                        "id": 3,
+                        "pid": 14809,
+                        "keyAddress": "E6040003",
+                        "objAddress": "E6100001",
+                        "objType": "4.0_scene",
+                        "opt": 17,
+                        "showAddress": "E6100001",
+                        "showMode": "同步"
+                    },
+                    {
+                        "id": 4,
+                        "pid": 26211,
+                        "keyAddress": "E6040004",
+                        "objAddress": "E6100002",
+                        "objType": "4.0_scene",
+                        "opt": 17,
+                        "showAddress": "E6100002",
+                        "showMode": "同步"
+                    },
+                    {
+                        "id": 5,
+                        "pid": 50518,
+                        "keyAddress": "E6040005",
+                        "objAddress": "FFFFFFFF",
+                        "objType": "2.0_dimmer",
+                        "opt": 19,
+                        "showAddress": "FFFFFFFF",
+                        "showMode": "同步"
+                    },
+                    {
+                        "id": 5,
+                        "pid": 11066,
+                        "keyAddress": "E6040005",
+                        "objAddress": "FFFFFFFF",
+                        "objType": "2.0_dimmer",
+                        "opt": 19,
+                        "showAddress": "",
+                        "showMode": ""
+                    },
+                    {
+                        "id": 5,
+                        "pid": 67881,
+                        "keyAddress": "E6040005",
+                        "objAddress": "FFFFFFFF",
+                        "objType": "2.0_dimmer",
+                        "opt": 19,
+                        "showAddress": "",
+                        "showMode": ""
+                    },
+                    {
+                        "id": 5,
+                        "pid": 55329,
+                        "keyAddress": "E6040005",
+                        "objAddress": "FFFFFFFF",
+                        "objType": "2.0_dimmer",
+                        "opt": 19,
+                        "showAddress": "",
+                        "showMode": ""
+                    },
+                    {
+                        "id": 6,
+                        "pid": 50518,
+                        "keyAddress": "E6040006",
+                        "objAddress": "FFFFFFFF",
+                        "objType": "2.0_dimmer",
+                        "opt": 20,
+                        "showAddress": "FFFFFFFF",
+                        "showMode": "同步"
+                    },
+                    {
+                        "id": 6,
+                        "pid": 11066,
+                        "keyAddress": "E6040006",
+                        "objAddress": "FFFFFFFF",
+                        "objType": "2.0_dimmer",
+                        "opt": 20,
+                        "showAddress": "",
+                        "showMode": ""
+                    },
+                    {
+                        "id": 6,
+                        "pid": 67881,
+                        "keyAddress": "E6040006",
+                        "objAddress": "FFFFFFFF",
+                        "objType": "2.0_dimmer",
+                        "opt": 20,
+                        "showAddress": "",
+                        "showMode": ""
+                    },
+                    {
+                        "id": 6,
+                        "pid": 55329,
+                        "keyAddress": "E6040006",
+                        "objAddress": "FFFFFFFF",
+                        "objType": "2.0_dimmer",
+                        "opt": 20,
+                        "showAddress": "",
+                        "showMode": ""
+                    }
+                ],
+                "id": 1,
+                "pid": 60742,
+                "keyNum": 6
+            }
+        ],
+        "IP": "192.168.1.230",
+        "Dev": "GW100A"
+    }
+]

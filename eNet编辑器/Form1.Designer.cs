@@ -343,8 +343,8 @@
             // 
             // 时钟校时ToolStripMenuItem
             // 
-            resources.ApplyResources(this.时钟校时ToolStripMenuItem, "时钟校时ToolStripMenuItem");
             this.时钟校时ToolStripMenuItem.Name = "时钟校时ToolStripMenuItem";
+            resources.ApplyResources(this.时钟校时ToolStripMenuItem, "时钟校时ToolStripMenuItem");
             this.时钟校时ToolStripMenuItem.Click += new System.EventHandler(this.时钟校时ToolStripMenuItem_Click);
             // 
             // toolStripMenuItem4

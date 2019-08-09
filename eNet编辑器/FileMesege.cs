@@ -494,9 +494,7 @@ namespace eNet编辑器
                 {
                     Directory.Delete(tmpPath, true);
                 }
-                //if (System.IO.File.Exists(TmpFilePath + "\\objs" + ip + ".zip"))
-                //{
-                //}
+       
                 File.Delete(tmpPath + ".zip");
                 Directory.CreateDirectory(tmpPath);
                 return true;

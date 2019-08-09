@@ -8,6 +8,8 @@ using System.Text;
 using System.Windows.Forms;
 using System.Net.Sockets;
 using System.Runtime.InteropServices;
+using System.IO;
+using Ionic.Zip;
 
 namespace eNet编辑器.AddForm
 {
@@ -217,7 +219,7 @@ namespace eNet编辑器.AddForm
                 showIp();
                 return;
             }
-            //
+          
             if (!sendBackUp(cbIP.Text))
             {
                 showIp();
@@ -250,7 +252,7 @@ namespace eNet编辑器.AddForm
                         AppTxtShow(string.Format("({0})工程文件初始化失败！", ip));
                         return false;
                     }
-                    
+                    SocketUtil.DelayMilli(200);
                   
                     
                     //编译场景
@@ -264,6 +266,7 @@ namespace eNet编辑器.AddForm
                         AppTxtShow("scene.json编译失败！");
 
                     }
+                    SocketUtil.DelayMilli(200);
                     //编译定时
                     if (fm.getTimerJsonByIP(ip))
                     {
@@ -275,6 +278,7 @@ namespace eNet编辑器.AddForm
                         AppTxtShow("timer.json编译失败！");
 
                     }
+                    SocketUtil.DelayMilli(200);
                     //编译面板
                     if (fm.getPanelJsonByIP(ip))
                     {
@@ -286,6 +290,7 @@ namespace eNet编辑器.AddForm
                         AppTxtShow("panel.json编译失败！");
 
                     }
+                    SocketUtil.DelayMilli(200);
                     //编译感应
                     if (fm.getSensorJsonByIP(ip))
                     {
@@ -297,14 +302,22 @@ namespace eNet编辑器.AddForm
                         AppTxtShow("sensor.json编译失败！");
 
                     }
-                    ZipHelper zipHelp = new ZipHelper();
+                    SocketUtil.DelayMilli(200);
                     string file = string.Format("{0}\\objs\\{1}", FileMesege.TmpFilePath, ip);
                     try
                     {
-                        string msg;
-                        //压缩到选中路径
-                        zipHelp.ZipFolder(file, string.Format("{0}.zip", file),out msg);
-                        //AppTxtShow(string.Format("({0})工程文件编译成功！", ip));
+
+                        //使用2.0版本Ionic.Zip压缩文件
+                        ///////zipHelp.ZipFolder(file, string.Format("{0}.zip", file),out msg);
+                        using (ZipFile zip = new ZipFile(string.Format("{0}.zip", file), Encoding.Default))
+                        {
+                     
+                            //将要压缩的文件夹添加到zip对象中去(要压缩的文件夹路径和名称)
+                            zip.AddDirectory(file);
+                            //将要压缩的文件添加到zip对象中去,如果文件不存在抛错FileNotFoundExcept
+                            //zip.AddFile(@"E:\\yangfeizai\\12051214544443\\"+"Jayzai.xml");
+                            zip.Save();
+                        }
                         pgBar.Value += 2;
                         return true;
                     }

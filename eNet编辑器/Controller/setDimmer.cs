@@ -303,6 +303,7 @@ namespace eNet编辑器.Controller
                 {
                     continue;
                 }
+                //数据信息  FB;{254.XX.0.XX:XX}; 64;
                 string data = strArray[i].Split(new string[] { ";" }, StringSplitOptions.RemoveEmptyEntries)[2];
                 Match match = reg.Match(strArray[i]);
                 if (match.Groups[3].Value == dataID && match.Groups[5].Value == "64")//40上电状态

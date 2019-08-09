@@ -1063,7 +1063,10 @@ namespace eNet编辑器
 
         private void 时钟校时ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            correctionTime ctTimer = new correctionTime();
+            ctTimer.StartPosition = FormStartPosition.CenterParent;
+            ctTimer.AppTxtShow += new Action<string>(AppTxtShow);
+            ctTimer.ShowDialog();
         }
 
         private void 按键检测ToolStripMenuItem_Click(object sender, EventArgs e)
