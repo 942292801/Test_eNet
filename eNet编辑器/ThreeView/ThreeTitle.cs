@@ -44,18 +44,8 @@ namespace eNet编辑器.ThreeView
             BindingFlags.Instance | BindingFlags.NonPublic);
             pi.SetValue(this.treeView1, true, null);
         }
-        /// <summary>
-        /// 解决窗体闪烁问题
-        /// </summary>
-        protected override CreateParams CreateParams
-        {
-            get
-            {
-                CreateParams cp = base.CreateParams;
-                cp.ExStyle |= 0x02000000;
-                return cp;
-            }
-        }
+
+
         private void ThreeTitle_Load(object sender, EventArgs e)
         {
            
@@ -393,7 +383,6 @@ namespace eNet编辑器.ThreeView
 
         private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
         {
-
             FileMesege.titlePointSection = "";
             //把选中节点保存至文档中 
             FileMesege.titleinfo = treeView1.SelectedNode.Text;
@@ -428,6 +417,7 @@ namespace eNet编辑器.ThreeView
         /// <param name="e"></param>
         private void treeView1_DrawNode(object sender, DrawTreeNodeEventArgs e)
         {
+            
             Color foreColor;
             Color backColor;
             if ((e.State & TreeNodeStates.Selected) > 0)
@@ -448,6 +438,7 @@ namespace eNet编辑器.ThreeView
             //e.Graphics.FillRectangle(new SolidBrush(backColor), new Rectangle(e.Bounds.Location, new Size(this.treeView1.Width - e.Bounds.X, e.Bounds.Height)));
             e.Graphics.FillRectangle(new SolidBrush(backColor), e.Bounds);
             e.Graphics.DrawString(e.Node.Text, this.treeView1.Font, new SolidBrush(foreColor), e.Bounds.X, e.Bounds.Y + 4);
+
             
         }
         /// <summary>
