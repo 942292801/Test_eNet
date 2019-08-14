@@ -70,7 +70,7 @@ namespace eNet编辑器.AddForm
             /// </summary>
             Dev = 1,
             /// <summary>
-            /// 变量类型
+            /// 虚拟端口类型
             /// </summary>
             Var = 2,
             /// <summary>
@@ -88,39 +88,46 @@ namespace eNet编辑器.AddForm
         //bool isLoad = false;
         private void sceneAddress_Load(object sender, EventArgs e)
         {
-            cbTypeitemIni();
-            //加载默认的类型到cb中
-            iniInfo(objType);
-            //初始默认设备列表信息到cb框
-            addIp();
-            //加载地址信息
-            if (obj != "" && obj != null)
+            try
             {
-                string[] infos = obj.Split('.');
-                if (linkType == LinkType.Com)
+                cbTypeitemIni();
+                //加载默认的类型到cb中
+                iniInfo(objType);
+                //初始默认设备列表信息到cb框
+                addIp();
+                //加载地址信息
+                if (obj != "" && obj != null)
                 {
-                    //不为设备类型
-                    cb1.Text = infos[0];
-                    //将超256 的号数操作
-                    cb4.Text = (Convert.ToInt32(infos[2]) * 256 + Convert.ToInt32(infos[3])).ToString();
-                    findNum();
+                    string[] infos = obj.Split('.');
+                    if (linkType == LinkType.Com)
+                    {
+                        //不为设备类型
+                        cb1.Text = infos[0];
+                        //将超256 的号数操作
+                        cb4.Text = (Convert.ToInt32(infos[2]) * 256 + Convert.ToInt32(infos[3])).ToString();
+                        findNum();
+                    }
+                    else if (linkType == LinkType.Dev)
+                    {
+                        cb1.Text = infos[0];
+                        cb3.Text = infos[2];
+                        cb4.Text = infos[3];
+                        findPort(infos[2]);
+                    }
+                    else if (linkType == LinkType.Var)
+                    {
+                        cb1.Text = infos[0];
+                        cb3.Text = infos[2];
+                        cb4.Text = infos[3];
+                        findVarNum();
+                        cb3.Enabled = false;
+                    }
+
                 }
-                else if(linkType == LinkType.Dev)
-                {
-                    cb1.Text = infos[0];
-                    cb3.Text = infos[2];
-                    cb4.Text = infos[3];
-                    findPort(infos[2]);
-                }
-                else if (linkType == LinkType.Var)
-                {
-                    cb1.Text = infos[0];
-                    cb3.Text = infos[2];
-                    cb4.Text = infos[3];
-                    findVarNum();
-                    cb3.Enabled = false;
-                }
-                   
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
             }
             
             
@@ -137,9 +144,15 @@ namespace eNet编辑器.AddForm
             DirectoryInfo folder = new DirectoryInfo(Application.StartupPath + "//types");
             
             HashSet<string> nameList = new HashSet<string>();
+            string tmp = "";
             foreach (FileInfo file in folder.GetFiles("*.ini"))
             {
-                nameList.Add(IniConfig.GetValue(file.FullName, "address", "2"));
+                tmp = IniConfig.GetValue(file.FullName, "address", "2");
+                if (!string.IsNullOrEmpty(tmp))
+                {
+                    nameList.Add(tmp);
+                }
+               
             }
             TypeList = nameList.ToList<string>();
             for (int i = 0; i < TypeList.Count; i++)
@@ -345,9 +358,15 @@ namespace eNet编辑器.AddForm
             cb3.Text = "";
             cb4.Text = "";
             linkType = LinkType.Dev;
+            string tmp = "";
             foreach (FileInfo file in folder.GetFiles("*.ini"))
             {
-                type = IniConfig.GetValue(file.FullName, "address", "2").Split(',')[1];
+                tmp = IniConfig.GetValue(file.FullName, "address", "2");
+                if (string.IsNullOrEmpty(tmp))
+                {
+                    continue;
+                }
+                type = tmp.Split(',')[1];
                 //找到类型一致
                 if (type == cbType)
                 {
@@ -496,14 +515,14 @@ namespace eNet编辑器.AddForm
         }
 
         /// <summary>
-        /// 查找当前ip的存在变量
+        /// 查找当前ip的存在虚拟端口
         /// </summary>
         private void findVarNum()
         {
             try
             {
                 cb4.Items.Clear();
-                foreach (DataJson.PointInfo point in FileMesege.PointList.variable)
+                foreach (DataJson.PointInfo point in FileMesege.PointList.virtualport)
                 {
                     if (point.ip == ip)
                     {

@@ -1,0 +1,228 @@
+[
+    {
+        "module": [
+            {
+                "devPortList": [
+                    {
+                        "portID": 1,
+                        "portType": "2.0_dimmer",
+                        "portInterface": "DaLi",
+                        "portContent": null
+                    },
+                    {
+                        "portID": 2,
+                        "portType": "2.0_dimmer",
+                        "portInterface": "DaLi",
+                        "portContent": null
+                    },
+                    {
+                        "portID": 3,
+                        "portType": "2.0_dimmer",
+                        "portInterface": "DaLi",
+                        "portContent": null
+                    },
+                    {
+                        "portID": 4,
+                        "portType": "2.0_dimmer",
+                        "portInterface": "DaLi",
+                        "portContent": null
+                    },
+                    {
+                        "portID": 5,
+                        "portType": "2.0_dimmer",
+                        "portInterface": "DaLi",
+                        "portContent": null
+                    },
+                    {
+                        "portID": 6,
+                        "portType": "2.0_dimmer",
+                        "portInterface": "DaLi",
+                        "portContent": null
+                    },
+                    {
+                        "portID": 7,
+                        "portType": "2.0_dimmer",
+                        "portInterface": "DaLi",
+                        "portContent": null
+                    },
+                    {
+                        "portID": 8,
+                        "portType": "2.0_dimmer",
+                        "portInterface": "DaLi",
+                        "portContent": null
+                    },
+                    {
+                        "portID": 9,
+                        "portType": "2.0_dimmer",
+                        "portInterface": "DaLi",
+                        "portContent": null
+                    },
+                    {
+                        "portID": 10,
+                        "portType": "2.0_dimmer",
+                        "portInterface": "DaLi",
+                        "portContent": null
+                    },
+                    {
+                        "portID": 11,
+                        "portType": "2.0_dimmer",
+                        "portInterface": "DaLi",
+                        "portContent": null
+                    },
+                    {
+                        "portID": 12,
+                        "portType": "2.0_dimmer",
+                        "portInterface": "DaLi",
+                        "portContent": null
+                    },
+                    {
+                        "portID": 13,
+                        "portType": "2.0_dimmer",
+                        "portInterface": "DaLi",
+                        "portContent": null
+                    },
+                    {
+                        "portID": 14,
+                        "portType": "2.0_dimmer",
+                        "portInterface": "DaLi",
+                        "portContent": null
+                    },
+                    {
+                        "portID": 15,
+                        "portType": "2.0_dimmer",
+                        "portInterface": "DaLi",
+                        "portContent": null
+                    },
+                    {
+                        "portID": 16,
+                        "portType": "2.0_dimmer",
+                        "portInterface": "DaLi",
+                        "portContent": null
+                    }
+                ],
+                "id": 1,
+                "device": "ET-DALI16A",
+                "sn": "",
+                "ver": "",
+                "area1": "",
+                "area2": "",
+                "area3": "",
+                "area4": "",
+                "name": ""
+            },
+            {
+                "devPortList": [
+                    {
+                        "portID": 1,
+                        "portType": "1.0_switch",
+                        "portInterface": "Switch",
+                        "portContent": null
+                    },
+                    {
+                        "portID": 2,
+                        "portType": "1.0_switch",
+                        "portInterface": "Switch",
+                        "portContent": null
+                    },
+                    {
+                        "portID": 3,
+                        "portType": "1.0_switch",
+                        "portInterface": "Switch",
+                        "portContent": null
+                    },
+                    {
+                        "portID": 4,
+                        "portType": "1.0_switch",
+                        "portInterface": "Switch",
+                        "portContent": null
+                    },
+                    {
+                        "portID": 5,
+                        "portType": "1.0_switch",
+                        "portInterface": "Switch",
+                        "portContent": null
+                    },
+                    {
+                        "portID": 6,
+                        "portType": "1.0_switch",
+                        "portInterface": "Switch",
+                        "portContent": null
+                    },
+                    {
+                        "portID": 7,
+                        "portType": "1.0_switch",
+                        "portInterface": "Switch",
+                        "portContent": null
+                    },
+                    {
+                        "portID": 8,
+                        "portType": "1.0_switch",
+                        "portInterface": "Switch",
+                        "portContent": null
+                    }
+                ],
+                "id": 10,
+                "device": "ET-R0816A",
+                "sn": "ffffffffffffffff",
+                "ver": "D20150804V1.11",
+                "area1": "",
+                "area2": "",
+                "area3": "",
+                "area4": "",
+                "name": ""
+            },
+            {
+                "devPortList": [
+                    {
+                        "portID": 1,
+                        "portType": "2.0_dimmer",
+                        "portInterface": "0-10V",
+                        "portContent": "{\"powerState\":\"64\",\"onState\":\"64\",\"changeState\":\"1\",\"max\":\"64\",\"min\":\"0\",\"spline\":\"006400C8012C019001F4025802BC0320038403E8044C04B00514057805DC064006A40708076C07D00834089808FC096009C40A280A8C0AF00B540BB80C1C0C800CE40D480DAC0E100E740ED80F3C0FA01004106810CC1130119411F8125C12C01324138813EC145014B41518157C15E0164416A8170C177017D41838189C1900196419C81A2C1A901AF41B581BBC1C201C841CE81D4C1DB01E141E781EDC1F401FA42008206C20D02134219821FC226022C42328238C23F0245424B8251C258025E4264826AC2710\",\"powerStateReg\":\"40\",\"onStateReg\":\"60\",\"changeStateReg\":\"61\",\"maxReg\":\"62\",\"minReg\":\"63\",\"splineReg\":\"65\"}"
+                    },
+                    {
+                        "portID": 2,
+                        "portType": "2.0_dimmer",
+                        "portInterface": "0-10V",
+                        "portContent": "{\"powerState\":\"00\",\"onState\":\"0A\",\"changeState\":\"00\",\"max\":\"5A\",\"min\":\"A\",\"spline\":\"006400C8012C019001F4025802BC0320038403E8044C04B00514057805DC064006A40708076C07D00834089808FC096009C40A280A8C0AF00B540BB80C1C0C800CE40D480DAC0E100E740ED80F3C0FA01004106810CC1130119411F8125C12C01324138813EC145014B41518157C15E0164416A8170C177017D41838189C1900196419C81A2C1A901AF41B581BBC1C201C841CE81D4C1DB01E141E781EDC1F401FA42008206C20D02134219821FC226022C42328238C23F0245424B8251C258025E4264826AC2710\",\"powerStateReg\":\"40\",\"onStateReg\":\"60\",\"changeStateReg\":\"61\",\"maxReg\":\"62\",\"minReg\":\"63\",\"splineReg\":\"65\"}"
+                    }
+                ],
+                "id": 11,
+                "device": "ET-D0201A",
+                "sn": "ffffffffffffffff",
+                "ver": "D20180614V1.05",
+                "area1": "",
+                "area2": "",
+                "area3": "",
+                "area4": "",
+                "name": ""
+            }
+        ],
+        "master": "GW100A",
+        "ip": "192.168.1.125",
+        "mask": "",
+        "gateway": "",
+        "mac": "",
+        "sn": "",
+        "ver": "",
+        "area1": "",
+        "area2": "",
+        "area3": "",
+        "area4": "",
+        "name": ""
+    },
+    {
+        "module": [],
+        "master": "GW100A",
+        "ip": "192.168.1.230",
+        "mask": "",
+        "gateway": "",
+        "mac": "",
+        "sn": "",
+        "ver": "",
+        "area1": "",
+        "area2": "",
+        "area3": "",
+        "area4": "",
+        "name": ""
+    }
+]

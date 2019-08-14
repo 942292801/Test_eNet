@@ -483,9 +483,9 @@ namespace eNet编辑器.AddForm
         {
             if (!string.IsNullOrEmpty(yyMMdd) && !string.IsNullOrEmpty(hhmmss))
             {
-                string dateString = string.Format("20{0}{1}",yyMMdd.Substring(2,6),hhmmss.Substring(2,6));
-                DateTime dt = DateTime.ParseExact(dateString, "yyyyMMddhhmmss", System.Globalization.CultureInfo.CurrentCulture);
-                lbMasterTime.Text = dt.ToString();
+                //string dateString = string.Format("{0}{1}",hhmmss.Substring(2,6));
+                //DateTime dt = DateTime.ParseExact(dateString, "yyyyMMddhhmmss", System.Globalization.CultureInfo.CurrentCulture);
+                lbMasterTime.Text = string.Format("20{0}/{1}/{2} {3}:{4}:{5}", yyMMdd.Substring(2, 2), yyMMdd.Substring(4, 2), yyMMdd.Substring(6, 2), hhmmss.Substring(2, 2), hhmmss.Substring(4, 2), hhmmss.Substring(6, 2));
                 yyMMdd = "";
                 hhmmss = "";
                 

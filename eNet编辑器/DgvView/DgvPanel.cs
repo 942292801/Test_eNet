@@ -1341,9 +1341,9 @@ namespace eNet编辑器.DgvView
                 pls.panelsInfo[rowCount].objType = type;
                 //获取树状图的IP第四位  + Address地址的 后六位
                 string ad = SocketUtil.GetIPstyle(ip, 4) + dc.Obj.Substring(2, 6);
-                if (type == "9.0_variable")
+                if (type == "9.0_virtualport")
                 {
-                    //变量特殊处理
+                    //虚拟端口特殊处理
                     ad = dc.Obj;
                 }
                 //区域加名称
@@ -1643,12 +1643,15 @@ namespace eNet编辑器.DgvView
                 dataGridView1.Rows[id].Cells[2].Value = DgvMesege.addressTransform(plInfo.objAddress);
                 dataGridView1.Rows[id].Cells[4].Value = string.Format("{0} {1} {2} {3}", eq.area1, eq.area2, eq.area3, eq.area4).Trim();//改根据地址从信息里面获取
                 dataGridView1.Rows[id].Cells[5].Value = eq.name;
-                if (eq.address != "FFFFFFFF")
+                if (eq.address != "FFFFFFFF" && dataGridView1.Rows[id].Cells[0].Value != null)
                 {
-                    plInfo.showAddress = eq.address;
-                    plInfo.showMode = "同步";
-                    dataGridView1.Rows[id].Cells[7].Value = dataGridView1.Rows[id].Cells[2].Value;
-                    dataGridView1.Rows[id].Cells[8].Value = "同步";
+   
+                        plInfo.showAddress = eq.address;
+                        plInfo.showMode = "同步";
+                        dataGridView1.Rows[id].Cells[7].Value = dataGridView1.Rows[id].Cells[2].Value;
+                        dataGridView1.Rows[id].Cells[8].Value = "同步";
+                    
+                    
                 }
             }
             else
@@ -1663,12 +1666,14 @@ namespace eNet编辑器.DgvView
                 dataGridView1.Rows[id].Cells[4].Value = string.Format("{0} {1} {2} {3}", eq.area1, eq.area2, eq.area3, eq.area4).Trim();//改根据地址从信息里面获取
                 dataGridView1.Rows[id].Cells[5].Value = eq.name;
                 dataGridView1.Rows[id].Cells[6].Value = updataMode(plInfo.objType, id, plInfo.opt);
-                if (eq.address != "FFFFFFFF")
+                if (eq.address != "FFFFFFFF" && dataGridView1.Rows[id].Cells[0].Value != null)
                 {
-                    plInfo.showAddress = eq.address;
-                    plInfo.showMode = "同步";
-                    dataGridView1.Rows[id].Cells[7].Value = dataGridView1.Rows[id].Cells[2].Value;
-                    dataGridView1.Rows[id].Cells[8].Value = "同步";
+                
+                        plInfo.showAddress = eq.address;
+                        plInfo.showMode = "同步";
+                        dataGridView1.Rows[id].Cells[7].Value = dataGridView1.Rows[id].Cells[2].Value;
+                        dataGridView1.Rows[id].Cells[8].Value = "同步";
+                    
                 }
                     
                             

@@ -22,14 +22,14 @@ namespace eNet编辑器.ThreeView
 
         public event DgvSceneAddItem2 dgvsceneAddItem;
         public event Action dgvtimerAddItem;
-        public event Action dgvVariableAddItem;
+        public event Action dgvVirtualportAddItem;
         //public event AddTitleDevCursor addTitleDevCursor;
         //public event AddTitlenNameCursor addTitlenNameCursor;
 
         //添加点位
         public event Action<string> addPoint;
-        //添加变量
-        public event Action<string> addVariable;
+        //添加虚拟端口
+        public event Action<string> addVirtualport;
 
 
         public ThreeTitle()
@@ -119,10 +119,10 @@ namespace eNet编辑器.ThreeView
                         case "logic":
                             // MessageBox.Show("logic");
                             break;
-                        case "variable":
+                        case "virtualport":
                             treeView1.CheckBoxes = false;
                             treeView1.ContextMenuStrip = null;
-                            variableAdd(num);
+                            virtualportAdd(num);
                             break;
                       
                         default: break;
@@ -243,8 +243,8 @@ namespace eNet编辑器.ThreeView
                         case "sensor":
                             getNametree(FileMesege.PointList.link, "sensor", ipLast);
                             break;
-                        case "variable":
-                            getNametree(FileMesege.PointList.variable, "variable", ipLast);
+                        case "virtualport":
+                            getNametree(FileMesege.PointList.virtualport, "virtualport", ipLast);
                             break;
                         default: break;
                     }
@@ -338,15 +338,15 @@ namespace eNet编辑器.ThreeView
         }
         #endregion
 
-        #region 变量加载节点
+        #region 虚拟端口加载节点
         /// <summary>
-        /// 变量模式 变量按钮加载树状图节点
+        /// 虚拟端口模式 虚拟端口按钮加载树状图节点
         /// </summary>
         /// <param name="num"></param>
-        private void variableAdd(int num)
+        private void virtualportAdd(int num)
         {
             TreeMesege tm = new TreeMesege();
-            string strs = IniConfig.GetValue(inifilepath, "variable", keys[num]);
+            string strs = IniConfig.GetValue(inifilepath, "virtualport", keys[num]);
             //读取到的ini值为空 则加载当前选中节点的地址
             if (string.IsNullOrEmpty(strs) && FileMesege.PointList != null)
             {
@@ -594,7 +594,7 @@ namespace eNet编辑器.ThreeView
                     break;
                 case "sensor":
                     break;
-                case "variable":
+                case "virtualport":
                     addVar(tn.Text);
                     
                     break;
@@ -604,7 +604,7 @@ namespace eNet编辑器.ThreeView
         }
 
         /// <summary>
-        /// 添加变量 根据变量后面 +？
+        /// 添加虚拟端口 根据虚拟端口后面 +？
         /// </summary>
         /// <param name="nodeTxt"></param>
         private void addVar(string nodeTxt)
@@ -618,10 +618,10 @@ namespace eNet编辑器.ThreeView
                 DataJson.totalList OldList = FileMesege.cmds.getListInfos();
                 for (int i = 0; i < number; i++)
                 {
-                    //添加变量
-                    addVariable(keys[FileMesege.cbTypeIndex]);
+                    //添加虚拟端口
+                    addVirtualport(keys[FileMesege.cbTypeIndex]);
                 }
-                dgvVariableAddItem();
+                dgvVirtualportAddItem();
                 DataJson.totalList NewList = FileMesege.cmds.getListInfos();
                 FileMesege.cmds.DoNewCommand(NewList, OldList);
                     
@@ -659,7 +659,7 @@ namespace eNet编辑器.ThreeView
                     break;
                 case "sensor":
                     break;
-                case "variable":
+                case "virtualport":
                     break;
                 default: break;
             }
@@ -702,8 +702,8 @@ namespace eNet编辑器.ThreeView
                 case "sensor":
                     dgvSceneListAdd(FileMesege.PointList.link, nodeText);
                     break;
-                case "variable":
-                    dgvSceneListAdd(FileMesege.PointList.variable, nodeText);
+                case "virtualport":
+                    dgvSceneListAdd(FileMesege.PointList.virtualport, nodeText);
                     break;
                 default:
                     dgvSceneListAdd(FileMesege.PointList.equipment, nodeText);
@@ -833,8 +833,8 @@ namespace eNet编辑器.ThreeView
                 case "sensor":
                     dgvTimerListAdd(FileMesege.PointList.link, nodeText);
                     break;
-                case "variable":
-                    dgvTimerListAdd(FileMesege.PointList.variable, nodeText);
+                case "virtualport":
+                    dgvTimerListAdd(FileMesege.PointList.virtualport, nodeText);
                     break;
                 default:
                     dgvTimerListAdd(FileMesege.PointList.equipment, nodeText);

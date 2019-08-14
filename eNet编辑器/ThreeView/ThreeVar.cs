@@ -101,7 +101,7 @@ namespace eNet编辑器.ThreeView
         private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
         {
             FileMesege.varSelectNode = treeView1.SelectedNode;
-            //DGVVar添加变量
+            //DGVVar添加虚拟端口
             dgvVarAddItem();
             string[] names = treeView1.SelectedNode.Text.Split(' ');
             if (treeView1.SelectedNode.Parent != null)

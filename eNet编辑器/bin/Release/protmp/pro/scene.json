@@ -5,244 +5,88 @@
                 "sceneInfo": [
                     {
                         "id": 1,
-                        "pid": 44841,
+                        "pid": 60715,
                         "type": "1.0_switch",
-                        "address": "FFFFFFFF",
+                        "address": "7D000301",
                         "opt": "00000001",
                         "optName": "开启",
                         "Delay": 0
                     },
                     {
                         "id": 2,
-                        "pid": 97917,
+                        "pid": 84565,
                         "type": "1.0_switch",
-                        "address": "FFFFFFFF",
+                        "address": "7D000302",
                         "opt": "00000001",
                         "optName": "开启",
                         "Delay": 0
                     },
                     {
                         "id": 3,
-                        "pid": 21376,
+                        "pid": 47192,
                         "type": "1.0_switch",
-                        "address": "FFFFFFFF",
+                        "address": "7D000303",
                         "opt": "00000001",
                         "optName": "开启",
                         "Delay": 0
                     },
                     {
                         "id": 4,
-                        "pid": 14875,
+                        "pid": 95036,
                         "type": "1.0_switch",
-                        "address": "FFFFFFFF",
-                        "opt": "00000001",
-                        "optName": "开启",
-                        "Delay": 0
-                    },
-                    {
-                        "id": 5,
-                        "pid": 41413,
-                        "type": "1.0_switch",
-                        "address": "FFFFFFFF",
-                        "opt": "00000001",
-                        "optName": "开启",
-                        "Delay": 0
-                    },
-                    {
-                        "id": 6,
-                        "pid": 79836,
-                        "type": "1.0_switch",
-                        "address": "FFFFFFFF",
-                        "opt": "00000001",
-                        "optName": "开启",
-                        "Delay": 0
-                    },
-                    {
-                        "id": 7,
-                        "pid": 61748,
-                        "type": "1.0_switch",
-                        "address": "FFFFFFFF",
-                        "opt": "00000001",
-                        "optName": "开启",
-                        "Delay": 0
-                    },
-                    {
-                        "id": 8,
-                        "pid": 84177,
-                        "type": "1.0_switch",
-                        "address": "FFFFFFFF",
+                        "address": "7D000304",
                         "opt": "00000001",
                         "optName": "开启",
                         "Delay": 0
                     }
                 ],
                 "id": 1,
-                "pid": 14809
+                "pid": 76452
             },
             {
                 "sceneInfo": [
                     {
                         "id": 1,
-                        "pid": 44841,
+                        "pid": 60715,
                         "type": "1.0_switch",
-                        "address": "FFFFFFFF",
+                        "address": "7D000301",
                         "opt": "00000000",
                         "optName": "关闭",
                         "Delay": 0
                     },
                     {
                         "id": 2,
-                        "pid": 97917,
+                        "pid": 84565,
                         "type": "1.0_switch",
-                        "address": "FFFFFFFF",
+                        "address": "7D000302",
                         "opt": "00000000",
                         "optName": "关闭",
                         "Delay": 0
                     },
                     {
                         "id": 3,
-                        "pid": 21376,
+                        "pid": 47192,
                         "type": "1.0_switch",
-                        "address": "FFFFFFFF",
+                        "address": "7D000303",
                         "opt": "00000000",
                         "optName": "关闭",
                         "Delay": 0
                     },
                     {
                         "id": 4,
-                        "pid": 14875,
+                        "pid": 95036,
                         "type": "1.0_switch",
-                        "address": "FFFFFFFF",
-                        "opt": "00000000",
-                        "optName": "关闭",
-                        "Delay": 0
-                    },
-                    {
-                        "id": 5,
-                        "pid": 41413,
-                        "type": "1.0_switch",
-                        "address": "FFFFFFFF",
-                        "opt": "00000000",
-                        "optName": "关闭",
-                        "Delay": 0
-                    },
-                    {
-                        "id": 6,
-                        "pid": 79836,
-                        "type": "1.0_switch",
-                        "address": "FFFFFFFF",
-                        "opt": "00000000",
-                        "optName": "关闭",
-                        "Delay": 0
-                    },
-                    {
-                        "id": 7,
-                        "pid": 61748,
-                        "type": "1.0_switch",
-                        "address": "FFFFFFFF",
-                        "opt": "00000000",
-                        "optName": "关闭",
-                        "Delay": 0
-                    },
-                    {
-                        "id": 8,
-                        "pid": 84177,
-                        "type": "1.0_switch",
-                        "address": "FFFFFFFF",
+                        "address": "7D000304",
                         "opt": "00000000",
                         "optName": "关闭",
                         "Delay": 0
                     }
                 ],
                 "id": 2,
-                "pid": 26211
-            },
-            {
-                "sceneInfo": [
-                    {
-                        "id": 1,
-                        "pid": 50518,
-                        "type": "2.0_dimmer",
-                        "address": "FFFFFFFF",
-                        "opt": "10000064",
-                        "optName": "调光",
-                        "Delay": 0
-                    },
-                    {
-                        "id": 2,
-                        "pid": 11066,
-                        "type": "2.0_dimmer",
-                        "address": "FFFFFFFF",
-                        "opt": "10000064",
-                        "optName": "调光",
-                        "Delay": 0
-                    },
-                    {
-                        "id": 3,
-                        "pid": 67881,
-                        "type": "2.0_dimmer",
-                        "address": "FFFFFFFF",
-                        "opt": "10000064",
-                        "optName": "调光",
-                        "Delay": 0
-                    },
-                    {
-                        "id": 4,
-                        "pid": 55329,
-                        "type": "2.0_dimmer",
-                        "address": "FFFFFFFF",
-                        "opt": "10000064",
-                        "optName": "调光",
-                        "Delay": 0
-                    }
-                ],
-                "id": 3,
-                "pid": 10758
-            },
-            {
-                "sceneInfo": [
-                    {
-                        "id": 1,
-                        "pid": 50518,
-                        "type": "2.0_dimmer",
-                        "address": "FFFFFFFF",
-                        "opt": "10000000",
-                        "optName": "调光",
-                        "Delay": 0
-                    },
-                    {
-                        "id": 2,
-                        "pid": 11066,
-                        "type": "2.0_dimmer",
-                        "address": "FFFFFFFF",
-                        "opt": "10000000",
-                        "optName": "调光",
-                        "Delay": 0
-                    },
-                    {
-                        "id": 3,
-                        "pid": 67881,
-                        "type": "2.0_dimmer",
-                        "address": "FFFFFFFF",
-                        "opt": "10000000",
-                        "optName": "调光",
-                        "Delay": 0
-                    },
-                    {
-                        "id": 4,
-                        "pid": 55329,
-                        "type": "2.0_dimmer",
-                        "address": "FFFFFFFF",
-                        "opt": "10000000",
-                        "optName": "调光",
-                        "Delay": 0
-                    }
-                ],
-                "id": 4,
-                "pid": 26776
+                "pid": 13148
             }
         ],
-        "IP": "192.168.1.230",
+        "IP": "192.168.1.125",
         "Dev": "GW100A"
     }
 ]

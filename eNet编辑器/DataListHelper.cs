@@ -480,7 +480,7 @@ namespace eNet编辑器
                     p.name = string.Format("{0}@{1}", p.name.Split('@')[0], IP.Split('.')[3]);
                 }
             }
-            foreach (DataJson.PointInfo p in FileMesege.PointList.variable)
+            foreach (DataJson.PointInfo p in FileMesege.PointList.virtualport)
             {
                 if (p.ip == oldIP)
                 {
@@ -548,12 +548,12 @@ namespace eNet编辑器
                 dellistlink = FileMesege.PointList.link.Find(mach => mach.ip == IP);
             }
 
-            //变量
-            DataJson.PointInfo dellistvariable = FileMesege.PointList.variable.Find(mach => mach.ip.Equals(IP));
-            while (dellistvariable != null)
+            //虚拟端口
+            DataJson.PointInfo dellistVirtualport = FileMesege.PointList.virtualport.Find(mach => mach.ip.Equals(IP));
+            while (dellistVirtualport != null)
             {
-                FileMesege.PointList.variable.Remove(dellistvariable);
-                dellistvariable = FileMesege.PointList.variable.Find(mach => mach.ip == IP);
+                FileMesege.PointList.virtualport.Remove(dellistVirtualport);
+                dellistVirtualport = FileMesege.PointList.virtualport.Find(mach => mach.ip == IP);
             }
             
         }
@@ -730,9 +730,9 @@ namespace eNet编辑器
                             return pointInfo;
                         }
                     }
-                    if (FileMesege.PointList.variable != null)
+                    if (FileMesege.PointList.virtualport != null)
                     {
-                        pointInfo = findPointByList_add(FileMesege.PointList.variable, address);
+                        pointInfo = findPointByList_add(FileMesege.PointList.virtualport, address);
                         if (pointInfo != null)
                         {
                             return pointInfo;
@@ -761,8 +761,8 @@ namespace eNet编辑器
                         pointInfo = findPointByList_add(FileMesege.PointList.link, address);
 
                         break;
-                    case "variable":
-                        pointInfo = findPointByList_add(FileMesege.PointList.variable, address);
+                    case "virtualport":
+                        pointInfo = findPointByList_add(FileMesege.PointList.virtualport, address);
 
                         break;
                     //为设备00 扫equipment
@@ -859,7 +859,7 @@ namespace eNet编辑器
                         return point;
                     }
                 }
-                foreach (DataJson.PointInfo point in FileMesege.PointList.variable)
+                foreach (DataJson.PointInfo point in FileMesege.PointList.virtualport)
                 {
                     if (point.pid == pid)
                     {
@@ -913,7 +913,7 @@ namespace eNet编辑器
                     return eq;
                 }
             }
-            foreach (DataJson.PointInfo eq in FileMesege.PointList.variable)
+            foreach (DataJson.PointInfo eq in FileMesege.PointList.virtualport)
             {
                 if (eq.area1 == section_name[0] && eq.area2 == section_name[1] && eq.area3 == section_name[2] && eq.area4 == section_name[3] && eq.name == section_name[4])
                 {

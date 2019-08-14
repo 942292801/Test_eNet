@@ -1732,9 +1732,9 @@ namespace eNet编辑器.DgvView
                 tmInfo.type = type;
                 //获取树状图的IP第四位  + Address地址的 后六位
                 string ad = SocketUtil.GetIPstyle(ip, 4) + tmInfo.address.Substring(2, 6);
-                if (type == "9.0_variable")
+                if (type == "9.0_virtualport")
                 {
-                    //变量特殊处理
+                    //虚拟端口特殊处理
                     ad = tmInfo.address;
                 }
                 //区域加名称

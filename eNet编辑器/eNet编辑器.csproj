@@ -338,11 +338,11 @@
     <Compile Include="AddForm\tsSection.Designer.cs">
       <DependentUpon>tsSection.cs</DependentUpon>
     </Compile>
-    <Compile Include="AddForm\variableAddress.cs">
+    <Compile Include="AddForm\virtualportAddress.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AddForm\variableAddress.Designer.cs">
-      <DependentUpon>variableAddress.cs</DependentUpon>
+    <Compile Include="AddForm\virtualportAddress.Designer.cs">
+      <DependentUpon>virtualportAddress.cs</DependentUpon>
     </Compile>
     <Compile Include="AddForm\versionInfo.cs">
       <SubType>Form</SubType>
@@ -576,8 +576,8 @@
     <EmbeddedResource Include="AddForm\tsSection.resx">
       <DependentUpon>tsSection.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AddForm\variableAddress.resx">
-      <DependentUpon>variableAddress.cs</DependentUpon>
+    <EmbeddedResource Include="AddForm\virtualportAddress.resx">
+      <DependentUpon>virtualportAddress.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AddForm\versionInfo.resx">
       <DependentUpon>versionInfo.cs</DependentUpon>

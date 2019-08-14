@@ -1,0 +1,18 @@
+{
+    "action": [
+        {
+            "num": 1,
+            "obj": "7D000A01",
+            "val": "00000001",
+            "delay": 0
+        },
+        {
+            "num": 2,
+            "obj": "7D000A02",
+            "val": "00000001",
+            "delay": 0
+        }
+    ],
+    "type": "scene",
+    "describe": "create by system"
+}

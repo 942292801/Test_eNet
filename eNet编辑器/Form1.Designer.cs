@@ -59,12 +59,12 @@
             this.功能GToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.设备在线搜索ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripSeparator();
-            this.时钟校时ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripSeparator();
-            this.固件更新ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem8 = new System.Windows.Forms.ToolStripSeparator();
             this.编译下载ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.工具TToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.时钟设置ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripSeparator();
+            this.固件更新ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripSeparator();
             this.应急状态设置ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem20 = new System.Windows.Forms.ToolStripSeparator();
             this.天文时钟设置ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -322,10 +322,6 @@
             this.功能GToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.设备在线搜索ToolStripMenuItem,
             this.toolStripMenuItem3,
-            this.时钟校时ToolStripMenuItem,
-            this.toolStripMenuItem4,
-            this.固件更新ToolStripMenuItem,
-            this.toolStripMenuItem8,
             this.编译下载ToolStripMenuItem});
             this.功能GToolStripMenuItem.Name = "功能GToolStripMenuItem";
             resources.ApplyResources(this.功能GToolStripMenuItem, "功能GToolStripMenuItem");
@@ -341,28 +337,6 @@
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
             resources.ApplyResources(this.toolStripMenuItem3, "toolStripMenuItem3");
             // 
-            // 时钟校时ToolStripMenuItem
-            // 
-            this.时钟校时ToolStripMenuItem.Name = "时钟校时ToolStripMenuItem";
-            resources.ApplyResources(this.时钟校时ToolStripMenuItem, "时钟校时ToolStripMenuItem");
-            this.时钟校时ToolStripMenuItem.Click += new System.EventHandler(this.时钟校时ToolStripMenuItem_Click);
-            // 
-            // toolStripMenuItem4
-            // 
-            this.toolStripMenuItem4.Name = "toolStripMenuItem4";
-            resources.ApplyResources(this.toolStripMenuItem4, "toolStripMenuItem4");
-            // 
-            // 固件更新ToolStripMenuItem
-            // 
-            this.固件更新ToolStripMenuItem.Name = "固件更新ToolStripMenuItem";
-            resources.ApplyResources(this.固件更新ToolStripMenuItem, "固件更新ToolStripMenuItem");
-            this.固件更新ToolStripMenuItem.Click += new System.EventHandler(this.固件更新ToolStripMenuItem_Click);
-            // 
-            // toolStripMenuItem8
-            // 
-            this.toolStripMenuItem8.Name = "toolStripMenuItem8";
-            resources.ApplyResources(this.toolStripMenuItem8, "toolStripMenuItem8");
-            // 
             // 编译下载ToolStripMenuItem
             // 
             this.编译下载ToolStripMenuItem.Name = "编译下载ToolStripMenuItem";
@@ -372,6 +346,10 @@
             // 工具TToolStripMenuItem
             // 
             this.工具TToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.时钟设置ToolStripMenuItem,
+            this.toolStripMenuItem6,
+            this.固件更新ToolStripMenuItem1,
+            this.toolStripMenuItem5,
             this.应急状态设置ToolStripMenuItem,
             this.toolStripMenuItem20,
             this.天文时钟设置ToolStripMenuItem,
@@ -379,13 +357,35 @@
             this.管理密码设置ToolStripMenuItem,
             this.toolStripMenuItem22,
             this.节假日设置ToolStripMenuItem});
-            resources.ApplyResources(this.工具TToolStripMenuItem, "工具TToolStripMenuItem");
             this.工具TToolStripMenuItem.Name = "工具TToolStripMenuItem";
+            resources.ApplyResources(this.工具TToolStripMenuItem, "工具TToolStripMenuItem");
+            // 
+            // 时钟设置ToolStripMenuItem
+            // 
+            this.时钟设置ToolStripMenuItem.Name = "时钟设置ToolStripMenuItem";
+            resources.ApplyResources(this.时钟设置ToolStripMenuItem, "时钟设置ToolStripMenuItem");
+            this.时钟设置ToolStripMenuItem.Click += new System.EventHandler(this.时钟设置ToolStripMenuItem_Click);
+            // 
+            // toolStripMenuItem6
+            // 
+            this.toolStripMenuItem6.Name = "toolStripMenuItem6";
+            resources.ApplyResources(this.toolStripMenuItem6, "toolStripMenuItem6");
+            // 
+            // 固件更新ToolStripMenuItem1
+            // 
+            this.固件更新ToolStripMenuItem1.Name = "固件更新ToolStripMenuItem1";
+            resources.ApplyResources(this.固件更新ToolStripMenuItem1, "固件更新ToolStripMenuItem1");
+            this.固件更新ToolStripMenuItem1.Click += new System.EventHandler(this.固件更新ToolStripMenuItem1_Click);
+            // 
+            // toolStripMenuItem5
+            // 
+            this.toolStripMenuItem5.Name = "toolStripMenuItem5";
+            resources.ApplyResources(this.toolStripMenuItem5, "toolStripMenuItem5");
             // 
             // 应急状态设置ToolStripMenuItem
             // 
-            this.应急状态设置ToolStripMenuItem.Name = "应急状态设置ToolStripMenuItem";
             resources.ApplyResources(this.应急状态设置ToolStripMenuItem, "应急状态设置ToolStripMenuItem");
+            this.应急状态设置ToolStripMenuItem.Name = "应急状态设置ToolStripMenuItem";
             this.应急状态设置ToolStripMenuItem.Click += new System.EventHandler(this.应急状态设置ToolStripMenuItem_Click);
             // 
             // toolStripMenuItem20
@@ -406,8 +406,8 @@
             // 
             // 管理密码设置ToolStripMenuItem
             // 
-            this.管理密码设置ToolStripMenuItem.Name = "管理密码设置ToolStripMenuItem";
             resources.ApplyResources(this.管理密码设置ToolStripMenuItem, "管理密码设置ToolStripMenuItem");
+            this.管理密码设置ToolStripMenuItem.Name = "管理密码设置ToolStripMenuItem";
             this.管理密码设置ToolStripMenuItem.Click += new System.EventHandler(this.管理密码设置ToolStripMenuItem_Click);
             // 
             // toolStripMenuItem22
@@ -417,8 +417,8 @@
             // 
             // 节假日设置ToolStripMenuItem
             // 
-            this.节假日设置ToolStripMenuItem.Name = "节假日设置ToolStripMenuItem";
             resources.ApplyResources(this.节假日设置ToolStripMenuItem, "节假日设置ToolStripMenuItem");
+            this.节假日设置ToolStripMenuItem.Name = "节假日设置ToolStripMenuItem";
             this.节假日设置ToolStripMenuItem.Click += new System.EventHandler(this.节假日设置ToolStripMenuItem_Click);
             // 
             // 帮助HToolStripMenuItem
@@ -812,8 +812,8 @@
             this.tabStrip.ColorScheme.TabItemSelectedBorderDark = System.Drawing.Color.Empty;
             this.tabStrip.ColorScheme.TabItemSelectedBorderLight = System.Drawing.Color.Empty;
             this.tabStrip.ColorScheme.TabItemSelectedText = System.Drawing.Color.White;
-            this.tabStrip.Controls.Add(this.tabControlPanel1);
             this.tabStrip.Controls.Add(this.tabControlPanel8);
+            this.tabStrip.Controls.Add(this.tabControlPanel1);
             this.tabStrip.Controls.Add(this.tabControlPanel5);
             this.tabStrip.Controls.Add(this.tabControlPanel4);
             this.tabStrip.Controls.Add(this.tabControlPanel3);
@@ -1227,10 +1227,6 @@
         private System.Windows.Forms.ToolStripMenuItem 功能GToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 设备在线搜索ToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem3;
-        private System.Windows.Forms.ToolStripMenuItem 时钟校时ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem4;
-        private System.Windows.Forms.ToolStripMenuItem 固件更新ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem8;
         private System.Windows.Forms.ToolStripMenuItem 编译下载ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 工具TToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 帮助HToolStripMenuItem;
@@ -1319,6 +1315,10 @@
         private DevComponents.DotNetBar.TabItem tabVar;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private DevComponents.DotNetBar.ButtonX buttonX8;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem5;
+        private System.Windows.Forms.ToolStripMenuItem 固件更新ToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem6;
+        private System.Windows.Forms.ToolStripMenuItem 时钟设置ToolStripMenuItem;
 
     }
 }

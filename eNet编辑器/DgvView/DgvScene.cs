@@ -1091,12 +1091,11 @@ namespace eNet编辑器.DgvView
                     type = dc.RtType;
                     
                 }
-                info.type = type;
                 //获取树状图的IP第四位  + Address地址的 后六位
                 string ad = SocketUtil.GetIPstyle(ips[0], 4) + info.address.Substring(2, 6);
-                if (type == "9.0_variable")
+                if (type == "9.0_virtualport")
                 {
-                    //变量特殊处理
+                    //虚拟端口特殊处理
                     ad = info.address;
                 }
                 //区域加名称
@@ -1105,21 +1104,25 @@ namespace eNet编辑器.DgvView
                 if (point != null)
                 {
                     info.pid = point.pid;
-                    info.type = point.type;
                     if (info.type != point.type)
                     {
                         info.opt = "";
                         info.optName = "";
                     }
+                    //info.type = point.type;
 
                 }
                 else
                 {
                     //搜索一次dev表 
                     info.pid = 0;
-                    //info.type = dc.ObjType;
-                    info.opt = "";
-                    info.optName = "";
+                    if (info.type != type)
+                    {
+                        info.opt = "";
+                        info.optName = "";
+                        info.type = type;
+                    }
+                   
                 }
                 DataJson.totalList NewList = FileMesege.cmds.getListInfos();
                 FileMesege.cmds.DoNewCommand(NewList, OldList);

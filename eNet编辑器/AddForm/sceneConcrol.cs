@@ -66,136 +66,143 @@ namespace eNet编辑器.AddForm
 
         private void sceneConcrol_Load(object sender, EventArgs e)
         {
-             //循环读取INI里面的信息
-            DirectoryInfo folder = new DirectoryInfo(Application.StartupPath + "//types");
-            string type= "";
-            //bool Flag = false;
-            foreach (FileInfo file in folder.GetFiles("*.ini"))
+            try
             {
-                type = IniConfig.GetValue(file.FullName, "define", "name");
-                //找到类型一致
-                if (type == objType)
+                //循环读取INI里面的信息
+                DirectoryInfo folder = new DirectoryInfo(Application.StartupPath + "//types");
+                string type = "";
+                //bool Flag = false;
+                foreach (FileInfo file in folder.GetFiles("*.ini"))
                 {
-                    string tmp = "";
-                    //循环读取command 1= 2= 3= 信息
-                    for (int i = 1; i < 30; i++)
+                    type = IniConfig.GetValue(file.FullName, "define", "name");
+                    //找到类型一致
+                    if (type == objType)
                     {
-                        tmp = IniConfig.GetValue(file.FullName, "command", i.ToString());
-                        if (tmp == "")
+                        string tmp = "";
+                        //循环读取command 1= 2= 3= 信息
+                        for (int i = 1; i < 30; i++)
                         {
-                            break;
-                        }
-                        data a = new data();
-
-                        a.list = tmp.Split(',');
-
-                        //把命令存放到信息
-                        comdsList.Add(a);
-                    }
-                    //2.1 cb1 加载 type.ini信息的头一个信息 
-                    foreach (data comd in comdsList)
-                    {
-                        cbVersion.Items.Add(comd.list[0]);
-                    }
-                    cbVersion.Items.Add("赋值");
-                    //默认加载cbversion第一个选项信息
-                    cbVersion.SelectedIndex = 0;
-                    cbAndlb(0);
-                    break;
-                }//类型一致
-
-            }
-
-            
-
-            
-            //窗口恢复
-            if (string.IsNullOrEmpty(ver) && string.IsNullOrEmpty(opt))
-            {
-                return;
-            }
-            object isExit = null;
-            string itmeTxt = "";
-            for (int i = 0; i < cbVersion.Items.Count; i++)
-            {
-                itmeTxt = cbVersion.Items[i].ToString();
-                if (itmeTxt == ver)
-                {
-                    //optName存在该名称
-                    cbVersion.SelectedItem = cbVersion.Items[i];
-                    string tmp1 = DataChange.HexStringToString( opt.Substring(0,2));
-                    for (int j = 0; j < cb1.Items.Count; j++)
-                    {
-                        if (cb1.Items[j].ToString().Contains(tmp1))
-                        {
-                            cb1.Text = cb1.Items[j].ToString();
-                            break;
-                        }
-                    }
-                    string tmp2 = DataChange.HexStringToString(opt.Substring(2, 2));
-                    if (tmp2 == "251" && tmp1 == "254")
-                    {
-                        //赋值状态
-                        cb2.SelectedIndex = 1;
-                    }
-                    else
-                    {
-                        for (int j = 0; j < cb2.Items.Count; j++)
-                        {
-                            if (cb2.Items[j].ToString().Contains(tmp2))
+                            tmp = IniConfig.GetValue(file.FullName, "command", i.ToString());
+                            if (tmp == "")
                             {
-                                cb2.Text = cb2.Items[j].ToString();
+                                break;
+                            }
+                            data a = new data();
+
+                            a.list = tmp.Split(',');
+
+                            //把命令存放到信息
+                            comdsList.Add(a);
+                        }
+                        //2.1 cb1 加载 type.ini信息的头一个信息 
+                        foreach (data comd in comdsList)
+                        {
+                            cbVersion.Items.Add(comd.list[0]);
+                        }
+                        cbVersion.Items.Add("赋值");
+                        //默认加载cbversion第一个选项信息
+                        cbVersion.SelectedIndex = 0;
+                        cbAndlb(0);
+                        break;
+                    }//类型一致
+
+
+                }
+
+
+
+
+                //窗口恢复
+                if (string.IsNullOrEmpty(ver) && string.IsNullOrEmpty(opt))
+                {
+                    return;
+                }
+                object isExit = null;
+                string itmeTxt = "";
+                for (int i = 0; i < cbVersion.Items.Count; i++)
+                {
+                    itmeTxt = cbVersion.Items[i].ToString();
+                    if (itmeTxt == ver)
+                    {
+                        //optName存在该名称
+                        cbVersion.SelectedItem = cbVersion.Items[i];
+                        string tmp1 = DataChange.HexStringToString(opt.Substring(0, 2));
+                        for (int j = 0; j < cb1.Items.Count; j++)
+                        {
+                            if (cb1.Items[j].ToString().Contains(tmp1))
+                            {
+                                cb1.Text = cb1.Items[j].ToString();
                                 break;
                             }
                         }
-                    }
-                   
-                    string tmp3 = DataChange.HexStringToString(opt.Substring(4, 2));
-                    for (int j = 0; j < cb3.Items.Count; j++)
-                    {
-                        if (cb3.Items[j].ToString().Contains(tmp3))
+                        string tmp2 = DataChange.HexStringToString(opt.Substring(2, 2));
+                        if (tmp2 == "251" && tmp1 == "254")
                         {
-                            cb3.Text = cb3.Items[j].ToString();
-                            break;
+                            //赋值状态
+                            cb2.SelectedIndex = 1;
                         }
-                    }
-                    string tmp4 = DataChange.HexStringToString(opt.Substring(6, 2));
-                    for (int j = 0; j < cb4.Items.Count; j++)
-                    {
-                        if (cb4.Items[j].ToString().Contains(tmp4))
+                        else
                         {
-                            cb4.Text = cb4.Items[j].ToString();
-                            break;
+                            for (int j = 0; j < cb2.Items.Count; j++)
+                            {
+                                if (cb2.Items[j].ToString().Contains(tmp2))
+                                {
+                                    cb2.Text = cb2.Items[j].ToString();
+                                    break;
+                                }
+                            }
                         }
-                    }
-                    return;
-                }
-                if (itmeTxt == "状态操作")
-                {
-                    isExit = cbVersion.Items[i];
-                }
-            }
 
-            if (isExit != null)
-            { 
-                //存在状态操作 恢复状态操作
-                cbVersion.SelectedItem = isExit;
-                cb1.Text = DataChange.HexStringToString(opt.Substring(0, 2));
-                cb2.Text = DataChange.HexStringToString(opt.Substring(2, 2));
-                cb3.Text = DataChange.HexStringToString(opt.Substring(4, 2));
-                string tmp = DataChange.HexStringToString(opt.Substring(6, 2));
-                for (int i = 0; i < cb4.Items.Count; i++)
-                { 
-                    if(cb4.Items[i].ToString().Contains(tmp))
-                    {
-                        cb4.SelectedItem = cb4.Items[i];
+                        string tmp3 = DataChange.HexStringToString(opt.Substring(4, 2));
+                        for (int j = 0; j < cb3.Items.Count; j++)
+                        {
+                            if (cb3.Items[j].ToString().Contains(tmp3))
+                            {
+                                cb3.Text = cb3.Items[j].ToString();
+                                break;
+                            }
+                        }
+                        string tmp4 = DataChange.HexStringToString(opt.Substring(6, 2));
+                        for (int j = 0; j < cb4.Items.Count; j++)
+                        {
+                            if (cb4.Items[j].ToString().Contains(tmp4))
+                            {
+                                cb4.Text = cb4.Items[j].ToString();
+                                break;
+                            }
+                        }
                         return;
                     }
+                    if (itmeTxt == "状态操作")
+                    {
+                        isExit = cbVersion.Items[i];
+                    }
                 }
-                        
+
+                if (isExit != null)
+                {
+                    //存在状态操作 恢复状态操作
+                    cbVersion.SelectedItem = isExit;
+                    cb1.Text = DataChange.HexStringToString(opt.Substring(0, 2));
+                    cb2.Text = DataChange.HexStringToString(opt.Substring(2, 2));
+                    cb3.Text = DataChange.HexStringToString(opt.Substring(4, 2));
+                    string tmp = DataChange.HexStringToString(opt.Substring(6, 2));
+                    for (int i = 0; i < cb4.Items.Count; i++)
+                    {
+                        if (cb4.Items[i].ToString().Contains(tmp))
+                        {
+                            cb4.SelectedItem = cb4.Items[i];
+                            return;
+                        }
+                    }
+
+                }
+
             }
-               
-            
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
             
             
         }
@@ -227,6 +234,8 @@ namespace eNet编辑器.AddForm
                 cb4.Text = "";
                 cb1.Text = "254";
                 cb2.Items.Clear();
+                cb3.Items.Clear();
+                cb4.Items.Clear();
                 cb2.Enabled = true;
                 cb2.Items.Add("设备");
                 cb2.Items.Add("变量");
@@ -592,14 +601,14 @@ namespace eNet编辑器.AddForm
 
 
         /// <summary>
-        /// 查找当前ip的存在变量
+        /// 查找当前ip的存在虚拟端口
         /// </summary>
         private void findVarNum()
         {
             try
             {
                 cb4.Items.Clear();
-                foreach (DataJson.PointInfo point in FileMesege.PointList.variable)
+                foreach (DataJson.PointInfo point in FileMesege.PointList.virtualport)
                 {
                     if (point.ip == ip)
                     {

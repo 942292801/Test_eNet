@@ -169,9 +169,9 @@ namespace eNet编辑器
             //调用添加场景
             threetitle.dgvsceneAddItem += new DgvSceneAddItem2(dgvscene.dgvsceneAddItem);
             threetitle.dgvtimerAddItem += new Action(dgvtimer.TimerAddItem);
-            threetitle.dgvVariableAddItem += new Action(dgvvar.dgvVarAddItem);
+            threetitle.dgvVirtualportAddItem += new Action(dgvvar.dgvVarAddItem);
             threetitle.addPoint += new Action<string>(dgvpoint.addPoint);
-            threetitle.addVariable += new Action<string>(dgvvar.addVariable);
+            threetitle.addVirtualport += new Action<string>(dgvvar.addVirtualport);
             threename.dgvDeviceAddItem += new DgvDeviceAddItem(dgvdevice.dgvDeviceAddItem);
             threepanel.dgvpanelAddItem += new DgvPanelAddItem(dgvpanel.dgvPanelAddItem);
             threetimer.dgvTimerAddItem +=new Action(dgvtimer.TimerAddItem);
@@ -322,7 +322,7 @@ namespace eNet编辑器
                 case "logic":
 
                     break;
-                case "variable":
+                case "virtualport":
                     threevar.ThreeVarAddNode();
                     dgvvar.dgvVarAddItem();
                     break;
@@ -621,9 +621,9 @@ namespace eNet编辑器
             Control_Add(threevar, plLeft);
             Control_Add(dgvvar, plDgv);
             //界面显示类型 
-            FileMesege.formType = "variable";
+            FileMesege.formType = "virtualport";
             //cbtype添加选择项 
-            cbtypeName("variable");
+            cbtypeName("virtualport");
             //添加对象树状图
             threetitle.ThreeTitleAddNode(cbType.SelectedIndex);
             //更改Title 小标题
@@ -971,7 +971,7 @@ namespace eNet编辑器
                     case "sensor":
                         dgvsensor.copyData();
                         break;
-                    case "variable":
+                    case "virtualport":
                         break;
                     default: break;
                 }
@@ -1013,7 +1013,7 @@ namespace eNet编辑器
                     case "sensor":
                         dgvsensor.pasteData();
                         break;
-                    case "variable":
+                    case "virtualport":
                         break;
                     default: break;
                 }
@@ -1061,29 +1061,13 @@ namespace eNet编辑器
             os.ShowDialog();
         }
 
-        private void 时钟校时ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            correctionTime ctTimer = new correctionTime();
-            ctTimer.StartPosition = FormStartPosition.CenterParent;
-            ctTimer.AppTxtShow += new Action<string>(AppTxtShow);
-            ctTimer.ShowDialog();
-        }
+
 
         private void 按键检测ToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void 固件更新ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            systemPrjUpdate prjUpdate = new systemPrjUpdate();
-            prjUpdate.AppTxtShow += new Action<string>(AppTxtShow);
-            //展示居中
-            prjUpdate.StartPosition = FormStartPosition.CenterParent;
-            prjUpdate.ShowDialog();
-        }
-
- 
 
         private void 编译下载ToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -1108,6 +1092,24 @@ namespace eNet编辑器
 
 
         #region 工具
+
+        private void 固件更新ToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            systemPrjUpdate prjUpdate = new systemPrjUpdate();
+            prjUpdate.AppTxtShow += new Action<string>(AppTxtShow);
+            //展示居中
+            prjUpdate.StartPosition = FormStartPosition.CenterParent;
+            prjUpdate.ShowDialog();
+        }
+
+        private void 时钟设置ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            correctionTime ctTimer = new correctionTime();
+            ctTimer.StartPosition = FormStartPosition.CenterParent;
+            ctTimer.AppTxtShow += new Action<string>(AppTxtShow);
+            ctTimer.ShowDialog();
+        }
+
         private void 应急状态设置ToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
@@ -1148,6 +1150,10 @@ namespace eNet编辑器
         }
 
         #endregion
+
+  
+
+ 
 
      
 

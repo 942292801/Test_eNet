@@ -53,7 +53,7 @@ namespace eNet编辑器
         //左栏 树状图treeVar节点选中临时存放
         public static TreeNode varSelectNode = null;
         /// <summary>
-        /// form下按钮的选择命名、场景。。。。  默认为命名 用来设置treetitle的显示功能 name,point,scene,timer,panel,sensor,logic,variable
+        /// form下按钮的选择命名、场景。。。。  默认为命名 用来设置treetitle的显示功能 name,point,scene,timer,panel,sensor,logic,virtualport
         /// </summary>
         public static string formType = "name";
         /// <summary>
@@ -559,13 +559,13 @@ namespace eNet编辑器
                             }
                         }
                     }
-                    if (PointList.variable != null)
+                    if (PointList.virtualport != null)
                     {
-                        foreach (DataJson.PointInfo point in PointList.variable)
+                        foreach (DataJson.PointInfo point in PointList.virtualport)
                         {
                             if (point.ip == ip)
                             {
-                                gwPoint.variable.Add(point);
+                                gwPoint.virtualport.Add(point);
                             }
                         }
                     }

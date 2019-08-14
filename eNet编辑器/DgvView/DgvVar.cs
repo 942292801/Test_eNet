@@ -57,9 +57,9 @@ namespace eNet编辑器.DgvView
                 
                 string ip = FileMesege.varSelectNode.Text.Split(' ')[0];
                 
-                foreach (DataJson.PointInfo eq in FileMesege.PointList.variable)
+                foreach (DataJson.PointInfo eq in FileMesege.PointList.virtualport)
                 {
-                    //加载该IP的变量
+                    //加载该IP的虚拟端口
                     if (eq.ip == ip)
                     {
                         CountAddInfo(eq);
@@ -97,7 +97,7 @@ namespace eNet编辑器.DgvView
 
         #region 增加 清空 删除
         /// <summary>
-        /// 增加按钮 新增一条变量信息
+        /// 增加按钮 新增一条虚拟端口信息
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -109,8 +109,8 @@ namespace eNet编辑器.DgvView
             }
             //撤销
             DataJson.totalList OldList = FileMesege.cmds.getListInfos();
-            FileMesege.titleinfo = "变量";
-            addVariable("变量");
+            FileMesege.titleinfo = "虚拟端口";
+            addVirtualport("虚拟端口");
             //按照address最后一位重新排序
             dgvVarAddItem();
             DataJson.totalList NewList = FileMesege.cmds.getListInfos();
@@ -120,17 +120,17 @@ namespace eNet编辑器.DgvView
         }
 
         /// <summary>
-        /// 添加变量
+        /// 添加虚拟端口
         /// </summary>
         /// <param name="typeName"></param>
-        public void addVariable(string typeName)
+        public void addVirtualport(string typeName)
         {
             
             if (string.IsNullOrEmpty(FileMesege.titleinfo))
             {
                 //AppTxtShow("请选择名称");
                 //return;
-                FileMesege.titleinfo = "变量";
+                FileMesege.titleinfo = "虚拟端口";
             }
             string ip = FileMesege.varSelectNode.Text.Split(' ')[0];
             //搜索选中区域  加载所有同区域的节点
@@ -153,7 +153,12 @@ namespace eNet编辑器.DgvView
             point.pid = DataChange.randomNum();
             string name = sortName(ip);
             point.name = string.Format("{0}@{1}", sortName(ip), ip.Split('.')[3]);
-            point.address = "FEFB03"+  SocketUtil.strtohexstr( Regex.Replace(name, @"[^\d]*", ""));
+            string nameID = Regex.Replace(name, @"[^\d]*", "");
+            if (Convert.ToInt32(nameID) > 255)
+            {
+                return;
+            }
+            point.address = "FEFB03"+  SocketUtil.strtohexstr(nameID);
             point.area1 = sect[0];
             point.area2 = sect[1];
             point.area3 = sect[2];
@@ -165,7 +170,7 @@ namespace eNet编辑器.DgvView
             point.value = "";
 
 
-            FileMesege.PointList.variable.Add(point);
+            FileMesege.PointList.virtualport.Add(point);
 
            
         }
@@ -181,7 +186,7 @@ namespace eNet编辑器.DgvView
             //判断当前是否有匹配
             //计算有多小个相同区域的信息
             //循环所有信息
-            foreach (DataJson.PointInfo eq in FileMesege.PointList.variable)
+            foreach (DataJson.PointInfo eq in FileMesege.PointList.virtualport)
             {
                 if (eq.ip == ip)
                 {
@@ -213,12 +218,12 @@ namespace eNet编辑器.DgvView
         }
 
         /// <summary>
-        /// 排序point.variable的信息
+        /// 排序point.virtualport的信息
         /// </summary>
         /// <param name="ip"></param>
-        private void variableSort()
+        private void virtualportSort()
         {
-            FileMesege.PointList.variable.Sort(delegate(DataJson.PointInfo x, DataJson.PointInfo y)
+            FileMesege.PointList.virtualport.Sort(delegate(DataJson.PointInfo x, DataJson.PointInfo y)
             {
                 
                     return (Convert.ToInt32(x.address.Substring(6, 2), 16)).CompareTo(Convert.ToInt32(y.address.Substring(6, 2), 16));
@@ -240,7 +245,7 @@ namespace eNet编辑器.DgvView
                 }
                 //选中子节点
                 string ip = FileMesege.varSelectNode.Text.Split(' ')[0];
-                foreach (DataJson.PointInfo eq in FileMesege.PointList.variable)
+                foreach (DataJson.PointInfo eq in FileMesege.PointList.virtualport)
                 {
                     if (eq.ip == ip)
                     {
@@ -254,7 +259,7 @@ namespace eNet编辑器.DgvView
                 DataJson.totalList OldList = FileMesege.cmds.getListInfos();
                 foreach (DataJson.PointInfo point in multipleList)
                 {
-                    FileMesege.PointList.variable.Remove(point);
+                    FileMesege.PointList.virtualport.Remove(point);
                 }
                 DataJson.totalList NewList = FileMesege.cmds.getListInfos();
                 FileMesege.cmds.DoNewCommand(NewList, OldList);
@@ -267,7 +272,7 @@ namespace eNet编辑器.DgvView
         //重新排序  刷新
         private void btnRefresh_Click(object sender, EventArgs e)
         {
-            variableSort();
+            virtualportSort();
             dgvVarAddItem();
         }
 
@@ -517,7 +522,7 @@ namespace eNet编辑器.DgvView
        /// <param name="address"></param>
         private void dgvAddress(string address)
         {
-            variableAddress varAdd = new variableAddress();
+            virtualportAddress varAdd = new virtualportAddress();
             //把窗口向屏幕中间刷新
             varAdd.StartPosition = FormStartPosition.CenterParent;
             //把当前选仲树状图网关传递到info里面 给新建设备框网关使用  
@@ -535,7 +540,7 @@ namespace eNet编辑器.DgvView
                 {
                     section.Add("");
                 }
-                foreach (DataJson.PointInfo eq in FileMesege.PointList.variable)
+                foreach (DataJson.PointInfo eq in FileMesege.PointList.virtualport)
                 {
                     if (eq.ip == ip && eq.address == varAdd.RtAddress)
                     {
@@ -543,7 +548,7 @@ namespace eNet编辑器.DgvView
                         return;
                     }
                 }
-                foreach (DataJson.PointInfo eq in FileMesege.PointList.variable)
+                foreach (DataJson.PointInfo eq in FileMesege.PointList.virtualport)
                 {
                     //当地域信息相同
                     if (eq.area1 == section[0] && eq.area2 == section[1] && eq.area3 == section[2] && eq.area4 == section[3] && eq.name == tmpName)
@@ -551,10 +556,10 @@ namespace eNet编辑器.DgvView
                         //撤销 
                         DataJson.totalList OldList = FileMesege.cmds.getListInfos();
                         eq.address = varAdd.RtAddress;
-                        if(eq.name.Contains("变量"))
+                        if(eq.name.Contains("虚拟端口"))
                         {
                             int num= Convert.ToInt32(varAdd.RtAddress.Substring(6,2),16);
-                            eq.name = string.Format("变量{0}@{1}", num, ip.Split('.')[3]);
+                            eq.name = string.Format("虚拟端口{0}@{1}", num, ip.Split('.')[3]);
                         }
                         DataJson.totalList NewList = FileMesege.cmds.getListInfos();
                         FileMesege.cmds.DoNewCommand(NewList, OldList);
@@ -604,13 +609,13 @@ namespace eNet编辑器.DgvView
                 section.Add("");
             }
 
-            foreach (DataJson.PointInfo eq in FileMesege.PointList.variable)
+            foreach (DataJson.PointInfo eq in FileMesege.PointList.virtualport)
             {
                 //当地域信息相同
                 if (eq.area1 == section[0] && eq.area2 == section[1] && eq.area3 == section[2] && eq.area4 == section[3] && eq.name == tmpName)
                 {
                     //剔除名字相同 
-                    foreach (DataJson.PointInfo et in FileMesege.PointList.variable)
+                    foreach (DataJson.PointInfo et in FileMesege.PointList.virtualport)
                     {
                         if (et.area1 == eq.area1 && et.area2 == eq.area2 && et.area3 == eq.area3 && et.area4 == eq.area4 && et.name == tmpNowName)
                         {
@@ -642,14 +647,14 @@ namespace eNet编辑器.DgvView
             //选中子节点
             string ip = FileMesege.varSelectNode.Text.Split(' ')[0];
             string tmpName = string.Format("{0}@{1}", oldName, ip.Split('.')[3]);
-            foreach (DataJson.PointInfo eq in FileMesege.PointList.variable)
+            foreach (DataJson.PointInfo eq in FileMesege.PointList.virtualport)
             {
                 //当地域信息相同
                 if (eq.area1 == section[0] && eq.area2 == section[1] && eq.area3 == section[2] && eq.area4 == section[3] && eq.name == tmpName)
                 {
                     //撤销
                     DataJson.totalList OldList = FileMesege.cmds.getListInfos();
-                    FileMesege.PointList.variable.Remove(eq);
+                    FileMesege.PointList.virtualport.Remove(eq);
                     DataJson.totalList NewList = FileMesege.cmds.getListInfos();
                     FileMesege.cmds.DoNewCommand(NewList, OldList);
                     dgvVarAddItem();
