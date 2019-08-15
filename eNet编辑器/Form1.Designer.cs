@@ -812,8 +812,8 @@
             this.tabStrip.ColorScheme.TabItemSelectedBorderDark = System.Drawing.Color.Empty;
             this.tabStrip.ColorScheme.TabItemSelectedBorderLight = System.Drawing.Color.Empty;
             this.tabStrip.ColorScheme.TabItemSelectedText = System.Drawing.Color.White;
-            this.tabStrip.Controls.Add(this.tabControlPanel8);
             this.tabStrip.Controls.Add(this.tabControlPanel1);
+            this.tabStrip.Controls.Add(this.tabControlPanel8);
             this.tabStrip.Controls.Add(this.tabControlPanel5);
             this.tabStrip.Controls.Add(this.tabControlPanel4);
             this.tabStrip.Controls.Add(this.tabControlPanel3);

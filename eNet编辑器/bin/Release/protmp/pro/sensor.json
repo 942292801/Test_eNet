@@ -2,30 +2,9 @@
     {
         "sensors": [
             {
-                "sensorsInfo": [
-                    {
-                        "id": 1,
-                        "pid": 0,
-                        "keyAddress": "7D020001",
-                        "objAddress": "",
-                        "objType": "",
-                        "opt": "",
-                        "optName": "",
-                        "fbmode": 0
-                    },
-                    {
-                        "id": 2,
-                        "pid": 76452,
-                        "keyAddress": "7D020002",
-                        "objAddress": "7D100001",
-                        "objType": "4.0_scene",
-                        "opt": "",
-                        "optName": "",
-                        "fbmode": 1
-                    }
-                ],
+                "sensorsInfo": [],
                 "id": 1001,
-                "pid": 23576,
+                "pid": 58416,
                 "ioNum": 2
             }
         ],

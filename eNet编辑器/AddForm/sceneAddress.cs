@@ -96,7 +96,7 @@ namespace eNet编辑器.AddForm
                 //初始默认设备列表信息到cb框
                 addIp();
                 //加载地址信息
-                if (obj != "" && obj != null)
+                if (!string.IsNullOrEmpty(obj))
                 {
                     string[] infos = obj.Split('.');
                     if (linkType == LinkType.Com)
@@ -180,6 +180,7 @@ namespace eNet编辑器.AddForm
                 string[] infos = IniConfig.GetValue(path, "address", (i + 1).ToString()).Split(',');
                 if (infos[0] == "固定" && infos.Length == 2)
                 {
+                    //变量Ini处理 address:3=
                     lbs[i].Text = infos[0];
                     cbs[i].Text = infos[1];
                     cb1.Text = "254";

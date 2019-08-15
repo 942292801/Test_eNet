@@ -350,6 +350,10 @@ namespace eNet编辑器.ThreeView
             {
                 pointChange1(eq, section, newSection);
             }
+            foreach (DataJson.PointInfo eq in FileMesege.PointList.virtualport)
+            {
+                pointChange1(eq, section, newSection);
+            }
             FileMesege.AreaList[i1].area = newSection;
             treeView1.SelectedNode.Text = newSection;
             
@@ -394,6 +398,10 @@ namespace eNet编辑器.ThreeView
                 pointChange2(eq, section, newSection);
             }
             foreach (DataJson.PointInfo eq in FileMesege.PointList.timer)
+            {
+                pointChange2(eq, section, newSection);
+            }
+            foreach (DataJson.PointInfo eq in FileMesege.PointList.virtualport)
             {
                 pointChange2(eq, section, newSection);
             }
@@ -447,6 +455,10 @@ namespace eNet编辑器.ThreeView
             {
                 pointChange3(eq, section, newSection);
             }
+            foreach (DataJson.PointInfo eq in FileMesege.PointList.virtualport)
+            {
+                pointChange3(eq, section, newSection);
+            }
             FileMesege.AreaList[i1].area2[i2].area3[i3].area = newSection;
             treeView1.SelectedNode.Text = newSection;
          
@@ -480,7 +492,7 @@ namespace eNet编辑器.ThreeView
 
             DataJson.totalList OldList = FileMesege.cmds.getListInfos();
           
-            //修改PointList信息
+            //修改PointList信息  //、、、、、、、、、、、、、、、、、、、、、、、、后续还要添加
             foreach (DataJson.PointInfo eq in FileMesege.PointList.equipment)
             {
                 pointChange4(eq, section, newSection);
@@ -494,6 +506,10 @@ namespace eNet编辑器.ThreeView
                 pointChange4(eq, section, newSection);
             }
             foreach (DataJson.PointInfo eq in FileMesege.PointList.timer)
+            {
+                pointChange4(eq, section, newSection);
+            }
+            foreach (DataJson.PointInfo eq in FileMesege.PointList.virtualport)
             {
                 pointChange4(eq, section, newSection);
             }
@@ -610,7 +626,7 @@ namespace eNet编辑器.ThreeView
                     a4.id4 = (oldid4 - 1).ToString();
                 }
             }
-            //删除NameList的设备地域信息 或更新信息
+            //删除NameList的设备地域信息 或更新信息  、、、、、、、、、、、、、、、后续还需添加
             foreach (DataJson.PointInfo eq in FileMesege.PointList.equipment)
             {
                 delupdatePoint4(eq,sections,objDel);
@@ -624,6 +640,10 @@ namespace eNet编辑器.ThreeView
                 delupdatePoint4(eq, sections, objDel);
             }
             foreach (DataJson.PointInfo eq in FileMesege.PointList.link)
+            {
+                delupdatePoint4(eq, sections, objDel);
+            }
+            foreach (DataJson.PointInfo eq in FileMesege.PointList.virtualport)
             {
                 delupdatePoint4(eq, sections, objDel);
             }
@@ -709,6 +729,10 @@ namespace eNet编辑器.ThreeView
             {
                 delupdatePoint3(eq, sections, objDel);
             }
+            foreach (DataJson.PointInfo eq in FileMesege.PointList.virtualport)
+            {
+                delupdatePoint3(eq, sections, objDel);
+            }
             //删除的节点所有信息
             DataJson.Area3 obj = FileMesege.AreaList[i1].area2[i2].area3[i3];
             FileMesege.AreaList[i1].area2[i2].area3.Remove(FileMesege.AreaList[i1].area2[i2].area3[i3]);
@@ -790,6 +814,10 @@ namespace eNet编辑器.ThreeView
                 delupdatePoint2(eq, sections, objDel);
             }
             foreach (DataJson.PointInfo eq in FileMesege.PointList.timer)
+            {
+                delupdatePoint2(eq, sections, objDel);
+            }
+            foreach (DataJson.PointInfo eq in FileMesege.PointList.virtualport)
             {
                 delupdatePoint2(eq, sections, objDel);
             }
@@ -879,6 +907,10 @@ namespace eNet编辑器.ThreeView
                 delupdatePoint1(eq, sections, objDel);
             }
             foreach (DataJson.PointInfo eq in FileMesege.PointList.timer)
+            {
+                delupdatePoint1(eq, sections, objDel);
+            }
+            foreach (DataJson.PointInfo eq in FileMesege.PointList.virtualport)
             {
                 delupdatePoint1(eq, sections, objDel);
             }

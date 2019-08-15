@@ -50,7 +50,6 @@
             // 
             // cb4
             // 
-            this.cb4.Enabled = false;
             this.cb4.FormattingEnabled = true;
             this.cb4.Location = new System.Drawing.Point(22, 266);
             this.cb4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -90,7 +89,6 @@
             // 
             // cb3
             // 
-            this.cb3.Enabled = false;
             this.cb3.FormattingEnabled = true;
             this.cb3.Location = new System.Drawing.Point(22, 203);
             this.cb3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -101,7 +99,6 @@
             // 
             // cb2
             // 
-            this.cb2.Enabled = false;
             this.cb2.FormattingEnabled = true;
             this.cb2.Location = new System.Drawing.Point(22, 141);
             this.cb2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -112,7 +109,6 @@
             // 
             // cb1
             // 
-            this.cb1.Enabled = false;
             this.cb1.FormattingEnabled = true;
             this.cb1.Location = new System.Drawing.Point(23, 79);
             this.cb1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);

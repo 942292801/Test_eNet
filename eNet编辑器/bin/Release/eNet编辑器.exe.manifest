@@ -889,14 +889,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="eNet编辑器.exe" size="4069888">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="eNet编辑器.exe" size="4072960">
       <assemblyIdentity name="eNet编辑器" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>L4Q67b+93ZQESfxRTCv/uMTjlLk=</dsig:DigestValue>
+        <dsig:DigestValue>6qWHm82QHxZYvMaZSBa1v3kteGA=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -908,7 +908,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>LiKHPpcstYgDqnWiqLIE8b/SEiI=</dsig:DigestValue>
+        <dsig:DigestValue>JfEckT0pI1fukdL0M5COjUi3eZ4=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -920,7 +920,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>s8xM1BStvz2os98oW5yb5S4IEwE=</dsig:DigestValue>
+        <dsig:DigestValue>E8fVRdZEBlPhbiLdei8CnUHJ0dw=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

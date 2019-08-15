@@ -5,16 +5,25 @@
                 "sceneInfo": [
                     {
                         "id": 1,
-                        "pid": 60715,
-                        "type": "1.0_switch",
-                        "address": "7D000301",
-                        "opt": "00000001",
-                        "optName": "开启",
+                        "pid": 98337,
+                        "type": "4.0_scene",
+                        "address": "7D100001",
+                        "opt": "00000002",
+                        "optName": "场景保存",
                         "Delay": 0
                     },
                     {
                         "id": 2,
-                        "pid": 84565,
+                        "pid": 0,
+                        "type": "2.0_dimmer",
+                        "address": "7D000701",
+                        "opt": "10000000",
+                        "optName": "调光",
+                        "Delay": 0
+                    },
+                    {
+                        "id": 3,
+                        "pid": 0,
                         "type": "1.0_switch",
                         "address": "7D000302",
                         "opt": "00000001",
@@ -22,71 +31,67 @@
                         "Delay": 0
                     },
                     {
-                        "id": 3,
-                        "pid": 47192,
-                        "type": "1.0_switch",
-                        "address": "7D000303",
-                        "opt": "00000001",
-                        "optName": "开启",
+                        "id": 4,
+                        "pid": 25950,
+                        "type": "5.0_time",
+                        "address": "7D200001",
+                        "opt": "",
+                        "optName": "",
                         "Delay": 0
                     },
                     {
-                        "id": 4,
-                        "pid": 95036,
-                        "type": "1.0_switch",
-                        "address": "7D000304",
-                        "opt": "00000001",
-                        "optName": "开启",
+                        "id": 5,
+                        "pid": 17552,
+                        "type": "6.1_panel",
+                        "address": "7D300001",
+                        "opt": "",
+                        "optName": "",
+                        "Delay": 0
+                    },
+                    {
+                        "id": 6,
+                        "pid": 58416,
+                        "type": "6.2_sensor",
+                        "address": "7D3003E9",
+                        "opt": "",
+                        "optName": "",
+                        "Delay": 0
+                    },
+                    {
+                        "id": 7,
+                        "pid": 18093,
+                        "type": "9.0_virtualport",
+                        "address": "FEFB0301",
+                        "opt": "",
+                        "optName": "",
+                        "Delay": 0
+                    },
+                    {
+                        "id": 8,
+                        "pid": 98337,
+                        "type": "4.0_scene",
+                        "address": "7D100001",
+                        "opt": "",
+                        "optName": "",
                         "Delay": 0
                     }
                 ],
                 "id": 1,
-                "pid": 76452
-            },
-            {
-                "sceneInfo": [
-                    {
-                        "id": 1,
-                        "pid": 60715,
-                        "type": "1.0_switch",
-                        "address": "7D000301",
-                        "opt": "00000000",
-                        "optName": "关闭",
-                        "Delay": 0
-                    },
-                    {
-                        "id": 2,
-                        "pid": 84565,
-                        "type": "1.0_switch",
-                        "address": "7D000302",
-                        "opt": "00000000",
-                        "optName": "关闭",
-                        "Delay": 0
-                    },
-                    {
-                        "id": 3,
-                        "pid": 47192,
-                        "type": "1.0_switch",
-                        "address": "7D000303",
-                        "opt": "00000000",
-                        "optName": "关闭",
-                        "Delay": 0
-                    },
-                    {
-                        "id": 4,
-                        "pid": 95036,
-                        "type": "1.0_switch",
-                        "address": "7D000304",
-                        "opt": "00000000",
-                        "optName": "关闭",
-                        "Delay": 0
-                    }
-                ],
-                "id": 2,
-                "pid": 13148
+                "pid": 98337
             }
         ],
         "IP": "192.168.1.125",
+        "Dev": "GW100A"
+    },
+    {
+        "scenes": [
+            {
+                "sceneInfo": [],
+                "id": 1,
+                "pid": 21254
+            }
+        ],
+        "IP": "192.168.1.230",
         "Dev": "GW100A"
     }
 ]

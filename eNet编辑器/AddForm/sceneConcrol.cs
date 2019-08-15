@@ -64,6 +64,33 @@ namespace eNet编辑器.AddForm
             public string[] list { get; set; }
         }
 
+        LinkType linkType = LinkType.Dev;
+
+        /// <summary>
+        /// 链路的类型
+        /// </summary>
+        public enum LinkType
+        {
+            /// <summary>
+            /// 设备类型
+            /// </summary>
+            Dev = 1,
+            /// <summary>
+            /// 虚拟端口类型
+            /// </summary>
+            Var = 2,
+            /// <summary>
+            /// 场景 定时 面板 类型
+            /// </summary>
+            Com = 3
+
+        }
+
+        /// <summary>
+        /// 链路存放
+        /// </summary>
+        private string lingkType = "00";
+
         private void sceneConcrol_Load(object sender, EventArgs e)
         {
             try
@@ -109,9 +136,6 @@ namespace eNet编辑器.AddForm
 
                 }
 
-
-
-
                 //窗口恢复
                 if (string.IsNullOrEmpty(ver) && string.IsNullOrEmpty(opt))
                 {
@@ -136,10 +160,36 @@ namespace eNet编辑器.AddForm
                             }
                         }
                         string tmp2 = DataChange.HexStringToString(opt.Substring(2, 2));
-                        if (tmp2 == "251" && tmp1 == "254")
+                        if ( tmp1 == "254")
                         {
                             //赋值状态
-                            cb2.SelectedIndex = 1;
+                            cb2.SelectedIndex = 0;
+                            if (linkType == LinkType.Com)
+                            {
+                                //不为设备类型
+                                
+                                string num3 = DataChange.HexStringToString(opt.Substring(4, 2));
+                                string num4 = DataChange.HexStringToString(opt.Substring(6, 2));
+                                //将超256 的号数操作
+                                cb4.Text = (Convert.ToInt32(num3) * 256 + Convert.ToInt32(num4)).ToString();
+                                findNum();
+                            }
+                            else if (linkType == LinkType.Dev)
+                            {
+                                string num3 = DataChange.HexStringToString(opt.Substring(4, 2));
+                                cb3.Text = num3;
+                                cb4.Text = DataChange.HexStringToString(opt.Substring(6, 2));
+                                findPort(num3);
+                            }
+                            else if (linkType == LinkType.Var)
+                            {
+                                cb2.SelectedIndex = 1;
+                                cb3.Text = DataChange.HexStringToString(opt.Substring(4, 2));
+                                cb4.Text = DataChange.HexStringToString(opt.Substring(6, 2));
+                                findVarNum();
+                                cb3.Enabled = false;
+                            }
+                            return;
                         }
                         else
                         {
@@ -228,19 +278,20 @@ namespace eNet编辑器.AddForm
             }
             else
             {
-                lb1.Text = "主机";
-                lb2.Text = "类型";
-                cb3.Text = "";
-                cb4.Text = "";
-                cb1.Text = "254";
-                cb2.Items.Clear();
-                cb3.Items.Clear();
-                cb4.Items.Clear();
-                cb2.Enabled = true;
-                cb2.Items.Add("设备");
+                ComboBox[] cbs = { cb1, cb2, cb3, cb4 };
+                //清除信息
+                for (int i = 0; i < 4; i++)
+                {
+                    cbs[i].Items.Clear();
+                    cbs[i].Enabled = true;
+                    cbs[i].Text = "";
+                }
+                
+                iniInfo(objType);
+                addIp();
+                searchNum();
                 cb2.Items.Add("变量");
-                cb2.SelectedIndex = 0;
-                cb4.Enabled = true;
+                
             }
         }
 
@@ -291,6 +342,11 @@ namespace eNet编辑器.AddForm
          
         }
 
+        /// <summary>
+        /// 斜杆
+        /// </summary>
+        /// <param name="cb"></param>
+        /// <param name="info"></param>
         private void dealXiegan(ComboBox cb, string info)
         {
             string[] parents = info.Split('\\');
@@ -311,6 +367,11 @@ namespace eNet编辑器.AddForm
             }
         }
 
+        /// <summary>
+        /// 冒号
+        /// </summary>
+        /// <param name="cb"></param>
+        /// <param name="info"></param>
         private void dealMaohao(ComboBox cb, string info)
         {
             string[] parents = info.Split(':');
@@ -330,6 +391,11 @@ namespace eNet编辑器.AddForm
 
         }
 
+        /// <summary>
+        /// 横杆
+        /// </summary>
+        /// <param name="cb"></param>
+        /// <param name="info"></param>
         private void dealHenggan(ComboBox cb, string info)
         {
             string[] child = info.Split('-');
@@ -386,7 +452,7 @@ namespace eNet编辑器.AddForm
                     }
                     else
                     {
-
+                        
                         this.ver = cbVersion.Text;
                     }
                 }
@@ -397,22 +463,35 @@ namespace eNet编辑器.AddForm
                     //string cb2Num = dealNum(cb2.Text);
                     string cb3Num = dealNum(cb3.Text);
                     string cb4Num = dealNum(cb4.Text);
-                    if (string.IsNullOrEmpty(cb1Num) || string.IsNullOrEmpty(cb2.Text) || string.IsNullOrEmpty(cb3Num) || string.IsNullOrEmpty(cb4Num))
+                    if (string.IsNullOrEmpty(cb1Num) || string.IsNullOrEmpty(cb2.Text))// || string.IsNullOrEmpty(cb3Num) || string.IsNullOrEmpty(cb4Num))
                     {
                         this.DialogResult = DialogResult.No;
                         return;
                     }
-                    if (cb2.Text == "设备")
+                    if (string.IsNullOrEmpty(cb3Num))
                     {
-                        this.opt = SocketUtil.strtohexstr(cb1Num) + "00" + SocketUtil.strtohexstr(cb3Num) + SocketUtil.strtohexstr(cb4Num);
+                        string tmp = SocketUtil.strtohexstr(cb4Num);
+                        while (tmp.Length < 4)
+                        {
+                            tmp = tmp.Insert(0, "0");
+                        }
+                        //内部变量 场景 定时 面板 等3为空的
+                        this.opt = SocketUtil.strtohexstr(cb1Num) + lingkType + tmp;
                     }
                     else
                     {
-                        this.opt = SocketUtil.strtohexstr(cb1Num) + "FB" + SocketUtil.strtohexstr(cb3Num) + SocketUtil.strtohexstr(cb4Num);
+                        this.opt = SocketUtil.strtohexstr(cb1Num) + lingkType + SocketUtil.strtohexstr(cb3Num) + SocketUtil.strtohexstr(cb4Num);
+                    
                     }
+                    
                     this.ver = cbVersion.Text;
 
 
+                }
+                if (string.IsNullOrEmpty(this.ver))
+                {
+                    this.DialogResult = DialogResult.No;
+                    return;
                 }
                 this.DialogResult = DialogResult.OK;
 
@@ -461,20 +540,21 @@ namespace eNet编辑器.AddForm
             }
             if (cb2.SelectedIndex == 0)
             {
-                //选中设备
-                lb3.Text = "设备";
-                lb4.Text = "端口";
+                
+                getInfo(objType);
                 addIp();
-                addNumForDevList();
+                searchNum();
             }
             else
             {
                 //选中变量
-                lb3.Text = "固定";
+                lb3.Text = "";
                 lb4.Text = "变量";
+                cb1.Text = "254";
                 cb3.Enabled = false;
-                cb3.Text = "3";
-                addIp();
+                cb3.Text = "";
+                dealInfoNum(cb4, "1-100");
+                lingkType = "F9";
                 findVarNum();
             }
         }
@@ -535,7 +615,7 @@ namespace eNet编辑器.AddForm
                 }
 
                 cb1.Enabled = false;
-             
+                cb1.Text = "254"; ;
                 
 
             }
@@ -601,6 +681,62 @@ namespace eNet编辑器.AddForm
 
 
         /// <summary>
+        /// 查找当前ip的存在场景 定时 面板 号
+        /// </summary>
+        private void findNum()
+        {
+            try
+            {
+
+                //////////////////////////////////后期还需要添加
+                switch (cb2.Text)
+                {
+                    case "场景":
+                        cb4.Items.Clear();
+                        DataJson.Scene scene = DataListHelper.getSceneList(ip);
+
+                        foreach (DataJson.scenes scenes in scene.scenes)
+                        {
+                            cb4.Items.Add(scenes.id);
+                        }
+                        break;
+                    case "定时":
+                        cb4.Items.Clear();
+                        DataJson.Timer timer = DataListHelper.getTimerList(ip);
+
+                        foreach (DataJson.timers tms in timer.timers)
+                        {
+                            cb4.Items.Add(tms.id);
+                        }
+                        break;
+                    case "面板":
+                        cb4.Items.Clear();
+                        DataJson.Panel panel = DataListHelper.getPanelList(ip);
+
+                        foreach (DataJson.panels pls in panel.panels)
+                        {
+                            cb4.Items.Add(pls.id);
+                        }
+                        break;
+                    case "感应编组":
+                        cb4.Items.Clear();
+                        DataJson.Sensor sensor = DataListHelper.getSensorList(ip);
+
+                        foreach (DataJson.sensors srs in sensor.sensors)
+                        {
+                            cb4.Items.Add(srs.id);
+                        }
+                        break;
+                    case "按键":
+                        break;
+                    default:
+                        break;
+                }
+            }
+            catch { }
+        }
+
+        /// <summary>
         /// 查找当前ip的存在虚拟端口
         /// </summary>
         private void findVarNum()
@@ -619,6 +755,168 @@ namespace eNet编辑器.AddForm
 
             }
             catch { }
+        }
+
+
+        /// <summary>
+        /// 根据类型type（中文名） 加载Ini的信息
+        /// </summary>
+        private void iniInfo(string findType)
+        {
+            linkType = LinkType.Dev;
+            string fileName = IniHelper.findTypesIniTypebyName(findType);
+            string path = string.Format("{0}//types//{1}.ini", Application.StartupPath, fileName);
+            Label[] lbs = { lb1, lb2, lb3, lb4 };
+            ComboBox[] cbs = { cb1, cb2, cb3, cb4 };
+
+            //读取【address】1-4信息
+            for (int i = 0; i < 4; i++)
+            {
+                string[] infos = IniConfig.GetValue(path, "address", (i + 1).ToString()).Split(',');
+                if (infos[0] == "固定" && infos.Length == 2)
+                {
+                    lbs[i].Text = infos[0];
+                    cbs[i].Text = infos[1];
+                    cb1.Text = "254";
+                    cb3.Enabled = false;
+                    //设置为虚拟端口类型
+                    linkType = LinkType.Var;
+                }
+                else if (infos.Length == 2)
+                {
+                    lbs[i].Text = infos[0];
+                    dealInfoNum(cbs[i], infos[1]);
+                }
+                else if (infos.Length == 3)
+                {
+                    //类型信息  添加
+                    cb2.Text = infos[1];
+                    cb2.Items.Add(infos[1]);
+                    lingkType = SocketUtil.strtohexstr(infos[2]);
+                }
+                else
+                {
+                    //场景 定时 面板 传感 即cb3关闭
+                    lb3.Text = "";
+                    cb3.Text = "";
+                    cb3.Enabled = false;
+                    //设置 以下类型
+                    linkType = LinkType.Com;
+                }
+            }///foreach 
+           
+        
+        }
+
+        /// <summary>
+        /// 根据类型type（中文名） 加载Ini的信息
+        /// </summary>
+        /// <param name="findType"></param>
+        private void getInfo(string findType)
+        {
+            linkType = LinkType.Dev;
+            string fileName = IniHelper.findTypesIniTypebyName(findType);
+            string path = string.Format("{0}//types//{1}.ini", Application.StartupPath, fileName);
+            Label[] lbs = { lb1, lb2, lb3, lb4 };
+            ComboBox[] cbs = { cb1, cb2, cb3, cb4 };
+
+            //读取【address】1-4信息
+            for (int i = 0; i < 4; i++)
+            {
+                string[] infos = IniConfig.GetValue(path, "address", (i + 1).ToString()).Split(',');
+                if (infos[0] == "固定" && infos.Length == 2)
+                {
+                    lbs[i].Text = infos[0];
+                    cbs[i].Text = infos[1];
+                    cb1.Text = "254";
+                    cb3.Enabled = false;
+                    //设置为虚拟端口类型
+                    linkType = LinkType.Var;
+                }
+                else if (infos.Length == 2)
+                {
+                    lbs[i].Text = infos[0];
+                    dealInfoNum(cbs[i], infos[1]);
+                }
+                else if (infos.Length == 3)
+                {
+                    //类型信息  添加
+                    //cb2.Text = infos[1];
+                    //cb2.Items.Add(infos[1]);
+                    lingkType = SocketUtil.strtohexstr(infos[2]);
+                }
+                else
+                {
+                    //场景 定时 面板 传感 即cb3关闭
+                    lb3.Text = "";
+                    cb3.Text = "";
+                    cb3.Enabled = false;
+                    //设置 以下类型
+                    linkType = LinkType.Com;
+                }
+            }///foreach 
+            
+
+        }
+
+        /// <summary>
+        /// 搜索当前类型的 实际存在号加载到cb框
+        /// </summary>
+        private void searchNum()
+        {
+            if (linkType == LinkType.Dev)
+            {
+                addNumForDevList();
+
+            }
+            else if (linkType == LinkType.Com)
+            {
+                findNum();
+                cb3.Enabled = false;
+            }
+            else if (linkType == LinkType.Var)
+            {
+                findVarNum();
+                cb3.Enabled = false;
+            }
+        }
+
+        /// <summary>
+        /// cb信息内容的判断1-9 或 1,2,3  或数字（链路类型）
+        /// </summary>
+        /// <param name="cb"></param>
+        /// <param name="info"></param>
+        private void dealInfoNum(ComboBox cb, string info)
+        {
+ 
+            if (info.Contains("-"))
+            {
+                string[] infos = info.Split('-');
+                int j = Convert.ToInt32(infos[1]);
+                if (j > 100)
+                {
+                    j = 100;
+                }
+                for (int i = Convert.ToInt32(infos[0]); i <= j; i++)
+                {
+                    cb.Items.Add(i.ToString());
+                }
+            }
+            else if (info.Contains(","))
+            {
+                string[] infos = info.Split(',');
+
+                for (int i = 0; i < infos.Length; i++)
+                {
+                    cb.Items.Add(infos[i]);
+                }
+            }
+            else
+            {
+                cb.Items.Add(info);
+
+            }
+
         }
 
         #region 窗体样色
