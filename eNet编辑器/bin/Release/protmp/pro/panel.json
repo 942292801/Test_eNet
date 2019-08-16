@@ -2,7 +2,68 @@
     {
         "panels": [
             {
-                "panelsInfo": [],
+                "panelsInfo": [
+                    {
+                        "id": 1,
+                        "pid": 25628,
+                        "keyAddress": "7D100001",
+                        "objAddress": "7D000301",
+                        "objType": "1.0_switch",
+                        "opt": 0,
+                        "showAddress": "7D000301",
+                        "showMode": "同步"
+                    },
+                    {
+                        "id": 2,
+                        "pid": 79900,
+                        "keyAddress": "7D100002",
+                        "objAddress": "7D000302",
+                        "objType": "1.0_switch",
+                        "opt": 0,
+                        "showAddress": "7D000302",
+                        "showMode": "同步"
+                    },
+                    {
+                        "id": 3,
+                        "pid": 28476,
+                        "keyAddress": "7D100003",
+                        "objAddress": "7D000303",
+                        "objType": "1.0_switch",
+                        "opt": 0,
+                        "showAddress": "7D000303",
+                        "showMode": "同步"
+                    },
+                    {
+                        "id": 4,
+                        "pid": 87458,
+                        "keyAddress": "7D100004",
+                        "objAddress": "7D000304",
+                        "objType": "1.0_switch",
+                        "opt": 0,
+                        "showAddress": "7D000304",
+                        "showMode": "同步"
+                    },
+                    {
+                        "id": 5,
+                        "pid": 11141,
+                        "keyAddress": "7D100005",
+                        "objAddress": "7D000305",
+                        "objType": "1.0_switch",
+                        "opt": 0,
+                        "showAddress": "7D000305",
+                        "showMode": "同步"
+                    },
+                    {
+                        "id": 6,
+                        "pid": 52861,
+                        "keyAddress": "7D100006",
+                        "objAddress": "7D000306",
+                        "objType": "1.0_switch",
+                        "opt": 0,
+                        "showAddress": "7D000306",
+                        "showMode": "同步"
+                    }
+                ],
                 "id": 1,
                 "pid": 17552,
                 "keyNum": 6

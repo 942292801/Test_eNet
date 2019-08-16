@@ -417,8 +417,8 @@
             // 
             // 节假日设置ToolStripMenuItem
             // 
-            resources.ApplyResources(this.节假日设置ToolStripMenuItem, "节假日设置ToolStripMenuItem");
             this.节假日设置ToolStripMenuItem.Name = "节假日设置ToolStripMenuItem";
+            resources.ApplyResources(this.节假日设置ToolStripMenuItem, "节假日设置ToolStripMenuItem");
             this.节假日设置ToolStripMenuItem.Click += new System.EventHandler(this.节假日设置ToolStripMenuItem_Click);
             // 
             // 帮助HToolStripMenuItem

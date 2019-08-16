@@ -13,6 +13,7 @@ using System.IO;
 using eNet编辑器.DgvView;
 using eNet编辑器.AddForm;
 using eNet编辑器.Properties;
+using eNet编辑器.Tools;
 
 namespace eNet编辑器
 {
@@ -1117,7 +1118,10 @@ namespace eNet编辑器
 
         private void 天文时钟设置ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            astronomicalClock astClock = new astronomicalClock();
+            astClock.StartPosition = FormStartPosition.CenterParent;
+            astClock.AppTxtShow += new Action<string>(AppTxtShow);
+            astClock.ShowDialog();
         }
 
         private void 管理密码设置ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1127,7 +1131,10 @@ namespace eNet编辑器
 
         private void 节假日设置ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            holidayUpdate hdUpdate = new holidayUpdate();
+            hdUpdate.StartPosition = FormStartPosition.CenterParent;
+            hdUpdate.AppTxtShow += new Action<string>(AppTxtShow);
+            hdUpdate.ShowDialog();
         }
 
         #endregion

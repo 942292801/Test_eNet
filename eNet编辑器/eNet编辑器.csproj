@@ -224,16 +224,22 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Tools\astronomicalClock.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tools\astronomicalClock.Designer.cs">
+      <DependentUpon>astronomicalClock.cs</DependentUpon>
+    </Compile>
     <Compile Include="AddForm\compileDownload.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="AddForm\compileDownload.Designer.cs">
       <DependentUpon>compileDownload.cs</DependentUpon>
     </Compile>
-    <Compile Include="AddForm\correctionTime.cs">
+    <Compile Include="Tools\correctionTime.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AddForm\correctionTime.Designer.cs">
+    <Compile Include="Tools\correctionTime.Designer.cs">
       <DependentUpon>correctionTime.cs</DependentUpon>
     </Compile>
     <Compile Include="AddForm\DGVconcrol.cs">
@@ -284,10 +290,16 @@
     <Compile Include="AddForm\sensorAdd.Designer.cs">
       <DependentUpon>sensorAdd.cs</DependentUpon>
     </Compile>
-    <Compile Include="AddForm\systemPrjUpdate.cs">
+    <Compile Include="Tools\holidayUpdate.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AddForm\systemPrjUpdate.Designer.cs">
+    <Compile Include="Tools\holidayUpdate.Designer.cs">
+      <DependentUpon>holidayUpdate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\systemPrjUpdate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tools\systemPrjUpdate.Designer.cs">
       <DependentUpon>systemPrjUpdate.cs</DependentUpon>
     </Compile>
     <Compile Include="AddForm\timerAdd.cs">
@@ -518,10 +530,13 @@
     <Compile Include="TreeMesege.cs" />
     <Compile Include="UdpSocket.cs" />
     <Compile Include="ZipHelper.cs" />
+    <EmbeddedResource Include="Tools\astronomicalClock.resx">
+      <DependentUpon>astronomicalClock.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AddForm\compileDownload.resx">
       <DependentUpon>compileDownload.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AddForm\correctionTime.resx">
+    <EmbeddedResource Include="Tools\correctionTime.resx">
       <DependentUpon>correctionTime.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AddForm\DGVconcrol.resx">
@@ -549,7 +564,10 @@
     <EmbeddedResource Include="AddForm\sensorAdd.resx">
       <DependentUpon>sensorAdd.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AddForm\systemPrjUpdate.resx">
+    <EmbeddedResource Include="Tools\holidayUpdate.resx">
+      <DependentUpon>holidayUpdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tools\systemPrjUpdate.resx">
       <DependentUpon>systemPrjUpdate.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AddForm\timerAdd.resx">
