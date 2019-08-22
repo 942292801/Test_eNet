@@ -106,6 +106,15 @@ namespace eNet编辑器.Properties {
         }
         
         /// <summary>
+        ///   查找类似 逻辑 的本地化字符串。
+        /// </summary>
+        internal static string Logic {
+            get {
+                return ResourceManager.GetString("Logic", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap Online {
@@ -176,6 +185,15 @@ namespace eNet编辑器.Properties {
         internal static string TxtShowDevName {
             get {
                 return ResourceManager.GetString("TxtShowDevName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 逻辑名称： 的本地化字符串。
+        /// </summary>
+        internal static string TxtShowLogicName {
+            get {
+                return ResourceManager.GetString("TxtShowLogicName", resourceCulture);
             }
         }
         

@@ -91,58 +91,7 @@ namespace eNet编辑器
         #endregion
 
         
-        #region 项目主文件Point_GW.json 写进主机的项目信息    暂时不要因为想添加ip地址进去
-        [Serializable]
-        public class Point_GW
-        {
-            public List<PointInfo_GW> equipment = new List<PointInfo_GW>();
-            public List<PointInfo_GW> scene = new List<PointInfo_GW>();
-            public List<PointInfo_GW> timer = new List<PointInfo_GW>();
-            public List<PointInfo_GW> link = new List<PointInfo_GW>();
 
-        }
-        [Serializable]
-        public class PointInfo_GW
-        {
-            //和总工程point相比少了ip
-            public int pid { get; set; }
-            public string area1 { get; set; }
-            public string area2 { get; set; }
-            public string area3 { get; set; }
-            public string area4 { get; set; }
-            public string name { get; set; } 
-            public string address { get; set; }//改FE开头
-            public string objType { get; set; }
-            public string value { get; set; }
-            public string type { get; set; }
-            //public string range { get; set; }
-        }
-
-
-
-        #endregion
-
-        #region 项目主文件device_GW.json 写进主机的项目信息  暂时不要因为想添加ip地址进去
-        [Serializable]
-        public class Device_GW
-        {
-            //少了ip
-            public string master { get; set; }
-            public string mask { get; set; }
-            public string gateway { get; set; }
-            public string mac { get; set; }
-            public string sn { get; set; }
-            public string ver { get; set; }
-            public string area1 { get; set; }
-            public string area2 { get; set; }
-            public string area3 { get; set; }
-            public string area4 { get; set; }
-            public string name { get; set; }
-            public List<Module> module = new List<Module>();
-        }
-      
-
-        #endregion
 
         #region 在线设备型号及版本序列号数据文件 serial.json
         [Serializable]
@@ -329,6 +278,7 @@ namespace eNet编辑器
             public List<PointInfo> timer  = new List<PointInfo>();
             public List<PointInfo> link = new List<PointInfo>();
             public List<PointInfo> virtualport = new List<PointInfo>();
+            public List<PointInfo> logic = new List<PointInfo>();
         }
         [Serializable]
         public class PointInfo {
@@ -475,6 +425,33 @@ namespace eNet编辑器
         }
         #endregion
 
+        #region 项目辅助文件Logic.json
+        [Serializable]
+        public class Logic
+        {
+            public string IP { get; set; }
+            public string Dev { get; set; }
+            public List<logics> logics = new List<logics>();
+        }
+        [Serializable]
+        public class logics
+        {
+            
+            public int id { get; set; }
+            public int pid { get; set; }
+            public HashSet<string> varName { get; set; }
+            public List<logicsInfo> logicsInfo = new List<logicsInfo>();
+        }
+        [Serializable]
+        public class logicsInfo
+        {
+            public int id { get; set; }
+            public int pid { get; set; }
+
+        }
+        #endregion
+
+
         #region 项目总文件  还需要添加
         [Serializable]
         public class totalList
@@ -496,6 +473,7 @@ namespace eNet编辑器
             public string timerList { get; set; }//定时
             public string panelList { get; set; }//绑定
             public string sensorList { get; set; }//感应
+            public string logicList { get; set; }//逻辑
         }
 
         #endregion

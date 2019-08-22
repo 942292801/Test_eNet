@@ -630,6 +630,8 @@ namespace eNet编辑器.Tools
                 client6003.SendAsync(getLatitude());
                 AppTxtShow("天文时钟设置成功");
                 SocketUtil.DelayMilli(2000);
+                lbSunrise.Text = "";
+                lbSunset.Text = "";
                 //再次获取日出日落时间
                 client6003.SendAsync("GET;{254.251.0.18};\r\n");
             }

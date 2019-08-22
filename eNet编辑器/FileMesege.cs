@@ -52,6 +52,9 @@ namespace eNet编辑器
 
         //左栏 树状图treeVar节点选中临时存放
         public static TreeNode varSelectNode = null;
+
+        //左栏 树状图treeLogic节点选中临时存放
+        public static TreeNode logicSelectNode = null;
         /// <summary>
         /// form下按钮的选择命名、场景。。。。  默认为命名 用来设置treetitle的显示功能 name,point,scene,timer,panel,sensor,logic,virtualport
         /// </summary>
@@ -71,6 +74,7 @@ namespace eNet编辑器
         public static DataJson.timersInfo copyTimer = null;
         public static DataJson.panelsInfo copyPanel = null;
         public static DataJson.sensorsInfo copySensor = null;
+        public static DataJson.logicsInfo copyLogic = null;
 
         public static List<DataJson.Device> DeviceList;//工程设备的保存记录
         public static List<DataJson.Area1> AreaList;//
@@ -80,6 +84,7 @@ namespace eNet编辑器
         public static List<DataJson.Timer> timerList;
         public static List<DataJson.Panel> panelList;//面板
         public static List<DataJson.Sensor> sensorList;//感应
+        public static List<DataJson.Logic> logicList;//逻辑
 
         //设置窗口恢复上一次信息状态
         public static DataJson.PortDimmer portDimmer = null;
@@ -219,7 +224,7 @@ namespace eNet编辑器
                 bool isUnzip = ziphelp.UnZipFile(localFilePath, TmpFilePath, out msg);
                 if(!isUnzip)
                 {
-                    MessageBox.Show("打开失败，文件不存在！", "提示");
+                    MessageBox.Show("解析文件失败！", "提示");
                     return false;
                 }
      
@@ -236,6 +241,7 @@ namespace eNet编辑器
                 || !System.IO.File.Exists(TmpFilePath + "\\pro\\panel.json")
                 || !System.IO.File.Exists(TmpFilePath + "\\pro\\timer.json")
                 || !System.IO.File.Exists(TmpFilePath + "\\pro\\sensor.json")
+                || !System.IO.File.Exists(TmpFilePath + "\\pro\\logic.json")
                 )
             {
                 MessageBox.Show("打开文件失败！", "提示");
@@ -249,6 +255,7 @@ namespace eNet编辑器
             panelList = JsonConvert.DeserializeObject<List<DataJson.Panel>>(File.ReadAllText(TmpFilePath + "\\pro\\panel.json"));
             timerList = JsonConvert.DeserializeObject<List<DataJson.Timer>>(File.ReadAllText(TmpFilePath + "\\pro\\timer.json"));
             sensorList = JsonConvert.DeserializeObject<List<DataJson.Sensor>>(File.ReadAllText(TmpFilePath + "\\pro\\sensor.json"));
+            logicList = JsonConvert.DeserializeObject<List<DataJson.Logic>>(File.ReadAllText(TmpFilePath + "\\pro\\logic.json"));
             filePath = localFilePath;
             fileName = fileNameExt;
             return true;
@@ -451,6 +458,7 @@ namespace eNet编辑器
             File.WriteAllText(path + "\\pro\\panel.json", ConvertJsonString(JsonConvert.SerializeObject(panelList)));
             File.WriteAllText(path + "\\pro\\timer.json", ConvertJsonString(JsonConvert.SerializeObject(timerList)));
             File.WriteAllText(path + "\\pro\\sensor.json", ConvertJsonString(JsonConvert.SerializeObject(sensorList)));
+            File.WriteAllText(path + "\\pro\\logic.json", ConvertJsonString(JsonConvert.SerializeObject(logicList)));
         }
 
         /// <summary>
@@ -566,6 +574,16 @@ namespace eNet编辑器
                             if (point.ip == ip)
                             {
                                 gwPoint.virtualport.Add(point);
+                            }
+                        }
+                    }
+                    if (PointList.logic != null)
+                    {
+                        foreach (DataJson.PointInfo point in PointList.logic)
+                        {
+                            if (point.ip == ip)
+                            {
+                                gwPoint.logic.Add(point);
                             }
                         }
                     }
@@ -1003,6 +1021,11 @@ namespace eNet编辑器
             }
         }
 
+
+        public bool getLogicJsonByIp(string ip)
+        {
+            return false;
+        }
 
         #endregion
 

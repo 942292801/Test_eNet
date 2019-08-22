@@ -113,6 +113,7 @@ namespace eNet编辑器
             threescene.addTitleNode += new Action(threesection_addTitleNode);
             threetimer.addTitleNode += new Action(threesection_addTitleNode);
             threesensor.addTitleNode += new Action(threesection_addTitleNode);
+            threelogic.addTitleNode += new Action(threesection_addTitleNode);
             //显示加载窗口true 为网关 false 为设备
             threename.showDevice += new ShowDeviceDgv(threename_showDgvDevice);
             /////////////////////////////////////////////////////////////
@@ -123,6 +124,7 @@ namespace eNet编辑器
             threescene.clearTxtShow += new Action<string>(clearTxtShow);
             threepanel.clearTxtShow += new Action<string>(clearTxtShow);
             threesensor.clearTxtShow += new Action<string>(clearTxtShow);
+            threelogic.clearTxtShow += new Action<string>(clearTxtShow);
             threevar.clearTxtShow += new Action<string>(clearTxtShow);
             dgvpoint.txtAppShow += new Action<string>(AppTxtShow);
             dgvname.txtAppShow += new Action<string>(AppTxtShow);
@@ -167,6 +169,7 @@ namespace eNet编辑器
             threetimer.updateTimerView += new Action(updateDgvTreeByFormType);
             threepanel.updatePanelView += new Action(updateDgvTreeByFormType);
             threesensor.updateSensorView += new Action(updateDgvTreeByFormType);
+            threelogic.updateLogicView += new Action(updateDgvTreeByFormType);
             //调用添加场景
             threetitle.dgvsceneAddItem += new DgvSceneAddItem2(dgvscene.dgvsceneAddItem);
             threetitle.dgvtimerAddItem += new Action(dgvtimer.TimerAddItem);
@@ -178,7 +181,7 @@ namespace eNet编辑器
             threetimer.dgvTimerAddItem +=new Action(dgvtimer.TimerAddItem);
             threesensor.dgvSensorAddItem +=new Action(dgvsensor.dgvSensorAddItem);
             threevar.dgvVarAddItem +=new Action(dgvvar.dgvVarAddItem);
-
+            threelogic.dgvLogicAddItem +=new Action(dgvlogic.dgvLogicAddItem);
             //区域按当前窗口来更新
             threesection.sectionUpdateDgvTreeByFormType += new Action(updateDgvTreeByFormType);
             threesection.updatePointDgv += new Action(dgvpoint.dgvPointAddItemBySection);
@@ -251,7 +254,7 @@ namespace eNet编辑器
             threelogic.ThreeLogicAddNode();
             threesection.ThreeSEctionAddNode();
             threevar.ThreeVarAddNode();
-            //threepoint.ThreePointAddNode();
+            threelogic.ThreeLogicAddNode();
         }
 
         
@@ -266,8 +269,8 @@ namespace eNet编辑器
             threepanel.ThreePanelAddNode();
             threesensor.ThreeSensorAddNode();
             threevar.ThreeVarAddNode();
-
             threelogic.ThreeLogicAddNode();
+
             threesection.ThreeSEctionAddNode();
             threetitle.ThreeTitleAddNode(cbType.SelectedIndex);
 
@@ -279,6 +282,7 @@ namespace eNet编辑器
             dgvtimer.TimerAddItem();
             dgvsensor.dgvSensorAddItem();
             dgvvar.dgvVarAddItem();
+            dgvlogic.dgvLogicAddItem();
             txtShow.Clear();
         }
 
@@ -321,7 +325,8 @@ namespace eNet编辑器
                     dgvsensor.dgvSensorAddItem();
                     break;
                 case "logic":
-
+                    threelogic.ThreeLogicAddNode();
+                    dgvsensor.dgvSensorAddItem();
                     break;
                 case "virtualport":
                     threevar.ThreeVarAddNode();

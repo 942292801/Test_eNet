@@ -25,5 +25,16 @@ namespace eNet编辑器.DgvView
             BindingFlags.Instance | BindingFlags.NonPublic);
             pi.SetValue(this.dataGridView1, true, null);*/
         }
+
+        private void DgvLogic_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        public void dgvLogicAddItem()
+        { 
+        
+        }
+
     }
 }

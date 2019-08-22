@@ -21,7 +21,7 @@ namespace eNet编辑器.AddForm
         private void versionInfo_Load(object sender, EventArgs e)
         {
             lbVersion.Text = Application.ProductVersion.ToString();
-            lbreserved.Text = "©2019-2020 Easyctrl Intelligent Technology Co., Ltd.";
+            lbreserved.Text = "©2019-2088 Easyctrl Intelligent Technology Co., Ltd.";
             lbpt.Text = "eNet Editor Share may be covered under one or more of the following United States Patents : 888888.";
         }
 

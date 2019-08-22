@@ -104,7 +104,16 @@ namespace eNet编辑器
                 {
                     FileMesege.sensorList = new List<DataJson.Sensor>();
                 }
-               
+
+                if (!string.IsNullOrEmpty(list.logicList))
+                {
+                    FileMesege.logicList = JsonConvert.DeserializeObject<List<DataJson.Logic>>(list.logicList);
+
+                }
+                else
+                {
+                    FileMesege.logicList = new List<DataJson.Logic>();
+                }
        
             }
            
@@ -206,6 +215,12 @@ namespace eNet编辑器
                 totalList.sensorList = JsonConvert.SerializeObject(FileMesege.sensorList);
 
             }
+            if (FileMesege.logicList != null)
+            {
+                totalList.logicList = JsonConvert.SerializeObject(FileMesege.logicList);
+
+            }
+
             return totalList;
         }
 

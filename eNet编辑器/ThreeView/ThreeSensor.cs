@@ -240,7 +240,7 @@ namespace eNet编辑器.ThreeView
         }
 
         /// <summary>
-        /// 新建编组回调
+        /// 新建感应回调
         /// </summary>
         private void addSensorNode()
         {

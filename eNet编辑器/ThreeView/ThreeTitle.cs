@@ -117,7 +117,9 @@ namespace eNet编辑器.ThreeView
                             sensorAdd(num,SocketUtil.getIP(FileMesege.sensorSelectNode));
                             break;
                         case "logic":
-                            // MessageBox.Show("logic");
+                            treeView1.CheckBoxes = true;
+                            treeView1.ContextMenuStrip = null;
+                            sensorAdd(num,SocketUtil.getIP(FileMesege.logicSelectNode));
                             break;
                         case "virtualport":
                             treeView1.CheckBoxes = false;
@@ -332,6 +334,14 @@ namespace eNet编辑器.ThreeView
 
         #region 感应加载节点
         private void sensorAdd(int num, string ipLast)
+        {
+            sceneAdd(num, ipLast);
+
+        }
+        #endregion
+
+        #region 逻辑加载节点
+        private void logicAdd(int num, string ipLast)
         {
             sceneAdd(num, ipLast);
 
@@ -581,18 +591,17 @@ namespace eNet编辑器.ThreeView
                     break;
                 case "scene":
                     sceneFormtype(tn.Text);
-                    //回调更新界面
-                   
                     break;
                 case "timer":
                     timerFormtype(tn.Text);
                     break;
                 case "panel":
-                    //回调更新界面
+                    //不允许双击添加
                     break;
                 case "logic":
                     break;
                 case "sensor":
+                    //不允许双击添加
                     break;
                 case "virtualport":
                     addVar(tn.Text);

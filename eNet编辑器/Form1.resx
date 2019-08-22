@@ -289,58 +289,58 @@
     <value>功能（G）</value>
   </data>
   <data name="时钟设置ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 22</value>
+    <value>148, 22</value>
   </data>
   <data name="时钟设置ToolStripMenuItem.Text" xml:space="preserve">
     <value>时钟校时</value>
   </data>
   <data name="toolStripMenuItem6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>149, 6</value>
+    <value>145, 6</value>
   </data>
   <data name="固件更新ToolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 22</value>
+    <value>148, 22</value>
   </data>
   <data name="固件更新ToolStripMenuItem1.Text" xml:space="preserve">
     <value>固件更新</value>
   </data>
   <data name="toolStripMenuItem5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>149, 6</value>
+    <value>145, 6</value>
   </data>
   <data name="应急状态设置ToolStripMenuItem.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
   <data name="应急状态设置ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 22</value>
+    <value>148, 22</value>
   </data>
   <data name="应急状态设置ToolStripMenuItem.Text" xml:space="preserve">
     <value>应急状态设置</value>
   </data>
   <data name="toolStripMenuItem20.Size" type="System.Drawing.Size, System.Drawing">
-    <value>149, 6</value>
+    <value>145, 6</value>
   </data>
   <data name="天文时钟设置ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 22</value>
+    <value>148, 22</value>
   </data>
   <data name="天文时钟设置ToolStripMenuItem.Text" xml:space="preserve">
     <value>天文时钟设置</value>
   </data>
   <data name="toolStripMenuItem21.Size" type="System.Drawing.Size, System.Drawing">
-    <value>149, 6</value>
+    <value>145, 6</value>
   </data>
   <data name="管理密码设置ToolStripMenuItem.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
   <data name="管理密码设置ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 22</value>
+    <value>148, 22</value>
   </data>
   <data name="管理密码设置ToolStripMenuItem.Text" xml:space="preserve">
     <value>管理密码设置</value>
   </data>
   <data name="toolStripMenuItem22.Size" type="System.Drawing.Size, System.Drawing">
-    <value>149, 6</value>
+    <value>145, 6</value>
   </data>
   <data name="节假日设置ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 22</value>
+    <value>148, 22</value>
   </data>
   <data name="节假日设置ToolStripMenuItem.Text" xml:space="preserve">
     <value>节假日设置</value>

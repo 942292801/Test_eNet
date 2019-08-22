@@ -164,15 +164,14 @@ namespace eNet编辑器.AddForm
                         {
                             //赋值状态
                             cb2.SelectedIndex = 0;
-                            if (linkType == LinkType.Com)
+                            if (tmp2 == "251" && DataChange.HexStringToString(opt.Substring(4, 2)) == "3")
                             {
-                                //不为设备类型
-                                
-                                string num3 = DataChange.HexStringToString(opt.Substring(4, 2));
-                                string num4 = DataChange.HexStringToString(opt.Substring(6, 2));
-                                //将超256 的号数操作
-                                cb4.Text = (Convert.ToInt32(num3) * 256 + Convert.ToInt32(num4)).ToString();
-                                findNum();
+                                //虚拟端口
+                                cb2.SelectedIndex = cb2.Items.Count - 1;
+                                //cb3.Text = DataChange.HexStringToString(opt.Substring(4, 2));
+                                cb4.Text = DataChange.HexStringToString(opt.Substring(6, 2));
+                                findVarNum();
+                                cb3.Enabled = false;
                             }
                             else if (linkType == LinkType.Dev)
                             {
@@ -181,13 +180,15 @@ namespace eNet编辑器.AddForm
                                 cb4.Text = DataChange.HexStringToString(opt.Substring(6, 2));
                                 findPort(num3);
                             }
-                            else if (linkType == LinkType.Var)
+                            else if (linkType == LinkType.Com)
                             {
-                                cb2.SelectedIndex = 1;
-                                cb3.Text = DataChange.HexStringToString(opt.Substring(4, 2));
-                                cb4.Text = DataChange.HexStringToString(opt.Substring(6, 2));
-                                findVarNum();
-                                cb3.Enabled = false;
+                                //不为场景 定时 面板 编组
+
+                                string num3 = DataChange.HexStringToString(opt.Substring(4, 2));
+                                string num4 = DataChange.HexStringToString(opt.Substring(6, 2));
+                                //将超256 的号数操作
+                                cb4.Text = (Convert.ToInt32(num3) * 256 + Convert.ToInt32(num4)).ToString();
+                                findNum();
                             }
                             return;
                         }
@@ -290,7 +291,10 @@ namespace eNet编辑器.AddForm
                 iniInfo(objType);
                 addIp();
                 searchNum();
-                cb2.Items.Add("变量");
+                if (cb2.Items[0].ToString() != "虚拟端口")
+                {
+                    cb2.Items.Add("虚拟端口");                
+                }
                 
             }
         }
@@ -421,6 +425,7 @@ namespace eNet编辑器.AddForm
             }
         }
 
+
         private void btnDecid_Click(object sender, EventArgs e)
         {
             try
@@ -480,6 +485,7 @@ namespace eNet编辑器.AddForm
                     }
                     else
                     {
+                        //虚拟端口
                         this.opt = SocketUtil.strtohexstr(cb1Num) + lingkType + SocketUtil.strtohexstr(cb3Num) + SocketUtil.strtohexstr(cb4Num);
                     
                     }
@@ -548,13 +554,13 @@ namespace eNet编辑器.AddForm
             else
             {
                 //选中变量
-                lb3.Text = "";
-                lb4.Text = "变量";
+                lb3.Text = "固定";
+                lb4.Text = "虚拟端口号";
                 cb1.Text = "254";
                 cb3.Enabled = false;
-                cb3.Text = "";
+                cb3.Text = "3";
                 dealInfoNum(cb4, "1-100");
-                lingkType = "F9";
+                lingkType = "FB";
                 findVarNum();
             }
         }

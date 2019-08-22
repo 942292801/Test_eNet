@@ -114,6 +114,17 @@ namespace eNet编辑器
                     break;
                 }
             }
+            //逻辑修改IP
+            foreach (DataJson.Logic logic in FileMesege.logicList)
+            {
+                if (logic.IP == oldip)
+                {
+                    logic.IP = ip;
+                    logic.Dev = master;
+
+                    break;
+                }
+            }
             /////////////////////////////后期完整数据 //////////////////
             changePointIP(ip,oldip);
             GatewaySort();
@@ -147,7 +158,7 @@ namespace eNet编辑器
             }
             if (FileMesege.sceneList != null)
             {
-                //Scene修改IP
+                //Scenes删除IP
                 foreach (DataJson.Scene scene in FileMesege.sceneList)
                 {
                     if (scene.IP == ip)
@@ -157,6 +168,58 @@ namespace eNet编辑器
                     }
                 }
             }
+
+            if (FileMesege.timerList != null)
+            {
+                //定时删除IP
+                foreach (DataJson.Timer timer in FileMesege.timerList)
+                {
+                    if (timer.IP == ip)
+                    {
+                        FileMesege.timerList.Remove(timer);
+                        break;
+                    }
+                }
+            }
+
+            if (FileMesege.panelList != null)
+            {
+                //面板删除IP
+                foreach (DataJson.Panel panel in FileMesege.panelList)
+                {
+                    if (panel.IP == ip)
+                    {
+                        FileMesege.panelList.Remove(panel);
+                        break;
+                    }
+                }
+            }
+            if (FileMesege.sensorList != null)
+            {
+                //感应删除IP
+                foreach (DataJson.Sensor sensor in FileMesege.sensorList)
+                {
+                    if (sensor.IP == ip)
+                    {
+                        FileMesege.sensorList.Remove(sensor);
+                        break;
+                    }
+                }
+            }
+
+            if (FileMesege.logicList != null)
+            {
+                //逻辑删除IP
+                foreach (DataJson.Logic logic in FileMesege.logicList)
+                {
+                    if (logic.IP == ip)
+                    {
+                        FileMesege.logicList.Remove(logic);
+                        break;
+                    }
+                }
+            }
+            //、、、、、、、、、、、、、、、、、、/后期数据完善
             delPointIP(ip);
             //刷新所有Tree的节点
             UpdateTreeView();
@@ -490,6 +553,15 @@ namespace eNet编辑器
                     p.name = string.Format("{0}@{1}", p.name.Split('@')[0], IP.Split('.')[3]);
                 }
             }
+            foreach (DataJson.PointInfo p in FileMesege.PointList.logic)
+            {
+                if (p.ip == oldIP)
+                {
+                    p.ip = IP;
+                    p.address = string.Format("{0}{1}", hexIP, p.address.Substring(2, 6));
+                    p.name = string.Format("{0}@{1}", p.name.Split('@')[0], IP.Split('.')[3]);
+                }
+            }
 
         }
 
@@ -555,7 +627,14 @@ namespace eNet编辑器
                 FileMesege.PointList.virtualport.Remove(dellistVirtualport);
                 dellistVirtualport = FileMesege.PointList.virtualport.Find(mach => mach.ip == IP);
             }
-            
+
+            //逻辑
+            DataJson.PointInfo dellistLogic = FileMesege.PointList.logic.Find(mach => mach.ip.Equals(IP));
+            while (dellistLogic != null)
+            {
+                FileMesege.PointList.logic.Remove(dellistLogic);
+                dellistLogic = FileMesege.PointList.logic.Find(mach => mach.ip == IP);
+            }
         }
 
         /// <summary>
@@ -738,6 +817,14 @@ namespace eNet编辑器
                             return pointInfo;
                         }
                     }
+                    if (FileMesege.PointList.logic != null)
+                    {
+                        pointInfo = findPointByList_add(FileMesege.PointList.logic, address);
+                        if (pointInfo != null)
+                        {
+                            return pointInfo;
+                        }
+                    }
                     return pointInfo;
                 }
                 // version_type 分割成
@@ -763,6 +850,10 @@ namespace eNet编辑器
                         break;
                     case "virtualport":
                         pointInfo = findPointByList_add(FileMesege.PointList.virtualport, address);
+
+                        break;
+                    case "logic":
+                        pointInfo = findPointByList_add(FileMesege.PointList.logic, address);
 
                         break;
                     //为设备00 扫equipment
@@ -867,6 +958,14 @@ namespace eNet编辑器
                         return point;
                     }
                 }
+                foreach (DataJson.PointInfo point in FileMesege.PointList.logic)
+                {
+                    if (point.pid == pid)
+                    {
+
+                        return point;
+                    }
+                }
             }
             catch{
                 return null;
@@ -914,6 +1013,13 @@ namespace eNet编辑器
                 }
             }
             foreach (DataJson.PointInfo eq in FileMesege.PointList.virtualport)
+            {
+                if (eq.area1 == section_name[0] && eq.area2 == section_name[1] && eq.area3 == section_name[2] && eq.area4 == section_name[3] && eq.name == section_name[4])
+                {
+                    return eq;
+                }
+            }
+            foreach (DataJson.PointInfo eq in FileMesege.PointList.logic)
             {
                 if (eq.area1 == section_name[0] && eq.area2 == section_name[1] && eq.area3 == section_name[2] && eq.area4 == section_name[3] && eq.name == section_name[4])
                 {

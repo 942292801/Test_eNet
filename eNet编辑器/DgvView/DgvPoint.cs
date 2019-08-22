@@ -387,11 +387,12 @@ namespace eNet编辑器.DgvView
                 if (eq.area1 == section[0] && eq.area2 == section[1] && eq.area3 == section[2] && eq.area4 == section[3])
                 {
                     //名字包含该信息
-                    if (eq.name != null && eq.name.Contains(FileMesege.titleinfo))
+                    if (!string.IsNullOrEmpty(eq.name))
                     {
                         //获取序号
                         num = eq.name.Split('@')[0].Replace(FileMesege.titleinfo, ""); //Regex.Replace(eq.name.Split('@')[0], @"[^\d]*", "");
-                        if (num != "")
+
+                        if (Regex.IsMatch(num, @"^[+-]?\d*[.]?\d*$"))
                         {
                             hasharry.Add(Convert.ToInt32(num));
                         }
