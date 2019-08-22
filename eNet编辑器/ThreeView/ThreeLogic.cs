@@ -79,7 +79,7 @@ namespace eNet编辑器.ThreeView
                                     if (point != null)
                                     {
                                         section = string.Format("{0} {1} {2} {3}", point.area1, point.area2, point.area3, point.area4).Trim().Replace(" ", "\\");
-                                        int index2 = tm.AddNode2(treeView1, string.Format("{0}{1} {2} {3}", Resources.Scene, lgs.id, section, point.name), index);
+                                        int index2 = tm.AddNode2(treeView1, string.Format("{0}{1} {2} {3}", Resources.Logic, lgs.id, section, point.name), index);
 
                                     }
 
@@ -235,35 +235,273 @@ namespace eNet编辑器.ThreeView
         /// 新建逻辑回调
         /// </summary>
         private void addLogicNode()
-        { 
-        
+        {
+            if (treeView1.SelectedNode != null && treeView1.SelectedNode.Parent == null)
+            {
+                treeView1.SelectedNode.Expand();
+
+            }
+            //获取定时号
+            string num = Convert.ToInt32(lgadd.Num).ToString("X4");
+
+            //获取IP最后一位 逻辑40
+            string address = SocketUtil.GetIPstyle(lgadd.Ip, 4) + "40" + num;
+            if (FileMesege.logicList == null)
+            {
+                FileMesege.logicList = new List<DataJson.Logic>();
+
+            }
+            //撤销
+            DataJson.totalList OldList = FileMesege.cmds.getListInfos();
+            //添加logicList 表中
+            //该IP在logicList里面是否存在  
+            if (!FileMesege.logicList.Exists(x => x.IP == lgadd.Ip))
+            {
+                //不存在新建List
+                DataJson.Logic lg = new DataJson.Logic();
+                lg.IP = lgadd.Ip;
+                lg.Dev = "GW100A";
+                lg.logics = new List<DataJson.logics>();
+                FileMesege.logicList.Add(lg);
+
+            }
+
+            //判断是否已经存在该点位信息
+            int randomNum = DataChange.randomNum();
+
+            foreach (DataJson.Logic lg in FileMesege.logicList)
+            {
+                //节点的IP相等 进入创建 不会存在相同ID号新建信息
+                if (lg.IP == lgadd.Ip)
+                {
+                    DataJson.logics lgs = new DataJson.logics();
+                    lgs.id = Convert.ToInt32(lgadd.Num);
+                    lgs.pid = randomNum;
+                    lgs.logicsInfo = new List<DataJson.logicsInfo>();
+                    if (copyLogic != null)
+                    {
+                        //复制副本
+                        lgs.logicsInfo = (List<DataJson.logicsInfo>)CommandManager.CloneObject(copyLogic.logicsInfo);
+                        //变量要唯一
+                        //srs.ioNum = copySensor.ioNum;
+                    }
+                    lg.logics.Add(lgs);
+    
+
+                    //添加point点
+                    DataJson.PointInfo eq = new DataJson.PointInfo();
+                    eq.area1 = lgadd.Area1;
+                    eq.area2 = lgadd.Area2;
+                    eq.area3 = lgadd.Area3;
+                    eq.area4 = lgadd.Area4;
+                    eq.address = address;
+                    eq.pid = randomNum;
+                    eq.ip = lgadd.Ip;
+                    eq.name = lgadd.PanelName;
+                    eq.type = IniHelper.findTypesIniTypebyName("逻辑");
+                    eq.objType = "";
+                    eq.value = "";
+                    FileMesege.PointList.logic.Add(eq);
+
+                    //排序
+                    LogicSort(lg);
+                    string parentNodePath = "";
+                    if (treeView1.SelectedNode != null)
+                    {
+                        parentNodePath = treeView1.SelectedNode.FullPath;
+                    }
+                    updateLogicView();
+
+                    if (FileMesege.logicSelectNode != null)
+                    {
+                        try
+                        {
+                            TreeMesege.findNodeByName(treeView1, parentNodePath).Expand();
+                        }
+                        catch
+                        {
+
+                        }
+
+                    }
+
+                    break;
+                }
+
+            }
+            DataJson.totalList NewList = FileMesege.cmds.getListInfos();
+            FileMesege.cmds.DoNewCommand(NewList, OldList);
+        }
+
+        /// <summary>
+        /// 在选中的该网关里面 逻辑按照ID重新排列顺序
+        /// </summary>
+        /// <param name="sc">当前对象排序</param>
+        private void LogicSort(DataJson.Logic lg)
+        {
+            lg.logics.Sort(delegate(DataJson.logics x, DataJson.logics y)
+            {
+                return x.id.CompareTo(y.id);
+            });
         }
 
         private void 修改ToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            
+            logicAdd logicadd = new logicAdd();
+            //展示居中
+            logicadd.StartPosition = FormStartPosition.CenterParent;
+            string[] ips = treeView1.SelectedNode.Parent.Text.Split(' ');
+            string[] timerNodeTxt = treeView1.SelectedNode.Text.Split(' ');
+            logicadd.Ip = ips[0];
+            //获取面板号数
+            logicadd.Num = Regex.Replace(timerNodeTxt[0], @"[^\d]*", "");
 
+            logicadd.Xflag = true;
+
+            logicadd.ShowDialog();
+
+            if (logicadd.DialogResult == DialogResult.OK)
+            {
+                //获取面板号
+                string num = Convert.ToInt32(logicadd.Num).ToString("X4");
+
+                //获取IP最后一位
+                string address = SocketUtil.GetIPstyle(logicadd.Ip, 4) + "40" + num;
+                //撤销
+                DataJson.totalList OldList = FileMesege.cmds.getListInfos();
+                //获取该节点IP地址面板下的 面板信息对象
+                DataJson.logics lgs = DataListHelper.getLogicsInfoList(ips[0], Convert.ToInt32(logicadd.Oldnum));
+                if (lgs != null)
+                {
+                    foreach (DataJson.PointInfo eq in FileMesege.PointList.logic)
+                    {
+                        //修改当前的point点信息
+                        if (lgs.pid == eq.pid)
+                        {
+                            lgs.id = Convert.ToInt32(logicadd.Num);
+                            eq.area1 = logicadd.Area1;
+                            eq.area2 = logicadd.Area2;
+                            eq.area3 = logicadd.Area3;
+                            eq.area4 = logicadd.Area4;
+                            eq.address = address;
+                            eq.name = logicadd.PanelName;
+                            break;
+                        }
+
+                    }
+                    foreach (DataJson.Logic lg in FileMesege.logicList)
+                    {
+                        if (lg.IP == ips[0])
+                        {
+                            //排序
+                            LogicSort(lg);
+                            break;
+                        }
+                    }
+                    updateLogicView();
+                    DataJson.totalList NewList = FileMesege.cmds.getListInfos();
+                    FileMesege.cmds.DoNewCommand(NewList, OldList);
+                }
+
+
+            }
         }
 
         private void 删除ToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            if (treeView1.SelectedNode == null || treeView1.SelectedNode.Parent == null)
+            {
+                return;
+            }
 
+            string[] ips = treeView1.SelectedNode.Parent.Text.Split(' ');
+            string[] logicNodetxt = treeView1.SelectedNode.Text.Split(' ');
+
+            foreach (DataJson.Logic lg in FileMesege.logicList)
+            {
+                //进入IP同一个
+                if (lg.IP == ips[0])
+                {
+                    foreach (DataJson.logics lgs in lg.logics)
+                    {
+                        //当场景号一样
+                        if (lgs.id.ToString() == Regex.Replace(logicNodetxt[0], @"[^\d]*", ""))
+                        {
+                            //撤销
+                            DataJson.totalList OldList = FileMesege.cmds.getListInfos();
+                            int Nodeindex = treeView1.SelectedNode.Index;
+                            int pNodeindex = treeView1.SelectedNode.Parent.Index;
+                            //移除pointList 中地址
+                            foreach (DataJson.PointInfo eq in FileMesege.PointList.logic)
+                            {
+                                //获取address与IP地址相同的对象
+                                if (eq.pid == lgs.pid)
+                                {
+                                    //移除Namelist 的对象
+                                    FileMesege.PointList.logic.Remove(eq);
+                                    break;
+                                }
+                            }
+                            //移除sensorlist的对象
+                            lg.logics.Remove(lgs);
+                            //树状图移除选中节点
+                            updateLogicView();
+                            DataJson.totalList NewList = FileMesege.cmds.getListInfos();
+                            FileMesege.cmds.DoNewCommand(NewList, OldList);
+                            //选中删除节点的下一个节点 没有节点就直接选中父节点
+                            if (treeView1.Nodes[pNodeindex].Nodes.Count > 0)
+                            {
+                                if (Nodeindex < treeView1.Nodes[pNodeindex].Nodes.Count)
+                                {
+                                    treeView1.SelectedNode = treeView1.Nodes[pNodeindex].Nodes[Nodeindex];
+                                }
+                                else
+                                {
+                                    treeView1.SelectedNode = treeView1.Nodes[pNodeindex].Nodes[0];
+                                }
+
+                            }
+                            else
+                            {
+                                treeView1.SelectedNode = treeView1.Nodes[pNodeindex];
+                            }
+                            return;
+                        }
+                    }
+
+                }
+
+            }//IP FOREACH
         }
 
         //复制的逻辑
         DataJson.logics copyLogic = null;
         private void 复制ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            string[] ips = FileMesege.logicSelectNode.Parent.Text.Split(' ');
+            string[] ids = FileMesege.logicSelectNode.Text.Split(' ');
+            int logicNum = Convert.ToInt32(Regex.Replace(ids[0], @"[^\d]*", ""));
+            //获取该节点IP地址面板下的 面板信息对象
+            DataJson.logics lgs = DataListHelper.getLogicsInfoList(ips[0], logicNum);
+            //可能存在克隆现象需要解决
+            copyLogic = lgs;
+            //新建面板
+            newLogic();
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-
+            if (treeView1.SelectedNode == null || treeView1.SelectedNode.Parent != null)
+            {
+                return;
+            }
+            newLogic();
         }
 
         private void btnDel_Click(object sender, EventArgs e)
         {
-
+            删除ToolStripMenuItem_Click(this, EventArgs.Empty);
         }
 
      

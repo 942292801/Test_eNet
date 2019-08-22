@@ -179,6 +179,7 @@
             this.btnDecid.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnDecid.TabIndex = 4;
             this.btnDecid.Tooltip = "添加";
+            this.btnDecid.Click += new System.EventHandler(this.btnDecid_Click);
             // 
             // lbNum
             // 

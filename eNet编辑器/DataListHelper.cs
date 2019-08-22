@@ -1437,7 +1437,106 @@ namespace eNet编辑器
         #endregion
 
 
-   
+        #region 操作logicList的管理工具
+
+
+        /// <summary>
+        /// 在选中节点的基础上 按IP和定时号ID 寻找logicList表中logics
+        /// </summary>
+        /// <returns></returns>
+        public static DataJson.logics getLogicInfoListByNode()
+        {
+            if (FileMesege.logicSelectNode == null || FileMesege.logicSelectNode.Parent == null)
+            {
+                return null;
+            }
+
+            string ip = FileMesege.logicSelectNode.Parent.Text.Split(' ')[0];
+            string[] logicNodetxt = FileMesege.logicSelectNode.Text.Split(' ');
+            int logicNum = Convert.ToInt32(Regex.Replace(logicNodetxt[0], @"[^\d]*", ""));
+            return getLogicsInfoList(ip, logicNum);
+        }
+
+        /// <summary>
+        /// 获取某个Logics列表中对应ID号的logicsInfo 否则返回空
+        /// </summary>
+        /// <param name="sc"></param>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public static DataJson.logicsInfo getLogicInfo(DataJson.logics lgs, int id)
+        {
+            foreach (DataJson.logicsInfo info in lgs.logicsInfo)
+            {
+                if (info.id == id)
+                {
+                    return info;
+                }
+            }
+            return null;
+        }
+
+
+        /// <summary>
+        /// 获取某个IP点 某个逻辑的对象列表 否则返回空
+        /// </summary>
+        /// <param name="IP">IP地址</param>
+        /// <param name="num">逻辑号</param>
+        /// <returns></returns>
+        public static DataJson.logics getLogicsInfoList(string ip, int num)
+        {
+            foreach (DataJson.Logic lgIp in FileMesege.logicList)
+            {
+                if (lgIp.IP == ip)
+                {
+                    foreach (DataJson.logics lgs in lgIp.logics)
+                    {
+                        if (lgs.id == num)
+                        {
+                            return lgs;
+                        }
+                    }
+
+                }
+            }
+            return null;
+        }
+
+        /// <summary>
+        /// 获取某个IP点 的所有logic
+        /// </summary>
+        /// <param name="IP">IP地址</param>
+        /// <returns></returns>
+        public static DataJson.Logic getLogicList(string ip)
+        {
+            foreach (DataJson.Logic lg in FileMesege.logicList)
+            {
+                if (lg.IP == ip)
+                {
+                    return lg;
+
+                }
+            }
+            return null;
+        }
+
+        /// <summary>
+        /// 删除逻辑中所有匹配的PID号
+        /// </summary>
+        /// <param name="pid"></param>
+        public static void reMoveAllLogicsByPid(int pid)
+        {
+            if (FileMesege.logicList == null)
+            {
+                return;
+            }
+            for (int i = 0; i < FileMesege.logicList.Count; i++)
+            {
+                FileMesege.logicList[i].logics.RemoveAll(logics => logics.pid == pid);
+            }
+
+        }
+
+        #endregion
 
 
     }

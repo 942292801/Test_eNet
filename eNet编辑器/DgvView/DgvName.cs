@@ -574,7 +574,7 @@ namespace eNet编辑器.DgvView
                 //循环判断 NameList中是否存在该节点
                 if (address == ep.address && ep.ip == parents[0])
                 {
-                    
+   
                     if (dataGridView1.Rows[count].Cells[3].Value != null)
                     {
                         string EditName = dataGridView1.Rows[count].Cells[3].Value.ToString();
@@ -595,7 +595,8 @@ namespace eNet编辑器.DgvView
                     }
                     else
                     {
-                        ep.name = "";
+                        dataGridView1.Rows[count].Cells[3].Value = ep.name.Split('@')[0];
+                        return;
                     }
                     DataJson.totalList NewList = FileMesege.cmds.getListInfos();
                     FileMesege.cmds.DoNewCommand(NewList, OldList);

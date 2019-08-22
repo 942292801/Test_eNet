@@ -324,7 +324,7 @@ namespace eNet编辑器.AddForm
                     //修改了编号
                     if (area1 == OldArea1 && area2 == OldArea2 && area3 == OldArea3 && area4 == OldArea4 && sceneName == OldName)
                     {
-                        this.DialogResult = DialogResult.No;
+                        this.DialogResult = DialogResult.OK;
                         return;
                     }
                 }

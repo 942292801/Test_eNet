@@ -420,6 +420,133 @@ namespace eNet编辑器.AddForm
 
         }
 
+        private void btnDecid_Click(object sender, EventArgs e)
+        {
+             if (txtNum.Text == "")
+            {
+                MessageBox.Show("逻辑号不能为空");
+                return;
+            }
+            try
+            {
+                if (Convert.ToInt32(txtNum.Text) > 65535 || Convert.ToInt32(txtNum.Text) <1)
+                {
+                    MessageBox.Show("逻辑号范围为1-1999");
+                    return;
+                }
+            }
+            catch
+            {
+                MessageBox.Show("逻辑号格式错误");
+                return;
+            }
+
+            if (xflag == false)
+            {
+                //新建
+                if (FileMesege.logicList != null)
+                {
+                    //检测是否存在该逻辑号
+                    for (int i = 0; i < FileMesege.logicList.Count; i++)
+                    {
+                        if (ip == FileMesege.logicList[i].IP)
+                        {
+                            foreach (DataJson.logics lgs in FileMesege.logicList[i].logics)
+                            {
+                                if (lgs.id.ToString() == txtNum.Text)
+                                {
+                                    MessageBox.Show("已存在该逻辑号！The logic number already exist", "提示");
+                                    return;
+                                }
+                            }
+                        }
+                    }
+                }
+
+            }
+            else
+            {
+                //修改
+                //检测是否存在该逻辑号
+                for (int i = 0; i < FileMesege.logicList.Count; i++)
+                {
+                    if (ip == FileMesege.logicList[i].IP)
+                    {
+                        foreach (DataJson.logics lgs in FileMesege.logicList[i].logics)
+                        {
+                            if (lgs.id.ToString() == txtNum.Text && this.Num != txtNum.Text)
+                            {
+                                MessageBox.Show("已存在该逻辑号！The logic number already exist", "提示");
+                                return;
+                            }
+
+                        }
+                    }
+                }
+            }
+            this.Num = txtNum.Text;
+            this.PanelName = string.Format("{0}@{1}", txtName.Text, Ip.Split('.')[3]);
+            this.Area1 = cbs1.Text;
+            this.Area2 = cbs2.Text;
+            this.Area3 = cbs3.Text;
+            this.Area4 = cbs4.Text;
+            //是添加逻辑 还是修改
+            if (!xflag)
+            {
+                //新建逻辑
+                foreach (DataJson.PointInfo pi in FileMesege.PointList.logic)
+                {
+                    if (pi.area1 == Area1 && pi.area2 == Area2 && pi.area3 == Area3 && pi.area4 == Area4 && pi.name == PanelName)
+                    {
+                        MessageBox.Show("该名称已存在，请更换名称");
+                        return;
+                    }
+
+                }
+                addLogicNode();
+                txtNum.Text = (Convert.ToInt32(txtNum.Text) + 1).ToString();
+            }
+            else
+            {
+                if (oldnum != num)
+                {
+                    //修改了逻辑
+                    if (area1 == OldArea1 && area2 == OldArea2 && area3 == OldArea3 && area4 == OldArea4 && PanelName == OldName)
+                    {
+                        this.DialogResult = DialogResult.OK;
+                        return;
+                    }
+
+                }
+                else
+                {
+                    //什么都没有修改
+                    if (area1 == OldArea1 && area2 == OldArea2 && area3 == OldArea3 && area4 == OldArea4 && PanelName == OldName)
+                    {
+                        this.DialogResult = DialogResult.No;
+                        return;
+                    }
+                }
+               
+
+                //修改区域  逻辑号没更改
+                foreach (DataJson.PointInfo pi in FileMesege.PointList.logic)
+                {
+                    //存在相同的区域名称
+                    if (pi.area1 == Area1 && pi.area2 == Area2 && pi.area3 == Area3 && pi.area4 == Area4 && pi.name == PanelName)
+                    {
+                        MessageBox.Show("该名称已存在，请更换名称");
+                        return;
+                    }
+                }
+
+
+                
+                this.DialogResult = DialogResult.OK;
+            }
+        
+        }
+
 
 
     }

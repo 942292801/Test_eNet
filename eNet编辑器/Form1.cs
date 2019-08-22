@@ -1142,6 +1142,20 @@ namespace eNet编辑器
             hdUpdate.ShowDialog();
         }
 
+        private void 按键检测ToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            panelCheck plc = new panelCheck();
+            //把窗口向屏幕中间刷新
+            plc.StartPosition = FormStartPosition.CenterParent;
+            //把当前选仲树状图网关传递到info里面 给新建设备框网关使用  
+            //plc.Address = address;
+            plc.ShowDialog();
+            if (plc.DialogResult == DialogResult.OK)
+            { 
+            
+            }
+        }
+
         #endregion
 
 
@@ -1162,6 +1176,8 @@ namespace eNet编辑器
         }
 
         #endregion
+
+    
 
   
 

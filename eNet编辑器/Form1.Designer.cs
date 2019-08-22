@@ -141,6 +141,8 @@
             this.plTitleCbbox = new System.Windows.Forms.Panel();
             this.symbolBox2 = new DevComponents.DotNetBar.Controls.SymbolBox();
             this.plLeft = new System.Windows.Forms.Panel();
+            this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripSeparator();
+            this.按键检测ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.PlMeustrip.ClientArea.SuspendLayout();
             this.PlMeustrip.SuspendLayout();
@@ -356,7 +358,9 @@
             this.toolStripMenuItem21,
             this.管理密码设置ToolStripMenuItem,
             this.toolStripMenuItem22,
-            this.节假日设置ToolStripMenuItem});
+            this.节假日设置ToolStripMenuItem,
+            this.toolStripMenuItem4,
+            this.按键检测ToolStripMenuItem});
             this.工具TToolStripMenuItem.Name = "工具TToolStripMenuItem";
             resources.ApplyResources(this.工具TToolStripMenuItem, "工具TToolStripMenuItem");
             // 
@@ -1168,6 +1172,17 @@
             resources.ApplyResources(this.plLeft, "plLeft");
             this.plLeft.Name = "plLeft";
             // 
+            // toolStripMenuItem4
+            // 
+            this.toolStripMenuItem4.Name = "toolStripMenuItem4";
+            resources.ApplyResources(this.toolStripMenuItem4, "toolStripMenuItem4");
+            // 
+            // 按键检测ToolStripMenuItem
+            // 
+            this.按键检测ToolStripMenuItem.Name = "按键检测ToolStripMenuItem";
+            resources.ApplyResources(this.按键检测ToolStripMenuItem, "按键检测ToolStripMenuItem");
+            this.按键检测ToolStripMenuItem.Click += new System.EventHandler(this.按键检测ToolStripMenuItem_Click_1);
+            // 
             // Form1
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -1319,6 +1334,8 @@
         private System.Windows.Forms.ToolStripMenuItem 固件更新ToolStripMenuItem1;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem6;
         private System.Windows.Forms.ToolStripMenuItem 时钟设置ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem4;
+        private System.Windows.Forms.ToolStripMenuItem 按键检测ToolStripMenuItem;
 
     }
 }

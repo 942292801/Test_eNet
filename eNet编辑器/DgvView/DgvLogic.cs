@@ -14,7 +14,7 @@ namespace eNet编辑器.DgvView
     {
         public DgvLogic()
         {
-            /*
+            
             //设置窗体双缓存
             this.SetStyle(ControlStyles.OptimizedDoubleBuffer | ControlStyles.ResizeRedraw | ControlStyles.AllPaintingInWmPaint, true);
             this.UpdateStyles();
@@ -23,7 +23,7 @@ namespace eNet编辑器.DgvView
             Type dgvType = this.dataGridView1.GetType();
             PropertyInfo pi = dgvType.GetProperty("DoubleBuffered",
             BindingFlags.Instance | BindingFlags.NonPublic);
-            pi.SetValue(this.dataGridView1, true, null);*/
+            pi.SetValue(this.dataGridView1, true, null);
         }
 
         private void DgvLogic_Load(object sender, EventArgs e)
