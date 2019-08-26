@@ -279,6 +279,7 @@ namespace eNet编辑器
             public List<PointInfo> link = new List<PointInfo>();
             public List<PointInfo> virtualport = new List<PointInfo>();
             public List<PointInfo> logic = new List<PointInfo>();
+            public List<PointInfo> localvar = new List<PointInfo>();
         }
         [Serializable]
         public class PointInfo {

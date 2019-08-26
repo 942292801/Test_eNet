@@ -104,6 +104,30 @@ namespace eNet编辑器
 
             }
         }
+
+        /// <summary>
+        /// 异步发送消息
+        /// </summary>
+        /// <param name="msg"></param>
+        public void SendHexAsync(string msg)
+        {
+            try
+            {
+                if (client.Connected)
+                {
+
+                    byte[] listData = DataChange.strToToHexByte(msg);
+                    client.Client.BeginSend(listData, 0, listData.Length, SocketFlags.None, SendCallBack, client);
+                }
+            }
+            catch
+            {
+                Close();
+                OnComplete(client, EnSocketAction.Close);
+
+            }
+        }
+
         /// <summary>
         /// 异步连接的回调函数
         /// </summary>

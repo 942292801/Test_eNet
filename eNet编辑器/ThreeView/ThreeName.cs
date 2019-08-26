@@ -314,6 +314,10 @@ namespace eNet编辑器.ThreeView
         #region 对树状图设备的删 改
         private void 修改ToolStripMenuItem1_Click(object sender, EventArgs e)
         {
+            if (treeView1.SelectedNode.Parent == null)
+            {
+                return;
+            }
             tnDevice tnd = new tnDevice();
             //把窗口向屏幕中间刷新
             tnd.StartPosition = FormStartPosition.CenterParent;

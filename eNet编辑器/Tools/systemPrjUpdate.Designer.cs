@@ -31,6 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(systemPrjUpdate));
             this.panel4 = new System.Windows.Forms.Panel();
             this.btnPath = new DevComponents.DotNetBar.ButtonX();
+            this.txtPath = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.cbOnlineIP = new System.Windows.Forms.ComboBox();
             this.lbName = new System.Windows.Forms.Label();
@@ -39,7 +40,6 @@
             this.btnClose = new DevComponents.DotNetBar.ButtonX();
             this.symbolBox1 = new DevComponents.DotNetBar.Controls.SymbolBox();
             this.lbTitle = new System.Windows.Forms.Label();
-            this.txtPath = new System.Windows.Forms.TextBox();
             this.panel4.SuspendLayout();
             this.plInfoTitle.SuspendLayout();
             this.SuspendLayout();
@@ -79,6 +79,14 @@
             this.btnPath.Tooltip = "选择固件";
             this.btnPath.Click += new System.EventHandler(this.btnPath_Click);
             // 
+            // txtPath
+            // 
+            this.txtPath.Location = new System.Drawing.Point(63, 60);
+            this.txtPath.Margin = new System.Windows.Forms.Padding(5);
+            this.txtPath.Name = "txtPath";
+            this.txtPath.Size = new System.Drawing.Size(122, 23);
+            this.txtPath.TabIndex = 20;
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -91,6 +99,7 @@
             // 
             // cbOnlineIP
             // 
+            this.cbOnlineIP.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbOnlineIP.FormattingEnabled = true;
             this.cbOnlineIP.Location = new System.Drawing.Point(63, 14);
             this.cbOnlineIP.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -194,14 +203,6 @@
             this.lbTitle.Text = "固件更新";
             this.lbTitle.MouseDown += new System.Windows.Forms.MouseEventHandler(this.plInfoTitle_MouseDown);
             this.lbTitle.MouseMove += new System.Windows.Forms.MouseEventHandler(this.plInfoTitle_MouseMove);
-            // 
-            // txtPath
-            // 
-            this.txtPath.Location = new System.Drawing.Point(63, 60);
-            this.txtPath.Margin = new System.Windows.Forms.Padding(5);
-            this.txtPath.Name = "txtPath";
-            this.txtPath.Size = new System.Drawing.Size(122, 23);
-            this.txtPath.TabIndex = 20;
             // 
             // systemPrjUpdate
             // 

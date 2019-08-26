@@ -272,3 +272,5 @@ C:\Users\Administrator\Desktop\Gitlab\eNet\eNet编辑器\obj\x86\Release\eNet编
 C:\Users\Administrator\Desktop\Gitlab\eNet\eNet编辑器\obj\x86\Release\eNet编辑器.Tools.astronomicalClock.resources
 C:\Users\Administrator\Desktop\Gitlab\eNet\eNet编辑器\obj\x86\Release\eNet编辑器.Tools.holidayUpdate.resources
 C:\Users\Administrator\Desktop\Gitlab\eNet\eNet编辑器\obj\x86\Release\eNet编辑器.AddForm.logicAdd.resources
+C:\Users\Administrator\Desktop\Gitlab\eNet\eNet编辑器\obj\x86\Release\eNet编辑器.Tools.KeyCheck.resources
+C:\Users\Administrator\Desktop\Gitlab\eNet\eNet编辑器\obj\x86\Release\eNet编辑器.Tools.masterIPchange.resources

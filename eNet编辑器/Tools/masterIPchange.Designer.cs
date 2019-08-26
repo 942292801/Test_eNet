@@ -1,6 +1,6 @@
-﻿namespace eNet编辑器.AddForm
+﻿namespace eNet编辑器.Tools
 {
-    partial class correctionTime
+    partial class masterIPchange
     {
         /// <summary>
         /// Required designer variable.
@@ -28,22 +28,24 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(correctionTime));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(masterIPchange));
             this.plInfoTitle = new System.Windows.Forms.Panel();
             this.btnUpdate = new DevComponents.DotNetBar.ButtonX();
             this.btnClose = new DevComponents.DotNetBar.ButtonX();
             this.symbolBox1 = new DevComponents.DotNetBar.Controls.SymbolBox();
             this.lbTitle = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.btnRefresh = new DevComponents.DotNetBar.ButtonX();
-            this.lbBJTime = new System.Windows.Forms.Label();
+            this.txtDevMAC = new System.Windows.Forms.TextBox();
+            this.txtDevIP = new System.Windows.Forms.TextBox();
+            this.txtDevMask = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.lbMasterTime = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.txtDevDNS = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.btnRefresh = new DevComponents.DotNetBar.ButtonX();
             this.cbOnlineIP = new System.Windows.Forms.ComboBox();
             this.lbName = new System.Windows.Forms.Label();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.plInfoTitle.SuspendLayout();
             this.panel4.SuspendLayout();
             this.SuspendLayout();
@@ -58,8 +60,8 @@
             this.plInfoTitle.Location = new System.Drawing.Point(1, 1);
             this.plInfoTitle.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.plInfoTitle.Name = "plInfoTitle";
-            this.plInfoTitle.Size = new System.Drawing.Size(229, 25);
-            this.plInfoTitle.TabIndex = 7;
+            this.plInfoTitle.Size = new System.Drawing.Size(258, 25);
+            this.plInfoTitle.TabIndex = 9;
             this.plInfoTitle.MouseDown += new System.Windows.Forms.MouseEventHandler(this.plInfoTitle_MouseDown);
             this.plInfoTitle.MouseMove += new System.Windows.Forms.MouseEventHandler(this.plInfoTitle_MouseMove);
             // 
@@ -75,19 +77,19 @@
             this.btnUpdate.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None;
             this.btnUpdate.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnUpdate.HoverImage")));
             this.btnUpdate.Image = ((System.Drawing.Image)(resources.GetObject("btnUpdate.Image")));
-            this.btnUpdate.Location = new System.Drawing.Point(186, 6);
+            this.btnUpdate.Location = new System.Drawing.Point(215, 6);
             this.btnUpdate.Margin = new System.Windows.Forms.Padding(6);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(15, 15);
             this.btnUpdate.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnUpdate.TabIndex = 20;
-            this.btnUpdate.Tooltip = "校准";
+            this.btnUpdate.Tooltip = "设置";
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // btnClose
             // 
             this.btnClose.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnClose.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnClose.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(228)))), ((int)(((byte)(228)))));
             this.btnClose.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
             this.btnClose.FocusCuesEnabled = false;
@@ -95,7 +97,7 @@
             this.btnClose.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None;
             this.btnClose.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnClose.HoverImage")));
             this.btnClose.Image = ((System.Drawing.Image)(resources.GetObject("btnClose.Image")));
-            this.btnClose.Location = new System.Drawing.Point(210, 6);
+            this.btnClose.Location = new System.Drawing.Point(239, 6);
             this.btnClose.Margin = new System.Windows.Forms.Padding(6);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(13, 13);
@@ -129,27 +131,106 @@
             this.lbTitle.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.lbTitle.Location = new System.Drawing.Point(25, 4);
             this.lbTitle.Name = "lbTitle";
-            this.lbTitle.Size = new System.Drawing.Size(56, 17);
+            this.lbTitle.Size = new System.Drawing.Size(80, 17);
             this.lbTitle.TabIndex = 1;
-            this.lbTitle.Text = "时钟校时";
+            this.lbTitle.Text = "主机网络设置";
             this.lbTitle.MouseDown += new System.Windows.Forms.MouseEventHandler(this.plInfoTitle_MouseDown);
             this.lbTitle.MouseMove += new System.Windows.Forms.MouseEventHandler(this.plInfoTitle_MouseMove);
             // 
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.White;
-            this.panel4.Controls.Add(this.btnRefresh);
-            this.panel4.Controls.Add(this.lbBJTime);
+            this.panel4.Controls.Add(this.txtDevMAC);
+            this.panel4.Controls.Add(this.txtDevIP);
+            this.panel4.Controls.Add(this.txtDevMask);
+            this.panel4.Controls.Add(this.label2);
             this.panel4.Controls.Add(this.label3);
-            this.panel4.Controls.Add(this.lbMasterTime);
-            this.panel4.Controls.Add(this.label1);
+            this.panel4.Controls.Add(this.txtDevDNS);
+            this.panel4.Controls.Add(this.label6);
+            this.panel4.Controls.Add(this.label4);
+            this.panel4.Controls.Add(this.btnRefresh);
             this.panel4.Controls.Add(this.cbOnlineIP);
             this.panel4.Controls.Add(this.lbName);
             this.panel4.Location = new System.Drawing.Point(1, 27);
             this.panel4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(229, 180);
-            this.panel4.TabIndex = 8;
+            this.panel4.Size = new System.Drawing.Size(258, 219);
+            this.panel4.TabIndex = 10;
+            // 
+            // txtDevMAC
+            // 
+            this.txtDevMAC.Location = new System.Drawing.Point(92, 175);
+            this.txtDevMAC.Margin = new System.Windows.Forms.Padding(4);
+            this.txtDevMAC.Name = "txtDevMAC";
+            this.txtDevMAC.Size = new System.Drawing.Size(120, 23);
+            this.txtDevMAC.TabIndex = 81;
+            // 
+            // txtDevIP
+            // 
+            this.txtDevIP.Location = new System.Drawing.Point(92, 58);
+            this.txtDevIP.Margin = new System.Windows.Forms.Padding(4);
+            this.txtDevIP.Name = "txtDevIP";
+            this.txtDevIP.Size = new System.Drawing.Size(120, 23);
+            this.txtDevIP.TabIndex = 72;
+            this.txtDevIP.Text = "192.168.1.230";
+            // 
+            // txtDevMask
+            // 
+            this.txtDevMask.Location = new System.Drawing.Point(92, 97);
+            this.txtDevMask.Margin = new System.Windows.Forms.Padding(4);
+            this.txtDevMask.Name = "txtDevMask";
+            this.txtDevMask.Size = new System.Drawing.Size(120, 23);
+            this.txtDevMask.TabIndex = 73;
+            this.txtDevMask.Text = "255.255.255.0";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(7, 61);
+            this.label2.Margin = new System.Windows.Forms.Padding(6);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(55, 17);
+            this.label2.TabIndex = 75;
+            this.label2.Text = "IP地址：";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(7, 100);
+            this.label3.Margin = new System.Windows.Forms.Padding(6);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(68, 17);
+            this.label3.TabIndex = 76;
+            this.label3.Text = "子网掩码：";
+            // 
+            // txtDevDNS
+            // 
+            this.txtDevDNS.Location = new System.Drawing.Point(92, 137);
+            this.txtDevDNS.Margin = new System.Windows.Forms.Padding(4);
+            this.txtDevDNS.Name = "txtDevDNS";
+            this.txtDevDNS.Size = new System.Drawing.Size(120, 23);
+            this.txtDevDNS.TabIndex = 74;
+            this.txtDevDNS.Text = "192.168.1.1";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(7, 178);
+            this.label6.Margin = new System.Windows.Forms.Padding(6);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(72, 17);
+            this.label6.TabIndex = 79;
+            this.label6.Text = "MAC地址：";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(7, 140);
+            this.label4.Margin = new System.Windows.Forms.Padding(6);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(68, 17);
+            this.label4.TabIndex = 77;
+            this.label4.Text = "默认网关：";
             // 
             // btnRefresh
             // 
@@ -162,95 +243,50 @@
             this.btnRefresh.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None;
             this.btnRefresh.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnRefresh.HoverImage")));
             this.btnRefresh.Image = ((System.Drawing.Image)(resources.GetObject("btnRefresh.Image")));
-            this.btnRefresh.Location = new System.Drawing.Point(194, 19);
+            this.btnRefresh.Location = new System.Drawing.Point(229, 23);
             this.btnRefresh.Margin = new System.Windows.Forms.Padding(6);
             this.btnRefresh.Name = "btnRefresh";
             this.btnRefresh.Size = new System.Drawing.Size(15, 15);
             this.btnRefresh.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnRefresh.TabIndex = 70;
-            this.btnRefresh.Tooltip = "获取主机时间";
+            this.btnRefresh.Tooltip = "获取信息";
             this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
-            // 
-            // lbBJTime
-            // 
-            this.lbBJTime.AutoSize = true;
-            this.lbBJTime.Font = new System.Drawing.Font("微软雅黑", 9F);
-            this.lbBJTime.Location = new System.Drawing.Point(73, 140);
-            this.lbBJTime.Name = "lbBJTime";
-            this.lbBJTime.Size = new System.Drawing.Size(112, 17);
-            this.lbBJTime.TabIndex = 69;
-            this.lbBJTime.Text = "2019/8/8 16:48:12";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("微软雅黑", 9F);
-            this.label3.Location = new System.Drawing.Point(13, 112);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(68, 17);
-            this.label3.TabIndex = 68;
-            this.label3.Text = "北京时间：";
-            // 
-            // lbMasterTime
-            // 
-            this.lbMasterTime.AutoSize = true;
-            this.lbMasterTime.Font = new System.Drawing.Font("微软雅黑", 9F);
-            this.lbMasterTime.Location = new System.Drawing.Point(73, 83);
-            this.lbMasterTime.Name = "lbMasterTime";
-            this.lbMasterTime.Size = new System.Drawing.Size(112, 17);
-            this.lbMasterTime.TabIndex = 67;
-            this.lbMasterTime.Text = "2019/8/8 16:48:12";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("微软雅黑", 9F);
-            this.label1.Location = new System.Drawing.Point(13, 57);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(68, 17);
-            this.label1.TabIndex = 66;
-            this.label1.Text = "主机时间：";
             // 
             // cbOnlineIP
             // 
             this.cbOnlineIP.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbOnlineIP.FormattingEnabled = true;
-            this.cbOnlineIP.Location = new System.Drawing.Point(63, 14);
+            this.cbOnlineIP.Location = new System.Drawing.Point(92, 18);
             this.cbOnlineIP.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.cbOnlineIP.Name = "cbOnlineIP";
-            this.cbOnlineIP.Size = new System.Drawing.Size(122, 25);
+            this.cbOnlineIP.Size = new System.Drawing.Size(120, 25);
             this.cbOnlineIP.TabIndex = 65;
             // 
             // lbName
             // 
             this.lbName.AutoSize = true;
             this.lbName.Font = new System.Drawing.Font("微软雅黑", 9F);
-            this.lbName.Location = new System.Drawing.Point(13, 17);
+            this.lbName.Location = new System.Drawing.Point(7, 21);
             this.lbName.Name = "lbName";
             this.lbName.Size = new System.Drawing.Size(44, 17);
             this.lbName.TabIndex = 64;
             this.lbName.Text = "主机：";
             // 
-            // timer1
-            // 
-            this.timer1.Interval = 1000;
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
-            // correctionTime
+            // masterIPchange
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkGray;
-            this.ClientSize = new System.Drawing.Size(232, 209);
+            this.ClientSize = new System.Drawing.Size(261, 248);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.plInfoTitle);
             this.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Name = "correctionTime";
-            this.Text = "correctionTime";
-            this.Load += new System.EventHandler(this.correctionTime_Load);
-            this.Paint += new System.Windows.Forms.PaintEventHandler(this.correctionTime_Paint);
+            this.Name = "masterIPchange";
+            this.Text = "masterIPchange";
+            this.Load += new System.EventHandler(this.masterIPchange_Load);
+            this.Paint += new System.Windows.Forms.PaintEventHandler(this.masterIPchange_Paint);
             this.plInfoTitle.ResumeLayout(false);
             this.plInfoTitle.PerformLayout();
             this.panel4.ResumeLayout(false);
@@ -267,13 +303,16 @@
         private DevComponents.DotNetBar.Controls.SymbolBox symbolBox1;
         private System.Windows.Forms.Label lbTitle;
         private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox txtDevMAC;
+        private System.Windows.Forms.TextBox txtDevIP;
+        private System.Windows.Forms.TextBox txtDevMask;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox txtDevDNS;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label4;
+        private DevComponents.DotNetBar.ButtonX btnRefresh;
         private System.Windows.Forms.ComboBox cbOnlineIP;
         private System.Windows.Forms.Label lbName;
-        private DevComponents.DotNetBar.ButtonX btnRefresh;
-        private System.Windows.Forms.Label lbBJTime;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label lbMasterTime;
-        private System.Windows.Forms.Timer timer1;
     }
 }

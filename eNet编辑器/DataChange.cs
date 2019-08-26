@@ -78,7 +78,7 @@ namespace eNet编辑器
         //十进制字符串转十六进制字符串
         public static string HexStringToString(string hexStr)
         {
-            return Convert.ToInt32(hexStr, 16).ToString();
+            return Convert.ToInt64(hexStr, 16).ToString();
         }
 
         /// <summary>

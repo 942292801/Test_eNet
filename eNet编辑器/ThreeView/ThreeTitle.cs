@@ -78,6 +78,12 @@ namespace eNet编辑器.ThreeView
                 //路径非空
                 if (!String.IsNullOrWhiteSpace(inifilepath))
                 {
+                    int index = 0;
+                    if (treeView1.SelectedNode != null)
+                    {
+                        index = treeView1.SelectedNode.Index;
+                    
+                    }
                     treeView1.Nodes.Clear();
                     FileMesege.titleinfo = "";
                     FileMesege.titlePointSection = "";
@@ -128,6 +134,10 @@ namespace eNet编辑器.ThreeView
                             break;
                       
                         default: break;
+                    }
+                    if (treeView1.Nodes.Count > 0 && index >0)
+                    {
+                        treeView1.SelectedNode = treeView1.Nodes[index];
                     }
                 }
             }
@@ -247,6 +257,12 @@ namespace eNet编辑器.ThreeView
                             break;
                         case "virtualport":
                             getNametree(FileMesege.PointList.virtualport, "virtualport", ipLast);
+                            break;
+                        case "logic":
+                            getNametree(FileMesege.PointList.logic, "logic", ipLast);
+                            break;
+                        case "localvar":
+                            getNametree(FileMesege.PointList.localvar, "localvar", ipLast);
                             break;
                         default: break;
                     }

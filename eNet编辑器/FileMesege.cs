@@ -224,7 +224,7 @@ namespace eNet编辑器
                 bool isUnzip = ziphelp.UnZipFile(localFilePath, TmpFilePath, out msg);
                 if(!isUnzip)
                 {
-                    MessageBox.Show("解析文件失败！", "提示");
+                    //MessageBox.Show("解析文件失败！", "提示");
                     return false;
                 }
      
@@ -244,7 +244,7 @@ namespace eNet编辑器
                 || !System.IO.File.Exists(TmpFilePath + "\\pro\\logic.json")
                 )
             {
-                MessageBox.Show("打开文件失败！", "提示");
+                //MessageBox.Show("打开文件失败！", "提示");
                 return false;
             }
             iniPath();
@@ -469,6 +469,12 @@ namespace eNet编辑器
         {
             try
             {
+                
+                if (System.IO.Directory.Exists(TmpFilePath))
+                {
+                    Directory.Delete(TmpFilePath, true);
+                }
+                /*
                 if (System.IO.Directory.Exists(TmpFilePath + "\\objs"))
                 {
                     Directory.Delete(TmpFilePath + "\\objs", true);
@@ -476,7 +482,7 @@ namespace eNet编辑器
                 if (System.IO.Directory.Exists(TmpFilePath + "\\pro"))
                 {
                     Directory.Delete(TmpFilePath + "\\pro", true);
-                }
+                }*/
                 Directory.CreateDirectory(TmpFilePath + "\\objs");
                 Directory.CreateDirectory(TmpFilePath + "\\pro");
             }
@@ -584,6 +590,16 @@ namespace eNet编辑器
                             if (point.ip == ip)
                             {
                                 gwPoint.logic.Add(point);
+                            }
+                        }
+                    }
+                    if (PointList.localvar != null)
+                    {
+                        foreach (DataJson.PointInfo point in PointList.localvar)
+                        {
+                            if (point.ip == ip)
+                            {
+                                gwPoint.localvar.Add(point);
                             }
                         }
                     }

@@ -93,8 +93,7 @@ namespace eNet编辑器.AddForm
                 return;
             }
             //设备ID号为数字
-            bool isid = Regex.IsMatch(cbDevice.Text, @"[^\d]*");
-            if (!isid)
+            if (!Regex.IsMatch(cbDevice.Text, @"^[+-]?\d*[.]?\d*$"))
             {
 
                 AppTxtShow("设备号输入格式错误");
@@ -131,7 +130,7 @@ namespace eNet编辑器.AddForm
                         }
                     }
                 }
-                FileMesege.info = string.Format("{0} {1} {2}", lbip.Text, cbDevice.Text, cbVersion.Text);
+                FileMesege.info = string.Format("{0} {1} {2}", lbip.Text.Replace(" ", ""), cbDevice.Text.Replace(" ", ""), cbVersion.Text.Replace(" ", ""));
                 try
                 {
                     //自动序号加一
@@ -157,7 +156,7 @@ namespace eNet编辑器.AddForm
                     //改设备版本
                     isChange = false;
                 }
-                FileMesege.info = string.Format("{0} {1} {2} {3} {4}", lbip.Text.Trim(), cbDevice.Text.Trim(), cbVersion.Text.Trim(), oldDevNum, oldDevVersion);
+                FileMesege.info = string.Format("{0} {1} {2} {3} {4}", lbip.Text.Replace(" ", ""), cbDevice.Text.Replace(" ", ""), cbVersion.Text.Replace(" ", ""), oldDevNum, oldDevVersion);
                 //修改模式
                 this.DialogResult = DialogResult.OK;
             }

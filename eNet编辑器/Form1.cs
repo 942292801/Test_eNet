@@ -718,12 +718,12 @@ namespace eNet编辑器
                     this.Text = Resources.SoftName + "Edit New Project";
                     updataAllView();
                     txtShow.Clear();
-                    AppTxtShow("新建工程");
+                    AppTxtShow("新建工程！");
             }
             else
             {
 
-                AppTxtShow("新建工程失败");
+                AppTxtShow("新建工程失败！");
             }           
         }
 
@@ -733,7 +733,7 @@ namespace eNet编辑器
             if (fm.openfile())
             {
 
-                    AppTxtShow("打开工程成功");
+                    AppTxtShow("打开工程成功！");
                     this.Text = Resources.SoftName + FileMesege.filePath;
                     //刷新所有窗口
                     updataAllView();                
@@ -742,7 +742,7 @@ namespace eNet编辑器
             }
             else
             {
-                AppTxtShow("打开工程失败");
+                AppTxtShow("打开工程失败！");
             }            
         }
 
@@ -753,11 +753,11 @@ namespace eNet编辑器
             if ( fm.savefile())
             {
 
-                AppTxtShow("保存工程成功");
+                AppTxtShow("保存工程成功！");
             }
             else
             {
-                AppTxtShow("保存工程失败");
+                AppTxtShow("保存工程失败！");
             }
         }
 
@@ -766,11 +766,11 @@ namespace eNet编辑器
             FileMesege fm = new FileMesege();
             if (fm.othersavefile())
             {
-                AppTxtShow("另存为工程成功");
+                AppTxtShow("另存为工程成功！");
             }
             else
             {
-                AppTxtShow("另存为工程失败");
+                AppTxtShow("另存为工程失败！");
             }
         }
 
@@ -830,15 +830,18 @@ namespace eNet编辑器
             
         }
 
-        //自己定义个点击事件需要执行的动作
+        //自己定义个点击事件需要执行的动作 历史记录
         private void DemoClick(object sender, EventArgs e)
         {
             ToolStripMenuItem but = sender as ToolStripMenuItem;
             FileMesege fm = new FileMesege();
+            if (!System.IO.File.Exists(but.Text))
+            {
+                AppTxtShow("文件路径不存在！");
+                return;
+            }
             if (fm.readProject(but.Text))
             {
-
-                txtShow.AppendText("打开工程成功\r\n");
                 this.Text = Resources.SoftName + FileMesege.filePath;
                 //刷新所有窗口
                 updataAllView();
@@ -847,7 +850,7 @@ namespace eNet编辑器
             }
             else
             {
-                txtShow.AppendText("打开工程失败\r\n");
+                AppTxtShow("工程打开失败！");
             }   
             
         }
@@ -1144,16 +1147,20 @@ namespace eNet编辑器
 
         private void 按键检测ToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
-            panelCheck plc = new panelCheck();
+            KeyCheck plc = new KeyCheck();
             //把窗口向屏幕中间刷新
             plc.StartPosition = FormStartPosition.CenterParent;
-            //把当前选仲树状图网关传递到info里面 给新建设备框网关使用  
-            //plc.Address = address;
+
             plc.ShowDialog();
-            if (plc.DialogResult == DialogResult.OK)
-            { 
-            
-            }
+     
+        }
+
+        private void 主机网络设置ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            masterIPchange masterchange = new masterIPchange();
+            masterchange.StartPosition = FormStartPosition.CenterParent;
+            masterchange.AppTxtShow += new Action<string>(AppTxtShow);
+            masterchange.ShowDialog();
         }
 
         #endregion
@@ -1176,6 +1183,9 @@ namespace eNet编辑器
         }
 
         #endregion
+
+       
+
 
     
 

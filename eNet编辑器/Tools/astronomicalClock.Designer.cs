@@ -353,6 +353,7 @@
             // 
             // cbOnlineIP
             // 
+            this.cbOnlineIP.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbOnlineIP.FormattingEnabled = true;
             this.cbOnlineIP.Location = new System.Drawing.Point(63, 14);
             this.cbOnlineIP.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);

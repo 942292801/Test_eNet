@@ -354,6 +354,14 @@ namespace eNet编辑器.ThreeView
             {
                 pointChange1(eq, section, newSection);
             }
+            foreach (DataJson.PointInfo eq in FileMesege.PointList.logic)
+            {
+                pointChange1(eq, section, newSection);
+            }
+            foreach (DataJson.PointInfo eq in FileMesege.PointList.localvar)
+            {
+                pointChange1(eq, section, newSection);
+            }
             FileMesege.AreaList[i1].area = newSection;
             treeView1.SelectedNode.Text = newSection;
             
@@ -402,6 +410,14 @@ namespace eNet编辑器.ThreeView
                 pointChange2(eq, section, newSection);
             }
             foreach (DataJson.PointInfo eq in FileMesege.PointList.virtualport)
+            {
+                pointChange2(eq, section, newSection);
+            }
+            foreach (DataJson.PointInfo eq in FileMesege.PointList.logic)
+            {
+                pointChange2(eq, section, newSection);
+            }
+            foreach (DataJson.PointInfo eq in FileMesege.PointList.localvar)
             {
                 pointChange2(eq, section, newSection);
             }
@@ -459,6 +475,14 @@ namespace eNet编辑器.ThreeView
             {
                 pointChange3(eq, section, newSection);
             }
+            foreach (DataJson.PointInfo eq in FileMesege.PointList.logic)
+            {
+                pointChange3(eq, section, newSection);
+            }
+            foreach (DataJson.PointInfo eq in FileMesege.PointList.localvar)
+            {
+                pointChange3(eq, section, newSection);
+            }
             FileMesege.AreaList[i1].area2[i2].area3[i3].area = newSection;
             treeView1.SelectedNode.Text = newSection;
          
@@ -510,6 +534,14 @@ namespace eNet编辑器.ThreeView
                 pointChange4(eq, section, newSection);
             }
             foreach (DataJson.PointInfo eq in FileMesege.PointList.virtualport)
+            {
+                pointChange4(eq, section, newSection);
+            }
+            foreach (DataJson.PointInfo eq in FileMesege.PointList.logic)
+            {
+                pointChange4(eq, section, newSection);
+            }
+            foreach (DataJson.PointInfo eq in FileMesege.PointList.localvar)
             {
                 pointChange4(eq, section, newSection);
             }
@@ -647,6 +679,14 @@ namespace eNet编辑器.ThreeView
             {
                 delupdatePoint4(eq, sections, objDel);
             }
+            foreach (DataJson.PointInfo eq in FileMesege.PointList.logic)
+            {
+                delupdatePoint4(eq, sections, objDel);
+            }
+            foreach (DataJson.PointInfo eq in FileMesege.PointList.localvar)
+            {
+                delupdatePoint4(eq, sections, objDel);
+            }
             //删除的节点所有信息
             DataJson.Area4 obj = FileMesege.AreaList[i1].area2[i2].area3[i3].area4[i4];
             FileMesege.AreaList[i1].area2[i2].area3[i3].area4.Remove( FileMesege.AreaList[i1].area2[i2].area3[i3].area4[i4]);
@@ -730,6 +770,14 @@ namespace eNet编辑器.ThreeView
                 delupdatePoint3(eq, sections, objDel);
             }
             foreach (DataJson.PointInfo eq in FileMesege.PointList.virtualport)
+            {
+                delupdatePoint3(eq, sections, objDel);
+            }
+            foreach (DataJson.PointInfo eq in FileMesege.PointList.logic)
+            {
+                delupdatePoint3(eq, sections, objDel);
+            }
+            foreach (DataJson.PointInfo eq in FileMesege.PointList.localvar)
             {
                 delupdatePoint3(eq, sections, objDel);
             }
@@ -818,6 +866,14 @@ namespace eNet编辑器.ThreeView
                 delupdatePoint2(eq, sections, objDel);
             }
             foreach (DataJson.PointInfo eq in FileMesege.PointList.virtualport)
+            {
+                delupdatePoint2(eq, sections, objDel);
+            }
+            foreach (DataJson.PointInfo eq in FileMesege.PointList.logic)
+            {
+                delupdatePoint2(eq, sections, objDel);
+            }
+            foreach (DataJson.PointInfo eq in FileMesege.PointList.localvar)
             {
                 delupdatePoint2(eq, sections, objDel);
             }
@@ -911,6 +967,14 @@ namespace eNet编辑器.ThreeView
                 delupdatePoint1(eq, sections, objDel);
             }
             foreach (DataJson.PointInfo eq in FileMesege.PointList.virtualport)
+            {
+                delupdatePoint1(eq, sections, objDel);
+            }
+            foreach (DataJson.PointInfo eq in FileMesege.PointList.logic)
+            {
+                delupdatePoint1(eq, sections, objDel);
+            }
+            foreach (DataJson.PointInfo eq in FileMesege.PointList.localvar)
             {
                 delupdatePoint1(eq, sections, objDel);
             }
@@ -1456,6 +1520,18 @@ namespace eNet编辑器.ThreeView
             {
                 PointUpdata4(eq, i1, i2, i3, i4);
             }
+            foreach (DataJson.PointInfo eq in FileMesege.PointList.virtualport)
+            {
+                PointUpdata4(eq, i1, i2, i3, i4);
+            }
+            foreach (DataJson.PointInfo eq in FileMesege.PointList.logic)
+            {
+                PointUpdata4(eq, i1, i2, i3, i4);
+            }
+            foreach (DataJson.PointInfo eq in FileMesege.PointList.localvar)
+            {
+                PointUpdata4(eq, i1, i2, i3, i4);
+            }
         }
 
         private void PointUpdata4(DataJson.PointInfo eq,int i1,int i2,int i3,int i4)
@@ -1518,7 +1594,18 @@ namespace eNet编辑器.ThreeView
             {
                 PointUpdata3(eq, i1, i2, i3);
             }
-           
+            foreach (DataJson.PointInfo eq in FileMesege.PointList.virtualport)
+            {
+                PointUpdata3(eq, i1, i2, i3);
+            }
+            foreach (DataJson.PointInfo eq in FileMesege.PointList.logic)
+            {
+                PointUpdata3(eq, i1, i2, i3);
+            }
+            foreach (DataJson.PointInfo eq in FileMesege.PointList.localvar)
+            {
+                PointUpdata3(eq, i1, i2, i3);
+            }
 
             
         }
@@ -1584,7 +1671,18 @@ namespace eNet编辑器.ThreeView
             {
                 PointUpdata2(eq, i1, i2);
             }
-           
+            foreach (DataJson.PointInfo eq in FileMesege.PointList.virtualport)
+            {
+                PointUpdata2(eq, i1, i2 );
+            }
+            foreach (DataJson.PointInfo eq in FileMesege.PointList.logic)
+            {
+                PointUpdata2(eq, i1, i2 );
+            }
+            foreach (DataJson.PointInfo eq in FileMesege.PointList.localvar)
+            {
+                PointUpdata2(eq, i1, i2 );
+            }
             
 
         }
@@ -1648,6 +1746,18 @@ namespace eNet编辑器.ThreeView
                 PointUpdata1(eq, i1);
             }
             foreach (DataJson.PointInfo eq in FileMesege.PointList.timer)
+            {
+                PointUpdata1(eq, i1);
+            }
+            foreach (DataJson.PointInfo eq in FileMesege.PointList.virtualport)
+            {
+                PointUpdata1(eq, i1);
+            }
+            foreach (DataJson.PointInfo eq in FileMesege.PointList.logic)
+            {
+                PointUpdata1(eq, i1);
+            }
+            foreach (DataJson.PointInfo eq in FileMesege.PointList.localvar)
             {
                 PointUpdata1(eq, i1);
             }

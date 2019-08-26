@@ -51,13 +51,13 @@ namespace eNet编辑器.AddForm
             }
             if (isNew)
             {
-                FileMesege.info = string.Format("{0} {1}", txtGateway.Text, cbVersion.Text);
+                FileMesege.info = string.Format("{0} {1}", txtGateway.Text.Replace(" ", ""), cbVersion.Text.Replace(" ", ""));
                 //回调函数
                 addgw();
             }
             else
             {
-                FileMesege.info = string.Format("{0} {1} {2}", txtGateway.Text, cbVersion.Text,oldinfos);
+                FileMesege.info = string.Format("{0} {1} {2}", txtGateway.Text.Replace(" ", ""), cbVersion.Text.Replace(" ", ""), oldinfos);
                 this.DialogResult = DialogResult.OK;
                    
             }

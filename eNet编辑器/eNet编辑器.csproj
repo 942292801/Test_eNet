@@ -302,6 +302,18 @@
     <Compile Include="Tools\holidayUpdate.Designer.cs">
       <DependentUpon>holidayUpdate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Tools\KeyCheck.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tools\KeyCheck.Designer.cs">
+      <DependentUpon>KeyCheck.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\masterIPchange.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tools\masterIPchange.Designer.cs">
+      <DependentUpon>masterIPchange.cs</DependentUpon>
+    </Compile>
     <Compile Include="Tools\systemPrjUpdate.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -575,6 +587,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Tools\holidayUpdate.resx">
       <DependentUpon>holidayUpdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tools\KeyCheck.resx">
+      <DependentUpon>KeyCheck.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tools\masterIPchange.resx">
+      <DependentUpon>masterIPchange.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Tools\systemPrjUpdate.resx">
       <DependentUpon>systemPrjUpdate.cs</DependentUpon>

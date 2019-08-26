@@ -280,7 +280,7 @@ namespace eNet编辑器.AddForm
                         ip = FileMesege.sensorSelectNode.Parent.Text.Split(' ')[0];
                         break;
                     case "logic":
-
+                        ip = FileMesege.logicSelectNode.Parent.Text.Split(' ')[0];
                         break;
                     
                     default: break;
