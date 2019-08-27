@@ -781,7 +781,7 @@ namespace eNet编辑器.ThreeView
                         }
                     }
                     info.id = id+1;
-                    info.Delay = 0;
+                    info.delay = 0;
                     info.address = eq.address;
                     info.pid = eq.pid;
                     info.opt = "";

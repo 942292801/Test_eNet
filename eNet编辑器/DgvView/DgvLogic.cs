@@ -36,5 +36,28 @@ namespace eNet编辑器.DgvView
         
         }
 
+        private void btnAddDay_Click(object sender, EventArgs e)
+        {
+            FileMesege.PointList = new DataJson.Point();
+            while(true)
+            {
+                int randomNum = DataChange.randomNum();
+                if (FileMesege.PointList.equipment.Exists(x => x.pid == randomNum))
+                {
+
+                    MessageBox.Show(string.Format("第{0}个存在相同pid", FileMesege.PointList.equipment.Count));
+                    break;
+                }
+                else
+                {
+                    DataJson.PointInfo point = new DataJson.PointInfo();
+                    point.pid = randomNum;
+                    FileMesege.PointList.equipment.Add(point);
+
+                }
+            }
+            
+        }
+
     }
 }

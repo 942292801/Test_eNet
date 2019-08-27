@@ -230,6 +230,7 @@
     <Compile Include="AddForm\logicAdd.Designer.cs">
       <DependentUpon>logicAdd.cs</DependentUpon>
     </Compile>
+    <Compile Include="Validator.cs" />
     <Compile Include="Tools\astronomicalClock.cs">
       <SubType>Form</SubType>
     </Compile>

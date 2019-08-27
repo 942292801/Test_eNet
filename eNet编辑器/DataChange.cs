@@ -169,9 +169,24 @@ namespace eNet编辑器
         /// <returns></returns>
         public static int randomNum()
         {
-            Random r = new Random(int.Parse(DateTime.Now.ToString("HHmmssfff")));
-            int num = r.Next(10000, 99999);//随机生成一个5位整数
+            Random r = null;
+            DataJson.PointInfo point = null;
+            int num = 0;
+            bool isExit = true;
+            while (isExit)
+            {
+                SocketUtil.DelayMilli(1);
+                r = new Random(int.Parse(DateTime.Now.ToString("HHmmssfff")));
+                num = r.Next(10000, 99999);//随机生成一个5位整数
+                point = DataListHelper.findPointByPid(num);
+                if (point == null)
+                {
+                    break;
+                }
+
+            }
             
+
             return num;
            
            

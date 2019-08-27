@@ -254,7 +254,7 @@ namespace eNet编辑器.ThreeView
             //撤销
             DataJson.totalList OldList = FileMesege.cmds.getListInfos();
             //添加logicList 表中
-            //该IP在logicList里面是否存在  
+            //该IP在logicList里面是否存在
             if (!FileMesege.logicList.Exists(x => x.IP == lgadd.Ip))
             {
                 //不存在新建List
@@ -302,7 +302,30 @@ namespace eNet编辑器.ThreeView
                     eq.objType = "";
                     eq.value = "";
                     FileMesege.PointList.logic.Add(eq);
-
+                    string tmp = "";
+                    //添加16个局部变量
+                    for (int i = (lgs.id - 1) * 16 + 1; i <= lgs.id * 16; i++)
+                    {
+                        //添加point点
+                        DataJson.PointInfo point = new DataJson.PointInfo();
+                        eq.area1 = lgadd.Area1;
+                        eq.area2 = lgadd.Area2;
+                        eq.area3 = lgadd.Area3;
+                        eq.area4 = lgadd.Area4;
+                        tmp = SocketUtil.strtohexstr(i.ToString());
+                        while (tmp.Length < 4)
+                        {
+                            tmp.Insert(0,"0");
+                        }
+                        eq.address = "FEF9" + tmp;
+                        eq.pid = DataChange.randomNum(); ;
+                        eq.ip = lgadd.Ip;
+                        eq.name = string.Format("局部变量{0}@{1}", i.ToString(), lgadd.Ip.Split('.')[3]); ;
+                        eq.type = "15.0_LocalVariable";
+                        eq.objType = "";
+                        eq.value = "";
+                        FileMesege.PointList.logic.Add(eq);
+                    }
                     //排序
                     LogicSort(lg);
                     string parentNodePath = "";

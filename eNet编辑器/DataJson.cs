@@ -323,7 +323,7 @@ namespace eNet编辑器
             public string address { get; set; }
             public string opt { get; set; }
             public string optName { get; set; }
-            public int Delay { get; set; }
+            public int delay { get; set; }
         }
         #endregion
 
@@ -440,7 +440,7 @@ namespace eNet编辑器
             
             public int id { get; set; }
             public int pid { get; set; }
-            public string varName { get; set; }//逻辑变量 用,分割开来 内部变量名组成为还要有地址做成唯一
+            public string varName { get; set; }//逻辑变量 pid,分割开来 内部变量名组成为还要有地址做成唯一
             public List<logicsInfo> logicsInfo = new List<logicsInfo>();
         }
         [Serializable]
@@ -448,8 +448,12 @@ namespace eNet编辑器
         {
             public int id { get; set; }
             public int pid { get; set; }
+            public int attr { get; set; }//是否主动反馈
             public string type { get; set; }
             public string address { get; set; }
+            public string opt { get; set; }
+            public string optName { get; set; }
+            public int delay { get; set; }
 
         }
         #endregion

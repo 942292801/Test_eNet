@@ -710,7 +710,7 @@ namespace eNet编辑器
                         sb.num = info.id;
                         sb.obj = info.address;
                         sb.val = info.opt;
-                        sb.delay = info.Delay;
+                        sb.delay = info.delay;
                         sn.action.Add(sb);
 
                     }

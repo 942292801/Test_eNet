@@ -506,7 +506,27 @@ namespace eNet编辑器.AddForm
                             cb4.Items.Add(srs.id);
                         }
                         break;
-                    case "按键":
+                    case "逻辑":
+                        cb4.Items.Clear();
+                        DataJson.Logic logic = DataListHelper.getLogicList(ip);
+
+                        foreach (DataJson.logics lgs in logic.logics)
+                        {
+                            cb4.Items.Add(lgs.id);
+                        }
+                        break;
+                    case "局部变量":
+                        cb4.Items.Clear();
+                        logic = DataListHelper.getLogicList(ip);
+
+                        foreach (DataJson.logics lgs in logic.logics)
+                        {
+                            for (int i = (lgs.id - 1) * 16 + 1; i <= lgs.id * 16; i++)
+                            {
+                                cb4.Items.Add(i);
+                            }
+
+                        }
                         break;
                     default:
                         break;

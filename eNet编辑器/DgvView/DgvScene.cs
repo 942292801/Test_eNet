@@ -153,7 +153,7 @@ namespace eNet编辑器.DgvView
                         dataGridView1.Rows[dex].Cells[2].Value = DgvMesege.addressTransform( info.address);
                         dataGridView1.Rows[dex].Cells[1].Value = IniHelper.findTypesIniNamebyType(info.type);
                         dataGridView1.Rows[dex].Cells[5].Value = (info.optName + " " + info.opt).Trim();
-                        dataGridView1.Rows[dex].Cells[6].Value = Convert.ToDouble(info.Delay) / 10;
+                        dataGridView1.Rows[dex].Cells[6].Value = Convert.ToDouble(info.delay) / 10;
                         dataGridView1.Rows[dex].Cells[7].Value = "删除";
                        
 
@@ -263,7 +263,7 @@ namespace eNet编辑器.DgvView
                 type = sc.sceneInfo[sc.sceneInfo.Count - 1].type;
                 opt = sc.sceneInfo[sc.sceneInfo.Count - 1].opt;
                 optname = sc.sceneInfo[sc.sceneInfo.Count - 1].optName;
-                delay = sc.sceneInfo[sc.sceneInfo.Count - 1].Delay;
+                delay = sc.sceneInfo[sc.sceneInfo.Count - 1].delay;
                 add = sc.sceneInfo[sc.sceneInfo.Count - 1].address;
             }
             
@@ -273,7 +273,7 @@ namespace eNet编辑器.DgvView
             
             info.opt = opt;
             info.optName = optname;
-            info.Delay = delay; 
+            info.delay = delay; 
             //地址加一处理 并搜索PointList表获取地址 信息
             if (!string.IsNullOrEmpty(add) && add != "FFFFFFFF")
             {
@@ -401,7 +401,7 @@ namespace eNet编辑器.DgvView
                             sb.num = info.id;
                             sb.obj = info.address;
                             sb.val = info.opt;
-                            sb.delay = info.Delay;
+                            sb.delay = info.delay;
                             sn.action.Add(sb);
                             
                         }
@@ -965,8 +965,8 @@ namespace eNet编辑器.DgvView
             //获取该节点IP地址场景下的 场景信息对象
             DataJson.scenes sc = DataListHelper.getSceneInfoList(ips[0], sceneNum);
             //获取sceneInfo对象表中对应ID号info对象
-            DataJson.sceneInfo info = getSceneID(sc, id);       
-            info.Delay = Convert.ToInt32( time * 10);
+            DataJson.sceneInfo info = getSceneID(sc, id);
+            info.delay = Convert.ToInt32(time * 10);
             DataJson.totalList NewList = FileMesege.cmds.getListInfos();
             FileMesege.cmds.DoNewCommand(NewList, OldList);
             

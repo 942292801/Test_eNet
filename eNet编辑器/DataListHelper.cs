@@ -910,6 +910,10 @@ namespace eNet编辑器
         /// <returns></returns>
         public static DataJson.PointInfo findPointByList_add(List<DataJson.PointInfo> Jsonlist, string address)
         {
+            if (Jsonlist == null)
+            {
+                return null;
+            }
             foreach (DataJson.PointInfo eq in Jsonlist)
             {
                 if (eq.address == address)
@@ -929,6 +933,10 @@ namespace eNet编辑器
         /// <returns></returns>
         public static DataJson.PointInfo findPointByPid(int pid, List<DataJson.PointInfo> list)
         {
+            if (list == null)
+            {
+                return null;
+            }
             foreach (DataJson.PointInfo point in list)
             {
                 if (point.pid == pid)
@@ -949,60 +957,92 @@ namespace eNet编辑器
         {
             try
             {
-                foreach (DataJson.PointInfo point in FileMesege.PointList.equipment)
+                if (FileMesege.PointList == null)
                 {
-                    if (point.pid == pid)
-                    {
+                    return null;
+                }
+                if (FileMesege.PointList.equipment != null)
+                {
 
-                        return point;
+                    foreach (DataJson.PointInfo point in FileMesege.PointList.equipment)
+                    {
+                        if (point.pid == pid)
+                        {
+
+                            return point;
+                        }
                     }
                 }
-                foreach (DataJson.PointInfo point in FileMesege.PointList.scene)
-                {
-                    if (point.pid == pid)
-                    {
 
-                        return point;
+                if (FileMesege.PointList.scene != null)
+                {
+                    foreach (DataJson.PointInfo point in FileMesege.PointList.scene)
+                    {
+                        if (point.pid == pid)
+                        {
+
+                            return point;
+                        }
                     }
                 }
-                foreach (DataJson.PointInfo point in FileMesege.PointList.link)
-                {
-                    if (point.pid == pid)
-                    {
 
-                        return point;
+                if (FileMesege.PointList.link != null)
+                {
+                    foreach (DataJson.PointInfo point in FileMesege.PointList.link)
+                    {
+                        if (point.pid == pid)
+                        {
+
+                            return point;
+                        }
                     }
                 }
-                foreach (DataJson.PointInfo point in FileMesege.PointList.timer)
-                {
-                    if (point.pid == pid)
-                    {
 
-                        return point;
+                if (FileMesege.PointList.timer != null)
+                {
+                    foreach (DataJson.PointInfo point in FileMesege.PointList.timer)
+                    {
+                        if (point.pid == pid)
+                        {
+
+                            return point;
+                        }
                     }
                 }
-                foreach (DataJson.PointInfo point in FileMesege.PointList.virtualport)
-                {
-                    if (point.pid == pid)
-                    {
 
-                        return point;
+                if (FileMesege.PointList.virtualport != null)
+                {
+                    foreach (DataJson.PointInfo point in FileMesege.PointList.virtualport)
+                    {
+                        if (point.pid == pid)
+                        {
+
+                            return point;
+                        }
                     }
                 }
-                foreach (DataJson.PointInfo point in FileMesege.PointList.logic)
-                {
-                    if (point.pid == pid)
-                    {
 
-                        return point;
+                if (FileMesege.PointList.logic != null)
+                {
+                    foreach (DataJson.PointInfo point in FileMesege.PointList.logic)
+                    {
+                        if (point.pid == pid)
+                        {
+
+                            return point;
+                        }
                     }
                 }
-                foreach (DataJson.PointInfo point in FileMesege.PointList.localvar)
-                {
-                    if (point.pid == pid)
-                    {
 
-                        return point;
+                if (FileMesege.PointList.localvar != null)
+                {
+                    foreach (DataJson.PointInfo point in FileMesege.PointList.localvar)
+                    {
+                        if (point.pid == pid)
+                        {
+
+                            return point;
+                        }
                     }
                 }
             }
