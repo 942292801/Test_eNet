@@ -10,7 +10,7 @@
                         "address": "EBFA0102",
                         "opt": "FEFA0B1C",
                         "optName": "赋值",
-                        "Delay": 0
+                        "delay": 0
                     },
                     {
                         "id": 2,
@@ -19,16 +19,16 @@
                         "address": "EBFA0B02",
                         "opt": "FEFA1719",
                         "optName": "赋值",
-                        "Delay": 0
+                        "delay": 0
                     },
                     {
                         "id": 3,
                         "pid": 0,
-                        "type": "15.0_LocalVariable ",
-                        "address": "EBF90004",
-                        "opt": "FEF90009",
-                        "optName": "赋值",
-                        "Delay": 0
+                        "type": "9.0_virtualport",
+                        "address": "FEFB0303",
+                        "opt": "",
+                        "optName": "",
+                        "delay": 0
                     },
                     {
                         "id": 4,
@@ -37,7 +37,7 @@
                         "address": "EB400017",
                         "opt": "FE40001D",
                         "optName": "赋值",
-                        "Delay": 0
+                        "delay": 0
                     },
                     {
                         "id": 5,
@@ -46,25 +46,25 @@
                         "address": "EB100001",
                         "opt": "FE100018",
                         "optName": "赋值",
-                        "Delay": 0
+                        "delay": 0
                     },
                     {
                         "id": 6,
                         "pid": 0,
                         "type": "6.1_panel",
                         "address": "EB300003",
-                        "opt": "FE30001A",
-                        "optName": "赋值",
-                        "Delay": 0
+                        "opt": "",
+                        "optName": "",
+                        "delay": 0
                     },
                     {
                         "id": 7,
                         "pid": 0,
                         "type": "9.0_virtualport",
                         "address": "FEFB0308",
-                        "opt": "FEFB031A",
-                        "optName": "赋值",
-                        "Delay": 0
+                        "opt": "",
+                        "optName": "",
+                        "delay": 0
                     },
                     {
                         "id": 8,
@@ -73,7 +73,7 @@
                         "address": "FFFFFFFF",
                         "opt": "FE001619",
                         "optName": "赋值",
-                        "Delay": 0
+                        "delay": 0
                     },
                     {
                         "id": 9,
@@ -82,7 +82,7 @@
                         "address": "FFFFFFFF",
                         "opt": "FE00070A",
                         "optName": "赋值",
-                        "Delay": 0
+                        "delay": 0
                     },
                     {
                         "id": 10,
@@ -91,7 +91,7 @@
                         "address": "EB200003",
                         "opt": "FE20001B",
                         "optName": "赋值",
-                        "Delay": 0
+                        "delay": 0
                     },
                     {
                         "id": 11,
@@ -100,7 +100,7 @@
                         "address": "EB3003EA",
                         "opt": "FE3003EA",
                         "optName": "赋值",
-                        "Delay": 0
+                        "delay": 0
                     }
                 ],
                 "id": 1,

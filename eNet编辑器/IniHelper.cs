@@ -183,7 +183,58 @@ namespace eNet编辑器
             return "";
         }
 
-        
+        /// <summary>
+        /// 根据地址Address寻找 该个地址的链路类型 设备 场景 定时 。。。。
+        /// </summary>
+        /// <param name="address"></param>
+        /// <returns></returns>
+        public static string findIniLinkTypeByAddress(string address)
+        {
+            try
+            {
+
+                string addressType = address.Substring(2, 2);
+                switch (addressType)
+                {
+                    case "00":
+                        return "设备";
+                    //这个类型现在地址确认不了类型
+                    case "10":
+                        return "场景";
+                    case "20":
+                        return "定时";
+                    case "30":
+                        //objType = "6.0_group";
+                        int num = Convert.ToInt32(address.Substring(4, 2),16) * 256 + Convert.ToInt32(address.Substring(6, 2),16);
+                        if (num <= 999)
+                        {
+                            return "面板";
+                        }
+                        else if (num <= 1999)
+                        {
+                            return "感应编组";
+                        }
+                        else
+                        {
+                            return "";
+                        }
+                    case "40":
+                        return "逻辑";
+
+                    case "FB":
+                      return "虚拟端口";
+                    ////////////////////////后期需要补充完整
+                    default:
+                        return "";
+                }
+                
+
+            }
+            catch
+            {
+                return "";
+            }
+        }
   
 
         /// <summary>
@@ -221,6 +272,11 @@ namespace eNet编辑器
                             {
                                 return "";
                             }
+                        case "40":
+                            return "3.0_logic";
+ 
+                        //case "FB":
+                          //  return "9.0_virtualport";
                         default:
                             return "";
                     }

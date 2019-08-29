@@ -264,8 +264,6 @@ C:\Users\Administrator\Desktop\Gitlab\eNet\eNet编辑器\obj\x86\Release\eNet编
 C:\Users\Administrator\Desktop\Gitlab\eNet\eNet编辑器\obj\x86\Release\eNet编辑器.application
 C:\Users\Administrator\Desktop\Gitlab\eNet\eNet编辑器\obj\x86\Release\eNet编辑器.csprojResolveAssemblyReference.cache
 C:\Users\Administrator\Desktop\Gitlab\eNet\eNet编辑器\obj\x86\Release\eNet编辑器.AddForm.systemPrjUpdate.resources
-C:\Users\Administrator\Desktop\Gitlab\eNet\eNet编辑器\bin\Release\Newtonsoft.Json.pdb
-C:\Users\Administrator\Desktop\Gitlab\eNet\eNet编辑器\bin\Release\Newtonsoft.Json.xml
 C:\Users\Administrator\Desktop\Gitlab\eNet\eNet编辑器\bin\Release\Ionic.Zip.dll
 C:\Users\Administrator\Desktop\Gitlab\eNet\eNet编辑器\obj\x86\Release\eNet编辑器.AddForm.correctionTime.resources
 C:\Users\Administrator\Desktop\Gitlab\eNet\eNet编辑器\obj\x86\Release\eNet编辑器.AddForm.virtualportAddress.resources
@@ -274,3 +272,4 @@ C:\Users\Administrator\Desktop\Gitlab\eNet\eNet编辑器\obj\x86\Release\eNet编
 C:\Users\Administrator\Desktop\Gitlab\eNet\eNet编辑器\obj\x86\Release\eNet编辑器.AddForm.logicAdd.resources
 C:\Users\Administrator\Desktop\Gitlab\eNet\eNet编辑器\obj\x86\Release\eNet编辑器.Tools.KeyCheck.resources
 C:\Users\Administrator\Desktop\Gitlab\eNet\eNet编辑器\obj\x86\Release\eNet编辑器.Tools.masterIPchange.resources
+C:\Users\Administrator\Desktop\Gitlab\eNet\eNet编辑器\bin\Release\Newtonsoft.Json.dll
