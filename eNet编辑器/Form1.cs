@@ -326,7 +326,7 @@ namespace eNet编辑器
                     break;
                 case "logic":
                     threelogic.ThreeLogicAddNode();
-                    dgvsensor.dgvSensorAddItem();
+                    dgvlogic.dgvLogicAddItem();
                     break;
                 case "virtualport":
                     threevar.ThreeVarAddNode();

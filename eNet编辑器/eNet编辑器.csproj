@@ -230,6 +230,24 @@
     <Compile Include="AddForm\logicAdd.Designer.cs">
       <DependentUpon>logicAdd.cs</DependentUpon>
     </Compile>
+    <Compile Include="DgvView\LogicCondition.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DgvView\LogicCondition.Designer.cs">
+      <DependentUpon>LogicCondition.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DgvView\LogicScene.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DgvView\LogicScene.Designer.cs">
+      <DependentUpon>LogicScene.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DgvView\LogicVoice.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DgvView\LogicVoice.Designer.cs">
+      <DependentUpon>LogicVoice.cs</DependentUpon>
+    </Compile>
     <Compile Include="Validator.cs" />
     <Compile Include="Tools\astronomicalClock.cs">
       <SubType>Form</SubType>
@@ -551,6 +569,15 @@
     <Compile Include="ZipHelper.cs" />
     <EmbeddedResource Include="AddForm\logicAdd.resx">
       <DependentUpon>logicAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DgvView\LogicCondition.resx">
+      <DependentUpon>LogicCondition.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DgvView\LogicScene.resx">
+      <DependentUpon>LogicScene.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DgvView\LogicVoice.resx">
+      <DependentUpon>LogicVoice.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Tools\astronomicalClock.resx">
       <DependentUpon>astronomicalClock.cs</DependentUpon>

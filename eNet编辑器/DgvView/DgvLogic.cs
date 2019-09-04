@@ -31,35 +31,24 @@ namespace eNet编辑器.DgvView
 
         private void DgvLogic_Load(object sender, EventArgs e)
         {
-            AddNewUserTab();
+
+            IniControl();
+            
         }
 
         public void dgvLogicAddItem()
-        { 
-        
+        {
         }
 
-        private void btnAddDay_Click(object sender, EventArgs e)
+        /// <summary>
+        /// 控件初始化
+        /// </summary>
+        private void IniControl()
         {
-            FileMesege.PointList = new DataJson.Point();
-            while(true)
-            {
-                int randomNum = DataChange.randomNum();
-                if (FileMesege.PointList.equipment.Exists(x => x.pid == randomNum))
-                {
-
-                    MessageBox.Show(string.Format("第{0}个存在相同pid", FileMesege.PointList.equipment.Count));
-                    break;
-                }
-                else
-                {
-                    DataJson.PointInfo point = new DataJson.PointInfo();
-                    point.pid = randomNum;
-                    FileMesege.PointList.equipment.Add(point);
-
-                }
-            }
-            
+            //Tab表格关闭按钮
+            superTabControl1.CloseButtonOnTabsVisible = true;
+            superTabControl1.Tabs.Clear();
+            AddNewSceneTab();
         }
 
         #region MenuBox_TabMenuOpen
@@ -75,33 +64,58 @@ namespace eNet编辑器.DgvView
                 if (pi != null)
                 {
                     ButtonItem bi = new ButtonItem();
-                    bi.Text = "Add User Tab";
-                    bi.BeginGroup = true;
-                    bi.Click += AddUserTab_Click;
-
+                    bi.Text = "场景处理模式";
+                    bi.Click += AddSceneTab_Click;
                     pi.SubItems.Insert(0, bi);
 
+                    
                     bi = new ButtonItem();
-                    bi.Text = "Delete User Tab";
+                    bi.Text = "多条件处理模式";
+                    bi.Click += AddConditionTab_Click;
+                    pi.SubItems.Insert(1, bi);
+
+                    bi = new ButtonItem();
+                    bi.Text = "表达式处理模式";
+                    bi.Click += AddVoiceTab_Click;
+                    pi.SubItems.Insert(2, bi);
+                    
+                    bi = new ButtonItem();
+                    bi.Text = "删除";
                     bi.Tag = superTabControl1.SelectedTab;
                     bi.Click += DelUserTab_Click;
-
-                    pi.SubItems.Insert(1, bi);
+                    pi.SubItems.Insert(3, bi);
 
                     // Enable the added Delete entry if the currently selected
                     // tab is one they have previously added
 
                     if (superTabControl1.SelectedTab == null ||
-                        superTabControl1.SelectedTab.Text.StartsWith("New Tab") == false)
+                        superTabControl1.Tabs.Count <2 )//.SelectedTab.Text.StartsWith("New Tab") == false)
                     {
                         bi.Enabled = false;
                     }
 
-                    if (pi.SubItems.Count > 2)
-                        pi.SubItems[2].BeginGroup = true;
+                    if (pi.SubItems.Count > 4)
+                        pi.SubItems[4].BeginGroup = true;
                 }
             
         }
+
+        #region DelUserTab
+        private void superTabControl1_TabItemClose(object sender, SuperTabStripTabItemCloseEventArgs e)
+        {
+            SuperTabItem tab = e.Tab as SuperTabItem;
+
+            // In our sample app, only let the user close tabs they have added
+
+            if (tab == null || superTabControl1.Tabs.Count < 2)
+            {
+                MessageBox.Show("模式不能为空，至少保留一项");
+
+                e.Cancel = true;
+            }
+        }
+
+        #endregion
 
         #region DelUserTab_Click
 
@@ -113,42 +127,119 @@ namespace eNet编辑器.DgvView
             {
                 SuperTabItem tab = bi.Tag as SuperTabItem;
 
-                if (tab != null && tab.Text.StartsWith("New Tab") == true)
+                if (tab != null && superTabControl1.Tabs.Count > 1)
                     tab.Close();
             }
         }
 
         #endregion
 
-        #region AddUserTab_Click
+        #region AddSceneTab_Click
 
-        void AddUserTab_Click(object sender, EventArgs e)
+        void AddSceneTab_Click(object sender, EventArgs e)
         {
-            AddNewUserTab();
+            AddNewSceneTab();
         }
 
-        #region AddNewUserTab
+        #region AddNewSceneTab
 
-        private void AddNewUserTab()
+        /// <summary>
+        /// 
+        /// </summary>
+        private void AddNewSceneTab()
         {
-            SuperTabItem tab = superTabControl1.CreateTab("New Tab " + _UserTabCount, 0);
+            SuperTabItem tab = superTabControl1.CreateTab("场景处理" + _UserTabCount, superTabControl1.Tabs.Count);
             tab.Tag = _UserTabCount++;
 
    
-
+            /*
             LabelX lbx = new LabelX();
-            lbx.Text = "This space intentionally left blank.";
+            lbx.Text = "This space intentionally left blank. Scene" + _UserTabCount;
             lbx.TextAlignment = StringAlignment.Center;
             lbx.TextLineAlignment = StringAlignment.Center;
             lbx.BackColor = Color.Transparent;
 
             tab.AttachedControl.Controls.Add(lbx);
             lbx.Dock = DockStyle.Fill;
-
+            superTabControl1.SelectedTab = tab;*/
             //UpdateDelUserButton();
         }
 
         #endregion
+        #endregion
+
+        #region AddConditionTab_Click
+
+        void AddConditionTab_Click(object sender, EventArgs e)
+        {
+            AddNewConditionTab();
+        }
+
+        #region AddNewConditionTab
+
+        private void AddNewConditionTab()
+        {
+            SuperTabItem tab = superTabControl1.CreateTab("多条件处理 " + _UserTabCount, superTabControl1.Tabs.Count);
+            tab.Tag = _UserTabCount++;
+
+
+            /*
+            LabelX lbx = new LabelX();
+            lbx.Text = "This space intentionally left blank. Condition " + _UserTabCount;
+            lbx.TextAlignment = StringAlignment.Center;
+            lbx.TextLineAlignment = StringAlignment.Center;
+            lbx.BackColor = Color.Transparent;
+
+            tab.AttachedControl.Controls.Add(lbx);
+            lbx.Dock = DockStyle.Fill;
+            */
+            //UpdateDelUserButton();
+        }
+
+        #endregion
+        #endregion
+
+        #region AddVoiceTab_Click
+
+        void AddVoiceTab_Click(object sender, EventArgs e)
+        {
+            AddNewVoiceTab();
+        }
+
+        #region AddNewVoiceTab
+
+        private void AddNewVoiceTab()
+        {
+            SuperTabItem tab = superTabControl1.CreateTab("表达式处理 " + _UserTabCount, superTabControl1.Tabs.Count);
+            tab.Tag = _UserTabCount++;
+
+
+            /*
+            LabelX lbx = new LabelX();
+            lbx.Text = "This space intentionally left blank. Voice" + _UserTabCount;
+            lbx.TextAlignment = StringAlignment.Center;
+            lbx.TextLineAlignment = StringAlignment.Center;
+            lbx.BackColor = Color.Transparent;
+
+            tab.AttachedControl.Controls.Add(lbx);
+            lbx.Dock = DockStyle.Fill;
+            */
+            //UpdateDelUserButton();
+        }
+
+
+        #endregion
+
+        private void superTabControl1_SelectedTabChanged(object sender, SuperTabStripSelectedTabChangedEventArgs e)
+        {
+            SuperTabItem tab = superTabControl1.SelectedTab;
+            LogicScene logicScene = new LogicScene(superTabControl1.SelectedTabIndex);
+            logicScene.Dock = DockStyle.Fill;
+            
+            tab.AttachedControl.Controls.Add(logicScene);
+        }
+
+
 
         #endregion
 

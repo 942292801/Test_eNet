@@ -160,7 +160,7 @@
             this.btnAdd.Size = new System.Drawing.Size(15, 15);
             this.btnAdd.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnAdd.TabIndex = 17;
-            this.btnAdd.Tooltip = "添加感应编组";
+            this.btnAdd.Tooltip = "添加逻辑";
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // btnDel

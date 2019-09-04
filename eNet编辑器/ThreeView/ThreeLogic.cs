@@ -286,8 +286,6 @@ namespace eNet编辑器.ThreeView
                         //srs.ioNum = copySensor.ioNum;
                     }
                     lg.logics.Add(lgs);
-    
-
                     //添加point点
                     DataJson.PointInfo eq = new DataJson.PointInfo();
                     eq.area1 = lgadd.Area1;
@@ -302,29 +300,36 @@ namespace eNet编辑器.ThreeView
                     eq.objType = "";
                     eq.value = "";
                     FileMesege.PointList.logic.Add(eq);
+                    
                     string tmp = "";
                     //添加16个局部变量
                     for (int i = (lgs.id - 1) * 16 + 1; i <= lgs.id * 16; i++)
                     {
+                        
                         //添加point点
-                        DataJson.PointInfo point = new DataJson.PointInfo();
-                        eq.area1 = lgadd.Area1;
-                        eq.area2 = lgadd.Area2;
-                        eq.area3 = lgadd.Area3;
-                        eq.area4 = lgadd.Area4;
+                        DataJson.PointInfo localvar = new DataJson.PointInfo();
+                        localvar.area1 = lgadd.Area1;
+                        localvar.area2 = lgadd.Area2;
+                        localvar.area3 = lgadd.Area3;
+                        localvar.area4 = lgadd.Area4;
                         tmp = SocketUtil.strtohexstr(i.ToString());
                         while (tmp.Length < 4)
                         {
-                            tmp.Insert(0,"0");
+                           tmp = tmp.Insert(0,"0");
                         }
-                        eq.address = "FEF9" + tmp;
-                        eq.pid = DataChange.randomNum(); ;
-                        eq.ip = lgadd.Ip;
-                        eq.name = string.Format("局部变量{0}@{1}", i.ToString(), lgadd.Ip.Split('.')[3]); ;
-                        eq.type = "15.0_LocalVariable";
-                        eq.objType = "";
-                        eq.value = "";
-                        FileMesege.PointList.logic.Add(eq);
+                        localvar.address = "FEF9" + tmp;
+                        localvar.pid = DataChange.randomNum();
+                        localvar.ip = lgadd.Ip;
+                        localvar.name = string.Format("局部变量{0}@{1}", i.ToString(), lgadd.Ip.Split('.')[3]); ;
+                        localvar.type = "15.0_LocalVariable";
+                        localvar.objType = "";
+                        localvar.value = "";
+                        if (DataListHelper.findPointBySection_name(new List<string>() { eq.area1, eq.area2, eq.area3, eq.area4, localvar.name }) != null)
+                        {
+                            break;
+                        }
+                        FileMesege.PointList.localvar.Add(localvar);
+                       
                     }
                     //排序
                     LogicSort(lg);
@@ -377,7 +382,7 @@ namespace eNet编辑器.ThreeView
             string[] ips = treeView1.SelectedNode.Parent.Text.Split(' ');
             string[] timerNodeTxt = treeView1.SelectedNode.Text.Split(' ');
             logicadd.Ip = ips[0];
-            //获取面板号数
+            //获取号数
             logicadd.Num = Regex.Replace(timerNodeTxt[0], @"[^\d]*", "");
 
             logicadd.Xflag = true;
@@ -386,7 +391,7 @@ namespace eNet编辑器.ThreeView
 
             if (logicadd.DialogResult == DialogResult.OK)
             {
-                //获取面板号
+                //获取号
                 string num = Convert.ToInt32(logicadd.Num).ToString("X4");
 
                 //获取IP最后一位
@@ -402,6 +407,40 @@ namespace eNet编辑器.ThreeView
                         //修改当前的point点信息
                         if (lgs.pid == eq.pid)
                         {
+                            
+                            //修改16个变量
+                            string addressVar = "";
+                            int id = (Convert.ToInt32(logicadd.Num) - 1) * 16 + 1;
+                            for (int i = (lgs.id - 1) * 16 + 1; i <= lgs.id * 16; i++)
+                            {
+                                addressVar = SocketUtil.strtohexstr(i.ToString());
+                                while (addressVar.Length < 4)
+                                {
+                                    addressVar = addressVar.Insert(0, "0");
+                                }
+                                addressVar = "FEF9" + addressVar;
+                                foreach (DataJson.PointInfo var in FileMesege.PointList.localvar)
+                                {
+                                    if (eq.ip == var.ip && var.address == addressVar)
+                                    {
+                                        var.area1 = logicadd.Area1;
+                                        var.area2 = logicadd.Area2;
+                                        var.area3 = logicadd.Area3;
+                                        var.area4 = logicadd.Area4;
+                                        string tmp = SocketUtil.strtohexstr(id.ToString());
+                                        while (tmp.Length < 4)
+                                        {
+                                            tmp = tmp.Insert(0, "0");
+                                        }
+                                        var.address = "FEF9" + tmp;
+                                        var.ip = logicadd.Ip;
+                                        var.name = string.Format("局部变量{0}@{1}", id.ToString(), logicadd.Ip.Split('.')[3]); ;
+                                        break;
+                                    }
+                                }
+                                id++;
+                            }
+                            
                             lgs.id = Convert.ToInt32(logicadd.Num);
                             eq.area1 = logicadd.Area1;
                             eq.area2 = logicadd.Area2;
@@ -437,7 +476,6 @@ namespace eNet编辑器.ThreeView
             {
                 return;
             }
-
             string[] ips = treeView1.SelectedNode.Parent.Text.Split(' ');
             string[] logicNodetxt = treeView1.SelectedNode.Text.Split(' ');
 
@@ -461,11 +499,31 @@ namespace eNet编辑器.ThreeView
                                 //获取address与IP地址相同的对象
                                 if (eq.pid == lgs.pid)
                                 {
+                                    //删除16个变量
+                                    string address = "";
+                                    for (int i = (lgs.id - 1) * 16 + 1; i <= lgs.id * 16; i++)
+                                    {
+                                        address = SocketUtil.strtohexstr(i.ToString());
+                                        while (address.Length < 4)
+                                        {
+                                            address = address.Insert(0, "0");
+                                        }
+                                        address = "FEF9" + address;
+                                        foreach (DataJson.PointInfo var in FileMesege.PointList.localvar)
+                                        {
+                                            if (eq.ip == var.ip && var.address == address)
+                                            {
+                                                FileMesege.PointList.localvar.Remove(var);
+                                                break;
+                                            }
+                                        }
+                                    }
                                     //移除Namelist 的对象
                                     FileMesege.PointList.logic.Remove(eq);
                                     break;
                                 }
                             }
+                            
                             //移除sensorlist的对象
                             lg.logics.Remove(lgs);
                             //树状图移除选中节点

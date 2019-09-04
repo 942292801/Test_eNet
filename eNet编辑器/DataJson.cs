@@ -90,7 +90,42 @@ namespace eNet编辑器
         }
         #endregion
 
-        
+        #region 项目执行文件logic l-.json 写进主机的项目信息
+        [Serializable]
+        public class Lc
+        {
+            public string type { get; set; }
+            public string describe { get; set; }
+            public List<TriggerNumber> trigger = new List<TriggerNumber>();
+            public Lc()
+            {
+                this.type = "logic";
+                this.describe = "create by system";
+            }
+
+        }
+        [Serializable]
+        public class TriggerNumber
+        {
+            public int num { get; set; }
+            public int attr { get; set; }
+            public string modelType { get; set; }
+            public string @switch { get; set; }//用@来做关键字为变量名
+            public List<Condition> condition = new List<Condition>();
+            
+
+        }
+
+        [Serializable]
+        public class Condition
+        {
+            public string @case { get; set; }
+            public string obj { get; set; }
+            public string data { get; set; }
+            public int delay { get; set; }
+        }
+
+        #endregion
 
 
         #region 在线设备型号及版本序列号数据文件 serial.json
@@ -440,15 +475,24 @@ namespace eNet编辑器
             
             public int id { get; set; }
             public int pid { get; set; }
-            public string varName { get; set; }//逻辑变量 pid,分割开来 内部变量名组成为还要有地址做成唯一
             public List<logicsInfo> logicsInfo = new List<logicsInfo>();
         }
+
         [Serializable]
         public class logicsInfo
         {
             public int id { get; set; }
+            public int attr { get; set; }//是否主动反馈 1为主动触发  0为被动触发
+            public string modelType { get; set; }
+            public string content { get; set; }
+
+        }
+
+        [Serializable]
+        public class logicsContent
+        {
+            public int id { get; set; }
             public int pid { get; set; }
-            public int attr { get; set; }//是否主动反馈
             public string type { get; set; }
             public string address { get; set; }
             public string opt { get; set; }
@@ -463,16 +507,7 @@ namespace eNet编辑器
         [Serializable]
         public class totalList
         {
-           /*
-            public  List<DataJson.Device> DeviceList = new List<Device>();//工程设备的保存记录
-            public  List<DataJson.Area1> AreaList = new List<Area1>();//
-            public DataJson.Point PointList = new Point();//Title表的设备信息
-            //public  DataJson.Serial serialList;//命名在线设备文件
-            public List<DataJson.Scene> sceneList = new List<Scene>();//场景
-            public List<DataJson.Timer> timerList = new List<Timer>();//定时
-            public List<DataJson.Panel> panelList = new List<Panel>();//绑定
-            public List<DataJson.Sensor> sensorList = new List<Sensor>();//感应
-            */
+
             public string DeviceList { get; set; }//工程设备的保存记录
             public string AreaList { get; set; }//
             public string PointList { get; set; }//Title表的设备信息

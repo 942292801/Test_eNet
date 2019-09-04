@@ -963,7 +963,7 @@ namespace eNet编辑器
                 }
                 if (FileMesege.PointList.equipment != null)
                 {
-
+                    
                     foreach (DataJson.PointInfo point in FileMesege.PointList.equipment)
                     {
                         if (point.pid == pid)

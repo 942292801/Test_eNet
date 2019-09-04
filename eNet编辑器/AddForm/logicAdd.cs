@@ -429,9 +429,9 @@ namespace eNet编辑器.AddForm
             }
             try
             {
-                if (Convert.ToInt32(txtNum.Text) > 65535 || Convert.ToInt32(txtNum.Text) <1)
+                if (Convert.ToInt32(txtNum.Text) > 1024 || Convert.ToInt32(txtNum.Text) <1)
                 {
-                    MessageBox.Show("逻辑号范围为1-1999");
+                    MessageBox.Show("逻辑号范围为1-1024");
                     return;
                 }
             }
