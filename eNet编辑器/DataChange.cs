@@ -164,7 +164,7 @@ namespace eNet编辑器
 
         
         /// <summary>
-        /// 产生随机5位数
+        /// 产生随机9位数  PID唯一数字
         /// </summary>
         /// <returns></returns>
         public static int randomNum()
@@ -177,7 +177,7 @@ namespace eNet编辑器
             {
                 SocketUtil.DelayMilli(1);
                 r = new Random(int.Parse(DateTime.Now.ToString("HHmmssfff")));
-                num = r.Next(10000, 99999);//随机生成一个5位整数
+                num = r.Next(100000000, 999999999);//随机生成一个9位整数
                 point = DataListHelper.findPointByPid(num);
                 if (point == null)
                 {
