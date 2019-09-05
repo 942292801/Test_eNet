@@ -510,7 +510,7 @@ namespace eNet编辑器
                 if (p.ip == oldIP)
                 {
                     p.ip = IP;
-                    p.address = string.Format("{0}{1}",hexIP,p.address.Substring(2,6));
+                    //p.address = string.Format("{0}{1}",hexIP,p.address.Substring(2,6));
                     p.name = string.Format("{0}@{1}", p.name.Split('@')[0], IP.Split('.')[3]);
                 }
             }
@@ -519,7 +519,7 @@ namespace eNet编辑器
                 if (p.ip == oldIP)
                 {
                     p.ip = IP;
-                    p.address = string.Format("{0}{1}", hexIP, p.address.Substring(2, 6));
+                    //p.address = string.Format("{0}{1}", hexIP, p.address.Substring(2, 6));
                     p.name = string.Format("{0}@{1}", p.name.Split('@')[0], IP.Split('.')[3]);
                 }
             }
@@ -528,7 +528,7 @@ namespace eNet编辑器
                 if (p.ip == oldIP)
                 {
                     p.ip = IP;
-                    p.address = string.Format("{0}{1}", hexIP, p.address.Substring(2, 6));
+                    //p.address = string.Format("{0}{1}", hexIP, p.address.Substring(2, 6));
                     //修改定时名称的后缀
                     //p.name =  p.name.Replace(Regex.Replace(p.name, @"[^\d]*", ""), "")+IP.Split('.')[3];
                     p.name = string.Format("{0}@{1}", p.name.Split('@')[0] , IP.Split('.')[3]);
@@ -539,7 +539,7 @@ namespace eNet编辑器
                 if (p.ip == oldIP)
                 {
                     p.ip = IP;
-                    p.address = string.Format("{0}{1}", hexIP, p.address.Substring(2, 6));
+                    //p.address = string.Format("{0}{1}", hexIP, p.address.Substring(2, 6));
                     p.name = string.Format("{0}@{1}", p.name.Split('@')[0], IP.Split('.')[3]);
                 }
             }
@@ -558,7 +558,7 @@ namespace eNet编辑器
                 if (p.ip == oldIP)
                 {
                     p.ip = IP;
-                    p.address = string.Format("{0}{1}", hexIP, p.address.Substring(2, 6));
+                    //p.address = string.Format("{0}{1}", hexIP, p.address.Substring(2, 6));
                     p.name = string.Format("{0}@{1}", p.name.Split('@')[0], IP.Split('.')[3]);
                 }
             }
@@ -786,11 +786,19 @@ namespace eNet编辑器
         /// <param name="type">type为空则搜索全部list表的</param>
         /// <param name="address"></param>
         /// <returns></returns>
-        public static DataJson.PointInfo findPointByType_address(string type, string address)
+        public static DataJson.PointInfo findPointByType_address(string type, string address,string ip)
         {
             try
             {
-                
+                string tmp = address.Substring(0, 2);
+                if (address != "FFFFFFFF" && tmp != "FE")
+                {
+                    //XXFFFFFF 把XX代替 192.168.1.XX
+                    address = "FE" + address.Substring(2, 6);
+                    string[] ips = ip.Split('.');
+                    ip = string.Format("{0}.{1}.{2}.{3}", ips[0], ips[1], ips[2],Convert.ToInt32(tmp, 16));
+                     
+                }
                 //区域加名称
                 DataJson.PointInfo pointInfo = null;
                 //如果type为空就搜索全表
@@ -798,7 +806,7 @@ namespace eNet编辑器
                 {
                     if (FileMesege.PointList.equipment != null)
                     {
-                        pointInfo = findPointByList_add(FileMesege.PointList.equipment, address);
+                        pointInfo = findPointByList_add(FileMesege.PointList.equipment, address, ip);
                         if (pointInfo != null)
                         {
                             return pointInfo;
@@ -806,7 +814,7 @@ namespace eNet编辑器
                     }
                     if (FileMesege.PointList.timer != null)
                     {
-                        pointInfo = findPointByList_add(FileMesege.PointList.timer, address);
+                        pointInfo = findPointByList_add(FileMesege.PointList.timer, address, ip);
                         if (pointInfo != null)
                         {
                             return pointInfo;
@@ -814,7 +822,7 @@ namespace eNet编辑器
                     }
                     if (FileMesege.PointList.scene != null)
                     {
-                        pointInfo = findPointByList_add(FileMesege.PointList.scene, address);
+                        pointInfo = findPointByList_add(FileMesege.PointList.scene, address, ip);
                         if (pointInfo != null)
                         {
                             return pointInfo;
@@ -822,7 +830,7 @@ namespace eNet编辑器
                     }
                     if (FileMesege.PointList.link != null)
                     {
-                        pointInfo = findPointByList_add(FileMesege.PointList.link, address);
+                        pointInfo = findPointByList_add(FileMesege.PointList.link, address, ip);
                         if (pointInfo != null)
                         {
                             return pointInfo;
@@ -830,7 +838,7 @@ namespace eNet编辑器
                     }
                     if (FileMesege.PointList.virtualport != null)
                     {
-                        pointInfo = findPointByList_add(FileMesege.PointList.virtualport, address);
+                        pointInfo = findPointByList_add(FileMesege.PointList.virtualport, address, ip);
                         if (pointInfo != null)
                         {
                             return pointInfo;
@@ -838,7 +846,7 @@ namespace eNet编辑器
                     }
                     if (FileMesege.PointList.logic != null)
                     {
-                        pointInfo = findPointByList_add(FileMesege.PointList.logic, address);
+                        pointInfo = findPointByList_add(FileMesege.PointList.logic, address, ip);
                         if (pointInfo != null)
                         {
                             return pointInfo;
@@ -846,7 +854,7 @@ namespace eNet编辑器
                     }
                     if (FileMesege.PointList.localvar != null)
                     {
-                        pointInfo = findPointByList_add(FileMesege.PointList.localvar, address);
+                        pointInfo = findPointByList_add(FileMesege.PointList.localvar, address, ip);
                         if (pointInfo != null)
                         {
                             return pointInfo;
@@ -858,38 +866,38 @@ namespace eNet编辑器
                 switch (type.Split('_')[1])
                 {
                     case "scene":
-                        pointInfo = findPointByList_add(FileMesege.PointList.scene, address);
+                        pointInfo = findPointByList_add(FileMesege.PointList.scene, address, ip);
 
                         break;
 
                     case "time":
-                        pointInfo = findPointByList_add(FileMesege.PointList.timer, address);
+                        pointInfo = findPointByList_add(FileMesege.PointList.timer, address, ip);
 
                         break;
 
                     case "panel":
-                        pointInfo = findPointByList_add(FileMesege.PointList.link, address);
+                        pointInfo = findPointByList_add(FileMesege.PointList.link, address, ip);
 
                         break;
                     case "sensor":
-                        pointInfo = findPointByList_add(FileMesege.PointList.link, address);
+                        pointInfo = findPointByList_add(FileMesege.PointList.link, address, ip);
 
                         break;
                     case "virtualport":
-                        pointInfo = findPointByList_add(FileMesege.PointList.virtualport, address);
+                        pointInfo = findPointByList_add(FileMesege.PointList.virtualport, address, ip);
 
                         break;
                     case "logic":
-                        pointInfo = findPointByList_add(FileMesege.PointList.logic, address);
+                        pointInfo = findPointByList_add(FileMesege.PointList.logic, address, ip);
 
                         break;
                     case "localvar":
-                        pointInfo = findPointByList_add(FileMesege.PointList.localvar, address);
+                        pointInfo = findPointByList_add(FileMesege.PointList.localvar, address, ip);
 
                         break;
                     //为设备00 扫equipment
                     default:
-                        pointInfo = findPointByList_add(FileMesege.PointList.equipment, address);
+                        pointInfo = findPointByList_add(FileMesege.PointList.equipment, address, ip);
 
                         break;
                 }
@@ -897,7 +905,7 @@ namespace eNet编辑器
                 return pointInfo;
             }
             catch {
-                return findPointByList_add(FileMesege.PointList.equipment, address); 
+                return findPointByList_add(FileMesege.PointList.equipment, address, ip); 
             }
             
         }
@@ -908,7 +916,7 @@ namespace eNet编辑器
         /// <param name="Jsonlist"></param>
         /// <param name="address"></param>
         /// <returns></returns>
-        public static DataJson.PointInfo findPointByList_add(List<DataJson.PointInfo> Jsonlist, string address)
+        public static DataJson.PointInfo findPointByList_add(List<DataJson.PointInfo> Jsonlist, string address, string ip)
         {
             if (Jsonlist == null)
             {
@@ -916,7 +924,7 @@ namespace eNet编辑器
             }
             foreach (DataJson.PointInfo eq in Jsonlist)
             {
-                if (eq.address == address)
+                if (eq.address == address && eq.ip == ip)
                 {
                     return eq;
 

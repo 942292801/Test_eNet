@@ -42,7 +42,7 @@ namespace eNet编辑器
         }
 
         /// <summary>
-        /// 地址转换
+        /// 地址转换  FFFFFFFF转换为255.255.255.255
         /// </summary>
         /// <returns></returns>
         public static string addressTransform(string address)

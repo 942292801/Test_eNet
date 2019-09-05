@@ -286,8 +286,12 @@ namespace eNet编辑器.AddForm
                     default: break;
                 }
 
-                cb1.Enabled = false;
-                cb1.Text = ip.Split('.')[3];
+                cb1.Enabled = true;
+                if (string.IsNullOrEmpty(cb1.Text))
+                {
+                    //cb1.Text = ip.Split('.')[3];
+                    cb1.Text = "254";
+                }
                 addNumForDevList();
                 
             }

@@ -212,7 +212,7 @@ namespace eNet编辑器.DgvView
                     string idportstr = dataGridView1.Rows[rowCount].Cells[0].Value.ToString();
                     //十六进制的ID端口号
                     string IDports = SocketUtil.strtohexstr(idportstr);
-                    string address = IP + "00" + ID + IDports;
+                    string address = "FE00" + ID + IDports;
                     string name = "";
 
                     //暂时存储名称 去掉数字
@@ -349,7 +349,7 @@ namespace eNet编辑器.DgvView
             string IP = SocketUtil.GetIPstyle(parents[0], 4);
             string ID = SocketUtil.strtohexstr(Regex.Replace(devs[0], @"[^\d]*", ""));
             string IDports = SocketUtil.strtohexstr((rowcount + 1).ToString());
-            string address = IP + "00" + ID + IDports;
+            string address = "FE00" + ID + IDports;
             dc.Point = null;
             foreach (DataJson.PointInfo ep in FileMesege.PointList.equipment)
             {
@@ -566,7 +566,7 @@ namespace eNet编辑器.DgvView
             string IP = SocketUtil.GetIPstyle(parents[0], 4);
             string ID = SocketUtil.strtohexstr(Regex.Replace(devs[0], @"[^\d]*", ""));
             string IDports = SocketUtil.strtohexstr((count + 1).ToString());
-            string address = IP + "00" + ID + IDports;
+            string address = "FE00" + ID + IDports;
             //撤销
             DataJson.totalList OldList = FileMesege.cmds.getListInfos();
             foreach (DataJson.PointInfo ep in FileMesege.PointList.equipment)
@@ -803,7 +803,7 @@ namespace eNet编辑器.DgvView
             string idportstr = dataGridView1.Rows[rowCount].Cells[0].Value.ToString();
             //十六进制的ID端口号
             string IDports = SocketUtil.strtohexstr(idportstr);
-            string address = IP + "00" + ID + IDports;
+            string address = "FE00" + ID + IDports;
             
             //area1-4 + name
             List<string> section_name = DataListHelper.dealPointInfo(FileMesege.titlePointSection);

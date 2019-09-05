@@ -253,7 +253,7 @@ namespace eNet编辑器.ThreeView
             string num = Convert.ToInt32(sradd.Num).ToString("X4");
 
             //获取IP最后一位 定时为20
-            string address = SocketUtil.GetIPstyle(sradd.Ip, 4) + "30" + num;
+            string address ="FE30" + num;
             if (FileMesege.sensorList == null)
             {
                 FileMesege.sensorList = new List<DataJson.Sensor>();
@@ -375,7 +375,7 @@ namespace eNet编辑器.ThreeView
                 string num = Convert.ToInt32(sensoradd.Num).ToString("X4");
 
                 //获取IP最后一位
-                string address = SocketUtil.GetIPstyle(sensoradd.Ip, 4) + "30" + num;
+                string address = "FE30" + num;
                 //撤销
                 DataJson.totalList OldList = FileMesege.cmds.getListInfos();
                 //获取该节点IP地址面板下的 面板信息对象

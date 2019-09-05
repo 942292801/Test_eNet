@@ -782,7 +782,14 @@ namespace eNet编辑器.ThreeView
                     }
                     info.id = id+1;
                     info.delay = 0;
-                    info.address = eq.address;
+                    if (ip != eq.ip && !string.IsNullOrEmpty(eq.ip))
+                    {
+                        info.address = SocketUtil.GetIPstyle(eq.ip,4) + eq.address.Substring(2,6);
+                    }
+                    else
+                    {
+                        info.address = eq.address;
+                    }
                     info.pid = eq.pid;
                     info.opt = "";
                     info.optName = "";
@@ -912,7 +919,14 @@ namespace eNet编辑器.ThreeView
                     }
                     tmInfo.id = id + 1;
                     tmInfo.shortTime = "";
-                    tmInfo.address = eq.address;
+                    if (ip != eq.ip && !string.IsNullOrEmpty(eq.ip))
+                    {
+                        tmInfo.address = SocketUtil.GetIPstyle(eq.ip, 4) + eq.address.Substring(2, 6);
+                    }
+                    else
+                    {
+                        tmInfo.address = eq.address;
+                    }
                     tmInfo.pid = eq.pid;
                     tmInfo.opt = "";
                     tmInfo.optName = "";

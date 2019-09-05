@@ -331,7 +331,7 @@ namespace eNet编辑器.DgvView
 
                     TcpSocket ts = new TcpSocket();
 
-                    sock = ts.ConnectServer(ip, 6001, 1);
+                    sock = ts.ConnectServer(ip, 6003, 1);
 
                     SocketUtil.DelayMilli(1000);
                     if (sock == null)

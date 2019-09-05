@@ -1,14 +1,1 @@
-[
-    {
-        "logics": [
-            {
-                "logicsInfo": [],
-                "id": 5,
-                "pid": 32219,
-                "varName": null
-            }
-        ],
-        "IP": "192.168.1.235",
-        "Dev": "GW100A"
-    }
-]
+[]

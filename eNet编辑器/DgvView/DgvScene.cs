@@ -84,7 +84,7 @@ namespace eNet编辑器.DgvView
                     string[] ips = FileMesege.sceneSelectNode.Parent.Text.Split(' ');
                     string[] ids = FileMesege.sceneSelectNode.Text.Split(' ');
                     int sceneNum = Convert.ToInt32(Regex.Replace(ids[0], @"[^\d]*", ""));
-                    string ip4 = SocketUtil.strtohexstr(SocketUtil.getIP(FileMesege.sceneSelectNode));//16进制
+                    //string ip4 = SocketUtil.strtohexstr(SocketUtil.getIP(FileMesege.sceneSelectNode));//16进制
                     //获取该节点IP地址场景下的 场景信息对象
                     DataJson.scenes sc = DataListHelper.getSceneInfoList(ips[0], sceneNum);
                     if (sc == null)
@@ -102,7 +102,8 @@ namespace eNet编辑器.DgvView
                             //pid号为0则为空 按地址来找
                             if ( info.address != "" &&info.address != "FFFFFFFF")
                             {
-                                DataJson.PointInfo point = DataListHelper.findPointByType_address(info.type,ip4+ info.address.Substring(2,6));
+
+                                DataJson.PointInfo point = DataListHelper.findPointByType_address(info.type,info.address,ips[0]);
                                 if (point != null)
                                 {
                                     info.pid = point.pid;
@@ -128,7 +129,20 @@ namespace eNet编辑器.DgvView
                             else
                             {
                                 //pid号有效
-                                info.address = point.address;
+                                try
+                                {
+                                    if (info.address.Substring(2, 6) != point.address.Substring(2, 6))
+                                    {
+                                        info.address = point.address;
+
+                                    }
+                                }
+                                catch
+                                {
+                                    info.address = point.address;
+                                }
+                                    
+
                                 //////////////////////////////////////////////////////争议地域
                                 //类型不一致 在value寻找
                                 if (info.type != point.type && !string.IsNullOrEmpty(point.value) && !string.IsNullOrEmpty(point.objType))
@@ -149,6 +163,7 @@ namespace eNet编辑器.DgvView
                             }
                             
                         }
+                        
                         dataGridView1.Rows[dex].Cells[0].Value = info.id;
                         dataGridView1.Rows[dex].Cells[2].Value = DgvMesege.addressTransform( info.address);
                         dataGridView1.Rows[dex].Cells[1].Value = IniHelper.findTypesIniNamebyType(info.type);
@@ -295,9 +310,8 @@ namespace eNet编辑器.DgvView
                 type = IniHelper.findIniTypesByAddress(ips[0], add).Split(',')[0];
 
                 info.type = type;
-                string ip4 = SocketUtil.strtohexstr(SocketUtil.getIP(FileMesege.sceneSelectNode));//16进制
                 //添加地域和名称 在sceneInfo表中
-                DataJson.PointInfo point = DataListHelper.findPointByType_address("", ip4 + add.Substring(2, 6));
+                DataJson.PointInfo point = DataListHelper.findPointByType_address("",add,ips[0]);
                 if (point != null)
                 {
 
@@ -942,7 +956,7 @@ namespace eNet编辑器.DgvView
             }
             if (info.type == "4.0_scene" || info.type == "5.0_time" || info.type == "6.1_panel" || info.type == "6.2_sensor")
             {
-                return DataListHelper.findPointByType_address(info.type,info.address);
+                return DataListHelper.findPointByType_address(info.type,info.address,ips[0]);
             }
 
             return null;
@@ -1092,14 +1106,9 @@ namespace eNet编辑器.DgvView
                     
                 }
                 //获取树状图的IP第四位  + Address地址的 后六位
-                string ad = SocketUtil.GetIPstyle(ips[0], 4) + info.address.Substring(2, 6);
-                if (type == "9.0_virtualport")
-                {
-                    //虚拟端口特殊处理
-                    ad = info.address;
-                }
+                string ad = info.address;
                 //区域加名称
-                DataJson.PointInfo point = DataListHelper.findPointByType_address("", ad);
+                DataJson.PointInfo point = DataListHelper.findPointByType_address("", ad,ips[0]);
                 
                 if (point != null)
                 {

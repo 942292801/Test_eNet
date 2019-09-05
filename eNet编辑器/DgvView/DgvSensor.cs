@@ -123,7 +123,7 @@ namespace eNet编辑器.DgvView
            
                 findKeyPanel();
                 List<DataJson.sensorsInfo> delSensor = new List<DataJson.sensorsInfo>();
-                string ip4 = SocketUtil.strtohexstr(SocketUtil.getIP(FileMesege.sensorSelectNode));//16进制
+                string ip = FileMesege.sensorSelectNode.Parent.Text.Split(' ')[0];
                 //循环加载该定时号的所有信息
                 foreach (DataJson.sensorsInfo srInfo in srs.sensorsInfo)
                 {
@@ -134,7 +134,7 @@ namespace eNet编辑器.DgvView
                         //pid号为0则为空 按地址来找
                         if (srInfo.objAddress != "" && srInfo.objAddress != "FFFFFFFF")
                         {
-                            DataJson.PointInfo point = DataListHelper.findPointByType_address(srInfo.objType, ip4 + srInfo.objAddress.Substring(2, 6));
+                            DataJson.PointInfo point = DataListHelper.findPointByType_address(srInfo.objType, srInfo.objAddress,ip);
                             if (point != null)
                             {
                                 srInfo.pid = point.pid;
@@ -159,7 +159,18 @@ namespace eNet编辑器.DgvView
                         else
                         {
                             //pid号有效
-                            srInfo.objAddress = point.address;
+                            try
+                            {
+                                if (srInfo.objAddress.Substring(2, 6) != point.address.Substring(2, 6))
+                                {
+                                    srInfo.objAddress = point.address;
+
+                                }
+                            }
+                            catch
+                            {
+                                srInfo.objAddress = point.address;
+                            }
                             //////////////////////////////////////////////////////争议地域
                             //类型不一致 在value寻找
                             if (srInfo.objType != point.type && !string.IsNullOrEmpty(point.value) && !string.IsNullOrEmpty(point.objType))
@@ -1217,7 +1228,8 @@ namespace eNet编辑器.DgvView
             }
             if (srInfo.objType == "4.0_scene" || srInfo.objType == "5.0_time" || srInfo.objType == "6.1_panel" || srInfo.objType == "6.2_sensor")
             {
-                return DataListHelper.findPointByType_address(srInfo.objType, srInfo.objAddress);
+                string ip = FileMesege.sensorSelectNode.Parent.Text.Split(' ')[0];
+                return DataListHelper.findPointByType_address(srInfo.objType, srInfo.objAddress,ip);
             }
 
             return null;
@@ -1337,14 +1349,10 @@ namespace eNet编辑器.DgvView
                 }
                 srs.sensorsInfo[rowCount].objType = type;
                 //获取树状图的IP第四位  + Address地址的 后六位
-                string ad = SocketUtil.GetIPstyle(ip, 4) + dc.Obj.Substring(2, 6);
-                if (type == "9.0_virtualport")
-                {
-                    //虚拟端口特殊处理
-                    ad = dc.Obj;
-                }
+                string ad =dc.Obj;
+ 
                 //区域加名称
-                DataJson.PointInfo point = DataListHelper.findPointByType_address("", ad);
+                DataJson.PointInfo point = DataListHelper.findPointByType_address("", ad,ip);
 
                 if (point != null)
                 {
@@ -1530,9 +1538,9 @@ namespace eNet编辑器.DgvView
                 //按照地址查找type的类型 
                 objType = IniHelper.findIniTypesByAddress(FileMesege.sensorSelectNode.Parent.Text.Split(' ')[0], objAddress).Split(',')[0];
                 srInfo.objType = objType;
-                string ip4 = SocketUtil.strtohexstr(SocketUtil.getIP(FileMesege.sensorSelectNode));//16进制
+                string ip = FileMesege.sensorSelectNode.Parent.Text.Split(' ')[0];
                 //添加地域和名称 在sceneInfo表中
-                DataJson.PointInfo point = DataListHelper.findPointByType_address(objType, ip4 + objAddress.Substring(2, 6));
+                DataJson.PointInfo point = DataListHelper.findPointByType_address(objType,objAddress,ip);
                 if (point != null)
                 {
                     srInfo.pid = point.pid;
@@ -1640,6 +1648,7 @@ namespace eNet编辑器.DgvView
             {
                 return;
             }
+            string ip = FileMesege.sensorSelectNode.Parent.Text.Split(' ')[0];
             int id = dataGridView1.CurrentCell.RowIndex;
             //获取sceneInfo对象表中对应ID号info对象
             DataJson.sensorsInfo srInfo = srs.sensorsInfo[id];
@@ -1662,7 +1671,15 @@ namespace eNet编辑器.DgvView
                 if (eq.type == srInfo.objType)
                 {
                     srInfo.pid = eq.pid;
-                    srInfo.objAddress = eq.address;
+                    if (ip != eq.ip && !string.IsNullOrEmpty(eq.ip))
+                    {
+                        srInfo.objAddress = SocketUtil.GetIPstyle(eq.ip, 4) + eq.address.Substring(2, 6);
+                    }
+                    else
+                    {
+                        srInfo.objAddress = eq.address;
+                    }
+   
                     dataGridView1.Rows[id].Cells[3].Value = DgvMesege.addressTransform(srInfo.objAddress);
                     dataGridView1.Rows[id].Cells[5].Value = string.Format("{0} {1} {2} {3}", eq.area1, eq.area2, eq.area3, eq.area4).Trim();//改根据地址从信息里面获取
                     dataGridView1.Rows[id].Cells[6].Value = eq.name;
@@ -1670,7 +1687,14 @@ namespace eNet编辑器.DgvView
                 else
                 {
                     srInfo.pid = eq.pid;
-                    srInfo.objAddress = eq.address;
+                    if (ip != eq.ip && !string.IsNullOrEmpty(eq.ip))
+                    {
+                        srInfo.objAddress = SocketUtil.GetIPstyle(eq.ip, 4) + eq.address.Substring(2, 6);
+                    }
+                    else
+                    {
+                        srInfo.objAddress = eq.address;
+                    }
                     srInfo.objType = eq.type;
                     srInfo.opt = "";
                     srInfo.optName = "";

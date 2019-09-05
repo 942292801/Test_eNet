@@ -99,7 +99,7 @@ namespace eNet编辑器.DgvView
                 }
                 dealtmsDates_prior(tms);
                 List<DataJson.timersInfo> delTimer = new List<DataJson.timersInfo>();
-                string ip4 = SocketUtil.strtohexstr(SocketUtil.getIP(FileMesege.timerSelectNode));//16进制
+                string ip = FileMesege.timerSelectNode.Parent.Text.Split(' ')[0];
                 //循环加载该定时号的所有信息
                 foreach (DataJson.timersInfo tmInfo in tms.timersInfo)
                 {
@@ -111,7 +111,7 @@ namespace eNet编辑器.DgvView
                         //pid号为0则为空 按地址来找
                         if (tmInfo.address != "" && tmInfo.address != "FFFFFFFF")
                         {
-                            DataJson.PointInfo point = DataListHelper.findPointByType_address(tmInfo.type, ip4 + tmInfo.address.Substring(2, 6));
+                            DataJson.PointInfo point = DataListHelper.findPointByType_address(tmInfo.type, tmInfo.address,ip);
                             if (point != null)
                             {
                                 tmInfo.pid = point.pid;
@@ -137,7 +137,19 @@ namespace eNet编辑器.DgvView
                         else
                         {
                             //pid号有效
-                            tmInfo.address = point.address;
+               
+                            try
+                            {
+                                if (tmInfo.address.Substring(2, 6) != point.address.Substring(2, 6))
+                                {
+                                    tmInfo.address = point.address;
+
+                                }
+                            }
+                            catch
+                            {
+                                tmInfo.address = point.address;
+                            }
                             //////////////////////////////////////////////////////争议地域
                             //类型不一致 在value寻找
                             if (tmInfo.type != point.type && !string.IsNullOrEmpty(point.value) && !string.IsNullOrEmpty(point.objType))
@@ -788,13 +800,13 @@ namespace eNet编辑器.DgvView
                             add = add.Substring(0, 4) + hexnum;
                             break;
                     }
+                    string ip = FileMesege.timerSelectNode.Parent.Text.Split(' ')[0];
                     //按照地址查找type的类型 
-                    type = IniHelper.findIniTypesByAddress(FileMesege.timerSelectNode.Parent.Text.Split(' ')[0], add).Split(',')[0];
+                    type = IniHelper.findIniTypesByAddress(ip, add).Split(',')[0];
                 
                     tmInfo.type = type;
-                    string ip4 = SocketUtil.strtohexstr(SocketUtil.getIP(FileMesege.timerSelectNode));//16进制
                     //添加地域和名称 在sceneInfo表中
-                    DataJson.PointInfo point = DataListHelper.findPointByType_address(type, ip4 + add.Substring(2, 6));
+                    DataJson.PointInfo point = DataListHelper.findPointByType_address(type, add,ip);
                     if (point != null)
                     {
                         tmInfo.pid = point.pid;
@@ -1608,7 +1620,8 @@ namespace eNet编辑器.DgvView
             }
             if (tmInfo.type == "4.0_scene" || tmInfo.type == "5.0_time" || tmInfo.type == "6.1_panel" || tmInfo.type == "6.2_sensor")
             {
-                return DataListHelper.findPointByType_address(tmInfo.type, tmInfo.address);
+                string ip = FileMesege.timerSelectNode.Parent.Text.Split(' ')[0];
+                return DataListHelper.findPointByType_address(tmInfo.type, tmInfo.address,ip);
             }
 
             return null;
@@ -1731,14 +1744,9 @@ namespace eNet编辑器.DgvView
                 }
                 tmInfo.type = type;
                 //获取树状图的IP第四位  + Address地址的 后六位
-                string ad = SocketUtil.GetIPstyle(ip, 4) + tmInfo.address.Substring(2, 6);
-                if (type == "9.0_virtualport")
-                {
-                    //虚拟端口特殊处理
-                    ad = tmInfo.address;
-                }
+                string ad = tmInfo.address;
                 //区域加名称
-                DataJson.PointInfo point = DataListHelper.findPointByType_address(type, ad);
+                DataJson.PointInfo point = DataListHelper.findPointByType_address(type, ad,ip);
                 //撤销 
                 
                 if (point != null)

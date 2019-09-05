@@ -888,7 +888,7 @@ namespace eNet编辑器.AddForm
                     default: break;
                 }
 
-                cb1.Enabled = false;
+                cb1.Enabled = true;
                 cb1.Text = "254"; ;
                 
 

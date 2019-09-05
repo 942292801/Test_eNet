@@ -5,39 +5,79 @@
                 "devPortList": [
                     {
                         "portID": 1,
-                        "portType": "2.0_dimmer",
-                        "portInterface": "0-10V",
+                        "portType": "1.0_switch",
+                        "portInterface": "Switch",
                         "portContent": null
                     },
                     {
                         "portID": 2,
-                        "portType": "2.0_dimmer",
-                        "portInterface": "0-10V",
+                        "portType": "1.0_switch",
+                        "portInterface": "Switch",
                         "portContent": null
                     },
                     {
                         "portID": 3,
-                        "portType": "2.0_dimmer",
-                        "portInterface": "0-10V",
+                        "portType": "1.0_switch",
+                        "portInterface": "Switch",
                         "portContent": null
                     },
                     {
                         "portID": 4,
-                        "portType": "2.0_dimmer",
-                        "portInterface": "0-10V",
+                        "portType": "1.0_switch",
+                        "portInterface": "Switch",
+                        "portContent": null
+                    },
+                    {
+                        "portID": 5,
+                        "portType": "1.0_switch",
+                        "portInterface": "Switch",
+                        "portContent": null
+                    },
+                    {
+                        "portID": 6,
+                        "portType": "1.0_switch",
+                        "portInterface": "Switch",
+                        "portContent": null
+                    },
+                    {
+                        "portID": 7,
+                        "portType": "1.0_switch",
+                        "portInterface": "Switch",
+                        "portContent": null
+                    },
+                    {
+                        "portID": 8,
+                        "portType": "1.0_switch",
+                        "portInterface": "Switch",
                         "portContent": null
                     }
                 ],
-                "id": 1,
-                "device": "ET-D0405T",
-                "sn": "ffffffffffffffff",
-                "ver": "D20180725V1.03",
+                "id": 2,
+                "device": "ET-R0816A",
+                "sn": "",
+                "ver": "",
                 "area1": "",
                 "area2": "",
                 "area3": "",
                 "area4": "",
                 "name": ""
-            },
+            }
+        ],
+        "master": "GW100A",
+        "ip": "192.168.1.111",
+        "mask": "",
+        "gateway": "",
+        "mac": "",
+        "sn": "",
+        "ver": "",
+        "area1": "",
+        "area2": "",
+        "area3": "",
+        "area4": "",
+        "name": ""
+    },
+    {
+        "module": [
             {
                 "devPortList": [
                     {
@@ -48,15 +88,51 @@
                     },
                     {
                         "portID": 2,
-                        "portType": "2.0_dimmer",
-                        "portInterface": "0-10V",
+                        "portType": "1.0_switch",
+                        "portInterface": "Switch",
+                        "portContent": null
+                    },
+                    {
+                        "portID": 3,
+                        "portType": "1.0_switch",
+                        "portInterface": "Switch",
+                        "portContent": null
+                    },
+                    {
+                        "portID": 4,
+                        "portType": "1.0_switch",
+                        "portInterface": "Switch",
+                        "portContent": null
+                    },
+                    {
+                        "portID": 5,
+                        "portType": "1.0_switch",
+                        "portInterface": "Switch",
+                        "portContent": null
+                    },
+                    {
+                        "portID": 6,
+                        "portType": "1.0_switch",
+                        "portInterface": "Switch",
+                        "portContent": null
+                    },
+                    {
+                        "portID": 7,
+                        "portType": "1.0_switch",
+                        "portInterface": "Switch",
+                        "portContent": null
+                    },
+                    {
+                        "portID": 8,
+                        "portType": "1.0_switch",
+                        "portInterface": "Switch",
                         "portContent": null
                     }
                 ],
-                "id": 11,
-                "device": "KP06A",
-                "sn": "ffffffffffffffff",
-                "ver": "D170731V2.01",
+                "id": 2,
+                "device": "ET-R0816A",
+                "sn": "",
+                "ver": "",
                 "area1": "",
                 "area2": "",
                 "area3": "",
@@ -65,7 +141,7 @@
             }
         ],
         "master": "GW100A",
-        "ip": "192.168.1.235",
+        "ip": "192.168.1.230",
         "mask": "",
         "gateway": "",
         "mac": "",

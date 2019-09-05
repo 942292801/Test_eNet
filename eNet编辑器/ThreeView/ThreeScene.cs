@@ -191,7 +191,8 @@ namespace eNet编辑器.ThreeView
             //获取场景号
             string num = Convert.ToInt32(tss.Num).ToString("X4");
             //获取IP最后一位
-            string address = SocketUtil.GetIPstyle(tss.Ip, 4) + "10" + num;
+            //string address = SocketUtil.GetIPstyle(tss.Ip, 4) + "10" + num;
+            string address = "FE10" + num;
             if (FileMesege.sceneList == null)
             {
                 FileMesege.sceneList = new List<DataJson.Scene>();
@@ -298,7 +299,7 @@ namespace eNet编辑器.ThreeView
                 string num = Convert.ToInt32(tss.Num).ToString("X4");
 
                 //获取IP最后一位
-                string address = SocketUtil.GetIPstyle(tss.Ip, 4) + "10" + num;
+                string address = "FE10" + num;
                 //撤销
                 DataJson.totalList OldList = FileMesege.cmds.getListInfos();
                 //获取该节点IP地址场景下的 场景信息对象
