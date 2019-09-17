@@ -967,7 +967,13 @@ namespace eNet编辑器.AddForm
                 {
                     case "场景":
                         cb4.Items.Clear();
-                        DataJson.Scene scene = DataListHelper.getSceneList(ip);
+                         string tmpip = ip;
+                        if (cb1.Text != "254")
+                        {
+                            string[] ips = ip.Split('.');
+                            tmpip = string.Format("{0}.{1}.{2}.{3}", ips[0], ips[1], ips[2], cb1.Text);
+                        }
+                        DataJson.Scene scene = DataListHelper.getSceneList(tmpip);
 
                         foreach (DataJson.scenes scenes in scene.scenes)
                         {

@@ -1,1 +1,32 @@
-[]
+[
+    {
+        "logics": [
+            {
+                "logicsInfo": [
+                    {
+                        "id": 1,
+                        "attr": 1,
+                        "modelType": "SceneDeal",
+                        "content": null
+                    }
+                ],
+                "id": 1,
+                "pid": 687386569
+            },
+            {
+                "logicsInfo": [
+                    {
+                        "id": 1,
+                        "attr": 1,
+                        "modelType": "ConditionDeal",
+                        "content": null
+                    }
+                ],
+                "id": 2,
+                "pid": 758679001
+            }
+        ],
+        "IP": "192.168.1.230",
+        "Dev": "GW100A"
+    }
+]

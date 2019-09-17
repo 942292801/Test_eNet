@@ -184,6 +184,8 @@ namespace eNet编辑器.ThreeView
 
         #endregion
 
+        #region 新建 修改 复制 删除
+
         private void 新建ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //右击树状图外面区域
@@ -277,7 +279,10 @@ namespace eNet编辑器.ThreeView
                     DataJson.logics lgs = new DataJson.logics();
                     lgs.id = Convert.ToInt32(lgadd.Num);
                     lgs.pid = randomNum;
+                    
                     lgs.logicsInfo = new List<DataJson.logicsInfo>();
+                    DataJson.logicsInfo lgInfo = new DataJson.logicsInfo();
+                    lgs.logicsInfo.Add(lgInfo);
                     if (copyLogic != null)
                     {
                         //复制副本
@@ -301,7 +306,7 @@ namespace eNet编辑器.ThreeView
                     eq.value = "";
                     FileMesege.PointList.logic.Add(eq);
                     
-                    string tmp = "";
+                    /*string tmp = "";
                     //添加16个局部变量
                     for (int i = (lgs.id - 1) * 16 + 1; i <= lgs.id * 16; i++)
                     {
@@ -330,7 +335,7 @@ namespace eNet编辑器.ThreeView
                         }
                         FileMesege.PointList.localvar.Add(localvar);
                        
-                    }
+                    }*/
                     //排序
                     LogicSort(lg);
                     string parentNodePath = "";
@@ -407,7 +412,7 @@ namespace eNet编辑器.ThreeView
                         //修改当前的point点信息
                         if (lgs.pid == eq.pid)
                         {
-                            
+                            /*
                             //修改16个变量
                             string addressVar = "";
                             int id = (Convert.ToInt32(logicadd.Num) - 1) * 16 + 1;
@@ -439,7 +444,7 @@ namespace eNet编辑器.ThreeView
                                     }
                                 }
                                 id++;
-                            }
+                            }*/
                             
                             lgs.id = Convert.ToInt32(logicadd.Num);
                             eq.area1 = logicadd.Area1;
@@ -499,6 +504,7 @@ namespace eNet编辑器.ThreeView
                                 //获取address与IP地址相同的对象
                                 if (eq.pid == lgs.pid)
                                 {
+                                    /*
                                     //删除16个变量
                                     string address = "";
                                     for (int i = (lgs.id - 1) * 16 + 1; i <= lgs.id * 16; i++)
@@ -517,7 +523,7 @@ namespace eNet编辑器.ThreeView
                                                 break;
                                             }
                                         }
-                                    }
+                                    }*/
                                     //移除Namelist 的对象
                                     FileMesege.PointList.logic.Remove(eq);
                                     break;
@@ -585,7 +591,7 @@ namespace eNet编辑器.ThreeView
             删除ToolStripMenuItem_Click(this, EventArgs.Empty);
         }
 
-     
+        #endregion
 
 
 

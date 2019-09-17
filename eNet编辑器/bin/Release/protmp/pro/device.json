@@ -5,55 +5,31 @@
                 "devPortList": [
                     {
                         "portID": 1,
-                        "portType": "1.0_switch",
-                        "portInterface": "Switch",
+                        "portType": "2.0_dimmer",
+                        "portInterface": "0-10V",
                         "portContent": null
                     },
                     {
                         "portID": 2,
-                        "portType": "1.0_switch",
-                        "portInterface": "Switch",
+                        "portType": "2.0_dimmer",
+                        "portInterface": "0-10V",
                         "portContent": null
                     },
                     {
                         "portID": 3,
-                        "portType": "1.0_switch",
-                        "portInterface": "Switch",
+                        "portType": "2.0_dimmer",
+                        "portInterface": "0-10V",
                         "portContent": null
                     },
                     {
                         "portID": 4,
-                        "portType": "1.0_switch",
-                        "portInterface": "Switch",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 5,
-                        "portType": "1.0_switch",
-                        "portInterface": "Switch",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 6,
-                        "portType": "1.0_switch",
-                        "portInterface": "Switch",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 7,
-                        "portType": "1.0_switch",
-                        "portInterface": "Switch",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 8,
-                        "portType": "1.0_switch",
-                        "portInterface": "Switch",
+                        "portType": "2.0_dimmer",
+                        "portInterface": "0-10V",
                         "portContent": null
                     }
                 ],
-                "id": 2,
-                "device": "ET-R0816A",
+                "id": 1,
+                "device": "ET-D0405T",
                 "sn": "",
                 "ver": "",
                 "area1": "",
@@ -61,23 +37,340 @@
                 "area3": "",
                 "area4": "",
                 "name": ""
-            }
-        ],
-        "master": "GW100A",
-        "ip": "192.168.1.111",
-        "mask": "",
-        "gateway": "",
-        "mac": "",
-        "sn": "",
-        "ver": "",
-        "area1": "",
-        "area2": "",
-        "area3": "",
-        "area4": "",
-        "name": ""
-    },
-    {
-        "module": [
+            },
+            {
+                "devPortList": [
+                    {
+                        "portID": 1,
+                        "portType": "2.0_dimmer",
+                        "portInterface": "0-10V",
+                        "portContent": null
+                    },
+                    {
+                        "portID": 2,
+                        "portType": "2.0_dimmer",
+                        "portInterface": "0-10V",
+                        "portContent": null
+                    },
+                    {
+                        "portID": 3,
+                        "portType": "2.0_dimmer",
+                        "portInterface": "0-10V",
+                        "portContent": null
+                    },
+                    {
+                        "portID": 4,
+                        "portType": "2.0_dimmer",
+                        "portInterface": "0-10V",
+                        "portContent": null
+                    }
+                ],
+                "id": 2,
+                "device": "ET-D0405T",
+                "sn": "",
+                "ver": "",
+                "area1": "",
+                "area2": "",
+                "area3": "",
+                "area4": "",
+                "name": ""
+            },
+            {
+                "devPortList": [
+                    {
+                        "portID": 1,
+                        "portType": "2.0_dimmer",
+                        "portInterface": "0-10V",
+                        "portContent": null
+                    },
+                    {
+                        "portID": 2,
+                        "portType": "2.0_dimmer",
+                        "portInterface": "0-10V",
+                        "portContent": null
+                    },
+                    {
+                        "portID": 3,
+                        "portType": "2.0_dimmer",
+                        "portInterface": "0-10V",
+                        "portContent": null
+                    },
+                    {
+                        "portID": 4,
+                        "portType": "2.0_dimmer",
+                        "portInterface": "0-10V",
+                        "portContent": null
+                    }
+                ],
+                "id": 3,
+                "device": "ET-R0416D4I",
+                "sn": "",
+                "ver": "",
+                "area1": "",
+                "area2": "",
+                "area3": "",
+                "area4": "",
+                "name": ""
+            },
+            {
+                "devPortList": [
+                    {
+                        "portID": 1,
+                        "portType": "2.0_dimmer",
+                        "portInterface": "0-10V",
+                        "portContent": null
+                    },
+                    {
+                        "portID": 2,
+                        "portType": "2.0_dimmer",
+                        "portInterface": "0-10V",
+                        "portContent": null
+                    },
+                    {
+                        "portID": 3,
+                        "portType": "2.0_dimmer",
+                        "portInterface": "0-10V",
+                        "portContent": null
+                    },
+                    {
+                        "portID": 4,
+                        "portType": "2.0_dimmer",
+                        "portInterface": "0-10V",
+                        "portContent": null
+                    }
+                ],
+                "id": 4,
+                "device": "ET-R0416D4I",
+                "sn": "",
+                "ver": "",
+                "area1": "",
+                "area2": "",
+                "area3": "",
+                "area4": "",
+                "name": ""
+            },
+            {
+                "devPortList": [
+                    {
+                        "portID": 1,
+                        "portType": "2.0_dimmer",
+                        "portInterface": "0-10V",
+                        "portContent": null
+                    },
+                    {
+                        "portID": 2,
+                        "portType": "2.0_dimmer",
+                        "portInterface": "0-10V",
+                        "portContent": null
+                    },
+                    {
+                        "portID": 3,
+                        "portType": "2.0_dimmer",
+                        "portInterface": "0-10V",
+                        "portContent": null
+                    },
+                    {
+                        "portID": 4,
+                        "portType": "2.0_dimmer",
+                        "portInterface": "0-10V",
+                        "portContent": null
+                    }
+                ],
+                "id": 5,
+                "device": "ET-R0416D4I",
+                "sn": "",
+                "ver": "",
+                "area1": "",
+                "area2": "",
+                "area3": "",
+                "area4": "",
+                "name": ""
+            },
+            {
+                "devPortList": [
+                    {
+                        "portID": 1,
+                        "portType": "2.0_dimmer",
+                        "portInterface": "0-10V",
+                        "portContent": "{"powerState":"00","onState":"0A","changeState":"00","max":"5A","min":"A","spline":"006400C8012C019001F4025802BC0320038403E8044C04B00514057805DC064006A40708076C07D00834089808FC096009C409C509C809CD09D309DC09E609F30A010A120A240A380A4E0A660A800A9C0AB90AD90AFA0B1E0B430B6B0B940BBF0BEC138813EC145014B41518157C15E0164416A8170C177017D41838189C1900196419C81A2C1A901AF41B581BBC1C201C841CE81D4C1DB01E141E781EDC1F401FA42008206C20D02134219821FC226022C42328238C23F0245424B8251C258025E4264826AC2710","powerStateReg":"40","onStateReg":"60","changeStateReg":"61","maxReg":"62","minReg":"63","splineReg":"65"}"
+                    },
+                    {
+                        "portID": 2,
+                        "portType": "2.0_dimmer",
+                        "portInterface": "0-10V",
+                        "portContent": "{"powerState":"00","onState":"0A","changeState":"00","max":"5A","min":"A","spline":"00640066006C00760085009700AD00C800E701090130015B018A01BD01F4022F026E02B202F90345039403E80440049C04FC04FC04FD04FE0500050205050508050B050F05140519051E0524052B053205390541054A0552055C05650570057B05860592059E05AA05B805C505D305E205F10600061106210632064306550668067B068E06A206B606CB06E006F6070C0723073A0752075F078607C708220897092609CF0A920B6F0C660D770EA20FE7114612BF145215FF17C719A81BA31DB81FE7223024932710","powerStateReg":"40","onStateReg":"60","changeStateReg":"61","maxReg":"62","minReg":"63","splineReg":"65"}"
+                    },
+                    {
+                        "portID": 3,
+                        "portType": "2.0_dimmer",
+                        "portInterface": "0-10V",
+                        "portContent": "{"powerState":"00","onState":"0A","changeState":"00","max":"5A","min":"A","spline":"006400C8012C019001F4025802BC0320038403E8044C04B00514057805DC064006A40708076C07D00834089808FC096009C40A280A8C0AF00B540BB80C1C0C800CE40D480DAC0E100E740ED80F3C0FA01004106810CC1130119411F8125C12C01324138813881389138B138D138F13921396139B139F13A513AB13B213B913C113C913D213DC13E613F113FC140814141421142F143D144C145B146B147C148D149F14B114C414D714EB15001515152B15411558156F158815A015B915D315EE160916241640165D","powerStateReg":"40","onStateReg":"60","changeStateReg":"61","maxReg":"62","minReg":"63","splineReg":"65"}"
+                    },
+                    {
+                        "portID": 4,
+                        "portType": "2.0_dimmer",
+                        "portInterface": "0-10V",
+                        "portContent": null
+                    }
+                ],
+                "id": 6,
+                "device": "ET-R0416D4I",
+                "sn": "",
+                "ver": "",
+                "area1": "",
+                "area2": "",
+                "area3": "",
+                "area4": "",
+                "name": ""
+            },
+            {
+                "devPortList": [
+                    {
+                        "portID": 1,
+                        "portType": "2.0_dimmer",
+                        "portInterface": "0-10V",
+                        "portContent": null
+                    },
+                    {
+                        "portID": 2,
+                        "portType": "2.0_dimmer",
+                        "portInterface": "0-10V",
+                        "portContent": null
+                    },
+                    {
+                        "portID": 3,
+                        "portType": "2.0_dimmer",
+                        "portInterface": "0-10V",
+                        "portContent": null
+                    },
+                    {
+                        "portID": 4,
+                        "portType": "2.0_dimmer",
+                        "portInterface": "0-10V",
+                        "portContent": null
+                    }
+                ],
+                "id": 7,
+                "device": "ET-R0416D4I",
+                "sn": "",
+                "ver": "",
+                "area1": "",
+                "area2": "",
+                "area3": "",
+                "area4": "",
+                "name": ""
+            },
+            {
+                "devPortList": [
+                    {
+                        "portID": 1,
+                        "portType": "2.0_dimmer",
+                        "portInterface": "0-10V",
+                        "portContent": null
+                    },
+                    {
+                        "portID": 2,
+                        "portType": "2.0_dimmer",
+                        "portInterface": "0-10V",
+                        "portContent": null
+                    },
+                    {
+                        "portID": 3,
+                        "portType": "2.0_dimmer",
+                        "portInterface": "0-10V",
+                        "portContent": null
+                    },
+                    {
+                        "portID": 4,
+                        "portType": "2.0_dimmer",
+                        "portInterface": "0-10V",
+                        "portContent": null
+                    }
+                ],
+                "id": 8,
+                "device": "ET-R0416D4I",
+                "sn": "",
+                "ver": "",
+                "area1": "",
+                "area2": "",
+                "area3": "",
+                "area4": "",
+                "name": ""
+            },
+            {
+                "devPortList": [
+                    {
+                        "portID": 1,
+                        "portType": "2.0_dimmer",
+                        "portInterface": "0-10V",
+                        "portContent": null
+                    },
+                    {
+                        "portID": 2,
+                        "portType": "2.0_dimmer",
+                        "portInterface": "0-10V",
+                        "portContent": null
+                    },
+                    {
+                        "portID": 3,
+                        "portType": "2.0_dimmer",
+                        "portInterface": "0-10V",
+                        "portContent": null
+                    },
+                    {
+                        "portID": 4,
+                        "portType": "2.0_dimmer",
+                        "portInterface": "0-10V",
+                        "portContent": null
+                    }
+                ],
+                "id": 9,
+                "device": "ET-R0416D4I",
+                "sn": "",
+                "ver": "",
+                "area1": "",
+                "area2": "",
+                "area3": "",
+                "area4": "",
+                "name": ""
+            },
+            {
+                "devPortList": [
+                    {
+                        "portID": 1,
+                        "portType": "2.0_dimmer",
+                        "portInterface": "0-10V",
+                        "portContent": null
+                    },
+                    {
+                        "portID": 2,
+                        "portType": "2.0_dimmer",
+                        "portInterface": "0-10V",
+                        "portContent": null
+                    },
+                    {
+                        "portID": 3,
+                        "portType": "2.0_dimmer",
+                        "portInterface": "0-10V",
+                        "portContent": null
+                    },
+                    {
+                        "portID": 4,
+                        "portType": "2.0_dimmer",
+                        "portInterface": "0-10V",
+                        "portContent": null
+                    }
+                ],
+                "id": 10,
+                "device": "ET-R0416D4I",
+                "sn": "",
+                "ver": "",
+                "area1": "",
+                "area2": "",
+                "area3": "",
+                "area4": "",
+                "name": ""
+            },
             {
                 "devPortList": [
                     {
@@ -103,34 +396,766 @@
                         "portType": "1.0_switch",
                         "portInterface": "Switch",
                         "portContent": null
-                    },
+                    }
+                ],
+                "id": 11,
+                "device": "ET-R0416A",
+                "sn": "",
+                "ver": "",
+                "area1": "",
+                "area2": "",
+                "area3": "",
+                "area4": "",
+                "name": ""
+            },
+            {
+                "devPortList": [
                     {
-                        "portID": 5,
+                        "portID": 1,
                         "portType": "1.0_switch",
                         "portInterface": "Switch",
                         "portContent": null
                     },
                     {
-                        "portID": 6,
+                        "portID": 2,
                         "portType": "1.0_switch",
                         "portInterface": "Switch",
                         "portContent": null
                     },
                     {
-                        "portID": 7,
+                        "portID": 3,
                         "portType": "1.0_switch",
                         "portInterface": "Switch",
                         "portContent": null
                     },
                     {
-                        "portID": 8,
+                        "portID": 4,
                         "portType": "1.0_switch",
                         "portInterface": "Switch",
                         "portContent": null
                     }
                 ],
-                "id": 2,
-                "device": "ET-R0816A",
+                "id": 12,
+                "device": "ET-R0416A",
+                "sn": "",
+                "ver": "",
+                "area1": "",
+                "area2": "",
+                "area3": "",
+                "area4": "",
+                "name": ""
+            },
+            {
+                "devPortList": [
+                    {
+                        "portID": 1,
+                        "portType": "1.0_switch",
+                        "portInterface": "Switch",
+                        "portContent": null
+                    },
+                    {
+                        "portID": 2,
+                        "portType": "1.0_switch",
+                        "portInterface": "Switch",
+                        "portContent": null
+                    },
+                    {
+                        "portID": 3,
+                        "portType": "1.0_switch",
+                        "portInterface": "Switch",
+                        "portContent": null
+                    },
+                    {
+                        "portID": 4,
+                        "portType": "1.0_switch",
+                        "portInterface": "Switch",
+                        "portContent": null
+                    }
+                ],
+                "id": 13,
+                "device": "ET-R0416A",
+                "sn": "",
+                "ver": "",
+                "area1": "",
+                "area2": "",
+                "area3": "",
+                "area4": "",
+                "name": ""
+            },
+            {
+                "devPortList": [
+                    {
+                        "portID": 1,
+                        "portType": "1.0_switch",
+                        "portInterface": "Switch",
+                        "portContent": null
+                    },
+                    {
+                        "portID": 2,
+                        "portType": "2.0_dimmer",
+                        "portInterface": "0-10V",
+                        "portContent": null
+                    }
+                ],
+                "id": 14,
+                "device": "KP06A",
+                "sn": "",
+                "ver": "",
+                "area1": "",
+                "area2": "",
+                "area3": "",
+                "area4": "",
+                "name": ""
+            },
+            {
+                "devPortList": [
+                    {
+                        "portID": 1,
+                        "portType": "1.0_switch",
+                        "portInterface": "Switch",
+                        "portContent": null
+                    },
+                    {
+                        "portID": 2,
+                        "portType": "2.0_dimmer",
+                        "portInterface": "0-10V",
+                        "portContent": null
+                    }
+                ],
+                "id": 15,
+                "device": "KP06A",
+                "sn": "",
+                "ver": "",
+                "area1": "",
+                "area2": "",
+                "area3": "",
+                "area4": "",
+                "name": ""
+            },
+            {
+                "devPortList": [
+                    {
+                        "portID": 1,
+                        "portType": "1.0_switch",
+                        "portInterface": "Switch",
+                        "portContent": null
+                    },
+                    {
+                        "portID": 2,
+                        "portType": "2.0_dimmer",
+                        "portInterface": "0-10V",
+                        "portContent": null
+                    }
+                ],
+                "id": 16,
+                "device": "KP06A",
+                "sn": "",
+                "ver": "",
+                "area1": "",
+                "area2": "",
+                "area3": "",
+                "area4": "",
+                "name": ""
+            },
+            {
+                "devPortList": [
+                    {
+                        "portID": 1,
+                        "portType": "1.0_switch",
+                        "portInterface": "Switch",
+                        "portContent": null
+                    },
+                    {
+                        "portID": 2,
+                        "portType": "2.0_dimmer",
+                        "portInterface": "0-10V",
+                        "portContent": null
+                    }
+                ],
+                "id": 17,
+                "device": "KP06A",
+                "sn": "",
+                "ver": "",
+                "area1": "",
+                "area2": "",
+                "area3": "",
+                "area4": "",
+                "name": ""
+            },
+            {
+                "devPortList": [
+                    {
+                        "portID": 1,
+                        "portType": "1.0_switch",
+                        "portInterface": "Switch",
+                        "portContent": null
+                    },
+                    {
+                        "portID": 2,
+                        "portType": "2.0_dimmer",
+                        "portInterface": "0-10V",
+                        "portContent": null
+                    }
+                ],
+                "id": 18,
+                "device": "KP06A",
+                "sn": "",
+                "ver": "",
+                "area1": "",
+                "area2": "",
+                "area3": "",
+                "area4": "",
+                "name": ""
+            },
+            {
+                "devPortList": [
+                    {
+                        "portID": 1,
+                        "portType": "2.0_dimmer",
+                        "portInterface": "0-10V",
+                        "portContent": null
+                    },
+                    {
+                        "portID": 2,
+                        "portType": "2.0_dimmer",
+                        "portInterface": "0-10V",
+                        "portContent": null
+                    },
+                    {
+                        "portID": 3,
+                        "portType": "2.0_dimmer",
+                        "portInterface": "0-10V",
+                        "portContent": null
+                    },
+                    {
+                        "portID": 4,
+                        "portType": "2.0_dimmer",
+                        "portInterface": "0-10V",
+                        "portContent": null
+                    }
+                ],
+                "id": 19,
+                "device": "ET-D0405T",
+                "sn": "",
+                "ver": "",
+                "area1": "",
+                "area2": "",
+                "area3": "",
+                "area4": "",
+                "name": ""
+            },
+            {
+                "devPortList": [
+                    {
+                        "portID": 1,
+                        "portType": "2.0_dimmer",
+                        "portInterface": "0-10V",
+                        "portContent": null
+                    },
+                    {
+                        "portID": 2,
+                        "portType": "2.0_dimmer",
+                        "portInterface": "0-10V",
+                        "portContent": null
+                    },
+                    {
+                        "portID": 3,
+                        "portType": "2.0_dimmer",
+                        "portInterface": "0-10V",
+                        "portContent": null
+                    },
+                    {
+                        "portID": 4,
+                        "portType": "2.0_dimmer",
+                        "portInterface": "0-10V",
+                        "portContent": null
+                    }
+                ],
+                "id": 20,
+                "device": "ET-D0405T",
+                "sn": "",
+                "ver": "",
+                "area1": "",
+                "area2": "",
+                "area3": "",
+                "area4": "",
+                "name": ""
+            },
+            {
+                "devPortList": [
+                    {
+                        "portID": 1,
+                        "portType": "2.0_dimmer",
+                        "portInterface": "0-10V",
+                        "portContent": null
+                    },
+                    {
+                        "portID": 2,
+                        "portType": "2.0_dimmer",
+                        "portInterface": "0-10V",
+                        "portContent": null
+                    },
+                    {
+                        "portID": 3,
+                        "portType": "2.0_dimmer",
+                        "portInterface": "0-10V",
+                        "portContent": null
+                    },
+                    {
+                        "portID": 4,
+                        "portType": "2.0_dimmer",
+                        "portInterface": "0-10V",
+                        "portContent": null
+                    }
+                ],
+                "id": 21,
+                "device": "ET-R0416D4I",
+                "sn": "",
+                "ver": "",
+                "area1": "",
+                "area2": "",
+                "area3": "",
+                "area4": "",
+                "name": ""
+            },
+            {
+                "devPortList": [
+                    {
+                        "portID": 1,
+                        "portType": "2.0_dimmer",
+                        "portInterface": "0-10V",
+                        "portContent": null
+                    },
+                    {
+                        "portID": 2,
+                        "portType": "2.0_dimmer",
+                        "portInterface": "0-10V",
+                        "portContent": null
+                    },
+                    {
+                        "portID": 3,
+                        "portType": "2.0_dimmer",
+                        "portInterface": "0-10V",
+                        "portContent": null
+                    },
+                    {
+                        "portID": 4,
+                        "portType": "2.0_dimmer",
+                        "portInterface": "0-10V",
+                        "portContent": null
+                    }
+                ],
+                "id": 22,
+                "device": "ET-R0416D4I",
+                "sn": "",
+                "ver": "",
+                "area1": "",
+                "area2": "",
+                "area3": "",
+                "area4": "",
+                "name": ""
+            },
+            {
+                "devPortList": [
+                    {
+                        "portID": 1,
+                        "portType": "2.0_dimmer",
+                        "portInterface": "0-10V",
+                        "portContent": null
+                    },
+                    {
+                        "portID": 2,
+                        "portType": "2.0_dimmer",
+                        "portInterface": "0-10V",
+                        "portContent": null
+                    },
+                    {
+                        "portID": 3,
+                        "portType": "2.0_dimmer",
+                        "portInterface": "0-10V",
+                        "portContent": null
+                    },
+                    {
+                        "portID": 4,
+                        "portType": "2.0_dimmer",
+                        "portInterface": "0-10V",
+                        "portContent": null
+                    }
+                ],
+                "id": 23,
+                "device": "ET-R0416D4I",
+                "sn": "",
+                "ver": "",
+                "area1": "",
+                "area2": "",
+                "area3": "",
+                "area4": "",
+                "name": ""
+            },
+            {
+                "devPortList": [
+                    {
+                        "portID": 1,
+                        "portType": "2.0_dimmer",
+                        "portInterface": "0-10V",
+                        "portContent": null
+                    },
+                    {
+                        "portID": 2,
+                        "portType": "2.0_dimmer",
+                        "portInterface": "0-10V",
+                        "portContent": null
+                    },
+                    {
+                        "portID": 3,
+                        "portType": "2.0_dimmer",
+                        "portInterface": "0-10V",
+                        "portContent": null
+                    },
+                    {
+                        "portID": 4,
+                        "portType": "2.0_dimmer",
+                        "portInterface": "0-10V",
+                        "portContent": null
+                    }
+                ],
+                "id": 24,
+                "device": "ET-R0416D4I",
+                "sn": "",
+                "ver": "",
+                "area1": "",
+                "area2": "",
+                "area3": "",
+                "area4": "",
+                "name": ""
+            },
+            {
+                "devPortList": [
+                    {
+                        "portID": 1,
+                        "portType": "2.0_dimmer",
+                        "portInterface": "0-10V",
+                        "portContent": null
+                    },
+                    {
+                        "portID": 2,
+                        "portType": "2.0_dimmer",
+                        "portInterface": "0-10V",
+                        "portContent": null
+                    },
+                    {
+                        "portID": 3,
+                        "portType": "2.0_dimmer",
+                        "portInterface": "0-10V",
+                        "portContent": null
+                    },
+                    {
+                        "portID": 4,
+                        "portType": "2.0_dimmer",
+                        "portInterface": "0-10V",
+                        "portContent": null
+                    }
+                ],
+                "id": 25,
+                "device": "ET-R0416D4I",
+                "sn": "",
+                "ver": "",
+                "area1": "",
+                "area2": "",
+                "area3": "",
+                "area4": "",
+                "name": ""
+            },
+            {
+                "devPortList": [
+                    {
+                        "portID": 1,
+                        "portType": "2.0_dimmer",
+                        "portInterface": "0-10V",
+                        "portContent": null
+                    },
+                    {
+                        "portID": 2,
+                        "portType": "2.0_dimmer",
+                        "portInterface": "0-10V",
+                        "portContent": null
+                    },
+                    {
+                        "portID": 3,
+                        "portType": "2.0_dimmer",
+                        "portInterface": "0-10V",
+                        "portContent": null
+                    },
+                    {
+                        "portID": 4,
+                        "portType": "2.0_dimmer",
+                        "portInterface": "0-10V",
+                        "portContent": null
+                    }
+                ],
+                "id": 26,
+                "device": "ET-R0416D4I",
+                "sn": "",
+                "ver": "",
+                "area1": "",
+                "area2": "",
+                "area3": "",
+                "area4": "",
+                "name": ""
+            },
+            {
+                "devPortList": [
+                    {
+                        "portID": 1,
+                        "portType": "2.0_dimmer",
+                        "portInterface": "0-10V",
+                        "portContent": null
+                    },
+                    {
+                        "portID": 2,
+                        "portType": "2.0_dimmer",
+                        "portInterface": "0-10V",
+                        "portContent": null
+                    },
+                    {
+                        "portID": 3,
+                        "portType": "2.0_dimmer",
+                        "portInterface": "0-10V",
+                        "portContent": null
+                    },
+                    {
+                        "portID": 4,
+                        "portType": "2.0_dimmer",
+                        "portInterface": "0-10V",
+                        "portContent": null
+                    }
+                ],
+                "id": 27,
+                "device": "ET-R0416D4I",
+                "sn": "",
+                "ver": "",
+                "area1": "",
+                "area2": "",
+                "area3": "",
+                "area4": "",
+                "name": ""
+            },
+            {
+                "devPortList": [
+                    {
+                        "portID": 1,
+                        "portType": "1.0_switch",
+                        "portInterface": "Switch",
+                        "portContent": null
+                    },
+                    {
+                        "portID": 2,
+                        "portType": "1.0_switch",
+                        "portInterface": "Switch",
+                        "portContent": null
+                    },
+                    {
+                        "portID": 3,
+                        "portType": "1.0_switch",
+                        "portInterface": "Switch",
+                        "portContent": null
+                    },
+                    {
+                        "portID": 4,
+                        "portType": "1.0_switch",
+                        "portInterface": "Switch",
+                        "portContent": null
+                    }
+                ],
+                "id": 28,
+                "device": "ET-R0416A",
+                "sn": "",
+                "ver": "",
+                "area1": "",
+                "area2": "",
+                "area3": "",
+                "area4": "",
+                "name": ""
+            },
+            {
+                "devPortList": [
+                    {
+                        "portID": 1,
+                        "portType": "1.0_switch",
+                        "portInterface": "Switch",
+                        "portContent": null
+                    },
+                    {
+                        "portID": 2,
+                        "portType": "1.0_switch",
+                        "portInterface": "Switch",
+                        "portContent": null
+                    },
+                    {
+                        "portID": 3,
+                        "portType": "1.0_switch",
+                        "portInterface": "Switch",
+                        "portContent": null
+                    },
+                    {
+                        "portID": 4,
+                        "portType": "1.0_switch",
+                        "portInterface": "Switch",
+                        "portContent": null
+                    }
+                ],
+                "id": 29,
+                "device": "ET-R0416A",
+                "sn": "",
+                "ver": "",
+                "area1": "",
+                "area2": "",
+                "area3": "",
+                "area4": "",
+                "name": ""
+            },
+            {
+                "devPortList": [
+                    {
+                        "portID": 1,
+                        "portType": "1.0_switch",
+                        "portInterface": "Switch",
+                        "portContent": null
+                    },
+                    {
+                        "portID": 2,
+                        "portType": "2.0_dimmer",
+                        "portInterface": "0-10V",
+                        "portContent": null
+                    }
+                ],
+                "id": 30,
+                "device": "KP06A",
+                "sn": "",
+                "ver": "",
+                "area1": "",
+                "area2": "",
+                "area3": "",
+                "area4": "",
+                "name": ""
+            },
+            {
+                "devPortList": [
+                    {
+                        "portID": 1,
+                        "portType": "1.0_switch",
+                        "portInterface": "Switch",
+                        "portContent": null
+                    },
+                    {
+                        "portID": 2,
+                        "portType": "2.0_dimmer",
+                        "portInterface": "0-10V",
+                        "portContent": null
+                    }
+                ],
+                "id": 31,
+                "device": "KP06A",
+                "sn": "",
+                "ver": "",
+                "area1": "",
+                "area2": "",
+                "area3": "",
+                "area4": "",
+                "name": ""
+            },
+            {
+                "devPortList": [
+                    {
+                        "portID": 1,
+                        "portType": "1.0_switch",
+                        "portInterface": "Switch",
+                        "portContent": null
+                    },
+                    {
+                        "portID": 2,
+                        "portType": "2.0_dimmer",
+                        "portInterface": "0-10V",
+                        "portContent": null
+                    }
+                ],
+                "id": 32,
+                "device": "KP06A",
+                "sn": "",
+                "ver": "",
+                "area1": "",
+                "area2": "",
+                "area3": "",
+                "area4": "",
+                "name": ""
+            },
+            {
+                "devPortList": [
+                    {
+                        "portID": 1,
+                        "portType": "1.0_switch",
+                        "portInterface": "Switch",
+                        "portContent": null
+                    },
+                    {
+                        "portID": 2,
+                        "portType": "2.0_dimmer",
+                        "portInterface": "0-10V",
+                        "portContent": null
+                    }
+                ],
+                "id": 33,
+                "device": "KP06A",
+                "sn": "",
+                "ver": "",
+                "area1": "",
+                "area2": "",
+                "area3": "",
+                "area4": "",
+                "name": ""
+            },
+            {
+                "devPortList": [
+                    {
+                        "portID": 1,
+                        "portType": "1.0_switch",
+                        "portInterface": "Switch",
+                        "portContent": null
+                    },
+                    {
+                        "portID": 2,
+                        "portType": "2.0_dimmer",
+                        "portInterface": "0-10V",
+                        "portContent": null
+                    }
+                ],
+                "id": 34,
+                "device": "KP06A",
+                "sn": "",
+                "ver": "",
+                "area1": "",
+                "area2": "",
+                "area3": "",
+                "area4": "",
+                "name": ""
+            },
+            {
+                "devPortList": [
+                    {
+                        "portID": 1,
+                        "portType": "1.0_switch",
+                        "portInterface": "Switch",
+                        "portContent": null
+                    },
+                    {
+                        "portID": 2,
+                        "portType": "2.0_dimmer",
+                        "portInterface": "0-10V",
+                        "portContent": null
+                    }
+                ],
+                "id": 35,
+                "device": "KP06A",
                 "sn": "",
                 "ver": "",
                 "area1": "",

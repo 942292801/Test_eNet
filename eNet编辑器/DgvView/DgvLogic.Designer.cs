@@ -82,6 +82,7 @@
             this.superTabControl1.Controls.Add(this.superTabControlPanel1);
             this.superTabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.superTabControl1.Location = new System.Drawing.Point(0, 25);
+            this.superTabControl1.Margin = new System.Windows.Forms.Padding(0);
             this.superTabControl1.Name = "superTabControl1";
             this.superTabControl1.ReorderTabsEnabled = true;
             this.superTabControl1.SelectedTabFont = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Bold);
@@ -92,6 +93,7 @@
             this.superTabControl1.Tabs.AddRange(new DevComponents.DotNetBar.BaseItem[] {
             this.superTabItem1});
             this.superTabControl1.TabStyle = DevComponents.DotNetBar.eSuperTabStyle.VisualStudio2008Dock;
+            this.superTabControl1.TabVerticalSpacing = 3;
             this.superTabControl1.Text = "superTabControl1";
             this.superTabControl1.TabItemClose += new System.EventHandler<DevComponents.DotNetBar.SuperTabStripTabItemCloseEventArgs>(this.superTabControl1_TabItemClose);
             this.superTabControl1.SelectedTabChanged += new System.EventHandler<DevComponents.DotNetBar.SuperTabStripSelectedTabChangedEventArgs>(this.superTabControl1_SelectedTabChanged);
@@ -99,9 +101,9 @@
             // superTabControlPanel1
             // 
             this.superTabControlPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.superTabControlPanel1.Location = new System.Drawing.Point(0, 30);
+            this.superTabControlPanel1.Location = new System.Drawing.Point(0, 28);
             this.superTabControlPanel1.Name = "superTabControlPanel1";
-            this.superTabControlPanel1.Size = new System.Drawing.Size(1064, 496);
+            this.superTabControlPanel1.Size = new System.Drawing.Size(1064, 498);
             this.superTabControlPanel1.TabIndex = 1;
             this.superTabControlPanel1.TabItem = this.superTabItem1;
             // 

@@ -631,7 +631,32 @@ namespace eNet编辑器
                 return false;
         }
         #endregion
-        
+
+
+        #region 提取方法
+        /// <summary>
+        /// 提取数字
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns>提取成功返回数值  失败返回-1</returns>
+        public static int GetNumber(string input)
+        {
+            
+            //获取数字
+            string num = Regex.Replace(input, @"[^\d]*", "");
+            if (IsInteger(num))
+            {
+                return Convert.ToInt32(num);
+            }
+            else
+            {
+                return -1;
+            }
+        }
+
+
+        #endregion
+
 
     }
 }

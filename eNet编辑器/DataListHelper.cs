@@ -1613,6 +1613,37 @@ namespace eNet编辑器
             return null;
         }
 
+
+        /// <summary>
+        /// 获取新ID在当前List的序号 
+        /// </summary>
+        /// <returns></returns>
+        public static int getLogicInfoID(DataJson.logics lgs)
+        {
+            HashSet<int> hasharry = new HashSet<int>();
+            foreach(DataJson.logicsInfo logsInfo in lgs.logicsInfo )
+            {
+                hasharry.Add( logsInfo.id);
+            }
+            //哈希表 同一个区域的所有序号都在里面
+            List<int> arry = hasharry.ToList<int>();            
+            arry.Sort();
+            if (arry.Count == 0)
+            {
+                //该区域节点前面数字不存在
+                return 1;
+            }
+            //哈希表 不存在序号 直接返回
+            for (int i = 0; i < arry.Count; i++)
+            {
+                if (arry[i] != i + 1)
+                {
+                    return i+1;
+                }
+            }
+            return arry[arry.Count - 1] + 1;
+        }
+
         /// <summary>
         /// 删除逻辑中所有匹配的PID号
         /// </summary>

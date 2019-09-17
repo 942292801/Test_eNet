@@ -435,11 +435,11 @@ namespace eNet编辑器
                     IndentChar = ' '
                 };
                 serializer.Serialize(jsonWriter, obj);
-                return textWriter.ToString();
+                return textWriter.ToString().Replace("\\", "");
             }
             else
             {
-                return str;
+                return str.Replace("\\", "");
             }
         }
 

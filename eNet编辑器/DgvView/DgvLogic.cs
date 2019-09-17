@@ -13,46 +13,187 @@ namespace eNet编辑器.DgvView
 {
     public partial class DgvLogic : Form
     {
+
+        LogicScene logicScene;
+
+        LogicCondition logicCondition;
+
+        LogicVoice logicVoice;
+
+
+
         public DgvLogic()
         {
             
-            //设置窗体双缓存
-            this.SetStyle(ControlStyles.OptimizedDoubleBuffer | ControlStyles.ResizeRedraw | ControlStyles.AllPaintingInWmPaint, true);
-            this.UpdateStyles();
             InitializeComponent();
-           
-            /*
-            //利用反射设置DataGridView的双缓冲
-            Type dgvType = this.dataGridView1.GetType();
-            PropertyInfo pi = dgvType.GetProperty("DoubleBuffered",
-            BindingFlags.Instance | BindingFlags.NonPublic);
-            pi.SetValue(this.dataGridView1, true, null);*/
         }
 
         private void DgvLogic_Load(object sender, EventArgs e)
         {
-
+            SetStyle(ControlStyles.UserPaint, true);
+            SetStyle(ControlStyles.AllPaintingInWmPaint, true); // 禁止擦除背景.
+            SetStyle(ControlStyles.OptimizedDoubleBuffer, true); // 双缓冲
+            this.UpdateStyles();
             IniControl();
-            
         }
 
-        public void dgvLogicAddItem()
-        {
-        }
 
+        #region 控件初始化
         /// <summary>
         /// 控件初始化
         /// </summary>
         private void IniControl()
         {
+            formCreat();
             //Tab表格关闭按钮
             superTabControl1.CloseButtonOnTabsVisible = true;
-            superTabControl1.Tabs.Clear();
-            AddNewSceneTab();
+            //清空表格
+            clearSuperTabControl1();
+
         }
 
-        #region MenuBox_TabMenuOpen
-        private int _UserTabCount = 1;
+        /// <summary>
+        /// 创建窗口对象  在删除的时候会把对象释放掉
+        /// </summary>
+        private void formCreat()
+        {
+            if (logicScene == null || logicScene.IsDisposed)
+            {
+                logicScene = new LogicScene();
+                logicScene.Dock = DockStyle.Fill;
+            }
+            if (logicCondition == null || logicCondition.IsDisposed)
+            {
+                logicCondition = new LogicCondition();
+                logicCondition.Dock = DockStyle.Fill;
+            }
+            if (logicVoice == null || logicVoice.IsDisposed)
+            {
+                logicVoice = new LogicVoice();
+                logicVoice.Dock = DockStyle.Fill;
+            }
+
+        }
+
+        #endregion
+  
+
+        #region 加载信息
+        public void dgvLogicAddItem()
+        {
+
+            DataJson.logics lgs = DataListHelper.getLogicInfoListByNode();
+            if (lgs == null)
+            {
+                clearSuperTabControl1();
+                return;
+            }
+            //清空表单
+            superTabControl1.Tabs.Clear();
+            foreach (DataJson.logicsInfo lginfo in lgs.logicsInfo)
+            {
+                //加载各个框
+                switch (lginfo.modelType)
+                {
+                    case "SceneDeal":
+                        AddNewSceneTab();
+                        break;
+                    case "ConditionDeal":
+                        AddNewConditionTab(lginfo.id);
+                        break;
+                    case "VoiceDeal":
+                        AddNewVoiceTab(lginfo.id);
+                        break;
+                    default:
+                        break;
+                }
+
+            }
+            //选中第一个
+            superTabControl1.SelectedTabIndex = 0;
+           
+        }
+
+
+        /// <summary>
+        /// 清空表框 并加载空白的项
+        /// </summary>
+        private void clearSuperTabControl1()
+        {
+            superTabControl1.Tabs.Clear();
+            SuperTabItem tab = superTabControl1.CreateTab("LogicSet", superTabControl1.Tabs.Count);
+            superTabControl1.SelectedTab = tab;
+
+            LabelX lbx = new LabelX();
+            lbx.Text = "Easy Control";
+            lbx.TextAlignment = StringAlignment.Center;
+            lbx.TextLineAlignment = StringAlignment.Center;
+            lbx.BackColor = Color.Transparent;
+
+            tab.AttachedControl.Controls.Add(lbx);
+            lbx.Dock = DockStyle.Fill;
+        }
+
+        /// <summary>
+        /// 选中加载信息
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void superTabControl1_SelectedTabChanged(object sender, SuperTabStripSelectedTabChangedEventArgs e)
+        {
+            SuperTabItem tab = superTabControl1.SelectedTab;
+            DataJson.logicsInfo logicInfo = findLogicInfoByTabName(tab.Text);
+            if (logicInfo == null)
+            {
+                return;
+            }
+            tabSelectAddPanel(logicInfo);
+        }
+
+
+        /// <summary>
+        /// 根据LogicInfo.modelType类型加载框和内容
+        /// </summary>
+        /// <param name="modelType"></param>
+        private void tabSelectAddPanel(DataJson.logicsInfo logicInfo)
+        {
+            formCreat();
+            //加载各个框的Panel信息
+            switch (logicInfo.modelType)
+            {
+                case "SceneDeal":
+                    //显示场景处理框
+                    superTabControl1.SelectedTab.AttachedControl.Controls.Add(logicScene);
+                    //加载信息内容 
+                    logicScene.formInfoIni(logicInfo);
+                    break;
+                case "ConditionDeal":
+                    //显示多条件处理
+                    superTabControl1.SelectedTab.AttachedControl.Controls.Add(logicCondition);
+                    //加载信息内容 
+                    break;
+                case "VoiceDeal":
+                    //显示表达式处理
+                    superTabControl1.SelectedTab.AttachedControl.Controls.Add(logicVoice);
+                    //加载信息内容 
+                    break;
+                default:
+                    break;
+            }
+        }
+        #endregion
+
+      
+
+
+        #region 表格控件整体操作 MenuBox_TabMenuOpen
+
+        #region 表格添加菜单栏
+        /// <summary>
+        /// 菜单栏样式
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void superTabControl1_ControlBox_MenuBox_PopupOpen(object sender, DevComponents.DotNetBar.PopupOpenEventArgs e)
         {
             // If the user has said they want us to modify the TabMenu,
@@ -60,6 +201,8 @@ namespace eNet编辑器.DgvView
             // add or delete new user tabs
 
                 PopupItem pi = sender as PopupItem;
+                //菜单主题  
+                pi.Style = eDotNetBarStyle.Metro;
 
                 if (pi != null)
                 {
@@ -99,26 +242,33 @@ namespace eNet编辑器.DgvView
                 }
             
         }
+        #endregion
 
-        #region DelUserTab
+        #region 删除框操作
+        /// <summary>
+        /// 框 删除操作
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void superTabControl1_TabItemClose(object sender, SuperTabStripTabItemCloseEventArgs e)
         {
             SuperTabItem tab = e.Tab as SuperTabItem;
-
             // In our sample app, only let the user close tabs they have added
-
             if (tab == null || superTabControl1.Tabs.Count < 2)
             {
-                MessageBox.Show("模式不能为空，至少保留一项");
-
                 e.Cancel = true;
+                return;
             }
+            //删除该信息
+            removeLogicInfo(tab.Text);
+
         }
 
-        #endregion
-
-        #region DelUserTab_Click
-
+        /// <summary>
+        ///  菜单栏 删除操作
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         void DelUserTab_Click(object sender, EventArgs e)
         {
             ButtonItem bi = sender as ButtonItem;
@@ -128,122 +278,227 @@ namespace eNet编辑器.DgvView
                 SuperTabItem tab = bi.Tag as SuperTabItem;
 
                 if (tab != null && superTabControl1.Tabs.Count > 1)
+                {
+                    removeLogicInfo(tab.Text);
+                    
                     tab.Close();
+                }
+                    
             }
         }
 
+        /// <summary>
+        /// 删除框的信息内容
+        /// </summary>
+        /// <param name="tabName"></param>
+        private void removeLogicInfo(string tabName)
+        {
+            DataJson.logics lgs = DataListHelper.getLogicInfoListByNode();
+            if (lgs == null)
+            {
+                return;
+            }
+            //撤销
+            DataJson.totalList OldList = FileMesege.cmds.getListInfos();
+            //删除逻辑框信息内容
+            DataJson.logicsInfo logicInfo = findLogicInfoByTabName(tabName);
+            if (logicInfo == null)
+            {
+                return;
+            }
+            lgs.logicsInfo.Remove(logicInfo);
+   
+            DataJson.totalList NewList = FileMesege.cmds.getListInfos();
+            FileMesege.cmds.DoNewCommand(NewList, OldList);
+        }
+
+        /// <summary>
+        /// 根据tabName 获取当前框的LogicInfo 否则返回null
+        /// </summary>
+        /// <param name="tabName"></param>
+        /// <returns></returns>
+        private DataJson.logicsInfo findLogicInfoByTabName(string tabName)
+        {
+            DataJson.logics lgs = DataListHelper.getLogicInfoListByNode();
+            if (lgs == null)
+            {
+                return null;
+            }
+            int id = Validator.GetNumber(tabName);
+            if (id == -1)
+            {
+                return null;
+            }
+            //删除逻辑框信息内容
+            foreach (DataJson.logicsInfo logicInfo in lgs.logicsInfo)
+            {
+                if (logicInfo.id == id)
+                {
+                    return logicInfo;
+              
+                }
+            }
+            return null;
+        }
+
         #endregion
 
-        #region AddSceneTab_Click
+
+        #region 添加场景处理框  AddSceneTab_Click
 
         void AddSceneTab_Click(object sender, EventArgs e)
         {
-            AddNewSceneTab();
+            DataJson.logics lgs = DataListHelper.getLogicInfoListByNode();
+            if (lgs == null)
+            {
+                return;
+            }
+            if (lgs.logicsInfo[0].modelType != "SceneDeal")
+            {
+                //撤销
+                DataJson.totalList OldList = FileMesege.cmds.getListInfos();
+                //清除所有信息 界面框也清除
+                lgs.logicsInfo.Clear();
+                superTabControl1.Tabs.Clear();
+                //添加新的场景处理
+                DataJson.logicsInfo lgInfo = new DataJson.logicsInfo();
+                lgs.logicsInfo.Add(lgInfo);
+                AddNewSceneTab();
+                DataJson.totalList NewList = FileMesege.cmds.getListInfos();
+                FileMesege.cmds.DoNewCommand(NewList, OldList);
+            }
+            
+           
         }
 
-        #region AddNewSceneTab
-
         /// <summary>
-        /// 
+        /// 添加场景框
         /// </summary>
         private void AddNewSceneTab()
         {
-            SuperTabItem tab = superTabControl1.CreateTab("场景处理" + _UserTabCount, superTabControl1.Tabs.Count);
-            tab.Tag = _UserTabCount++;
+            SuperTabItem tab = superTabControl1.CreateTab("场景处理 1", superTabControl1.Tabs.Count);
+            superTabControl1.SelectedTab = tab;
+            tab.AttachedControl.Controls.Add(logicScene);
 
-   
-            /*
-            LabelX lbx = new LabelX();
-            lbx.Text = "This space intentionally left blank. Scene" + _UserTabCount;
-            lbx.TextAlignment = StringAlignment.Center;
-            lbx.TextLineAlignment = StringAlignment.Center;
-            lbx.BackColor = Color.Transparent;
-
-            tab.AttachedControl.Controls.Add(lbx);
-            lbx.Dock = DockStyle.Fill;
-            superTabControl1.SelectedTab = tab;*/
-            //UpdateDelUserButton();
         }
 
         #endregion
-        #endregion
 
-        #region AddConditionTab_Click
+        #region  添加多条件处理框 AddConditionTab_Click
 
         void AddConditionTab_Click(object sender, EventArgs e)
         {
-            AddNewConditionTab();
+            DataJson.logics lgs = DataListHelper.getLogicInfoListByNode();
+            if (lgs == null)
+            {
+                return;
+            }
+            if (lgs.logicsInfo[0].modelType == "SceneDeal")
+            {
+                //撤销
+                DataJson.totalList OldList = FileMesege.cmds.getListInfos();
+                //清除所有信息 界面框也清除
+                lgs.logicsInfo.Clear();
+                superTabControl1.Tabs.Clear();
+                
+                //添加新的场景处理
+                DataJson.logicsInfo lgInfo = new DataJson.logicsInfo();
+                lgInfo.id = DataListHelper.getLogicInfoID(lgs);
+                lgInfo.modelType = "ConditionDeal";
+                lgs.logicsInfo.Add(lgInfo);
+                AddNewConditionTab(lgInfo.id);
+                DataJson.totalList NewList = FileMesege.cmds.getListInfos();
+                FileMesege.cmds.DoNewCommand(NewList, OldList);
+            }
+            else
+            {
+                //撤销
+                DataJson.totalList OldList = FileMesege.cmds.getListInfos();
+                //添加新的场景处理
+                DataJson.logicsInfo lgInfo = new DataJson.logicsInfo();
+                lgInfo.id = DataListHelper.getLogicInfoID(lgs);
+                lgInfo.modelType = "ConditionDeal";
+                lgs.logicsInfo.Insert(lgInfo.id-1, lgInfo);
+                AddNewConditionTab(lgInfo.id);
+                DataJson.totalList NewList = FileMesege.cmds.getListInfos();
+                FileMesege.cmds.DoNewCommand(NewList, OldList);
+            }
+            
         }
 
-        #region AddNewConditionTab
 
-        private void AddNewConditionTab()
+     
+        /// <summary>
+        /// 添加多条件框
+        /// </summary>
+        private void AddNewConditionTab(int id)
         {
-            SuperTabItem tab = superTabControl1.CreateTab("多条件处理 " + _UserTabCount, superTabControl1.Tabs.Count);
-            tab.Tag = _UserTabCount++;
-
-
-            /*
-            LabelX lbx = new LabelX();
-            lbx.Text = "This space intentionally left blank. Condition " + _UserTabCount;
-            lbx.TextAlignment = StringAlignment.Center;
-            lbx.TextLineAlignment = StringAlignment.Center;
-            lbx.BackColor = Color.Transparent;
-
-            tab.AttachedControl.Controls.Add(lbx);
-            lbx.Dock = DockStyle.Fill;
-            */
-            //UpdateDelUserButton();
+            SuperTabItem tab = superTabControl1.CreateTab("多条件处理 "+id, superTabControl1.Tabs.Count);
+            tab.Tag = id;
         }
 
         #endregion
-        #endregion
 
-        #region AddVoiceTab_Click
+        #region  添加表达式处理框 AddVoiceTab_Click
 
         void AddVoiceTab_Click(object sender, EventArgs e)
         {
-            AddNewVoiceTab();
+       
+            DataJson.logics lgs = DataListHelper.getLogicInfoListByNode();
+            if (lgs == null)
+            {
+                return;
+            }
+            if (lgs.logicsInfo[0].modelType == "SceneDeal")
+            {
+                //撤销
+                DataJson.totalList OldList = FileMesege.cmds.getListInfos();
+                //清除所有信息 界面框也清除
+                lgs.logicsInfo.Clear();
+                superTabControl1.Tabs.Clear();
+                //添加新的场景处理
+                DataJson.logicsInfo lgInfo = new DataJson.logicsInfo();
+                lgInfo.id = DataListHelper.getLogicInfoID(lgs);
+                lgInfo.modelType = "VoiceDeal";
+                lgs.logicsInfo.Add(lgInfo);
+                AddNewVoiceTab(lgInfo.id);
+                DataJson.totalList NewList = FileMesege.cmds.getListInfos();
+                FileMesege.cmds.DoNewCommand(NewList, OldList);
+            }
+            else
+            {
+                //撤销
+                DataJson.totalList OldList = FileMesege.cmds.getListInfos();
+                //添加新的场景处理
+                DataJson.logicsInfo lgInfo = new DataJson.logicsInfo();
+                lgInfo.id = DataListHelper.getLogicInfoID(lgs);
+                lgInfo.modelType = "VoiceDeal";
+                lgs.logicsInfo.Insert(lgInfo.id-1,lgInfo);
+                AddNewVoiceTab(lgInfo.id);
+                DataJson.totalList NewList = FileMesege.cmds.getListInfos();
+                FileMesege.cmds.DoNewCommand(NewList, OldList);
+            }
         }
 
-        #region AddNewVoiceTab
-
-        private void AddNewVoiceTab()
+  
+        /// <summary>
+        /// 添加表达式处理框
+        /// </summary>
+        private void AddNewVoiceTab(int id)
         {
-            SuperTabItem tab = superTabControl1.CreateTab("表达式处理 " + _UserTabCount, superTabControl1.Tabs.Count);
-            tab.Tag = _UserTabCount++;
+            SuperTabItem tab = superTabControl1.CreateTab("表达式处理 " + id, superTabControl1.Tabs.Count);
+            tab.Tag = id;
 
-
-            /*
-            LabelX lbx = new LabelX();
-            lbx.Text = "This space intentionally left blank. Voice" + _UserTabCount;
-            lbx.TextAlignment = StringAlignment.Center;
-            lbx.TextLineAlignment = StringAlignment.Center;
-            lbx.BackColor = Color.Transparent;
-
-            tab.AttachedControl.Controls.Add(lbx);
-            lbx.Dock = DockStyle.Fill;
-            */
-            //UpdateDelUserButton();
         }
 
 
-        #endregion
-
-        private void superTabControl1_SelectedTabChanged(object sender, SuperTabStripSelectedTabChangedEventArgs e)
-        {
-            SuperTabItem tab = superTabControl1.SelectedTab;
-            LogicScene logicScene = new LogicScene(superTabControl1.SelectedTabIndex);
-            logicScene.Dock = DockStyle.Fill;
-            
-            tab.AttachedControl.Controls.Add(logicScene);
-        }
-
-
+ 
 
         #endregion
 
         #endregion
+
+      
 
 
 

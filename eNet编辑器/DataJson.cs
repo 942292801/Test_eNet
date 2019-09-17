@@ -486,10 +486,29 @@ namespace eNet编辑器
             public string modelType { get; set; }
             public string content { get; set; }
 
+            public logicsInfo()
+            {
+                id = 1;
+                attr = 1;
+                modelType = "SceneDeal";//"SceneDeal" "ConditionDeal" "VoicelDeal"
+            }
+
         }
 
+        //场景处理
         [Serializable]
-        public class logicsContent
+        public class LogicSceneContent 
+        {
+            public int pid { get; set; }
+            //public string address { get; set; }
+            public List<sceneInfo> sceneInfo = new List<sceneInfo>();
+        }
+
+
+
+        //多条件处理
+        [Serializable]
+        public class ConditionContent
         {
             public int id { get; set; }
             public int pid { get; set; }
@@ -500,6 +519,21 @@ namespace eNet编辑器
             public int delay { get; set; }
 
         }
+
+        //表达式处理
+        [Serializable]
+        public class VoiceContent
+        {
+            public int id { get; set; }
+            public int pid { get; set; }
+            public string type { get; set; }
+            public string address { get; set; }
+            public string opt { get; set; }
+            public string optName { get; set; }
+            public int delay { get; set; }
+
+        }
+
         #endregion
 
 

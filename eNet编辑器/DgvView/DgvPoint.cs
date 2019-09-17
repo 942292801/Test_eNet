@@ -672,7 +672,7 @@ namespace eNet编辑器.DgvView
             int rowNum = e.RowIndex;
             //选中列号
             int columnNum = e.ColumnIndex;
-            DataJson.PointInfo eq ;
+            DataJson.PointInfo eq = null;
             //撤销
             DataJson.totalList OldList = null;
 
@@ -690,6 +690,17 @@ namespace eNet编辑器.DgvView
                     case "pointObjType":
                         //保存当前信息
                         eq = findNowRow(rowNum);
+                        if (eq == null)
+                        {
+                            SocketUtil.DelayMilli(100);
+                            eq = findNowRow(rowNum);
+                            if (eq == null)
+                            {
+                                MessageBox.Show("699行信息保存失败");
+                                break;
+                            }
+                        }
+                        
                         OldList = FileMesege.cmds.getListInfos();
                         string objtype = IniHelper.findObjsFileNae_ByName(dataGridView1.Rows[rowNum].Cells[4].EditedFormattedValue.ToString());
                         if( eq.objType != objtype)
@@ -710,11 +721,23 @@ namespace eNet编辑器.DgvView
 
                     case "pointValue":
                         //保存当前信息
-                        eq = findNowRow(rowNum);
+                         eq = findNowRow(rowNum);
+                        if (eq == null)
+                        {
+                            SocketUtil.DelayMilli(100);
+                            eq = findNowRow(rowNum);
+                            if (eq == null)
+                            {
+                                MessageBox.Show("699行信息保存失败");
+                                break;
+                            }
+                        }
+                        
                         if (dataGridView1.Rows[rowNum].Cells[4].Value == null || dataGridView1.Rows[rowNum].Cells[5].Value == null)
                         {
                             return;
                         }
+                        OldList = FileMesege.cmds.getListInfos();
                         //类型需要 检查是否匹配一致
                         string type = IniHelper.findObjValueType_ByVal(dataGridView1.Rows[rowNum].Cells[4].Value.ToString(), dataGridView1.Rows[rowNum].Cells[5].EditedFormattedValue.ToString());
                         //解绑IP地址
@@ -724,7 +747,7 @@ namespace eNet编辑器.DgvView
                             eq.ip = "";
                             dataGridView1.Rows[rowNum].Cells[1].Value = "255.255.255.255";
                         }
-                        OldList = FileMesege.cmds.getListInfos();
+                        
                         eq.value = IniHelper.findObjSectionValue_ByValName(dataGridView1.Rows[rowNum].Cells[4].Value.ToString(), dataGridView1.Rows[rowNum].Cells[5].EditedFormattedValue.ToString());
                         eq.type = type;
                         NewList = FileMesege.cmds.getListInfos();
