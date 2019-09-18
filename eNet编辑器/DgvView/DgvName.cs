@@ -1080,7 +1080,7 @@ namespace eNet编辑器.DgvView
                 
             }
             //再反转复原二进制数据
-            return Convert.ToInt32(DataChange.Reversal(bin), 2).ToString();
+            return Convert.ToInt64(DataChange.Reversal(bin), 2).ToString();
         }
 
         #endregion

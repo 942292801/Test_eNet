@@ -1088,7 +1088,7 @@ namespace eNet编辑器.Controller
                 {
                     return;
                 }
-                devPort.portContent = JsonConvert.SerializeObject(portDimmer);
+                devPort.portContent = JsonConvert.SerializeObject(portDimmer).Replace("\\","");
                 isSend = sendRegOrder("01", "64");//设置为线性模式 00自定义 01曲线 02废除了 
                 if (!isSend)
                 {

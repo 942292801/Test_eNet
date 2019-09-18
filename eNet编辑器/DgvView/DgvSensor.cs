@@ -135,7 +135,7 @@ namespace eNet编辑器.DgvView
                         if (srInfo.objAddress != "" && srInfo.objAddress != "FFFFFFFF")
                         {
                             DataJson.PointInfo point = DataListHelper.findPointByType_address(srInfo.objType, srInfo.objAddress,ip);
-                            if (point != null)
+                            if (point != null) 
                             {
                                 srInfo.pid = point.pid;
                                 srInfo.objAddress = point.address;
@@ -493,9 +493,15 @@ namespace eNet编辑器.DgvView
                     {
                         if (m.id.ToString() == cbDevNum.Text)
                         {
-                            ioVal = IniConfig.GetValue(path + m.device + ".ini", "input", "io");
+                            ioVal = IniConfig.GetValue(path + m.device + ".ini", "input", "io").Trim();
+                            int tmpnum = Validator.GetNumber(ioVal);
+                            if(tmpnum == -1)
+                            {
+                                break ;
+                            }
+                            ioVal = tmpnum.ToString();
                             //iniKEY的内容不为字符 null
-                            if (ioVal != "null")
+                            if (!string.IsNullOrEmpty(ioVal) && ioVal != "null" )
                             {
                                 if (ioVal.Contains("-"))
                                 {

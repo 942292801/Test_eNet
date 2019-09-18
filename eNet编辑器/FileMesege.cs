@@ -28,7 +28,7 @@ namespace eNet编辑器
         public static string TmpFilePath = Application.StartupPath + "\\protmp";
         //treesection临时存放数据处 区域
         public static TreeNode sectionNode = null;
-        //四个区域点 补齐 分割\\
+        //四个区域点 空的区域也用\\补齐 分割\\
         public static string sectionNodeCopy = "";//备份 不清除
         //点位区域 英文ini文件名称 tv_ir
         public static string objType = "";
@@ -435,11 +435,11 @@ namespace eNet编辑器
                     IndentChar = ' '
                 };
                 serializer.Serialize(jsonWriter, obj);
-                return textWriter.ToString().Replace("\\", "");
+                return textWriter.ToString();
             }
             else
             {
-                return str.Replace("\\", "");
+                return str;
             }
         }
 

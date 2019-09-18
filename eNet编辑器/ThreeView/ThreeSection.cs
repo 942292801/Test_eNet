@@ -31,10 +31,10 @@ namespace eNet编辑器.ThreeView
             SetStyle(ControlStyles.AllPaintingInWmPaint, true); // 禁止擦除背景.
             SetStyle(ControlStyles.DoubleBuffer, true); // 双缓冲
             //利用反射设置DataGridView的双缓冲
-            Type dgvType = this.treeView1.GetType();
-            PropertyInfo pi = dgvType.GetProperty("DoubleBuffered",
-            BindingFlags.Instance | BindingFlags.NonPublic);
-            pi.SetValue(this.treeView1, true, null);   
+            //Type dgvType = this.treeView1.GetType();
+            //PropertyInfo pi = dgvType.GetProperty("DoubleBuffered",
+            //BindingFlags.Instance | BindingFlags.NonPublic);
+            //pi.SetValue(this.treeView1, true, null);   
            
         }
         public event AddTitleNode addTitleNode;
@@ -45,7 +45,7 @@ namespace eNet编辑器.ThreeView
         public event Action sectionUpdateDgvTreeByFormType;
         public event Action updatePointDgv;
 
-        
+        public event Action logicCbSceneGetItem;
 
         private void ThreeSection_Load(object sender, EventArgs e)
         {
@@ -1257,6 +1257,10 @@ namespace eNet编辑器.ThreeView
             {
                 //刷title新树状图
                 addTitleNode();
+            }
+            if (FileMesege.formType == "logic")
+            {
+                logicCbSceneGetItem();
             }
 
             //修改光标为加号

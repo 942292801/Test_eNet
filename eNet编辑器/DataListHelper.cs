@@ -679,11 +679,17 @@ namespace eNet编辑器
         /// <returns></returns>
         public static List<string> GetPointNodeBySectionName(List<DataJson.PointInfo> pointlist)
         {
+            List<string> infoList = new List<string>();
             if (string.IsNullOrEmpty(FileMesege.sectionNodeCopy))
             {
-                return null;
+                foreach (DataJson.PointInfo eq in pointlist)
+                {
+                    infoList.Add(dealSection(eq));
+                }
+                return infoList;
             }
-            List<string> infoList = new List<string>();
+            
+           
             //区域
             string[] sections = FileMesege.sectionNodeCopy.Split('\\');
             if (sections[0] == "查看所有区域")
@@ -1178,6 +1184,25 @@ namespace eNet编辑器
                     foreach (DataJson.scenes sc in scIP.scenes)
                     {
                         if (sc.id == num)
+                        {
+                            return sc;
+                        }
+                    }
+
+                }
+            }
+            return null;
+        }
+
+        public static DataJson.scenes getSceneInfoListByPid(string ip, int pid)
+        {
+            foreach (DataJson.Scene scIP in FileMesege.sceneList)
+            {
+                if (scIP.IP == ip)
+                {
+                    foreach (DataJson.scenes sc in scIP.scenes)
+                    {
+                        if (sc.pid == pid)
                         {
                             return sc;
                         }

@@ -32,11 +32,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LogicScene));
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.cbAttr = new System.Windows.Forms.ComboBox();
-            this.label2 = new System.Windows.Forms.Label();
             this.num = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.address = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.section = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -45,8 +40,13 @@
             this.state = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.del = new DevComponents.DotNetBar.Controls.DataGridViewButtonXColumn();
             this.checkDel = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.cbScene = new System.Windows.Forms.ComboBox();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.btnDecid = new DevComponents.DotNetBar.ButtonX();
+            this.cbScene = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.cbAttr = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -95,68 +95,6 @@
             this.dataGridView1.RowTemplate.Height = 23;
             this.dataGridView1.Size = new System.Drawing.Size(765, 373);
             this.dataGridView1.TabIndex = 4;
-            // 
-            // tableLayoutPanel1
-            // 
-            this.tableLayoutPanel1.ColumnCount = 1;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Controls.Add(this.panel1, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.dataGridView1, 0, 1);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 90F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(765, 463);
-            this.tableLayoutPanel1.TabIndex = 5;
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.panel1.Controls.Add(this.btnDecid);
-            this.panel1.Controls.Add(this.cbScene);
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.cbAttr);
-            this.panel1.Controls.Add(this.label2);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(765, 90);
-            this.panel1.TabIndex = 5;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(23, 54);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(68, 17);
-            this.label1.TabIndex = 35;
-            this.label1.Text = "执行模式：";
-            // 
-            // cbAttr
-            // 
-            this.cbAttr.FormattingEnabled = true;
-            this.cbAttr.Items.AddRange(new object[] {
-            "被动触发",
-            "主动触发"});
-            this.cbAttr.Location = new System.Drawing.Point(106, 11);
-            this.cbAttr.Name = "cbAttr";
-            this.cbAttr.Size = new System.Drawing.Size(83, 25);
-            this.cbAttr.TabIndex = 34;
-            this.cbAttr.Text = "主动触发";
-            this.cbAttr.SelectedIndexChanged += new System.EventHandler(this.cbAttr_SelectedIndexChanged);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(23, 14);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(68, 17);
-            this.label2.TabIndex = 33;
-            this.label2.Text = "执行模式：";
             // 
             // num
             // 
@@ -218,13 +156,37 @@
             this.checkDel.Name = "checkDel";
             this.checkDel.Width = 50;
             // 
-            // cbScene
+            // tableLayoutPanel1
             // 
-            this.cbScene.FormattingEnabled = true;
-            this.cbScene.Location = new System.Drawing.Point(106, 51);
-            this.cbScene.Name = "cbScene";
-            this.cbScene.Size = new System.Drawing.Size(299, 25);
-            this.cbScene.TabIndex = 36;
+            this.tableLayoutPanel1.AutoScroll = true;
+            this.tableLayoutPanel1.ColumnCount = 1;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.Controls.Add(this.panel1, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.dataGridView1, 0, 1);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 2;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 90F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(765, 463);
+            this.tableLayoutPanel1.TabIndex = 5;
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.panel1.Controls.Add(this.btnDecid);
+            this.panel1.Controls.Add(this.cbScene);
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.cbAttr);
+            this.panel1.Controls.Add(this.label2);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(765, 90);
+            this.panel1.TabIndex = 5;
             // 
             // btnDecid
             // 
@@ -243,6 +205,45 @@
             this.btnDecid.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnDecid.TabIndex = 37;
             this.btnDecid.Tooltip = "设置";
+            this.btnDecid.Click += new System.EventHandler(this.btnDecid_Click);
+            // 
+            // cbScene
+            // 
+            this.cbScene.FormattingEnabled = true;
+            this.cbScene.Location = new System.Drawing.Point(106, 51);
+            this.cbScene.Name = "cbScene";
+            this.cbScene.Size = new System.Drawing.Size(299, 25);
+            this.cbScene.TabIndex = 36;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(23, 54);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(44, 17);
+            this.label1.TabIndex = 35;
+            this.label1.Text = "场景：";
+            // 
+            // cbAttr
+            // 
+            this.cbAttr.FormattingEnabled = true;
+            this.cbAttr.Items.AddRange(new object[] {
+            "被动触发",
+            "主动触发"});
+            this.cbAttr.Location = new System.Drawing.Point(106, 11);
+            this.cbAttr.Name = "cbAttr";
+            this.cbAttr.Size = new System.Drawing.Size(83, 25);
+            this.cbAttr.TabIndex = 34;
+            this.cbAttr.Text = "主动触发";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(23, 14);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(68, 17);
+            this.label2.TabIndex = 33;
+            this.label2.Text = "执行模式：";
             // 
             // LogicScene
             // 

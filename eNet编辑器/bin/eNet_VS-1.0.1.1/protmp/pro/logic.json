@@ -1,0 +1,20 @@
+[
+    {
+        "logics": [
+            {
+                "logicsInfo": [
+                    {
+                        "id": 1,
+                        "attr": 1,
+                        "modelType": "SceneDeal",
+                        "content": null
+                    }
+                ],
+                "id": 1,
+                "pid": 288133500
+            }
+        ],
+        "IP": "192.168.1.235",
+        "Dev": "GW100A"
+    }
+]

@@ -143,6 +143,7 @@ namespace eNet编辑器
             dgvtimer.AppTxtShow += new Action<string>(AppTxtShow);
             tnGateway.AppTxtShow += new Action<string>(AppTxtShow);
             tnDevice.AppTxtShow += new Action<string>(AppTxtShow);
+            LogicScene.AppTxtShow += new Action<string>(AppTxtShow);
             /////////////////////////////////////////////////////////////
             //  网关 根据DeviceList更新同步加载所有的TreeView
             //  os.UpdateTreeView += new Action<bool>((flag) =>
@@ -186,6 +187,7 @@ namespace eNet编辑器
             threesection.sectionUpdateDgvTreeByFormType += new Action(updateDgvTreeByFormType);
             threesection.updatePointDgv += new Action(dgvpoint.dgvPointAddItemBySection);
             threepoint.updateDgvPoint += new Action(dgvpoint.dgvPointAddItemByObjType);
+            threesection.logicCbSceneGetItem +=new Action(dgvlogic.delegeteLogicCbSceneGetItem);
             /////////////////////////////////////////////////////////////
             //光标事件调用 
             //添加加号光标

@@ -5,28 +5,16 @@
                 "logicsInfo": [
                     {
                         "id": 1,
-                        "attr": 1,
+                        "attr": 0,
                         "modelType": "SceneDeal",
-                        "content": null
+                        "content": "{\"sceneInfo\":[{\"id\":1,\"pid\":0,\"type\":\"10.1_key\",\"address\":\"EBFA0102\",\"opt\":\"FEFA0B1C\",\"optName\":\"赋值\",\"delay\":0},{\"id\":2,\"pid\":0,\"type\":\"10.2_io\",\"address\":\"EBFA0B02\",\"opt\":\"FEFA1719\",\"optName\":\"赋值\",\"delay\":0},{\"id\":3,\"pid\":0,\"type\":\"9.0_virtualport\",\"address\":\"FEFB0303\",\"opt\":\"\",\"optName\":\"\",\"delay\":0},{\"id\":4,\"pid\":0,\"type\":\"3.0_logic\",\"address\":\"EB400017\",\"opt\":\"FE40001D\",\"optName\":\"赋值\",\"delay\":0},{\"id\":5,\"pid\":92371,\"type\":\"4.0_scene\",\"address\":\"EB100001\",\"opt\":\"FE100018\",\"optName\":\"赋值\",\"delay\":0},{\"id\":6,\"pid\":0,\"type\":\"6.1_panel\",\"address\":\"EB300003\",\"opt\":\"\",\"optName\":\"\",\"delay\":0},{\"id\":7,\"pid\":0,\"type\":\"9.0_virtualport\",\"address\":\"FEFB0308\",\"opt\":\"\",\"optName\":\"\",\"delay\":0},{\"id\":8,\"pid\":31937,\"type\":\"2.0_dimmer\",\"address\":\"FFFFFFFF\",\"opt\":\"FE001619\",\"optName\":\"赋值\",\"delay\":0},{\"id\":9,\"pid\":43951,\"type\":\"1.0_switch\",\"address\":\"FFFFFFFF\",\"opt\":\"FE00070A\",\"optName\":\"赋值\",\"delay\":0},{\"id\":10,\"pid\":0,\"type\":\"5.0_time\",\"address\":\"EB200003\",\"opt\":\"FE20001B\",\"optName\":\"赋值\",\"delay\":0},{\"id\":11,\"pid\":0,\"type\":\"6.2_sensor\",\"address\":\"EB3003EA\",\"opt\":\"FE3003EA\",\"optName\":\"赋值\",\"delay\":0}],\"pid\":92371}"
                     }
                 ],
                 "id": 1,
-                "pid": 687386569
-            },
-            {
-                "logicsInfo": [
-                    {
-                        "id": 1,
-                        "attr": 1,
-                        "modelType": "ConditionDeal",
-                        "content": null
-                    }
-                ],
-                "id": 2,
-                "pid": 758679001
+                "pid": 288133500
             }
         ],
-        "IP": "192.168.1.230",
+        "IP": "192.168.1.235",
         "Dev": "GW100A"
     }
 ]

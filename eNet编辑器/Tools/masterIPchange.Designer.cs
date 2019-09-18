@@ -162,6 +162,7 @@
             this.txtDevMAC.Location = new System.Drawing.Point(92, 175);
             this.txtDevMAC.Margin = new System.Windows.Forms.Padding(4);
             this.txtDevMAC.Name = "txtDevMAC";
+            this.txtDevMAC.ReadOnly = true;
             this.txtDevMAC.Size = new System.Drawing.Size(120, 23);
             this.txtDevMAC.TabIndex = 81;
             // 

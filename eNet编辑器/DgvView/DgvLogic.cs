@@ -75,6 +75,25 @@ namespace eNet编辑器.DgvView
 
         }
 
+        /// <summary>
+        /// 回调场景更新cbScene的内容
+        /// </summary>
+        public void delegeteLogicCbSceneGetItem()
+        {
+            try
+            {
+                if (superTabControl1.SelectedTab.Text.Contains("场景处理"))
+                {
+                    string ip = FileMesege.logicSelectNode.Parent.Text.Split(' ')[0];
+                    logicScene.cbSceneGetItem(ip);
+                }
+            }
+            catch
+            { 
+            
+            }
+        }
+
         #endregion
   
 
