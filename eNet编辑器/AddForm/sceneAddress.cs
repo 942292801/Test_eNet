@@ -109,6 +109,7 @@ namespace eNet编辑器.AddForm
                     }
                     else if (linkType == LinkType.Dev)
                     {
+                        addNumForDevList();
                         cb1.Text = infos[0];
                         cb3.Text = infos[2];
                         cb4.Text = infos[3];
@@ -166,7 +167,10 @@ namespace eNet编辑器.AddForm
         /// </summary>
         private void iniInfo(string findType)
         {
-
+            if (string.IsNullOrEmpty(findType))
+            {
+                return;
+            }
 
             linkType = LinkType.Dev;
             string fileName = IniHelper.findTypesIniTypebyName(findType);
@@ -287,12 +291,12 @@ namespace eNet编辑器.AddForm
                 }
 
                 cb1.Enabled = true;
-                if (string.IsNullOrEmpty(cb1.Text))
+                if (string.IsNullOrEmpty(cb1.Text) || cb1.Text == "255")
                 {
                     //cb1.Text = ip.Split('.')[3];
                     cb1.Text = "254";
                 }
-                addNumForDevList();
+                
                 
             }
             catch

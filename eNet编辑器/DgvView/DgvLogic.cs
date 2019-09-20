@@ -26,14 +26,14 @@ namespace eNet编辑器.DgvView
         {
             
             InitializeComponent();
+            SetStyle(ControlStyles.UserPaint, true);
+            SetStyle(ControlStyles.AllPaintingInWmPaint, true); // 禁止擦除背景.
+            SetStyle(ControlStyles.DoubleBuffer, true); // 双缓冲
+            this.UpdateStyles();
         }
 
         private void DgvLogic_Load(object sender, EventArgs e)
         {
-            SetStyle(ControlStyles.UserPaint, true);
-            SetStyle(ControlStyles.AllPaintingInWmPaint, true); // 禁止擦除背景.
-            SetStyle(ControlStyles.OptimizedDoubleBuffer, true); // 双缓冲
-            this.UpdateStyles();
             IniControl();
         }
 
@@ -100,15 +100,17 @@ namespace eNet编辑器.DgvView
         #region 加载信息
         public void dgvLogicAddItem()
         {
-
+            //清空表单
+            //superTabControl1.Hide();解决黑闪失败
+            superTabControl1.Tabs.Clear();
             DataJson.logics lgs = DataListHelper.getLogicInfoListByNode();
             if (lgs == null)
             {
                 clearSuperTabControl1();
+                //superTabControl1.Show();解决黑闪失败
                 return;
             }
-            //清空表单
-            superTabControl1.Tabs.Clear();
+
             foreach (DataJson.logicsInfo lginfo in lgs.logicsInfo)
             {
                 //加载各个框
@@ -128,10 +130,13 @@ namespace eNet编辑器.DgvView
                 }
 
             }
+            //superTabControl1.Show(); 解决黑闪失败
             //选中第一个
             superTabControl1.SelectedTabIndex = 0;
-           
+
         }
+
+   
 
 
         /// <summary>
@@ -167,6 +172,7 @@ namespace eNet编辑器.DgvView
                 return;
             }
             tabSelectAddPanel(logicInfo);
+
         }
 
 
@@ -185,6 +191,7 @@ namespace eNet编辑器.DgvView
                     superTabControl1.SelectedTab.AttachedControl.Controls.Add(logicScene);
                     //加载信息内容 
                     logicScene.formInfoIni(logicInfo);
+
                     break;
                 case "ConditionDeal":
                     //显示多条件处理

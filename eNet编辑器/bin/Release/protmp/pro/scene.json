@@ -44,8 +44,8 @@
                         "pid": 92371,
                         "type": "4.0_scene",
                         "address": "EB100001",
-                        "opt": "FE100018",
-                        "optName": "赋值",
+                        "opt": "00000001",
+                        "optName": "场景调用",
                         "delay": 0
                     },
                     {

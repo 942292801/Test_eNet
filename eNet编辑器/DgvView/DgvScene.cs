@@ -24,6 +24,7 @@ namespace eNet编辑器.DgvView
             SetStyle(ControlStyles.UserPaint, true);
             SetStyle(ControlStyles.AllPaintingInWmPaint, true); // 禁止擦除背景.
             SetStyle(ControlStyles.DoubleBuffer, true); // 双缓冲
+            this.UpdateStyles();
             //利用反射设置DataGridView的双缓冲
             Type dgvType = this.dataGridView1.GetType();
             PropertyInfo pi = dgvType.GetProperty("DoubleBuffered",
@@ -644,8 +645,7 @@ namespace eNet编辑器.DgvView
         //移动到删除的时候高亮一行
         private void dataGridView1_CellMouseMove(object sender, DataGridViewCellMouseEventArgs e)
         {
-            
-            if (isClick)
+            if (isClick == true)
             {
                 return;
 
@@ -656,13 +656,10 @@ namespace eNet编辑器.DgvView
                 int rowNum = e.RowIndex;
                 //选中列号
                 int columnNum = e.ColumnIndex;
-                
                 if (rowNum >= 0 && columnNum >= 0)
                 {
-                
                     dataGridView1.ClearSelection();
                     dataGridView1.Rows[rowNum].Selected = true;//选中行
-                 
                 }
             }
         }

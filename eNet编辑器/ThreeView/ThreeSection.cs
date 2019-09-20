@@ -30,6 +30,7 @@ namespace eNet编辑器.ThreeView
             SetStyle(ControlStyles.UserPaint, true);
             SetStyle(ControlStyles.AllPaintingInWmPaint, true); // 禁止擦除背景.
             SetStyle(ControlStyles.DoubleBuffer, true); // 双缓冲
+            this.UpdateStyles();
             //利用反射设置DataGridView的双缓冲
             //Type dgvType = this.treeView1.GetType();
             //PropertyInfo pi = dgvType.GetProperty("DoubleBuffered",

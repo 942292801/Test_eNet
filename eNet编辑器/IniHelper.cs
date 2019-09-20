@@ -275,8 +275,10 @@ namespace eNet编辑器
                         case "40":
                             return "3.0_logic";
  
-                        //case "FB":
-                          //  return "9.0_virtualport";
+                        case "FB":
+                            return "9.0_virtualport";
+                        case "F9":
+                            return "15.0_LocalVariable";
                         default:
                             return "";
                     }
