@@ -12,9 +12,9 @@ using System.Runtime.InteropServices;
 
 namespace eNet编辑器.AddForm
 {
-    public partial class sceneConcrol : Form
+    public partial class LogicConcrol : Form
     {
-        public sceneConcrol()
+        public LogicConcrol()
         {
             InitializeComponent();
         }
@@ -87,12 +87,16 @@ namespace eNet编辑器.AddForm
             /// <summary>
             /// 场景 定时 面板 类型
             /// </summary>
-            Com = 3
+            Com = 3,
+            /// <summary>
+            /// 局部变量
+            /// </summary>
+            localVar=4
 
         }
 
 
-        private void sceneConcrol_Load(object sender, EventArgs e)
+        private void LogicConcrol_Load(object sender, EventArgs e)
         {
             try
             {
@@ -131,6 +135,7 @@ namespace eNet编辑器.AddForm
                         //默认加载cbversion第一个选项信息
                         cbVersion.SelectedIndex = 0;
                         cbTypeitemIni();
+                        addIp();
                         cbAndlb(0);
                         break;
                     }//类型一致
@@ -148,10 +153,12 @@ namespace eNet编辑器.AddForm
                 for (int i = 0; i < cbVersion.Items.Count; i++)
                 {
                     itmeTxt = cbVersion.Items[i].ToString();
+                    //赋值窗体
                     if (itmeTxt == ver)
                     {
                         //optName存在该名称
                         cbVersion.SelectedItem = cbVersion.Items[i];
+                        //地址位置
                         string tmp1 = DataChange.HexStringToString(opt.Substring(0, 2));
                         for (int j = 0; j < cb1.Items.Count; j++)
                         {
@@ -161,68 +168,54 @@ namespace eNet编辑器.AddForm
                                 break;
                             }
                         }
+                        //类型位
                         string tmp2 = DataChange.HexStringToString(opt.Substring(2, 2));
                         if (tmp1 == "254" )
                         {
+                            
                             //赋值状态
-                            if( tmp2 == "251")
+                            //类型位 虚拟端口或者局部变量 特殊处理
+                            cb2.Text = IniHelper.findIniLinkTypeByAddress(opt);
+
+                            if (linkType == LinkType.Dev)
                             {
-                                //虚拟端口
-                                cb2.SelectedIndex = cb2.Items.Count - 1;
-                                //cb3.Text = DataChange.HexStringToString(opt.Substring(4, 2));
-                                cb4.Text = DataChange.HexStringToString(opt.Substring(6, 2));
-                                findVarNum();
-                               
-                            }
-                            else if (linkType == LinkType.Var )
-                            {
-                                //虚拟端口
-                                cb2.Text = IniHelper.findIniLinkTypeByAddress(opt);
-                                if (linkType == LinkType.Dev)
-                                {
-                                    string num3 = DataChange.HexStringToString(opt.Substring(4, 2));
-                                    cb3.Text = num3;
-                                    cb4.Text = DataChange.HexStringToString(opt.Substring(6, 2));
-                                    findPort(num3);
-                                }
-                                else if (linkType == LinkType.Var)
-                                {
-                                    cb4.Text = DataChange.HexStringToString(opt.Substring(6, 2));
-                                    findVarNum();
-                                }
-                                else if (linkType == LinkType.Com)
-                                {
-                                    string num3 = DataChange.HexStringToString(opt.Substring(4, 2));
-                                    string num4 = DataChange.HexStringToString(opt.Substring(6, 2));
-                                    //将超256 的号数操作
-                                    cb4.Text = (Convert.ToInt32(num3) * 256 + Convert.ToInt32(num4)).ToString();
-                                    findNum();
-                                }
-         
-                            }
-                            else if (linkType == LinkType.Dev)
-                            {
-                                cb2.SelectedIndex = 0;
                                 string num3 = DataChange.HexStringToString(opt.Substring(4, 2));
                                 cb3.Text = num3;
                                 cb4.Text = DataChange.HexStringToString(opt.Substring(6, 2));
                                 findPort(num3);
                             }
+                            else if (linkType == LinkType.Var)
+                            {
+                                cb4.Text = DataChange.HexStringToString(opt.Substring(6, 2));
+                                findVarNum();
+                            }
                             else if (linkType == LinkType.Com)
                             {
-                                //不为场景 定时 面板 编组
-                                cb2.SelectedIndex = 0;
                                 string num3 = DataChange.HexStringToString(opt.Substring(4, 2));
                                 string num4 = DataChange.HexStringToString(opt.Substring(6, 2));
                                 //将超256 的号数操作
                                 cb4.Text = (Convert.ToInt32(num3) * 256 + Convert.ToInt32(num4)).ToString();
                                 findNum();
                             }
+                            else if (linkType == LinkType.localVar)
+                            {
+                                //局部变量
+                                //cb1.Text = infos[0];
+                                string num3 = DataChange.HexStringToString(opt.Substring(4, 2));
+                                string num4 = DataChange.HexStringToString(opt.Substring(6, 2));
+                                int localvarNum = Convert.ToInt32(num3) * 256 + Convert.ToInt32(num4);
+                                double tmp = Math.Ceiling((double)localvarNum / 8);
+                                cb3.Text = Convert.ToInt32(tmp).ToString();
+                                //将超256 的号数操作
+                                cb4.Text = localvarNum.ToString();
+                            }
+                            
                            
                             return;
                         }
                         else
                         {
+                            //command命令操作
                             for (int j = 0; j < cb2.Items.Count; j++)
                             {
                                 if (cb2.Items[j].ToString().Contains(tmp2))
@@ -232,7 +225,7 @@ namespace eNet编辑器.AddForm
                                 }
                             }
                         }
-
+                        //command命令操作
                         string tmp3 = DataChange.HexStringToString(opt.Substring(4, 2));
                         for (int j = 0; j < cb3.Items.Count; j++)
                         {
@@ -242,6 +235,7 @@ namespace eNet编辑器.AddForm
                                 break;
                             }
                         }
+                        //command命令操作
                         string tmp4 = DataChange.HexStringToString(opt.Substring(6, 2));
                         for (int j = 0; j < cb4.Items.Count; j++)
                         {
@@ -317,9 +311,9 @@ namespace eNet编辑器.AddForm
                     cbs[i].Text = "";
                 }
                 lb2.Text = "类型";
-                if (objType == "虚拟端口")
+                if (objType == "虚拟端口" || objType == "局部变量")
                 {
-                  
+                    
                     for (int i = 0; i < TypeList.Count; i++)
                     {
                         if (TypeList[i].Split(',')[1] == "按键" || TypeList[i].Split(',')[1] == "感应输入")
@@ -328,18 +322,20 @@ namespace eNet编辑器.AddForm
                         }
                         cb2.Items.Add(TypeList[i].Split(',')[1]);
                     }
+                    cb2.Items.Add("局部变量");
+                    //这里选择类型有问题
                     cb2.Text = objType;
                     addIp();
                     searchNum();
                 }
                 else
                 {
-               
+
                     iniInfo(objType);
                     addIp();
                     searchNum();
                     cb2.Items.Add("虚拟端口");
-                    
+                    cb2.Items.Add("局部变量");
                 }
                 
             }
@@ -378,6 +374,15 @@ namespace eNet编辑器.AddForm
         /// </summary>
         private void iniInfo(string findType)
         {
+            if (string.IsNullOrEmpty(findType))
+            {
+                return;
+            }
+            if (findType == "局部变量")
+            {
+                localVarMode();
+                return;
+            }
             linkType = LinkType.Dev;
             string fileName = IniHelper.findTypesIniTypebyName(findType);
             string path = string.Format("{0}//types//{1}.ini", Application.StartupPath, fileName);
@@ -424,11 +429,56 @@ namespace eNet编辑器.AddForm
         }
 
         /// <summary>
+        /// 把cb的信息更新为局部变量信息
+        /// </summary>
+        private void localVarMode()
+        {
+            try
+            {
+                linkType = LinkType.localVar;
+                lb3.Text = "逻辑号";
+                lb4.Text = "局部变量号";
+                cb2.Text = "局部变量";
+                cb3.Text = "";
+                cb4.Text = "";
+                cb3.Enabled = true;
+                //rtType = "15.0_LocalVariable";
+                cb3.Items.Clear();
+                foreach (DataJson.Logic lg in FileMesege.logicList)
+                {
+                    //  添加该网关IP的子节点
+                    if (lg.IP == ip)
+                    {
+                        foreach (DataJson.logics lgs in lg.logics)
+                        {
+                            cb3.Items.Add(lgs.id);
+
+                        }
+
+                    }
+                }
+
+            }
+            catch
+            {
+            }
+        }
+
+        /// <summary>
         /// 根据类型type（中文名）cb2不会加载该类型
         /// </summary>
         /// <param name="findType"></param>
         private void getInfo(string findType)
         {
+            if (string.IsNullOrEmpty(findType))
+            {
+                return;
+            }
+            if (findType == "局部变量")
+            {
+                localVarMode();
+                return;
+            }
             linkType = LinkType.Dev;
             string fileName = IniHelper.findTypesIniTypebyName(findType);
             string path = string.Format("{0}//types//{1}.ini", Application.StartupPath, fileName);
@@ -479,6 +529,15 @@ namespace eNet编辑器.AddForm
         /// <param name="cbType"></param>
         private void typeChange(string cbType)
         {
+            if (string.IsNullOrEmpty(cbType))
+            {
+                return;
+            }
+            if (cbType == "局部变量")
+            {
+                localVarMode();
+                return;
+            }
             //循环读取INI里面的信息
             DirectoryInfo folder = new DirectoryInfo(Application.StartupPath + "//types");
             string type = "";
@@ -723,8 +782,21 @@ namespace eNet编辑器.AddForm
 
                         if (cb3.Text != "" && cb4.Text != "")
                         {
-                            //设备
-                            newobj = newobj + SocketUtil.strtohexstr(cb3.Text) + SocketUtil.strtohexstr(cb4.Text);
+                            if (cb2.Text != "局部变量")
+                            {
+                                //设备
+                                newobj = newobj + SocketUtil.strtohexstr(cb3.Text) + SocketUtil.strtohexstr(cb4.Text);
+                            }
+                            else
+                            {
+                                //局部变量
+                                string tmp = SocketUtil.strtohexstr(cb4.Text);
+                                while (tmp.Length < 4)
+                                {
+                                    tmp = tmp.Insert(0, "0");
+                                }
+                                newobj = SocketUtil.strtohexstr(cb1.Text) + SocketUtil.strtohexstr("249") + tmp;
+                            }
                         }
                         else if (cb3.Text == "" && cb4.Text != "")
                         {
@@ -744,8 +816,6 @@ namespace eNet编辑器.AddForm
                         return;
                     }
                     this.opt = newobj;
-
-
                     this.ver = cbVersion.Text;
 
 
@@ -800,11 +870,12 @@ namespace eNet编辑器.AddForm
                 //选中不为赋值
                 return;
             }
-            if (objType == "虚拟端口")
+            if (objType == "虚拟端口" || objType == "局部变量")
             {
                 typeChange(cb2.Text);
                 searchNum();
             }
+            
             else
             {
                 //多一次虚拟端口加载
@@ -815,16 +886,23 @@ namespace eNet编辑器.AddForm
                     addIp();
                     searchNum();
                 }
-                else
+                else if (cb2.SelectedIndex == 1)
                 {
                     //选中变量
+                    linkType = LinkType.Var;
                     lb3.Text = "固定";
                     lb4.Text = "虚拟端口号";
                     cb1.Text = "254";
                     cb3.Enabled = false;
                     cb3.Text = "3";
+                    cb4.Text = "";
                     dealInfoNum(cb4, "1-100");
                     findVarNum();
+                }
+                else if (cb2.SelectedIndex == 2)
+                {
+                    //局部变量
+                    localVarMode();
                 }
             }
             
@@ -839,6 +917,10 @@ namespace eNet编辑器.AddForm
             {
 
                 findPort(cb3.Text);
+            }
+            else if (linkType == LinkType.localVar)
+            {
+                findLogicNum(cb3.Text);
             }
             
         }
@@ -1057,7 +1139,23 @@ namespace eNet编辑器.AddForm
             catch { }
         }
 
-
+        /// <summary>
+        /// 局部变量 加载逻辑号
+        /// </summary>
+        /// <param name="logicID"></param>
+        private void findLogicNum(string logicID)
+        {
+            int id = Validator.GetNumber(logicID);
+            if (id == -1)
+            {
+                return;
+            }
+            cb4.Items.Clear();
+            for (int i = (id - 1) * 8 + 1; i <= id * 8; i++)
+            {
+                cb4.Items.Add(i);
+            }
+        }
 
         /// <summary>
         /// 搜索当前类型的 实际存在号加载到cb框
@@ -1078,6 +1176,11 @@ namespace eNet编辑器.AddForm
             {
                 findVarNum();
                 cb3.Enabled = false;
+            }
+            else if (linkType == LinkType.localVar)
+            {
+                findLogicNum(cb3.Text);
+
             }
         }
 
@@ -1215,7 +1318,7 @@ namespace eNet编辑器.AddForm
 
         }
         #endregion
-        private void sceneConcrol_Paint(object sender, PaintEventArgs e)
+        private void LogicConcrol_Paint(object sender, PaintEventArgs e)
         {
             
             Rectangle myRectangle = new Rectangle(0, 0, this.Width, this.Height);

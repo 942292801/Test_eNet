@@ -745,7 +745,7 @@ namespace eNet编辑器.DgvView
                                 break;
                             case "operation":
                                 //操作
-                                string info = dgvOperation(Convert.ToInt32(dataGridView1.Rows[rowCount].Cells[0].Value), dataGridView1.Rows[rowCount].Cells[1].EditedFormattedValue.ToString());
+                                string info = dgvOperation(id, dataGridView1.Rows[rowCount].Cells[1].EditedFormattedValue.ToString());
                                 if (info != null)
                                 {
                                     dataGridView1.Rows[rowCount].Cells[5].Value = info;

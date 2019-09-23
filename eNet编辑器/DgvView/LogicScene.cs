@@ -298,6 +298,7 @@ namespace eNet编辑器.DgvView
 
         #endregion
 
+
         #region 设置执行模式和场景
         /// <summary>
         /// 设置按钮 
@@ -478,11 +479,11 @@ namespace eNet编辑器.DgvView
                                     break;
                                 case "operation":
                                     //操作
-                                    /*string info = dgvOperation(Convert.ToInt32(dataGridView1.Rows[rowCount].Cells[0].Value), dataGridView1.Rows[rowCount].Cells[1].EditedFormattedValue.ToString());
-                                    if (info != null)
+                                    string info = dgvOperation(id, dataGridView1.Rows[rowCount].Cells[1].EditedFormattedValue.ToString());
+                                    if (!string.IsNullOrEmpty(info))
                                     {
                                         dataGridView1.Rows[rowCount].Cells[5].Value = info;
-                                    }*/
+                                    }
                                     break;
                                 case "del":
                                     //删除表
@@ -668,7 +669,51 @@ namespace eNet编辑器.DgvView
                 
             
         }
-  
+
+
+        /// <summary>
+        /// DGV表 操作栏 返回操作信息
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="type">类型</param>
+        /// <returns></returns>
+        private string dgvOperation(int id, string type)
+        {
+
+
+            LogicConcrol dc = new LogicConcrol();
+            DataJson.LogicSceneContent logicSceneContent = JsonConvert.DeserializeObject<DataJson.LogicSceneContent>(tmpLogicInfo.content);
+            DataJson.sceneInfo info = getLogicSceneInfo(id, logicSceneContent);
+            if (info == null)
+            {
+                return null;
+            }
+            
+            dc.Point = DataListHelper.findPointByPid(info.pid);
+            //把窗口向屏幕中间刷新
+            dc.StartPosition = FormStartPosition.CenterParent;
+            dc.ObjType = type;
+            dc.Opt = info.opt;
+            dc.Ver = info.optName;
+            dc.ShowDialog();
+            if (dc.DialogResult == DialogResult.OK)
+            {
+                //撤销 
+                DataJson.totalList OldList = FileMesege.cmds.getListInfos();
+                info.opt = dc.Opt;
+                info.optName = dc.Ver;
+                tmpLogicInfo.content = JsonConvert.SerializeObject(logicSceneContent);
+                DataJson.totalList NewList = FileMesege.cmds.getListInfos();
+                FileMesege.cmds.DoNewCommand(NewList, OldList);
+                return dc.Ver + " " + dc.Opt;
+            }
+            else
+            {
+                return null;
+            }
+            
+            
+        }
 
         #endregion
 

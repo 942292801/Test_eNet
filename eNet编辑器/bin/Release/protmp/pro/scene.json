@@ -23,7 +23,7 @@
                     },
                     {
                         "id": 3,
-                        "pid": 0,
+                        "pid": 389032164,
                         "type": "9.0_virtualport",
                         "address": "FEFB0303",
                         "opt": "",
@@ -59,7 +59,7 @@
                     },
                     {
                         "id": 7,
-                        "pid": 0,
+                        "pid": 163289221,
                         "type": "9.0_virtualport",
                         "address": "FEFB0308",
                         "opt": "",

@@ -637,6 +637,10 @@ namespace eNet编辑器.AddForm
             catch { }
         }
 
+        /// <summary>
+        /// 局部变量 加载逻辑号
+        /// </summary>
+        /// <param name="logicID"></param>
         private void findLogicNum(string logicID)
         {
             int id = Validator.GetNumber(logicID);

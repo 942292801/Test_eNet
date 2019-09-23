@@ -220,9 +220,13 @@ namespace eNet编辑器
                         }
                     case "40":
                         return "逻辑";
-
+                    case "F9":
+                        return "局部变量";
+                    case "FA":
+                        return "感应输入";//虚拟按键250
                     case "FB":
                       return "虚拟端口";
+
                     ////////////////////////后期需要补充完整
                     default:
                         return "";
