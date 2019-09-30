@@ -7,35 +7,11 @@
                         "id": 1,
                         "attr": 0,
                         "modelType": "SceneDeal",
-                        "content": "{\"sceneInfo\":[{\"id\":1,\"pid\":0,\"type\":\"15.0_LocalVariable\",\"address\":\"EBF90001\",\"opt\":\"\",\"optName\":\"\",\"delay\":0},{\"id\":2,\"pid\":0,\"type\":\"10.2_io\",\"address\":\"EBFA0B02\",\"opt\":\"FEFA1719\",\"optName\":\"赋值\",\"delay\":0},{\"id\":3,\"pid\":0,\"type\":\"9.0_virtualport\",\"address\":\"FEFB0303\",\"opt\":\"\",\"optName\":\"\",\"delay\":0},{\"id\":4,\"pid\":0,\"type\":\"3.0_logic\",\"address\":\"EB400017\",\"opt\":\"FE40001D\",\"optName\":\"赋值\",\"delay\":0},{\"id\":5,\"pid\":92371,\"type\":\"4.0_scene\",\"address\":\"EB100001\",\"opt\":\"FE100018\",\"optName\":\"赋值\",\"delay\":0},{\"id\":6,\"pid\":0,\"type\":\"6.1_panel\",\"address\":\"EB300003\",\"opt\":\"\",\"optName\":\"\",\"delay\":0},{\"id\":7,\"pid\":0,\"type\":\"9.0_virtualport\",\"address\":\"FEFB0308\",\"opt\":\"\",\"optName\":\"\",\"delay\":0},{\"id\":8,\"pid\":31937,\"type\":\"2.0_dimmer\",\"address\":\"FFFFFFFF\",\"opt\":\"FE001619\",\"optName\":\"赋值\",\"delay\":0},{\"id\":9,\"pid\":43951,\"type\":\"1.0_switch\",\"address\":\"FFFFFFFF\",\"opt\":\"FE00070A\",\"optName\":\"赋值\",\"delay\":0},{\"id\":10,\"pid\":0,\"type\":\"5.0_time\",\"address\":\"EB200003\",\"opt\":\"FE20001B\",\"optName\":\"赋值\",\"delay\":0},{\"id\":11,\"pid\":0,\"type\":\"6.2_sensor\",\"address\":\"EB3003EA\",\"opt\":\"FE3003EA\",\"optName\":\"赋值\",\"delay\":0}],\"pid\":92371}"
+                        "content": "{\"sceneInfo\":[{\"id\":1,\"pid\":475433738,\"type\":\"1.0_switch\",\"address\":\"FE000102\",\"opt\":\"\",\"optName\":\"\",\"delay\":0},{\"id\":2,\"pid\":0,\"type\":\"8.0_uart\",\"address\":\"FE000C01\",\"opt\":\"\",\"optName\":\"\",\"delay\":0},{\"id\":3,\"pid\":0,\"type\":\"10.2_io\",\"address\":\"FEFA0104\",\"opt\":\"\",\"optName\":\"\",\"delay\":0},{\"id\":4,\"pid\":0,\"type\":\"10.1_key\",\"address\":\"FEFA0503\",\"opt\":\"\",\"optName\":\"\",\"delay\":0},{\"id\":5,\"pid\":0,\"type\":\"3.0_logic\",\"address\":\"FE400005\",\"opt\":\"\",\"optName\":\"\",\"delay\":0},{\"id\":6,\"pid\":905444872,\"type\":\"4.0_scene\",\"address\":\"FE100046\",\"opt\":\"\",\"optName\":\"\",\"delay\":0},{\"id\":7,\"pid\":0,\"type\":\"5.0_time\",\"address\":\"FE200006\",\"opt\":\"\",\"optName\":\"\",\"delay\":0},{\"id\":8,\"pid\":0,\"type\":\"6.1_panel\",\"address\":\"FE300006\",\"opt\":\"\",\"optName\":\"\",\"delay\":0},{\"id\":9,\"pid\":0,\"type\":\"6.2_sensor\",\"address\":\"FE3004C6\",\"opt\":\"\",\"optName\":\"\",\"delay\":0},{\"id\":10,\"pid\":0,\"type\":\"9.0_virtualport\",\"address\":\"FEFB0337\",\"opt\":\"\",\"optName\":\"\",\"delay\":0},{\"id\":11,\"pid\":342508859,\"type\":\"1.0_switch\",\"address\":\"FE000308\",\"opt\":\"\",\"optName\":\"\",\"delay\":0},{\"id\":12,\"pid\":401434935,\"type\":\"1.0_switch\",\"address\":\"FE000307\",\"opt\":\"\",\"optName\":\"\",\"delay\":0},{\"id\":13,\"pid\":653883233,\"type\":\"1.0_switch\",\"address\":\"FE000306\",\"opt\":\"\",\"optName\":\"\",\"delay\":0},{\"id\":14,\"pid\":146045616,\"type\":\"1.0_switch\",\"address\":\"FE000305\",\"opt\":\"\",\"optName\":\"\",\"delay\":0},{\"id\":15,\"pid\":201734345,\"type\":\"1.0_switch\",\"address\":\"FE000304\",\"opt\":\"\",\"optName\":\"\",\"delay\":0},{\"id\":16,\"pid\":892313590,\"type\":\"1.0_switch\",\"address\":\"FE000303\",\"opt\":\"\",\"optName\":\"\",\"delay\":0},{\"id\":17,\"pid\":142676410,\"type\":\"1.0_switch\",\"address\":\"FE000302\",\"opt\":\"\",\"optName\":\"\",\"delay\":0},{\"id\":18,\"pid\":193069264,\"type\":\"1.0_switch\",\"address\":\"FE000301\",\"opt\":\"\",\"optName\":\"\",\"delay\":0}],\"pid\":723710772}"
                     }
                 ],
                 "id": 1,
-                "pid": 288133500
-            },
-            {
-                "logicsInfo": [
-                    {
-                        "id": 1,
-                        "attr": 1,
-                        "modelType": "ConditionDeal",
-                        "content": null
-                    },
-                    {
-                        "id": 2,
-                        "attr": 1,
-                        "modelType": "VoiceDeal",
-                        "content": null
-                    },
-                    {
-                        "id": 3,
-                        "attr": 1,
-                        "modelType": "ConditionDeal",
-                        "content": null
-                    }
-                ],
-                "id": 2,
-                "pid": 382776602
+                "pid": 396783766
             },
             {
                 "logicsInfo": [
@@ -43,14 +19,44 @@
                         "id": 1,
                         "attr": 1,
                         "modelType": "SceneDeal",
-                        "content": "{\"sceneInfo\":[{\"id\":1,\"pid\":0,\"type\":\"10.1_key\",\"address\":\"EBFA0102\",\"opt\":\"FEFA0B1C\",\"optName\":\"赋值\",\"delay\":0},{\"id\":2,\"pid\":0,\"type\":\"10.2_io\",\"address\":\"EBFA0B02\",\"opt\":\"FEFA1719\",\"optName\":\"赋值\",\"delay\":0},{\"id\":3,\"pid\":0,\"type\":\"9.0_virtualport\",\"address\":\"FEFB0303\",\"opt\":\"\",\"optName\":\"\",\"delay\":0},{\"id\":4,\"pid\":0,\"type\":\"3.0_logic\",\"address\":\"EB400017\",\"opt\":\"FE40001D\",\"optName\":\"赋值\",\"delay\":0},{\"id\":5,\"pid\":92371,\"type\":\"4.0_scene\",\"address\":\"EB100001\",\"opt\":\"00000001\",\"optName\":\"场景调用\",\"delay\":0},{\"id\":6,\"pid\":0,\"type\":\"6.1_panel\",\"address\":\"EB300003\",\"opt\":\"\",\"optName\":\"\",\"delay\":0},{\"id\":7,\"pid\":0,\"type\":\"9.0_virtualport\",\"address\":\"FEFB0308\",\"opt\":\"\",\"optName\":\"\",\"delay\":0},{\"id\":8,\"pid\":31937,\"type\":\"2.0_dimmer\",\"address\":\"FFFFFFFF\",\"opt\":\"FE001619\",\"optName\":\"赋值\",\"delay\":0},{\"id\":9,\"pid\":43951,\"type\":\"1.0_switch\",\"address\":\"FFFFFFFF\",\"opt\":\"FE00070A\",\"optName\":\"赋值\",\"delay\":0},{\"id\":10,\"pid\":0,\"type\":\"5.0_time\",\"address\":\"EB200003\",\"opt\":\"FE20001B\",\"optName\":\"赋值\",\"delay\":0},{\"id\":11,\"pid\":0,\"type\":\"15.0_LocalVariable\",\"address\":\"EBF90012\",\"opt\":\"\",\"optName\":\"\",\"delay\":0}],\"pid\":92371}"
+                        "content": null
+                    }
+                ],
+                "id": 2,
+                "pid": 932621121
+            },
+            {
+                "logicsInfo": [
+                    {
+                        "id": 1,
+                        "attr": 1,
+                        "modelType": "SceneDeal",
+                        "content": null
                     }
                 ],
                 "id": 3,
-                "pid": 146751791
+                "pid": 480771737
             }
         ],
-        "IP": "192.168.1.235",
+        "IP": "192.168.1.222",
+        "Dev": "GW100A"
+    },
+    {
+        "logics": [
+            {
+                "logicsInfo": [
+                    {
+                        "id": 1,
+                        "attr": 1,
+                        "modelType": "SceneDeal",
+                        "content": null
+                    }
+                ],
+                "id": 1,
+                "pid": 350419285
+            }
+        ],
+        "IP": "192.168.1.223",
         "Dev": "GW100A"
     }
 ]

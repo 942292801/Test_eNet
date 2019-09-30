@@ -40,12 +40,32 @@ namespace eNet编辑器.ThreeView
             SetStyle(ControlStyles.DoubleBuffer, true); // 双缓冲
             this.UpdateStyles();
             //利用反射设置DataGridView的双缓冲
-            Type dgvType = this.treeView1.GetType();
+            /*Type dgvType = this.treeView1.GetType();
             PropertyInfo pi = dgvType.GetProperty("DoubleBuffered",
             BindingFlags.Instance | BindingFlags.NonPublic);
-            pi.SetValue(this.treeView1, true, null);
+            pi.SetValue(this.treeView1, true, null);*/
         }
 
+        #region 解决背景闪烁
+        //测试 解决背景闪烁
+        protected override void WndProc(ref Message m)
+        {
+            if (m.Msg == 0x0014)
+                // 禁掉清除背景消息         
+                return;
+            base.WndProc(ref m);
+        }
+        //测试 解决背景闪烁
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                CreateParams cp = base.CreateParams;
+                cp.ExStyle |= 0x02000000;
+                return cp;
+            }
+        }
+        #endregion
 
         private void ThreeTitle_Load(object sender, EventArgs e)
         {
@@ -419,13 +439,14 @@ namespace eNet编辑器.ThreeView
                 FileMesege.titlePointSection = treeView1.SelectedNode.Text;
                 FileMesege.titleinfo = "";
             }
-            if (FileMesege.formType == "scene" )
+            /*
+            if (FileMesege.formType == "scene")
             {
                 //选中为场景时候
                 FileMesege.titlePointSection = treeView1.SelectedNode.Text;
                 FileMesege.titleinfo = "";
-            }
-            if (FileMesege.formType == "panel" || FileMesege.formType == "sensor")
+            }*/
+            if (FileMesege.formType == "scene"|| FileMesege.formType == "panel" || FileMesege.formType == "sensor" || FileMesege.formType == "logic")
             {
                 FileMesege.titlePointSection = treeView1.SelectedNode.Text;
                 FileMesege.titleinfo = "";
@@ -465,7 +486,7 @@ namespace eNet编辑器.ThreeView
             //e.Graphics.FillRectangle(new SolidBrush(backColor), new Rectangle(e.Bounds.Location, new Size(this.treeView1.Width - e.Bounds.X, e.Bounds.Height)));
             e.Graphics.FillRectangle(new SolidBrush(backColor), e.Bounds);
             e.Graphics.DrawString(e.Node.Text, this.treeView1.Font, new SolidBrush(foreColor), e.Bounds.X, e.Bounds.Y + 4);
-
+            
             
         }
         /// <summary>
@@ -562,6 +583,7 @@ namespace eNet编辑器.ThreeView
         {
             try
             {
+                
                 dgvNodeAdd(treeView1.SelectedNode);
                 updateDgv();
             }
@@ -573,17 +595,20 @@ namespace eNet编辑器.ThreeView
 
         private void 添加ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            
-            //循环判断treeView的节点 如果是选中
-            foreach (TreeNode tn in treeView1.Nodes)
+            try
             {
-                if (tn.Checked)
+                //循环判断treeView的节点 如果是选中
+                foreach (TreeNode tn in treeView1.Nodes)
                 {
-                    dgvNodeAdd(tn);    
-                }
-            }//foreach所有节点信息处理完
-            //添加完成刷新窗口
-            updateDgv();
+                    if (tn.Checked)
+                    {
+                        dgvNodeAdd(tn);
+                    }
+                }//foreach所有节点信息处理完
+                //添加完成刷新窗口
+                updateDgv();
+            }
+            catch { }
         }
 
 

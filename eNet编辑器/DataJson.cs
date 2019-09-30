@@ -485,7 +485,7 @@ namespace eNet编辑器
             public int attr { get; set; }//是否主动反馈 1为主动触发  0为被动触发
             public string modelType { get; set; }
             public string content { get; set; }
-
+            //public LogicSceneContent logicSceneContent = new LogicSceneContent();
             public logicsInfo()
             {
                 id = 1;

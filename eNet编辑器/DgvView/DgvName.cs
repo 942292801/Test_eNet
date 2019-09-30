@@ -882,20 +882,22 @@ namespace eNet编辑器.DgvView
                 }
                 //实例化客户端
                 client = new ClientAsync();
-                newClient();
+                IniClient();
                 string[] strip = FileMesege.tnselectNode.Parent.Text.Split(' ');
                 //异步连接
                 client.ConnectAsync(strip[0], 6003);
                 if (client != null && client.Connected())
                 {
                     timer1_Tick(this, EventArgs.Empty);
-                    timer1.Enabled = true;
+                    //timer1.Enabled = true;
+                    timer1.Start();
                 }
                 
             }
             catch
             {
-                timer1.Enabled = false;
+                timer1.Stop();
+                //timer1.Enabled = false;
                 client = null;
                 return;
             }
@@ -920,7 +922,8 @@ namespace eNet编辑器.DgvView
             }
             catch
             {
-                timer1.Enabled = false;
+                timer1.Stop();
+                //timer1.Enabled = false;
                 client = null;
                 return;
             }
@@ -928,9 +931,9 @@ namespace eNet编辑器.DgvView
         }
 
         /// <summary>
-        /// 新建连接socket
+        /// 初始化客户端的处理
         /// </summary>
-        private void newClient()
+        private void IniClient()
         {
             
             //实例化事件 传值到封装函数  c为函数类处理返回的client

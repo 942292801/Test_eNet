@@ -1678,14 +1678,9 @@ namespace eNet编辑器.DgvView
                 if (eq.type == srInfo.objType)
                 {
                     srInfo.pid = eq.pid;
-                    if (ip != eq.ip && !string.IsNullOrEmpty(eq.ip))
-                    {
-                        srInfo.objAddress = SocketUtil.GetIPstyle(eq.ip, 4) + eq.address.Substring(2, 6);
-                    }
-                    else
-                    {
-                        srInfo.objAddress = eq.address;
-                    }
+            
+                    srInfo.objAddress = eq.address;
+                    
    
                     dataGridView1.Rows[id].Cells[3].Value = DgvMesege.addressTransform(srInfo.objAddress);
                     dataGridView1.Rows[id].Cells[5].Value = string.Format("{0} {1} {2} {3}", eq.area1, eq.area2, eq.area3, eq.area4).Trim();//改根据地址从信息里面获取
@@ -1694,14 +1689,9 @@ namespace eNet编辑器.DgvView
                 else
                 {
                     srInfo.pid = eq.pid;
-                    if (ip != eq.ip && !string.IsNullOrEmpty(eq.ip))
-                    {
-                        srInfo.objAddress = SocketUtil.GetIPstyle(eq.ip, 4) + eq.address.Substring(2, 6);
-                    }
-                    else
-                    {
-                        srInfo.objAddress = eq.address;
-                    }
+   
+                    srInfo.objAddress = eq.address;
+                    
                     srInfo.objType = eq.type;
                     srInfo.opt = "";
                     srInfo.optName = "";

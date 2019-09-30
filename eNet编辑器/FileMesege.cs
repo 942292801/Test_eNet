@@ -35,6 +35,8 @@ namespace eNet编辑器
         //treetitle名字临时存放 对象表
         public static string titleinfo = "";
         public static string titlePointSection = "";//存放 点位的名称 section//section---name
+        //逻辑表的Tab的信息名称 用于DataListHelper.findLogicInfoByTabName函数
+        public static string LogicTabName = "";
 
         //左栏 树状图treename节点选中临时存放
         public static TreeNode tnselectNode = null;

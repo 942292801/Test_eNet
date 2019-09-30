@@ -620,6 +620,7 @@ namespace eNet编辑器
             threetitle.ThreeTitleAddNode(cbType.SelectedIndex);
             //更改Title 小标题
             LbTitleName.Text = Resources.lbTitleObj;
+            dgvlogic.dgvLogicAddItem();
         }
 
 
@@ -750,17 +751,21 @@ namespace eNet编辑器
 
         private void 保存ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FileMesege fm = new FileMesege();
-           
-            if ( fm.savefile())
+            try
             {
+                FileMesege fm = new FileMesege();
 
-                AppTxtShow("保存工程成功！");
+                if (fm.savefile())
+                {
+
+                    AppTxtShow("保存工程成功！");
+                }
+                else
+                {
+                    AppTxtShow("保存工程失败！");
+                }
             }
-            else
-            {
-                AppTxtShow("保存工程失败！");
-            }
+            catch { }
         }
 
         private void 另存为ToolStripMenuItem_Click(object sender, EventArgs e)

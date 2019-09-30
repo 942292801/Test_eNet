@@ -14,6 +14,8 @@ namespace eNet编辑器.DgvView
     public partial class DgvLogic : Form
     {
 
+        SuperTabControl superTabControl1;
+
         LogicScene logicScene;
 
         LogicCondition logicCondition;
@@ -44,12 +46,32 @@ namespace eNet编辑器.DgvView
         /// </summary>
         private void IniControl()
         {
+            SuperTabControllCreat();
             formCreat();
             //Tab表格关闭按钮
             superTabControl1.CloseButtonOnTabsVisible = true;
             //清空表格
             clearSuperTabControl1();
 
+        }
+
+        /// <summary>
+        /// 新建superTabControl1控件 解决黑闪问题
+        /// </summary>
+        private void SuperTabControllCreat()
+        {
+            panel2.Controls.Clear();
+            superTabControl1 = null;
+            superTabControl1 = new SuperTabControl();
+
+            superTabControl1.Dock = DockStyle.Fill;
+            superTabControl1.CloseButtonOnTabsVisible = true;
+            superTabControl1.SelectedTabChanged += new EventHandler<SuperTabStripSelectedTabChangedEventArgs>(superTabControl1_SelectedTabChanged);
+            superTabControl1.ControlBox.MenuBox.PopupOpen += new DotNetBarManager.PopupOpenEventHandler(superTabControl1_ControlBox_MenuBox_PopupOpen);
+            superTabControl1.TabItemClose += new EventHandler<SuperTabStripTabItemCloseEventArgs>(superTabControl1_TabItemClose);
+            panel2.Controls.Add(superTabControl1);
+
+           
         }
 
         /// <summary>
@@ -102,7 +124,7 @@ namespace eNet编辑器.DgvView
         {
             //清空表单
             //superTabControl1.Hide();解决黑闪失败
-            superTabControl1.Tabs.Clear();
+            //superTabControl1.Tabs.Clear();
             DataJson.logics lgs = DataListHelper.getLogicInfoListByNode();
             if (lgs == null)
             {
@@ -110,7 +132,7 @@ namespace eNet编辑器.DgvView
                 //superTabControl1.Show();解决黑闪失败
                 return;
             }
-
+            SuperTabControllCreat();
             foreach (DataJson.logicsInfo lginfo in lgs.logicsInfo)
             {
                 //加载各个框
@@ -136,15 +158,16 @@ namespace eNet编辑器.DgvView
 
         }
 
-   
 
+        
 
         /// <summary>
         /// 清空表框 并加载空白的项
         /// </summary>
         private void clearSuperTabControl1()
         {
-            superTabControl1.Tabs.Clear();
+            //superTabControl1.Tabs.Clear();
+            SuperTabControllCreat();
             SuperTabItem tab = superTabControl1.CreateTab("LogicSet", superTabControl1.Tabs.Count);
             superTabControl1.SelectedTab = tab;
 
@@ -166,11 +189,13 @@ namespace eNet编辑器.DgvView
         private void superTabControl1_SelectedTabChanged(object sender, SuperTabStripSelectedTabChangedEventArgs e)
         {
             SuperTabItem tab = superTabControl1.SelectedTab;
-            DataJson.logicsInfo logicInfo = findLogicInfoByTabName(tab.Text);
+            DataJson.logicsInfo logicInfo = DataListHelper.findLogicInfoByTabName(tab.Text);
+            FileMesege.LogicTabName = tab.Text;
             if (logicInfo == null)
             {
                 return;
             }
+
             tabSelectAddPanel(logicInfo);
 
         }
@@ -190,7 +215,7 @@ namespace eNet编辑器.DgvView
                     //显示场景处理框
                     superTabControl1.SelectedTab.AttachedControl.Controls.Add(logicScene);
                     //加载信息内容 
-                    logicScene.formInfoIni(logicInfo);
+                    logicScene.formInfoIni();
 
                     break;
                 case "ConditionDeal":
@@ -327,7 +352,7 @@ namespace eNet编辑器.DgvView
             //撤销
             DataJson.totalList OldList = FileMesege.cmds.getListInfos();
             //删除逻辑框信息内容
-            DataJson.logicsInfo logicInfo = findLogicInfoByTabName(tabName);
+            DataJson.logicsInfo logicInfo = DataListHelper.findLogicInfoByTabName(tabName);
             if (logicInfo == null)
             {
                 return;
@@ -338,34 +363,7 @@ namespace eNet编辑器.DgvView
             FileMesege.cmds.DoNewCommand(NewList, OldList);
         }
 
-        /// <summary>
-        /// 根据tabName 获取当前框的LogicInfo 否则返回null
-        /// </summary>
-        /// <param name="tabName"></param>
-        /// <returns></returns>
-        private DataJson.logicsInfo findLogicInfoByTabName(string tabName)
-        {
-            DataJson.logics lgs = DataListHelper.getLogicInfoListByNode();
-            if (lgs == null)
-            {
-                return null;
-            }
-            int id = Validator.GetNumber(tabName);
-            if (id == -1)
-            {
-                return null;
-            }
-            //删除逻辑框信息内容
-            foreach (DataJson.logicsInfo logicInfo in lgs.logicsInfo)
-            {
-                if (logicInfo.id == id)
-                {
-                    return logicInfo;
-              
-                }
-            }
-            return null;
-        }
+      
 
         #endregion
 
@@ -385,7 +383,8 @@ namespace eNet编辑器.DgvView
                 DataJson.totalList OldList = FileMesege.cmds.getListInfos();
                 //清除所有信息 界面框也清除
                 lgs.logicsInfo.Clear();
-                superTabControl1.Tabs.Clear();
+                //superTabControl1.Tabs.Clear();
+                SuperTabControllCreat();
                 //添加新的场景处理
                 DataJson.logicsInfo lgInfo = new DataJson.logicsInfo();
                 lgs.logicsInfo.Add(lgInfo);
@@ -425,8 +424,8 @@ namespace eNet编辑器.DgvView
                 DataJson.totalList OldList = FileMesege.cmds.getListInfos();
                 //清除所有信息 界面框也清除
                 lgs.logicsInfo.Clear();
-                superTabControl1.Tabs.Clear();
-                
+                //superTabControl1.Tabs.Clear();
+                SuperTabControllCreat();
                 //添加新的场景处理
                 DataJson.logicsInfo lgInfo = new DataJson.logicsInfo();
                 lgInfo.id = DataListHelper.getLogicInfoID(lgs);
@@ -481,7 +480,8 @@ namespace eNet编辑器.DgvView
                 DataJson.totalList OldList = FileMesege.cmds.getListInfos();
                 //清除所有信息 界面框也清除
                 lgs.logicsInfo.Clear();
-                superTabControl1.Tabs.Clear();
+                //superTabControl1.Tabs.Clear();
+                SuperTabControllCreat();
                 //添加新的场景处理
                 DataJson.logicsInfo lgInfo = new DataJson.logicsInfo();
                 lgInfo.id = DataListHelper.getLogicInfoID(lgs);
@@ -522,9 +522,38 @@ namespace eNet编辑器.DgvView
 
         #endregion
 
+  
         #endregion
 
-      
+
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            SuperTabItem tab = superTabControl1.SelectedTab;
+            DataJson.logicsInfo logicInfo = DataListHelper.findLogicInfoByTabName(tab.Text);
+            if (logicInfo == null)
+            {
+                return;
+            }
+            if (logicInfo.modelType == "SceneDeal")
+            { 
+                //添加一行新内容
+                logicScene.dgvAddRow();
+            }
+            
+            
+        }
+
+        private void btnDown_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnRead_Click(object sender, EventArgs e)
+        {
+
+        }
+
 
 
 

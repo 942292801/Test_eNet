@@ -1686,6 +1686,36 @@ namespace eNet编辑器
 
         }
 
+        /// <summary>
+        /// 根据tabName 获取当前框的LogicInfo 否则返回null
+        /// </summary>
+        /// <param name="tabName"></param>
+        /// <returns></returns>
+        public static DataJson.logicsInfo findLogicInfoByTabName(string tabName)
+        {
+            DataJson.logics lgs = DataListHelper.getLogicInfoListByNode();
+            if (lgs == null)
+            {
+                return null;
+            }
+            int id = Validator.GetNumber(tabName);
+            if (id == -1)
+            {
+                return null;
+            }
+            //删除逻辑框信息内容
+            foreach (DataJson.logicsInfo logicInfo in lgs.logicsInfo)
+            {
+                if (logicInfo.id == id)
+                {
+                    return logicInfo;
+
+                }
+            }
+            return null;
+        }
+
+
         #endregion
 
 

@@ -38,6 +38,28 @@ namespace eNet编辑器.ThreeView
             //pi.SetValue(this.treeView1, true, null);   
            
         }
+
+        #region 解决背景闪烁
+        //测试 解决背景闪烁
+        protected override void WndProc(ref Message m)
+        {
+            if (m.Msg == 0x0014)
+                // 禁掉清除背景消息         
+                return;
+            base.WndProc(ref m);
+        }
+        //测试 解决背景闪烁
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                CreateParams cp = base.CreateParams;
+                cp.ExStyle |= 0x02000000;
+                return cp;
+            }
+        }
+        #endregion
+
         public event AddTitleNode addTitleNode;
         //public event AddSectionDevCursor addSectionDevCursor;
         //public event AddSectionNameCursor addSectionNameCursor;
@@ -1249,18 +1271,21 @@ namespace eNet编辑器.ThreeView
                 //刷PointDGV
                 updatePointDgv();
             }
-            if (FileMesege.formType == "scene" || FileMesege.formType == "timer" || FileMesege.formType == "panel" || FileMesege.formType == "sensor")
+            if (FileMesege.formType == "name" && FileMesege.cbTypeIndex == 0)
             {
                 //刷title新树状图
                 addTitleNode();
             }
-            if (FileMesege.formType == "name" && FileMesege.cbTypeIndex ==0 )
+
+            if (FileMesege.formType == "scene" || FileMesege.formType == "timer" || FileMesege.formType == "panel" || FileMesege.formType == "sensor" || FileMesege.formType == "logic")
             {
                 //刷title新树状图
                 addTitleNode();
             }
+            
             if (FileMesege.formType == "logic")
             {
+                //逻辑的场景cb框内容 按区域搜索
                 logicCbSceneGetItem();
             }
 

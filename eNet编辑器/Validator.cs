@@ -33,10 +33,7 @@ namespace eNet编辑器
         }
         */
 
-        public static bool isIpv4(string strInput)
-        {
-            return Regex.IsMatch(strInput, @"^[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}$");
-        }
+       
 
       
         #region 匹配方法
@@ -437,7 +434,7 @@ namespace eNet编辑器
             return IsMatch(input, pattern);
         }
 
-        /*
+        
         /// <summary>  
         /// 验证IPv4地址  
         /// [第一位和最后一位数字不能是0或255；允许用0补位]  
@@ -448,6 +445,7 @@ namespace eNet编辑器
         {
             //string pattern = @"^(25[0-4]|2[0-4]\d]|[01]?\d{2}|[1-9])\.(25[0-5]|2[0-4]\d]|[01]?\d?\d)\.(25[0-5]|2[0-4]\d]|[01]?\d?\d)\.(25[0-4]|2[0-4]\d]|[01]?\d{2}|[1-9])$";  
             //return IsMatch(input, pattern);  
+            
             string[] IPs = input.Split('.');
             if (IPs.Length != 4)
                 return false;
@@ -470,7 +468,12 @@ namespace eNet编辑器
                 }
             }
             return true;
-        }*/
+        }
+
+        public static bool isIpv4(string strInput)
+        {
+            return Regex.IsMatch(strInput, @"^[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}$");
+        }
 
         /// <summary>  
         /// 验证IPv6地址  
@@ -654,6 +657,26 @@ namespace eNet编辑器
             }
         }
 
+        /// <summary>
+        /// 提取IP地址
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        public static string GetIPv4(string input)
+        {
+            //获取IP
+            string ipv4 = Regex.Match(input, @"(\d+)\.(\d+)\.(\d+)\.(\d+)").Value;
+            if (isIpv4(ipv4))
+            {
+                return ipv4;
+
+            }
+            else
+            {
+                return null;
+            }
+           
+        }
 
         #endregion
 

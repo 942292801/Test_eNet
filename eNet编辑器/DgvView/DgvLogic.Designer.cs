@@ -30,26 +30,18 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DgvLogic));
             this.panel1 = new System.Windows.Forms.Panel();
-            this.superTabControl1 = new DevComponents.DotNetBar.SuperTabControl();
-            this.superTabControlPanel1 = new DevComponents.DotNetBar.SuperTabControlPanel();
-            this.superTabItem1 = new DevComponents.DotNetBar.SuperTabItem();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.plInfoTitle = new System.Windows.Forms.Panel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.btnAdd = new DevComponents.DotNetBar.ButtonX();
-            this.btnCall = new DevComponents.DotNetBar.ButtonX();
             this.btnDown = new DevComponents.DotNetBar.ButtonX();
-            this.buttonX1 = new DevComponents.DotNetBar.ButtonX();
+            this.btnRead = new DevComponents.DotNetBar.ButtonX();
             this.btnClear = new DevComponents.DotNetBar.ButtonX();
-            this.btnDel = new DevComponents.DotNetBar.ButtonX();
             this.symbolBox1 = new DevComponents.DotNetBar.Controls.SymbolBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.panel2 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.superTabControl1)).BeginInit();
-            this.superTabControl1.SuspendLayout();
             this.plInfoTitle.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
-            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -63,58 +55,14 @@
             this.panel1.Size = new System.Drawing.Size(1064, 551);
             this.panel1.TabIndex = 18;
             // 
-            // superTabControl1
+            // panel2
             // 
-            // 
-            // 
-            // 
-            // 
-            // 
-            // 
-            this.superTabControl1.ControlBox.CloseBox.Name = "";
-            // 
-            // 
-            // 
-            this.superTabControl1.ControlBox.MenuBox.Name = "";
-            this.superTabControl1.ControlBox.MenuBox.PopupOpen += new DevComponents.DotNetBar.DotNetBarManager.PopupOpenEventHandler(this.superTabControl1_ControlBox_MenuBox_PopupOpen);
-            this.superTabControl1.ControlBox.Name = "";
-            this.superTabControl1.ControlBox.SubItems.AddRange(new DevComponents.DotNetBar.BaseItem[] {
-            this.superTabControl1.ControlBox.MenuBox,
-            this.superTabControl1.ControlBox.CloseBox});
-            this.superTabControl1.Controls.Add(this.superTabControlPanel1);
-            this.superTabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.superTabControl1.Location = new System.Drawing.Point(0, 0);
-            this.superTabControl1.Margin = new System.Windows.Forms.Padding(0);
-            this.superTabControl1.Name = "superTabControl1";
-            this.superTabControl1.ReorderTabsEnabled = true;
-            this.superTabControl1.SelectedTabFont = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Bold);
-            this.superTabControl1.SelectedTabIndex = 0;
-            this.superTabControl1.Size = new System.Drawing.Size(1064, 526);
-            this.superTabControl1.TabFont = new System.Drawing.Font("微软雅黑", 9F);
-            this.superTabControl1.TabIndex = 17;
-            this.superTabControl1.Tabs.AddRange(new DevComponents.DotNetBar.BaseItem[] {
-            this.superTabItem1});
-            this.superTabControl1.TabStyle = DevComponents.DotNetBar.eSuperTabStyle.VisualStudio2008Dock;
-            this.superTabControl1.TabVerticalSpacing = 3;
-            this.superTabControl1.Text = "superTabControl1";
-            this.superTabControl1.TabItemClose += new System.EventHandler<DevComponents.DotNetBar.SuperTabStripTabItemCloseEventArgs>(this.superTabControl1_TabItemClose);
-            this.superTabControl1.SelectedTabChanged += new System.EventHandler<DevComponents.DotNetBar.SuperTabStripSelectedTabChangedEventArgs>(this.superTabControl1_SelectedTabChanged);
-            // 
-            // superTabControlPanel1
-            // 
-            this.superTabControlPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.superTabControlPanel1.Location = new System.Drawing.Point(0, 28);
-            this.superTabControlPanel1.Name = "superTabControlPanel1";
-            this.superTabControlPanel1.Size = new System.Drawing.Size(1064, 498);
-            this.superTabControlPanel1.TabIndex = 1;
-            this.superTabControlPanel1.TabItem = this.superTabItem1;
-            // 
-            // superTabItem1
-            // 
-            this.superTabItem1.AttachedControl = this.superTabControlPanel1;
-            this.superTabItem1.GlobalItem = false;
-            this.superTabItem1.Name = "superTabItem1";
-            this.superTabItem1.Text = "superTabItem1";
+            this.panel2.BackColor = System.Drawing.Color.White;
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(0, 25);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(1064, 526);
+            this.panel2.TabIndex = 18;
             // 
             // plInfoTitle
             // 
@@ -133,14 +81,12 @@
             // 
             this.flowLayoutPanel1.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.flowLayoutPanel1.Controls.Add(this.btnAdd);
-            this.flowLayoutPanel1.Controls.Add(this.btnCall);
             this.flowLayoutPanel1.Controls.Add(this.btnDown);
-            this.flowLayoutPanel1.Controls.Add(this.buttonX1);
+            this.flowLayoutPanel1.Controls.Add(this.btnRead);
             this.flowLayoutPanel1.Controls.Add(this.btnClear);
-            this.flowLayoutPanel1.Controls.Add(this.btnDel);
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(901, 0);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(952, 0);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(163, 25);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(109, 25);
             this.flowLayoutPanel1.TabIndex = 15;
             // 
             // btnAdd
@@ -161,25 +107,7 @@
             this.btnAdd.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnAdd.TabIndex = 4;
             this.btnAdd.Tooltip = "增加";
-            // 
-            // btnCall
-            // 
-            this.btnCall.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnCall.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnCall.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btnCall.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
-            this.btnCall.FocusCuesEnabled = false;
-            this.btnCall.Font = new System.Drawing.Font("黑体", 9F);
-            this.btnCall.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None;
-            this.btnCall.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnCall.HoverImage")));
-            this.btnCall.Image = ((System.Drawing.Image)(resources.GetObject("btnCall.Image")));
-            this.btnCall.Location = new System.Drawing.Point(33, 6);
-            this.btnCall.Margin = new System.Windows.Forms.Padding(6);
-            this.btnCall.Name = "btnCall";
-            this.btnCall.Size = new System.Drawing.Size(15, 15);
-            this.btnCall.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnCall.TabIndex = 0;
-            this.btnCall.Tooltip = "调用";
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // btnDown
             // 
@@ -192,32 +120,34 @@
             this.btnDown.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None;
             this.btnDown.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnDown.HoverImage")));
             this.btnDown.Image = ((System.Drawing.Image)(resources.GetObject("btnDown.Image")));
-            this.btnDown.Location = new System.Drawing.Point(60, 6);
+            this.btnDown.Location = new System.Drawing.Point(33, 6);
             this.btnDown.Margin = new System.Windows.Forms.Padding(6);
             this.btnDown.Name = "btnDown";
             this.btnDown.Size = new System.Drawing.Size(15, 15);
             this.btnDown.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnDown.TabIndex = 3;
             this.btnDown.Tooltip = "加载";
+            this.btnDown.Click += new System.EventHandler(this.btnDown_Click);
             // 
-            // buttonX1
+            // btnRead
             // 
-            this.buttonX1.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.buttonX1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.buttonX1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.buttonX1.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
-            this.buttonX1.FocusCuesEnabled = false;
-            this.buttonX1.Font = new System.Drawing.Font("黑体", 9F);
-            this.buttonX1.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None;
-            this.buttonX1.HoverImage = ((System.Drawing.Image)(resources.GetObject("buttonX1.HoverImage")));
-            this.buttonX1.Image = ((System.Drawing.Image)(resources.GetObject("buttonX1.Image")));
-            this.buttonX1.Location = new System.Drawing.Point(87, 6);
-            this.buttonX1.Margin = new System.Windows.Forms.Padding(6);
-            this.buttonX1.Name = "buttonX1";
-            this.buttonX1.Size = new System.Drawing.Size(15, 15);
-            this.buttonX1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.buttonX1.TabIndex = 13;
-            this.buttonX1.Tooltip = "载入";
+            this.btnRead.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnRead.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnRead.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnRead.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
+            this.btnRead.FocusCuesEnabled = false;
+            this.btnRead.Font = new System.Drawing.Font("黑体", 9F);
+            this.btnRead.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None;
+            this.btnRead.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnRead.HoverImage")));
+            this.btnRead.Image = ((System.Drawing.Image)(resources.GetObject("btnRead.Image")));
+            this.btnRead.Location = new System.Drawing.Point(60, 6);
+            this.btnRead.Margin = new System.Windows.Forms.Padding(6);
+            this.btnRead.Name = "btnRead";
+            this.btnRead.Size = new System.Drawing.Size(15, 15);
+            this.btnRead.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnRead.TabIndex = 13;
+            this.btnRead.Tooltip = "载入";
+            this.btnRead.Click += new System.EventHandler(this.btnRead_Click);
             // 
             // btnClear
             // 
@@ -230,32 +160,13 @@
             this.btnClear.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None;
             this.btnClear.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnClear.HoverImage")));
             this.btnClear.Image = ((System.Drawing.Image)(resources.GetObject("btnClear.Image")));
-            this.btnClear.Location = new System.Drawing.Point(114, 6);
+            this.btnClear.Location = new System.Drawing.Point(87, 6);
             this.btnClear.Margin = new System.Windows.Forms.Padding(6);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(15, 15);
             this.btnClear.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnClear.TabIndex = 5;
             this.btnClear.Tooltip = "清空";
-            // 
-            // btnDel
-            // 
-            this.btnDel.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnDel.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnDel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btnDel.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
-            this.btnDel.FocusCuesEnabled = false;
-            this.btnDel.Font = new System.Drawing.Font("黑体", 9F);
-            this.btnDel.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None;
-            this.btnDel.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnDel.HoverImage")));
-            this.btnDel.Image = ((System.Drawing.Image)(resources.GetObject("btnDel.Image")));
-            this.btnDel.Location = new System.Drawing.Point(141, 6);
-            this.btnDel.Margin = new System.Windows.Forms.Padding(6);
-            this.btnDel.Name = "btnDel";
-            this.btnDel.Size = new System.Drawing.Size(15, 15);
-            this.btnDel.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnDel.TabIndex = 6;
-            this.btnDel.Tooltip = "删除选中行";
             // 
             // symbolBox1
             // 
@@ -285,16 +196,6 @@
             this.label1.TabIndex = 11;
             this.label1.Text = "内容";
             // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.Color.White;
-            this.panel2.Controls.Add(this.superTabControl1);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(0, 25);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1064, 526);
-            this.panel2.TabIndex = 18;
-            // 
             // DgvLogic
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -307,12 +208,9 @@
             this.Text = "DgvLogic";
             this.Load += new System.EventHandler(this.DgvLogic_Load);
             this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.superTabControl1)).EndInit();
-            this.superTabControl1.ResumeLayout(false);
             this.plInfoTitle.ResumeLayout(false);
             this.plInfoTitle.PerformLayout();
             this.flowLayoutPanel1.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -320,17 +218,12 @@
         #endregion
 
         private System.Windows.Forms.Panel panel1;
-        private DevComponents.DotNetBar.SuperTabControl superTabControl1;
-        private DevComponents.DotNetBar.SuperTabControlPanel superTabControlPanel1;
-        private DevComponents.DotNetBar.SuperTabItem superTabItem1;
         private System.Windows.Forms.Panel plInfoTitle;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private DevComponents.DotNetBar.ButtonX btnAdd;
-        private DevComponents.DotNetBar.ButtonX btnCall;
         private DevComponents.DotNetBar.ButtonX btnDown;
-        private DevComponents.DotNetBar.ButtonX buttonX1;
+        private DevComponents.DotNetBar.ButtonX btnRead;
         private DevComponents.DotNetBar.ButtonX btnClear;
-        private DevComponents.DotNetBar.ButtonX btnDel;
         private DevComponents.DotNetBar.Controls.SymbolBox symbolBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel2;

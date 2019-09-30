@@ -347,6 +347,7 @@ namespace eNet编辑器.AddForm
                 }
 
                 cb1.Enabled = true;
+                cb1.Items.Add( "254") ;
                 if (string.IsNullOrEmpty(cb1.Text) || cb1.Text == "255")
                 {
                     //cb1.Text = ip.Split('.')[3];
