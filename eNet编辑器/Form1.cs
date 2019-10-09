@@ -982,7 +982,19 @@ namespace eNet编辑器
                         dgvpanel.copyData();
                         break;
                     case "logic":
+                        
+                        if (dgvlogic.logicType == DgvLogic.LogicType.Scene)
+                        {
+                            dgvlogic.logicScene.copyData();
+                        }
+                        else if (dgvlogic.logicType == DgvLogic.LogicType.Condition)
+                        {
 
+                        }
+                        else if (dgvlogic.logicType == DgvLogic.LogicType.Voice)
+                        {
+
+                        }
                         break;
                     case "sensor":
                         dgvsensor.copyData();
@@ -1024,7 +1036,19 @@ namespace eNet编辑器
                         dgvpanel.pasteData();
                         break;
                     case "logic":
+                        if (dgvlogic.logicType == DgvLogic.LogicType.Scene)
+                        {
+                            dgvlogic.logicScene.pasteData();
+                        }
+                        else if (dgvlogic.logicType == DgvLogic.LogicType.Condition)
+                        {
 
+                        }
+                        else if (dgvlogic.logicType == DgvLogic.LogicType.Voice)
+                        { 
+                        
+                        }
+                        
                         break;
                     case "sensor":
                         dgvsensor.pasteData();

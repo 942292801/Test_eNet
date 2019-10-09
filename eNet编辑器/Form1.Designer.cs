@@ -145,6 +145,7 @@
             this.plTitleCbbox = new System.Windows.Forms.Panel();
             this.symbolBox2 = new DevComponents.DotNetBar.Controls.SymbolBox();
             this.plLeft = new System.Windows.Forms.Panel();
+            this.ngenInstaller1 = new NgenInstaller.NgenInstaller();
             this.menuStrip1.SuspendLayout();
             this.PlMeustrip.ClientArea.SuspendLayout();
             this.PlMeustrip.SuspendLayout();
@@ -1353,6 +1354,7 @@
         private System.Windows.Forms.ToolStripMenuItem 按键检测ToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem7;
         private System.Windows.Forms.ToolStripMenuItem 主机网络设置ToolStripMenuItem;
+        private NgenInstaller.NgenInstaller ngenInstaller1;
 
     }
 }

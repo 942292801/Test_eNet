@@ -14,15 +14,33 @@ namespace eNet编辑器.DgvView
     public partial class DgvLogic : Form
     {
 
-        SuperTabControl superTabControl1;
+        public SuperTabControl superTabControl1;
 
-        LogicScene logicScene;
+        public LogicScene logicScene;
 
-        LogicCondition logicCondition;
+        public LogicCondition logicCondition;
 
-        LogicVoice logicVoice;
+        public LogicVoice logicVoice;
 
+        public  LogicType logicType = 0;
 
+        public enum LogicType
+        {
+            /// <summary>
+            /// 场景类型
+            /// </summary>
+            Scene = 1,
+            /// <summary>
+            /// 多条件处理
+            /// </summary>
+            Condition = 2,
+            /// <summary>
+            /// 表达式处理
+            /// </summary>
+            Voice = 3,
+           
+
+        }
 
         public DgvLogic()
         {
@@ -212,6 +230,7 @@ namespace eNet编辑器.DgvView
             switch (logicInfo.modelType)
             {
                 case "SceneDeal":
+                    logicType = LogicType.Scene;
                     //显示场景处理框
                     superTabControl1.SelectedTab.AttachedControl.Controls.Add(logicScene);
                     //加载信息内容 
@@ -219,11 +238,13 @@ namespace eNet编辑器.DgvView
 
                     break;
                 case "ConditionDeal":
+                    logicType = LogicType.Condition;
                     //显示多条件处理
                     superTabControl1.SelectedTab.AttachedControl.Controls.Add(logicCondition);
                     //加载信息内容 
                     break;
                 case "VoiceDeal":
+                    logicType = LogicType.Voice;
                     //显示表达式处理
                     superTabControl1.SelectedTab.AttachedControl.Controls.Add(logicVoice);
                     //加载信息内容 

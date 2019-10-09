@@ -495,7 +495,10 @@ namespace eNet编辑器
 
         }
 
-        //场景处理
+        #region 内容信息
+
+        #region 场景处理
+
         [Serializable]
         public class LogicSceneContent 
         {
@@ -503,24 +506,33 @@ namespace eNet编辑器
             //public string address { get; set; }
             public List<sceneInfo> sceneInfo = new List<sceneInfo>();
         }
+        #endregion
 
-
-
-        //多条件处理
+        #region 多条件处理
         [Serializable]
         public class ConditionContent
         {
-            public int id { get; set; }
-            public int pid { get; set; }
-            public string type { get; set; }
-            public string address { get; set; }
-            public string opt { get; set; }
-            public string optName { get; set; }
-            public int delay { get; set; }
+            public List<ConditionInfo> conditionInfo = new List<ConditionInfo>();
+            public List<sceneInfo> trueDo = new List<sceneInfo>();
+            public List<sceneInfo> falseDo = new List<sceneInfo>();
 
         }
 
-        //表达式处理
+        [Serializable]
+        public class ConditionInfo
+        {
+            public int id { get; set; }
+            public int a { get; set; }
+            public string objAddress { get; set; }
+            public int b { get; set; }
+            public string operation { get; set; }
+            public int c { get; set; }
+            public string compareAddress { get; set; }
+            public int d { get; set; }
+        }
+        #endregion
+
+        #region 表达式处理
         [Serializable]
         public class VoiceContent
         {
@@ -533,6 +545,9 @@ namespace eNet编辑器
             public int delay { get; set; }
 
         }
+        #endregion
+
+        #endregion
 
         #endregion
 

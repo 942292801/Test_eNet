@@ -76,7 +76,7 @@ namespace eNet编辑器
         public static DataJson.timersInfo copyTimer = null;
         public static DataJson.panelsInfo copyPanel = null;
         public static DataJson.sensorsInfo copySensor = null;
-        public static DataJson.logicsInfo copyLogic = null;
+        public static DataJson.sceneInfo copyLogicScene = null;
 
         public static List<DataJson.Device> DeviceList;//工程设备的保存记录
         public static List<DataJson.Area1> AreaList;//

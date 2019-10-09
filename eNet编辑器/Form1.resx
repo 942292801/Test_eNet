@@ -12180,6 +12180,9 @@
   <data name="&gt;&gt;plMain.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <metadata name="ngenInstaller1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>229, 29</value>
+  </metadata>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
@@ -13659,6 +13662,12 @@
   </data>
   <data name="&gt;&gt;tabSensor.Type" xml:space="preserve">
     <value>DevComponents.DotNetBar.TabItem, DevComponents.DotNetBar2, Version=14.0.0.3, Culture=neutral, PublicKeyToken=c39c3242a43eee2b</value>
+  </data>
+  <data name="&gt;&gt;ngenInstaller1.Name" xml:space="preserve">
+    <value>ngenInstaller1</value>
+  </data>
+  <data name="&gt;&gt;ngenInstaller1.Type" xml:space="preserve">
+    <value>NgenInstaller.NgenInstaller, NgenInstaller, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>Form1</value>

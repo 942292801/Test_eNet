@@ -127,6 +127,7 @@ namespace eNet编辑器.ThreeView
         //选中节点高亮不消失
         private void treeView1_DrawNode(object sender, DrawTreeNodeEventArgs e)
         {
+            
             Color foreColor;
             Color backColor;
             if ((e.State & TreeNodeStates.Selected) > 0)
@@ -147,6 +148,9 @@ namespace eNet编辑器.ThreeView
             //e.Graphics.FillRectangle(new SolidBrush(backColor), new Rectangle(e.Bounds.Location, new Size(this.treeView1.Width - e.Bounds.X, e.Bounds.Height)));
             e.Graphics.FillRectangle(new SolidBrush(backColor), e.Bounds);
             e.Graphics.DrawString(e.Node.Text, this.treeView1.Font, new SolidBrush(foreColor), e.Bounds.X, e.Bounds.Y + 4);
+
+
+
         }
         #endregion
 

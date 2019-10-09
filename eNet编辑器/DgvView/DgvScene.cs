@@ -894,8 +894,15 @@ namespace eNet编辑器.DgvView
                     switch (dataGridView1.Columns[columnNum].Name)
                     {
                         case "delay":
-                            //改变延时
-                            dgvDelay(Convert.ToInt32(dataGridView1.Rows[rowNum].Cells[0].Value), Convert.ToDouble(dataGridView1.Rows[rowNum].Cells[6].Value));
+                            if (Validator.IsNumber(dataGridView1.Rows[rowNum].Cells[6].Value.ToString()))
+                            {
+                                //改变延时
+                                dgvDelay(Convert.ToInt32(dataGridView1.Rows[rowNum].Cells[0].Value), Convert.ToDouble(dataGridView1.Rows[rowNum].Cells[6].Value));
+                            }
+                            else
+                            {
+                                AppTxtShow("延时格式错误，请正确填写！");
+                            }
                             break;
                         case "type":
                             //改变对象  

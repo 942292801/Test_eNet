@@ -162,6 +162,7 @@
     <Reference Include="Newtonsoft.Json">
       <HintPath>E:\c#资源文件\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="NgenInstaller, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="PresentationCore">
       <Private>True</Private>
     </Reference>
@@ -174,6 +175,7 @@
     <Reference Include="System.Configuration">
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.Configuration.Install" />
     <Reference Include="System.Core">
       <Private>True</Private>
     </Reference>
@@ -412,7 +414,7 @@
       <DependentUpon>versionInfo.cs</DependentUpon>
     </Compile>
     <Compile Include="ClientAsync.cs" />
-    <Compile Include="CommandManager.cs.cs" />
+    <Compile Include="CommandManager.cs" />
     <Compile Include="Controller\IniForm.cs">
       <SubType>Form</SubType>
     </Compile>

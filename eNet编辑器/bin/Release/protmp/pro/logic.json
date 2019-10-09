@@ -18,7 +18,13 @@
                     {
                         "id": 1,
                         "attr": 1,
-                        "modelType": "SceneDeal",
+                        "modelType": "ConditionDeal",
+                        "content": null
+                    },
+                    {
+                        "id": 2,
+                        "attr": 1,
+                        "modelType": "VoiceDeal",
                         "content": null
                     }
                 ],
