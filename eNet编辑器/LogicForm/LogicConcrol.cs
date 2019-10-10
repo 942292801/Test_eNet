@@ -820,6 +820,7 @@ namespace eNet编辑器.AddForm
 
 
                 }
+                
                 if (string.IsNullOrEmpty(this.ver) )
                 {
                     this.DialogResult = DialogResult.No;

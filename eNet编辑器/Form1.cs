@@ -144,6 +144,7 @@ namespace eNet编辑器
             tnGateway.AppTxtShow += new Action<string>(AppTxtShow);
             tnDevice.AppTxtShow += new Action<string>(AppTxtShow);
             LogicScene.AppTxtShow += new Action<string>(AppTxtShow);
+            LogicCondition.AppTxtShow += new Action<string>(AppTxtShow);
             /////////////////////////////////////////////////////////////
             //  网关 根据DeviceList更新同步加载所有的TreeView
             //  os.UpdateTreeView += new Action<bool>((flag) =>

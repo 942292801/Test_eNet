@@ -697,7 +697,8 @@ namespace eNet编辑器.DgvView
                             eq = findNowRow(rowNum);
                             if (eq == null)
                             {
-                                MessageBox.Show("699行信息保存失败");
+                                txtAppShow("信息保存失败");
+                                //MessageBox.Show("699行");
                                 break;
                             }
                         }
@@ -729,7 +730,7 @@ namespace eNet编辑器.DgvView
                             eq = findNowRow(rowNum);
                             if (eq == null)
                             {
-                                MessageBox.Show("699行信息保存失败");
+                                txtAppShow("信息保存失败");
                                 break;
                             }
                         }

@@ -208,6 +208,7 @@ namespace eNet编辑器.DgvView
         {
             SuperTabItem tab = superTabControl1.SelectedTab;
             DataJson.logicsInfo logicInfo = DataListHelper.findLogicInfoByTabName(tab.Text);
+            //记录当前tab表的信息
             FileMesege.LogicTabName = tab.Text;
             if (logicInfo == null)
             {
@@ -242,6 +243,7 @@ namespace eNet编辑器.DgvView
                     //显示多条件处理
                     superTabControl1.SelectedTab.AttachedControl.Controls.Add(logicCondition);
                     //加载信息内容 
+                    logicCondition.formInfoIni();
                     break;
                 case "VoiceDeal":
                     logicType = LogicType.Voice;

@@ -78,16 +78,23 @@ namespace eNet编辑器.DgvView
         public void formInfoIni()
         {
             DataJson.logicsInfo LogicInfo = DataListHelper.findLogicInfoByTabName(FileMesege.LogicTabName);
-            if (LogicInfo == null || string.IsNullOrEmpty(LogicInfo.content))
+            if (LogicInfo == null )
             {
                 cbScene.Text = "";
                 dataGridView1.Rows.Clear();
                 return;
             }
-            ip = FileMesege.logicSelectNode.Parent.Text.Split(' ')[0];
-            cbSceneGetItem(ip);
             //执行模式
             cbAttr.SelectedIndex = LogicInfo.attr;
+            ip = FileMesege.logicSelectNode.Parent.Text.Split(' ')[0];
+            cbSceneGetItem(ip);
+            if (string.IsNullOrEmpty(LogicInfo.content))
+            {
+                cbScene.Text = "";
+                dataGridView1.Rows.Clear();
+                return;
+            }
+            
             DataJson.LogicSceneContent logicSceneContent = JsonConvert.DeserializeObject<DataJson.LogicSceneContent>(LogicInfo.content);
             DataJson.scenes sc = DataListHelper.getSceneInfoListByPid(ip, logicSceneContent.pid);
             if (sc == null)
@@ -432,7 +439,7 @@ namespace eNet编辑器.DgvView
         }
 
 
-        //移动到删除的时候高亮一行
+        //移动到格子的时候高亮一行
         private void dataGridView1_CellMouseMove(object sender, DataGridViewCellMouseEventArgs e)
         {
             if (isClick == true)
@@ -717,6 +724,7 @@ namespace eNet编辑器.DgvView
                         {
                             info.opt = "";
                             info.optName = "";
+                            info.type = point.type;
                         }
                     }
                     else
@@ -922,7 +930,7 @@ namespace eNet编辑器.DgvView
 
             //找到当前操作tab对象
             DataJson.logicsInfo LogicInfo = DataListHelper.findLogicInfoByTabName(FileMesege.LogicTabName);
-            if (LogicInfo == null)
+            if (LogicInfo == null || LogicInfo.content == null)
             {
                 return;
             }
@@ -1355,6 +1363,11 @@ namespace eNet编辑器.DgvView
 
         }
         #endregion
+
+        private void btnIfAdd_Click(object sender, EventArgs e)
+        {
+            dgvAddRow();
+        }
 
 
     }///class

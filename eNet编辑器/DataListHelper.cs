@@ -1194,6 +1194,7 @@ namespace eNet编辑器
             return null;
         }
 
+
         public static DataJson.scenes getSceneInfoListByPid(string ip, int pid)
         {
             foreach (DataJson.Scene scIP in FileMesege.sceneList)
@@ -1715,6 +1716,48 @@ namespace eNet编辑器
             return null;
         }
 
+
+        /// <summary>
+        /// 根据DGV表中的ID号获取该行的对象
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public static DataJson.sceneInfo getLogicSceneInfo(int id, List<DataJson.sceneInfo> list)
+        {
+            if (list != null)
+            {
+                foreach (DataJson.sceneInfo sceneInfo in list)
+                {
+                    if (sceneInfo.id == id)
+                    {
+                        return sceneInfo;
+                    }
+                }
+            }
+            return null;
+
+        }
+
+        /// <summary>
+        /// 根据DGV表中的ID号获取该行的对象
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public static DataJson.ConditionInfo getLogicConditionInfo(int id, List<DataJson.ConditionInfo> list)
+        {
+            if (list != null)
+            {
+                foreach (DataJson.ConditionInfo conditionInfo in list)
+                {
+                    if (conditionInfo.id == id)
+                    {
+                        return conditionInfo;
+                    }
+                }
+            }
+            return null;
+
+        }
 
         #endregion
 

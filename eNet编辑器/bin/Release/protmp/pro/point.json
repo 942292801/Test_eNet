@@ -796,8 +796,49 @@
             "type": "4.0_scene"
         }
     ],
-    "timer": [],
-    "link": [],
+    "timer": [
+        {
+            "pid": 107317113,
+            "area1": "",
+            "area2": "",
+            "area3": "",
+            "area4": "",
+            "name": "工作日@222",
+            "ip": "192.168.1.222",
+            "address": "FE200001",
+            "objType": "",
+            "value": "",
+            "type": "5.0_time"
+        }
+    ],
+    "link": [
+        {
+            "pid": 540085328,
+            "area1": "",
+            "area2": "",
+            "area3": "",
+            "area4": "",
+            "name": "一键面板@222",
+            "ip": "192.168.1.222",
+            "address": "FE300001",
+            "objType": "",
+            "value": "",
+            "type": "6.1_panel"
+        },
+        {
+            "pid": 776252063,
+            "area1": "",
+            "area2": "",
+            "area3": "",
+            "area4": "",
+            "name": "湿度感应器@222",
+            "ip": "192.168.1.222",
+            "address": "FE3003E9",
+            "objType": "",
+            "value": "",
+            "type": "6.2_sensor"
+        }
+    ],
     "virtualport": [],
     "logic": [
         {
@@ -840,9 +881,9 @@
             "type": "3.0_logic"
         },
         {
-            "pid": 480771737,
-            "area1": "餐厅",
-            "area2": "酒柜",
+            "pid": 331119300,
+            "area1": "",
+            "area2": "",
             "area3": "",
             "area4": "",
             "name": "逻辑3@222",

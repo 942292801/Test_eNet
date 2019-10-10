@@ -8,6 +8,8 @@ using System.Text;
 using System.Windows.Forms;
 using System.Reflection;
 using System.IO;
+using Newtonsoft.Json;
+using eNet编辑器.AddForm;
 
 namespace eNet编辑器.DgvView
 {
@@ -36,29 +38,308 @@ namespace eNet编辑器.DgvView
         }
         #endregion
 
+        public static event Action<string> AppTxtShow;
+
+        //当前选中节点的IP地址
+        string ip = "";
+        DataGridViewComboBoxColumn cbOperation;
+
         private void LogicCondition_Load(object sender, EventArgs e)
         {
             dgvAddColumn();
         }
 
+
+        #region 窗体添加信息
+        /// <summary>
+        /// 总：窗体数据展现在窗体 
+        /// </summary>
+        public void formInfoIni()
+        {
+            DataJson.logicsInfo LogicInfo = DataListHelper.findLogicInfoByTabName(FileMesege.LogicTabName);
+            if (LogicInfo == null)
+            {
+              
+                dataGridView1.Rows.Clear();
+                dataGridView2.Rows.Clear();
+                dataGridView3.Rows.Clear();
+                return;
+            }
+             //执行模式
+            cbAttr.SelectedIndex = LogicInfo.attr;
+            if(string.IsNullOrEmpty(LogicInfo.content))
+            {
+                dataGridView1.Rows.Clear();
+                dataGridView2.Rows.Clear();
+                dataGridView3.Rows.Clear();
+                return;
+            }
+            ip = FileMesege.logicSelectNode.Parent.Text.Split(' ')[0];
+           
+            DataJson.ConditionContent logicConditionContent = JsonConvert.DeserializeObject<DataJson.ConditionContent>(LogicInfo.content);
+            //加载对象比较表格
+            dgvConditionAddItem(dataGridView1, logicConditionContent.conditionInfo, ip);
+            //加载确定 否 表格
+            dgvAddItem(dataGridView2, logicConditionContent.trueDo,ip);
+            dgvAddItem(dataGridView3, logicConditionContent.falseDo, ip);
+
+        }
+
+        /// <summary>
+        /// 表格判断条件 展现数据
+        /// </summary>
+        /// <param name="dataGridView"></param>
+        /// <param name="conditionInfo"></param>
+        /// <param name="ip"></param>
+        private void dgvConditionAddItem(DataGridView dataGridView, List<DataJson.ConditionInfo> conditionInfo, string ip)
+        {
+            try
+            {
+                dataGridView.Rows.Clear();
+                /*
+                List<DataJson.sceneInfo> delScene = new List<DataJson.sceneInfo>();
+                if (sceneInfo == null)
+                {
+                    return;
+                }*/
+                //循环加载该场景号的所有信息
+                foreach (DataJson.ConditionInfo info in conditionInfo)
+                {
+                    int dex = dataGridView.Rows.Add();
+                    /*
+                    if (info.pid == 0)
+                    {
+                        //pid号为0则为空 按地址来找
+                        if (info.address != "" && info.address != "FFFFFFFF")
+                        {
+
+                            DataJson.PointInfo point = DataListHelper.findPointByType_address(info.type, info.address, ip);
+                            if (point != null)
+                            {
+                                info.pid = point.pid;
+                                info.address = point.address;
+                                info.type = point.type;
+                                dataGridView.Rows[dex].Cells[3].Value = string.Format("{0} {1} {2} {3}", point.area1, point.area2, point.area3, point.area4).Trim();//改根据地址从信息里面获取
+                                dataGridView.Rows[dex].Cells[4].Value = point.name;
+                            }
+                        }
+
+                    }
+                    else
+                    {
+                        //pid号有效 需要更新address type
+                        DataJson.PointInfo point = DataListHelper.findPointByPid(info.pid);
+                        if (point == null)
+                        {
+                            //pid号有无效 删除该场景
+                            delScene.Add(info);
+                            dataGridView.Rows.Remove(dataGridView.Rows[dex]);
+                            continue;
+                        }
+                        else
+                        {
+                            //pid号有效
+                            try
+                            {
+                                if (info.address.Substring(2, 6) != point.address.Substring(2, 6))
+                                {
+                                    info.address = point.address;
+
+                                }
+                            }
+                            catch
+                            {
+                                info.address = point.address;
+                            }
+
+
+                            //////////////////////////////////////////////////////争议地域
+                            //类型不一致 在value寻找
+                            if (info.type != point.type && !string.IsNullOrEmpty(point.value) && !string.IsNullOrEmpty(point.objType))
+                            {
+                                //根据value寻找type                        
+                                point.type = IniHelper.findObjValueType_ByobjTypeValue(point.objType, point.value);
+                            }
+                            //////////////////////////////////////////////////////到这里
+                            if (info.type != point.type || info.type == "")
+                            {
+                                //当类型为空时候清空操作
+                                info.opt = "";
+                                info.optName = "";
+                            }
+                            info.type = point.type;
+                            dataGridView.Rows[dex].Cells[3].Value = string.Format("{0} {1} {2} {3}", point.area1, point.area2, point.area3, point.area4).Trim();//改根据地址从信息里面获取
+                            dataGridView.Rows[dex].Cells[4].Value = point.name;
+                        }
+
+                    }*/
+
+                    dataGridView.Rows[dex].Cells[0].Value = info.id;
+                    dataGridView.Rows[dex].Cells[1].Value = info.a;
+                    //dataGridView.Rows[dex].Cells[2].Value = DgvMesege.addressTransform(info.address);
+                    dataGridView.Rows[dex].Cells[3].Value = info.b;
+                    dataGridView.Rows[dex].Cells[4].Value = info.operation;
+                    dataGridView.Rows[dex].Cells[5].Value = info.c;
+                    //dataGridView.Rows[dex].Cells[6].Value = ;
+                    dataGridView.Rows[dex].Cells[7].Value = info.d;
+                    dataGridView.Rows[dex].Cells[8].Value = "删除";
+
+
+                }
+                /*
+                for (int i = 0; i < delScene.Count; i++)
+                {
+                    sceneInfo.Remove(delScene[i]);
+                }*/
+
+            }
+            catch (Exception ex)
+            {
+                dataGridView.Rows.Clear();
+                MessageBox.Show(ex + "\r\n临时调试错误信息 后期删除屏蔽");
+            }
+        }
+
+        /// <summary>
+        /// dgv表格2 3展现数据
+        /// </summary>
+        /// <param name="sceneInfo"></param>
+        /// <param name="ip"></param>
+        private void dgvAddItem(DataGridView dataGridView, List<DataJson.sceneInfo> sceneInfo, string ip)
+        {
+            try
+            {
+                dataGridView.Rows.Clear();
+                List<DataJson.sceneInfo> delScene = new List<DataJson.sceneInfo>();
+                if (sceneInfo == null)
+                {
+                    return;
+                }
+                //循环加载该场景号的所有信息
+                foreach (DataJson.sceneInfo info in sceneInfo)
+                {
+                    int dex = dataGridView.Rows.Add();
+
+                    if (info.pid == 0)
+                    {
+                        //pid号为0则为空 按地址来找
+                        if (info.address != "" && info.address != "FFFFFFFF")
+                        {
+
+                            DataJson.PointInfo point = DataListHelper.findPointByType_address(info.type, info.address, ip);
+                            if (point != null)
+                            {
+                                info.pid = point.pid;
+                                info.address = point.address;
+                                info.type = point.type;
+                                dataGridView.Rows[dex].Cells[3].Value = string.Format("{0} {1} {2} {3}", point.area1, point.area2, point.area3, point.area4).Trim();//改根据地址从信息里面获取
+                                dataGridView.Rows[dex].Cells[4].Value = point.name;
+                            }
+                        }
+
+                    }
+                    else
+                    {
+                        //pid号有效 需要更新address type
+                        DataJson.PointInfo point = DataListHelper.findPointByPid(info.pid);
+                        if (point == null)
+                        {
+                            //pid号有无效 删除该场景
+                            delScene.Add(info);
+                            dataGridView.Rows.Remove(dataGridView.Rows[dex]);
+                            continue;
+                        }
+                        else
+                        {
+                            //pid号有效
+                            try
+                            {
+                                if (info.address.Substring(2, 6) != point.address.Substring(2, 6))
+                                {
+                                    info.address = point.address;
+
+                                }
+                            }
+                            catch
+                            {
+                                info.address = point.address;
+                            }
+
+
+                            //////////////////////////////////////////////////////争议地域
+                            //类型不一致 在value寻找
+                            if (info.type != point.type && !string.IsNullOrEmpty(point.value) && !string.IsNullOrEmpty(point.objType))
+                            {
+                                //根据value寻找type                        
+                                point.type = IniHelper.findObjValueType_ByobjTypeValue(point.objType, point.value);
+                            }
+                            //////////////////////////////////////////////////////到这里
+                            if (info.type != point.type || info.type == "")
+                            {
+                                //当类型为空时候清空操作
+                                info.opt = "";
+                                info.optName = "";
+                            }
+                            info.type = point.type;
+                            dataGridView.Rows[dex].Cells[3].Value = string.Format("{0} {1} {2} {3}", point.area1, point.area2, point.area3, point.area4).Trim();//改根据地址从信息里面获取
+                            dataGridView.Rows[dex].Cells[4].Value = point.name;
+                        }
+
+                    }
+
+                    dataGridView.Rows[dex].Cells[0].Value = info.id;
+                    dataGridView.Rows[dex].Cells[2].Value = DgvMesege.addressTransform(info.address);
+                    dataGridView.Rows[dex].Cells[1].Value = IniHelper.findTypesIniNamebyType(info.type);
+                    dataGridView.Rows[dex].Cells[5].Value = (info.optName + " " + info.opt).Trim();
+                    dataGridView.Rows[dex].Cells[6].Value = Convert.ToDouble(info.delay) / 10;
+                    dataGridView.Rows[dex].Cells[7].Value = "删除";
+
+
+                }
+                for (int i = 0; i < delScene.Count; i++)
+                {
+                    sceneInfo.Remove(delScene[i]);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                dataGridView.Rows.Clear();
+                MessageBox.Show(ex + "\r\n临时调试错误信息 后期删除屏蔽");
+            }
+        }
+
+        #endregion
+
+        #region dgv加载比较式和类型框
+        /// <summary>
+        /// dgv加载比较式和类型框
+        /// </summary>
         private void dgvAddColumn()
         {
             //新增对象列 加载
             this.dataGridView1.Rows.Clear();
-            DataGridViewComboBoxColumn cbOperation = new DataGridViewComboBoxColumn();
+            cbOperation = new DataGridViewComboBoxColumn();
+            /*
             cbOperation.Items.Add("等于");
             cbOperation.Items.Add("大于");
             cbOperation.Items.Add("小于");
             cbOperation.Items.Add("不等于");
             cbOperation.Items.Add("大于等于");
-            cbOperation.Items.Add("小于等于");
+            cbOperation.Items.Add("小于等于");*/
+             cbOperation.Items.Add("==");
+            cbOperation.Items.Add(">");
+            cbOperation.Items.Add("<");
+            cbOperation.Items.Add("!=");
+            cbOperation.Items.Add(">=");
+            cbOperation.Items.Add("<=");
             //设置列名
             cbOperation.HeaderText = "比较式";
             //设置下拉列表的默认值 
             cbOperation.DisplayStyle = DataGridViewComboBoxDisplayStyle.Nothing;
             //cbObjType.DefaultCellStyle.NullValue = cbObjType.Items[0];
-            cbOperation.Name = "pointObjType";
-            //cbOperation.ReadOnly = true;
+            cbOperation.Name = "operation";
+            cbOperation.ReadOnly = true;
             //插入执行对象
             this.dataGridView1.Columns.Insert(4, cbOperation);
             //新增对象列 加载
@@ -105,24 +386,1340 @@ namespace eNet编辑器.DgvView
             this.dataGridView2.Columns.Insert(1, dgvc);
             this.dataGridView3.Columns.Insert(1, dgvc2);
         }
+        #endregion
 
+
+        #region   设置执行模式
+        /// <summary>
+        /// 设置执行模式
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnAttr_Click(object sender, EventArgs e)
+        {
+            //找到当前操作tab对象
+            DataJson.logicsInfo LogicInfo = DataListHelper.findLogicInfoByTabName(FileMesege.LogicTabName);
+            if (LogicInfo == null)
+            {
+                return;
+            }
+
+            //撤销 
+            DataJson.totalList OldList = FileMesege.cmds.getListInfos();
+            //主动模式
+            if (cbAttr.SelectedIndex != -1)
+            {
+                LogicInfo.attr = cbAttr.SelectedIndex;
+
+            }
+            else
+            {
+                cbAttr.SelectedIndex = 1;
+                LogicInfo.attr = 1;
+            }
+
+            DataJson.totalList NewList = FileMesege.cmds.getListInfos();
+            FileMesege.cmds.DoNewCommand(NewList, OldList);
+            AppTxtShow("设置执行模式成功");
+        }
+
+        #endregion
+
+
+        #region 表格新增一行
         private void btnIfAdd_Click(object sender, EventArgs e)
         {
-            dataGridView1.Rows.Add();
+            //找到当前操作tab对象
+            DataJson.logicsInfo LogicInfo = DataListHelper.findLogicInfoByTabName(FileMesege.LogicTabName);
+            if (LogicInfo == null)
+            {
+                return;
+            }
+            DataJson.ConditionContent logicConditionContent = new DataJson.ConditionContent();
+            if (LogicInfo.content != null)
+            {
+                //把tab对象JSON字符串转换为 操作对象
+                logicConditionContent = JsonConvert.DeserializeObject<DataJson.ConditionContent>(LogicInfo.content);
+            }
+            //新建表
+            DataJson.ConditionInfo info = new DataJson.ConditionInfo();
+            info.id = logicConditionContent.conditionInfo.Count + 1;
+
+            //info.type = "";
+            //info.opt = "";
+            //info.optName = "";
+            //撤销 
+            DataJson.totalList OldList = FileMesege.cmds.getListInfos();
+            logicConditionContent.conditionInfo.Add(info);
+            LogicInfo.content = JsonConvert.SerializeObject(logicConditionContent);
+            DataJson.totalList NewList = FileMesege.cmds.getListInfos();
+            FileMesege.cmds.DoNewCommand(NewList, OldList);
+            dgvConditionAddItem(dataGridView1, logicConditionContent.conditionInfo, ip);
         }
 
         private void btnElseIfAdd_Click(object sender, EventArgs e)
         {
-            dataGridView2.Rows.Add();
+            //找到当前操作tab对象
+            DataJson.logicsInfo LogicInfo = DataListHelper.findLogicInfoByTabName(FileMesege.LogicTabName);
+            if (LogicInfo == null)
+            {
+                return;
+            }
+            DataJson.ConditionContent logicConditionContent = new DataJson.ConditionContent();
+            if (LogicInfo.content != null)
+            {
+                //把tab对象JSON字符串转换为 操作对象
+                logicConditionContent = JsonConvert.DeserializeObject<DataJson.ConditionContent>(LogicInfo.content);
+            }
+            //新建表
+            DataJson.sceneInfo info = new DataJson.sceneInfo();
+            info.id = logicConditionContent.trueDo.Count + 1;
+
+            //info.type = "";
+            //info.opt = "";
+            //info.optName = "";
+            //撤销 
+            DataJson.totalList OldList = FileMesege.cmds.getListInfos();
+            logicConditionContent.trueDo.Add(info);
+            LogicInfo.content = JsonConvert.SerializeObject(logicConditionContent);
+            DataJson.totalList NewList = FileMesege.cmds.getListInfos();
+            FileMesege.cmds.DoNewCommand(NewList, OldList);
+            dgvAddItem(dataGridView2, logicConditionContent.trueDo, ip);
         }
 
         private void btnElseAdd_Click(object sender, EventArgs e)
         {
-            dataGridView3.Rows.Add();
+            //找到当前操作tab对象
+            DataJson.logicsInfo LogicInfo = DataListHelper.findLogicInfoByTabName(FileMesege.LogicTabName);
+            if (LogicInfo == null)
+            {
+                return;
+            }
+            DataJson.ConditionContent logicConditionContent = new DataJson.ConditionContent();
+            if (LogicInfo.content != null)
+            {
+                //把tab对象JSON字符串转换为 操作对象
+                logicConditionContent = JsonConvert.DeserializeObject<DataJson.ConditionContent>(LogicInfo.content);
+            }
+            //新建表
+            DataJson.sceneInfo info = new DataJson.sceneInfo();
+            info.id = logicConditionContent.falseDo.Count + 1;
+
+            //info.type = "";
+            //info.opt = "";
+            //info.optName = "";
+            //撤销 
+            DataJson.totalList OldList = FileMesege.cmds.getListInfos();
+            logicConditionContent.falseDo.Add(info);
+            LogicInfo.content = JsonConvert.SerializeObject(logicConditionContent);
+            DataJson.totalList NewList = FileMesege.cmds.getListInfos();
+            FileMesege.cmds.DoNewCommand(NewList, OldList);
+            dgvAddItem(dataGridView3, logicConditionContent.falseDo, ip);
+        }
+
+       
+
+        #endregion
+
+        #region 表格单击双击 操作 高亮显示
+        private bool isFirstClick = true;
+        private bool isDoubleClick = false;
+        private int milliseconds = 0;
+        /// <summary>
+        /// 行号
+        /// </summary>
+        private int rowCount = 0;
+        /// <summary>
+        /// 列号
+        /// </summary>
+        private int columnCount = 0;
+        private int oldrowCount = 0;
+        private int oldcolumnCount = 0;
+
+        bool isClick = false;
+
+        private void CellMouseDown(DataGridView dataGridView, DataGridViewCellMouseEventArgs e, Timer doubleClickTimer)
+        {
+            try
+            {
+                oldrowCount = rowCount;
+                oldcolumnCount = columnCount;
+                rowCount = e.RowIndex;
+                columnCount = e.ColumnIndex;
+
+
+                // 鼠标单击.
+                if (isFirstClick)
+                {
+                    isFirstClick = false;
+                    doubleClickTimer.Start();
+                }
+                // 鼠标双击
+                else
+                {
+
+                    isDoubleClick = true;
+                }
+
+
+                if (isClick)
+                {
+                    if (dataGridView.SelectedCells.Count == 1 && rowCount == oldrowCount && columnCount == oldcolumnCount)
+                    {
+                        return;
+
+                    }
+                    else if (oldcolumnCount == columnCount)
+                    {
+                        return;
+                    }
+                    isClick = false;
+                }
+                else
+                {
+                    isClick = true;
+                }
+            }
+            catch (Exception ex) { MessageBox.Show(ex + "临时调试错误信息"); }
+        }
+
+        private void CellMouseMove(DataGridView dataGridView, DataGridViewCellMouseEventArgs e)
+        {
+            if (isClick == true)
+            {
+                return;
+
+            }
+            else
+            {
+                //选中行号
+                int rowNum = e.RowIndex;
+                //选中列号
+                int columnNum = e.ColumnIndex;
+                if (rowNum >= 0 && columnNum >= 0)
+                {
+                    dataGridView.ClearSelection();
+                    dataGridView.Rows[rowNum].Selected = true;//选中行
+                }
+            }
+        }
+
+        #region 判断表格 
+
+        private void dataGridView1_MouseDown(object sender, MouseEventArgs e)
+        {
+            DgvMesege.endDataViewCurrent(dataGridView1, e.Y, e.X);
+        }
+
+
+        private void doubleClickTimer1_Tick(object sender, EventArgs e)
+        {
+            try
+            {
+                milliseconds += 100;
+                // 第二次鼠标点击超出双击事件间隔
+                if (milliseconds >= SystemInformation.DoubleClickTime)
+                {
+                    doubleClickTimer1.Stop();
+
+
+                    if (isDoubleClick)
+                    {
+
+                        if (rowCount >= 0 && columnCount >= 0)
+                        {
+
+                            int id = Convert.ToInt32(dataGridView1.Rows[rowCount].Cells[0].Value);
+                            switch (dataGridView1.Columns[columnCount].Name)
+                            {
+                                case "operation":
+                                    cbOperation.ReadOnly = false;
+                                    break;
+                     
+                                case "del1":
+                                    //删除表
+                                    dgvIfDel(id);
+                                    
+                                    break;
+                                case "num":
+                                    //设置对象跳转
+                                    /*
+                                    DataJson.PointInfo point = dgvJumpSet(id);
+                                    if (point != null)
+                                    {
+                                        //传输到form窗口控制
+                                        //AppTxtShow("传输到主窗口"+DateTime.Now);
+                                        jumpSetInfo(point);
+                                    }*/
+                                    break;
+                                default: break;
+                            }
+                            try
+                            {
+                                //更改内容回自动刷新到第一行
+                                dataGridView1.CurrentCell = dataGridView1.Rows[rowCount].Cells[columnCount];
+                            }
+                            catch
+                            {
+                                if (dataGridView1.Rows.Count > 0)
+                                {
+                                    dataGridView1.CurrentCell = dataGridView1.Rows[dataGridView1.Rows.Count - 1].Cells[columnCount];
+                                }
+
+                            }
+                        }
+                    }
+                    else
+                    {
+                        //处理单击事件操作
+                        if (rowCount >= 0 && columnCount >= 0)
+                        {
+                            //DGV的行号
+                            int id = Convert.ToInt32(dataGridView1.Rows[rowCount].Cells[0].Value);
+                            switch (dataGridView1.Columns[columnCount].Name)
+                            {
+                                case "address":
+                                    //setTitleAddress();
+                                    break;
+                                case "section":
+                                    //setTitleAddress();
+                                    break;
+                                case "name":
+                                    //setTitleAddress();
+                                    break;
+                                case "del1":
+                                    //删除表
+                                    dgvIfDel(id);
+
+                                    break;
+                                default: break;
+
+
+
+                            }
+                            try
+                            {
+                                //更改内容回自动刷新到第一行
+                                dataGridView1.CurrentCell = dataGridView1.Rows[rowCount].Cells[columnCount];
+                            }
+                            catch
+                            {
+                                if (dataGridView1.Rows.Count > 0)
+                                {
+                                    dataGridView1.CurrentCell = dataGridView1.Rows[dataGridView1.Rows.Count - 1].Cells[columnCount];
+                                }
+
+                            }
+                        }
+                    }
+
+                    isFirstClick = true;
+                    isDoubleClick = false;
+                    milliseconds = 0;
+                }
+            }
+            catch (Exception ex) { MessageBox.Show(ex + "临时调试错误信息"); }
+        }
+
+        
+        private void dataGridView1_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            CellMouseDown(dataGridView1,e,doubleClickTimer1);
+        }
+
+        private void dataGridView1_CellMouseMove(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            CellMouseMove(dataGridView1,e);
+        }
+
+        private void dataGridView1_DataError(object sender, DataGridViewDataErrorEventArgs e)
+        {
+
+        }
+
+        private void dataGridView1_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
+        {
+
+        }
+
+        private void dataGridView1_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                //选中行号
+                int rowNum = e.RowIndex;
+                //选中列号
+                int columnNum = e.ColumnIndex;
+                if (rowNum >= 0 && columnNum >= 0)
+                {
+                    switch (dataGridView1.Columns[columnNum].Name)
+                    {
+                        case "a":
+                            if (Validator.IsNumber(dataGridView1.Rows[rowNum].Cells[1].Value.ToString()))
+                            {
+                                //改变延时
+                                dgvABCD(Convert.ToInt32(dataGridView1.Rows[rowNum].Cells[0].Value), Convert.ToInt32(dataGridView1.Rows[rowNum].Cells[1].Value),1);
+                            }
+                            else
+                            {
+                                AppTxtShow("延时格式错误，请正确填写！");
+                            }
+                            break;
+                        case "b":
+                            if (Validator.IsNumber(dataGridView1.Rows[rowNum].Cells[3].Value.ToString()))
+                            {
+                                //改变延时
+                                dgvABCD(Convert.ToInt32(dataGridView1.Rows[rowNum].Cells[0].Value), Convert.ToInt32(dataGridView1.Rows[rowNum].Cells[3].Value), 3);
+                            }
+                            else
+                            {
+                                AppTxtShow("延时格式错误，请正确填写！");
+                            }
+                            break;
+                        case "c":
+                            if (Validator.IsNumber(dataGridView1.Rows[rowNum].Cells[5].Value.ToString()))
+                            {
+                                //改变延时
+                                dgvABCD(Convert.ToInt32(dataGridView1.Rows[rowNum].Cells[0].Value), Convert.ToInt32(dataGridView1.Rows[rowNum].Cells[5].Value), 5);
+                            }
+                            else
+                            {
+                                AppTxtShow("延时格式错误，请正确填写！");
+                            }
+                            break;
+                        case "d":
+                            if (Validator.IsNumber(dataGridView1.Rows[rowNum].Cells[7].Value.ToString()))
+                            {
+                                //改变延时
+                                dgvABCD(Convert.ToInt32(dataGridView1.Rows[rowNum].Cells[0].Value), Convert.ToInt32(dataGridView1.Rows[rowNum].Cells[7].Value), 7);
+                            }
+                            else
+                            {
+                                AppTxtShow("延时格式错误，请正确填写！");
+                            }
+                            break;
+                        case "operation":
+                            dgvIfOperation(Convert.ToInt32(dataGridView1.Rows[rowNum].Cells[0].Value), dataGridView1.Rows[rowNum].Cells[4].EditedFormattedValue.ToString());
+                            cbOperation.ReadOnly = true;
+                            break;
+                        default: break;
+                    }
+                }
+            }
+            catch (Exception ex) { MessageBox.Show(ex + "临时调试错误信息"); }
+        }
+
+
+        private void dgvABCD(int id, int val,int abcd)
+        {
+            //找到当前操作tab对象
+            DataJson.logicsInfo LogicInfo = DataListHelper.findLogicInfoByTabName(FileMesege.LogicTabName);
+            if (LogicInfo == null || LogicInfo.content == null)
+            {
+                return;
+            }
+            //把tab对象JSON字符串转换为 操作对象
+            DataJson.ConditionContent logicConditionContent = JsonConvert.DeserializeObject<DataJson.ConditionContent>(LogicInfo.content);
+            
+            //撤销 
+            DataJson.totalList OldList = FileMesege.cmds.getListInfos();
+            DataJson.ConditionInfo info = DataListHelper.getLogicConditionInfo(id, logicConditionContent.conditionInfo);
+            if (info == null)
+            {
+                return;
+            }
+            switch (abcd)
+            { 
+                case 1:
+                    info.a = val;
+                    break;
+                case 3:
+                    info.b = val;
+                    break;
+                case 5:
+                    info.c = val;
+                    break;
+                case 7:
+                    info.d = val;
+                    break;
+                default:
+                    break;
+            }
+            LogicInfo.content = JsonConvert.SerializeObject(logicConditionContent);
+            DataJson.totalList NewList = FileMesege.cmds.getListInfos();
+            FileMesege.cmds.DoNewCommand(NewList, OldList);
+           
+
+        }
+
+        private void dgvIfOperation(int id, string val)
+        {
+            //找到当前操作tab对象
+            DataJson.logicsInfo LogicInfo = DataListHelper.findLogicInfoByTabName(FileMesege.LogicTabName);
+            if (LogicInfo == null || LogicInfo.content == null)
+            {
+                return;
+            }
+            //把tab对象JSON字符串转换为 操作对象
+            DataJson.ConditionContent logicConditionContent = JsonConvert.DeserializeObject<DataJson.ConditionContent>(LogicInfo.content);
+
+            //撤销 
+            DataJson.totalList OldList = FileMesege.cmds.getListInfos();
+            DataJson.ConditionInfo info = DataListHelper.getLogicConditionInfo(id, logicConditionContent.conditionInfo);
+            if (info == null)
+            {
+                return;
+            }
+            info.operation = val;
+            LogicInfo.content = JsonConvert.SerializeObject(logicConditionContent);
+            DataJson.totalList NewList = FileMesege.cmds.getListInfos();
+            FileMesege.cmds.DoNewCommand(NewList, OldList);
+
+
+        }
+
+        private void dgvIfDel(int id)
+        {
+            //找到当前操作tab对象
+            DataJson.logicsInfo LogicInfo = DataListHelper.findLogicInfoByTabName(FileMesege.LogicTabName);
+            if (LogicInfo == null || LogicInfo.content == null)
+            {
+                return;
+            }
+            //把tab对象JSON字符串转换为 操作对象
+            DataJson.ConditionContent logicConditionContent = JsonConvert.DeserializeObject<DataJson.ConditionContent>(LogicInfo.content);
+
+            
+            DataJson.ConditionInfo info = DataListHelper.getLogicConditionInfo(id, logicConditionContent.conditionInfo);
+            if (info == null)
+            {
+                return;
+            }
+            //撤销 
+            DataJson.totalList OldList = FileMesege.cmds.getListInfos();
+            if (!logicConditionContent.conditionInfo.Remove(info))
+            {
+                return;
+            }
+            //排序
+            conditionInfoSort(logicConditionContent.conditionInfo);
+            LogicInfo.content = JsonConvert.SerializeObject(logicConditionContent);
+            DataJson.totalList NewList = FileMesege.cmds.getListInfos();
+            FileMesege.cmds.DoNewCommand(NewList, OldList);
+            dgvConditionAddItem(dataGridView1, logicConditionContent.conditionInfo,ip);
+        }
+
+        private void conditionInfoSort(List<DataJson.ConditionInfo> infos)
+        {
+            int i = 1;
+            foreach (DataJson.ConditionInfo info in infos)
+            {
+                info.id = i;
+                i++;
+            }
+        }
+
+        #endregion
+
+
+        #region trueDo表格 符合执行
+
+        private void dataGridView2_MouseDown(object sender, MouseEventArgs e)
+        {
+            DgvMesege.endDataViewCurrent(dataGridView2, e.Y, e.X);
+        }
+   
+
+        private void doubleClickTimer2_Tick(object sender, EventArgs e)
+        {
+            try
+            {
+                milliseconds += 100;
+                // 第二次鼠标点击超出双击事件间隔
+                if (milliseconds >= SystemInformation.DoubleClickTime)
+                {
+                    doubleClickTimer2.Stop();
+
+
+                    if (isDoubleClick)
+                    {
+
+                        if (rowCount >= 0 && columnCount >= 0)
+                        {
+
+                            int id = Convert.ToInt32(dataGridView2.Rows[rowCount].Cells[0].Value);
+                            switch (dataGridView2.Columns[columnCount].Name)
+                            {
+                                case "address2":
+                                    //改变地址
+                                    string obj = "";
+                                    if (dataGridView2.Rows[rowCount].Cells[2].Value != null)
+                                    {
+                                        //原地址
+                                        obj = dataGridView2.Rows[rowCount].Cells[2].Value.ToString();
+                                    }
+                                    string objType = dataGridView2.Rows[rowCount].Cells[1].EditedFormattedValue.ToString();
+                                    //赋值List 并添加地域 名字
+                                    dgvAddress2(id, objType, obj);
+                                    
+                                    break;
+                                case "operation2":
+                                    
+                                    //操作
+                                    string info = dgvOperation2(id, dataGridView2.Rows[rowCount].Cells[1].EditedFormattedValue.ToString());
+                                    if (!string.IsNullOrEmpty(info))
+                                    {
+                                        dataGridView2.Rows[rowCount].Cells[5].Value = info;
+                                    }
+                                    break;
+                                case "del2":
+                                    //删除表
+                                    dgvDel2(id);
+
+                                    break;
+                                case "num2":
+                                    //设置对象跳转
+                                    /*
+                                    DataJson.PointInfo point = dgvJumpSet(id);
+                                    if (point != null)
+                                    {
+                                        //传输到form窗口控制
+                                        //AppTxtShow("传输到主窗口"+DateTime.Now);
+                                        jumpSetInfo(point);
+                                    }*/
+                                    break;
+                                default: break;
+                            }
+                            try
+                            {
+                                //更改内容回自动刷新到第一行
+                                dataGridView2.CurrentCell = dataGridView2.Rows[rowCount].Cells[columnCount];
+                            }
+                            catch
+                            {
+                                if (dataGridView2.Rows.Count > 0)
+                                {
+                                    dataGridView2.CurrentCell = dataGridView2.Rows[dataGridView2.Rows.Count - 1].Cells[columnCount];
+                                }
+
+                            }
+                        }
+                    }
+                    else
+                    {
+                        //处理单击事件操作
+                        if (rowCount >= 0 && columnCount >= 0)
+                        {
+                            //DGV的行号
+                            int id = Convert.ToInt32(dataGridView2.Rows[rowCount].Cells[0].Value);
+                            switch (dataGridView2.Columns[columnCount].Name)
+                            {
+                                case "address2":
+                                    //setTitleAddress();
+                                    break;
+                                case "section2":
+                                    //setTitleAddress();
+                                    break;
+                                case "name2":
+                                    //setTitleAddress();
+                                    break;
+                                case "del2":
+                                    //删除表
+                                    dgvDel2(id);
+
+                                    break;
+                                default: break;
+
+
+
+                            }
+                            try
+                            {
+                                //更改内容回自动刷新到第一行
+                                dataGridView2.CurrentCell = dataGridView2.Rows[rowCount].Cells[columnCount];
+                            }
+                            catch
+                            {
+                                if (dataGridView2.Rows.Count > 0)
+                                {
+                                    dataGridView2.CurrentCell = dataGridView2.Rows[dataGridView2.Rows.Count - 1].Cells[columnCount];
+                                }
+
+                            }
+                        }
+                    }
+
+                    isFirstClick = true;
+                    isDoubleClick = false;
+                    milliseconds = 0;
+                }
+            }
+            catch (Exception ex) { MessageBox.Show(ex + "临时调试错误信息"); }
+        }
+
+        private void dataGridView2_DataError(object sender, DataGridViewDataErrorEventArgs e)
+        {
+
+        }
+
+        private void dataGridView2_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            CellMouseDown(dataGridView2, e, doubleClickTimer2);
+
+        }
+
+        private void dataGridView2_CellMouseMove(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            CellMouseMove(dataGridView2, e);
+        }
+
+        private void dataGridView2_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
+        {
+
+        }
+
+        private void dataGridView2_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                //选中行号
+                int rowNum = e.RowIndex;
+                //选中列号
+                int columnNum = e.ColumnIndex;
+                if (rowNum >= 0 && columnNum >= 0)
+                {
+                    switch (dataGridView2.Columns[columnNum].Name)
+                    {
+                        case "delay2":
+                            if (Validator.IsNumber(dataGridView2.Rows[rowNum].Cells[6].Value.ToString()))
+                            {
+                                //改变延时
+                                dgvDelay2(Convert.ToInt32(dataGridView2.Rows[rowNum].Cells[0].Value), Convert.ToDouble(dataGridView2.Rows[rowNum].Cells[6].Value));
+                            }
+                            else
+                            {
+                                AppTxtShow("延时格式错误，请正确填写！");
+                            }
+                            break;
+                 
+                        default: break;
+                    }
+                }
+            }
+            catch (Exception ex) { MessageBox.Show(ex + "临时调试错误信息"); }
         }
 
 
 
 
-    }
+        /// <summary>
+        /// 获取新的地址 刷新地域 名字
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="objType">当前对象的类型</param>
+        /// <param name="obj">当前对象的地址值</param>
+        /// <returns></returns>
+        private void dgvAddress2(int id, string objType, string obj)
+        {
+            LogicAddress dc = new LogicAddress();
+            //把窗口向屏幕中间刷新
+            dc.StartPosition = FormStartPosition.CenterParent;
+            //把当前选仲树状图网关传递到info里面 给新建设备框网关使用  
+            //dc.Obj = obj;
+            dc.ObjType = objType;
+            dc.Obj = obj;
+            dc.ShowDialog();
+            if (dc.DialogResult == DialogResult.OK)
+            {
+                //找到当前操作tab对象
+                DataJson.logicsInfo LogicInfo = DataListHelper.findLogicInfoByTabName(FileMesege.LogicTabName);
+                if (LogicInfo == null)
+                {
+                    return;
+                }
+                //把tab对象JSON字符串转换为 操作对象
+                DataJson.ConditionContent logicConditionContent = JsonConvert.DeserializeObject<DataJson.ConditionContent>(LogicInfo.content);
+
+                DataJson.sceneInfo info = DataListHelper.getLogicSceneInfo(id, logicConditionContent.trueDo);
+                if (info == null)
+                {
+                    return;
+                }
+                //撤销 
+                DataJson.totalList OldList = FileMesege.cmds.getListInfos();
+                info.address = dc.Obj;
+                if (dc.RtType == "15.0_LocalVariable")
+                {
+                    info.pid = 0;
+                    if (info.type != "15.0_LocalVariable")
+                    {
+                        info.type = "15.0_LocalVariable";
+                        info.opt = "";
+                        info.optName = "";
+                    }
+
+                }
+                else
+                {
+                    //按照地址查找type的类型 只限制于设备
+                    string type = IniHelper.findIniTypesByAddress(ip, info.address).Split(',')[0];
+                    if (string.IsNullOrEmpty(type))
+                    {
+                        type = dc.RtType;
+
+                    }
+                    //区域加名称
+                    DataJson.PointInfo point = DataListHelper.findPointByType_address("", info.address, ip);
+                    if (point != null)
+                    {
+                        info.pid = point.pid;
+                        if (info.type != point.type)
+                        {
+                            info.opt = "";
+                            info.optName = "";
+                            info.type = point.type;
+                        }
+                    }
+                    else
+                    {
+                        //搜索一次dev表 
+                        info.pid = 0;
+                        if (info.type != type)
+                        {
+                            info.opt = "";
+                            info.optName = "";
+                            info.type = type;
+                        }
+
+                    }
+
+
+                }
+                LogicInfo.content = JsonConvert.SerializeObject(logicConditionContent);
+                DataJson.totalList NewList = FileMesege.cmds.getListInfos();
+                FileMesege.cmds.DoNewCommand(NewList, OldList);
+                dgvAddItem(dataGridView2, logicConditionContent.trueDo,ip);
+            }//ok
+
+
+        }
+
+
+        /// <summary>
+        /// DGV表 操作栏 返回操作信息
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="type">类型</param>
+        /// <returns></returns>
+        private string dgvOperation2(int id, string type)
+        {
+
+
+            LogicConcrol dc = new LogicConcrol();
+            //找到当前操作tab对象
+            DataJson.logicsInfo LogicInfo = DataListHelper.findLogicInfoByTabName(FileMesege.LogicTabName);
+            if (LogicInfo == null)
+            {
+                return null;
+            }
+            //把tab对象JSON字符串转换为 操作对象
+            DataJson.ConditionContent logicConditionContent = JsonConvert.DeserializeObject<DataJson.ConditionContent>(LogicInfo.content);
+
+            DataJson.sceneInfo info = DataListHelper.getLogicSceneInfo(id, logicConditionContent.trueDo);
+            if (info == null)
+            {
+                return null;
+            }
+
+            dc.Point = DataListHelper.findPointByPid(info.pid);
+            //把窗口向屏幕中间刷新
+            dc.StartPosition = FormStartPosition.CenterParent;
+            dc.ObjType = type;
+            dc.Opt = info.opt;
+            dc.Ver = info.optName;
+            dc.ShowDialog();
+            if (dc.DialogResult == DialogResult.OK)
+            {
+                //撤销 
+                DataJson.totalList OldList = FileMesege.cmds.getListInfos();
+                info.opt = dc.Opt;
+                info.optName = dc.Ver;
+                LogicInfo.content = JsonConvert.SerializeObject(logicConditionContent);
+                DataJson.totalList NewList = FileMesege.cmds.getListInfos();
+                FileMesege.cmds.DoNewCommand(NewList, OldList);
+                return dc.Ver + " " + dc.Opt;
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// 修改DGV表中 延时时间
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="time">延时时间</param>
+        private void dgvDelay2(int id, Double time)
+        {
+            //找到当前操作tab对象
+            DataJson.logicsInfo LogicInfo = DataListHelper.findLogicInfoByTabName(FileMesege.LogicTabName);
+            if (LogicInfo == null)
+            {
+                return;
+            }
+            //把tab对象JSON字符串转换为 操作对象
+            DataJson.ConditionContent logicConditionContent = JsonConvert.DeserializeObject<DataJson.ConditionContent>(LogicInfo.content);
+
+            DataJson.sceneInfo info = DataListHelper.getLogicSceneInfo(id, logicConditionContent.trueDo);
+            if (info == null)
+            {
+                return;
+            }
+            //撤销 
+            DataJson.totalList OldList = FileMesege.cmds.getListInfos();
+            info.delay = Convert.ToInt32(time * 10);
+            LogicInfo.content = JsonConvert.SerializeObject(logicConditionContent);
+            DataJson.totalList NewList = FileMesege.cmds.getListInfos();
+            FileMesege.cmds.DoNewCommand(NewList, OldList);
+
+        }
+
+        private void dgvDel2(int id)
+        {
+            //找到当前操作tab对象
+            DataJson.logicsInfo LogicInfo = DataListHelper.findLogicInfoByTabName(FileMesege.LogicTabName);
+            if (LogicInfo == null || LogicInfo.content == null)
+            {
+                return;
+            }
+            //把tab对象JSON字符串转换为 操作对象
+            DataJson.ConditionContent logicConditionContent = JsonConvert.DeserializeObject<DataJson.ConditionContent>(LogicInfo.content);
+
+            DataJson.sceneInfo info = DataListHelper.getLogicSceneInfo(id, logicConditionContent.trueDo);
+            if (info == null)
+            {
+                return;
+            }
+            //撤销 
+            DataJson.totalList OldList = FileMesege.cmds.getListInfos();
+            if (!logicConditionContent.trueDo.Remove(info))
+            {
+                return;
+            }
+            //排序
+            sceneInfoSort(logicConditionContent.trueDo);
+            LogicInfo.content = JsonConvert.SerializeObject(logicConditionContent);
+            DataJson.totalList NewList = FileMesege.cmds.getListInfos();
+            FileMesege.cmds.DoNewCommand(NewList, OldList);
+            dgvAddItem(dataGridView2, logicConditionContent.trueDo, ip);
+        }
+
+        private void sceneInfoSort(List<DataJson.sceneInfo> infos)
+        {
+            int i = 1;
+            foreach (DataJson.sceneInfo info in infos)
+            {
+                info.id = i;
+                i++;
+            }
+        }
+
+        #endregion
+
+
+        #region falseDo 不符合执行
+        private void dataGridView3_MouseDown(object sender, MouseEventArgs e)
+        {
+            DgvMesege.endDataViewCurrent(dataGridView3, e.Y, e.X);
+        }
+
+        private void doubleClickTimer3_Tick(object sender, EventArgs e)
+        {
+            try
+            {
+                milliseconds += 100;
+                // 第二次鼠标点击超出双击事件间隔
+                if (milliseconds >= SystemInformation.DoubleClickTime)
+                {
+                    doubleClickTimer3.Stop();
+
+
+                    if (isDoubleClick)
+                    {
+
+                        if (rowCount >= 0 && columnCount >= 0)
+                        {
+
+                            int id = Convert.ToInt32(dataGridView3.Rows[rowCount].Cells[0].Value);
+                            switch (dataGridView3.Columns[columnCount].Name)
+                            {
+                                case "address3":
+                                    //改变地址
+                                    string obj = "";
+                                    if (dataGridView3.Rows[rowCount].Cells[2].Value != null)
+                                    {
+                                        //原地址
+                                        obj = dataGridView3.Rows[rowCount].Cells[2].Value.ToString();
+                                    }
+                                    string objType = dataGridView3.Rows[rowCount].Cells[1].EditedFormattedValue.ToString();
+                                    //赋值List 并添加地域 名字
+                                    dgvAddress3(id, objType, obj);
+                                    
+                                    break;
+                                case "operation3":
+                                    
+                                    //操作
+                                    string info = dgvOperation3(id, dataGridView3.Rows[rowCount].Cells[1].EditedFormattedValue.ToString());
+                                    if (!string.IsNullOrEmpty(info))
+                                    {
+                                        dataGridView3.Rows[rowCount].Cells[5].Value = info;
+                                    }
+                                    break;
+                                case "del3":
+                                    //删除表
+                                    dgvDel3(id);
+
+                                    break;
+                                case "num3":
+                                    //设置对象跳转
+                                    /*
+                                    DataJson.PointInfo point = dgvJumpSet(id);
+                                    if (point != null)
+                                    {
+                                        //传输到form窗口控制
+                                        //AppTxtShow("传输到主窗口"+DateTime.Now);
+                                        jumpSetInfo(point);
+                                    }*/
+                                    break;
+                                default: break;
+                            }
+                            try
+                            {
+                                //更改内容回自动刷新到第一行
+                                dataGridView3.CurrentCell = dataGridView3.Rows[rowCount].Cells[columnCount];
+                            }
+                            catch
+                            {
+                                if (dataGridView3.Rows.Count > 0)
+                                {
+                                    dataGridView3.CurrentCell = dataGridView3.Rows[dataGridView3.Rows.Count - 1].Cells[columnCount];
+                                }
+
+                            }
+                        }
+                    }
+                    else
+                    {
+                        //处理单击事件操作
+                        if (rowCount >= 0 && columnCount >= 0)
+                        {
+                            //DGV的行号
+                            int id = Convert.ToInt32(dataGridView3.Rows[rowCount].Cells[0].Value);
+                            switch (dataGridView3.Columns[columnCount].Name)
+                            {
+                                case "address3":
+                                    //setTitleAddress();
+                                    break;
+                                case "section3":
+                                    //setTitleAddress();
+                                    break;
+                                case "name3":
+                                    //setTitleAddress();
+                                    break;
+                                case "del3":
+                                    //删除表
+                                    dgvDel3(id);
+
+                                    break;
+                                default: break;
+
+
+
+                            }
+                            try
+                            {
+                                //更改内容回自动刷新到第一行
+                                dataGridView3.CurrentCell = dataGridView3.Rows[rowCount].Cells[columnCount];
+                            }
+                            catch
+                            {
+                                if (dataGridView3.Rows.Count > 0)
+                                {
+                                    dataGridView3.CurrentCell = dataGridView3.Rows[dataGridView3.Rows.Count - 1].Cells[columnCount];
+                                }
+
+                            }
+                        }
+                    }
+
+                    isFirstClick = true;
+                    isDoubleClick = false;
+                    milliseconds = 0;
+                }
+            }
+            catch (Exception ex) { MessageBox.Show(ex + "临时调试错误信息"); }
+        }
+
+        private void dataGridView3_DataError(object sender, DataGridViewDataErrorEventArgs e)
+        {
+
+        }
+
+        private void dataGridView3_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            CellMouseDown(dataGridView3, e, doubleClickTimer3);
+        }
+
+        private void dataGridView3_CellMouseMove(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            CellMouseMove(dataGridView3, e);
+        }
+
+        private void dataGridView3_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
+        {
+
+        }
+
+        private void dataGridView3_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                //选中行号
+                int rowNum = e.RowIndex;
+                //选中列号
+                int columnNum = e.ColumnIndex;
+                if (rowNum >= 0 && columnNum >= 0)
+                {
+                    switch (dataGridView3.Columns[columnNum].Name)
+                    {
+                        case "delay3":
+                            if (Validator.IsNumber(dataGridView3.Rows[rowNum].Cells[6].Value.ToString()))
+                            {
+                                //改变延时
+                                dgvDelay3(Convert.ToInt32(dataGridView3.Rows[rowNum].Cells[0].Value), Convert.ToDouble(dataGridView3.Rows[rowNum].Cells[6].Value));
+                            }
+                            else
+                            {
+                                AppTxtShow("延时格式错误，请正确填写！");
+                            }
+                            break;
+
+                        default: break;
+                    }
+                }
+            }
+            catch (Exception ex) { MessageBox.Show(ex + "临时调试错误信息"); }
+        }
+
+        /// <summary>
+        /// 获取新的地址 刷新地域 名字
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="objType">当前对象的类型</param>
+        /// <param name="obj">当前对象的地址值</param>
+        /// <returns></returns>
+        private void dgvAddress3(int id, string objType, string obj)
+        {
+            LogicAddress dc = new LogicAddress();
+            //把窗口向屏幕中间刷新
+            dc.StartPosition = FormStartPosition.CenterParent;
+            //把当前选仲树状图网关传递到info里面 给新建设备框网关使用  
+            //dc.Obj = obj;
+            dc.ObjType = objType;
+            dc.Obj = obj;
+            dc.ShowDialog();
+            if (dc.DialogResult == DialogResult.OK)
+            {
+                //找到当前操作tab对象
+                DataJson.logicsInfo LogicInfo = DataListHelper.findLogicInfoByTabName(FileMesege.LogicTabName);
+                if (LogicInfo == null)
+                {
+                    return;
+                }
+                //把tab对象JSON字符串转换为 操作对象
+                DataJson.ConditionContent logicConditionContent = JsonConvert.DeserializeObject<DataJson.ConditionContent>(LogicInfo.content);
+
+                DataJson.sceneInfo info = DataListHelper.getLogicSceneInfo(id, logicConditionContent.falseDo);
+                if (info == null)
+                {
+                    return;
+                }
+                //撤销 
+                DataJson.totalList OldList = FileMesege.cmds.getListInfos();
+                info.address = dc.Obj;
+                if (dc.RtType == "15.0_LocalVariable")
+                {
+                    info.pid = 0;
+                    if (info.type != "15.0_LocalVariable")
+                    {
+                        info.type = "15.0_LocalVariable";
+                        info.opt = "";
+                        info.optName = "";
+                    }
+
+                }
+                else
+                {
+                    //按照地址查找type的类型 只限制于设备
+                    string type = IniHelper.findIniTypesByAddress(ip, info.address).Split(',')[0];
+                    if (string.IsNullOrEmpty(type))
+                    {
+                        type = dc.RtType;
+
+                    }
+                    //区域加名称
+                    DataJson.PointInfo point = DataListHelper.findPointByType_address("", info.address, ip);
+                    if (point != null)
+                    {
+                        info.pid = point.pid;
+                        if (info.type != point.type)
+                        {
+                            info.opt = "";
+                            info.optName = "";
+                            info.type = point.type;
+                        }
+                    }
+                    else
+                    {
+                        //搜索一次dev表 
+                        info.pid = 0;
+                        if (info.type != type)
+                        {
+                            info.opt = "";
+                            info.optName = "";
+                            info.type = type;
+                        }
+
+                    }
+
+
+                }
+                LogicInfo.content = JsonConvert.SerializeObject(logicConditionContent);
+                DataJson.totalList NewList = FileMesege.cmds.getListInfos();
+                FileMesege.cmds.DoNewCommand(NewList, OldList);
+                dgvAddItem(dataGridView3, logicConditionContent.falseDo, ip);
+            }//ok
+
+
+        }
+
+
+        /// <summary>
+        /// DGV表 操作栏 返回操作信息
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="type">类型</param>
+        /// <returns></returns>
+        private string dgvOperation3(int id, string type)
+        {
+
+
+            LogicConcrol dc = new LogicConcrol();
+            //找到当前操作tab对象
+            DataJson.logicsInfo LogicInfo = DataListHelper.findLogicInfoByTabName(FileMesege.LogicTabName);
+            if (LogicInfo == null)
+            {
+                return null;
+            }
+            //把tab对象JSON字符串转换为 操作对象
+            DataJson.ConditionContent logicConditionContent = JsonConvert.DeserializeObject<DataJson.ConditionContent>(LogicInfo.content);
+
+            DataJson.sceneInfo info = DataListHelper.getLogicSceneInfo(id, logicConditionContent.falseDo);
+            if (info == null)
+            {
+                return null;
+            }
+
+            dc.Point = DataListHelper.findPointByPid(info.pid);
+            //把窗口向屏幕中间刷新
+            dc.StartPosition = FormStartPosition.CenterParent;
+            dc.ObjType = type;
+            dc.Opt = info.opt;
+            dc.Ver = info.optName;
+            dc.ShowDialog();
+            if (dc.DialogResult == DialogResult.OK)
+            {
+                //撤销 
+                DataJson.totalList OldList = FileMesege.cmds.getListInfos();
+                info.opt = dc.Opt;
+                info.optName = dc.Ver;
+                LogicInfo.content = JsonConvert.SerializeObject(logicConditionContent);
+                DataJson.totalList NewList = FileMesege.cmds.getListInfos();
+                FileMesege.cmds.DoNewCommand(NewList, OldList);
+                return dc.Ver + " " + dc.Opt;
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+
+        /// <summary>
+        /// 修改DGV表中 延时时间
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="time">延时时间</param>
+        private void dgvDelay3(int id, Double time)
+        {
+            //找到当前操作tab对象
+            DataJson.logicsInfo LogicInfo = DataListHelper.findLogicInfoByTabName(FileMesege.LogicTabName);
+            if (LogicInfo == null)
+            {
+                return;
+            }
+            //把tab对象JSON字符串转换为 操作对象
+            DataJson.ConditionContent logicConditionContent = JsonConvert.DeserializeObject<DataJson.ConditionContent>(LogicInfo.content);
+
+            DataJson.sceneInfo info = DataListHelper.getLogicSceneInfo(id, logicConditionContent.falseDo);
+            if (info == null)
+            {
+                return;
+            }
+            //撤销 
+            DataJson.totalList OldList = FileMesege.cmds.getListInfos();
+            info.delay = Convert.ToInt32(time * 10);
+            LogicInfo.content = JsonConvert.SerializeObject(logicConditionContent);
+            DataJson.totalList NewList = FileMesege.cmds.getListInfos();
+            FileMesege.cmds.DoNewCommand(NewList, OldList);
+
+        }
+
+        private void dgvDel3(int id)
+        {
+            //找到当前操作tab对象
+            DataJson.logicsInfo LogicInfo = DataListHelper.findLogicInfoByTabName(FileMesege.LogicTabName);
+            if (LogicInfo == null || LogicInfo.content == null)
+            {
+                return;
+            }
+            //把tab对象JSON字符串转换为 操作对象
+            DataJson.ConditionContent logicConditionContent = JsonConvert.DeserializeObject<DataJson.ConditionContent>(LogicInfo.content);
+
+            DataJson.sceneInfo info = DataListHelper.getLogicSceneInfo(id, logicConditionContent.falseDo);
+            if (info == null)
+            {
+                return;
+            }
+            //撤销 
+            DataJson.totalList OldList = FileMesege.cmds.getListInfos();
+            if (!logicConditionContent.falseDo.Remove(info))
+            {
+                return;
+            }
+            //排序
+            sceneInfoSort(logicConditionContent.falseDo);
+            LogicInfo.content = JsonConvert.SerializeObject(logicConditionContent);
+            DataJson.totalList NewList = FileMesege.cmds.getListInfos();
+            FileMesege.cmds.DoNewCommand(NewList, OldList);
+            dgvAddItem(dataGridView3, logicConditionContent.falseDo, ip);
+        }
+
+        #endregion
+
+        #endregion
+
+
+    }//class
 }

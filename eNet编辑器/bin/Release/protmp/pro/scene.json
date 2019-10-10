@@ -143,47 +143,11 @@
                 "sceneInfo": [
                     {
                         "id": 1,
-                        "pid": 981095365,
-                        "type": "1.0_switch",
-                        "address": "FE000103",
-                        "opt": "00000001",
-                        "optName": "开启",
-                        "delay": 0
-                    },
-                    {
-                        "id": 2,
-                        "pid": 957448493,
-                        "type": "1.0_switch",
-                        "address": "FE000106",
-                        "opt": "00000001",
-                        "optName": "开启",
-                        "delay": 0
-                    },
-                    {
-                        "id": 3,
-                        "pid": 699402942,
-                        "type": "1.0_switch",
-                        "address": "FE000205",
-                        "opt": "00000001",
-                        "optName": "开启",
-                        "delay": 0
-                    },
-                    {
-                        "id": 4,
-                        "pid": 154827821,
-                        "type": "2.0_dimmer",
-                        "address": "FE000601",
-                        "opt": "10000F64",
-                        "optName": "调光",
-                        "delay": 0
-                    },
-                    {
-                        "id": 5,
-                        "pid": 233563720,
-                        "type": "1.0_switch",
-                        "address": "FE000101",
-                        "opt": "00000001",
-                        "optName": "开启",
+                        "pid": 319694443,
+                        "type": "4.0_scene",
+                        "address": "FE100003",
+                        "opt": "00000005",
+                        "optName": "场景删除",
                         "delay": 0
                     }
                 ],
@@ -199,7 +163,7 @@
                         "address": "FE000103",
                         "opt": "00000000",
                         "optName": "关闭",
-                        "delay": 0
+                        "delay": 50
                     },
                     {
                         "id": 2,

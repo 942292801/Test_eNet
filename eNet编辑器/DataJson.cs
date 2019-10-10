@@ -359,6 +359,13 @@ namespace eNet编辑器
             public string opt { get; set; }
             public string optName { get; set; }
             public int delay { get; set; }
+            public sceneInfo()
+            {
+                delay = 0;
+                pid = 0;
+                id = 0;
+            }
+
         }
         #endregion
 
@@ -523,12 +530,20 @@ namespace eNet编辑器
         {
             public int id { get; set; }
             public int a { get; set; }
-            public string objAddress { get; set; }
+            public int objPid { get; set; }
             public int b { get; set; }
             public string operation { get; set; }
             public int c { get; set; }
-            public string compareAddress { get; set; }
+            public int compareobjPid { get; set; }
             public int d { get; set; }
+            public ConditionInfo()
+            {
+                a = 1;
+                b = 0;
+                c = 1;
+                d = 0;
+
+            }
         }
         #endregion
 
