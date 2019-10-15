@@ -925,6 +925,11 @@ namespace eNet编辑器.DgvView
         #endregion
 
         #region 表格新增一行回调
+        private void btnIfAdd_Click(object sender, EventArgs e)
+        {
+            dgvAddRow();
+        }
+
         public void dgvAddRow()
         {
 
@@ -1364,10 +1369,7 @@ namespace eNet编辑器.DgvView
         }
         #endregion
 
-        private void btnIfAdd_Click(object sender, EventArgs e)
-        {
-            dgvAddRow();
-        }
+        
 
 
     }///class

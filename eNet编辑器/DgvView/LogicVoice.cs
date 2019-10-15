@@ -10,6 +10,7 @@ using System.IO;
 using eNet编辑器.AddForm;
 using Newtonsoft.Json;
 using System.Reflection;
+using eNet编辑器.LogicForm;
 
 namespace eNet编辑器.DgvView
 {
@@ -324,7 +325,7 @@ namespace eNet编辑器.DgvView
                     }
 
                     dataGridView.Rows[dex].Cells[0].Value = info.id;
-                    dataGridView.Rows[dex].Cells[1].Value = info.id;
+                    dataGridView.Rows[dex].Cells[1].Value = info.result;
                     dataGridView.Rows[dex].Cells[3].Value = DgvMesege.addressTransform(info.address);
                     dataGridView.Rows[dex].Cells[2].Value = IniHelper.findTypesIniNamebyType(info.type);
                     dataGridView.Rows[dex].Cells[6].Value = (info.optName + " " + info.opt).Trim();
@@ -376,6 +377,50 @@ namespace eNet编辑器.DgvView
             FileMesege.cmds.DoNewCommand(NewList, OldList);
             AppTxtShow("设置执行模式成功");
         }
+        #endregion
+
+        #region 表达式
+        private void txtVoice_DoubleClick(object sender, EventArgs e)
+        {
+            Voice dc = new Voice();
+            DataJson.logicsInfo LogicInfo = DataListHelper.findLogicInfoByTabName(FileMesege.LogicTabName);
+            if (LogicInfo == null)
+            {
+                return;
+            }
+            DataJson.VoiceContent logicVoiceContent;
+            if (LogicInfo.content == null)
+            {
+                logicVoiceContent = new DataJson.VoiceContent();
+            }
+            else
+            {
+                logicVoiceContent = JsonConvert.DeserializeObject<DataJson.VoiceContent>(LogicInfo.content);
+
+            }
+            //把窗口向屏幕中间刷新
+            dc.StartPosition = FormStartPosition.CenterParent;
+            dc.Result = txtVoice.Text;
+            dc.ShowDialog();
+            if (dc.DialogResult == DialogResult.OK)
+            {
+                //撤销 
+                DataJson.totalList OldList = FileMesege.cmds.getListInfos();
+                logicVoiceContent.voice = dc.ReturnResult;
+                LogicInfo.content = JsonConvert.SerializeObject(logicVoiceContent);
+                DataJson.totalList NewList = FileMesege.cmds.getListInfos();
+                FileMesege.cmds.DoNewCommand(NewList, OldList);
+                AppTxtShow("设置表达式成功");
+                txtVoice.Text = dc.ReturnResult;
+            }
+        }
+
+        private void txtVoice_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
+           
+        }
+
         #endregion
 
         #region 更改赋值地址
@@ -920,6 +965,16 @@ namespace eNet编辑器.DgvView
                                     dgvDel2(id);
 
                                     break;
+                                case "result":
+                                    //结果
+                                    info = dgvResult(id, dataGridView2.Rows[rowCount].Cells[1].EditedFormattedValue.ToString());
+                                    if (!string.IsNullOrEmpty(info))
+                                    {
+                                        dataGridView2.Rows[rowCount].Cells[1].Value = info;
+                                    }
+                                  
+
+                                    break;
                                 case "num2":
                                     //设置对象跳转
                                     /*
@@ -1053,6 +1108,42 @@ namespace eNet编辑器.DgvView
             catch (Exception ex) { MessageBox.Show(ex + "临时调试错误信息"); }
         }
 
+        private string dgvResult(int id, string result)
+        {
+            LogicResult dc = new LogicResult();
+            //找到当前操作tab对象
+            DataJson.logicsInfo LogicInfo = DataListHelper.findLogicInfoByTabName(FileMesege.LogicTabName);
+            if (LogicInfo == null)
+            {
+                return null;
+            }
+            //把tab对象JSON字符串转换为 操作对象
+            DataJson.VoiceContent logicVoiceContent = JsonConvert.DeserializeObject<DataJson.VoiceContent>(LogicInfo.content);
+
+            DataJson.VoiceIfItem info = DataListHelper.getLogicVoiceIfItem(id, logicVoiceContent.voiceIfItem);
+            if (info == null)
+            {
+                return null;
+            }
+            dc.StartPosition = FormStartPosition.CenterParent;
+            dc.Result = result;
+            dc.ShowDialog();
+            if (dc.DialogResult == DialogResult.OK)
+            {
+                //撤销 
+                DataJson.totalList OldList = FileMesege.cmds.getListInfos();
+                info.result = dc.ReturnResult;
+                LogicInfo.content = JsonConvert.SerializeObject(logicVoiceContent);
+                DataJson.totalList NewList = FileMesege.cmds.getListInfos();
+                FileMesege.cmds.DoNewCommand(NewList, OldList);
+                return dc.ReturnResult;
+            }
+            else
+            {
+                return null;
+            }
+        }
+
 
         /// <summary>
         /// 获取新的地址 刷新地域 名字
@@ -1154,8 +1245,6 @@ namespace eNet编辑器.DgvView
         /// <returns></returns>
         private string dgvOperation2(int id, string type)
         {
-
-
             LogicConcrol dc = new LogicConcrol();
             //找到当前操作tab对象
             DataJson.logicsInfo LogicInfo = DataListHelper.findLogicInfoByTabName(FileMesege.LogicTabName);
@@ -1270,6 +1359,173 @@ namespace eNet编辑器.DgvView
 
   
         #endregion
+
+        #region Del按键处理
+        private void dataGridView2_KeyUp(object sender, KeyEventArgs e)
+        {
+            try
+            {
+                if (e.KeyData == Keys.Delete)
+                {
+
+                    DelKeyOpt2();
+
+                }
+            }
+            catch (Exception ex) { MessageBox.Show(ex + "临时调试错误信息"); }
+        }
+
+        //删除操作
+        private void DelKeyOpt2()
+        {
+            try
+            {
+                //找到当前操作tab对象
+                DataJson.logicsInfo LogicInfo = DataListHelper.findLogicInfoByTabName(FileMesege.LogicTabName);
+                if (LogicInfo == null)
+                {
+                    return;
+                }
+                //把tab对象JSON字符串转换为 操作对象
+                DataJson.VoiceContent logicVoiceContent = JsonConvert.DeserializeObject<DataJson.VoiceContent>(LogicInfo.content);
+
+                
+                bool ischange = false;
+                //撤销
+                DataJson.totalList OldList = FileMesege.cmds.getListInfos();
+                for (int i = 0; i < dataGridView2.SelectedCells.Count; i++)
+                {
+                    //获取当前选中单元格的列序号
+                    int colIndex = dataGridView2.SelectedCells[i].ColumnIndex;
+
+                    //当粘贴选中单元格为操作
+                    if (colIndex == 6)
+                    {
+                        int id = Convert.ToInt32(dataGridView2.Rows[dataGridView2.SelectedCells[i].RowIndex].Cells[0].Value);
+         
+                        DataJson.VoiceIfItem info = DataListHelper.getLogicVoiceIfItem(id, logicVoiceContent.voiceIfItem);
+                        if (info == null)
+                        {
+                            continue;
+                        }
+
+                        ischange = true;
+                        info.opt = "";
+                        info.optName = "";
+                        dataGridView2.Rows[dataGridView2.SelectedCells[i].RowIndex].Cells[6].Value = null;
+
+                    }//if
+                }
+                if (ischange)
+                {
+                    LogicInfo.content = JsonConvert.SerializeObject(logicVoiceContent);
+                    DataJson.totalList NewList = FileMesege.cmds.getListInfos();
+                    FileMesege.cmds.DoNewCommand(NewList, OldList);
+                }
+            }//try
+            catch
+            {
+
+            }
+
+        }
+        #endregion
+
+
+        #region 复制 粘贴
+        /// <summary>
+        /// 复制点位的对象 与参数 
+        /// </summary>
+        public void copyData()
+        {
+            //获取当前选中单元格的列序号
+            int colIndex = dataGridView2.CurrentRow.Cells.IndexOf(dataGridView2.CurrentCell);
+            //当粘贴选中单元格为操作
+            if (colIndex == 6)
+            {
+                int id = Convert.ToInt32(dataGridView2.CurrentRow.Cells[0].Value);
+                //找到当前操作tab对象
+                DataJson.logicsInfo LogicInfo = DataListHelper.findLogicInfoByTabName(FileMesege.LogicTabName);
+                if (LogicInfo == null)
+                {
+                    return;
+                }
+                //把tab对象JSON字符串转换为 操作对象
+                DataJson.VoiceContent logicVoiceContent = JsonConvert.DeserializeObject<DataJson.VoiceContent>(LogicInfo.content);
+
+                DataJson.VoiceIfItem info = DataListHelper.getLogicVoiceIfItem(id, logicVoiceContent.voiceIfItem);
+                if (info == null)
+                {
+                    return;
+                }
+                //获取sceneInfo对象表中对应ID号info对象
+                FileMesege.copyLogicScene = info;
+
+            }
+
+
+        }
+
+        /// <summary>
+        /// 粘贴点位的对象与参数
+        /// </summary>
+        public void pasteData()
+        {
+            try
+            {
+                DataJson.logicsInfo LogicInfo = DataListHelper.findLogicInfoByTabName(FileMesege.LogicTabName);
+                if (LogicInfo == null)
+                {
+                    return;
+                }
+                //把tab对象JSON字符串转换为 操作对象
+                DataJson.VoiceContent logicVoiceContent = JsonConvert.DeserializeObject<DataJson.VoiceContent>(LogicInfo.content);
+                bool ischange = false;
+                //撤销
+                DataJson.totalList OldList = FileMesege.cmds.getListInfos();
+                for (int i = 0; i < dataGridView2.SelectedCells.Count; i++)
+                {
+                    //获取当前选中单元格的列序号
+                    int colIndex = dataGridView2.SelectedCells[i].ColumnIndex;
+
+                    //当粘贴选中单元格为操作
+                    if (colIndex == 6)
+                    {
+                        int id = Convert.ToInt32(dataGridView2.Rows[dataGridView2.SelectedCells[i].RowIndex].Cells[0].Value);
+                        DataJson.VoiceIfItem info = DataListHelper.getLogicVoiceIfItem(id, logicVoiceContent.voiceIfItem);
+                        if (info == null)
+                        {
+                            return;
+                        }
+
+                        if (FileMesege.copyLogicScene.type == "" || info.type == "" || info.type != FileMesege.copyLogicScene.type)
+                        {
+                            continue;
+                        }
+                        ischange = true;
+                        info.opt = FileMesege.copyLogicScene.opt;
+                        info.optName = FileMesege.copyLogicScene.optName;
+
+                        dataGridView2.Rows[dataGridView2.SelectedCells[i].RowIndex].Cells[6].Value = (info.optName + " " + info.opt).Trim();
+                    }//if
+                }
+                if (ischange)
+                {
+                    LogicInfo.content = JsonConvert.SerializeObject(logicVoiceContent);
+                    DataJson.totalList NewList = FileMesege.cmds.getListInfos();
+                    FileMesege.cmds.DoNewCommand(NewList, OldList);
+                }
+
+            }//try
+            catch
+            {
+
+            }
+
+
+        }
+        #endregion
+
 
 
     }

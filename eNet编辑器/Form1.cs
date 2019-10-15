@@ -991,11 +991,11 @@ namespace eNet编辑器
                         }
                         else if (dgvlogic.logicType == DgvLogic.LogicType.Condition)
                         {
-
+                            dgvlogic.logicCondition.copyData();
                         }
                         else if (dgvlogic.logicType == DgvLogic.LogicType.Voice)
                         {
-
+                            dgvlogic.logicVoice.copyData();
                         }
                         break;
                     case "sensor":
@@ -1044,11 +1044,11 @@ namespace eNet编辑器
                         }
                         else if (dgvlogic.logicType == DgvLogic.LogicType.Condition)
                         {
-
+                            dgvlogic.logicCondition.pasteData();
                         }
                         else if (dgvlogic.logicType == DgvLogic.LogicType.Voice)
-                        { 
-                        
+                        {
+                            dgvlogic.logicVoice.pasteData();
                         }
                         
                         break;

@@ -2021,6 +2021,292 @@ namespace eNet编辑器.DgvView
 
         #endregion
 
+   
+
+        #endregion
+
+        #region Del按键处理
+        private void dataGridView2_KeyUp(object sender, KeyEventArgs e)
+        {
+            try
+            {
+                if (e.KeyData == Keys.Delete)
+                {
+
+                    DelKeyOpt2();
+
+                }
+            }
+            catch (Exception ex) { MessageBox.Show(ex + "临时调试错误信息"); }
+        }
+
+        //删除操作
+        private void DelKeyOpt2()
+        {
+            try
+            {
+                //找到当前操作tab对象
+                DataJson.logicsInfo LogicInfo = DataListHelper.findLogicInfoByTabName(FileMesege.LogicTabName);
+                if (LogicInfo == null)
+                {
+                    return;
+                }
+                //把tab对象JSON字符串转换为 操作对象
+                DataJson.ConditionContent logicConditionContent = JsonConvert.DeserializeObject<DataJson.ConditionContent>(LogicInfo.content);
+
+                bool ischange = false;
+                //撤销
+                DataJson.totalList OldList = FileMesege.cmds.getListInfos();
+                for (int i = 0; i < dataGridView2.SelectedCells.Count; i++)
+                {
+                    //获取当前选中单元格的列序号
+                    int colIndex = dataGridView2.SelectedCells[i].ColumnIndex;
+
+                    //当粘贴选中单元格为操作
+                    if (colIndex == 5)
+                    {
+                        int id = Convert.ToInt32(dataGridView2.Rows[dataGridView2.SelectedCells[i].RowIndex].Cells[0].Value);
+                        DataJson.sceneInfo info = DataListHelper.getLogicSceneInfo(id, logicConditionContent.trueDo);
+                        if (info == null)
+                        {
+                            continue;
+                        }
+      
+
+                        ischange = true;
+                        info.opt = "";
+                        info.optName = "";
+                        dataGridView2.Rows[dataGridView2.SelectedCells[i].RowIndex].Cells[5].Value = null;
+
+                    }//if
+                }
+                if (ischange)
+                {
+                    LogicInfo.content = JsonConvert.SerializeObject(logicConditionContent);
+                    DataJson.totalList NewList = FileMesege.cmds.getListInfos();
+                    FileMesege.cmds.DoNewCommand(NewList, OldList);
+                }
+            }//try
+            catch
+            {
+
+            }
+
+        }
+
+        private void dataGridView3_KeyUp(object sender, KeyEventArgs e)
+        {
+            try
+            {
+                if (e.KeyData == Keys.Delete)
+                {
+
+                    DelKeyOpt3();
+
+                }
+            }
+            catch (Exception ex) { MessageBox.Show(ex + "临时调试错误信息"); }
+        }
+
+        //删除操作
+        private void DelKeyOpt3()
+        {
+            try
+            {
+                //找到当前操作tab对象
+                DataJson.logicsInfo LogicInfo = DataListHelper.findLogicInfoByTabName(FileMesege.LogicTabName);
+                if (LogicInfo == null)
+                {
+                    return;
+                }
+                //把tab对象JSON字符串转换为 操作对象
+                DataJson.ConditionContent logicConditionContent = JsonConvert.DeserializeObject<DataJson.ConditionContent>(LogicInfo.content);
+
+                bool ischange = false;
+                //撤销
+                DataJson.totalList OldList = FileMesege.cmds.getListInfos();
+                for (int i = 0; i < dataGridView3.SelectedCells.Count; i++)
+                {
+                    //获取当前选中单元格的列序号
+                    int colIndex = dataGridView3.SelectedCells[i].ColumnIndex;
+
+                    //当粘贴选中单元格为操作
+                    if (colIndex == 5)
+                    {
+                        int id = Convert.ToInt32(dataGridView3.Rows[dataGridView3.SelectedCells[i].RowIndex].Cells[0].Value);
+                        DataJson.sceneInfo info = DataListHelper.getLogicSceneInfo(id, logicConditionContent.falseDo);
+                        if (info == null)
+                        {
+                            continue;
+                        }
+          
+
+                        ischange = true;
+                        info.opt = "";
+                        info.optName = "";
+                        dataGridView3.Rows[dataGridView3.SelectedCells[i].RowIndex].Cells[5].Value = null;
+
+                    }//if
+                }
+                if (ischange)
+                {
+                    LogicInfo.content = JsonConvert.SerializeObject(logicConditionContent);
+                    DataJson.totalList NewList = FileMesege.cmds.getListInfos();
+                    FileMesege.cmds.DoNewCommand(NewList, OldList);
+                }
+            }//try
+            catch
+            {
+
+            }
+
+        }
+
+        #endregion
+
+        #region 复制 粘贴
+        /// <summary>
+        /// 复制点位的对象 与参数 
+        /// </summary>
+        public void copyData()
+        {
+            try
+            {
+                if (dataGridView2.Focused)
+                {
+                    copy(dataGridView2, true);
+                }
+                else if (dataGridView3.Focused)
+                {
+                    copy(dataGridView3, false);
+                }
+            }
+            catch { }
+            
+            
+
+        }
+
+        private void copy(DataGridView dataGridView,bool flag)
+        {
+            //获取当前选中单元格的列序号
+            int colIndex = dataGridView.CurrentRow.Cells.IndexOf(dataGridView.CurrentCell);
+            //当粘贴选中单元格为操作
+            if (colIndex == 5)
+            {
+                int id = Convert.ToInt32(dataGridView.CurrentRow.Cells[0].Value);
+                //找到当前操作tab对象
+                DataJson.logicsInfo LogicInfo = DataListHelper.findLogicInfoByTabName(FileMesege.LogicTabName);
+                if (LogicInfo == null)
+                {
+                    return;
+                }
+                //把tab对象JSON字符串转换为 操作对象
+                DataJson.ConditionContent logicConditionContent = JsonConvert.DeserializeObject<DataJson.ConditionContent>(LogicInfo.content);
+                DataJson.sceneInfo info = null;
+                if (flag)
+                {
+                    info = DataListHelper.getLogicSceneInfo(id, logicConditionContent.trueDo);
+                    if (info == null)
+                    {
+                        return;
+                    }
+                }
+                else
+                {
+                    info = DataListHelper.getLogicSceneInfo(id, logicConditionContent.falseDo);
+                    if (info == null)
+                    {
+                        return;
+                    }
+                }
+                //获取sceneInfo对象表中对应ID号info对象
+                FileMesege.copyLogicScene = info;
+
+            }
+        }
+
+        /// <summary>
+        /// 粘贴点位的对象与参数
+        /// </summary>
+        public void pasteData()
+        {
+            
+            try
+            {
+                if (dataGridView2.Focused)
+                {
+                    past(dataGridView2, true);
+                }
+                else if (dataGridView3.Focused)
+                {
+                    past(dataGridView3, false);
+                }
+
+            }//try
+            catch
+            {
+
+            }
+        }
+
+        private void past(DataGridView dataGridView, bool flag)
+        {
+            DataJson.logicsInfo LogicInfo = DataListHelper.findLogicInfoByTabName(FileMesege.LogicTabName);
+            if (LogicInfo == null)
+            {
+                return;
+            }
+            //把tab对象JSON字符串转换为 操作对象
+            DataJson.ConditionContent logicConditionContent = JsonConvert.DeserializeObject<DataJson.ConditionContent>(LogicInfo.content);
+            bool ischange = false;
+            //撤销
+            DataJson.totalList OldList = FileMesege.cmds.getListInfos();
+            for (int i = 0; i < dataGridView.SelectedCells.Count; i++)
+            {
+                //获取当前选中单元格的列序号
+                int colIndex = dataGridView.SelectedCells[i].ColumnIndex;
+
+                //当粘贴选中单元格为操作
+                if (colIndex == 5)
+                {
+                    int id = Convert.ToInt32(dataGridView.Rows[dataGridView.SelectedCells[i].RowIndex].Cells[0].Value);
+                    DataJson.sceneInfo info = null;
+                    if (flag)
+                    {
+                        info = DataListHelper.getLogicSceneInfo(id, logicConditionContent.trueDo);
+                        if (info == null)
+                        {
+                            return;
+                        }
+                    }
+                    else
+                    {
+                        info = DataListHelper.getLogicSceneInfo(id, logicConditionContent.falseDo);
+                        if (info == null)
+                        {
+                            return;
+                        }
+                    }
+                    if (FileMesege.copyLogicScene.type == "" || info.type == "" || info.type != FileMesege.copyLogicScene.type)
+                    {
+                        continue;
+                    }
+                    ischange = true;
+                    info.opt = FileMesege.copyLogicScene.opt;
+                    info.optName = FileMesege.copyLogicScene.optName;
+
+                    dataGridView.Rows[dataGridView.SelectedCells[i].RowIndex].Cells[5].Value = (info.optName + " " + info.opt).Trim();
+                }//if
+            }
+            if (ischange)
+            {
+                LogicInfo.content = JsonConvert.SerializeObject(logicConditionContent);
+                DataJson.totalList NewList = FileMesege.cmds.getListInfos();
+                FileMesege.cmds.DoNewCommand(NewList, OldList);
+            }
+        }
+
         #endregion
 
 

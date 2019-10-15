@@ -67,6 +67,7 @@
             // plInfoTitle
             // 
             this.plInfoTitle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.plInfoTitle.Controls.Add(this.btnAdd);
             this.plInfoTitle.Controls.Add(this.flowLayoutPanel1);
             this.plInfoTitle.Controls.Add(this.symbolBox1);
             this.plInfoTitle.Controls.Add(this.label1);
@@ -80,13 +81,12 @@
             // flowLayoutPanel1
             // 
             this.flowLayoutPanel1.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.flowLayoutPanel1.Controls.Add(this.btnAdd);
             this.flowLayoutPanel1.Controls.Add(this.btnDown);
             this.flowLayoutPanel1.Controls.Add(this.btnRead);
             this.flowLayoutPanel1.Controls.Add(this.btnClear);
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(952, 0);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(980, 0);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(109, 25);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(81, 25);
             this.flowLayoutPanel1.TabIndex = 15;
             // 
             // btnAdd
@@ -100,7 +100,7 @@
             this.btnAdd.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None;
             this.btnAdd.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnAdd.HoverImage")));
             this.btnAdd.Image = ((System.Drawing.Image)(resources.GetObject("btnAdd.Image")));
-            this.btnAdd.Location = new System.Drawing.Point(6, 6);
+            this.btnAdd.Location = new System.Drawing.Point(956, 4);
             this.btnAdd.Margin = new System.Windows.Forms.Padding(6);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(15, 15);
@@ -121,7 +121,7 @@
             this.btnDown.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None;
             this.btnDown.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnDown.HoverImage")));
             this.btnDown.Image = ((System.Drawing.Image)(resources.GetObject("btnDown.Image")));
-            this.btnDown.Location = new System.Drawing.Point(33, 6);
+            this.btnDown.Location = new System.Drawing.Point(6, 6);
             this.btnDown.Margin = new System.Windows.Forms.Padding(6);
             this.btnDown.Name = "btnDown";
             this.btnDown.Size = new System.Drawing.Size(15, 15);
@@ -141,7 +141,7 @@
             this.btnRead.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None;
             this.btnRead.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnRead.HoverImage")));
             this.btnRead.Image = ((System.Drawing.Image)(resources.GetObject("btnRead.Image")));
-            this.btnRead.Location = new System.Drawing.Point(60, 6);
+            this.btnRead.Location = new System.Drawing.Point(33, 6);
             this.btnRead.Margin = new System.Windows.Forms.Padding(6);
             this.btnRead.Name = "btnRead";
             this.btnRead.Size = new System.Drawing.Size(15, 15);
@@ -161,13 +161,14 @@
             this.btnClear.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None;
             this.btnClear.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnClear.HoverImage")));
             this.btnClear.Image = ((System.Drawing.Image)(resources.GetObject("btnClear.Image")));
-            this.btnClear.Location = new System.Drawing.Point(87, 6);
+            this.btnClear.Location = new System.Drawing.Point(60, 6);
             this.btnClear.Margin = new System.Windows.Forms.Padding(6);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(15, 15);
             this.btnClear.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnClear.TabIndex = 5;
             this.btnClear.Tooltip = "清空";
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
             // symbolBox1
             // 

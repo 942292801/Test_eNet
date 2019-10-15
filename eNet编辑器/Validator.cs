@@ -658,6 +658,20 @@ namespace eNet编辑器
         }
 
         /// <summary>
+        /// 提取字符串 去掉数字
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        public static string GetStr(string input)
+        {
+
+            //获取数字
+            string str = Regex.Replace(input, @"[\d]*", "");
+            return str;
+        }
+
+
+        /// <summary>
         /// 提取IP地址
         /// </summary>
         /// <param name="input"></param>
@@ -693,6 +707,8 @@ namespace eNet编辑器
             }
             return null;
         }
+
+
 
         #endregion
 

@@ -250,6 +250,18 @@
     <Compile Include="DgvView\LogicVoice.Designer.cs">
       <DependentUpon>LogicVoice.cs</DependentUpon>
     </Compile>
+    <Compile Include="LogicForm\Voice.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LogicForm\Voice.Designer.cs">
+      <DependentUpon>Voice.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LogicForm\LogicResult.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LogicForm\LogicResult.Designer.cs">
+      <DependentUpon>LogicResult.cs</DependentUpon>
+    </Compile>
     <Compile Include="LogicForm\LogicAddress.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -598,6 +610,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DgvView\LogicVoice.resx">
       <DependentUpon>LogicVoice.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LogicForm\Voice.resx">
+      <DependentUpon>Voice.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LogicForm\LogicResult.resx">
+      <DependentUpon>LogicResult.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LogicForm\LogicAddress.resx">
       <DependentUpon>LogicAddress.cs</DependentUpon>

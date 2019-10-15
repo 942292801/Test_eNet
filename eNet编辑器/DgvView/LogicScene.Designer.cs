@@ -294,7 +294,7 @@
             this.btnIfAdd.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None;
             this.btnIfAdd.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnIfAdd.HoverImage")));
             this.btnIfAdd.Image = ((System.Drawing.Image)(resources.GetObject("btnIfAdd.Image")));
-            this.btnIfAdd.Location = new System.Drawing.Point(96, 4);
+            this.btnIfAdd.Location = new System.Drawing.Point(91, 3);
             this.btnIfAdd.Margin = new System.Windows.Forms.Padding(6);
             this.btnIfAdd.Name = "btnIfAdd";
             this.btnIfAdd.Size = new System.Drawing.Size(15, 15);

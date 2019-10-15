@@ -88,6 +88,7 @@ namespace eNet编辑器.DgvView
             superTabControl1.Dock = DockStyle.Fill;
             superTabControl1.CloseButtonOnTabsVisible = true;
             superTabControl1.MouseClick +=new MouseEventHandler(superTabControl1_MouseClick);
+            superTabControl1.TabStripMouseUp +=new EventHandler<MouseEventArgs>(superTabControl1_TabStripMouseUp);
             superTabControl1.SelectedTabChanged += new EventHandler<SuperTabStripSelectedTabChangedEventArgs>(superTabControl1_SelectedTabChanged);
             superTabControl1.ControlBox.MenuBox.PopupOpen += new DotNetBarManager.PopupOpenEventHandler(superTabControl1_ControlBox_MenuBox_PopupOpen);
             superTabControl1.TabItemClose += new EventHandler<SuperTabStripTabItemCloseEventArgs>(superTabControl1_TabItemClose);
@@ -95,6 +96,8 @@ namespace eNet编辑器.DgvView
 
            
         }
+
+       
 
         /// <summary>
         /// 创建窗口对象  在删除的时候会把对象释放掉
@@ -174,11 +177,10 @@ namespace eNet编辑器.DgvView
                 }
 
             }
-            //superTabControl1.Show(); 解决黑闪失败
             try
             {
                 //恢复上次选中
-                superTabControl1.SelectedTabIndex = FileMesege.TmpSelectedTabIndex;
+                superTabControl1.SelectedTabIndex = FileMesege.LogicSelectedTabIndex;
             }
             catch
             {
@@ -188,7 +190,11 @@ namespace eNet编辑器.DgvView
 
         }
 
-
+        //用于恢复上一次选中框
+        private void superTabControl1_TabStripMouseUp(object sender, MouseEventArgs e)
+        {
+            FileMesege.LogicSelectedTabIndex = superTabControl1.SelectedTabIndex;
+        }
         
 
         /// <summary>
@@ -222,10 +228,7 @@ namespace eNet编辑器.DgvView
             DataJson.logicsInfo logicInfo = DataListHelper.findLogicInfoByTabName(tab.Text);
             //记录当前tab表的信息
             FileMesege.LogicTabName = tab.Text;
-            if (superTabControl1.SelectedTabIndex >0)
-            {
-                FileMesege.TmpSelectedTabIndex = superTabControl1.SelectedTabIndex;
-            }
+           
             if (logicInfo == null)
             {
                 return;
@@ -277,8 +280,6 @@ namespace eNet编辑器.DgvView
             }
         }
         #endregion
-
-      
 
 
         #region 表格控件整体操作 MenuBox_TabMenuOpen
@@ -570,7 +571,7 @@ namespace eNet编辑器.DgvView
         #endregion
 
 
-
+        #region 添加 下载 加载 清空
         private void btnAdd_Click(object sender, EventArgs e)
         {
             SuperTabItem tab = superTabControl1.SelectedTab;
@@ -598,7 +599,24 @@ namespace eNet编辑器.DgvView
 
         }
 
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            SuperTabItem tab = superTabControl1.SelectedTab;
+            //撤销
+            DataJson.totalList OldList = FileMesege.cmds.getListInfos();
+            //删除逻辑框信息内容
+            DataJson.logicsInfo logicInfo = DataListHelper.findLogicInfoByTabName(tab.Text);
+            if (logicInfo == null)
+            {
+                return;
+            }
+            logicInfo.content = "";
+            DataJson.totalList NewList = FileMesege.cmds.getListInfos();
+            FileMesege.cmds.DoNewCommand(NewList, OldList);
+            tabSelectAddPanel(logicInfo);
+        }
 
+        #endregion
 
 
     }
