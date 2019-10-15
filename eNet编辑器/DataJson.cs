@@ -531,10 +531,14 @@ namespace eNet编辑器
             public int id { get; set; }
             public int a { get; set; }
             public int objPid { get; set; }
+            public string objAddress { get; set; }
+            public string objType { get; set; }
             public int b { get; set; }
             public string operation { get; set; }
             public int c { get; set; }
-            public int compareobjPid { get; set; }
+            public int comparePid { get; set; }
+            public string compareobjAddress { get; set; }
+            public string compareobjType { get; set; }
             public int d { get; set; }
             public ConditionInfo()
             {
@@ -551,15 +555,28 @@ namespace eNet编辑器
         [Serializable]
         public class VoiceContent
         {
-            public int id { get; set; }
+            public string voice { get; set; }
+            public string voiceAssignment { get; set; }
+            public List<VoiceItem> voiceItem = new List<VoiceItem>();
+            public List<VoiceIfItem> voiceIfItem = new List<VoiceIfItem>();
+        }
+
+        [Serializable]
+        public class VoiceItem
+        {
+            public string letter { get; set; }
             public int pid { get; set; }
             public string type { get; set; }
             public string address { get; set; }
-            public string opt { get; set; }
-            public string optName { get; set; }
-            public int delay { get; set; }
-
         }
+
+        [Serializable]
+        public class VoiceIfItem : sceneInfo
+        {
+            public string result { get; set; }
+    
+        }
+
         #endregion
 
         #endregion

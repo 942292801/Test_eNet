@@ -262,6 +262,12 @@
     <Compile Include="LogicForm\LogicConcrol.Designer.cs">
       <DependentUpon>LogicConcrol.cs</DependentUpon>
     </Compile>
+    <Compile Include="LogicForm\LogicVoiceAddress.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LogicForm\LogicVoiceAddress.Designer.cs">
+      <DependentUpon>LogicVoiceAddress.cs</DependentUpon>
+    </Compile>
     <Compile Include="Validator.cs" />
     <Compile Include="Tools\astronomicalClock.cs">
       <SubType>Form</SubType>
@@ -598,6 +604,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="LogicForm\LogicConcrol.resx">
       <DependentUpon>LogicConcrol.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LogicForm\LogicVoiceAddress.resx">
+      <DependentUpon>LogicVoiceAddress.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Tools\astronomicalClock.resx">
       <DependentUpon>astronomicalClock.cs</DependentUpon>

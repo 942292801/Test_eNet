@@ -42,6 +42,9 @@ namespace eNet编辑器.DgvView
 
         }
 
+
+       
+
         public DgvLogic()
         {
             
@@ -84,6 +87,7 @@ namespace eNet编辑器.DgvView
 
             superTabControl1.Dock = DockStyle.Fill;
             superTabControl1.CloseButtonOnTabsVisible = true;
+            superTabControl1.MouseClick +=new MouseEventHandler(superTabControl1_MouseClick);
             superTabControl1.SelectedTabChanged += new EventHandler<SuperTabStripSelectedTabChangedEventArgs>(superTabControl1_SelectedTabChanged);
             superTabControl1.ControlBox.MenuBox.PopupOpen += new DotNetBarManager.PopupOpenEventHandler(superTabControl1_ControlBox_MenuBox_PopupOpen);
             superTabControl1.TabItemClose += new EventHandler<SuperTabStripTabItemCloseEventArgs>(superTabControl1_TabItemClose);
@@ -171,8 +175,16 @@ namespace eNet编辑器.DgvView
 
             }
             //superTabControl1.Show(); 解决黑闪失败
-            //选中第一个
-            superTabControl1.SelectedTabIndex = 0;
+            try
+            {
+                //恢复上次选中
+                superTabControl1.SelectedTabIndex = FileMesege.TmpSelectedTabIndex;
+            }
+            catch
+            {
+                //选中第一个
+                superTabControl1.SelectedTabIndex = 0;
+            }
 
         }
 
@@ -210,15 +222,23 @@ namespace eNet编辑器.DgvView
             DataJson.logicsInfo logicInfo = DataListHelper.findLogicInfoByTabName(tab.Text);
             //记录当前tab表的信息
             FileMesege.LogicTabName = tab.Text;
+            if (superTabControl1.SelectedTabIndex >0)
+            {
+                FileMesege.TmpSelectedTabIndex = superTabControl1.SelectedTabIndex;
+            }
             if (logicInfo == null)
             {
                 return;
             }
 
             tabSelectAddPanel(logicInfo);
-
+            
         }
 
+        private void superTabControl1_MouseClick(object sender, MouseEventArgs e)
+        {
+            
+        }
 
         /// <summary>
         /// 根据LogicInfo.modelType类型加载框和内容
@@ -250,6 +270,7 @@ namespace eNet编辑器.DgvView
                     //显示表达式处理
                     superTabControl1.SelectedTab.AttachedControl.Controls.Add(logicVoice);
                     //加载信息内容 
+                    logicVoice.formInfoIni();
                     break;
                 default:
                     break;

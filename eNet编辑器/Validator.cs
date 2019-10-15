@@ -678,6 +678,22 @@ namespace eNet编辑器
            
         }
 
+        /// <summary>
+        /// 获取小括号里面内容 否则返回Null
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        public static string GetParenthesis(string input)
+        {
+            Regex reg = new Regex(@"(?is)(?<=\()[^\)]+(?=\))");
+            MatchCollection mc = reg.Matches(input);
+            foreach (Match m in mc)
+            {
+                return m.Value;
+            }
+            return null;
+        }
+
         #endregion
 
 

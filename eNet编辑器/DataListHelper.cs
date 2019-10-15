@@ -737,7 +737,7 @@ namespace eNet编辑器
         }
 
         //添加 section --- name---type 格式 或者section --- name
-        private static string dealSection(DataJson.PointInfo eq)
+        public static string dealSection(DataJson.PointInfo eq)
         {
             string tmp = eq.area1;
             if (!string.IsNullOrEmpty(eq.area2))
@@ -1752,6 +1752,49 @@ namespace eNet编辑器
                     if (conditionInfo.id == id)
                     {
                         return conditionInfo;
+                    }
+                }
+            }
+            return null;
+
+        }
+
+        /// <summary>
+        /// 根据DGV表中的ID号ABCDEF...  获取该行的对象
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public static DataJson.VoiceItem getLogicVoiceItem(string id, List<DataJson.VoiceItem> list)
+        {
+            if (list != null)
+            {
+                foreach (DataJson.VoiceItem voiceItem in list)
+                {
+                    if (voiceItem.letter == id)
+                    {
+                        return voiceItem;
+                    }
+                }
+            }
+            return null;
+
+        }
+
+
+        /// <summary>
+        /// 根据DGV表中的ID号获取该行的对象
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public static DataJson.VoiceIfItem getLogicVoiceIfItem(int id, List<DataJson.VoiceIfItem> list)
+        {
+            if (list != null)
+            {
+                foreach (DataJson.VoiceIfItem voiceIfItem in list)
+                {
+                    if (voiceIfItem.id == id)
+                    {
+                        return voiceIfItem;
                     }
                 }
             }
