@@ -930,6 +930,7 @@ namespace eNet编辑器.DgvView
                                 sb.num = tmInfo.id;
                                 sb.obj = tmInfo.address;
                                 sb.data = tmInfo.opt;
+                                sb.optname = tmInfo.optName;
                                 sb.hour = hour;
                                 sb.min = min;
                                 string[] ymd = dates[i].Split('/');
@@ -964,9 +965,10 @@ namespace eNet编辑器.DgvView
                             for (int i = 0; i < dates.Length; i++)
                             {
                                 DataJson.Timernumber sb = new DataJson.Timernumber();
-                                //sb.num = tmInfo.id;
+                                sb.num = tmInfo.id;
                                 sb.obj = tmInfo.address;
                                 sb.data = tmInfo.opt;
+                                sb.optname = tmInfo.optName;
                                 sb.hour = hour;
                                 sb.min = min;
                                 sb.year = 255;

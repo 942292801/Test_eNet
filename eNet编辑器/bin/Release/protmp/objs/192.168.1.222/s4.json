@@ -1,0 +1,34 @@
+{
+    "action": [
+        {
+            "num": 1,
+            "obj": "FE000305",
+            "val": "00000000",
+            "optname": "关闭",
+            "delay": 0
+        },
+        {
+            "num": 2,
+            "obj": "FE000306",
+            "val": "00000000",
+            "optname": "关闭",
+            "delay": 0
+        },
+        {
+            "num": 3,
+            "obj": "FE000307",
+            "val": "00000000",
+            "optname": "关闭",
+            "delay": 0
+        },
+        {
+            "num": 4,
+            "obj": "FE000308",
+            "val": "00000000",
+            "optname": "关闭",
+            "delay": 0
+        }
+    ],
+    "type": "scene",
+    "describe": "create by system"
+}

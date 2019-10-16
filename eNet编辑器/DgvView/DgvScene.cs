@@ -416,6 +416,7 @@ namespace eNet编辑器.DgvView
                             sb.num = info.id;
                             sb.obj = info.address;
                             sb.val = info.opt;
+                            sb.optname = info.optName;
                             sb.delay = info.delay;
                             sn.action.Add(sb);
                             

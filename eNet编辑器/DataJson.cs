@@ -54,6 +54,7 @@ namespace eNet编辑器
             public int num { get; set; }
             public string obj { get; set; }
             public string val { get; set; }
+            public string optname { get; set; }
             public int delay { get; set; }
 
         }
@@ -86,7 +87,7 @@ namespace eNet编辑器
             public int min { get; set; }
             public string obj { get; set; }
             public string data { get; set; }
-
+            public string optname { get; set; }
         }
         #endregion
 
@@ -122,6 +123,7 @@ namespace eNet编辑器
             public string @case { get; set; }
             public string obj { get; set; }
             public string data { get; set; }
+            public string optname { get; set; }
             public int delay { get; set; }
         }
 

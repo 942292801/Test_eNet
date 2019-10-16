@@ -82,7 +82,7 @@ namespace eNet编辑器
         public static List<DataJson.Device> DeviceList;//工程设备的保存记录
         public static List<DataJson.Area1> AreaList;//
         public static DataJson.Point PointList;//Title表的设备信息
-        public static DataJson.Serial serialList;//命名在线设备文件
+        public static DataJson.Serial serialList;//命名在线设备型号及版本序列号数据文件
         public static List<DataJson.Scene> sceneList;//场景
         public static List<DataJson.Timer> timerList;
         public static List<DataJson.Panel> panelList;//面板
@@ -522,7 +522,7 @@ namespace eNet编辑器
             }
         }
 
-
+        #region 点位 位置 设备列表
         /// <summary>
         /// 在point.json总文件中抽取该网关ip的信息并写进 所有点位信息 成功：返回json字符串 失败：返回""
         /// </summary>
@@ -673,7 +673,9 @@ namespace eNet编辑器
                 return "";
             }
         }
+        #endregion
 
+        #region 场景
         /// <summary>
         /// 把scene.json该ip地址的下的场景 全部抽离 产生s1.json,s2.json,sX.json
         /// </summary>
@@ -713,6 +715,7 @@ namespace eNet编辑器
                         sb.num = info.id;
                         sb.obj = info.address;
                         sb.val = info.opt;
+                        sb.optname = info.optName;
                         sb.delay = info.delay;
                         sn.action.Add(sb);
 
@@ -732,7 +735,9 @@ namespace eNet编辑器
                 return false;
             }
         }
+        #endregion
 
+        #region 定时
         /// <summary>
         /// 把timer.json该ip地址的下的定时 全部抽离 产生t1.json,t2.json,tX.json
         /// </summary>
@@ -808,6 +813,7 @@ namespace eNet编辑器
                                 sb.num = tmInfo.id;
                                 sb.obj = tmInfo.address;
                                 sb.data = tmInfo.opt;
+                                sb.optname = tmInfo.optName;
                                 sb.hour = hour;
                                 sb.min = min;
                                 string[] ymd = dates[i].Split('/');
@@ -845,6 +851,7 @@ namespace eNet编辑器
                                 sb.num = tmInfo.id;
                                 sb.obj = tmInfo.address;
                                 sb.data = tmInfo.opt;
+                                sb.optname = tmInfo.optName;
                                 sb.hour = hour;
                                 sb.min = min;
                                 sb.year = 255;
@@ -871,8 +878,9 @@ namespace eNet编辑器
                 return false;
             }
         }
+        #endregion
 
-
+        #region 面板
         /// <summary>
         /// 把panel.json该ip地址的下的面板 全部抽离 产生k1.json,k2.json,kX.json 1-999号
         /// </summary>
@@ -972,7 +980,9 @@ namespace eNet编辑器
                 default: return 255;
             }
         }
+        #endregion
 
+        #region 感应
         /// <summary>
         /// 把sensor.json该ip地址的下的感应 全部抽离 产生k1001.json,k1002.json,kX.json 1001-1999号
         /// </summary>
@@ -1039,12 +1049,64 @@ namespace eNet编辑器
                 return false;
             }
         }
+        #endregion
 
-
+        #region 逻辑
         public bool getLogicJsonByIp(string ip)
         {
-            return false;
+            try
+            {
+                DataJson.Logic lg = DataListHelper.getLogicList(ip);
+
+                //获取该IP下的所有逻辑
+                if (lg == null || lg.logics.Count == 0)
+                {
+                    return true;
+                }
+                foreach (DataJson.logics lgs in lg.logics)
+                {
+                    //逻辑的信息为空
+                    if (lgs.logicsInfo.Count == 0)
+                    {
+                        continue;
+                    }
+                    /*
+                    DataJson.Sn sn = new DataJson.Sn();
+                    sn.action = new List<DataJson.Scenenumber>();
+                    //把有效的对象操作 放到SN对象里面
+                    foreach (DataJson.sceneInfo info in scs.sceneInfo)
+                    {
+                        //确保有信息
+                        if (string.IsNullOrEmpty(info.opt))
+                        {
+
+                            continue;
+                        }
+                        DataJson.Scenenumber sb = new DataJson.Scenenumber();
+
+                        sb.num = info.id;
+                        sb.obj = info.address;
+                        sb.val = info.opt;
+                        sb.delay = info.delay;
+                        sn.action.Add(sb);
+
+                    }
+                    if (sn.action.Count > 0)
+                    {
+                        File.WriteAllText(string.Format("{0}\\objs\\{1}\\s{2}.json", TmpFilePath, ip, scs.id), ConvertJsonString(JsonConvert.SerializeObject(sn)));
+                    }
+                    */
+
+                }
+                return true;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.ToString());
+                return false;
+            }
         }
+        #endregion
 
         #endregion
 
