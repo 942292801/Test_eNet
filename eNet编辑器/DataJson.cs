@@ -125,6 +125,10 @@ namespace eNet编辑器
             public string data { get; set; }
             public string optname { get; set; }
             public int delay { get; set; }
+            public Condition()
+            {
+                delay = 0;
+            }
         }
 
         #endregion

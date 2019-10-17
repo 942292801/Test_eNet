@@ -523,11 +523,6 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form1.en-US.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Form1.en-US.resx</DependentUpon>
-    </Compile>
     <Compile Include="IniConfig.cs" />
     <Compile Include="IniHelper.cs" />
     <Compile Include="Program.cs" />
@@ -742,14 +737,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DgvView\DgvVar.resx">
       <DependentUpon>DgvVar.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Form1.en-US.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Form1.en-US.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Form1.en.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>

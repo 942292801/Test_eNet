@@ -29,10 +29,11 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
+            this.PlMeustrip = new Infragistics.Win.Misc.UltraPanel();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.文件ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.新建项目ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -80,10 +81,6 @@
             this.帮助ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem24 = new System.Windows.Forms.ToolStripSeparator();
             this.关于软件ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.LbTitleName = new System.Windows.Forms.Label();
-            this.cbType = new System.Windows.Forms.ComboBox();
-            this.PlMeustrip = new Infragistics.Win.Misc.UltraPanel();
             this.PlToolstrip = new Infragistics.Win.Misc.UltraPanel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.btnOpen = new DevComponents.DotNetBar.ButtonX();
@@ -125,6 +122,9 @@
             this.tabLogic = new DevComponents.DotNetBar.TabItem(this.components);
             this.tabControlPanel6 = new DevComponents.DotNetBar.TabControlPanel();
             this.tabSensor = new DevComponents.DotNetBar.TabItem(this.components);
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.LbTitleName = new System.Windows.Forms.Label();
+            this.cbType = new System.Windows.Forms.ComboBox();
             this.plMain = new System.Windows.Forms.Panel();
             this.plCentent = new System.Windows.Forms.Panel();
             this.plDgv = new System.Windows.Forms.Panel();
@@ -146,9 +146,9 @@
             this.symbolBox2 = new DevComponents.DotNetBar.Controls.SymbolBox();
             this.plLeft = new System.Windows.Forms.Panel();
             this.ngenInstaller1 = new NgenInstaller.NgenInstaller();
-            this.menuStrip1.SuspendLayout();
             this.PlMeustrip.ClientArea.SuspendLayout();
             this.PlMeustrip.SuspendLayout();
+            this.menuStrip1.SuspendLayout();
             this.PlToolstrip.ClientArea.SuspendLayout();
             this.PlToolstrip.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
@@ -164,6 +164,17 @@
             this.plTitle.SuspendLayout();
             this.plTitleCbbox.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // PlMeustrip
+            // 
+            appearance1.BackColor = System.Drawing.Color.DarkGray;
+            this.PlMeustrip.Appearance = appearance1;
+            // 
+            // PlMeustrip.ClientArea
+            // 
+            this.PlMeustrip.ClientArea.Controls.Add(this.menuStrip1);
+            resources.ApplyResources(this.PlMeustrip, "PlMeustrip");
+            this.PlMeustrip.Name = "PlMeustrip";
             // 
             // menuStrip1
             // 
@@ -477,34 +488,6 @@
             this.关于软件ToolStripMenuItem.Name = "关于软件ToolStripMenuItem";
             resources.ApplyResources(this.关于软件ToolStripMenuItem, "关于软件ToolStripMenuItem");
             this.关于软件ToolStripMenuItem.Click += new System.EventHandler(this.关于软件ToolStripMenuItem_Click);
-            // 
-            // timer1
-            // 
-            this.timer1.Interval = 3000;
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
-            // LbTitleName
-            // 
-            resources.ApplyResources(this.LbTitleName, "LbTitleName");
-            this.LbTitleName.Name = "LbTitleName";
-            // 
-            // cbType
-            // 
-            resources.ApplyResources(this.cbType, "cbType");
-            this.cbType.FormattingEnabled = true;
-            this.cbType.Name = "cbType";
-            this.cbType.SelectedIndexChanged += new System.EventHandler(this.cbType_SelectedIndexChanged);
-            // 
-            // PlMeustrip
-            // 
-            appearance1.BackColor = System.Drawing.Color.DarkGray;
-            this.PlMeustrip.Appearance = appearance1;
-            // 
-            // PlMeustrip.ClientArea
-            // 
-            this.PlMeustrip.ClientArea.Controls.Add(this.menuStrip1);
-            resources.ApplyResources(this.PlMeustrip, "PlMeustrip");
-            this.PlMeustrip.Name = "PlMeustrip";
             // 
             // PlToolstrip
             // 
@@ -1039,6 +1022,23 @@
             resources.ApplyResources(this.tabSensor, "tabSensor");
             this.tabSensor.Click += new System.EventHandler(this.tabSensor_Click);
             // 
+            // timer1
+            // 
+            this.timer1.Interval = 3000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // LbTitleName
+            // 
+            resources.ApplyResources(this.LbTitleName, "LbTitleName");
+            this.LbTitleName.Name = "LbTitleName";
+            // 
+            // cbType
+            // 
+            resources.ApplyResources(this.cbType, "cbType");
+            this.cbType.FormattingEnabled = true;
+            this.cbType.Name = "cbType";
+            this.cbType.SelectedIndexChanged += new System.EventHandler(this.cbType_SelectedIndexChanged);
+            // 
             // plMain
             // 
             this.plMain.Controls.Add(this.plCentent);
@@ -1214,11 +1214,11 @@
             this.Name = "Form1";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
             this.PlMeustrip.ClientArea.ResumeLayout(false);
             this.PlMeustrip.ClientArea.PerformLayout();
             this.PlMeustrip.ResumeLayout(false);
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.PlToolstrip.ClientArea.ResumeLayout(false);
             this.PlToolstrip.ResumeLayout(false);
             this.flowLayoutPanel1.ResumeLayout(false);

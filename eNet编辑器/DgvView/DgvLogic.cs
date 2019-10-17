@@ -591,7 +591,8 @@ namespace eNet编辑器.DgvView
 
         private void btnDown_Click(object sender, EventArgs e)
         {
-
+            FileMesege fm = new FileMesege();
+            fm.getLogicJsonByIp("192.168.1.222");
         }
 
         private void btnRead_Click(object sender, EventArgs e)
