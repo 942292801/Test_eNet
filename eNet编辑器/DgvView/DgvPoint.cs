@@ -368,6 +368,10 @@ namespace eNet编辑器.DgvView
             DataJson.totalList NewList = FileMesege.cmds.getListInfos();
             FileMesege.cmds.DoNewCommand(NewList, OldList);
             dgvPointAddItemBySection();
+            if (dataGridView1.Rows.Count > 0)
+            {
+                dataGridView1.CurrentCell = dataGridView1.Rows[dataGridView1.Rows.Count - 1].Cells[0];
+            }
         }
 
         /// <summary>

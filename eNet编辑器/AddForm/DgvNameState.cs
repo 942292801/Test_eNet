@@ -126,7 +126,7 @@ namespace eNet编辑器.AddForm
 
 
                     //lbs控件处理
-                    lbs[keyIndex - 1].Text = infos[4];
+                    lbs[keyIndex - 1].Text = infos[4] + "："; 
                     //lbs[keyIndex - 1].ForeColor = Color.Red;
 
                 }
@@ -424,15 +424,7 @@ namespace eNet编辑器.AddForm
 
         #endregion
 
-        private void sld1_DecreaseButtonClick(object sender, EventArgs e)
-        {
-
-        }
-
-        private void sld1_IncreaseButtonClick(object sender, EventArgs e)
-        {
-
-        }
+ 
 
        
 

@@ -431,6 +431,7 @@
             this.btnImport.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnImport.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnImport.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
+            this.btnImport.Enabled = false;
             this.btnImport.FocusCuesEnabled = false;
             this.btnImport.Font = new System.Drawing.Font("黑体", 9F);
             this.btnImport.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None;

@@ -150,8 +150,17 @@ namespace eNet编辑器
         }
 
 
+        #region DGV选中最后一行
+        public static void selectLastCount(DataGridView dataGridView)
+        {
+            if (dataGridView.Rows.Count > 0)
+            {
+                dataGridView.CurrentCell = dataGridView.Rows[dataGridView.Rows.Count - 1].Cells[0];
+            }
+        }
 
-      
+        #endregion
+
 
         #region  判断DGV是否点击空白
 

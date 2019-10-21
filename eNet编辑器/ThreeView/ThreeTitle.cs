@@ -30,7 +30,9 @@ namespace eNet编辑器.ThreeView
         public event Action<string> addPoint;
         //添加虚拟端口
         public event Action<string> addVirtualport;
-
+        public event Action selectLastCountScene;
+        public event Action selectLastCountTimer;
+        public event Action selectLastCountLocalVar;
 
         public ThreeTitle()
         {
@@ -672,7 +674,7 @@ namespace eNet编辑器.ThreeView
                     //添加虚拟端口
                     addVirtualport(keys[FileMesege.cbTypeIndex]);
                 }
-                dgvVirtualportAddItem();
+                //
                 DataJson.totalList NewList = FileMesege.cmds.getListInfos();
                 FileMesege.cmds.DoNewCommand(NewList, OldList);
                     
@@ -683,7 +685,7 @@ namespace eNet编辑器.ThreeView
         }
 
         /// <summary>
-        /// 更新dgv窗口 后续还有添加
+        /// 更新dgv窗口并刷新到新添加的一页 后续还有添加
         /// </summary>
         private void updateDgv()
         {
@@ -698,10 +700,11 @@ namespace eNet编辑器.ThreeView
                     break;
                 case "scene":
                     dgvsceneAddItem();
-      
+                    selectLastCountScene();
                     break;
                 case "timer":
                     dgvtimerAddItem();
+                    selectLastCountTimer();
                     break;
                 case "panel":
                     //dgvPanelAddItem();
@@ -711,6 +714,8 @@ namespace eNet编辑器.ThreeView
                 case "sensor":
                     break;
                 case "virtualport":
+                    dgvVirtualportAddItem();
+                    selectLastCountLocalVar();
                     break;
                 default: break;
             }

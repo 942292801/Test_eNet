@@ -88,15 +88,22 @@ namespace eNet编辑器
         /// <returns></returns>
         public static string HexString2BinString(string hexString)
         {
-            string result = string.Empty;
-            foreach (char c in hexString)
+            try
             {
-                int v = Convert.ToInt32(c.ToString(), 16);
-                int v2 = int.Parse(Convert.ToString(v, 2));
-                // 去掉格式串中的空格，即可去掉每个4位二进制数之间的空格，
-                result += string.Format("{0:d4} ", v2);
+                string result = string.Empty;
+                foreach (char c in hexString)
+                {
+                    int v = Convert.ToInt32(c.ToString(), 16);
+                    int v2 = int.Parse(Convert.ToString(v, 2));
+                    // 去掉格式串中的空格，即可去掉每个4位二进制数之间的空格，
+                    result += string.Format("{0:d4} ", v2);
+                }
+                return result;
             }
-            return result;
+            catch
+            {
+                return null;
+            }
         }
 
         /// <summary>
@@ -158,7 +165,7 @@ namespace eNet编辑器
 
             }
             //再次反转二进制数值 并转换为十进制
-            return Convert.ToInt32(DataChange.Reversal(contentBin), 2).ToString("X");
+            return Convert.ToInt32(DataChange.Reversal(contentBin), 2).ToString("X8");
 
         }
 

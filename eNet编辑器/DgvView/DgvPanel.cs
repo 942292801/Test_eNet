@@ -1626,83 +1626,80 @@ namespace eNet编辑器.DgvView
         /// </summary>
         private void setTitleObjAddress()
         {
-           
-            int colIndex = dataGridView1.SelectedCells[0].ColumnIndex ;
-
-            DataJson.panels pls = DataListHelper.getPanelsInfoListByNode();
-            if (pls == null)
+            try
             {
-                return;
-            }
-            string ip = FileMesege.panelSelectNode.Parent.Text.Split(' ')[0];
-            int id = dataGridView1.CurrentCell.RowIndex;
-            //获取sceneInfo对象表中对应ID号info对象
-            DataJson.panelsInfo plInfo = pls.panelsInfo[id];
-            List<string> section_name = DataListHelper.dealPointInfo(FileMesege.titlePointSection);
-
-            DataJson.PointInfo eq  =  DataListHelper.findPointBySection_name(section_name);
-            if (eq == null)
-            {
-                return;
-            }
-            //撤销
-            DataJson.totalList OldList = FileMesege.cmds.getListInfos();
-         
-            if (eq.type == plInfo.objType)
-            {
-                plInfo.pid = eq.pid;
-        
-                plInfo.objAddress = eq.address;
-                
-                
-                dataGridView1.Rows[id].Cells[2].Value = DgvMesege.addressTransform(plInfo.objAddress);
-                dataGridView1.Rows[id].Cells[4].Value = string.Format("{0} {1} {2} {3}", eq.area1, eq.area2, eq.area3, eq.area4).Trim();//改根据地址从信息里面获取
-                dataGridView1.Rows[id].Cells[5].Value = eq.name;
-                if (eq.address != "FFFFFFFF" && dataGridView1.Rows[id].Cells[0].Value != null)
+                int colIndex = dataGridView1.SelectedCells[0].ColumnIndex;
+                DataJson.panels pls = DataListHelper.getPanelsInfoListByNode();
+                if (pls == null)
                 {
-   
+                    return;
+                }
+                string ip = FileMesege.panelSelectNode.Parent.Text.Split(' ')[0];
+                int id = dataGridView1.CurrentCell.RowIndex;
+                //获取sceneInfo对象表中对应ID号info对象
+                DataJson.panelsInfo plInfo = pls.panelsInfo[id];
+                List<string> section_name = DataListHelper.dealPointInfo(FileMesege.titlePointSection);
+
+                DataJson.PointInfo eq = DataListHelper.findPointBySection_name(section_name);
+                if (eq == null)
+                {
+                    return;
+                }
+                //撤销
+                DataJson.totalList OldList = FileMesege.cmds.getListInfos();
+
+                if (eq.type == plInfo.objType)
+                {
+                    plInfo.pid = eq.pid;
+
+                    plInfo.objAddress = eq.address;
+
+
+                    dataGridView1.Rows[id].Cells[2].Value = DgvMesege.addressTransform(plInfo.objAddress);
+                    dataGridView1.Rows[id].Cells[4].Value = string.Format("{0} {1} {2} {3}", eq.area1, eq.area2, eq.area3, eq.area4).Trim();//改根据地址从信息里面获取
+                    dataGridView1.Rows[id].Cells[5].Value = eq.name;
+                    if (eq.address != "FFFFFFFF" && dataGridView1.Rows[id].Cells[0].Value != null)
+                    {
+
                         plInfo.showAddress = eq.address;
                         plInfo.showMode = "同步";
                         dataGridView1.Rows[id].Cells[7].Value = dataGridView1.Rows[id].Cells[2].Value;
                         dataGridView1.Rows[id].Cells[8].Value = "同步";
-                    
-                    
+
+
+                    }
                 }
-            }
-            else
-            {
-                plInfo.pid = eq.pid;
-
-         
-                plInfo.objAddress = eq.address;
-                
-                plInfo.objType = eq.type;
-                plInfo.opt = 0;
-
-                dataGridView1.Rows[id].Cells[2].Value = DgvMesege.addressTransform(plInfo.objAddress);
-                dataGridView1.Rows[id].Cells[3].Value = IniHelper.findTypesIniNamebyType(plInfo.objType);
-                dataGridView1.Rows[id].Cells[4].Value = string.Format("{0} {1} {2} {3}", eq.area1, eq.area2, eq.area3, eq.area4).Trim();//改根据地址从信息里面获取
-                dataGridView1.Rows[id].Cells[5].Value = eq.name;
-                dataGridView1.Rows[id].Cells[6].Value = updataMode(plInfo.objType, id, plInfo.opt);
-                if (eq.address != "FFFFFFFF" && dataGridView1.Rows[id].Cells[0].Value != null)
+                else
                 {
-                
+                    plInfo.pid = eq.pid;
+
+
+                    plInfo.objAddress = eq.address;
+
+                    plInfo.objType = eq.type;
+                    plInfo.opt = 0;
+
+                    dataGridView1.Rows[id].Cells[2].Value = DgvMesege.addressTransform(plInfo.objAddress);
+                    dataGridView1.Rows[id].Cells[3].Value = IniHelper.findTypesIniNamebyType(plInfo.objType);
+                    dataGridView1.Rows[id].Cells[4].Value = string.Format("{0} {1} {2} {3}", eq.area1, eq.area2, eq.area3, eq.area4).Trim();//改根据地址从信息里面获取
+                    dataGridView1.Rows[id].Cells[5].Value = eq.name;
+                    dataGridView1.Rows[id].Cells[6].Value = updataMode(plInfo.objType, id, plInfo.opt);
+                    if (eq.address != "FFFFFFFF" && dataGridView1.Rows[id].Cells[0].Value != null)
+                    {
+
                         plInfo.showAddress = eq.address;
                         plInfo.showMode = "同步";
                         dataGridView1.Rows[id].Cells[7].Value = dataGridView1.Rows[id].Cells[2].Value;
                         dataGridView1.Rows[id].Cells[8].Value = "同步";
-                    
-                }
-                    
-                            
-            }
-                        
+                    }
 
-       
-                   
-            DataJson.totalList NewList = FileMesege.cmds.getListInfos();
-            FileMesege.cmds.DoNewCommand(NewList, OldList);
-                    
+                }
+                DataJson.totalList NewList = FileMesege.cmds.getListInfos();
+                FileMesege.cmds.DoNewCommand(NewList, OldList);
+            }
+            catch { 
+            
+            }
        
         }
 

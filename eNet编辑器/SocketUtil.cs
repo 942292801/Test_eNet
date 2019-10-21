@@ -48,6 +48,30 @@ namespace eNet编辑器
         }
 
         /// <summary>
+        /// 获取Set;内容;{ip.type.id.port};/r/n 指令
+        /// </summary>
+        /// <param name="content"></param>
+        /// <param name="address"></param>
+        /// <param name="ip"></param>
+        /// <returns></returns>
+        public static string getObjSet(string content, string address, string ip)
+        {
+            try
+            {
+                string ipLast = ip.Split('.')[3];
+                string[] adds = address.Split('.');
+                string type = adds[1];
+                string id = adds[2];
+                string port = adds[3];
+                string msg = string.Format("SET;{0};{{{1}.{2}.{3}.{4}}};\r\n", content, ipLast, type, id, port);
+                return msg;
+            }
+            catch {
+                return "";
+            }
+        }
+
+        /// <summary>
         /// 十进制字符串转换为16进制字符串 前面补0如 9 09 a 0a
         /// </summary>
         /// <param name="PortIP"></param>

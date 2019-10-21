@@ -116,8 +116,13 @@ namespace eNet编辑器.DgvView
             dgvVarAddItem();
             DataJson.totalList NewList = FileMesege.cmds.getListInfos();
             FileMesege.cmds.DoNewCommand(NewList, OldList);
-           
-            
+
+            selectLastCount();
+        }
+
+        public void selectLastCount()
+        {
+            DgvMesege.selectLastCount(dataGridView1);
         }
 
         /// <summary>

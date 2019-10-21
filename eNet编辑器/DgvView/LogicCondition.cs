@@ -398,8 +398,8 @@ namespace eNet编辑器.DgvView
             //新增对象列 加载
             this.dataGridView1.Rows.Clear();
             cbOperation = new DataGridViewComboBoxColumn();
-            /*
-            cbOperation.Items.Add("等于");
+            
+            /*cbOperation.Items.Add("等于");
             cbOperation.Items.Add("大于");
             cbOperation.Items.Add("小于");
             cbOperation.Items.Add("不等于");

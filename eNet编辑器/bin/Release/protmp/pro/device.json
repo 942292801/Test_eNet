@@ -490,13 +490,49 @@
                 "devPortList": [
                     {
                         "portID": 1,
+                        "portType": "1.0_switch",
+                        "portInterface": "Switch",
+                        "portContent": null
+                    },
+                    {
+                        "portID": 2,
+                        "portType": "2.0_dimmer",
+                        "portInterface": "0-10V",
+                        "portContent": null
+                    },
+                    {
+                        "portID": 3,
+                        "portType": "2.1_dimmer",
+                        "portInterface": "0-10V",
+                        "portContent": null
+                    },
+                    {
+                        "portID": 4,
+                        "portType": "7.0_ir",
+                        "portInterface": "红外5",
+                        "portContent": null
+                    },
+                    {
+                        "portID": 5,
                         "portType": "8.0_uart",
-                        "portInterface": "串口",
+                        "portInterface": "串口6",
+                        "portContent": null
+                    },
+                    {
+                        "portID": 6,
+                        "portType": "13.0_RGB",
+                        "portInterface": "调色8",
+                        "portContent": null
+                    },
+                    {
+                        "portID": 7,
+                        "portType": "14.0_data",
+                        "portInterface": "数据9",
                         "portContent": null
                     }
                 ],
                 "id": 12,
-                "device": "ET-RS1000A",
+                "device": "TEST01",
                 "sn": "",
                 "ver": "",
                 "area1": "",

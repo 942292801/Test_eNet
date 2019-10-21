@@ -517,8 +517,15 @@ namespace eNet编辑器
         {
             public int pid { get; set; }
             //public string address { get; set; }
-            public List<sceneInfo> sceneInfo = new List<sceneInfo>();
+            public List<SceneItem> SceneItemInfo = new List<SceneItem>();
         }
+
+        public class SceneItem : sceneInfo
+        {
+            public string state { get; set; }
+
+        }
+
         #endregion
 
         #region 多条件处理

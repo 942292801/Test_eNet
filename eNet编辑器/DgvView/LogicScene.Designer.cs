@@ -29,17 +29,10 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LogicScene));
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.num = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.address = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.section = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.operation = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.state = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.del = new DevComponents.DotNetBar.Controls.DataGridViewButtonXColumn();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnAttr = new DevComponents.DotNetBar.ButtonX();
             this.btnDecid = new DevComponents.DotNetBar.ButtonX();
@@ -53,6 +46,13 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnIfAdd = new DevComponents.DotNetBar.ButtonX();
             this.label3 = new System.Windows.Forms.Label();
+            this.num = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.address = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.section = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.operation = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.state = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.del = new DevComponents.DotNetBar.Controls.DataGridViewButtonXColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel5.SuspendLayout();
@@ -66,14 +66,14 @@
             this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
             this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridView1.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableAlwaysIncludeHeaderText;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.num,
@@ -83,14 +83,14 @@
             this.operation,
             this.state,
             this.del});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(235)))), ((int)(((byte)(248)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(235)))), ((int)(((byte)(248)))));
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.dataGridView1.Location = new System.Drawing.Point(0, 22);
@@ -106,60 +106,6 @@
             this.dataGridView1.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dataGridView1_DataError);
             this.dataGridView1.KeyUp += new System.Windows.Forms.KeyEventHandler(this.dataGridView1_KeyUp);
             this.dataGridView1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.dataGridView1_MouseDown);
-            // 
-            // num
-            // 
-            this.num.HeaderText = "序号";
-            this.num.Name = "num";
-            this.num.ReadOnly = true;
-            this.num.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.num.Width = 60;
-            // 
-            // address
-            // 
-            this.address.HeaderText = "地址";
-            this.address.Name = "address";
-            this.address.ReadOnly = true;
-            // 
-            // section
-            // 
-            this.section.HeaderText = "区域";
-            this.section.Name = "section";
-            this.section.ReadOnly = true;
-            this.section.Width = 160;
-            // 
-            // name
-            // 
-            this.name.HeaderText = "名称";
-            this.name.Name = "name";
-            this.name.ReadOnly = true;
-            this.name.Width = 80;
-            // 
-            // operation
-            // 
-            this.operation.HeaderText = "操作";
-            this.operation.Name = "operation";
-            this.operation.ReadOnly = true;
-            this.operation.Width = 140;
-            // 
-            // state
-            // 
-            this.state.HeaderText = "状态";
-            this.state.Name = "state";
-            this.state.ReadOnly = true;
-            this.state.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.state.Width = 60;
-            // 
-            // del
-            // 
-            this.del.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
-            this.del.HeaderText = "删除";
-            this.del.Name = "del";
-            this.del.ReadOnly = true;
-            this.del.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.del.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.del.Text = null;
-            this.del.Width = 55;
             // 
             // panel1
             // 
@@ -301,6 +247,7 @@
             this.btnIfAdd.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnIfAdd.TabIndex = 40;
             this.btnIfAdd.Tooltip = "增加";
+            this.btnIfAdd.Visible = false;
             this.btnIfAdd.Click += new System.EventHandler(this.btnIfAdd_Click);
             // 
             // label3
@@ -311,6 +258,59 @@
             this.label3.Size = new System.Drawing.Size(68, 17);
             this.label3.TabIndex = 39;
             this.label3.Text = "场景判断：";
+            // 
+            // num
+            // 
+            this.num.HeaderText = "序号";
+            this.num.Name = "num";
+            this.num.ReadOnly = true;
+            this.num.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.num.Width = 60;
+            // 
+            // address
+            // 
+            this.address.HeaderText = "地址";
+            this.address.Name = "address";
+            this.address.ReadOnly = true;
+            // 
+            // section
+            // 
+            this.section.HeaderText = "区域";
+            this.section.Name = "section";
+            this.section.ReadOnly = true;
+            this.section.Width = 160;
+            // 
+            // name
+            // 
+            this.name.HeaderText = "名称";
+            this.name.Name = "name";
+            this.name.ReadOnly = true;
+            this.name.Width = 80;
+            // 
+            // operation
+            // 
+            this.operation.HeaderText = "操作";
+            this.operation.Name = "operation";
+            this.operation.ReadOnly = true;
+            this.operation.Width = 140;
+            // 
+            // state
+            // 
+            this.state.HeaderText = "状态";
+            this.state.Name = "state";
+            this.state.ReadOnly = true;
+            this.state.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // del
+            // 
+            this.del.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
+            this.del.HeaderText = "删除";
+            this.del.Name = "del";
+            this.del.ReadOnly = true;
+            this.del.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.del.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.del.Text = null;
+            this.del.Width = 55;
             // 
             // LogicScene
             // 
@@ -345,6 +345,12 @@
         private System.Windows.Forms.ComboBox cbScene;
         private DevComponents.DotNetBar.ButtonX btnDecid;
         private System.Windows.Forms.Timer doubleClickTimer;
+        private System.Windows.Forms.Timer timer1;
+        private DevComponents.DotNetBar.ButtonX btnAttr;
+        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.Panel panel2;
+        private DevComponents.DotNetBar.ButtonX btnIfAdd;
+        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DataGridViewTextBoxColumn num;
         private System.Windows.Forms.DataGridViewTextBoxColumn address;
         private System.Windows.Forms.DataGridViewTextBoxColumn section;
@@ -352,11 +358,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn operation;
         private System.Windows.Forms.DataGridViewTextBoxColumn state;
         private DevComponents.DotNetBar.Controls.DataGridViewButtonXColumn del;
-        private System.Windows.Forms.Timer timer1;
-        private DevComponents.DotNetBar.ButtonX btnAttr;
-        private System.Windows.Forms.Panel panel5;
-        private System.Windows.Forms.Panel panel2;
-        private DevComponents.DotNetBar.ButtonX btnIfAdd;
-        private System.Windows.Forms.Label label3;
     }
 }

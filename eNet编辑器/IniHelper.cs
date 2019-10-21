@@ -227,6 +227,8 @@ namespace eNet编辑器
                     case "FB":
                       return "虚拟端口";
 
+
+
                     ////////////////////////后期需要补充完整
                     default:
                         return "";
@@ -278,7 +280,8 @@ namespace eNet编辑器
                             }
                         case "40":
                             return "3.0_logic";
- 
+                        case "FA":
+                            return "10.2_io";//虚拟按键250
                         case "FB":
                             return "9.0_virtualport";
                         case "F9":

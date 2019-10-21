@@ -79,6 +79,7 @@ namespace eNet编辑器
         public static DataJson.panelsInfo copyPanel = null;
         public static DataJson.sensorsInfo copySensor = null;
         public static DataJson.sceneInfo copyLogicScene = null;
+        public static DataJson.SceneItem copyLogicSceneItem = null;
 
         public static List<DataJson.Device> DeviceList;//工程设备的保存记录
         public static List<DataJson.Area1> AreaList;//
@@ -1125,7 +1126,7 @@ namespace eNet编辑器
         {
             DataJson.LogicSceneContent logicSceneContent = JsonConvert.DeserializeObject<DataJson.LogicSceneContent>(LogicInfo.content);
             //计算场景数量是50的多小倍
-            int j = (logicSceneContent.sceneInfo.Count - logicSceneContent.sceneInfo.Count % 50) / 50;
+            int j = (logicSceneContent.SceneItemInfo.Count - logicSceneContent.SceneItemInfo.Count % 50) / 50;
             if (j > 0)
             {
                 #region 场景数量超出50的范围
@@ -1141,23 +1142,23 @@ namespace eNet编辑器
                     //填写switch
                     for (int k = i * 50; k < i * 50 + 50; k++)
                     {
-                        if (k >= logicSceneContent.sceneInfo.Count)
+                        if (k >= logicSceneContent.SceneItemInfo.Count)
                         {
                             //超出索引范围退出
                             break;
                         }
                         //确保有信息 
-                        if (string.IsNullOrEmpty(logicSceneContent.sceneInfo[k].opt))
+                        if (string.IsNullOrEmpty(logicSceneContent.SceneItemInfo[k].state))
                         {
                             continue;
                         }
                         if (string.IsNullOrEmpty(total.@switch))
                         {
-                            total.@switch = string.Format("{0}=={1}", logicSceneContent.sceneInfo[k].address, logicSceneContent.sceneInfo[k].opt);
+                            total.@switch = string.Format("({0}=={1})", logicSceneContent.SceneItemInfo[k].address, logicSceneContent.SceneItemInfo[k].state);
                         }
                         else
                         {
-                            total.@switch = string.Format("{0}&&{1}=={2}", total.@switch, logicSceneContent.sceneInfo[k].address, logicSceneContent.sceneInfo[k].opt);
+                            total.@switch = string.Format("{0}&&({1}=={2})", total.@switch, logicSceneContent.SceneItemInfo[k].address, logicSceneContent.SceneItemInfo[k].state);
                         }
                     }
                     string localVarAddress = string.Format("FEF9{0}", ((LogicID-1) * 8 + total.num).ToString("X4"));
@@ -1231,21 +1232,21 @@ namespace eNet编辑器
                 total.attr = LogicInfo.attr;
                 total.modelType = LogicInfo.modelType;
                 //填写switch
-                for (int k = 0; k < logicSceneContent.sceneInfo.Count; k++)
+                for (int k = 0; k < logicSceneContent.SceneItemInfo.Count; k++)
                 {
             
                     //确保有信息 
-                    if (string.IsNullOrEmpty(logicSceneContent.sceneInfo[k].opt))
+                    if (string.IsNullOrEmpty(logicSceneContent.SceneItemInfo[k].state))
                     {
                         continue;
                     }
                     if (string.IsNullOrEmpty(total.@switch))
                     {
-                        total.@switch = string.Format("{0}=={1}", logicSceneContent.sceneInfo[k].address, logicSceneContent.sceneInfo[k].opt);
+                        total.@switch = string.Format("({0}=={1})", logicSceneContent.SceneItemInfo[k].address, logicSceneContent.SceneItemInfo[k].state);
                     }
                     else
                     {
-                        total.@switch = string.Format("{0}&&{1}=={2}", total.@switch, logicSceneContent.sceneInfo[k].address, logicSceneContent.sceneInfo[k].opt);
+                        total.@switch = string.Format("{0}&&({1}=={2})", total.@switch, logicSceneContent.SceneItemInfo[k].address, logicSceneContent.SceneItemInfo[k].state);
                     }
                 }
                 //填写case

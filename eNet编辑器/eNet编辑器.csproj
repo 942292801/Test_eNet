@@ -250,6 +250,12 @@
     <Compile Include="DgvView\LogicVoice.Designer.cs">
       <DependentUpon>LogicVoice.cs</DependentUpon>
     </Compile>
+    <Compile Include="LogicForm\LogicState.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LogicForm\LogicState.Designer.cs">
+      <DependentUpon>LogicState.cs</DependentUpon>
+    </Compile>
     <Compile Include="LogicForm\Voice.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -279,6 +285,11 @@
     </Compile>
     <Compile Include="LogicForm\LogicVoiceAddress.Designer.cs">
       <DependentUpon>LogicVoiceAddress.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Resources.en-US.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.en-US.resx</DependentUpon>
     </Compile>
     <Compile Include="Validator.cs" />
     <Compile Include="Tools\astronomicalClock.cs">
@@ -606,6 +617,12 @@
     <EmbeddedResource Include="DgvView\LogicVoice.resx">
       <DependentUpon>LogicVoice.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Form1.en-US.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LogicForm\LogicState.resx">
+      <DependentUpon>LogicState.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="LogicForm\Voice.resx">
       <DependentUpon>Voice.cs</DependentUpon>
     </EmbeddedResource>
@@ -620,6 +637,13 @@
     </EmbeddedResource>
     <EmbeddedResource Include="LogicForm\LogicVoiceAddress.resx">
       <DependentUpon>LogicVoiceAddress.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.en-US.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.en-US.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tools\astronomicalClock.en-US.resx">
+      <DependentUpon>astronomicalClock.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Tools\astronomicalClock.resx">
       <DependentUpon>astronomicalClock.cs</DependentUpon>

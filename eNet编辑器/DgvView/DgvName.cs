@@ -677,6 +677,22 @@ namespace eNet编辑器.DgvView
                 {
                     //处理双击事件操作
                     dataGridView1.Columns[3].ReadOnly = false;
+                    if (rowCount >= 0 && columnCount >= 0)
+                    {
+                        try
+                        {
+                            
+                            switch (dataGridView1.Columns[columnCount].Name)
+                            {
+                                case "NameState":
+                                 
+                                    //展示状态窗口
+                                    DgvStateShow();
+                                    break;
+                                default: break;
+                            }
+                        }catch (Exception ex) { MessageBox.Show(ex + "临时调试错误信息"); }
+                    }
                 }
                 else
                 {

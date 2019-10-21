@@ -836,11 +836,16 @@ namespace eNet编辑器.DgvView
                 FileMesege.cmds.DoNewCommand(NewList, OldList);
                 //重新刷新
                 TimerAddItem();
+                DgvMesege.selectLastCount(dataGridView1);  
             }
             catch (Exception ex) { MessageBox.Show(ex + "临时调试错误信息"); }
         }
 
-        
+
+        public void selectLastCount()
+        {
+            DgvMesege.selectLastCount(dataGridView1);  
+        }
 
         //清空
         private void btnClear_Click(object sender, EventArgs e)

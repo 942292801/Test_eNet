@@ -266,6 +266,7 @@
             this.buttonX1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.buttonX1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.buttonX1.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
+            this.buttonX1.Enabled = false;
             this.buttonX1.FocusCuesEnabled = false;
             this.buttonX1.Font = new System.Drawing.Font("黑体", 9F);
             this.buttonX1.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None;

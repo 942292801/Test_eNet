@@ -86,8 +86,6 @@
             this.sld1.Value = 100;
             this.sld1.Visible = false;
             this.sld1.ValueChanged += new System.EventHandler(this.sld1_ValueChanged);
-            this.sld1.IncreaseButtonClick += new System.EventHandler(this.sld1_IncreaseButtonClick);
-            this.sld1.DecreaseButtonClick += new System.EventHandler(this.sld1_DecreaseButtonClick);
             // 
             // lb2
             // 
@@ -122,8 +120,6 @@
             this.sld2.Value = 0;
             this.sld2.Visible = false;
             this.sld2.ValueChanged += new System.EventHandler(this.sld2_ValueChanged);
-            this.sld2.IncreaseButtonClick += new System.EventHandler(this.sld1_IncreaseButtonClick);
-            this.sld2.DecreaseButtonClick += new System.EventHandler(this.sld1_DecreaseButtonClick);
             // 
             // lb3
             // 
@@ -157,8 +153,6 @@
             this.sld3.Value = 0;
             this.sld3.Visible = false;
             this.sld3.ValueChanged += new System.EventHandler(this.sld3_ValueChanged);
-            this.sld3.IncreaseButtonClick += new System.EventHandler(this.sld1_IncreaseButtonClick);
-            this.sld3.DecreaseButtonClick += new System.EventHandler(this.sld1_DecreaseButtonClick);
             // 
             // lb4
             // 
@@ -192,8 +186,6 @@
             this.sld4.Value = 0;
             this.sld4.Visible = false;
             this.sld4.ValueChanged += new System.EventHandler(this.sld4_ValueChanged);
-            this.sld4.IncreaseButtonClick += new System.EventHandler(this.sld1_IncreaseButtonClick);
-            this.sld4.DecreaseButtonClick += new System.EventHandler(this.sld1_DecreaseButtonClick);
             // 
             // lb5
             // 
@@ -227,8 +219,6 @@
             this.sld5.Value = 0;
             this.sld5.Visible = false;
             this.sld5.ValueChanged += new System.EventHandler(this.sld5_ValueChanged);
-            this.sld5.IncreaseButtonClick += new System.EventHandler(this.sld1_IncreaseButtonClick);
-            this.sld5.DecreaseButtonClick += new System.EventHandler(this.sld1_DecreaseButtonClick);
             // 
             // lb6
             // 
@@ -262,8 +252,6 @@
             this.sld6.Value = 0;
             this.sld6.Visible = false;
             this.sld6.ValueChanged += new System.EventHandler(this.sld6_ValueChanged);
-            this.sld6.IncreaseButtonClick += new System.EventHandler(this.sld1_IncreaseButtonClick);
-            this.sld6.DecreaseButtonClick += new System.EventHandler(this.sld1_DecreaseButtonClick);
             // 
             // lb7
             // 
@@ -296,8 +284,6 @@
             this.sld7.Value = 0;
             this.sld7.Visible = false;
             this.sld7.ValueChanged += new System.EventHandler(this.sld7_ValueChanged);
-            this.sld7.IncreaseButtonClick += new System.EventHandler(this.sld1_IncreaseButtonClick);
-            this.sld7.DecreaseButtonClick += new System.EventHandler(this.sld1_DecreaseButtonClick);
             // 
             // lb8
             // 
@@ -331,8 +317,6 @@
             this.sld8.Value = 0;
             this.sld8.Visible = false;
             this.sld8.ValueChanged += new System.EventHandler(this.sld8_ValueChanged);
-            this.sld8.IncreaseButtonClick += new System.EventHandler(this.sld1_IncreaseButtonClick);
-            this.sld8.DecreaseButtonClick += new System.EventHandler(this.sld1_DecreaseButtonClick);
             // 
             // plInfoTitle
             // 

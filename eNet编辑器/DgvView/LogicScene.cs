@@ -15,6 +15,7 @@ using System.Net;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.Diagnostics;
+using eNet编辑器.LogicForm;
 
 namespace eNet编辑器.DgvView
 {
@@ -43,7 +44,7 @@ namespace eNet编辑器.DgvView
 
         //客户端
         ClientAsync client;
-        Thread thread;
+        //Thread thread;
 
         private void LogicScene_Load(object sender, EventArgs e)
         {
@@ -112,22 +113,22 @@ namespace eNet编辑器.DgvView
                 string sectionName = string.Format("{0}{1} {2} {3}", Resources.Scene, sc.id, section, point.name);
                 cbScene.Text = sectionName;
                 //加载DGV信息
-                dgvAddItem(logicSceneContent.sceneInfo, ip);
-                thread = new Thread(new ThreadStart(ThreadMethod)); //创建线程                 
-                thread.Start(); //启动线程
+                dgvAddItem(logicSceneContent.SceneItemInfo, ip);
+                //thread = new Thread(new ThreadStart(ThreadMethod)); //创建线程                 
+                //thread.Start(); //启动线程
                 
             }
 
         }
 
         /// <summary>
-        /// 创建线程链接
+        /// 创建线程链接 链接tcp6003端口 刷新状态回来
         /// </summary>
         private void ThreadMethod()
         {
             //刷新状态
             Connet6003();
-            thread.Abort();
+            //thread.Abort();
         }
 
 
@@ -215,18 +216,18 @@ namespace eNet编辑器.DgvView
         /// </summary>
         /// <param name="sceneInfo"></param>
         /// <param name="ip"></param>
-        private void dgvAddItem(List<DataJson.sceneInfo> sceneInfo,string ip)
+        private void dgvAddItem(List<DataJson.SceneItem> sceneInfo, string ip)
         {
             try
             {
                 dataGridView1.Rows.Clear();
-                List<DataJson.sceneInfo> delScene = new List<DataJson.sceneInfo>();
+                List<DataJson.SceneItem> delScene = new List<DataJson.SceneItem>();
                 if (sceneInfo == null)
                 {
                     return;
                 }
                 //循环加载该场景号的所有信息
-                foreach (DataJson.sceneInfo info in sceneInfo)
+                foreach (DataJson.SceneItem info in sceneInfo)
                 {
                     int dex = dataGridView1.Rows.Add();
 
@@ -301,7 +302,7 @@ namespace eNet编辑器.DgvView
                     dataGridView1.Rows[dex].Cells[2].Value = DgvMesege.addressTransform(info.address);
                     dataGridView1.Rows[dex].Cells[1].Value = IniHelper.findTypesIniNamebyType(info.type);
                     dataGridView1.Rows[dex].Cells[5].Value = (info.optName + " " + info.opt).Trim();
-                    dataGridView1.Rows[dex].Cells[6].Value = "离线"; //状态
+                    dataGridView1.Rows[dex].Cells[6].Value = info.state; //状态
                     dataGridView1.Rows[dex].Cells[7].Value = "删除";
 
 
@@ -402,12 +403,19 @@ namespace eNet编辑器.DgvView
 
             DataJson.LogicSceneContent logicSceneContent = new DataJson.LogicSceneContent();
             logicSceneContent.pid = sc.pid;
-            logicSceneContent.sceneInfo = (List<DataJson.sceneInfo>)CommandManager.CloneObject(sc.sceneInfo);
+            logicSceneContent.SceneItemInfo.Clear();
+            List<DataJson.sceneInfo> list = (List<DataJson.sceneInfo>)CommandManager.CloneObject(sc.sceneInfo);
+            foreach (DataJson.sceneInfo tmp in list)
+            {
+                DataJson.SceneItem item = new DataJson.SceneItem();
+                item = CommandManager.AutoCopy<DataJson.sceneInfo, DataJson.SceneItem>(tmp);
+                logicSceneContent.SceneItemInfo.Add(item);
+            }
             //对象反编译为json字符串
             LogicInfo.content = JsonConvert.SerializeObject(logicSceneContent);
             DataJson.totalList NewList = FileMesege.cmds.getListInfos();
             FileMesege.cmds.DoNewCommand(NewList, OldList);
-            dgvAddItem(logicSceneContent.sceneInfo, ip);
+            dgvAddItem(logicSceneContent.SceneItemInfo, ip);
             AppTxtShow("设置场景参数成功");
         }
 
@@ -527,6 +535,7 @@ namespace eNet编辑器.DgvView
                             switch (dataGridView1.Columns[columnCount].Name)
                             {
                                 case "address":
+                                    /*
                                     //改变地址
                                     string obj = "";
                                     if (dataGridView1.Rows[rowCount].Cells[2].Value != null)
@@ -537,20 +546,30 @@ namespace eNet编辑器.DgvView
                                     string objType = dataGridView1.Rows[rowCount].Cells[1].EditedFormattedValue.ToString();
                                     //赋值List 并添加地域 名字
                                     dgvAddress(id, objType, obj);
-
+                                    */
                                     break;
                                 case "operation":
+                                    /*
                                     //操作
                                     string info = dgvOperation(id, dataGridView1.Rows[rowCount].Cells[1].EditedFormattedValue.ToString());
                                     if (!string.IsNullOrEmpty(info))
                                     {
                                         dataGridView1.Rows[rowCount].Cells[5].Value = info;
-                                    }
+                                    }*/
                                     break;
                                 case "del":
                                     //删除表
                                     dgvDel(id);
 
+                                    break;
+                                case "state":
+                                    //状态表
+                                    //展示状态窗口
+                                    string val =  DgvStateShow(id);
+                                    if (!string.IsNullOrEmpty(val))
+                                    {
+                                        dataGridView1.Rows[rowCount].Cells[6].Value = val;
+                                    }
                                     break;
                                 case "num":
                                     //设置对象跳转
@@ -590,17 +609,15 @@ namespace eNet编辑器.DgvView
                             switch (dataGridView1.Columns[columnCount].Name)
                             {
                                 case "address":
-                                    setTitleAddress();
+                                    //setTitleAddress();
                                     break;
                                 case "section":
-                                    setTitleAddress();
+                                    //setTitleAddress();
                                     break;
                                 case "name":
-                                    setTitleAddress();
+                                    //setTitleAddress();
                                     break;
                                 case "del":
-                                  
-                               
                                     //删除表
                                     dgvDel(id);
 
@@ -644,11 +661,11 @@ namespace eNet编辑器.DgvView
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        private DataJson.sceneInfo getLogicSceneInfo(int id, DataJson.LogicSceneContent logicSceneContent)
+        private DataJson.SceneItem getLogicSceneInfo(int id, DataJson.LogicSceneContent logicSceneContent)
         {
-            if (logicSceneContent.sceneInfo != null)
+            if (logicSceneContent.SceneItemInfo != null)
             {
-                foreach (DataJson.sceneInfo sceneInfo in logicSceneContent.sceneInfo)
+                foreach (DataJson.SceneItem sceneInfo in logicSceneContent.SceneItemInfo)
                 {
                     if (sceneInfo.id == id)
                     {
@@ -660,6 +677,7 @@ namespace eNet编辑器.DgvView
 
         }
 
+        #region 屏蔽功能
         /// <summary>
         /// 获取新的地址 刷新地域 名字
         /// </summary>
@@ -745,7 +763,7 @@ namespace eNet编辑器.DgvView
                 LogicInfo.content = JsonConvert.SerializeObject(logicSceneContent);
                 DataJson.totalList NewList = FileMesege.cmds.getListInfos();
                 FileMesege.cmds.DoNewCommand(NewList, OldList);
-                dgvAddItem(logicSceneContent.sceneInfo, ip);
+                dgvAddItem(logicSceneContent.SceneItemInfo, ip);
             }//ok
                 
             
@@ -801,63 +819,12 @@ namespace eNet编辑器.DgvView
             }
         }
 
-        private  void dgvDel(int id)
-        {
-
-
-            //找到当前操作tab对象
-            DataJson.logicsInfo LogicInfo = DataListHelper.findLogicInfoByTabName(FileMesege.LogicTabName);
-            if (LogicInfo == null)
-            {
-                return ;
-            }
-            //把tab对象JSON字符串转换为 操作对象
-            DataJson.LogicSceneContent logicSceneContent = JsonConvert.DeserializeObject<DataJson.LogicSceneContent>(LogicInfo.content);
-            DataJson.sceneInfo info = getLogicSceneInfo(id, logicSceneContent);
-            if (info == null)
-            {
-                return;
-            }
-           
-            //撤销 
-            DataJson.totalList OldList = FileMesege.cmds.getListInfos();
-            if (!logicSceneContent.sceneInfo.Remove(info))
-            {
-                return;
-            }
-            //排序
-            sceneInfoSort(logicSceneContent);
-            LogicInfo.content = JsonConvert.SerializeObject(logicSceneContent);
-            DataJson.totalList NewList = FileMesege.cmds.getListInfos();
-            FileMesege.cmds.DoNewCommand(NewList, OldList);
-            dgvAddItem(logicSceneContent.sceneInfo, ip);
-           
-        }
-
-
-
-
-
-
-        /// <summary>
-        /// 场景信息 scenInfo 序号重新排序赋值
-        /// </summary>
-        private void sceneInfoSort(DataJson.LogicSceneContent sc)
-        {
-            int i = 1;
-            foreach (DataJson.sceneInfo scinfo in sc.sceneInfo)
-            {
-                scinfo.id = i;
-                i++;
-            }
-        }
-
         /// <summary>
         /// 复制title选中的节点 赋地址给Address
         /// </summary>
         private void setTitleAddress()
         {
-            
+
             int colIndex = dataGridView1.SelectedCells[0].ColumnIndex;
             int id = dataGridView1.CurrentCell.RowIndex;
             //找到当前操作tab对象
@@ -885,14 +852,14 @@ namespace eNet编辑器.DgvView
             if (eq.type == info.type)
             {
                 info.pid = eq.pid;
- 
+
                 info.address = eq.address;
 
 
                 dataGridView1.Rows[id].Cells[2].Value = DgvMesege.addressTransform(info.address);
                 dataGridView1.Rows[id].Cells[3].Value = string.Format("{0} {1} {2} {3}", eq.area1, eq.area2, eq.area3, eq.area4).Trim();//改根据地址从信息里面获取
                 dataGridView1.Rows[id].Cells[4].Value = eq.name;
-              
+
             }
             else
             {
@@ -908,7 +875,7 @@ namespace eNet编辑器.DgvView
                 dataGridView1.Rows[id].Cells[3].Value = string.Format("{0} {1} {2} {3}", eq.area1, eq.area2, eq.area3, eq.area4).Trim();//改根据地址从信息里面获取
                 dataGridView1.Rows[id].Cells[4].Value = eq.name;
                 dataGridView1.Rows[id].Cells[5].Value = "";
- 
+
 
 
             }
@@ -918,9 +885,117 @@ namespace eNet编辑器.DgvView
             LogicInfo.content = JsonConvert.SerializeObject(logicSceneContent);
             DataJson.totalList NewList = FileMesege.cmds.getListInfos();
             FileMesege.cmds.DoNewCommand(NewList, OldList);
-            
+
 
         }
+        #endregion
+
+        /// <summary>
+        /// 状态框界面显示
+        /// </summary>
+        private string DgvStateShow(int id)
+        {
+            LogicState dns = new LogicState();
+            if (dataGridView1.Rows[rowCount].Cells[1] == null || dataGridView1.Rows[rowCount].Cells[2] == null)
+            {
+                return null;
+;
+            }
+            dns.TypeName = dataGridView1.Rows[rowCount].Cells[1].EditedFormattedValue.ToString();
+            dns.AddressDecimal = dataGridView1.Rows[rowCount].Cells[2].EditedFormattedValue.ToString();
+            if (dataGridView1.Rows[rowCount].Cells[6].Value != null)
+            {
+                //当前状态显示值
+                dns.StateValue = dataGridView1.Rows[rowCount].Cells[6].Value.ToString();
+            }
+            else
+            {
+                dns.StateValue = "";
+            }
+            Point pt = MousePosition;
+            //把窗口向屏幕中间刷新
+            dns.StartPosition = FormStartPosition.Manual;
+            dns.Left = pt.X + 10;
+            dns.Top = pt.Y + 10;
+            dns.ShowDialog();
+            
+
+            //找到当前操作tab对象
+            DataJson.logicsInfo LogicInfo = DataListHelper.findLogicInfoByTabName(FileMesege.LogicTabName);
+            if (LogicInfo == null)
+            {
+                return null;
+            }
+            //把tab对象JSON字符串转换为 操作对象
+            DataJson.LogicSceneContent logicSceneContent = JsonConvert.DeserializeObject<DataJson.LogicSceneContent>(LogicInfo.content);
+            DataJson.SceneItem info = getLogicSceneInfo(id, logicSceneContent);
+            if (info == null)
+            {
+                return null;
+            }
+
+            //撤销 
+            DataJson.totalList OldList = FileMesege.cmds.getListInfos();
+            if (info.state == dns.ReturnVal)
+            {
+                return null;
+            }
+            info.state = dns.ReturnVal;
+            LogicInfo.content = JsonConvert.SerializeObject(logicSceneContent);
+            DataJson.totalList NewList = FileMesege.cmds.getListInfos();
+            FileMesege.cmds.DoNewCommand(NewList, OldList);
+            return info.state;
+
+         
+        }
+
+        private  void dgvDel(int id)
+        {
+
+
+            //找到当前操作tab对象
+            DataJson.logicsInfo LogicInfo = DataListHelper.findLogicInfoByTabName(FileMesege.LogicTabName);
+            if (LogicInfo == null)
+            {
+                return ;
+            }
+            //把tab对象JSON字符串转换为 操作对象
+            DataJson.LogicSceneContent logicSceneContent = JsonConvert.DeserializeObject<DataJson.LogicSceneContent>(LogicInfo.content);
+            DataJson.SceneItem info = getLogicSceneInfo(id, logicSceneContent);
+            if (info == null)
+            {
+                return;
+            }
+           
+            //撤销 
+            DataJson.totalList OldList = FileMesege.cmds.getListInfos();
+            if (!logicSceneContent.SceneItemInfo.Remove(info))
+            {
+                return;
+            }
+            //排序
+            sceneInfoSort(logicSceneContent);
+            LogicInfo.content = JsonConvert.SerializeObject(logicSceneContent);
+            DataJson.totalList NewList = FileMesege.cmds.getListInfos();
+            FileMesege.cmds.DoNewCommand(NewList, OldList);
+            dgvAddItem(logicSceneContent.SceneItemInfo, ip);
+           
+        }
+
+        /// <summary>
+        /// 场景信息 scenInfo 序号重新排序赋值
+        /// </summary>
+        private void sceneInfoSort(DataJson.LogicSceneContent sc)
+        {
+            int i = 1;
+            foreach (DataJson.SceneItem scinfo in sc.SceneItemInfo)
+            {
+                scinfo.id = i;
+                i++;
+            }
+        }
+
+        
 
         #endregion
 
@@ -946,19 +1021,19 @@ namespace eNet编辑器.DgvView
                 return;
             }
              //新建表
-            DataJson.sceneInfo info = new DataJson.sceneInfo();
-            info.id = logicSceneContent.sceneInfo.Count + 1;
+            DataJson.SceneItem info = new DataJson.SceneItem();
+            info.id = logicSceneContent.SceneItemInfo.Count + 1;
             info.pid = 0;
             //info.type = "";
             //info.opt = "";
             //info.optName = "";
             //撤销 
             DataJson.totalList OldList = FileMesege.cmds.getListInfos();
-            logicSceneContent.sceneInfo.Add(info);
+            logicSceneContent.SceneItemInfo.Add(info);
             LogicInfo.content = JsonConvert.SerializeObject(logicSceneContent);
             DataJson.totalList NewList = FileMesege.cmds.getListInfos();
             FileMesege.cmds.DoNewCommand(NewList, OldList);
-            dgvAddItem(logicSceneContent.sceneInfo, ip);
+            dgvAddItem(logicSceneContent.SceneItemInfo, ip);
         }
         #endregion
 
@@ -1285,7 +1360,7 @@ namespace eNet编辑器.DgvView
             //获取当前选中单元格的列序号
             int colIndex = dataGridView1.CurrentRow.Cells.IndexOf(dataGridView1.CurrentCell);
             //当粘贴选中单元格为操作
-            if (colIndex == 5)
+            if (colIndex == 6)
             {
                 int id = Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value);
                 //找到当前操作tab对象
@@ -1296,13 +1371,13 @@ namespace eNet编辑器.DgvView
                 }
                 //把tab对象JSON字符串转换为 操作对象
                 DataJson.LogicSceneContent logicSceneContent = JsonConvert.DeserializeObject<DataJson.LogicSceneContent>(LogicInfo.content);
-                DataJson.sceneInfo info = getLogicSceneInfo(id, logicSceneContent);
+                DataJson.SceneItem info = getLogicSceneInfo(id, logicSceneContent);
                 if (info == null)
                 {
                     return;
                 }
                 //获取sceneInfo对象表中对应ID号info对象
-                FileMesege.copyLogicScene = info;
+                FileMesege.copyLogicSceneItem = info;
 
             }
 
@@ -1332,24 +1407,24 @@ namespace eNet编辑器.DgvView
                     int colIndex = dataGridView1.SelectedCells[i].ColumnIndex;
 
                     //当粘贴选中单元格为操作
-                    if (colIndex == 5)
+                    if (colIndex == 6)
                     {
                         int id = Convert.ToInt32(dataGridView1.Rows[dataGridView1.SelectedCells[i].RowIndex].Cells[0].Value);
-                        DataJson.sceneInfo info = getLogicSceneInfo(id, logicSceneContent);
+                        DataJson.SceneItem info = getLogicSceneInfo(id, logicSceneContent);
                         if (info == null)
                         {
                             return;
                         }
 
-                        if (FileMesege.copyLogicScene.type == "" || info.type == "" || info.type != FileMesege.copyLogicScene.type)
+                        if (FileMesege.copyLogicSceneItem.type == "" || info.type == "" || info.type != FileMesege.copyLogicSceneItem.type)
                         {
                             continue;
                         }
                         ischange = true;
-                        info.opt = FileMesege.copyLogicScene.opt;
-                        info.optName = FileMesege.copyLogicScene.optName;
+                        info.state = FileMesege.copyLogicSceneItem.state;
+                      
 
-                        dataGridView1.Rows[dataGridView1.SelectedCells[i].RowIndex].Cells[5].Value = (info.optName + " " + info.opt).Trim();
+                        dataGridView1.Rows[dataGridView1.SelectedCells[i].RowIndex].Cells[6].Value = (info.state).Trim();
                     }//if
                 }
                 if (ischange)

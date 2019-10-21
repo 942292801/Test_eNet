@@ -46,6 +46,8 @@ namespace eNet编辑器
         public int searchLocition = 2;
         public Form1()
         {
+            //程序默认为en-US英语启动
+            //System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("en-US");
             InitializeComponent();
 
         }
@@ -175,8 +177,11 @@ namespace eNet编辑器
             threelogic.updateLogicView += new Action(updateDgvTreeByFormType);
             //调用添加场景
             threetitle.dgvsceneAddItem += new DgvSceneAddItem2(dgvscene.dgvsceneAddItem);
+            threetitle.selectLastCountScene += new Action(dgvscene.selectLastCount);
             threetitle.dgvtimerAddItem += new Action(dgvtimer.TimerAddItem);
+            threetitle.selectLastCountTimer += new Action(dgvtimer.selectLastCount);
             threetitle.dgvVirtualportAddItem += new Action(dgvvar.dgvVarAddItem);
+            threetitle.selectLastCountLocalVar += new Action(dgvvar.selectLastCount);
             threetitle.addPoint += new Action<string>(dgvpoint.addPoint);
             threetitle.addVirtualport += new Action<string>(dgvvar.addVirtualport);
             threename.dgvDeviceAddItem += new DgvDeviceAddItem(dgvdevice.dgvDeviceAddItem);
