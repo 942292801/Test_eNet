@@ -876,7 +876,7 @@ namespace eNet编辑器
 
                         break;
 
-                    case "time":
+                    case "timer":
                         pointInfo = findPointByList_add(FileMesege.PointList.timer, address, ip);
 
                         break;

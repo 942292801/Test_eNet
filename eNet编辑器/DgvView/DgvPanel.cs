@@ -1112,7 +1112,7 @@ namespace eNet编辑器.DgvView
             {
                 return null;
             }
-            if (plInfo.objType == "4.0_scene" || plInfo.objType == "5.0_time" || plInfo.objType == "6.1_panel" || plInfo.objType == "6.2_sensor")
+            if (plInfo.objType == "4.0_scene" || plInfo.objType == "5.0_timer" || plInfo.objType == "6.1_panel" || plInfo.objType == "6.2_sensor")
             {
     
                 string ip = FileMesege.panelSelectNode.Parent.Text.Split(' ')[0];

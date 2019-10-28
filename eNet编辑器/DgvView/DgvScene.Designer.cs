@@ -39,7 +39,7 @@
             this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.operation = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.delay = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.del = new DevComponents.DotNetBar.Controls.DataGridViewButtonXColumn();
+            this.del = new System.Windows.Forms.DataGridViewButtonColumn();
             this.checkDel = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.doubleClickTimer = new System.Windows.Forms.Timer(this.components);
             this.plInfoTitle = new System.Windows.Forms.Panel();
@@ -153,13 +153,10 @@
             // 
             // del
             // 
-            this.del.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
             this.del.HeaderText = "删除";
             this.del.Name = "del";
             this.del.ReadOnly = true;
             this.del.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.del.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.del.Text = null;
             this.del.Width = 55;
             // 
             // checkDel
@@ -366,10 +363,12 @@
             this.ClientSize = new System.Drawing.Size(1006, 909);
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("微软雅黑", 9F);
+            this.KeyPreview = true;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "DgvScene";
             this.Text = "DgvScene";
             this.Load += new System.EventHandler(this.DgvScene_Load);
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.DgvScene_KeyPress);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.plInfoTitle.ResumeLayout(false);
             this.plInfoTitle.PerformLayout();
@@ -400,7 +399,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn name;
         private System.Windows.Forms.DataGridViewTextBoxColumn operation;
         private System.Windows.Forms.DataGridViewTextBoxColumn delay;
-        private DevComponents.DotNetBar.Controls.DataGridViewButtonXColumn del;
+        private System.Windows.Forms.DataGridViewButtonColumn del;
         private System.Windows.Forms.DataGridViewCheckBoxColumn checkDel;
     }
 }

@@ -36,14 +36,6 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.keyAddress = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.objAddress = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.section = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.operation = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.del = new DevComponents.DotNetBar.Controls.DataGridViewButtonXColumn();
-            this.add = new DevComponents.DotNetBar.Controls.DataGridViewButtonXColumn();
             this.ultraSplitter1 = new Infragistics.Win.Misc.UltraSplitter();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
@@ -68,6 +60,14 @@
             this.symbolBox1 = new DevComponents.DotNetBar.Controls.SymbolBox();
             this.label1 = new System.Windows.Forms.Label();
             this.doubleClickTimer = new System.Windows.Forms.Timer(this.components);
+            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.keyAddress = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.objAddress = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.section = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.operation = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.del = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.add = new System.Windows.Forms.DataGridViewButtonColumn();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -163,74 +163,6 @@
             this.dataGridView1.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dataGridView1_DataError);
             this.dataGridView1.KeyUp += new System.Windows.Forms.KeyEventHandler(this.dataGridView1_KeyUp);
             this.dataGridView1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.dataGridView1_MouseDown);
-            // 
-            // id
-            // 
-            this.id.HeaderText = "感应";
-            this.id.Name = "id";
-            this.id.ReadOnly = true;
-            this.id.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.id.Width = 60;
-            // 
-            // keyAddress
-            // 
-            this.keyAddress.HeaderText = "输入地址";
-            this.keyAddress.Name = "keyAddress";
-            this.keyAddress.ReadOnly = true;
-            this.keyAddress.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.keyAddress.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.keyAddress.Width = 80;
-            // 
-            // objAddress
-            // 
-            this.objAddress.HeaderText = "执行地址";
-            this.objAddress.Name = "objAddress";
-            this.objAddress.ReadOnly = true;
-            this.objAddress.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // section
-            // 
-            this.section.HeaderText = "区域";
-            this.section.Name = "section";
-            this.section.ReadOnly = true;
-            this.section.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.section.Width = 160;
-            // 
-            // name
-            // 
-            this.name.HeaderText = "名称";
-            this.name.Name = "name";
-            this.name.ReadOnly = true;
-            this.name.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.name.Width = 80;
-            // 
-            // operation
-            // 
-            this.operation.HeaderText = "操作";
-            this.operation.Name = "operation";
-            this.operation.ReadOnly = true;
-            this.operation.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.operation.Width = 140;
-            // 
-            // del
-            // 
-            this.del.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
-            this.del.HeaderText = "删除";
-            this.del.Name = "del";
-            this.del.ReadOnly = true;
-            this.del.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.del.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.del.Text = null;
-            this.del.Width = 55;
-            // 
-            // add
-            // 
-            this.add.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
-            this.add.HeaderText = "添加";
-            this.add.Name = "add";
-            this.add.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.add.Text = null;
-            this.add.Width = 60;
             // 
             // ultraSplitter1
             // 
@@ -559,6 +491,69 @@
             this.doubleClickTimer.Interval = 40;
             this.doubleClickTimer.Tick += new System.EventHandler(this.doubleClickTimer_Tick);
             // 
+            // id
+            // 
+            this.id.HeaderText = "感应";
+            this.id.Name = "id";
+            this.id.ReadOnly = true;
+            this.id.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.id.Width = 60;
+            // 
+            // keyAddress
+            // 
+            this.keyAddress.HeaderText = "输入地址";
+            this.keyAddress.Name = "keyAddress";
+            this.keyAddress.ReadOnly = true;
+            this.keyAddress.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.keyAddress.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.keyAddress.Width = 80;
+            // 
+            // objAddress
+            // 
+            this.objAddress.HeaderText = "执行地址";
+            this.objAddress.Name = "objAddress";
+            this.objAddress.ReadOnly = true;
+            this.objAddress.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // section
+            // 
+            this.section.HeaderText = "区域";
+            this.section.Name = "section";
+            this.section.ReadOnly = true;
+            this.section.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.section.Width = 160;
+            // 
+            // name
+            // 
+            this.name.HeaderText = "名称";
+            this.name.Name = "name";
+            this.name.ReadOnly = true;
+            this.name.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.name.Width = 80;
+            // 
+            // operation
+            // 
+            this.operation.HeaderText = "操作";
+            this.operation.Name = "operation";
+            this.operation.ReadOnly = true;
+            this.operation.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.operation.Width = 140;
+            // 
+            // del
+            // 
+            this.del.HeaderText = "删除";
+            this.del.Name = "del";
+            this.del.ReadOnly = true;
+            this.del.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.del.Width = 55;
+            // 
+            // add
+            // 
+            this.add.HeaderText = "添加";
+            this.add.Name = "add";
+            this.add.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.add.Width = 60;
+            // 
             // DgvSensor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -625,7 +620,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn section;
         private System.Windows.Forms.DataGridViewTextBoxColumn name;
         private System.Windows.Forms.DataGridViewTextBoxColumn operation;
-        private DevComponents.DotNetBar.Controls.DataGridViewButtonXColumn del;
-        private DevComponents.DotNetBar.Controls.DataGridViewButtonXColumn add;
+        private System.Windows.Forms.DataGridViewButtonColumn del;
+        private System.Windows.Forms.DataGridViewButtonColumn add;
     }
 }

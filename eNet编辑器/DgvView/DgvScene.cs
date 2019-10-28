@@ -838,6 +838,7 @@ namespace eNet编辑器.DgvView
 
         }
 
+        string tmodelay = "";
         private void dataGridView1_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
         {
             //选中行号
@@ -860,7 +861,13 @@ namespace eNet编辑器.DgvView
                         //提交编辑
                         dataGridView1.EndEdit();
                         break;
-
+                    case "delay":
+                        if (dataGridView1.Rows[rowNum].Cells[6].Value != null )
+                        {
+                            tmodelay = dataGridView1.Rows[rowNum].Cells[6].Value.ToString();
+                        }
+                    
+                        break;
 
                     default: break;
                 }
@@ -901,7 +908,7 @@ namespace eNet编辑器.DgvView
                     switch (dataGridView1.Columns[columnNum].Name)
                     {
                         case "delay":
-                            if (Validator.IsNumber(dataGridView1.Rows[rowNum].Cells[6].Value.ToString()))
+                            if (dataGridView1.Rows[rowNum].Cells[6].Value != null && Validator.IsNumber(dataGridView1.Rows[rowNum].Cells[6].Value.ToString()))
                             {
                                 //改变延时
                                 dgvDelay(Convert.ToInt32(dataGridView1.Rows[rowNum].Cells[0].Value), Convert.ToDouble(dataGridView1.Rows[rowNum].Cells[6].Value));
@@ -909,6 +916,7 @@ namespace eNet编辑器.DgvView
                             else
                             {
                                 AppTxtShow("延时格式错误，请正确填写！");
+                                dataGridView1.Rows[rowNum].Cells[6].Value = tmodelay;
                             }
                             break;
                         case "type":
@@ -965,7 +973,7 @@ namespace eNet编辑器.DgvView
             {
                 return null;
             }
-            if (info.type == "4.0_scene" || info.type == "5.0_time" || info.type == "6.1_panel" || info.type == "6.2_sensor")
+            if (info.type == "4.0_scene" || info.type == "5.0_timer" || info.type == "6.1_panel" || info.type == "6.2_sensor")
             {
                 return DataListHelper.findPointByType_address(info.type,info.address,ips[0]);
             }
@@ -1299,8 +1307,17 @@ namespace eNet编辑器.DgvView
         }
         #endregion
 
-   
-      
+
+        #region 限制输入 数字 回车 退回 .按键
+        private void DgvScene_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //如果输入的不是数字键，也不是回车键、Backspace键，则取消该输入
+            if (!(Char.IsNumber(e.KeyChar)) && e.KeyChar != (char)13 && e.KeyChar != (char)8 && e.KeyChar != (char)46)
+            {
+                e.Handled = true;
+            }
+        }
+        #endregion
 
 
 

@@ -619,6 +619,16 @@ namespace eNet编辑器.DgvView
 
         #endregion
 
+        #region 限制输入 数字 回车 退回 .按键
+        private void DgvLogic_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //如果输入的不是数字键，也不是回车键、Backspace键，则取消该输入
+            if (!(Char.IsNumber(e.KeyChar)) && e.KeyChar != (char)13 && e.KeyChar != (char)8 && e.KeyChar != (char)46)
+            {
+                e.Handled = true;
+            }
+        }
+        #endregion
 
     }
 }

@@ -47,7 +47,7 @@
             this.pointAdd = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pointSection = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pointName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.pointDel = new DevComponents.DotNetBar.Controls.DataGridViewButtonXColumn();
+            this.pointDel = new System.Windows.Forms.DataGridViewButtonColumn();
             this.pointMultiple = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -276,12 +276,9 @@
             // 
             // pointDel
             // 
-            this.pointDel.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
             this.pointDel.HeaderText = "删除";
             this.pointDel.Name = "pointDel";
             this.pointDel.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.pointDel.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.pointDel.Text = null;
             this.pointDel.Width = 55;
             // 
             // pointMultiple
@@ -330,7 +327,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn pointAdd;
         private System.Windows.Forms.DataGridViewTextBoxColumn pointSection;
         private System.Windows.Forms.DataGridViewTextBoxColumn pointName;
-        private DevComponents.DotNetBar.Controls.DataGridViewButtonXColumn pointDel;
+        private System.Windows.Forms.DataGridViewButtonColumn pointDel;
         private System.Windows.Forms.DataGridViewCheckBoxColumn pointMultiple;
     }
 }

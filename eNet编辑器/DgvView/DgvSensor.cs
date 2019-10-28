@@ -495,12 +495,16 @@ namespace eNet编辑器.DgvView
                         if (m.id.ToString() == cbDevNum.Text)
                         {
                             ioVal = IniConfig.GetValue(path + m.device + ".ini", "input", "io").Trim();
-                            int tmpnum = Validator.GetNumber(ioVal);
-                            if(tmpnum == -1)
+                            if (string.IsNullOrEmpty(ioVal))
                             {
-                                break ;
+                                break;
                             }
-                            ioVal = tmpnum.ToString();
+                            //int tmpnum = Validator.GetNumber(ioVal);
+                            //if(tmpnum == -1)
+                            //{
+                            //    break ;
+                            //}
+                            //ioVal = tmpnum.ToString();
                             //iniKEY的内容不为字符 null
                             if (!string.IsNullOrEmpty(ioVal) && ioVal != "null" )
                             {
@@ -1233,7 +1237,7 @@ namespace eNet编辑器.DgvView
             {
                 return null;
             }
-            if (srInfo.objType == "4.0_scene" || srInfo.objType == "5.0_time" || srInfo.objType == "6.1_panel" || srInfo.objType == "6.2_sensor")
+            if (srInfo.objType == "4.0_scene" || srInfo.objType == "5.0_timer" || srInfo.objType == "6.1_panel" || srInfo.objType == "6.2_sensor")
             {
                 string ip = FileMesege.sensorSelectNode.Parent.Text.Split(' ')[0];
                 return DataListHelper.findPointByType_address(srInfo.objType, srInfo.objAddress,ip);

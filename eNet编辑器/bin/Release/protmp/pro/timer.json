@@ -2,20 +2,10 @@
     {
         "timers": [
             {
-                "timersInfo": [
-                    {
-                        "id": 1,
-                        "pid": 0,
-                        "type": "",
-                        "address": "",
-                        "opt": "",
-                        "optName": "",
-                        "shortTime": ""
-                    }
-                ],
+                "timersInfo": [],
                 "id": 1,
-                "pid": 107317113,
-                "dates": "2,5",
+                "pid": 499192175,
+                "dates": "",
                 "priorHoloday": "01000001"
             }
         ],

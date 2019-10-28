@@ -49,7 +49,7 @@
             this.c = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.compareAddress = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.d = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.del1 = new DevComponents.DotNetBar.Controls.DataGridViewButtonXColumn();
+            this.del1 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnIfAdd = new DevComponents.DotNetBar.ButtonX();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
@@ -60,7 +60,7 @@
             this.name2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.operation2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.delay2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.del2 = new DevComponents.DotNetBar.Controls.DataGridViewButtonXColumn();
+            this.del2 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.panel3 = new System.Windows.Forms.Panel();
             this.btnElseIfAdd = new DevComponents.DotNetBar.ButtonX();
             this.label3 = new System.Windows.Forms.Label();
@@ -71,7 +71,7 @@
             this.name3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.operation3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.delay3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.del3 = new DevComponents.DotNetBar.Controls.DataGridViewButtonXColumn();
+            this.del3 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.panel4 = new System.Windows.Forms.Panel();
             this.btnElseAdd = new DevComponents.DotNetBar.ButtonX();
             this.label5 = new System.Windows.Forms.Label();
@@ -260,13 +260,10 @@
             // 
             // del1
             // 
-            this.del1.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
             this.del1.HeaderText = "删除";
             this.del1.Name = "del1";
             this.del1.ReadOnly = true;
             this.del1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.del1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.del1.Text = null;
             this.del1.Width = 55;
             // 
             // panel2
@@ -416,13 +413,10 @@
             // 
             // del2
             // 
-            this.del2.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
             this.del2.HeaderText = "删除";
             this.del2.Name = "del2";
             this.del2.ReadOnly = true;
             this.del2.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.del2.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.del2.Text = null;
             this.del2.Width = 55;
             // 
             // panel3
@@ -556,13 +550,10 @@
             // 
             // del3
             // 
-            this.del3.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
             this.del3.HeaderText = "删除";
             this.del3.Name = "del3";
             this.del3.ReadOnly = true;
             this.del3.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.del3.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.del3.Text = null;
             this.del3.Width = 55;
             // 
             // panel4
@@ -711,6 +702,20 @@
         private System.Windows.Forms.Timer doubleClickTimer1;
         private System.Windows.Forms.Timer doubleClickTimer2;
         private System.Windows.Forms.Timer doubleClickTimer3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn num2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn address2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn section2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn name2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn operation2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn delay2;
+        private System.Windows.Forms.DataGridViewButtonColumn del2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn num3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn address3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn section3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn name3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn operation3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn delay3;
+        private System.Windows.Forms.DataGridViewButtonColumn del3;
         private System.Windows.Forms.DataGridViewTextBoxColumn num;
         private System.Windows.Forms.DataGridViewTextBoxColumn a;
         private System.Windows.Forms.DataGridViewTextBoxColumn objAddress;
@@ -718,21 +723,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn c;
         private System.Windows.Forms.DataGridViewTextBoxColumn compareAddress;
         private System.Windows.Forms.DataGridViewTextBoxColumn d;
-        private DevComponents.DotNetBar.Controls.DataGridViewButtonXColumn del1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn num2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn address2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn section2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn name2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn operation2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn delay2;
-        private DevComponents.DotNetBar.Controls.DataGridViewButtonXColumn del2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn num3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn address3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn section3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn name3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn operation3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn delay3;
-        private DevComponents.DotNetBar.Controls.DataGridViewButtonXColumn del3;
+        private System.Windows.Forms.DataGridViewButtonColumn del1;
 
     }
 }

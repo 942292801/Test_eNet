@@ -811,9 +811,9 @@
     ],
     "timer": [
         {
-            "pid": 107317113,
-            "area1": "",
-            "area2": "",
+            "pid": 499192175,
+            "area1": "客厅",
+            "area2": "背景墙",
             "area3": "",
             "area4": "",
             "name": "工作日@222",
@@ -821,7 +821,7 @@
             "address": "FE200001",
             "objType": "",
             "value": "",
-            "type": "5.0_time"
+            "type": "5.0_timer"
         }
     ],
     "link": [
@@ -852,69 +852,57 @@
             "type": "6.2_sensor"
         }
     ],
-    "virtualport": [],
+    "virtualport": [
+        {
+            "pid": 643992081,
+            "area1": "",
+            "area2": "",
+            "area3": "",
+            "area4": "",
+            "name": "虚拟端口1@222",
+            "ip": "192.168.1.222",
+            "address": "FEFB0301",
+            "objType": "",
+            "value": "",
+            "type": "9.0_virtualport"
+        }
+    ],
     "logic": [
         {
-            "pid": 396783766,
-            "area1": "主人房",
-            "area2": "",
+            "pid": 876274720,
+            "area1": "客厅",
+            "area2": "阳台",
             "area3": "",
             "area4": "",
             "name": "逻辑1@222",
             "ip": "192.168.1.222",
-            "address": "C8400001",
+            "address": "FE400001",
             "objType": "",
             "value": "",
             "type": "3.0_logic"
         },
         {
-            "pid": 932621121,
-            "area1": "",
+            "pid": 144687686,
+            "area1": "客厅",
+            "area2": "阳台",
+            "area3": "",
+            "area4": "",
+            "name": "逻辑3@222",
+            "ip": "192.168.1.222",
+            "address": "FE400003",
+            "objType": "",
+            "value": "",
+            "type": "3.0_logic"
+        },
+        {
+            "pid": 221313098,
+            "area1": "客厅",
             "area2": "",
             "area3": "",
             "area4": "",
             "name": "逻辑2@222",
             "ip": "192.168.1.222",
-            "address": "C8400002",
-            "objType": "",
-            "value": "",
-            "type": "3.0_logic"
-        },
-        {
-            "pid": 350419285,
-            "area1": "",
-            "area2": "",
-            "area3": "",
-            "area4": "",
-            "name": "逻辑1@223",
-            "ip": "192.168.1.223",
-            "address": "DE400001",
-            "objType": "",
-            "value": "",
-            "type": "3.0_logic"
-        },
-        {
-            "pid": 331119300,
-            "area1": "",
-            "area2": "",
-            "area3": "",
-            "area4": "",
-            "name": "逻辑3@222",
-            "ip": "192.168.1.222",
-            "address": "DE400003",
-            "objType": "",
-            "value": "",
-            "type": "3.0_logic"
-        },
-        {
-            "pid": 951889448,
-            "area1": "小孩房",
-            "area2": "",
-            "area3": "",
-            "area4": "",
-            "name": "逻辑4@222",
-            "ip": "192.168.1.222",
-            "address": "DE400004",
+            "address": "FE400002",
             "objType": "",
             "value": "",
             "type": "3.0_logic"

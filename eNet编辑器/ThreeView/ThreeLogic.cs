@@ -273,7 +273,7 @@ namespace eNet编辑器.ThreeView
             string num = Convert.ToInt32(lgadd.Num).ToString("X4");
 
             //获取IP最后一位 逻辑40
-            string address = SocketUtil.GetIPstyle(lgadd.Ip, 4) + "40" + num;
+            string address = "FE40" + num;
             if (FileMesege.logicList == null)
             {
                 FileMesege.logicList = new List<DataJson.Logic>();

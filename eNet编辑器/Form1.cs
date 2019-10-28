@@ -448,27 +448,31 @@ namespace eNet编辑器
         /// <param name="msg"></param>
         public void AppTxtShow(string msg)
         {
+            try
+            {
+                string tmp = string.Format("({1}) {0}\r\n", msg, DateTime.Now.ToLongTimeString());
 
-            string tmp = string.Format("({1}) {0}\r\n", msg, DateTime.Now.ToLongTimeString());
-            
-            if (clearNum == 2)
-            {
-                txtShow.AppendText(tmp);
-                this.txtShow.ScrollToCaret();
+                if (clearNum == 2)
+                {
+                    txtShow.AppendText(tmp);
+                    this.txtShow.ScrollToCaret();
+                }
+                else
+                {
+                    this.txtShow.ScrollToCaret();
+                    txtShow.AppendText(tmp);
+                }
+                //来一个延时
+                SocketUtil.DelayMilli(300);
+                txtShow.SelectAll();
+                this.txtShow.SelectionColor = Color.Black;
+
+                txtShow.Select(txtShow.Text.Length - tmp.Length + 1, tmp.Length);
+                this.txtShow.SelectionColor = Color.Red;
+                clearNum++;
             }
-            else
-            {
-                this.txtShow.ScrollToCaret();
-                txtShow.AppendText(tmp);
-            }
-            //来一个延时
-            SocketUtil.DelayMilli(300);
-            txtShow.SelectAll();
-            this.txtShow.SelectionColor = Color.Black;
-     
-            txtShow.Select(txtShow.Text.Length - tmp.Length + 1,tmp.Length);
-            this.txtShow.SelectionColor = Color.Red;
-            clearNum++;
+            catch
+            { }
             
         }
 

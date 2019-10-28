@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.IO;
+using eNet编辑器.Properties;
 
 namespace eNet编辑器
 {
@@ -183,6 +184,7 @@ namespace eNet编辑器
             return "";
         }
 
+
         /// <summary>
         /// 根据地址Address寻找 该个地址的链路类型 设备 场景 定时 。。。。
         /// </summary>
@@ -197,36 +199,57 @@ namespace eNet编辑器
                 switch (addressType)
                 {
                     case "00":
-                        return "设备";
+                        return Resources.Device;
                     //这个类型现在地址确认不了类型
                     case "10":
-                        return "场景";
+                        return Resources.Scene;
                     case "20":
-                        return "定时";
+                        return Resources.Timer;
                     case "30":
                         //objType = "6.0_group";
                         int num = Convert.ToInt32(address.Substring(4, 2),16) * 256 + Convert.ToInt32(address.Substring(6, 2),16);
                         if (num <= 999)
                         {
-                            return "面板";
+                            return Resources.Panel;
                         }
                         else if (num <= 1999)
                         {
-                            return "感应编组";
+                            return Resources.Sensor;
                         }
                         else
                         {
                             return "";
                         }
                     case "40":
-                        return "逻辑";
+                        return Resources.Logic;
                     case "F9":
-                        return "局部变量";
+                        return Resources.LocalVar;
+                    case "F8":
+                        return Resources.IO;//感应输入
                     case "FA":
-                        return "感应输入";//虚拟按键250
+                        return Resources.PanelButton;//虚拟按键250
+                  
                     case "FB":
-                      return "虚拟端口";
+                   
+                        if (address.Substring(4, 2) == "03")
+                        {
+                            return Resources.Virtualport;
 
+                        }
+                        else if (address.Substring(4, 2) == "00")
+                        {
+                            if (address.Substring(6, 2) == "02")
+                            {
+                                //日期
+                                return Resources.Date;
+                            }
+                            else if (address.Substring(6, 2) == "03")
+                            { 
+                                //时间
+                                return Resources.Time;
+                            }
+                        }
+                        return "";
 
 
                     ////////////////////////后期需要补充完整
@@ -262,7 +285,7 @@ namespace eNet编辑器
                         case "10":
                             return"4.0_scene";
                         case "20":
-                            return "5.0_time";
+                            return "5.0_timer";
                         case "30":
                             //objType = "6.0_group";
                             int num = Convert.ToInt32(address.Substring(4, 2)) * 256 + Convert.ToInt32(address.Substring(6, 2));
@@ -280,12 +303,33 @@ namespace eNet编辑器
                             }
                         case "40":
                             return "3.0_logic";
-                        case "FA":
-                            return "10.2_io";//虚拟按键250
-                        case "FB":
-                            return "9.0_virtualport";
                         case "F9":
                             return "15.0_LocalVariable";
+                        case "F8":
+                            return "10.2_io";//感应输入
+                        case "FA":
+                            return "16.0_PanelButton";//虚拟按键250
+                        case "FB":
+                            if (address.Substring(4, 2) == "03")
+                            {
+                                return "9.0_virtualport";
+
+                            }
+                            else if (address.Substring(4, 2) == "00")
+                            {
+                                if (address.Substring(6, 2) == "02")
+                                {
+                                    //日期
+                                    return "Date";
+                                }
+                                else if (address.Substring(6, 2) == "03")
+                                { 
+                                    //时间
+                                    return "Time";
+                                }
+                            }
+                            return "";
+                      
                         default:
                             return "";
                     }

@@ -1626,7 +1626,7 @@ namespace eNet编辑器.DgvView
             {
                 return null;
             }
-            if (tmInfo.type == "4.0_scene" || tmInfo.type == "5.0_time" || tmInfo.type == "6.1_panel" || tmInfo.type == "6.2_sensor")
+            if (tmInfo.type == "4.0_scene" || tmInfo.type == "5.0_timer" || tmInfo.type == "6.1_panel" || tmInfo.type == "6.2_sensor")
             {
                 string ip = FileMesege.timerSelectNode.Parent.Text.Split(' ')[0];
                 return DataListHelper.findPointByType_address(tmInfo.type, tmInfo.address,ip);

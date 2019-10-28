@@ -1071,10 +1071,32 @@ namespace eNet编辑器.DgvView
         }
 
 
-
+        string tmpDelay = "";
         private void dataGridView2_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
         {
+            try
+            {
+                //选中行号
+                int rowNum = e.RowIndex;
+                //选中列号
+                int columnNum = e.ColumnIndex;
+                if (rowNum >= 0 && columnNum >= 0)
+                {
+                    switch (dataGridView2.Columns[columnNum].Name)
+                    {
+                        case "delay2":
+                            if (dataGridView2.Rows[rowNum].Cells[7].Value != null )
+                            {
+                                tmpDelay = dataGridView2.Rows[rowNum].Cells[7].Value.ToString() ;
+                            }
+                          
+                            break;
 
+                        default: break;
+                    }
+                }
+            }
+            catch (Exception ex) { MessageBox.Show(ex + "临时调试错误信息"); }
         }
 
         private void dataGridView2_CellEndEdit(object sender, DataGridViewCellEventArgs e)
@@ -1090,7 +1112,7 @@ namespace eNet编辑器.DgvView
                     switch (dataGridView2.Columns[columnNum].Name)
                     {
                         case "delay2":
-                            if (Validator.IsNumber(dataGridView2.Rows[rowNum].Cells[7].Value.ToString()))
+                            if (dataGridView2.Rows[rowNum].Cells[7].Value != null && Validator.IsNumber(dataGridView2.Rows[rowNum].Cells[7].Value.ToString()))
                             {
                                 //改变延时
                                 dgvDelay2(Convert.ToInt32(dataGridView2.Rows[rowNum].Cells[0].Value), Convert.ToDouble(dataGridView2.Rows[rowNum].Cells[7].Value));
@@ -1098,6 +1120,7 @@ namespace eNet编辑器.DgvView
                             else
                             {
                                 AppTxtShow("延时格式错误，请正确填写！");
+                                dataGridView2.Rows[rowNum].Cells[7].Value = tmpDelay;
                             }
                             break;
 
