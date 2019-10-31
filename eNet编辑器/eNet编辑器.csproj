@@ -546,7 +546,7 @@
     <Compile Include="Properties\AssemblyInfo.cs">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
-    <Compile Include="SocketUtil.cs" />
+    <Compile Include="ToolsUtil.cs" />
     <Compile Include="TcpSocket.cs" />
     <Compile Include="ThreeView\ThreePanel.cs">
       <SubType>Form</SubType>

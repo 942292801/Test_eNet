@@ -252,7 +252,7 @@ namespace eNet编辑器.AddForm
                         AppTxtShow(string.Format("({0})工程文件初始化失败！", ip));
                         return false;
                     }
-                    SocketUtil.DelayMilli(200);
+                    ToolsUtil.DelayMilli(200);
                   
                     
                     //编译场景
@@ -266,7 +266,7 @@ namespace eNet编辑器.AddForm
                         AppTxtShow("scene.json编译失败！");
 
                     }
-                    SocketUtil.DelayMilli(200);
+                    ToolsUtil.DelayMilli(200);
                     //编译定时
                     if (fm.getTimerJsonByIP(ip))
                     {
@@ -278,7 +278,7 @@ namespace eNet编辑器.AddForm
                         AppTxtShow("timer.json编译失败！");
 
                     }
-                    SocketUtil.DelayMilli(200);
+                    ToolsUtil.DelayMilli(200);
                     //编译面板
                     if (fm.getPanelJsonByIP(ip))
                     {
@@ -290,7 +290,7 @@ namespace eNet编辑器.AddForm
                         AppTxtShow("panel.json编译失败！");
 
                     }
-                    SocketUtil.DelayMilli(200);
+                    ToolsUtil.DelayMilli(200);
                     //编译感应
                     if (fm.getSensorJsonByIP(ip))
                     {
@@ -302,7 +302,7 @@ namespace eNet编辑器.AddForm
                         AppTxtShow("sensor.json编译失败！");
 
                     }
-                    SocketUtil.DelayMilli(200);
+                    ToolsUtil.DelayMilli(200);
                     string file = string.Format("{0}\\objs\\{1}", FileMesege.TmpFilePath, ip);
                     try
                     {
@@ -449,7 +449,7 @@ namespace eNet编辑器.AddForm
                 TcpSocket ts = new TcpSocket();
 
                 sock = ts.ConnectServer(ip, 6001, 1);
-                SocketUtil.Delay(1);
+                ToolsUtil.Delay(1);
                 if (sock == null)
                 {
                     
@@ -516,7 +516,7 @@ namespace eNet编辑器.AddForm
                 string data = string.Format("down /backup/{0}${1}",fileName,json);
                 TcpSocket ts = new TcpSocket();
                 sock = ts.ConnectServer(ip, 6001, 1);
-                SocketUtil.Delay(1);
+                ToolsUtil.Delay(1);
                 if (sock == null)
                 {
                     AppTxtShow("连接主机失败，请检查网络！");

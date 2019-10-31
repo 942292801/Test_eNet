@@ -581,7 +581,7 @@ namespace eNet编辑器.AddForm
                     {
                         if (TypeList[i].Split(',')[1] == cb2.Text)
                         {
-                            newobj = SocketUtil.strtohexstr(cb1.Text) + SocketUtil.strtohexstr(TypeList[i].Split(',')[2]);
+                            newobj = ToolsUtil.strtohexstr(cb1.Text) + ToolsUtil.strtohexstr(TypeList[i].Split(',')[2]);
                             break;
                         }
                     }
@@ -589,12 +589,12 @@ namespace eNet编辑器.AddForm
                     if (cb3.Text != "" && cb4.Text != "")
                     {
                         //设备
-                        newobj = newobj + SocketUtil.strtohexstr(cb3.Text) + SocketUtil.strtohexstr(cb4.Text);
+                        newobj = newobj + ToolsUtil.strtohexstr(cb3.Text) + ToolsUtil.strtohexstr(cb4.Text);
                     }
                     else if (cb3.Text == "" && cb4.Text != "")
                     {
                         //非设备类
-                        string tmp = SocketUtil.strtohexstr(cb4.Text);
+                        string tmp = ToolsUtil.strtohexstr(cb4.Text);
                         while (tmp.Length < 4)
                         {
                             tmp = tmp.Insert(0, "0");

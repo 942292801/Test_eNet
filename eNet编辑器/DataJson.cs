@@ -112,20 +112,20 @@ namespace eNet编辑器
             public int attr { get; set; }
             public string modelType { get; set; }
             public string @switch { get; set; }//用@来做关键字为变量名
-            public List<Condition> condition = new List<Condition>();
+            public List<ConditionCase> conditionCase = new List<ConditionCase>();
             
 
         }
 
         [Serializable]
-        public class Condition
+        public class ConditionCase
         {
             public string @case { get; set; }
             public string obj { get; set; }
             public string data { get; set; }
             public string optname { get; set; }
             public int delay { get; set; }
-            public Condition()
+            public ConditionCase()
             {
                 delay = 0;
             }
@@ -568,10 +568,10 @@ namespace eNet编辑器
         [Serializable]
         public class VoiceContent
         {
-            public string voice { get; set; }
-            public string voiceAssignment { get; set; }
-            public List<VoiceItem> voiceItem = new List<VoiceItem>();
-            public List<VoiceIfItem> voiceIfItem = new List<VoiceIfItem>();
+            public string voice { get; set; }//表达式
+            public string voiceAssignment { get; set; }//赋值地址
+            public List<VoiceItem> voiceItem = new List<VoiceItem>();//ABC项
+            public List<VoiceIfItem> voiceIfItem = new List<VoiceIfItem>();//判断结果
         }
 
         [Serializable]

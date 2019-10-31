@@ -280,7 +280,7 @@ namespace eNet编辑器.AddForm
                 //1.筛选当前发送内容
                 //获取obj发送的指令    SET; 指令;对象信息  \r\n
 
-                string msg = SocketUtil.getObjSet(content, rowNum, FileMesege.tnselectNode);
+                string msg = ToolsUtil.getObjSet(content, rowNum, FileMesege.tnselectNode);
                 //客户端发送数据
                 client.SendAsync(msg);
                 

@@ -463,7 +463,7 @@ namespace eNet编辑器
                     txtShow.AppendText(tmp);
                 }
                 //来一个延时
-                SocketUtil.DelayMilli(300);
+                ToolsUtil.DelayMilli(300);
                 txtShow.SelectAll();
                 this.txtShow.SelectionColor = Color.Black;
 

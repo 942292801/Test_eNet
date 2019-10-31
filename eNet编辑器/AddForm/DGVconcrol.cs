@@ -251,8 +251,8 @@ namespace eNet编辑器.AddForm
                 }
                 //1.筛选当前发送内容
                 //获取obj发送的指令    SET; 指令;对象信息  \r\n
-                string content = SocketUtil.strtohexstr(cb1Num) + SocketUtil.strtohexstr(cb2Num) + SocketUtil.strtohexstr(cb3Num) + SocketUtil.strtohexstr(cb4Num);
-                string msg = SocketUtil.getObjSet(content, rowindex, FileMesege.tnselectNode);
+                string content = ToolsUtil.strtohexstr(cb1Num) + ToolsUtil.strtohexstr(cb2Num) + ToolsUtil.strtohexstr(cb3Num) + ToolsUtil.strtohexstr(cb4Num);
+                string msg = ToolsUtil.getObjSet(content, rowindex, FileMesege.tnselectNode);
                 //客户端发送数据
                 client.SendAsync(msg);
             }

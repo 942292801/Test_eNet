@@ -744,7 +744,7 @@ namespace eNet编辑器.AddForm
                         this.DialogResult = DialogResult.No;
                         return;
                     }
-                    this.opt = SocketUtil.strtohexstr(cb1Num) + SocketUtil.strtohexstr(cb2Num) + SocketUtil.strtohexstr(cb3Num) + SocketUtil.strtohexstr(cb4Num);
+                    this.opt = ToolsUtil.strtohexstr(cb1Num) + ToolsUtil.strtohexstr(cb2Num) + ToolsUtil.strtohexstr(cb3Num) + ToolsUtil.strtohexstr(cb4Num);
                     if (cb4.Text.Split(':').Length > 1)
                     {
                         if (cbVersion.Text == "状态操作")
@@ -775,7 +775,7 @@ namespace eNet编辑器.AddForm
                         {
                             if (TypeList[i].Split(',')[1] == cb2.Text)
                             {
-                                newobj = SocketUtil.strtohexstr(cb1.Text) + SocketUtil.strtohexstr(TypeList[i].Split(',')[2]);
+                                newobj = ToolsUtil.strtohexstr(cb1.Text) + ToolsUtil.strtohexstr(TypeList[i].Split(',')[2]);
                                 break;
                             }
                         }
@@ -785,23 +785,23 @@ namespace eNet编辑器.AddForm
                             if (cb2.Text != "局部变量")
                             {
                                 //设备
-                                newobj = newobj + SocketUtil.strtohexstr(cb3.Text) + SocketUtil.strtohexstr(cb4.Text);
+                                newobj = newobj + ToolsUtil.strtohexstr(cb3.Text) + ToolsUtil.strtohexstr(cb4.Text);
                             }
                             else
                             {
                                 //局部变量
-                                string tmp = SocketUtil.strtohexstr(cb4.Text);
+                                string tmp = ToolsUtil.strtohexstr(cb4.Text);
                                 while (tmp.Length < 4)
                                 {
                                     tmp = tmp.Insert(0, "0");
                                 }
-                                newobj = SocketUtil.strtohexstr(cb1.Text) + SocketUtil.strtohexstr("249") + tmp;
+                                newobj = ToolsUtil.strtohexstr(cb1.Text) + ToolsUtil.strtohexstr("249") + tmp;
                             }
                         }
                         else if (cb3.Text == "" && cb4.Text != "")
                         {
                             //非设备类
-                            string tmp = SocketUtil.strtohexstr(cb4.Text);
+                            string tmp = ToolsUtil.strtohexstr(cb4.Text);
                             while (tmp.Length < 4)
                             {
                                 tmp = tmp.Insert(0, "0");

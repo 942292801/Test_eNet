@@ -152,7 +152,7 @@ namespace eNet编辑器.DgvView
                         continue;
                     }
                     //判断ID是否为当前选中的ID 
-                    if (str.Substring(4, 2) == SocketUtil.strtohexstr((device).ToString()))
+                    if (str.Substring(4, 2) == ToolsUtil.strtohexstr((device).ToString()))
                     {
 
                         count = Convert.ToInt32(str.Substring(6, 2), 16);
@@ -204,15 +204,15 @@ namespace eNet编辑器.DgvView
                     string[] devs = FileMesege.tnselectNode.Text.Split(' ');
                     
                     //获取IP最后一位
-                     string IP = SocketUtil.GetIPstyle(parents[0], 4);
+                     string IP = ToolsUtil.GetIPstyle(parents[0], 4);
                     //获取10进制的设备ID号
                     string idstr = Regex.Replace(devs[0], @"[^\d]*", "");
                     //十六进制的ID号
-                    string ID = SocketUtil.strtohexstr(idstr);
+                    string ID = ToolsUtil.strtohexstr(idstr);
                     //10进制的ID端口号 
                     string idportstr = dataGridView1.Rows[rowCount].Cells[0].Value.ToString();
                     //十六进制的ID端口号
-                    string IDports = SocketUtil.strtohexstr(idportstr);
+                    string IDports = ToolsUtil.strtohexstr(idportstr);
                     string address = "FE00" + ID + IDports;
                     string name = "";
 
@@ -347,9 +347,9 @@ namespace eNet编辑器.DgvView
             dc.StartPosition = FormStartPosition.CenterParent;
             string[] parents = FileMesege.tnselectNode.Parent.Text.Split(' ');
             string[] devs = FileMesege.tnselectNode.Text.Split(' ');
-            string IP = SocketUtil.GetIPstyle(parents[0], 4);
-            string ID = SocketUtil.strtohexstr(Regex.Replace(devs[0], @"[^\d]*", ""));
-            string IDports = SocketUtil.strtohexstr((rowcount + 1).ToString());
+            string IP = ToolsUtil.GetIPstyle(parents[0], 4);
+            string ID = ToolsUtil.strtohexstr(Regex.Replace(devs[0], @"[^\d]*", ""));
+            string IDports = ToolsUtil.strtohexstr((rowcount + 1).ToString());
             string address = "FE00" + ID + IDports;
             dc.Point = null;
             foreach (DataJson.PointInfo ep in FileMesege.PointList.equipment)
@@ -564,9 +564,9 @@ namespace eNet编辑器.DgvView
             }
             string[] parents = FileMesege.tnselectNode.Parent.Text.Split(' ');
             string[] devs = FileMesege.tnselectNode.Text.Split(' ');
-            string IP = SocketUtil.GetIPstyle(parents[0], 4);
-            string ID = SocketUtil.strtohexstr(Regex.Replace(devs[0], @"[^\d]*", ""));
-            string IDports = SocketUtil.strtohexstr((count + 1).ToString());
+            string IP = ToolsUtil.GetIPstyle(parents[0], 4);
+            string ID = ToolsUtil.strtohexstr(Regex.Replace(devs[0], @"[^\d]*", ""));
+            string IDports = ToolsUtil.strtohexstr((count + 1).ToString());
             string address = "FE00" + ID + IDports;
             //撤销
             DataJson.totalList OldList = FileMesege.cmds.getListInfos();
@@ -811,15 +811,15 @@ namespace eNet编辑器.DgvView
             string[] devs = FileMesege.tnselectNode.Text.Split(' ');
 
             //获取IP最后一位
-            string IP = SocketUtil.GetIPstyle(parents[0], 4);
+            string IP = ToolsUtil.GetIPstyle(parents[0], 4);
             //获取10进制的设备ID号
             string idstr = Regex.Replace(devs[0], @"[^\d]*", "");
             //十六进制的ID号
-            string ID = SocketUtil.strtohexstr(idstr);
+            string ID = ToolsUtil.strtohexstr(idstr);
             //10进制的ID端口号 
             string idportstr = dataGridView1.Rows[rowCount].Cells[0].Value.ToString();
             //十六进制的ID端口号
-            string IDports = SocketUtil.strtohexstr(idportstr);
+            string IDports = ToolsUtil.strtohexstr(idportstr);
             string address = "FE00" + ID + IDports;
             
             //area1-4 + name
@@ -930,7 +930,7 @@ namespace eNet编辑器.DgvView
             {
                 if (client != null && client.Connected())
                 {
-                    string msg = "GET;{" + SocketUtil.getIP(FileMesege.tnselectNode) + ".0." + SocketUtil.getID(FileMesege.tnselectNode) + ".255};\r\n";
+                    string msg = "GET;{" + ToolsUtil.getIP(FileMesege.tnselectNode) + ".0." + ToolsUtil.getID(FileMesege.tnselectNode) + ".255};\r\n";
 
                     //客户端发送数据
                     client.SendAsync(msg);

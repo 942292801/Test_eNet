@@ -164,7 +164,7 @@ namespace eNet编辑器.DgvView
             {
                 return;
             }
-            point.address = "FEFB03"+  SocketUtil.strtohexstr(nameID);
+            point.address = "FEFB03"+  ToolsUtil.strtohexstr(nameID);
             point.area1 = sect[0];
             point.area2 = sect[1];
             point.area3 = sect[2];

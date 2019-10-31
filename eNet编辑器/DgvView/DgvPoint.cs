@@ -397,7 +397,7 @@ namespace eNet编辑器.DgvView
                         //获取序号
                         num = eq.name.Split('@')[0].Replace(FileMesege.titleinfo, ""); //Regex.Replace(eq.name.Split('@')[0], @"[^\d]*", "");
 
-                        if (Regex.IsMatch(num, @"^[+-]?\d*[.]?\d*$"))
+                        if (Validator.IsNumber(num))// Regex.IsMatch(num, @"^[+-]?\d*[.]?\d*$"))
                         {
                             hasharry.Add(Convert.ToInt32(num));
                         }
@@ -628,10 +628,12 @@ namespace eNet编辑器.DgvView
                         {
                             
                             case "pointName":
-                                if(string.IsNullOrEmpty( FileMesege.titleinfo))
+
+                                if (string.IsNullOrEmpty(FileMesege.titleinfo))
                                 {
                                     break;
                                 }
+
                                 //添加名称
                                 changeName(); 
                                 break;
@@ -697,7 +699,7 @@ namespace eNet编辑器.DgvView
                         eq = findNowRow(rowNum);
                         if (eq == null)
                         {
-                            SocketUtil.DelayMilli(100);
+                            ToolsUtil.DelayMilli(100);
                             eq = findNowRow(rowNum);
                             if (eq == null)
                             {
@@ -730,7 +732,7 @@ namespace eNet编辑器.DgvView
                          eq = findNowRow(rowNum);
                         if (eq == null)
                         {
-                            SocketUtil.DelayMilli(100);
+                            ToolsUtil.DelayMilli(100);
                             eq = findNowRow(rowNum);
                             if (eq == null)
                             {
@@ -986,8 +988,11 @@ namespace eNet编辑器.DgvView
                     {
                         if (et.area1 == eq.area1 && et.area2 == eq.area2 && et.area3 == eq.area3 && et.area4 == eq.area4 && et.name.Split('@')[0] == nowName)
                         {
-
-                            dataGridView1.Rows[rowNum].Cells[3].Value = oldName;
+                            if (rowCount == rowNum)
+                            {
+                                dataGridView1.Rows[rowNum].Cells[3].Value = oldName;
+                            
+                            }
                             return;
 
                         }

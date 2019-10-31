@@ -707,7 +707,7 @@ namespace eNet编辑器
                     foreach (DataJson.sceneInfo info in scs.sceneInfo)
                     {
                         //确保有信息
-                        if (string.IsNullOrEmpty(info.opt))
+                        if (string.IsNullOrEmpty(info.opt) || info.address == "FFFFFFFF")
                         {
                             
                             continue;
@@ -773,7 +773,7 @@ namespace eNet编辑器
                     foreach (DataJson.timersInfo tmInfo in tms.timersInfo)
                     {
                         //确保有信息
-                        if (string.IsNullOrEmpty(tmInfo.opt) || string.IsNullOrEmpty(tmInfo.shortTime))
+                        if (string.IsNullOrEmpty(tmInfo.opt) || string.IsNullOrEmpty(tmInfo.shortTime) || tmInfo.address == "FFFFFFFF")
                         {
                             continue;
                         }
@@ -913,7 +913,12 @@ namespace eNet编辑器
                     foreach (DataJson.panelsInfo plInfo in pls.panelsInfo)
                     {
                         //确保有信息
-                        if (string.IsNullOrEmpty(plInfo.keyAddress) || string.IsNullOrEmpty(plInfo.objAddress) || plInfo.opt == 0 || string.IsNullOrEmpty(plInfo.objType))
+                        if (string.IsNullOrEmpty(plInfo.keyAddress) 
+                            || string.IsNullOrEmpty(plInfo.objAddress)
+                            || plInfo.opt == 0 
+                            || string.IsNullOrEmpty(plInfo.objType)
+                            || plInfo.objAddress == "FFFFFFFF"
+                            )
                         {
                             continue;
                         }
@@ -1020,6 +1025,7 @@ namespace eNet编辑器
                             || string.IsNullOrEmpty(srInfo.opt)
                             || string.IsNullOrEmpty(srInfo.objType)
                             || srInfo.fbmode == 0
+                            || srInfo.objAddress == "FFFFFFFF"
                             )
                         {
                             continue;
@@ -1073,6 +1079,7 @@ namespace eNet编辑器
                         continue;
                     }
                     
+                    //逻辑模块
                     DataJson.Lc lc = new DataJson.Lc();
                     lc.trigger = new List<DataJson.TriggerNumber>();
                     //把有效的对象操作 放到lc对象里面
@@ -1092,9 +1099,11 @@ namespace eNet编辑器
                                 break;
                             case "ConditionDeal":
                                 //提取多条件处理的逻辑
+                                ConditionDeal(lc, info);
                                 break;
                             case "VoiceDeal":
                                 //提取表达式处理的逻辑
+                                VoiceDeal(lc, info);
                                 break;
                             default:
                                 break;
@@ -1103,9 +1112,12 @@ namespace eNet编辑器
             
 
                     }
+                    //判断有没有num块存在
                     if (lc.trigger.Count > 0)
                     {
+                        
                         //File.WriteAllText(string.Format("{0}\\objs\\{1}\\l{2}.json", TmpFilePath, ip, lgs.id), ConvertJsonString(JsonConvert.SerializeObject(lc)));
+                        //暂时输出到某个目录下面
                         File.WriteAllText(string.Format("C:\\Users\\Administrator\\Desktop\\工程obj\\tmp\\l{0}.json", lgs.id), ConvertJsonString(JsonConvert.SerializeObject(lc)));
                     }
                     
@@ -1148,7 +1160,7 @@ namespace eNet编辑器
                             break;
                         }
                         //确保有信息 
-                        if (string.IsNullOrEmpty(logicSceneContent.SceneItemInfo[k].state))
+                        if (string.IsNullOrEmpty(logicSceneContent.SceneItemInfo[k].state) || logicSceneContent.SceneItemInfo[k].address == "FFFFFFFF")
                         {
                             continue;
                         }
@@ -1163,22 +1175,22 @@ namespace eNet编辑器
                     }
                     string localVarAddress = string.Format("FEF9{0}", ((LogicID-1) * 8 + total.num).ToString("X4"));
                     lastSwitch = string.Format("{0}&&{1}", lastSwitch, localVarAddress);
-                    DataJson.Condition cas1 = new DataJson.Condition();
+                    DataJson.ConditionCase cas1 = new DataJson.ConditionCase();
                     cas1.@case = "1";
                     cas1.obj = localVarAddress;
                     cas1.data = "00000001";
                     cas1.delay = 0;
-                    total.condition.Add(cas1);
+                    total.conditionCase.Add(cas1);
 
-                    DataJson.Condition cas2 = new DataJson.Condition();
+                    DataJson.ConditionCase cas2 = new DataJson.ConditionCase();
                     cas2.@case = "*";
                     cas2.obj = localVarAddress;
                     cas2.data = "00000000";
                     cas2.delay = 0;
-                    total.condition.Add(cas2);
+                    total.conditionCase.Add(cas2);
 
                     //当switch项内容不为空且 case的内容不为空
-                    if (total.condition.Count > 0 && !string.IsNullOrEmpty(total.@switch))
+                    if (total.conditionCase.Count > 0 && !string.IsNullOrEmpty(total.@switch))
                     {
                         lc.trigger.Add(total);
                     }
@@ -1200,22 +1212,22 @@ namespace eNet编辑器
                         lc.trigger.Clear();
                         return;
                     }
-                    DataJson.Condition cas1 = new DataJson.Condition();
+                    DataJson.ConditionCase cas1 = new DataJson.ConditionCase();
                     cas1.@case = "1";
                     cas1.obj = point.address;
                     cas1.data = "10000001";
                     cas1.delay = 0;
-                    total.condition.Add(cas1);
+                    total.conditionCase.Add(cas1);
 
-                    DataJson.Condition cas2 = new DataJson.Condition();
+                    DataJson.ConditionCase cas2 = new DataJson.ConditionCase();
                     cas2.@case = "*";
                     cas2.obj = point.address;
                     cas2.data = "10000000";
                     cas2.delay = 0;
-                    total.condition.Add(cas2);
+                    total.conditionCase.Add(cas2);
 
                     //当switch项内容不为空且 case的内容不为空
-                    if (total.condition.Count > 0 && !string.IsNullOrEmpty(total.@switch))
+                    if (total.conditionCase.Count > 0 && !string.IsNullOrEmpty(total.@switch))
                     {
                         lc.trigger.Add(total);
                     }
@@ -1236,7 +1248,7 @@ namespace eNet编辑器
                 {
             
                     //确保有信息 
-                    if (string.IsNullOrEmpty(logicSceneContent.SceneItemInfo[k].state))
+                    if (string.IsNullOrEmpty(logicSceneContent.SceneItemInfo[k].state) || logicSceneContent.SceneItemInfo[k].address == "FFFFFFFF")
                     {
                         continue;
                     }
@@ -1257,22 +1269,22 @@ namespace eNet编辑器
                     lc.trigger.Clear();
                     return;
                 }
-                DataJson.Condition cas1 = new DataJson.Condition();
+                DataJson.ConditionCase cas1 = new DataJson.ConditionCase();
                 cas1.@case = "1";
                 cas1.obj = point.address;
                 cas1.data = "10000001";
                 cas1.delay = 0;
-                total.condition.Add(cas1);
+                total.conditionCase.Add(cas1);
 
-                DataJson.Condition cas2 = new DataJson.Condition();
+                DataJson.ConditionCase cas2 = new DataJson.ConditionCase();
                 cas2.@case = "*";
                 cas2.obj = point.address;
                 cas2.data = "10000000";
                 cas2.delay = 0;
-                total.condition.Add(cas2);
+                total.conditionCase.Add(cas2);
 
                 //当switch项内容不为空且 case的内容不为空
-                if (total.condition.Count > 0 && !string.IsNullOrEmpty(total.@switch))
+                if (total.conditionCase.Count > 0 && !string.IsNullOrEmpty(total.@switch))
                 {
                     lc.trigger.Add(total);
                 }
@@ -1289,9 +1301,8 @@ namespace eNet编辑器
 
         private void ConditionDeal(DataJson.Lc lc, DataJson.logicsInfo LogicInfo)
         {
-            /*
-            DataJson.ConditionContent logicConditionContent = JsonConvert.DeserializeObject<DataJson.ConditionContent>(LogicInfo.content);
-            if()
+            
+            DataJson.ConditionContent logicConditionContent = JsonConvert.DeserializeObject<DataJson.ConditionContent>(LogicInfo.content);            
             //场景数量不超50范围
             DataJson.TriggerNumber total = new DataJson.TriggerNumber();
             total.num = LogicInfo.id;
@@ -1302,49 +1313,126 @@ namespace eNet编辑器
             {
 
                 //确保有信息 
-                if (string.IsNullOrEmpty(logicConditionContent.conditionInfo[k].))
+                if (string.IsNullOrEmpty(logicConditionContent.conditionInfo[k].compareobjAddress) 
+                    || string.IsNullOrEmpty(logicConditionContent.conditionInfo[k].objAddress)
+                    || string.IsNullOrEmpty(logicConditionContent.conditionInfo[k].operation)
+                    || logicConditionContent.conditionInfo[k].objAddress == "FFFFFFFF"
+                    || logicConditionContent.conditionInfo[k].compareobjAddress == "FFFFFFFF"
+                    || logicConditionContent.conditionInfo[k].a == 0
+                    || logicConditionContent.conditionInfo[k].c == 0
+                    )
                 {
                     continue;
                 }
+                
                 if (string.IsNullOrEmpty(total.@switch))
                 {
-                    total.@switch = string.Format("{0}=={1}", logicSceneContent.sceneInfo[k].address, logicSceneContent.sceneInfo[k].opt);
+                    
+                    total.@switch = string.Format("({0}{1}{2})",
+                        PowerAdd(logicConditionContent.conditionInfo[k].a, logicConditionContent.conditionInfo[k].b, logicConditionContent.conditionInfo[k].objAddress),
+                        logicConditionContent.conditionInfo[k].operation,
+                        PowerAdd(logicConditionContent.conditionInfo[k].c, logicConditionContent.conditionInfo[k].d, logicConditionContent.conditionInfo[k].compareobjAddress)
+                        
+                        );
                 }
                 else
                 {
-                    total.@switch = string.Format("{0}&&{1}=={2}", total.@switch, logicSceneContent.sceneInfo[k].address, logicSceneContent.sceneInfo[k].opt);
+                    total.@switch = string.Format("{0}&&({1}{2}{3})",
+                        total.@switch,
+                        PowerAdd(logicConditionContent.conditionInfo[k].a, logicConditionContent.conditionInfo[k].b, logicConditionContent.conditionInfo[k].objAddress),
+                        logicConditionContent.conditionInfo[k].operation,
+                        PowerAdd(logicConditionContent.conditionInfo[k].c, logicConditionContent.conditionInfo[k].d, logicConditionContent.conditionInfo[k].compareobjAddress)
+                        );
                 }
             }
             //填写case
-            DataJson.PointInfo point = DataListHelper.findPointByPid(logicSceneContent.pid);
-            if (point == null)
+            if (string.IsNullOrEmpty(total.@switch))
             {
                 //清空所有内容
                 lc.trigger.Clear();
                 return;
             }
-            DataJson.Condition cas1 = new DataJson.Condition();
-            cas1.@case = "1";
-            cas1.obj = point.address;
-            cas1.data = "10000001";
-            cas1.delay = 0;
-            total.condition.Add(cas1);
-
-            DataJson.Condition cas2 = new DataJson.Condition();
-            cas2.@case = "*";
-            cas2.obj = point.address;
-            cas2.data = "10000000";
-            cas2.delay = 0;
-            total.condition.Add(cas2);
-
+            //trueDo
+            for (int k = 0; k < logicConditionContent.trueDo.Count; k++)
+            {
+                if (string.IsNullOrEmpty(logicConditionContent.trueDo[k].address)
+                    || logicConditionContent.trueDo[k].address == "FFFFFFFF"
+                    || string.IsNullOrEmpty(logicConditionContent.trueDo[k].opt)
+                )
+                {
+                    continue;
+                }
+                DataJson.ConditionCase cas1 = new DataJson.ConditionCase();
+                cas1.@case = "1";
+   
+                
+                cas1.obj = logicConditionContent.trueDo[k].address;
+                cas1.data = logicConditionContent.trueDo[k].opt;
+                cas1.optname = logicConditionContent.trueDo[k].optName;
+                cas1.delay = logicConditionContent.trueDo[k].delay;
+                total.conditionCase.Add(cas1);
+            }
+            //falseDo
+            for (int k = 0; k < logicConditionContent.falseDo.Count; k++)
+            {
+                if (string.IsNullOrEmpty(logicConditionContent.falseDo[k].address)
+                    || logicConditionContent.falseDo[k].address == "FFFFFFFF"
+                    || string.IsNullOrEmpty(logicConditionContent.falseDo[k].opt)
+                )
+                {
+                    continue;
+                }
+                DataJson.ConditionCase cas1 = new DataJson.ConditionCase();
+         
+                cas1.@case = "*";
+                cas1.obj = logicConditionContent.falseDo[k].address;
+                cas1.data = logicConditionContent.falseDo[k].opt;
+                cas1.optname = logicConditionContent.falseDo[k].optName;
+                cas1.delay = logicConditionContent.falseDo[k].delay;
+                total.conditionCase.Add(cas1);
+            }
             //当switch项内容不为空且 case的内容不为空
-            if (total.condition.Count > 0 && !string.IsNullOrEmpty(total.@switch))
+            if (total.conditionCase.Count > 0 && !string.IsNullOrEmpty(total.@switch))
             {
                 lc.trigger.Add(total);
             }
-            */
+            
+        }
 
-
+        /// <summary>
+        /// 地址加权 a为乘 b为加
+        /// </summary>
+        /// <returns></returns>
+        private string PowerAdd(int a,int b,string address)
+        {
+            string tmp = "";
+            if (a == 1)
+            {
+                if (b == 0)
+                {
+                    //1 0
+                    tmp = address;
+                }
+                else
+                { 
+                    //1 x
+                    tmp = string.Format("({0}+{1})", address, b);
+                }
+            }
+            else
+            {
+                if (b == 0)
+                {
+                    //0 1
+                    tmp = "";
+                }
+                else
+                {
+                    //x x
+                    tmp = string.Format("({0}*{1}+{2})",a, address, b);
+                }
+            }
+            return tmp;
 
         }
 
@@ -1355,61 +1443,90 @@ namespace eNet编辑器
 
         private void VoiceDeal(DataJson.Lc lc, DataJson.logicsInfo LogicInfo)
         {
-            /*
+            
             DataJson.VoiceContent logicVoiceContent = JsonConvert.DeserializeObject<DataJson.VoiceContent>(LogicInfo.content);
-            if()
             //场景数量不超50范围
             DataJson.TriggerNumber total = new DataJson.TriggerNumber();
             total.num = LogicInfo.id;
             total.attr = LogicInfo.attr;
             total.modelType = LogicInfo.modelType;
-            //填写switch
-            for (int k = 0; k < logicConditionContent.conditionInfo.Count; k++)
-            {
 
-                //确保有信息 
-                if (string.IsNullOrEmpty(logicConditionContent.conditionInfo[k].))
-                {
-                    continue;
-                }
-                if (string.IsNullOrEmpty(total.@switch))
-                {
-                    total.@switch = string.Format("{0}=={1}", logicSceneContent.sceneInfo[k].address, logicSceneContent.sceneInfo[k].opt);
-                }
-                else
-                {
-                    total.@switch = string.Format("{0}&&{1}=={2}", total.@switch, logicSceneContent.sceneInfo[k].address, logicSceneContent.sceneInfo[k].opt);
-                }
-            }
-            //填写case
-            DataJson.PointInfo point = DataListHelper.findPointByPid(logicSceneContent.pid);
-            if (point == null)
+            //填写switch  
+            if (string.IsNullOrEmpty(logicVoiceContent.voice))
             {
                 //清空所有内容
                 lc.trigger.Clear();
                 return;
             }
-            DataJson.Condition cas1 = new DataJson.Condition();
-            cas1.@case = "1";
-            cas1.obj = point.address;
-            cas1.data = "10000001";
-            cas1.delay = 0;
-            total.condition.Add(cas1);
+            char[] voiceChar = logicVoiceContent.voice.ToCharArray();
+    
+          
+            for(int i = 0;i < voiceChar.Length;i++)
+            {
+                if (Validator.IsEnglishCharacter(voiceChar[i].ToString()))
+                {
+                     DataJson.VoiceItem voiceitem = logicVoiceContent.voiceItem.Find(obj => obj.letter == voiceChar[i].ToString());
+                     if (voiceitem == null || string.IsNullOrEmpty(voiceitem.address) || voiceitem.address == "FFFFFFFF")
+                     {
+                         //地址为空 直接退出
+                         total.@switch = "";
+                         break;
+                     }
+                     total.@switch = string.Format("{0}{1}", total.@switch, voiceitem.address);
+                }
+                else
+                {
+                    total.@switch = string.Format("{0}{1}", total.@switch , voiceChar[i]);
+                }
+            }
+            
 
-            DataJson.Condition cas2 = new DataJson.Condition();
-            cas2.@case = "*";
-            cas2.obj = point.address;
-            cas2.data = "10000000";
-            cas2.delay = 0;
-            total.condition.Add(cas2);
+            //填写case
+            if (string.IsNullOrEmpty(total.@switch))
+            {
+                //清空所有内容
+                lc.trigger.Clear();
+                return;
+            }
+            //表达式是否有赋值到局部变量或者虚拟变量
+            if (!string.IsNullOrEmpty(logicVoiceContent.voiceAssignment))
+            {
+                DataJson.ConditionCase cas1 = new DataJson.ConditionCase();
 
+                cas1.@case = "#";
+                cas1.obj = logicVoiceContent.voiceAssignment;
+                cas1.data = "FE000000";
+                cas1.optname = "";
+                cas1.delay = 0;
+                total.conditionCase.Add(cas1);
+            }
+
+            //表达判断项
+            for (int k = 0; k < logicVoiceContent.voiceIfItem.Count; k++)
+            {
+                if (string.IsNullOrEmpty(logicVoiceContent.voiceIfItem[k].result)
+                    || string.IsNullOrEmpty(logicVoiceContent.voiceIfItem[k].address)
+                    || logicVoiceContent.voiceIfItem[k].address == "FFFFFFFF"
+                    || string.IsNullOrEmpty(logicVoiceContent.voiceIfItem[k].opt)
+
+                )
+                {
+                    continue;
+                }
+                DataJson.ConditionCase cas1 = new DataJson.ConditionCase();
+
+                cas1.@case = logicVoiceContent.voiceIfItem[k].result;
+                cas1.obj = logicVoiceContent.voiceIfItem[k].address;
+                cas1.data = logicVoiceContent.voiceIfItem[k].opt;
+                cas1.optname = logicVoiceContent.voiceIfItem[k].optName;
+                cas1.delay = logicVoiceContent.voiceIfItem[k].delay;
+                total.conditionCase.Add(cas1);
+            }
             //当switch项内容不为空且 case的内容不为空
-            if (total.condition.Count > 0 && !string.IsNullOrEmpty(total.@switch))
+            if (total.conditionCase.Count > 0 && !string.IsNullOrEmpty(total.@switch))
             {
                 lc.trigger.Add(total);
             }
-            */
-
 
 
         }

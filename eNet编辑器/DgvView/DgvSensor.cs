@@ -413,8 +413,8 @@ namespace eNet编辑器.DgvView
             {
                 return;
             }
-            string ip = SocketUtil.strtohexstr(SocketUtil.getIP(FileMesege.sensorSelectNode));
-            string id = SocketUtil.strtohexstr(cbDevNum.Text);
+            string ip = ToolsUtil.strtohexstr(ToolsUtil.getIP(FileMesege.sensorSelectNode));
+            string id = ToolsUtil.strtohexstr(cbDevNum.Text);
             string tmpNum = "";
             //devices 里面ini的名字
             List<int> ioNumList = findIONum();
@@ -447,7 +447,7 @@ namespace eNet编辑器.DgvView
                 }
                 else
                 {
-                    tmpNum = SocketUtil.strtohexstr(ioNumList[i].ToString());
+                    tmpNum = ToolsUtil.strtohexstr(ioNumList[i].ToString());
                     while (tmpNum.Length < 4)
                     {
                         tmpNum = tmpNum.Insert(0, "0");
@@ -696,7 +696,7 @@ namespace eNet编辑器.DgvView
                 string[] ids = FileMesege.sensorSelectNode.Text.Split(' ');
                 int sceneNum = Convert.ToInt32(Regex.Replace(ids[0], @"[^\d]*", ""));
                 //发送调用指令
-                string ip4 = SocketUtil.getIP(FileMesege.sensorSelectNode);
+                string ip4 = ToolsUtil.getIP(FileMesege.sensorSelectNode);
                 TcpSocket ts = new TcpSocket();
 
                 sock = ts.ConnectServer(ip, 6003, 2);
@@ -765,7 +765,7 @@ namespace eNet编辑器.DgvView
                 string[] ids = FileMesege.sensorSelectNode.Text.Split(' ');
                 int sceneNum = Convert.ToInt32(Regex.Replace(ids[0], @"[^\d]*", ""));
                 //发送调用指令
-                string ip4 = SocketUtil.getIP(FileMesege.sensorSelectNode);
+                string ip4 = ToolsUtil.getIP(FileMesege.sensorSelectNode);
                 TcpSocket ts = new TcpSocket();
 
                 sock = ts.ConnectServer(ip, 6003, 2);
@@ -876,7 +876,7 @@ namespace eNet编辑器.DgvView
                 string[] ids = FileMesege.sensorSelectNode.Text.Split(' ');
                 int sceneNum = Convert.ToInt32(Regex.Replace(ids[0], @"[^\d]*", ""));
                 //发送调用指令
-                string ip4 = SocketUtil.getIP(FileMesege.sensorSelectNode);
+                string ip4 = ToolsUtil.getIP(FileMesege.sensorSelectNode);
                 TcpSocket ts = new TcpSocket();
 
                 sock = ts.ConnectServer(ip, 6003, 2);
@@ -1535,10 +1535,10 @@ namespace eNet编辑器.DgvView
                 {
                     case "00":
                         //设备类地址
-                        objAddress = objAddress.Substring(0, 6) + SocketUtil.strtohexstr((Convert.ToInt32(objAddress.Substring(6, 2), 16) + 1).ToString());
+                        objAddress = objAddress.Substring(0, 6) + ToolsUtil.strtohexstr((Convert.ToInt32(objAddress.Substring(6, 2), 16) + 1).ToString());
                         break;
                     default:
-                        string hexnum = SocketUtil.strtohexstr((Convert.ToInt32(objAddress.Substring(4, 4), 16) + 1).ToString());
+                        string hexnum = ToolsUtil.strtohexstr((Convert.ToInt32(objAddress.Substring(4, 4), 16) + 1).ToString());
                         while (hexnum.Length < 4)
                         {
                             hexnum = hexnum.Insert(0, "0");

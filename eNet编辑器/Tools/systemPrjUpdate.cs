@@ -57,9 +57,9 @@ namespace eNet编辑器.AddForm
             }
             udpIni();
             //获取本地IP
-            Localip = SocketUtil.GetLocalIP();
+            Localip = ToolsUtil.GetLocalIP();
             //udp 绑定
-            udp.udpBing(Localip, SocketUtil.GetFreePort().ToString());
+            udp.udpBing(Localip, ToolsUtil.GetFreePort().ToString());
             //绑定成功
             if (udp.isbing)
             {
@@ -409,7 +409,7 @@ namespace eNet编辑器.AddForm
                 TcpSocket ts = new TcpSocket();
 
                 sock = ts.ConnectServer(ip, 6001, 1);
-                SocketUtil.DelayMilli(1000);
+                ToolsUtil.DelayMilli(1000);
                 
                 if (sock == null)
                 {

@@ -89,6 +89,8 @@ namespace eNet编辑器.ThreeView
                 tm.AddNode1(treeView1, "查看所有区域");             
                 return;
             }
+            //记录滑动条的位置
+            Point pt = treeView1.AutoScrollOffset;
             //记录当前节点展开状况
             List<string> isExpands = tm.treeIsExpandsState(treeView1);
             //区域一
@@ -117,8 +119,15 @@ namespace eNet编辑器.ThreeView
             //展开记录的节点
             tm.treeIspandsStateRcv(treeView1, isExpands);
             tm.AddNode1(treeView1, "查看所有区域");
+        
+                //还原滑动条位置
+                treeView1.AutoScrollOffset = pt;
+            
+            
             
         }
+
+   
 
         #region 新建 修改 删除 展开（收起）节点
 
@@ -284,54 +293,53 @@ namespace eNet编辑器.ThreeView
         {
 
             if (treeView1.SelectedNode == null || treeView1.SelectedNode.Text == "查看所有区域")
+            {
+                return;
+            }
+            if (newflag == false)
+            {
+                return;
+            }
+            else
+            {
+                tsChange tsc = new tsChange();
+                //把窗口向屏幕中间刷新
+                tsc.StartPosition = FormStartPosition.CenterParent;
+                FileMesege.info = treeView1.SelectedNode.Text;
+                tsc.ShowDialog();
+                if (tsc.DialogResult == DialogResult.OK)
                 {
-                    return;
-                }
-                if (newflag == false)
-                {
-                    return;
-                }
-                else
-                {
-                    
-                    tsChange tsc = new tsChange();
-                    //把窗口向屏幕中间刷新
-                    tsc.StartPosition = FormStartPosition.CenterParent;
-                    FileMesege.info = treeView1.SelectedNode.Text;
-                    tsc.ShowDialog();
-                    if (tsc.DialogResult == DialogResult.OK)
+                    //获取修改后的名字                       
+                    TreeMesege tm = new TreeMesege();
+                    string[] nums = tm.GetNodeNum(treeView1.SelectedNode).Split(' ');
+                    string[] section = null;
+                    switch (nums.Length)
                     {
-
-                        //获取修改后的名字                       
-                        TreeMesege tm = new TreeMesege();
-                        string[] nums = tm.GetNodeNum(treeView1.SelectedNode).Split(' ');
-                        string[] section = null;
-                        switch (nums.Length)
-                        {
-                            case 4:
-                                section = tm.GetSection(nums[0], nums[1], nums[2], nums[3]).Split('\\');
-                                AreaListChange1(section,nums[0], nums[1], nums[2], nums[3]);
+                        case 4:
+                            section = tm.GetSection(nums[0], nums[1], nums[2], nums[3]).Split('\\');
+                            AreaListChange1(section,nums[0], nums[1], nums[2], nums[3]);
                                 
-                                break;
-                            case 1:
-                                section = tm.GetSection(nums[0], "", "", "").Split('\\');
-                                AreaListChange1(section, nums[0]);
-                                break;
-                            case 2:
-                                section = tm.GetSection(nums[0], nums[1], "", "").Split('\\');
-                                AreaListChange1(section, nums[0], nums[1]);
-                                break;
-                            case 3:
-                                section = tm.GetSection(nums[0], nums[1], nums[2], "").Split('\\');
-                                AreaListChange1(section, nums[0], nums[1], nums[2]);
-                                break;
-                            default: break;
-                        }
-                        sectionUpdateDgvTreeByFormType();
-                    
+                            break;
+                        case 1:
+                            section = tm.GetSection(nums[0], "", "", "").Split('\\');
+                            AreaListChange1(section, nums[0]);
+                            break;
+                        case 2:
+                            section = tm.GetSection(nums[0], nums[1], "", "").Split('\\');
+                            AreaListChange1(section, nums[0], nums[1]);
+                            break;
+                        case 3:
+                            section = tm.GetSection(nums[0], nums[1], nums[2], "").Split('\\');
+                            AreaListChange1(section, nums[0], nums[1], nums[2]);
+                            break;
+                        default: break;
                     }
-                    
+                    sectionUpdateDgvTreeByFormType();
+
+                 
                 }
+                    
+            }
 
 
            
@@ -597,10 +605,8 @@ namespace eNet编辑器.ThreeView
                 }
                 else//右击树状图区域
                 {
-                   
+                  
                    bool flag = deleteNode(treeView1.SelectedNode);
-                   ThreeSEctionAddNode();
-
                 }
             }
         }

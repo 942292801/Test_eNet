@@ -334,7 +334,7 @@ namespace eNet编辑器.DgvView
 
                     sock = ts.ConnectServer(ip, 6003, 1);
 
-                    SocketUtil.DelayMilli(1000);
+                    ToolsUtil.DelayMilli(1000);
                     if (sock == null)
                     {
                         return ;

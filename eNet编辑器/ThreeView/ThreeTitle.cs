@@ -116,7 +116,7 @@ namespace eNet编辑器.ThreeView
                         case "name":
                             treeView1.CheckBoxes = false;
                             treeView1.ContextMenuStrip = null;
-                            nameAdd(num, SocketUtil.getIP(FileMesege.tnselectNode));
+                            nameAdd(num, ToolsUtil.getIP(FileMesege.tnselectNode));
                             //MessageBox.Show("name");
                             break;
                         case "point":
@@ -127,28 +127,28 @@ namespace eNet编辑器.ThreeView
                         case "scene":
                             treeView1.CheckBoxes = true;
                             treeView1.ContextMenuStrip = contextMenuStrip2;
-                            sceneAdd(num, SocketUtil.getIP(FileMesege.sceneSelectNode));
+                            sceneAdd(num, ToolsUtil.getIP(FileMesege.sceneSelectNode));
                             break;
                         case "timer":
                             treeView1.CheckBoxes = true;
                             treeView1.ContextMenuStrip = contextMenuStrip2;
-                            timerAdd(num, SocketUtil.getIP(FileMesege.timerSelectNode));
+                            timerAdd(num, ToolsUtil.getIP(FileMesege.timerSelectNode));
                             break;
                         case "panel":
                             treeView1.CheckBoxes = true;
                             treeView1.ContextMenuStrip = null;
-                            panelAdd(num, SocketUtil.getIP(FileMesege.panelSelectNode));
+                            panelAdd(num, ToolsUtil.getIP(FileMesege.panelSelectNode));
                             // MessageBox.Show("bind");
                             break;
                         case "sensor":
                              treeView1.CheckBoxes = true;
                              treeView1.ContextMenuStrip = null;
-                            sensorAdd(num,SocketUtil.getIP(FileMesege.sensorSelectNode));
+                            sensorAdd(num,ToolsUtil.getIP(FileMesege.sensorSelectNode));
                             break;
                         case "logic":
                             treeView1.CheckBoxes = true;
                             treeView1.ContextMenuStrip = null;
-                            sensorAdd(num,SocketUtil.getIP(FileMesege.logicSelectNode));
+                            sensorAdd(num,ToolsUtil.getIP(FileMesege.logicSelectNode));
                             break;
                         case "virtualport":
                             treeView1.CheckBoxes = false;
@@ -815,7 +815,7 @@ namespace eNet编辑器.ThreeView
                     info.delay = 0;
                     if (ip != eq.ip && !string.IsNullOrEmpty(eq.ip))
                     {
-                        info.address = SocketUtil.GetIPstyle(eq.ip,4) + eq.address.Substring(2,6);
+                        info.address = ToolsUtil.GetIPstyle(eq.ip,4) + eq.address.Substring(2,6);
                     }
                     else
                     {
@@ -952,7 +952,7 @@ namespace eNet编辑器.ThreeView
                     tmInfo.shortTime = "";
                     if (ip != eq.ip && !string.IsNullOrEmpty(eq.ip))
                     {
-                        tmInfo.address = SocketUtil.GetIPstyle(eq.ip, 4) + eq.address.Substring(2, 6);
+                        tmInfo.address = ToolsUtil.GetIPstyle(eq.ip, 4) + eq.address.Substring(2, 6);
                     }
                     else
                     {

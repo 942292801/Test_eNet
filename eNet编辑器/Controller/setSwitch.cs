@@ -608,7 +608,7 @@ namespace eNet编辑器.Controller
                         dp.portContent = JsonConvert.SerializeObject(tmpPW);
 
                         sendRegOrder(pw.powerState, id, "40");
-                        SocketUtil.DelayMilli(500);
+                        ToolsUtil.DelayMilli(500);
                
                         
                         msg += string.Format("上电状态：成功写入至模块端口{0}！\r\n", dp.portID);
@@ -640,9 +640,9 @@ namespace eNet编辑器.Controller
                 SaveFormState();
                 DataJson.PortSwitch pw = JsonConvert.DeserializeObject<DataJson.PortSwitch>(devPort.portContent);
                 sendRegOrder(pw.powerState, "40");
-                SocketUtil.DelayMilli(400);
+                ToolsUtil.DelayMilli(400);
                 sendRegOrder(pw.interLock, "60");
-                SocketUtil.DelayMilli(400);
+                ToolsUtil.DelayMilli(400);
                 if (client6003 != null && client6003.Connected())
                 {
                     MessageBox.Show("成功写入至模块！", "提示");
@@ -663,9 +663,9 @@ namespace eNet编辑器.Controller
         private void btnRead_Click(object sender, EventArgs e)
         {
             sendGetOrder("40");//上电状态
-            SocketUtil.DelayMilli(200);
+            ToolsUtil.DelayMilli(200);
             sendGetOrder("60");//开启状态
-            SocketUtil.DelayMilli(200);
+            ToolsUtil.DelayMilli(200);
           
         }
 

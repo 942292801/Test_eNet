@@ -1029,19 +1029,19 @@ namespace eNet编辑器.Controller
                         dp.portContent = JsonConvert.SerializeObject(portDimmer);
                         id = dp.portID.ToString();
                         isSend = sendRegOrder("01", id, "64");//设置为线性模式 00自定义 01曲线 02废除了 
-                        SocketUtil.DelayMilli(1000);
+                        ToolsUtil.DelayMilli(1000);
                         isSend = sendRegOrder(portDimmer.powerState, id, "40");
-                        SocketUtil.DelayMilli(1000);
+                        ToolsUtil.DelayMilli(1000);
                         isSend = sendRegOrder(portDimmer.onState, id, "60");
-                        SocketUtil.DelayMilli(1000);
+                        ToolsUtil.DelayMilli(1000);
                         isSend = sendRegOrder(portDimmer.changeState, id, "61");
-                        SocketUtil.DelayMilli(1000);
+                        ToolsUtil.DelayMilli(1000);
                         isSend = sendRegOrder(portDimmer.max, id, "62");
-                        SocketUtil.DelayMilli(1000);
+                        ToolsUtil.DelayMilli(1000);
                         isSend = sendRegOrder(portDimmer.min, id, "63");
-                        SocketUtil.DelayMilli(1000);
+                        ToolsUtil.DelayMilli(1000);
                         isSend = sendRegOrder(portDimmer.spline, id, "65");
-                        SocketUtil.DelayMilli(1000);
+                        ToolsUtil.DelayMilli(1000);
                    
 
                         if (isSend)
@@ -1095,49 +1095,49 @@ namespace eNet编辑器.Controller
                     MessageBox.Show("写入失败！\r\n请检查网络连接或参数", "提示");
                     return;
                 }
-                SocketUtil.DelayMilli(400);
+                ToolsUtil.DelayMilli(400);
                 sendRegOrder(portDimmer.powerState,"40");
                 if (!isSend)
                 {
                     MessageBox.Show("写入失败！\r\n请检查网络连接或参数", "提示");
                     return;
                 }
-                SocketUtil.DelayMilli(400);
+                ToolsUtil.DelayMilli(400);
                 sendRegOrder(portDimmer.onState,"60");
                 if (!isSend)
                 {
                     MessageBox.Show("写入失败！\r\n请检查网络连接或参数", "提示");
                     return;
                 }
-                SocketUtil.DelayMilli(400);
+                ToolsUtil.DelayMilli(400);
                 sendRegOrder(portDimmer.changeState, "61");
                 if (!isSend)
                 {
                     MessageBox.Show("写入失败！\r\n请检查网络连接或参数", "提示");
                     return;
                 }
-                SocketUtil.DelayMilli(400);
+                ToolsUtil.DelayMilli(400);
                 sendRegOrder(portDimmer.max, "62");
                 if (!isSend)
                 {
                     MessageBox.Show("写入失败！\r\n请检查网络连接或参数", "提示");
                     return;
                 }
-                SocketUtil.DelayMilli(400);
+                ToolsUtil.DelayMilli(400);
                 sendRegOrder(portDimmer.min, "63");
                 if (!isSend)
                 {
                     MessageBox.Show("写入失败！\r\n请检查网络连接或参数", "提示");
                     return;
                 }
-                SocketUtil.DelayMilli(400);
+                ToolsUtil.DelayMilli(400);
                 sendRegOrder(portDimmer.spline, "65");
                 if (!isSend)
                 {
                     MessageBox.Show("写入失败！\r\n请检查网络连接或参数", "提示");
                     return;
                 }
-                SocketUtil.DelayMilli(2000);
+                ToolsUtil.DelayMilli(2000);
                 if (sendResetdriver())//重启设备
                 {
                     MessageBox.Show("成功写入至模块,设备重启中请稍候！", "提示");
@@ -1162,15 +1162,15 @@ namespace eNet编辑器.Controller
         private void btnRead_Click(object sender, EventArgs e)
         {
             sendGetOrder("40");//上电状态
-            SocketUtil.DelayMilli(200);
+            ToolsUtil.DelayMilli(200);
             sendGetOrder("60");//开启状态
-            SocketUtil.DelayMilli(200);
+            ToolsUtil.DelayMilli(200);
             sendGetOrder("61");
-            SocketUtil.DelayMilli(200);
+            ToolsUtil.DelayMilli(200);
             sendGetOrder("62");
-            SocketUtil.DelayMilli(200);
+            ToolsUtil.DelayMilli(200);
             sendGetOrder("63");
-            SocketUtil.DelayMilli(200);
+            ToolsUtil.DelayMilli(200);
             sendGetOrder("65");
 
         }

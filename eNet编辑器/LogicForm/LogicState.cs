@@ -365,7 +365,7 @@ namespace eNet编辑器.LogicForm
                 }
                 //1.筛选当前发送内容
                 //获取obj发送的指令    SET; 指令;对象信息  \r\n
-                string msg = SocketUtil.getObjSet(content,addressDecimal ,ip);
+                string msg = ToolsUtil.getObjSet(content,addressDecimal ,ip);
                 //客户端发送数据
                 client.SendAsync(msg);
                 //MessageBox.Show(msg);

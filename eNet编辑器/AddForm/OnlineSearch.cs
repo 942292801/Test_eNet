@@ -306,9 +306,9 @@ namespace eNet编辑器.AddForm
             udp.udpClose();
             udpIni();
             //获取本地IP
-            Localip = SocketUtil.GetLocalIP();
+            Localip = ToolsUtil.GetLocalIP();
             //udp 绑定
-            udp.udpBing(Localip, SocketUtil.GetFreePort().ToString());              
+            udp.udpBing(Localip, ToolsUtil.GetFreePort().ToString());              
             
             //绑定成功
             if (udp.isbing)

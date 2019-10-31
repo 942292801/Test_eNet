@@ -58,9 +58,9 @@ namespace eNet编辑器.Tools
             }
             udpIni();
             //获取本地IP
-            Localip = SocketUtil.GetLocalIP();
+            Localip = ToolsUtil.GetLocalIP();
             //udp 绑定
-            udp.udpBing(Localip, SocketUtil.GetFreePort().ToString());
+            udp.udpBing(Localip, ToolsUtil.GetFreePort().ToString());
             //绑定成功
             if (udp.isbing)
             {
@@ -629,7 +629,7 @@ namespace eNet编辑器.Tools
                 client6003.SendAsync(getLongitude());
                 client6003.SendAsync(getLatitude());
                 AppTxtShow("天文时钟设置成功");
-                SocketUtil.DelayMilli(2000);
+                ToolsUtil.DelayMilli(2000);
                 lbSunrise.Text = "";
                 lbSunset.Text = "";
                 //再次获取日出日落时间

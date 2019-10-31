@@ -182,7 +182,7 @@ namespace eNet编辑器
             bool isExit = true;
             while (isExit)
             {
-                SocketUtil.DelayMilli(1);
+                ToolsUtil.DelayMilli(1);
                 r = new Random(int.Parse(DateTime.Now.ToString("HHmmssfff")));
                 num = r.Next(100000000, 999999999);//随机生成一个9位整数
                 point = DataListHelper.findPointByPid(num);

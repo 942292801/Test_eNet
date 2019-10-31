@@ -504,7 +504,7 @@ namespace eNet编辑器
         /// <param name="oldIP"></param>
         public static void changePointIP(string IP,string oldIP)
         {
-            string hexIP = SocketUtil.GetIPstyle(IP, 4);
+            string hexIP = ToolsUtil.GetIPstyle(IP, 4);
             foreach (DataJson.PointInfo p in FileMesege.PointList.equipment)
             {
                 if (p.ip == oldIP)
@@ -585,8 +585,8 @@ namespace eNet编辑器
         /// <param name="oldid">旧ID地址</param>
         public static void changePointID(string IP, string id, string oldid)
         {
-            id = SocketUtil.strtohexstr(id);
-            oldid = SocketUtil.strtohexstr(oldid);
+            id = ToolsUtil.strtohexstr(id);
+            oldid = ToolsUtil.strtohexstr(oldid);
             foreach (DataJson.PointInfo p in FileMesege.PointList.equipment)
             {
                 if (p.ip == IP && p.address.Substring(4,2) == oldid)
@@ -663,7 +663,7 @@ namespace eNet编辑器
         /// <param name="oldid">旧ID地址</param>
         public static void delPointID(string IP, string id)
         {
-            id = SocketUtil.strtohexstr(id);
+            id = ToolsUtil.strtohexstr(id);
             List<DataJson.PointInfo> dellist = FileMesege.PointList.equipment.FindAll(mach => mach.ip == IP && mach.address.Substring(4,2) == id);
             foreach (DataJson.PointInfo p in dellist)
             {

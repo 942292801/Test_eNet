@@ -498,12 +498,12 @@ namespace eNet编辑器.AddForm
                     this.DialogResult = DialogResult.No;
                     return;
                 }
-                newobj = SocketUtil.strtohexstr(ip.Split('.')[3]);
-                newobj = newobj + SocketUtil.strtohexstr(cbDevNum.Text);
+                newobj = ToolsUtil.strtohexstr(ip.Split('.')[3]);
+                newobj = newobj + ToolsUtil.strtohexstr(cbDevNum.Text);
 
 
                 //非设备类
-                string tmp = SocketUtil.strtohexstr(cbKeyNum.Text);
+                string tmp = ToolsUtil.strtohexstr(cbKeyNum.Text);
                 while (tmp.Length < 4)
                 {
                     tmp = tmp.Insert(0, "0");

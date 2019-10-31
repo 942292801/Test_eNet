@@ -189,7 +189,7 @@ namespace eNet编辑器.AddForm
         {
             try
             {
-                string tmp = string.Format( "FEFB03{0}" , SocketUtil.strtohexstr(cb4.Text));
+                string tmp = string.Format( "FEFB03{0}" , ToolsUtil.strtohexstr(cb4.Text));
                 if (tmp.Length == 8)
                 {
                     this.RtAddress = tmp;

@@ -61,7 +61,7 @@ namespace eNet编辑器.LogicForm
         /// </summary>
         private void ControlIni()
         {
-            cbOperation.Items.Add("==");
+            cbOperation.Items.Add("=");
             cbOperation.Items.Add(">");
             cbOperation.Items.Add("<");
             cbOperation.Items.Add("!=");

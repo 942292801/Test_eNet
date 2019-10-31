@@ -763,7 +763,7 @@ namespace eNet编辑器.LogicForm
                         //获取类型的编码
                         if (TypeList[i].Split(',')[1] == cb2.Text)
                         {
-                            newobj = SocketUtil.strtohexstr(cb1.Text) + SocketUtil.strtohexstr(TypeList[i].Split(',')[2]);
+                            newobj = ToolsUtil.strtohexstr(cb1.Text) + ToolsUtil.strtohexstr(TypeList[i].Split(',')[2]);
                             break;
                         }
                     }
@@ -781,24 +781,24 @@ namespace eNet编辑器.LogicForm
                         else if (cb2.Text == Resources.LocalVar)
                         {
                             //局部变量
-                            string tmp = SocketUtil.strtohexstr(cb4.Text);
+                            string tmp = ToolsUtil.strtohexstr(cb4.Text);
                             while (tmp.Length < 4)
                             {
                                 tmp = tmp.Insert(0, "0");
                             }
-                            newobj = SocketUtil.strtohexstr(cb1.Text) + SocketUtil.strtohexstr("249") + tmp;
+                            newobj = ToolsUtil.strtohexstr(cb1.Text) + ToolsUtil.strtohexstr("249") + tmp;
                         }
                         else
                         {
                             //设备
-                            newobj = newobj + SocketUtil.strtohexstr(cb3.Text) + SocketUtil.strtohexstr(cb4.Text);
+                            newobj = newobj + ToolsUtil.strtohexstr(cb3.Text) + ToolsUtil.strtohexstr(cb4.Text);
                         }
                         
                     }
                     else if (cb3.Text == "" && cb4.Text != "")
                     {
                         //非设备类
-                        string tmp = SocketUtil.strtohexstr(cb4.Text);
+                        string tmp = ToolsUtil.strtohexstr(cb4.Text);
                         while (tmp.Length < 4)
                         {
                             tmp = tmp.Insert(0, "0");

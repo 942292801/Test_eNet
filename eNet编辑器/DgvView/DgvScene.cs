@@ -296,10 +296,10 @@ namespace eNet编辑器.DgvView
                 switch (add.Substring(2, 2))
                 { 
                     case "00":
-                            add = add.Substring(0,6)+SocketUtil.strtohexstr((Convert.ToInt32(add.Substring(6, 2), 16) +1).ToString());
+                            add = add.Substring(0,6)+ToolsUtil.strtohexstr((Convert.ToInt32(add.Substring(6, 2), 16) +1).ToString());
                         break;
                     default:
-                        string hexnum = SocketUtil.strtohexstr((Convert.ToInt32(add.Substring(4, 4), 16) + 1).ToString());
+                        string hexnum = ToolsUtil.strtohexstr((Convert.ToInt32(add.Substring(4, 4), 16) + 1).ToString());
                         while(hexnum.Length<4)
                         {
                             hexnum = hexnum.Insert(0,"0");
@@ -526,7 +526,7 @@ namespace eNet编辑器.DgvView
                     string[] ids = FileMesege.sceneSelectNode.Text.Split(' ');
                     int sceneNum = Convert.ToInt32(Regex.Replace(ids[0], @"[^\d]*", ""));
                     //发送调用指令
-                    string ip4 = SocketUtil.getIP(FileMesege.sceneSelectNode);
+                    string ip4 = ToolsUtil.getIP(FileMesege.sceneSelectNode);
                     TcpSocket ts = new TcpSocket();
               
                     sock = ts.ConnectServer(ips[0], 6003, 2);

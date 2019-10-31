@@ -730,7 +730,11 @@ namespace eNet编辑器.DgvView
                                     dgvobjAddress(id,obj);
                                     break;
                                 case "compareAddress":
-                                     if (dataGridView1.Rows[rowCount].Cells[6].Value != null)
+                                    if (dataGridView1.Rows[rowCount].Cells[2].Value == null)
+                                    {
+                                        break;
+                                    }
+                                    if (dataGridView1.Rows[rowCount].Cells[6].Value != null)
                                     {
                                         obj = Validator.GetParenthesis(dataGridView1.Rows[rowCount].Cells[6].Value.ToString());
                                     }
