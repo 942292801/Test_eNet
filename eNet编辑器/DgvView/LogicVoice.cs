@@ -125,7 +125,7 @@ namespace eNet编辑器.DgvView
             DataJson.VoiceContent logicVoiceContent = JsonConvert.DeserializeObject<DataJson.VoiceContent>(LogicInfo.content);
             //表达式和赋值
             txtVoice.Text = logicVoiceContent.voice;
-            txtAssignment.Text = DgvMesege.addressTransform(logicVoiceContent.voiceAssignment);
+            txtAssignment.Text = DgvMesege.addressTransform(logicVoiceContent.voiceGive);
             //加载对象比较表格
             dgvVoiceAddItem(dataGridView1, logicVoiceContent.voiceItem, ip);
             //加载确定 否 表格
@@ -445,21 +445,21 @@ namespace eNet编辑器.DgvView
             //把窗口向屏幕中间刷新
             dc.StartPosition = FormStartPosition.CenterParent;
             //把当前选仲树状图网关传递到info里面 给新建设备框网关使用  
-            dc.Obj = DgvMesege.addressTransform(logicVoiceContent.voiceAssignment);
-            if (string.IsNullOrEmpty(logicVoiceContent.voiceAssignment))
+            dc.Obj = DgvMesege.addressTransform(logicVoiceContent.voiceGive);
+            if (string.IsNullOrEmpty(logicVoiceContent.voiceGive))
             {
                 dc.ObjType = "";
             }
             else
             {
-                dc.ObjType = logicVoiceContent.voiceAssignment.Substring(2,2);
+                dc.ObjType = logicVoiceContent.voiceGive.Substring(2, 2);
             }
             dc.ShowDialog();
             if (dc.DialogResult == DialogResult.OK)
             {
                 //撤销 
                 DataJson.totalList OldList = FileMesege.cmds.getListInfos();
-                logicVoiceContent.voiceAssignment = dc.Obj;
+                logicVoiceContent.voiceGive = dc.Obj;
                 LogicInfo.content = JsonConvert.SerializeObject(logicVoiceContent);
                 DataJson.totalList NewList = FileMesege.cmds.getListInfos();
                 FileMesege.cmds.DoNewCommand(NewList, OldList);

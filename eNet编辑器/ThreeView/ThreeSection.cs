@@ -70,6 +70,9 @@ namespace eNet编辑器.ThreeView
 
         public event Action logicCbSceneGetItem;
 
+        //树状图节点
+        string fullpath = "";
+
         private void ThreeSection_Load(object sender, EventArgs e)
         {
             //新建
@@ -89,8 +92,6 @@ namespace eNet编辑器.ThreeView
                 tm.AddNode1(treeView1, "查看所有区域");             
                 return;
             }
-            //记录滑动条的位置
-            Point pt = treeView1.AutoScrollOffset;
             //记录当前节点展开状况
             List<string> isExpands = tm.treeIsExpandsState(treeView1);
             //区域一
@@ -119,13 +120,11 @@ namespace eNet编辑器.ThreeView
             //展开记录的节点
             tm.treeIspandsStateRcv(treeView1, isExpands);
             tm.AddNode1(treeView1, "查看所有区域");
-        
-                //还原滑动条位置
-                treeView1.AutoScrollOffset = pt;
-            
-            
+            TreeMesege.SetPrevVisitNode(treeView1,fullpath);
             
         }
+
+ 
 
    
 
@@ -206,10 +205,14 @@ namespace eNet编辑器.ThreeView
             {
                 return;
             }
+            int id = -1;
+            string[] nums = null;
+            TreeNode tmp = FileMesege.sectionNode;
             if (newflag == false)
             {
                 //新建节点 
-                area1();
+                id = area1();
+                fullpath = treeView1.Nodes[id].FullPath;
             }
             else 
             {
@@ -220,24 +223,31 @@ namespace eNet编辑器.ThreeView
                     {
                         return;
                     }
+                    
                     //添加子节点
-                    string[] nums = tm.GetNodeNum(FileMesege.sectionNode).Split(' ');
+                    nums = tm.GetNodeNum(FileMesege.sectionNode).Split(' ');
                     switch (nums.Length)
                     {
                         case 4:
                             //area1();
                             break;
                         case 1:
-                            area2(nums[0]);
+                            id = area2(nums[0]);
+                            fullpath = treeView1.Nodes[Convert.ToInt32(nums[0])].Nodes[id].FullPath;
                             break;
                         case 2:
-                            area3(nums[0], nums[1]);
+                            id = area3(nums[0], nums[1]);
+                            fullpath = treeView1.Nodes[Convert.ToInt32(nums[0])].Nodes[Convert.ToInt32(nums[1])].Nodes[id].FullPath;
+
                             break;
                         case 3:
-                            area4(nums[0], nums[1], nums[2]);
+                            id = area4(nums[0], nums[1], nums[2]);
+                            fullpath = treeView1.Nodes[Convert.ToInt32(nums[0])].Nodes[Convert.ToInt32(nums[1])].Nodes[Convert.ToInt32(nums[2])].Nodes[id].FullPath;
+
                             break;
                         default:
-                            area1();
+                            id = area1();
+                            fullpath = treeView1.Nodes[id].FullPath;
                             break;
                     }
 
@@ -245,21 +255,26 @@ namespace eNet编辑器.ThreeView
                 else
                 {
                     //添加节点
-                    string[] nums = tm.GetNodeNum(FileMesege.sectionNode).Split(' ');
+                    nums = tm.GetNodeNum(FileMesege.sectionNode).Split(' ');
                     switch (nums.Length)
                     {
                         case 4:
-                            area4(nums[0], nums[1], nums[2]);
+                            id = area4(nums[0], nums[1], nums[2]);
+                            fullpath = treeView1.Nodes[Convert.ToInt32(nums[0])].Nodes[Convert.ToInt32(nums[1])].Nodes[Convert.ToInt32(nums[2])].Nodes[id].FullPath;
+
                             break;
                         case 1:
-                            area1();
+                            id = area1();
+                            fullpath = treeView1.Nodes[id].FullPath;
                             break;
                         case 2:
-                            area2(nums[0]);
-                            
+                            id = area2(nums[0]);
+                            fullpath = treeView1.Nodes[Convert.ToInt32(nums[0])].Nodes[id].FullPath;
                             break;
                         case 3:
-                            area3(nums[0], nums[1]);
+                            id = area3(nums[0], nums[1]);
+                            fullpath = treeView1.Nodes[Convert.ToInt32(nums[0])].Nodes[Convert.ToInt32(nums[1])].Nodes[id].FullPath;
+
                             
                             break;
                         default:
@@ -268,24 +283,10 @@ namespace eNet编辑器.ThreeView
                 }
                 
             }
-            string parentNodePath = "";
-            if(treeView1.SelectedNode != null)
-            {
-                parentNodePath =treeView1.SelectedNode.FullPath;
-            }     
+    
+            
             ThreeSEctionAddNode();
-            if (FileMesege.sectionNode != null)
-            {
-                try
-                {
-                    //展开添加的节点
-                    TreeMesege.findNodeByName(treeView1, parentNodePath).Expand();
-                }
-                catch { 
-                
-                }
-
-            }
+            FileMesege.sectionNode = tmp;
            
         }
 
@@ -395,7 +396,6 @@ namespace eNet编辑器.ThreeView
             }
             FileMesege.AreaList[i1].area = newSection;
             treeView1.SelectedNode.Text = newSection;
-            
             DataJson.totalList NewList = FileMesege.cmds.getListInfos();
             FileMesege.cmds.DoNewCommand(NewList, OldList);
         }
@@ -454,7 +454,6 @@ namespace eNet编辑器.ThreeView
             }
             FileMesege.AreaList[i1].area2[i2].area = newSection;
             treeView1.SelectedNode.Text = newSection;
-            
             DataJson.totalList NewList = FileMesege.cmds.getListInfos();
             FileMesege.cmds.DoNewCommand(NewList, OldList);
         }
@@ -516,7 +515,6 @@ namespace eNet编辑器.ThreeView
             }
             FileMesege.AreaList[i1].area2[i2].area3[i3].area = newSection;
             treeView1.SelectedNode.Text = newSection;
-         
             DataJson.totalList NewList = FileMesege.cmds.getListInfos();
             FileMesege.cmds.DoNewCommand(NewList, OldList);
         }
@@ -578,7 +576,6 @@ namespace eNet编辑器.ThreeView
             }
             FileMesege.AreaList[i1].area2[i2].area3[i3].area4[i4].area = newSection;
             treeView1.SelectedNode.Text = newSection;
-     
             DataJson.totalList NewList = FileMesege.cmds.getListInfos();
             FileMesege.cmds.DoNewCommand(NewList, OldList);
         }
@@ -605,8 +602,21 @@ namespace eNet编辑器.ThreeView
                 }
                 else//右击树状图区域
                 {
-                  
-                   bool flag = deleteNode(treeView1.SelectedNode);
+
+                    if (deleteNode(treeView1.SelectedNode))
+                    {
+                        //选中上一个可视节点
+                        fullpath = "";
+                        if (FileMesege.sectionNode != null && FileMesege.sectionNode.PrevVisibleNode != null)
+                        {
+
+                            fullpath = FileMesege.sectionNode.PrevVisibleNode.FullPath;
+
+                        }
+                        ThreeSEctionAddNode();
+                    }
+                   
+                    
                 }
             }
         }
@@ -1079,7 +1089,7 @@ namespace eNet编辑器.ThreeView
         /// 添加新的第一级节点
         /// </summary>
         /// <returns></returns>
-        private bool area1()
+        private int area1()
         {
             //新建节点 FileMesege.AreaList
             if (FileMesege.AreaList == null)
@@ -1090,13 +1100,13 @@ namespace eNet编辑器.ThreeView
             {
                 if (area1.area == sectionname)
                 {
-                    return false;
+                    return -1;
                 }
             }
             DataJson.totalList OldList = FileMesege.cmds.getListInfos();
             if (treeView1.Nodes.Count != 0)
             {
-                //把最后面的节点（全部） 删除掉
+                //把最后面的节点（所有区域） 删除掉
                 treeView1.Nodes[treeView1.Nodes.Count - 1].Remove();
             }
             
@@ -1119,10 +1129,9 @@ namespace eNet编辑器.ThreeView
             a1.id4 = "";
             a1.area2 = new List<DataJson.Area2>();
             FileMesege.AreaList.Add(a1);
-          
             DataJson.totalList NewList = FileMesege.cmds.getListInfos();
             FileMesege.cmds.DoNewCommand(NewList, OldList);
-            return true;
+            return id;
         }
 
         /// <summary>
@@ -1130,7 +1139,7 @@ namespace eNet编辑器.ThreeView
         /// </summary>
         /// <param name="index1">第一级节点的索引号</param>
         /// <returns></returns>
-        private bool area2(string index1)
+        private int area2(string index1)
         {
             int i1 = Convert.ToInt32(index1);
             DataJson.totalList OldList = FileMesege.cmds.getListInfos();
@@ -1140,11 +1149,12 @@ namespace eNet编辑器.ThreeView
             {
                 if (area2.area == sectionname)
                 {
-                    return false;
+                    return -1;
                 }
             }
             TreeMesege tm = new TreeMesege();
             int id = tm.AddNode2(treeView1, sectionname,i1);
+            
             DataJson.Area2 a2 = new DataJson.Area2();
             a2.area = sectionname;
             if (id == 0)
@@ -1163,10 +1173,9 @@ namespace eNet编辑器.ThreeView
             a2.id4 = "";
             a2.area3 = new List<DataJson.Area3>();
             FileMesege.AreaList[i1].area2.Add(a2);
-            
             DataJson.totalList NewList = FileMesege.cmds.getListInfos();
             FileMesege.cmds.DoNewCommand(NewList, OldList);
-            return true;
+            return id;
         }
 
         /// <summary>
@@ -1175,7 +1184,7 @@ namespace eNet编辑器.ThreeView
         /// <param name="index1">第一级节点的索引号</param>
         /// <param name="index2">第二级节点的索引号</param>
         /// <returns></returns>
-        private bool area3(string index1, string index2)
+        private int area3(string index1, string index2)
         {
             DataJson.totalList OldList = FileMesege.cmds.getListInfos();
           
@@ -1186,7 +1195,7 @@ namespace eNet编辑器.ThreeView
             {
                 if (area3.area == sectionname)
                 {
-                    return false;
+                    return -1;
                 }
             }
             TreeMesege tm = new TreeMesege();
@@ -1209,10 +1218,9 @@ namespace eNet编辑器.ThreeView
             a3.id4 = "";
             a3.area4 = new List<DataJson.Area4>();
             FileMesege.AreaList[i1].area2[i2].area3.Add(a3);
-            
             DataJson.totalList NewList = FileMesege.cmds.getListInfos();
             FileMesege.cmds.DoNewCommand(NewList, OldList);
-            return true;
+            return id;
         }
 
         /// <summary>
@@ -1222,7 +1230,7 @@ namespace eNet编辑器.ThreeView
         /// <param name="index2">第二级节点的索引号</param>
         /// <param name="index3">第三级节点的索引号</param>
         /// <returns></returns>
-        private bool area4(string index1, string index2, string index3)
+        private int area4(string index1, string index2, string index3)
         {
             DataJson.totalList OldList = FileMesege.cmds.getListInfos();
      
@@ -1234,7 +1242,7 @@ namespace eNet编辑器.ThreeView
             {
                 if (area4.area == sectionname)
                 {
-                    return false;
+                    return -1;
                 }
             }
             TreeMesege tm = new TreeMesege();
@@ -1258,7 +1266,7 @@ namespace eNet编辑器.ThreeView
             FileMesege.AreaList[i1].area2[i2].area3[i3].area4.Add(a4);
             DataJson.totalList NewList = FileMesege.cmds.getListInfos();
             FileMesege.cmds.DoNewCommand(NewList, OldList);
-            return true;
+            return id;
         }
 
         #endregion
@@ -1851,8 +1859,20 @@ namespace eNet编辑器.ThreeView
             if (treeView1.SelectedNode != null && FileMesege.sectionNode.Text != "查看所有区域")
             {
 
-                bool flag = deleteNode(treeView1.SelectedNode);
-                ThreeSEctionAddNode();
+                if (deleteNode(treeView1.SelectedNode))
+                {
+                    //选中上一个可视节点
+                    fullpath = "";
+                    if (FileMesege.sectionNode != null && FileMesege.sectionNode.PrevVisibleNode != null)
+                    {
+
+                        fullpath = FileMesege.sectionNode.PrevVisibleNode.FullPath;
+
+                    }
+                    ThreeSEctionAddNode();
+                
+                }
+               
             }
         }
         #endregion

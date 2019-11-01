@@ -106,6 +106,15 @@ namespace eNet编辑器.Properties {
         }
         
         /// <summary>
+        ///   查找类似 赋值 的本地化字符串。
+        /// </summary>
+        internal static string Give {
+            get {
+                return ResourceManager.GetString("Give", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 感应输入 的本地化字符串。
         /// </summary>
         internal static string IO {

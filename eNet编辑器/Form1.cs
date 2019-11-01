@@ -345,7 +345,7 @@ namespace eNet编辑器
                 default: break;
             }
 
-            threesection.ThreeSEctionAddNode();
+            //threesection.ThreeSEctionAddNode();
             threetitle.ThreeTitleAddNode(cbType.SelectedIndex);
             txtShow.Clear();
         }
@@ -918,6 +918,7 @@ namespace eNet编辑器
 
             FileMesege.cmds.UnDo();
             updateDgvTreeByFormType();
+            threesection.ThreeSEctionAddNode();
         }
 
 
@@ -929,6 +930,7 @@ namespace eNet编辑器
 
             FileMesege.cmds.ReDo();
             updateDgvTreeByFormType();
+            threesection.ThreeSEctionAddNode();
         }
 
         private void btnUndo_Click(object sender, EventArgs e)
@@ -938,6 +940,7 @@ namespace eNet编辑器
 
             FileMesege.cmds.UnDo();
             updateDgvTreeByFormType();
+            threesection.ThreeSEctionAddNode();
         }
 
         private void btnRedo_Click(object sender, EventArgs e)
@@ -947,6 +950,7 @@ namespace eNet编辑器
 
             FileMesege.cmds.ReDo();
             updateDgvTreeByFormType();
+            threesection.ThreeSEctionAddNode();
         }
 
 

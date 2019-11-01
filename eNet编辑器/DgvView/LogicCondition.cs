@@ -132,7 +132,7 @@ namespace eNet编辑器.DgvView
 
 
                 }
-
+              
 
 
             }
@@ -763,6 +763,7 @@ namespace eNet编辑器.DgvView
                                     break;
                                 default: break;
                             }
+                            
                             try
                             {
                                 //更改内容回自动刷新到第一行
@@ -807,6 +808,7 @@ namespace eNet编辑器.DgvView
 
 
                             }
+                            
                             try
                             {
                                 //更改内容回自动刷新到第一行

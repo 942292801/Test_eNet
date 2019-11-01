@@ -1489,12 +1489,12 @@ namespace eNet编辑器
                 return;
             }
             //表达式是否有赋值到局部变量或者虚拟变量
-            if (!string.IsNullOrEmpty(logicVoiceContent.voiceAssignment))
+            if (!string.IsNullOrEmpty(logicVoiceContent.voiceGive))
             {
                 DataJson.ConditionCase cas1 = new DataJson.ConditionCase();
 
                 cas1.@case = "#";
-                cas1.obj = logicVoiceContent.voiceAssignment;
+                cas1.obj = logicVoiceContent.voiceGive;
                 cas1.data = "FE000000";
                 cas1.optname = "";
                 cas1.delay = 0;

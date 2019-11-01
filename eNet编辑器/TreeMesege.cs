@@ -429,6 +429,52 @@ namespace eNet编辑器
         }
 
 
+        /// <summary>
+        /// 根据节点fullpath选中树状图该节点
+        /// </summary>
+        /// <param name="treeView"></param>
+        /// <param name="fullpath"></param>
+        public static void SetPrevVisitNode(TreeView treeView, string fullpath)
+        {
+            if (!string.IsNullOrEmpty(fullpath))
+            {
+                foreach (TreeNode item in treeView.Nodes)
+                {
+                    TreeNode tmpNode = FindNode(item, fullpath);
+                    if (tmpNode != null)
+                    {
+                        treeView.SelectedNode = tmpNode;
+                        break;
+                    }
+                }
+
+            }
+        }
+
+        public static TreeNode FindNode(TreeNode tnParent, string strValue)
+        {
+
+            if (tnParent == null) return null;
+            if (tnParent.FullPath == strValue) return tnParent;
+
+
+            TreeNode tnRet = null;
+
+            foreach (TreeNode tn in tnParent.Nodes)
+            {
+
+                tnRet = FindNode(tn, strValue);
+
+                if (tnRet != null) break;
+
+            }
+
+            return tnRet;
+
+        }
+
+
+
     }
 
 

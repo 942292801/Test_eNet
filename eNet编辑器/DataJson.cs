@@ -569,7 +569,7 @@ namespace eNet编辑器
         public class VoiceContent
         {
             public string voice { get; set; }//表达式
-            public string voiceAssignment { get; set; }//赋值地址
+            public string voiceGive { get; set; }//赋值地址
             public List<VoiceItem> voiceItem = new List<VoiceItem>();//ABC项
             public List<VoiceIfItem> voiceIfItem = new List<VoiceIfItem>();//判断结果
         }

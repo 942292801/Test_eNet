@@ -320,12 +320,12 @@ namespace eNet编辑器
                                 if (address.Substring(6, 2) == "02")
                                 {
                                     //日期
-                                    return "Date";
+                                    return "17.0_Date";
                                 }
                                 else if (address.Substring(6, 2) == "03")
                                 { 
                                     //时间
-                                    return "Time";
+                                    return "18.0_Time";
                                 }
                             }
                             return "";

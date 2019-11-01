@@ -467,7 +467,6 @@ namespace eNet编辑器.ThreeView
         /// <param name="e"></param>
         private void treeView1_DrawNode(object sender, DrawTreeNodeEventArgs e)
         {
-            
             Color foreColor;
             Color backColor;
             if ((e.State & TreeNodeStates.Selected) > 0)
@@ -489,7 +488,6 @@ namespace eNet编辑器.ThreeView
             e.Graphics.FillRectangle(new SolidBrush(backColor), e.Bounds);
             e.Graphics.DrawString(e.Node.Text, this.treeView1.Font, new SolidBrush(foreColor), e.Bounds.X, e.Bounds.Y + 4);
             
-            
         }
         /// <summary>
         /// 开始第一个选择的节点Index
@@ -504,7 +502,7 @@ namespace eNet编辑器.ThreeView
         private void treeView1_MouseDown(object sender, MouseEventArgs e)
         {
             //右击选中节点
-            if (e.Button == MouseButtons.Right || e.Button == MouseButtons.Left)
+            if (e.Button == MouseButtons.Right|| e.Button == MouseButtons.Left)
             {
                 Point ClickPoint = new Point(e.X, e.Y);
                 TreeNode CurrentNode = treeView1.GetNodeAt(ClickPoint);
@@ -529,21 +527,18 @@ namespace eNet编辑器.ThreeView
         /// <param name="e"></param>
         private void treeView1_MouseUp(object sender, MouseEventArgs e)
         {
+            //选中checkbox
             Point ClickPoint = this.PointToClient(Control.MousePosition);
             TreeNode CurrentNode = treeView1.GetNodeAt(ClickPoint);
 
-            if (CurrentNode != null)
-            {
-                treeView1.SelectedNode = CurrentNode;//选中这个节点
-
-            }
-            else
+            if (CurrentNode == null)
             {
                 return;
             }
+
             if (startrow >= 0)
             {
-                int endrow = this.treeView1.SelectedNode.Index;
+                int endrow = CurrentNode.Index;// this.treeView1.SelectedNode.Index;
 
                 if (startrow < endrow)
                 {
@@ -588,6 +583,8 @@ namespace eNet编辑器.ThreeView
                 
                 dgvNodeAdd(treeView1.SelectedNode);
                 updateDgv();
+                //右击选中节点
+           
             }
             catch { 
             

@@ -219,4 +219,8 @@
   <data name="Virtualport" xml:space="preserve">
     <value>虚拟端口</value>
   </data>
+  <data name="Give" xml:space="preserve">
+    <value>赋值</value>
+    <comment>赋值类型</comment>
+  </data>
 </root>

@@ -90,6 +90,7 @@ namespace eNet编辑器.LogicForm
             /// 时间
             /// </summary>
             time=6
+           
             
         }
 
@@ -212,16 +213,18 @@ namespace eNet编辑器.LogicForm
                 localVarMode();
                 return;
             }
-            else if (objType == "Date")
+            else if (objType == "17.0_Date")
             {
                 DateMode();
                 return;
             }
-            else if (objType == "Time")
+            else if (objType == "18.0_Time")
             {
                 TimeMode();
                 return;
             }
+
+
 
             string path = string.Format("{0}//types//{1}.ini", Application.StartupPath, objType);
        
@@ -319,7 +322,7 @@ namespace eNet编辑器.LogicForm
                 cb4.Text = "2";
                 cb3.Enabled = false;
                 cb4.Enabled = false;
-                rtType = "Date";
+                rtType = "17.0_Date";
                 cb3.Items.Clear();
                 
 
@@ -344,7 +347,7 @@ namespace eNet编辑器.LogicForm
                 cb4.Text = "3";
                 cb3.Enabled = false;
                 cb4.Enabled = false;
-                rtType = "Time";
+                rtType = "18.0_Time";
                 cb3.Items.Clear();
 
 
@@ -353,6 +356,8 @@ namespace eNet编辑器.LogicForm
             {
             }
         }
+
+
 
         /// <summary>
         /// cb信息内容的判断1-9 或 1,2,3  或数字（链路类型）
