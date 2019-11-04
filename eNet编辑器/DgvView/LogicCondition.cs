@@ -11,6 +11,7 @@ using System.IO;
 using Newtonsoft.Json;
 using eNet编辑器.AddForm;
 using eNet编辑器.LogicForm;
+using eNet编辑器.Properties;
 
 namespace eNet编辑器.DgvView
 {
@@ -116,10 +117,11 @@ namespace eNet编辑器.DgvView
                 foreach (DataJson.ConditionInfo info in conditionInfo)
                 {
                     int dex = dataGridView.Rows.Add();
+                    /* 关闭非匹配变红
                     if (info.compareobjType != info.objType)
                     {
                         this.dataGridView1.Rows[dex].Cells[6].Style.ForeColor = Color.Red;
-                    }
+                    }*/
                     dataGridView.Rows[dex].Cells[0].Value = info.id;
                     dataGridView.Rows[dex].Cells[1].Value = info.a;
                     dataGridView.Rows[dex].Cells[2].Value = getObj(info);
@@ -225,7 +227,7 @@ namespace eNet编辑器.DgvView
             if (info.comparePid == 0)
             {
                 //pid号为0则为空 按地址来找
-                if ( !string.IsNullOrEmpty(info.compareobjAddress) && info.compareobjAddress != "FFFFFFFF")
+                if (!string.IsNullOrEmpty(info.compareobjAddress)  )
                 {
 
                     DataJson.PointInfo point = DataListHelper.findPointByType_address(info.compareobjType, info.compareobjAddress, ip);
@@ -238,8 +240,13 @@ namespace eNet编辑器.DgvView
                     }
                     else
                     {
+                        
                         string tmpType = IniHelper.findIniLinkTypeByAddress(info.compareobjAddress);
-
+                        if (info.compareobjAddress.Substring(0,2)!= "FE" && string.IsNullOrEmpty(info.compareobjType))
+                        { 
+                            //状态操作
+                            return string.Format("{0} ({1})", Resources.StateControl, DgvMesege.addressTransform(info.compareobjAddress));
+                        }
                         return string.Format("{0} ({1})", tmpType, DgvMesege.addressTransform(info.compareobjAddress));
                     }
                 }
@@ -730,16 +737,8 @@ namespace eNet编辑器.DgvView
                                     dgvobjAddress(id,obj);
                                     break;
                                 case "compareAddress":
-                                    if (dataGridView1.Rows[rowCount].Cells[2].Value == null)
-                                    {
-                                        break;
-                                    }
-                                    if (dataGridView1.Rows[rowCount].Cells[6].Value != null)
-                                    {
-                                        obj = Validator.GetParenthesis(dataGridView1.Rows[rowCount].Cells[6].Value.ToString());
-                                    }
                                     //赋值List 并添加地域 名字
-                                     dgvcompareAddress(id, obj);
+                                     dgvcompareAddress(id);
                                     break;
                                 case "operation":
                                     cbOperation.ReadOnly = false;
@@ -1049,12 +1048,10 @@ namespace eNet编辑器.DgvView
         /// 获取新的地址 刷新地域 名字
         /// </summary>
         /// <param name="id"></param>
-        /// <param name="objType">当前对象的类型</param>
-        /// <param name="obj">当前对象的地址值</param>
         /// <returns></returns>
-        private void dgvcompareAddress(int id,  string obj)
+        private void dgvcompareAddress(int id)
         {
-            LogicConditionAddress dc = new LogicConditionAddress();
+            LogicCompareAddress dc = new LogicCompareAddress();
             //找到当前操作tab对象
             DataJson.logicsInfo LogicInfo = DataListHelper.findLogicInfoByTabName(FileMesege.LogicTabName);
             if (LogicInfo == null)
@@ -1065,49 +1062,61 @@ namespace eNet编辑器.DgvView
             DataJson.ConditionContent logicConditionContent = JsonConvert.DeserializeObject<DataJson.ConditionContent>(LogicInfo.content);
 
             DataJson.ConditionInfo info = DataListHelper.getLogicConditionInfo(id, logicConditionContent.conditionInfo);
-            if (info == null)
+            if (info == null || string.IsNullOrEmpty(info.objType) || string.IsNullOrEmpty(info.objAddress))
             {
                 return;
             }
+            
             //把窗口向屏幕中间刷新
             dc.StartPosition = FormStartPosition.CenterParent;
-            dc.ObjType = info.compareobjType;
-            dc.Obj = obj;
+            dc.ObjType = info.objType;
+            dc.Address = info.compareobjAddress;
+            dc.CompareType = info.compareobjType;
             dc.ShowDialog();
             if (dc.DialogResult == DialogResult.OK)
             {
+                
                 //撤销 
                 DataJson.totalList OldList = FileMesege.cmds.getListInfos();
-                info.compareobjAddress = dc.Obj;
-
-                //按照地址查找type的类型 只限制于设备
-                string type = IniHelper.findIniTypesByAddress(ip, info.compareobjAddress).Split(',')[0];
-                if (string.IsNullOrEmpty(type))
+                info.compareobjAddress = dc.Address;
+                if (dc.Address.Substring(0, 2) == "FE")
                 {
-                    type = dc.RtType;
-
-                }
-                //区域加名称
-                DataJson.PointInfo point = DataListHelper.findPointByType_address("", info.compareobjAddress, ip);
-                if (point != null)
-                {
-                    info.comparePid = point.pid;
-                    if (info.compareobjType != point.type)
+                    //按照地址查找type的类型 只限制于设备
+                    string type = IniHelper.findIniTypesByAddress(ip, info.compareobjAddress).Split(',')[0];
+                    if (string.IsNullOrEmpty(type))
                     {
-                        info.compareobjType = point.type;
+                        type = dc.RtType;
+
+                    }
+                    //区域加名称
+                    DataJson.PointInfo point = DataListHelper.findPointByType_address("", info.compareobjAddress, ip);
+                    if (point != null)
+                    {
+                        info.comparePid = point.pid;
+                        if (info.compareobjType != point.type)
+                        {
+                            info.compareobjType = point.type;
+                        }
+                    }
+                    else
+                    {
+                        //搜索一次dev表 
+                        info.comparePid = 0;
+
+                        if (info.compareobjType != type)
+                        {
+                            info.compareobjType = type;
+                        }
+
                     }
                 }
                 else
                 {
-                    //搜索一次dev表 
+                    //状态操作
+                    info.compareobjType = "";
                     info.comparePid = 0;
-
-                    if (info.compareobjType != type)
-                    {
-                        info.compareobjType = type;
-                    }
-
                 }
+               
                 LogicInfo.content = JsonConvert.SerializeObject(logicConditionContent);
                 DataJson.totalList NewList = FileMesege.cmds.getListInfos();
                 FileMesege.cmds.DoNewCommand(NewList, OldList);

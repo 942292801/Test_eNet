@@ -396,6 +396,8 @@ namespace eNet编辑器.LogicForm
             }
 
         }
+
+
         #endregion
 
         /// <summary>
@@ -488,12 +490,10 @@ namespace eNet编辑器.LogicForm
             else if (linkType == LinkType.Com)
             {
                 findComNum();
-                cb3.Enabled = false;
             }
             else if (linkType == LinkType.Var)
             {
                 findVarNum();
-                cb3.Enabled = false;
             }
           
             
@@ -580,6 +580,7 @@ namespace eNet编辑器.LogicForm
                     }
                     infos = IniConfig.GetValue(file.FullName, "address", "4").Split(',');
                     lb4.Text = infos[0];
+                    cb4.Text = "";
                     dealInfoNum(cb4, infos[1]);
                     cb4.Enabled = true;
 

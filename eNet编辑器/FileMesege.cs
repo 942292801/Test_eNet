@@ -8,6 +8,7 @@ using Microsoft.VisualBasic;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json;
 using System.Runtime.InteropServices;
+using eNet编辑器.Properties;
 
 
 namespace eNet编辑器
@@ -1301,7 +1302,10 @@ namespace eNet编辑器
 
         private void ConditionDeal(DataJson.Lc lc, DataJson.logicsInfo LogicInfo)
         {
-            
+            string objTypeCNName = "";
+            string subAddress = "";
+            string with = "";
+            string compare = "";
             DataJson.ConditionContent logicConditionContent = JsonConvert.DeserializeObject<DataJson.ConditionContent>(LogicInfo.content);            
             //场景数量不超50范围
             DataJson.TriggerNumber total = new DataJson.TriggerNumber();
@@ -1324,25 +1328,100 @@ namespace eNet编辑器
                 {
                     continue;
                 }
+                //获取中文类型名
+                objTypeCNName = IniHelper.findTypesIniNamebyType(logicConditionContent.conditionInfo[k].objType);
+                
+                
                 
                 if (string.IsNullOrEmpty(total.@switch))
                 {
-                    
-                    total.@switch = string.Format("({0}{1}{2})",
-                        PowerAdd(logicConditionContent.conditionInfo[k].a, logicConditionContent.conditionInfo[k].b, logicConditionContent.conditionInfo[k].objAddress),
-                        logicConditionContent.conditionInfo[k].operation,
-                        PowerAdd(logicConditionContent.conditionInfo[k].c, logicConditionContent.conditionInfo[k].d, logicConditionContent.conditionInfo[k].compareobjAddress)
-                        
-                        );
+                    //时间日期特殊处理
+                    if (objTypeCNName == Resources.Date || objTypeCNName == Resources.Time)
+                    {
+                        //获取&的内容 和 新的compare地址
+                        with = "";
+                        compare = "";
+                        for (int i = 0; i < 4; i++)
+                        {
+                            subAddress = logicConditionContent.conditionInfo[k].compareobjAddress.Substring(i * 2, 2);
+                            if (subAddress == "FF")
+                            {
+                                with = with + "00";
+                                compare = compare + "00";
+                            }
+                            else
+                            {
+                                with = with + "FF";
+                                compare = compare + subAddress;
+                            }
+                        }
+                        if (objTypeCNName == Resources.Time)
+                        {
+                            with = string.Format("00{0}00", with.Substring(2, 4));
+                        }
+                        total.@switch = string.Format("(({0}&{1}){2}{3})",
+                       PowerAdd(logicConditionContent.conditionInfo[k].a, logicConditionContent.conditionInfo[k].b, logicConditionContent.conditionInfo[k].objAddress),
+                       with,
+                       logicConditionContent.conditionInfo[k].operation,
+                       PowerAdd(logicConditionContent.conditionInfo[k].c, logicConditionContent.conditionInfo[k].d, compare)
+
+                       );
+                    }
+                    else
+                    {
+                        total.@switch = string.Format("({0}{1}{2})",
+                           PowerAdd(logicConditionContent.conditionInfo[k].a, logicConditionContent.conditionInfo[k].b, logicConditionContent.conditionInfo[k].objAddress),
+                           logicConditionContent.conditionInfo[k].operation,
+                           PowerAdd(logicConditionContent.conditionInfo[k].c, logicConditionContent.conditionInfo[k].d, logicConditionContent.conditionInfo[k].compareobjAddress)
+
+                           );
+                    }
+                   
                 }
                 else
                 {
-                    total.@switch = string.Format("{0}&&({1}{2}{3})",
-                        total.@switch,
-                        PowerAdd(logicConditionContent.conditionInfo[k].a, logicConditionContent.conditionInfo[k].b, logicConditionContent.conditionInfo[k].objAddress),
-                        logicConditionContent.conditionInfo[k].operation,
-                        PowerAdd(logicConditionContent.conditionInfo[k].c, logicConditionContent.conditionInfo[k].d, logicConditionContent.conditionInfo[k].compareobjAddress)
-                        );
+                    //时间日期特殊处理
+                    if (objTypeCNName == Resources.Date || objTypeCNName == Resources.Time)
+                    {
+                        //获取&的内容 和 新的compare地址
+                        with = "";
+                        compare = "";
+                        for (int i = 0; i < 4; i++)
+                        {
+                            subAddress = logicConditionContent.conditionInfo[k].compareobjAddress.Substring(i * 2, 2);
+                            if (subAddress == "FF")
+                            {
+                                with = with + "00";
+                                compare = compare + "00";
+                            }
+                            else
+                            {
+                                with = with + "FF";
+                                compare = compare + subAddress;
+                            }
+                        }
+                        if (objTypeCNName == Resources.Time)
+                        {
+                            with = string.Format("00{0}00", with.Substring(2, 4));
+                        }
+                        total.@switch = string.Format("{0}&&(({1}&{2}){3}{4})",
+                             total.@switch,
+                             PowerAdd(logicConditionContent.conditionInfo[k].a, logicConditionContent.conditionInfo[k].b, logicConditionContent.conditionInfo[k].objAddress),
+                             with,
+                             logicConditionContent.conditionInfo[k].operation,
+                             PowerAdd(logicConditionContent.conditionInfo[k].c, logicConditionContent.conditionInfo[k].d, compare)
+                             );
+                    }
+                    else
+                    {
+                        total.@switch = string.Format("{0}&&({1}{2}{3})",
+                            total.@switch,
+                            PowerAdd(logicConditionContent.conditionInfo[k].a, logicConditionContent.conditionInfo[k].b, logicConditionContent.conditionInfo[k].objAddress),
+                            logicConditionContent.conditionInfo[k].operation,
+                            PowerAdd(logicConditionContent.conditionInfo[k].c, logicConditionContent.conditionInfo[k].d, logicConditionContent.conditionInfo[k].compareobjAddress)
+                            );
+                    }
+                    
                 }
             }
             //填写case

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Windows.Forms;
 
 namespace eNet编辑器
 {
@@ -103,6 +104,43 @@ namespace eNet编辑器
             catch
             {
                 return null;
+            }
+        }
+
+
+        /// <summary>
+        /// 截取二进制位数  binval为二进制数值即地址 inset为0 / 0-1 / 位置数
+        /// </summary>
+        /// <param name="binval"></param>
+        /// <param name="inset">位置数</param>
+        /// <returns>返回十进制值</returns>
+        public static string getBinBit(string binval, string inset)
+        {
+            try
+            {
+                string bin = "";
+                //截取位数 组成一个新值
+                if (inset.Contains("-"))
+                {
+                    string[] infos = inset.Split('-');
+                    int end = Convert.ToInt32(infos[1]);
+                    int start = Convert.ToInt32(infos[0]);
+                    //反转二进制数据
+                    bin = DataChange.Reversal(binval).Substring(start, end - start + 1);
+
+                }
+                else
+                {
+                    //反转二进制数据
+                    bin = DataChange.Reversal(binval).Substring(Convert.ToInt32(inset), 1);
+
+                }
+                //再反转复原二进制数据
+                return Convert.ToInt64(DataChange.Reversal(bin), 2).ToString();
+            }
+            catch
+            {
+                return "0";
             }
         }
 
@@ -234,6 +272,45 @@ namespace eNet编辑器
             {
                 return 1;
             }
+        }
+
+
+        /// <summary>
+        /// cb信息内容的判断1-9 或 1,2,3  或数字（链路类型）
+        /// </summary>
+        /// <param name="cb"></param>
+        /// <param name="info"></param>
+        public static void dealInfoNum(ComboBox cb, string info)
+        {
+            cb.Items.Clear();
+            if (info.Contains("-"))
+            {
+                string[] infos = info.Split('-');
+                int j = Convert.ToInt32(infos[1]);
+                if (j > 100)
+                {
+                    j = 100;
+                }
+                for (int i = Convert.ToInt32(infos[0]); i <= j; i++)
+                {
+                    cb.Items.Add(i.ToString());
+                }
+            }
+            else if (info.Contains(","))
+            {
+                string[] infos = info.Split(',');
+
+                for (int i = 0; i < infos.Length; i++)
+                {
+                    cb.Items.Add(infos[i]);
+                }
+            }
+            else
+            {
+                cb.Items.Add(info);
+
+            }
+
         }
 
 

@@ -133,7 +133,7 @@ namespace eNet编辑器.LogicForm
                         slds[keyIndex - 1].Maximum = Convert.ToInt32(sldValue[1]);
                         if (infos[0].Contains("w"))
                         {
-                            string val = getBinBit(binVal, infos[2]);
+                            string val = DataChange.getBinBit(binVal, infos[2]);
                             //该项是可以进行写操作
                             slds[keyIndex - 1].Value =Convert.ToInt32( val);
                             slds[keyIndex - 1].Text =val;    
@@ -168,40 +168,7 @@ namespace eNet编辑器.LogicForm
             
         }
 
-        /// <summary>
-        /// 截取二进制位数  binval为二进制数值 inset为0 / 0-1 / 位置数
-        /// </summary>
-        /// <param name="binval"></param>
-        /// <param name="inset">位置数</param>
-        /// <returns>返回十进制值</returns>
-        private string getBinBit(string binval, string inset)
-        {
-            try
-            {
-                string bin = "";
-                //截取位数 组成一个新值
-                if (inset.Contains("-"))
-                {
-                    string[] infos = inset.Split('-');
-                    int end = Convert.ToInt32(infos[1]);
-                    int start = Convert.ToInt32(infos[0]);
-                    //反转二进制数据
-                    bin = DataChange.Reversal(binval).Substring(start, end - start + 1);
-
-                }
-                else
-                {
-                    //反转二进制数据
-                    bin = DataChange.Reversal(binval).Substring(Convert.ToInt32(inset), 1);
-
-                }
-                //再反转复原二进制数据
-                return Convert.ToInt64(DataChange.Reversal(bin), 2).ToString();
-            }
-            catch {
-                return "0";
-            }
-        }
+       
 
         /// <summary>
         /// 异步连接TCP信息回调初始化

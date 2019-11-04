@@ -1,1 +1,75 @@
-[]
+[
+    {
+        "panels": [
+            {
+                "panelsInfo": [
+                    {
+                        "id": 1,
+                        "pid": 0,
+                        "keyAddress": "",
+                        "objAddress": "",
+                        "objType": "",
+                        "opt": 0,
+                        "showAddress": "",
+                        "showMode": ""
+                    },
+                    {
+                        "id": 2,
+                        "pid": 0,
+                        "keyAddress": "",
+                        "objAddress": "",
+                        "objType": "",
+                        "opt": 0,
+                        "showAddress": "",
+                        "showMode": ""
+                    },
+                    {
+                        "id": 3,
+                        "pid": 0,
+                        "keyAddress": "",
+                        "objAddress": "",
+                        "objType": "",
+                        "opt": 0,
+                        "showAddress": "",
+                        "showMode": ""
+                    },
+                    {
+                        "id": 4,
+                        "pid": 0,
+                        "keyAddress": "",
+                        "objAddress": "",
+                        "objType": "",
+                        "opt": 0,
+                        "showAddress": "",
+                        "showMode": ""
+                    },
+                    {
+                        "id": 5,
+                        "pid": 0,
+                        "keyAddress": "",
+                        "objAddress": "",
+                        "objType": "",
+                        "opt": 0,
+                        "showAddress": "",
+                        "showMode": ""
+                    },
+                    {
+                        "id": 6,
+                        "pid": 0,
+                        "keyAddress": "",
+                        "objAddress": "",
+                        "objType": "",
+                        "opt": 0,
+                        "showAddress": "",
+                        "showMode": ""
+                    }
+                ],
+                "id": 1,
+                "pid": 540085328,
+                "keyNum": 6
+            }
+        ],
+        "IP": "192.168.1.222",
+        "Dev": "GW100A"
+    }
+]

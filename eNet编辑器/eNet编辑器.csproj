@@ -292,6 +292,12 @@
     <Compile Include="LogicForm\LogicConditionAddress.Designer.cs">
       <DependentUpon>LogicConditionAddress.cs</DependentUpon>
     </Compile>
+    <Compile Include="LogicForm\LogicCompareAddress.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LogicForm\LogicCompareAddress.Designer.cs">
+      <DependentUpon>LogicCompareAddress.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\Resources.en-US.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -646,6 +652,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="LogicForm\LogicConditionAddress.resx">
       <DependentUpon>LogicConditionAddress.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LogicForm\LogicCompareAddress.resx">
+      <DependentUpon>LogicCompareAddress.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.en-US.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

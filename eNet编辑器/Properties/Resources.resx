@@ -223,4 +223,10 @@
     <value>赋值</value>
     <comment>赋值类型</comment>
   </data>
+  <data name="StateControl" xml:space="preserve">
+    <value>状态操作</value>
+  </data>
+  <data name="Ignore" xml:space="preserve">
+    <value>忽略</value>
+  </data>
 </root>

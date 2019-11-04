@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using System.IO;
 using System.Text.RegularExpressions;
 using System.Runtime.InteropServices;
+using eNet编辑器.Properties;
 
 namespace eNet编辑器.AddForm
 {
@@ -429,19 +430,20 @@ namespace eNet编辑器.AddForm
         }
 
         /// <summary>
-        /// 把cb的信息更新为局部变量信息
+        /// 窗体框信息更新为局部变量信息
         /// </summary>
         private void localVarMode()
         {
             try
             {
                 linkType = LinkType.localVar;
-                lb3.Text = "逻辑号";
-                lb4.Text = "局部变量号";
-                cb2.Text = "局部变量";
+                lb3.Text = Resources.LogicNum;
+                lb4.Text = Resources.LocalVarNum;
+                cb2.Text = Resources.LocalVar;
                 cb3.Text = "";
                 cb4.Text = "";
                 cb3.Enabled = true;
+                cb4.Enabled = true;
                 //rtType = "15.0_LocalVariable";
                 cb3.Items.Clear();
                 foreach (DataJson.Logic lg in FileMesege.logicList)

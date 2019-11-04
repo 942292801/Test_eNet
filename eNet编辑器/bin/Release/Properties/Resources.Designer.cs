@@ -115,6 +115,15 @@ namespace eNet编辑器.Properties {
         }
         
         /// <summary>
+        ///   查找类似 忽略 的本地化字符串。
+        /// </summary>
+        internal static string Ignore {
+            get {
+                return ResourceManager.GetString("Ignore", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 感应输入 的本地化字符串。
         /// </summary>
         internal static string IO {
@@ -239,6 +248,15 @@ namespace eNet编辑器.Properties {
         internal static string SoftName {
             get {
                 return ResourceManager.GetString("SoftName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 状态操作 的本地化字符串。
+        /// </summary>
+        internal static string StateControl {
+            get {
+                return ResourceManager.GetString("StateControl", resourceCulture);
             }
         }
         
