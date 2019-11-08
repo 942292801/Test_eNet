@@ -38,7 +38,10 @@ namespace eNet编辑器.DgvView
         }
 
         public event Action<string> txtAppShow;
-        public event Action updateSectionTitleNode;
+        public event Action updateTitleNode;
+        public event Action unSelectTitleNode;
+        public event Action unSelectSectionNode;
+        
         //public event DgvDeviceCursorDefault dgvDeviceCursorDefault;
         /// <summary>
         /// 解决窗体闪烁问题
@@ -71,112 +74,113 @@ namespace eNet编辑器.DgvView
         /// <param name="num">树状图上下级索引号</param>
         public void dgvNameAddItem()
         {
-            try{
-            //封装一个添加DGV信息的函数 打开配置文件自己读
-            this.dataGridView1.Rows.Clear();
-            if (FileMesege.tnselectNode == null || FileMesege.tnselectNode.Parent == null )
+            try
             {
-                return;
-            }
-            string[] arr = FileMesege.tnselectNode.Text.Split(' ');
-            string filename = arr[1] + ".ini";
-            string filepath = Application.StartupPath + "\\devices\\" + filename;
-            TreeMesege tm = new TreeMesege();
-            string[] num = tm.GetNodeNum(FileMesege.tnselectNode).Split(' ');
+                //封装一个添加DGV信息的函数 打开配置文件自己读
+                this.dataGridView1.Rows.Clear();
+                if (FileMesege.tnselectNode == null || FileMesege.tnselectNode.Parent == null )
+                {
+                    return;
+                }
+                string[] arr = FileMesege.tnselectNode.Text.Split(' ');
+                string filename = arr[1] + ".ini";
+                string filepath = Application.StartupPath + "\\devices\\" + filename;
+                TreeMesege tm = new TreeMesege();
+                string[] num = tm.GetNodeNum(FileMesege.tnselectNode).Split(' ');
 
-            //关闭刷新按键 所有信息释放对象
-            if (btnNew.Style == DevComponents.DotNetBar.eDotNetBarStyle.Office2003 )
-            {
-                timer1.Enabled = false;
-                client.Close();
-                btnNew.Style = DevComponents.DotNetBar.eDotNetBarStyle.VS2005;
+                //关闭刷新按键 所有信息释放对象
+                if (btnNew.Style == DevComponents.DotNetBar.eDotNetBarStyle.Office2003 )
+                {
+                    timer1.Enabled = false;
+                    client.Close();
+                    btnNew.Style = DevComponents.DotNetBar.eDotNetBarStyle.VS2005;
                
-            }
-            if (filepath == "" || num == null)
-            {
-                return;
-            }
-            
-            //ini添加port type   DeviceList添加 section name 需要用/分割开来
-            int master = Convert.ToInt32(num[0]);
-            int nub = Convert.ToInt32(num[1]);//树状图的索引号
-            //选中节点的设备号
-            int device = Convert.ToInt32(FileMesege.DeviceList[master].module[nub].id);
-            string value = "";
-            int index = 0;
-            
-            //获取全部Section下的Key
-            List<string> list = IniConfig.ReadKeys("ports", filepath);
-            //循环添加行信息
-            for (int i = 0; i < list.Count; i++)
-            {
-                if (list[i] == "0")
-                {
-                    continue;
                 }
-                //获取类型版本类型版本
-                value = IniConfig.GetValue(filepath, "ports",list[i]);
-                if(value == "")
+                if (filepath == "" || num == null)
                 {
-                    break;
+                    return;
                 }
-                //添加新的一行 端口 类型 区域
-                index = this.dataGridView1.Rows.Add();
-                //端口号
-                this.dataGridView1.Rows[index].Cells[0].Value = list[i].ToString();
-                //类型
-                this.dataGridView1.Rows[index].Cells[1].Value = IniHelper.findTypesIniNamebyType(value);
-                this.dataGridView1.Rows[index].Cells[4].Value = Resources.DevStateOff;
-                this.dataGridView1.Rows[index].Cells[5].Value = "操作";
-                this.dataGridView1.Rows[index].Cells[6].Value = "设置";
-                //this.dataGridView1.Rows[index].Cells[3].Value =arr[arr.Length-1];
-            }
-            //分割的DeviceList 里面ip地址
-            string iplast = FileMesege.DeviceList[master].ip;
-            string str = null;
-            int count = 0;
-
-     
-            //添加区域和名称
-            foreach (DataJson.PointInfo e in FileMesege.PointList.equipment)
-            {
-                //需要更改IP不是唯一的
-                //判断与选中网关节点IP是否相同
-                if (e.ip == iplast)
+            
+                //ini添加port type   DeviceList添加 section name 需要用/分割开来
+                int master = Convert.ToInt32(num[0]);
+                int nub = Convert.ToInt32(num[1]);//树状图的索引号
+                //选中节点的设备号
+                int device = Convert.ToInt32(FileMesege.DeviceList[master].module[nub].id);
+                string value = "";
+                int index = 0;
+            
+                //获取全部Section下的Key
+                List<string> list = IniConfig.ReadKeys("ports", filepath);
+                //循环添加行信息
+                for (int i = 0; i < list.Count; i++)
                 {
-
-                    str = e.address;
-                    //为0直接退出
-                    if (str.Substring(6, 2) == "00")
+                    if (list[i] == "0")
                     {
                         continue;
                     }
-                    //判断ID是否为当前选中的ID 
-                    if (str.Substring(4, 2) == ToolsUtil.strtohexstr((device).ToString()))
+                    //获取类型版本类型版本
+                    value = IniConfig.GetValue(filepath, "ports",list[i]);
+                    if(value == "")
+                    {
+                        break;
+                    }
+                    //添加新的一行 端口 类型 区域
+                    index = this.dataGridView1.Rows.Add();
+                    //端口号
+                    this.dataGridView1.Rows[index].Cells[0].Value = list[i].ToString();
+                    //类型
+                    this.dataGridView1.Rows[index].Cells[1].Value = IniHelper.findTypesIniNamebyType(value);
+                    this.dataGridView1.Rows[index].Cells[4].Value = Resources.DevStateOff;
+                    this.dataGridView1.Rows[index].Cells[5].Value = "操作";
+                    this.dataGridView1.Rows[index].Cells[6].Value = "设置";
+                    //this.dataGridView1.Rows[index].Cells[3].Value =arr[arr.Length-1];
+                }
+                #region 添加区域和名称
+                //分割的DeviceList 里面ip地址
+                string iplast = FileMesege.DeviceList[master].ip;
+                string str = null;
+                int count = 0;
+                foreach (DataJson.PointInfo e in FileMesege.PointList.equipment)
+                {
+                    //需要更改IP不是唯一的
+                    //判断与选中网关节点IP是否相同
+                    if (e.ip == iplast)
                     {
 
-                        count = Convert.ToInt32(str.Substring(6, 2), 16);
-                        //判断当前行是否超出 已存在的行数
-                        if (count <= this.dataGridView1.Rows.Count)
+                        str = e.address;
+                        //为0直接退出
+                        if (str.Substring(6, 2) == "00")
                         {
-                            if (count == 0)
-                            {
-                                count++;
-                            }
-                            //解析ID获取行数
-                            this.dataGridView1.Rows[count - 1].Cells[2].Value = string.Format("{0} {1} {2} {3}", e.area1, e.area2, e.area3, e.area4).Trim();
-                            //添加DGV名称
-                            this.dataGridView1.Rows[count - 1].Cells[3].Value = e.name.Split('@')[0];
-
+                            continue;
                         }
+                        //判断ID是否为当前选中的ID 
+                        if (str.Substring(4, 2) == ToolsUtil.strtohexstr((device).ToString()))
+                        {
+
+                            count = Convert.ToInt32(str.Substring(6, 2), 16);
+                            //判断当前行是否超出 已存在的行数
+                            if (count <= this.dataGridView1.Rows.Count)
+                            {
+                                if (count == 0)
+                                {
+                                    count++;
+                                }
+                                //解析ID获取行数
+                                this.dataGridView1.Rows[count - 1].Cells[2].Value = string.Format("{0} {1} {2} {3}", e.area1, e.area2, e.area3, e.area4).Trim();
+                                //添加DGV名称
+                                this.dataGridView1.Rows[count - 1].Cells[3].Value = e.name.Split('@')[0];
+
+                            }
+                        }
+
+
                     }
 
-
                 }
+                #endregion
 
-            }
-           
-            shuaxinBtn();
+
+                shuaxinBtn();
             }//try
             catch (Exception ex) { MessageBox.Show(ex + "临时调试错误信息"); }
 
@@ -778,6 +782,7 @@ namespace eNet编辑器.DgvView
                                 pointAddAddress();
                            
                             }
+                            /*
                             try
                             {
                                 //更改内容回自动刷新到第一行
@@ -790,7 +795,7 @@ namespace eNet编辑器.DgvView
                                     dataGridView1.CurrentCell = dataGridView1.Rows[dataGridView1.Rows.Count - 1].Cells[columnCount];
                                 }
 
-                            }
+                            }*/
                         }//try
                         catch (Exception ex) { MessageBox.Show(ex + "临时调试错误信息"); }
                     }
@@ -862,7 +867,7 @@ namespace eNet编辑器.DgvView
                     FileMesege.cmds.DoNewCommand(NewList, OldList);
                     //刷新dgv
                     dgvNameAddItem();
-                    updateSectionTitleNode();
+                    updateTitleNode();
                     break;
                 }
             }
@@ -1117,8 +1122,9 @@ namespace eNet编辑器.DgvView
             {
                 //treesection临时存放数据处
                 FileMesege.sectionNode = null;
-                updateSectionTitleNode();
-
+                //需要添加
+                unSelectTitleNode();
+                unSelectSectionNode();
                 //鼠标图标改变
                 //cursor_default();
                 //dgvDeviceCursorDefault();
@@ -1247,7 +1253,7 @@ namespace eNet编辑器.DgvView
                 {
                     DataJson.totalList NewList = FileMesege.cmds.getListInfos();
                     FileMesege.cmds.DoNewCommand(NewList, OldList);
-                    updateSectionTitleNode();
+                    updateTitleNode();
                 }
             }//try
             catch

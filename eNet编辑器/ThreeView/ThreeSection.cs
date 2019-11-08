@@ -65,7 +65,7 @@ namespace eNet编辑器.ThreeView
         //public event AddSectionNameCursor addSectionNameCursor;
    
         //按窗口类型来更新窗口
-        public event Action sectionUpdateDgvTreeByFormType;
+        public event Action sectionUpdateTreeByFormType;
         public event Action updatePointDgv;
 
         public event Action logicCbSceneGetItem;
@@ -82,8 +82,6 @@ namespace eNet编辑器.ThreeView
 
         public void ThreeSEctionAddNode()
         {
-           
-           
             TreeMesege tm = new TreeMesege();
             
             if (FileMesege.AreaList == null)
@@ -124,7 +122,13 @@ namespace eNet编辑器.ThreeView
             
         }
 
- 
+        /// <summary>
+        /// 取消节点选中
+        /// </summary>
+        public void unSelectNode()
+        {
+            treeView1.SelectedNode = null;
+        }
 
    
 
@@ -335,7 +339,7 @@ namespace eNet编辑器.ThreeView
                             break;
                         default: break;
                     }
-                    sectionUpdateDgvTreeByFormType();
+                    sectionUpdateTreeByFormType();
 
                  
                 }
@@ -656,7 +660,7 @@ namespace eNet编辑器.ThreeView
                     break;
                 default: return false;
             }
-            sectionUpdateDgvTreeByFormType();
+            sectionUpdateTreeByFormType();
         
             DataJson.totalList NewList = FileMesege.cmds.getListInfos();
             FileMesege.cmds.DoNewCommand(NewList, OldList);
@@ -1280,6 +1284,7 @@ namespace eNet编辑器.ThreeView
             FileMesege.sectionNode = treeView1.SelectedNode;
             TreeMesege tm = new TreeMesege();
             FileMesege.sectionNodeCopy = tm.GetSectionByNode(treeView1.SelectedNode);
+            fullpath = treeView1.SelectedNode.FullPath;
             if (FileMesege.formType == "point")
             {
                 //刷PointDGV
@@ -1503,7 +1508,7 @@ namespace eNet编辑器.ThreeView
                     DataJson.totalList NewList = FileMesege.cmds.getListInfos();
                     FileMesege.cmds.DoNewCommand(NewList, OldList);
                     //刷新窗口
-                    sectionUpdateDgvTreeByFormType();
+                    sectionUpdateTreeByFormType();
                  
                     
                    

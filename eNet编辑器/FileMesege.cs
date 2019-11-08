@@ -1117,9 +1117,9 @@ namespace eNet编辑器
                     if (lc.trigger.Count > 0)
                     {
                         
-                        //File.WriteAllText(string.Format("{0}\\objs\\{1}\\l{2}.json", TmpFilePath, ip, lgs.id), ConvertJsonString(JsonConvert.SerializeObject(lc)));
+                        File.WriteAllText(string.Format("{0}\\objs\\{1}\\l{2}.json", TmpFilePath, ip, lgs.id), ConvertJsonString(JsonConvert.SerializeObject(lc)));
                         //暂时输出到某个目录下面
-                        File.WriteAllText(string.Format("C:\\Users\\Administrator\\Desktop\\工程obj\\tmp\\l{0}.json", lgs.id), ConvertJsonString(JsonConvert.SerializeObject(lc)));
+                        //File.WriteAllText(string.Format("C:\\Users\\Administrator\\Desktop\\工程obj\\tmp\\l{0}.json", lgs.id), ConvertJsonString(JsonConvert.SerializeObject(lc)));
                     }
                     
 

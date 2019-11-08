@@ -29,6 +29,10 @@ namespace eNet编辑器.ThreeView
         public event Action addTitleNode;
         //判断true为选中父节点
         bool newitemflag = false;
+
+        //树状图节点
+        string fullpath = "";
+
         public ThreeScene()
         {
             InitializeComponent();
@@ -63,6 +67,7 @@ namespace eNet编辑器.ThreeView
             }
         }
         #endregion
+
 
         private void ThreeScene_Load(object sender, EventArgs e)
         {
@@ -118,7 +123,7 @@ namespace eNet编辑器.ThreeView
                 }
                 //展开记录的节点
                 tm.treeIspandsStateRcv(treeView1, isExpands);
-
+                TreeMesege.SetPrevVisitNode(treeView1, fullpath);
             }
             catch { 
                 //错误处理
@@ -270,27 +275,20 @@ namespace eNet编辑器.ThreeView
                     //eq.range = "";
                     eq.value = "";
                     FileMesege.PointList.scene.Add(eq);
-
                     //排序
                     ScenesSort(sc);
-                    string parentNodePath = "";
-                    if (treeView1.SelectedNode != null)
+                    string section = string.Format("{0} {1} {2} {3}", eq.area1, eq.area2, eq.area3, eq.area4).Trim().Replace(" ", "\\");
+                    if (FileMesege.sceneSelectNode.Parent == null)
                     {
-                        parentNodePath = treeView1.SelectedNode.FullPath;
+                        fullpath = FileMesege.sceneSelectNode.FullPath + "\\" + string.Format("{0}{1} {2} {3}", Resources.Scene, scs.id, section, eq.name);
+
+                    }
+                    else
+                    {
+                        fullpath = FileMesege.sceneSelectNode.Parent.FullPath + "\\" + string.Format("{0}{1} {2} {3}", Resources.Scene, scs.id, section, eq.name);
                     }
                     updateSceneView();
-                    if (FileMesege.sceneSelectNode != null)
-                    {
-                        try
-                        {
-                            TreeMesege.findNodeByName(treeView1, parentNodePath).Expand();
-                        }
-                        catch
-                        {
-
-                        }
-
-                    }
+                   
                     
                     break;
                 }
@@ -341,6 +339,16 @@ namespace eNet编辑器.ThreeView
                             eq.address = address;
                             //scs.address = address;
                             eq.name = tss.SceneName;
+                            string section = string.Format("{0} {1} {2} {3}", eq.area1, eq.area2, eq.area3, eq.area4).Trim().Replace(" ", "\\");
+                            if (FileMesege.sceneSelectNode.Parent == null)
+                            {
+                                fullpath = FileMesege.sceneSelectNode.FullPath + "\\" + string.Format("{0}{1} {2} {3}", Resources.Scene, scs.id, section, eq.name);
+
+                            }
+                            else
+                            {
+                                fullpath = FileMesege.sceneSelectNode.Parent.FullPath + "\\" + string.Format("{0}{1} {2} {3}", Resources.Scene, scs.id, section, eq.name);
+                            }
                             break;
                         }
 
@@ -354,6 +362,7 @@ namespace eNet编辑器.ThreeView
                             break;
                         }
                     }
+
                     updateSceneView();
                 }            
                
@@ -521,6 +530,7 @@ namespace eNet编辑器.ThreeView
         {
 
             FileMesege.sceneSelectNode = treeView1.SelectedNode;
+            fullpath = treeView1.SelectedNode.FullPath;
             //DGVSceme添加场景
             dgvsceneAddItem();
             addTitleNode();

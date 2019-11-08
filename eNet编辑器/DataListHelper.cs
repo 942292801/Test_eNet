@@ -231,13 +231,10 @@ namespace eNet编辑器
         /// 新建设备
         /// </summary>
         /// <param name="infos">新IP + 设备号 +设备型号 例：（192.168.1.111+空格+2 + 空格 + ET1000）</param>
-        public static void newDevice(string ip, string id,string version)
+        public static void newDevice(DataJson.Device dev, string id,string version)
         {
             
-            foreach (DataJson.Device dev in FileMesege.DeviceList)
-            {
-                if (dev.ip == ip)
-                {
+           
                     DataJson.Module md = new DataJson.Module();
                     md.id = Convert.ToInt32(id);
                     md.device = version;
@@ -255,12 +252,47 @@ namespace eNet编辑器
                     DeviceSort(dev);
                     //刷新所有Tree的节点
                     UpdateTreeView();
-                    break;
-                }
-               
-            }
+         
             
            
+        }
+
+        /// <summary>
+        /// 新建设备
+        /// </summary>
+        /// <param name="infos">新IP + 设备号 +设备型号 例：（192.168.1.111+空格+2 + 空格 + ET1000）</param>
+        public static void newDevice(string ip, string id, string version)
+        {
+            foreach (DataJson.Device dev in FileMesege.DeviceList)
+            {
+
+                if (dev.ip == ip)
+                {
+                    DataJson.Module md = new DataJson.Module();
+                    md.id = Convert.ToInt32(id);
+                    md.device = version;
+                    md.area1 = "";
+                    md.area2 = "";
+                    md.area3 = "";
+                    md.area4 = "";
+                    md.name = "";
+                    md.sn = "";
+                    md.ver = "";
+                    addPortType(md.devPortList, version);
+                    //插入新设备信息
+                    dev.module.Add(md);
+                    //按ID号排序
+                    DeviceSort(dev);
+                    //刷新所有Tree的节点
+                    UpdateTreeView();
+                    break;
+                }
+            }
+
+           
+
+
+
         }
 
 
@@ -293,6 +325,31 @@ namespace eNet编辑器
                     break;
                 }
             }
+        }
+
+        /// <summary>
+        /// 修改设备
+        /// </summary> 
+        /// <param name="infos">新IP + 新ID号 +新型号 + 旧ID号 +旧型号例：（192.168.1.111+空格+2 + 空格 + ET1000+ 空格+1 + 空格 + ETXXXXX）</param>
+        public static void changeDevice(DataJson.Device dev, string id, string version, string oldid, string oldVersion)
+        {
+       
+            foreach (DataJson.Module m in dev.module)
+            {
+                if (m.id.ToString() == oldid && m.device == oldVersion)
+                {
+
+                    m.id = Convert.ToInt32(id);
+                    m.device = version;
+                    addPortType(m.devPortList, version);
+                    //按ID号排序
+                    DeviceSort(dev);
+                    //刷新所有Tree的节点
+                    UpdateTreeView();
+                    break;
+                }
+            }
+      
         }
 
         /// <summary>

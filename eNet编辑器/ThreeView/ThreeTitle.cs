@@ -173,6 +173,11 @@ namespace eNet编辑器.ThreeView
         
         }
 
+        public void unSelectTitleNode()
+        {
+            treeView1.SelectedNode = null;
+        }
+
         #region 设备加载节点
         /// <summary>
         /// 设备模式 设备按钮加载树状图节点

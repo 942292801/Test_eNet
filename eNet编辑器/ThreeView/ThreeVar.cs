@@ -27,6 +27,9 @@ namespace eNet编辑器.ThreeView
             //pi.SetValue(this.treeView1, true, null);
         }
 
+        //树状图节点
+        string fullpath = "";
+
         #region 解决背景闪烁
         //测试 解决背景闪烁
         protected override void WndProc(ref Message m)
@@ -86,7 +89,7 @@ namespace eNet编辑器.ThreeView
                 }
                 //展开记录的节点
                 tm.treeIspandsStateRcv(treeView1, isExpands);
-
+                TreeMesege.SetPrevVisitNode(treeView1, fullpath);
             }
             catch
             {
@@ -123,6 +126,7 @@ namespace eNet编辑器.ThreeView
         private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
         {
             FileMesege.varSelectNode = treeView1.SelectedNode;
+            fullpath = treeView1.SelectedNode.FullPath;
             //DGVVar添加虚拟端口
             dgvVarAddItem();
             string[] names = treeView1.SelectedNode.Text.Split(' ');

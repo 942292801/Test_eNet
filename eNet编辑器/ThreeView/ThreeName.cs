@@ -38,7 +38,10 @@ namespace eNet编辑器.ThreeView
         tnDevice tnd;
         
         bool newitemflag = false;
-        
+
+        //树状图节点
+        string fullpath = "";
+
         public ThreeName()
         {
             InitializeComponent();
@@ -118,7 +121,7 @@ namespace eNet编辑器.ThreeView
             }
             //展开记录的节点
             tm.treeIspandsStateRcv(treeView1, isExpands);
-
+            TreeMesege.SetPrevVisitNode(treeView1, fullpath);
             
         }
 
@@ -174,28 +177,22 @@ namespace eNet编辑器.ThreeView
             string id = strs[1];
             //设备型号
             string version = strs[2];
-            //展开新增的节点的信息
-            string parentNodePath = "";
-            if (treeView1.SelectedNode != null)
+            foreach (DataJson.Device dev in FileMesege.DeviceList)
             {
-                parentNodePath = treeView1.SelectedNode.FullPath;
+
+                if (dev.ip == ip)
+                {
+                    fullpath = ip + " " + dev.master + "\\" + Resources.Device + id + " " + version;
+
+                    DataListHelper.newDevice(dev, id, version);
+                    break;
+                }
             }
-            DataListHelper.newDevice(ip,id,version);
+
+
+            
             DataJson.totalList NewList = FileMesege.cmds.getListInfos();
             FileMesege.cmds.DoNewCommand(NewList, OldList);
-            if (FileMesege.tnselectNode != null)
-            {
-                try
-                {
-                    //展开新增的节点的
-                    TreeMesege.findNodeByName(treeView1, parentNodePath).Expand();
-                }
-                catch
-                {
-
-                }
-
-            }
             dgvDeviceAddItem(false);
             
         }
@@ -229,6 +226,7 @@ namespace eNet编辑器.ThreeView
             string ip = strs[0];
             //设备型号
             string master = strs[1];
+            fullpath = ip + " " + master;
             DataListHelper.newGateway(ip,master);
             DataJson.totalList NewList = FileMesege.cmds.getListInfos();
             FileMesege.cmds.DoNewCommand(NewList, OldList);
@@ -266,6 +264,7 @@ namespace eNet编辑器.ThreeView
                     string master = strs[1];
                     //网关IP
                     string oldip = strs[2];
+                    fullpath = ip + " " + master;
                     DataListHelper.changeGateway(ip,master,oldip);
                     DataJson.totalList NewList = FileMesege.cmds.getListInfos();
                     FileMesege.cmds.DoNewCommand(NewList, OldList);
@@ -366,6 +365,7 @@ namespace eNet编辑器.ThreeView
                 string oldid = strs[3];
                 //设备型号
                 string oldVersion = strs[4];
+
                 //修改IP
                 if (tnd.IsChange)
                 {
@@ -377,7 +377,17 @@ namespace eNet编辑器.ThreeView
                     //删除NameList信息
                     DataListHelper.delPointID(ip, oldid);
                 }
-                DataListHelper.changeDevice(ip, id, version, oldid, oldVersion);
+                
+                 //修改某IP下某ID 型号的设备信息
+                foreach (DataJson.Device dev in FileMesege.DeviceList)
+                {
+                    if (dev.ip == ip)
+                    {
+                        fullpath = ip + " " + dev.master + "\\" + Resources.Device + id + " " + version;
+                        DataListHelper.changeDevice(dev, id, version, oldid, oldVersion);
+
+                    }
+                }
                 DataJson.totalList NewList = FileMesege.cmds.getListInfos();
                 FileMesege.cmds.DoNewCommand(NewList, OldList);
                 //刷新窗体清空窗体信息
@@ -448,6 +458,7 @@ namespace eNet编辑器.ThreeView
             string filepath = string.Format("{0}\\devices\\{1}.ini", Application.StartupPath, treeView1.SelectedNode.Text.Split(' ')[1]); 
             TreeMesege tm = new TreeMesege();
             FileMesege.tnselectNode = treeView1.SelectedNode;
+            fullpath = treeView1.SelectedNode.FullPath;
             addTitleNode();
             //判断ini文件存在不存在
             if (File.Exists(filepath))

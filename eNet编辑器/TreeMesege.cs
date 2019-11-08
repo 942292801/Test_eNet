@@ -450,7 +450,13 @@ namespace eNet编辑器
 
             }
         }
-
+        
+        /// <summary>
+        /// 根据fullpath递归寻找节点
+        /// </summary>
+        /// <param name="tnParent"></param>
+        /// <param name="strValue"></param>
+        /// <returns></returns>
         public static TreeNode FindNode(TreeNode tnParent, string strValue)
         {
 

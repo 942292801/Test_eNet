@@ -230,7 +230,7 @@ namespace eNet编辑器.AddForm
         }
 
         /// <summary>
-        /// //编译s.json k.json t.json 并压缩
+        /// //编译s.json k.json t.json L.json并压缩
         /// </summary>
         /// <param name="ip"></param>
         private bool compile(string ip)
@@ -303,6 +303,18 @@ namespace eNet编辑器.AddForm
 
                     }
                     ToolsUtil.DelayMilli(200);
+                    //编译逻辑
+                    if (fm.getLogicJsonByIp(ip))
+                    {
+                        AppTxtShow("logic.json编译通过！");
+                        pgBar.Value += 2;
+                    }
+                    else
+                    {
+                        AppTxtShow("logic.json编译失败！");
+
+                    }
+                    ToolsUtil.DelayMilli(200);
                     string file = string.Format("{0}\\objs\\{1}", FileMesege.TmpFilePath, ip);
                     try
                     {
@@ -346,7 +358,8 @@ namespace eNet编辑器.AddForm
             {
               
                 FileMesege fm = new FileMesege();
-                
+
+                #region 获取point area device 文件
                 //抽离point 信息
                 string point  = fm.getPointJsonByIP(ip);
                 if (!string.IsNullOrEmpty(point))
@@ -385,7 +398,9 @@ namespace eNet编辑器.AddForm
                     AppTxtShow("device.json编译失败！");
                     return false;
                 }
+                #endregion
 
+                /////////////////链接 写入
                 if (sendData(ip, point, "point.json"))
                 {
                     AppTxtShow("point.json载入完成！");
@@ -397,7 +412,7 @@ namespace eNet编辑器.AddForm
                     AppTxtShow("point.json载入失败！");
                     return false;
                 }
-
+                ToolsUtil.DelayMilli(200);
                 if (sendData(ip, area, "area.json"))
                 {
                     AppTxtShow("area.json载入完成！");
@@ -409,7 +424,7 @@ namespace eNet编辑器.AddForm
                     AppTxtShow("area.json载入失败！");
                     return false;
                 }
-
+                ToolsUtil.DelayMilli(200);
                 if (sendData(ip, device, "device.json"))
                 {
                     AppTxtShow("device.json载入完成！");

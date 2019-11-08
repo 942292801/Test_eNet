@@ -62,6 +62,9 @@ namespace eNet编辑器.ThreeView
         //判断true为选中父节点
         bool isSelectParetnNode = false;
 
+        //树状图节点
+        string fullpath = "";
+
         private void ThreeSensor_Load(object sender, EventArgs e)
         {
             sradd = new sensorAdd();
@@ -117,7 +120,7 @@ namespace eNet编辑器.ThreeView
                 }
                 //展开记录的节点
                 tm.treeIspandsStateRcv(treeView1, isExpands);
-
+                TreeMesege.SetPrevVisitNode(treeView1, fullpath);
             }
             catch
             {
@@ -164,6 +167,7 @@ namespace eNet编辑器.ThreeView
         private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
         {
             FileMesege.sensorSelectNode = treeView1.SelectedNode;
+            fullpath = treeView1.SelectedNode.FullPath;
             //DGVtimer添加定时
             dgvSensorAddItem();
             addTitleNode();
@@ -336,26 +340,18 @@ namespace eNet编辑器.ThreeView
 
                     //排序
                     PanelSort(sr);
-                    string parentNodePath = "";
-                    if (treeView1.SelectedNode != null)
+                    string section = string.Format("{0} {1} {2} {3}", eq.area1, eq.area2, eq.area3, eq.area4).Trim().Replace(" ", "\\");
+                    if (FileMesege.sensorSelectNode.Parent == null)
                     {
-                        parentNodePath = treeView1.SelectedNode.FullPath;
+                        fullpath = FileMesege.sensorSelectNode.FullPath + "\\" + string.Format("{0}{1} {2} {3}", Resources.Sensor, srs.id, section, eq.name);
+
+                    }
+                    else
+                    {
+                        fullpath = FileMesege.sensorSelectNode.Parent.FullPath + "\\" + string.Format("{0}{1} {2} {3}", Resources.Sensor, srs.id, section, eq.name);
                     }
                     updateSensorView();
-                    
-                    if (FileMesege.sensorSelectNode != null)
-                    {
-                        try
-                        {
-                            TreeMesege.findNodeByName(treeView1, parentNodePath).Expand();
-                        }
-                        catch
-                        {
-
-                        }
-
-                    }
-
+               
                     break;
                 }
 
@@ -416,6 +412,16 @@ namespace eNet编辑器.ThreeView
                             eq.area4 = sensoradd.Area4;
                             eq.address = address;
                             eq.name = sensoradd.PanelName;
+                            string section = string.Format("{0} {1} {2} {3}", eq.area1, eq.area2, eq.area3, eq.area4).Trim().Replace(" ", "\\");
+                            if (FileMesege.sensorSelectNode.Parent == null)
+                            {
+                                fullpath = FileMesege.sensorSelectNode.FullPath + "\\" + string.Format("{0}{1} {2} {3}", Resources.Sensor, srs.id, section, eq.name);
+
+                            }
+                            else
+                            {
+                                fullpath = FileMesege.sensorSelectNode.Parent.FullPath + "\\" + string.Format("{0}{1} {2} {3}", Resources.Sensor, srs.id, section, eq.name);
+                            }
                             break;
                         }
 

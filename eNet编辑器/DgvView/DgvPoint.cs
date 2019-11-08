@@ -18,9 +18,9 @@ namespace eNet编辑器.DgvView
         public event Action<string> txtAppShow;
         //更新title树状图
         public event Action updateTitleNode;
+        //更新 点位 和 位置 树状图
+        public event Action updatePointSectionNode;
 
-        //更新所有窗口
-        public event Action updatePointView;
         public DgvPoint()
         {
             InitializeComponent();
@@ -464,7 +464,8 @@ namespace eNet编辑器.DgvView
                 DataJson.totalList NewList = FileMesege.cmds.getListInfos();
                 FileMesege.cmds.DoNewCommand(NewList, OldList);
                 multipleList.Clear();
-                updatePointView();
+                //dgvPointAddItemBySection();
+                updatePointSectionNode();
             }
 
         }
@@ -499,7 +500,7 @@ namespace eNet编辑器.DgvView
                 DataJson.totalList NewList = FileMesege.cmds.getListInfos();
                 FileMesege.cmds.DoNewCommand(NewList, OldList);
                 multipleList.Clear();
-                updatePointView();
+                updatePointSectionNode();
             }
         }
         #endregion

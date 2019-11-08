@@ -28,6 +28,10 @@ namespace eNet编辑器.ThreeView
         }
 
         public event Action updateDgvPoint;
+
+        //树状图节点
+        string fullpath = "";
+
         private void ThreePoint_Load(object sender, EventArgs e)
         {
 
@@ -54,6 +58,7 @@ namespace eNet编辑器.ThreeView
                     }
 
                 }
+                TreeMesege.SetPrevVisitNode(treeView1, fullpath);
             }
             catch { 
             
@@ -100,7 +105,16 @@ namespace eNet编辑器.ThreeView
         /// <param name="e"></param>
         private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
         {
-
+            
+            if (treeView1.SelectedNode.Parent == null)
+            {
+                //获取父节点的fullpath
+                fullpath = treeView1.SelectedNode.FullPath;
+            }
+            else
+            {
+                fullpath = treeView1.SelectedNode.Parent.FullPath;
+            }
             if (string.IsNullOrEmpty(FileMesege.sectionNodeCopy))
             {
                 return;
@@ -110,7 +124,12 @@ namespace eNet编辑器.ThreeView
             {
                 FileMesege.objType = "所有点位";
             }
-            updateDgvPoint();
+            if (FileMesege.formType == "point")
+            {
+                //刷PointDGV
+                updateDgvPoint();
+            }
+           
         }
 
       
