@@ -34,6 +34,9 @@ namespace eNet编辑器.ThreeView
         public event Action selectLastCountTimer;
         public event Action selectLastCountLocalVar;
 
+        //树状图节点
+        string fullpath = "";
+
         public ThreeTitle()
         {
             InitializeComponent();            
@@ -41,11 +44,6 @@ namespace eNet编辑器.ThreeView
             SetStyle(ControlStyles.AllPaintingInWmPaint, true); // 禁止擦除背景.
             SetStyle(ControlStyles.DoubleBuffer, true); // 双缓冲
             this.UpdateStyles();
-            //利用反射设置DataGridView的双缓冲
-            /*Type dgvType = this.treeView1.GetType();
-            PropertyInfo pi = dgvType.GetProperty("DoubleBuffered",
-            BindingFlags.Instance | BindingFlags.NonPublic);
-            pi.SetValue(this.treeView1, true, null);*/
         }
 
         #region 解决背景闪烁
@@ -101,12 +99,7 @@ namespace eNet编辑器.ThreeView
                 //路径非空
                 if (!String.IsNullOrWhiteSpace(inifilepath))
                 {
-                    int index = 0;
-                    if (treeView1.SelectedNode != null)
-                    {
-                        index = treeView1.SelectedNode.Index;
-                    
-                    }
+                  
                     treeView1.Nodes.Clear();
                     FileMesege.titleinfo = "";
                     FileMesege.titlePointSection = "";
@@ -158,10 +151,7 @@ namespace eNet编辑器.ThreeView
                       
                         default: break;
                     }
-                    if (treeView1.Nodes.Count > 0 && index >0)
-                    {
-                        treeView1.SelectedNode = treeView1.Nodes[index];
-                    }
+                    TreeMesege.SetPrevVisitNode(treeView1, fullpath);
                 }
             }
             catch
@@ -440,6 +430,7 @@ namespace eNet编辑器.ThreeView
             FileMesege.titlePointSection = "";
             //把选中节点保存至文档中 
             FileMesege.titleinfo = treeView1.SelectedNode.Text;
+            fullpath = treeView1.SelectedNode.FullPath;
             if (FileMesege.formType == "name" && FileMesege.cbTypeIndex == 0)
             {
                 //当选中为 命名和点位

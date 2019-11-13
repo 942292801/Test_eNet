@@ -215,6 +215,30 @@ namespace eNet编辑器
         #endregion
 
 
+        #region DGV表滑动条恢复 并选中原来选中格
+        /// <summary>
+        /// 横坐标距离 X_Value, 垂直标距离 Y_Value, 行号 rowCount, 列号 columnCount
+        /// </summary>
+        /// <param name="dataGridView"></param>
+        /// <param name="X_Value"></param>
+        /// <param name="Y_Value"></param>
+        /// <param name="rowCount"></param>
+        /// <param name="columnCount"></param>
+        public static void RecoverDgvForm(DataGridView dataGridView, int X_Value, int Y_Value, int rowCount, int columnCount)
+        {
+            try
+            {
+                dataGridView.FirstDisplayedScrollingRowIndex = Y_Value;//设置垂直滚动条位置
+                dataGridView.HorizontalScrollingOffset = X_Value;
+                
+                dataGridView.CurrentCell = dataGridView.Rows[rowCount].Cells[columnCount];//设置单元格焦点
+            }catch(Exception ex){
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        #endregion
+
 
     }//class
 }

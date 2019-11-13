@@ -2372,6 +2372,21 @@ namespace eNet编辑器.DgvView
 
         #endregion
 
+        private void dataGridView1_Scroll(object sender, ScrollEventArgs e)
+        {
+
+        }
+
+        private void dataGridView2_Scroll(object sender, ScrollEventArgs e)
+        {
+
+        }
+
+        private void dataGridView3_Scroll(object sender, ScrollEventArgs e)
+        {
+
+        }
+
 
 
   

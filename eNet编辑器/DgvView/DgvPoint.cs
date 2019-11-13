@@ -150,6 +150,7 @@ namespace eNet编辑器.DgvView
 
                     }
                 }
+                DgvMesege.RecoverDgvForm(dataGridView1, X_Value, Y_Value, rowCount, columnCount);
                 
             }
             catch (Exception e)
@@ -215,7 +216,7 @@ namespace eNet编辑器.DgvView
 
                     }
                 }
-                
+                DgvMesege.RecoverDgvForm(dataGridView1, X_Value, Y_Value, rowCount, columnCount);
             }
             catch {
                 this.dataGridView1.Rows.Clear();
@@ -1258,6 +1259,25 @@ namespace eNet编辑器.DgvView
             catch
             {
 
+            }
+
+        }
+        #endregion
+
+        #region 记录滑动条位置
+        //滑动条位置
+        int X_Value; // Stores position of Horizontal scroll bar
+        int Y_Value; // Stores position of Vertical scroll bar
+        private void dataGridView1_Scroll(object sender, ScrollEventArgs e)
+        {
+            if (e.ScrollOrientation == ScrollOrientation.HorizontalScroll)
+            {
+                X_Value = e.NewValue;
+            }
+
+            if (e.ScrollOrientation == ScrollOrientation.VerticalScroll)
+            {
+                Y_Value = e.NewValue;
             }
 
         }

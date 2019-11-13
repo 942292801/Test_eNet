@@ -31,12 +31,20 @@
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DgvTimer));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DgvTimer));
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.num = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.address = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.section = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.operation = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.shortTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.del = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.checkDel = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.ultraSplitter1 = new Infragistics.Win.Misc.UltraSplitter();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
@@ -76,14 +84,6 @@
             this.styleManager1 = new DevComponents.DotNetBar.StyleManager(this.components);
             this.checkBoxItem1 = new DevComponents.DotNetBar.CheckBoxItem();
             this.doubleClickTimer = new System.Windows.Forms.Timer(this.components);
-            this.num = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.address = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.section = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.operation = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.shortTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.del = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.checkDel = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -178,8 +178,70 @@
             this.dataGridView1.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_CellMouseDown);
             this.dataGridView1.CellMouseMove += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_CellMouseMove);
             this.dataGridView1.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dataGridView1_DataError);
+            this.dataGridView1.Scroll += new System.Windows.Forms.ScrollEventHandler(this.dataGridView1_Scroll);
             this.dataGridView1.KeyUp += new System.Windows.Forms.KeyEventHandler(this.dataGridView1_KeyUp);
             this.dataGridView1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.dataGridView1_MouseDown);
+            // 
+            // num
+            // 
+            this.num.HeaderText = "序号";
+            this.num.Name = "num";
+            this.num.ReadOnly = true;
+            this.num.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.num.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.num.Width = 60;
+            // 
+            // address
+            // 
+            this.address.HeaderText = "地址";
+            this.address.Name = "address";
+            this.address.ReadOnly = true;
+            // 
+            // section
+            // 
+            this.section.HeaderText = "区域";
+            this.section.Name = "section";
+            this.section.ReadOnly = true;
+            this.section.Width = 160;
+            // 
+            // name
+            // 
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.name.DefaultCellStyle = dataGridViewCellStyle2;
+            this.name.HeaderText = "名称";
+            this.name.Name = "name";
+            this.name.ReadOnly = true;
+            this.name.Width = 80;
+            // 
+            // operation
+            // 
+            this.operation.HeaderText = "操作";
+            this.operation.Name = "operation";
+            this.operation.ReadOnly = true;
+            this.operation.Width = 140;
+            // 
+            // shortTime
+            // 
+            this.shortTime.HeaderText = "定时时间";
+            this.shortTime.Name = "shortTime";
+            this.shortTime.ReadOnly = true;
+            this.shortTime.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.shortTime.Width = 160;
+            // 
+            // del
+            // 
+            this.del.HeaderText = "删除";
+            this.del.Name = "del";
+            this.del.ReadOnly = true;
+            this.del.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.del.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.del.Width = 55;
+            // 
+            // checkDel
+            // 
+            this.checkDel.HeaderText = "";
+            this.checkDel.Name = "checkDel";
+            this.checkDel.Width = 50;
             // 
             // ultraSplitter1
             // 
@@ -242,6 +304,7 @@
             this.listbox.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Rounded;
             this.listbox.BackgroundStyle.TextColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarCaptionText;
             this.listbox.BackgroundStyle.TextShadowColor = System.Drawing.Color.Blue;
+            this.listbox.CheckStateMember = null;
             this.listbox.ContainerControlProcessDialogKey = true;
             this.listbox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.listbox.DragDropSupport = true;
@@ -764,67 +827,6 @@
             // 
             this.doubleClickTimer.Interval = 40;
             this.doubleClickTimer.Tick += new System.EventHandler(this.doubleClickTimer_Tick);
-            // 
-            // num
-            // 
-            this.num.HeaderText = "序号";
-            this.num.Name = "num";
-            this.num.ReadOnly = true;
-            this.num.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.num.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.num.Width = 60;
-            // 
-            // address
-            // 
-            this.address.HeaderText = "地址";
-            this.address.Name = "address";
-            this.address.ReadOnly = true;
-            // 
-            // section
-            // 
-            this.section.HeaderText = "区域";
-            this.section.Name = "section";
-            this.section.ReadOnly = true;
-            this.section.Width = 160;
-            // 
-            // name
-            // 
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.name.DefaultCellStyle = dataGridViewCellStyle2;
-            this.name.HeaderText = "名称";
-            this.name.Name = "name";
-            this.name.ReadOnly = true;
-            this.name.Width = 80;
-            // 
-            // operation
-            // 
-            this.operation.HeaderText = "操作";
-            this.operation.Name = "operation";
-            this.operation.ReadOnly = true;
-            this.operation.Width = 140;
-            // 
-            // shortTime
-            // 
-            this.shortTime.HeaderText = "定时时间";
-            this.shortTime.Name = "shortTime";
-            this.shortTime.ReadOnly = true;
-            this.shortTime.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.shortTime.Width = 160;
-            // 
-            // del
-            // 
-            this.del.HeaderText = "删除";
-            this.del.Name = "del";
-            this.del.ReadOnly = true;
-            this.del.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.del.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.del.Width = 55;
-            // 
-            // checkDel
-            // 
-            this.checkDel.HeaderText = "";
-            this.checkDel.Name = "checkDel";
-            this.checkDel.Width = 50;
             // 
             // DgvTimer
             // 

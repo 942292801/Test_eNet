@@ -278,6 +278,8 @@ namespace eNet编辑器
         /// </summary>
         private void updataAllView()
         {
+            txtShow.Clear();
+
             threename.ThreeNameAddNode();
             threescene.ThreeSceneAddNode();
             threetimer.ThreeTimerAddNode();
@@ -298,70 +300,16 @@ namespace eNet编辑器
             dgvsensor.dgvSensorAddItem();
             dgvvar.dgvVarAddItem();
             dgvlogic.dgvLogicAddItem();
-            txtShow.Clear();
         }
 
-        /// <summary>
-        /// 根据选择窗口类型更新窗口
-        /// </summary>
-        private void updateDgvTreeByFormType()
-        {
-            switch (FileMesege.formType)
-            {
-                case "name":
-                    threename.ThreeNameAddNode();
-                    if (FileMesege.tnselectNode != null && FileMesege.tnselectNode.Parent == null)
-                    {
-                        dgvdevice.dgvDeviceAddItem(true);
-                    }
-                    else
-                    {
-                        dgvname.dgvNameAddItem();
-                    }
-                    
-                    break;
-
-                case "point":
-                    dgvpoint.dgvPointAddItemBySection();
-                    break;
-                case "scene":
-                    threescene.ThreeSceneAddNode();
-                    dgvscene.dgvsceneAddItem();
-                    break;
-                case "timer":
-                    threetimer.ThreeTimerAddNode();
-                    dgvtimer.TimerAddItem();
-                    break;
-                case "panel":
-                    threepanel.ThreePanelAddNode();
-                    dgvpanel.dgvPanelAddItem();
-                    break;
-                case "sensor":
-                    threesensor.ThreeSensorAddNode();
-                    dgvsensor.dgvSensorAddItem();
-                    break;
-                case "logic":
-                    threelogic.ThreeLogicAddNode();
-                    dgvlogic.dgvLogicAddItem();
-                    break;
-                case "virtualport":
-                    threevar.ThreeVarAddNode();
-                    dgvvar.dgvVarAddItem();
-                    break;
-
-                default: break;
-            }
-
-            //threesection.ThreeSEctionAddNode();
-            threetitle.ThreeTitleAddNode(cbType.SelectedIndex);
-            txtShow.Clear();
-        }
+      
 
         /// <summary>
         /// 根据选择窗口类型更新窗口
         /// </summary>
         private void updateTreeByFormType()
         {
+            txtShow.Clear();
             switch (FileMesege.formType)
             {
                 case "name":
@@ -370,9 +318,22 @@ namespace eNet编辑器
                     break;
 
                 case "point":
-                    
-                    threesection.ThreeSEctionAddNode();
-                    threepoint.ThreePointAddNode();
+
+                    if (FileMesege.sectionNode != null)
+                    {
+                        if (!string.IsNullOrEmpty(FileMesege.objType))
+                        {
+                            threepoint.ThreePointAddNode();
+                           
+                        }
+                        else
+                        {
+                            threesection.ThreeSEctionAddNode();
+                        
+                        }
+                        
+                    }
+     
                     break;
                 case "scene":
                     threescene.ThreeSceneAddNode();
@@ -398,7 +359,7 @@ namespace eNet编辑器
 
             //threesection.ThreeSEctionAddNode();
             threetitle.ThreeTitleAddNode(cbType.SelectedIndex);
-            txtShow.Clear();
+            
         }
 
 
@@ -599,8 +560,7 @@ namespace eNet编辑器
             //更改Title 小标题
             LbTitleName.Text = Resources.lbTitleDevice;
             //更新加载表格
-            threesection.ThreeSEctionAddNode();
-            threepoint.ThreePointAddNode();
+            updateTreeByFormType();
         }
 
         private void tabScene_Click(object sender, EventArgs e)
@@ -971,8 +931,13 @@ namespace eNet编辑器
                 return;
 
             FileMesege.cmds.UnDo();
-            updateDgvTreeByFormType();
-            threesection.ThreeSEctionAddNode();
+            if (FileMesege.formType != "point")
+            {
+                threesection.ThreeSEctionAddNode();
+
+            }
+            updateTreeByFormType();
+            
         }
 
 
@@ -983,8 +948,12 @@ namespace eNet编辑器
                 return;
 
             FileMesege.cmds.ReDo();
-            updateDgvTreeByFormType();
-            threesection.ThreeSEctionAddNode();
+            if (FileMesege.formType != "point")
+            {
+                threesection.ThreeSEctionAddNode();
+
+            }
+            updateTreeByFormType();
         }
 
         private void btnUndo_Click(object sender, EventArgs e)
@@ -993,8 +962,12 @@ namespace eNet编辑器
                 return;
 
             FileMesege.cmds.UnDo();
-            updateDgvTreeByFormType();
-            threesection.ThreeSEctionAddNode();
+            if (FileMesege.formType != "point")
+            {
+                threesection.ThreeSEctionAddNode();
+
+            }
+            updateTreeByFormType();
         }
 
         private void btnRedo_Click(object sender, EventArgs e)
@@ -1003,8 +976,12 @@ namespace eNet编辑器
                 return;
 
             FileMesege.cmds.ReDo();
-            updateDgvTreeByFormType();
-            threesection.ThreeSEctionAddNode();
+            if (FileMesege.formType != "point")
+            {
+                threesection.ThreeSEctionAddNode();
+            
+            }
+            updateTreeByFormType();
         }
 
 

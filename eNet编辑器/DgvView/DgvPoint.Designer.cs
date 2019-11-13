@@ -33,6 +33,12 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DgvPoint));
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.pointNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pointAdd = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pointSection = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pointName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pointDel = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.pointMultiple = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.doubleClickTimer = new System.Windows.Forms.Timer(this.components);
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -43,12 +49,6 @@
             this.btnDel = new DevComponents.DotNetBar.ButtonX();
             this.symbolBox1 = new DevComponents.DotNetBar.Controls.SymbolBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.pointNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.pointAdd = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.pointSection = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.pointName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.pointDel = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.pointMultiple = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -102,8 +102,54 @@
             this.dataGridView1.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_CellMouseDown);
             this.dataGridView1.CellMouseMove += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_CellMouseMove);
             this.dataGridView1.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dataGridView1_DataError);
+            this.dataGridView1.Scroll += new System.Windows.Forms.ScrollEventHandler(this.dataGridView1_Scroll);
             this.dataGridView1.KeyUp += new System.Windows.Forms.KeyEventHandler(this.dataGridView1_KeyUp);
             this.dataGridView1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.dataGridView1_MouseDown);
+            // 
+            // pointNum
+            // 
+            this.pointNum.HeaderText = "序号";
+            this.pointNum.Name = "pointNum";
+            this.pointNum.ReadOnly = true;
+            this.pointNum.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.pointNum.Width = 60;
+            // 
+            // pointAdd
+            // 
+            this.pointAdd.HeaderText = "地址";
+            this.pointAdd.Name = "pointAdd";
+            this.pointAdd.ReadOnly = true;
+            this.pointAdd.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // pointSection
+            // 
+            this.pointSection.HeaderText = "区域";
+            this.pointSection.Name = "pointSection";
+            this.pointSection.ReadOnly = true;
+            this.pointSection.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.pointSection.Width = 160;
+            // 
+            // pointName
+            // 
+            this.pointName.HeaderText = "名称";
+            this.pointName.Name = "pointName";
+            this.pointName.ReadOnly = true;
+            this.pointName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.pointName.Width = 80;
+            // 
+            // pointDel
+            // 
+            this.pointDel.HeaderText = "删除";
+            this.pointDel.Name = "pointDel";
+            this.pointDel.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.pointDel.Width = 55;
+            // 
+            // pointMultiple
+            // 
+            this.pointMultiple.HeaderText = "";
+            this.pointMultiple.Name = "pointMultiple";
+            this.pointMultiple.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.pointMultiple.Width = 50;
             // 
             // doubleClickTimer
             // 
@@ -242,51 +288,6 @@
             this.label1.Size = new System.Drawing.Size(32, 17);
             this.label1.TabIndex = 11;
             this.label1.Text = "内容";
-            // 
-            // pointNum
-            // 
-            this.pointNum.HeaderText = "序号";
-            this.pointNum.Name = "pointNum";
-            this.pointNum.ReadOnly = true;
-            this.pointNum.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.pointNum.Width = 60;
-            // 
-            // pointAdd
-            // 
-            this.pointAdd.HeaderText = "地址";
-            this.pointAdd.Name = "pointAdd";
-            this.pointAdd.ReadOnly = true;
-            this.pointAdd.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // pointSection
-            // 
-            this.pointSection.HeaderText = "区域";
-            this.pointSection.Name = "pointSection";
-            this.pointSection.ReadOnly = true;
-            this.pointSection.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.pointSection.Width = 160;
-            // 
-            // pointName
-            // 
-            this.pointName.HeaderText = "名称";
-            this.pointName.Name = "pointName";
-            this.pointName.ReadOnly = true;
-            this.pointName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.pointName.Width = 80;
-            // 
-            // pointDel
-            // 
-            this.pointDel.HeaderText = "删除";
-            this.pointDel.Name = "pointDel";
-            this.pointDel.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.pointDel.Width = 55;
-            // 
-            // pointMultiple
-            // 
-            this.pointMultiple.HeaderText = "";
-            this.pointMultiple.Name = "pointMultiple";
-            this.pointMultiple.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.pointMultiple.Width = 50;
             // 
             // DgvPoint
             // 

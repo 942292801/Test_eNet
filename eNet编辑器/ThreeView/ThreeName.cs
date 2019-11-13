@@ -42,6 +42,7 @@ namespace eNet编辑器.ThreeView
         //树状图节点
         string fullpath = "";
 
+
         public ThreeName()
         {
             InitializeComponent();
@@ -122,7 +123,6 @@ namespace eNet编辑器.ThreeView
             //展开记录的节点
             tm.treeIspandsStateRcv(treeView1, isExpands);
             TreeMesege.SetPrevVisitNode(treeView1, fullpath);
-            
         }
 
         #region 对树状图网关增 删 改和  设备增
@@ -453,7 +453,6 @@ namespace eNet编辑器.ThreeView
         /// <param name="e"></param>
         private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
         {
-            
             //判断 ini文件存在不  再判断是父子节点 
             string filepath = string.Format("{0}\\devices\\{1}.ini", Application.StartupPath, treeView1.SelectedNode.Text.Split(' ')[1]); 
             TreeMesege tm = new TreeMesege();
@@ -536,7 +535,6 @@ namespace eNet编辑器.ThreeView
         /// <param name="e"></param>
         private void treeView1_DrawNode(object sender, DrawTreeNodeEventArgs e)
         {
-            
             Color foreColor;
             Color backColor;
             if ((e.State & TreeNodeStates.Selected) > 0)

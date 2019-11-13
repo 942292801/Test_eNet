@@ -443,6 +443,7 @@ namespace eNet编辑器
                     TreeNode tmpNode = FindNode(item, fullpath);
                     if (tmpNode != null)
                     {
+                        treeView.TopNode = tmpNode;
                         treeView.SelectedNode = tmpNode;
                         break;
                     }

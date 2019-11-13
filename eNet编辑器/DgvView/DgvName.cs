@@ -58,11 +58,7 @@ namespace eNet编辑器.DgvView
         //客户端
         ClientAsync client;
 
-        private void DgvName_Load(object sender, EventArgs e)
-        {
-
-            
-        }
+       
 
        
 
@@ -179,7 +175,8 @@ namespace eNet编辑器.DgvView
                 }
                 #endregion
 
-
+                DgvMesege.RecoverDgvForm(dataGridView1,X_Value,Y_Value,rowCount,columnCount);
+                
                 shuaxinBtn();
             }//try
             catch (Exception ex) { MessageBox.Show(ex + "临时调试错误信息"); }
@@ -1264,13 +1261,33 @@ namespace eNet编辑器.DgvView
 
         #endregion
 
+        #region 记录滑动条位置
+        //滑动条位置
+        int X_Value; // Stores position of Horizontal scroll bar
+        int Y_Value; // Stores position of Vertical scroll bar
+        private void dataGridView1_Scroll(object sender, ScrollEventArgs e)
+        {
+            if (e.ScrollOrientation == ScrollOrientation.HorizontalScroll)
+            {
+                X_Value = e.NewValue;
+            }
+
+            if (e.ScrollOrientation == ScrollOrientation.VerticalScroll)
+            {
+                Y_Value = e.NewValue;
+            }
+
+        }
+        #endregion
 
 
-      
-     
 
-    
-   
+
+
+
+
+
+
 
 
         //end

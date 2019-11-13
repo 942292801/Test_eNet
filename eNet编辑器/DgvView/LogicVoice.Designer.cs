@@ -44,20 +44,15 @@
             this.label2 = new System.Windows.Forms.Label();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.btnElseIfAdd = new DevComponents.DotNetBar.ButtonX();
-            this.label3 = new System.Windows.Forms.Label();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.btnElseAdd = new DevComponents.DotNetBar.ButtonX();
-            this.label5 = new System.Windows.Forms.Label();
-            this.doubleClickTimer1 = new System.Windows.Forms.Timer(this.components);
-            this.doubleClickTimer2 = new System.Windows.Forms.Timer(this.components);
             this.num1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.address1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.section1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.name1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.del1 = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.btnElseIfAdd = new DevComponents.DotNetBar.ButtonX();
+            this.label3 = new System.Windows.Forms.Label();
+            this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.num2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.result = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.address2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -66,6 +61,11 @@
             this.operation2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.delay2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.del2 = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.btnElseAdd = new DevComponents.DotNetBar.ButtonX();
+            this.label5 = new System.Windows.Forms.Label();
+            this.doubleClickTimer1 = new System.Windows.Forms.Timer(this.components);
+            this.doubleClickTimer2 = new System.Windows.Forms.Timer(this.components);
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -238,7 +238,44 @@
             this.dataGridView1.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_CellMouseDown);
             this.dataGridView1.CellMouseMove += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_CellMouseMove);
             this.dataGridView1.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dataGridView1_DataError);
+            this.dataGridView1.Scroll += new System.Windows.Forms.ScrollEventHandler(this.dataGridView1_Scroll);
             this.dataGridView1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.dataGridView1_MouseDown);
+            // 
+            // num1
+            // 
+            this.num1.HeaderText = "序号";
+            this.num1.Name = "num1";
+            this.num1.ReadOnly = true;
+            this.num1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.num1.Width = 60;
+            // 
+            // address1
+            // 
+            this.address1.HeaderText = "地址";
+            this.address1.Name = "address1";
+            this.address1.ReadOnly = true;
+            // 
+            // section1
+            // 
+            this.section1.HeaderText = "区域";
+            this.section1.Name = "section1";
+            this.section1.ReadOnly = true;
+            this.section1.Width = 160;
+            // 
+            // name1
+            // 
+            this.name1.HeaderText = "名称";
+            this.name1.Name = "name1";
+            this.name1.ReadOnly = true;
+            this.name1.Width = 80;
+            // 
+            // del1
+            // 
+            this.del1.HeaderText = "删除";
+            this.del1.Name = "del1";
+            this.del1.ReadOnly = true;
+            this.del1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.del1.Width = 55;
             // 
             // panel3
             // 
@@ -326,92 +363,9 @@
             this.dataGridView2.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView2_CellMouseDown);
             this.dataGridView2.CellMouseMove += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView2_CellMouseMove);
             this.dataGridView2.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dataGridView2_DataError);
+            this.dataGridView2.Scroll += new System.Windows.Forms.ScrollEventHandler(this.dataGridView2_Scroll);
             this.dataGridView2.KeyUp += new System.Windows.Forms.KeyEventHandler(this.dataGridView2_KeyUp);
             this.dataGridView2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.dataGridView2_MouseDown);
-            // 
-            // panel4
-            // 
-            this.panel4.Controls.Add(this.btnElseAdd);
-            this.panel4.Controls.Add(this.label5);
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel4.Location = new System.Drawing.Point(0, 0);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(811, 22);
-            this.panel4.TabIndex = 42;
-            // 
-            // btnElseAdd
-            // 
-            this.btnElseAdd.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnElseAdd.BackColor = System.Drawing.Color.White;
-            this.btnElseAdd.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
-            this.btnElseAdd.FocusCuesEnabled = false;
-            this.btnElseAdd.Font = new System.Drawing.Font("黑体", 9F);
-            this.btnElseAdd.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None;
-            this.btnElseAdd.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnElseAdd.HoverImage")));
-            this.btnElseAdd.Image = ((System.Drawing.Image)(resources.GetObject("btnElseAdd.Image")));
-            this.btnElseAdd.Location = new System.Drawing.Point(115, 3);
-            this.btnElseAdd.Margin = new System.Windows.Forms.Padding(10, 6, 6, 6);
-            this.btnElseAdd.Name = "btnElseAdd";
-            this.btnElseAdd.Size = new System.Drawing.Size(15, 15);
-            this.btnElseAdd.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnElseAdd.TabIndex = 40;
-            this.btnElseAdd.Tooltip = "增加";
-            this.btnElseAdd.Click += new System.EventHandler(this.btnElseAdd_Click);
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(23, 2);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(92, 17);
-            this.label5.TabIndex = 40;
-            this.label5.Text = "表达式判断项：";
-            // 
-            // doubleClickTimer1
-            // 
-            this.doubleClickTimer1.Interval = 40;
-            this.doubleClickTimer1.Tick += new System.EventHandler(this.doubleClickTimer1_Tick);
-            // 
-            // doubleClickTimer2
-            // 
-            this.doubleClickTimer2.Interval = 40;
-            this.doubleClickTimer2.Tick += new System.EventHandler(this.doubleClickTimer2_Tick);
-            // 
-            // num1
-            // 
-            this.num1.HeaderText = "序号";
-            this.num1.Name = "num1";
-            this.num1.ReadOnly = true;
-            this.num1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.num1.Width = 60;
-            // 
-            // address1
-            // 
-            this.address1.HeaderText = "地址";
-            this.address1.Name = "address1";
-            this.address1.ReadOnly = true;
-            // 
-            // section1
-            // 
-            this.section1.HeaderText = "区域";
-            this.section1.Name = "section1";
-            this.section1.ReadOnly = true;
-            this.section1.Width = 160;
-            // 
-            // name1
-            // 
-            this.name1.HeaderText = "名称";
-            this.name1.Name = "name1";
-            this.name1.ReadOnly = true;
-            this.name1.Width = 80;
-            // 
-            // del1
-            // 
-            this.del1.HeaderText = "删除";
-            this.del1.Name = "del1";
-            this.del1.ReadOnly = true;
-            this.del1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.del1.Width = 55;
             // 
             // num2
             // 
@@ -467,6 +421,54 @@
             this.del2.ReadOnly = true;
             this.del2.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.del2.Width = 55;
+            // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.btnElseAdd);
+            this.panel4.Controls.Add(this.label5);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel4.Location = new System.Drawing.Point(0, 0);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(811, 22);
+            this.panel4.TabIndex = 42;
+            // 
+            // btnElseAdd
+            // 
+            this.btnElseAdd.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnElseAdd.BackColor = System.Drawing.Color.White;
+            this.btnElseAdd.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
+            this.btnElseAdd.FocusCuesEnabled = false;
+            this.btnElseAdd.Font = new System.Drawing.Font("黑体", 9F);
+            this.btnElseAdd.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None;
+            this.btnElseAdd.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnElseAdd.HoverImage")));
+            this.btnElseAdd.Image = ((System.Drawing.Image)(resources.GetObject("btnElseAdd.Image")));
+            this.btnElseAdd.Location = new System.Drawing.Point(115, 3);
+            this.btnElseAdd.Margin = new System.Windows.Forms.Padding(10, 6, 6, 6);
+            this.btnElseAdd.Name = "btnElseAdd";
+            this.btnElseAdd.Size = new System.Drawing.Size(15, 15);
+            this.btnElseAdd.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnElseAdd.TabIndex = 40;
+            this.btnElseAdd.Tooltip = "增加";
+            this.btnElseAdd.Click += new System.EventHandler(this.btnElseAdd_Click);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(23, 2);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(92, 17);
+            this.label5.TabIndex = 40;
+            this.label5.Text = "表达式判断项：";
+            // 
+            // doubleClickTimer1
+            // 
+            this.doubleClickTimer1.Interval = 40;
+            this.doubleClickTimer1.Tick += new System.EventHandler(this.doubleClickTimer1_Tick);
+            // 
+            // doubleClickTimer2
+            // 
+            this.doubleClickTimer2.Interval = 40;
+            this.doubleClickTimer2.Tick += new System.EventHandler(this.doubleClickTimer2_Tick);
             // 
             // LogicVoice
             // 

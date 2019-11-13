@@ -33,6 +33,13 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LogicScene));
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.num = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.address = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.section = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.operation = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.state = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.del = new System.Windows.Forms.DataGridViewButtonColumn();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnAttr = new DevComponents.DotNetBar.ButtonX();
             this.btnDecid = new DevComponents.DotNetBar.ButtonX();
@@ -46,13 +53,6 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnIfAdd = new DevComponents.DotNetBar.ButtonX();
             this.label3 = new System.Windows.Forms.Label();
-            this.num = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.address = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.section = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.operation = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.state = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.del = new System.Windows.Forms.DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel5.SuspendLayout();
@@ -104,8 +104,59 @@
             this.dataGridView1.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_CellMouseDown);
             this.dataGridView1.CellMouseMove += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_CellMouseMove);
             this.dataGridView1.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dataGridView1_DataError);
+            this.dataGridView1.Scroll += new System.Windows.Forms.ScrollEventHandler(this.dataGridView1_Scroll);
             this.dataGridView1.KeyUp += new System.Windows.Forms.KeyEventHandler(this.dataGridView1_KeyUp);
             this.dataGridView1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.dataGridView1_MouseDown);
+            // 
+            // num
+            // 
+            this.num.HeaderText = "序号";
+            this.num.Name = "num";
+            this.num.ReadOnly = true;
+            this.num.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.num.Width = 60;
+            // 
+            // address
+            // 
+            this.address.HeaderText = "地址";
+            this.address.Name = "address";
+            this.address.ReadOnly = true;
+            // 
+            // section
+            // 
+            this.section.HeaderText = "区域";
+            this.section.Name = "section";
+            this.section.ReadOnly = true;
+            this.section.Width = 160;
+            // 
+            // name
+            // 
+            this.name.HeaderText = "名称";
+            this.name.Name = "name";
+            this.name.ReadOnly = true;
+            this.name.Width = 80;
+            // 
+            // operation
+            // 
+            this.operation.HeaderText = "操作";
+            this.operation.Name = "operation";
+            this.operation.ReadOnly = true;
+            this.operation.Width = 140;
+            // 
+            // state
+            // 
+            this.state.HeaderText = "状态";
+            this.state.Name = "state";
+            this.state.ReadOnly = true;
+            this.state.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // del
+            // 
+            this.del.HeaderText = "删除";
+            this.del.Name = "del";
+            this.del.ReadOnly = true;
+            this.del.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.del.Width = 55;
             // 
             // panel1
             // 
@@ -258,56 +309,6 @@
             this.label3.Size = new System.Drawing.Size(68, 17);
             this.label3.TabIndex = 39;
             this.label3.Text = "场景判断：";
-            // 
-            // num
-            // 
-            this.num.HeaderText = "序号";
-            this.num.Name = "num";
-            this.num.ReadOnly = true;
-            this.num.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.num.Width = 60;
-            // 
-            // address
-            // 
-            this.address.HeaderText = "地址";
-            this.address.Name = "address";
-            this.address.ReadOnly = true;
-            // 
-            // section
-            // 
-            this.section.HeaderText = "区域";
-            this.section.Name = "section";
-            this.section.ReadOnly = true;
-            this.section.Width = 160;
-            // 
-            // name
-            // 
-            this.name.HeaderText = "名称";
-            this.name.Name = "name";
-            this.name.ReadOnly = true;
-            this.name.Width = 80;
-            // 
-            // operation
-            // 
-            this.operation.HeaderText = "操作";
-            this.operation.Name = "operation";
-            this.operation.ReadOnly = true;
-            this.operation.Width = 140;
-            // 
-            // state
-            // 
-            this.state.HeaderText = "状态";
-            this.state.Name = "state";
-            this.state.ReadOnly = true;
-            this.state.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // del
-            // 
-            this.del.HeaderText = "删除";
-            this.del.Name = "del";
-            this.del.ReadOnly = true;
-            this.del.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.del.Width = 55;
             // 
             // LogicScene
             // 
