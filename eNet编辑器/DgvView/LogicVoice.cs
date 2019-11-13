@@ -11,6 +11,7 @@ using eNet编辑器.AddForm;
 using Newtonsoft.Json;
 using System.Reflection;
 using eNet编辑器.LogicForm;
+using System.Threading;
 
 namespace eNet编辑器.DgvView
 {
@@ -105,6 +106,23 @@ namespace eNet编辑器.DgvView
         /// </summary>
         public void formInfoIni()
         {
+
+            //way1.ok
+            Thread t = new Thread(ShowDatatable);
+            t.IsBackground = true;
+            t.Start();
+        }
+
+        #region 测试异步加载
+        public delegate void FormIniDelegate();
+        private void ShowDatatable()
+        {
+            this.Invoke(new FormIniDelegate(TabIni));
+
+        }
+
+        private void TabIni()
+        {
             dataGridView1.Rows.Clear();
             dataGridView2.Rows.Clear();
             txtVoice.Text = "";
@@ -130,9 +148,11 @@ namespace eNet编辑器.DgvView
             dgvVoiceAddItem(dataGridView1, logicVoiceContent.voiceItem, ip);
             //加载确定 否 表格
             dgvAddItem(dataGridView2, logicVoiceContent.voiceIfItem, ip);
-        
-
+            DgvMesege.RecoverDgvForm(dataGridView1, X_Value1, Y_Value1, ScrollRowCount1, ScrollColumnCount1);
+            DgvMesege.RecoverDgvForm(dataGridView2, X_Value2, Y_Value2, ScrollRowCount2, ScrollColumnCount2);
         }
+
+        #endregion
 
         /// <summary>
         /// 表格判断条件 展现数据
@@ -512,6 +532,7 @@ namespace eNet编辑器.DgvView
             DataJson.totalList NewList = FileMesege.cmds.getListInfos();
             FileMesege.cmds.DoNewCommand(NewList, OldList);
             dgvVoiceAddItem(dataGridView1, logicVoiceContent.voiceItem, ip);
+            DgvMesege.selectLastCount(dataGridView1); 
         }
 
         /// <summary>
@@ -545,6 +566,7 @@ namespace eNet编辑器.DgvView
             DataJson.totalList NewList = FileMesege.cmds.getListInfos();
             FileMesege.cmds.DoNewCommand(NewList, OldList);
             dgvAddItem(dataGridView2, logicVoiceContent.voiceIfItem, ip);
+            DgvMesege.selectLastCount(dataGridView2); 
         }
 
         #endregion
@@ -567,7 +589,13 @@ namespace eNet编辑器.DgvView
 
         bool isClick = false;
 
-        private void CellMouseDown(DataGridView dataGridView, DataGridViewCellMouseEventArgs e, Timer doubleClickTimer)
+        private int ScrollRowCount1 = 0;
+        private int ScrollColumnCount1 = 0;
+        private int ScrollRowCount2 = 0;
+        private int ScrollColumnCount2 = 0;
+
+       
+        private void CellMouseDown(DataGridView dataGridView, DataGridViewCellMouseEventArgs e, System.Windows.Forms.Timer doubleClickTimer)
         {
             try
             {
@@ -768,6 +796,8 @@ namespace eNet编辑器.DgvView
         private void dataGridView1_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
         {
             CellMouseDown(dataGridView1, e, doubleClickTimer1);
+            ScrollRowCount1 = e.RowIndex;
+            ScrollColumnCount1 = e.ColumnIndex;
         }
 
         private void dataGridView1_CellMouseMove(object sender, DataGridViewCellMouseEventArgs e)
@@ -863,6 +893,7 @@ namespace eNet编辑器.DgvView
                 DataJson.totalList NewList = FileMesege.cmds.getListInfos();
                 FileMesege.cmds.DoNewCommand(NewList, OldList);
                 dgvVoiceAddItem(dataGridView1, logicVoiceContent.voiceItem, ip);
+                DgvMesege.RecoverDgvForm(dataGridView1, X_Value1, Y_Value1, ScrollRowCount1, ScrollColumnCount1);
             }//ok
 
 
@@ -1063,6 +1094,8 @@ namespace eNet编辑器.DgvView
         private void dataGridView2_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
         {
             CellMouseDown(dataGridView2, e, doubleClickTimer2);
+            ScrollRowCount2 = e.RowIndex;
+            ScrollColumnCount2 = e.ColumnIndex;
         }
 
         private void dataGridView2_CellMouseMove(object sender, DataGridViewCellMouseEventArgs e)
@@ -1255,6 +1288,8 @@ namespace eNet编辑器.DgvView
                 DataJson.totalList NewList = FileMesege.cmds.getListInfos();
                 FileMesege.cmds.DoNewCommand(NewList, OldList);
                 dgvAddItem(dataGridView2, logicVoiceContent.voiceIfItem, ip);
+                DgvMesege.RecoverDgvForm(dataGridView2, X_Value2, Y_Value2, ScrollRowCount2, ScrollColumnCount2);
+
             }//ok
 
 
@@ -1366,6 +1401,7 @@ namespace eNet编辑器.DgvView
             DataJson.totalList NewList = FileMesege.cmds.getListInfos();
             FileMesege.cmds.DoNewCommand(NewList, OldList);
             dgvAddItem(dataGridView2, logicVoiceContent.voiceIfItem, ip);
+
         }
 
         private void voiceIfItemSort(List<DataJson.VoiceIfItem> infos)
@@ -1549,16 +1585,40 @@ namespace eNet编辑器.DgvView
         }
         #endregion
 
+        #region 记录滑动条位置
+        //滑动条位置
+        int X_Value1; // Stores position of Horizontal scroll bar
+        int Y_Value1; // Stores position of Vertical scroll bar
+        int X_Value2; // Stores position of Horizontal scroll bar
+        int Y_Value2; // Stores position of Vertical scroll bar
+   
         private void dataGridView1_Scroll(object sender, ScrollEventArgs e)
         {
+            if (e.ScrollOrientation == ScrollOrientation.HorizontalScroll)
+            {
+                X_Value1 = e.NewValue;
+            }
 
+            if (e.ScrollOrientation == ScrollOrientation.VerticalScroll)
+            {
+                Y_Value1 = e.NewValue;
+            }
         }
 
         private void dataGridView2_Scroll(object sender, ScrollEventArgs e)
         {
+            if (e.ScrollOrientation == ScrollOrientation.HorizontalScroll)
+            {
+                X_Value2 = e.NewValue;
+            }
 
+            if (e.ScrollOrientation == ScrollOrientation.VerticalScroll)
+            {
+                Y_Value2 = e.NewValue;
+            }
         }
 
+        #endregion
 
 
     }

@@ -78,8 +78,25 @@ namespace eNet编辑器.DgvView
         /// </summary>
         public void formInfoIni()
         {
+            //way1.ok
+            Thread t = new Thread(ShowDatatable);
+            t.IsBackground = true;
+            t.Start();
+
+        }
+
+        #region 测试异步加载
+        public delegate void FormIniDelegate();
+        private void ShowDatatable()
+        {
+            this.Invoke(new FormIniDelegate(TabIni));
+
+        }
+
+        private void TabIni()
+        {
             DataJson.logicsInfo LogicInfo = DataListHelper.findLogicInfoByTabName(FileMesege.LogicTabName);
-            if (LogicInfo == null )
+            if (LogicInfo == null)
             {
                 cbScene.Text = "";
                 dataGridView1.Rows.Clear();
@@ -95,7 +112,7 @@ namespace eNet编辑器.DgvView
                 dataGridView1.Rows.Clear();
                 return;
             }
-            
+
             DataJson.LogicSceneContent logicSceneContent = JsonConvert.DeserializeObject<DataJson.LogicSceneContent>(LogicInfo.content);
             DataJson.scenes sc = DataListHelper.getSceneInfoListByPid(ip, logicSceneContent.pid);
             if (sc == null)
@@ -103,7 +120,7 @@ namespace eNet编辑器.DgvView
                 cbScene.Text = "";
                 dataGridView1.Rows.Clear();
                 return;
-                
+
             }
             //获取该场景的场景名称 
             DataJson.PointInfo point = DataListHelper.findPointByPid(logicSceneContent.pid);
@@ -116,10 +133,12 @@ namespace eNet编辑器.DgvView
                 dgvAddItem(logicSceneContent.SceneItemInfo, ip);
                 //thread = new Thread(new ThreadStart(ThreadMethod)); //创建线程                 
                 //thread.Start(); //启动线程
-                
-            }
 
+            }
+            DgvMesege.RecoverDgvForm(dataGridView1, X_Value, Y_Value, rowCount, columnCount);
         }
+
+        #endregion
 
         /// <summary>
         /// 创建线程链接 链接tcp6003端口 刷新状态回来
@@ -304,14 +323,13 @@ namespace eNet编辑器.DgvView
                     dataGridView1.Rows[dex].Cells[5].Value = (info.optName + " " + info.opt).Trim();
                     dataGridView1.Rows[dex].Cells[6].Value = info.state; //状态
                     dataGridView1.Rows[dex].Cells[7].Value = "删除";
-
-
                 }
                 for (int i = 0; i < delScene.Count; i++)
                 {
                     sceneInfo.Remove(delScene[i]);
                 }
-                DgvMesege.RecoverDgvForm(dataGridView1, X_Value, Y_Value, rowCount, columnCount);
+                
+
             }
             catch (Exception ex)
             {
@@ -320,8 +338,11 @@ namespace eNet编辑器.DgvView
             }
         }
 
+
+        
         #endregion
 
+       
 
         #region 设置执行模式和场景
 
@@ -1461,6 +1482,9 @@ namespace eNet编辑器.DgvView
             }
 
         }
+
+ 
+
         #endregion
 
         

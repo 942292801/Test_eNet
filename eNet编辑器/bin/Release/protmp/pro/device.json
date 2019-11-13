@@ -115,6 +115,276 @@
                 ],
                 "id": 2,
                 "device": "ET-R0816A",
+                "sn": "ffffffffffffffff",
+                "ver": "D20150804V1.11",
+                "area1": "",
+                "area2": "",
+                "area3": "",
+                "area4": "",
+                "name": ""
+            },
+            {
+                "devPortList": [
+                    {
+                        "portID": 1,
+                        "portType": "1.0_switch",
+                        "portInterface": "Switch",
+                        "portContent": null
+                    },
+                    {
+                        "portID": 2,
+                        "portType": "1.0_switch",
+                        "portInterface": "Switch",
+                        "portContent": null
+                    },
+                    {
+                        "portID": 3,
+                        "portType": "1.0_switch",
+                        "portInterface": "Switch",
+                        "portContent": null
+                    },
+                    {
+                        "portID": 4,
+                        "portType": "1.0_switch",
+                        "portInterface": "Switch",
+                        "portContent": null
+                    },
+                    {
+                        "portID": 5,
+                        "portType": "1.0_switch",
+                        "portInterface": "Switch",
+                        "portContent": null
+                    },
+                    {
+                        "portID": 6,
+                        "portType": "1.0_switch",
+                        "portInterface": "Switch",
+                        "portContent": null
+                    },
+                    {
+                        "portID": 7,
+                        "portType": "1.0_switch",
+                        "portInterface": "Switch",
+                        "portContent": null
+                    },
+                    {
+                        "portID": 8,
+                        "portType": "1.0_switch",
+                        "portInterface": "Switch",
+                        "portContent": null
+                    }
+                ],
+                "id": 3,
+                "device": "ET-R0816A",
+                "sn": "ffffffffffffffff",
+                "ver": "D20150804V1.11",
+                "area1": "",
+                "area2": "",
+                "area3": "",
+                "area4": "",
+                "name": ""
+            },
+            {
+                "devPortList": [
+                    {
+                        "portID": 1,
+                        "portType": "1.0_switch",
+                        "portInterface": "Switch",
+                        "portContent": null
+                    },
+                    {
+                        "portID": 2,
+                        "portType": "1.0_switch",
+                        "portInterface": "Switch",
+                        "portContent": null
+                    },
+                    {
+                        "portID": 3,
+                        "portType": "1.0_switch",
+                        "portInterface": "Switch",
+                        "portContent": null
+                    },
+                    {
+                        "portID": 4,
+                        "portType": "1.0_switch",
+                        "portInterface": "Switch",
+                        "portContent": null
+                    },
+                    {
+                        "portID": 5,
+                        "portType": "1.0_switch",
+                        "portInterface": "Switch",
+                        "portContent": null
+                    },
+                    {
+                        "portID": 6,
+                        "portType": "1.0_switch",
+                        "portInterface": "Switch",
+                        "portContent": null
+                    },
+                    {
+                        "portID": 7,
+                        "portType": "1.0_switch",
+                        "portInterface": "Switch",
+                        "portContent": null
+                    },
+                    {
+                        "portID": 8,
+                        "portType": "1.0_switch",
+                        "portInterface": "Switch",
+                        "portContent": null
+                    }
+                ],
+                "id": 4,
+                "device": "ET-R0816A",
+                "sn": "ffffffffffffffff",
+                "ver": "D20150804V1.11",
+                "area1": "",
+                "area2": "",
+                "area3": "",
+                "area4": "",
+                "name": ""
+            },
+            {
+                "devPortList": [
+                    {
+                        "portID": 1,
+                        "portType": "1.0_switch",
+                        "portInterface": "Switch",
+                        "portContent": null
+                    },
+                    {
+                        "portID": 2,
+                        "portType": "1.0_switch",
+                        "portInterface": "Switch",
+                        "portContent": null
+                    },
+                    {
+                        "portID": 3,
+                        "portType": "1.0_switch",
+                        "portInterface": "Switch",
+                        "portContent": null
+                    },
+                    {
+                        "portID": 4,
+                        "portType": "1.0_switch",
+                        "portInterface": "Switch",
+                        "portContent": null
+                    },
+                    {
+                        "portID": 5,
+                        "portType": "1.0_switch",
+                        "portInterface": "Switch",
+                        "portContent": null
+                    },
+                    {
+                        "portID": 6,
+                        "portType": "1.0_switch",
+                        "portInterface": "Switch",
+                        "portContent": null
+                    },
+                    {
+                        "portID": 7,
+                        "portType": "1.0_switch",
+                        "portInterface": "Switch",
+                        "portContent": null
+                    },
+                    {
+                        "portID": 8,
+                        "portType": "1.0_switch",
+                        "portInterface": "Switch",
+                        "portContent": null
+                    }
+                ],
+                "id": 5,
+                "device": "ET-R0816A",
+                "sn": "ffffffffffffffff",
+                "ver": "D20150804V1.11",
+                "area1": "",
+                "area2": "",
+                "area3": "",
+                "area4": "",
+                "name": ""
+            },
+            {
+                "devPortList": [
+                    {
+                        "portID": 1,
+                        "portType": "2.0_dimmer",
+                        "portInterface": "0-10V",
+                        "portContent": null
+                    },
+                    {
+                        "portID": 2,
+                        "portType": "2.0_dimmer",
+                        "portInterface": "0-10V",
+                        "portContent": null
+                    }
+                ],
+                "id": 6,
+                "device": "ET-D0201A",
+                "sn": "ffffffffffffffff",
+                "ver": "D20150403V1.03",
+                "area1": "",
+                "area2": "",
+                "area3": "",
+                "area4": "",
+                "name": ""
+            },
+            {
+                "devPortList": [
+                    {
+                        "portID": 1,
+                        "portType": "2.0_dimmer",
+                        "portInterface": "0-10V",
+                        "portContent": null
+                    },
+                    {
+                        "portID": 2,
+                        "portType": "2.0_dimmer",
+                        "portInterface": "0-10V",
+                        "portContent": null
+                    }
+                ],
+                "id": 7,
+                "device": "ET-D0201A",
+                "sn": "ffffffffffffffff",
+                "ver": "D20180614V1.05",
+                "area1": "",
+                "area2": "",
+                "area3": "",
+                "area4": "",
+                "name": ""
+            },
+            {
+                "devPortList": [
+                    {
+                        "portID": 1,
+                        "portType": "1.0_switch",
+                        "portInterface": "窗帘1",
+                        "portContent": null
+                    },
+                    {
+                        "portID": 2,
+                        "portType": "1.0_switch",
+                        "portInterface": "窗帘2",
+                        "portContent": null
+                    },
+                    {
+                        "portID": 3,
+                        "portType": "1.0_switch",
+                        "portInterface": "窗帘3",
+                        "portContent": null
+                    },
+                    {
+                        "portID": 4,
+                        "portType": "1.0_switch",
+                        "portInterface": "窗帘4",
+                        "portContent": null
+                    }
+                ],
+                "id": 8,
+                "device": "ET-CR02A",
                 "sn": "",
                 "ver": "",
                 "area1": "",
@@ -123,6 +393,227 @@
                 "area4": "",
                 "name": ""
             },
+            {
+                "devPortList": [
+                    {
+                        "portID": 1,
+                        "portType": "1.0_switch",
+                        "portInterface": "窗帘1",
+                        "portContent": null
+                    },
+                    {
+                        "portID": 2,
+                        "portType": "1.0_switch",
+                        "portInterface": "窗帘2",
+                        "portContent": null
+                    },
+                    {
+                        "portID": 3,
+                        "portType": "1.0_switch",
+                        "portInterface": "窗帘3",
+                        "portContent": null
+                    },
+                    {
+                        "portID": 4,
+                        "portType": "1.0_switch",
+                        "portInterface": "窗帘4",
+                        "portContent": null
+                    }
+                ],
+                "id": 9,
+                "device": "ET-CR02A",
+                "sn": "",
+                "ver": "",
+                "area1": "",
+                "area2": "",
+                "area3": "",
+                "area4": "",
+                "name": ""
+            },
+            {
+                "devPortList": [
+                    {
+                        "portID": 1,
+                        "portType": "1.0_switch",
+                        "portInterface": "窗帘1",
+                        "portContent": null
+                    },
+                    {
+                        "portID": 2,
+                        "portType": "1.0_switch",
+                        "portInterface": "窗帘2",
+                        "portContent": null
+                    },
+                    {
+                        "portID": 3,
+                        "portType": "1.0_switch",
+                        "portInterface": "窗帘3",
+                        "portContent": null
+                    },
+                    {
+                        "portID": 4,
+                        "portType": "1.0_switch",
+                        "portInterface": "窗帘4",
+                        "portContent": null
+                    }
+                ],
+                "id": 10,
+                "device": "ET-CR02A",
+                "sn": "",
+                "ver": "",
+                "area1": "",
+                "area2": "",
+                "area3": "",
+                "area4": "",
+                "name": ""
+            },
+            {
+                "devPortList": [
+                    {
+                        "portID": 1,
+                        "portType": "8.0_uart",
+                        "portInterface": "串口",
+                        "portContent": null
+                    }
+                ],
+                "id": 11,
+                "device": "ET-RS1000A",
+                "sn": "",
+                "ver": "",
+                "area1": "",
+                "area2": "",
+                "area3": "",
+                "area4": "",
+                "name": ""
+            },
+            {
+                "devPortList": [
+                    {
+                        "portID": 1,
+                        "portType": "1.0_switch",
+                        "portInterface": "Switch",
+                        "portContent": null
+                    },
+                    {
+                        "portID": 2,
+                        "portType": "2.0_dimmer",
+                        "portInterface": "0-10V",
+                        "portContent": null
+                    },
+                    {
+                        "portID": 3,
+                        "portType": "2.1_dimmer",
+                        "portInterface": "0-10V",
+                        "portContent": null
+                    },
+                    {
+                        "portID": 4,
+                        "portType": "7.0_ir",
+                        "portInterface": "红外5",
+                        "portContent": null
+                    },
+                    {
+                        "portID": 5,
+                        "portType": "8.0_uart",
+                        "portInterface": "串口6",
+                        "portContent": null
+                    },
+                    {
+                        "portID": 6,
+                        "portType": "13.0_RGB",
+                        "portInterface": "调色8",
+                        "portContent": null
+                    },
+                    {
+                        "portID": 7,
+                        "portType": "14.0_data",
+                        "portInterface": "数据9",
+                        "portContent": null
+                    }
+                ],
+                "id": 12,
+                "device": "TEST01",
+                "sn": "",
+                "ver": "",
+                "area1": "",
+                "area2": "",
+                "area3": "",
+                "area4": "",
+                "name": ""
+            },
+            {
+                "devPortList": [
+                    {
+                        "portID": 1,
+                        "portType": "8.0_uart",
+                        "portInterface": "串口",
+                        "portContent": null
+                    }
+                ],
+                "id": 13,
+                "device": "ET-RS1000A",
+                "sn": "",
+                "ver": "",
+                "area1": "",
+                "area2": "",
+                "area3": "",
+                "area4": "",
+                "name": ""
+            },
+            {
+                "devPortList": [
+                    {
+                        "portID": 1,
+                        "portType": "8.0_uart",
+                        "portInterface": "串口",
+                        "portContent": null
+                    }
+                ],
+                "id": 14,
+                "device": "ET-RS1000A",
+                "sn": "",
+                "ver": "",
+                "area1": "",
+                "area2": "",
+                "area3": "",
+                "area4": "",
+                "name": ""
+            },
+            {
+                "devPortList": [
+                    {
+                        "portID": 1,
+                        "portType": "8.0_uart",
+                        "portInterface": "串口",
+                        "portContent": null
+                    }
+                ],
+                "id": 15,
+                "device": "ET-RS1000A",
+                "sn": "",
+                "ver": "",
+                "area1": "",
+                "area2": "",
+                "area3": "",
+                "area4": "",
+                "name": ""
+            }
+        ],
+        "master": "GW100A",
+        "ip": "192.168.1.222",
+        "mask": "",
+        "gateway": "",
+        "mac": "",
+        "sn": "",
+        "ver": "",
+        "area1": "",
+        "area2": "",
+        "area3": "",
+        "area4": "",
+        "name": ""
+    },
+    {
+        "module": [
             {
                 "devPortList": [
                     {
@@ -188,128 +679,6 @@
                 "devPortList": [
                     {
                         "portID": 1,
-                        "portType": "1.0_switch",
-                        "portInterface": "Switch",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 2,
-                        "portType": "1.0_switch",
-                        "portInterface": "Switch",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 3,
-                        "portType": "1.0_switch",
-                        "portInterface": "Switch",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 4,
-                        "portType": "1.0_switch",
-                        "portInterface": "Switch",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 5,
-                        "portType": "1.0_switch",
-                        "portInterface": "Switch",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 6,
-                        "portType": "1.0_switch",
-                        "portInterface": "Switch",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 7,
-                        "portType": "1.0_switch",
-                        "portInterface": "Switch",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 8,
-                        "portType": "1.0_switch",
-                        "portInterface": "Switch",
-                        "portContent": null
-                    }
-                ],
-                "id": 4,
-                "device": "ET-R0816A",
-                "sn": "",
-                "ver": "",
-                "area1": "",
-                "area2": "",
-                "area3": "",
-                "area4": "",
-                "name": ""
-            },
-            {
-                "devPortList": [
-                    {
-                        "portID": 1,
-                        "portType": "1.0_switch",
-                        "portInterface": "Switch",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 2,
-                        "portType": "1.0_switch",
-                        "portInterface": "Switch",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 3,
-                        "portType": "1.0_switch",
-                        "portInterface": "Switch",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 4,
-                        "portType": "1.0_switch",
-                        "portInterface": "Switch",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 5,
-                        "portType": "1.0_switch",
-                        "portInterface": "Switch",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 6,
-                        "portType": "1.0_switch",
-                        "portInterface": "Switch",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 7,
-                        "portType": "1.0_switch",
-                        "portInterface": "Switch",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 8,
-                        "portType": "1.0_switch",
-                        "portInterface": "Switch",
-                        "portContent": null
-                    }
-                ],
-                "id": 5,
-                "device": "ET-R0816A",
-                "sn": "",
-                "ver": "",
-                "area1": "",
-                "area2": "",
-                "area3": "",
-                "area4": "",
-                "name": ""
-            },
-            {
-                "devPortList": [
-                    {
-                        "portID": 1,
                         "portType": "2.0_dimmer",
                         "portInterface": "0-10V",
                         "portContent": null
@@ -319,1474 +688,10 @@
                         "portType": "2.0_dimmer",
                         "portInterface": "0-10V",
                         "portContent": null
-                    },
-                    {
-                        "portID": 3,
-                        "portType": "2.0_dimmer",
-                        "portInterface": "0-10V",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 4,
-                        "portType": "2.0_dimmer",
-                        "portInterface": "0-10V",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 5,
-                        "portType": "2.0_dimmer",
-                        "portInterface": "0-10V",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 6,
-                        "portType": "2.0_dimmer",
-                        "portInterface": "0-10V",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 7,
-                        "portType": "2.0_dimmer",
-                        "portInterface": "0-10V",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 8,
-                        "portType": "2.0_dimmer",
-                        "portInterface": "0-10V",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 9,
-                        "portType": "2.0_dimmer",
-                        "portInterface": "0-10V",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 10,
-                        "portType": "2.0_dimmer",
-                        "portInterface": "0-10V",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 11,
-                        "portType": "2.0_dimmer",
-                        "portInterface": "0-10V",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 12,
-                        "portType": "2.0_dimmer",
-                        "portInterface": "0-10V",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 13,
-                        "portType": "2.0_dimmer",
-                        "portInterface": "0-10V",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 14,
-                        "portType": "2.0_dimmer",
-                        "portInterface": "0-10V",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 15,
-                        "portType": "2.0_dimmer",
-                        "portInterface": "0-10V",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 16,
-                        "portType": "2.0_dimmer",
-                        "portInterface": "0-10V",
-                        "portContent": null
                     }
                 ],
-                "id": 10,
-                "device": "ET-DMX16A",
-                "sn": "",
-                "ver": "",
-                "area1": "",
-                "area2": "",
-                "area3": "",
-                "area4": "",
-                "name": ""
-            },
-            {
-                "devPortList": [
-                    {
-                        "portID": 1,
-                        "portType": "2.0_dimmer",
-                        "portInterface": "0-10V",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 2,
-                        "portType": "2.0_dimmer",
-                        "portInterface": "0-10V",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 3,
-                        "portType": "2.0_dimmer",
-                        "portInterface": "0-10V",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 4,
-                        "portType": "2.0_dimmer",
-                        "portInterface": "0-10V",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 5,
-                        "portType": "2.0_dimmer",
-                        "portInterface": "0-10V",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 6,
-                        "portType": "2.0_dimmer",
-                        "portInterface": "0-10V",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 7,
-                        "portType": "2.0_dimmer",
-                        "portInterface": "0-10V",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 8,
-                        "portType": "2.0_dimmer",
-                        "portInterface": "0-10V",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 9,
-                        "portType": "2.0_dimmer",
-                        "portInterface": "0-10V",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 10,
-                        "portType": "2.0_dimmer",
-                        "portInterface": "0-10V",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 11,
-                        "portType": "2.0_dimmer",
-                        "portInterface": "0-10V",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 12,
-                        "portType": "2.0_dimmer",
-                        "portInterface": "0-10V",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 13,
-                        "portType": "2.0_dimmer",
-                        "portInterface": "0-10V",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 14,
-                        "portType": "2.0_dimmer",
-                        "portInterface": "0-10V",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 15,
-                        "portType": "2.0_dimmer",
-                        "portInterface": "0-10V",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 16,
-                        "portType": "2.0_dimmer",
-                        "portInterface": "0-10V",
-                        "portContent": null
-                    }
-                ],
-                "id": 11,
-                "device": "ET-DMX16A",
-                "sn": "",
-                "ver": "",
-                "area1": "",
-                "area2": "",
-                "area3": "",
-                "area4": "",
-                "name": ""
-            },
-            {
-                "devPortList": [
-                    {
-                        "portID": 1,
-                        "portType": "2.0_dimmer",
-                        "portInterface": "0-10V",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 2,
-                        "portType": "2.0_dimmer",
-                        "portInterface": "0-10V",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 3,
-                        "portType": "2.0_dimmer",
-                        "portInterface": "0-10V",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 4,
-                        "portType": "2.0_dimmer",
-                        "portInterface": "0-10V",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 5,
-                        "portType": "2.0_dimmer",
-                        "portInterface": "0-10V",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 6,
-                        "portType": "2.0_dimmer",
-                        "portInterface": "0-10V",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 7,
-                        "portType": "2.0_dimmer",
-                        "portInterface": "0-10V",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 8,
-                        "portType": "2.0_dimmer",
-                        "portInterface": "0-10V",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 9,
-                        "portType": "2.0_dimmer",
-                        "portInterface": "0-10V",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 10,
-                        "portType": "2.0_dimmer",
-                        "portInterface": "0-10V",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 11,
-                        "portType": "2.0_dimmer",
-                        "portInterface": "0-10V",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 12,
-                        "portType": "2.0_dimmer",
-                        "portInterface": "0-10V",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 13,
-                        "portType": "2.0_dimmer",
-                        "portInterface": "0-10V",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 14,
-                        "portType": "2.0_dimmer",
-                        "portInterface": "0-10V",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 15,
-                        "portType": "2.0_dimmer",
-                        "portInterface": "0-10V",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 16,
-                        "portType": "2.0_dimmer",
-                        "portInterface": "0-10V",
-                        "portContent": null
-                    }
-                ],
-                "id": 12,
-                "device": "ET-DMX16A",
-                "sn": "",
-                "ver": "",
-                "area1": "",
-                "area2": "",
-                "area3": "",
-                "area4": "",
-                "name": ""
-            },
-            {
-                "devPortList": [
-                    {
-                        "portID": 1,
-                        "portType": "2.0_dimmer",
-                        "portInterface": "0-10V",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 2,
-                        "portType": "2.0_dimmer",
-                        "portInterface": "0-10V",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 3,
-                        "portType": "2.0_dimmer",
-                        "portInterface": "0-10V",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 4,
-                        "portType": "2.0_dimmer",
-                        "portInterface": "0-10V",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 5,
-                        "portType": "2.0_dimmer",
-                        "portInterface": "0-10V",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 6,
-                        "portType": "2.0_dimmer",
-                        "portInterface": "0-10V",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 7,
-                        "portType": "2.0_dimmer",
-                        "portInterface": "0-10V",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 8,
-                        "portType": "2.0_dimmer",
-                        "portInterface": "0-10V",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 9,
-                        "portType": "2.0_dimmer",
-                        "portInterface": "0-10V",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 10,
-                        "portType": "2.0_dimmer",
-                        "portInterface": "0-10V",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 11,
-                        "portType": "2.0_dimmer",
-                        "portInterface": "0-10V",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 12,
-                        "portType": "2.0_dimmer",
-                        "portInterface": "0-10V",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 13,
-                        "portType": "2.0_dimmer",
-                        "portInterface": "0-10V",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 14,
-                        "portType": "2.0_dimmer",
-                        "portInterface": "0-10V",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 15,
-                        "portType": "2.0_dimmer",
-                        "portInterface": "0-10V",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 16,
-                        "portType": "2.0_dimmer",
-                        "portInterface": "0-10V",
-                        "portContent": null
-                    }
-                ],
-                "id": 13,
-                "device": "ET-DMX16A",
-                "sn": "",
-                "ver": "",
-                "area1": "",
-                "area2": "",
-                "area3": "",
-                "area4": "",
-                "name": ""
-            },
-            {
-                "devPortList": [
-                    {
-                        "portID": 1,
-                        "portType": "2.0_dimmer",
-                        "portInterface": "0-10V",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 2,
-                        "portType": "2.0_dimmer",
-                        "portInterface": "0-10V",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 3,
-                        "portType": "2.0_dimmer",
-                        "portInterface": "0-10V",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 4,
-                        "portType": "2.0_dimmer",
-                        "portInterface": "0-10V",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 5,
-                        "portType": "2.0_dimmer",
-                        "portInterface": "0-10V",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 6,
-                        "portType": "2.0_dimmer",
-                        "portInterface": "0-10V",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 7,
-                        "portType": "2.0_dimmer",
-                        "portInterface": "0-10V",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 8,
-                        "portType": "2.0_dimmer",
-                        "portInterface": "0-10V",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 9,
-                        "portType": "2.0_dimmer",
-                        "portInterface": "0-10V",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 10,
-                        "portType": "2.0_dimmer",
-                        "portInterface": "0-10V",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 11,
-                        "portType": "2.0_dimmer",
-                        "portInterface": "0-10V",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 12,
-                        "portType": "2.0_dimmer",
-                        "portInterface": "0-10V",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 13,
-                        "portType": "2.0_dimmer",
-                        "portInterface": "0-10V",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 14,
-                        "portType": "2.0_dimmer",
-                        "portInterface": "0-10V",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 15,
-                        "portType": "2.0_dimmer",
-                        "portInterface": "0-10V",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 16,
-                        "portType": "2.0_dimmer",
-                        "portInterface": "0-10V",
-                        "portContent": null
-                    }
-                ],
-                "id": 14,
-                "device": "ET-DMX16A",
-                "sn": "",
-                "ver": "",
-                "area1": "",
-                "area2": "",
-                "area3": "",
-                "area4": "",
-                "name": ""
-            },
-            {
-                "devPortList": [
-                    {
-                        "portID": 1,
-                        "portType": "2.0_dimmer",
-                        "portInterface": "0-10V",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 2,
-                        "portType": "2.0_dimmer",
-                        "portInterface": "0-10V",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 3,
-                        "portType": "2.0_dimmer",
-                        "portInterface": "0-10V",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 4,
-                        "portType": "2.0_dimmer",
-                        "portInterface": "0-10V",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 5,
-                        "portType": "2.0_dimmer",
-                        "portInterface": "0-10V",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 6,
-                        "portType": "2.0_dimmer",
-                        "portInterface": "0-10V",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 7,
-                        "portType": "2.0_dimmer",
-                        "portInterface": "0-10V",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 8,
-                        "portType": "2.0_dimmer",
-                        "portInterface": "0-10V",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 9,
-                        "portType": "2.0_dimmer",
-                        "portInterface": "0-10V",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 10,
-                        "portType": "2.0_dimmer",
-                        "portInterface": "0-10V",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 11,
-                        "portType": "2.0_dimmer",
-                        "portInterface": "0-10V",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 12,
-                        "portType": "2.0_dimmer",
-                        "portInterface": "0-10V",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 13,
-                        "portType": "2.0_dimmer",
-                        "portInterface": "0-10V",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 14,
-                        "portType": "2.0_dimmer",
-                        "portInterface": "0-10V",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 15,
-                        "portType": "2.0_dimmer",
-                        "portInterface": "0-10V",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 16,
-                        "portType": "2.0_dimmer",
-                        "portInterface": "0-10V",
-                        "portContent": null
-                    }
-                ],
-                "id": 15,
-                "device": "ET-DMX16A",
-                "sn": "",
-                "ver": "",
-                "area1": "",
-                "area2": "",
-                "area3": "",
-                "area4": "",
-                "name": ""
-            },
-            {
-                "devPortList": [
-                    {
-                        "portID": 1,
-                        "portType": "2.0_dimmer",
-                        "portInterface": "0-10V",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 2,
-                        "portType": "2.0_dimmer",
-                        "portInterface": "0-10V",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 3,
-                        "portType": "2.0_dimmer",
-                        "portInterface": "0-10V",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 4,
-                        "portType": "2.0_dimmer",
-                        "portInterface": "0-10V",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 5,
-                        "portType": "2.0_dimmer",
-                        "portInterface": "0-10V",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 6,
-                        "portType": "2.0_dimmer",
-                        "portInterface": "0-10V",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 7,
-                        "portType": "2.0_dimmer",
-                        "portInterface": "0-10V",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 8,
-                        "portType": "2.0_dimmer",
-                        "portInterface": "0-10V",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 9,
-                        "portType": "2.0_dimmer",
-                        "portInterface": "0-10V",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 10,
-                        "portType": "2.0_dimmer",
-                        "portInterface": "0-10V",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 11,
-                        "portType": "2.0_dimmer",
-                        "portInterface": "0-10V",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 12,
-                        "portType": "2.0_dimmer",
-                        "portInterface": "0-10V",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 13,
-                        "portType": "2.0_dimmer",
-                        "portInterface": "0-10V",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 14,
-                        "portType": "2.0_dimmer",
-                        "portInterface": "0-10V",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 15,
-                        "portType": "2.0_dimmer",
-                        "portInterface": "0-10V",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 16,
-                        "portType": "2.0_dimmer",
-                        "portInterface": "0-10V",
-                        "portContent": null
-                    }
-                ],
-                "id": 16,
-                "device": "ET-DMX16A",
-                "sn": "",
-                "ver": "",
-                "area1": "",
-                "area2": "",
-                "area3": "",
-                "area4": "",
-                "name": ""
-            },
-            {
-                "devPortList": [
-                    {
-                        "portID": 1,
-                        "portType": "2.0_dimmer",
-                        "portInterface": "0-10V",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 2,
-                        "portType": "2.0_dimmer",
-                        "portInterface": "0-10V",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 3,
-                        "portType": "2.0_dimmer",
-                        "portInterface": "0-10V",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 4,
-                        "portType": "2.0_dimmer",
-                        "portInterface": "0-10V",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 5,
-                        "portType": "2.0_dimmer",
-                        "portInterface": "0-10V",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 6,
-                        "portType": "2.0_dimmer",
-                        "portInterface": "0-10V",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 7,
-                        "portType": "2.0_dimmer",
-                        "portInterface": "0-10V",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 8,
-                        "portType": "2.0_dimmer",
-                        "portInterface": "0-10V",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 9,
-                        "portType": "2.0_dimmer",
-                        "portInterface": "0-10V",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 10,
-                        "portType": "2.0_dimmer",
-                        "portInterface": "0-10V",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 11,
-                        "portType": "2.0_dimmer",
-                        "portInterface": "0-10V",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 12,
-                        "portType": "2.0_dimmer",
-                        "portInterface": "0-10V",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 13,
-                        "portType": "2.0_dimmer",
-                        "portInterface": "0-10V",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 14,
-                        "portType": "2.0_dimmer",
-                        "portInterface": "0-10V",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 15,
-                        "portType": "2.0_dimmer",
-                        "portInterface": "0-10V",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 16,
-                        "portType": "2.0_dimmer",
-                        "portInterface": "0-10V",
-                        "portContent": null
-                    }
-                ],
-                "id": 17,
-                "device": "ET-DMX16A",
-                "sn": "",
-                "ver": "",
-                "area1": "",
-                "area2": "",
-                "area3": "",
-                "area4": "",
-                "name": ""
-            },
-            {
-                "devPortList": [
-                    {
-                        "portID": 1,
-                        "portType": "1.0_switch",
-                        "portInterface": "窗帘1",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 2,
-                        "portType": "1.0_switch",
-                        "portInterface": "窗帘2",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 3,
-                        "portType": "1.0_switch",
-                        "portInterface": "窗帘3",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 4,
-                        "portType": "1.0_switch",
-                        "portInterface": "窗帘4",
-                        "portContent": null
-                    }
-                ],
-                "id": 20,
-                "device": "ET-CR02A",
-                "sn": "",
-                "ver": "",
-                "area1": "",
-                "area2": "",
-                "area3": "",
-                "area4": "",
-                "name": ""
-            },
-            {
-                "devPortList": [
-                    {
-                        "portID": 1,
-                        "portType": "1.0_switch",
-                        "portInterface": "窗帘1",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 2,
-                        "portType": "1.0_switch",
-                        "portInterface": "窗帘2",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 3,
-                        "portType": "1.0_switch",
-                        "portInterface": "窗帘3",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 4,
-                        "portType": "1.0_switch",
-                        "portInterface": "窗帘4",
-                        "portContent": null
-                    }
-                ],
-                "id": 21,
-                "device": "ET-CR02A",
-                "sn": "",
-                "ver": "",
-                "area1": "",
-                "area2": "",
-                "area3": "",
-                "area4": "",
-                "name": ""
-            },
-            {
-                "devPortList": [
-                    {
-                        "portID": 1,
-                        "portType": "1.0_switch",
-                        "portInterface": "窗帘1",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 2,
-                        "portType": "1.0_switch",
-                        "portInterface": "窗帘2",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 3,
-                        "portType": "1.0_switch",
-                        "portInterface": "窗帘3",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 4,
-                        "portType": "1.0_switch",
-                        "portInterface": "窗帘4",
-                        "portContent": null
-                    }
-                ],
-                "id": 22,
-                "device": "ET-CR02A",
-                "sn": "",
-                "ver": "",
-                "area1": "",
-                "area2": "",
-                "area3": "",
-                "area4": "",
-                "name": ""
-            },
-            {
-                "devPortList": [
-                    {
-                        "portID": 1,
-                        "portType": "1.0_switch",
-                        "portInterface": "窗帘1",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 2,
-                        "portType": "1.0_switch",
-                        "portInterface": "窗帘2",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 3,
-                        "portType": "1.0_switch",
-                        "portInterface": "窗帘3",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 4,
-                        "portType": "1.0_switch",
-                        "portInterface": "窗帘4",
-                        "portContent": null
-                    }
-                ],
-                "id": 23,
-                "device": "ET-CR02A",
-                "sn": "",
-                "ver": "",
-                "area1": "",
-                "area2": "",
-                "area3": "",
-                "area4": "",
-                "name": ""
-            },
-            {
-                "devPortList": [
-                    {
-                        "portID": 1,
-                        "portType": "1.0_switch",
-                        "portInterface": "窗帘1",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 2,
-                        "portType": "1.0_switch",
-                        "portInterface": "窗帘2",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 3,
-                        "portType": "1.0_switch",
-                        "portInterface": "窗帘3",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 4,
-                        "portType": "1.0_switch",
-                        "portInterface": "窗帘4",
-                        "portContent": null
-                    }
-                ],
-                "id": 24,
-                "device": "ET-CR02A",
-                "sn": "",
-                "ver": "",
-                "area1": "",
-                "area2": "",
-                "area3": "",
-                "area4": "",
-                "name": ""
-            },
-            {
-                "devPortList": [
-                    {
-                        "portID": 1,
-                        "portType": "1.0_switch",
-                        "portInterface": "窗帘1",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 2,
-                        "portType": "1.0_switch",
-                        "portInterface": "窗帘2",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 3,
-                        "portType": "1.0_switch",
-                        "portInterface": "窗帘3",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 4,
-                        "portType": "1.0_switch",
-                        "portInterface": "窗帘4",
-                        "portContent": null
-                    }
-                ],
-                "id": 25,
-                "device": "ET-CR02A",
-                "sn": "",
-                "ver": "",
-                "area1": "",
-                "area2": "",
-                "area3": "",
-                "area4": "",
-                "name": ""
-            },
-            {
-                "devPortList": [
-                    {
-                        "portID": 1,
-                        "portType": "1.0_switch",
-                        "portInterface": "窗帘1",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 2,
-                        "portType": "1.0_switch",
-                        "portInterface": "窗帘2",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 3,
-                        "portType": "1.0_switch",
-                        "portInterface": "窗帘3",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 4,
-                        "portType": "1.0_switch",
-                        "portInterface": "窗帘4",
-                        "portContent": null
-                    }
-                ],
-                "id": 26,
-                "device": "ET-CR02A",
-                "sn": "",
-                "ver": "",
-                "area1": "",
-                "area2": "",
-                "area3": "",
-                "area4": "",
-                "name": ""
-            },
-            {
-                "devPortList": [
-                    {
-                        "portID": 1,
-                        "portType": "1.0_switch",
-                        "portInterface": "窗帘1",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 2,
-                        "portType": "1.0_switch",
-                        "portInterface": "窗帘2",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 3,
-                        "portType": "1.0_switch",
-                        "portInterface": "窗帘3",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 4,
-                        "portType": "1.0_switch",
-                        "portInterface": "窗帘4",
-                        "portContent": null
-                    }
-                ],
-                "id": 27,
-                "device": "ET-CR02A",
-                "sn": "",
-                "ver": "",
-                "area1": "",
-                "area2": "",
-                "area3": "",
-                "area4": "",
-                "name": ""
-            },
-            {
-                "devPortList": [
-                    {
-                        "portID": 1,
-                        "portType": "1.0_switch",
-                        "portInterface": "窗帘1",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 2,
-                        "portType": "1.0_switch",
-                        "portInterface": "窗帘2",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 3,
-                        "portType": "1.0_switch",
-                        "portInterface": "窗帘3",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 4,
-                        "portType": "1.0_switch",
-                        "portInterface": "窗帘4",
-                        "portContent": null
-                    }
-                ],
-                "id": 28,
-                "device": "ET-CR02A",
-                "sn": "",
-                "ver": "",
-                "area1": "",
-                "area2": "",
-                "area3": "",
-                "area4": "",
-                "name": ""
-            },
-            {
-                "devPortList": [
-                    {
-                        "portID": 1,
-                        "portType": "1.0_switch",
-                        "portInterface": "窗帘1",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 2,
-                        "portType": "1.0_switch",
-                        "portInterface": "窗帘2",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 3,
-                        "portType": "1.0_switch",
-                        "portInterface": "窗帘3",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 4,
-                        "portType": "1.0_switch",
-                        "portInterface": "窗帘4",
-                        "portContent": null
-                    }
-                ],
-                "id": 29,
-                "device": "ET-CR02A",
-                "sn": "",
-                "ver": "",
-                "area1": "",
-                "area2": "",
-                "area3": "",
-                "area4": "",
-                "name": ""
-            },
-            {
-                "devPortList": [
-                    {
-                        "portID": 1,
-                        "portType": "1.0_switch",
-                        "portInterface": "窗帘1",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 2,
-                        "portType": "1.0_switch",
-                        "portInterface": "窗帘2",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 3,
-                        "portType": "1.0_switch",
-                        "portInterface": "窗帘3",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 4,
-                        "portType": "1.0_switch",
-                        "portInterface": "窗帘4",
-                        "portContent": null
-                    }
-                ],
-                "id": 30,
-                "device": "ET-CR02A",
-                "sn": "",
-                "ver": "",
-                "area1": "",
-                "area2": "",
-                "area3": "",
-                "area4": "",
-                "name": ""
-            },
-            {
-                "devPortList": [
-                    {
-                        "portID": 1,
-                        "portType": "1.0_switch",
-                        "portInterface": "窗帘1",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 2,
-                        "portType": "1.0_switch",
-                        "portInterface": "窗帘2",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 3,
-                        "portType": "1.0_switch",
-                        "portInterface": "窗帘3",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 4,
-                        "portType": "1.0_switch",
-                        "portInterface": "窗帘4",
-                        "portContent": null
-                    }
-                ],
-                "id": 31,
-                "device": "ET-CR02A",
-                "sn": "",
-                "ver": "",
-                "area1": "",
-                "area2": "",
-                "area3": "",
-                "area4": "",
-                "name": ""
-            },
-            {
-                "devPortList": [
-                    {
-                        "portID": 1,
-                        "portType": "1.0_switch",
-                        "portInterface": "窗帘1",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 2,
-                        "portType": "1.0_switch",
-                        "portInterface": "窗帘2",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 3,
-                        "portType": "1.0_switch",
-                        "portInterface": "窗帘3",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 4,
-                        "portType": "1.0_switch",
-                        "portInterface": "窗帘4",
-                        "portContent": null
-                    }
-                ],
-                "id": 32,
-                "device": "ET-CR02A",
-                "sn": "",
-                "ver": "",
-                "area1": "",
-                "area2": "",
-                "area3": "",
-                "area4": "",
-                "name": ""
-            },
-            {
-                "devPortList": [
-                    {
-                        "portID": 1,
-                        "portType": "1.0_switch",
-                        "portInterface": "窗帘1",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 2,
-                        "portType": "1.0_switch",
-                        "portInterface": "窗帘2",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 3,
-                        "portType": "1.0_switch",
-                        "portInterface": "窗帘3",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 4,
-                        "portType": "1.0_switch",
-                        "portInterface": "窗帘4",
-                        "portContent": null
-                    }
-                ],
-                "id": 33,
-                "device": "ET-CR02A",
-                "sn": "",
-                "ver": "",
-                "area1": "",
-                "area2": "",
-                "area3": "",
-                "area4": "",
-                "name": ""
-            },
-            {
-                "devPortList": [
-                    {
-                        "portID": 1,
-                        "portType": "1.0_switch",
-                        "portInterface": "窗帘1",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 2,
-                        "portType": "1.0_switch",
-                        "portInterface": "窗帘2",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 3,
-                        "portType": "1.0_switch",
-                        "portInterface": "窗帘3",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 4,
-                        "portType": "1.0_switch",
-                        "portInterface": "窗帘4",
-                        "portContent": null
-                    }
-                ],
-                "id": 34,
-                "device": "ET-CR02A",
-                "sn": "",
-                "ver": "",
-                "area1": "",
-                "area2": "",
-                "area3": "",
-                "area4": "",
-                "name": ""
-            },
-            {
-                "devPortList": [
-                    {
-                        "portID": 1,
-                        "portType": "1.0_switch",
-                        "portInterface": "窗帘1",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 2,
-                        "portType": "1.0_switch",
-                        "portInterface": "窗帘2",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 3,
-                        "portType": "1.0_switch",
-                        "portInterface": "窗帘3",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 4,
-                        "portType": "1.0_switch",
-                        "portInterface": "窗帘4",
-                        "portContent": null
-                    }
-                ],
-                "id": 35,
-                "device": "ET-CR02A",
-                "sn": "",
-                "ver": "",
-                "area1": "",
-                "area2": "",
-                "area3": "",
-                "area4": "",
-                "name": ""
-            },
-            {
-                "devPortList": [
-                    {
-                        "portID": 1,
-                        "portType": "1.0_switch",
-                        "portInterface": "Switch",
-                        "portContent": null
-                    },
-                    {
-                        "portID": 2,
-                        "portType": "2.0_dimmer",
-                        "portInterface": "0-10V",
-                        "portContent": null
-                    }
-                ],
-                "id": 40,
-                "device": "KP06C",
+                "id": 7,
+                "device": "ET-D0201A",
                 "sn": "",
                 "ver": "",
                 "area1": "",
@@ -1797,7 +702,7 @@
             }
         ],
         "master": "GW100A",
-        "ip": "192.168.1.230",
+        "ip": "192.168.1.223",
         "mask": "",
         "gateway": "",
         "mac": "",

@@ -76,7 +76,7 @@
             // 
             this.sld1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.sld1.LabelWidth = 30;
-            this.sld1.Location = new System.Drawing.Point(73, 9);
+            this.sld1.Location = new System.Drawing.Point(94, 9);
             this.sld1.Margin = new System.Windows.Forms.Padding(3, 11, 3, 4);
             this.sld1.Name = "sld1";
             this.sld1.Size = new System.Drawing.Size(175, 25);
@@ -109,7 +109,7 @@
             // 
             this.sld2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.sld2.LabelWidth = 30;
-            this.sld2.Location = new System.Drawing.Point(73, 54);
+            this.sld2.Location = new System.Drawing.Point(94, 54);
             this.sld2.Margin = new System.Windows.Forms.Padding(3, 11, 3, 4);
             this.sld2.Name = "sld2";
             this.sld2.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -143,7 +143,7 @@
             // 
             this.sld3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.sld3.LabelWidth = 30;
-            this.sld3.Location = new System.Drawing.Point(73, 97);
+            this.sld3.Location = new System.Drawing.Point(94, 97);
             this.sld3.Margin = new System.Windows.Forms.Padding(3, 11, 3, 4);
             this.sld3.Name = "sld3";
             this.sld3.Size = new System.Drawing.Size(175, 25);
@@ -176,7 +176,7 @@
             // 
             this.sld4.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.sld4.LabelWidth = 30;
-            this.sld4.Location = new System.Drawing.Point(73, 139);
+            this.sld4.Location = new System.Drawing.Point(94, 139);
             this.sld4.Margin = new System.Windows.Forms.Padding(3, 11, 3, 4);
             this.sld4.Name = "sld4";
             this.sld4.Size = new System.Drawing.Size(175, 25);
@@ -209,7 +209,7 @@
             // 
             this.sld5.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.sld5.LabelWidth = 30;
-            this.sld5.Location = new System.Drawing.Point(73, 182);
+            this.sld5.Location = new System.Drawing.Point(94, 182);
             this.sld5.Margin = new System.Windows.Forms.Padding(3, 11, 3, 4);
             this.sld5.Name = "sld5";
             this.sld5.Size = new System.Drawing.Size(175, 25);
@@ -242,7 +242,7 @@
             // 
             this.sld6.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.sld6.LabelWidth = 30;
-            this.sld6.Location = new System.Drawing.Point(73, 224);
+            this.sld6.Location = new System.Drawing.Point(94, 224);
             this.sld6.Margin = new System.Windows.Forms.Padding(3, 11, 3, 4);
             this.sld6.Name = "sld6";
             this.sld6.Size = new System.Drawing.Size(175, 25);
@@ -275,7 +275,7 @@
             // 
             this.sld7.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.sld7.LabelWidth = 30;
-            this.sld7.Location = new System.Drawing.Point(73, 267);
+            this.sld7.Location = new System.Drawing.Point(94, 267);
             this.sld7.Margin = new System.Windows.Forms.Padding(3, 11, 3, 4);
             this.sld7.Name = "sld7";
             this.sld7.Size = new System.Drawing.Size(175, 25);
@@ -307,7 +307,7 @@
             // 
             this.sld8.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.sld8.LabelWidth = 30;
-            this.sld8.Location = new System.Drawing.Point(73, 309);
+            this.sld8.Location = new System.Drawing.Point(94, 309);
             this.sld8.Margin = new System.Windows.Forms.Padding(3, 11, 3, 4);
             this.sld8.Name = "sld8";
             this.sld8.Size = new System.Drawing.Size(175, 25);
@@ -327,7 +327,7 @@
             this.plInfoTitle.Location = new System.Drawing.Point(1, 1);
             this.plInfoTitle.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.plInfoTitle.Name = "plInfoTitle";
-            this.plInfoTitle.Size = new System.Drawing.Size(257, 25);
+            this.plInfoTitle.Size = new System.Drawing.Size(281, 25);
             this.plInfoTitle.TabIndex = 79;
             this.plInfoTitle.MouseDown += new System.Windows.Forms.MouseEventHandler(this.plInfoTitle_MouseDown);
             this.plInfoTitle.MouseMove += new System.Windows.Forms.MouseEventHandler(this.plInfoTitle_MouseMove);
@@ -343,7 +343,7 @@
             this.btnClose.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None;
             this.btnClose.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnClose.HoverImage")));
             this.btnClose.Image = ((System.Drawing.Image)(resources.GetObject("btnClose.Image")));
-            this.btnClose.Location = new System.Drawing.Point(235, 4);
+            this.btnClose.Location = new System.Drawing.Point(262, 6);
             this.btnClose.Margin = new System.Windows.Forms.Padding(6);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(13, 13);
@@ -404,7 +404,7 @@
             this.panel1.Controls.Add(this.sld7);
             this.panel1.Location = new System.Drawing.Point(1, 27);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(257, 340);
+            this.panel1.Size = new System.Drawing.Size(281, 340);
             this.panel1.TabIndex = 80;
             // 
             // DgvNameState
@@ -412,7 +412,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkGray;
-            this.ClientSize = new System.Drawing.Size(260, 369);
+            this.ClientSize = new System.Drawing.Size(284, 369);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.plInfoTitle);
             this.Font = new System.Drawing.Font("微软雅黑", 9F);

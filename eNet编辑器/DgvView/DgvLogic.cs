@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.Reflection;
 using DevComponents.DotNetBar;
+using System.Threading;
 
 namespace eNet编辑器.DgvView
 {
@@ -82,9 +83,9 @@ namespace eNet编辑器.DgvView
         private void SuperTabControllCreat()
         {
             panel2.Controls.Clear();
-            superTabControl1 = null;
+         
+            superTabControl1 =null;
             superTabControl1 = new SuperTabControl();
-
             superTabControl1.Dock = DockStyle.Fill;
             superTabControl1.CloseButtonOnTabsVisible = true;
             superTabControl1.MouseClick +=new MouseEventHandler(superTabControl1_MouseClick);
@@ -93,7 +94,7 @@ namespace eNet编辑器.DgvView
             superTabControl1.ControlBox.MenuBox.PopupOpen += new DotNetBarManager.PopupOpenEventHandler(superTabControl1_ControlBox_MenuBox_PopupOpen);
             superTabControl1.TabItemClose += new EventHandler<SuperTabStripTabItemCloseEventArgs>(superTabControl1_TabItemClose);
             panel2.Controls.Add(superTabControl1);
-
+            
            
         }
 
@@ -148,13 +149,10 @@ namespace eNet编辑器.DgvView
         public void dgvLogicAddItem()
         {
             //清空表单
-            //superTabControl1.Hide();解决黑闪失败
-            //superTabControl1.Tabs.Clear();
             DataJson.logics lgs = DataListHelper.getLogicInfoListByNode();
             if (lgs == null)
             {
                 clearSuperTabControl1();
-                //superTabControl1.Show();解决黑闪失败
                 return;
             }
             SuperTabControllCreat();
@@ -187,8 +185,31 @@ namespace eNet编辑器.DgvView
                 //选中第一个
                 superTabControl1.SelectedTabIndex = 0;
             }
+            /*
+            //恢复滑动条
+            DataJson.logicsInfo logicInfo = DataListHelper.findLogicInfoByTabName(superTabControl1.SelectedTab.Text);
+            if (logicInfo == null)
+            {
+                return;
+            } 
+            switch (logicInfo.modelType)
+            {
+                case "SceneDeal":
 
+                    logicScene.RecoverDgvForm();
+                    break;
+                case "ConditionDeal":
+                    logicCondition.RecoverDgvForm();
+                    break;
+                case "VoiceDeal":
+                    logicVoice.RecoverDgvForm();
+                    break;
+                default:
+                    break;
+            }*/
+       
         }
+
 
         //用于恢复上一次选中框
         private void superTabControl1_TabStripMouseUp(object sender, MouseEventArgs e)
@@ -218,24 +239,31 @@ namespace eNet编辑器.DgvView
         }
 
         /// <summary>
-        /// 选中加载信息
+        /// 选中加载场景 多条件 表达式
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void superTabControl1_SelectedTabChanged(object sender, SuperTabStripSelectedTabChangedEventArgs e)
         {
-            SuperTabItem tab = superTabControl1.SelectedTab;
-            DataJson.logicsInfo logicInfo = DataListHelper.findLogicInfoByTabName(tab.Text);
-            //记录当前tab表的信息
-            FileMesege.LogicTabName = tab.Text;
-           
-            if (logicInfo == null)
+            try
             {
-                return;
-            }
+                SuperTabItem tab = superTabControl1.SelectedTab;
+                DataJson.logicsInfo logicInfo = DataListHelper.findLogicInfoByTabName(tab.Text);
+                //记录当前tab表的信息
+                FileMesege.LogicTabName = tab.Text;
 
-            tabSelectAddPanel(logicInfo);
-            
+                if (logicInfo == null)
+                {
+                    return;
+                }
+
+                tabSelectAddPanel(logicInfo);
+              
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
         }
 
         private void superTabControl1_MouseClick(object sender, MouseEventArgs e)
@@ -259,7 +287,7 @@ namespace eNet编辑器.DgvView
                     superTabControl1.SelectedTab.AttachedControl.Controls.Add(logicScene);
                     //加载信息内容 
                     logicScene.formInfoIni();
-
+                    
                     break;
                 case "ConditionDeal":
                     logicType = LogicType.Condition;
@@ -278,6 +306,7 @@ namespace eNet编辑器.DgvView
                 default:
                     break;
             }
+
         }
         #endregion
 
