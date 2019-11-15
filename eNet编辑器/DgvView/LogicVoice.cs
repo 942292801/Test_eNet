@@ -746,13 +746,13 @@ namespace eNet编辑器.DgvView
                             switch (dataGridView1.Columns[columnCount].Name)
                             {
                                 case "address1":
-                                    //setTitleAddress();
+                                    setTitleAddress1();
                                     break;
                                 case "section1":
-                                    //setTitleAddress();
+                                    setTitleAddress1();
                                     break;
                                 case "name1":
-                                    //setTitleAddress();
+                                    setTitleAddress1();
                                     break;
                                 case "del1":
                                     //删除表
@@ -939,6 +939,81 @@ namespace eNet编辑器.DgvView
             }
         }
 
+
+        /// <summary>
+        /// 复制title选中的节点 赋地址给ObjAddress
+        /// </summary>
+        private void setTitleAddress1()
+        {
+            try
+            {
+                int colIndex = dataGridView1.SelectedCells[0].ColumnIndex;
+                //string ip = FileMesege.panelSelectNode.Parent.Text.Split(' ')[0];
+                int id = dataGridView1.CurrentCell.RowIndex;
+
+                //找到当前操作tab对象
+                DataJson.logicsInfo LogicInfo = DataListHelper.findLogicInfoByTabName(FileMesege.LogicTabName);
+                if (LogicInfo == null || LogicInfo.content == null)
+                {
+                    return;
+                }
+                //把tab对象JSON字符串转换为 操作对象
+                DataJson.VoiceContent logicVoiceContent = JsonConvert.DeserializeObject<DataJson.VoiceContent>(LogicInfo.content);
+
+                DataJson.VoiceItem info = DataListHelper.getLogicVoiceItem(dataGridView1.Rows[id].Cells[0].Value.ToString(), logicVoiceContent.voiceItem);
+                if (info == null)
+                {
+                    return;
+                }
+               
+  
+                List<string> section_name = DataListHelper.dealPointInfo(FileMesege.titlePointSection);
+
+                DataJson.PointInfo eq = DataListHelper.findPointBySection_name(section_name);
+                if (eq == null)
+                {
+                    return;
+                }
+                //撤销
+                DataJson.totalList OldList = FileMesege.cmds.getListInfos();
+                if (eq.type == info.type)
+                {
+                    info.pid = eq.pid;
+
+                    info.address = eq.address;
+
+
+                    dataGridView1.Rows[id].Cells[2].Value = DgvMesege.addressTransform(info.address);
+                    dataGridView1.Rows[id].Cells[3].Value = string.Format("{0} {1} {2} {3}", eq.area1, eq.area2, eq.area3, eq.area4).Trim();//改根据地址从信息里面获取
+                    dataGridView1.Rows[id].Cells[4].Value = eq.name;
+              
+                }
+                else
+                {
+                    info.pid = eq.pid;
+                    info.address = eq.address;
+
+                    info.type = eq.type;
+
+                    dataGridView1.Rows[id].Cells[2].Value = DgvMesege.addressTransform(info.address);
+                    dataGridView1.Rows[id].Cells[1].Value = IniHelper.findTypesIniNamebyType(info.type);
+                    dataGridView1.Rows[id].Cells[3].Value = string.Format("{0} {1} {2} {3}", eq.area1, eq.area2, eq.area3, eq.area4).Trim();//改根据地址从信息里面获取
+                    dataGridView1.Rows[id].Cells[4].Value = eq.name;
+              
+              
+
+                }
+                LogicInfo.content = JsonConvert.SerializeObject(logicVoiceContent);
+                DataJson.totalList NewList = FileMesege.cmds.getListInfos();
+                FileMesege.cmds.DoNewCommand(NewList, OldList);
+            }
+            catch
+            {
+
+            }
+
+        }
+
         #endregion
 
 
@@ -1044,13 +1119,13 @@ namespace eNet编辑器.DgvView
                             switch (dataGridView2.Columns[columnCount].Name)
                             {
                                 case "address2":
-                                    //setTitleAddress();
+                                    setTitleAddress2();
                                     break;
                                 case "section2":
-                                    //setTitleAddress();
+                                    setTitleAddress2();
                                     break;
                                 case "name2":
-                                    //setTitleAddress();
+                                    setTitleAddress2();
                                     break;
                                 case "del2":
                                     //删除表
@@ -1412,6 +1487,78 @@ namespace eNet编辑器.DgvView
                 info.id = i;
                 i++;
             }
+        }
+
+        /// <summary>
+        /// 复制title选中的节点 赋地址给ObjAddress
+        /// </summary>
+        private void setTitleAddress2()
+        {
+            try
+            {
+                int colIndex = dataGridView2.SelectedCells[0].ColumnIndex;
+                //string ip = FileMesege.panelSelectNode.Parent.Text.Split(' ')[0];
+                int id = dataGridView2.CurrentCell.RowIndex ;
+
+                //找到当前操作tab对象
+                DataJson.logicsInfo LogicInfo = DataListHelper.findLogicInfoByTabName(FileMesege.LogicTabName);
+                if (LogicInfo == null)
+                {
+                    return;
+                }
+                //把tab对象JSON字符串转换为 操作对象
+                DataJson.VoiceContent logicVoiceContent = JsonConvert.DeserializeObject<DataJson.VoiceContent>(LogicInfo.content);
+
+                DataJson.VoiceIfItem info = DataListHelper.getLogicVoiceIfItem(id + 1, logicVoiceContent.voiceIfItem);
+                if (info == null)
+                {
+                    return;
+                }
+
+
+                List<string> section_name = DataListHelper.dealPointInfo(FileMesege.titlePointSection);
+
+                DataJson.PointInfo eq = DataListHelper.findPointBySection_name(section_name);
+                if (eq == null)
+                {
+                    return;
+                }
+                //撤销
+                DataJson.totalList OldList = FileMesege.cmds.getListInfos();
+                if (eq.type == info.type)
+                {
+                    info.pid = eq.pid;
+                    info.address = eq.address;
+
+                    dataGridView2.Rows[id].Cells[3].Value = DgvMesege.addressTransform(info.address);
+                    dataGridView2.Rows[id].Cells[4].Value = string.Format("{0} {1} {2} {3}", eq.area1, eq.area2, eq.area3, eq.area4).Trim();//改根据地址从信息里面获取
+                    dataGridView2.Rows[id].Cells[5].Value = eq.name;
+
+                }
+                else
+                {
+                    info.pid = eq.pid;
+                    info.address = eq.address;
+                    info.type = eq.type;
+                    info.opt = "";
+                    info.optName = "";
+                    dataGridView2.Rows[id].Cells[3].Value = DgvMesege.addressTransform(info.address);
+                    dataGridView2.Rows[id].Cells[2].Value = IniHelper.findTypesIniNamebyType(info.type);
+                    dataGridView2.Rows[id].Cells[4].Value = string.Format("{0} {1} {2} {3}", eq.area1, eq.area2, eq.area3, eq.area4).Trim();//改根据地址从信息里面获取
+                    dataGridView2.Rows[id].Cells[5].Value = eq.name;
+                    dataGridView2.Rows[id].Cells[6].Value = null;
+
+
+                }
+                LogicInfo.content = JsonConvert.SerializeObject(logicVoiceContent);
+                DataJson.totalList NewList = FileMesege.cmds.getListInfos();
+                FileMesege.cmds.DoNewCommand(NewList, OldList);
+            }
+            catch
+            {
+
+            }
+
         }
 
         #endregion

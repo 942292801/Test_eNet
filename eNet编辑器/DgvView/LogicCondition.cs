@@ -817,11 +817,11 @@ namespace eNet编辑器.DgvView
                             int id = Convert.ToInt32(dataGridView1.Rows[rowCount].Cells[0].Value);
                             switch (dataGridView1.Columns[columnCount].Name)
                             {
-                                case "address":
-                                    //setTitleAddress();
+                                case "objAddress":
+                                    setTitleObjAddress();
                                     break;
-                                case "section":
-                                    //setTitleAddress();
+                                case "compareAddress":
+                                    setTitleCompareAddress();
                                     break;
                                 case "name":
                                     //setTitleAddress();
@@ -1268,6 +1268,112 @@ namespace eNet编辑器.DgvView
             }
         }
 
+        /// <summary>
+        /// 复制title选中的节点 赋地址给ObjAddress
+        /// </summary>
+        private void setTitleObjAddress()
+        {
+            try
+            {
+                int colIndex = dataGridView1.SelectedCells[0].ColumnIndex;
+                int id = dataGridView1.CurrentCell.RowIndex;
+
+                //找到当前操作tab对象
+                DataJson.logicsInfo LogicInfo = DataListHelper.findLogicInfoByTabName(FileMesege.LogicTabName);
+                if (LogicInfo == null || LogicInfo.content == null)
+                {
+                    return;
+                }
+                //把tab对象JSON字符串转换为 操作对象
+                DataJson.ConditionContent logicConditionContent = JsonConvert.DeserializeObject<DataJson.ConditionContent>(LogicInfo.content);
+
+
+                DataJson.ConditionInfo info = DataListHelper.getLogicConditionInfo(id+1, logicConditionContent.conditionInfo);
+                if (info == null)
+                {
+                    return;
+                }
+
+
+                List<string> section_name = DataListHelper.dealPointInfo(FileMesege.titlePointSection);
+
+                DataJson.PointInfo eq = DataListHelper.findPointBySection_name(section_name);
+                if (eq == null)
+                {
+                    return;
+                }
+                //撤销
+                DataJson.totalList OldList = FileMesege.cmds.getListInfos();
+
+                info.objPid = eq.pid;
+                info.objAddress = eq.address;
+                info.objType = eq.type;
+                dataGridView1.Rows[id].Cells[2].Value = getObj(info);
+
+                LogicInfo.content = JsonConvert.SerializeObject(logicConditionContent);
+                DataJson.totalList NewList = FileMesege.cmds.getListInfos();
+                FileMesege.cmds.DoNewCommand(NewList, OldList);
+            }
+            catch
+            {
+
+            }
+
+        }
+
+        /// <summary>
+        /// 复制title选中的节点 赋地址给ObjAddress
+        /// </summary>
+        private void setTitleCompareAddress()
+        {
+            try
+            {
+                int colIndex = dataGridView1.SelectedCells[0].ColumnIndex;
+                int id = dataGridView1.CurrentCell.RowIndex;
+
+                //找到当前操作tab对象
+                DataJson.logicsInfo LogicInfo = DataListHelper.findLogicInfoByTabName(FileMesege.LogicTabName);
+                if (LogicInfo == null || LogicInfo.content == null)
+                {
+                    return;
+                }
+                //把tab对象JSON字符串转换为 操作对象
+                DataJson.ConditionContent logicConditionContent = JsonConvert.DeserializeObject<DataJson.ConditionContent>(LogicInfo.content);
+
+
+                DataJson.ConditionInfo info = DataListHelper.getLogicConditionInfo(id + 1, logicConditionContent.conditionInfo);
+                if (info == null)
+                {
+                    return;
+                }
+
+
+                List<string> section_name = DataListHelper.dealPointInfo(FileMesege.titlePointSection);
+
+                DataJson.PointInfo eq = DataListHelper.findPointBySection_name(section_name);
+                if (eq == null)
+                {
+                    return;
+                }
+                //撤销
+                DataJson.totalList OldList = FileMesege.cmds.getListInfos();
+
+                info.comparePid = eq.pid;
+                info.compareobjAddress = eq.address;
+                info.compareobjType = eq.type;
+                dataGridView1.Rows[id].Cells[6].Value = getCompareObj(info);
+
+                LogicInfo.content = JsonConvert.SerializeObject(logicConditionContent);
+                DataJson.totalList NewList = FileMesege.cmds.getListInfos();
+                FileMesege.cmds.DoNewCommand(NewList, OldList);
+            }
+            catch
+            {
+
+            }
+
+        }
+
         #endregion
 
 
@@ -1364,13 +1470,13 @@ namespace eNet编辑器.DgvView
                             switch (dataGridView2.Columns[columnCount].Name)
                             {
                                 case "address2":
-                                    //setTitleAddress();
+                                    setTitleAddress2();
                                     break;
                                 case "section2":
-                                    //setTitleAddress();
+                                    setTitleAddress2();
                                     break;
                                 case "name2":
-                                    //setTitleAddress();
+                                    setTitleAddress2();
                                     break;
                                 case "del2":
                                     //删除表
@@ -1700,6 +1806,77 @@ namespace eNet编辑器.DgvView
             }
         }
 
+        /// <summary>
+        /// 复制title选中的节点 赋地址给ObjAddress
+        /// </summary>
+        private void setTitleAddress2()
+        {
+            try
+            {
+                int colIndex = dataGridView2.SelectedCells[0].ColumnIndex;
+                int id = dataGridView2.CurrentCell.RowIndex;
+
+                //找到当前操作tab对象
+                DataJson.logicsInfo LogicInfo = DataListHelper.findLogicInfoByTabName(FileMesege.LogicTabName);
+                if (LogicInfo == null || LogicInfo.content == null)
+                {
+                    return;
+                }
+                //把tab对象JSON字符串转换为 操作对象
+                DataJson.ConditionContent logicConditionContent = JsonConvert.DeserializeObject<DataJson.ConditionContent>(LogicInfo.content);
+
+                DataJson.sceneInfo info = DataListHelper.getLogicSceneInfo(id+1, logicConditionContent.trueDo);
+                if (info == null)
+                {
+                    return;
+                }
+
+
+                List<string> section_name = DataListHelper.dealPointInfo(FileMesege.titlePointSection);
+
+                DataJson.PointInfo eq = DataListHelper.findPointBySection_name(section_name);
+                if (eq == null)
+                {
+                    return;
+                }
+                //撤销
+                DataJson.totalList OldList = FileMesege.cmds.getListInfos();
+                if (eq.type == info.type)
+                {
+                    info.pid = eq.pid;
+                    info.address = eq.address;
+
+                    dataGridView2.Rows[id].Cells[2].Value = DgvMesege.addressTransform(info.address);
+                    dataGridView2.Rows[id].Cells[3].Value = string.Format("{0} {1} {2} {3}", eq.area1, eq.area2, eq.area3, eq.area4).Trim();//改根据地址从信息里面获取
+                    dataGridView2.Rows[id].Cells[4].Value = eq.name;
+
+                }
+                else
+                {
+                    info.pid = eq.pid;
+                    info.address = eq.address;
+                    info.type = eq.type;
+                    info.opt = "";
+                    info.optName = "";
+                    dataGridView2.Rows[id].Cells[2].Value = DgvMesege.addressTransform(info.address);
+                    dataGridView2.Rows[id].Cells[1].Value = IniHelper.findTypesIniNamebyType(info.type);
+                    dataGridView2.Rows[id].Cells[3].Value = string.Format("{0} {1} {2} {3}", eq.area1, eq.area2, eq.area3, eq.area4).Trim();//改根据地址从信息里面获取
+                    dataGridView2.Rows[id].Cells[4].Value = eq.name;
+                    dataGridView2.Rows[id].Cells[5].Value = null;
+
+
+                }
+                LogicInfo.content = JsonConvert.SerializeObject(logicConditionContent);
+                DataJson.totalList NewList = FileMesege.cmds.getListInfos();
+                FileMesege.cmds.DoNewCommand(NewList, OldList);
+            }
+            catch
+            {
+
+            }
+
+        }
+
         #endregion
 
 
@@ -1794,13 +1971,13 @@ namespace eNet编辑器.DgvView
                             switch (dataGridView3.Columns[columnCount].Name)
                             {
                                 case "address3":
-                                    //setTitleAddress();
+                                    setTitleAddress3();
                                     break;
                                 case "section3":
-                                    //setTitleAddress();
+                                    setTitleAddress3();
                                     break;
                                 case "name3":
-                                    //setTitleAddress();
+                                    setTitleAddress3();
                                     break;
                                 case "del3":
                                     //删除表
@@ -2118,6 +2295,77 @@ namespace eNet编辑器.DgvView
             DataJson.totalList NewList = FileMesege.cmds.getListInfos();
             FileMesege.cmds.DoNewCommand(NewList, OldList);
             dgvAddItem(dataGridView3, logicConditionContent.falseDo, ip);
+        }
+
+        /// <summary>
+        /// 复制title选中的节点 赋地址给ObjAddress
+        /// </summary>
+        private void setTitleAddress3()
+        {
+            try
+            {
+                int colIndex = dataGridView3.SelectedCells[0].ColumnIndex;
+                int id = dataGridView3.CurrentCell.RowIndex;
+
+                //找到当前操作tab对象
+                DataJson.logicsInfo LogicInfo = DataListHelper.findLogicInfoByTabName(FileMesege.LogicTabName);
+                if (LogicInfo == null || LogicInfo.content == null)
+                {
+                    return;
+                }
+                //把tab对象JSON字符串转换为 操作对象
+                DataJson.ConditionContent logicConditionContent = JsonConvert.DeserializeObject<DataJson.ConditionContent>(LogicInfo.content);
+
+                DataJson.sceneInfo info = DataListHelper.getLogicSceneInfo(id+1, logicConditionContent.falseDo);
+                if (info == null)
+                {
+                    return;
+                }
+
+
+                List<string> section_name = DataListHelper.dealPointInfo(FileMesege.titlePointSection);
+
+                DataJson.PointInfo eq = DataListHelper.findPointBySection_name(section_name);
+                if (eq == null)
+                {
+                    return;
+                }
+                //撤销
+                DataJson.totalList OldList = FileMesege.cmds.getListInfos();
+                if (eq.type == info.type)
+                {
+                    info.pid = eq.pid;
+                    info.address = eq.address;
+
+                    dataGridView3.Rows[id].Cells[2].Value = DgvMesege.addressTransform(info.address);
+                    dataGridView3.Rows[id].Cells[3].Value = string.Format("{0} {1} {2} {3}", eq.area1, eq.area2, eq.area3, eq.area4).Trim();//改根据地址从信息里面获取
+                    dataGridView3.Rows[id].Cells[4].Value = eq.name;
+
+                }
+                else
+                {
+                    info.pid = eq.pid;
+                    info.address = eq.address;
+                    info.type = eq.type;
+                    info.opt = "";
+                    info.optName = "";
+                    dataGridView3.Rows[id].Cells[2].Value = DgvMesege.addressTransform(info.address);
+                    dataGridView3.Rows[id].Cells[1].Value = IniHelper.findTypesIniNamebyType(info.type);
+                    dataGridView3.Rows[id].Cells[3].Value = string.Format("{0} {1} {2} {3}", eq.area1, eq.area2, eq.area3, eq.area4).Trim();//改根据地址从信息里面获取
+                    dataGridView3.Rows[id].Cells[4].Value = eq.name;
+                    dataGridView3.Rows[id].Cells[5].Value = null;
+
+
+                }
+                LogicInfo.content = JsonConvert.SerializeObject(logicConditionContent);
+                DataJson.totalList NewList = FileMesege.cmds.getListInfos();
+                FileMesege.cmds.DoNewCommand(NewList, OldList);
+            }
+            catch
+            {
+
+            }
+
         }
 
         #endregion

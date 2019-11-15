@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DgvPanel));
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -60,11 +60,14 @@
             this.panel6 = new System.Windows.Forms.Panel();
             this.panel8 = new System.Windows.Forms.Panel();
             this.panel7 = new System.Windows.Forms.Panel();
+            this.btnAttr = new DevComponents.DotNetBar.ButtonX();
+            this.cbKeyNum = new System.Windows.Forms.ComboBox();
+            this.cbPage = new System.Windows.Forms.ComboBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.imgSlider = new DevExpress.XtraEditors.Controls.ImageSlider();
             this.cbDevNum = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.cbKeyNum = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.panel10 = new System.Windows.Forms.Panel();
             this.symbolBox2 = new DevComponents.DotNetBar.Controls.SymbolBox();
@@ -108,14 +111,14 @@
             this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
             this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridView1.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableAlwaysIncludeHeaderText;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("微软雅黑", 9F);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("微软雅黑", 9F);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.id,
@@ -126,14 +129,14 @@
             this.showAddress,
             this.del,
             this.add});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("微软雅黑", 9F);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(235)))), ((int)(((byte)(248)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("微软雅黑", 9F);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(235)))), ((int)(((byte)(248)))));
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
@@ -480,11 +483,14 @@
             // panel7
             // 
             this.panel7.AutoScroll = true;
+            this.panel7.Controls.Add(this.btnAttr);
+            this.panel7.Controls.Add(this.cbKeyNum);
+            this.panel7.Controls.Add(this.cbPage);
+            this.panel7.Controls.Add(this.label6);
             this.panel7.Controls.Add(this.label5);
             this.panel7.Controls.Add(this.imgSlider);
             this.panel7.Controls.Add(this.cbDevNum);
             this.panel7.Controls.Add(this.label4);
-            this.panel7.Controls.Add(this.cbKeyNum);
             this.panel7.Controls.Add(this.label2);
             this.panel7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel7.Location = new System.Drawing.Point(0, 25);
@@ -492,10 +498,82 @@
             this.panel7.Size = new System.Drawing.Size(204, 479);
             this.panel7.TabIndex = 31;
             // 
+            // btnAttr
+            // 
+            this.btnAttr.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnAttr.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnAttr.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
+            this.btnAttr.FocusCuesEnabled = false;
+            this.btnAttr.Font = new System.Drawing.Font("黑体", 9F);
+            this.btnAttr.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None;
+            this.btnAttr.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnAttr.HoverImage")));
+            this.btnAttr.Image = ((System.Drawing.Image)(resources.GetObject("btnAttr.Image")));
+            this.btnAttr.Location = new System.Drawing.Point(171, 103);
+            this.btnAttr.Margin = new System.Windows.Forms.Padding(6);
+            this.btnAttr.Name = "btnAttr";
+            this.btnAttr.Size = new System.Drawing.Size(24, 24);
+            this.btnAttr.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnAttr.TabIndex = 40;
+            this.btnAttr.Tooltip = "设置";
+            this.btnAttr.Click += new System.EventHandler(this.btnAttr_Click);
+            // 
+            // cbKeyNum
+            // 
+            this.cbKeyNum.FormattingEnabled = true;
+            this.cbKeyNum.Items.AddRange(new object[] {
+            "0",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12"});
+            this.cbKeyNum.Location = new System.Drawing.Point(108, 19);
+            this.cbKeyNum.Name = "cbKeyNum";
+            this.cbKeyNum.Size = new System.Drawing.Size(46, 25);
+            this.cbKeyNum.TabIndex = 39;
+            // 
+            // cbPage
+            // 
+            this.cbPage.FormattingEnabled = true;
+            this.cbPage.Items.AddRange(new object[] {
+            "0",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12"});
+            this.cbPage.Location = new System.Drawing.Point(108, 58);
+            this.cbPage.Name = "cbPage";
+            this.cbPage.Size = new System.Drawing.Size(46, 25);
+            this.cbPage.TabIndex = 38;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(12, 61);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(44, 17);
+            this.label6.TabIndex = 37;
+            this.label6.Text = "页号：";
+            // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(12, 115);
+            this.label5.Location = new System.Drawing.Point(12, 153);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(68, 17);
             this.label5.TabIndex = 36;
@@ -507,7 +585,7 @@
             this.imgSlider.AutoSlideInterval = 1000;
             this.imgSlider.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.imgSlider.LayoutMode = DevExpress.Utils.Drawing.ImageLayoutMode.MiddleCenter;
-            this.imgSlider.Location = new System.Drawing.Point(0, 148);
+            this.imgSlider.Location = new System.Drawing.Point(0, 186);
             this.imgSlider.Name = "imgSlider";
             this.imgSlider.ScrollButtonFadeAnimationTime = 100;
             this.imgSlider.Size = new System.Drawing.Size(204, 120);
@@ -517,38 +595,19 @@
             // cbDevNum
             // 
             this.cbDevNum.FormattingEnabled = true;
-            this.cbDevNum.Location = new System.Drawing.Point(108, 64);
+            this.cbDevNum.Location = new System.Drawing.Point(108, 102);
             this.cbDevNum.Name = "cbDevNum";
             this.cbDevNum.Size = new System.Drawing.Size(46, 25);
             this.cbDevNum.TabIndex = 34;
-            this.cbDevNum.SelectedIndexChanged += new System.EventHandler(this.cbDevNum_SelectedIndexChanged);
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(12, 67);
+            this.label4.Location = new System.Drawing.Point(12, 105);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(80, 17);
             this.label4.TabIndex = 33;
             this.label4.Text = "面板设备号：";
-            // 
-            // cbKeyNum
-            // 
-            this.cbKeyNum.FormattingEnabled = true;
-            this.cbKeyNum.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8"});
-            this.cbKeyNum.Location = new System.Drawing.Point(108, 19);
-            this.cbKeyNum.Name = "cbKeyNum";
-            this.cbKeyNum.Size = new System.Drawing.Size(46, 25);
-            this.cbKeyNum.TabIndex = 32;
-            this.cbKeyNum.TextChanged += new System.EventHandler(this.cbKeyNum_TextChanged);
             // 
             // label2
             // 
@@ -739,7 +798,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.Timer doubleClickTimer;
-        private System.Windows.Forms.ComboBox cbKeyNum;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox cbDevNum;
         private System.Windows.Forms.Label label4;
@@ -763,5 +821,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn showAddress;
         private System.Windows.Forms.DataGridViewButtonColumn del;
         private System.Windows.Forms.DataGridViewButtonColumn add;
+        private System.Windows.Forms.ComboBox cbPage;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.ComboBox cbKeyNum;
+        private DevComponents.DotNetBar.ButtonX btnAttr;
     }
 }
