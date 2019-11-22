@@ -166,11 +166,23 @@ namespace eNet编辑器.ThreeView
 
         private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
         {
+            if (FileMesege.sensorSelectNode == null)
+            {
+                addTitleNode();
+            }
+            else
+            {
+                if (ToolsUtil.getIP(treeView1.SelectedNode) != ToolsUtil.getIP(FileMesege.sensorSelectNode))
+                {
+                    addTitleNode();
+
+                }
+            }
             FileMesege.sensorSelectNode = treeView1.SelectedNode;
             fullpath = treeView1.SelectedNode.FullPath;
             //DGVtimer添加定时
             dgvSensorAddItem();
-            addTitleNode();
+  
             string[] names = treeView1.SelectedNode.Text.Split(' ');
             if (treeView1.SelectedNode.Parent != null)
             {

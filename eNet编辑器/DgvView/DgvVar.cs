@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using System.Text.RegularExpressions;
 using System.Reflection;
 using eNet编辑器.AddForm;
+using System.Threading;
 
 namespace eNet编辑器.DgvView
 {
@@ -39,12 +40,30 @@ namespace eNet编辑器.DgvView
 
         }
 
-      
+
+        #region 刷新dgv框相关操作
+
+        public void dgvVarAddItem()
+        {
+            Thread t = new Thread(ShowDatatable);
+            t.IsBackground = true;
+            t.Start();
+        }
+        #region 测试异步加载
+        public delegate void FormIniDelegate();
+        private void ShowDatatable()
+        {
+            this.Invoke(new FormIniDelegate(TabIni));
+
+        }
+
+
+        #endregion
 
          /// <summary>
         /// 加载DgV所有信息
         /// </summary>
-        public void dgvVarAddItem()
+        public void TabIni()
         {
             try
             {
@@ -81,7 +100,7 @@ namespace eNet编辑器.DgvView
         /// 添加每一行的信息
         /// </summary>
         /// <param name="eq"></param>
-        private void CountAddInfo(DataJson.PointInfo eq)
+        public void CountAddInfo(DataJson.PointInfo eq)
         {
             //添加新的一行 rowNum为行号
             int rowNum = this.dataGridView1.Rows.Add();
@@ -96,6 +115,12 @@ namespace eNet编辑器.DgvView
             //删除
             this.dataGridView1.Rows[rowNum].Cells[4].Value = "删除";
         }
+
+        public void clearDgvClear()
+        {
+            dataGridView1.Rows.Clear();
+        }
+        #endregion
 
         #region 增加 清空 删除
         /// <summary>
@@ -114,10 +139,10 @@ namespace eNet编辑器.DgvView
             FileMesege.titleinfo = "虚拟端口";
             addVirtualport("虚拟端口");
             //按照address最后一位重新排序
-            dgvVarAddItem();
+            
             DataJson.totalList NewList = FileMesege.cmds.getListInfos();
             FileMesege.cmds.DoNewCommand(NewList, OldList);
-
+            
             selectLastCount();
         }
 
@@ -178,7 +203,7 @@ namespace eNet编辑器.DgvView
 
 
             FileMesege.PointList.virtualport.Add(point);
-
+            CountAddInfo(point);
            
         }
 

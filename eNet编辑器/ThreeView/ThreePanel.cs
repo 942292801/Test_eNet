@@ -31,11 +31,7 @@ namespace eNet编辑器.ThreeView
             SetStyle(ControlStyles.AllPaintingInWmPaint, true); // 禁止擦除背景.
             SetStyle(ControlStyles.DoubleBuffer, true); // 双缓冲
             this.UpdateStyles();
-            //利用反射设置DataGridView的双缓冲
-            //Type dgvType = this.treeView1.GetType();
-            //PropertyInfo pi = dgvType.GetProperty("DoubleBuffered",
-            //BindingFlags.Instance | BindingFlags.NonPublic);
-            //pi.SetValue(this.treeView1, true, null);
+     
         }
 
         #region 解决背景闪烁
@@ -150,12 +146,23 @@ namespace eNet编辑器.ThreeView
         /// <param name="e"></param>
         private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
         {
+            if (FileMesege.panelSelectNode == null)
+            {
+                addTitleNode();
+            }
+            else
+            {
+                if (ToolsUtil.getIP(treeView1.SelectedNode) != ToolsUtil.getIP(FileMesege.panelSelectNode))
+                {
+                    addTitleNode();
 
+                }
+            }
             FileMesege.panelSelectNode = treeView1.SelectedNode;
             fullpath = treeView1.SelectedNode.FullPath;
             //DGVtimer添加定时
             dgvpanelAddItem();
-            addTitleNode();
+       
             string[] names = treeView1.SelectedNode.Text.Split(' ');
             if (treeView1.SelectedNode.Parent != null)
             {
@@ -324,7 +331,7 @@ namespace eNet编辑器.ThreeView
                     DataJson.panels pls = new DataJson.panels();
                     pls.id = Convert.ToInt32(pladd.Num);
                     pls.pid = randomNum;
-                    pls.keyNum = 6;
+                    pls.keyNum = 0;
                     pls.panelsInfo = new List<DataJson.panelsInfo>();
                     if (copyPanel != null)
                     {

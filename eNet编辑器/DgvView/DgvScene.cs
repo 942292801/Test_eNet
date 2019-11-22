@@ -36,6 +36,8 @@ namespace eNet编辑器.DgvView
         /// </summary>
         public event Action<string> AppTxtShow;
 
+        string ip = "";
+
         /// <summary>
         /// 传输point点跳转窗口
         /// </summary>
@@ -65,10 +67,30 @@ namespace eNet编辑器.DgvView
             //插入
             this.dataGridView1.Columns.Insert(1, dgvc);
             //this.dataGridView1.RowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+         
         }
 
-        //加载DgV所有信息
+        #region 刷新窗体事件
+ 
         public void dgvsceneAddItem()
+        {
+            Thread t = new Thread(ShowDatatable);
+            t.IsBackground = true;
+            t.Start();
+        }
+        #region 测试异步加载
+        public delegate void FormIniDelegate();
+        private void ShowDatatable()
+        {
+            this.Invoke(new FormIniDelegate(TabIni));
+
+        }
+
+
+        #endregion
+
+        //加载DgV所有信息
+        public void TabIni()
         {
             this.dataGridView1.Rows.Clear();
             multipleList.Clear();
@@ -82,12 +104,12 @@ namespace eNet编辑器.DgvView
                 {
                     //选中子节点
                     //循环获取
-                    string[] ips = FileMesege.sceneSelectNode.Parent.Text.Split(' ');
+                    ip = FileMesege.sceneSelectNode.Parent.Text.Split(' ')[0];
                     string[] ids = FileMesege.sceneSelectNode.Text.Split(' ');
                     int sceneNum = Convert.ToInt32(Regex.Replace(ids[0], @"[^\d]*", ""));
                     //string ip4 = SocketUtil.strtohexstr(SocketUtil.getIP(FileMesege.sceneSelectNode));//16进制
                     //获取该节点IP地址场景下的 场景信息对象
-                    DataJson.scenes sc = DataListHelper.getSceneInfoList(ips[0], sceneNum);
+                    DataJson.scenes sc = DataListHelper.getSceneInfoList(ip, sceneNum);
                     if (sc == null)
                     {
                         return;
@@ -96,83 +118,11 @@ namespace eNet编辑器.DgvView
                     //循环加载该场景号的所有信息
                     foreach (DataJson.sceneInfo info in sc.sceneInfo)
                     {
-                        int dex = dataGridView1.Rows.Add();
-                       
-                        if (info.pid == 0)
+                        if (addItem(info, ip) != null)
                         {
-                            //pid号为0则为空 按地址来找
-                            if ( info.address != "" &&info.address != "FFFFFFFF")
-                            {
-
-                                DataJson.PointInfo point = DataListHelper.findPointByType_address(info.type,info.address,ips[0]);
-                                if (point != null)
-                                {
-                                    info.pid = point.pid;
-                                    info.address = point.address;
-                                    info.type = point.type;
-                                    dataGridView1.Rows[dex].Cells[3].Value = string.Format("{0} {1} {2} {3}", point.area1, point.area2, point.area3, point.area4).Trim();//改根据地址从信息里面获取
-                                    dataGridView1.Rows[dex].Cells[4].Value = point.name;
-                                }
-                            }
-                            
-                        }
-                        else
-                        { 
-                            //pid号有效 需要更新address type
-                            DataJson.PointInfo point = DataListHelper.findPointByPid(info.pid);
-                            if (point == null)
-                            {
-                                //pid号有无效 删除该场景
-                                delScene.Add(info);
-                                dataGridView1.Rows.Remove(dataGridView1.Rows[dex]);
-                                continue;
-                            }
-                            else
-                            {
-                                //pid号有效
-                                try
-                                {
-                                    if (info.address.Substring(2, 6) != point.address.Substring(2, 6))
-                                    {
-                                        info.address = point.address;
-
-                                    }
-                                }
-                                catch
-                                {
-                                    info.address = point.address;
-                                }
-                                    
-
-                                //////////////////////////////////////////////////////争议地域
-                                //类型不一致 在value寻找
-                                if (info.type != point.type && !string.IsNullOrEmpty(point.value) && !string.IsNullOrEmpty(point.objType))
-                                {
-                                    //根据value寻找type                        
-                                    point.type = IniHelper.findObjValueType_ByobjTypeValue(point.objType, point.value);
-                                }
-                                //////////////////////////////////////////////////////到这里
-                                if (info.type != point.type || info.type == "")
-                                {
-                                    //当类型为空时候清空操作
-                                    info.opt = "";
-                                    info.optName = "";
-                                }
-                                info.type = point.type;
-                                dataGridView1.Rows[dex].Cells[3].Value = string.Format("{0} {1} {2} {3}", point.area1, point.area2, point.area3, point.area4).Trim();//改根据地址从信息里面获取
-                                dataGridView1.Rows[dex].Cells[4].Value = point.name;
-                            }
-                            
-                        }
+                            delScene.Add(info);
                         
-                        dataGridView1.Rows[dex].Cells[0].Value = info.id;
-                        dataGridView1.Rows[dex].Cells[2].Value = DgvMesege.addressTransform( info.address);
-                        dataGridView1.Rows[dex].Cells[1].Value = IniHelper.findTypesIniNamebyType(info.type);
-                        dataGridView1.Rows[dex].Cells[5].Value = (info.optName + " " + info.opt).Trim();
-                        dataGridView1.Rows[dex].Cells[6].Value = Convert.ToDouble(info.delay) / 10;
-                        dataGridView1.Rows[dex].Cells[7].Value = "删除";
-                       
-
+                        }
                     }
                     for (int i = 0; i < delScene.Count; i++)
                     {
@@ -192,6 +142,98 @@ namespace eNet编辑器.DgvView
             }
            
         }
+
+        /// <summary>
+        /// 添加一行的信息资料
+        /// </summary>
+        /// <param name="info"></param>
+        /// <param name="delScene"></param>
+        /// <param name="ip"></param>
+        public DataJson.sceneInfo addItem(DataJson.sceneInfo info, string ip)
+        { 
+            int dex = dataGridView1.Rows.Add();          
+            if (info.pid == 0)
+            {
+                //pid号为0则为空 按地址来找
+                if ( info.address != "" &&info.address != "FFFFFFFF")
+                {
+
+                    DataJson.PointInfo point = DataListHelper.findPointByType_address(info.type,info.address,ip);
+                    if (point != null)
+                    {
+                        info.pid = point.pid;
+                        info.address = point.address;
+                        info.type = point.type;
+                        dataGridView1.Rows[dex].Cells[3].Value = string.Format("{0} {1} {2} {3}", point.area1, point.area2, point.area3, point.area4).Trim();//改根据地址从信息里面获取
+                        dataGridView1.Rows[dex].Cells[4].Value = point.name;
+                    }
+                }
+                            
+            }
+            else
+            { 
+                //pid号有效 需要更新address type
+                DataJson.PointInfo point = DataListHelper.findPointByPid(info.pid);
+                if (point == null)
+                {
+                    //pid号有无效 删除该场景
+                    dataGridView1.Rows.Remove(dataGridView1.Rows[dex]);
+                    return info;
+                }
+                else
+                {
+                    //pid号有效
+                    try
+                    {
+                        if (info.address.Substring(2, 6) != point.address.Substring(2, 6))
+                        {
+                            info.address = point.address;
+
+                        }
+                    }
+                    catch
+                    {
+                        info.address = point.address;
+                    }
+                                    
+
+                    //////////////////////////////////////////////////////争议地域
+                    //类型不一致 在value寻找
+                    if (info.type != point.type && !string.IsNullOrEmpty(point.value) && !string.IsNullOrEmpty(point.objType))
+                    {
+                        //根据value寻找type                        
+                        point.type = IniHelper.findObjValueType_ByobjTypeValue(point.objType, point.value);
+                    }
+                    //////////////////////////////////////////////////////到这里
+                    if (info.type != point.type || info.type == "")
+                    {
+                        //当类型为空时候清空操作
+                        info.opt = "";
+                        info.optName = "";
+                    }
+                    info.type = point.type;
+                    dataGridView1.Rows[dex].Cells[3].Value = string.Format("{0} {1} {2} {3}", point.area1, point.area2, point.area3, point.area4).Trim();//改根据地址从信息里面获取
+                    dataGridView1.Rows[dex].Cells[4].Value = point.name;
+                }
+                            
+            }
+                        
+            dataGridView1.Rows[dex].Cells[0].Value = info.id;
+            dataGridView1.Rows[dex].Cells[1].Value = IniHelper.findTypesIniNamebyType(info.type);
+            dataGridView1.Rows[dex].Cells[2].Value = DgvMesege.addressTransform( info.address); 
+            dataGridView1.Rows[dex].Cells[5].Value = (info.optName + " " + info.opt).Trim();
+            dataGridView1.Rows[dex].Cells[6].Value = Convert.ToDouble(info.delay) / 10;
+            dataGridView1.Rows[dex].Cells[7].Value = "删除";
+
+            return null;
+                    
+        }
+
+        public void clearDgvClear()
+        {
+            dataGridView1.Rows.Clear();
+        }
+        #endregion
 
         #region 功能性处理 函数
 
@@ -260,11 +302,10 @@ namespace eNet编辑器.DgvView
             }
             //选中子节点
             //循环获取
-            string[] ips = FileMesege.sceneSelectNode.Parent.Text.Split(' ');
             string[] ids = FileMesege.sceneSelectNode.Text.Split(' ');
             int sceneNum = Convert.ToInt32(Regex.Replace(ids[0], @"[^\d]*", ""));
             //获取该节点IP地址场景下的 场景信息对象
-            DataJson.scenes sc = DataListHelper.getSceneInfoList(ips[0], sceneNum);
+            DataJson.scenes sc = DataListHelper.getSceneInfoList(ip, sceneNum);
             //新建表
             DataJson.sceneInfo info = new DataJson.sceneInfo();
             
@@ -308,14 +349,13 @@ namespace eNet编辑器.DgvView
                         break;
                 }
                 //按照地址查找type的类型 
-                type = IniHelper.findIniTypesByAddress(ips[0], add).Split(',')[0];
+                type = IniHelper.findIniTypesByAddress(ip, add).Split(',')[0];
 
                 info.type = type;
                 //添加地域和名称 在sceneInfo表中
-                DataJson.PointInfo point = DataListHelper.findPointByType_address("",add,ips[0]);
+                DataJson.PointInfo point = DataListHelper.findPointByType_address("",add,ip);
                 if (point != null)
                 {
-
                     info.pid = point.pid;
                     info.type = point.type;
                     if (info.type != point.type)
@@ -323,16 +363,10 @@ namespace eNet编辑器.DgvView
                         info.opt = "";
                         info.optName = "";
                     }
-
-
-
                 }
                 else
                 {
                     info.pid = 0;
-                    //info.type = "";
-                    //info.opt = "";
-                    //info.optName = "";
                 }
             }
             info.address = add;
@@ -342,9 +376,7 @@ namespace eNet编辑器.DgvView
             //sceneInfoSort(sc);
             DataJson.totalList NewList = FileMesege.cmds.getListInfos();
             FileMesege.cmds.DoNewCommand(NewList, OldList);
-            //重新刷新
-            dgvsceneAddItem();
-
+            addItem(info,ip);
             DgvMesege.selectLastCount(dataGridView1);  
       
             }
@@ -372,13 +404,13 @@ namespace eNet编辑器.DgvView
             }
             //选中子节点
             //循环获取
-            string[] ips = FileMesege.sceneSelectNode.Parent.Text.Split(' ');
+        
             string[] ids = FileMesege.sceneSelectNode.Text.Split(' ');
             int sceneNum = Convert.ToInt32(Regex.Replace(ids[0], @"[^\d]*", ""));
             //撤销 
             DataJson.totalList OldList = FileMesege.cmds.getListInfos();
             //获取该节点IP地址场景下的 场景信息对象
-            DataJson.scenes sc = DataListHelper.getSceneInfoList(ips[0], sceneNum);
+            DataJson.scenes sc = DataListHelper.getSceneInfoList(ip, sceneNum);
             sc.sceneInfo.Clear();
             DataJson.totalList NewList = FileMesege.cmds.getListInfos();
             FileMesege.cmds.DoNewCommand(NewList, OldList);
@@ -398,11 +430,10 @@ namespace eNet编辑器.DgvView
             {
                 try
                 {
-                    string[] ips = FileMesege.sceneSelectNode.Parent.Text.Split(' ');
                     string[] ids = FileMesege.sceneSelectNode.Text.Split(' ');
                     int sceneNum = Convert.ToInt32(Regex.Replace(ids[0], @"[^\d]*", ""));
                     //获取该节点IP地址场景下的 场景信息对象
-                    DataJson.scenes sc = DataListHelper.getSceneInfoList(ips[0], sceneNum);
+                    DataJson.scenes sc = DataListHelper.getSceneInfoList(ip, sceneNum);
                     
                     //场景信息不为空
                     if (sc.sceneInfo.Count > 0)
@@ -442,7 +473,7 @@ namespace eNet编辑器.DgvView
 
                             while (i <10)
                             {
-                                sock = ts.ConnectServer(ips[0], 6001, 1);
+                                sock = ts.ConnectServer(ip, 6001, 1);
                                 if (sock == null)
                                 {
                                     i++;
@@ -522,18 +553,17 @@ namespace eNet编辑器.DgvView
             {
                 try
                 {
-                    string[] ips = FileMesege.sceneSelectNode.Parent.Text.Split(' ');
                     string[] ids = FileMesege.sceneSelectNode.Text.Split(' ');
                     int sceneNum = Convert.ToInt32(Regex.Replace(ids[0], @"[^\d]*", ""));
                     //发送调用指令
                     string ip4 = ToolsUtil.getIP(FileMesege.sceneSelectNode);
                     TcpSocket ts = new TcpSocket();
               
-                    sock = ts.ConnectServer(ips[0], 6003, 2);
+                    sock = ts.ConnectServer(ip, 6003, 2);
                     if (sock == null)
                     {
                         //防止一连失败
-                        sock = ts.ConnectServer(ips[0], 6003, 2);
+                        sock = ts.ConnectServer(ip, 6003, 2);
                         if (sock == null)
                         {
                             AppTxtShow("连接失败！");
@@ -601,13 +631,12 @@ namespace eNet编辑器.DgvView
             }
             else
             {
-                string[] ips = FileMesege.sceneSelectNode.Parent.Text.Split(' ');
                 string[] ids = FileMesege.sceneSelectNode.Text.Split(' ');
                 int sceneNum = Convert.ToInt32(Regex.Replace(ids[0], @"[^\d]*", ""));
                 //撤销 
                 DataJson.totalList OldList = FileMesege.cmds.getListInfos();
                 //获取该节点IP地址场景下的 场景信息对象
-                DataJson.scenes sc = DataListHelper.getSceneInfoList(ips[0], sceneNum);
+                DataJson.scenes sc = DataListHelper.getSceneInfoList(ip, sceneNum);
                 foreach (DataJson.sceneInfo info in multipleList)
                 {
                     sc.sceneInfo.Remove(info);
@@ -883,11 +912,10 @@ namespace eNet编辑器.DgvView
             {
                 return;
             }
-            string[] ips = FileMesege.sceneSelectNode.Parent.Text.Split(' ');
             string[] ids = FileMesege.sceneSelectNode.Text.Split(' ');
             int sceneNum = Convert.ToInt32(Regex.Replace(ids[0], @"[^\d]*", ""));
             //获取该节点IP地址场景下的 场景信息对象
-            DataJson.scenes sc = DataListHelper.getSceneInfoList(ips[0], sceneNum);
+            DataJson.scenes sc = DataListHelper.getSceneInfoList(ip, sceneNum);
             //获取sceneInfo对象表中对应ID号info对象
             DataJson.sceneInfo info = getSceneID(sc, Convert.ToInt32(dataGridView1.Rows[rowNumber].Cells[0].Value));
             multipleList.Add(info);
@@ -938,13 +966,12 @@ namespace eNet编辑器.DgvView
         private void dgvDel(int id)
         {
     
-            string[] ips = FileMesege.sceneSelectNode.Parent.Text.Split(' ');
             string[] ids = FileMesege.sceneSelectNode.Text.Split(' ');
             int sceneNum = Convert.ToInt32(Regex.Replace(ids[0], @"[^\d]*", ""));
             //撤销 
             DataJson.totalList OldList = FileMesege.cmds.getListInfos();
             //获取该节点IP地址场景下的 场景信息对象
-            DataJson.scenes sc = DataListHelper.getSceneInfoList(ips[0], sceneNum);
+            DataJson.scenes sc = DataListHelper.getSceneInfoList(ip, sceneNum);
             //获取sceneInfo对象表中对应ID号info对象
             DataJson.sceneInfo info = getSceneID(sc, id);
             sc.sceneInfo.Remove(info);
@@ -961,11 +988,10 @@ namespace eNet编辑器.DgvView
         /// <returns></returns>
         private DataJson.PointInfo dgvJumpSet(int id )
         {
-            string[] ips = FileMesege.sceneSelectNode.Parent.Text.Split(' ');
             string[] ids = FileMesege.sceneSelectNode.Text.Split(' ');
             int sceneNum = Convert.ToInt32(Regex.Replace(ids[0], @"[^\d]*", ""));
             //获取该节点IP地址场景下的 场景信息对象
-            DataJson.scenes sc = DataListHelper.getSceneInfoList(ips[0], sceneNum);
+            DataJson.scenes sc = DataListHelper.getSceneInfoList(ip, sceneNum);
             //获取sceneInfo对象表中对应ID号info对象
             DataJson.sceneInfo info = getSceneID(sc, id);
 
@@ -975,7 +1001,7 @@ namespace eNet编辑器.DgvView
             }
             if (info.type == "4.0_scene" || info.type == "5.0_timer" || info.type == "6.1_panel" || info.type == "6.2_sensor")
             {
-                return DataListHelper.findPointByType_address(info.type,info.address,ips[0]);
+                return DataListHelper.findPointByType_address(info.type,info.address,ip);
             }
 
             return null;
@@ -990,13 +1016,12 @@ namespace eNet编辑器.DgvView
         /// <param name="time">延时时间</param>
         private void dgvDelay(int id, Double time)
         {
-            string[] ips = FileMesege.sceneSelectNode.Parent.Text.Split(' ');
             string[] ids = FileMesege.sceneSelectNode.Text.Split(' ');
             int sceneNum = Convert.ToInt32(Regex.Replace(ids[0], @"[^\d]*", ""));
             //撤销 
             DataJson.totalList OldList = FileMesege.cmds.getListInfos();
             //获取该节点IP地址场景下的 场景信息对象
-            DataJson.scenes sc = DataListHelper.getSceneInfoList(ips[0], sceneNum);
+            DataJson.scenes sc = DataListHelper.getSceneInfoList(ip, sceneNum);
             //获取sceneInfo对象表中对应ID号info对象
             DataJson.sceneInfo info = getSceneID(sc, id);
             info.delay = Convert.ToInt32(time * 10);
@@ -1012,13 +1037,12 @@ namespace eNet编辑器.DgvView
         /// <param name="type"></param>
         private string dgvObjtype(int id,string type)
         {
-            string[] ips = FileMesege.sceneSelectNode.Parent.Text.Split(' ');
             string[] ids = FileMesege.sceneSelectNode.Text.Split(' ');
             int sceneNum = Convert.ToInt32(Regex.Replace(ids[0], @"[^\d]*", ""));
             //撤销 
             DataJson.totalList OldList = FileMesege.cmds.getListInfos();
             //获取该节点IP地址场景下的 场景信息对象
-            DataJson.scenes sc = DataListHelper.getSceneInfoList(ips[0], sceneNum);
+            DataJson.scenes sc = DataListHelper.getSceneInfoList(ip, sceneNum);
             //获取sceneInfo对象表中对应ID号info对象
             DataJson.sceneInfo info = getSceneID(sc, id);
             if (info.pid != 0)
@@ -1050,12 +1074,11 @@ namespace eNet编辑器.DgvView
 
 
             sceneConcrol dc = new sceneConcrol();
-            string[] ips = FileMesege.sceneSelectNode.Parent.Text.Split(' ');
             string[] ids = FileMesege.sceneSelectNode.Text.Split(' ');
             int sceneNum = Convert.ToInt32(Regex.Replace(ids[0], @"[^\d]*", ""));
             //撤销 
             //获取该节点IP地址场景下的 场景信息对象
-            DataJson.scenes sc = DataListHelper.getSceneInfoList(ips[0], sceneNum);
+            DataJson.scenes sc = DataListHelper.getSceneInfoList(ip, sceneNum);
             //获取sceneInfo对象表中对应ID号info对象
             DataJson.sceneInfo info = getSceneID(sc, id);
             dc.Point = DataListHelper.findPointByPid(info.pid);
@@ -1102,11 +1125,10 @@ namespace eNet编辑器.DgvView
             dc.ShowDialog();
             if (dc.DialogResult == DialogResult.OK)
             {
-                string[] ips = FileMesege.sceneSelectNode.Parent.Text.Split(' ');
                 string[] ids = FileMesege.sceneSelectNode.Text.Split(' ');
                 int sceneNum = Convert.ToInt32(Regex.Replace(ids[0], @"[^\d]*", ""));
                 //获取该节点IP地址场景下的 场景信息对象
-                DataJson.scenes sc = DataListHelper.getSceneInfoList(ips[0], sceneNum);
+                DataJson.scenes sc = DataListHelper.getSceneInfoList(ip, sceneNum);
                 //获取sceneInfo对象表中对应ID号info对象
                 DataJson.sceneInfo info = getSceneID(sc, id);
                 //撤销 
@@ -1118,7 +1140,7 @@ namespace eNet编辑器.DgvView
                     return;
                 }
                 //按照地址查找type的类型 只限制于设备
-                string type = IniHelper.findIniTypesByAddress(ips[0],info.address).Split(',')[0];
+                string type = IniHelper.findIniTypesByAddress(ip,info.address).Split(',')[0];
                 if(string.IsNullOrEmpty(type))
                 {
                     type = dc.RtType;
@@ -1127,7 +1149,7 @@ namespace eNet编辑器.DgvView
                 //获取树状图的IP第四位  + Address地址的 后六位
                 string ad = info.address;
                 //区域加名称
-                DataJson.PointInfo point = DataListHelper.findPointByType_address("", ad,ips[0]);
+                DataJson.PointInfo point = DataListHelper.findPointByType_address("", ad,ip);
                 
                 if (point != null)
                 {
@@ -1173,21 +1195,16 @@ namespace eNet编辑器.DgvView
             //获取当前选中单元格的列序号
             int colIndex = dataGridView1.CurrentRow.Cells.IndexOf(dataGridView1.CurrentCell);
             //当粘贴选中单元格为操作
-            if (colIndex == 5)
-            {
+          
                 int id = Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value);
-                string[] ips = FileMesege.sceneSelectNode.Parent.Text.Split(' ');
                 string[] ids = FileMesege.sceneSelectNode.Text.Split(' ');
                 int sceneNum = Convert.ToInt32(Regex.Replace(ids[0], @"[^\d]*", ""));
                 //撤销 
                 //获取该节点IP地址场景下的 场景信息对象
-                DataJson.scenes sc = DataListHelper.getSceneInfoList(ips[0], sceneNum);
+                DataJson.scenes sc = DataListHelper.getSceneInfoList(ip, sceneNum);
                 //获取sceneInfo对象表中对应ID号info对象
                 FileMesege.copyScene = getSceneID(sc, id);
-               
-            }
-
-
+ 
         }
 
         /// <summary>
@@ -1197,36 +1214,82 @@ namespace eNet编辑器.DgvView
         {
             try
             {
+                if (FileMesege.copyScene == null)
+                {
+                    return;
+                }
                 bool ischange = false;
+                bool isAddress = false;
                 //撤销
                 DataJson.totalList OldList = FileMesege.cmds.getListInfos();
+                string[] ids = FileMesege.sceneSelectNode.Text.Split(' ');
+                //场景号
+                int sceneNum = Convert.ToInt32(Regex.Replace(ids[0], @"[^\d]*", ""));
+                //选中行 序号
+                int id = 0;
+                //列号
+                int colIndex = 0;
+                int j = 0;
+                //获取该节点IP地址场景下的 场景信息对象
+                DataJson.scenes sc = DataListHelper.getSceneInfoList(ip, sceneNum);
                 for (int i = 0; i < dataGridView1.SelectedCells.Count; i++)
                 {
                     //获取当前选中单元格的列序号
-                    int colIndex = dataGridView1.SelectedCells[i].ColumnIndex;
-
+                    colIndex = dataGridView1.SelectedCells[i].ColumnIndex;
+                    id = Convert.ToInt32(dataGridView1.Rows[dataGridView1.SelectedCells[i].RowIndex].Cells[0].Value);
                     //当粘贴选中单元格为操作
                     if (colIndex == 5)
                     {
-                        int id = Convert.ToInt32(dataGridView1.Rows[dataGridView1.SelectedCells[i].RowIndex].Cells[0].Value);
-                        string[] ips = FileMesege.sceneSelectNode.Parent.Text.Split(' ');
-                        string[] ids = FileMesege.sceneSelectNode.Text.Split(' ');
-                        int sceneNum = Convert.ToInt32(Regex.Replace(ids[0], @"[^\d]*", ""));
-                        //撤销 
-                        //获取该节点IP地址场景下的 场景信息对象
-                        DataJson.scenes sc = DataListHelper.getSceneInfoList(ips[0], sceneNum);
+                        if (isAddress)
+                        {
+                            continue;
+                        }
                         //获取sceneInfo对象表中对应ID号info对象
                         DataJson.sceneInfo sceneInfo = getSceneID(sc, id);
-                        if (FileMesege.copyScene.type == "" || sceneInfo.type == "" || sceneInfo.type != FileMesege.copyScene.type)
+                        if (string.IsNullOrEmpty(FileMesege.copyScene.type) || string.IsNullOrEmpty(sceneInfo.type) || sceneInfo.type != FileMesege.copyScene.type)
                         {
+                            //类型不一致 并且为空
                             continue;
                         }
                         ischange = true;
                         sceneInfo.opt = FileMesege.copyScene.opt;
                         sceneInfo.optName = FileMesege.copyScene.optName;
                         
-                        dataGridView1.Rows[dataGridView1.SelectedCells[i].RowIndex].Cells[5].Value = (sceneInfo.optName + " " + sceneInfo.opt).Trim();
+                        dataGridView1.Rows[id -1].Cells[5].Value = (sceneInfo.optName + " " + sceneInfo.opt).Trim();
                     }//if
+                    else if (colIndex == 2)
+                    {
+                        isAddress = true;
+                        if (string.IsNullOrEmpty(FileMesege.copyScene.address) && FileMesege.copyScene.address == "FFFFFFFF")
+                        {
+                            continue;
+                        }
+                        DataJson.sceneInfo sceneInfo = getSceneID(sc, id);
+                        sceneInfo.address = DgvMesege.addressAddOne(FileMesege.copyScene.address,j);
+                        sceneInfo.type = IniHelper.findIniTypesByAddress(ip, sceneInfo.address).Split(',')[0];
+                        //添加地域和名称 在sceneInfo表中
+                        DataJson.PointInfo point = DataListHelper.findPointByType_address("", sceneInfo.address, ip);
+                        if (point != null)
+                        {
+                            sceneInfo.pid = point.pid;
+                            sceneInfo.type = point.type;
+                            dataGridView1.Rows[id -1].Cells[3].Value = string.Format("{0} {1} {2} {3}", point.area1, point.area2, point.area3, point.area4).Trim();//改根据地址从信息里面获取
+                            dataGridView1.Rows[id -1].Cells[4].Value = point.name;
+                        }
+                        else
+                        {
+                            sceneInfo.pid = 0;
+                        }
+                        sceneInfo.opt = FileMesege.copyScene.opt;
+                        sceneInfo.optName =FileMesege.copyScene.optName;
+                        dataGridView1.Rows[id - 1].Cells[1].Value = IniHelper.findTypesIniNamebyType(sceneInfo.type);
+                        dataGridView1.Rows[id - 1].Cells[2].Value = DgvMesege.addressTransform(sceneInfo.address);
+                        dataGridView1.Rows[id - 1].Cells[5].Value = (sceneInfo.optName + " " + sceneInfo.opt).Trim();
+                        dataGridView1.Rows[id - 1].Cells[6].Value = Convert.ToDouble(sceneInfo.delay) / 10;
+                        ischange = true;
+                        j++;
+                    }
+                    
                 }
                 if (ischange)
                 {
@@ -1277,12 +1340,11 @@ namespace eNet编辑器.DgvView
                     if (colIndex == 5)
                     {
                         int id = Convert.ToInt32(dataGridView1.Rows[dataGridView1.SelectedCells[i].RowIndex].Cells[0].Value);
-                        string[] ips = FileMesege.sceneSelectNode.Parent.Text.Split(' ');
                         string[] ids = FileMesege.sceneSelectNode.Text.Split(' ');
                         int sceneNum = Convert.ToInt32(Regex.Replace(ids[0], @"[^\d]*", ""));
                         //撤销 
                         //获取该节点IP地址场景下的 场景信息对象
-                        DataJson.scenes sc = DataListHelper.getSceneInfoList(ips[0], sceneNum);
+                        DataJson.scenes sc = DataListHelper.getSceneInfoList(ip, sceneNum);
                         //获取sceneInfo对象表中对应ID号info对象
                         DataJson.sceneInfo sceneInfo = getSceneID(sc, id);
       

@@ -5,23 +5,90 @@
                 "panelsInfo": [
                     {
                         "id": 1,
-                        "pid": 0,
-                        "keyAddress": "",
-                        "objAddress": "",
-                        "objType": "",
-                        "opt": 0,
-                        "showAddress": "",
-                        "showMode": ""
+                        "pid": 608960991,
+                        "keyAddress": "E6090001",
+                        "objAddress": "E6100002",
+                        "objType": "4.0_scene",
+                        "opt": 17,
+                        "showAddress": "E6100002",
+                        "showMode": "同步"
                     },
                     {
                         "id": 2,
-                        "pid": 0,
-                        "keyAddress": "",
-                        "objAddress": "",
-                        "objType": "",
-                        "opt": 0,
-                        "showAddress": "",
-                        "showMode": ""
+                        "pid": 730365633,
+                        "keyAddress": "E6090002",
+                        "objAddress": "FE100001",
+                        "objType": "4.0_scene",
+                        "opt": 17,
+                        "showAddress": "FE100001",
+                        "showMode": "同步"
+                    },
+                    {
+                        "id": 3,
+                        "pid": 367180247,
+                        "keyAddress": "E6090003",
+                        "objAddress": "FE100004",
+                        "objType": "4.0_scene",
+                        "opt": 17,
+                        "showAddress": "FE100004",
+                        "showMode": "同步"
+                    },
+                    {
+                        "id": 4,
+                        "pid": 949518276,
+                        "keyAddress": "E6090004",
+                        "objAddress": "E6100003",
+                        "objType": "4.0_scene",
+                        "opt": 17,
+                        "showAddress": "E6100003",
+                        "showMode": "同步"
+                    },
+                    {
+                        "id": 5,
+                        "pid": 880778369,
+                        "keyAddress": "E6090005",
+                        "objAddress": "E6100006",
+                        "objType": "4.0_scene",
+                        "opt": 17,
+                        "showAddress": "E6100006",
+                        "showMode": "同步"
+                    },
+                    {
+                        "id": 6,
+                        "pid": 855577641,
+                        "keyAddress": "E6090006",
+                        "objAddress": "E6100005",
+                        "objType": "4.0_scene",
+                        "opt": 17,
+                        "showAddress": "E6100005",
+                        "showMode": "同步"
+                    }
+                ],
+                "id": 1,
+                "pid": 607954599,
+                "keyNum": 6
+            },
+            {
+                "panelsInfo": [
+                    {
+                        "id": 1,
+                        "pid": 365477832,
+                        "keyAddress": "E60A0001",
+                        "objAddress": "E6100008",
+                        "objType": "4.0_scene",
+                        "opt": 17,
+                        "showAddress": "E6100008",
+                        "showMode": "同步"
+                    },
+                    {
+                        "id": 2,
+                        "pid": 301741631,
+                        "keyAddress": "E60A0002",
+                        "objAddress": "E6100007",
+                        "objType": "4.0_scene",
+                        "opt": 17,
+                        "showAddress": "E6100007",
+                        "showMode": "同步"
                     },
                     {
                         "id": 3,
@@ -64,12 +131,204 @@
                         "showMode": ""
                     }
                 ],
-                "id": 1,
-                "pid": 540085328,
+                "id": 2,
+                "pid": 581236029,
                 "keyNum": 6
+            },
+            {
+                "panelsInfo": [
+                    {
+                        "id": 1,
+                        "pid": 271479325,
+                        "keyAddress": "E60B0001",
+                        "objAddress": "E610000D",
+                        "objType": "4.0_scene",
+                        "opt": 17,
+                        "showAddress": "E610000D",
+                        "showMode": "同步"
+                    },
+                    {
+                        "id": 1,
+                        "pid": 670873705,
+                        "keyAddress": "E60B0001",
+                        "objAddress": "E610000E",
+                        "objType": "4.0_scene",
+                        "opt": 17,
+                        "showAddress": "",
+                        "showMode": ""
+                    },
+                    {
+                        "id": 2,
+                        "pid": 305428928,
+                        "keyAddress": "E60B0002",
+                        "objAddress": "E610000B",
+                        "objType": "4.0_scene",
+                        "opt": 17,
+                        "showAddress": "E610000B",
+                        "showMode": "同步"
+                    },
+                    {
+                        "id": 2,
+                        "pid": 445392732,
+                        "keyAddress": "E60B0002",
+                        "objAddress": "E610000C",
+                        "objType": "4.0_scene",
+                        "opt": 17,
+                        "showAddress": "",
+                        "showMode": ""
+                    },
+                    {
+                        "id": 3,
+                        "pid": 348761743,
+                        "keyAddress": "E60B0003",
+                        "objAddress": "E6100011",
+                        "objType": "4.0_scene",
+                        "opt": 17,
+                        "showAddress": "E6100011",
+                        "showMode": "同步"
+                    },
+                    {
+                        "id": 3,
+                        "pid": 487559382,
+                        "keyAddress": "E60B0003",
+                        "objAddress": "E6100012",
+                        "objType": "4.0_scene",
+                        "opt": 17,
+                        "showAddress": "",
+                        "showMode": ""
+                    },
+                    {
+                        "id": 4,
+                        "pid": 843162240,
+                        "keyAddress": "E60B0004",
+                        "objAddress": "E610000F",
+                        "objType": "4.0_scene",
+                        "opt": 17,
+                        "showAddress": "E610000F",
+                        "showMode": "同步"
+                    },
+                    {
+                        "id": 4,
+                        "pid": 525272947,
+                        "keyAddress": "E60B0004",
+                        "objAddress": "E6100010",
+                        "objType": "4.0_scene",
+                        "opt": 17,
+                        "showAddress": "",
+                        "showMode": ""
+                    },
+                    {
+                        "id": 5,
+                        "pid": 591638644,
+                        "keyAddress": "E60B0005",
+                        "objAddress": "E610002C",
+                        "objType": "4.0_scene",
+                        "opt": 17,
+                        "showAddress": "E610002C",
+                        "showMode": "同步"
+                    },
+                    {
+                        "id": 6,
+                        "pid": 298178957,
+                        "keyAddress": "E60B0006",
+                        "objAddress": "E610002B",
+                        "objType": "4.0_scene",
+                        "opt": 17,
+                        "showAddress": "E610002B",
+                        "showMode": "同步"
+                    }
+                ],
+                "id": 3,
+                "pid": 237397067,
+                "keyNum": 6
+            },
+            {
+                "panelsInfo": [
+                    {
+                        "id": 1,
+                        "pid": 0,
+                        "keyAddress": "E60C0001",
+                        "objAddress": "",
+                        "objType": "",
+                        "opt": 0,
+                        "showAddress": "",
+                        "showMode": ""
+                    },
+                    {
+                        "id": 2,
+                        "pid": 0,
+                        "keyAddress": "E60C0002",
+                        "objAddress": "",
+                        "objType": "",
+                        "opt": 0,
+                        "showAddress": "",
+                        "showMode": ""
+                    },
+                    {
+                        "id": 3,
+                        "pid": 0,
+                        "keyAddress": "E60C0003",
+                        "objAddress": "",
+                        "objType": "",
+                        "opt": 0,
+                        "showAddress": "",
+                        "showMode": ""
+                    },
+                    {
+                        "id": 4,
+                        "pid": 0,
+                        "keyAddress": "E60C0004",
+                        "objAddress": "",
+                        "objType": "",
+                        "opt": 0,
+                        "showAddress": "",
+                        "showMode": ""
+                    },
+                    {
+                        "id": 5,
+                        "pid": 0,
+                        "keyAddress": "E60C0005",
+                        "objAddress": "",
+                        "objType": "",
+                        "opt": 0,
+                        "showAddress": "",
+                        "showMode": ""
+                    },
+                    {
+                        "id": 6,
+                        "pid": 0,
+                        "keyAddress": "E60C0006",
+                        "objAddress": "",
+                        "objType": "",
+                        "opt": 0,
+                        "showAddress": "",
+                        "showMode": ""
+                    }
+                ],
+                "id": 4,
+                "pid": 442642657,
+                "keyNum": 6
+            },
+            {
+                "panelsInfo": [],
+                "id": 5,
+                "pid": 619393188,
+                "keyNum": 0
+            },
+            {
+                "panelsInfo": [],
+                "id": 6,
+                "pid": 177527181,
+                "keyNum": 0
+            },
+            {
+                "panelsInfo": [],
+                "id": 7,
+                "pid": 322737708,
+                "keyNum": 0
             }
         ],
-        "IP": "192.168.1.222",
+        "IP": "192.168.1.230",
         "Dev": "GW100A"
     }
 ]

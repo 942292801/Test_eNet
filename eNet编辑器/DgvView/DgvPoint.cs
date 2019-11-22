@@ -10,6 +10,7 @@ using System.Reflection;
 using System.IO;
 using System.Text.RegularExpressions;
 using eNet编辑器.ThreeView;
+using System.Threading;
 
 namespace eNet编辑器.DgvView
 {
@@ -80,8 +81,43 @@ namespace eNet编辑器.DgvView
         }
 
         #region dgv的数据加载 更新combox的item值
-        //根据区域和 类型TYPE（灯。空调。电视。）
+
+        #region 根据区域和 类型TYPE  测试异步加载
         public void dgvPointAddItemByObjType()
+        {
+            Thread t = new Thread(ShowDatatableByObjType);
+            t.IsBackground = true;
+            t.Start();
+        }
+        public delegate void AddItemByObjTypeDelegate();
+        private void ShowDatatableByObjType()
+        {
+            this.Invoke(new AddItemByObjTypeDelegate(AddItemByObjType));
+
+        }
+
+
+        #endregion
+
+        #region 加载信息到Dgv表中 根据区域 测试异步加载
+        public void dgvPointAddItemBySection()
+        {
+            Thread t = new Thread(ShowDatatableBySection);
+            t.IsBackground = true;
+            t.Start();
+        }
+        public delegate void AddItemBySectionDelegate();
+        private void ShowDatatableBySection()
+        {
+            this.Invoke(new AddItemBySectionDelegate(AddItemBySection));
+
+        }
+
+
+        #endregion
+
+        //根据区域和 类型TYPE（灯。空调。电视。）
+        public void AddItemByObjType()
         {
             try
             {
@@ -163,7 +199,7 @@ namespace eNet编辑器.DgvView
         /// <summary>
         /// 加载信息到Dgv表中 根据区域
         /// </summary>
-        public void dgvPointAddItemBySection()
+        public void AddItemBySection()
         {
             try
             {
@@ -230,7 +266,7 @@ namespace eNet编辑器.DgvView
         /// 添加每一行的信息
         /// </summary>
         /// <param name="eq"></param>
-        private void CountAddInfo(DataJson.PointInfo eq)
+        public void CountAddInfo(DataJson.PointInfo eq)
         {
             //添加新的一行 rowNum为行号
             int  rowNum = this.dataGridView1.Rows.Add();
@@ -253,8 +289,6 @@ namespace eNet编辑器.DgvView
                 this.dataGridView1.Rows[rowNum].Cells[5].Value = IniHelper.findObjValueName_ByVal(objTypeName, eq.value);
                 this.dataGridView1.Rows[rowNum].Cells[5].ReadOnly = true;
             }         
-         
-
 
             this.dataGridView1.Rows[rowNum].Cells[6].Value = "删除";
         }
@@ -300,6 +334,11 @@ namespace eNet编辑器.DgvView
             }
             
 
+        }
+
+        public void clearDgvClear()
+        {
+            dataGridView1.Rows.Clear();
         }
 
         #endregion
@@ -368,11 +407,8 @@ namespace eNet编辑器.DgvView
             FileMesege.PointList.equipment.Add(point);
             DataJson.totalList NewList = FileMesege.cmds.getListInfos();
             FileMesege.cmds.DoNewCommand(NewList, OldList);
-            dgvPointAddItemBySection();
-            if (dataGridView1.Rows.Count > 0)
-            {
-                dataGridView1.CurrentCell = dataGridView1.Rows[dataGridView1.Rows.Count - 1].Cells[0];
-            }
+            CountAddInfo(point);
+            DgvMesege.selectLastCount(dataGridView1);  
         }
 
         /// <summary>

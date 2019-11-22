@@ -12,6 +12,7 @@ using System.Net.Sockets;
 using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using eNet编辑器.AddForm;
+using System.Threading;
 
 namespace eNet编辑器.DgvView
 {
@@ -86,11 +87,28 @@ namespace eNet编辑器.DgvView
             this.dataGridView1.Columns.Insert(4, objType);
         }
 
+        #region 刷新窗体事件
 
+        public void dgvSensorAddItem()
+        {
+            Thread t = new Thread(ShowDatatable);
+            t.IsBackground = true;
+            t.Start();
+        }
+        #region 测试异步加载
+        public delegate void FormIniDelegate();
+        private void ShowDatatable()
+        {
+            this.Invoke(new FormIniDelegate(TabIni));
+
+        }
+
+
+        #endregion
         /// <summary>
         /// 加载DgV所有信息
         /// </summary>
-        public void dgvSensorAddItem()
+        public void TabIni()
         {
             try
             {
@@ -231,6 +249,11 @@ namespace eNet编辑器.DgvView
             }
         }
 
+        public void clearDgvClear()
+        {
+            dataGridView1.Rows.Clear();
+        }
+        #endregion
 
         #region 工具类
 
@@ -1502,15 +1525,15 @@ namespace eNet编辑器.DgvView
                 inserNum++;
                 if (find.id == id)
                 {
-                    if (!string.IsNullOrEmpty(find.keyAddress))
-                    {
+                    //if (!string.IsNullOrEmpty(find.keyAddress))
+                    //{
                         objType = find.objType;
                         keyAddress = find.keyAddress;
                         objAddress = find.objAddress;
                         opt = find.opt;
                         optName = find.optName;
                         fbmode = find.fbmode;
-                    }
+                    //}
 
                 }
                 if (find.id == id + 1)

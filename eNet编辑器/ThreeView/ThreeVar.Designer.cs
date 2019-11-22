@@ -34,11 +34,11 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.treeView1 = new System.Windows.Forms.TreeView();
+            this.imgLIst = new System.Windows.Forms.ImageList(this.components);
             this.panel3 = new System.Windows.Forms.Panel();
             this.plInfoTitle = new System.Windows.Forms.Panel();
             this.symbolBox1 = new DevComponents.DotNetBar.Controls.SymbolBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.imgLIst = new System.Windows.Forms.ImageList(this.components);
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -99,6 +99,15 @@
             this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
             this.treeView1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.treeView1_MouseDown);
             // 
+            // imgLIst
+            // 
+            this.imgLIst.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imgLIst.ImageStream")));
+            this.imgLIst.TransparentColor = System.Drawing.Color.White;
+            this.imgLIst.Images.SetKeyName(0, "u100.png");
+            this.imgLIst.Images.SetKeyName(1, "u84.png");
+            this.imgLIst.Images.SetKeyName(2, "u100_1.png");
+            this.imgLIst.Images.SetKeyName(3, "u84_2.png");
+            // 
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.White;
@@ -149,15 +158,6 @@
             this.label1.Size = new System.Drawing.Size(32, 17);
             this.label1.TabIndex = 1;
             this.label1.Text = "导航";
-            // 
-            // imgLIst
-            // 
-            this.imgLIst.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imgLIst.ImageStream")));
-            this.imgLIst.TransparentColor = System.Drawing.Color.White;
-            this.imgLIst.Images.SetKeyName(0, "u100.png");
-            this.imgLIst.Images.SetKeyName(1, "u84.png");
-            this.imgLIst.Images.SetKeyName(2, "u100_1.png");
-            this.imgLIst.Images.SetKeyName(3, "u84_2.png");
             // 
             // ThreeVar
             // 

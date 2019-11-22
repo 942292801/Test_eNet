@@ -69,6 +69,11 @@ namespace eNet编辑器
         /// </summary>
         public static int cbTypeIndex = 0;
 
+        /// <summary>
+        /// 设备的状态是否刷新回来
+        /// </summary>
+        public static bool isDgvNameDeviceConnet = false;
+
         //undo redo
         public static CommandManager cmds = new CommandManager();
 
@@ -130,6 +135,8 @@ namespace eNet编辑器
             panelSelectNode = null;
             //左栏 树状图treesensor节点选中临时存放
             sensorSelectNode = null;
+            varSelectNode = null;
+            logicSelectNode = null;
             //工程设备的保存记录
             DeviceList = null;
             //工程位置树状图
@@ -146,6 +153,8 @@ namespace eNet编辑器
             panelList = null;
             //感应
             sensorList = null;
+            //逻辑
+            logicList = null;
             //undo redo
             cmds = new CommandManager();
             filePath = "";
@@ -215,9 +224,10 @@ namespace eNet编辑器
         public bool readProject(string openFilePath)
         {
             string localFilePath = openFilePath.ToString(); //获得文件路径 
-            string fileNameExt = localFilePath.Substring(localFilePath.LastIndexOf("\\") + 1); //获取文件名，不带路径
-            //读取的后缀不为.cy
-            if (fileNameExt.Split('.')[1] != "yc")
+            //string fileNameExt = localFilePath.Substring(localFilePath.LastIndexOf("\\") + 1); //获取文件名，不带路径
+            string filename = Path.GetFileNameWithoutExtension(localFilePath);//文件名　　　　林业局考勤06
+            string extension = Path.GetExtension(localFilePath);//文件后缀 带点（.）　　　　　.xlsx
+            if (Path.GetExtension(openFilePath) != ".yc")
             {
                 return false;
             }
@@ -263,7 +273,7 @@ namespace eNet编辑器
             sensorList = JsonConvert.DeserializeObject<List<DataJson.Sensor>>(File.ReadAllText(TmpFilePath + "\\pro\\sensor.json"));
             logicList = JsonConvert.DeserializeObject<List<DataJson.Logic>>(File.ReadAllText(TmpFilePath + "\\pro\\logic.json"));
             filePath = localFilePath;
-            fileName = fileNameExt;
+            fileName = filename + extension;
             return true;
         }
 
@@ -302,7 +312,11 @@ namespace eNet编辑器
                     {
                         
                         localFilePath = sfd.FileName.ToString(); //获得文件路径 
-                        fileNameExt = localFilePath.Substring(localFilePath.LastIndexOf("\\") + 1); //获取文件名，不带路径
+                        //文件名　　　　林业局考勤06
+                        string filename = Path.GetFileNameWithoutExtension(localFilePath);
+                        //文件后缀 带点（.）　　　　　.xlsx
+                        string extension = Path.GetExtension(localFilePath);
+                        fileNameExt = filename + extension; //获取文件名，不带路径
 
                         string historyPath = IniConfig.GetValue(Application.StartupPath + "\\conf.ini", "filepath", "path");
                         if (!historyPath.Contains(localFilePath))
@@ -376,7 +390,11 @@ namespace eNet编辑器
                 if (sfd.ShowDialog() == DialogResult.OK)
                 {
                     localFilePath = sfd.FileName.ToString(); //获得文件路径 
-                    fileNameExt = localFilePath.Substring(localFilePath.LastIndexOf("\\") + 1); //获取文件名，不带路径
+                    //文件名　　　　林业局考勤06
+                    string filename = Path.GetFileNameWithoutExtension(localFilePath);
+                    //文件后缀 带点（.）　　　　　.xlsx
+                    string extension = Path.GetExtension(localFilePath);
+                    fileNameExt = filename + extension; //获取文件名，不带路径
                     string historyPath = IniConfig.GetValue(Application.StartupPath + "\\conf.ini", "filepath", "path");
                     if (!historyPath.Contains(localFilePath))
                     {

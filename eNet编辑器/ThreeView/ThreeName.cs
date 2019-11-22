@@ -18,7 +18,7 @@ namespace eNet编辑器.ThreeView
     public delegate void SendFormContrl(string msg);
     public delegate void ShowDeviceDgv(bool flag);
     public delegate void DgvNameAddItem();
-    public delegate void DgvDeviceAddItem(bool isConnect);
+    public delegate void DgvDeviceAddItem();
     public partial class ThreeName : Form
     {
         //主窗口显示信息
@@ -193,7 +193,7 @@ namespace eNet编辑器.ThreeView
             
             DataJson.totalList NewList = FileMesege.cmds.getListInfos();
             FileMesege.cmds.DoNewCommand(NewList, OldList);
-            dgvDeviceAddItem(false);
+            dgvDeviceAddItem();
             
         }
 
@@ -313,7 +313,7 @@ namespace eNet编辑器.ThreeView
                     
                 }
             }
-            dgvDeviceAddItem(false);
+            dgvDeviceAddItem();
             
              
         }
@@ -456,22 +456,36 @@ namespace eNet编辑器.ThreeView
             //判断 ini文件存在不  再判断是父子节点 
             string filepath = string.Format("{0}\\devices\\{1}.ini", Application.StartupPath, treeView1.SelectedNode.Text.Split(' ')[1]); 
             TreeMesege tm = new TreeMesege();
+            if (FileMesege.tnselectNode == null)
+            {
+                addTitleNode();
+            }
+            else
+            {
+                if (ToolsUtil.getIP(treeView1.SelectedNode) != ToolsUtil.getIP(FileMesege.tnselectNode))
+                {
+                    addTitleNode();
+                
+                }
+            }
+             
             FileMesege.tnselectNode = treeView1.SelectedNode;
             fullpath = treeView1.SelectedNode.FullPath;
-            addTitleNode();
+            
             //判断ini文件存在不存在
             if (File.Exists(filepath))
             {
 
                 //显示设备node
-                sendFormContrl(Resources.TxtShowDevName + IniConfig.GetValue(filepath, "define", "note") + "\r\n");                
+                sendFormContrl(Resources.TxtShowDevName + IniConfig.GetValue(filepath, "define", "note") + "\r\n");
+              
                 //调用dgv的ini配置
                 if (treeView1.SelectedNode.Parent == null)
                 {
                     //显示网关设备DGV框                
                     showDevice(true);
                     //选中为父节点显示DGVDevice  
-                    dgvDeviceAddItem(true);
+                    dgvDeviceAddItem();
                 }
                 else
                 {

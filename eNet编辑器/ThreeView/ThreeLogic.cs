@@ -165,12 +165,23 @@ namespace eNet编辑器.ThreeView
         /// <param name="e"></param>
         private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
         {
-            
+            if (FileMesege.logicSelectNode == null)
+            {
+                addTitleNode();
+            }
+            else
+            {
+                if (ToolsUtil.getIP(treeView1.SelectedNode) != ToolsUtil.getIP(FileMesege.logicSelectNode))
+                {
+                    addTitleNode();
+
+                }
+            }
             FileMesege.logicSelectNode = treeView1.SelectedNode;
             fullpath = treeView1.SelectedNode.FullPath;
             //DGVSceme添加场景
             dgvLogicAddItem();
-            addTitleNode();
+          
             string[] names = treeView1.SelectedNode.Text.Split(' ');
             if (treeView1.SelectedNode.Parent != null)
             {

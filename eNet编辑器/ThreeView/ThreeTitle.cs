@@ -11,20 +11,18 @@ using System.Text.RegularExpressions;
 using eNet编辑器.DgvView;
 using System.IO;
 using System.Reflection;
+using System.Threading;
 
 namespace eNet编辑器.ThreeView
 {
-    public delegate void DgvSceneAddItem2();
-    //public delegate void AddTitleDevCursor();
-   // public delegate void AddTitlenNameCursor();
+    public delegate DataJson.sceneInfo DgvsceneAddOneItem(DataJson.sceneInfo info, string ip);
+ 
     public partial class ThreeTitle : Form
     {
 
-        public event DgvSceneAddItem2 dgvsceneAddItem;
-        public event Action dgvtimerAddItem;
-        public event Action dgvVirtualportAddItem;
-        //public event AddTitleDevCursor addTitleDevCursor;
-        //public event AddTitlenNameCursor addTitlenNameCursor;
+        public event DgvsceneAddOneItem dgvsceneAddOneItem;
+        public event Func<DataJson.timersInfo, string, DataJson.timersInfo> dgvtimerAddOneItem;
+  
 
         //添加点位
         public event Action<string> addPoint;
@@ -35,7 +33,7 @@ namespace eNet编辑器.ThreeView
         public event Action selectLastCountLocalVar;
 
         //树状图节点
-        string fullpath = "";
+        public string fullpath = "";
 
         public ThreeTitle()
         {
@@ -84,18 +82,36 @@ namespace eNet编辑器.ThreeView
         /// </summary>
         public string inifilepath = "";
 
-      
+
         
+        #region 测试异步加载
+        public void ThreeTitleAddNode(int num)
+        {
+            FileMesege.cbTypeIndex = num;
+            Thread t = new Thread(ShowDatatable);
+            t.IsBackground = true;
+            t.Start();
+        }
+
+        public delegate void FormIniDelegate();
+        private void ShowDatatable()
+        {
+            this.Invoke(new FormIniDelegate(TabIni));
+
+        }
+
+
+        #endregion
 
         /// <summary>
         /// 树状图加载总设置函数 从names.ini文件加载的名字 或从nameJson加载 
         /// </summary>
         /// <param name="num">对象类型cbType索引号</param>
-        public void ThreeTitleAddNode(int num)
+        public void TabIni()
         {
             try
             {
-                FileMesege.cbTypeIndex = num;
+                
                 //路径非空
                 if (!String.IsNullOrWhiteSpace(inifilepath))
                 {
@@ -109,44 +125,44 @@ namespace eNet编辑器.ThreeView
                         case "name":
                             treeView1.CheckBoxes = false;
                             treeView1.ContextMenuStrip = null;
-                            nameAdd(num, ToolsUtil.getIP(FileMesege.tnselectNode));
+                            nameAdd(FileMesege.cbTypeIndex, ToolsUtil.getIP(FileMesege.tnselectNode));
                             //MessageBox.Show("name");
                             break;
                         case "point":
                             treeView1.CheckBoxes = false;
                             treeView1.ContextMenuStrip = null;
-                            pointAdd(num);
+                            pointAdd(FileMesege.cbTypeIndex);
                             break;
                         case "scene":
                             treeView1.CheckBoxes = true;
                             treeView1.ContextMenuStrip = contextMenuStrip2;
-                            sceneAdd(num, ToolsUtil.getIP(FileMesege.sceneSelectNode));
+                            sceneAdd(FileMesege.cbTypeIndex, ToolsUtil.getIP(FileMesege.sceneSelectNode));
                             break;
                         case "timer":
                             treeView1.CheckBoxes = true;
                             treeView1.ContextMenuStrip = contextMenuStrip2;
-                            timerAdd(num, ToolsUtil.getIP(FileMesege.timerSelectNode));
+                            timerAdd(FileMesege.cbTypeIndex, ToolsUtil.getIP(FileMesege.timerSelectNode));
                             break;
                         case "panel":
                             treeView1.CheckBoxes = true;
                             treeView1.ContextMenuStrip = null;
-                            panelAdd(num, ToolsUtil.getIP(FileMesege.panelSelectNode));
+                            panelAdd(FileMesege.cbTypeIndex, ToolsUtil.getIP(FileMesege.panelSelectNode));
                             // MessageBox.Show("bind");
                             break;
                         case "sensor":
                              treeView1.CheckBoxes = true;
                              treeView1.ContextMenuStrip = null;
-                            sensorAdd(num,ToolsUtil.getIP(FileMesege.sensorSelectNode));
+                             sensorAdd(FileMesege.cbTypeIndex, ToolsUtil.getIP(FileMesege.sensorSelectNode));
                             break;
                         case "logic":
                             treeView1.CheckBoxes = true;
                             treeView1.ContextMenuStrip = null;
-                            sensorAdd(num,ToolsUtil.getIP(FileMesege.logicSelectNode));
+                            sensorAdd(FileMesege.cbTypeIndex, ToolsUtil.getIP(FileMesege.logicSelectNode));
                             break;
                         case "virtualport":
                             treeView1.CheckBoxes = false;
                             treeView1.ContextMenuStrip = null;
-                            virtualportAdd(num);
+                            virtualportAdd(FileMesege.cbTypeIndex);
                             break;
                       
                         default: break;
@@ -166,6 +182,15 @@ namespace eNet编辑器.ThreeView
         public void unSelectTitleNode()
         {
             treeView1.SelectedNode = null;
+        }
+
+        public void UpdataNodeText(string oldNodeText,string newNodeText)
+        {
+            TreeNode node = TreeMesege.findNodeByName(treeView1,oldNodeText);
+            if (node != null)
+            {
+                node.Text = newNodeText;
+            }
         }
 
         #region 设备加载节点
@@ -578,7 +603,6 @@ namespace eNet编辑器.ThreeView
             {
                 
                 dgvNodeAdd(treeView1.SelectedNode);
-                updateDgv();
                 //右击选中节点
            
             }
@@ -598,10 +622,10 @@ namespace eNet编辑器.ThreeView
                     if (tn.Checked)
                     {
                         dgvNodeAdd(tn);
+                     
                     }
                 }//foreach所有节点信息处理完
-                //添加完成刷新窗口
-                updateDgv();
+                
             }
             catch { }
         }
@@ -670,52 +694,14 @@ namespace eNet编辑器.ThreeView
                 //
                 DataJson.totalList NewList = FileMesege.cmds.getListInfos();
                 FileMesege.cmds.DoNewCommand(NewList, OldList);
-                    
+               
+                selectLastCountLocalVar();
             }
             catch { 
             
             }
         }
 
-        /// <summary>
-        /// 更新dgv窗口并刷新到新添加的一页 后续还有添加
-        /// </summary>
-        private void updateDgv()
-        {
-            //区域
-            switch (FileMesege.formType)
-            {
-                case "name":
-
-                    break;
-                case "point":
-                    
-                    break;
-                case "scene":
-                    dgvsceneAddItem();
-                    selectLastCountScene();
-                    break;
-                case "timer":
-                    dgvtimerAddItem();
-                    selectLastCountTimer();
-                    break;
-                case "panel":
-                    //dgvPanelAddItem();
-                    break;
-                case "logic":
-                    break;
-                case "sensor":
-                    break;
-                case "virtualport":
-                    dgvVirtualportAddItem();
-                    selectLastCountLocalVar();
-                    break;
-                default: break;
-            }
-            
-            
-           
-        }
 
         #region 添加功能 场景DGV添加 新增SceneInfo对象
         /// <summary>
@@ -822,6 +808,8 @@ namespace eNet编辑器.ThreeView
                     sc.sceneInfo.Add(info);
                     DataJson.totalList NewList = FileMesege.cmds.getListInfos();
                     FileMesege.cmds.DoNewCommand(NewList, OldList);
+                    dgvsceneAddOneItem(info, ip);
+                    selectLastCountScene();
                     break;
                 }
             }
@@ -958,6 +946,8 @@ namespace eNet编辑器.ThreeView
                     tms.timersInfo.Add(tmInfo);
                     DataJson.totalList NewList = FileMesege.cmds.getListInfos();
                     FileMesege.cmds.DoNewCommand(NewList, OldList);
+                    dgvtimerAddOneItem(tmInfo,ip);
+                    selectLastCountTimer();
                     break;
                 }
             }

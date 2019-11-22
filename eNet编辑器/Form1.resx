@@ -124,98 +124,7 @@
   <data name="menuStrip1.Font" type="System.Drawing.Font, System.Drawing">
     <value>微软雅黑, 9pt</value>
   </data>
-  <data name="文件ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>74, 21</value>
-  </data>
-  <data name="文件ToolStripMenuItem.Text" xml:space="preserve">
-    <value>文件（F）</value>
-  </data>
-  <data name="编辑ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 21</value>
-  </data>
-  <data name="编辑ToolStripMenuItem.Text" xml:space="preserve">
-    <value>编辑（E）</value>
-  </data>
-  <data name="功能GToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>77, 21</value>
-  </data>
-  <data name="功能GToolStripMenuItem.Text" xml:space="preserve">
-    <value>功能（G）</value>
-  </data>
-  <data name="工具TToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 21</value>
-  </data>
-  <data name="工具TToolStripMenuItem.Text" xml:space="preserve">
-    <value>工具（T）</value>
-  </data>
-  <data name="帮助HToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>77, 21</value>
-  </data>
-  <data name="帮助HToolStripMenuItem.Text" xml:space="preserve">
-    <value>帮助（H）</value>
-  </data>
-  <data name="menuStrip1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="menuStrip1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1264, 25</value>
-  </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="menuStrip1.TabIndex" type="System.Int32, mscorlib">
-    <value>10</value>
-  </data>
-  <data name="menuStrip1.Text" xml:space="preserve">
-    <value>menuStrip1</value>
-  </data>
-  <data name="&gt;&gt;menuStrip1.Name" xml:space="preserve">
-    <value>menuStrip1</value>
-  </data>
-  <data name="&gt;&gt;menuStrip1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.MenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;menuStrip1.Parent" xml:space="preserve">
-    <value>PlMeustrip.ClientArea</value>
-  </data>
-  <data name="&gt;&gt;menuStrip1.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;PlMeustrip.ClientArea.Name" xml:space="preserve">
-    <value>PlMeustrip.ClientArea</value>
-  </data>
-  <data name="&gt;&gt;PlMeustrip.ClientArea.Type" xml:space="preserve">
-    <value>Infragistics.Win.Misc.UltraPanelClientAreaUnsafe, Infragistics4.Win.Misc.v12.2, Version=12.2.20122.2123, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb</value>
-  </data>
-  <data name="&gt;&gt;PlMeustrip.ClientArea.Parent" xml:space="preserve">
-    <value>PlMeustrip</value>
-  </data>
-  <data name="&gt;&gt;PlMeustrip.ClientArea.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="PlMeustrip.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
-  </data>
-  <data name="PlMeustrip.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="PlMeustrip.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1264, 26</value>
-  </data>
-  <data name="PlMeustrip.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;PlMeustrip.Name" xml:space="preserve">
-    <value>PlMeustrip</value>
-  </data>
-  <data name="&gt;&gt;PlMeustrip.Type" xml:space="preserve">
-    <value>Infragistics.Win.Misc.UltraPanel, Infragistics4.Win.Misc.v12.2, Version=12.2.20122.2123, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb</value>
-  </data>
-  <data name="&gt;&gt;PlMeustrip.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;PlMeustrip.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
   <data name="新建项目ToolStripMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
     <value>Ctrl+N</value>
   </data>
@@ -267,6 +176,7 @@
   <data name="toolStripMenuItem2.Size" type="System.Drawing.Size, System.Drawing">
     <value>174, 6</value>
   </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="导出ToolStripMenuItem.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
@@ -299,6 +209,12 @@
   </data>
   <data name="退出ToolStripMenuItem.Text" xml:space="preserve">
     <value>退出(X)</value>
+  </data>
+  <data name="文件ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>74, 21</value>
+  </data>
+  <data name="文件ToolStripMenuItem.Text" xml:space="preserve">
+    <value>文件（F）</value>
   </data>
   <data name="撤销ToolStripMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
     <value>Ctrl+Z</value>
@@ -345,95 +261,140 @@
   <data name="粘贴PCtrlVToolStripMenuItem.Text" xml:space="preserve">
     <value>粘贴(P)</value>
   </data>
+  <data name="toolStripMenuItem8.Size" type="System.Drawing.Size, System.Drawing">
+    <value>158, 6</value>
+  </data>
+  <data name="相同ToolStripMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
+    <value>Ctrl+Q</value>
+  </data>
+  <data name="相同ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>161, 22</value>
+  </data>
+  <data name="相同ToolStripMenuItem.Text" xml:space="preserve">
+    <value>相同</value>
+  </data>
+  <data name="toolStripMenuItem14.Size" type="System.Drawing.Size, System.Drawing">
+    <value>158, 6</value>
+  </data>
+  <data name="升序ToolStripMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
+    <value>Ctrl+W</value>
+  </data>
+  <data name="升序ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>161, 22</value>
+  </data>
+  <data name="升序ToolStripMenuItem.Text" xml:space="preserve">
+    <value>升序</value>
+  </data>
+  <data name="编辑ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 21</value>
+  </data>
+  <data name="编辑ToolStripMenuItem.Text" xml:space="preserve">
+    <value>编辑（E）</value>
+  </data>
   <data name="设备在线搜索ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>148, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="设备在线搜索ToolStripMenuItem.Text" xml:space="preserve">
     <value>设备在线搜索</value>
   </data>
   <data name="toolStripMenuItem3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>145, 6</value>
+    <value>177, 6</value>
+  </data>
+  <data name="编译下载ToolStripMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
+    <value>Ctrl+D</value>
   </data>
   <data name="编译下载ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>148, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="编译下载ToolStripMenuItem.Text" xml:space="preserve">
     <value>编译&amp;&amp;下载</value>
   </data>
+  <data name="功能GToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>77, 21</value>
+  </data>
+  <data name="功能GToolStripMenuItem.Text" xml:space="preserve">
+    <value>功能（G）</value>
+  </data>
   <data name="时钟设置ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>148, 22</value>
+    <value>152, 22</value>
   </data>
   <data name="时钟设置ToolStripMenuItem.Text" xml:space="preserve">
     <value>时钟校时</value>
   </data>
   <data name="toolStripMenuItem6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>145, 6</value>
+    <value>149, 6</value>
   </data>
   <data name="固件更新ToolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>148, 22</value>
+    <value>152, 22</value>
   </data>
   <data name="固件更新ToolStripMenuItem1.Text" xml:space="preserve">
     <value>固件更新</value>
   </data>
   <data name="toolStripMenuItem5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>145, 6</value>
+    <value>149, 6</value>
   </data>
   <data name="应急状态设置ToolStripMenuItem.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
   <data name="应急状态设置ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>148, 22</value>
+    <value>152, 22</value>
   </data>
   <data name="应急状态设置ToolStripMenuItem.Text" xml:space="preserve">
     <value>应急状态设置</value>
   </data>
   <data name="toolStripMenuItem20.Size" type="System.Drawing.Size, System.Drawing">
-    <value>145, 6</value>
+    <value>149, 6</value>
   </data>
   <data name="天文时钟设置ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>148, 22</value>
+    <value>152, 22</value>
   </data>
   <data name="天文时钟设置ToolStripMenuItem.Text" xml:space="preserve">
     <value>天文时钟设置</value>
   </data>
   <data name="toolStripMenuItem21.Size" type="System.Drawing.Size, System.Drawing">
-    <value>145, 6</value>
+    <value>149, 6</value>
   </data>
   <data name="管理密码设置ToolStripMenuItem.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
   <data name="管理密码设置ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>148, 22</value>
+    <value>152, 22</value>
   </data>
   <data name="管理密码设置ToolStripMenuItem.Text" xml:space="preserve">
     <value>管理密码设置</value>
   </data>
   <data name="toolStripMenuItem22.Size" type="System.Drawing.Size, System.Drawing">
-    <value>145, 6</value>
+    <value>149, 6</value>
   </data>
   <data name="节假日设置ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>148, 22</value>
+    <value>152, 22</value>
   </data>
   <data name="节假日设置ToolStripMenuItem.Text" xml:space="preserve">
     <value>节假日设置</value>
   </data>
   <data name="toolStripMenuItem4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>145, 6</value>
+    <value>149, 6</value>
   </data>
   <data name="按键检测ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>148, 22</value>
+    <value>152, 22</value>
   </data>
   <data name="按键检测ToolStripMenuItem.Text" xml:space="preserve">
     <value>按键检测</value>
   </data>
   <data name="toolStripMenuItem7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>145, 6</value>
+    <value>149, 6</value>
   </data>
   <data name="主机网络设置ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>148, 22</value>
+    <value>152, 22</value>
   </data>
   <data name="主机网络设置ToolStripMenuItem.Text" xml:space="preserve">
     <value>主机网络设置</value>
+  </data>
+  <data name="工具TToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 21</value>
+  </data>
+  <data name="工具TToolStripMenuItem.Text" xml:space="preserve">
+    <value>工具（T）</value>
   </data>
   <data name="帮助ToolStripMenuItem.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -453,314 +414,71 @@
   <data name="关于软件ToolStripMenuItem.Text" xml:space="preserve">
     <value>关于软件</value>
   </data>
-  <data name="&gt;&gt;btnOpen.Name" xml:space="preserve">
-    <value>btnOpen</value>
+  <data name="帮助HToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>77, 21</value>
   </data>
-  <data name="&gt;&gt;btnOpen.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.ButtonX, DevComponents.DotNetBar2, Version=14.0.0.3, Culture=neutral, PublicKeyToken=c39c3242a43eee2b</value>
+  <data name="帮助HToolStripMenuItem.Text" xml:space="preserve">
+    <value>帮助（H）</value>
   </data>
-  <data name="&gt;&gt;btnOpen.Parent" xml:space="preserve">
-    <value>flowLayoutPanel1</value>
+  <data name="menuStrip1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
   </data>
-  <data name="&gt;&gt;btnOpen.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="menuStrip1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1264, 25</value>
   </data>
-  <data name="&gt;&gt;btnSave.Name" xml:space="preserve">
-    <value>btnSave</value>
-  </data>
-  <data name="&gt;&gt;btnSave.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.ButtonX, DevComponents.DotNetBar2, Version=14.0.0.3, Culture=neutral, PublicKeyToken=c39c3242a43eee2b</value>
-  </data>
-  <data name="&gt;&gt;btnSave.Parent" xml:space="preserve">
-    <value>flowLayoutPanel1</value>
-  </data>
-  <data name="&gt;&gt;btnSave.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;line2.Name" xml:space="preserve">
-    <value>line2</value>
-  </data>
-  <data name="&gt;&gt;line2.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.Controls.Line, DevComponents.DotNetBar2, Version=14.0.0.3, Culture=neutral, PublicKeyToken=c39c3242a43eee2b</value>
-  </data>
-  <data name="&gt;&gt;line2.Parent" xml:space="preserve">
-    <value>flowLayoutPanel1</value>
-  </data>
-  <data name="&gt;&gt;line2.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;btnCopy.Name" xml:space="preserve">
-    <value>btnCopy</value>
-  </data>
-  <data name="&gt;&gt;btnCopy.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.ButtonX, DevComponents.DotNetBar2, Version=14.0.0.3, Culture=neutral, PublicKeyToken=c39c3242a43eee2b</value>
-  </data>
-  <data name="&gt;&gt;btnCopy.Parent" xml:space="preserve">
-    <value>flowLayoutPanel1</value>
-  </data>
-  <data name="&gt;&gt;btnCopy.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;btnPast.Name" xml:space="preserve">
-    <value>btnPast</value>
-  </data>
-  <data name="&gt;&gt;btnPast.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.ButtonX, DevComponents.DotNetBar2, Version=14.0.0.3, Culture=neutral, PublicKeyToken=c39c3242a43eee2b</value>
-  </data>
-  <data name="&gt;&gt;btnPast.Parent" xml:space="preserve">
-    <value>flowLayoutPanel1</value>
-  </data>
-  <data name="&gt;&gt;btnPast.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;line1.Name" xml:space="preserve">
-    <value>line1</value>
-  </data>
-  <data name="&gt;&gt;line1.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.Controls.Line, DevComponents.DotNetBar2, Version=14.0.0.3, Culture=neutral, PublicKeyToken=c39c3242a43eee2b</value>
-  </data>
-  <data name="&gt;&gt;line1.Parent" xml:space="preserve">
-    <value>flowLayoutPanel1</value>
-  </data>
-  <data name="&gt;&gt;line1.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;btnUndo.Name" xml:space="preserve">
-    <value>btnUndo</value>
-  </data>
-  <data name="&gt;&gt;btnUndo.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.ButtonX, DevComponents.DotNetBar2, Version=14.0.0.3, Culture=neutral, PublicKeyToken=c39c3242a43eee2b</value>
-  </data>
-  <data name="&gt;&gt;btnUndo.Parent" xml:space="preserve">
-    <value>flowLayoutPanel1</value>
-  </data>
-  <data name="&gt;&gt;btnUndo.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="&gt;&gt;btnRedo.Name" xml:space="preserve">
-    <value>btnRedo</value>
-  </data>
-  <data name="&gt;&gt;btnRedo.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.ButtonX, DevComponents.DotNetBar2, Version=14.0.0.3, Culture=neutral, PublicKeyToken=c39c3242a43eee2b</value>
-  </data>
-  <data name="&gt;&gt;btnRedo.Parent" xml:space="preserve">
-    <value>flowLayoutPanel1</value>
-  </data>
-  <data name="&gt;&gt;btnRedo.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="&gt;&gt;line3.Name" xml:space="preserve">
-    <value>line3</value>
-  </data>
-  <data name="&gt;&gt;line3.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.Controls.Line, DevComponents.DotNetBar2, Version=14.0.0.3, Culture=neutral, PublicKeyToken=c39c3242a43eee2b</value>
-  </data>
-  <data name="&gt;&gt;line3.Parent" xml:space="preserve">
-    <value>flowLayoutPanel1</value>
-  </data>
-  <data name="&gt;&gt;line3.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <data name="&gt;&gt;btnCompileDownload.Name" xml:space="preserve">
-    <value>btnCompileDownload</value>
-  </data>
-  <data name="&gt;&gt;btnCompileDownload.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.ButtonX, DevComponents.DotNetBar2, Version=14.0.0.3, Culture=neutral, PublicKeyToken=c39c3242a43eee2b</value>
-  </data>
-  <data name="&gt;&gt;btnCompileDownload.Parent" xml:space="preserve">
-    <value>flowLayoutPanel1</value>
-  </data>
-  <data name="&gt;&gt;btnCompileDownload.ZOrder" xml:space="preserve">
-    <value>9</value>
-  </data>
-  <data name="&gt;&gt;line4.Name" xml:space="preserve">
-    <value>line4</value>
-  </data>
-  <data name="&gt;&gt;line4.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.Controls.Line, DevComponents.DotNetBar2, Version=14.0.0.3, Culture=neutral, PublicKeyToken=c39c3242a43eee2b</value>
-  </data>
-  <data name="&gt;&gt;line4.Parent" xml:space="preserve">
-    <value>flowLayoutPanel1</value>
-  </data>
-  <data name="&gt;&gt;line4.ZOrder" xml:space="preserve">
+  <data name="menuStrip1.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
   </data>
-  <data name="&gt;&gt;buttonX12.Name" xml:space="preserve">
-    <value>buttonX12</value>
+  <data name="menuStrip1.Text" xml:space="preserve">
+    <value>menuStrip1</value>
   </data>
-  <data name="&gt;&gt;buttonX12.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.ButtonX, DevComponents.DotNetBar2, Version=14.0.0.3, Culture=neutral, PublicKeyToken=c39c3242a43eee2b</value>
+  <data name="&gt;&gt;menuStrip1.Name" xml:space="preserve">
+    <value>menuStrip1</value>
   </data>
-  <data name="&gt;&gt;buttonX12.Parent" xml:space="preserve">
-    <value>flowLayoutPanel1</value>
+  <data name="&gt;&gt;menuStrip1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.MenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;buttonX12.ZOrder" xml:space="preserve">
-    <value>11</value>
+  <data name="&gt;&gt;menuStrip1.Parent" xml:space="preserve">
+    <value>PlMeustrip.ClientArea</value>
   </data>
-  <data name="&gt;&gt;buttonX2.Name" xml:space="preserve">
-    <value>buttonX2</value>
-  </data>
-  <data name="&gt;&gt;buttonX2.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.ButtonX, DevComponents.DotNetBar2, Version=14.0.0.3, Culture=neutral, PublicKeyToken=c39c3242a43eee2b</value>
-  </data>
-  <data name="&gt;&gt;buttonX2.Parent" xml:space="preserve">
-    <value>flowLayoutPanel1</value>
-  </data>
-  <data name="&gt;&gt;buttonX2.ZOrder" xml:space="preserve">
-    <value>12</value>
-  </data>
-  <data name="&gt;&gt;buttonX11.Name" xml:space="preserve">
-    <value>buttonX11</value>
-  </data>
-  <data name="&gt;&gt;buttonX11.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.ButtonX, DevComponents.DotNetBar2, Version=14.0.0.3, Culture=neutral, PublicKeyToken=c39c3242a43eee2b</value>
-  </data>
-  <data name="&gt;&gt;buttonX11.Parent" xml:space="preserve">
-    <value>flowLayoutPanel1</value>
-  </data>
-  <data name="&gt;&gt;buttonX11.ZOrder" xml:space="preserve">
-    <value>13</value>
-  </data>
-  <data name="&gt;&gt;buttonX10.Name" xml:space="preserve">
-    <value>buttonX10</value>
-  </data>
-  <data name="&gt;&gt;buttonX10.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.ButtonX, DevComponents.DotNetBar2, Version=14.0.0.3, Culture=neutral, PublicKeyToken=c39c3242a43eee2b</value>
-  </data>
-  <data name="&gt;&gt;buttonX10.Parent" xml:space="preserve">
-    <value>flowLayoutPanel1</value>
-  </data>
-  <data name="&gt;&gt;buttonX10.ZOrder" xml:space="preserve">
-    <value>14</value>
-  </data>
-  <data name="&gt;&gt;buttonX9.Name" xml:space="preserve">
-    <value>buttonX9</value>
-  </data>
-  <data name="&gt;&gt;buttonX9.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.ButtonX, DevComponents.DotNetBar2, Version=14.0.0.3, Culture=neutral, PublicKeyToken=c39c3242a43eee2b</value>
-  </data>
-  <data name="&gt;&gt;buttonX9.Parent" xml:space="preserve">
-    <value>flowLayoutPanel1</value>
-  </data>
-  <data name="&gt;&gt;buttonX9.ZOrder" xml:space="preserve">
-    <value>15</value>
-  </data>
-  <data name="&gt;&gt;buttonX16.Name" xml:space="preserve">
-    <value>buttonX16</value>
-  </data>
-  <data name="&gt;&gt;buttonX16.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.ButtonX, DevComponents.DotNetBar2, Version=14.0.0.3, Culture=neutral, PublicKeyToken=c39c3242a43eee2b</value>
-  </data>
-  <data name="&gt;&gt;buttonX16.Parent" xml:space="preserve">
-    <value>flowLayoutPanel1</value>
-  </data>
-  <data name="&gt;&gt;buttonX16.ZOrder" xml:space="preserve">
-    <value>16</value>
-  </data>
-  <data name="&gt;&gt;buttonX15.Name" xml:space="preserve">
-    <value>buttonX15</value>
-  </data>
-  <data name="&gt;&gt;buttonX15.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.ButtonX, DevComponents.DotNetBar2, Version=14.0.0.3, Culture=neutral, PublicKeyToken=c39c3242a43eee2b</value>
-  </data>
-  <data name="&gt;&gt;buttonX15.Parent" xml:space="preserve">
-    <value>flowLayoutPanel1</value>
-  </data>
-  <data name="&gt;&gt;buttonX15.ZOrder" xml:space="preserve">
-    <value>17</value>
-  </data>
-  <data name="&gt;&gt;buttonX14.Name" xml:space="preserve">
-    <value>buttonX14</value>
-  </data>
-  <data name="&gt;&gt;buttonX14.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.ButtonX, DevComponents.DotNetBar2, Version=14.0.0.3, Culture=neutral, PublicKeyToken=c39c3242a43eee2b</value>
-  </data>
-  <data name="&gt;&gt;buttonX14.Parent" xml:space="preserve">
-    <value>flowLayoutPanel1</value>
-  </data>
-  <data name="&gt;&gt;buttonX14.ZOrder" xml:space="preserve">
-    <value>18</value>
-  </data>
-  <data name="&gt;&gt;buttonX13.Name" xml:space="preserve">
-    <value>buttonX13</value>
-  </data>
-  <data name="&gt;&gt;buttonX13.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.ButtonX, DevComponents.DotNetBar2, Version=14.0.0.3, Culture=neutral, PublicKeyToken=c39c3242a43eee2b</value>
-  </data>
-  <data name="&gt;&gt;buttonX13.Parent" xml:space="preserve">
-    <value>flowLayoutPanel1</value>
-  </data>
-  <data name="&gt;&gt;buttonX13.ZOrder" xml:space="preserve">
-    <value>19</value>
-  </data>
-  <data name="&gt;&gt;buttonX8.Name" xml:space="preserve">
-    <value>buttonX8</value>
-  </data>
-  <data name="&gt;&gt;buttonX8.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.ButtonX, DevComponents.DotNetBar2, Version=14.0.0.3, Culture=neutral, PublicKeyToken=c39c3242a43eee2b</value>
-  </data>
-  <data name="&gt;&gt;buttonX8.Parent" xml:space="preserve">
-    <value>flowLayoutPanel1</value>
-  </data>
-  <data name="&gt;&gt;buttonX8.ZOrder" xml:space="preserve">
-    <value>20</value>
-  </data>
-  <data name="flowLayoutPanel1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>11, 5</value>
-  </data>
-  <data name="flowLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>866, 40</value>
-  </data>
-  <data name="flowLayoutPanel1.TabIndex" type="System.Int32, mscorlib">
-    <value>26</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanel1.Name" xml:space="preserve">
-    <value>flowLayoutPanel1</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanel1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanel1.Parent" xml:space="preserve">
-    <value>PlToolstrip.ClientArea</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanel1.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;menuStrip1.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="&gt;&gt;PlToolstrip.ClientArea.Name" xml:space="preserve">
-    <value>PlToolstrip.ClientArea</value>
+  <data name="&gt;&gt;PlMeustrip.ClientArea.Name" xml:space="preserve">
+    <value>PlMeustrip.ClientArea</value>
   </data>
-  <data name="&gt;&gt;PlToolstrip.ClientArea.Type" xml:space="preserve">
+  <data name="&gt;&gt;PlMeustrip.ClientArea.Type" xml:space="preserve">
     <value>Infragistics.Win.Misc.UltraPanelClientAreaUnsafe, Infragistics4.Win.Misc.v12.2, Version=12.2.20122.2123, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb</value>
   </data>
-  <data name="&gt;&gt;PlToolstrip.ClientArea.Parent" xml:space="preserve">
-    <value>PlToolstrip</value>
+  <data name="&gt;&gt;PlMeustrip.ClientArea.Parent" xml:space="preserve">
+    <value>PlMeustrip</value>
   </data>
-  <data name="&gt;&gt;PlToolstrip.ClientArea.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;PlMeustrip.ClientArea.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="PlToolstrip.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+  <data name="PlMeustrip.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>
   </data>
-  <data name="PlToolstrip.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 26</value>
+  <data name="PlMeustrip.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
   </data>
-  <data name="PlToolstrip.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1264, 50</value>
+  <data name="PlMeustrip.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1264, 26</value>
   </data>
-  <data name="PlToolstrip.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
+  <data name="PlMeustrip.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
   </data>
-  <data name="&gt;&gt;PlToolstrip.Name" xml:space="preserve">
-    <value>PlToolstrip</value>
+  <data name="&gt;&gt;PlMeustrip.Name" xml:space="preserve">
+    <value>PlMeustrip</value>
   </data>
-  <data name="&gt;&gt;PlToolstrip.Type" xml:space="preserve">
+  <data name="&gt;&gt;PlMeustrip.Type" xml:space="preserve">
     <value>Infragistics.Win.Misc.UltraPanel, Infragistics4.Win.Misc.v12.2, Version=12.2.20122.2123, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb</value>
   </data>
-  <data name="&gt;&gt;PlToolstrip.Parent" xml:space="preserve">
+  <data name="&gt;&gt;PlMeustrip.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;PlToolstrip.ZOrder" xml:space="preserve">
-    <value>2</value>
+  <data name="&gt;&gt;PlMeustrip.ZOrder" xml:space="preserve">
+    <value>3</value>
   </data>
   <data name="btnOpen.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>None</value>
@@ -4804,7 +4522,7 @@
     <value>13</value>
   </data>
   <data name="btnCompileDownload.Tooltip" xml:space="preserve">
-    <value>编译下载 (Ctrl+O)</value>
+    <value>编译下载 (Ctrl+D)</value>
   </data>
   <data name="&gt;&gt;btnCompileDownload.Name" xml:space="preserve">
     <value>btnCompileDownload</value>
@@ -4844,6 +4562,611 @@
   </data>
   <data name="&gt;&gt;line4.ZOrder" xml:space="preserve">
     <value>10</value>
+  </data>
+  <data name="btnSame.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="btnSame.Font" type="System.Drawing.Font, System.Drawing">
+    <value>黑体, 9pt</value>
+  </data>
+  <data name="btnSame.HoverImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABkAAAAZCAYAAADE6YVjAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1
+        MAAA6mAAADqYAAAXb5JfxUYAAAAJcEhZcwAACxIAAAsSAdLdfvwAADgaaVRYdFhNTDpjb20uYWRvYmUu
+        eG1wAAAAAAA8P3hwYWNrZXQgYmVnaW49Iu+7vyIgaWQ9Ilc1TTBNcENlaGlIenJlU3pOVGN6a2M5ZCI/
+        Pgo8eDp4bXBtZXRhIHhtbG5zOng9ImFkb2JlOm5zOm1ldGEvIiB4OnhtcHRrPSJBZG9iZSBYTVAgQ29y
+        ZSA1LjUtYzAxNCA3OS4xNTE0ODEsIDIwMTMvMDMvMTMtMTI6MDk6MTUgICAgICAgICI+CiAgIDxyZGY6
+        UkRGIHhtbG5zOnJkZj0iaHR0cDovL3d3dy53My5vcmcvMTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIyI+
+        CiAgICAgIDxyZGY6RGVzY3JpcHRpb24gcmRmOmFib3V0PSIiCiAgICAgICAgICAgIHhtbG5zOnhtcD0i
+        aHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLyIKICAgICAgICAgICAgeG1sbnM6ZGM9Imh0dHA6Ly9w
+        dXJsLm9yZy9kYy9lbGVtZW50cy8xLjEvIgogICAgICAgICAgICB4bWxuczpwaG90b3Nob3A9Imh0dHA6
+        Ly9ucy5hZG9iZS5jb20vcGhvdG9zaG9wLzEuMC8iCiAgICAgICAgICAgIHhtbG5zOnhtcE1NPSJodHRw
+        Oi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvbW0vIgogICAgICAgICAgICB4bWxuczpzdEV2dD0iaHR0cDov
+        L25zLmFkb2JlLmNvbS94YXAvMS4wL3NUeXBlL1Jlc291cmNlRXZlbnQjIgogICAgICAgICAgICB4bWxu
+        czp0aWZmPSJodHRwOi8vbnMuYWRvYmUuY29tL3RpZmYvMS4wLyIKICAgICAgICAgICAgeG1sbnM6ZXhp
+        Zj0iaHR0cDovL25zLmFkb2JlLmNvbS9leGlmLzEuMC8iPgogICAgICAgICA8eG1wOkNyZWF0b3JUb29s
+        PkFkb2JlIFBob3Rvc2hvcCBDQyAoV2luZG93cyk8L3htcDpDcmVhdG9yVG9vbD4KICAgICAgICAgPHht
+        cDpDcmVhdGVEYXRlPjIwMTktMTEtMjFUMTc6NTM6NTErMDg6MDA8L3htcDpDcmVhdGVEYXRlPgogICAg
+        ICAgICA8eG1wOk1vZGlmeURhdGU+MjAxOS0xMS0yMVQxNzo1NjozMSswODowMDwveG1wOk1vZGlmeURh
+        dGU+CiAgICAgICAgIDx4bXA6TWV0YWRhdGFEYXRlPjIwMTktMTEtMjFUMTc6NTY6MzErMDg6MDA8L3ht
+        cDpNZXRhZGF0YURhdGU+CiAgICAgICAgIDxkYzpmb3JtYXQ+aW1hZ2UvcG5nPC9kYzpmb3JtYXQ+CiAg
+        ICAgICAgIDxwaG90b3Nob3A6Q29sb3JNb2RlPjM8L3Bob3Rvc2hvcDpDb2xvck1vZGU+CiAgICAgICAg
+        IDx4bXBNTTpJbnN0YW5jZUlEPnhtcC5paWQ6NGVlMzVlOWItZGU1Zi0wNjRmLTk1NjQtMDg3Yzk0MTAw
+        MzEyPC94bXBNTTpJbnN0YW5jZUlEPgogICAgICAgICA8eG1wTU06RG9jdW1lbnRJRD54bXAuZGlkOjRl
+        ZTM1ZTliLWRlNWYtMDY0Zi05NTY0LTA4N2M5NDEwMDMxMjwveG1wTU06RG9jdW1lbnRJRD4KICAgICAg
+        ICAgPHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD54bXAuZGlkOjRlZTM1ZTliLWRlNWYtMDY0Zi05NTY0
+        LTA4N2M5NDEwMDMxMjwveG1wTU06T3JpZ2luYWxEb2N1bWVudElEPgogICAgICAgICA8eG1wTU06SGlz
+        dG9yeT4KICAgICAgICAgICAgPHJkZjpTZXE+CiAgICAgICAgICAgICAgIDxyZGY6bGkgcmRmOnBhcnNl
+        VHlwZT0iUmVzb3VyY2UiPgogICAgICAgICAgICAgICAgICA8c3RFdnQ6YWN0aW9uPmNyZWF0ZWQ8L3N0
+        RXZ0OmFjdGlvbj4KICAgICAgICAgICAgICAgICAgPHN0RXZ0Omluc3RhbmNlSUQ+eG1wLmlpZDo0ZWUz
+        NWU5Yi1kZTVmLTA2NGYtOTU2NC0wODdjOTQxMDAzMTI8L3N0RXZ0Omluc3RhbmNlSUQ+CiAgICAgICAg
+        ICAgICAgICAgIDxzdEV2dDp3aGVuPjIwMTktMTEtMjFUMTc6NTM6NTErMDg6MDA8L3N0RXZ0OndoZW4+
+        CiAgICAgICAgICAgICAgICAgIDxzdEV2dDpzb2Z0d2FyZUFnZW50PkFkb2JlIFBob3Rvc2hvcCBDQyAo
+        V2luZG93cyk8L3N0RXZ0OnNvZnR3YXJlQWdlbnQ+CiAgICAgICAgICAgICAgIDwvcmRmOmxpPgogICAg
+        ICAgICAgICA8L3JkZjpTZXE+CiAgICAgICAgIDwveG1wTU06SGlzdG9yeT4KICAgICAgICAgPHRpZmY6
+        T3JpZW50YXRpb24+MTwvdGlmZjpPcmllbnRhdGlvbj4KICAgICAgICAgPHRpZmY6WFJlc29sdXRpb24+
+        NzIwMDAwLzEwMDAwPC90aWZmOlhSZXNvbHV0aW9uPgogICAgICAgICA8dGlmZjpZUmVzb2x1dGlvbj43
+        MjAwMDAvMTAwMDA8L3RpZmY6WVJlc29sdXRpb24+CiAgICAgICAgIDx0aWZmOlJlc29sdXRpb25Vbml0
+        PjI8L3RpZmY6UmVzb2x1dGlvblVuaXQ+CiAgICAgICAgIDxleGlmOkNvbG9yU3BhY2U+NjU1MzU8L2V4
+        aWY6Q29sb3JTcGFjZT4KICAgICAgICAgPGV4aWY6UGl4ZWxYRGltZW5zaW9uPjI1PC9leGlmOlBpeGVs
+        WERpbWVuc2lvbj4KICAgICAgICAgPGV4aWY6UGl4ZWxZRGltZW5zaW9uPjI1PC9leGlmOlBpeGVsWURp
+        bWVuc2lvbj4KICAgICAgPC9yZGY6RGVzY3JpcHRpb24+CiAgIDwvcmRmOlJERj4KPC94OnhtcG1ldGE+
+        CiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAK
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAog
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        IAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        CiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAK
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAog
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        IAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgCjw/eHBhY2tldCBl
+        bmQ9InciPz5qtLhEAAAC+UlEQVRIS7WVPWgUQRTHFzxBBJNKgigGFGMl7u15GhCstBRBbEwawSaCndik
+        EAVBgmhhkdvLJfGrTi+xErFR0KBYaYiQBDSiXRAk4fn7z+7cHdm5i0VS/JndefPeb96br8jMtl3Bzq1W
+        8yN+3KYnFpUnUGpRUrdDfN+o1O1jJbU12vUktZ+0L7CP8n0kmWbsZCbGRHFq57Fd+T9I3S7gtEBA66LP
+        BK+2QYaY2Ap61RkCgLYH5xkcLJmwJRzu01bLU1Y6wUyZQF+5ZufIYowxq4IlDbuH7sonhy8WIQqeAfYy
+        4H2lhmNqD5ldb7nhyhYBiXJIhC0CFCU1O8p3SnCVsj3D+SKEIBLGWQHiSRuOVTJKkOS1rvCPvSm3ZoBy
+        WD9jXtPvIV+KkHGnYaVbHrc7x5l1nGfggwblM8qA+/h/R78gy0VINpMfzPY75dkds2NYB0EO4DDSUSl2
+        ZZlnhfbz/Q3b3wKE2VzDqAV8FD8DyvooC3QRB1+CgmTPx3mIdIrMRgsQHGoY3rAOAyqTLxUqYdNuC0r2
+        AMSpAClPs4vqtkOLLTUd67aHYElHpdh9uRBl7wLhjABxgA2QSwQLliqX7G4TaLcJolaboQBxiyxjK7hX
+        10xk1zgFdzs0g+wC0leAkO5Otw29WpCua4JfSaXivsrOWmrH8J+jr1GE1O05xqEApOvuIpjs2W3BrmR3
+        1ugzMhkJQf5IAAY9yJ3oTc6J7LpmdK50vjhnv4CsULaDIYgOkGb3G8BpB6G+/LuM1IYkm9vy3BDcFLeV
+        hW4OrU8I8hW5EuC4DOSMy6SVkbsY3QWpK0f/+fWu3Ug7JADjZv09GILMe4hT5jAFZGATSA/2B/n4D7rF
+        /Y0egiw1gzfsVtvbsIrzGDqrdySHlJh9lW2vd2YxB8wA6M2fC6cChBm/JeAKDpd9GVjIk/x/cvANIqhv
+        F/SCMqkoftoCBCGkfFVvM0F9GVxZCNJPBjfpf8m33vZ1vtfQHP3X0WF3gAVpyyII2U4FO7dWFv0DNQXK
+        hueDGZIAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="btnSame.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABkAAAAZCAYAAADE6YVjAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1
+        MAAA6mAAADqYAAAXb5JfxUYAAAAJcEhZcwAACxIAAAsSAdLdfvwAADgaaVRYdFhNTDpjb20uYWRvYmUu
+        eG1wAAAAAAA8P3hwYWNrZXQgYmVnaW49Iu+7vyIgaWQ9Ilc1TTBNcENlaGlIenJlU3pOVGN6a2M5ZCI/
+        Pgo8eDp4bXBtZXRhIHhtbG5zOng9ImFkb2JlOm5zOm1ldGEvIiB4OnhtcHRrPSJBZG9iZSBYTVAgQ29y
+        ZSA1LjUtYzAxNCA3OS4xNTE0ODEsIDIwMTMvMDMvMTMtMTI6MDk6MTUgICAgICAgICI+CiAgIDxyZGY6
+        UkRGIHhtbG5zOnJkZj0iaHR0cDovL3d3dy53My5vcmcvMTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIyI+
+        CiAgICAgIDxyZGY6RGVzY3JpcHRpb24gcmRmOmFib3V0PSIiCiAgICAgICAgICAgIHhtbG5zOnhtcD0i
+        aHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLyIKICAgICAgICAgICAgeG1sbnM6ZGM9Imh0dHA6Ly9w
+        dXJsLm9yZy9kYy9lbGVtZW50cy8xLjEvIgogICAgICAgICAgICB4bWxuczpwaG90b3Nob3A9Imh0dHA6
+        Ly9ucy5hZG9iZS5jb20vcGhvdG9zaG9wLzEuMC8iCiAgICAgICAgICAgIHhtbG5zOnhtcE1NPSJodHRw
+        Oi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvbW0vIgogICAgICAgICAgICB4bWxuczpzdEV2dD0iaHR0cDov
+        L25zLmFkb2JlLmNvbS94YXAvMS4wL3NUeXBlL1Jlc291cmNlRXZlbnQjIgogICAgICAgICAgICB4bWxu
+        czp0aWZmPSJodHRwOi8vbnMuYWRvYmUuY29tL3RpZmYvMS4wLyIKICAgICAgICAgICAgeG1sbnM6ZXhp
+        Zj0iaHR0cDovL25zLmFkb2JlLmNvbS9leGlmLzEuMC8iPgogICAgICAgICA8eG1wOkNyZWF0b3JUb29s
+        PkFkb2JlIFBob3Rvc2hvcCBDQyAoV2luZG93cyk8L3htcDpDcmVhdG9yVG9vbD4KICAgICAgICAgPHht
+        cDpDcmVhdGVEYXRlPjIwMTktMTEtMjFUMTc6NTM6MjcrMDg6MDA8L3htcDpDcmVhdGVEYXRlPgogICAg
+        ICAgICA8eG1wOk1vZGlmeURhdGU+MjAxOS0xMS0yMVQxNzo1NTo0NiswODowMDwveG1wOk1vZGlmeURh
+        dGU+CiAgICAgICAgIDx4bXA6TWV0YWRhdGFEYXRlPjIwMTktMTEtMjFUMTc6NTU6NDYrMDg6MDA8L3ht
+        cDpNZXRhZGF0YURhdGU+CiAgICAgICAgIDxkYzpmb3JtYXQ+aW1hZ2UvcG5nPC9kYzpmb3JtYXQ+CiAg
+        ICAgICAgIDxwaG90b3Nob3A6Q29sb3JNb2RlPjM8L3Bob3Rvc2hvcDpDb2xvck1vZGU+CiAgICAgICAg
+        IDx4bXBNTTpJbnN0YW5jZUlEPnhtcC5paWQ6ZDdmY2FlODUtZDkxOS02ZjRkLTgzMWUtNWI3MTI3ZDBj
+        MzhmPC94bXBNTTpJbnN0YW5jZUlEPgogICAgICAgICA8eG1wTU06RG9jdW1lbnRJRD54bXAuZGlkOmQ3
+        ZmNhZTg1LWQ5MTktNmY0ZC04MzFlLTViNzEyN2QwYzM4ZjwveG1wTU06RG9jdW1lbnRJRD4KICAgICAg
+        ICAgPHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD54bXAuZGlkOmQ3ZmNhZTg1LWQ5MTktNmY0ZC04MzFl
+        LTViNzEyN2QwYzM4ZjwveG1wTU06T3JpZ2luYWxEb2N1bWVudElEPgogICAgICAgICA8eG1wTU06SGlz
+        dG9yeT4KICAgICAgICAgICAgPHJkZjpTZXE+CiAgICAgICAgICAgICAgIDxyZGY6bGkgcmRmOnBhcnNl
+        VHlwZT0iUmVzb3VyY2UiPgogICAgICAgICAgICAgICAgICA8c3RFdnQ6YWN0aW9uPmNyZWF0ZWQ8L3N0
+        RXZ0OmFjdGlvbj4KICAgICAgICAgICAgICAgICAgPHN0RXZ0Omluc3RhbmNlSUQ+eG1wLmlpZDpkN2Zj
+        YWU4NS1kOTE5LTZmNGQtODMxZS01YjcxMjdkMGMzOGY8L3N0RXZ0Omluc3RhbmNlSUQ+CiAgICAgICAg
+        ICAgICAgICAgIDxzdEV2dDp3aGVuPjIwMTktMTEtMjFUMTc6NTM6MjcrMDg6MDA8L3N0RXZ0OndoZW4+
+        CiAgICAgICAgICAgICAgICAgIDxzdEV2dDpzb2Z0d2FyZUFnZW50PkFkb2JlIFBob3Rvc2hvcCBDQyAo
+        V2luZG93cyk8L3N0RXZ0OnNvZnR3YXJlQWdlbnQ+CiAgICAgICAgICAgICAgIDwvcmRmOmxpPgogICAg
+        ICAgICAgICA8L3JkZjpTZXE+CiAgICAgICAgIDwveG1wTU06SGlzdG9yeT4KICAgICAgICAgPHRpZmY6
+        T3JpZW50YXRpb24+MTwvdGlmZjpPcmllbnRhdGlvbj4KICAgICAgICAgPHRpZmY6WFJlc29sdXRpb24+
+        NzIwMDAwLzEwMDAwPC90aWZmOlhSZXNvbHV0aW9uPgogICAgICAgICA8dGlmZjpZUmVzb2x1dGlvbj43
+        MjAwMDAvMTAwMDA8L3RpZmY6WVJlc29sdXRpb24+CiAgICAgICAgIDx0aWZmOlJlc29sdXRpb25Vbml0
+        PjI8L3RpZmY6UmVzb2x1dGlvblVuaXQ+CiAgICAgICAgIDxleGlmOkNvbG9yU3BhY2U+NjU1MzU8L2V4
+        aWY6Q29sb3JTcGFjZT4KICAgICAgICAgPGV4aWY6UGl4ZWxYRGltZW5zaW9uPjI1PC9leGlmOlBpeGVs
+        WERpbWVuc2lvbj4KICAgICAgICAgPGV4aWY6UGl4ZWxZRGltZW5zaW9uPjI1PC9leGlmOlBpeGVsWURp
+        bWVuc2lvbj4KICAgICAgPC9yZGY6RGVzY3JpcHRpb24+CiAgIDwvcmRmOlJERj4KPC94OnhtcG1ldGE+
+        CiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAK
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAog
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        IAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        CiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAK
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAog
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        IAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+        ICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgCjw/eHBhY2tldCBl
+        bmQ9InciPz68mmIZAAAC9ElEQVRIS7WVPWgUQRiGF4wgAS+VBFEMKMbKRogKgpWWEhAbk0awiWAnNilE
+        ISBB7nZnZndPECvr9BIrERsFFcVKQ4QkoBHtgiAJ5/PO7l7u2N2LRVK8zO58P8/8fDMTdDqdPVdl526r
+        +xGGYY9agbUuiOMExcdp7zgXf3Qu2aTdsjb+SfsczTrnThoTBcYYL3yCKEqu4HPjfyGTJFomsENbp88k
+        n+iBTAFYJ/5lLaTVaqlt4Lig5DivokfW2okoioZIKvgotsv4zFubbAiG/SGaw1bAV2ogHnCI4HcsUydJ
+        khajG8lG6FiGiNZDfGuMliY9xfdjpKXsneFSCcIocsWLmgGJp5NEibQMVnvjl5DgHCRbKogfABpjVq96
+        IF9KkDx4WjMwpv0gDJXY9SWul4fgmxzm/y0SZK0EiaL2GIYfOH8PQzcchiafmTtK/8wAye5hQKQjfH9D
+        f0sQpn4r22hrm82m3x/NAl0loFiCkmTP/QqIdA7NliDMoI1es1zjWu9iD5AqqlEn2SsgXiUIVTUCZB8V
+        FaRp2t0PdJBkZwZI9nxvsv0RQEVRguh8yCEDaCRdyDWCK5cql+z49RZAzKDbZUiWUI59AGngTGSXXwHI
+        IQeAjJYgJN8vyLa6kIF7gvwtUJwzIKeJ/0DfkwpI/Ayj7h2c+yADqwtRXVqeVqCqBEQB6TCnM1WQPxIB
+        5xXEt0YlyMBzktkdEIPcMN+/6F/n3B2rgugAaWS/gVygLSCogPZLNrUqd90Q3BT3+SeHm1Z/FeRr5qAD
+        Fq/RXlQZ55egT6TyVrAuSmPUKrGlP6U1U9lhdovF/lRBlgpIISBPgYzvAGlQ8k35A3ivWzy70cNKyGqW
+        XJtm7xEwlwXGGyScB3IJCO+IhwwZ43io9M64lRywoAOdv0d1EPcGZ1605HoUGRJJ9ix9n5SkXm4Z+CQQ
+        Em8DKiGM+CbLwtusPSggkU7/GLO4i/0FSfW2bzHbTZJyFpLb2E4UN8SOkL1UZefuqhP8A8SOqjyG90jR
+        AAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="btnSame.Location" type="System.Drawing.Point, System.Drawing">
+    <value>363, 8</value>
+  </data>
+  <data name="btnSame.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>8, 8, 8, 8</value>
+  </data>
+  <data name="btnSame.Size" type="System.Drawing.Size, System.Drawing">
+    <value>25, 25</value>
+  </data>
+  <data name="btnSame.TabIndex" type="System.Int32, mscorlib">
+    <value>26</value>
+  </data>
+  <data name="btnSame.Tooltip" xml:space="preserve">
+    <value>相同 (Ctrl+Q)</value>
+  </data>
+  <data name="&gt;&gt;btnSame.Name" xml:space="preserve">
+    <value>btnSame</value>
+  </data>
+  <data name="&gt;&gt;btnSame.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.ButtonX, DevComponents.DotNetBar2, Version=14.0.0.3, Culture=neutral, PublicKeyToken=c39c3242a43eee2b</value>
+  </data>
+  <data name="&gt;&gt;btnSame.Parent" xml:space="preserve">
+    <value>flowLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;btnSame.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="btnAscending.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="btnAscending.Font" type="System.Drawing.Font, System.Drawing">
+    <value>黑体, 9pt</value>
+  </data>
+  <data name="btnAscending.HoverImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABkAAAAZCAYAAADE6YVjAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAEWSURBVEhLzZXbEYIwEEUpwRIsIYMNWAIl2ImU4B/gj6VIJ9qBJay7ccNsHhvC4Ihn5s4Ae7M3
+        ITyqTTE32PFhknqAFnXOyXSwZ3saNI11Byc+jTgMAHPCkCPbY9DQkAmDXtqKZDNNagg1rXt4OCMeX7jk
+        QQ1mpd1ynH0rZ0PCAfl7uwRqFgZY9XBnywRNhjY3JVoF22LQMCZDPmrYZknUJ2Gflm0+WLSbrYn2Sd7j
+        lMcpGRJutiZ1hiWYKxhq4BQ0fsoaD1lPEDLyZQ+6Tg+EVO7ljSgJkR7hLV9pMFBdSaRvr2Q1fxMSeJY/
+        dUGD7UKosVP2W6VRErKakhD7v8AvBZ8upyQkVyviJyE4eNpU7S3O1Tagqt6ghC9N1WPL1AAAAABJRU5E
+        rkJggg==
+</value>
+  </data>
+  <data name="btnAscending.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABkAAAAZCAYAAADE6YVjAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAEMSURBVEhLzVSBEYIwDGQER3AER3AERnAT2aBeQ89xcBPdwBGwkSCpTUqxnvh3fyfk+980lmpV
+        GGM29FMEADQA7piiMectyWVYCxdr3YEeIwC0/TxhT/IYvlijyAfdtY5iQ4lKCJpa216Z8ESlAGgwR/XI
+        fdGfNd9N28+e7RKg2XsAsSPJC8Nm5IFjFySLgcMWAohQk+wJWTMSGpKFQBN5wUCcEz9jSTNRCImHrVHZ
+        YQ6cczs0mBiY33iNlpSDh+Cc6HUAml/Hmbq8EdB8pBbCNRMXdMoXpjqJ+eVOivE3IVzz0b+OG6wcwu9V
+        4lulISekGDkhuHv8UtDjcuSFFHb5o5BpqNotTtVWQFU9AGhhIKSfibUPAAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="btnAscending.Location" type="System.Drawing.Point, System.Drawing">
+    <value>404, 8</value>
+  </data>
+  <data name="btnAscending.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>8, 8, 8, 8</value>
+  </data>
+  <data name="btnAscending.Size" type="System.Drawing.Size, System.Drawing">
+    <value>25, 25</value>
+  </data>
+  <data name="btnAscending.TabIndex" type="System.Int32, mscorlib">
+    <value>19</value>
+  </data>
+  <data name="btnAscending.Tooltip" xml:space="preserve">
+    <value>升序 (Ctrl+W)</value>
+  </data>
+  <data name="&gt;&gt;btnAscending.Name" xml:space="preserve">
+    <value>btnAscending</value>
+  </data>
+  <data name="&gt;&gt;btnAscending.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.ButtonX, DevComponents.DotNetBar2, Version=14.0.0.3, Culture=neutral, PublicKeyToken=c39c3242a43eee2b</value>
+  </data>
+  <data name="&gt;&gt;btnAscending.Parent" xml:space="preserve">
+    <value>flowLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;btnAscending.ZOrder" xml:space="preserve">
+    <value>12</value>
   </data>
   <data name="buttonX12.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Left</value>
@@ -5397,7 +5720,7 @@
 </value>
   </data>
   <data name="buttonX12.Location" type="System.Drawing.Point, System.Drawing">
-    <value>363, 8</value>
+    <value>445, 8</value>
   </data>
   <data name="buttonX12.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>8, 8, 8, 8</value>
@@ -5424,7 +5747,7 @@
     <value>flowLayoutPanel1</value>
   </data>
   <data name="&gt;&gt;buttonX12.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>13</value>
   </data>
   <data name="buttonX2.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Left</value>
@@ -5981,7 +6304,7 @@
 </value>
   </data>
   <data name="buttonX2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>404, 8</value>
+    <value>486, 8</value>
   </data>
   <data name="buttonX2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>8, 8, 8, 8</value>
@@ -6008,7 +6331,7 @@
     <value>flowLayoutPanel1</value>
   </data>
   <data name="&gt;&gt;buttonX2.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>14</value>
   </data>
   <data name="buttonX11.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Left</value>
@@ -6571,7 +6894,7 @@
 </value>
   </data>
   <data name="buttonX11.Location" type="System.Drawing.Point, System.Drawing">
-    <value>445, 8</value>
+    <value>527, 8</value>
   </data>
   <data name="buttonX11.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>8, 8, 8, 8</value>
@@ -6598,7 +6921,7 @@
     <value>flowLayoutPanel1</value>
   </data>
   <data name="&gt;&gt;buttonX11.ZOrder" xml:space="preserve">
-    <value>13</value>
+    <value>15</value>
   </data>
   <data name="buttonX10.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Left</value>
@@ -7158,7 +7481,7 @@
 </value>
   </data>
   <data name="buttonX10.Location" type="System.Drawing.Point, System.Drawing">
-    <value>486, 8</value>
+    <value>568, 8</value>
   </data>
   <data name="buttonX10.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>8, 8, 8, 8</value>
@@ -7185,7 +7508,7 @@
     <value>flowLayoutPanel1</value>
   </data>
   <data name="&gt;&gt;buttonX10.ZOrder" xml:space="preserve">
-    <value>14</value>
+    <value>16</value>
   </data>
   <data name="buttonX9.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Left</value>
@@ -7728,7 +8051,7 @@
 </value>
   </data>
   <data name="buttonX9.Location" type="System.Drawing.Point, System.Drawing">
-    <value>527, 8</value>
+    <value>609, 8</value>
   </data>
   <data name="buttonX9.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>8, 8, 8, 8</value>
@@ -7755,7 +8078,7 @@
     <value>flowLayoutPanel1</value>
   </data>
   <data name="&gt;&gt;buttonX9.ZOrder" xml:space="preserve">
-    <value>15</value>
+    <value>17</value>
   </data>
   <data name="buttonX16.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Left</value>
@@ -8321,7 +8644,7 @@
 </value>
   </data>
   <data name="buttonX16.Location" type="System.Drawing.Point, System.Drawing">
-    <value>568, 8</value>
+    <value>650, 8</value>
   </data>
   <data name="buttonX16.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>8, 8, 8, 8</value>
@@ -8348,589 +8671,7 @@
     <value>flowLayoutPanel1</value>
   </data>
   <data name="&gt;&gt;buttonX16.ZOrder" xml:space="preserve">
-    <value>16</value>
-  </data>
-  <data name="buttonX15.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Left</value>
-  </data>
-  <data name="buttonX15.Font" type="System.Drawing.Font, System.Drawing">
-    <value>黑体, 9pt</value>
-  </data>
-  <data name="buttonX15.HoverImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABkAAAAZCAYAAADE6YVjAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1
-        MAAA6mAAADqYAAAXb5JfxUYAAAAJcEhZcwAADrwAAA68AZW8ckkAADnPaVRYdFhNTDpjb20uYWRvYmUu
-        eG1wAAAAAAA8P3hwYWNrZXQgYmVnaW49Iu+7vyIgaWQ9Ilc1TTBNcENlaGlIenJlU3pOVGN6a2M5ZCI/
-        Pgo8eDp4bXBtZXRhIHhtbG5zOng9ImFkb2JlOm5zOm1ldGEvIiB4OnhtcHRrPSJBZG9iZSBYTVAgQ29y
-        ZSA1LjUtYzAxNCA3OS4xNTE0ODEsIDIwMTMvMDMvMTMtMTI6MDk6MTUgICAgICAgICI+CiAgIDxyZGY6
-        UkRGIHhtbG5zOnJkZj0iaHR0cDovL3d3dy53My5vcmcvMTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIyI+
-        CiAgICAgIDxyZGY6RGVzY3JpcHRpb24gcmRmOmFib3V0PSIiCiAgICAgICAgICAgIHhtbG5zOnhtcD0i
-        aHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLyIKICAgICAgICAgICAgeG1sbnM6ZGM9Imh0dHA6Ly9w
-        dXJsLm9yZy9kYy9lbGVtZW50cy8xLjEvIgogICAgICAgICAgICB4bWxuczpwaG90b3Nob3A9Imh0dHA6
-        Ly9ucy5hZG9iZS5jb20vcGhvdG9zaG9wLzEuMC8iCiAgICAgICAgICAgIHhtbG5zOnhtcE1NPSJodHRw
-        Oi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvbW0vIgogICAgICAgICAgICB4bWxuczpzdEV2dD0iaHR0cDov
-        L25zLmFkb2JlLmNvbS94YXAvMS4wL3NUeXBlL1Jlc291cmNlRXZlbnQjIgogICAgICAgICAgICB4bWxu
-        czp0aWZmPSJodHRwOi8vbnMuYWRvYmUuY29tL3RpZmYvMS4wLyIKICAgICAgICAgICAgeG1sbnM6ZXhp
-        Zj0iaHR0cDovL25zLmFkb2JlLmNvbS9leGlmLzEuMC8iPgogICAgICAgICA8eG1wOkNyZWF0b3JUb29s
-        PkFkb2JlIFBob3Rvc2hvcCBDQyAoV2luZG93cyk8L3htcDpDcmVhdG9yVG9vbD4KICAgICAgICAgPHht
-        cDpDcmVhdGVEYXRlPjIwMTktMDUtMjhUMTQ6MjI6NDkrMDg6MDA8L3htcDpDcmVhdGVEYXRlPgogICAg
-        ICAgICA8eG1wOk1vZGlmeURhdGU+MjAxOS0wNi0xM1QxMTozMzo1NiswODowMDwveG1wOk1vZGlmeURh
-        dGU+CiAgICAgICAgIDx4bXA6TWV0YWRhdGFEYXRlPjIwMTktMDYtMTNUMTE6MzM6NTYrMDg6MDA8L3ht
-        cDpNZXRhZGF0YURhdGU+CiAgICAgICAgIDxkYzpmb3JtYXQ+aW1hZ2UvcG5nPC9kYzpmb3JtYXQ+CiAg
-        ICAgICAgIDxwaG90b3Nob3A6Q29sb3JNb2RlPjM8L3Bob3Rvc2hvcDpDb2xvck1vZGU+CiAgICAgICAg
-        IDx4bXBNTTpJbnN0YW5jZUlEPnhtcC5paWQ6MTUzMDE0MzYtYTBhOS0xODQ0LThkODQtN2U5N2VjZDdl
-        NmQzPC94bXBNTTpJbnN0YW5jZUlEPgogICAgICAgICA8eG1wTU06RG9jdW1lbnRJRD54bXAuZGlkOjM4
-        ZWYzMjVjLWRhNWYtNzQ0Mi1hNmE1LTU0NmU4YmIxZmMxZDwveG1wTU06RG9jdW1lbnRJRD4KICAgICAg
-        ICAgPHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD54bXAuZGlkOjM4ZWYzMjVjLWRhNWYtNzQ0Mi1hNmE1
-        LTU0NmU4YmIxZmMxZDwveG1wTU06T3JpZ2luYWxEb2N1bWVudElEPgogICAgICAgICA8eG1wTU06SGlz
-        dG9yeT4KICAgICAgICAgICAgPHJkZjpTZXE+CiAgICAgICAgICAgICAgIDxyZGY6bGkgcmRmOnBhcnNl
-        VHlwZT0iUmVzb3VyY2UiPgogICAgICAgICAgICAgICAgICA8c3RFdnQ6YWN0aW9uPmNyZWF0ZWQ8L3N0
-        RXZ0OmFjdGlvbj4KICAgICAgICAgICAgICAgICAgPHN0RXZ0Omluc3RhbmNlSUQ+eG1wLmlpZDozOGVm
-        MzI1Yy1kYTVmLTc0NDItYTZhNS01NDZlOGJiMWZjMWQ8L3N0RXZ0Omluc3RhbmNlSUQ+CiAgICAgICAg
-        ICAgICAgICAgIDxzdEV2dDp3aGVuPjIwMTktMDUtMjhUMTQ6MjI6NDkrMDg6MDA8L3N0RXZ0OndoZW4+
-        CiAgICAgICAgICAgICAgICAgIDxzdEV2dDpzb2Z0d2FyZUFnZW50PkFkb2JlIFBob3Rvc2hvcCBDQyAo
-        V2luZG93cyk8L3N0RXZ0OnNvZnR3YXJlQWdlbnQ+CiAgICAgICAgICAgICAgIDwvcmRmOmxpPgogICAg
-        ICAgICAgICAgICA8cmRmOmxpIHJkZjpwYXJzZVR5cGU9IlJlc291cmNlIj4KICAgICAgICAgICAgICAg
-        ICAgPHN0RXZ0OmFjdGlvbj5zYXZlZDwvc3RFdnQ6YWN0aW9uPgogICAgICAgICAgICAgICAgICA8c3RF
-        dnQ6aW5zdGFuY2VJRD54bXAuaWlkOjE1MzAxNDM2LWEwYTktMTg0NC04ZDg0LTdlOTdlY2Q3ZTZkMzwv
-        c3RFdnQ6aW5zdGFuY2VJRD4KICAgICAgICAgICAgICAgICAgPHN0RXZ0OndoZW4+MjAxOS0wNi0xM1Qx
-        MTozMzo1NiswODowMDwvc3RFdnQ6d2hlbj4KICAgICAgICAgICAgICAgICAgPHN0RXZ0OnNvZnR3YXJl
-        QWdlbnQ+QWRvYmUgUGhvdG9zaG9wIENDIChXaW5kb3dzKTwvc3RFdnQ6c29mdHdhcmVBZ2VudD4KICAg
-        ICAgICAgICAgICAgICAgPHN0RXZ0OmNoYW5nZWQ+Lzwvc3RFdnQ6Y2hhbmdlZD4KICAgICAgICAgICAg
-        ICAgPC9yZGY6bGk+CiAgICAgICAgICAgIDwvcmRmOlNlcT4KICAgICAgICAgPC94bXBNTTpIaXN0b3J5
-        PgogICAgICAgICA8dGlmZjpPcmllbnRhdGlvbj4xPC90aWZmOk9yaWVudGF0aW9uPgogICAgICAgICA8
-        dGlmZjpYUmVzb2x1dGlvbj45NjAwMDAvMTAwMDA8L3RpZmY6WFJlc29sdXRpb24+CiAgICAgICAgIDx0
-        aWZmOllSZXNvbHV0aW9uPjk2MDAwMC8xMDAwMDwvdGlmZjpZUmVzb2x1dGlvbj4KICAgICAgICAgPHRp
-        ZmY6UmVzb2x1dGlvblVuaXQ+MjwvdGlmZjpSZXNvbHV0aW9uVW5pdD4KICAgICAgICAgPGV4aWY6Q29s
-        b3JTcGFjZT42NTUzNTwvZXhpZjpDb2xvclNwYWNlPgogICAgICAgICA8ZXhpZjpQaXhlbFhEaW1lbnNp
-        b24+MjU8L2V4aWY6UGl4ZWxYRGltZW5zaW9uPgogICAgICAgICA8ZXhpZjpQaXhlbFlEaW1lbnNpb24+
-        MjU8L2V4aWY6UGl4ZWxZRGltZW5zaW9uPgogICAgICA8L3JkZjpEZXNjcmlwdGlvbj4KICAgPC9yZGY6
-        UkRGPgo8L3g6eG1wbWV0YT4KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAog
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        IAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        CiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAK
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAog
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        IAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        CiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAK
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAKPD94cGFja2V0IGVuZD0idyI/PuLwR0kAAAT4SURBVEhLfVZbbBtFFJ2K9qviIR4qj0oIKUIV
-        EkrSNMV2HJzEju21nfShpColBSEh/kHkoxSa+LHxI3Zq59HylBBCLeKTD0B8wA9SJSSQ+KGipapAFRGQ
-        lm4Ecbw7M8u5u5507SR8HI1n5845c+/ce8fs+YrNxoqCxbINFp0x2XDeYvGcxTR9jUUzcl9UF5MDFf6D
-        f0HefGZJ3iLg90pfTSyHS/ybUEWcDFb4kyfygo0UOIvQ/qzJEmkTfNb9cd16YJMIFlgiY+2JFM2ZwIK0
-        u9+z7f3v2nbPO62gb2rNXxU8VZGTKd16jA6pZRpMy5odoQr/bqDMv90kEpuxQv1V+aMiaSffCmTXhTF4
-        VlzWdCuQSDce76vJ613vO2u8RUTLmYHAvPiXFr0kJLgdvHYkFpiXBsJ5zbNmOCLjBcG0dKMjWBVXvQLd
-        RITRvyD+Girxz6J58WpMt8aHC5aO+Vf9VX69523XbmMPhNoiYLAXIHK8IHfi8r5Wi3QK2hhYkn/HCtYb
-        iO3dw3m+M5XmbGTKZMmMySIFc9dgydxN68El+1cS8xB7YbBjRbkjVZavd+ODcpHEeqv89pGS9I/pnOEA
-        IOUskeUsiayJ55AglEnAWFawowV5/MCSmyRtAgSDRbPmw4GquK0MyIO+RbF6qCR84/DyyEy7SIMlcpyN
-        ZrGWttlo2n4keFZear8fDwwW081xMlDohttaUWRehMBJ4JBHRMsiPakGMCYyjujeYNW+2oUDbieC7/8w
-        XOCXZHCgGVN/TdxM6fze52ZtdqLsivQ7Im6RbQAeDefNlCKj/Vvh4Dm5Ck+sl1C5nwAf0Yhqn0AxOqdF
-        zrtAeidQYC0iLh6M5q3S0Cy/2NzfjouxvPWK00IiRZy0CSck+DaMyoeXVJyOAIEqeZMQ1kHm7qdR/VZ8
-        WHdIvR+j+eZvGNNmr4iDNhFaD8+6tlF4jci08KF3MZaYRs4XWxcUaCMZtYg0oUQold1+BbszSArU0R0+
-        t9mi0s1IuGR9DMJNMUWsP0XMT4H0nk0iqJUYQCR00CTISQB8g+C74HJYF+DZYYZes7xVVihQ5iGLXk6m
-        150EoJFqJYZmikPAA4d4Y3x2jv+ksq0He3GvnzOQrKk0bEfnB7btW7TrMb3eqeXWkBBrLFwkATcMQ7O4
-        A6p+mtP96NaYOhiBCjxasCYYyIx2csJ+GBxcFCtahsdTmTqI4QVG3yJnAyhSSoChErIQ9YM3AyLWE2jv
-        K0RO+0kAHX0dKfzoliKO4TlpHy6KyaPIvkG6SFxwKrOO8GJelndEcOko1I5QWVxRrcn1QtoRXU4n3pJ3
-        bS8Ct9Fdr8RKvDwwy+9DF941Ol1nfTUKk2QpxD9ctHbjoZvAiX8nAeUFPRf9NfFz8k35UOKUzVpEyFCd
-        xpljE70neM9vIFu+iM80XvMv8KdDczKC+JeDVX6t97wtiVwJuGGSq3gA+xNnJNNOe0Ro0bco/8CrVvcK
-        ERSJIvLO1TcCeYAHTiIRRig5tKmmCIwalEVY/BNvcye68lCwJn8jIS/B/4HsyB4Xv4z7GaFm2iKCV+97
-        PLs3kP++5HTDueC4bnaES2YRXjmbtxNT5D48WOEi/xA9bx9Gp2O3iCA79oB478gUis15VqlfobBydRbP
-        20/hXT+N/1aXEUqj97w0QGygFgzMb4XmxC/hgjWPBOhJZq0d1LGpqbaK2Ow/AOyWOuAHzZwAAAAASUVO
-        RK5CYII=
-</value>
-  </data>
-  <data name="buttonX15.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABkAAAAZCAYAAADE6YVjAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1
-        MAAA6mAAADqYAAAXb5JfxUYAAAAJcEhZcwAADrwAAA68AZW8ckkAADnPaVRYdFhNTDpjb20uYWRvYmUu
-        eG1wAAAAAAA8P3hwYWNrZXQgYmVnaW49Iu+7vyIgaWQ9Ilc1TTBNcENlaGlIenJlU3pOVGN6a2M5ZCI/
-        Pgo8eDp4bXBtZXRhIHhtbG5zOng9ImFkb2JlOm5zOm1ldGEvIiB4OnhtcHRrPSJBZG9iZSBYTVAgQ29y
-        ZSA1LjUtYzAxNCA3OS4xNTE0ODEsIDIwMTMvMDMvMTMtMTI6MDk6MTUgICAgICAgICI+CiAgIDxyZGY6
-        UkRGIHhtbG5zOnJkZj0iaHR0cDovL3d3dy53My5vcmcvMTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIyI+
-        CiAgICAgIDxyZGY6RGVzY3JpcHRpb24gcmRmOmFib3V0PSIiCiAgICAgICAgICAgIHhtbG5zOnhtcD0i
-        aHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLyIKICAgICAgICAgICAgeG1sbnM6ZGM9Imh0dHA6Ly9w
-        dXJsLm9yZy9kYy9lbGVtZW50cy8xLjEvIgogICAgICAgICAgICB4bWxuczpwaG90b3Nob3A9Imh0dHA6
-        Ly9ucy5hZG9iZS5jb20vcGhvdG9zaG9wLzEuMC8iCiAgICAgICAgICAgIHhtbG5zOnhtcE1NPSJodHRw
-        Oi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvbW0vIgogICAgICAgICAgICB4bWxuczpzdEV2dD0iaHR0cDov
-        L25zLmFkb2JlLmNvbS94YXAvMS4wL3NUeXBlL1Jlc291cmNlRXZlbnQjIgogICAgICAgICAgICB4bWxu
-        czp0aWZmPSJodHRwOi8vbnMuYWRvYmUuY29tL3RpZmYvMS4wLyIKICAgICAgICAgICAgeG1sbnM6ZXhp
-        Zj0iaHR0cDovL25zLmFkb2JlLmNvbS9leGlmLzEuMC8iPgogICAgICAgICA8eG1wOkNyZWF0b3JUb29s
-        PkFkb2JlIFBob3Rvc2hvcCBDQyAoV2luZG93cyk8L3htcDpDcmVhdG9yVG9vbD4KICAgICAgICAgPHht
-        cDpDcmVhdGVEYXRlPjIwMTktMDUtMjhUMTQ6MjI6NDgrMDg6MDA8L3htcDpDcmVhdGVEYXRlPgogICAg
-        ICAgICA8eG1wOk1vZGlmeURhdGU+MjAxOS0wNi0xM1QxMTozMToxNyswODowMDwveG1wOk1vZGlmeURh
-        dGU+CiAgICAgICAgIDx4bXA6TWV0YWRhdGFEYXRlPjIwMTktMDYtMTNUMTE6MzE6MTcrMDg6MDA8L3ht
-        cDpNZXRhZGF0YURhdGU+CiAgICAgICAgIDxkYzpmb3JtYXQ+aW1hZ2UvcG5nPC9kYzpmb3JtYXQ+CiAg
-        ICAgICAgIDxwaG90b3Nob3A6Q29sb3JNb2RlPjM8L3Bob3Rvc2hvcDpDb2xvck1vZGU+CiAgICAgICAg
-        IDx4bXBNTTpJbnN0YW5jZUlEPnhtcC5paWQ6MjFhMzljOWYtZjIxNC03MjQ4LWEyN2ItYzAzMjNjNzFi
-        ZmU4PC94bXBNTTpJbnN0YW5jZUlEPgogICAgICAgICA8eG1wTU06RG9jdW1lbnRJRD54bXAuZGlkOjNm
-        NGZjNzljLTdlMzEtODc0Ni04Yjg2LTQwZjgxYTY5N2RlMTwveG1wTU06RG9jdW1lbnRJRD4KICAgICAg
-        ICAgPHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD54bXAuZGlkOjNmNGZjNzljLTdlMzEtODc0Ni04Yjg2
-        LTQwZjgxYTY5N2RlMTwveG1wTU06T3JpZ2luYWxEb2N1bWVudElEPgogICAgICAgICA8eG1wTU06SGlz
-        dG9yeT4KICAgICAgICAgICAgPHJkZjpTZXE+CiAgICAgICAgICAgICAgIDxyZGY6bGkgcmRmOnBhcnNl
-        VHlwZT0iUmVzb3VyY2UiPgogICAgICAgICAgICAgICAgICA8c3RFdnQ6YWN0aW9uPmNyZWF0ZWQ8L3N0
-        RXZ0OmFjdGlvbj4KICAgICAgICAgICAgICAgICAgPHN0RXZ0Omluc3RhbmNlSUQ+eG1wLmlpZDozZjRm
-        Yzc5Yy03ZTMxLTg3NDYtOGI4Ni00MGY4MWE2OTdkZTE8L3N0RXZ0Omluc3RhbmNlSUQ+CiAgICAgICAg
-        ICAgICAgICAgIDxzdEV2dDp3aGVuPjIwMTktMDUtMjhUMTQ6MjI6NDgrMDg6MDA8L3N0RXZ0OndoZW4+
-        CiAgICAgICAgICAgICAgICAgIDxzdEV2dDpzb2Z0d2FyZUFnZW50PkFkb2JlIFBob3Rvc2hvcCBDQyAo
-        V2luZG93cyk8L3N0RXZ0OnNvZnR3YXJlQWdlbnQ+CiAgICAgICAgICAgICAgIDwvcmRmOmxpPgogICAg
-        ICAgICAgICAgICA8cmRmOmxpIHJkZjpwYXJzZVR5cGU9IlJlc291cmNlIj4KICAgICAgICAgICAgICAg
-        ICAgPHN0RXZ0OmFjdGlvbj5zYXZlZDwvc3RFdnQ6YWN0aW9uPgogICAgICAgICAgICAgICAgICA8c3RF
-        dnQ6aW5zdGFuY2VJRD54bXAuaWlkOjIxYTM5YzlmLWYyMTQtNzI0OC1hMjdiLWMwMzIzYzcxYmZlODwv
-        c3RFdnQ6aW5zdGFuY2VJRD4KICAgICAgICAgICAgICAgICAgPHN0RXZ0OndoZW4+MjAxOS0wNi0xM1Qx
-        MTozMToxNyswODowMDwvc3RFdnQ6d2hlbj4KICAgICAgICAgICAgICAgICAgPHN0RXZ0OnNvZnR3YXJl
-        QWdlbnQ+QWRvYmUgUGhvdG9zaG9wIENDIChXaW5kb3dzKTwvc3RFdnQ6c29mdHdhcmVBZ2VudD4KICAg
-        ICAgICAgICAgICAgICAgPHN0RXZ0OmNoYW5nZWQ+Lzwvc3RFdnQ6Y2hhbmdlZD4KICAgICAgICAgICAg
-        ICAgPC9yZGY6bGk+CiAgICAgICAgICAgIDwvcmRmOlNlcT4KICAgICAgICAgPC94bXBNTTpIaXN0b3J5
-        PgogICAgICAgICA8dGlmZjpPcmllbnRhdGlvbj4xPC90aWZmOk9yaWVudGF0aW9uPgogICAgICAgICA8
-        dGlmZjpYUmVzb2x1dGlvbj45NjAwMDAvMTAwMDA8L3RpZmY6WFJlc29sdXRpb24+CiAgICAgICAgIDx0
-        aWZmOllSZXNvbHV0aW9uPjk2MDAwMC8xMDAwMDwvdGlmZjpZUmVzb2x1dGlvbj4KICAgICAgICAgPHRp
-        ZmY6UmVzb2x1dGlvblVuaXQ+MjwvdGlmZjpSZXNvbHV0aW9uVW5pdD4KICAgICAgICAgPGV4aWY6Q29s
-        b3JTcGFjZT42NTUzNTwvZXhpZjpDb2xvclNwYWNlPgogICAgICAgICA8ZXhpZjpQaXhlbFhEaW1lbnNp
-        b24+MjU8L2V4aWY6UGl4ZWxYRGltZW5zaW9uPgogICAgICAgICA8ZXhpZjpQaXhlbFlEaW1lbnNpb24+
-        MjU8L2V4aWY6UGl4ZWxZRGltZW5zaW9uPgogICAgICA8L3JkZjpEZXNjcmlwdGlvbj4KICAgPC9yZGY6
-        UkRGPgo8L3g6eG1wbWV0YT4KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAog
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        IAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        CiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAK
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAog
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        IAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        CiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAK
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAg
-        ICAgICAKPD94cGFja2V0IGVuZD0idyI/PikFYMYAAAQMSURBVEhLfVVLaBNRFJ1iuyp+8EP9FEQoUgTp
-        wk0tiChduLDgwoKLuhDEvWJr82kyk2QmmSRNpkmTbkWkFZcuVFzoRhAEBTcWq6UoxaK21RS1CqXxnDd5
-        7ZtJ6uIwM+9zzn3n3ndHS6czmmUlNV3XtVgsriUSJp4xgWhU7zQMY9C27de5XH7JcZxlIp93FrPZ0QXL
-        sp6lUvZl204fNU1LM00T+xPcp42MRMi3G9hTJxKPJzTD0NtAYOXzuWqpVKqOj5eqxeJ4HThOQHANQoPx
-        eOwQRSKRKNGBsZfA8zoR4HQmk33DzaVSuSG5H3JdJpOZhgM9OMVhCM+VyxOcW/OI6LrRMzqa+8VJP5GM
-        2g91DcVgawWYVQKsCBH6GYlEOnCC92r0kgSbvqVSqQew8jrQD+/NZDL5BOvnCoWiR4z7VQ5gQ6QZCXwq
-        J2WUSPB3eBxE4reDtzkaFV4jZwYT3IK0tQJBxyl8VEj9qNCqJgjc5ICMiGKI8odlpU4ykUge1lnCUlYO
-        c5dIECwSClqXHGfMcyIFFeZhPwnVU+AEKxDvtu2MIPKLGIYob1GmwAG48UKe3idAVFiy/d4FxSoIY7QR
-        1YL5+IYIoyY5QdsQYDsKReRxCwGO/6Rdj7mACeQgSm8JduyEhYJcivCiSQEpgnXnJRn3N8LYWGGFC6+g
-        Uu4Bd/jE9wAiFJZQgE8JVaSGvbAzjcqbqu33YwpOXRNJpBUSkpC5wCIhpOvuGMX9QpznOpVDBfnrRNi7
-        5LtfRKKRCMHA2JZUvppIDB/eCYmtRFQhEvMyk4yFwTmVg98U6U0mrbsgrPMUXt8HSQAiO1QBCbffyXdX
-        AGJnsHeyxjGJ7wsaWsZCo6qQYOXBwqskISGfBE/InsfTsNLkE6X/VlYb92LNQw0vv2UZ+lEqTfBirqKF
-        d7lWGBsWuO9srBSnpeIkFyW5izICTAxoIKv4yQleMP6cEOE52sLI2btyOUfjHeKYzAW/YzHjCO7YIsnl
-        frj0xzQTBxuKcCEuEW/+IJPO6Fl1tAM3HAWR8ojgiR+UPSNbU7Ho/otgrx4MhrZteRIeG01vBk09C9Jd
-        KM2WcHhEiNAm/BrYBVph0QDGPquthe/ZbPZdIBDcNzR0S/OIcHIzms2uDBvmQfwIUd+ABcfRZnrxnkVj
-        nUUw667/mwIQXcEpToVCIW14OLApwkkQfAFWVSFCkkgi9VuOETWOdSS7j/cnHA67Ilj0t1ZFX5HYLkRw
-        FpF84gaV4H/gOq7HiReQnz7myiOChL3CsefhbXfNZyazAxfUzufzYvNWYpKcPywQ30YZd1KgTgSl2YbB
-        dl4mt2JM0X9Qklx4DFUVSqfT0zhpBf5XQCye+F7GxfuA+QL2n8D+Jt4fFoVXJKD9A0V8K8bl5wMUAAAA
-        AElFTkSuQmCC
-</value>
-  </data>
-  <data name="buttonX15.Location" type="System.Drawing.Point, System.Drawing">
-    <value>609, 8</value>
-  </data>
-  <data name="buttonX15.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>8, 8, 8, 8</value>
-  </data>
-  <data name="buttonX15.Size" type="System.Drawing.Size, System.Drawing">
-    <value>25, 25</value>
-  </data>
-  <data name="buttonX15.TabIndex" type="System.Int32, mscorlib">
-    <value>19</value>
-  </data>
-  <data name="buttonX15.Tooltip" xml:space="preserve">
-    <value>打开文件</value>
-  </data>
-  <data name="buttonX15.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;buttonX15.Name" xml:space="preserve">
-    <value>buttonX15</value>
-  </data>
-  <data name="&gt;&gt;buttonX15.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.ButtonX, DevComponents.DotNetBar2, Version=14.0.0.3, Culture=neutral, PublicKeyToken=c39c3242a43eee2b</value>
-  </data>
-  <data name="&gt;&gt;buttonX15.Parent" xml:space="preserve">
-    <value>flowLayoutPanel1</value>
-  </data>
-  <data name="&gt;&gt;buttonX15.ZOrder" xml:space="preserve">
-    <value>17</value>
+    <value>18</value>
   </data>
   <data name="buttonX14.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Left</value>
@@ -9483,7 +9224,7 @@
 </value>
   </data>
   <data name="buttonX14.Location" type="System.Drawing.Point, System.Drawing">
-    <value>650, 8</value>
+    <value>691, 8</value>
   </data>
   <data name="buttonX14.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>8, 8, 8, 8</value>
@@ -9510,7 +9251,7 @@
     <value>flowLayoutPanel1</value>
   </data>
   <data name="&gt;&gt;buttonX14.ZOrder" xml:space="preserve">
-    <value>18</value>
+    <value>19</value>
   </data>
   <data name="buttonX13.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Left</value>
@@ -10058,7 +9799,7 @@
 </value>
   </data>
   <data name="buttonX13.Location" type="System.Drawing.Point, System.Drawing">
-    <value>689, 8</value>
+    <value>730, 8</value>
   </data>
   <data name="buttonX13.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>6, 6, 6, 6</value>
@@ -10085,7 +9826,7 @@
     <value>flowLayoutPanel1</value>
   </data>
   <data name="&gt;&gt;buttonX13.ZOrder" xml:space="preserve">
-    <value>19</value>
+    <value>20</value>
   </data>
   <data name="buttonX8.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Left</value>
@@ -10634,7 +10375,7 @@
 </value>
   </data>
   <data name="buttonX8.Location" type="System.Drawing.Point, System.Drawing">
-    <value>728, 8</value>
+    <value>769, 8</value>
   </data>
   <data name="buttonX8.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>8, 8, 8, 8</value>
@@ -10661,169 +10402,67 @@
     <value>flowLayoutPanel1</value>
   </data>
   <data name="&gt;&gt;buttonX8.ZOrder" xml:space="preserve">
-    <value>20</value>
+    <value>21</value>
+  </data>
+  <data name="flowLayoutPanel1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>11, 5</value>
+  </data>
+  <data name="flowLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>866, 40</value>
+  </data>
+  <data name="flowLayoutPanel1.TabIndex" type="System.Int32, mscorlib">
+    <value>26</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel1.Name" xml:space="preserve">
+    <value>flowLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel1.Parent" xml:space="preserve">
+    <value>PlToolstrip.ClientArea</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;PlToolstrip.ClientArea.Name" xml:space="preserve">
+    <value>PlToolstrip.ClientArea</value>
+  </data>
+  <data name="&gt;&gt;PlToolstrip.ClientArea.Type" xml:space="preserve">
+    <value>Infragistics.Win.Misc.UltraPanelClientAreaUnsafe, Infragistics4.Win.Misc.v12.2, Version=12.2.20122.2123, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb</value>
+  </data>
+  <data name="&gt;&gt;PlToolstrip.ClientArea.Parent" xml:space="preserve">
+    <value>PlToolstrip</value>
+  </data>
+  <data name="&gt;&gt;PlToolstrip.ClientArea.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="PlToolstrip.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="PlToolstrip.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 26</value>
+  </data>
+  <data name="PlToolstrip.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1264, 50</value>
+  </data>
+  <data name="PlToolstrip.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;PlToolstrip.Name" xml:space="preserve">
+    <value>PlToolstrip</value>
+  </data>
+  <data name="&gt;&gt;PlToolstrip.Type" xml:space="preserve">
+    <value>Infragistics.Win.Misc.UltraPanel, Infragistics4.Win.Misc.v12.2, Version=12.2.20122.2123, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb</value>
+  </data>
+  <data name="&gt;&gt;PlToolstrip.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;PlToolstrip.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
   <data name="tabStrip.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
     <value>None</value>
-  </data>
-  <data name="&gt;&gt;tabControlPanel1.Name" xml:space="preserve">
-    <value>tabControlPanel1</value>
-  </data>
-  <data name="&gt;&gt;tabControlPanel1.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.TabControlPanel, DevComponents.DotNetBar2, Version=14.0.0.3, Culture=neutral, PublicKeyToken=c39c3242a43eee2b</value>
-  </data>
-  <data name="&gt;&gt;tabControlPanel1.Parent" xml:space="preserve">
-    <value>tabStrip</value>
-  </data>
-  <data name="&gt;&gt;tabControlPanel1.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;tabControlPanel8.Name" xml:space="preserve">
-    <value>tabControlPanel8</value>
-  </data>
-  <data name="&gt;&gt;tabControlPanel8.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.TabControlPanel, DevComponents.DotNetBar2, Version=14.0.0.3, Culture=neutral, PublicKeyToken=c39c3242a43eee2b</value>
-  </data>
-  <data name="&gt;&gt;tabControlPanel8.Parent" xml:space="preserve">
-    <value>tabStrip</value>
-  </data>
-  <data name="&gt;&gt;tabControlPanel8.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;tabControlPanel5.Name" xml:space="preserve">
-    <value>tabControlPanel5</value>
-  </data>
-  <data name="&gt;&gt;tabControlPanel5.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.TabControlPanel, DevComponents.DotNetBar2, Version=14.0.0.3, Culture=neutral, PublicKeyToken=c39c3242a43eee2b</value>
-  </data>
-  <data name="&gt;&gt;tabControlPanel5.Parent" xml:space="preserve">
-    <value>tabStrip</value>
-  </data>
-  <data name="&gt;&gt;tabControlPanel5.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <data name="&gt;&gt;tabControlPanel4.Name" xml:space="preserve">
-    <value>tabControlPanel4</value>
-  </data>
-  <data name="&gt;&gt;tabControlPanel4.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.TabControlPanel, DevComponents.DotNetBar2, Version=14.0.0.3, Culture=neutral, PublicKeyToken=c39c3242a43eee2b</value>
-  </data>
-  <data name="&gt;&gt;tabControlPanel4.Parent" xml:space="preserve">
-    <value>tabStrip</value>
-  </data>
-  <data name="&gt;&gt;tabControlPanel4.ZOrder" xml:space="preserve">
-    <value>12</value>
-  </data>
-  <data name="&gt;&gt;tabControlPanel3.Name" xml:space="preserve">
-    <value>tabControlPanel3</value>
-  </data>
-  <data name="&gt;&gt;tabControlPanel3.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.TabControlPanel, DevComponents.DotNetBar2, Version=14.0.0.3, Culture=neutral, PublicKeyToken=c39c3242a43eee2b</value>
-  </data>
-  <data name="&gt;&gt;tabControlPanel3.Parent" xml:space="preserve">
-    <value>tabStrip</value>
-  </data>
-  <data name="&gt;&gt;tabControlPanel3.ZOrder" xml:space="preserve">
-    <value>16</value>
-  </data>
-  <data name="&gt;&gt;tabControlPanel2.Name" xml:space="preserve">
-    <value>tabControlPanel2</value>
-  </data>
-  <data name="&gt;&gt;tabControlPanel2.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.TabControlPanel, DevComponents.DotNetBar2, Version=14.0.0.3, Culture=neutral, PublicKeyToken=c39c3242a43eee2b</value>
-  </data>
-  <data name="&gt;&gt;tabControlPanel2.Parent" xml:space="preserve">
-    <value>tabStrip</value>
-  </data>
-  <data name="&gt;&gt;tabControlPanel2.ZOrder" xml:space="preserve">
-    <value>20</value>
-  </data>
-  <data name="&gt;&gt;tabControlPanel7.Name" xml:space="preserve">
-    <value>tabControlPanel7</value>
-  </data>
-  <data name="&gt;&gt;tabControlPanel7.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.TabControlPanel, DevComponents.DotNetBar2, Version=14.0.0.3, Culture=neutral, PublicKeyToken=c39c3242a43eee2b</value>
-  </data>
-  <data name="&gt;&gt;tabControlPanel7.Parent" xml:space="preserve">
-    <value>tabStrip</value>
-  </data>
-  <data name="&gt;&gt;tabControlPanel7.ZOrder" xml:space="preserve">
-    <value>24</value>
-  </data>
-  <data name="&gt;&gt;tabControlPanel6.Name" xml:space="preserve">
-    <value>tabControlPanel6</value>
-  </data>
-  <data name="&gt;&gt;tabControlPanel6.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.TabControlPanel, DevComponents.DotNetBar2, Version=14.0.0.3, Culture=neutral, PublicKeyToken=c39c3242a43eee2b</value>
-  </data>
-  <data name="&gt;&gt;tabControlPanel6.Parent" xml:space="preserve">
-    <value>tabStrip</value>
-  </data>
-  <data name="&gt;&gt;tabControlPanel6.ZOrder" xml:space="preserve">
-    <value>28</value>
-  </data>
-  <data name="tabStrip.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
-  </data>
-  <data name="tabStrip.Font" type="System.Drawing.Font, System.Drawing">
-    <value>微软雅黑, 9.75pt</value>
-  </data>
-  <data name="tabStrip.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="tabStrip.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1264, 27</value>
-  </data>
-  <data name="tabStrip.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;tabStrip.Name" xml:space="preserve">
-    <value>tabStrip</value>
-  </data>
-  <data name="&gt;&gt;tabStrip.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.TabControl, DevComponents.DotNetBar2, Version=14.0.0.3, Culture=neutral, PublicKeyToken=c39c3242a43eee2b</value>
-  </data>
-  <data name="&gt;&gt;tabStrip.Parent" xml:space="preserve">
-    <value>PlTabStrip.ClientArea</value>
-  </data>
-  <data name="&gt;&gt;tabStrip.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;PlTabStrip.ClientArea.Name" xml:space="preserve">
-    <value>PlTabStrip.ClientArea</value>
-  </data>
-  <data name="&gt;&gt;PlTabStrip.ClientArea.Type" xml:space="preserve">
-    <value>Infragistics.Win.Misc.UltraPanelClientAreaUnsafe, Infragistics4.Win.Misc.v12.2, Version=12.2.20122.2123, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb</value>
-  </data>
-  <data name="&gt;&gt;PlTabStrip.ClientArea.Parent" xml:space="preserve">
-    <value>PlTabStrip</value>
-  </data>
-  <data name="&gt;&gt;PlTabStrip.ClientArea.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="PlTabStrip.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
-  </data>
-  <data name="PlTabStrip.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 76</value>
-  </data>
-  <data name="PlTabStrip.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1264, 30</value>
-  </data>
-  <data name="PlTabStrip.TabIndex" type="System.Int32, mscorlib">
-    <value>14</value>
-  </data>
-  <data name="&gt;&gt;PlTabStrip.Name" xml:space="preserve">
-    <value>PlTabStrip</value>
-  </data>
-  <data name="&gt;&gt;PlTabStrip.Type" xml:space="preserve">
-    <value>Infragistics.Win.Misc.UltraPanel, Infragistics4.Win.Misc.v12.2, Version=12.2.20122.2123, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb</value>
-  </data>
-  <data name="&gt;&gt;PlTabStrip.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;PlTabStrip.ZOrder" xml:space="preserve">
-    <value>1</value>
   </data>
   <data name="tabControlPanel1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -10906,6 +10545,100 @@
   </data>
   <data name="&gt;&gt;tabControlPanel1.ZOrder" xml:space="preserve">
     <value>0</value>
+  </data>
+  <data name="tabControlPanel2.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="tabControlPanel2.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="tabControlPanel2.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
+    <value>Center</value>
+  </data>
+  <data name="tabControlPanel2.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="tabControlPanel2.Font" type="System.Drawing.Font, System.Drawing">
+    <value>黑体, 10.5pt</value>
+  </data>
+  <data name="tabControlPanel2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 29</value>
+  </data>
+  <data name="tabControlPanel2.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>1, 1, 1, 1</value>
+  </data>
+  <data name="tabControlPanel2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1264, 0</value>
+  </data>
+  <data name="tabControlPanel2.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="tabPoint.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        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
+</value>
+  </data>
+  <data name="tabPoint.Text" xml:space="preserve">
+    <value>  点 位</value>
+  </data>
+  <data name="&gt;&gt;tabControlPanel2.Name" xml:space="preserve">
+    <value>tabControlPanel2</value>
+  </data>
+  <data name="&gt;&gt;tabControlPanel2.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.TabControlPanel, DevComponents.DotNetBar2, Version=14.0.0.3, Culture=neutral, PublicKeyToken=c39c3242a43eee2b</value>
+  </data>
+  <data name="&gt;&gt;tabControlPanel2.Parent" xml:space="preserve">
+    <value>tabStrip</value>
+  </data>
+  <data name="&gt;&gt;tabControlPanel2.ZOrder" xml:space="preserve">
+    <value>4</value>
   </data>
   <data name="tabControlPanel8.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -11243,7 +10976,7 @@
     <value>tabStrip</value>
   </data>
   <data name="&gt;&gt;tabControlPanel8.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>8</value>
   </data>
   <data name="tabControlPanel5.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -11325,7 +11058,7 @@
     <value>tabStrip</value>
   </data>
   <data name="&gt;&gt;tabControlPanel5.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>12</value>
   </data>
   <data name="tabControlPanel4.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -11408,7 +11141,7 @@
     <value>tabStrip</value>
   </data>
   <data name="&gt;&gt;tabControlPanel4.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>16</value>
   </data>
   <data name="tabControlPanel3.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -11491,100 +11224,6 @@
     <value>tabStrip</value>
   </data>
   <data name="&gt;&gt;tabControlPanel3.ZOrder" xml:space="preserve">
-    <value>16</value>
-  </data>
-  <data name="tabControlPanel2.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="tabControlPanel2.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="tabControlPanel2.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
-    <value>Center</value>
-  </data>
-  <data name="tabControlPanel2.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="tabControlPanel2.Font" type="System.Drawing.Font, System.Drawing">
-    <value>黑体, 10.5pt</value>
-  </data>
-  <data name="tabControlPanel2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 29</value>
-  </data>
-  <data name="tabControlPanel2.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>1, 1, 1, 1</value>
-  </data>
-  <data name="tabControlPanel2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1264, 0</value>
-  </data>
-  <data name="tabControlPanel2.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
-  <data name="tabPoint.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        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
-</value>
-  </data>
-  <data name="tabPoint.Text" xml:space="preserve">
-    <value>  点 位</value>
-  </data>
-  <data name="&gt;&gt;tabControlPanel2.Name" xml:space="preserve">
-    <value>tabControlPanel2</value>
-  </data>
-  <data name="&gt;&gt;tabControlPanel2.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.TabControlPanel, DevComponents.DotNetBar2, Version=14.0.0.3, Culture=neutral, PublicKeyToken=c39c3242a43eee2b</value>
-  </data>
-  <data name="&gt;&gt;tabControlPanel2.Parent" xml:space="preserve">
-    <value>tabStrip</value>
-  </data>
-  <data name="&gt;&gt;tabControlPanel2.ZOrder" xml:space="preserve">
     <value>20</value>
   </data>
   <data name="tabControlPanel7.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
@@ -11753,6 +11392,69 @@
   <data name="&gt;&gt;tabControlPanel6.ZOrder" xml:space="preserve">
     <value>28</value>
   </data>
+  <data name="tabStrip.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="tabStrip.Font" type="System.Drawing.Font, System.Drawing">
+    <value>微软雅黑, 9.75pt</value>
+  </data>
+  <data name="tabStrip.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="tabStrip.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1264, 27</value>
+  </data>
+  <data name="tabStrip.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;tabStrip.Name" xml:space="preserve">
+    <value>tabStrip</value>
+  </data>
+  <data name="&gt;&gt;tabStrip.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.TabControl, DevComponents.DotNetBar2, Version=14.0.0.3, Culture=neutral, PublicKeyToken=c39c3242a43eee2b</value>
+  </data>
+  <data name="&gt;&gt;tabStrip.Parent" xml:space="preserve">
+    <value>PlTabStrip.ClientArea</value>
+  </data>
+  <data name="&gt;&gt;tabStrip.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;PlTabStrip.ClientArea.Name" xml:space="preserve">
+    <value>PlTabStrip.ClientArea</value>
+  </data>
+  <data name="&gt;&gt;PlTabStrip.ClientArea.Type" xml:space="preserve">
+    <value>Infragistics.Win.Misc.UltraPanelClientAreaUnsafe, Infragistics4.Win.Misc.v12.2, Version=12.2.20122.2123, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb</value>
+  </data>
+  <data name="&gt;&gt;PlTabStrip.ClientArea.Parent" xml:space="preserve">
+    <value>PlTabStrip</value>
+  </data>
+  <data name="&gt;&gt;PlTabStrip.ClientArea.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="PlTabStrip.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="PlTabStrip.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 76</value>
+  </data>
+  <data name="PlTabStrip.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1264, 30</value>
+  </data>
+  <data name="PlTabStrip.TabIndex" type="System.Int32, mscorlib">
+    <value>14</value>
+  </data>
+  <data name="&gt;&gt;PlTabStrip.Name" xml:space="preserve">
+    <value>PlTabStrip</value>
+  </data>
+  <data name="&gt;&gt;PlTabStrip.Type" xml:space="preserve">
+    <value>Infragistics.Win.Misc.UltraPanel, Infragistics4.Win.Misc.v12.2, Version=12.2.20122.2123, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb</value>
+  </data>
+  <data name="&gt;&gt;PlTabStrip.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;PlTabStrip.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
   <metadata name="timer1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>139, 29</value>
   </metadata>
@@ -11819,150 +11521,6 @@
   <data name="&gt;&gt;cbType.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="&gt;&gt;plCentent.Name" xml:space="preserve">
-    <value>plCentent</value>
-  </data>
-  <data name="&gt;&gt;plCentent.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;plCentent.Parent" xml:space="preserve">
-    <value>plMain</value>
-  </data>
-  <data name="&gt;&gt;plCentent.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;ultraSplitter2.Name" xml:space="preserve">
-    <value>ultraSplitter2</value>
-  </data>
-  <data name="&gt;&gt;ultraSplitter2.Type" xml:space="preserve">
-    <value>Infragistics.Win.Misc.UltraSplitter, Infragistics4.Win.Misc.v12.2, Version=12.2.20122.2123, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb</value>
-  </data>
-  <data name="&gt;&gt;ultraSplitter2.Parent" xml:space="preserve">
-    <value>plMain</value>
-  </data>
-  <data name="&gt;&gt;ultraSplitter2.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;ultraSplitter1.Name" xml:space="preserve">
-    <value>ultraSplitter1</value>
-  </data>
-  <data name="&gt;&gt;ultraSplitter1.Type" xml:space="preserve">
-    <value>Infragistics.Win.Misc.UltraSplitter, Infragistics4.Win.Misc.v12.2, Version=12.2.20122.2123, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb</value>
-  </data>
-  <data name="&gt;&gt;ultraSplitter1.Parent" xml:space="preserve">
-    <value>plMain</value>
-  </data>
-  <data name="&gt;&gt;ultraSplitter1.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;plRight.Name" xml:space="preserve">
-    <value>plRight</value>
-  </data>
-  <data name="&gt;&gt;plRight.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;plRight.Parent" xml:space="preserve">
-    <value>plMain</value>
-  </data>
-  <data name="&gt;&gt;plRight.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;plLeft.Name" xml:space="preserve">
-    <value>plLeft</value>
-  </data>
-  <data name="&gt;&gt;plLeft.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;plLeft.Parent" xml:space="preserve">
-    <value>plMain</value>
-  </data>
-  <data name="&gt;&gt;plLeft.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="plMain.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="plMain.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 106</value>
-  </data>
-  <data name="plMain.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1264, 536</value>
-  </data>
-  <data name="plMain.TabIndex" type="System.Int32, mscorlib">
-    <value>15</value>
-  </data>
-  <data name="&gt;&gt;plMain.Name" xml:space="preserve">
-    <value>plMain</value>
-  </data>
-  <data name="&gt;&gt;plMain.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;plMain.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;plMain.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;plDgv.Name" xml:space="preserve">
-    <value>plDgv</value>
-  </data>
-  <data name="&gt;&gt;plDgv.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;plDgv.Parent" xml:space="preserve">
-    <value>plCentent</value>
-  </data>
-  <data name="&gt;&gt;plDgv.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;ultraSplitter3.Name" xml:space="preserve">
-    <value>ultraSplitter3</value>
-  </data>
-  <data name="&gt;&gt;ultraSplitter3.Type" xml:space="preserve">
-    <value>Infragistics.Win.Misc.UltraSplitter, Infragistics4.Win.Misc.v12.2, Version=12.2.20122.2123, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb</value>
-  </data>
-  <data name="&gt;&gt;ultraSplitter3.Parent" xml:space="preserve">
-    <value>plCentent</value>
-  </data>
-  <data name="&gt;&gt;ultraSplitter3.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;plInfo.Name" xml:space="preserve">
-    <value>plInfo</value>
-  </data>
-  <data name="&gt;&gt;plInfo.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;plInfo.Parent" xml:space="preserve">
-    <value>plCentent</value>
-  </data>
-  <data name="&gt;&gt;plInfo.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="plCentent.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="plCentent.Location" type="System.Drawing.Point, System.Drawing">
-    <value>214, 0</value>
-  </data>
-  <data name="plCentent.Size" type="System.Drawing.Size, System.Drawing">
-    <value>836, 536</value>
-  </data>
-  <data name="plCentent.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;plCentent.Name" xml:space="preserve">
-    <value>plCentent</value>
-  </data>
-  <data name="&gt;&gt;plCentent.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;plCentent.Parent" xml:space="preserve">
-    <value>plMain</value>
-  </data>
-  <data name="&gt;&gt;plCentent.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
   <data name="plDgv.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
@@ -12011,54 +11569,6 @@
   <data name="&gt;&gt;ultraSplitter3.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="&gt;&gt;txtShow.Name" xml:space="preserve">
-    <value>txtShow</value>
-  </data>
-  <data name="&gt;&gt;txtShow.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RichTextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtShow.Parent" xml:space="preserve">
-    <value>plInfo</value>
-  </data>
-  <data name="&gt;&gt;txtShow.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;plInfoTitle.Name" xml:space="preserve">
-    <value>plInfoTitle</value>
-  </data>
-  <data name="&gt;&gt;plInfoTitle.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;plInfoTitle.Parent" xml:space="preserve">
-    <value>plInfo</value>
-  </data>
-  <data name="&gt;&gt;plInfoTitle.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="plInfo.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Bottom</value>
-  </data>
-  <data name="plInfo.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 443</value>
-  </data>
-  <data name="plInfo.Size" type="System.Drawing.Size, System.Drawing">
-    <value>836, 93</value>
-  </data>
-  <data name="plInfo.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;plInfo.Name" xml:space="preserve">
-    <value>plInfo</value>
-  </data>
-  <data name="&gt;&gt;plInfo.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;plInfo.Parent" xml:space="preserve">
-    <value>plCentent</value>
-  </data>
-  <data name="&gt;&gt;plInfo.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
   <data name="txtShow.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
@@ -12088,66 +11598,6 @@
   </data>
   <data name="&gt;&gt;txtShow.ZOrder" xml:space="preserve">
     <value>0</value>
-  </data>
-  <data name="&gt;&gt;symbolBox1.Name" xml:space="preserve">
-    <value>symbolBox1</value>
-  </data>
-  <data name="&gt;&gt;symbolBox1.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.Controls.SymbolBox, DevComponents.DotNetBar2, Version=14.0.0.3, Culture=neutral, PublicKeyToken=c39c3242a43eee2b</value>
-  </data>
-  <data name="&gt;&gt;symbolBox1.Parent" xml:space="preserve">
-    <value>plInfoTitle</value>
-  </data>
-  <data name="&gt;&gt;symbolBox1.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;btnInfoClear.Name" xml:space="preserve">
-    <value>btnInfoClear</value>
-  </data>
-  <data name="&gt;&gt;btnInfoClear.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.ButtonX, DevComponents.DotNetBar2, Version=14.0.0.3, Culture=neutral, PublicKeyToken=c39c3242a43eee2b</value>
-  </data>
-  <data name="&gt;&gt;btnInfoClear.Parent" xml:space="preserve">
-    <value>plInfoTitle</value>
-  </data>
-  <data name="&gt;&gt;btnInfoClear.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;label1.Name" xml:space="preserve">
-    <value>label1</value>
-  </data>
-  <data name="&gt;&gt;label1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label1.Parent" xml:space="preserve">
-    <value>plInfoTitle</value>
-  </data>
-  <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="plInfoTitle.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
-  </data>
-  <data name="plInfoTitle.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="plInfoTitle.Size" type="System.Drawing.Size, System.Drawing">
-    <value>836, 25</value>
-  </data>
-  <data name="plInfoTitle.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;plInfoTitle.Name" xml:space="preserve">
-    <value>plInfoTitle</value>
-  </data>
-  <data name="&gt;&gt;plInfoTitle.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;plInfoTitle.Parent" xml:space="preserve">
-    <value>plInfo</value>
-  </data>
-  <data name="&gt;&gt;plInfoTitle.ZOrder" xml:space="preserve">
-    <value>1</value>
   </data>
   <data name="symbolBox1.BackgroundStyle.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -12392,6 +11842,78 @@
   <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
+  <data name="plInfoTitle.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="plInfoTitle.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="plInfoTitle.Size" type="System.Drawing.Size, System.Drawing">
+    <value>836, 25</value>
+  </data>
+  <data name="plInfoTitle.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;plInfoTitle.Name" xml:space="preserve">
+    <value>plInfoTitle</value>
+  </data>
+  <data name="&gt;&gt;plInfoTitle.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;plInfoTitle.Parent" xml:space="preserve">
+    <value>plInfo</value>
+  </data>
+  <data name="&gt;&gt;plInfoTitle.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="plInfo.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Bottom</value>
+  </data>
+  <data name="plInfo.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 443</value>
+  </data>
+  <data name="plInfo.Size" type="System.Drawing.Size, System.Drawing">
+    <value>836, 93</value>
+  </data>
+  <data name="plInfo.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;plInfo.Name" xml:space="preserve">
+    <value>plInfo</value>
+  </data>
+  <data name="&gt;&gt;plInfo.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;plInfo.Parent" xml:space="preserve">
+    <value>plCentent</value>
+  </data>
+  <data name="&gt;&gt;plInfo.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="plCentent.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="plCentent.Location" type="System.Drawing.Point, System.Drawing">
+    <value>214, 0</value>
+  </data>
+  <data name="plCentent.Size" type="System.Drawing.Size, System.Drawing">
+    <value>836, 536</value>
+  </data>
+  <data name="plCentent.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;plCentent.Name" xml:space="preserve">
+    <value>plCentent</value>
+  </data>
+  <data name="&gt;&gt;plCentent.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;plCentent.Parent" xml:space="preserve">
+    <value>plMain</value>
+  </data>
+  <data name="&gt;&gt;plCentent.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="ultraSplitter2.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Right</value>
   </data>
@@ -12436,66 +11958,6 @@
   </data>
   <data name="&gt;&gt;ultraSplitter1.ZOrder" xml:space="preserve">
     <value>2</value>
-  </data>
-  <data name="&gt;&gt;plSection.Name" xml:space="preserve">
-    <value>plSection</value>
-  </data>
-  <data name="&gt;&gt;plSection.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;plSection.Parent" xml:space="preserve">
-    <value>plRight</value>
-  </data>
-  <data name="&gt;&gt;plSection.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;ultraSplitter4.Name" xml:space="preserve">
-    <value>ultraSplitter4</value>
-  </data>
-  <data name="&gt;&gt;ultraSplitter4.Type" xml:space="preserve">
-    <value>Infragistics.Win.Misc.UltraSplitter, Infragistics4.Win.Misc.v12.2, Version=12.2.20122.2123, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb</value>
-  </data>
-  <data name="&gt;&gt;ultraSplitter4.Parent" xml:space="preserve">
-    <value>plRight</value>
-  </data>
-  <data name="&gt;&gt;ultraSplitter4.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;plTitle.Name" xml:space="preserve">
-    <value>plTitle</value>
-  </data>
-  <data name="&gt;&gt;plTitle.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;plTitle.Parent" xml:space="preserve">
-    <value>plRight</value>
-  </data>
-  <data name="&gt;&gt;plTitle.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="plRight.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Right</value>
-  </data>
-  <data name="plRight.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1060, 0</value>
-  </data>
-  <data name="plRight.Size" type="System.Drawing.Size, System.Drawing">
-    <value>204, 536</value>
-  </data>
-  <data name="plRight.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;plRight.Name" xml:space="preserve">
-    <value>plRight</value>
-  </data>
-  <data name="&gt;&gt;plRight.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;plRight.Parent" xml:space="preserve">
-    <value>plMain</value>
-  </data>
-  <data name="&gt;&gt;plRight.ZOrder" xml:space="preserve">
-    <value>3</value>
   </data>
   <data name="plSection.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -12545,54 +12007,6 @@
   <data name="&gt;&gt;ultraSplitter4.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="&gt;&gt;plTitleTree.Name" xml:space="preserve">
-    <value>plTitleTree</value>
-  </data>
-  <data name="&gt;&gt;plTitleTree.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;plTitleTree.Parent" xml:space="preserve">
-    <value>plTitle</value>
-  </data>
-  <data name="&gt;&gt;plTitleTree.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;plTitleCbbox.Name" xml:space="preserve">
-    <value>plTitleCbbox</value>
-  </data>
-  <data name="&gt;&gt;plTitleCbbox.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;plTitleCbbox.Parent" xml:space="preserve">
-    <value>plTitle</value>
-  </data>
-  <data name="&gt;&gt;plTitleCbbox.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="plTitle.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Bottom</value>
-  </data>
-  <data name="plTitle.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 284</value>
-  </data>
-  <data name="plTitle.Size" type="System.Drawing.Size, System.Drawing">
-    <value>204, 252</value>
-  </data>
-  <data name="plTitle.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;plTitle.Name" xml:space="preserve">
-    <value>plTitle</value>
-  </data>
-  <data name="&gt;&gt;plTitle.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;plTitle.Parent" xml:space="preserve">
-    <value>plRight</value>
-  </data>
-  <data name="&gt;&gt;plTitle.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
   <data name="plTitleTree.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
@@ -12616,42 +12030,6 @@
   </data>
   <data name="&gt;&gt;plTitleTree.ZOrder" xml:space="preserve">
     <value>0</value>
-  </data>
-  <data name="&gt;&gt;symbolBox2.Name" xml:space="preserve">
-    <value>symbolBox2</value>
-  </data>
-  <data name="&gt;&gt;symbolBox2.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.Controls.SymbolBox, DevComponents.DotNetBar2, Version=14.0.0.3, Culture=neutral, PublicKeyToken=c39c3242a43eee2b</value>
-  </data>
-  <data name="&gt;&gt;symbolBox2.Parent" xml:space="preserve">
-    <value>plTitleCbbox</value>
-  </data>
-  <data name="&gt;&gt;symbolBox2.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="plTitleCbbox.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
-  </data>
-  <data name="plTitleCbbox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="plTitleCbbox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>204, 25</value>
-  </data>
-  <data name="plTitleCbbox.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;plTitleCbbox.Name" xml:space="preserve">
-    <value>plTitleCbbox</value>
-  </data>
-  <data name="&gt;&gt;plTitleCbbox.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;plTitleCbbox.Parent" xml:space="preserve">
-    <value>plTitle</value>
-  </data>
-  <data name="&gt;&gt;plTitleCbbox.ZOrder" xml:space="preserve">
-    <value>1</value>
   </data>
   <data name="symbolBox2.BackgroundStyle.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -12732,6 +12110,78 @@
   <data name="&gt;&gt;symbolBox2.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="plTitleCbbox.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="plTitleCbbox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="plTitleCbbox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>204, 25</value>
+  </data>
+  <data name="plTitleCbbox.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;plTitleCbbox.Name" xml:space="preserve">
+    <value>plTitleCbbox</value>
+  </data>
+  <data name="&gt;&gt;plTitleCbbox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;plTitleCbbox.Parent" xml:space="preserve">
+    <value>plTitle</value>
+  </data>
+  <data name="&gt;&gt;plTitleCbbox.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="plTitle.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Bottom</value>
+  </data>
+  <data name="plTitle.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 284</value>
+  </data>
+  <data name="plTitle.Size" type="System.Drawing.Size, System.Drawing">
+    <value>204, 252</value>
+  </data>
+  <data name="plTitle.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;plTitle.Name" xml:space="preserve">
+    <value>plTitle</value>
+  </data>
+  <data name="&gt;&gt;plTitle.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;plTitle.Parent" xml:space="preserve">
+    <value>plRight</value>
+  </data>
+  <data name="&gt;&gt;plTitle.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="plRight.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="plRight.Location" type="System.Drawing.Point, System.Drawing">
+    <value>1060, 0</value>
+  </data>
+  <data name="plRight.Size" type="System.Drawing.Size, System.Drawing">
+    <value>204, 536</value>
+  </data>
+  <data name="plRight.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;plRight.Name" xml:space="preserve">
+    <value>plRight</value>
+  </data>
+  <data name="&gt;&gt;plRight.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;plRight.Parent" xml:space="preserve">
+    <value>plMain</value>
+  </data>
+  <data name="&gt;&gt;plRight.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
   <data name="plLeft.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Left</value>
   </data>
@@ -12755,6 +12205,30 @@
   </data>
   <data name="&gt;&gt;plLeft.ZOrder" xml:space="preserve">
     <value>4</value>
+  </data>
+  <data name="plMain.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="plMain.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 106</value>
+  </data>
+  <data name="plMain.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1264, 536</value>
+  </data>
+  <data name="plMain.TabIndex" type="System.Int32, mscorlib">
+    <value>15</value>
+  </data>
+  <data name="&gt;&gt;plMain.Name" xml:space="preserve">
+    <value>plMain</value>
+  </data>
+  <data name="&gt;&gt;plMain.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;plMain.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;plMain.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <metadata name="ngenInstaller1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>229, 29</value>
@@ -14191,6 +13665,12 @@
   <data name="&gt;&gt;tabName.Type" xml:space="preserve">
     <value>DevComponents.DotNetBar.TabItem, DevComponents.DotNetBar2, Version=14.0.0.3, Culture=neutral, PublicKeyToken=c39c3242a43eee2b</value>
   </data>
+  <data name="&gt;&gt;tabPoint.Name" xml:space="preserve">
+    <value>tabPoint</value>
+  </data>
+  <data name="&gt;&gt;tabPoint.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.TabItem, DevComponents.DotNetBar2, Version=14.0.0.3, Culture=neutral, PublicKeyToken=c39c3242a43eee2b</value>
+  </data>
   <data name="&gt;&gt;tabVar.Name" xml:space="preserve">
     <value>tabVar</value>
   </data>
@@ -14213,12 +13693,6 @@
     <value>tabScene</value>
   </data>
   <data name="&gt;&gt;tabScene.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.TabItem, DevComponents.DotNetBar2, Version=14.0.0.3, Culture=neutral, PublicKeyToken=c39c3242a43eee2b</value>
-  </data>
-  <data name="&gt;&gt;tabPoint.Name" xml:space="preserve">
-    <value>tabPoint</value>
-  </data>
-  <data name="&gt;&gt;tabPoint.Type" xml:space="preserve">
     <value>DevComponents.DotNetBar.TabItem, DevComponents.DotNetBar2, Version=14.0.0.3, Culture=neutral, PublicKeyToken=c39c3242a43eee2b</value>
   </data>
   <data name="&gt;&gt;tabLogic.Name" xml:space="preserve">
@@ -14244,6 +13718,30 @@
   </data>
   <data name="&gt;&gt;ngenInstaller1.Type" xml:space="preserve">
     <value>NgenInstaller.NgenInstaller, NgenInstaller, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;toolStripMenuItem8.Name" xml:space="preserve">
+    <value>toolStripMenuItem8</value>
+  </data>
+  <data name="&gt;&gt;toolStripMenuItem8.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;相同ToolStripMenuItem.Name" xml:space="preserve">
+    <value>相同ToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;相同ToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripMenuItem14.Name" xml:space="preserve">
+    <value>toolStripMenuItem14</value>
+  </data>
+  <data name="&gt;&gt;toolStripMenuItem14.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;升序ToolStripMenuItem.Name" xml:space="preserve">
+    <value>升序ToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;升序ToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>Form1</value>

@@ -153,6 +153,7 @@ namespace eNet编辑器.ThreeView
             {
                 return;
             }
+            addSelectNode = FileMesege.sectionNode;
             tss.LbText = "添加节点";
             tss.Selectindex = i;
             tss.ShowDialog();
@@ -195,11 +196,15 @@ namespace eNet编辑器.ThreeView
             {
                 return;
             }
+            addSelectNode = FileMesege.sectionNode;
+
             tss.Selectindex = i;
             tss.ShowDialog();
 
         }
 
+        //选中的节点
+        TreeNode addSelectNode = null;
         //新建节点
         public void addNodeDelegate()
         {
@@ -211,7 +216,6 @@ namespace eNet编辑器.ThreeView
             }
             int id = -1;
             string[] nums = null;
-            TreeNode tmp = FileMesege.sectionNode;
             if (newflag == false)
             {
                 //新建节点 
@@ -223,13 +227,13 @@ namespace eNet编辑器.ThreeView
                 TreeMesege tm = new TreeMesege();
                 if (isAddChild)
                 {
-                    if (FileMesege.sectionNode != null && FileMesege.sectionNode.Text == "查看所有区域")
+                    if (addSelectNode != null && addSelectNode.Text == "查看所有区域")
                     {
                         return;
                     }
                     
                     //添加子节点
-                    nums = tm.GetNodeNum(FileMesege.sectionNode).Split(' ');
+                    nums = tm.GetNodeNum(addSelectNode).Split(' ');
                     switch (nums.Length)
                     {
                         case 4:
@@ -259,7 +263,7 @@ namespace eNet编辑器.ThreeView
                 else
                 {
                     //添加节点
-                    nums = tm.GetNodeNum(FileMesege.sectionNode).Split(' ');
+                    nums = tm.GetNodeNum(addSelectNode).Split(' ');
                     switch (nums.Length)
                     {
                         case 4:
@@ -290,7 +294,7 @@ namespace eNet编辑器.ThreeView
     
             
             ThreeSEctionAddNode();
-            FileMesege.sectionNode = tmp;
+        
            
         }
 

@@ -125,6 +125,7 @@ namespace eNet编辑器.ThreeView
 
         private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
         {
+
             FileMesege.varSelectNode = treeView1.SelectedNode;
             fullpath = treeView1.SelectedNode.FullPath;
             //DGVVar添加虚拟端口

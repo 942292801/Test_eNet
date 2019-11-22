@@ -134,6 +134,7 @@ namespace eNet编辑器
             var cmd = new Command(totalList,unDototalList);
             if (UnDoActionStack.Count > 2)
             {
+                
                 var cmd3 = UnDoActionStack.Pop();
                 var cmd2 = UnDoActionStack.Pop();
                 UnDoActionStack.Pop();

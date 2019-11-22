@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DgvName));
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.NamePort = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -46,8 +46,8 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.plInfoTitle = new System.Windows.Forms.Panel();
+            this.cbOnline = new System.Windows.Forms.CheckBox();
             this.symbolBox1 = new DevComponents.DotNetBar.Controls.SymbolBox();
-            this.btnNew = new DevComponents.DotNetBar.ButtonX();
             this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
@@ -59,19 +59,19 @@
             // 
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
-            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
             this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridView1.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableAlwaysIncludeHeaderText;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("微软雅黑", 9F);
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("微软雅黑", 9F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.NamePort,
@@ -81,14 +81,14 @@
             this.NameState,
             this.NameOperation,
             this.NameSet});
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("微软雅黑", 9F);
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(235)))), ((int)(((byte)(248)))));
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("微软雅黑", 9F);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(235)))), ((int)(((byte)(248)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
@@ -96,6 +96,7 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.RowHeadersWidth = 30;
+            this.dataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dataGridView1.RowTemplate.Height = 23;
             this.dataGridView1.Size = new System.Drawing.Size(883, 453);
             this.dataGridView1.TabIndex = 1;
@@ -199,8 +200,8 @@
             // plInfoTitle
             // 
             this.plInfoTitle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.plInfoTitle.Controls.Add(this.cbOnline);
             this.plInfoTitle.Controls.Add(this.symbolBox1);
-            this.plInfoTitle.Controls.Add(this.btnNew);
             this.plInfoTitle.Controls.Add(this.label1);
             this.plInfoTitle.Dock = System.Windows.Forms.DockStyle.Top;
             this.plInfoTitle.Location = new System.Drawing.Point(0, 0);
@@ -208,6 +209,18 @@
             this.plInfoTitle.Name = "plInfoTitle";
             this.plInfoTitle.Size = new System.Drawing.Size(883, 25);
             this.plInfoTitle.TabIndex = 14;
+            // 
+            // cbOnline
+            // 
+            this.cbOnline.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.cbOnline.AutoSize = true;
+            this.cbOnline.Location = new System.Drawing.Point(781, 3);
+            this.cbOnline.Name = "cbOnline";
+            this.cbOnline.Size = new System.Drawing.Size(99, 21);
+            this.cbOnline.TabIndex = 11;
+            this.cbOnline.Text = "获取实时状态";
+            this.cbOnline.UseVisualStyleBackColor = true;
+            this.cbOnline.CheckedChanged += new System.EventHandler(this.cbOnline_CheckedChanged);
             // 
             // symbolBox1
             // 
@@ -224,28 +237,6 @@
             this.symbolBox1.SymbolColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(119)))), ((int)(((byte)(119)))));
             this.symbolBox1.TabIndex = 10;
             this.symbolBox1.Text = "symbolBox1";
-            // 
-            // btnNew
-            // 
-            this.btnNew.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnNew.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnNew.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btnNew.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
-            this.btnNew.FocusCuesEnabled = false;
-            this.btnNew.Font = new System.Drawing.Font("黑体", 9F);
-            this.btnNew.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.Image;
-            this.btnNew.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnNew.HoverImage")));
-            this.btnNew.Image = ((System.Drawing.Image)(resources.GetObject("btnNew.Image")));
-            this.btnNew.Location = new System.Drawing.Point(863, 5);
-            this.btnNew.Margin = new System.Windows.Forms.Padding(6);
-            this.btnNew.Name = "btnNew";
-            this.btnNew.Size = new System.Drawing.Size(15, 15);
-            this.btnNew.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnNew.TabIndex = 0;
-            this.btnNew.Tooltip = "清空";
-            this.btnNew.Visible = false;
-            this.btnNew.Click += new System.EventHandler(this.btnNew_Click_1);
             // 
             // label1
             // 
@@ -286,7 +277,6 @@
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel plInfoTitle;
-        private DevComponents.DotNetBar.ButtonX btnNew;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel2;
         private DevComponents.DotNetBar.Controls.SymbolBox symbolBox1;
@@ -297,5 +287,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn NameState;
         private DevComponents.DotNetBar.Controls.DataGridViewButtonXColumn NameOperation;
         private DevComponents.DotNetBar.Controls.DataGridViewButtonXColumn NameSet;
+        private System.Windows.Forms.CheckBox cbOnline;
     }
 }

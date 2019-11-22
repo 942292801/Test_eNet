@@ -15,6 +15,7 @@ using System.Text.RegularExpressions;
 using System.Reflection;
 using eNet编辑器.Controller;
 using eNet编辑器.Properties;
+using System.Threading;
 
 namespace eNet编辑器.DgvView
 {
@@ -38,9 +39,10 @@ namespace eNet编辑器.DgvView
         }
 
         public event Action<string> txtAppShow;
-        public event Action updateTitleNode;
+        //public event Action updateTitleNode;
         public event Action unSelectTitleNode;
         public event Action unSelectSectionNode;
+        public event Action<string,string> updateTitleNodeText;
         
         //public event DgvDeviceCursorDefault dgvDeviceCursorDefault;
         /// <summary>
@@ -63,18 +65,38 @@ namespace eNet编辑器.DgvView
        
 
         #region 刷新窗体事件
+
+        public void dgvNameAddItem()
+        {
+
+            //way1.ok
+            Thread t = new Thread(ShowDatatable);
+            t.IsBackground = true;
+            t.Start();
+        }
+        #region 测试异步加载
+        public delegate void FormIniDelegate();
+        private void ShowDatatable()
+        {
+            this.Invoke(new FormIniDelegate(TabIni));
+
+        }
+        
+    
+        #endregion
+
         /// <summary>
         /// DGV添加没一行的数值 重新加载数据
         /// </summary>
         /// <param name="filepath">ini文件路径</param>
         /// <param name="num">树状图上下级索引号</param>
-        public void dgvNameAddItem()
+        private void TabIni()
         {
             try
             {
                 //封装一个添加DGV信息的函数 打开配置文件自己读
                 this.dataGridView1.Rows.Clear();
-                if (FileMesege.tnselectNode == null || FileMesege.tnselectNode.Parent == null )
+                if (FileMesege.tnselectNode == null || FileMesege.tnselectNode.Parent == null)
                 {
                     return;
                 }
@@ -84,19 +106,12 @@ namespace eNet编辑器.DgvView
                 TreeMesege tm = new TreeMesege();
                 string[] num = tm.GetNodeNum(FileMesege.tnselectNode).Split(' ');
 
-                //关闭刷新按键 所有信息释放对象
-                if (btnNew.Style == DevComponents.DotNetBar.eDotNetBarStyle.Office2003 )
-                {
-                    timer1.Enabled = false;
-                    client.Close();
-                    btnNew.Style = DevComponents.DotNetBar.eDotNetBarStyle.VS2005;
-               
-                }
+
                 if (filepath == "" || num == null)
                 {
                     return;
                 }
-            
+
                 //ini添加port type   DeviceList添加 section name 需要用/分割开来
                 int master = Convert.ToInt32(num[0]);
                 int nub = Convert.ToInt32(num[1]);//树状图的索引号
@@ -104,7 +119,7 @@ namespace eNet编辑器.DgvView
                 int device = Convert.ToInt32(FileMesege.DeviceList[master].module[nub].id);
                 string value = "";
                 int index = 0;
-            
+
                 //获取全部Section下的Key
                 List<string> list = IniConfig.ReadKeys("ports", filepath);
                 //循环添加行信息
@@ -115,8 +130,8 @@ namespace eNet编辑器.DgvView
                         continue;
                     }
                     //获取类型版本类型版本
-                    value = IniConfig.GetValue(filepath, "ports",list[i]);
-                    if(value == "")
+                    value = IniConfig.GetValue(filepath, "ports", list[i]);
+                    if (value == "")
                     {
                         break;
                     }
@@ -175,15 +190,32 @@ namespace eNet编辑器.DgvView
                 }
                 #endregion
 
-                DgvMesege.RecoverDgvForm(dataGridView1,X_Value,Y_Value,rowCount,columnCount);
-                
-                shuaxinBtn();
-            }//try
-            catch (Exception ex) { MessageBox.Show(ex + "临时调试错误信息"); }
+                DgvMesege.RecoverDgvForm(dataGridView1, X_Value, Y_Value, rowCount, columnCount);
+                this.cbOnline.CheckedChanged -= new System.EventHandler(this.cbOnline_CheckedChanged);
+                if (FileMesege.isDgvNameDeviceConnet)
+                {
+                    shuaxinBtn();
+                    cbOnline.Checked = true;
+                }
+                else
+                {
+                    cbOnline.Checked = false;
+                    timer1.Stop();
+                    client = null;
+                }
+                this.cbOnline.CheckedChanged += new System.EventHandler(this.cbOnline_CheckedChanged);
+            }
+            catch
+            { 
+            
+            }
 
         }
 
-
+        public void clearDgvClear()
+        {
+            dataGridView1.Rows.Clear();
+        }
         #endregion
 
 
@@ -830,15 +862,20 @@ namespace eNet编辑器.DgvView
             {
                 return;
             }
+            //撤销
+            DataJson.totalList OldList = FileMesege.cmds.getListInfos();
             //解绑已经绑定了地址的point
             foreach (DataJson.PointInfo eq in FileMesege.PointList.equipment)
             {
                 if (eq.address == address && eq.ip == parents[0])
                 {
+                    string oldNodeText = DataListHelper.dealSection(eq);
                     eq.address = "FFFFFFFF";
                     eq.ip = "";
+                    eq.name = string.Format("{0}@255", eq.name.Split('@')[0]);
                     //类型删除 不能删除
                     //eq.type = "";
+                    updateTitleNodeText(oldNodeText,DataListHelper.dealSection(eq));
                     break;
                 }
             }
@@ -854,8 +891,8 @@ namespace eNet编辑器.DgvView
                         txtAppShow(string.Format("该点位类型为（{0}）与端口类型不一致！", IniHelper.findTypesIniNamebyType(eq.type)));
                         return ;
                     }
-                    //撤销
-                    DataJson.totalList OldList = FileMesege.cmds.getListInfos();
+                    string oldNodeText = DataListHelper.dealSection(eq);
+                    
                     eq.ip = parents[0];
                     eq.address = address;
                     eq.type = type;
@@ -864,7 +901,7 @@ namespace eNet编辑器.DgvView
                     FileMesege.cmds.DoNewCommand(NewList, OldList);
                     //刷新dgv
                     dgvNameAddItem();
-                    updateTitleNode();
+                    updateTitleNodeText(oldNodeText, DataListHelper.dealSection(eq));
                     break;
                 }
             }
@@ -876,14 +913,20 @@ namespace eNet编辑器.DgvView
 
 
         #region  刷新按键
-        /// <summary>
-        /// 刷新按键 按时获取1  
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void btnNew_Click_1(object sender, EventArgs e)
+        private void cbOnline_CheckedChanged(object sender, EventArgs e)
         {
-            shuaxinBtn();
+            if (cbOnline.Checked)
+            {
+                shuaxinBtn();
+                FileMesege.isDgvNameDeviceConnet = true;
+            }
+            else
+            {
+                FileMesege.isDgvNameDeviceConnet = false;
+                timer1.Stop();
+                //timer1.Enabled = false;
+                client = null;
+            }
         }
 
         /// <summary>
@@ -975,7 +1018,7 @@ namespace eNet编辑器.DgvView
                 {
                     case ClientAsync.EnSocketAction.Connect:
                         //MessageBox.Show("已经与" + key + "建立连接");
-                        btnNew.Style = DevComponents.DotNetBar.eDotNetBarStyle.Office2003;
+                        
                         //timer1.Start();
 
                         break;
@@ -1227,6 +1270,7 @@ namespace eNet编辑器.DgvView
                         {
                             if (colIndex == 2 || colIndex == 3)
                             {
+                                string oldNodeText = DataListHelper.dealSection(eq);
                                 eq.address = "FFFFFFFF";
                                 eq.ip = "";
                                 if (string.IsNullOrEmpty(eq.objType))
@@ -1237,11 +1281,10 @@ namespace eNet编辑器.DgvView
                                 ischange = true;
                                 this.dataGridView1.Rows[dataGridView1.SelectedCells[i].RowIndex].Cells[2].Value = null;
                                 this.dataGridView1.Rows[dataGridView1.SelectedCells[i].RowIndex].Cells[3].Value = null;
+                                updateTitleNodeText(oldNodeText, DataListHelper.dealSection(eq));
                                 break;
                             }
               
-
-
                         }
                     }
 
@@ -1250,7 +1293,7 @@ namespace eNet编辑器.DgvView
                 {
                     DataJson.totalList NewList = FileMesege.cmds.getListInfos();
                     FileMesege.cmds.DoNewCommand(NewList, OldList);
-                    updateTitleNode();
+                   
                 }
             }//try
             catch
@@ -1279,6 +1322,8 @@ namespace eNet编辑器.DgvView
 
         }
         #endregion
+
+      
 
 
 

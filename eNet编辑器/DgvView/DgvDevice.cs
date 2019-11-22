@@ -13,6 +13,7 @@ using eNet编辑器.Properties;
 using System.Text.RegularExpressions;
 using eNet编辑器.Controller;
 using System.Net.Sockets;
+using System.Threading;
 
 
 namespace eNet编辑器.DgvView
@@ -59,11 +60,30 @@ namespace eNet编辑器.DgvView
 
         }
 
+        #region 刷新窗体事件
+
+        public void dgvDeviceAddItem()
+        {
+            Thread t = new Thread(ShowDatatable);
+            t.IsBackground = true;
+            t.Start();
+        }
+        #region 测试异步加载
+        public delegate void FormIniDelegate();
+        private void ShowDatatable()
+        {
+            this.Invoke(new FormIniDelegate(TabIni));
+
+        }
+
+
+        #endregion
+
         /// <summary>
         /// 网关加载到DGV表格信息
         /// </summary>
         /// <param name="num">树状图索引号</param>
-        public void dgvDeviceAddItem(bool isConnect)
+        public void TabIni()
         {
             this.dataGridView1.Rows.Clear();
             if (FileMesege.tnselectNode == null)
@@ -107,15 +127,29 @@ namespace eNet编辑器.DgvView
                     break;
                 }//eq.ip == ips
             }//foreach DeviceList表
-            if (isConnect)
+            this.cbOnline.CheckedChanged -= new System.EventHandler(this.cbOnline_CheckedChanged);
+            if (FileMesege.isDgvNameDeviceConnet)
             {
+                cbOnline.Checked = true;
                 clientConnect();
             }
+            else
+            {
+                cbOnline.Checked = false;
+                client = null;
+            }
+            this.cbOnline.CheckedChanged += new System.EventHandler(this.cbOnline_CheckedChanged);
             DgvMesege.RecoverDgvForm(dataGridView1, X_Value, Y_Value, rowcount, columnCount);
 
             
         }
 
+        public void clearDgvClear()
+        {
+            dataGridView1.Rows.Clear();
+        }
+
+        #endregion
 
         #region 鼠标点击DGV表操作
         /// <summary>
@@ -550,8 +584,23 @@ namespace eNet编辑器.DgvView
 
         ClientAsync client;
 
-  
 
+        private void cbOnline_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cbOnline.Checked)
+            {
+                FileMesege.isDgvNameDeviceConnet = true;
+                clientConnect();
+
+            }
+            else
+            {
+                FileMesege.isDgvNameDeviceConnet = false;
+                client = null;
+                return;
+            }
+
+        }
  
 
         private void clientConnect()
@@ -581,8 +630,7 @@ namespace eNet编辑器.DgvView
             }
         }
 
-        //接收区信息缓存buffer
-        string bufferMsg = "";
+       
 
 
         /// <summary>
@@ -590,7 +638,8 @@ namespace eNet编辑器.DgvView
         /// </summary>
         private void ClientIni()
         {
-            
+            //接收区信息缓存buffer
+            string bufferMsg = "";
             string strip = FileMesege.tnselectNode.Text.Split(' ')[0];
             client.Completed += new Action<System.Net.Sockets.TcpClient, ClientAsync.EnSocketAction>((c, enAction) =>
             {
@@ -630,49 +679,54 @@ namespace eNet编辑器.DgvView
             //信息接收处理
             client.Received += new Action<string, string>((key, msg) =>
             {
-                bufferMsg = bufferMsg + msg;
-                if (msg.Length == 1024)
+                try
                 {
-                    return;
-                }
-                //SocketUtil.WriteLog(bufferMsg);
-                if (bufferMsg.Contains("serial"))
-                {
-                    // 序列化接收信息
-                    FileMesege.serialList = JsonConvert.DeserializeObject<DataJson.Serial>(bufferMsg);
-                    bufferMsg = "";
-                    foreach (DataJson.Device dev in FileMesege.DeviceList)
+                    bufferMsg = bufferMsg + msg;
+                    if (msg.Length == 1024)
                     {
-                        //当IP相等时候进入module里面 
-                        if (dev.ip == strip)
+                        return;
+                    }
+                 
+                    //SocketUtil.WriteLog(bufferMsg);
+                    if (bufferMsg.Contains("serial"))
+                    {
+
+                        // 序列化接收信息
+                        FileMesege.serialList = JsonConvert.DeserializeObject<DataJson.Serial>(bufferMsg);
+                        bufferMsg = "";
+                        foreach (DataJson.Device dev in FileMesege.DeviceList)
                         {
-
-                            foreach (DataJson.serials sl in FileMesege.serialList.serial)
+                            //当IP相等时候进入module里面 
+                            if (dev.ip == strip)
                             {
-                                //获取到的Serial文件在线 的ID 对比dataList信息
-                                foreach (DataJson.Module mdl in dev.module)
-                                {
-                                    //当设备的号码相同 名字相同  修改序列号 版本号 状态 
-                                    if (sl.id == mdl.id && sl.serial.Trim() == mdl.device)
-                                    {
-                                        mdl.sn = sl.mac8.Trim().Replace(":", "");
-                                        mdl.ver = sl.version.Trim();
-                                        changeSn_ver(mdl);
-                                        //寻找到该信息就退出当前循环
-                                        break;
-                                    }
 
-                                }//for 
+                                foreach (DataJson.serials sl in FileMesege.serialList.serial)
+                                {
+                                    //获取到的Serial文件在线 的ID 对比dataList信息
+                                    foreach (DataJson.Module mdl in dev.module)
+                                    {
+                                        //当设备的号码相同 名字相同  修改序列号 版本号 状态 
+                                        if (sl.id == mdl.id && sl.serial.Trim() == mdl.device)
+                                        {
+                                            mdl.sn = sl.mac8.Trim().Replace(":", "");
+                                            mdl.ver = sl.version.Trim();
+                                            changeSn_ver(mdl);
+                                            //寻找到该信息就退出当前循环
+                                            break;
+                                        }
+
+                                    }//for 
+
+                                }
 
                             }
 
-                        }
-
-                    }//for dev
+                        }//for dev
 
 
-                }//ifserial
-            
+                    }//ifserial
+                }
+                catch { }
                 
             });
           
@@ -1039,6 +1093,8 @@ namespace eNet编辑器.DgvView
 
         }
         #endregion
+
+   
 
 
 

@@ -463,14 +463,25 @@ namespace eNet编辑器.AddForm
                 string filepath = string.Format("{0}\\objs\\{1}.zip",FileMesege.TmpFilePath,ip);
                 TcpSocket ts = new TcpSocket();
 
-                sock = ts.ConnectServer(ip, 6001, 1);
-                ToolsUtil.Delay(1);
+                sock = ts.ConnectServer(ip, 6001, 2);
+                ToolsUtil.DelayMilli(2000);
                 if (sock == null)
                 {
+                    sock = ts.ConnectServer(ip, 6001, 2);
+                    ToolsUtil.DelayMilli(2000);
+                    if (sock == null)
+                    {
+                        //防止一连失败
+                        sock = ts.ConnectServer(ip, 6001, 2);
+                        ToolsUtil.DelayMilli(2000);
+                        if (sock == null)
+                        {
+                            AppTxtShow("文件载入主机失败");
+                            showIp();
+                            return;
+                        }
+                    }
                     
-                    AppTxtShow("文件载入主机失败");
-                    showIp();
-                    return;
                 }
 
 
@@ -507,9 +518,9 @@ namespace eNet编辑器.AddForm
                 }
                 
             }
-            catch(Exception e)
+            catch//(Exception e)
             {
-                MessageBox.Show(e.ToString());
+                //MessageBox.Show(e.ToString());
                 showIp();
             }
         }//private
@@ -530,13 +541,28 @@ namespace eNet编辑器.AddForm
                 //写入数据格式
                 string data = string.Format("down /backup/{0}${1}",fileName,json);
                 TcpSocket ts = new TcpSocket();
-                sock = ts.ConnectServer(ip, 6001, 1);
-                ToolsUtil.Delay(1);
+         
+
+                sock = ts.ConnectServer(ip, 6001, 2);
+                ToolsUtil.DelayMilli(2000);
                 if (sock == null)
                 {
-                    AppTxtShow("连接主机失败，请检查网络！");
-                    return false;
+                    sock = ts.ConnectServer(ip, 6001, 2);
+                    ToolsUtil.DelayMilli(2000);
+                    if (sock == null)
+                    {
+                        //防止一连失败
+                        sock = ts.ConnectServer(ip, 6001, 2);
+                        ToolsUtil.DelayMilli(2000);
+                        if (sock == null)
+                        {
+                            AppTxtShow("连接主机失败，请检查网络！");
+                            return false;
+                        }
+                    }
+
                 }
+
                 int flag = 0;
                 //0:发送数据成功；-1:超时；-2:发送数据出现错误；-3:发送数据时出现异常
                 flag = ts.SendData(sock, data, 1);
@@ -554,9 +580,9 @@ namespace eNet编辑器.AddForm
 
                 
             }
-            catch(Exception e )
+            catch//(Exception e )
             {
-                MessageBox.Show(e.ToString());
+                //MessageBox.Show(e.ToString());
                 return false;
             }
         }

@@ -15,6 +15,7 @@ using System.IO;
 using System.Net.Sockets;
 using Newtonsoft.Json;
 using DevComponents.DotNetBar.Controls;
+using System.Threading;
 
 namespace eNet编辑器.DgvView
 {
@@ -39,6 +40,8 @@ namespace eNet编辑器.DgvView
         /// 主Form信息显示
         /// </summary>
         public event Action<string> AppTxtShow;
+
+      
 
         /// <summary>
         /// 传输point点跳转窗口
@@ -82,11 +85,27 @@ namespace eNet编辑器.DgvView
         }
 
         #region 刷新dgv框相关操作 
-        
+
+        public void TimerAddItem()
+        {
+            Thread t = new Thread(ShowDatatable);
+            t.IsBackground = true;
+            t.Start();
+        }
+        #region 测试异步加载
+        public delegate void FormIniDelegate();
+        private void ShowDatatable()
+        {
+            this.Invoke(new FormIniDelegate(TabIni));
+
+        }
+
+
+        #endregion
         /// <summary>
         /// 刷新该节点的所有信息
         /// </summary>
-        public void TimerAddItem()
+        public void TabIni()
         {
            
             try
@@ -104,80 +123,11 @@ namespace eNet编辑器.DgvView
                 //循环加载该定时号的所有信息
                 foreach (DataJson.timersInfo tmInfo in tms.timersInfo)
                 {
-                        
-                    int dex = dataGridView1.Rows.Add();
 
-                    if (tmInfo.pid == 0)
+                    if (addItem(tmInfo, ip) != null)
                     {
-                        //pid号为0则为空 按地址来找
-                        if (tmInfo.address != "" && tmInfo.address != "FFFFFFFF")
-                        {
-                            DataJson.PointInfo point = DataListHelper.findPointByType_address(tmInfo.type, tmInfo.address,ip);
-                            if (point != null)
-                            {
-                                tmInfo.pid = point.pid;
-                                tmInfo.address = point.address;
-                                tmInfo.type = point.type;
-                                dataGridView1.Rows[dex].Cells[3].Value = string.Format("{0} {1} {2} {3}", point.area1, point.area2, point.area3, point.area4).Trim();//改根据地址从信息里面获取
-                                dataGridView1.Rows[dex].Cells[4].Value = point.name;
-                            }
-                        }
-
+                        delTimer.Add(tmInfo);
                     }
-                    else
-                    {
-                        //pid号有效 需要更新address type
-                        DataJson.PointInfo point = DataListHelper.findPointByPid(tmInfo.pid);
-                        if (point == null)
-                        {
-                            //pid号有无效 删除该场景
-                            delTimer.Add(tmInfo);
-                            dataGridView1.Rows.Remove(dataGridView1.Rows[dex]);
-                            continue;
-                        }
-                        else
-                        {
-                            //pid号有效
-               
-                            try
-                            {
-                                if (tmInfo.address.Substring(2, 6) != point.address.Substring(2, 6))
-                                {
-                                    tmInfo.address = point.address;
-
-                                }
-                            }
-                            catch
-                            {
-                                tmInfo.address = point.address;
-                            }
-                            //////////////////////////////////////////////////////争议地域
-                            //类型不一致 在value寻找
-                            if (tmInfo.type != point.type && !string.IsNullOrEmpty(point.value) && !string.IsNullOrEmpty(point.objType))
-                            {
-                                //根据value寻找type                        
-                                point.type = IniHelper.findObjValueType_ByobjTypeValue(point.objType, point.value);
-                            }
-                            //////////////////////////////////////////////////////到这里
-                            if (tmInfo.type != point.type || tmInfo.type == "")
-                            {
-                                //当类型为空时候清空操作
-                                tmInfo.opt = "";
-                                tmInfo.optName = "";
-                            }
-                            tmInfo.type = point.type;
-                            dataGridView1.Rows[dex].Cells[3].Value = string.Format("{0} {1} {2} {3}", point.area1, point.area2, point.area3, point.area4).Trim();//改根据地址从信息里面获取
-                            dataGridView1.Rows[dex].Cells[4].Value = point.name;
-                        }
-
-                    }
-                    dataGridView1.Rows[dex].Cells[0].Value = tmInfo.id;
-                    dataGridView1.Rows[dex].Cells[1].Value = IniHelper.findTypesIniNamebyType(tmInfo.type); 
-                    dataGridView1.Rows[dex].Cells[2].Value = DgvMesege.addressTransform(tmInfo.address);
-                    
-                    dataGridView1.Rows[dex].Cells[5].Value = (tmInfo.optName + " " + tmInfo.opt).Trim();
-                    dataGridView1.Rows[dex].Cells[6].Value = tmInfo.shortTime;
-                    dataGridView1.Rows[dex].Cells[7].Value = "删除";
 
 
                 }
@@ -196,6 +146,84 @@ namespace eNet编辑器.DgvView
 
            
            
+        }
+
+        public DataJson.timersInfo addItem(DataJson.timersInfo tmInfo, string ip)
+        {
+            int dex = dataGridView1.Rows.Add();
+
+            if (tmInfo.pid == 0)
+            {
+                //pid号为0则为空 按地址来找
+                if (tmInfo.address != "" && tmInfo.address != "FFFFFFFF")
+                {
+                    DataJson.PointInfo point = DataListHelper.findPointByType_address(tmInfo.type, tmInfo.address, ip);
+                    if (point != null)
+                    {
+                        tmInfo.pid = point.pid;
+                        tmInfo.address = point.address;
+                        tmInfo.type = point.type;
+                        dataGridView1.Rows[dex].Cells[3].Value = string.Format("{0} {1} {2} {3}", point.area1, point.area2, point.area3, point.area4).Trim();//改根据地址从信息里面获取
+                        dataGridView1.Rows[dex].Cells[4].Value = point.name;
+                    }
+                }
+
+            }
+            else
+            {
+                //pid号有效 需要更新address type
+                DataJson.PointInfo point = DataListHelper.findPointByPid(tmInfo.pid);
+                if (point == null)
+                {
+                    //pid号有无效 删除该场景
+                   
+                    dataGridView1.Rows.Remove(dataGridView1.Rows[dex]);
+                    return tmInfo;
+                }
+                else
+                {
+                    //pid号有效
+
+                    try
+                    {
+                        if (tmInfo.address.Substring(2, 6) != point.address.Substring(2, 6))
+                        {
+                            tmInfo.address = point.address;
+
+                        }
+                    }
+                    catch
+                    {
+                        tmInfo.address = point.address;
+                    }
+                    //////////////////////////////////////////////////////争议地域
+                    //类型不一致 在value寻找
+                    if (tmInfo.type != point.type && !string.IsNullOrEmpty(point.value) && !string.IsNullOrEmpty(point.objType))
+                    {
+                        //根据value寻找type                        
+                        point.type = IniHelper.findObjValueType_ByobjTypeValue(point.objType, point.value);
+                    }
+                    //////////////////////////////////////////////////////到这里
+                    if (tmInfo.type != point.type || tmInfo.type == "")
+                    {
+                        //当类型为空时候清空操作
+                        tmInfo.opt = "";
+                        tmInfo.optName = "";
+                    }
+                    tmInfo.type = point.type;
+                    dataGridView1.Rows[dex].Cells[3].Value = string.Format("{0} {1} {2} {3}", point.area1, point.area2, point.area3, point.area4).Trim();//改根据地址从信息里面获取
+                    dataGridView1.Rows[dex].Cells[4].Value = point.name;
+                }
+
+            }
+            dataGridView1.Rows[dex].Cells[0].Value = tmInfo.id;
+            dataGridView1.Rows[dex].Cells[1].Value = IniHelper.findTypesIniNamebyType(tmInfo.type);
+            dataGridView1.Rows[dex].Cells[2].Value = DgvMesege.addressTransform(tmInfo.address);
+
+            dataGridView1.Rows[dex].Cells[5].Value = (tmInfo.optName + " " + tmInfo.opt).Trim();
+            dataGridView1.Rows[dex].Cells[6].Value = tmInfo.shortTime;
+            dataGridView1.Rows[dex].Cells[7].Value = "删除";
+            return null;
         }
 
         /// <summary>
@@ -294,6 +322,11 @@ namespace eNet编辑器.DgvView
                 }
             }
             
+        }
+
+        public void clearDgvClear()
+        {
+            dataGridView1.Rows.Clear();
         }
 
         #endregion
@@ -784,6 +817,7 @@ namespace eNet编辑器.DgvView
                 tmInfo.type = type;
                 tmInfo.opt = opt;
                 tmInfo.optName = optname;
+                string ip = FileMesege.timerSelectNode.Parent.Text.Split(' ')[0];
                 //地址加一处理 并搜索PointList表获取地址 信息
                 if (!string.IsNullOrEmpty(add) && add != "FFFFFFFF")
                 {
@@ -802,7 +836,7 @@ namespace eNet编辑器.DgvView
                             add = add.Substring(0, 4) + hexnum;
                             break;
                     }
-                    string ip = FileMesege.timerSelectNode.Parent.Text.Split(' ')[0];
+                    
                     //按照地址查找type的类型 
                     type = IniHelper.findIniTypesByAddress(ip, add).Split(',')[0];
                 
@@ -835,8 +869,7 @@ namespace eNet编辑器.DgvView
                 //timerInfoSort(tms);
                 DataJson.totalList NewList = FileMesege.cmds.getListInfos();
                 FileMesege.cmds.DoNewCommand(NewList, OldList);
-                //重新刷新
-                TimerAddItem();
+                addItem(tmInfo,ip);
                 DgvMesege.selectLastCount(dataGridView1);  
             }
             catch (Exception ex) { MessageBox.Show(ex + "临时调试错误信息"); }

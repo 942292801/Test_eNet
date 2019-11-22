@@ -5,1063 +5,1870 @@
                 "sceneInfo": [
                     {
                         "id": 1,
-                        "pid": 475433738,
-                        "type": "1.0_switch",
-                        "address": "FE000102",
-                        "opt": "00000001",
-                        "optName": "开启",
+                        "pid": 558121373,
+                        "type": "2.0_dimmer",
+                        "address": "E6000101",
+                        "opt": "10000164",
+                        "optName": "调光",
                         "delay": 0
                     },
                     {
                         "id": 2,
-                        "pid": 190780970,
-                        "type": "1.0_switch",
-                        "address": "FE000105",
-                        "opt": "00000001",
-                        "optName": "开启",
+                        "pid": 321083872,
+                        "type": "2.0_dimmer",
+                        "address": "E6000102",
+                        "opt": "10000164",
+                        "optName": "调光",
                         "delay": 0
                     },
                     {
                         "id": 3,
-                        "pid": 713762886,
-                        "type": "1.0_switch",
-                        "address": "FE000107",
-                        "opt": "00000001",
-                        "optName": "开启",
+                        "pid": 217411348,
+                        "type": "2.0_dimmer",
+                        "address": "E6000103",
+                        "opt": "10000164",
+                        "optName": "调光",
                         "delay": 0
                     },
                     {
                         "id": 4,
-                        "pid": 462782426,
-                        "type": "1.0_switch",
-                        "address": "FE000108",
-                        "opt": "00000001",
-                        "optName": "开启",
+                        "pid": 731080507,
+                        "type": "2.0_dimmer",
+                        "address": "E6000104",
+                        "opt": "10000164",
+                        "optName": "调光",
                         "delay": 0
                     },
                     {
                         "id": 5,
-                        "pid": 193069264,
-                        "type": "1.0_switch",
-                        "address": "FE000301",
-                        "opt": "00000001",
-                        "optName": "开启",
+                        "pid": 574589820,
+                        "type": "2.0_dimmer",
+                        "address": "E6000201",
+                        "opt": "1000013C",
+                        "optName": "调光",
                         "delay": 0
                     },
                     {
                         "id": 6,
-                        "pid": 690350304,
-                        "type": "1.0_switch",
-                        "address": "FE000405",
-                        "opt": "00000001",
-                        "optName": "开启",
+                        "pid": 104045710,
+                        "type": "2.0_dimmer",
+                        "address": "E6000202",
+                        "opt": "1000013C",
+                        "optName": "调光",
                         "delay": 0
                     },
                     {
                         "id": 7,
-                        "pid": 250653573,
+                        "pid": 213354661,
                         "type": "2.0_dimmer",
-                        "address": "FE000702",
-                        "opt": "10000364",
+                        "address": "E6000203",
+                        "opt": "10000164",
+                        "optName": "调光",
+                        "delay": 0
+                    },
+                    {
+                        "id": 8,
+                        "pid": 681849188,
+                        "type": "2.0_dimmer",
+                        "address": "E6000204",
+                        "opt": "1000013C",
                         "optName": "调光",
                         "delay": 0
                     }
                 ],
                 "id": 1,
-                "pid": 577021337
+                "pid": 730365633
             },
             {
                 "sceneInfo": [
                     {
                         "id": 1,
-                        "pid": 475433738,
-                        "type": "1.0_switch",
-                        "address": "FE000102",
-                        "opt": "00000000",
+                        "pid": 558121373,
+                        "type": "2.0_dimmer",
+                        "address": "E6000101",
+                        "opt": "01000002",
                         "optName": "关闭",
                         "delay": 0
                     },
                     {
                         "id": 2,
-                        "pid": 190780970,
-                        "type": "1.0_switch",
-                        "address": "FE000105",
-                        "opt": "00000000",
+                        "pid": 321083872,
+                        "type": "2.0_dimmer",
+                        "address": "E6000102",
+                        "opt": "01000002",
                         "optName": "关闭",
                         "delay": 0
                     },
                     {
                         "id": 3,
-                        "pid": 713762886,
-                        "type": "1.0_switch",
-                        "address": "FE000107",
-                        "opt": "00000000",
+                        "pid": 217411348,
+                        "type": "2.0_dimmer",
+                        "address": "E6000103",
+                        "opt": "01000002",
                         "optName": "关闭",
                         "delay": 0
                     },
                     {
                         "id": 4,
-                        "pid": 462782426,
-                        "type": "1.0_switch",
-                        "address": "FE000108",
-                        "opt": "00000000",
+                        "pid": 731080507,
+                        "type": "2.0_dimmer",
+                        "address": "E6000104",
+                        "opt": "01000002",
                         "optName": "关闭",
                         "delay": 0
                     },
                     {
                         "id": 5,
-                        "pid": 193069264,
-                        "type": "1.0_switch",
-                        "address": "FE000301",
-                        "opt": "00000000",
+                        "pid": 574589820,
+                        "type": "2.0_dimmer",
+                        "address": "E6000201",
+                        "opt": "01000002",
                         "optName": "关闭",
                         "delay": 0
                     },
                     {
                         "id": 6,
-                        "pid": 690350304,
-                        "type": "1.0_switch",
-                        "address": "FE000405",
-                        "opt": "00000000",
+                        "pid": 104045710,
+                        "type": "2.0_dimmer",
+                        "address": "E6000202",
+                        "opt": "01000002",
                         "optName": "关闭",
                         "delay": 0
                     },
                     {
                         "id": 7,
-                        "pid": 250653573,
+                        "pid": 213354661,
                         "type": "2.0_dimmer",
-                        "address": "FE000702",
-                        "opt": "10000A00",
-                        "optName": "调光",
+                        "address": "E6000203",
+                        "opt": "01000002",
+                        "optName": "关闭",
+                        "delay": 0
+                    },
+                    {
+                        "id": 8,
+                        "pid": 681849188,
+                        "type": "2.0_dimmer",
+                        "address": "E6000204",
+                        "opt": "01000002",
+                        "optName": "关闭",
                         "delay": 0
                     }
                 ],
                 "id": 2,
-                "pid": 856985173
+                "pid": 608960991
             },
             {
                 "sceneInfo": [
                     {
                         "id": 1,
-                        "pid": 319694443,
-                        "type": "4.0_scene",
-                        "address": "FE100003",
-                        "opt": "00000005",
-                        "optName": "场景删除",
+                        "pid": 574589820,
+                        "type": "2.0_dimmer",
+                        "address": "E6000201",
+                        "opt": "10000164",
+                        "optName": "调光",
+                        "delay": 0
+                    },
+                    {
+                        "id": 2,
+                        "pid": 104045710,
+                        "type": "2.0_dimmer",
+                        "address": "E6000202",
+                        "opt": "10000164",
+                        "optName": "调光",
+                        "delay": 0
+                    },
+                    {
+                        "id": 3,
+                        "pid": 213354661,
+                        "type": "2.0_dimmer",
+                        "address": "E6000203",
+                        "opt": "10000164",
+                        "optName": "调光",
+                        "delay": 0
+                    },
+                    {
+                        "id": 4,
+                        "pid": 681849188,
+                        "type": "2.0_dimmer",
+                        "address": "E6000204",
+                        "opt": "15000A00",
+                        "optName": "循环调光",
+                        "delay": 0
+                    },
+                    {
+                        "id": 5,
+                        "pid": 558121373,
+                        "type": "2.0_dimmer",
+                        "address": "E6000101",
+                        "opt": "10000164",
+                        "optName": "调光",
+                        "delay": 0
+                    },
+                    {
+                        "id": 6,
+                        "pid": 321083872,
+                        "type": "2.0_dimmer",
+                        "address": "E6000102",
+                        "opt": "10000164",
+                        "optName": "调光",
+                        "delay": 0
+                    },
+                    {
+                        "id": 7,
+                        "pid": 217411348,
+                        "type": "2.0_dimmer",
+                        "address": "E6000103",
+                        "opt": "10000164",
+                        "optName": "调光",
+                        "delay": 0
+                    },
+                    {
+                        "id": 8,
+                        "pid": 731080507,
+                        "type": "2.0_dimmer",
+                        "address": "E6000104",
+                        "opt": "10000164",
+                        "optName": "调光",
                         "delay": 0
                     }
                 ],
                 "id": 3,
-                "pid": 319694443
+                "pid": 949518276
             },
             {
                 "sceneInfo": [
                     {
                         "id": 1,
-                        "pid": 981095365,
-                        "type": "1.0_switch",
-                        "address": "FE000103",
-                        "opt": "00000000",
+                        "pid": 574589820,
+                        "type": "2.0_dimmer",
+                        "address": "E6000201",
+                        "opt": "01000002",
                         "optName": "关闭",
-                        "delay": 50
+                        "delay": 0
                     },
                     {
                         "id": 2,
-                        "pid": 957448493,
-                        "type": "1.0_switch",
-                        "address": "FE000106",
-                        "opt": "00000000",
+                        "pid": 104045710,
+                        "type": "2.0_dimmer",
+                        "address": "E6000202",
+                        "opt": "01000002",
                         "optName": "关闭",
                         "delay": 0
                     },
                     {
                         "id": 3,
-                        "pid": 699402942,
-                        "type": "1.0_switch",
-                        "address": "FE000205",
-                        "opt": "00000000",
+                        "pid": 213354661,
+                        "type": "2.0_dimmer",
+                        "address": "E6000203",
+                        "opt": "01000002",
                         "optName": "关闭",
                         "delay": 0
                     },
                     {
                         "id": 4,
-                        "pid": 154827821,
+                        "pid": 681849188,
                         "type": "2.0_dimmer",
-                        "address": "FE000601",
-                        "opt": "10000300",
-                        "optName": "调光",
+                        "address": "E6000204",
+                        "opt": "01000002",
+                        "optName": "关闭",
                         "delay": 0
                     },
                     {
                         "id": 5,
-                        "pid": 233563720,
-                        "type": "1.0_switch",
-                        "address": "FE000101",
-                        "opt": "00000000",
+                        "pid": 558121373,
+                        "type": "2.0_dimmer",
+                        "address": "E6000101",
+                        "opt": "01000002",
+                        "optName": "关闭",
+                        "delay": 0
+                    },
+                    {
+                        "id": 6,
+                        "pid": 321083872,
+                        "type": "2.0_dimmer",
+                        "address": "E6000102",
+                        "opt": "01000002",
+                        "optName": "关闭",
+                        "delay": 0
+                    },
+                    {
+                        "id": 7,
+                        "pid": 217411348,
+                        "type": "2.0_dimmer",
+                        "address": "E6000103",
+                        "opt": "01000002",
+                        "optName": "关闭",
+                        "delay": 0
+                    },
+                    {
+                        "id": 8,
+                        "pid": 731080507,
+                        "type": "2.0_dimmer",
+                        "address": "E6000104",
+                        "opt": "01000002",
                         "optName": "关闭",
                         "delay": 0
                     }
                 ],
                 "id": 4,
-                "pid": 372758222
+                "pid": 367180247
             },
             {
                 "sceneInfo": [
                     {
                         "id": 1,
-                        "pid": 0,
-                        "type": "3.0_logic",
-                        "address": "FE400005",
-                        "opt": "00000000",
-                        "optName": "逻辑关闭",
+                        "pid": 558121373,
+                        "type": "2.0_dimmer",
+                        "address": "E6000101",
+                        "opt": "1000013C",
+                        "optName": "调光",
                         "delay": 0
                     },
                     {
                         "id": 2,
-                        "pid": 905444872,
-                        "type": "4.0_scene",
-                        "address": "FE100046",
-                        "opt": "00000001",
-                        "optName": "场景调用",
+                        "pid": 321083872,
+                        "type": "2.0_dimmer",
+                        "address": "E6000102",
+                        "opt": "1000013C",
+                        "optName": "调光",
                         "delay": 0
                     },
                     {
                         "id": 3,
-                        "pid": 0,
-                        "type": "5.0_timer",
-                        "address": "FE200010",
-                        "opt": "",
-                        "optName": "",
+                        "pid": 217411348,
+                        "type": "2.0_dimmer",
+                        "address": "E6000103",
+                        "opt": "1000013C",
+                        "optName": "调光",
                         "delay": 0
                     },
                     {
                         "id": 4,
-                        "pid": 0,
-                        "type": "6.1_panel",
-                        "address": "FE300006",
-                        "opt": "00000000",
-                        "optName": "禁止面板触发",
+                        "pid": 731080507,
+                        "type": "2.0_dimmer",
+                        "address": "E6000104",
+                        "opt": "1000013C",
+                        "optName": "调光",
                         "delay": 0
                     },
                     {
                         "id": 5,
-                        "pid": 0,
-                        "type": "13.0_RGB",
-                        "address": "FE000C06",
-                        "opt": "00000000",
-                        "optName": "调色",
+                        "pid": 574589820,
+                        "type": "2.0_dimmer",
+                        "address": "E6000201",
+                        "opt": "10000164",
+                        "optName": "调光",
                         "delay": 0
                     },
                     {
                         "id": 6,
-                        "pid": 0,
-                        "type": "10.0_key",
-                        "address": "FE000C00",
-                        "opt": "",
-                        "optName": "",
+                        "pid": 104045710,
+                        "type": "2.0_dimmer",
+                        "address": "E6000202",
+                        "opt": "10000164",
+                        "optName": "调光",
                         "delay": 0
                     },
                     {
                         "id": 7,
-                        "pid": 0,
-                        "type": "1.0_switch",
-                        "address": "FE000C01",
-                        "opt": "00000001",
-                        "optName": "开启",
+                        "pid": 213354661,
+                        "type": "2.0_dimmer",
+                        "address": "E6000203",
+                        "opt": "10000164",
+                        "optName": "调光",
                         "delay": 0
                     },
                     {
                         "id": 8,
-                        "pid": 0,
+                        "pid": 681849188,
                         "type": "2.0_dimmer",
-                        "address": "FE000C02",
-                        "opt": "",
-                        "optName": "",
+                        "address": "E6000204",
+                        "opt": "15000A00",
+                        "optName": "循环调光",
+                        "delay": 0
+                    }
+                ],
+                "id": 5,
+                "pid": 855577641
+            },
+            {
+                "sceneInfo": [
+                    {
+                        "id": 1,
+                        "pid": 574589820,
+                        "type": "2.0_dimmer",
+                        "address": "E6000201",
+                        "opt": "01000002",
+                        "optName": "关闭",
                         "delay": 0
                     },
                     {
-                        "id": 9,
-                        "pid": 0,
-                        "type": "2.1_dimmer",
-                        "address": "FE000C03",
-                        "opt": "",
-                        "optName": "",
+                        "id": 2,
+                        "pid": 104045710,
+                        "type": "2.0_dimmer",
+                        "address": "E6000202",
+                        "opt": "01000002",
+                        "optName": "关闭",
                         "delay": 0
                     },
                     {
-                        "id": 10,
-                        "pid": 0,
-                        "type": "7.0_ir",
-                        "address": "FE000C04",
-                        "opt": "",
-                        "optName": "",
+                        "id": 3,
+                        "pid": 213354661,
+                        "type": "2.0_dimmer",
+                        "address": "E6000203",
+                        "opt": "01000002",
+                        "optName": "关闭",
                         "delay": 0
                     },
                     {
-                        "id": 11,
-                        "pid": 0,
-                        "type": "8.0_uart",
-                        "address": "FE000C05",
-                        "opt": "",
-                        "optName": "",
+                        "id": 4,
+                        "pid": 681849188,
+                        "type": "2.0_dimmer",
+                        "address": "E6000204",
+                        "opt": "01000002",
+                        "optName": "关闭",
                         "delay": 0
                     },
                     {
-                        "id": 12,
-                        "pid": 0,
-                        "type": "13.0_RGB",
-                        "address": "FE000C06",
-                        "opt": "",
-                        "optName": "",
+                        "id": 5,
+                        "pid": 558121373,
+                        "type": "2.0_dimmer",
+                        "address": "E6000101",
+                        "opt": "01000002",
+                        "optName": "关闭",
                         "delay": 0
                     },
                     {
-                        "id": 13,
-                        "pid": 0,
-                        "type": "14.0_data",
-                        "address": "FE000C07",
-                        "opt": "",
-                        "optName": "",
+                        "id": 6,
+                        "pid": 321083872,
+                        "type": "2.0_dimmer",
+                        "address": "E6000102",
+                        "opt": "01000002",
+                        "optName": "关闭",
                         "delay": 0
                     },
                     {
-                        "id": 14,
-                        "pid": 911148722,
-                        "type": "1.0_switch",
-                        "address": "FE000208",
-                        "opt": "00000001",
-                        "optName": "开启",
+                        "id": 7,
+                        "pid": 217411348,
+                        "type": "2.0_dimmer",
+                        "address": "E6000103",
+                        "opt": "01000002",
+                        "optName": "关闭",
                         "delay": 0
                     },
                     {
-                        "id": 15,
-                        "pid": 342508859,
-                        "type": "1.0_switch",
-                        "address": "FE000308",
-                        "opt": "00000001",
-                        "optName": "开启",
-                        "delay": 0
-                    },
-                    {
-                        "id": 16,
-                        "pid": 125732438,
-                        "type": "1.0_switch",
-                        "address": "FE000A03",
-                        "opt": "00000001",
-                        "optName": "开启",
-                        "delay": 0
-                    },
-                    {
-                        "id": 17,
-                        "pid": 261103593,
-                        "type": "1.0_switch",
-                        "address": "FE000A04",
-                        "opt": "00000001",
-                        "optName": "开启",
-                        "delay": 0
-                    },
-                    {
-                        "id": 18,
-                        "pid": 327701176,
-                        "type": "1.0_switch",
-                        "address": "FE000A01",
-                        "opt": "00000001",
-                        "optName": "开启",
-                        "delay": 0
-                    },
-                    {
-                        "id": 19,
-                        "pid": 741863729,
-                        "type": "1.0_switch",
-                        "address": "FE000A02",
-                        "opt": "00000001",
-                        "optName": "开启",
-                        "delay": 0
-                    },
-                    {
-                        "id": 20,
-                        "pid": 726368415,
-                        "type": "1.0_switch",
-                        "address": "FE000207",
-                        "opt": "00000001",
-                        "optName": "开启",
-                        "delay": 0
-                    },
-                    {
-                        "id": 21,
-                        "pid": 911148722,
-                        "type": "1.0_switch",
-                        "address": "FE000208",
-                        "opt": "00000001",
-                        "optName": "开启",
-                        "delay": 0
-                    },
-                    {
-                        "id": 22,
-                        "pid": 342508859,
-                        "type": "1.0_switch",
-                        "address": "FE000308",
-                        "opt": "00000001",
-                        "optName": "开启",
-                        "delay": 0
-                    },
-                    {
-                        "id": 23,
-                        "pid": 125732438,
-                        "type": "1.0_switch",
-                        "address": "FE000A03",
-                        "opt": "00000001",
-                        "optName": "开启",
-                        "delay": 0
-                    },
-                    {
-                        "id": 24,
-                        "pid": 261103593,
-                        "type": "1.0_switch",
-                        "address": "FE000A04",
-                        "opt": "00000001",
-                        "optName": "开启",
-                        "delay": 0
-                    },
-                    {
-                        "id": 25,
-                        "pid": 327701176,
-                        "type": "1.0_switch",
-                        "address": "FE000A01",
-                        "opt": "00000001",
-                        "optName": "开启",
-                        "delay": 0
-                    },
-                    {
-                        "id": 26,
-                        "pid": 741863729,
-                        "type": "1.0_switch",
-                        "address": "FE000A02",
-                        "opt": "00000001",
-                        "optName": "开启",
-                        "delay": 0
-                    },
-                    {
-                        "id": 27,
-                        "pid": 726368415,
-                        "type": "1.0_switch",
-                        "address": "FE000207",
-                        "opt": "00000001",
-                        "optName": "开启",
-                        "delay": 0
-                    },
-                    {
-                        "id": 28,
-                        "pid": 911148722,
-                        "type": "1.0_switch",
-                        "address": "FE000208",
-                        "opt": "00000001",
-                        "optName": "开启",
-                        "delay": 0
-                    },
-                    {
-                        "id": 29,
-                        "pid": 342508859,
-                        "type": "1.0_switch",
-                        "address": "FE000308",
-                        "opt": "00000001",
-                        "optName": "开启",
-                        "delay": 0
-                    },
-                    {
-                        "id": 30,
-                        "pid": 125732438,
-                        "type": "1.0_switch",
-                        "address": "FE000A03",
-                        "opt": "00000001",
-                        "optName": "开启",
-                        "delay": 0
-                    },
-                    {
-                        "id": 31,
-                        "pid": 261103593,
-                        "type": "1.0_switch",
-                        "address": "FE000A04",
-                        "opt": "00000001",
-                        "optName": "开启",
-                        "delay": 0
-                    },
-                    {
-                        "id": 32,
-                        "pid": 327701176,
-                        "type": "1.0_switch",
-                        "address": "FE000A01",
-                        "opt": "00000001",
-                        "optName": "开启",
-                        "delay": 0
-                    },
-                    {
-                        "id": 33,
-                        "pid": 741863729,
-                        "type": "1.0_switch",
-                        "address": "FE000A02",
-                        "opt": "00000001",
-                        "optName": "开启",
-                        "delay": 0
-                    },
-                    {
-                        "id": 34,
-                        "pid": 726368415,
-                        "type": "1.0_switch",
-                        "address": "FE000207",
-                        "opt": "00000001",
-                        "optName": "开启",
-                        "delay": 0
-                    },
-                    {
-                        "id": 35,
-                        "pid": 911148722,
-                        "type": "1.0_switch",
-                        "address": "FE000208",
-                        "opt": "00000001",
-                        "optName": "开启",
-                        "delay": 0
-                    },
-                    {
-                        "id": 36,
-                        "pid": 342508859,
-                        "type": "1.0_switch",
-                        "address": "FE000308",
-                        "opt": "00000001",
-                        "optName": "开启",
-                        "delay": 0
-                    },
-                    {
-                        "id": 37,
-                        "pid": 125732438,
-                        "type": "1.0_switch",
-                        "address": "FE000A03",
-                        "opt": "00000001",
-                        "optName": "开启",
-                        "delay": 0
-                    },
-                    {
-                        "id": 38,
-                        "pid": 261103593,
-                        "type": "1.0_switch",
-                        "address": "FE000A04",
-                        "opt": "00000001",
-                        "optName": "开启",
-                        "delay": 0
-                    },
-                    {
-                        "id": 39,
-                        "pid": 327701176,
-                        "type": "1.0_switch",
-                        "address": "FE000A01",
-                        "opt": "00000001",
-                        "optName": "开启",
-                        "delay": 0
-                    },
-                    {
-                        "id": 40,
-                        "pid": 741863729,
-                        "type": "1.0_switch",
-                        "address": "FE000A02",
-                        "opt": "00000001",
-                        "optName": "开启",
-                        "delay": 0
-                    },
-                    {
-                        "id": 41,
-                        "pid": 726368415,
-                        "type": "1.0_switch",
-                        "address": "FE000207",
-                        "opt": "00000001",
-                        "optName": "开启",
-                        "delay": 0
-                    },
-                    {
-                        "id": 42,
-                        "pid": 911148722,
-                        "type": "1.0_switch",
-                        "address": "FE000208",
-                        "opt": "00000001",
-                        "optName": "开启",
-                        "delay": 0
-                    },
-                    {
-                        "id": 43,
-                        "pid": 342508859,
-                        "type": "1.0_switch",
-                        "address": "FE000308",
-                        "opt": "00000001",
-                        "optName": "开启",
-                        "delay": 0
-                    },
-                    {
-                        "id": 44,
-                        "pid": 125732438,
-                        "type": "1.0_switch",
-                        "address": "FE000A03",
-                        "opt": "00000001",
-                        "optName": "开启",
-                        "delay": 0
-                    },
-                    {
-                        "id": 45,
-                        "pid": 261103593,
-                        "type": "1.0_switch",
-                        "address": "FE000A04",
-                        "opt": "00000001",
-                        "optName": "开启",
-                        "delay": 0
-                    },
-                    {
-                        "id": 46,
-                        "pid": 327701176,
-                        "type": "1.0_switch",
-                        "address": "FE000A01",
-                        "opt": "00000001",
-                        "optName": "开启",
-                        "delay": 0
-                    },
-                    {
-                        "id": 47,
-                        "pid": 741863729,
-                        "type": "1.0_switch",
-                        "address": "FE000A02",
-                        "opt": "00000001",
-                        "optName": "开启",
-                        "delay": 0
-                    },
-                    {
-                        "id": 48,
-                        "pid": 726368415,
-                        "type": "1.0_switch",
-                        "address": "FE000207",
-                        "opt": "00000001",
-                        "optName": "开启",
-                        "delay": 0
-                    },
-                    {
-                        "id": 49,
-                        "pid": 911148722,
-                        "type": "1.0_switch",
-                        "address": "FE000208",
-                        "opt": "00000001",
-                        "optName": "开启",
-                        "delay": 0
-                    },
-                    {
-                        "id": 50,
-                        "pid": 342508859,
-                        "type": "1.0_switch",
-                        "address": "FE000308",
-                        "opt": "00000001",
-                        "optName": "开启",
-                        "delay": 0
-                    },
-                    {
-                        "id": 51,
-                        "pid": 125732438,
-                        "type": "1.0_switch",
-                        "address": "FE000A03",
-                        "opt": "00000001",
-                        "optName": "开启",
-                        "delay": 0
-                    },
-                    {
-                        "id": 52,
-                        "pid": 261103593,
-                        "type": "1.0_switch",
-                        "address": "FE000A04",
-                        "opt": "00000001",
-                        "optName": "开启",
-                        "delay": 0
-                    },
-                    {
-                        "id": 53,
-                        "pid": 327701176,
-                        "type": "1.0_switch",
-                        "address": "FE000A01",
-                        "opt": "00000001",
-                        "optName": "开启",
-                        "delay": 0
-                    },
-                    {
-                        "id": 54,
-                        "pid": 741863729,
-                        "type": "1.0_switch",
-                        "address": "FE000A02",
-                        "opt": "00000001",
-                        "optName": "开启",
+                        "id": 8,
+                        "pid": 731080507,
+                        "type": "2.0_dimmer",
+                        "address": "E6000104",
+                        "opt": "01000002",
+                        "optName": "关闭",
                         "delay": 0
                     }
                 ],
                 "id": 6,
-                "pid": 723710772
+                "pid": 880778369
             },
             {
                 "sceneInfo": [
                     {
                         "id": 1,
-                        "pid": 614990661,
-                        "type": "1.0_switch",
-                        "address": "FE000104",
-                        "opt": "",
-                        "optName": "",
+                        "pid": 558121373,
+                        "type": "2.0_dimmer",
+                        "address": "E6000101",
+                        "opt": "10000128",
+                        "optName": "调光",
                         "delay": 0
                     },
                     {
                         "id": 2,
-                        "pid": 190780970,
-                        "type": "1.0_switch",
-                        "address": "FE000105",
-                        "opt": "",
-                        "optName": "",
+                        "pid": 321083872,
+                        "type": "2.0_dimmer",
+                        "address": "E6000102",
+                        "opt": "10000128",
+                        "optName": "调光",
                         "delay": 0
                     },
                     {
                         "id": 3,
-                        "pid": 957448493,
-                        "type": "1.0_switch",
-                        "address": "FE000106",
-                        "opt": "",
-                        "optName": "",
+                        "pid": 217411348,
+                        "type": "2.0_dimmer",
+                        "address": "E6000103",
+                        "opt": "10000128",
+                        "optName": "调光",
                         "delay": 0
                     },
                     {
                         "id": 4,
-                        "pid": 713762886,
-                        "type": "1.0_switch",
-                        "address": "FE000107",
-                        "opt": "",
-                        "optName": "",
+                        "pid": 731080507,
+                        "type": "2.0_dimmer",
+                        "address": "E6000104",
+                        "opt": "10000128",
+                        "optName": "调光",
                         "delay": 0
                     },
                     {
                         "id": 5,
-                        "pid": 462782426,
-                        "type": "1.0_switch",
-                        "address": "FE000108",
-                        "opt": "",
-                        "optName": "",
+                        "pid": 574589820,
+                        "type": "2.0_dimmer",
+                        "address": "E6000201",
+                        "opt": "01000002",
+                        "optName": "关闭",
                         "delay": 0
                     },
                     {
                         "id": 6,
-                        "pid": 0,
-                        "type": "",
-                        "address": "FE000109",
-                        "opt": "",
-                        "optName": "",
+                        "pid": 104045710,
+                        "type": "2.0_dimmer",
+                        "address": "E6000202",
+                        "opt": "01000002",
+                        "optName": "关闭",
                         "delay": 0
                     },
                     {
                         "id": 7,
-                        "pid": 0,
-                        "type": "",
-                        "address": "FE00010A",
-                        "opt": "",
-                        "optName": "",
+                        "pid": 213354661,
+                        "type": "2.0_dimmer",
+                        "address": "E6000203",
+                        "opt": "01000002",
+                        "optName": "关闭",
                         "delay": 0
                     },
                     {
                         "id": 8,
-                        "pid": 0,
-                        "type": "",
-                        "address": "FE00010B",
-                        "opt": "",
-                        "optName": "",
-                        "delay": 0
-                    },
-                    {
-                        "id": 9,
-                        "pid": 0,
-                        "type": "",
-                        "address": "FE00010C",
-                        "opt": "",
-                        "optName": "",
-                        "delay": 0
-                    },
-                    {
-                        "id": 10,
-                        "pid": 0,
-                        "type": "",
-                        "address": "FE00010D",
-                        "opt": "",
-                        "optName": "",
-                        "delay": 0
-                    },
-                    {
-                        "id": 11,
-                        "pid": 0,
-                        "type": "",
-                        "address": "FE00010E",
-                        "opt": "",
-                        "optName": "",
-                        "delay": 0
-                    },
-                    {
-                        "id": 12,
-                        "pid": 0,
-                        "type": "",
-                        "address": "FE00010F",
-                        "opt": "",
-                        "optName": "",
-                        "delay": 0
-                    },
-                    {
-                        "id": 13,
-                        "pid": 0,
-                        "type": "",
-                        "address": "FE000110",
-                        "opt": "",
-                        "optName": "",
-                        "delay": 0
-                    },
-                    {
-                        "id": 14,
-                        "pid": 0,
-                        "type": "",
-                        "address": "FE000111",
-                        "opt": "",
-                        "optName": "",
-                        "delay": 0
-                    },
-                    {
-                        "id": 15,
-                        "pid": 0,
-                        "type": "",
-                        "address": "FE000112",
-                        "opt": "",
-                        "optName": "",
-                        "delay": 0
-                    },
-                    {
-                        "id": 16,
-                        "pid": 0,
-                        "type": "",
-                        "address": "FE000113",
-                        "opt": "",
-                        "optName": "",
-                        "delay": 0
-                    },
-                    {
-                        "id": 17,
-                        "pid": 0,
-                        "type": "",
-                        "address": "FE000114",
-                        "opt": "",
-                        "optName": "",
-                        "delay": 0
-                    },
-                    {
-                        "id": 18,
-                        "pid": 0,
-                        "type": "",
-                        "address": "FE000115",
-                        "opt": "",
-                        "optName": "",
-                        "delay": 0
-                    },
-                    {
-                        "id": 19,
-                        "pid": 0,
-                        "type": "",
-                        "address": "FE000116",
-                        "opt": "",
-                        "optName": "",
-                        "delay": 0
-                    },
-                    {
-                        "id": 20,
-                        "pid": 0,
-                        "type": "",
-                        "address": "FE000117",
-                        "opt": "",
-                        "optName": "",
-                        "delay": 0
-                    },
-                    {
-                        "id": 21,
-                        "pid": 0,
-                        "type": "",
-                        "address": "FE000118",
-                        "opt": "",
-                        "optName": "",
-                        "delay": 0
-                    },
-                    {
-                        "id": 22,
-                        "pid": 0,
-                        "type": "",
-                        "address": "FE000119",
-                        "opt": "",
-                        "optName": "",
-                        "delay": 0
-                    },
-                    {
-                        "id": 23,
-                        "pid": 0,
-                        "type": "",
-                        "address": "FE00011A",
-                        "opt": "",
-                        "optName": "",
-                        "delay": 0
-                    },
-                    {
-                        "id": 24,
-                        "pid": 0,
-                        "type": "",
-                        "address": "FE00011B",
-                        "opt": "",
-                        "optName": "",
-                        "delay": 0
-                    },
-                    {
-                        "id": 25,
-                        "pid": 0,
-                        "type": "",
-                        "address": "FE00011C",
-                        "opt": "",
-                        "optName": "",
-                        "delay": 0
-                    },
-                    {
-                        "id": 26,
-                        "pid": 0,
-                        "type": "",
-                        "address": "FE00011D",
-                        "opt": "",
-                        "optName": "",
-                        "delay": 0
-                    },
-                    {
-                        "id": 27,
-                        "pid": 0,
-                        "type": "",
-                        "address": "FE00011E",
-                        "opt": "",
-                        "optName": "",
-                        "delay": 0
-                    },
-                    {
-                        "id": 28,
-                        "pid": 0,
-                        "type": "",
-                        "address": "FE00011F",
-                        "opt": "",
-                        "optName": "",
-                        "delay": 0
-                    },
-                    {
-                        "id": 29,
-                        "pid": 0,
-                        "type": "",
-                        "address": "FE000120",
-                        "opt": "",
-                        "optName": "",
-                        "delay": 0
-                    },
-                    {
-                        "id": 30,
-                        "pid": 0,
-                        "type": "",
-                        "address": "FE000121",
-                        "opt": "",
-                        "optName": "",
-                        "delay": 0
-                    },
-                    {
-                        "id": 31,
-                        "pid": 0,
-                        "type": "",
-                        "address": "FE000122",
-                        "opt": "",
-                        "optName": "",
-                        "delay": 0
-                    },
-                    {
-                        "id": 32,
-                        "pid": 0,
-                        "type": "",
-                        "address": "FE000123",
-                        "opt": "",
-                        "optName": "",
-                        "delay": 0
-                    },
-                    {
-                        "id": 33,
-                        "pid": 0,
-                        "type": "",
-                        "address": "FE000124",
-                        "opt": "",
-                        "optName": "",
-                        "delay": 0
-                    },
-                    {
-                        "id": 34,
-                        "pid": 0,
-                        "type": "",
-                        "address": "FE000125",
-                        "opt": "",
-                        "optName": "",
-                        "delay": 0
-                    },
-                    {
-                        "id": 35,
-                        "pid": 0,
-                        "type": "",
-                        "address": "FE000126",
-                        "opt": "",
-                        "optName": "",
-                        "delay": 0
-                    },
-                    {
-                        "id": 36,
-                        "pid": 0,
-                        "type": "",
-                        "address": "FE000127",
-                        "opt": "",
-                        "optName": "",
-                        "delay": 0
-                    },
-                    {
-                        "id": 37,
-                        "pid": 0,
-                        "type": "",
-                        "address": "FE000128",
-                        "opt": "",
-                        "optName": "",
+                        "pid": 681849188,
+                        "type": "2.0_dimmer",
+                        "address": "E6000204",
+                        "opt": "01000002",
+                        "optName": "关闭",
                         "delay": 0
                     }
                 ],
                 "id": 7,
-                "pid": 234945190
+                "pid": 301741631
             },
             {
                 "sceneInfo": [
                     {
                         "id": 1,
-                        "pid": 327701176,
-                        "type": "1.0_switch",
-                        "address": "FE000A01",
-                        "opt": "",
-                        "optName": "",
+                        "pid": 558121373,
+                        "type": "2.0_dimmer",
+                        "address": "E6000101",
+                        "opt": "01000002",
+                        "optName": "关闭",
                         "delay": 0
                     },
                     {
                         "id": 2,
-                        "pid": 741863729,
-                        "type": "1.0_switch",
-                        "address": "FE000A02",
-                        "opt": "",
-                        "optName": "",
+                        "pid": 321083872,
+                        "type": "2.0_dimmer",
+                        "address": "E6000102",
+                        "opt": "01000002",
+                        "optName": "关闭",
+                        "delay": 0
+                    },
+                    {
+                        "id": 3,
+                        "pid": 217411348,
+                        "type": "2.0_dimmer",
+                        "address": "E6000103",
+                        "opt": "01000002",
+                        "optName": "关闭",
+                        "delay": 0
+                    },
+                    {
+                        "id": 4,
+                        "pid": 731080507,
+                        "type": "2.0_dimmer",
+                        "address": "E6000104",
+                        "opt": "01000002",
+                        "optName": "关闭",
+                        "delay": 0
+                    },
+                    {
+                        "id": 5,
+                        "pid": 574589820,
+                        "type": "2.0_dimmer",
+                        "address": "E6000201",
+                        "opt": "01000002",
+                        "optName": "关闭",
+                        "delay": 0
+                    },
+                    {
+                        "id": 6,
+                        "pid": 104045710,
+                        "type": "2.0_dimmer",
+                        "address": "E6000202",
+                        "opt": "01000002",
+                        "optName": "关闭",
+                        "delay": 0
+                    },
+                    {
+                        "id": 7,
+                        "pid": 213354661,
+                        "type": "2.0_dimmer",
+                        "address": "E6000203",
+                        "opt": "01000002",
+                        "optName": "关闭",
+                        "delay": 0
+                    },
+                    {
+                        "id": 8,
+                        "pid": 681849188,
+                        "type": "2.0_dimmer",
+                        "address": "E6000204",
+                        "opt": "01000002",
+                        "optName": "关闭",
                         "delay": 0
                     }
                 ],
-                "id": 70,
-                "pid": 905444872
+                "id": 8,
+                "pid": 365477832
+            },
+            {
+                "sceneInfo": [
+                    {
+                        "id": 1,
+                        "pid": 558121373,
+                        "type": "2.0_dimmer",
+                        "address": "E6000101",
+                        "opt": "01000001",
+                        "optName": "开启",
+                        "delay": 0
+                    },
+                    {
+                        "id": 2,
+                        "pid": 321083872,
+                        "type": "2.0_dimmer",
+                        "address": "E6000102",
+                        "opt": "01000001",
+                        "optName": "开启",
+                        "delay": 0
+                    },
+                    {
+                        "id": 3,
+                        "pid": 217411348,
+                        "type": "2.0_dimmer",
+                        "address": "E6000103",
+                        "opt": "01000001",
+                        "optName": "开启",
+                        "delay": 0
+                    },
+                    {
+                        "id": 4,
+                        "pid": 731080507,
+                        "type": "2.0_dimmer",
+                        "address": "E6000104",
+                        "opt": "01000001",
+                        "optName": "开启",
+                        "delay": 0
+                    },
+                    {
+                        "id": 5,
+                        "pid": 574589820,
+                        "type": "2.0_dimmer",
+                        "address": "E6000201",
+                        "opt": "01000001",
+                        "optName": "开启",
+                        "delay": 0
+                    },
+                    {
+                        "id": 6,
+                        "pid": 104045710,
+                        "type": "2.0_dimmer",
+                        "address": "E6000202",
+                        "opt": "01000001",
+                        "optName": "开启",
+                        "delay": 0
+                    },
+                    {
+                        "id": 7,
+                        "pid": 213354661,
+                        "type": "2.0_dimmer",
+                        "address": "E6000203",
+                        "opt": "01000001",
+                        "optName": "开启",
+                        "delay": 0
+                    },
+                    {
+                        "id": 8,
+                        "pid": 681849188,
+                        "type": "2.0_dimmer",
+                        "address": "E6000204",
+                        "opt": "01000001",
+                        "optName": "开启",
+                        "delay": 0
+                    }
+                ],
+                "id": 9,
+                "pid": 525081688
+            },
+            {
+                "sceneInfo": [
+                    {
+                        "id": 1,
+                        "pid": 558121373,
+                        "type": "2.0_dimmer",
+                        "address": "E6000101",
+                        "opt": "01000002",
+                        "optName": "关闭",
+                        "delay": 0
+                    },
+                    {
+                        "id": 2,
+                        "pid": 321083872,
+                        "type": "2.0_dimmer",
+                        "address": "E6000102",
+                        "opt": "01000002",
+                        "optName": "关闭",
+                        "delay": 0
+                    },
+                    {
+                        "id": 3,
+                        "pid": 217411348,
+                        "type": "2.0_dimmer",
+                        "address": "E6000103",
+                        "opt": "01000002",
+                        "optName": "关闭",
+                        "delay": 0
+                    },
+                    {
+                        "id": 4,
+                        "pid": 731080507,
+                        "type": "2.0_dimmer",
+                        "address": "E6000104",
+                        "opt": "01000002",
+                        "optName": "关闭",
+                        "delay": 0
+                    },
+                    {
+                        "id": 5,
+                        "pid": 574589820,
+                        "type": "2.0_dimmer",
+                        "address": "E6000201",
+                        "opt": "01000002",
+                        "optName": "关闭",
+                        "delay": 0
+                    },
+                    {
+                        "id": 6,
+                        "pid": 104045710,
+                        "type": "2.0_dimmer",
+                        "address": "E6000202",
+                        "opt": "01000002",
+                        "optName": "关闭",
+                        "delay": 0
+                    },
+                    {
+                        "id": 7,
+                        "pid": 213354661,
+                        "type": "2.0_dimmer",
+                        "address": "E6000203",
+                        "opt": "01000002",
+                        "optName": "关闭",
+                        "delay": 0
+                    },
+                    {
+                        "id": 8,
+                        "pid": 681849188,
+                        "type": "2.0_dimmer",
+                        "address": "E6000204",
+                        "opt": "01000002",
+                        "optName": "关闭",
+                        "delay": 0
+                    }
+                ],
+                "id": 10,
+                "pid": 911047600
+            },
+            {
+                "sceneInfo": [
+                    {
+                        "id": 1,
+                        "pid": 795347507,
+                        "type": "2.0_dimmer",
+                        "address": "E6000301",
+                        "opt": "10000164",
+                        "optName": "调光",
+                        "delay": 0
+                    },
+                    {
+                        "id": 2,
+                        "pid": 636296977,
+                        "type": "2.0_dimmer",
+                        "address": "E6000302",
+                        "opt": "10000164",
+                        "optName": "调光",
+                        "delay": 0
+                    },
+                    {
+                        "id": 3,
+                        "pid": 558416562,
+                        "type": "2.0_dimmer",
+                        "address": "E6000303",
+                        "opt": "10000164",
+                        "optName": "调光",
+                        "delay": 0
+                    },
+                    {
+                        "id": 4,
+                        "pid": 419012274,
+                        "type": "2.0_dimmer",
+                        "address": "E6000304",
+                        "opt": "10000164",
+                        "optName": "调光",
+                        "delay": 0
+                    },
+                    {
+                        "id": 5,
+                        "pid": 108355106,
+                        "type": "2.0_dimmer",
+                        "address": "E6000401",
+                        "opt": "10000164",
+                        "optName": "调光",
+                        "delay": 0
+                    }
+                ],
+                "id": 11,
+                "pid": 305428928
+            },
+            {
+                "sceneInfo": [
+                    {
+                        "id": 1,
+                        "pid": 795347507,
+                        "type": "2.0_dimmer",
+                        "address": "E6000301",
+                        "opt": "01000002",
+                        "optName": "关闭",
+                        "delay": 0
+                    },
+                    {
+                        "id": 2,
+                        "pid": 636296977,
+                        "type": "2.0_dimmer",
+                        "address": "E6000302",
+                        "opt": "01000002",
+                        "optName": "关闭",
+                        "delay": 0
+                    },
+                    {
+                        "id": 3,
+                        "pid": 558416562,
+                        "type": "2.0_dimmer",
+                        "address": "E6000303",
+                        "opt": "01000002",
+                        "optName": "关闭",
+                        "delay": 0
+                    },
+                    {
+                        "id": 4,
+                        "pid": 419012274,
+                        "type": "2.0_dimmer",
+                        "address": "E6000304",
+                        "opt": "01000002",
+                        "optName": "关闭",
+                        "delay": 0
+                    },
+                    {
+                        "id": 5,
+                        "pid": 108355106,
+                        "type": "2.0_dimmer",
+                        "address": "E6000401",
+                        "opt": "01000002",
+                        "optName": "关闭",
+                        "delay": 0
+                    }
+                ],
+                "id": 12,
+                "pid": 445392732
+            },
+            {
+                "sceneInfo": [
+                    {
+                        "id": 1,
+                        "pid": 795347507,
+                        "type": "2.0_dimmer",
+                        "address": "E6000301",
+                        "opt": "10000150",
+                        "optName": "调光",
+                        "delay": 0
+                    },
+                    {
+                        "id": 2,
+                        "pid": 636296977,
+                        "type": "2.0_dimmer",
+                        "address": "E6000302",
+                        "opt": "10000150",
+                        "optName": "调光",
+                        "delay": 0
+                    },
+                    {
+                        "id": 3,
+                        "pid": 558416562,
+                        "type": "2.0_dimmer",
+                        "address": "E6000303",
+                        "opt": "10000164",
+                        "optName": "调光",
+                        "delay": 0
+                    },
+                    {
+                        "id": 4,
+                        "pid": 419012274,
+                        "type": "2.0_dimmer",
+                        "address": "E6000304",
+                        "opt": "10000164",
+                        "optName": "调光",
+                        "delay": 0
+                    },
+                    {
+                        "id": 5,
+                        "pid": 108355106,
+                        "type": "2.0_dimmer",
+                        "address": "E6000401",
+                        "opt": "10000164",
+                        "optName": "调光",
+                        "delay": 0
+                    }
+                ],
+                "id": 13,
+                "pid": 271479325
+            },
+            {
+                "sceneInfo": [
+                    {
+                        "id": 1,
+                        "pid": 795347507,
+                        "type": "2.0_dimmer",
+                        "address": "E6000301",
+                        "opt": "01000002",
+                        "optName": "关闭",
+                        "delay": 0
+                    },
+                    {
+                        "id": 2,
+                        "pid": 636296977,
+                        "type": "2.0_dimmer",
+                        "address": "E6000302",
+                        "opt": "01000002",
+                        "optName": "关闭",
+                        "delay": 0
+                    },
+                    {
+                        "id": 3,
+                        "pid": 558416562,
+                        "type": "2.0_dimmer",
+                        "address": "E6000303",
+                        "opt": "01000002",
+                        "optName": "关闭",
+                        "delay": 0
+                    },
+                    {
+                        "id": 4,
+                        "pid": 419012274,
+                        "type": "2.0_dimmer",
+                        "address": "E6000304",
+                        "opt": "01000002",
+                        "optName": "关闭",
+                        "delay": 0
+                    },
+                    {
+                        "id": 5,
+                        "pid": 108355106,
+                        "type": "2.0_dimmer",
+                        "address": "E6000401",
+                        "opt": "01000002",
+                        "optName": "关闭",
+                        "delay": 0
+                    }
+                ],
+                "id": 14,
+                "pid": 670873705
+            },
+            {
+                "sceneInfo": [
+                    {
+                        "id": 1,
+                        "pid": 795347507,
+                        "type": "2.0_dimmer",
+                        "address": "E6000301",
+                        "opt": "1000010A",
+                        "optName": "调光",
+                        "delay": 0
+                    },
+                    {
+                        "id": 2,
+                        "pid": 636296977,
+                        "type": "2.0_dimmer",
+                        "address": "E6000302",
+                        "opt": "01000002",
+                        "optName": "关闭",
+                        "delay": 0
+                    },
+                    {
+                        "id": 3,
+                        "pid": 558416562,
+                        "type": "2.0_dimmer",
+                        "address": "E6000303",
+                        "opt": "01000002",
+                        "optName": "关闭",
+                        "delay": 0
+                    },
+                    {
+                        "id": 4,
+                        "pid": 419012274,
+                        "type": "2.0_dimmer",
+                        "address": "E6000304",
+                        "opt": "1000010A",
+                        "optName": "调光",
+                        "delay": 0
+                    },
+                    {
+                        "id": 5,
+                        "pid": 108355106,
+                        "type": "2.0_dimmer",
+                        "address": "E6000401",
+                        "opt": "1000010A",
+                        "optName": "调光",
+                        "delay": 0
+                    }
+                ],
+                "id": 15,
+                "pid": 843162240
+            },
+            {
+                "sceneInfo": [
+                    {
+                        "id": 1,
+                        "pid": 795347507,
+                        "type": "2.0_dimmer",
+                        "address": "E6000301",
+                        "opt": "01000002",
+                        "optName": "关闭",
+                        "delay": 0
+                    },
+                    {
+                        "id": 2,
+                        "pid": 636296977,
+                        "type": "2.0_dimmer",
+                        "address": "E6000302",
+                        "opt": "01000002",
+                        "optName": "关闭",
+                        "delay": 0
+                    },
+                    {
+                        "id": 3,
+                        "pid": 558416562,
+                        "type": "2.0_dimmer",
+                        "address": "E6000303",
+                        "opt": "01000002",
+                        "optName": "关闭",
+                        "delay": 0
+                    },
+                    {
+                        "id": 4,
+                        "pid": 419012274,
+                        "type": "2.0_dimmer",
+                        "address": "E6000304",
+                        "opt": "01000002",
+                        "optName": "关闭",
+                        "delay": 0
+                    },
+                    {
+                        "id": 5,
+                        "pid": 108355106,
+                        "type": "2.0_dimmer",
+                        "address": "E6000401",
+                        "opt": "01000002",
+                        "optName": "关闭",
+                        "delay": 0
+                    }
+                ],
+                "id": 16,
+                "pid": 525272947
+            },
+            {
+                "sceneInfo": [
+                    {
+                        "id": 1,
+                        "pid": 795347507,
+                        "type": "2.0_dimmer",
+                        "address": "E6000301",
+                        "opt": "10000132",
+                        "optName": "调光",
+                        "delay": 0
+                    },
+                    {
+                        "id": 2,
+                        "pid": 636296977,
+                        "type": "2.0_dimmer",
+                        "address": "E6000302",
+                        "opt": "10000164",
+                        "optName": "调光",
+                        "delay": 0
+                    },
+                    {
+                        "id": 3,
+                        "pid": 558416562,
+                        "type": "2.0_dimmer",
+                        "address": "E6000303",
+                        "opt": "10000164",
+                        "optName": "调光",
+                        "delay": 0
+                    },
+                    {
+                        "id": 4,
+                        "pid": 419012274,
+                        "type": "2.0_dimmer",
+                        "address": "E6000304",
+                        "opt": "10000132",
+                        "optName": "调光",
+                        "delay": 0
+                    },
+                    {
+                        "id": 5,
+                        "pid": 108355106,
+                        "type": "2.0_dimmer",
+                        "address": "E6000401",
+                        "opt": "10000132",
+                        "optName": "调光",
+                        "delay": 0
+                    }
+                ],
+                "id": 17,
+                "pid": 348761743
+            },
+            {
+                "sceneInfo": [
+                    {
+                        "id": 1,
+                        "pid": 795347507,
+                        "type": "2.0_dimmer",
+                        "address": "E6000301",
+                        "opt": "01000002",
+                        "optName": "关闭",
+                        "delay": 0
+                    },
+                    {
+                        "id": 2,
+                        "pid": 636296977,
+                        "type": "2.0_dimmer",
+                        "address": "E6000302",
+                        "opt": "01000002",
+                        "optName": "关闭",
+                        "delay": 0
+                    },
+                    {
+                        "id": 3,
+                        "pid": 558416562,
+                        "type": "2.0_dimmer",
+                        "address": "E6000303",
+                        "opt": "01000002",
+                        "optName": "关闭",
+                        "delay": 0
+                    },
+                    {
+                        "id": 4,
+                        "pid": 419012274,
+                        "type": "2.0_dimmer",
+                        "address": "E6000304",
+                        "opt": "01000002",
+                        "optName": "关闭",
+                        "delay": 0
+                    },
+                    {
+                        "id": 5,
+                        "pid": 108355106,
+                        "type": "2.0_dimmer",
+                        "address": "E6000401",
+                        "opt": "01000002",
+                        "optName": "关闭",
+                        "delay": 0
+                    }
+                ],
+                "id": 18,
+                "pid": 487559382
+            },
+            {
+                "sceneInfo": [
+                    {
+                        "id": 1,
+                        "pid": 148565257,
+                        "type": "2.0_dimmer",
+                        "address": "E6000501",
+                        "opt": "10000164",
+                        "optName": "调光",
+                        "delay": 0
+                    },
+                    {
+                        "id": 2,
+                        "pid": 413521178,
+                        "type": "2.0_dimmer",
+                        "address": "E6000502",
+                        "opt": "10000164",
+                        "optName": "调光",
+                        "delay": 0
+                    }
+                ],
+                "id": 19,
+                "pid": 678764809
+            },
+            {
+                "sceneInfo": [
+                    {
+                        "id": 1,
+                        "pid": 148565257,
+                        "type": "2.0_dimmer",
+                        "address": "E6000501",
+                        "opt": "01000002",
+                        "optName": "关闭",
+                        "delay": 0
+                    },
+                    {
+                        "id": 2,
+                        "pid": 413521178,
+                        "type": "2.0_dimmer",
+                        "address": "E6000502",
+                        "opt": "01000002",
+                        "optName": "关闭",
+                        "delay": 0
+                    }
+                ],
+                "id": 20,
+                "pid": 684366777
+            },
+            {
+                "sceneInfo": [
+                    {
+                        "id": 1,
+                        "pid": 148565257,
+                        "type": "2.0_dimmer",
+                        "address": "E6000501",
+                        "opt": "10000150",
+                        "optName": "调光",
+                        "delay": 0
+                    },
+                    {
+                        "id": 2,
+                        "pid": 413521178,
+                        "type": "2.0_dimmer",
+                        "address": "E6000502",
+                        "opt": "10000132",
+                        "optName": "调光",
+                        "delay": 0
+                    }
+                ],
+                "id": 21,
+                "pid": 123324577
+            },
+            {
+                "sceneInfo": [
+                    {
+                        "id": 1,
+                        "pid": 148565257,
+                        "type": "2.0_dimmer",
+                        "address": "E6000501",
+                        "opt": "01000002",
+                        "optName": "关闭",
+                        "delay": 0
+                    },
+                    {
+                        "id": 2,
+                        "pid": 413521178,
+                        "type": "2.0_dimmer",
+                        "address": "E6000502",
+                        "opt": "01000002",
+                        "optName": "关闭",
+                        "delay": 0
+                    }
+                ],
+                "id": 22,
+                "pid": 692808767
+            },
+            {
+                "sceneInfo": [
+                    {
+                        "id": 1,
+                        "pid": 148565257,
+                        "type": "2.0_dimmer",
+                        "address": "E6000501",
+                        "opt": "10000114",
+                        "optName": "调光",
+                        "delay": 0
+                    },
+                    {
+                        "id": 2,
+                        "pid": 413521178,
+                        "type": "2.0_dimmer",
+                        "address": "E6000502",
+                        "opt": "01000002",
+                        "optName": "关闭",
+                        "delay": 0
+                    }
+                ],
+                "id": 23,
+                "pid": 117662847
+            },
+            {
+                "sceneInfo": [
+                    {
+                        "id": 1,
+                        "pid": 148565257,
+                        "type": "2.0_dimmer",
+                        "address": "E6000501",
+                        "opt": "01000002",
+                        "optName": "关闭",
+                        "delay": 0
+                    },
+                    {
+                        "id": 2,
+                        "pid": 413521178,
+                        "type": "2.0_dimmer",
+                        "address": "E6000502",
+                        "opt": "01000002",
+                        "optName": "关闭",
+                        "delay": 0
+                    }
+                ],
+                "id": 24,
+                "pid": 352268555
+            },
+            {
+                "sceneInfo": [
+                    {
+                        "id": 1,
+                        "pid": 530775332,
+                        "type": "2.0_dimmer",
+                        "address": "E6000503",
+                        "opt": "10000164",
+                        "optName": "调光",
+                        "delay": 0
+                    },
+                    {
+                        "id": 2,
+                        "pid": 206710872,
+                        "type": "2.0_dimmer",
+                        "address": "E6000504",
+                        "opt": "10000164",
+                        "optName": "调光",
+                        "delay": 0
+                    }
+                ],
+                "id": 25,
+                "pid": 851299359
+            },
+            {
+                "sceneInfo": [
+                    {
+                        "id": 1,
+                        "pid": 530775332,
+                        "type": "2.0_dimmer",
+                        "address": "E6000503",
+                        "opt": "01000002",
+                        "optName": "关闭",
+                        "delay": 0
+                    },
+                    {
+                        "id": 2,
+                        "pid": 206710872,
+                        "type": "2.0_dimmer",
+                        "address": "E6000504",
+                        "opt": "01000002",
+                        "optName": "关闭",
+                        "delay": 0
+                    }
+                ],
+                "id": 26,
+                "pid": 960270832
+            },
+            {
+                "sceneInfo": [
+                    {
+                        "id": 1,
+                        "pid": 530775332,
+                        "type": "2.0_dimmer",
+                        "address": "E6000503",
+                        "opt": "10000150",
+                        "optName": "调光",
+                        "delay": 0
+                    },
+                    {
+                        "id": 2,
+                        "pid": 206710872,
+                        "type": "2.0_dimmer",
+                        "address": "E6000504",
+                        "opt": "10000132",
+                        "optName": "调光",
+                        "delay": 0
+                    }
+                ],
+                "id": 27,
+                "pid": 176648474
+            },
+            {
+                "sceneInfo": [
+                    {
+                        "id": 1,
+                        "pid": 530775332,
+                        "type": "2.0_dimmer",
+                        "address": "E6000503",
+                        "opt": "01000002",
+                        "optName": "关闭",
+                        "delay": 0
+                    },
+                    {
+                        "id": 2,
+                        "pid": 206710872,
+                        "type": "2.0_dimmer",
+                        "address": "E6000504",
+                        "opt": "01000002",
+                        "optName": "关闭",
+                        "delay": 0
+                    }
+                ],
+                "id": 28,
+                "pid": 102343578
+            },
+            {
+                "sceneInfo": [
+                    {
+                        "id": 1,
+                        "pid": 530775332,
+                        "type": "2.0_dimmer",
+                        "address": "E6000503",
+                        "opt": "10000114",
+                        "optName": "调光",
+                        "delay": 0
+                    },
+                    {
+                        "id": 2,
+                        "pid": 206710872,
+                        "type": "2.0_dimmer",
+                        "address": "E6000504",
+                        "opt": "01000002",
+                        "optName": "关闭",
+                        "delay": 0
+                    }
+                ],
+                "id": 29,
+                "pid": 640796472
+            },
+            {
+                "sceneInfo": [
+                    {
+                        "id": 1,
+                        "pid": 530775332,
+                        "type": "2.0_dimmer",
+                        "address": "E6000503",
+                        "opt": "01000002",
+                        "optName": "关闭",
+                        "delay": 0
+                    },
+                    {
+                        "id": 2,
+                        "pid": 206710872,
+                        "type": "2.0_dimmer",
+                        "address": "E6000504",
+                        "opt": "01000002",
+                        "optName": "关闭",
+                        "delay": 0
+                    }
+                ],
+                "id": 30,
+                "pid": 755913811
+            },
+            {
+                "sceneInfo": [
+                    {
+                        "id": 1,
+                        "pid": 577622790,
+                        "type": "2.0_dimmer",
+                        "address": "E6000601",
+                        "opt": "10000164",
+                        "optName": "调光",
+                        "delay": 0
+                    },
+                    {
+                        "id": 2,
+                        "pid": 781903903,
+                        "type": "2.0_dimmer",
+                        "address": "E6000602",
+                        "opt": "10000164",
+                        "optName": "调光",
+                        "delay": 0
+                    }
+                ],
+                "id": 31,
+                "pid": 160469868
+            },
+            {
+                "sceneInfo": [
+                    {
+                        "id": 1,
+                        "pid": 577622790,
+                        "type": "2.0_dimmer",
+                        "address": "E6000601",
+                        "opt": "01000002",
+                        "optName": "关闭",
+                        "delay": 0
+                    },
+                    {
+                        "id": 2,
+                        "pid": 781903903,
+                        "type": "2.0_dimmer",
+                        "address": "E6000602",
+                        "opt": "01000002",
+                        "optName": "关闭",
+                        "delay": 0
+                    }
+                ],
+                "id": 32,
+                "pid": 616144596
+            },
+            {
+                "sceneInfo": [
+                    {
+                        "id": 1,
+                        "pid": 577622790,
+                        "type": "2.0_dimmer",
+                        "address": "E6000601",
+                        "opt": "10000150",
+                        "optName": "调光",
+                        "delay": 0
+                    },
+                    {
+                        "id": 2,
+                        "pid": 781903903,
+                        "type": "2.0_dimmer",
+                        "address": "E6000602",
+                        "opt": "10000132",
+                        "optName": "调光",
+                        "delay": 0
+                    }
+                ],
+                "id": 33,
+                "pid": 131796290
+            },
+            {
+                "sceneInfo": [
+                    {
+                        "id": 1,
+                        "pid": 577622790,
+                        "type": "2.0_dimmer",
+                        "address": "E6000601",
+                        "opt": "01000002",
+                        "optName": "关闭",
+                        "delay": 0
+                    },
+                    {
+                        "id": 2,
+                        "pid": 781903903,
+                        "type": "2.0_dimmer",
+                        "address": "E6000602",
+                        "opt": "01000002",
+                        "optName": "关闭",
+                        "delay": 0
+                    }
+                ],
+                "id": 34,
+                "pid": 594189578
+            },
+            {
+                "sceneInfo": [
+                    {
+                        "id": 1,
+                        "pid": 577622790,
+                        "type": "2.0_dimmer",
+                        "address": "E6000601",
+                        "opt": "10000114",
+                        "optName": "调光",
+                        "delay": 0
+                    },
+                    {
+                        "id": 2,
+                        "pid": 781903903,
+                        "type": "2.0_dimmer",
+                        "address": "E6000602",
+                        "opt": "01000002",
+                        "optName": "关闭",
+                        "delay": 0
+                    }
+                ],
+                "id": 35,
+                "pid": 319117516
+            },
+            {
+                "sceneInfo": [
+                    {
+                        "id": 1,
+                        "pid": 577622790,
+                        "type": "2.0_dimmer",
+                        "address": "E6000601",
+                        "opt": "01000002",
+                        "optName": "关闭",
+                        "delay": 0
+                    },
+                    {
+                        "id": 2,
+                        "pid": 781903903,
+                        "type": "2.0_dimmer",
+                        "address": "E6000602",
+                        "opt": "01000002",
+                        "optName": "关闭",
+                        "delay": 0
+                    }
+                ],
+                "id": 36,
+                "pid": 896978272
+            },
+            {
+                "sceneInfo": [
+                    {
+                        "id": 1,
+                        "pid": 721398908,
+                        "type": "2.0_dimmer",
+                        "address": "E6000603",
+                        "opt": "10000164",
+                        "optName": "调光",
+                        "delay": 0
+                    },
+                    {
+                        "id": 2,
+                        "pid": 220437013,
+                        "type": "2.0_dimmer",
+                        "address": "E6000604",
+                        "opt": "10000164",
+                        "optName": "调光",
+                        "delay": 0
+                    }
+                ],
+                "id": 37,
+                "pid": 372985205
+            },
+            {
+                "sceneInfo": [
+                    {
+                        "id": 1,
+                        "pid": 721398908,
+                        "type": "2.0_dimmer",
+                        "address": "E6000603",
+                        "opt": "01000002",
+                        "optName": "关闭",
+                        "delay": 0
+                    },
+                    {
+                        "id": 2,
+                        "pid": 220437013,
+                        "type": "2.0_dimmer",
+                        "address": "E6000604",
+                        "opt": "01000002",
+                        "optName": "关闭",
+                        "delay": 0
+                    }
+                ],
+                "id": 38,
+                "pid": 461453246
+            },
+            {
+                "sceneInfo": [
+                    {
+                        "id": 1,
+                        "pid": 721398908,
+                        "type": "2.0_dimmer",
+                        "address": "E6000603",
+                        "opt": "10000150",
+                        "optName": "调光",
+                        "delay": 0
+                    },
+                    {
+                        "id": 2,
+                        "pid": 220437013,
+                        "type": "2.0_dimmer",
+                        "address": "E6000604",
+                        "opt": "10000132",
+                        "optName": "调光",
+                        "delay": 0
+                    }
+                ],
+                "id": 39,
+                "pid": 841190712
+            },
+            {
+                "sceneInfo": [
+                    {
+                        "id": 1,
+                        "pid": 721398908,
+                        "type": "2.0_dimmer",
+                        "address": "E6000603",
+                        "opt": "01000002",
+                        "optName": "关闭",
+                        "delay": 0
+                    },
+                    {
+                        "id": 2,
+                        "pid": 220437013,
+                        "type": "2.0_dimmer",
+                        "address": "E6000604",
+                        "opt": "01000002",
+                        "optName": "关闭",
+                        "delay": 0
+                    }
+                ],
+                "id": 40,
+                "pid": 158601296
+            },
+            {
+                "sceneInfo": [
+                    {
+                        "id": 1,
+                        "pid": 721398908,
+                        "type": "2.0_dimmer",
+                        "address": "E6000603",
+                        "opt": "10000114",
+                        "optName": "调光",
+                        "delay": 0
+                    },
+                    {
+                        "id": 2,
+                        "pid": 220437013,
+                        "type": "2.0_dimmer",
+                        "address": "E6000604",
+                        "opt": "01000002",
+                        "optName": "关闭",
+                        "delay": 0
+                    }
+                ],
+                "id": 41,
+                "pid": 832698117
+            },
+            {
+                "sceneInfo": [
+                    {
+                        "id": 1,
+                        "pid": 721398908,
+                        "type": "2.0_dimmer",
+                        "address": "E6000603",
+                        "opt": "01000002",
+                        "optName": "关闭",
+                        "delay": 0
+                    },
+                    {
+                        "id": 2,
+                        "pid": 220437013,
+                        "type": "2.0_dimmer",
+                        "address": "E6000604",
+                        "opt": "01000002",
+                        "optName": "关闭",
+                        "delay": 0
+                    }
+                ],
+                "id": 42,
+                "pid": 960772966
+            },
+            {
+                "sceneInfo": [
+                    {
+                        "id": 1,
+                        "pid": 795347507,
+                        "type": "2.0_dimmer",
+                        "address": "E6000301",
+                        "opt": "01000001",
+                        "optName": "开启",
+                        "delay": 0
+                    },
+                    {
+                        "id": 2,
+                        "pid": 636296977,
+                        "type": "2.0_dimmer",
+                        "address": "E6000302",
+                        "opt": "01000001",
+                        "optName": "开启",
+                        "delay": 0
+                    },
+                    {
+                        "id": 3,
+                        "pid": 558416562,
+                        "type": "2.0_dimmer",
+                        "address": "E6000303",
+                        "opt": "01000001",
+                        "optName": "开启",
+                        "delay": 0
+                    },
+                    {
+                        "id": 4,
+                        "pid": 419012274,
+                        "type": "2.0_dimmer",
+                        "address": "E6000304",
+                        "opt": "01000001",
+                        "optName": "开启",
+                        "delay": 0
+                    },
+                    {
+                        "id": 5,
+                        "pid": 108355106,
+                        "type": "2.0_dimmer",
+                        "address": "E6000401",
+                        "opt": "01000001",
+                        "optName": "开启",
+                        "delay": 0
+                    }
+                ],
+                "id": 43,
+                "pid": 298178957
+            },
+            {
+                "sceneInfo": [
+                    {
+                        "id": 1,
+                        "pid": 795347507,
+                        "type": "2.0_dimmer",
+                        "address": "E6000301",
+                        "opt": "01000002",
+                        "optName": "关闭",
+                        "delay": 0
+                    },
+                    {
+                        "id": 2,
+                        "pid": 636296977,
+                        "type": "2.0_dimmer",
+                        "address": "E6000302",
+                        "opt": "01000002",
+                        "optName": "关闭",
+                        "delay": 0
+                    },
+                    {
+                        "id": 3,
+                        "pid": 558416562,
+                        "type": "2.0_dimmer",
+                        "address": "E6000303",
+                        "opt": "01000002",
+                        "optName": "关闭",
+                        "delay": 0
+                    },
+                    {
+                        "id": 4,
+                        "pid": 419012274,
+                        "type": "2.0_dimmer",
+                        "address": "E6000304",
+                        "opt": "01000002",
+                        "optName": "关闭",
+                        "delay": 0
+                    },
+                    {
+                        "id": 5,
+                        "pid": 108355106,
+                        "type": "2.0_dimmer",
+                        "address": "E6000401",
+                        "opt": "01000002",
+                        "optName": "关闭",
+                        "delay": 0
+                    }
+                ],
+                "id": 44,
+                "pid": 591638644
             }
         ],
-        "IP": "192.168.1.222",
+        "IP": "192.168.1.230",
         "Dev": "GW100A"
     }
 ]

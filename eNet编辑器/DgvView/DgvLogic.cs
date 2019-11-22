@@ -152,6 +152,10 @@ namespace eNet编辑器.DgvView
             DataJson.logics lgs = DataListHelper.getLogicInfoListByNode();
             if (lgs == null)
             {
+                if (superTabControl1.Tabs.Count == 1 && superTabControl1.Tabs[0].Text == "LogicSet")
+                {
+                    return;
+                }
                 clearSuperTabControl1();
                 return;
             }
@@ -221,7 +225,7 @@ namespace eNet编辑器.DgvView
         /// <summary>
         /// 清空表框 并加载空白的项
         /// </summary>
-        private void clearSuperTabControl1()
+        public void clearSuperTabControl1()
         {
             //superTabControl1.Tabs.Clear();
             SuperTabControllCreat();

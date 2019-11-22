@@ -45,6 +45,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.plInfoTitle = new System.Windows.Forms.Panel();
+            this.cbOnline = new System.Windows.Forms.CheckBox();
             this.symbolBox1 = new DevComponents.DotNetBar.Controls.SymbolBox();
             this.label1 = new System.Windows.Forms.Label();
             this.doubleClickTimer = new System.Windows.Forms.Timer(this.components);
@@ -71,7 +72,7 @@
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.DeviceNum,
             this.DeviceName,
@@ -96,6 +97,7 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.RowHeadersWidth = 30;
+            this.dataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dataGridView1.RowTemplate.Height = 23;
             this.dataGridView1.Size = new System.Drawing.Size(1006, 884);
             this.dataGridView1.TabIndex = 3;
@@ -196,6 +198,7 @@
             // plInfoTitle
             // 
             this.plInfoTitle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.plInfoTitle.Controls.Add(this.cbOnline);
             this.plInfoTitle.Controls.Add(this.symbolBox1);
             this.plInfoTitle.Controls.Add(this.label1);
             this.plInfoTitle.Dock = System.Windows.Forms.DockStyle.Top;
@@ -204,6 +207,18 @@
             this.plInfoTitle.Name = "plInfoTitle";
             this.plInfoTitle.Size = new System.Drawing.Size(1006, 25);
             this.plInfoTitle.TabIndex = 15;
+            // 
+            // cbOnline
+            // 
+            this.cbOnline.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.cbOnline.AutoSize = true;
+            this.cbOnline.Location = new System.Drawing.Point(904, 2);
+            this.cbOnline.Name = "cbOnline";
+            this.cbOnline.Size = new System.Drawing.Size(99, 21);
+            this.cbOnline.TabIndex = 13;
+            this.cbOnline.Text = "获取实时状态";
+            this.cbOnline.UseVisualStyleBackColor = true;
+            this.cbOnline.CheckedChanged += new System.EventHandler(this.cbOnline_CheckedChanged);
             // 
             // symbolBox1
             // 
@@ -275,5 +290,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn DeviceTitle;
         private System.Windows.Forms.DataGridViewTextBoxColumn NameState;
         private DevComponents.DotNetBar.Controls.DataGridViewButtonXColumn DeviceIni;
+        private System.Windows.Forms.CheckBox cbOnline;
     }
 }

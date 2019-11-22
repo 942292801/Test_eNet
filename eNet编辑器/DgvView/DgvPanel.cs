@@ -114,15 +114,34 @@ namespace eNet编辑器.DgvView
         }
 
 
+        #region 刷新窗体事件
+
+        public void dgvPanelAddItem()
+        {
+            Thread t = new Thread(ShowDatatable);
+            t.IsBackground = true;
+            t.Start();
+        }
+        #region 测试异步加载
+        public delegate void FormIniDelegate();
+        private void ShowDatatable()
+        {
+            this.Invoke(new FormIniDelegate(TabIni));
+
+        }
+
+
+        #endregion
         /// <summary>
         /// 加载DgV所有信息
         /// </summary>
-        public void dgvPanelAddItem()
+        public void TabIni()
         {
-           
+            
             try
             {
                 this.dataGridView1.Rows.Clear();
+                cbKeyNum.SelectedIndex = 0;
                 imgSlider.ImageList = null;
                 cbPage.SelectedIndex = 0;
                 cbDevNum.Items.Clear();
@@ -219,6 +238,8 @@ namespace eNet编辑器.DgvView
                     }
                     if (tmpId == plInfo.id)
                     {
+                        plInfo.showAddress = "";
+                        plInfo.showMode = "";
                         //同上的
                         dataGridView1.Rows[dex].Cells[0].Value = null;
                         dataGridView1.Rows[dex].Cells[10].ReadOnly = true;
@@ -256,6 +277,12 @@ namespace eNet编辑器.DgvView
             
         }
 
+        public void clearDgvClear()
+        {
+            dataGridView1.Rows.Clear();
+        }
+
+        #endregion
 
         #region 工具类
 
@@ -1138,13 +1165,13 @@ namespace eNet编辑器.DgvView
                 inserNum++;
                 if (find.id == id)
                 {
-                    if (!string.IsNullOrEmpty(find.keyAddress))
-                    {
+                    //if (!string.IsNullOrEmpty(find.keyAddress))
+                    //{
                         objType = find.objType;
                         keyAddress = find.keyAddress;
                         objAddress = find.objAddress;
                         opt = find.opt;
-                    }
+                    //}
 
                 }
                 if (find.id == id + 1)
@@ -1328,8 +1355,12 @@ namespace eNet编辑器.DgvView
                 DataJson.totalList OldList = FileMesege.cmds.getListInfos();
                 //地址
                 pls.panelsInfo[rowCount].objAddress = dc.Obj;
-                pls.panelsInfo[rowCount].showAddress = dc.Obj;
-                pls.panelsInfo[rowCount].showMode = "同步";
+                if (dataGridView1.Rows[rowCount].Cells[0].Value != null)
+                {
+                    pls.panelsInfo[rowCount].showAddress = dc.Obj;
+                    pls.panelsInfo[rowCount].showMode = "同步";
+                }
+                
                 if (string.IsNullOrEmpty(dc.Obj))
                 {
                     return;
