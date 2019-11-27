@@ -88,7 +88,7 @@
                         "address": "E6000101",
                         "opt": "01000002",
                         "optName": "关闭",
-                        "delay": 0
+                        "delay": 50
                     },
                     {
                         "id": 2,
@@ -113,44 +113,44 @@
                         "pid": 731080507,
                         "type": "2.0_dimmer",
                         "address": "E6000104",
-                        "opt": "01000002",
-                        "optName": "关闭",
-                        "delay": 0
+                        "opt": "",
+                        "optName": "",
+                        "delay": 50
                     },
                     {
                         "id": 5,
-                        "pid": 574589820,
-                        "type": "2.0_dimmer",
-                        "address": "E6000201",
-                        "opt": "01000002",
-                        "optName": "关闭",
-                        "delay": 0
+                        "pid": 0,
+                        "type": "",
+                        "address": "E6000105",
+                        "opt": "",
+                        "optName": "",
+                        "delay": 240
                     },
                     {
                         "id": 6,
-                        "pid": 104045710,
-                        "type": "2.0_dimmer",
-                        "address": "E6000202",
-                        "opt": "01000002",
-                        "optName": "关闭",
+                        "pid": 0,
+                        "type": "",
+                        "address": "E6000106",
+                        "opt": "",
+                        "optName": "",
                         "delay": 0
                     },
                     {
                         "id": 7,
-                        "pid": 213354661,
-                        "type": "2.0_dimmer",
-                        "address": "E6000203",
-                        "opt": "01000002",
-                        "optName": "关闭",
+                        "pid": 0,
+                        "type": "",
+                        "address": "E6000107",
+                        "opt": "",
+                        "optName": "",
                         "delay": 0
                     },
                     {
                         "id": 8,
-                        "pid": 681849188,
-                        "type": "2.0_dimmer",
-                        "address": "E6000204",
-                        "opt": "01000002",
-                        "optName": "关闭",
+                        "pid": 0,
+                        "type": "",
+                        "address": "E6000108",
+                        "opt": "",
+                        "optName": "",
                         "delay": 0
                     }
                 ],
@@ -959,8 +959,8 @@
                         "pid": 558416562,
                         "type": "2.0_dimmer",
                         "address": "E6000303",
-                        "opt": "01000002",
-                        "optName": "关闭",
+                        "opt": "",
+                        "optName": "",
                         "delay": 0
                     },
                     {
@@ -968,17 +968,71 @@
                         "pid": 419012274,
                         "type": "2.0_dimmer",
                         "address": "E6000304",
-                        "opt": "01000002",
-                        "optName": "关闭",
+                        "opt": "",
+                        "optName": "",
                         "delay": 0
                     },
                     {
                         "id": 5,
-                        "pid": 108355106,
+                        "pid": 558121373,
                         "type": "2.0_dimmer",
-                        "address": "E6000401",
-                        "opt": "01000002",
-                        "optName": "关闭",
+                        "address": "E6000101",
+                        "opt": "",
+                        "optName": "",
+                        "delay": 0
+                    },
+                    {
+                        "id": 6,
+                        "pid": 0,
+                        "type": "",
+                        "address": "E6000306",
+                        "opt": "",
+                        "optName": "",
+                        "delay": 0
+                    },
+                    {
+                        "id": 7,
+                        "pid": 0,
+                        "type": "",
+                        "address": "E6000307",
+                        "opt": "",
+                        "optName": "",
+                        "delay": 0
+                    },
+                    {
+                        "id": 8,
+                        "pid": 0,
+                        "type": "",
+                        "address": "E6000308",
+                        "opt": "",
+                        "optName": "",
+                        "delay": 0
+                    },
+                    {
+                        "id": 9,
+                        "pid": 0,
+                        "type": "",
+                        "address": "E6000309",
+                        "opt": "",
+                        "optName": "",
+                        "delay": 0
+                    },
+                    {
+                        "id": 10,
+                        "pid": 0,
+                        "type": "",
+                        "address": "E600030A",
+                        "opt": "",
+                        "optName": "",
+                        "delay": 0
+                    },
+                    {
+                        "id": 11,
+                        "pid": 0,
+                        "type": "",
+                        "address": "E600030B",
+                        "opt": "",
+                        "optName": "",
                         "delay": 0
                     }
                 ],

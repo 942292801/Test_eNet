@@ -36,10 +36,12 @@ namespace eNet编辑器
         public static string objType = "";
         //treetitle名字临时存放 对象表
         public static string titleinfo = "";
-        public static string titlePointSection = "";//存放 点位的名称 section//section---name
+        public static string titlePointSection = "";//treetitle选中节点的名称  section//section---name
         //逻辑表的Tab的信息名称 用于DataListHelper.findLogicInfoByTabName函数
         public static string LogicTabName = "";
         public static int LogicSelectedTabIndex = 0;
+        //升降序间隔
+        public static double AsDesCendingNum = 1;
 
         //左栏 树状图treename节点选中临时存放
         public static TreeNode tnselectNode = null;
@@ -617,6 +619,7 @@ namespace eNet编辑器
                             }
                         }
                     }
+                    /*
                     if (PointList.localvar != null)
                     {
                         foreach (DataJson.PointInfo point in PointList.localvar)
@@ -626,7 +629,7 @@ namespace eNet编辑器
                                 gwPoint.localvar.Add(point);
                             }
                         }
-                    }
+                    }*/
                 }
                 //File.WriteAllText(string.Format("{0}\\objs\\{1}\\point.json", TmpFilePath, ip), ConvertJsonString(JsonConvert.SerializeObject(gwPoint)));
                 return JsonConvert.SerializeObject(gwPoint);

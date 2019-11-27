@@ -206,16 +206,16 @@ namespace eNet编辑器
             //threetitle.addTitleDevCursor += new AddTitleDevCursor(dgvdevice.cursor_copy);
             //threetitle.addTitlenNameCursor += new AddTitlenNameCursor(dgvname.cursor_copy);
 
-            dgvdevice.updateSectionTitleNode += new Action(() =>//刷新右边两树状图 取消选中状态 
+   
+            dgvdevice.unSelectTitleNode += new Action(() =>//刷新右边两树状图 取消选中状态 
             {
-                threesection.ThreeSEctionAddNode();
-                threetitle.ThreeTitleAddNode(cbType.SelectedIndex);
+                threetitle.unSelectTitleNode();
             });
-            /*
-            dgvname.updateTitleNode += new Action(() =>//刷新右边两树状图 取消选中状态 
+            dgvdevice.unSelectSectionNode += new Action(() =>//刷新右边两树状图 取消选中状态 
             {
-                threetitle.ThreeTitleAddNode(cbType.SelectedIndex);
-            });*/
+                threesection.unSelectNode();
+            });
+     
             dgvname.unSelectTitleNode += new Action(() =>//刷新右边两树状图 取消选中状态 
             {
                 threetitle.unSelectTitleNode();
@@ -282,15 +282,23 @@ namespace eNet编辑器
         /// </summary>
         private void clearDgvClear()
         {
-            dgvname.clearDgvClear();
-            dgvdevice.clearDgvClear();
-            dgvpoint.clearDgvClear();
-            dgvscene.clearDgvClear();
-            dgvtimer.clearDgvClear();
-            dgvpanel.clearDgvClear();
-            dgvsensor.clearDgvClear();
-            dgvlogic.clearSuperTabControl1();
-            dgvvar.clearDgvClear();
+            try
+            {
+                dgvname.clearDgvClear();
+                dgvdevice.clearDgvClear();
+                dgvpoint.clearDgvClear();
+                dgvscene.clearDgvClear();
+                dgvtimer.clearDgvClear();
+                dgvpanel.clearDgvClear();
+                dgvsensor.clearDgvClear();
+                dgvvar.clearDgvClear();
+                //有可能没有加载好
+                dgvlogic.clearSuperTabControl1();
+            }
+            catch { 
+            
+            }
+            
         }
 
         /// <summary>
@@ -1019,23 +1027,21 @@ namespace eNet编辑器
 
 
 
-        private void 剪切ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
 
-        }
 
         private void btnCopy_Click(object sender, EventArgs e)
         {
-            复制CCtrlCToolStripMenuItem_Click(this, EventArgs.Empty);
+            //复制CCtrlCToolStripMenuItem_Click(this, EventArgs.Empty);
         }
 
         private void btnPast_Click(object sender, EventArgs e)
         {
-            粘贴PCtrlVToolStripMenuItem_Click(this, EventArgs.Empty);
+            //粘贴PCtrlVToolStripMenuItem_Click(this, EventArgs.Empty);
         }
 
         private void 复制CCtrlCToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            /*
             try
             {
                 switch (FileMesege.formType)
@@ -1087,10 +1093,12 @@ namespace eNet编辑器
             {
                 MessageBox.Show("复制出现问题错误号858");
             }
+             */
         }
 
         private void 粘贴PCtrlVToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            /*
             try
             {
                 switch (FileMesege.formType)
@@ -1140,29 +1148,201 @@ namespace eNet编辑器
             catch
             {
                 MessageBox.Show("粘贴出现问题错误号895");
-            }
+            }*/
+
         }
 
         private void btnSame_Click(object sender, EventArgs e)
         {
-
+            相同ToolStripMenuItem_Click(this, EventArgs.Empty);
         }
 
        
 
         private void 相同ToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            try
+            {
+                switch (FileMesege.formType)
+                {
+                    case "name":
+                        if (isGwDgv)
+                        {
+                            dgvdevice.Same();
+                        }
 
+                        break;
+
+                    case "point":
+                        dgvpoint.Same();
+                        break;
+                    case "scene":
+                        dgvscene.Same();
+                        break;
+                    case "timer":
+                        dgvtimer.Same();
+                        break;
+                    case "panel":
+                        dgvpanel.Same();
+                        break;
+                    case "logic":
+
+                        if (dgvlogic.logicType == DgvLogic.LogicType.Scene)
+                        {
+                            //dgvlogic.logicScene.Same();
+                        }
+                        else if (dgvlogic.logicType == DgvLogic.LogicType.Condition)
+                        {
+                            //dgvlogic.logicCondition.Same();
+                        }
+                        else if (dgvlogic.logicType == DgvLogic.LogicType.Voice)
+                        {
+                            //dgvlogic.logicVoice.Same();
+                        }
+                        break;
+                    case "sensor":
+                        //dgvsensor.Same();
+                        break;
+                    case "virtualport":
+                        break;
+                    default: break;
+                }
+            }
+            catch
+            {
+                MessageBox.Show("相同复制 出现问题");
+            }
         }
 
         private void 升序ToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            try
+            {
+                switch (FileMesege.formType)
+                {
+                    case "name":
+                        /*
+                        if (isGwDgv)
+                        {
+                            dgvdevice.Ascending();
+                        }*/
+                        
+                        break;
 
+                    case "point":
+                        //dgvpoint.Ascending();
+                        break;
+                    case "scene":
+                        dgvscene.Ascending();
+                        break;
+                    case "timer":
+                        dgvtimer.Ascending();
+                        break;
+                    case "panel":
+                        dgvpanel.Ascending();
+                        break;
+                    case "logic":
+
+                        if (dgvlogic.logicType == DgvLogic.LogicType.Scene)
+                        {
+                            //dgvlogic.logicScene.Ascending();
+                        }
+                        else if (dgvlogic.logicType == DgvLogic.LogicType.Condition)
+                        {
+                            //dgvlogic.logicCondition.Ascending();
+                        }
+                        else if (dgvlogic.logicType == DgvLogic.LogicType.Voice)
+                        {
+                            //dgvlogic.logicVoice.Ascending();
+                        }
+                        break;
+                    case "sensor":
+                        //dgvsensor.Ascending();
+                        break;
+                    case "virtualport":
+                        break;
+                    default: break;
+                }
+            }
+            catch
+            {
+                MessageBox.Show("升序 出现问题");
+            }
         }
 
         private void btnAscending_Click(object sender, EventArgs e)
         {
+            升序ToolStripMenuItem_Click(this, EventArgs.Empty);
+        }
 
+        private void 降序ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                switch (FileMesege.formType)
+                {
+                    case "name":
+                        /*
+                        if (isGwDgv)
+                        {
+                            dgvdevice.Ascending();
+                        }*/
+
+                        break;
+
+                    case "point":
+                        //dgvpoint.Ascending();
+                        break;
+                    case "scene":
+                        dgvscene.Descending();
+                        break;
+                    case "timer":
+                        dgvtimer.Descending();
+                        break;
+                    case "panel":
+                        dgvpanel.Descending();
+                        break;
+                    case "logic":
+
+                        if (dgvlogic.logicType == DgvLogic.LogicType.Scene)
+                        {
+                            //dgvlogic.logicScene.Descending();
+                        }
+                        else if (dgvlogic.logicType == DgvLogic.LogicType.Condition)
+                        {
+                            //dgvlogic.logicCondition.Descending();
+                        }
+                        else if (dgvlogic.logicType == DgvLogic.LogicType.Voice)
+                        {
+                            //dgvlogic.logicVoice.Descending();
+                        }
+                        break;
+                    case "sensor":
+                        //dgvsensor.Descending();
+                        break;
+                    case "virtualport":
+                        break;
+                    default: break;
+                }
+            }
+            catch
+            {
+                MessageBox.Show("降序出现问题");
+            }
+        }
+
+        private void btnDescending_Click(object sender, EventArgs e)
+        {
+            降序ToolStripMenuItem_Click(this, EventArgs.Empty);
+        }
+
+        private void btnSet_Click(object sender, EventArgs e)
+        {
+            AsDesCending cpdown = new AsDesCending();
+          
+            //展示居中
+            cpdown.StartPosition = FormStartPosition.CenterParent;
+            cpdown.ShowDialog();
         }
 
         #endregion
@@ -1184,10 +1364,6 @@ namespace eNet编辑器
 
 
 
-        private void 按键检测ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
 
 
         private void 编译下载ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1295,6 +1471,8 @@ namespace eNet编辑器
         }
 
         #endregion
+
+       
 
 
 

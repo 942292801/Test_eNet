@@ -313,11 +313,10 @@ namespace eNet编辑器.AddForm
             //绑定成功
             if (udp.isbing)
             {
-                //udp.udpSend("255.255.255.255","6002","search all");
                 string[]tmps = Localip.Split('.');
                 string broadcastIp = String.Format("{0}.{1}.{2}.255", tmps[0], tmps[1], tmps[2]);
-                udp.udpSend(broadcastIp, "6002", "Search all");
-                
+                udp.udpSend(broadcastIp, "6002", "search all");
+                udp.udpSend("255.255.255.255", "6002", "Search all");
             }
             TxtShow("搜索主机结束！");
 

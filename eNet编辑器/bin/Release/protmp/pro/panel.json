@@ -236,6 +236,16 @@
                         "opt": 17,
                         "showAddress": "E610002B",
                         "showMode": "同步"
+                    },
+                    {
+                        "id": 6,
+                        "pid": 591638644,
+                        "keyAddress": "E60B0006",
+                        "objAddress": "E610002C",
+                        "objType": "4.0_scene",
+                        "opt": 0,
+                        "showAddress": "",
+                        "showMode": ""
                     }
                 ],
                 "id": 3,

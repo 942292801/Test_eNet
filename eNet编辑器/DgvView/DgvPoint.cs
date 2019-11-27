@@ -756,6 +756,7 @@ namespace eNet编辑器.DgvView
                             eq.type = "";
                             eq.address = "FFFFFFFF";
                             eq.ip = "";
+                            eq.name = string.Format("{0}@255", eq.name.Split('@')[0]);
                             dataGridView1.Rows[rowNum].Cells[1].Value = "255.255.255.255";
                             dataGridView1.Rows[rowNum].Cells[5].Value = null;
                             NewList = FileMesege.cmds.getListInfos();
@@ -791,6 +792,7 @@ namespace eNet编辑器.DgvView
                         {
                             eq.address = "FFFFFFFF";
                             eq.ip = "";
+                            eq.name = string.Format("{0}@255", eq.name.Split('@')[0]);
                             dataGridView1.Rows[rowNum].Cells[1].Value = "255.255.255.255";
                         }
                         
@@ -1119,6 +1121,7 @@ namespace eNet编辑器.DgvView
         /// </summary>
         public void copyData()
         {
+            
             //获取当前选中单元格的列序号
             int colIndex = dataGridView1.CurrentRow.Cells.IndexOf(dataGridView1.CurrentCell);
          
@@ -1162,7 +1165,6 @@ namespace eNet编辑器.DgvView
                     //当粘贴选中单元格为对象和参数
                     if (colIndex == 4 || colIndex == 5)
                     {
-
                         //区域
                         List<string> section = dataGridView1.Rows[dataGridView1.SelectedCells[i].RowIndex].Cells[2].Value.ToString().Split(' ').ToList();
                         while (section.Count != 4)
@@ -1185,6 +1187,7 @@ namespace eNet编辑器.DgvView
                                 //解绑IP地址
                                 eq.address = "FFFFFFFF";
                                 eq.ip = "";
+                                eq.name = string.Format("{0}@255", eq.name.Split('@')[0]);
                                 ischange = true;
                                 //获取中文类型名
                                 string objTypeName = IniHelper.findObjsDefineName_ByType(eq.objType);
@@ -1220,6 +1223,85 @@ namespace eNet编辑器.DgvView
             }
 
 
+        }
+        #endregion
+
+        #region 升序 相同
+        public void Same()
+        { 
+             try
+            {
+                bool ischange = false;
+                int colIndex = 0;
+                DataJson.PointInfo eq = null;
+                string objTypeName = "";
+                //撤销
+                DataJson.totalList OldList = FileMesege.cmds.getListInfos();
+                for (int i = dataGridView1.SelectedCells.Count - 1; i >= 0; i--)
+                {
+                    //获取当前选中单元格的列序号
+                    colIndex = dataGridView1.SelectedCells[i].ColumnIndex;
+                    //当粘贴选中单元格为对象和参数
+                    if (colIndex == 4 || colIndex == 5)
+                    {
+                        eq = DataListHelper.findPointBySectionName(dataGridView1.Rows[dataGridView1.SelectedCells[i].RowIndex].Cells[2].Value.ToString(), dataGridView1.Rows[dataGridView1.SelectedCells[i].RowIndex].Cells[3].Value.ToString());
+                        if (eq == null)
+                        {
+                            continue;
+                        }
+                        if (i == dataGridView1.SelectedCells.Count - 1)
+                        {
+                            //获取第一行对象
+                            FileMesege.copyPoint = eq;
+                            continue;
+                        }
+                        if (eq.objType == FileMesege.copyPoint.objType && eq.value == FileMesege.copyPoint.value)
+                        {
+                            continue;
+                        }
+                        eq.objType = FileMesege.copyPoint.objType;
+                        eq.value = FileMesege.copyPoint.value;
+                        eq.type = FileMesege.copyPoint.type;
+                        //解绑IP地址
+                        eq.address = "FFFFFFFF";
+                        eq.ip = "";
+                        eq.name = string.Format("{0}@255", eq.name.Split('@')[0]);
+                        ischange = true;
+                        //获取中文类型名
+                        objTypeName = IniHelper.findObjsDefineName_ByType(eq.objType);
+                        //类型 objType
+                        this.dataGridView1.Rows[dataGridView1.SelectedCells[i].RowIndex].Cells[4].Value = objTypeName;
+                        if (!string.IsNullOrEmpty(objTypeName))
+                        {
+                            updataValueItem(dataGridView1.SelectedCells[i].RowIndex, objTypeName);
+                            //参数 value
+                            this.dataGridView1.Rows[dataGridView1.SelectedCells[i].RowIndex].Cells[5].Value = IniHelper.findObjValueName_ByVal(objTypeName, eq.value);
+                            this.dataGridView1.Rows[dataGridView1.SelectedCells[i].RowIndex].Cells[5].ReadOnly = true;
+                        }
+                        else
+                        {
+                            this.dataGridView1.Rows[dataGridView1.SelectedCells[i].RowIndex].Cells[5].Value = "";
+                        }
+                                
+                              
+                            
+                        
+                    }//if
+                }//for
+                if (ischange)
+                {
+                    DataJson.totalList NewList = FileMesege.cmds.getListInfos();
+                    FileMesege.cmds.DoNewCommand(NewList, OldList);
+                }
+            }//try
+            catch
+            {
+
+            }
+        }
+        public void Ascending()
+        {
+            
         }
         #endregion
 

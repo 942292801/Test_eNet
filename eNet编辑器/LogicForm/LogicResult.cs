@@ -222,7 +222,7 @@ namespace eNet编辑器.LogicForm
         private void txtLeft_KeyPress(object sender, KeyPressEventArgs e)
         {
             //如果输入的不是数字键，也不是回车键、Backspace键，则取消该输入
-            if (!(Char.IsNumber(e.KeyChar)) && e.KeyChar != (char)13 && e.KeyChar != (char)8)
+            if (!(Char.IsNumber(e.KeyChar)) && e.KeyChar != (char)13 && e.KeyChar != (char)8 && e.KeyChar != (char)3 && e.KeyChar != (char)22)
             {
                 e.Handled = true;
             } 
@@ -231,7 +231,7 @@ namespace eNet编辑器.LogicForm
         private void txtRight_KeyPress(object sender, KeyPressEventArgs e)
         {
             //如果输入的不是数字键，也不是回车键、Backspace键，则取消该输入
-            if (!(Char.IsNumber(e.KeyChar)) && e.KeyChar != (char)13 && e.KeyChar != (char)8)
+            if (!(Char.IsNumber(e.KeyChar)) && e.KeyChar != (char)13 && e.KeyChar != (char)8 && e.KeyChar != (char)3 && e.KeyChar != (char)22)
             {
                 e.Handled = true;
             } 

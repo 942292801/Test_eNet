@@ -64,7 +64,7 @@ namespace eNet编辑器
         /// </summary>
         /// <param name="address"></param>
         /// <returns></returns>
-        public static string addressAddOne(string address,int j)
+        public static string addressAdd(string address,int j)
         {
             if (string.IsNullOrEmpty(address) || address == "FFFFFFFF" || address.Length != 8)
             {
@@ -91,6 +91,58 @@ namespace eNet编辑器
       
             }
            
+        }
+
+        /// <summary>
+        /// 地址减j  例如 230.0.5.6 + 2  = 230.0.5.8
+        /// </summary>
+        /// <param name="address"></param>
+        /// <returns></returns>
+        public static string addressReduce(string address, int j)
+        {
+            if (string.IsNullOrEmpty(address) || address == "FFFFFFFF" || address.Length != 8)
+            {
+                return string.Empty;
+            }
+            else
+            {
+                string addressType = address.Substring(2, 2);
+                if (addressType == "00" || addressType == "F9" || addressType == "FA" || addressType == "FB" || addressType == "F8")
+                {
+                    int num = Convert.ToInt32(address.Substring(6, 2), 16) - j;
+                    if(num > 0)
+                    {
+                        address = address.Substring(0, 6) + ToolsUtil.strtohexstr(num.ToString());
+                    }
+                    else
+                    {
+                        return string.Empty;
+                    }
+  
+                }
+                else if (addressType == "10" || addressType == "20" || addressType == "30" || addressType == "40" || addressType == "F9")
+                {
+                    int num = Convert.ToInt32(address.Substring(4, 4), 16) - j;
+                    if (num > 0)
+                    {
+                        string hexnum = ToolsUtil.strtohexstr(num.ToString());
+                        while (hexnum.Length < 4)
+                        {
+                            hexnum = hexnum.Insert(0, "0");
+                        }
+                        address = address.Substring(0, 4) + hexnum;
+                    }
+                    else
+                    {
+                        return string.Empty;
+                    }
+                   
+                    
+                }
+                return address;
+
+            }
+
         }
 
         /// <summary>

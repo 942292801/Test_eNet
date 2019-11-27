@@ -8,37 +8,41 @@ using System.Text;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
 
-namespace eNet编辑器.LogicForm
+namespace eNet编辑器.AddForm
 {
-    public partial class Voice : Form
+    public partial class AsDesCending : Form
     {
-
-        private string result;
-
-        public string Result
-        {
-            get { return result; }
-            set { result = value; }
-        }
-
-        private string returnResult;
-
-        public string ReturnResult
-        {
-            get { return returnResult; }
-            set { returnResult = value; }
-        }
-
-        public Voice()
+        public AsDesCending()
         {
             InitializeComponent();
         }
 
-        private void Voice_Load(object sender, EventArgs e)
+
+
+        private void AsDesCending_Load(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(result))
+            txtName.Text = FileMesege.AsDesCendingNum.ToString();
+        }
+
+
+        private void btnDecid_Click(object sender, EventArgs e)
+        {
+            try
             {
-                richTextBox1.Text = result;
+                if (!Validator.IsNumber(txtName.Text))
+                {
+                    MessageBox.Show("请填写0.1-100之间的数字或小数");
+                    return;
+                }
+                if (Convert.ToDouble(txtName.Text) > 100 || Convert.ToDouble(txtName.Text)<0.1)
+                {
+                    MessageBox.Show("请填写0.1-100之间的数字或小数");
+                }
+                FileMesege.AsDesCendingNum = Convert.ToDouble(txtName.Text);
+                this.DialogResult = DialogResult.OK;
+            }
+            catch {
+                FileMesege.AsDesCendingNum = 1;
             }
         }
 
@@ -138,7 +142,25 @@ namespace eNet编辑器.LogicForm
 
         }
         #endregion
+        private void AsDesCending_Paint(object sender, PaintEventArgs e)
+        {
+            Rectangle myRectangle = new Rectangle(0, 0, this.Width, this.Height);
+            //ControlPaint.DrawBorder(e.Graphics, myRectangle, Color.Blue, ButtonBorderStyle.Solid);//画个边框 
+            ControlPaint.DrawBorder(e.Graphics, myRectangle,
+                Color.DarkGray, 1, ButtonBorderStyle.Solid,
+                Color.DarkGray, 1, ButtonBorderStyle.Solid,
+                Color.DarkGray, 2, ButtonBorderStyle.Solid,
+                Color.DarkGray, 2, ButtonBorderStyle.Solid
+            );
+        }
+
         private Point mPoint;
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = System.Windows.Forms.DialogResult.No;
+            this.Close();
+        }
 
         private void plInfoTitle_MouseDown(object sender, MouseEventArgs e)
         {
@@ -152,59 +174,7 @@ namespace eNet编辑器.LogicForm
                 this.Location = new Point(this.Location.X + e.X - mPoint.X, this.Location.Y + e.Y - mPoint.Y);
             }
         }
-
-        private void btnClose_Click(object sender, EventArgs e)
-        {
-            this.DialogResult = System.Windows.Forms.DialogResult.No;
-            this.Close();
-        }
-
-
-        private void Voice_Paint(object sender, PaintEventArgs e)
-        {
-            Rectangle myRectangle = new Rectangle(0, 0, this.Width, this.Height);
-            //ControlPaint.DrawBorder(e.Graphics, myRectangle, Color.Blue, ButtonBorderStyle.Solid);//画个边框 
-            ControlPaint.DrawBorder(e.Graphics, myRectangle,
-                Color.DarkGray, 1, ButtonBorderStyle.Solid,
-                Color.DarkGray, 1, ButtonBorderStyle.Solid,
-                Color.DarkGray, 2, ButtonBorderStyle.Solid,
-                Color.DarkGray, 2, ButtonBorderStyle.Solid
-            );
-        }
-
-        
         #endregion
-
-
-  
-
-
-        private void richTextBox1_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!(Char.IsSymbol(e.KeyChar)) && !(Char.IsPunctuation(e.KeyChar)) && !(Char.IsNumber(e.KeyChar)) && !(Char.IsUpper(e.KeyChar)) && e.KeyChar != (char)13 && e.KeyChar != (char)8 && e.KeyChar != (char)3 && e.KeyChar != (char)22)
-            {
-                e.Handled = true;
-            } 
-        }
-
-        private void btnDecid_Click(object sender, EventArgs e)
-        {
-            returnResult = "";
-
-            if (string.IsNullOrEmpty(richTextBox1.Text))
-            {
-                this.DialogResult = DialogResult.OK;
-                return;
-            }
-            else
-            {
-                returnResult = richTextBox1.Text;
-                this.DialogResult = DialogResult.OK;
-            }
-            
-        }
-
-
 
     }
 }

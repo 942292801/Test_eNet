@@ -320,7 +320,7 @@ namespace eNet编辑器
             public List<PointInfo> link = new List<PointInfo>();
             public List<PointInfo> virtualport = new List<PointInfo>();
             public List<PointInfo> logic = new List<PointInfo>();
-            public List<PointInfo> localvar = new List<PointInfo>();
+            //public List<PointInfo> localvar = new List<PointInfo>();
         }
         [Serializable]
         public class PointInfo {
@@ -403,8 +403,6 @@ namespace eNet编辑器
             public string opt { get; set; }
             public string optName { get; set; }
             public string shortTime { get; set; }
-            
-            
         }
         #endregion
 

@@ -38,7 +38,8 @@ namespace eNet编辑器.DgvView
 
         //public event DgvNameCursorDefault dgvNameCursorDefault;
 
-        public event Action updateSectionTitleNode;
+        public event Action unSelectTitleNode;
+        public event Action unSelectSectionNode;
 
         public event Action<string> AppTxtShow;
 
@@ -858,7 +859,7 @@ namespace eNet编辑器.DgvView
                 {
                     DataJson.totalList NewList = FileMesege.cmds.getListInfos();
                     FileMesege.cmds.DoNewCommand(NewList, OldList);
-                    updateSectionTitleNode();
+                    
                 }
             }//try
             catch
@@ -886,8 +887,9 @@ namespace eNet编辑器.DgvView
                 FileMesege.sectionNode = null;
                 //treetitle名字临时存放
                 FileMesege.titleinfo = "";
-                //更新section和title的树状图
-                updateSectionTitleNode();
+                //取消选中section和title的树状图
+                unSelectTitleNode();
+                unSelectSectionNode();
                 //鼠标图标变为正常 DGVname DGVdevice也变
                 //cursor_default();
                 //dgvNameCursorDefault();
@@ -1072,6 +1074,112 @@ namespace eNet编辑器.DgvView
 
         }
 
+
+        #endregion
+
+        #region 升序 相同
+        public void Same()
+        {
+            try
+            {
+                bool ischange = false;
+                //撤销
+                DataJson.totalList OldList = FileMesege.cmds.getListInfos();
+                string ip = FileMesege.tnselectNode.Text.Split(' ')[0];
+                int colIndex = 0;
+                DataJson.Module md = null;
+                for (int i = dataGridView1.SelectedCells.Count-1; i >= 0; i--)
+                {
+                    colIndex = dataGridView1.SelectedCells[i].ColumnIndex;
+                    if (dataGridView1.SelectedCells[i].RowIndex == 0)
+                    {
+                        //修改某IP下某ID 型号的设备信息
+                        foreach (DataJson.Device dev in FileMesege.DeviceList)
+                        {
+                            if (dev.ip == ip)
+                            {
+                                if (i == dataGridView1.SelectedCells.Count - 1)
+                                {
+                                    //获取第一行对象
+                                    md = new DataJson.Module();
+                                    md.area1 = dev.area1;
+                                    md.area2 = dev.area2;
+                                    md.area3 = dev.area3;
+                                    md.area4 = dev.area4;
+                                    md.name = dev.name;
+                                    FileMesege.copyDevice = md;
+                                    continue;
+                                }
+
+                                if (colIndex == 4)
+                                {
+                                    ischange = true;
+                                    dev.area1 = FileMesege.copyDevice.area1;
+                                    dev.area2 = FileMesege.copyDevice.area2;
+                                    dev.area3 = FileMesege.copyDevice.area3;
+                                    dev.area4 = FileMesege.copyDevice.area4;
+                                    dataGridView1.Rows[dataGridView1.SelectedCells[i].RowIndex].Cells[4].Value = string.Format("{0} {1} {2} {3}", dev.area1, dev.area2, dev.area3, dev.area4).Trim();
+
+                                }//if
+                                else if (colIndex == 5)
+                                {
+                                    ischange = true;
+                                    dev.name = FileMesege.copyDevice.name;
+                                    dataGridView1.Rows[dataGridView1.SelectedCells[i].RowIndex].Cells[5].Value = FileMesege.copyDevice.name;
+                                }
+
+                            }
+                        }
+                    }
+                    else
+                    {
+                        int id = Convert.ToInt32(dataGridView1.Rows[dataGridView1.SelectedCells[i].RowIndex].Cells[0].Value);
+                        md = DataListHelper.findDeviceByIP_ID(ip, id);
+                        if (md == null)
+                        {
+                            return;
+                        }
+                        if (i == dataGridView1.SelectedCells.Count - 1)
+                        {
+                            FileMesege.copyDevice = md;
+                            continue;
+                        }
+                        if (colIndex == 4)
+                        {
+                            ischange = true;
+                            md.area1 = FileMesege.copyDevice.area1;
+                            md.area2 = FileMesege.copyDevice.area2;
+                            md.area3 = FileMesege.copyDevice.area3;
+                            md.area4 = FileMesege.copyDevice.area4;
+                            dataGridView1.Rows[dataGridView1.SelectedCells[i].RowIndex].Cells[4].Value = string.Format("{0} {1} {2} {3}", md.area1, md.area2, md.area3, md.area4).Trim();
+
+                        }//if
+                        else if (colIndex == 5)
+                        {
+                            ischange = true;
+                            md.name = FileMesege.copyDevice.name;
+                            dataGridView1.Rows[dataGridView1.SelectedCells[i].RowIndex].Cells[5].Value = FileMesege.copyDevice.name;
+                        }
+                    }
+
+                }
+                if (ischange)
+                {
+                    DataJson.totalList NewList = FileMesege.cmds.getListInfos();
+                    FileMesege.cmds.DoNewCommand(NewList, OldList);
+                }
+
+            }//try
+            catch
+            {
+
+            }
+        }
+
+        public void Ascending()
+        {
+            return;
+        }
 
         #endregion
 

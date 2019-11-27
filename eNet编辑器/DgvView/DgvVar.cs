@@ -32,6 +32,7 @@ namespace eNet编辑器.DgvView
 
         //临时存放旧的Name名称
         private string oldName = "";
+        string ip = "";
 
         HashSet<DataJson.PointInfo> multipleList = new HashSet<DataJson.PointInfo>();
 
@@ -75,7 +76,7 @@ namespace eNet编辑器.DgvView
                     return;
                 }
                 
-                string ip = FileMesege.varSelectNode.Text.Split(' ')[0];
+                ip = FileMesege.varSelectNode.Text.Split(' ')[0];
                 
                 foreach (DataJson.PointInfo eq in FileMesege.PointList.virtualport)
                 {
@@ -164,7 +165,6 @@ namespace eNet编辑器.DgvView
                 //return;
                 FileMesege.titleinfo = "虚拟端口";
             }
-            string ip = FileMesege.varSelectNode.Text.Split(' ')[0];
             //搜索选中区域  加载所有同区域的节点
             //区域
             string[] sect = null;
@@ -276,7 +276,6 @@ namespace eNet编辑器.DgvView
                     return;
                 }
                 //选中子节点
-                string ip = FileMesege.varSelectNode.Text.Split(' ')[0];
                 foreach (DataJson.PointInfo eq in FileMesege.PointList.virtualport)
                 {
                     if (eq.ip == ip)
@@ -563,7 +562,6 @@ namespace eNet编辑器.DgvView
             if (varAdd.DialogResult == DialogResult.OK)
             {
                 //选中子节点
-                string ip = FileMesege.varSelectNode.Text.Split(' ')[0];
                 oldName = dataGridView1.Rows[rowCount].Cells[3].Value.ToString();
                 string tmpName = string.Format("{0}@{1}", oldName, ip.Split('.')[3]);
                 //区域
@@ -631,7 +629,6 @@ namespace eNet编辑器.DgvView
             }
    
              //选中子节点
-            string ip = FileMesege.varSelectNode.Text.Split(' ')[0];
             string tmpName = string.Format("{0}@{1}", oldName, ip.Split('.')[3]);
             string tmpNowName = string.Format("{0}@{1}", nowName, ip.Split('.')[3]);
             //区域
@@ -677,7 +674,6 @@ namespace eNet编辑器.DgvView
             }
             oldName = dataGridView1.Rows[rowCount].Cells[3].Value.ToString();
             //选中子节点
-            string ip = FileMesege.varSelectNode.Text.Split(' ')[0];
             string tmpName = string.Format("{0}@{1}", oldName, ip.Split('.')[3]);
             foreach (DataJson.PointInfo eq in FileMesege.PointList.virtualport)
             {

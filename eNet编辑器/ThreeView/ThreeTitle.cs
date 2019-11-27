@@ -304,9 +304,10 @@ namespace eNet编辑器.ThreeView
                         case "logic":
                             getNametree(FileMesege.PointList.logic, "logic", ipLast);
                             break;
+                            /*
                         case "localvar":
                             getNametree(FileMesege.PointList.localvar, "localvar", ipLast);
-                            break;
+                            break;*/
                         default: break;
                     }
                 }

@@ -619,7 +619,7 @@ namespace eNet编辑器
                     p.name = string.Format("{0}@{1}", p.name.Split('@')[0], IP.Split('.')[3]);
                 }
             }
-
+            /*
             foreach (DataJson.PointInfo p in FileMesege.PointList.localvar)
             {
                 if (p.ip == oldIP)
@@ -629,7 +629,7 @@ namespace eNet编辑器
                     //p.address = string.Format("{0}{1}", hexIP, p.address.Substring(2, 6));
                     p.name = string.Format("{0}@{1}", p.name.Split('@')[0], IP.Split('.')[3]);
                 }
-            }
+            }*/
 
         }
 
@@ -703,14 +703,14 @@ namespace eNet编辑器
                 FileMesege.PointList.logic.Remove(dellistLogic);
                 dellistLogic = FileMesege.PointList.logic.Find(mach => mach.ip == IP);
             }
-
+            /*
             //内部变量
             DataJson.PointInfo dellistVar = FileMesege.PointList.localvar.Find(mach => mach.ip.Equals(IP));
             while (dellistVar != null)
             {
                 FileMesege.PointList.localvar.Remove(dellistVar);
                 dellistVar = FileMesege.PointList.localvar.Find(mach => mach.ip == IP);
-            }
+            }*/
         }
 
         /// <summary>
@@ -828,17 +828,18 @@ namespace eNet编辑器
             {
                 return infoList;
             }
-            string[] section = section_name.Replace("---", " ").Split(' ')[0].Split('\\');
+            string[] modes = section_name.Replace("---", "?").Split('?');
+            string[] section = modes[0].Split('\\');
             infoList = section.ToList();
             while (infoList.Count < 4)
             {
                 infoList.Add("");
             }
-            infoList.Add(section_name.Replace("---", " ").Split(' ')[1]);
-            if (section_name.Replace("---", " ").Split(' ').Length > 2)
+            infoList.Add(modes[1]);
+            if (modes.Length > 2)
             {
                 //当type不为空的时候
-                infoList.Add(section_name.Replace("---", " ").Split(' ')[2]);
+                infoList.Add(modes[2]);
             }
             return infoList;
         }
@@ -915,6 +916,7 @@ namespace eNet编辑器
                             return pointInfo;
                         }
                     }
+                    /*
                     if (FileMesege.PointList.localvar != null)
                     {
                         pointInfo = findPointByList_add(FileMesege.PointList.localvar, address, ip);
@@ -922,7 +924,7 @@ namespace eNet编辑器
                         {
                             return pointInfo;
                         }
-                    }
+                    }*/
                     return pointInfo;
                 }
                 // version_type 分割成
@@ -954,10 +956,11 @@ namespace eNet编辑器
                         pointInfo = findPointByList_add(FileMesege.PointList.logic, address, ip);
 
                         break;
+                        /*
                     case "localvar":
                         pointInfo = findPointByList_add(FileMesege.PointList.localvar, address, ip);
 
-                        break;
+                        break;*/
                     //为设备00 扫equipment
                     default:
                         pointInfo = findPointByList_add(FileMesege.PointList.equipment, address, ip);
@@ -1104,7 +1107,7 @@ namespace eNet编辑器
                         }
                     }
                 }
-
+                /*
                 if (FileMesege.PointList.localvar != null)
                 {
                     foreach (DataJson.PointInfo point in FileMesege.PointList.localvar)
@@ -1115,11 +1118,80 @@ namespace eNet编辑器
                             return point;
                         }
                     }
-                }
+                }*/
             }
             catch{
                 return null;
             }
+            return null;
+        }
+
+        /// <summary>
+        /// 根据区域名称 和名称 搜索 PointList 全表中寻找point点 失败返回null
+        /// </summary>
+        /// <param name="section"></param>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        public static DataJson.PointInfo findPointBySectionName(string section, string name)
+        { 
+            //区域
+            List<string> sections = section.Split(' ').ToList();
+            while (sections.Count != 4)
+            {
+                sections.Add("");
+            }
+            foreach (DataJson.PointInfo eq in FileMesege.PointList.equipment)
+            {
+                if (eq.area1 == sections[0] && eq.area2 == sections[1] && eq.area3 == sections[2] && eq.area4 == sections[3] && eq.name.Split('@')[0] == name)
+                {
+                    return eq;
+                }
+            }
+            foreach (DataJson.PointInfo eq in FileMesege.PointList.scene)
+            {
+                if (eq.area1 == sections[0] && eq.area2 == sections[1] && eq.area3 == sections[2] && eq.area4 == sections[3] && eq.name.Split('@')[0] == name)
+                {
+                    return eq;
+                }
+            }
+            foreach (DataJson.PointInfo eq in FileMesege.PointList.timer)
+            {
+                if (eq.area1 == sections[0] && eq.area2 == sections[1] && eq.area3 == sections[2] && eq.area4 == sections[3] && eq.name.Split('@')[0] == name)
+                {
+                    return eq;
+                }
+            }
+            foreach (DataJson.PointInfo eq in FileMesege.PointList.link)
+            {
+                if (eq.area1 == sections[0] && eq.area2 == sections[1] && eq.area3 == sections[2] && eq.area4 == sections[3] && eq.name.Split('@')[0] == name)
+                {
+                    return eq;
+                }
+            }
+            foreach (DataJson.PointInfo eq in FileMesege.PointList.logic)
+            {
+                if (eq.area1 == sections[0] && eq.area2 == sections[1] && eq.area3 == sections[2] && eq.area4 == sections[3] && eq.name.Split('@')[0] == name)
+                {
+                    return eq;
+                }
+            }
+           
+            foreach (DataJson.PointInfo eq in FileMesege.PointList.virtualport)
+            {
+                if (eq.area1 == sections[0] && eq.area2 == sections[1] && eq.area3 == sections[2] && eq.area4 == sections[3] && eq.name.Split('@')[0] == name)
+                {
+                    return eq;
+                }
+            }
+            /*
+            foreach (DataJson.PointInfo eq in FileMesege.PointList.localvar)
+            {
+                if (eq.area1 == sections[0] && eq.area2 == sections[1] && eq.area3 == sections[2] && eq.area4 == sections[3] && eq.name.Split('@')[0] == name)
+                {
+                    return eq;
+                }
+            }*/
+            
             return null;
         }
 
@@ -1176,13 +1248,14 @@ namespace eNet编辑器
                     return eq;
                 }
             }
+            /*
             foreach (DataJson.PointInfo eq in FileMesege.PointList.localvar)
             {
                 if (eq.area1 == section_name[0] && eq.area2 == section_name[1] && eq.area3 == section_name[2] && eq.area4 == section_name[3] && eq.name == section_name[4])
                 {
                     return eq;
                 }
-            }
+            }*/
             return null;
         }
 
