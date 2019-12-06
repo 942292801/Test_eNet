@@ -323,7 +323,7 @@ namespace eNet编辑器.ThreeView
                     DataJson.sensors srs = new DataJson.sensors();
                     srs.id = Convert.ToInt32(sradd.Num);
                     srs.pid = randomNum;
-                    srs.ioNum = 2;
+                    srs.ioNum = 0;
                     srs.sensorsInfo = new List<DataJson.sensorsInfo>();
                     if (copySensor != null)
                     {

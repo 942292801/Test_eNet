@@ -68,6 +68,7 @@
             this.symbolBox1 = new DevComponents.DotNetBar.Controls.SymbolBox();
             this.label1 = new System.Windows.Forms.Label();
             this.doubleClickTimer = new System.Windows.Forms.Timer(this.components);
+            this.btnAttr = new DevComponents.DotNetBar.ButtonX();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -281,6 +282,7 @@
             // panel7
             // 
             this.panel7.AutoScroll = true;
+            this.panel7.Controls.Add(this.btnAttr);
             this.panel7.Controls.Add(this.cbDevNum);
             this.panel7.Controls.Add(this.label4);
             this.panel7.Controls.Add(this.cbIONum);
@@ -325,7 +327,6 @@
             this.cbIONum.Name = "cbIONum";
             this.cbIONum.Size = new System.Drawing.Size(46, 25);
             this.cbIONum.TabIndex = 32;
-            this.cbIONum.TextChanged += new System.EventHandler(this.cbIoNum_TextChanged);
             // 
             // label2
             // 
@@ -556,6 +557,25 @@
             this.doubleClickTimer.Interval = 40;
             this.doubleClickTimer.Tick += new System.EventHandler(this.doubleClickTimer_Tick);
             // 
+            // btnAttr
+            // 
+            this.btnAttr.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnAttr.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnAttr.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
+            this.btnAttr.FocusCuesEnabled = false;
+            this.btnAttr.Font = new System.Drawing.Font("黑体", 9F);
+            this.btnAttr.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None;
+            this.btnAttr.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnAttr.HoverImage")));
+            this.btnAttr.Image = ((System.Drawing.Image)(resources.GetObject("btnAttr.Image")));
+            this.btnAttr.Location = new System.Drawing.Point(170, 21);
+            this.btnAttr.Margin = new System.Windows.Forms.Padding(6);
+            this.btnAttr.Name = "btnAttr";
+            this.btnAttr.Size = new System.Drawing.Size(24, 24);
+            this.btnAttr.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnAttr.TabIndex = 41;
+            this.btnAttr.Tooltip = "设置";
+            this.btnAttr.Click += new System.EventHandler(this.btnAttr_Click);
+            // 
             // DgvSensor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -624,5 +644,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn operation;
         private System.Windows.Forms.DataGridViewButtonColumn del;
         private System.Windows.Forms.DataGridViewButtonColumn add;
+        private DevComponents.DotNetBar.ButtonX btnAttr;
     }
 }

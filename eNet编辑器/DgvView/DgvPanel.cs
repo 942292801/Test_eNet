@@ -111,6 +111,7 @@ namespace eNet编辑器.DgvView
             this.dataGridView1.Columns.Insert(6, mode);
             //插入显示模式
             this.dataGridView1.Columns.Insert(8, showmode);
+            this.dataGridView1.Columns[8].ReadOnly = true;
             
         }
 
@@ -153,7 +154,7 @@ namespace eNet编辑器.DgvView
                 {
                     return;
                 }
-                
+                ip = FileMesege.panelSelectNode.Parent.Text.Split(' ')[0];//IP地址
                 cbKeyNum.Text = pls.keyNum.ToString();
                 //面板图片
                 if (pls.keyNum <= 8)
@@ -168,7 +169,7 @@ namespace eNet编辑器.DgvView
                 }
                 findKeyPanel();
                 List<DataJson.panelsInfo> delPanel = new List<DataJson.panelsInfo>();
-                ip = FileMesege.panelSelectNode.Parent.Text.Split(' ')[0];//IP地址
+                
                 //循环加载该定时号的所有信息
                 foreach (DataJson.panelsInfo plInfo in pls.panelsInfo)
                 {
@@ -940,7 +941,9 @@ namespace eNet编辑器.DgvView
                                 mode.ReadOnly = false;
                                 break;
 
-                           
+                            case "showMode":
+                                this.dataGridView1.Columns[8].ReadOnly = false;
+                                break;
                             default: break;
                         }
                         try
@@ -1081,6 +1084,7 @@ namespace eNet编辑器.DgvView
                             break;
                            
                         case "showMode":
+                            this.dataGridView1.Columns[8].ReadOnly = true;
                             dgvShowMode(rowNum);
                            
                             break;
@@ -1456,7 +1460,8 @@ namespace eNet编辑器.DgvView
                 DataJson.totalList NewList = FileMesege.cmds.getListInfos();
                 FileMesege.cmds.DoNewCommand(NewList, OldList);
             }
-            dgvPanelAddItem();
+            dataGridView1.Rows[rowCount].Cells[7].Value = DgvMesege.addressTransform(pls.panelsInfo[rowCount].showAddress);
+           
 
 
         }
@@ -2170,6 +2175,39 @@ namespace eNet编辑器.DgvView
                         ischange = true;
 
                     }
+                    else if (colIndex == 8)
+                    {
+                        if (dataGridView1.Rows[id].Cells[0].Value != null)
+                        {
+                            if (string.IsNullOrEmpty(FileMesege.copyPanel.showAddress))
+                            {
+                                //无 mode
+                                plInfo.showAddress = FileMesege.copyPanel.showAddress;
+                                plInfo.showMode = FileMesege.copyPanel.showMode;
+                         
+                            }
+                            else
+                            {
+                                if (string.IsNullOrEmpty(plInfo.showAddress))
+                                {
+                                    //同步 地址为空 
+                                    plInfo.showAddress = plInfo.objAddress;
+                                    plInfo.showMode = FileMesege.copyPanel.showMode;
+                                    
+                                }
+                                else
+                                {
+                                    plInfo.showMode = FileMesege.copyPanel.showMode;
+                                }
+ 
+                            }
+                           
+
+                        }
+                        dataGridView1.Rows[id].Cells[7].Value = DgvMesege.addressTransform(plInfo.showAddress);
+                        dataGridView1.Rows[id].Cells[8].Value = plInfo.showMode;
+                        ischange = true;
+                    }
              
 
                 }
@@ -2257,7 +2295,7 @@ namespace eNet编辑器.DgvView
                     if (colIndex == 2)
                     {
                         //地址递增
-                        if (string.IsNullOrEmpty(FileMesege.copyPanel.objAddress) && FileMesege.copyPanel.objAddress == "FFFFFFFF")
+                        if (string.IsNullOrEmpty(FileMesege.copyPanel.objAddress) || FileMesege.copyPanel.objAddress == "FFFFFFFF")
                         {
                             continue;
                         }
@@ -2386,7 +2424,7 @@ namespace eNet编辑器.DgvView
                     if (colIndex == 2)
                     {
                         //地址递减
-                        if (string.IsNullOrEmpty(FileMesege.copyPanel.objAddress) && FileMesege.copyPanel.objAddress == "FFFFFFFF")
+                        if (string.IsNullOrEmpty(FileMesege.copyPanel.objAddress) || FileMesege.copyPanel.objAddress == "FFFFFFFF")
                         {
                             continue;
                         }

@@ -66,7 +66,7 @@ namespace eNet编辑器
         /// <returns></returns>
         public static string addressAdd(string address,int j)
         {
-            if (string.IsNullOrEmpty(address) || address == "FFFFFFFF" || address.Length != 8)
+            if (string.IsNullOrEmpty(address) || address == "FFFFFFFF" || address.Length != 8 || address.Substring(0, 2) != "FE")
             {
                 return string.Empty;
             }
@@ -75,10 +75,20 @@ namespace eNet编辑器
                 string addressType = address.Substring(2, 2);
                 if (addressType == "00" || addressType == "F9" || addressType == "FA" || addressType == "FB" || addressType == "F8")
                 {
+                    if (addressType == "FB")
+                    {
+                        if (address.Substring(6, 2) == "02" || address.Substring(6, 2) == "03")
+                        {
+
+                            //日期 和时间 
+                            return address;
+                        }
+                    }
+                   
                     address = address.Substring(0, 6) + ToolsUtil.strtohexstr((Convert.ToInt32(address.Substring(6, 2), 16) + j).ToString());
                 
                 }
-                else if(addressType == "10" || addressType == "20" ||addressType == "30" || addressType == "40" || addressType == "F9"  )
+                else if (addressType == "10" || addressType == "20" || addressType == "30" || addressType == "40" || addressType == "F9")
                 {
                     string hexnum = ToolsUtil.strtohexstr((Convert.ToInt32(address.Substring(4, 4), 16) + j).ToString());
                     while (hexnum.Length < 4)
@@ -87,6 +97,7 @@ namespace eNet编辑器
                     }
                     address = address.Substring(0, 4) + hexnum;
                 }
+              
                 return address;
       
             }
@@ -100,7 +111,7 @@ namespace eNet编辑器
         /// <returns></returns>
         public static string addressReduce(string address, int j)
         {
-            if (string.IsNullOrEmpty(address) || address == "FFFFFFFF" || address.Length != 8)
+            if (string.IsNullOrEmpty(address) || address == "FFFFFFFF" || address.Length != 8 || address.Substring(0, 2) != "FE")
             {
                 return string.Empty;
             }
@@ -109,6 +120,15 @@ namespace eNet编辑器
                 string addressType = address.Substring(2, 2);
                 if (addressType == "00" || addressType == "F9" || addressType == "FA" || addressType == "FB" || addressType == "F8")
                 {
+                    if (addressType == "FB")
+                    {
+                        if (address.Substring(6, 2) == "02" || address.Substring(6, 2) == "03")
+                        {
+
+                            //日期 和时间 
+                            return address;
+                        }
+                    }
                     int num = Convert.ToInt32(address.Substring(6, 2), 16) - j;
                     if(num > 0)
                     {

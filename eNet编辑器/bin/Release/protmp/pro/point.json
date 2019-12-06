@@ -954,8 +954,61 @@
             "objType": "",
             "value": "",
             "type": "6.1_panel"
+        },
+        {
+            "pid": 282215543,
+            "area1": "4F",
+            "area2": "C区小会议室",
+            "area3": "",
+            "area4": "",
+            "name": "湿度感应器@230",
+            "ip": "192.168.1.230",
+            "address": "FE3003E9",
+            "objType": "",
+            "value": "",
+            "type": "6.2_sensor"
         }
     ],
     "virtualport": [],
-    "logic": []
+    "logic": [
+        {
+            "pid": 472664780,
+            "area1": "3F",
+            "area2": "A区指挥大厅",
+            "area3": "",
+            "area4": "",
+            "name": "逻辑1@230",
+            "ip": "192.168.1.230",
+            "address": "FE400001",
+            "objType": "",
+            "value": "",
+            "type": "3.0_logic"
+        },
+        {
+            "pid": 395842121,
+            "area1": "3F",
+            "area2": "A区指挥大厅",
+            "area3": "",
+            "area4": "",
+            "name": "逻辑2@230",
+            "ip": "192.168.1.230",
+            "address": "FE400002",
+            "objType": "",
+            "value": "",
+            "type": "3.0_logic"
+        },
+        {
+            "pid": 271914559,
+            "area1": "3F",
+            "area2": "A区指挥大厅",
+            "area3": "",
+            "area4": "",
+            "name": "逻辑3@230",
+            "ip": "192.168.1.230",
+            "address": "FE400003",
+            "objType": "",
+            "value": "",
+            "type": "3.0_logic"
+        }
+    ]
 }

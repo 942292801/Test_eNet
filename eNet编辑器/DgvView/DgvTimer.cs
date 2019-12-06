@@ -2240,7 +2240,7 @@ namespace eNet编辑器.DgvView
                     else if (colIndex == 2)
                     {
                         //地址递增
-                        if (string.IsNullOrEmpty(FileMesege.copyTimer.address) && FileMesege.copyTimer.address == "FFFFFFFF")
+                        if (string.IsNullOrEmpty(FileMesege.copyTimer.address) || FileMesege.copyTimer.address == "FFFFFFFF")
                         {
                             continue;
                         }
@@ -2412,7 +2412,7 @@ namespace eNet编辑器.DgvView
                     else if (colIndex == 2)
                     {
                         //地址递减
-                        if (string.IsNullOrEmpty(FileMesege.copyTimer.address) && FileMesege.copyTimer.address == "FFFFFFFF")
+                        if (string.IsNullOrEmpty(FileMesege.copyTimer.address) || FileMesege.copyTimer.address == "FFFFFFFF")
                         {
                             continue;
                         }

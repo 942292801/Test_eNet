@@ -1378,6 +1378,7 @@ namespace eNet编辑器.DgvView
         /// </summary>
         public void copyData()
         {
+            /*
             //获取当前选中单元格的列序号
             int colIndex = dataGridView1.CurrentRow.Cells.IndexOf(dataGridView1.CurrentCell);
             //当粘贴选中单元格为操作
@@ -1401,7 +1402,7 @@ namespace eNet编辑器.DgvView
                 FileMesege.copyLogicSceneItem = info;
 
             }
-
+            */
 
         }
 
@@ -1410,6 +1411,7 @@ namespace eNet编辑器.DgvView
         /// </summary>
         public void pasteData()
         {
+            /*
             try
             {
                 DataJson.logicsInfo LogicInfo = DataListHelper.findLogicInfoByTabName(FileMesege.LogicTabName);
@@ -1459,11 +1461,95 @@ namespace eNet编辑器.DgvView
             catch
             {
 
-            }
+            }*/
 
 
         }
         #endregion
+
+        #region 相同
+
+        //相同
+        public void Same()
+        {
+            try
+            {
+                bool ischange = false;
+                //撤销
+                DataJson.totalList OldList = FileMesege.cmds.getListInfos();
+
+                //选中行 序号
+                int id = 0;
+                //列号
+                int colIndex = 0;
+                //记录第一个选中格的列号
+                int FirstColumnIndex = -1;
+                DataJson.logicsInfo LogicInfo = DataListHelper.findLogicInfoByTabName(FileMesege.LogicTabName);
+                if (LogicInfo == null)
+                {
+                    return;
+                }
+                //把tab对象JSON字符串转换为 操作对象
+                DataJson.LogicSceneContent logicSceneContent = JsonConvert.DeserializeObject<DataJson.LogicSceneContent>(LogicInfo.content);
+                DataJson.SceneItem info = null;
+                DataJson.SceneItem copyInfo = null;
+                for (int i = dataGridView1.SelectedCells.Count - 1; i >= 0; i--)
+                {
+                    //获取当前选中单元格的列序号
+                    colIndex = dataGridView1.SelectedCells[i].ColumnIndex;
+                    if (FirstColumnIndex != -1 && FirstColumnIndex != colIndex)
+                    {
+                        //只操作 第一个选中格的列号 
+                        continue;
+                    }
+                    id = dataGridView1.SelectedCells[i].RowIndex;
+                    info = getLogicSceneInfo(id+1, logicSceneContent);
+                    if (info == null)
+                    {
+                        continue;
+                    }
+                    if (i == dataGridView1.SelectedCells.Count - 1)
+                    {
+                        //记录第一个选中格内容
+                        FirstColumnIndex = colIndex;
+                        copyInfo = info;
+                        continue;
+                    }
+                    //当粘贴选中单元格
+                    if (colIndex == 6)
+                    {
+                        //状态操作 
+                        //获取sceneInfo对象表中对应ID号info对象
+                        if (string.IsNullOrEmpty(copyInfo.type) || string.IsNullOrEmpty(info.type) || info.type != copyInfo.type)
+                        {
+                            //类型不一致 并且为空
+                            continue;
+                        }
+                        ischange = true;
+                        info.state = copyInfo.state;
+                        dataGridView1.Rows[id].Cells[6].Value = (info.state).Trim();
+                    }//if
+                  
+
+
+                }
+                if (ischange)
+                {
+                    LogicInfo.content = JsonConvert.SerializeObject(logicSceneContent);
+                    DataJson.totalList NewList = FileMesege.cmds.getListInfos();
+                    FileMesege.cmds.DoNewCommand(NewList, OldList);
+                }
+
+
+
+            }//try
+            catch
+            {
+
+            }
+        }
+        #endregion
+
 
         #region 记录滑动条位置
         //滑动条位置

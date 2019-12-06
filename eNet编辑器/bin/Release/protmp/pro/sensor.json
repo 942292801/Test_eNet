@@ -1,1 +1,125 @@
-[]
+[
+    {
+        "sensors": [
+            {
+                "sensorsInfo": [
+                    {
+                        "id": 1,
+                        "pid": 0,
+                        "keyAddress": "",
+                        "objAddress": "",
+                        "objType": "",
+                        "opt": "",
+                        "optName": "",
+                        "fbmode": 0
+                    },
+                    {
+                        "id": 1,
+                        "pid": 0,
+                        "keyAddress": "",
+                        "objAddress": "",
+                        "objType": null,
+                        "opt": null,
+                        "optName": null,
+                        "fbmode": 0
+                    },
+                    {
+                        "id": 2,
+                        "pid": 0,
+                        "keyAddress": "",
+                        "objAddress": "",
+                        "objType": "",
+                        "opt": "",
+                        "optName": "",
+                        "fbmode": 0
+                    },
+                    {
+                        "id": 2,
+                        "pid": 0,
+                        "keyAddress": "",
+                        "objAddress": "",
+                        "objType": null,
+                        "opt": null,
+                        "optName": null,
+                        "fbmode": 0
+                    },
+                    {
+                        "id": 3,
+                        "pid": 0,
+                        "keyAddress": "",
+                        "objAddress": "",
+                        "objType": "",
+                        "opt": "",
+                        "optName": "",
+                        "fbmode": 0
+                    },
+                    {
+                        "id": 3,
+                        "pid": 0,
+                        "keyAddress": "",
+                        "objAddress": "",
+                        "objType": null,
+                        "opt": null,
+                        "optName": null,
+                        "fbmode": 0
+                    },
+                    {
+                        "id": 4,
+                        "pid": 0,
+                        "keyAddress": "",
+                        "objAddress": "",
+                        "objType": "",
+                        "opt": "",
+                        "optName": "",
+                        "fbmode": 0
+                    },
+                    {
+                        "id": 4,
+                        "pid": 0,
+                        "keyAddress": "",
+                        "objAddress": "",
+                        "objType": null,
+                        "opt": null,
+                        "optName": null,
+                        "fbmode": 0
+                    },
+                    {
+                        "id": 5,
+                        "pid": 0,
+                        "keyAddress": "",
+                        "objAddress": "",
+                        "objType": "",
+                        "opt": "",
+                        "optName": "",
+                        "fbmode": 0
+                    },
+                    {
+                        "id": 6,
+                        "pid": 0,
+                        "keyAddress": "",
+                        "objAddress": "",
+                        "objType": "",
+                        "opt": "",
+                        "optName": "",
+                        "fbmode": 0
+                    },
+                    {
+                        "id": 6,
+                        "pid": 0,
+                        "keyAddress": "",
+                        "objAddress": "",
+                        "objType": null,
+                        "opt": null,
+                        "optName": null,
+                        "fbmode": 0
+                    }
+                ],
+                "id": 1001,
+                "pid": 282215543,
+                "ioNum": 6
+            }
+        ],
+        "IP": "192.168.1.230",
+        "Dev": "GW100A"
+    }
+]

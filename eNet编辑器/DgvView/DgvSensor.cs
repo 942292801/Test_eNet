@@ -85,6 +85,7 @@ namespace eNet编辑器.DgvView
             showmode.Name = "fbMode";
 
             this.dataGridView1.Columns.Insert(2, showmode);
+            dataGridView1.Columns[2].ReadOnly = true;
             //插入执行对象类型
             this.dataGridView1.Columns.Insert(4, objType);
         }
@@ -118,9 +119,7 @@ namespace eNet编辑器.DgvView
                 cbDevNum.Items.Clear();
                 cbDevNum.Text = "";
                 this.dataGridView1.Rows.Clear();
-                this.cbIONum.TextChanged -= new System.EventHandler(this.cbIoNum_TextChanged);
                 cbIONum.Text = "";
-                this.cbIONum.TextChanged += new System.EventHandler(this.cbIoNum_TextChanged);
                 int tmpId = -1;
                 DataJson.sensors srs = DataListHelper.getSensorInfoListByNode();
                 if (srs == null)
@@ -128,23 +127,12 @@ namespace eNet编辑器.DgvView
                     cbIONum.Text = "";
                     return;
                 }
-                if (srs.sensorsInfo.Count == 0)
-                {
-                    //新建面板 不存在信息则让 cbIoNumCHnageText事件加载
-                    cbIONum.Text = srs.ioNum.ToString();
-                    return;
-                }
-                else
-                {
-                    this.cbIONum.TextChanged -= new System.EventHandler(this.cbIoNum_TextChanged);
-                    cbIONum.Text = srs.ioNum.ToString();
-                    this.cbIONum.TextChanged += new System.EventHandler(this.cbIoNum_TextChanged);
-                }
-                
-           
+                ip = FileMesege.sensorSelectNode.Parent.Text.Split(' ')[0];
+                cbIONum.Text = srs.ioNum.ToString();
+
                 findKeyPanel();
                 List<DataJson.sensorsInfo> delSensor = new List<DataJson.sensorsInfo>();
-                ip = FileMesege.sensorSelectNode.Parent.Text.Split(' ')[0];
+                
                 //循环加载该定时号的所有信息
                 foreach (DataJson.sensorsInfo srInfo in srs.sensorsInfo)
                 {
@@ -339,8 +327,8 @@ namespace eNet编辑器.DgvView
         #endregion
 
         #region IO键选择
-
-        private void cbIoNum_TextChanged(object sender, EventArgs e)
+        //确认
+        private void btnAttr_Click(object sender, EventArgs e)
         {
             try
             {
@@ -1114,8 +1102,10 @@ namespace eNet编辑器.DgvView
                                     jumpSetInfo(point);
                                 }
                                 break;
-               
-                     
+
+                            case "fbMode":
+                                dataGridView1.Columns[2].ReadOnly = false;
+                                break;
 
 
                             default: break;
@@ -1229,6 +1219,7 @@ namespace eNet编辑器.DgvView
                     {
                      
                         case "fbMode":
+                            dataGridView1.Columns[2].ReadOnly = true;
                             dgvFbMode(rowNum);
                             break;
                         default: break;
@@ -1312,7 +1303,7 @@ namespace eNet编辑器.DgvView
         }
 
         /// <summary>
-        /// 设置显示模式 无 同步 反显
+        /// 设置输入状态 闭合释放
         /// </summary>
         private void dgvFbMode(int id)
         {
@@ -1827,6 +1818,364 @@ namespace eNet编辑器.DgvView
         }
         #endregion
 
+        #region 升序 相同 降序
+
+        //相同
+        public void Same()
+        {
+            try
+            {
+                bool ischange = false;
+                //撤销
+                DataJson.totalList OldList = FileMesege.cmds.getListInfos();
+
+                //选中行 序号
+                int id = 0;
+                //列号
+                int colIndex = 0;
+                //记录第一个选中格的列号
+                int FirstColumnIndex = -1;
+                DataJson.sensors srs = DataListHelper.getSensorInfoListByNode();
+                if (srs == null)
+                {
+                    return;
+                }
+                DataJson.sensorsInfo srInfo = null;
+
+                for (int i = dataGridView1.SelectedCells.Count - 1; i >= 0; i--)
+                {
+                    //获取当前选中单元格的列序号
+                    colIndex = dataGridView1.SelectedCells[i].ColumnIndex;
+                    if (FirstColumnIndex != -1 && FirstColumnIndex != colIndex)
+                    {
+                        //只操作 第一个选中格的列号 
+                        continue;
+                    }
+                    id = dataGridView1.SelectedCells[i].RowIndex;
+                    srInfo = srs.sensorsInfo[id];
+                    if (srInfo == null)
+                    {
+                        return;
+                    }
+                    if (i == dataGridView1.SelectedCells.Count - 1)
+                    {
+                        //记录第一个选中格内容
+                        FirstColumnIndex = colIndex;
+                        FileMesege.copySensor = srInfo;
+                        continue;
+                    }
+                    //当粘贴选中单元格为操作
+                    if (colIndex == 7)
+                    {
+
+                        //获取sceneInfo对象表中对应ID号info对象
+                        if (string.IsNullOrEmpty(FileMesege.copySensor.objType) || string.IsNullOrEmpty(srInfo.objType) || srInfo.objType != FileMesege.copySensor.objType)
+                        {
+                            //类型不一致 并且为空
+                            continue;
+                        }
+                        ischange = true;
+                        srInfo.opt = FileMesege.copySensor.opt;
+                        srInfo.optName = FileMesege.copySensor.optName;
+                        dataGridView1.Rows[id].Cells[7].Value = (srInfo.optName + " " + srInfo.opt).Trim();
+                    }//if
+                    else if (colIndex == 3)
+                    {
+                        //选中单元格为地址
+                        srInfo.objAddress = FileMesege.copySensor.objAddress;
+                        if (FileMesege.copySensor.objType != srInfo.objType)
+                        {
+                            //类型不一样清空类型
+                            srInfo.opt = "";
+                            srInfo.optName = "";
+
+                        }
+                        srInfo.objType = FileMesege.copySensor.objType;
+                        srInfo.pid = FileMesege.copySensor.pid;
+
+                      
+
+                        //添加地域和名称 在sceneInfo表中
+                        DataJson.PointInfo point = DataListHelper.findPointByPid(srInfo.pid);
+                        if (point != null)
+                        {
+                            srInfo.objType = point.type;
+                            dataGridView1.Rows[id].Cells[5].Value = string.Format("{0} {1} {2} {3}", point.area1, point.area2, point.area3, point.area4).Trim();//改根据地址从信息里面获取
+                            dataGridView1.Rows[id].Cells[6].Value = point.name;
+                        }
+                        else
+                        {
+                            srInfo.pid = 0;
+                            dataGridView1.Rows[id].Cells[5].Value = string.Empty;
+                            dataGridView1.Rows[id].Cells[6].Value = string.Empty;
+                        }
+                        dataGridView1.Rows[id].Cells[3].Value = DgvMesege.addressTransform(srInfo.objAddress);
+                        dataGridView1.Rows[id].Cells[4].Value = IniHelper.findTypesIniNamebyType(srInfo.objType);
+                        ischange = true;
+
+                    }
+                    else if (colIndex == 2)
+                    {
+                        srInfo.fbmode = FileMesege.copySensor.fbmode;
+                        dataGridView1.Rows[id].Cells[2].Value = findFbMode(srInfo.fbmode);//闭合 释放
+                        ischange = true;
+                    }
+
+
+                }
+                if (ischange)
+                {
+                    DataJson.totalList NewList = FileMesege.cmds.getListInfos();
+                    FileMesege.cmds.DoNewCommand(NewList, OldList);
+                }
+
+
+
+            }//try
+            catch
+            {
+
+            }
+        }
+
+        //升序
+        public void Ascending()
+        {
+
+            try
+            {
+                bool ischange = false;
+                //撤销
+                DataJson.totalList OldList = FileMesege.cmds.getListInfos();
+
+                //选中行 序号
+                int id = 0;
+                //列号
+                int colIndex = 0;
+                //记录第一个选中格的列号
+                int FirstColumnIndex = -1;
+                //地址添加量
+                int addCount = 0;
+                DataJson.sensors srs = DataListHelper.getSensorInfoListByNode();
+                if (srs == null)
+                {
+                    return;
+                }
+                DataJson.sensorsInfo srInfo = null;
+                //把第一行的数目 和 列数记录起来
+                for (int i = dataGridView1.SelectedCells.Count - 1; i >= 0; i--)
+                {
+                    colIndex = dataGridView1.SelectedCells[i].ColumnIndex;
+                    if (FirstColumnIndex == -1 && FirstColumnIndex != colIndex)
+                    {
+                        //只操作单选的列
+                        FirstColumnIndex = dataGridView1.SelectedCells[i].ColumnIndex;
+                        id = dataGridView1.SelectedCells[i].RowIndex;
+                        srInfo = srs.sensorsInfo[id];
+                        if (srInfo == null)
+                        {
+                            return;
+                        }
+                        FileMesege.copySensor = srInfo;
+                        continue;
+                    }
+                    if (colIndex == FirstColumnIndex)
+                    {
+                        addCount++;
+                    }
+                }
+
+                for (int i = 0; i < dataGridView1.SelectedCells.Count; i++)
+                {
+                    //获取当前选中单元格的列序号
+                    colIndex = dataGridView1.SelectedCells[i].ColumnIndex;
+                    if (FirstColumnIndex != colIndex)
+                    {
+                        //只操作单选的列
+                        continue;
+                    }
+                    id = dataGridView1.SelectedCells[i].RowIndex;
+                    srInfo = srs.sensorsInfo[id];
+                    if (srInfo == null)
+                    {
+                        continue;
+                    }
+                    if (addCount == 0)
+                    {
+                        continue;
+                    }
+                    if (colIndex == 3)
+                    {
+                        //地址递增
+                        if (string.IsNullOrEmpty(FileMesege.copySensor.objAddress) || FileMesege.copySensor.objAddress == "FFFFFFFF")
+                        {
+                            continue;
+                        }
+                        if (!Validator.IsInteger(FileMesege.AsDesCendingNum.ToString()))
+                        {
+                            FileMesege.AsDesCendingNum = 1;
+                        }
+
+                        srInfo.objAddress = DgvMesege.addressAdd(FileMesege.copySensor.objAddress, addCount * Convert.ToInt32(FileMesege.AsDesCendingNum));
+                        srInfo.objType = IniHelper.findIniTypesByAddress(ip, srInfo.objAddress).Split(',')[0];
+                        //添加地域和名称 在sceneInfo表中
+                        DataJson.PointInfo point = DataListHelper.findPointByType_address("", srInfo.objAddress, ip);
+                        if (point != null)
+                        {
+                            srInfo.pid = point.pid;
+                            srInfo.objType = point.type;
+                            dataGridView1.Rows[id].Cells[5].Value = string.Format("{0} {1} {2} {3}", point.area1, point.area2, point.area3, point.area4).Trim();//改根据地址从信息里面获取
+                            dataGridView1.Rows[id].Cells[6].Value = point.name;
+                        }
+                        else
+                        {
+                            srInfo.pid = 0;
+                            dataGridView1.Rows[id].Cells[5].Value = string.Empty;
+                            dataGridView1.Rows[id].Cells[6].Value = string.Empty;
+                        }
+
+                        srInfo.opt = string.Empty;
+                        srInfo.optName = string.Empty;
+                        dataGridView1.Rows[id].Cells[3].Value = DgvMesege.addressTransform(srInfo.objAddress);
+                        dataGridView1.Rows[id].Cells[4].Value = IniHelper.findTypesIniNamebyType(srInfo.objType);
+                        dataGridView1.Rows[id].Cells[7].Value = (srInfo.optName + " " + srInfo.opt).Trim();
+                        ischange = true;
+                    }
+                    addCount--;
+                }
+                if (ischange)
+                {
+                    DataJson.totalList NewList = FileMesege.cmds.getListInfos();
+                    FileMesege.cmds.DoNewCommand(NewList, OldList);
+                }
+            }//try
+            catch
+            {
+
+            }
+        }
+
+        //降序
+        public void Descending()
+        {
+            try
+            {
+                bool ischange = false;
+                //撤销
+                DataJson.totalList OldList = FileMesege.cmds.getListInfos();
+
+                //选中行 序号
+                int id = 0;
+                //列号
+                int colIndex = 0;
+                //记录第一个选中格的列号
+                int FirstColumnIndex = -1;
+                //地址添加量
+                int reduceCount = 0;
+                DataJson.sensors srs = DataListHelper.getSensorInfoListByNode();
+                if (srs == null)
+                {
+                    return;
+                }
+                DataJson.sensorsInfo srInfo = null;
+                //把第一行的数目 和 列数记录起来
+                for (int i = dataGridView1.SelectedCells.Count - 1; i >= 0; i--)
+                {
+                    colIndex = dataGridView1.SelectedCells[i].ColumnIndex;
+                    if (FirstColumnIndex == -1 && FirstColumnIndex != colIndex)
+                    {
+                        //只操作单选的列
+                        FirstColumnIndex = dataGridView1.SelectedCells[i].ColumnIndex;
+                        id = dataGridView1.SelectedCells[i].RowIndex;
+                        srInfo = srs.sensorsInfo[id];
+                        if (srInfo == null)
+                        {
+                            return;
+                        }
+                        FileMesege.copySensor = srInfo;
+                        continue;
+                    }
+                    if (colIndex == FirstColumnIndex)
+                    {
+                        reduceCount++;
+                    }
+                }
+
+                for (int i = 0; i < dataGridView1.SelectedCells.Count; i++)
+                {
+                    //获取当前选中单元格的列序号
+                    colIndex = dataGridView1.SelectedCells[i].ColumnIndex;
+                    if (FirstColumnIndex != colIndex)
+                    {
+                        //只操作单选的列
+                        continue;
+                    }
+                    id = dataGridView1.SelectedCells[i].RowIndex;
+                    srInfo = srs.sensorsInfo[id];
+                    if (srInfo == null)
+                    {
+                        continue;
+                    }
+                    if (reduceCount == 0)
+                    {
+                        continue;
+                    }
+                    if (colIndex == 3)
+                    {
+                        //地址递增
+                        if (string.IsNullOrEmpty(FileMesege.copySensor.objAddress) || FileMesege.copySensor.objAddress == "FFFFFFFF")
+                        {
+                            continue;
+                        }
+                        if (!Validator.IsInteger(FileMesege.AsDesCendingNum.ToString()))
+                        {
+                            FileMesege.AsDesCendingNum = 1;
+                        }
+
+                        srInfo.objAddress = DgvMesege.addressReduce(FileMesege.copySensor.objAddress, reduceCount * Convert.ToInt32(FileMesege.AsDesCendingNum));
+                        srInfo.objType = IniHelper.findIniTypesByAddress(ip, srInfo.objAddress).Split(',')[0];
+                        //添加地域和名称 在sceneInfo表中
+                        DataJson.PointInfo point = DataListHelper.findPointByType_address("", srInfo.objAddress, ip);
+                        if (point != null)
+                        {
+                            srInfo.pid = point.pid;
+                            srInfo.objType = point.type;
+                            dataGridView1.Rows[id].Cells[5].Value = string.Format("{0} {1} {2} {3}", point.area1, point.area2, point.area3, point.area4).Trim();//改根据地址从信息里面获取
+                            dataGridView1.Rows[id].Cells[6].Value = point.name;
+                        }
+                        else
+                        {
+                            srInfo.pid = 0;
+                            dataGridView1.Rows[id].Cells[5].Value = string.Empty;
+                            dataGridView1.Rows[id].Cells[6].Value = string.Empty;
+                        }
+
+                        srInfo.opt = string.Empty;
+                        srInfo.optName = string.Empty;
+                        dataGridView1.Rows[id].Cells[3].Value = DgvMesege.addressTransform(srInfo.objAddress);
+                        dataGridView1.Rows[id].Cells[4].Value = IniHelper.findTypesIniNamebyType(srInfo.objType);
+                        dataGridView1.Rows[id].Cells[7].Value = (srInfo.optName + " " + srInfo.opt).Trim();
+                        ischange = true;
+                    }
+                    reduceCount--;
+                }
+                if (ischange)
+                {
+                    DataJson.totalList NewList = FileMesege.cmds.getListInfos();
+                    FileMesege.cmds.DoNewCommand(NewList, OldList);
+                }
+            }//try
+            catch
+            {
+
+            }
+        }
+
+
+
+        #endregion
+
+
         #region 记录滑动条位置
         //滑动条位置
         int X_Value; // Stores position of Horizontal scroll bar
@@ -1845,6 +2194,8 @@ namespace eNet编辑器.DgvView
 
         }
         #endregion
+
+       
 
        
 

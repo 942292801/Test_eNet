@@ -86,8 +86,7 @@ namespace eNet编辑器
         public static DataJson.timersInfo copyTimer = null;
         public static DataJson.panelsInfo copyPanel = null;
         public static DataJson.sensorsInfo copySensor = null;
-        public static DataJson.sceneInfo copyLogicScene = null;
-        public static DataJson.SceneItem copyLogicSceneItem = null;
+        //public static DataJson.SceneItem copyLogicSceneItem = null;
 
         public static List<DataJson.Device> DeviceList;//工程设备的保存记录
         public static List<DataJson.Area1> AreaList;//
@@ -500,20 +499,13 @@ namespace eNet编辑器
                 {
                     Directory.Delete(TmpFilePath, true);
                 }
-                /*
-                if (System.IO.Directory.Exists(TmpFilePath + "\\objs"))
-                {
-                    Directory.Delete(TmpFilePath + "\\objs", true);
-                }
-                if (System.IO.Directory.Exists(TmpFilePath + "\\pro"))
-                {
-                    Directory.Delete(TmpFilePath + "\\pro", true);
-                }*/
+                Directory.CreateDirectory(TmpFilePath);
                 Directory.CreateDirectory(TmpFilePath + "\\objs");
                 Directory.CreateDirectory(TmpFilePath + "\\pro");
             }
-            catch { 
+            catch{
                 
+            
             }
         }
 

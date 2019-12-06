@@ -42,36 +42,14 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.num = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.a = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.objAddress = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.b = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.c = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.compareAddress = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.d = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.del1 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnIfAdd = new DevComponents.DotNetBar.ButtonX();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.num2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.address2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.section2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.name2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.operation2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.delay2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.del2 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.panel3 = new System.Windows.Forms.Panel();
             this.btnElseIfAdd = new DevComponents.DotNetBar.ButtonX();
             this.label3 = new System.Windows.Forms.Label();
             this.dataGridView3 = new System.Windows.Forms.DataGridView();
-            this.num3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.address3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.section3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.name3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.operation3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.delay3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.del3 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.panel4 = new System.Windows.Forms.Panel();
             this.btnElseAdd = new DevComponents.DotNetBar.ButtonX();
             this.label5 = new System.Windows.Forms.Label();
@@ -80,6 +58,28 @@
             this.doubleClickTimer1 = new System.Windows.Forms.Timer(this.components);
             this.doubleClickTimer2 = new System.Windows.Forms.Timer(this.components);
             this.doubleClickTimer3 = new System.Windows.Forms.Timer(this.components);
+            this.num2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.address2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.section2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.name2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.operation2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.delay2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.del2 = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.num3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.address3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.section3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.name3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.operation3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.delay3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.del3 = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.num = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.a = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.objAddress = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.b = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.c = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.compareAddress = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.d = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.del1 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -212,62 +212,6 @@
             this.dataGridView1.Scroll += new System.Windows.Forms.ScrollEventHandler(this.dataGridView1_Scroll);
             this.dataGridView1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.dataGridView1_MouseDown);
             // 
-            // num
-            // 
-            this.num.HeaderText = "序号";
-            this.num.Name = "num";
-            this.num.ReadOnly = true;
-            this.num.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.num.Width = 60;
-            // 
-            // a
-            // 
-            this.a.HeaderText = "A*";
-            this.a.Name = "a";
-            this.a.Width = 60;
-            // 
-            // objAddress
-            // 
-            this.objAddress.HeaderText = "对象";
-            this.objAddress.Name = "objAddress";
-            this.objAddress.ReadOnly = true;
-            this.objAddress.Width = 160;
-            // 
-            // b
-            // 
-            this.b.HeaderText = "+B";
-            this.b.Name = "b";
-            this.b.Width = 60;
-            // 
-            // c
-            // 
-            this.c.HeaderText = "C*";
-            this.c.Name = "c";
-            this.c.Width = 60;
-            // 
-            // compareAddress
-            // 
-            this.compareAddress.HeaderText = "比较对象";
-            this.compareAddress.Name = "compareAddress";
-            this.compareAddress.ReadOnly = true;
-            this.compareAddress.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.compareAddress.Width = 160;
-            // 
-            // d
-            // 
-            this.d.HeaderText = "+D";
-            this.d.Name = "d";
-            this.d.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.d.Width = 60;
-            // 
-            // del1
-            // 
-            this.del1.HeaderText = "删除";
-            this.del1.Name = "del1";
-            this.del1.ReadOnly = true;
-            this.del1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.del1.Width = 55;
-            // 
             // panel2
             // 
             this.panel2.Controls.Add(this.btnIfAdd);
@@ -374,55 +318,6 @@
             this.dataGridView2.KeyUp += new System.Windows.Forms.KeyEventHandler(this.dataGridView2_KeyUp);
             this.dataGridView2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.dataGridView2_MouseDown);
             // 
-            // num2
-            // 
-            this.num2.HeaderText = "序号";
-            this.num2.Name = "num2";
-            this.num2.ReadOnly = true;
-            this.num2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.num2.Width = 60;
-            // 
-            // address2
-            // 
-            this.address2.HeaderText = "地址";
-            this.address2.Name = "address2";
-            this.address2.ReadOnly = true;
-            // 
-            // section2
-            // 
-            this.section2.HeaderText = "区域";
-            this.section2.Name = "section2";
-            this.section2.ReadOnly = true;
-            this.section2.Width = 160;
-            // 
-            // name2
-            // 
-            this.name2.HeaderText = "名称";
-            this.name2.Name = "name2";
-            this.name2.ReadOnly = true;
-            this.name2.Width = 80;
-            // 
-            // operation2
-            // 
-            this.operation2.HeaderText = "操作";
-            this.operation2.Name = "operation2";
-            this.operation2.ReadOnly = true;
-            this.operation2.Width = 140;
-            // 
-            // delay2
-            // 
-            this.delay2.HeaderText = "延时（秒）";
-            this.delay2.Name = "delay2";
-            this.delay2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // del2
-            // 
-            this.del2.HeaderText = "删除";
-            this.del2.Name = "del2";
-            this.del2.ReadOnly = true;
-            this.del2.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.del2.Width = 55;
-            // 
             // panel3
             // 
             this.panel3.Controls.Add(this.btnElseIfAdd);
@@ -513,55 +408,6 @@
             this.dataGridView3.KeyUp += new System.Windows.Forms.KeyEventHandler(this.dataGridView3_KeyUp);
             this.dataGridView3.MouseDown += new System.Windows.Forms.MouseEventHandler(this.dataGridView3_MouseDown);
             // 
-            // num3
-            // 
-            this.num3.HeaderText = "序号";
-            this.num3.Name = "num3";
-            this.num3.ReadOnly = true;
-            this.num3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.num3.Width = 60;
-            // 
-            // address3
-            // 
-            this.address3.HeaderText = "地址";
-            this.address3.Name = "address3";
-            this.address3.ReadOnly = true;
-            // 
-            // section3
-            // 
-            this.section3.HeaderText = "区域";
-            this.section3.Name = "section3";
-            this.section3.ReadOnly = true;
-            this.section3.Width = 160;
-            // 
-            // name3
-            // 
-            this.name3.HeaderText = "名称";
-            this.name3.Name = "name3";
-            this.name3.ReadOnly = true;
-            this.name3.Width = 80;
-            // 
-            // operation3
-            // 
-            this.operation3.HeaderText = "操作";
-            this.operation3.Name = "operation3";
-            this.operation3.ReadOnly = true;
-            this.operation3.Width = 140;
-            // 
-            // delay3
-            // 
-            this.delay3.HeaderText = "延时（秒）";
-            this.delay3.Name = "delay3";
-            this.delay3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // del3
-            // 
-            this.del3.HeaderText = "删除";
-            this.del3.Name = "del3";
-            this.del3.ReadOnly = true;
-            this.del3.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.del3.Width = 55;
-            // 
             // panel4
             // 
             this.panel4.Controls.Add(this.btnElseAdd);
@@ -647,6 +493,166 @@
             // 
             this.doubleClickTimer3.Interval = 40;
             this.doubleClickTimer3.Tick += new System.EventHandler(this.doubleClickTimer3_Tick);
+            // 
+            // num2
+            // 
+            this.num2.HeaderText = "序号";
+            this.num2.Name = "num2";
+            this.num2.ReadOnly = true;
+            this.num2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.num2.Width = 60;
+            // 
+            // address2
+            // 
+            this.address2.HeaderText = "地址";
+            this.address2.Name = "address2";
+            this.address2.ReadOnly = true;
+            // 
+            // section2
+            // 
+            this.section2.HeaderText = "区域";
+            this.section2.Name = "section2";
+            this.section2.ReadOnly = true;
+            this.section2.Width = 160;
+            // 
+            // name2
+            // 
+            this.name2.HeaderText = "名称";
+            this.name2.Name = "name2";
+            this.name2.ReadOnly = true;
+            this.name2.Width = 80;
+            // 
+            // operation2
+            // 
+            this.operation2.HeaderText = "操作";
+            this.operation2.Name = "operation2";
+            this.operation2.ReadOnly = true;
+            this.operation2.Width = 140;
+            // 
+            // delay2
+            // 
+            this.delay2.HeaderText = "延时（秒）";
+            this.delay2.Name = "delay2";
+            this.delay2.ReadOnly = true;
+            this.delay2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // del2
+            // 
+            this.del2.HeaderText = "删除";
+            this.del2.Name = "del2";
+            this.del2.ReadOnly = true;
+            this.del2.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.del2.Width = 55;
+            // 
+            // num3
+            // 
+            this.num3.HeaderText = "序号";
+            this.num3.Name = "num3";
+            this.num3.ReadOnly = true;
+            this.num3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.num3.Width = 60;
+            // 
+            // address3
+            // 
+            this.address3.HeaderText = "地址";
+            this.address3.Name = "address3";
+            this.address3.ReadOnly = true;
+            // 
+            // section3
+            // 
+            this.section3.HeaderText = "区域";
+            this.section3.Name = "section3";
+            this.section3.ReadOnly = true;
+            this.section3.Width = 160;
+            // 
+            // name3
+            // 
+            this.name3.HeaderText = "名称";
+            this.name3.Name = "name3";
+            this.name3.ReadOnly = true;
+            this.name3.Width = 80;
+            // 
+            // operation3
+            // 
+            this.operation3.HeaderText = "操作";
+            this.operation3.Name = "operation3";
+            this.operation3.ReadOnly = true;
+            this.operation3.Width = 140;
+            // 
+            // delay3
+            // 
+            this.delay3.HeaderText = "延时（秒）";
+            this.delay3.Name = "delay3";
+            this.delay3.ReadOnly = true;
+            this.delay3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // del3
+            // 
+            this.del3.HeaderText = "删除";
+            this.del3.Name = "del3";
+            this.del3.ReadOnly = true;
+            this.del3.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.del3.Width = 55;
+            // 
+            // num
+            // 
+            this.num.HeaderText = "序号";
+            this.num.Name = "num";
+            this.num.ReadOnly = true;
+            this.num.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.num.Width = 60;
+            // 
+            // a
+            // 
+            this.a.HeaderText = "A*";
+            this.a.Name = "a";
+            this.a.ReadOnly = true;
+            this.a.Width = 60;
+            // 
+            // objAddress
+            // 
+            this.objAddress.HeaderText = "对象";
+            this.objAddress.Name = "objAddress";
+            this.objAddress.ReadOnly = true;
+            this.objAddress.Width = 160;
+            // 
+            // b
+            // 
+            this.b.HeaderText = "+B";
+            this.b.Name = "b";
+            this.b.ReadOnly = true;
+            this.b.Width = 60;
+            // 
+            // c
+            // 
+            this.c.HeaderText = "C*";
+            this.c.Name = "c";
+            this.c.ReadOnly = true;
+            this.c.Width = 60;
+            // 
+            // compareAddress
+            // 
+            this.compareAddress.HeaderText = "比较对象";
+            this.compareAddress.Name = "compareAddress";
+            this.compareAddress.ReadOnly = true;
+            this.compareAddress.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.compareAddress.Width = 160;
+            // 
+            // d
+            // 
+            this.d.HeaderText = "+D";
+            this.d.Name = "d";
+            this.d.ReadOnly = true;
+            this.d.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.d.Width = 60;
+            // 
+            // del1
+            // 
+            this.del1.HeaderText = "删除";
+            this.del1.Name = "del1";
+            this.del1.ReadOnly = true;
+            this.del1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.del1.Width = 55;
             // 
             // LogicCondition
             // 

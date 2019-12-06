@@ -69,7 +69,7 @@ namespace eNet编辑器.DgvView
         private void IniControl()
         {
             SuperTabControllCreat();
-            formCreat();
+            formCreat();            
             //Tab表格关闭按钮
             superTabControl1.CloseButtonOnTabsVisible = true;
             //清空表格
@@ -83,7 +83,6 @@ namespace eNet编辑器.DgvView
         private void SuperTabControllCreat()
         {
             panel2.Controls.Clear();
-         
             superTabControl1 =null;
             superTabControl1 = new SuperTabControl();
             superTabControl1.Dock = DockStyle.Fill;
@@ -94,7 +93,6 @@ namespace eNet编辑器.DgvView
             superTabControl1.ControlBox.MenuBox.PopupOpen += new DotNetBarManager.PopupOpenEventHandler(superTabControl1_ControlBox_MenuBox_PopupOpen);
             superTabControl1.TabItemClose += new EventHandler<SuperTabStripTabItemCloseEventArgs>(superTabControl1_TabItemClose);
             panel2.Controls.Add(superTabControl1);
-            
            
         }
 
@@ -160,6 +158,7 @@ namespace eNet编辑器.DgvView
                 return;
             }
             SuperTabControllCreat();
+            superTabControl1.Visible = false;
             foreach (DataJson.logicsInfo lginfo in lgs.logicsInfo)
             {
                 //加载各个框
@@ -189,28 +188,7 @@ namespace eNet编辑器.DgvView
                 //选中第一个
                 superTabControl1.SelectedTabIndex = 0;
             }
-            /*
-            //恢复滑动条
-            DataJson.logicsInfo logicInfo = DataListHelper.findLogicInfoByTabName(superTabControl1.SelectedTab.Text);
-            if (logicInfo == null)
-            {
-                return;
-            } 
-            switch (logicInfo.modelType)
-            {
-                case "SceneDeal":
-
-                    logicScene.RecoverDgvForm();
-                    break;
-                case "ConditionDeal":
-                    logicCondition.RecoverDgvForm();
-                    break;
-                case "VoiceDeal":
-                    logicVoice.RecoverDgvForm();
-                    break;
-                default:
-                    break;
-            }*/
+            superTabControl1.Visible = true;
        
         }
 
@@ -260,7 +238,6 @@ namespace eNet编辑器.DgvView
                 {
                     return;
                 }
-
                 tabSelectAddPanel(logicInfo);
               
             }
@@ -286,12 +263,13 @@ namespace eNet编辑器.DgvView
             switch (logicInfo.modelType)
             {
                 case "SceneDeal":
+                   
                     logicType = LogicType.Scene;
                     //显示场景处理框
                     superTabControl1.SelectedTab.AttachedControl.Controls.Add(logicScene);
                     //加载信息内容 
                     logicScene.formInfoIni();
-                    
+                   
                     break;
                 case "ConditionDeal":
                     logicType = LogicType.Condition;
@@ -310,6 +288,7 @@ namespace eNet编辑器.DgvView
                 default:
                     break;
             }
+           
 
         }
         #endregion

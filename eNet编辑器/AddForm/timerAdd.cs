@@ -144,8 +144,12 @@ namespace eNet编辑器.AddForm
             cbs2.Text = "";
             cbs3.Text = "";
             cbs4.Text = "";
-            
-            int j = FileMesege.AreaList.Count;
+
+            int j = 0;
+            if (FileMesege.AreaList != null)
+            {
+                j = FileMesege.AreaList.Count;
+            }
             if (j > 0)
             {
                 for (int i = 0; i < j; i++)

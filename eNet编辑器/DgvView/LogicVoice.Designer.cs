@@ -53,6 +53,11 @@
             this.btnElseIfAdd = new DevComponents.DotNetBar.ButtonX();
             this.label3 = new System.Windows.Forms.Label();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.btnElseAdd = new DevComponents.DotNetBar.ButtonX();
+            this.label5 = new System.Windows.Forms.Label();
+            this.doubleClickTimer1 = new System.Windows.Forms.Timer(this.components);
+            this.doubleClickTimer2 = new System.Windows.Forms.Timer(this.components);
             this.num2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.result = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.address2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -61,11 +66,6 @@
             this.operation2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.delay2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.del2 = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.btnElseAdd = new DevComponents.DotNetBar.ButtonX();
-            this.label5 = new System.Windows.Forms.Label();
-            this.doubleClickTimer1 = new System.Windows.Forms.Timer(this.components);
-            this.doubleClickTimer2 = new System.Windows.Forms.Timer(this.components);
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -369,61 +369,6 @@
             this.dataGridView2.KeyUp += new System.Windows.Forms.KeyEventHandler(this.dataGridView2_KeyUp);
             this.dataGridView2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.dataGridView2_MouseDown);
             // 
-            // num2
-            // 
-            this.num2.HeaderText = "序号";
-            this.num2.Name = "num2";
-            this.num2.ReadOnly = true;
-            this.num2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.num2.Width = 60;
-            // 
-            // result
-            // 
-            this.result.HeaderText = "结果";
-            this.result.Name = "result";
-            this.result.ReadOnly = true;
-            // 
-            // address2
-            // 
-            this.address2.HeaderText = "地址";
-            this.address2.Name = "address2";
-            this.address2.ReadOnly = true;
-            // 
-            // section2
-            // 
-            this.section2.HeaderText = "区域";
-            this.section2.Name = "section2";
-            this.section2.ReadOnly = true;
-            this.section2.Width = 160;
-            // 
-            // name2
-            // 
-            this.name2.HeaderText = "名称";
-            this.name2.Name = "name2";
-            this.name2.ReadOnly = true;
-            this.name2.Width = 80;
-            // 
-            // operation2
-            // 
-            this.operation2.HeaderText = "操作";
-            this.operation2.Name = "operation2";
-            this.operation2.ReadOnly = true;
-            this.operation2.Width = 140;
-            // 
-            // delay2
-            // 
-            this.delay2.HeaderText = "延时（秒）";
-            this.delay2.Name = "delay2";
-            this.delay2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // del2
-            // 
-            this.del2.HeaderText = "删除";
-            this.del2.Name = "del2";
-            this.del2.ReadOnly = true;
-            this.del2.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.del2.Width = 55;
-            // 
             // panel4
             // 
             this.panel4.Controls.Add(this.btnElseAdd);
@@ -471,6 +416,62 @@
             // 
             this.doubleClickTimer2.Interval = 40;
             this.doubleClickTimer2.Tick += new System.EventHandler(this.doubleClickTimer2_Tick);
+            // 
+            // num2
+            // 
+            this.num2.HeaderText = "序号";
+            this.num2.Name = "num2";
+            this.num2.ReadOnly = true;
+            this.num2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.num2.Width = 60;
+            // 
+            // result
+            // 
+            this.result.HeaderText = "结果";
+            this.result.Name = "result";
+            this.result.ReadOnly = true;
+            // 
+            // address2
+            // 
+            this.address2.HeaderText = "地址";
+            this.address2.Name = "address2";
+            this.address2.ReadOnly = true;
+            // 
+            // section2
+            // 
+            this.section2.HeaderText = "区域";
+            this.section2.Name = "section2";
+            this.section2.ReadOnly = true;
+            this.section2.Width = 160;
+            // 
+            // name2
+            // 
+            this.name2.HeaderText = "名称";
+            this.name2.Name = "name2";
+            this.name2.ReadOnly = true;
+            this.name2.Width = 80;
+            // 
+            // operation2
+            // 
+            this.operation2.HeaderText = "操作";
+            this.operation2.Name = "operation2";
+            this.operation2.ReadOnly = true;
+            this.operation2.Width = 140;
+            // 
+            // delay2
+            // 
+            this.delay2.HeaderText = "延时（秒）";
+            this.delay2.Name = "delay2";
+            this.delay2.ReadOnly = true;
+            this.delay2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // del2
+            // 
+            this.del2.HeaderText = "删除";
+            this.del2.Name = "del2";
+            this.del2.ReadOnly = true;
+            this.del2.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.del2.Width = 55;
             // 
             // LogicVoice
             // 

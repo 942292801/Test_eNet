@@ -1189,19 +1189,19 @@ namespace eNet编辑器
 
                         if (dgvlogic.logicType == DgvLogic.LogicType.Scene)
                         {
-                            //dgvlogic.logicScene.Same();
+                            dgvlogic.logicScene.Same();
                         }
                         else if (dgvlogic.logicType == DgvLogic.LogicType.Condition)
                         {
-                            //dgvlogic.logicCondition.Same();
+                            dgvlogic.logicCondition.Same();
                         }
                         else if (dgvlogic.logicType == DgvLogic.LogicType.Voice)
                         {
-                            //dgvlogic.logicVoice.Same();
+                            dgvlogic.logicVoice.Same();
                         }
                         break;
                     case "sensor":
-                        //dgvsensor.Same();
+                        dgvsensor.Same();
                         break;
                     case "virtualport":
                         break;
@@ -1249,15 +1249,15 @@ namespace eNet编辑器
                         }
                         else if (dgvlogic.logicType == DgvLogic.LogicType.Condition)
                         {
-                            //dgvlogic.logicCondition.Ascending();
+                            dgvlogic.logicCondition.Ascending();
                         }
                         else if (dgvlogic.logicType == DgvLogic.LogicType.Voice)
                         {
-                            //dgvlogic.logicVoice.Ascending();
+                            dgvlogic.logicVoice.Ascending();
                         }
                         break;
                     case "sensor":
-                        //dgvsensor.Ascending();
+                        dgvsensor.Ascending();
                         break;
                     case "virtualport":
                         break;
@@ -1310,15 +1310,15 @@ namespace eNet编辑器
                         }
                         else if (dgvlogic.logicType == DgvLogic.LogicType.Condition)
                         {
-                            //dgvlogic.logicCondition.Descending();
+                            dgvlogic.logicCondition.Descending();
                         }
                         else if (dgvlogic.logicType == DgvLogic.LogicType.Voice)
                         {
-                            //dgvlogic.logicVoice.Descending();
+                            dgvlogic.logicVoice.Descending();
                         }
                         break;
                     case "sensor":
-                        //dgvsensor.Descending();
+                        dgvsensor.Descending();
                         break;
                     case "virtualport":
                         break;

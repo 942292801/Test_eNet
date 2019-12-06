@@ -60,7 +60,7 @@
                         "objAddress": "E6100005",
                         "objType": "4.0_scene",
                         "opt": 17,
-                        "showAddress": "E6100005",
+                        "showAddress": "E6100020",
                         "showMode": "同步"
                     }
                 ],
@@ -144,7 +144,7 @@
                         "objAddress": "E610000D",
                         "objType": "4.0_scene",
                         "opt": 17,
-                        "showAddress": "E610000D",
+                        "showAddress": "E6100001",
                         "showMode": "同步"
                     },
                     {
@@ -234,7 +234,7 @@
                         "objAddress": "E610002B",
                         "objType": "4.0_scene",
                         "opt": 17,
-                        "showAddress": "E610002B",
+                        "showAddress": "E610000B",
                         "showMode": "同步"
                     },
                     {

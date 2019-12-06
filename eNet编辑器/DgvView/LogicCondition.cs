@@ -34,10 +34,10 @@ namespace eNet编辑器.DgvView
         private void doubleBuffered(DataGridView dataGridView)
         {
             //利用反射设置DataGridView的双缓冲
-            Type dgvType = this.dataGridView1.GetType();
+            Type dgvType = dataGridView.GetType();
             PropertyInfo pi = dgvType.GetProperty("DoubleBuffered",
             BindingFlags.Instance | BindingFlags.NonPublic);
-            pi.SetValue(this.dataGridView1, true, null);
+            pi.SetValue(dataGridView, true, null);
         }
         #endregion
 
@@ -789,6 +789,18 @@ namespace eNet编辑器.DgvView
                                         jumpSetInfo(point);
                                     }*/
                                     break;
+                                case "a":
+                                    dataGridView1.Columns[1].ReadOnly = false;
+                                    break;
+                                case "b":
+                                    dataGridView1.Columns[3].ReadOnly = false;
+                                    break;
+                                case "c":
+                                    dataGridView1.Columns[5].ReadOnly = false;
+                                    break;
+                                case "d":
+                                    dataGridView1.Columns[7].ReadOnly = false;
+                                    break;
                                 default: break;
                             }
                             
@@ -941,6 +953,7 @@ namespace eNet编辑器.DgvView
                     switch (dataGridView1.Columns[columnNum].Name)
                     {
                         case "a":
+                            dataGridView1.Columns[1].ReadOnly = true;
                             if (dataGridView1.Rows[rowNum].Cells[1].Value != null && Validator.IsInteger(dataGridView1.Rows[rowNum].Cells[1].Value.ToString()))
                             {
 
@@ -954,6 +967,7 @@ namespace eNet编辑器.DgvView
                             }
                             break;
                         case "b":
+                            dataGridView1.Columns[3].ReadOnly = true;
                             if (dataGridView1.Rows[rowNum].Cells[3].Value != null && Validator.IsInteger(dataGridView1.Rows[rowNum].Cells[3].Value.ToString()))
                             {
                                 //改变延时
@@ -966,6 +980,7 @@ namespace eNet编辑器.DgvView
                             }
                             break;
                         case "c":
+                            dataGridView1.Columns[5].ReadOnly = true;
                             if (dataGridView1.Rows[rowNum].Cells[5].Value != null && Validator.IsInteger(dataGridView1.Rows[rowNum].Cells[5].Value.ToString()))
                             {
                                 //改变延时
@@ -978,6 +993,7 @@ namespace eNet编辑器.DgvView
                             }
                             break;
                         case "d":
+                            dataGridView1.Columns[7].ReadOnly = true;
                             if (dataGridView1.Rows[rowNum].Cells[7].Value != null && Validator.IsInteger(dataGridView1.Rows[rowNum].Cells[7].Value.ToString()))
                             {
                                 //改变延时
@@ -1056,7 +1072,6 @@ namespace eNet编辑器.DgvView
                 }
                 else
                 {
-                    //搜索一次dev表 
                     info.objPid = 0;
                     if (info.objType != type)
                     {
@@ -1064,7 +1079,14 @@ namespace eNet编辑器.DgvView
                     }
 
                 }
-
+                if (info.objType != info.compareobjType)
+                {
+                    info.comparePid = 0;
+                    info.compareobjAddress = string.Empty;
+                    info.compareobjType = string.Empty;
+                    //dataGridView1.Rows[id].Cells[6].Value = null;
+                    //dataGridView1.Rows[id].Cells[6].Value = getCompareObj(info);
+                }
 
                 LogicInfo.content = JsonConvert.SerializeObject(logicConditionContent);
                 DataJson.totalList NewList = FileMesege.cmds.getListInfos();
@@ -1443,6 +1465,10 @@ namespace eNet编辑器.DgvView
                                         jumpSetInfo(point);
                                     }*/
                                     break;
+                                case "delay2":
+                                    dataGridView2.Columns[6].ReadOnly = false;
+                      
+                                    break;
                                 default: break;
                             }
                             try
@@ -1570,6 +1596,7 @@ namespace eNet编辑器.DgvView
                     switch (dataGridView2.Columns[columnNum].Name)
                     {
                         case "delay2":
+                            dataGridView2.Columns[6].ReadOnly = true;
                             if (dataGridView2.Rows[rowNum].Cells[6].Value != null && Validator.IsNumber(dataGridView2.Rows[rowNum].Cells[6].Value.ToString()))
                             {
                                 //改变延时
@@ -1944,6 +1971,10 @@ namespace eNet编辑器.DgvView
                                         jumpSetInfo(point);
                                     }*/
                                     break;
+                                case "delay3":
+                                    dataGridView3.Columns[6].ReadOnly = false;
+                            
+                                    break;
                                 default: break;
                             }
                             try
@@ -2073,6 +2104,7 @@ namespace eNet编辑器.DgvView
                     switch (dataGridView3.Columns[columnNum].Name)
                     {
                         case "delay3":
+                            dataGridView3.Columns[6].ReadOnly = true;
                             if (dataGridView3.Rows[rowNum].Cells[6].Value != null && Validator.IsNumber(dataGridView3.Rows[rowNum].Cells[6].Value.ToString()))
                             {
                                 //改变延时
@@ -2538,6 +2570,7 @@ namespace eNet编辑器.DgvView
 
         private void copy(DataGridView dataGridView,bool flag)
         {
+            /*
             //获取当前选中单元格的列序号
             int colIndex = dataGridView.CurrentRow.Cells.IndexOf(dataGridView.CurrentCell);
             //当粘贴选中单元格为操作
@@ -2572,7 +2605,7 @@ namespace eNet编辑器.DgvView
                 //获取sceneInfo对象表中对应ID号info对象
                 FileMesege.copyLogicScene = info;
 
-            }
+            }*/
         }
 
         /// <summary>
@@ -2601,6 +2634,7 @@ namespace eNet编辑器.DgvView
 
         private void past(DataGridView dataGridView, bool flag)
         {
+            /*
             DataJson.logicsInfo LogicInfo = DataListHelper.findLogicInfoByTabName(FileMesege.LogicTabName);
             if (LogicInfo == null)
             {
@@ -2653,8 +2687,1380 @@ namespace eNet编辑器.DgvView
                 LogicInfo.content = JsonConvert.SerializeObject(logicConditionContent);
                 DataJson.totalList NewList = FileMesege.cmds.getListInfos();
                 FileMesege.cmds.DoNewCommand(NewList, OldList);
+            }*/
+        }
+
+        #endregion
+
+        #region 升序 相同 降序
+
+        #region 相同
+        public void Same()
+        {
+            try
+            {
+                if (dataGridView1.Focused)
+                {
+                    SameDgv1();
+                }
+                else if (dataGridView2.Focused)
+                {
+                    SameDgv2();
+                }
+                else if (dataGridView3.Focused)
+                {
+                    SameDgv3();
+                }
+            }
+            catch { }
+        }
+
+        private void SameDgv1()
+        {
+            try
+            {
+                bool ischange = false;
+                //撤销
+                DataJson.totalList OldList = FileMesege.cmds.getListInfos();
+
+                //选中行号
+                int id = 0;
+                //列号
+                int colIndex = 0;
+                //记录第一个选中格的列号
+                int FirstColumnIndex = -1;
+                DataJson.logicsInfo LogicInfo = DataListHelper.findLogicInfoByTabName(FileMesege.LogicTabName);
+                if (LogicInfo == null)
+                {
+                    return;
+                }
+                //把tab对象JSON字符串转换为 操作对象
+                DataJson.ConditionContent logicConditionContent = JsonConvert.DeserializeObject<DataJson.ConditionContent>(LogicInfo.content);
+                DataJson.ConditionInfo info = null;
+                DataJson.ConditionInfo copyInfo = null;
+                for (int i = dataGridView1.SelectedCells.Count - 1; i >= 0; i--)
+                {
+                    //获取当前选中单元格的列序号
+                    colIndex = dataGridView1.SelectedCells[i].ColumnIndex;
+                    if (FirstColumnIndex != -1 && FirstColumnIndex != colIndex)
+                    {
+                        //只操作 第一个选中格的列号 
+                        continue;
+                    }
+                    id = dataGridView1.SelectedCells[i].RowIndex;
+                    info = DataListHelper.getLogicConditionInfo(id +1 , logicConditionContent.conditionInfo);
+                    if (info == null)
+                    {
+                        return;
+                    }
+
+                    if (i == dataGridView1.SelectedCells.Count - 1)
+                    {
+                        //记录第一个选中格内容
+                        FirstColumnIndex = colIndex;
+                        copyInfo = info;
+                        continue;
+                    }
+                    //当粘贴选中单元格为操作
+                    if (colIndex == 2)
+                    {
+                        //选中单元格为对象
+                        info.objAddress = copyInfo.objAddress;
+                        info.objType = copyInfo.objType;
+                        info.objPid = copyInfo.objPid;
+                        if (info.objType != info.compareobjType)
+                        {
+                            info.comparePid = 0;
+                            info.compareobjAddress = string.Empty;
+                            info.compareobjType = string.Empty;
+                            dataGridView1.Rows[id].Cells[6].Value = null;
+                            //dataGridView1.Rows[id].Cells[6].Value = getCompareObj(info);
+                        }
+                        dataGridView1.Rows[id].Cells[2].Value = getObj(info);
+
+                        ischange = true;
+
+                    }
+                    else if (colIndex == 6)
+                    {
+                        //选中单元格为对象
+                        if (dataGridView1.Rows[id].Cells[2].Value != null &&  info.objType == copyInfo.objType)
+                        {
+                            info.compareobjAddress = copyInfo.compareobjAddress;
+                            info.compareobjType = copyInfo.compareobjType;
+                            info.comparePid = copyInfo.comparePid;
+                            dataGridView1.Rows[id].Cells[6].Value = getCompareObj(info);
+                            ischange = true;
+                        }
+
+                       
+                    }
+                    else if (colIndex == 1)
+                    {
+                        info.a = copyInfo.a;
+                        dataGridView1.Rows[id].Cells[1].Value = info.a;
+                        ischange = true;
+                    }
+                    else if (colIndex == 3)
+                    {
+                        info.b = copyInfo.b;
+                        dataGridView1.Rows[id].Cells[3].Value = info.b;
+                        ischange = true;
+                    }
+                    else if (colIndex == 5)
+                    {
+                        info.c = copyInfo.c;
+                        dataGridView1.Rows[id].Cells[5].Value = info.c;
+                        ischange = true;
+                        
+                    }
+                    else if (colIndex == 7)
+                    {
+                        info.d = copyInfo.d;
+                        dataGridView1.Rows[id].Cells[7].Value = info.d;
+                        ischange = true;
+
+                    }
+                }
+                if (ischange)
+                {
+                    LogicInfo.content = JsonConvert.SerializeObject(logicConditionContent);
+                    DataJson.totalList NewList = FileMesege.cmds.getListInfos();
+                    FileMesege.cmds.DoNewCommand(NewList, OldList);
+                }
+
+
+
+            }//try
+            catch
+            {
+
             }
         }
+
+        private void SameDgv2()
+        {
+            try
+            {
+                bool ischange = false;
+                //撤销
+                DataJson.totalList OldList = FileMesege.cmds.getListInfos();
+
+                //选中行号
+                int id = 0;
+                //列号
+                int colIndex = 0;
+                //记录第一个选中格的列号
+                int FirstColumnIndex = -1;
+                DataJson.logicsInfo LogicInfo = DataListHelper.findLogicInfoByTabName(FileMesege.LogicTabName);
+                if (LogicInfo == null)
+                {
+                    return;
+                }
+                //把tab对象JSON字符串转换为 操作对象
+                DataJson.ConditionContent logicConditionContent = JsonConvert.DeserializeObject<DataJson.ConditionContent>(LogicInfo.content);
+                DataJson.sceneInfo info = null;
+                DataJson.sceneInfo copyInfo = null;
+                for (int i = dataGridView2.SelectedCells.Count - 1; i >= 0; i--)
+                {
+                    //获取当前选中单元格的列序号
+                    colIndex = dataGridView2.SelectedCells[i].ColumnIndex;
+                    if (FirstColumnIndex != -1 && FirstColumnIndex != colIndex)
+                    {
+                        //只操作 第一个选中格的列号 
+                        continue;
+                    }
+                    id = dataGridView2.SelectedCells[i].RowIndex;
+                    info = DataListHelper.getLogicSceneInfo(id+1, logicConditionContent.trueDo);
+                    if (info == null)
+                    {
+                        return;
+                    }
+
+                    if (i == dataGridView2.SelectedCells.Count - 1)
+                    {
+                        //记录第一个选中格内容
+                        FirstColumnIndex = colIndex;
+                        copyInfo = info;
+                        continue;
+                    }
+                    //当粘贴选中单元格为操作
+                    if (colIndex == 5)
+                    {
+
+                        //获取sceneInfo对象表中对应ID号info对象
+                        if (string.IsNullOrEmpty(copyInfo.type) || string.IsNullOrEmpty(info.type) || info.type != copyInfo.type)
+                        {
+                            //类型不一致 并且为空
+                            continue;
+                        }
+                        ischange = true;
+                        info.opt = copyInfo.opt;
+                        info.optName = copyInfo.optName;
+                        dataGridView2.Rows[id].Cells[5].Value = (info.optName + " " + info.opt).Trim();
+                    }//if
+                    else if (colIndex == 2)
+                    {
+                        //选中单元格为地址
+                        info.address = copyInfo.address;
+                        if (copyInfo.type != info.type)
+                        {
+                            //类型不一样清空类型
+                            info.opt = string.Empty;
+                            info.optName = string.Empty;
+                        }
+                        info.type = copyInfo.type;
+                        info.pid = copyInfo.pid;
+                        //添加地域和名称 在sceneInfo表中
+                        DataJson.PointInfo point = DataListHelper.findPointByPid(info.pid);
+                        if (point != null)
+                        {
+                            info.type = point.type;
+                            dataGridView2.Rows[id].Cells[3].Value = string.Format("{0} {1} {2} {3}", point.area1, point.area2, point.area3, point.area4).Trim();//改根据地址从信息里面获取
+                            dataGridView2.Rows[id].Cells[4].Value = point.name;
+                        }
+                        else
+                        {
+                            info.pid = 0;
+                            dataGridView2.Rows[id].Cells[3].Value = string.Empty;
+                            dataGridView2.Rows[id].Cells[4].Value = string.Empty;
+                        }
+                        dataGridView2.Rows[id].Cells[1].Value = IniHelper.findTypesIniNamebyType(info.type);
+                        dataGridView2.Rows[id].Cells[2].Value = DgvMesege.addressTransform(info.address);
+                        dataGridView2.Rows[id].Cells[5].Value = (info.optName + " " + info.opt).Trim();
+
+                        ischange = true;
+
+                    }
+                    else if (colIndex == 6)
+                    {
+                        //延时相同
+                        ischange = true;
+                        info.delay = copyInfo.delay;
+                        dataGridView2.Rows[id].Cells[6].Value = Convert.ToDouble(info.delay) / 10;
+                    }
+                
+
+                }
+                if (ischange)
+                {
+                    LogicInfo.content = JsonConvert.SerializeObject(logicConditionContent);
+                    DataJson.totalList NewList = FileMesege.cmds.getListInfos();
+                    FileMesege.cmds.DoNewCommand(NewList, OldList);
+                }
+
+
+
+            }//try
+            catch
+            {
+
+            }
+        }
+
+        private void SameDgv3()
+        {
+            try
+            {
+                bool ischange = false;
+                //撤销
+                DataJson.totalList OldList = FileMesege.cmds.getListInfos();
+
+                //选中行号
+                int id = 0;
+                //列号
+                int colIndex = 0;
+                //记录第一个选中格的列号
+                int FirstColumnIndex = -1;
+                DataJson.logicsInfo LogicInfo = DataListHelper.findLogicInfoByTabName(FileMesege.LogicTabName);
+                if (LogicInfo == null)
+                {
+                    return;
+                }
+                //把tab对象JSON字符串转换为 操作对象
+                DataJson.ConditionContent logicConditionContent = JsonConvert.DeserializeObject<DataJson.ConditionContent>(LogicInfo.content);
+                DataJson.sceneInfo info = null;
+                DataJson.sceneInfo copyInfo = null;
+                for (int i = dataGridView3.SelectedCells.Count - 1; i >= 0; i--)
+                {
+                    //获取当前选中单元格的列序号
+                    colIndex = dataGridView3.SelectedCells[i].ColumnIndex;
+                    if (FirstColumnIndex != -1 && FirstColumnIndex != colIndex)
+                    {
+                        //只操作 第一个选中格的列号 
+                        continue;
+                    }
+                    id = dataGridView3.SelectedCells[i].RowIndex;
+                    info = DataListHelper.getLogicSceneInfo(id + 1, logicConditionContent.falseDo);
+                    if (info == null)
+                    {
+                        return;
+                    }
+
+                    if (i == dataGridView3.SelectedCells.Count - 1)
+                    {
+                        //记录第一个选中格内容
+                        FirstColumnIndex = colIndex;
+                        copyInfo = info;
+                        continue;
+                    }
+                    //当粘贴选中单元格为操作
+                    if (colIndex == 5)
+                    {
+
+                        //获取sceneInfo对象表中对应ID号info对象
+                        if (string.IsNullOrEmpty(copyInfo.type) || string.IsNullOrEmpty(info.type) || info.type != copyInfo.type)
+                        {
+                            //类型不一致 并且为空
+                            continue;
+                        }
+                        ischange = true;
+                        info.opt = copyInfo.opt;
+                        info.optName = copyInfo.optName;
+                        dataGridView3.Rows[id].Cells[5].Value = (info.optName + " " + info.opt).Trim();
+                    }//if
+                    else if (colIndex == 2)
+                    {
+                        //选中单元格为地址
+                        info.address = copyInfo.address;
+                        if (copyInfo.type != info.type)
+                        {
+                            //类型不一样清空类型
+                            info.opt = string.Empty;
+                            info.optName = string.Empty;
+                        }
+                        info.type = copyInfo.type;
+                        info.pid = copyInfo.pid;
+                        //添加地域和名称 在sceneInfo表中
+                        DataJson.PointInfo point = DataListHelper.findPointByPid(info.pid);
+                        if (point != null)
+                        {
+                            info.type = point.type;
+                            dataGridView3.Rows[id].Cells[3].Value = string.Format("{0} {1} {2} {3}", point.area1, point.area2, point.area3, point.area4).Trim();//改根据地址从信息里面获取
+                            dataGridView3.Rows[id].Cells[4].Value = point.name;
+                        }
+                        else
+                        {
+                            info.pid = 0;
+                            dataGridView3.Rows[id].Cells[3].Value = string.Empty;
+                            dataGridView3.Rows[id].Cells[4].Value = string.Empty;
+                        }
+                        dataGridView3.Rows[id].Cells[1].Value = IniHelper.findTypesIniNamebyType(info.type);
+                        dataGridView3.Rows[id].Cells[2].Value = DgvMesege.addressTransform(info.address);
+                        dataGridView3.Rows[id].Cells[5].Value = (info.optName + " " + info.opt).Trim();
+
+                        ischange = true;
+
+                    }
+                    else if (colIndex == 6)
+                    {
+                        //延时相同
+                        ischange = true;
+                        info.delay = copyInfo.delay;
+                        dataGridView3.Rows[id].Cells[6].Value = Convert.ToDouble(info.delay) / 10;
+                    }
+
+
+                }
+                if (ischange)
+                {
+                    LogicInfo.content = JsonConvert.SerializeObject(logicConditionContent);
+                    DataJson.totalList NewList = FileMesege.cmds.getListInfos();
+                    FileMesege.cmds.DoNewCommand(NewList, OldList);
+                }
+
+
+
+            }//try
+            catch
+            {
+
+            }
+        }
+
+        #endregion
+
+        #region 升序
+        public void Ascending()
+        {
+            try
+            {
+                if (dataGridView1.Focused)
+                {
+                    AscendingDgv1();
+                }
+                else if (dataGridView2.Focused)
+                {
+                    AscendingDgv2();
+                }
+                else if (dataGridView3.Focused)
+                {
+                    AscendingDgv3();
+                }
+            }
+            catch { }
+
+        }
+
+        private void AscendingDgv1()
+        {
+            try
+            {
+                bool ischange = false;
+                //撤销
+                DataJson.totalList OldList = FileMesege.cmds.getListInfos();
+
+                //选中行 序号
+                int id = 0;
+                //列号
+                int colIndex = 0;
+                //记录第一个选中格的列号
+                int FirstColumnIndex = -1;
+                //地址添加量
+                int addCount = 0;
+                DataJson.logicsInfo LogicInfo = DataListHelper.findLogicInfoByTabName(FileMesege.LogicTabName);
+                if (LogicInfo == null)
+                {
+                    return;
+                }
+                //把tab对象JSON字符串转换为 操作对象
+                DataJson.ConditionContent logicConditionContent = JsonConvert.DeserializeObject<DataJson.ConditionContent>(LogicInfo.content);
+                DataJson.ConditionInfo info = null;
+                DataJson.ConditionInfo copyInfo = null;
+
+                //把第一行的数目 和 列数记录起来
+                for (int i = dataGridView1.SelectedCells.Count - 1; i >= 0; i--)
+                {
+                    colIndex = dataGridView1.SelectedCells[i].ColumnIndex;
+                    if (FirstColumnIndex == -1 && FirstColumnIndex != colIndex)
+                    {
+                        //只操作单选的列
+                        FirstColumnIndex = dataGridView1.SelectedCells[i].ColumnIndex;
+                        id = dataGridView1.SelectedCells[i].RowIndex;
+
+                        info = DataListHelper.getLogicConditionInfo(id + 1, logicConditionContent.conditionInfo);
+                        if (info == null)
+                        {
+                            return;
+                        }
+                        copyInfo = info;
+                        continue;
+                    }
+                    if (colIndex == FirstColumnIndex)
+                    {
+                        addCount++;
+                    }
+                }
+
+                for (int i = 0; i < dataGridView1.SelectedCells.Count; i++)
+                {
+                    //获取当前选中单元格的列序号
+                    colIndex = dataGridView1.SelectedCells[i].ColumnIndex;
+                    if (FirstColumnIndex != colIndex)
+                    {
+                        //只操作单选的列
+                        continue;
+                    }
+                    id = dataGridView1.SelectedCells[i].RowIndex;
+                    info = DataListHelper.getLogicConditionInfo(id + 1, logicConditionContent.conditionInfo);
+                    if (info == null)
+                    {
+                        return;
+                    }
+
+                    if (colIndex == 2)
+                    {
+                        //地址递增
+                        if (string.IsNullOrEmpty(copyInfo.objAddress) || copyInfo.objAddress == "FFFFFFFF" || copyInfo.objAddress.Substring(0, 2) != "FE")
+                        {
+                            continue;
+                        }
+                        if (!Validator.IsInteger(FileMesege.AsDesCendingNum.ToString()))
+                        {
+                            FileMesege.AsDesCendingNum = 1;
+                        }
+                        if (addCount == 0)
+                        {
+                            continue;
+                        }
+                        info.objAddress = DgvMesege.addressAdd(copyInfo.objAddress, addCount * Convert.ToInt32(FileMesege.AsDesCendingNum));
+                        //AppTxtShow(id +"   "+sceneInfo.address+ "   "+addCount);
+                        info.objType = IniHelper.findIniTypesByAddress(ip, info.objAddress).Split(',')[0];
+                        //添加地域和名称 在sceneInfo表中
+                        DataJson.PointInfo point = DataListHelper.findPointByType_address("", info.objAddress, ip);
+                        if (point != null)
+                        {
+                            info.objPid = point.pid;
+                            info.objType = point.type;
+                        }
+                        else
+                        {
+                            info.objPid = 0;
+                  
+                        }
+                        if (info.objType != info.compareobjType)
+                        {
+                            info.comparePid = 0;
+                            info.compareobjAddress = string.Empty;
+                            info.compareobjType = string.Empty;
+                            dataGridView1.Rows[id].Cells[6].Value = null;
+                            //dataGridView1.Rows[id].Cells[6].Value = getCompareObj(info);
+                        }
+                        dataGridView1.Rows[id].Cells[2].Value = getObj(info);
+
+                        ischange = true;
+
+                    }
+                    else if (colIndex == 6)
+                    {
+                        //地址递增
+                        if (string.IsNullOrEmpty(copyInfo.compareobjAddress) || copyInfo.compareobjAddress == "FFFFFFFF" || copyInfo.compareobjAddress.Substring(0, 2) != "FE")
+                        {
+                            continue;
+                        }
+                        if (!Validator.IsInteger(FileMesege.AsDesCendingNum.ToString()))
+                        {
+                            FileMesege.AsDesCendingNum = 1;
+                        }
+                        if (addCount == 0)
+                        {
+                            continue;
+                        }
+                        info.compareobjAddress = DgvMesege.addressAdd(copyInfo.compareobjAddress, addCount * Convert.ToInt32(FileMesege.AsDesCendingNum));
+                        //AppTxtShow(id +"   "+sceneInfo.address+ "   "+addCount);
+                        info.compareobjType = IniHelper.findIniTypesByAddress(ip, info.compareobjAddress).Split(',')[0];
+                        //添加地域和名称 在sceneInfo表中
+                        DataJson.PointInfo point = DataListHelper.findPointByType_address("", info.compareobjAddress, ip);
+                        if (point != null)
+                        {
+                            info.comparePid = point.pid;
+                            info.compareobjType = point.type;
+                        }
+                        else
+                        {
+                            info.comparePid = 0;
+
+                        }
+                        if (info.objType != info.compareobjType)
+                        {
+                            info.comparePid = 0;
+                            info.compareobjAddress = string.Empty;
+                            info.compareobjType = string.Empty;
+                          
+                            
+                        }
+                        dataGridView1.Rows[id].Cells[6].Value = getCompareObj(info);
+
+                        ischange = true;
+                    }
+                    else if (colIndex == 1)
+                    {
+                        info.a = copyInfo.a + addCount * Convert.ToInt32(FileMesege.AsDesCendingNum);
+                        dataGridView1.Rows[id].Cells[1].Value = info.a;
+                        ischange = true;
+                    }
+                    else if (colIndex == 3)
+                    {
+                        info.b = copyInfo.b + addCount * Convert.ToInt32(FileMesege.AsDesCendingNum);
+                        dataGridView1.Rows[id].Cells[3].Value = info.b;
+                        ischange = true;
+                    }
+                    else if (colIndex == 5)
+                    {
+                        info.c = copyInfo.c + addCount * Convert.ToInt32(FileMesege.AsDesCendingNum);
+                        dataGridView1.Rows[id].Cells[5].Value = info.c;
+                        ischange = true;
+
+                    }
+                    else if (colIndex == 7)
+                    {
+                        info.d = copyInfo.d + addCount * Convert.ToInt32(FileMesege.AsDesCendingNum);
+                        dataGridView1.Rows[id].Cells[7].Value = info.d;
+                        ischange = true;
+
+                    }
+                    addCount--;
+                }
+                if (ischange)
+                {
+                    LogicInfo.content = JsonConvert.SerializeObject(logicConditionContent);
+                    DataJson.totalList NewList = FileMesege.cmds.getListInfos();
+                    FileMesege.cmds.DoNewCommand(NewList, OldList);
+                }
+            }//try
+            catch
+            {
+
+            }
+        }
+
+        private void AscendingDgv2()
+        {
+            try
+            {
+                bool ischange = false;
+                //撤销
+                DataJson.totalList OldList = FileMesege.cmds.getListInfos();
+
+                //选中行 序号
+                int id = 0;
+                //列号
+                int colIndex = 0;
+                //记录第一个选中格的列号
+                int FirstColumnIndex = -1;
+                //地址添加量
+                int addCount = 0;
+                DataJson.logicsInfo LogicInfo = DataListHelper.findLogicInfoByTabName(FileMesege.LogicTabName);
+                if (LogicInfo == null)
+                {
+                    return;
+                }
+                //把tab对象JSON字符串转换为 操作对象
+                DataJson.ConditionContent logicConditionContent = JsonConvert.DeserializeObject<DataJson.ConditionContent>(LogicInfo.content);
+                DataJson.sceneInfo info = null;
+                DataJson.sceneInfo copyInfo = null;
+
+                //把第一行的数目 和 列数记录起来
+                for (int i = dataGridView2.SelectedCells.Count - 1; i >= 0; i--)
+                {
+                    colIndex = dataGridView2.SelectedCells[i].ColumnIndex;
+                    if (FirstColumnIndex == -1 && FirstColumnIndex != colIndex)
+                    {
+                        //只操作单选的列
+                        FirstColumnIndex = dataGridView2.SelectedCells[i].ColumnIndex;
+                        id = dataGridView2.SelectedCells[i].RowIndex;
+           
+                        info = DataListHelper.getLogicSceneInfo(id + 1, logicConditionContent.trueDo);
+                        if (info == null)
+                        {
+                            return;
+                        }
+                        copyInfo = info;
+                        continue;
+                    }
+                    if (colIndex == FirstColumnIndex)
+                    {
+                        addCount++;
+                    }
+                }
+
+                for (int i = 0; i < dataGridView2.SelectedCells.Count; i++)
+                {
+                    //获取当前选中单元格的列序号
+                    colIndex = dataGridView2.SelectedCells[i].ColumnIndex;
+                    if (FirstColumnIndex != colIndex)
+                    {
+                        //只操作单选的列
+                        continue;
+                    }
+                    id = dataGridView2.SelectedCells[i].RowIndex;
+                    info = DataListHelper.getLogicSceneInfo(id + 1, logicConditionContent.trueDo);
+                    if (info == null)
+                    {
+                        return;
+                    }
+
+                    //延时递增
+                    if (colIndex == 6)
+                    {
+
+                        ischange = true;
+                        info.delay = copyInfo.delay + addCount * Convert.ToInt32(FileMesege.AsDesCendingNum * 10);
+                        dataGridView2.Rows[id].Cells[6].Value = Convert.ToDouble(info.delay) / 10;
+                    }//if
+                    else if (colIndex == 2)
+                    {
+                        //地址递增
+                        if (string.IsNullOrEmpty(copyInfo.address) || copyInfo.address == "FFFFFFFF")
+                        {
+                            continue;
+                        }
+                        if (!Validator.IsInteger(FileMesege.AsDesCendingNum.ToString()))
+                        {
+                            FileMesege.AsDesCendingNum = 1;
+                        }
+                        if (addCount == 0)
+                        {
+                            continue;
+                        }
+                        info.address = DgvMesege.addressAdd(copyInfo.address, addCount * Convert.ToInt32(FileMesege.AsDesCendingNum));
+                        //AppTxtShow(id +"   "+sceneInfo.address+ "   "+addCount);
+                        info.type = IniHelper.findIniTypesByAddress(ip, info.address).Split(',')[0];
+                        //添加地域和名称 在sceneInfo表中
+                        DataJson.PointInfo point = DataListHelper.findPointByType_address("", info.address, ip);
+                        if (point != null)
+                        {
+                            info.pid = point.pid;
+                            info.type = point.type;
+                            dataGridView2.Rows[id].Cells[3].Value = string.Format("{0} {1} {2} {3}", point.area1, point.area2, point.area3, point.area4).Trim();//改根据地址从信息里面获取
+                            dataGridView2.Rows[id].Cells[4].Value = point.name;
+                        }
+                        else
+                        {
+                            info.pid = 0;
+                            dataGridView2.Rows[id].Cells[3].Value = string.Empty;
+                            dataGridView2.Rows[id].Cells[4].Value = string.Empty;
+                        }
+                        info.opt = string.Empty;
+                        info.optName = string.Empty;
+                        dataGridView2.Rows[id].Cells[1].Value = IniHelper.findTypesIniNamebyType(info.type);
+                        dataGridView2.Rows[id].Cells[2].Value = DgvMesege.addressTransform(info.address);
+                        dataGridView2.Rows[id].Cells[5].Value = (info.optName + " " + info.opt).Trim();
+
+                        ischange = true;
+
+                    }
+                    addCount--;
+                }
+                if (ischange)
+                {
+                    LogicInfo.content = JsonConvert.SerializeObject(logicConditionContent);
+                    DataJson.totalList NewList = FileMesege.cmds.getListInfos();
+                    FileMesege.cmds.DoNewCommand(NewList, OldList);
+                }
+            }//try
+            catch
+            {
+
+            }
+        }
+
+        private void AscendingDgv3()
+        {
+            try
+            {
+                bool ischange = false;
+                //撤销
+                DataJson.totalList OldList = FileMesege.cmds.getListInfos();
+
+                //选中行 序号
+                int id = 0;
+                //列号
+                int colIndex = 0;
+                //记录第一个选中格的列号
+                int FirstColumnIndex = -1;
+                //地址添加量
+                int addCount = 0;
+                DataJson.logicsInfo LogicInfo = DataListHelper.findLogicInfoByTabName(FileMesege.LogicTabName);
+                if (LogicInfo == null)
+                {
+                    return;
+                }
+                //把tab对象JSON字符串转换为 操作对象
+                DataJson.ConditionContent logicConditionContent = JsonConvert.DeserializeObject<DataJson.ConditionContent>(LogicInfo.content);
+                DataJson.sceneInfo info = null;
+                DataJson.sceneInfo copyInfo = null;
+
+                //把第一行的数目 和 列数记录起来
+                for (int i = dataGridView3.SelectedCells.Count - 1; i >= 0; i--)
+                {
+                    colIndex = dataGridView3.SelectedCells[i].ColumnIndex;
+                    if (FirstColumnIndex == -1 && FirstColumnIndex != colIndex)
+                    {
+                        //只操作单选的列
+                        FirstColumnIndex = dataGridView3.SelectedCells[i].ColumnIndex;
+                        id = dataGridView3.SelectedCells[i].RowIndex;
+
+                        info = DataListHelper.getLogicSceneInfo(id + 1, logicConditionContent.falseDo);
+                        if (info == null)
+                        {
+                            return;
+                        }
+                        copyInfo = info;
+                        continue;
+                    }
+                    if (colIndex == FirstColumnIndex)
+                    {
+                        addCount++;
+                    }
+                }
+
+                for (int i = 0; i < dataGridView3.SelectedCells.Count; i++)
+                {
+                    //获取当前选中单元格的列序号
+                    colIndex = dataGridView3.SelectedCells[i].ColumnIndex;
+                    if (FirstColumnIndex != colIndex)
+                    {
+                        //只操作单选的列
+                        continue;
+                    }
+                    id = dataGridView3.SelectedCells[i].RowIndex;
+                    info = DataListHelper.getLogicSceneInfo(id + 1, logicConditionContent.falseDo);
+                    if (info == null)
+                    {
+                        return;
+                    }
+
+                    //延时递增
+                    if (colIndex == 6)
+                    {
+
+                        ischange = true;
+                        info.delay = copyInfo.delay + addCount * Convert.ToInt32(FileMesege.AsDesCendingNum * 10);
+                        dataGridView3.Rows[id].Cells[6].Value = Convert.ToDouble(info.delay) / 10;
+                    }//if
+                    else if (colIndex == 2)
+                    {
+                        //地址递增
+                        if (string.IsNullOrEmpty(copyInfo.address) || copyInfo.address == "FFFFFFFF")
+                        {
+                            continue;
+                        }
+                        if (!Validator.IsInteger(FileMesege.AsDesCendingNum.ToString()))
+                        {
+                            FileMesege.AsDesCendingNum = 1;
+                        }
+                        if (addCount == 0)
+                        {
+                            continue;
+                        }
+                        info.address = DgvMesege.addressAdd(copyInfo.address, addCount * Convert.ToInt32(FileMesege.AsDesCendingNum));
+                        //AppTxtShow(id +"   "+sceneInfo.address+ "   "+addCount);
+                        info.type = IniHelper.findIniTypesByAddress(ip, info.address).Split(',')[0];
+                        //添加地域和名称 在sceneInfo表中
+                        DataJson.PointInfo point = DataListHelper.findPointByType_address("", info.address, ip);
+                        if (point != null)
+                        {
+                            info.pid = point.pid;
+                            info.type = point.type;
+                            dataGridView3.Rows[id].Cells[3].Value = string.Format("{0} {1} {2} {3}", point.area1, point.area2, point.area3, point.area4).Trim();//改根据地址从信息里面获取
+                            dataGridView3.Rows[id].Cells[4].Value = point.name;
+                        }
+                        else
+                        {
+                            info.pid = 0;
+                            dataGridView3.Rows[id].Cells[3].Value = string.Empty;
+                            dataGridView3.Rows[id].Cells[4].Value = string.Empty;
+                        }
+                        info.opt = string.Empty;
+                        info.optName = string.Empty;
+                        dataGridView3.Rows[id].Cells[1].Value = IniHelper.findTypesIniNamebyType(info.type);
+                        dataGridView3.Rows[id].Cells[2].Value = DgvMesege.addressTransform(info.address);
+                        dataGridView3.Rows[id].Cells[5].Value = (info.optName + " " + info.opt).Trim();
+
+                        ischange = true;
+
+                    }
+                    addCount--;
+                }
+                if (ischange)
+                {
+                    LogicInfo.content = JsonConvert.SerializeObject(logicConditionContent);
+                    DataJson.totalList NewList = FileMesege.cmds.getListInfos();
+                    FileMesege.cmds.DoNewCommand(NewList, OldList);
+                }
+            }//try
+            catch
+            {
+
+            }
+        }
+        #endregion
+
+        #region 降序
+        public void Descending()
+        {
+            try
+            {
+                if (dataGridView1.Focused)
+                {
+                    DescendingDgv1();
+                }
+                else if (dataGridView2.Focused)
+                {
+                    DescendingDgv2();
+                }
+                else if (dataGridView3.Focused)
+                {
+                    DescendingDgv3();
+                }
+            }
+            catch { }
+        }
+
+  
+
+        private void DescendingDgv1()
+        {
+            try
+            {
+                bool ischange = false;
+                //撤销
+                DataJson.totalList OldList = FileMesege.cmds.getListInfos();
+
+                //选中行 序号
+                int id = 0;
+                //列号
+                int colIndex = 0;
+                //记录第一个选中格的列号
+                int FirstColumnIndex = -1;
+                //地址添加量
+                int reduceCount = 0;
+                DataJson.logicsInfo LogicInfo = DataListHelper.findLogicInfoByTabName(FileMesege.LogicTabName);
+                if (LogicInfo == null)
+                {
+                    return;
+                }
+                //把tab对象JSON字符串转换为 操作对象
+                DataJson.ConditionContent logicConditionContent = JsonConvert.DeserializeObject<DataJson.ConditionContent>(LogicInfo.content);
+                DataJson.ConditionInfo info = null;
+                DataJson.ConditionInfo copyInfo = null;
+
+                //把第一行的数目 和 列数记录起来
+                for (int i = dataGridView1.SelectedCells.Count - 1; i >= 0; i--)
+                {
+                    colIndex = dataGridView1.SelectedCells[i].ColumnIndex;
+                    if (FirstColumnIndex == -1 && FirstColumnIndex != colIndex)
+                    {
+                        //只操作单选的列
+                        FirstColumnIndex = dataGridView1.SelectedCells[i].ColumnIndex;
+                        id = dataGridView1.SelectedCells[i].RowIndex;
+
+                        info = DataListHelper.getLogicConditionInfo(id + 1, logicConditionContent.conditionInfo);
+                        if (info == null)
+                        {
+                            return;
+                        }
+                        copyInfo = info;
+                        continue;
+                    }
+                    if (colIndex == FirstColumnIndex)
+                    {
+                        reduceCount++;
+                    }
+                }
+
+                for (int i = 0; i < dataGridView1.SelectedCells.Count; i++)
+                {
+                    //获取当前选中单元格的列序号
+                    colIndex = dataGridView1.SelectedCells[i].ColumnIndex;
+                    if (FirstColumnIndex != colIndex)
+                    {
+                        //只操作单选的列
+                        continue;
+                    }
+                    id = dataGridView1.SelectedCells[i].RowIndex;
+                    info = DataListHelper.getLogicConditionInfo(id + 1, logicConditionContent.conditionInfo);
+                    if (info == null)
+                    {
+                        return;
+                    }
+
+                    if (colIndex == 2)
+                    {
+                        //地址递增
+                        if (string.IsNullOrEmpty(copyInfo.objAddress) || copyInfo.objAddress == "FFFFFFFF" || copyInfo.objAddress.Substring(0, 2) != "FE")
+                        {
+                            continue;
+                        }
+                        if (!Validator.IsInteger(FileMesege.AsDesCendingNum.ToString()))
+                        {
+                            FileMesege.AsDesCendingNum = 1;
+                        }
+                        if (reduceCount == 0)
+                        {
+                            continue;
+                        }
+                        info.objAddress = DgvMesege.addressReduce(copyInfo.objAddress, reduceCount * Convert.ToInt32(FileMesege.AsDesCendingNum));
+                        //AppTxtShow(id +"   "+sceneInfo.address+ "   "+addCount);
+                        info.objType = IniHelper.findIniTypesByAddress(ip, info.objAddress).Split(',')[0];
+                        //添加地域和名称 在sceneInfo表中
+                        DataJson.PointInfo point = DataListHelper.findPointByType_address("", info.objAddress, ip);
+                        if (point != null)
+                        {
+                            info.objPid = point.pid;
+                            info.objType = point.type;
+                        }
+                        else
+                        {
+                            info.objPid = 0;
+
+                        }
+                        if (info.objType != info.compareobjType)
+                        {
+                            info.comparePid = 0;
+                            info.compareobjAddress = string.Empty;
+                            info.compareobjType = string.Empty;
+                            dataGridView1.Rows[id].Cells[6].Value = null;
+                            //dataGridView1.Rows[id].Cells[6].Value = getCompareObj(info);
+                        }
+                        dataGridView1.Rows[id].Cells[2].Value = getObj(info);
+
+                        ischange = true;
+
+                    }
+                    else if (colIndex == 6)
+                    {
+                        //地址递增
+                        if (string.IsNullOrEmpty(copyInfo.compareobjAddress) || copyInfo.compareobjAddress == "FFFFFFFF" || copyInfo.compareobjAddress.Substring(0, 2) != "FE")
+                        {
+                            continue;
+                        }
+                        if (!Validator.IsInteger(FileMesege.AsDesCendingNum.ToString()))
+                        {
+                            FileMesege.AsDesCendingNum = 1;
+                        }
+                        if (reduceCount == 0)
+                        {
+                            continue;
+                        }
+                        info.compareobjAddress = DgvMesege.addressReduce(copyInfo.compareobjAddress, reduceCount * Convert.ToInt32(FileMesege.AsDesCendingNum));
+                        //AppTxtShow(id +"   "+sceneInfo.address+ "   "+addCount);
+                        info.compareobjType = IniHelper.findIniTypesByAddress(ip, info.compareobjAddress).Split(',')[0];
+                        //添加地域和名称 在sceneInfo表中
+                        DataJson.PointInfo point = DataListHelper.findPointByType_address("", info.compareobjAddress, ip);
+                        if (point != null)
+                        {
+                            info.comparePid = point.pid;
+                            info.compareobjType = point.type;
+                        }
+                        else
+                        {
+                            info.comparePid = 0;
+
+                        }
+                        if (info.objType != info.compareobjType)
+                        {
+                            info.comparePid = 0;
+                            info.compareobjAddress = string.Empty;
+                            info.compareobjType = string.Empty;
+
+
+                        }
+                        dataGridView1.Rows[id].Cells[6].Value = getCompareObj(info);
+
+                        ischange = true;
+                    }
+                    else if (colIndex == 1)
+                    {
+                        info.a = copyInfo.a - reduceCount * Convert.ToInt32(FileMesege.AsDesCendingNum);
+                        if (info.a < 0)
+                        {
+                            info.a = 0;
+                        }
+                        dataGridView1.Rows[id].Cells[1].Value = info.a;
+                        ischange = true;
+                    }
+                    else if (colIndex == 3)
+                    {
+                        info.b = copyInfo.b - reduceCount * Convert.ToInt32(FileMesege.AsDesCendingNum);
+                        if (info.b < 0)
+                        {
+                            info.b = 0;
+                        }
+                        dataGridView1.Rows[id].Cells[3].Value = info.b;
+                        ischange = true;
+                    }
+                    else if (colIndex == 5)
+                    {
+                        info.c = copyInfo.c - reduceCount * Convert.ToInt32(FileMesege.AsDesCendingNum);
+                        if (info.c < 0)
+                        {
+                            info.c = 0;
+                        }
+                        dataGridView1.Rows[id].Cells[5].Value = info.c;
+                        ischange = true;
+
+                    }
+                    else if (colIndex == 7)
+                    {
+                        info.d = copyInfo.d - reduceCount * Convert.ToInt32(FileMesege.AsDesCendingNum);
+                        if (info.d < 0)
+                        {
+                            info.d = 0;
+                        }
+                        dataGridView1.Rows[id].Cells[7].Value = info.d;
+                        ischange = true;
+
+                    }
+                    reduceCount--;
+                }
+                if (ischange)
+                {
+                    LogicInfo.content = JsonConvert.SerializeObject(logicConditionContent);
+                    DataJson.totalList NewList = FileMesege.cmds.getListInfos();
+                    FileMesege.cmds.DoNewCommand(NewList, OldList);
+                }
+            }//try
+            catch
+            {
+
+            }
+        }
+
+        private void DescendingDgv2()
+        {
+            try
+            {
+                bool ischange = false;
+                //撤销
+                DataJson.totalList OldList = FileMesege.cmds.getListInfos();
+
+                //选中行 序号
+                int id = 0;
+                //列号
+                int colIndex = 0;
+                //记录第一个选中格的列号
+                int FirstColumnIndex = -1;
+                //地址添加量
+                int reduceCount = 0;
+                DataJson.logicsInfo LogicInfo = DataListHelper.findLogicInfoByTabName(FileMesege.LogicTabName);
+                if (LogicInfo == null)
+                {
+                    return;
+                }
+                //把tab对象JSON字符串转换为 操作对象
+                DataJson.ConditionContent logicConditionContent = JsonConvert.DeserializeObject<DataJson.ConditionContent>(LogicInfo.content);
+                DataJson.sceneInfo info = null;
+                DataJson.sceneInfo copyInfo = null;
+
+                //把第一行的数目 和 列数记录起来
+                for (int i = dataGridView2.SelectedCells.Count - 1; i >= 0; i--)
+                {
+                    colIndex = dataGridView2.SelectedCells[i].ColumnIndex;
+                    if (FirstColumnIndex == -1 && FirstColumnIndex != colIndex)
+                    {
+                        //只操作单选的列
+                        FirstColumnIndex = dataGridView2.SelectedCells[i].ColumnIndex;
+                        id = dataGridView2.SelectedCells[i].RowIndex;
+
+                        info = DataListHelper.getLogicSceneInfo(id + 1, logicConditionContent.trueDo);
+                        if (info == null)
+                        {
+                            return;
+                        }
+                        copyInfo = info;
+                        continue;
+                    }
+                    if (colIndex == FirstColumnIndex)
+                    {
+                        reduceCount++;
+                    }
+                }
+
+                for (int i = 0; i < dataGridView2.SelectedCells.Count; i++)
+                {
+                    //获取当前选中单元格的列序号
+                    colIndex = dataGridView2.SelectedCells[i].ColumnIndex;
+                    if (FirstColumnIndex != colIndex)
+                    {
+                        //只操作单选的列
+                        continue;
+                    }
+                    id = dataGridView2.SelectedCells[i].RowIndex;
+                    info = DataListHelper.getLogicSceneInfo(id + 1, logicConditionContent.trueDo);
+                    if (info == null)
+                    {
+                        return;
+                    }
+
+                    //延时递增
+                    if (colIndex == 6)
+                    {
+
+                        ischange = true;
+                        info.delay = copyInfo.delay - reduceCount * Convert.ToInt32(FileMesege.AsDesCendingNum * 10);
+                        if (info.delay < 0)
+                        {
+                            info.delay = 0;
+                        }
+                        dataGridView2.Rows[id].Cells[6].Value = Convert.ToDouble(info.delay) / 10;
+                    }//if
+                    else if (colIndex == 2)
+                    {
+                        //地址递增
+                        if (string.IsNullOrEmpty(copyInfo.address) || copyInfo.address == "FFFFFFFF")
+                        {
+                            continue;
+                        }
+                        if (!Validator.IsInteger(FileMesege.AsDesCendingNum.ToString()))
+                        {
+                            FileMesege.AsDesCendingNum = 1;
+                        }
+                        if (reduceCount == 0)
+                        {
+                            continue;
+                        }
+                        info.address = DgvMesege.addressReduce(copyInfo.address, reduceCount * Convert.ToInt32(FileMesege.AsDesCendingNum));
+                        //AppTxtShow(id +"   "+sceneInfo.address+ "   "+addCount);
+                        info.type = IniHelper.findIniTypesByAddress(ip, info.address).Split(',')[0];
+                        //添加地域和名称 在sceneInfo表中
+                        DataJson.PointInfo point = DataListHelper.findPointByType_address("", info.address, ip);
+                        if (point != null)
+                        {
+                            info.pid = point.pid;
+                            info.type = point.type;
+                            dataGridView2.Rows[id].Cells[3].Value = string.Format("{0} {1} {2} {3}", point.area1, point.area2, point.area3, point.area4).Trim();//改根据地址从信息里面获取
+                            dataGridView2.Rows[id].Cells[4].Value = point.name;
+                        }
+                        else
+                        {
+                            info.pid = 0;
+                            dataGridView2.Rows[id].Cells[3].Value = string.Empty;
+                            dataGridView2.Rows[id].Cells[4].Value = string.Empty;
+                        }
+                        info.opt = string.Empty;
+                        info.optName = string.Empty;
+                        dataGridView2.Rows[id].Cells[1].Value = IniHelper.findTypesIniNamebyType(info.type);
+                        dataGridView2.Rows[id].Cells[2].Value = DgvMesege.addressTransform(info.address);
+                        dataGridView2.Rows[id].Cells[5].Value = (info.optName + " " + info.opt).Trim();
+
+                        ischange = true;
+
+                    }
+                    reduceCount--;
+                }
+                if (ischange)
+                {
+                    LogicInfo.content = JsonConvert.SerializeObject(logicConditionContent);
+                    DataJson.totalList NewList = FileMesege.cmds.getListInfos();
+                    FileMesege.cmds.DoNewCommand(NewList, OldList);
+                }
+            }//try
+            catch
+            {
+
+            }
+        }
+
+        private void DescendingDgv3()
+        {
+            try
+            {
+                bool ischange = false;
+                //撤销
+                DataJson.totalList OldList = FileMesege.cmds.getListInfos();
+
+                //选中行 序号
+                int id = 0;
+                //列号
+                int colIndex = 0;
+                //记录第一个选中格的列号
+                int FirstColumnIndex = -1;
+                //地址添加量
+                int reduceCount = 0;
+                DataJson.logicsInfo LogicInfo = DataListHelper.findLogicInfoByTabName(FileMesege.LogicTabName);
+                if (LogicInfo == null)
+                {
+                    return;
+                }
+                //把tab对象JSON字符串转换为 操作对象
+                DataJson.ConditionContent logicConditionContent = JsonConvert.DeserializeObject<DataJson.ConditionContent>(LogicInfo.content);
+                DataJson.sceneInfo info = null;
+                DataJson.sceneInfo copyInfo = null;
+
+                //把第一行的数目 和 列数记录起来
+                for (int i = dataGridView3.SelectedCells.Count - 1; i >= 0; i--)
+                {
+                    colIndex = dataGridView3.SelectedCells[i].ColumnIndex;
+                    if (FirstColumnIndex == -1 && FirstColumnIndex != colIndex)
+                    {
+                        //只操作单选的列
+                        FirstColumnIndex = dataGridView3.SelectedCells[i].ColumnIndex;
+                        id = dataGridView3.SelectedCells[i].RowIndex;
+
+                        info = DataListHelper.getLogicSceneInfo(id + 1, logicConditionContent.falseDo);
+                        if (info == null)
+                        {
+                            return;
+                        }
+                        copyInfo = info;
+                        continue;
+                    }
+                    if (colIndex == FirstColumnIndex)
+                    {
+                        reduceCount++;
+                    }
+                }
+
+                for (int i = 0; i < dataGridView3.SelectedCells.Count; i++)
+                {
+                    //获取当前选中单元格的列序号
+                    colIndex = dataGridView3.SelectedCells[i].ColumnIndex;
+                    if (FirstColumnIndex != colIndex)
+                    {
+                        //只操作单选的列
+                        continue;
+                    }
+                    id = dataGridView3.SelectedCells[i].RowIndex;
+                    info = DataListHelper.getLogicSceneInfo(id + 1, logicConditionContent.falseDo);
+                    if (info == null)
+                    {
+                        return;
+                    }
+
+                    //延时递增
+                    if (colIndex == 6)
+                    {
+
+                        ischange = true;
+                        info.delay = copyInfo.delay - reduceCount * Convert.ToInt32(FileMesege.AsDesCendingNum * 10);
+                        if (info.delay < 0)
+                        {
+                            info.delay = 0;
+                        }
+                        dataGridView3.Rows[id].Cells[6].Value = Convert.ToDouble(info.delay) / 10;
+                    }//if
+                    else if (colIndex == 2)
+                    {
+                        //地址递增
+                        if (string.IsNullOrEmpty(copyInfo.address) || copyInfo.address == "FFFFFFFF")
+                        {
+                            continue;
+                        }
+                        if (!Validator.IsInteger(FileMesege.AsDesCendingNum.ToString()))
+                        {
+                            FileMesege.AsDesCendingNum = 1;
+                        }
+                        if (reduceCount == 0)
+                        {
+                            continue;
+                        }
+                        info.address = DgvMesege.addressReduce(copyInfo.address, reduceCount * Convert.ToInt32(FileMesege.AsDesCendingNum));
+                        //AppTxtShow(id +"   "+sceneInfo.address+ "   "+addCount);
+                        info.type = IniHelper.findIniTypesByAddress(ip, info.address).Split(',')[0];
+                        //添加地域和名称 在sceneInfo表中
+                        DataJson.PointInfo point = DataListHelper.findPointByType_address("", info.address, ip);
+                        if (point != null)
+                        {
+                            info.pid = point.pid;
+                            info.type = point.type;
+                            dataGridView3.Rows[id].Cells[3].Value = string.Format("{0} {1} {2} {3}", point.area1, point.area2, point.area3, point.area4).Trim();//改根据地址从信息里面获取
+                            dataGridView3.Rows[id].Cells[4].Value = point.name;
+                        }
+                        else
+                        {
+                            info.pid = 0;
+                            dataGridView3.Rows[id].Cells[3].Value = string.Empty;
+                            dataGridView3.Rows[id].Cells[4].Value = string.Empty;
+                        }
+                        info.opt = string.Empty;
+                        info.optName = string.Empty;
+                        dataGridView3.Rows[id].Cells[1].Value = IniHelper.findTypesIniNamebyType(info.type);
+                        dataGridView3.Rows[id].Cells[2].Value = DgvMesege.addressTransform(info.address);
+                        dataGridView3.Rows[id].Cells[5].Value = (info.optName + " " + info.opt).Trim();
+
+                        ischange = true;
+
+                    }
+                    reduceCount--;
+                }
+                if (ischange)
+                {
+                    LogicInfo.content = JsonConvert.SerializeObject(logicConditionContent);
+                    DataJson.totalList NewList = FileMesege.cmds.getListInfos();
+                    FileMesege.cmds.DoNewCommand(NewList, OldList);
+                }
+            }//try
+            catch
+            {
+
+            }
+        }
+
+        #endregion
+
+
 
         #endregion
 
