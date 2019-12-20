@@ -1031,8 +1031,9 @@ namespace eNet编辑器.DgvView
 
             //找到当前操作tab对象
             DataJson.logicsInfo LogicInfo = DataListHelper.findLogicInfoByTabName(FileMesege.LogicTabName);
-            if (LogicInfo == null || LogicInfo.content == null)
+            if (LogicInfo == null || string.IsNullOrEmpty(LogicInfo.content) )
             {
+
                 return;
             }
             //把tab对象JSON字符串转换为 操作对象

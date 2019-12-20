@@ -121,16 +121,20 @@ namespace eNet编辑器.DgvView
                 this.dataGridView1.Rows.Clear();
                 cbIONum.Text = "";
                 int tmpId = -1;
+                try
+                {
+                    ip = FileMesege.sensorSelectNode.Parent.Text.Split(' ')[0];
+                    findKeyPanel();
+                }
+                catch { }
                 DataJson.sensors srs = DataListHelper.getSensorInfoListByNode();
                 if (srs == null)
                 {
                     cbIONum.Text = "";
                     return;
                 }
-                ip = FileMesege.sensorSelectNode.Parent.Text.Split(' ')[0];
                 cbIONum.Text = srs.ioNum.ToString();
 
-                findKeyPanel();
                 List<DataJson.sensorsInfo> delSensor = new List<DataJson.sensorsInfo>();
                 
                 //循环加载该定时号的所有信息

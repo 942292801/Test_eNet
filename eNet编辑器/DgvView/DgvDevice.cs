@@ -585,6 +585,28 @@ namespace eNet编辑器.DgvView
 
         ClientAsync client;
 
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            try
+            {
+                for (int i = 0; i < this.dataGridView1.Rows.Count;i++ )
+                {
+                    this.dataGridView1.Rows[i].Cells[6].Style.BackColor = Color.White;
+                    this.dataGridView1.Rows[i].Cells[6].Style.ForeColor = Color.Red;
+                    this.dataGridView1.Rows[i].Cells[6].Value = Resources.DevStateOff;
+                }
+             
+                clientConnect();
+                
+            }
+            catch
+            {
+                timer1.Stop();
+                client = null;
+                return;
+            }
+        }
+
 
         private void cbOnline_CheckedChanged(object sender, EventArgs e)
         {
@@ -592,12 +614,20 @@ namespace eNet编辑器.DgvView
             {
                 FileMesege.isDgvNameDeviceConnet = true;
                 clientConnect();
+                timer1.Start();
 
             }
             else
             {
+                for (int i = 0; i < this.dataGridView1.Rows.Count; i++)
+                {
+                    this.dataGridView1.Rows[i].Cells[6].Style.BackColor = Color.White;
+                    this.dataGridView1.Rows[i].Cells[6].Style.ForeColor = Color.Red;
+                    this.dataGridView1.Rows[i].Cells[6].Value = Resources.DevStateOff;
+                }
                 FileMesege.isDgvNameDeviceConnet = false;
                 client = null;
+                timer1.Stop();
                 return;
             }
 
@@ -622,11 +652,13 @@ namespace eNet编辑器.DgvView
                 if (client != null && client.Connected())
                 {
                     client.SendAsync("read serial.json$");
+
                 }
             }
             catch
             {
                 client = null;
+                timer1.Stop();
                 return;
             }
         }
@@ -1201,6 +1233,8 @@ namespace eNet编辑器.DgvView
 
         }
         #endregion
+
+      
 
    
 

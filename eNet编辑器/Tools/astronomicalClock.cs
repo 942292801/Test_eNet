@@ -665,8 +665,11 @@ namespace eNet编辑器.Tools
         private string getLongitude()
         {
             
-            string tmp = cbLongitude.SelectedIndex.ToString("X2")+ cblgDegree.SelectedIndex.ToString("X2")+
-                cblgMinute.SelectedIndex.ToString("X2")+cblgSeconds.SelectedIndex.ToString("X2");
+           // string tmp = cbLongitude.SelectedIndex.ToString("X2")+  cblgDegree.SelectedIndex.ToString("X2")+
+             //   cblgMinute.SelectedIndex.ToString("X2")+cblgSeconds.SelectedIndex.ToString("X2");
+
+            string tmp = cbLongitude.SelectedIndex.ToString("X2") + Convert.ToInt32(cblgDegree.Text).ToString("X2") +
+                Convert.ToInt32(cblgMinute.Text).ToString("X2") + Convert.ToInt32(cblgSeconds.Text).ToString("X2");
             
             return "SET;" + tmp + ";{254.251.0.15};\r\n";
         }
@@ -677,8 +680,10 @@ namespace eNet编辑器.Tools
         /// <returns></returns>
         private string getLatitude()
         {
-            string tmp = cbLatitude.SelectedIndex.ToString("X2") + cbltDegree.SelectedIndex.ToString("X2") +
-               cbltMinute.SelectedIndex.ToString("X2") + cbltSeconds.SelectedIndex.ToString("X2");
+            //string tmp = cbLatitude.SelectedIndex.ToString("X2") + cbltDegree.SelectedIndex.ToString("X2") +
+            //   cbltMinute.SelectedIndex.ToString("X2") + cbltSeconds.SelectedIndex.ToString("X2");
+            string tmp = cbLatitude.SelectedIndex.ToString("X2") + Convert.ToInt32(cbltDegree.Text).ToString("X2") +
+               Convert.ToInt32(cbltMinute.Text).ToString("X2") + Convert.ToInt32(cbltSeconds.Text).ToString("X2");
             return "SET;" + tmp + ";{254.251.0.16};\r\n";
         }
 

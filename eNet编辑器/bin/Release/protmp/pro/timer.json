@@ -2,96 +2,14 @@
     {
         "timers": [
             {
-                "timersInfo": [
-                    {
-                        "id": 1,
-                        "pid": 0,
-                        "type": "",
-                        "address": "",
-                        "opt": "",
-                        "optName": "",
-                        "shortTime": ""
-                    },
-                    {
-                        "id": 2,
-                        "pid": 0,
-                        "type": "",
-                        "address": "",
-                        "opt": "",
-                        "optName": "",
-                        "shortTime": ""
-                    },
-                    {
-                        "id": 3,
-                        "pid": 0,
-                        "type": "",
-                        "address": "",
-                        "opt": "",
-                        "optName": "",
-                        "shortTime": ""
-                    },
-                    {
-                        "id": 4,
-                        "pid": 0,
-                        "type": "",
-                        "address": "",
-                        "opt": "",
-                        "optName": "",
-                        "shortTime": ""
-                    },
-                    {
-                        "id": 5,
-                        "pid": 0,
-                        "type": "",
-                        "address": "",
-                        "opt": "",
-                        "optName": "",
-                        "shortTime": ""
-                    },
-                    {
-                        "id": 6,
-                        "pid": 0,
-                        "type": "",
-                        "address": "",
-                        "opt": "",
-                        "optName": "",
-                        "shortTime": ""
-                    },
-                    {
-                        "id": 7,
-                        "pid": 0,
-                        "type": "",
-                        "address": "",
-                        "opt": "",
-                        "optName": "",
-                        "shortTime": ""
-                    },
-                    {
-                        "id": 8,
-                        "pid": 0,
-                        "type": "",
-                        "address": "",
-                        "opt": "",
-                        "optName": "",
-                        "shortTime": ""
-                    },
-                    {
-                        "id": 9,
-                        "pid": 0,
-                        "type": "",
-                        "address": "",
-                        "opt": "",
-                        "optName": "",
-                        "shortTime": ""
-                    }
-                ],
+                "timersInfo": [],
                 "id": 1,
-                "pid": 158340524,
-                "dates": "2,5",
+                "pid": 499192175,
+                "dates": "",
                 "priorHoloday": "01000001"
             }
         ],
-        "IP": "192.168.1.230",
+        "IP": "192.168.1.222",
         "Dev": "GW100A"
     }
 ]

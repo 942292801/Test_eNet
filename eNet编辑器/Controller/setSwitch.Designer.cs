@@ -52,12 +52,17 @@
             this.btnTest = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.timer2 = new System.Windows.Forms.Timer(this.components);
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.lbTip = new System.Windows.Forms.Label();
+            this.pgBar = new DevComponents.DotNetBar.Controls.ProgressBarX();
             this.plInfoTitle.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.panel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // plInfoTitle
@@ -232,6 +237,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.panel4);
             this.groupBox2.Controls.Add(this.cbPower);
             this.groupBox2.Controls.Add(this.label11);
             this.groupBox2.Controls.Add(this.cbLock);
@@ -363,6 +369,49 @@
             this.timer2.Interval = 5000;
             this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
             // 
+            // backgroundWorker1
+            // 
+            this.backgroundWorker1.WorkerReportsProgress = true;
+            this.backgroundWorker1.WorkerSupportsCancellation = true;
+            this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
+            this.backgroundWorker1.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorker1_ProgressChanged);
+            this.backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
+            // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.Color.White;
+            this.panel4.Controls.Add(this.lbTip);
+            this.panel4.Controls.Add(this.pgBar);
+            this.panel4.Location = new System.Drawing.Point(130, 10);
+            this.panel4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(249, 80);
+            this.panel4.TabIndex = 36;
+            this.panel4.Visible = false;
+            // 
+            // lbTip
+            // 
+            this.lbTip.AutoSize = true;
+            this.lbTip.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lbTip.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.lbTip.Location = new System.Drawing.Point(123, 60);
+            this.lbTip.Name = "lbTip";
+            this.lbTip.Size = new System.Drawing.Size(121, 17);
+            this.lbTip.TabIndex = 67;
+            this.lbTip.Text = "正在写入，请稍后. . .";
+            // 
+            // pgBar
+            // 
+            // 
+            // 
+            // 
+            this.pgBar.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.pgBar.Location = new System.Drawing.Point(17, 32);
+            this.pgBar.Name = "pgBar";
+            this.pgBar.Size = new System.Drawing.Size(216, 17);
+            this.pgBar.Style = DevComponents.DotNetBar.eDotNetBarStyle.OfficeXP;
+            this.pgBar.TabIndex = 66;
+            // 
             // setSwitch
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -386,6 +435,8 @@
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -414,5 +465,9 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Timer timer2;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Label lbTip;
+        private DevComponents.DotNetBar.Controls.ProgressBarX pgBar;
     }
 }

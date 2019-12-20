@@ -44,7 +44,7 @@ namespace eNet编辑器.Controller
 
         ClientAsync client6003;
         private event Action<string> tcp6003receviceDelegate;
-
+        private event Action allWriteDelegate;
 
         public setSwitch()
         {
@@ -56,6 +56,7 @@ namespace eNet编辑器.Controller
 
             try
             {
+                allWriteDelegate += new Action(allWrite);
                 tcp6003receviceDelegate += new Action<string>(tcp6003ReceviceDelegateMsg);
                 //链接tcp
                 Connect6003Tcp(ip);
@@ -580,57 +581,7 @@ namespace eNet编辑器.Controller
 
         private void btnAllWrite_Click(object sender, EventArgs e)
         {
-            try
-            {
-                SavePowerState(cbPower.Text);
-                string id = "";
-                string msg = "";
-                //当前参数对象 
-                DataJson.PortSwitch pw = JsonConvert.DeserializeObject<DataJson.PortSwitch>(devPort.portContent);
-                foreach (DataJson.DevPort dp in devModuel.devPortList)
-                {
-                    if (dp.portType == DevPort.portType)
-                    {
-                        id = dp.portID.ToString();
-                        
-                        DataJson.PortSwitch tmpPW = null;
-                        if (string.IsNullOrEmpty(dp.portContent))
-                        {
-                            tmpPW = new DataJson.PortSwitch();
-                        }
-                        else
-                        {
-                            tmpPW = JsonConvert.DeserializeObject<DataJson.PortSwitch>(dp.portContent);
-                            //tmpPW = TransExpV2<DataJson.PortSwitch, DataJson.PortSwitch>.Trans((DataJson.PortSwitch)dp.portContent);
-                        }
-                        tmpPW.powerState = pw.powerState;
-                        //复制对象
-                        dp.portContent = JsonConvert.SerializeObject(tmpPW);
-
-                        sendRegOrder(pw.powerState, id, "40");
-                        ToolsUtil.DelayMilli(500);
-               
-                        
-                        msg += string.Format("上电状态：成功写入至模块端口{0}！\r\n", dp.portID);
-
-                    }
-                }
-
-                if (client6003 != null && client6003.Connected())//
-                {
-                    MessageBox.Show(msg , "提示");
-                }
-                else
-                {
-                    MessageBox.Show("写入失败！\r\n请检查网络连接或参数", "提示");
-                }
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("操作失败！\n" + ex.Message, "提示", MessageBoxButtons.OK,
-                    MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
-            }
+            backgroundWorker1.RunWorkerAsync();
         }
 
         private void btnWrite_Click(object sender, EventArgs e)
@@ -889,6 +840,84 @@ namespace eNet编辑器.Controller
                 //不用操作 上面已经清空过互锁
             }
 
+
+        }
+        #endregion
+
+        #region 全部写入按钮
+        private void allWrite()
+        {
+            try
+            {
+                panel4.Visible = true;
+                SavePowerState(cbPower.Text);
+                string id = "";
+                string msg = "";
+                int i = 0;
+                //当前参数对象 
+                DataJson.PortSwitch pw = JsonConvert.DeserializeObject<DataJson.PortSwitch>(devPort.portContent);
+                foreach (DataJson.DevPort dp in devModuel.devPortList)
+                {
+                    if (dp.portType == DevPort.portType)
+                    {
+                        id = dp.portID.ToString();
+
+                        DataJson.PortSwitch tmpPW = null;
+                        if (string.IsNullOrEmpty(dp.portContent))
+                        {
+                            tmpPW = new DataJson.PortSwitch();
+                        }
+                        else
+                        {
+                            tmpPW = JsonConvert.DeserializeObject<DataJson.PortSwitch>(dp.portContent);
+                            //tmpPW = TransExpV2<DataJson.PortSwitch, DataJson.PortSwitch>.Trans((DataJson.PortSwitch)dp.portContent);
+                        }
+                        tmpPW.powerState = pw.powerState;
+                        //复制对象
+                        dp.portContent = JsonConvert.SerializeObject(tmpPW);
+
+                        sendRegOrder(pw.powerState, id, "40");
+                        i += 2;
+                        backgroundWorker1.ReportProgress(i);
+                        ToolsUtil.DelayMilli(500);
+
+
+                        msg += string.Format("上电状态：成功写入至模块端口{0}！\r\n", dp.portID);
+
+                    }
+                }
+                pgBar.Value = 100;
+                if (client6003 != null && client6003.Connected())//
+                {
+                    MessageBox.Show(msg, "提示");
+                }
+                else
+                {
+                    MessageBox.Show("写入失败！\r\n请检查网络连接或参数", "提示");
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("操作失败！\n" + ex.Message, "提示", MessageBoxButtons.OK,
+                    MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
+            }
+        }
+
+        private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
+        {
+            this.Invoke(allWriteDelegate);
+        }
+
+        private void backgroundWorker1_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+            pgBar.Value = e.ProgressPercentage;
+        }
+
+        private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            panel4.Visible = false;
+            pgBar.Value = 0;
 
         }
         #endregion

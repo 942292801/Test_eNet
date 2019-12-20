@@ -153,6 +153,8 @@ namespace eNet编辑器.AddForm
             {
                 try
                 {
+                    //新建网关
+                    DataJson.totalList OldList = FileMesege.cmds.getListInfos();
                     string parentIp = "";
                     switch (treeView1.SelectedNode.Level)
                     {
@@ -181,6 +183,8 @@ namespace eNet编辑器.AddForm
                             TxtShow("添加设备失败!请选择添加设备!");
                             break;
                     }
+                    DataJson.totalList NewList = FileMesege.cmds.getListInfos();
+                    FileMesege.cmds.DoNewCommand(NewList, OldList);
                 }
                 catch { }
             }

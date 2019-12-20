@@ -184,7 +184,7 @@ namespace eNet编辑器
             {
                 OpenFileDialog op = new OpenFileDialog();
                 string historyPath = IniConfig.GetValue(Application.StartupPath + "\\conf.ini", "filepath", "path");
-                if (historyPath != "")
+                if (!string.IsNullOrEmpty(historyPath))
                 {
                     //设置此次默认目录为上一次选中目录  
                     op.InitialDirectory = historyPath.Split(',')[0];

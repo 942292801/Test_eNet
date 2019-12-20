@@ -47,6 +47,8 @@ namespace eNet编辑器.Controller
         ClientAsync client6003;
         private event Action<string> tcp6003receviceDelegate;
 
+        private event Action allWriteDelegate;
+
         //曲线数据点
         List<string> xData = new List<string>();
         List<int> yData = new List<int>();
@@ -58,6 +60,7 @@ namespace eNet编辑器.Controller
 
         private void setDimmer_Load(object sender, EventArgs e)
         {
+            allWriteDelegate += new Action(allWrite);
             tcp6003receviceDelegate += new Action<string>(tcp6003ReceviceDelegateMsg);
             //链接tcp
             Connect6003Tcp(ip);
@@ -1011,71 +1014,9 @@ namespace eNet编辑器.Controller
 
         private void btnAllWrite_Click(object sender, EventArgs e)
         {
-            try
-            {
-                DataJson.PortDimmer portDimmer = SaveFormState();
-                if (portDimmer == null)
-                {
-                    return;
-                }
-                string id = "";
-                string msg = "";
-                bool isSend = true;
-               
-                foreach (DataJson.DevPort dp  in devModuel.devPortList)
-                {
-                    if (dp.portType == DevPort.portType)
-                    {
-                        dp.portContent = JsonConvert.SerializeObject(portDimmer);
-                        id = dp.portID.ToString();
-                        isSend = sendRegOrder("01", id, "64");//设置为线性模式 00自定义 01曲线 02废除了 
-                        ToolsUtil.DelayMilli(1000);
-                        isSend = sendRegOrder(portDimmer.powerState, id, "40");
-                        ToolsUtil.DelayMilli(1000);
-                        isSend = sendRegOrder(portDimmer.onState, id, "60");
-                        ToolsUtil.DelayMilli(1000);
-                        isSend = sendRegOrder(portDimmer.changeState, id, "61");
-                        ToolsUtil.DelayMilli(1000);
-                        isSend = sendRegOrder(portDimmer.max, id, "62");
-                        ToolsUtil.DelayMilli(1000);
-                        isSend = sendRegOrder(portDimmer.min, id, "63");
-                        ToolsUtil.DelayMilli(1000);
-                        isSend = sendRegOrder(portDimmer.spline, id, "65");
-                        ToolsUtil.DelayMilli(1000);
-                   
+            backgroundWorker1.RunWorkerAsync();
+            
 
-                        if (isSend)
-                        {
-                            msg += string.Format("写入至模块端口{0}成功！\r\n", dp.portID);
-                        }
-                        else
-                        {
-                            msg += string.Format("写入至模块端口{0}失败！\r\n", dp.portID);
-                            break;
-                        }
-                       
-                    }
-                }
-
-                
-                if (sendResetdriver())//重启设备
-                {
-                    MessageBox.Show(msg+"设备重启中请稍候", "提示");
-                }
-                else
-                {
-                    MessageBox.Show("写入失败！\r\n请检查网络连接或参数", "提示");
-                }
-
-
-
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("操作失败！\n" + ex.Message, "提示", MessageBoxButtons.OK,
-                    MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
-            }
         }
 
         private void btnWrite_Click(object sender, EventArgs e)
@@ -1760,7 +1701,108 @@ namespace eNet编辑器.Controller
 
         #endregion
 
-      
+        #region 全部写入按钮
+        private void allWrite()
+        {
+            try
+            {
+                panel4.Visible = true;
+                DataJson.PortDimmer portDimmer = SaveFormState();
+                if (portDimmer == null)
+                {
+                    return;
+                }
+                string id = "";
+                string msg = "";
+                bool isSend = true;
+                int i = 0;
+                foreach (DataJson.DevPort dp in devModuel.devPortList)
+                {
+                    if (dp.portType == DevPort.portType)
+                    {
+                        dp.portContent = JsonConvert.SerializeObject(portDimmer);
+                        id = dp.portID.ToString();
+                        isSend = sendRegOrder("01", id, "64");//设置为线性模式 00自定义 01曲线 02废除了 
+                        i += 2;
+                        backgroundWorker1.ReportProgress(i);
+                        ToolsUtil.DelayMilli(1000);
+                        isSend = sendRegOrder(portDimmer.powerState, id, "40");
+                        i += 2;
+                        backgroundWorker1.ReportProgress(i);
+                        ToolsUtil.DelayMilli(1000);
+                        isSend = sendRegOrder(portDimmer.onState, id, "60");
+                        i += 2;
+                        backgroundWorker1.ReportProgress(i);
+                        ToolsUtil.DelayMilli(1000);
+                        isSend = sendRegOrder(portDimmer.changeState, id, "61");
+                        i += 2;
+                        backgroundWorker1.ReportProgress(i);
+                        ToolsUtil.DelayMilli(1000);
+                        isSend = sendRegOrder(portDimmer.max, id, "62");
+                        i += 2;
+                        backgroundWorker1.ReportProgress(i);
+                        ToolsUtil.DelayMilli(1000);
+                        isSend = sendRegOrder(portDimmer.min, id, "63");
+                        i += 2;
+                        backgroundWorker1.ReportProgress(i);
+                        ToolsUtil.DelayMilli(1000);
+                        isSend = sendRegOrder(portDimmer.spline, id, "65");
+                        i += 2;
+                        backgroundWorker1.ReportProgress(i);
+                        ToolsUtil.DelayMilli(1000);
+
+                        
+                        if (isSend)
+                        {
+
+                            msg += string.Format("写入至模块端口{0}成功！\r\n", dp.portID);
+                        }
+                        else
+                        {
+                            msg += string.Format("写入至模块端口{0}失败！\r\n", dp.portID);
+                            break;
+                        }
+
+                    }
+                }
+
+                pgBar.Value = 100;
+                if (sendResetdriver())//重启设备
+                {
+                    MessageBox.Show(msg + "设备重启中请稍候", "提示");
+                }
+                else
+                {
+                    MessageBox.Show("写入失败！\r\n请检查网络连接或参数", "提示");
+                }
+
+            }
+            catch (Exception ex)
+            {
+                backgroundWorker1.CancelAsync();
+                MessageBox.Show("操作失败！\n" + ex.Message, "提示", MessageBoxButtons.OK,
+                    MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
+            }
+        }
+
+        private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
+        {
+            this.Invoke(allWriteDelegate);
+        }
+
+        private void backgroundWorker1_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+            pgBar.Value = e.ProgressPercentage;
+        }
+
+        private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            panel4.Visible = false;
+            pgBar.Value = 0;
+
+        }
+        #endregion
+
 
 
 

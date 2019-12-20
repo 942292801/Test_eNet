@@ -409,7 +409,7 @@ namespace eNet编辑器.DgvView
                 return;
             }
             DataJson.VoiceContent logicVoiceContent;
-            if (LogicInfo.content == null)
+            if (string.IsNullOrEmpty(LogicInfo.content))
             {
                 logicVoiceContent = new DataJson.VoiceContent();
             }
@@ -453,7 +453,7 @@ namespace eNet编辑器.DgvView
                 return;
             }
             DataJson.VoiceContent logicVoiceContent ;
-            if (LogicInfo.content == null)
+            if (string.IsNullOrEmpty(LogicInfo.content))
             {
                 logicVoiceContent = new DataJson.VoiceContent();
             }
@@ -510,7 +510,7 @@ namespace eNet编辑器.DgvView
                 return;
             }
             DataJson.VoiceContent logicVoiceContent;
-            if (LogicInfo.content == null)
+            if (string.IsNullOrEmpty(LogicInfo.content))
             {
                 logicVoiceContent = new DataJson.VoiceContent();
             }
@@ -548,7 +548,7 @@ namespace eNet编辑器.DgvView
                 return;
             }
             DataJson.VoiceContent logicVoiceContent;
-            if (LogicInfo.content == null)
+            if (string.IsNullOrEmpty(LogicInfo.content))
             {
                 logicVoiceContent = new DataJson.VoiceContent();
             }
@@ -901,7 +901,7 @@ namespace eNet编辑器.DgvView
         {
             //找到当前操作tab对象
             DataJson.logicsInfo LogicInfo = DataListHelper.findLogicInfoByTabName(FileMesege.LogicTabName);
-            if (LogicInfo == null || LogicInfo.content == null)
+            if (LogicInfo == null || string.IsNullOrEmpty(LogicInfo.content))
             {
                 return;
             }
@@ -951,7 +951,7 @@ namespace eNet编辑器.DgvView
 
                 //找到当前操作tab对象
                 DataJson.logicsInfo LogicInfo = DataListHelper.findLogicInfoByTabName(FileMesege.LogicTabName);
-                if (LogicInfo == null || LogicInfo.content == null)
+                if (LogicInfo == null || string.IsNullOrEmpty(LogicInfo.content))
                 {
                     return;
                 }

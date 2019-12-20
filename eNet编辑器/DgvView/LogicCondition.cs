@@ -550,7 +550,7 @@ namespace eNet编辑器.DgvView
                 return;
             }
             DataJson.ConditionContent logicConditionContent = new DataJson.ConditionContent();
-            if (LogicInfo.content != null)
+            if (!string.IsNullOrEmpty(LogicInfo.content) )
             {
                 //把tab对象JSON字符串转换为 操作对象
                 logicConditionContent = JsonConvert.DeserializeObject<DataJson.ConditionContent>(LogicInfo.content);
@@ -581,7 +581,7 @@ namespace eNet编辑器.DgvView
                 return;
             }
             DataJson.ConditionContent logicConditionContent = new DataJson.ConditionContent();
-            if (LogicInfo.content != null)
+            if (!string.IsNullOrEmpty(LogicInfo.content))
             {
                 //把tab对象JSON字符串转换为 操作对象
                 logicConditionContent = JsonConvert.DeserializeObject<DataJson.ConditionContent>(LogicInfo.content);
@@ -612,7 +612,7 @@ namespace eNet编辑器.DgvView
                 return;
             }
             DataJson.ConditionContent logicConditionContent = new DataJson.ConditionContent();
-            if (LogicInfo.content != null)
+            if (!string.IsNullOrEmpty(LogicInfo.content))
             {
                 //把tab对象JSON字符串转换为 操作对象
                 logicConditionContent = JsonConvert.DeserializeObject<DataJson.ConditionContent>(LogicInfo.content);
@@ -1185,7 +1185,7 @@ namespace eNet编辑器.DgvView
         {
             //找到当前操作tab对象
             DataJson.logicsInfo LogicInfo = DataListHelper.findLogicInfoByTabName(FileMesege.LogicTabName);
-            if (LogicInfo == null || LogicInfo.content == null)
+            if (LogicInfo == null || string.IsNullOrEmpty(LogicInfo.content) )
             {
                 return;
             }
@@ -1227,7 +1227,7 @@ namespace eNet编辑器.DgvView
         {
             //找到当前操作tab对象
             DataJson.logicsInfo LogicInfo = DataListHelper.findLogicInfoByTabName(FileMesege.LogicTabName);
-            if (LogicInfo == null || LogicInfo.content == null)
+            if (LogicInfo == null || string.IsNullOrEmpty(LogicInfo.content))
             {
                 return;
             }
@@ -1253,7 +1253,7 @@ namespace eNet编辑器.DgvView
         {
             //找到当前操作tab对象
             DataJson.logicsInfo LogicInfo = DataListHelper.findLogicInfoByTabName(FileMesege.LogicTabName);
-            if (LogicInfo == null || LogicInfo.content == null)
+            if (LogicInfo == null || string.IsNullOrEmpty(LogicInfo.content))
             {
                 return;
             }
@@ -1302,7 +1302,7 @@ namespace eNet编辑器.DgvView
 
                 //找到当前操作tab对象
                 DataJson.logicsInfo LogicInfo = DataListHelper.findLogicInfoByTabName(FileMesege.LogicTabName);
-                if (LogicInfo == null || LogicInfo.content == null)
+                if (LogicInfo == null || string.IsNullOrEmpty(LogicInfo.content))
                 {
                     return;
                 }
@@ -1355,7 +1355,7 @@ namespace eNet编辑器.DgvView
 
                 //找到当前操作tab对象
                 DataJson.logicsInfo LogicInfo = DataListHelper.findLogicInfoByTabName(FileMesege.LogicTabName);
-                if (LogicInfo == null || LogicInfo.content == null)
+                if (LogicInfo == null || string.IsNullOrEmpty(LogicInfo.content))
                 {
                     return;
                 }
@@ -1797,7 +1797,7 @@ namespace eNet编辑器.DgvView
         {
             //找到当前操作tab对象
             DataJson.logicsInfo LogicInfo = DataListHelper.findLogicInfoByTabName(FileMesege.LogicTabName);
-            if (LogicInfo == null || LogicInfo.content == null)
+            if (LogicInfo == null || string.IsNullOrEmpty(LogicInfo.content))
             {
                 return;
             }
@@ -1845,7 +1845,7 @@ namespace eNet编辑器.DgvView
 
                 //找到当前操作tab对象
                 DataJson.logicsInfo LogicInfo = DataListHelper.findLogicInfoByTabName(FileMesege.LogicTabName);
-                if (LogicInfo == null || LogicInfo.content == null)
+                if (LogicInfo == null || string.IsNullOrEmpty(LogicInfo.content))
                 {
                     return;
                 }
@@ -2303,7 +2303,7 @@ namespace eNet编辑器.DgvView
         {
             //找到当前操作tab对象
             DataJson.logicsInfo LogicInfo = DataListHelper.findLogicInfoByTabName(FileMesege.LogicTabName);
-            if (LogicInfo == null || LogicInfo.content == null)
+            if (LogicInfo == null || string.IsNullOrEmpty(LogicInfo.content))
             {
                 return;
             }
@@ -2341,7 +2341,7 @@ namespace eNet编辑器.DgvView
 
                 //找到当前操作tab对象
                 DataJson.logicsInfo LogicInfo = DataListHelper.findLogicInfoByTabName(FileMesege.LogicTabName);
-                if (LogicInfo == null || LogicInfo.content == null)
+                if (LogicInfo == null || string.IsNullOrEmpty(LogicInfo.content))
                 {
                     return;
                 }

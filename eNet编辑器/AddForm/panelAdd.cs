@@ -364,16 +364,20 @@ namespace eNet编辑器.AddForm
             //是添加面板 还是修改面板
             if (!xflag)
             {
-                //新建面板
-                foreach (DataJson.PointInfo pi in FileMesege.PointList.link)
+                try
                 {
-                    if (pi.area1 == Area1 && pi.area2 == Area2 && pi.area3 == Area3 && pi.area4 == Area4 && pi.name == PanelName)
+                    //新建面板
+                    foreach (DataJson.PointInfo pi in FileMesege.PointList.link)
                     {
-                        MessageBox.Show("该名称已存在，请更换名称");
-                        return;
-                    }
+                        if (pi.area1 == Area1 && pi.area2 == Area2 && pi.area3 == Area3 && pi.area4 == Area4 && pi.name == PanelName)
+                        {
+                            MessageBox.Show("该名称已存在，请更换名称");
+                            return;
+                        }
 
+                    }
                 }
+                catch { }
                 addPanelNode();
                 txtNum.Text = (Convert.ToInt32(txtNum.Text) + 1).ToString();
             }

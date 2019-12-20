@@ -149,12 +149,18 @@ namespace eNet编辑器.DgvView
                 cbDevNum.Items.Clear();
                 cbDevNum.Text = "";
                 int tmpId = -1;
+                try
+                {
+                    ip = FileMesege.panelSelectNode.Parent.Text.Split(' ')[0];//IP地址
+                    findKeyPanel();
+                }
+                catch { }
                 DataJson.panels pls = DataListHelper.getPanelsInfoListByNode();
                 if (pls == null || pls.keyNum ==0)
                 {
                     return;
                 }
-                ip = FileMesege.panelSelectNode.Parent.Text.Split(' ')[0];//IP地址
+                
                 cbKeyNum.Text = pls.keyNum.ToString();
                 //面板图片
                 if (pls.keyNum <= 8)
@@ -167,7 +173,7 @@ namespace eNet编辑器.DgvView
                 {
                     imgSlider.ImageList = null;
                 }
-                findKeyPanel();
+                
                 List<DataJson.panelsInfo> delPanel = new List<DataJson.panelsInfo>();
                 
                 //循环加载该定时号的所有信息

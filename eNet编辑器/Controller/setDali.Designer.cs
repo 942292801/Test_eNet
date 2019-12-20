@@ -30,9 +30,9 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(setDali));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend5 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.plInfoTitle = new System.Windows.Forms.Panel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.btnRefresh = new DevComponents.DotNetBar.ButtonX();
@@ -137,6 +137,10 @@
             this.label7 = new System.Windows.Forms.Label();
             this.lblmTiao = new System.Windows.Forms.Label();
             this.timer2 = new System.Windows.Forms.Timer(this.components);
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.lbTip = new System.Windows.Forms.Label();
+            this.pgBar = new DevComponents.DotNetBar.Controls.ProgressBarX();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.plInfoTitle.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -147,6 +151,7 @@
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tblmTiao)).BeginInit();
+            this.panel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // plInfoTitle
@@ -1473,6 +1478,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.panel4);
             this.groupBox2.Controls.Add(this.label19);
             this.groupBox2.Controls.Add(this.label21);
             this.groupBox2.Controls.Add(this.label20);
@@ -1531,27 +1537,27 @@
             // chart1
             // 
             this.chart1.BackColor = System.Drawing.Color.Transparent;
-            chartArea2.Name = "ChartArea1";
-            chartArea2.Position.Auto = false;
-            chartArea2.Position.Height = 97F;
-            chartArea2.Position.Width = 100F;
-            chartArea2.Position.Y = 3F;
-            this.chart1.ChartAreas.Add(chartArea2);
-            legend2.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Top;
-            legend2.Enabled = false;
-            legend2.MaximumAutoSize = 40F;
-            legend2.Name = "Legend1";
-            this.chart1.Legends.Add(legend2);
+            chartArea5.Name = "ChartArea1";
+            chartArea5.Position.Auto = false;
+            chartArea5.Position.Height = 97F;
+            chartArea5.Position.Width = 100F;
+            chartArea5.Position.Y = 3F;
+            this.chart1.ChartAreas.Add(chartArea5);
+            legend5.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Top;
+            legend5.Enabled = false;
+            legend5.MaximumAutoSize = 40F;
+            legend5.Name = "Legend1";
+            this.chart1.Legends.Add(legend5);
             this.chart1.Location = new System.Drawing.Point(235, 46);
             this.chart1.Name = "chart1";
             this.chart1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series2.Legend = "Legend1";
-            series2.Name = "Series1";
-            series2.ToolTip = "#VALX #VAL";
-            series2.YValuesPerPoint = 6;
-            this.chart1.Series.Add(series2);
+            series5.ChartArea = "ChartArea1";
+            series5.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series5.Legend = "Legend1";
+            series5.Name = "Series1";
+            series5.ToolTip = "#VALX #VAL";
+            series5.YValuesPerPoint = 6;
+            this.chart1.Series.Add(series5);
             this.chart1.Size = new System.Drawing.Size(739, 266);
             this.chart1.TabIndex = 28;
             // 
@@ -1767,6 +1773,49 @@
             this.timer2.Interval = 5000;
             this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
             // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.Color.White;
+            this.panel4.Controls.Add(this.lbTip);
+            this.panel4.Controls.Add(this.pgBar);
+            this.panel4.Location = new System.Drawing.Point(364, 131);
+            this.panel4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(249, 80);
+            this.panel4.TabIndex = 36;
+            this.panel4.Visible = false;
+            // 
+            // lbTip
+            // 
+            this.lbTip.AutoSize = true;
+            this.lbTip.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lbTip.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.lbTip.Location = new System.Drawing.Point(123, 60);
+            this.lbTip.Name = "lbTip";
+            this.lbTip.Size = new System.Drawing.Size(121, 17);
+            this.lbTip.TabIndex = 67;
+            this.lbTip.Text = "正在写入，请稍后. . .";
+            // 
+            // pgBar
+            // 
+            // 
+            // 
+            // 
+            this.pgBar.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.pgBar.Location = new System.Drawing.Point(17, 32);
+            this.pgBar.Name = "pgBar";
+            this.pgBar.Size = new System.Drawing.Size(216, 17);
+            this.pgBar.Style = DevComponents.DotNetBar.eDotNetBarStyle.OfficeXP;
+            this.pgBar.TabIndex = 66;
+            // 
+            // backgroundWorker1
+            // 
+            this.backgroundWorker1.WorkerReportsProgress = true;
+            this.backgroundWorker1.WorkerSupportsCancellation = true;
+            this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
+            this.backgroundWorker1.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorker1_ProgressChanged);
+            this.backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
+            // 
             // setDali
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -1795,6 +1844,8 @@
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tblmTiao)).EndInit();
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1905,6 +1956,10 @@
         private System.Windows.Forms.Button button64;
         private System.Windows.Forms.Button button65;
         private System.Windows.Forms.Button button66;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Label lbTip;
+        private DevComponents.DotNetBar.Controls.ProgressBarX pgBar;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
 
     }
 }
