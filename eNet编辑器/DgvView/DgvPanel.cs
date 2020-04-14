@@ -2142,7 +2142,7 @@ namespace eNet编辑器.DgvView
                         {
                             //类型不一样清空类型
                             plInfo.opt = 0;
-                          
+
                         }
                         plInfo.objType = FileMesege.copyPanel.objType;
                         plInfo.pid = FileMesege.copyPanel.pid;
@@ -2190,7 +2190,7 @@ namespace eNet编辑器.DgvView
                                 //无 mode
                                 plInfo.showAddress = FileMesege.copyPanel.showAddress;
                                 plInfo.showMode = FileMesege.copyPanel.showMode;
-                         
+
                             }
                             else
                             {
@@ -2199,21 +2199,29 @@ namespace eNet编辑器.DgvView
                                     //同步 地址为空 
                                     plInfo.showAddress = plInfo.objAddress;
                                     plInfo.showMode = FileMesege.copyPanel.showMode;
-                                    
+
                                 }
                                 else
                                 {
                                     plInfo.showMode = FileMesege.copyPanel.showMode;
                                 }
- 
+
                             }
-                           
+
 
                         }
                         dataGridView1.Rows[id].Cells[7].Value = DgvMesege.addressTransform(plInfo.showAddress);
                         dataGridView1.Rows[id].Cells[8].Value = plInfo.showMode;
                         ischange = true;
                     }
+                    else if (colIndex == 1)
+                    {
+                        //按键地址
+                        plInfo.keyAddress = FileMesege.copyPanel.keyAddress;
+                        dataGridView1.Rows[id].Cells[1].Value = keyAddressTransform(plInfo.keyAddress);
+                        ischange = true;
+                    }
+
              
 
                 }
@@ -2348,6 +2356,13 @@ namespace eNet编辑器.DgvView
                         ischange = true;
 
                     }
+                    else if (colIndex == 1)
+                    {
+                        //按键地址
+                        plInfo.keyAddress = DgvMesege.KeyAddressAdd(FileMesege.copyPanel.keyAddress, addCount * Convert.ToInt32(FileMesege.AsDesCendingNum)); ;
+                        dataGridView1.Rows[id].Cells[1].Value = keyAddressTransform(plInfo.keyAddress);
+                        ischange = true;
+                    }
                     addCount--;
                 }
                 if (ischange)
@@ -2476,6 +2491,13 @@ namespace eNet编辑器.DgvView
                         dataGridView1.Rows[id].Cells[8].Value = plInfo.showMode;
                         ischange = true;
 
+                    }
+                    else if (colIndex == 1)
+                    {
+                        //按键地址
+                        plInfo.keyAddress = DgvMesege.KeyAddressReduce(FileMesege.copyPanel.keyAddress, reduceCount * Convert.ToInt32(FileMesege.AsDesCendingNum));
+                        dataGridView1.Rows[id].Cells[1].Value = keyAddressTransform(plInfo.keyAddress);
+                        ischange = true;
                     }
                     reduceCount--;
                 }

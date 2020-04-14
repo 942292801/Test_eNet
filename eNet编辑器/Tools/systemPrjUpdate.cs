@@ -65,7 +65,7 @@ namespace eNet编辑器.AddForm
             {
 
                 udp.udpSend("255.255.255.255", "6002", "search all");
-
+                udp.udpSend("255.255.255.255", "6002", "Search all");
             }
         }
 

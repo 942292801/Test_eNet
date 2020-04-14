@@ -192,4 +192,41 @@
     <value>逻辑名称：</value>
     <comment>主窗口信息面试界面（逻辑名称：）</comment>
   </data>
+  <data name="Date" xml:space="preserve">
+    <value>日期</value>
+  </data>
+  <data name="Fixation" xml:space="preserve">
+    <value>固定</value>
+  </data>
+  <data name="LocalVar" xml:space="preserve">
+    <value>局部变量</value>
+  </data>
+  <data name="LocalVarNum" xml:space="preserve">
+    <value>变量号</value>
+  </data>
+  <data name="LogicNum" xml:space="preserve">
+    <value>逻辑号</value>
+  </data>
+  <data name="Time" xml:space="preserve">
+    <value>时间</value>
+  </data>
+  <data name="IO" xml:space="preserve">
+    <value>感应输入</value>
+  </data>
+  <data name="PanelButton" xml:space="preserve">
+    <value>面板按键</value>
+  </data>
+  <data name="Virtualport" xml:space="preserve">
+    <value>虚拟端口</value>
+  </data>
+  <data name="Give" xml:space="preserve">
+    <value>赋值</value>
+    <comment>赋值类型</comment>
+  </data>
+  <data name="StateControl" xml:space="preserve">
+    <value>状态操作</value>
+  </data>
+  <data name="Ignore" xml:space="preserve">
+    <value>忽略</value>
+  </data>
 </root>

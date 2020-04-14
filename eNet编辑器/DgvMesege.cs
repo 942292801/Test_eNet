@@ -166,6 +166,68 @@ namespace eNet编辑器
         }
 
         /// <summary>
+        /// 按键地址递增
+        /// </summary>
+        /// <param name="address"></param>
+        /// <param name="j"></param>
+        /// <returns></returns>
+        public static string KeyAddressAdd(string address, int j)
+        {
+            if (string.IsNullOrEmpty(address) || address == "FFFFFFFF" || address.Length != 8 )
+            {
+                return string.Empty;
+            }
+            else
+            {
+          
+                string hexnum = ToolsUtil.strtohexstr((Convert.ToInt32(address.Substring(4, 4), 16) + j).ToString());
+                while (hexnum.Length < 4)
+                {
+                    hexnum = hexnum.Insert(0, "0");
+                }
+                address = address.Substring(0, 4) + hexnum;
+
+                return address;
+
+            }
+        }
+
+        /// <summary>
+        /// 按键地址递减
+        /// </summary>
+        /// <param name="address"></param>
+        /// <param name="j"></param>
+        /// <returns></returns>
+        public static string KeyAddressReduce(string address, int j)
+        {
+            if (string.IsNullOrEmpty(address) || address == "FFFFFFFF" || address.Length != 8 )
+            {
+                return string.Empty;
+            }
+            else
+            {
+
+                int num = Convert.ToInt32(address.Substring(4, 4), 16) - j;
+                if (num > 0)
+                {
+                    string hexnum = ToolsUtil.strtohexstr(num.ToString());
+                    while (hexnum.Length < 4)
+                    {
+                        hexnum = hexnum.Insert(0, "0");
+                    }
+                    address = address.Substring(0, 4) + hexnum;
+                }
+                else
+                {
+                    return string.Empty;
+                }
+                return address;
+
+            }
+
+        }
+
+        /// <summary>
         /// 实现复制功能，将DataGridView中选定单元格的值复制到剪贴板中
         /// </summary>
         /// <param name="dgv_Test"></param>

@@ -1924,6 +1924,13 @@ namespace eNet编辑器.DgvView
                         dataGridView1.Rows[id].Cells[2].Value = findFbMode(srInfo.fbmode);//闭合 释放
                         ischange = true;
                     }
+                    else if (colIndex == 1)
+                    {
+                        //按键地址
+                        srInfo.keyAddress = FileMesege.copySensor.keyAddress;
+                        dataGridView1.Rows[id].Cells[1].Value = keyAddressTransform(srInfo.keyAddress);
+                        ischange = true;
+                    }
 
 
                 }
@@ -2045,6 +2052,13 @@ namespace eNet编辑器.DgvView
                         dataGridView1.Rows[id].Cells[7].Value = (srInfo.optName + " " + srInfo.opt).Trim();
                         ischange = true;
                     }
+                    else if (colIndex == 1)
+                    {
+                        //按键地址
+                        srInfo.keyAddress = DgvMesege.KeyAddressAdd(FileMesege.copySensor.keyAddress, addCount * Convert.ToInt32(FileMesege.AsDesCendingNum)); ;
+                        dataGridView1.Rows[id].Cells[1].Value = keyAddressTransform(srInfo.keyAddress);
+                        ischange = true;
+                    }
                     addCount--;
                 }
                 if (ischange)
@@ -2159,6 +2173,13 @@ namespace eNet编辑器.DgvView
                         dataGridView1.Rows[id].Cells[3].Value = DgvMesege.addressTransform(srInfo.objAddress);
                         dataGridView1.Rows[id].Cells[4].Value = IniHelper.findTypesIniNamebyType(srInfo.objType);
                         dataGridView1.Rows[id].Cells[7].Value = (srInfo.optName + " " + srInfo.opt).Trim();
+                        ischange = true;
+                    }
+                    else if (colIndex == 1)
+                    {
+                        //按键地址
+                        srInfo.keyAddress = DgvMesege.KeyAddressReduce(FileMesege.copySensor.keyAddress, reduceCount * Convert.ToInt32(FileMesege.AsDesCendingNum));
+                        dataGridView1.Rows[id].Cells[1].Value = keyAddressTransform(srInfo.keyAddress);
                         ischange = true;
                     }
                     reduceCount--;
