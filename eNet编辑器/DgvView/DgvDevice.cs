@@ -743,8 +743,13 @@ namespace eNet编辑器.DgvView
                                         {
                                             mdl.sn = sl.mac8.Trim().Replace(":", "");
                                             mdl.ver = sl.version.Trim();
+
                                             changeSn_ver(mdl);
                                             //寻找到该信息就退出当前循环
+                                            //临时添加  改好serial就删除
+                                            dataGridView1.Rows[0].Cells[6].Value = Resources.DevStateOn;
+                                            dataGridView1.Rows[0].Cells[6].Style.BackColor = Color.Lime;
+                                            dataGridView1.Rows[0].Cells[6].Style.ForeColor = Color.Black;
                                             break;
                                         }
 
@@ -773,8 +778,10 @@ namespace eNet编辑器.DgvView
         /// <param name="mdl"></param>
         private void changeSn_ver(DataJson.Module mdl)
         {
+            //因为主机还没修改完成 这里 i = 1  跳过第一格  后面 要改成i=0  主机返回状态时候加上网关的反馈
             //循环DGV表格
-            for (int i = 0; i < dataGridView1.RowCount; i++)
+         
+            for (int i = 1; i < dataGridView1.RowCount; i++)
             {
                 //找到该ID 退出循环
                 if (dataGridView1.Rows[i].Cells[0].Value.ToString()== mdl.id.ToString())
@@ -795,9 +802,8 @@ namespace eNet编辑器.DgvView
                     dataGridView1.Rows[i].Cells[6].Style.ForeColor = Color.Black;
                     break;
                 }
-                
-
             }
+
         }
 
         #endregion
