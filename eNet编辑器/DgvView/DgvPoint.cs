@@ -43,41 +43,48 @@ namespace eNet编辑器.DgvView
         
         private void DgvPoint_Load(object sender, EventArgs e)
         {
-            //新增对象列 加载
-            this.dataGridView1.Rows.Clear();
-            cbObjType = new DataGridViewComboBoxColumn();
-            cbValue = new DataGridViewComboBoxColumn();
-            DirectoryInfo folder = new DirectoryInfo(Application.StartupPath + "//objs");
-            string name = "";
-            foreach (FileInfo file in folder.GetFiles("*.ini"))
+            try
             {
-
-                name = IniConfig.GetValue(file.FullName, "define", "name");
-                if (name != "")
+                //新增对象列 加载
+                this.dataGridView1.Rows.Clear();
+                cbObjType = new DataGridViewComboBoxColumn();
+                cbValue = new DataGridViewComboBoxColumn();
+                DirectoryInfo folder = new DirectoryInfo(Application.StartupPath + "//objs");
+                string name = "";
+                foreach (FileInfo file in folder.GetFiles("*.ini"))
                 {
-                    cbObjType.Items.Add(name);
+
+                    name = IniConfig.GetValue(file.FullName, "define", "name");
+                    if (name != "")
+                    {
+                        cbObjType.Items.Add(name);
+                    }
                 }
+                //设置列名
+                cbObjType.HeaderText = "对象";
+                //设置下拉列表的默认值 
+                cbObjType.DisplayStyle = DataGridViewComboBoxDisplayStyle.Nothing;
+                //cbObjType.DefaultCellStyle.NullValue = cbObjType.Items[0];
+                cbObjType.Name = "pointObjType";
+                cbObjType.ReadOnly = true;
+
+                //设置列名
+                cbValue.HeaderText = "参数";
+                //设置下拉列表的默认值 
+                cbValue.DisplayStyle = DataGridViewComboBoxDisplayStyle.Nothing;
+                //或者这样设置 默认选择第一项
+                cbValue.ReadOnly = true;
+                cbValue.Name = "pointValue";
+
+                //插入执行对象
+                this.dataGridView1.Columns.Insert(4, cbObjType);
+                //插入执行模式
+                this.dataGridView1.Columns.Insert(5, cbValue);
             }
-            //设置列名
-            cbObjType.HeaderText = "对象";
-            //设置下拉列表的默认值 
-            cbObjType.DisplayStyle = DataGridViewComboBoxDisplayStyle.Nothing;
-            //cbObjType.DefaultCellStyle.NullValue = cbObjType.Items[0];
-            cbObjType.Name = "pointObjType";
-            cbObjType.ReadOnly = true;
-
-            //设置列名
-            cbValue.HeaderText = "参数";
-            //设置下拉列表的默认值 
-            cbValue.DisplayStyle = DataGridViewComboBoxDisplayStyle.Nothing;
-            //或者这样设置 默认选择第一项
-            cbValue.ReadOnly = true;
-            cbValue.Name = "pointValue";
-
-            //插入执行对象
-            this.dataGridView1.Columns.Insert(4, cbObjType);
-            //插入执行模式
-            this.dataGridView1.Columns.Insert(5, cbValue);
+            catch (Exception ex)
+            {
+                ToolsUtil.WriteLog(ex.Message);
+            }
         }
 
         #region dgv的数据加载 更新combox的item值
@@ -906,9 +913,10 @@ namespace eNet编辑器.DgvView
                 section.Add("");
             }
             oldName = dataGridView1.Rows[rowCount].Cells[3].Value.ToString();
-            if (oldName.Contains(FileMesege.titleinfo))
+           
+            if (oldName.Contains(FileMesege.titleinfo)  && oldName.Substring(0, FileMesege.titleinfo.Length) == FileMesege.titleinfo )
             {
-                //该名称的类型已经存在
+                //该名称
                 return;
             }   
             foreach (DataJson.PointInfo eq in FileMesege.PointList.equipment)
@@ -1028,11 +1036,9 @@ namespace eNet编辑器.DgvView
                     {
                         if (et.area1 == eq.area1 && et.area2 == eq.area2 && et.area3 == eq.area3 && et.area4 == eq.area4 && et.name.Split('@')[0] == nowName)
                         {
-                            if (rowCount == rowNum)
-                            {
-                                dataGridView1.Rows[rowNum].Cells[3].Value = oldName;
+                       
+                            dataGridView1.Rows[rowNum].Cells[3].Value = oldName;
                             
-                            }
                             return;
 
                         }

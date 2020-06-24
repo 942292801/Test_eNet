@@ -244,6 +244,14 @@
     <Compile Include="AddForm\AsDesCending.Designer.cs">
       <DependentUpon>AsDesCending.cs</DependentUpon>
     </Compile>
+    <Compile Include="ClientAsync5000.cs" />
+    <Compile Include="Controller\SetData.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controller\SetData.Designer.cs">
+      <DependentUpon>SetData.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CsvHelper.cs" />
     <Compile Include="DgvView\LogicCondition.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -474,23 +482,23 @@
     <Compile Include="Controller\IniForm.Designer.cs">
       <DependentUpon>IniForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controller\setDali.cs">
+    <Compile Include="Controller\SetDali.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Controller\setDali.Designer.cs">
-      <DependentUpon>setDali.cs</DependentUpon>
+    <Compile Include="Controller\SetDali.Designer.cs">
+      <DependentUpon>SetDali.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controller\setDimmer.cs">
+    <Compile Include="Controller\SetDimmer.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Controller\setDimmer.Designer.cs">
-      <DependentUpon>setDimmer.cs</DependentUpon>
+    <Compile Include="Controller\SetDimmer.Designer.cs">
+      <DependentUpon>SetDimmer.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controller\setSwitch.cs">
+    <Compile Include="Controller\SetSwitch.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Controller\setSwitch.Designer.cs">
-      <DependentUpon>setSwitch.cs</DependentUpon>
+    <Compile Include="Controller\SetSwitch.Designer.cs">
+      <DependentUpon>SetSwitch.cs</DependentUpon>
     </Compile>
     <Compile Include="DataChange.cs" />
     <Compile Include="DataJson.cs" />
@@ -635,6 +643,9 @@
     <EmbeddedResource Include="AddForm\AsDesCending.resx">
       <DependentUpon>AsDesCending.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Controller\SetData.resx">
+      <DependentUpon>SetData.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DgvView\LogicCondition.resx">
       <DependentUpon>LogicCondition.cs</DependentUpon>
     </EmbeddedResource>
@@ -757,14 +768,14 @@
     <EmbeddedResource Include="Controller\IniForm.resx">
       <DependentUpon>IniForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controller\setDali.resx">
-      <DependentUpon>setDali.cs</DependentUpon>
+    <EmbeddedResource Include="Controller\SetDali.resx">
+      <DependentUpon>SetDali.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controller\setDimmer.resx">
-      <DependentUpon>setDimmer.cs</DependentUpon>
+    <EmbeddedResource Include="Controller\SetDimmer.resx">
+      <DependentUpon>SetDimmer.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controller\setSwitch.resx">
-      <DependentUpon>setSwitch.cs</DependentUpon>
+    <EmbeddedResource Include="Controller\SetSwitch.resx">
+      <DependentUpon>SetSwitch.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DgvView\DgvPanel.resx">
       <DependentUpon>DgvPanel.cs</DependentUpon>

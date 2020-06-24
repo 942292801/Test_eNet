@@ -74,8 +74,8 @@ namespace eNet编辑器.AddForm
                 //types下的文件名
                 string type = "";
                 string[] arr = FileMesege.tnselectNode.Text.Split(' ');
-                string filename = string.Format("{0}.ini", arr[1]);
-                string filepath = string.Format("{0}\\devices\\{1}", Application.StartupPath, filename);
+                string filepath = IniHelper.findDevicesDisplay(arr[1]);
+
                 //获取types下 ini类型名称
                 type = IniConfig.GetValue(filepath, "ports", (rowNum+1).ToString()).Split(',')[0];
                 filepath = string.Format("{0}\\types\\{1}.ini", Application.StartupPath, type);

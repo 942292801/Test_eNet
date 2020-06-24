@@ -42,6 +42,7 @@ namespace eNet编辑器.DgvView
         #endregion
 
         public static event Action<string> AppTxtShow;
+        public static event Action unSelectTitleNode;
 
         //当前选中节点的IP地址
         string ip = "";
@@ -187,7 +188,7 @@ namespace eNet编辑器.DgvView
                         info.objPid = point.pid;
                         info.objAddress = point.address;
                         info.objType = point.type;
-                        return DataListHelper.dealSection(point) + string.Format(" ({1})", DgvMesege.addressTransform(info.objAddress));
+                        return DataListHelper.dealSection(point) + string.Format("({0})", DgvMesege.addressTransform(info.objAddress));
                     }
                     
                     else
@@ -258,7 +259,7 @@ namespace eNet编辑器.DgvView
                         info.comparePid = point.pid;
                         info.compareobjAddress = point.address;
                         info.compareobjType = point.type;
-                        return DataListHelper.dealSection(point) + string.Format(" ({1})", DgvMesege.addressTransform(info.compareobjAddress));
+                        return DataListHelper.dealSection(point) + string.Format(" ({0})", DgvMesege.addressTransform(info.compareobjAddress));
                     }
                     else
                     {
@@ -730,6 +731,8 @@ namespace eNet编辑器.DgvView
         private void dataGridView1_MouseDown(object sender, MouseEventArgs e)
         {
             DgvMesege.endDataViewCurrent(dataGridView1, e.Y, e.X);
+            dataGridView2.ClearSelection();
+            dataGridView3.ClearSelection();
         }
 
 
@@ -822,7 +825,7 @@ namespace eNet编辑器.DgvView
                     else
                     {
                         #region //处理单击事件操作
-
+                        
                         if (rowCount >= 0 && columnCount >= 0)
                         {
                             //DGV的行号
@@ -1335,6 +1338,7 @@ namespace eNet编辑器.DgvView
                 LogicInfo.content = JsonConvert.SerializeObject(logicConditionContent);
                 DataJson.totalList NewList = FileMesege.cmds.getListInfos();
                 FileMesege.cmds.DoNewCommand(NewList, OldList);
+                unSelectTitleNode();
             }
             catch
             {
@@ -1388,6 +1392,7 @@ namespace eNet编辑器.DgvView
                 LogicInfo.content = JsonConvert.SerializeObject(logicConditionContent);
                 DataJson.totalList NewList = FileMesege.cmds.getListInfos();
                 FileMesege.cmds.DoNewCommand(NewList, OldList);
+                unSelectTitleNode();
             }
             catch
             {
@@ -1404,6 +1409,8 @@ namespace eNet编辑器.DgvView
         private void dataGridView2_MouseDown(object sender, MouseEventArgs e)
         {
             DgvMesege.endDataViewCurrent(dataGridView2, e.Y, e.X);
+            dataGridView1.ClearSelection();
+            dataGridView3.ClearSelection();
         }
    
 
@@ -1489,6 +1496,7 @@ namespace eNet编辑器.DgvView
                     else
                     {
                         //处理单击事件操作
+                       
                         if (rowCount >= 0 && columnCount >= 0)
                         {
                             //DGV的行号
@@ -1896,6 +1904,7 @@ namespace eNet编辑器.DgvView
                 LogicInfo.content = JsonConvert.SerializeObject(logicConditionContent);
                 DataJson.totalList NewList = FileMesege.cmds.getListInfos();
                 FileMesege.cmds.DoNewCommand(NewList, OldList);
+                unSelectTitleNode();
             }
             catch
             {
@@ -1911,6 +1920,8 @@ namespace eNet编辑器.DgvView
         private void dataGridView3_MouseDown(object sender, MouseEventArgs e)
         {
             DgvMesege.endDataViewCurrent(dataGridView3, e.Y, e.X);
+            dataGridView1.ClearSelection();
+            dataGridView2.ClearSelection();
         }
 
         private void doubleClickTimer3_Tick(object sender, EventArgs e)
@@ -1922,7 +1933,7 @@ namespace eNet编辑器.DgvView
                 if (milliseconds >= SystemInformation.DoubleClickTime)
                 {
                     doubleClickTimer3.Stop();
-
+                    
 
                     if (isDoubleClick)
                     {
@@ -1994,6 +2005,7 @@ namespace eNet编辑器.DgvView
                     }
                     else
                     {
+                        
                         //处理单击事件操作
                         if (rowCount >= 0 && columnCount >= 0)
                         {
@@ -2392,6 +2404,7 @@ namespace eNet编辑器.DgvView
                 LogicInfo.content = JsonConvert.SerializeObject(logicConditionContent);
                 DataJson.totalList NewList = FileMesege.cmds.getListInfos();
                 FileMesege.cmds.DoNewCommand(NewList, OldList);
+                unSelectTitleNode();
             }
             catch
             {
@@ -2699,15 +2712,15 @@ namespace eNet编辑器.DgvView
         {
             try
             {
-                if (dataGridView1.Focused)
+                if (dataGridView1.SelectedCells.Count >0 )
                 {
                     SameDgv1();
                 }
-                else if (dataGridView2.Focused)
+                else if (dataGridView2.SelectedCells.Count > 0)
                 {
                     SameDgv2();
                 }
-                else if (dataGridView3.Focused)
+                else if (dataGridView3.SelectedCells.Count > 0)
                 {
                     SameDgv3();
                 }
@@ -3085,15 +3098,15 @@ namespace eNet编辑器.DgvView
         {
             try
             {
-                if (dataGridView1.Focused)
+                if (dataGridView1.SelectedCells.Count > 0)
                 {
                     AscendingDgv1();
                 }
-                else if (dataGridView2.Focused)
+                else if (dataGridView2.SelectedCells.Count > 0)
                 {
                     AscendingDgv2();
                 }
-                else if (dataGridView3.Focused)
+                else if (dataGridView3.SelectedCells.Count > 0)
                 {
                     AscendingDgv3();
                 }
@@ -3562,15 +3575,15 @@ namespace eNet编辑器.DgvView
         {
             try
             {
-                if (dataGridView1.Focused)
+                if (dataGridView1.SelectedCells.Count > 0)
                 {
                     DescendingDgv1();
                 }
-                else if (dataGridView2.Focused)
+                else if (dataGridView2.SelectedCells.Count > 0)
                 {
                     DescendingDgv2();
                 }
-                else if (dataGridView3.Focused)
+                else if (dataGridView3.SelectedCells.Count > 0)
                 {
                     DescendingDgv3();
                 }
@@ -4114,12 +4127,28 @@ namespace eNet编辑器.DgvView
 
 
 
+
+
+
+
+
         #endregion
 
+        #region 右击菜单 升序 相同 降序
+        private void 相同ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Same();
+        }
 
+        private void 升序ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Ascending();
+        }
 
-
-
-
+        private void 降序ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Descending();
+        }
+        #endregion
     }//class
 }

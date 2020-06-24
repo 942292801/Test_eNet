@@ -238,6 +238,10 @@ namespace eNet编辑器
             public string area4 { get; set; }
             public string name { get; set; }
             public List<DevPort> devPortList = new List<DevPort>();
+            //临时添加
+            public string devContent { get; set; }
+
+
         }
 
         [Serializable]
@@ -250,7 +254,7 @@ namespace eNet编辑器
 
         }
 
-        #region 端口内容 开关 调光 串口1000 串口2000 温感 光感
+        #region 端口内容 开关 调光 串口3000 温感 光感
         
         [Serializable]
         public class PortSwitch 
@@ -305,6 +309,33 @@ namespace eNet编辑器
             }
         }
 
+
+        [Serializable]
+        public class DevRS3000
+        {
+            //轮询时间
+            public int pollingTime { get; set; }
+            //波特率
+            public int baud { get; set; }
+            //停止位
+            public int stopBit { get; set; }
+            public int check { get; set; }
+
+            public List<PortData> portDatas = new List<PortData>();
+        }
+
+        [Serializable]
+        public class PortData
+        {
+            public int id { get; set; }
+           
+            public string name { get; set; }
+            public string sendCode { get; set; }
+            public string customCode { get; set; }
+            public string rcvCode { get; set; }
+            public string pollingCode { get; set; }
+            public string logicCode { get; set; }
+        }
         #endregion
 
 

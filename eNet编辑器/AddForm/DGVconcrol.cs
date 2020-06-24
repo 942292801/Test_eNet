@@ -65,7 +65,8 @@ namespace eNet编辑器.AddForm
             {
                 //1.获取当前设备的名字信息 读一次device .ini 该行的类型 
                 string[] names = FileMesege.tnselectNode.Text.Split(' ');
-                string[] type = IniConfig.GetValue(path + "//devices//" + names[1] + ".ini", "ports", (rowindex + 1).ToString()).Split(',');
+                string filepath = IniHelper.findDevicesDisplay(names[1]);
+                string[] type = IniConfig.GetValue(filepath, "ports", (rowindex + 1).ToString()).Split(',');
 
                 //2.打开对应类型的type.ini文件加载
                 string tmp = "";

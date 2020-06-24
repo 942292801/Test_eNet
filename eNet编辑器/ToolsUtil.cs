@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
 using System.Net.Sockets;
-using System.Threading;
 using System.Net;
 using System.Windows.Forms;
 using System.Net.NetworkInformation;
 using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.Runtime.Serialization;
 
 namespace eNet编辑器
 {
@@ -287,26 +287,78 @@ namespace eNet编辑器
         /// <param name="text"></param>
         public static void WriteLog(string text)
         {
-
-            string path = AppDomain.CurrentDomain.BaseDirectory;
-            path = System.IO.Path.Combine(path
-            , "Logs\\");
-
-            if (!System.IO.Directory.Exists(path))
+            try
             {
-                System.IO.Directory.CreateDirectory(path);
+                string path = AppDomain.CurrentDomain.BaseDirectory;
+                path = System.IO.Path.Combine(path
+                , "Logs\\");
+
+                if (!System.IO.Directory.Exists(path))
+                {
+                    System.IO.Directory.CreateDirectory(path);
+                }
+                string fileFullName = System.IO.Path.Combine(path
+                , string.Format("{0}.log", DateTime.Now.ToString("yyyyMMdd-HHmm")));
+
+
+                using (StreamWriter output = System.IO.File.AppendText(fileFullName))
+                {
+                    output.WriteLine(text);
+
+                    output.Close();
+                }
             }
-            string fileFullName = System.IO.Path.Combine(path
-            , string.Format("{0}.txt", DateTime.Now.ToString("yyyyMMdd-HHmm")));
+            catch (Exception ex) {
+                Console.WriteLine(ex.Message);
+            }
+           
+        }
 
-
-            using (StreamWriter output = System.IO.File.AppendText(fileFullName))
+        /// <summary>
+        /// 普通的对象可以克隆 有object的不行
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        public static object CloneObject(object obj)
+        {
+            using (MemoryStream memStream = new MemoryStream())
             {
-                output.WriteLine(text);
-
-                output.Close();
+                BinaryFormatter binaryFormatter = new BinaryFormatter(null,
+                  new StreamingContext(StreamingContextStates.Clone));
+                binaryFormatter.Serialize(memStream, obj);
+                memStream.Seek(0, SeekOrigin.Begin);
+                return binaryFormatter.Deserialize(memStream);
             }
         }
+
+
+        public static string AddBlank(string content)
+        {
+            if (string.IsNullOrEmpty(content))
+            {
+                return null;
+            }
+            string tmp = content.Replace(" ","");
+            return Regex.Replace(tmp, @".{2}", "$0 ").Trim();
+
+        }
+
+        /// <summary>
+        /// 计算字符串中子串出现的次数
+        /// </summary>
+        /// <param name="str">字符串</param>
+        /// <param name="substring">子串</param>
+        /// <returns></returns>
+        public static int SubstringCount(string str, string substring)
+        {
+            if (str.Contains(substring))
+            {
+                string strReplaced = str.Replace(substring, "");
+                return (str.Length - strReplaced.Length) / substring.Length;
+            }
+            return 0;
+        }
+
 
     }
 }

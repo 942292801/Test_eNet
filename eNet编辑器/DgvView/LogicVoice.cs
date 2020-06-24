@@ -42,7 +42,7 @@ namespace eNet编辑器.DgvView
         string[] letter = { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z" };
 
         public static event Action<string> AppTxtShow;
-
+        public static event Action unSelectTitleNode;
         //当前选中节点的IP地址
         string ip = "";
 
@@ -666,6 +666,7 @@ namespace eNet编辑器.DgvView
         private void dataGridView1_MouseDown(object sender, MouseEventArgs e)
         {
             DgvMesege.endDataViewCurrent(dataGridView1, e.Y, e.X);
+            dataGridView2.ClearSelection();
         }
 
         private void doubleClickTimer1_Tick(object sender, EventArgs e)
@@ -757,12 +758,8 @@ namespace eNet编辑器.DgvView
                                 case "del1":
                                     //删除表
                                     dgvDel1(id);
-
                                     break;
                                 default: break;
-
-
-
                             }
                             try
                             {
@@ -1004,6 +1001,7 @@ namespace eNet编辑器.DgvView
                 LogicInfo.content = JsonConvert.SerializeObject(logicVoiceContent);
                 DataJson.totalList NewList = FileMesege.cmds.getListInfos();
                 FileMesege.cmds.DoNewCommand(NewList, OldList);
+                unSelectTitleNode();
             }
             catch
             {
@@ -1019,6 +1017,7 @@ namespace eNet编辑器.DgvView
         private void dataGridView2_MouseDown(object sender, MouseEventArgs e)
         {
             DgvMesege.endDataViewCurrent(dataGridView2, e.Y, e.X);
+            dataGridView1.ClearSelection();
         }
 
         private void doubleClickTimer2_Tick(object sender, EventArgs e)
@@ -1555,6 +1554,7 @@ namespace eNet编辑器.DgvView
                 LogicInfo.content = JsonConvert.SerializeObject(logicVoiceContent);
                 DataJson.totalList NewList = FileMesege.cmds.getListInfos();
                 FileMesege.cmds.DoNewCommand(NewList, OldList);
+                unSelectTitleNode();
             }
             catch
             {
@@ -1744,11 +1744,11 @@ namespace eNet编辑器.DgvView
         {
             try
             {
-                if (dataGridView1.Focused)
+                if (dataGridView1.SelectedCells.Count >0)
                 {
                     SameDgv1();
                 }
-                else if (dataGridView2.Focused)
+                else if (dataGridView2.SelectedCells.Count > 0)
                 {
                     SameDgv2();
                 }
@@ -1982,11 +1982,11 @@ namespace eNet编辑器.DgvView
 
             try
             {
-                if (dataGridView1.Focused)
+                if (dataGridView1.SelectedCells.Count > 0)
                 {
                     AscendingDgv1();
                 }
-                else if (dataGridView2.Focused)
+                else if (dataGridView2.SelectedCells.Count > 0)
                 {
                     AscendingDgv2();
                 }
@@ -2247,11 +2247,11 @@ namespace eNet编辑器.DgvView
         {
             try
             {
-                if (dataGridView1.Focused)
+                if (dataGridView1.SelectedCells.Count > 0)
                 {
                     DescendingDgv1();
                 }
-                else if (dataGridView2.Focused)
+                else if (dataGridView2.SelectedCells.Count > 0)
                 {
                     DescendingDgv2();
                 }
@@ -2547,8 +2547,24 @@ namespace eNet编辑器.DgvView
             }
         }
 
+
         #endregion
 
+        #region 右击菜单 升序 相同 降序
+        private void 相同ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Same();
+        }
 
+        private void 升序ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Ascending();
+        }
+
+        private void 降序ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Descending();
+        }
+        #endregion
     }
 }

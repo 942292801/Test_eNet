@@ -1,16 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
-using eNet编辑器.AddForm;
 using System.Text.RegularExpressions;
-using eNet编辑器.DgvView;
 using System.IO;
-using System.Reflection;
 using System.Threading;
 
 namespace eNet编辑器.ThreeView
@@ -101,7 +94,6 @@ namespace eNet编辑器.ThreeView
         }
 
 
-        #endregion
 
         /// <summary>
         /// 树状图加载总设置函数 从names.ini文件加载的名字 或从nameJson加载 
@@ -144,18 +136,18 @@ namespace eNet编辑器.ThreeView
                             timerAdd(FileMesege.cbTypeIndex, ToolsUtil.getIP(FileMesege.timerSelectNode));
                             break;
                         case "panel":
-                            treeView1.CheckBoxes = true;
+                            treeView1.CheckBoxes = false;
                             treeView1.ContextMenuStrip = null;
                             panelAdd(FileMesege.cbTypeIndex, ToolsUtil.getIP(FileMesege.panelSelectNode));
                             // MessageBox.Show("bind");
                             break;
                         case "sensor":
-                             treeView1.CheckBoxes = true;
+                             treeView1.CheckBoxes = false;
                              treeView1.ContextMenuStrip = null;
                              sensorAdd(FileMesege.cbTypeIndex, ToolsUtil.getIP(FileMesege.sensorSelectNode));
                             break;
                         case "logic":
-                            treeView1.CheckBoxes = true;
+                            treeView1.CheckBoxes = false;
                             treeView1.ContextMenuStrip = null;
                             sensorAdd(FileMesege.cbTypeIndex, ToolsUtil.getIP(FileMesege.logicSelectNode));
                             break;
@@ -179,9 +171,14 @@ namespace eNet编辑器.ThreeView
         
         }
 
+        #endregion
+
+        #region 取消选中
         public void unSelectTitleNode()
         {
             treeView1.SelectedNode = null;
+            FileMesege.titlePointSection = null;
+            FileMesege.titleinfo = "";
         }
 
         public void UpdataNodeText(string oldNodeText,string newNodeText)
@@ -192,6 +189,7 @@ namespace eNet编辑器.ThreeView
                 node.Text = newNodeText;
             }
         }
+        #endregion
 
         #region 设备加载节点
         /// <summary>

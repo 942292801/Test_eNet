@@ -156,8 +156,17 @@ namespace eNet编辑器.ThreeView
 
             //把窗口向屏幕中间刷新
             tnd.StartPosition = FormStartPosition.CenterParent;
-            //把当前选仲树状图网关传递到info里面 给新建设备框网关使用           
-            FileMesege.info = treeView1.SelectedNode.Text;
+            if (treeView1.SelectedNode.Parent != null)
+            {
+                //把当前选仲树状图网关传递到info里面 给新建设备框网关使用           
+                FileMesege.info = treeView1.SelectedNode.Parent.Text;
+            }
+            else
+            {
+                //把当前选仲树状图网关传递到info里面 给新建设备框网关使用           
+                FileMesege.info = treeView1.SelectedNode.Text;
+            }
+            
             tnd.isNew = true;
             tnd.Title = "添加";
             tnd.ShowDialog();
@@ -454,7 +463,7 @@ namespace eNet编辑器.ThreeView
         private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
         {
             //判断 ini文件存在不  再判断是父子节点 
-            string filepath = string.Format("{0}\\devices\\{1}.ini", Application.StartupPath, treeView1.SelectedNode.Text.Split(' ')[1]); 
+            string filepath = IniHelper.findDevicesDisplay(treeView1.SelectedNode.Text.Split(' ')[1]);
             TreeMesege tm = new TreeMesege();
             if (FileMesege.tnselectNode == null)
             {
@@ -499,6 +508,11 @@ namespace eNet编辑器.ThreeView
             {
                 //不存在文件
                 sendFormContrl("");
+                showDevice(false);
+                dgvNameAddItem();
+             
+
+
                 return;
                 //MessageBox.Show("bu存在文件夹");
 
@@ -590,11 +604,9 @@ namespace eNet编辑器.ThreeView
             {
                 return;
             }
-            if (treeView1.SelectedNode.Parent == null)
-            {
-                //添加设备
-                newTnDevice();
-            }
+          
+            //添加设备
+            newTnDevice();
           
         }
 

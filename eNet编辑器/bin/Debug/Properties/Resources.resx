@@ -229,4 +229,8 @@
   <data name="Ignore" xml:space="preserve">
     <value>忽略</value>
   </data>
+  <data name="Port" xml:space="preserve">
+    <value>端口</value>
+    <comment>端口</comment>
+  </data>
 </root>

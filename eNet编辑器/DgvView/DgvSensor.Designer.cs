@@ -50,6 +50,7 @@
             this.panel6 = new System.Windows.Forms.Panel();
             this.panel8 = new System.Windows.Forms.Panel();
             this.panel7 = new System.Windows.Forms.Panel();
+            this.btnAttr = new DevComponents.DotNetBar.ButtonX();
             this.cbDevNum = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.cbIONum = new System.Windows.Forms.ComboBox();
@@ -68,7 +69,11 @@
             this.symbolBox1 = new DevComponents.DotNetBar.Controls.SymbolBox();
             this.label1 = new System.Windows.Forms.Label();
             this.doubleClickTimer = new System.Windows.Forms.Timer(this.components);
-            this.btnAttr = new DevComponents.DotNetBar.ButtonX();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.相同ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
+            this.升序ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.降序ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -81,6 +86,7 @@
             this.panel10.SuspendLayout();
             this.plInfoTitle.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -139,6 +145,7 @@
             this.operation,
             this.del,
             this.add});
+            this.dataGridView1.ContextMenuStrip = this.contextMenuStrip1;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
@@ -292,6 +299,25 @@
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(204, 514);
             this.panel7.TabIndex = 31;
+            // 
+            // btnAttr
+            // 
+            this.btnAttr.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnAttr.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnAttr.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
+            this.btnAttr.FocusCuesEnabled = false;
+            this.btnAttr.Font = new System.Drawing.Font("黑体", 9F);
+            this.btnAttr.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None;
+            this.btnAttr.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnAttr.HoverImage")));
+            this.btnAttr.Image = ((System.Drawing.Image)(resources.GetObject("btnAttr.Image")));
+            this.btnAttr.Location = new System.Drawing.Point(170, 21);
+            this.btnAttr.Margin = new System.Windows.Forms.Padding(6);
+            this.btnAttr.Name = "btnAttr";
+            this.btnAttr.Size = new System.Drawing.Size(24, 24);
+            this.btnAttr.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnAttr.TabIndex = 41;
+            this.btnAttr.Tooltip = "设置";
+            this.btnAttr.Click += new System.EventHandler(this.btnAttr_Click);
             // 
             // cbDevNum
             // 
@@ -557,24 +583,41 @@
             this.doubleClickTimer.Interval = 40;
             this.doubleClickTimer.Tick += new System.EventHandler(this.doubleClickTimer_Tick);
             // 
-            // btnAttr
+            // contextMenuStrip1
             // 
-            this.btnAttr.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnAttr.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.btnAttr.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
-            this.btnAttr.FocusCuesEnabled = false;
-            this.btnAttr.Font = new System.Drawing.Font("黑体", 9F);
-            this.btnAttr.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None;
-            this.btnAttr.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnAttr.HoverImage")));
-            this.btnAttr.Image = ((System.Drawing.Image)(resources.GetObject("btnAttr.Image")));
-            this.btnAttr.Location = new System.Drawing.Point(170, 21);
-            this.btnAttr.Margin = new System.Windows.Forms.Padding(6);
-            this.btnAttr.Name = "btnAttr";
-            this.btnAttr.Size = new System.Drawing.Size(24, 24);
-            this.btnAttr.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnAttr.TabIndex = 41;
-            this.btnAttr.Tooltip = "设置";
-            this.btnAttr.Click += new System.EventHandler(this.btnAttr_Click);
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.相同ToolStripMenuItem,
+            this.toolStripMenuItem1,
+            this.升序ToolStripMenuItem,
+            this.降序ToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip2";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 98);
+            // 
+            // 相同ToolStripMenuItem
+            // 
+            this.相同ToolStripMenuItem.Name = "相同ToolStripMenuItem";
+            this.相同ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.相同ToolStripMenuItem.Text = "相同(Ctrl+Q)";
+            this.相同ToolStripMenuItem.Click += new System.EventHandler(this.相同ToolStripMenuItem_Click);
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(177, 6);
+            // 
+            // 升序ToolStripMenuItem
+            // 
+            this.升序ToolStripMenuItem.Name = "升序ToolStripMenuItem";
+            this.升序ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.升序ToolStripMenuItem.Text = "升序(Ctrl+W)";
+            this.升序ToolStripMenuItem.Click += new System.EventHandler(this.升序ToolStripMenuItem_Click);
+            // 
+            // 降序ToolStripMenuItem
+            // 
+            this.降序ToolStripMenuItem.Name = "降序ToolStripMenuItem";
+            this.降序ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.降序ToolStripMenuItem.Text = "降序(Ctrl+D)";
+            this.降序ToolStripMenuItem.Click += new System.EventHandler(this.降序ToolStripMenuItem_Click);
             // 
             // DgvSensor
             // 
@@ -602,6 +645,7 @@
             this.plInfoTitle.ResumeLayout(false);
             this.plInfoTitle.PerformLayout();
             this.flowLayoutPanel1.ResumeLayout(false);
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -645,5 +689,10 @@
         private System.Windows.Forms.DataGridViewButtonColumn del;
         private System.Windows.Forms.DataGridViewButtonColumn add;
         private DevComponents.DotNetBar.ButtonX btnAttr;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem 相同ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem 升序ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 降序ToolStripMenuItem;
     }
 }

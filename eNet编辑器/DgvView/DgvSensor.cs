@@ -38,6 +38,7 @@ namespace eNet编辑器.DgvView
         public event Action<string> AppTxtShow;
 
         public event Action updateSectionTitleNode;
+        public event Action unSelectTitleNode;
 
         DataGridViewComboBoxColumn showmode;
 
@@ -1201,8 +1202,6 @@ namespace eNet编辑器.DgvView
                 switch (dataGridView1.Columns[columnNum].Name)
                 {
 
-                 
-
 
                     default: break;
                 }
@@ -1728,7 +1727,8 @@ namespace eNet编辑器.DgvView
 
             DataJson.totalList NewList = FileMesege.cmds.getListInfos();
             FileMesege.cmds.DoNewCommand(NewList, OldList);
-
+            //title栏取消选中
+            unSelectTitleNode();
 
         }
 
@@ -2218,18 +2218,25 @@ namespace eNet编辑器.DgvView
             }
 
         }
+
+
         #endregion
 
-       
+        #region 右击菜单 升序 相同 降序
+        private void 相同ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Same();
+        }
 
-       
+        private void 升序ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Ascending();
+        }
 
-       
-
-      
-
-
-
-
+        private void 降序ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Descending();
+        }
+        #endregion
     }
 }

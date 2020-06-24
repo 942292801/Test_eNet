@@ -69,7 +69,8 @@ namespace eNet编辑器.ThreeView
         public event Action updatePointDgv;
 
         public event Action logicCbSceneGetItem;
-
+        //取消选中点位
+        public event Action unSelectPointNode;
         //树状图节点
         string fullpath = "";
 
@@ -208,94 +209,99 @@ namespace eNet编辑器.ThreeView
         //新建节点
         public void addNodeDelegate()
         {
-
-            sectionname = FileMesege.info;
-            if (sectionname == "查看所有区域")
+            try
             {
-                return;
-            }
-            int id = -1;
-            string[] nums = null;
-            if (newflag == false)
-            {
-                //新建节点 
-                id = area1();
-                fullpath = treeView1.Nodes[id].FullPath;
-            }
-            else 
-            {
-                TreeMesege tm = new TreeMesege();
-                if (isAddChild)
+                sectionname = FileMesege.info;
+                if (sectionname == "查看所有区域")
                 {
-                    if (addSelectNode != null && addSelectNode.Text == "查看所有区域")
-                    {
-                        return;
-                    }
-                    
-                    //添加子节点
-                    nums = tm.GetNodeNum(addSelectNode).Split(' ');
-                    switch (nums.Length)
-                    {
-                        case 4:
-                            //area1();
-                            break;
-                        case 1:
-                            id = area2(nums[0]);
-                            fullpath = treeView1.Nodes[Convert.ToInt32(nums[0])].Nodes[id].FullPath;
-                            break;
-                        case 2:
-                            id = area3(nums[0], nums[1]);
-                            fullpath = treeView1.Nodes[Convert.ToInt32(nums[0])].Nodes[Convert.ToInt32(nums[1])].Nodes[id].FullPath;
-
-                            break;
-                        case 3:
-                            id = area4(nums[0], nums[1], nums[2]);
-                            fullpath = treeView1.Nodes[Convert.ToInt32(nums[0])].Nodes[Convert.ToInt32(nums[1])].Nodes[Convert.ToInt32(nums[2])].Nodes[id].FullPath;
-
-                            break;
-                        default:
-                            id = area1();
-                            fullpath = treeView1.Nodes[id].FullPath;
-                            break;
-                    }
-
+                    return;
+                }
+                int id = -1;
+                string[] nums = null;
+                if (newflag == false)
+                {
+                    //新建节点 
+                    id = area1();
+                    fullpath = treeView1.Nodes[id].FullPath;
                 }
                 else
                 {
-                    //添加节点
-                    nums = tm.GetNodeNum(addSelectNode).Split(' ');
-                    switch (nums.Length)
+                    TreeMesege tm = new TreeMesege();
+                    if (isAddChild)
                     {
-                        case 4:
-                            id = area4(nums[0], nums[1], nums[2]);
-                            fullpath = treeView1.Nodes[Convert.ToInt32(nums[0])].Nodes[Convert.ToInt32(nums[1])].Nodes[Convert.ToInt32(nums[2])].Nodes[id].FullPath;
+                        if (addSelectNode != null && addSelectNode.Text == "查看所有区域")
+                        {
+                            return;
+                        }
 
-                            break;
-                        case 1:
-                            id = area1();
-                            fullpath = treeView1.Nodes[id].FullPath;
-                            break;
-                        case 2:
-                            id = area2(nums[0]);
-                            fullpath = treeView1.Nodes[Convert.ToInt32(nums[0])].Nodes[id].FullPath;
-                            break;
-                        case 3:
-                            id = area3(nums[0], nums[1]);
-                            fullpath = treeView1.Nodes[Convert.ToInt32(nums[0])].Nodes[Convert.ToInt32(nums[1])].Nodes[id].FullPath;
+                        //添加子节点
+                        nums = tm.GetNodeNum(addSelectNode).Split(' ');
+                        switch (nums.Length)
+                        {
+                            case 4:
+                                //area1();
+                                break;
+                            case 1:
+                                id = area2(nums[0]);
+                                fullpath = treeView1.Nodes[Convert.ToInt32(nums[0])].Nodes[id].FullPath;
+                                break;
+                            case 2:
+                                id = area3(nums[0], nums[1]);
+                                fullpath = treeView1.Nodes[Convert.ToInt32(nums[0])].Nodes[Convert.ToInt32(nums[1])].Nodes[id].FullPath;
 
-                            
-                            break;
-                        default:
-                            break;
+                                break;
+                            case 3:
+                                id = area4(nums[0], nums[1], nums[2]);
+                                fullpath = treeView1.Nodes[Convert.ToInt32(nums[0])].Nodes[Convert.ToInt32(nums[1])].Nodes[Convert.ToInt32(nums[2])].Nodes[id].FullPath;
+
+                                break;
+                            default:
+                                id = area1();
+                                fullpath = treeView1.Nodes[id].FullPath;
+                                break;
+                        }
+
                     }
+                    else
+                    {
+                        //添加节点
+                        nums = tm.GetNodeNum(addSelectNode).Split(' ');
+                        switch (nums.Length)
+                        {
+                            case 4:
+                                id = area4(nums[0], nums[1], nums[2]);
+                                fullpath = treeView1.Nodes[Convert.ToInt32(nums[0])].Nodes[Convert.ToInt32(nums[1])].Nodes[Convert.ToInt32(nums[2])].Nodes[id].FullPath;
+
+                                break;
+                            case 1:
+                                id = area1();
+                                fullpath = treeView1.Nodes[id].FullPath;
+                                break;
+                            case 2:
+                                id = area2(nums[0]);
+                                fullpath = treeView1.Nodes[Convert.ToInt32(nums[0])].Nodes[id].FullPath;
+                                break;
+                            case 3:
+                                id = area3(nums[0], nums[1]);
+                                fullpath = treeView1.Nodes[Convert.ToInt32(nums[0])].Nodes[Convert.ToInt32(nums[1])].Nodes[id].FullPath;
+
+
+                                break;
+                            default:
+                                break;
+                        }
+                    }
+
                 }
-                
+
+
+                ThreeSEctionAddNode();
             }
-    
-            
-            ThreeSEctionAddNode();
-        
-           
+            catch (Exception ex) {
+                Console.Write(ex.Message);
+            }
+
+
         }
 
         private void 修改ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1299,6 +1305,7 @@ namespace eNet编辑器.ThreeView
             fullpath = treeView1.SelectedNode.FullPath;
             if (FileMesege.formType == "point")
             {
+                unSelectPointNode();
                 //刷PointDGV
                 updatePointDgv();
             }

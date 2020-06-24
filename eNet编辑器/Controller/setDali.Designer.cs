@@ -1,6 +1,6 @@
 ﻿namespace eNet编辑器.Controller
 {
-    partial class setDali
+    partial class SetDali
     {
         /// <summary>
         /// Required designer variable.
@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(setDali));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend5 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SetDali));
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.plInfoTitle = new System.Windows.Forms.Panel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.btnRefresh = new DevComponents.DotNetBar.ButtonX();
@@ -116,6 +116,9 @@
             this.btnClearBind = new System.Windows.Forms.Button();
             this.btnBind = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.lbTip = new System.Windows.Forms.Label();
+            this.pgBar = new DevComponents.DotNetBar.Controls.ProgressBarX();
             this.label19 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
@@ -137,9 +140,6 @@
             this.label7 = new System.Windows.Forms.Label();
             this.lblmTiao = new System.Windows.Forms.Label();
             this.timer2 = new System.Windows.Forms.Timer(this.components);
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.lbTip = new System.Windows.Forms.Label();
-            this.pgBar = new DevComponents.DotNetBar.Controls.ProgressBarX();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.plInfoTitle.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
@@ -147,11 +147,11 @@
             this.groupBox3.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tblmTiao)).BeginInit();
-            this.panel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // plInfoTitle
@@ -159,7 +159,6 @@
             this.plInfoTitle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(228)))), ((int)(((byte)(228)))));
             this.plInfoTitle.Controls.Add(this.flowLayoutPanel1);
             this.plInfoTitle.Controls.Add(this.label1);
-            this.plInfoTitle.Controls.Add(this.btnClose);
             this.plInfoTitle.Controls.Add(this.symbolBox1);
             this.plInfoTitle.Controls.Add(this.lbTitle);
             this.plInfoTitle.Controls.Add(this.btnOutput);
@@ -180,9 +179,10 @@
             this.flowLayoutPanel1.Controls.Add(this.btnAllWrite);
             this.flowLayoutPanel1.Controls.Add(this.btnWrite);
             this.flowLayoutPanel1.Controls.Add(this.btnRead);
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(838, 0);
+            this.flowLayoutPanel1.Controls.Add(this.btnClose);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(868, 0);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(135, 25);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(125, 25);
             this.flowLayoutPanel1.TabIndex = 21;
             // 
             // btnRefresh
@@ -196,8 +196,8 @@
             this.btnRefresh.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None;
             this.btnRefresh.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnRefresh.HoverImage")));
             this.btnRefresh.Image = ((System.Drawing.Image)(resources.GetObject("btnRefresh.Image")));
-            this.btnRefresh.Location = new System.Drawing.Point(6, 6);
-            this.btnRefresh.Margin = new System.Windows.Forms.Padding(6);
+            this.btnRefresh.Location = new System.Drawing.Point(3, 6);
+            this.btnRefresh.Margin = new System.Windows.Forms.Padding(3, 6, 3, 6);
             this.btnRefresh.Name = "btnRefresh";
             this.btnRefresh.Size = new System.Drawing.Size(15, 15);
             this.btnRefresh.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -208,8 +208,8 @@
             // btnIni
             // 
             this.btnIni.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnIni.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnIni.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.btnIni.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnIni.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
             this.btnIni.FocusCuesEnabled = false;
@@ -217,8 +217,8 @@
             this.btnIni.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None;
             this.btnIni.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnIni.HoverImage")));
             this.btnIni.Image = ((System.Drawing.Image)(resources.GetObject("btnIni.Image")));
-            this.btnIni.Location = new System.Drawing.Point(33, 6);
-            this.btnIni.Margin = new System.Windows.Forms.Padding(6);
+            this.btnIni.Location = new System.Drawing.Point(24, 6);
+            this.btnIni.Margin = new System.Windows.Forms.Padding(3, 6, 3, 6);
             this.btnIni.Name = "btnIni";
             this.btnIni.Size = new System.Drawing.Size(15, 15);
             this.btnIni.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -229,8 +229,8 @@
             // btnAllWrite
             // 
             this.btnAllWrite.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnAllWrite.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAllWrite.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.btnAllWrite.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnAllWrite.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
             this.btnAllWrite.FocusCuesEnabled = false;
@@ -238,8 +238,8 @@
             this.btnAllWrite.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None;
             this.btnAllWrite.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnAllWrite.HoverImage")));
             this.btnAllWrite.Image = ((System.Drawing.Image)(resources.GetObject("btnAllWrite.Image")));
-            this.btnAllWrite.Location = new System.Drawing.Point(60, 6);
-            this.btnAllWrite.Margin = new System.Windows.Forms.Padding(6);
+            this.btnAllWrite.Location = new System.Drawing.Point(45, 6);
+            this.btnAllWrite.Margin = new System.Windows.Forms.Padding(3, 6, 3, 6);
             this.btnAllWrite.Name = "btnAllWrite";
             this.btnAllWrite.Size = new System.Drawing.Size(15, 15);
             this.btnAllWrite.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -258,8 +258,8 @@
             this.btnWrite.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None;
             this.btnWrite.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnWrite.HoverImage")));
             this.btnWrite.Image = ((System.Drawing.Image)(resources.GetObject("btnWrite.Image")));
-            this.btnWrite.Location = new System.Drawing.Point(87, 6);
-            this.btnWrite.Margin = new System.Windows.Forms.Padding(6);
+            this.btnWrite.Location = new System.Drawing.Point(66, 6);
+            this.btnWrite.Margin = new System.Windows.Forms.Padding(3, 6, 3, 6);
             this.btnWrite.Name = "btnWrite";
             this.btnWrite.Size = new System.Drawing.Size(15, 15);
             this.btnWrite.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -278,8 +278,8 @@
             this.btnRead.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None;
             this.btnRead.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnRead.HoverImage")));
             this.btnRead.Image = ((System.Drawing.Image)(resources.GetObject("btnRead.Image")));
-            this.btnRead.Location = new System.Drawing.Point(114, 6);
-            this.btnRead.Margin = new System.Windows.Forms.Padding(6);
+            this.btnRead.Location = new System.Drawing.Point(87, 6);
+            this.btnRead.Margin = new System.Windows.Forms.Padding(3, 6, 3, 6);
             this.btnRead.Name = "btnRead";
             this.btnRead.Size = new System.Drawing.Size(15, 15);
             this.btnRead.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -311,8 +311,8 @@
             this.btnClose.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None;
             this.btnClose.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnClose.HoverImage")));
             this.btnClose.Image = ((System.Drawing.Image)(resources.GetObject("btnClose.Image")));
-            this.btnClose.Location = new System.Drawing.Point(978, 6);
-            this.btnClose.Margin = new System.Windows.Forms.Padding(6);
+            this.btnClose.Location = new System.Drawing.Point(108, 7);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(3, 6, 3, 6);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(13, 13);
             this.btnClose.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -351,8 +351,8 @@
             // btnOutput
             // 
             this.btnOutput.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnOutput.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnOutput.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.btnOutput.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnOutput.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
             this.btnOutput.FocusCuesEnabled = false;
@@ -373,8 +373,8 @@
             // btnImport
             // 
             this.btnImport.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnImport.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnImport.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.btnImport.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnImport.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
             this.btnImport.FocusCuesEnabled = false;
@@ -1454,7 +1454,7 @@
             this.btnClearBind.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.btnClearBind.ForeColor = System.Drawing.Color.Black;
             this.btnClearBind.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnClearBind.Location = new System.Drawing.Point(846, 102);
+            this.btnClearBind.Location = new System.Drawing.Point(846, 99);
             this.btnClearBind.Name = "btnClearBind";
             this.btnClearBind.Size = new System.Drawing.Size(98, 25);
             this.btnClearBind.TabIndex = 36;
@@ -1468,7 +1468,7 @@
             this.btnBind.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.btnBind.ForeColor = System.Drawing.Color.Black;
             this.btnBind.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnBind.Location = new System.Drawing.Point(846, 49);
+            this.btnBind.Location = new System.Drawing.Point(846, 55);
             this.btnBind.Name = "btnBind";
             this.btnBind.Size = new System.Drawing.Size(98, 25);
             this.btnBind.TabIndex = 35;
@@ -1500,6 +1500,41 @@
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "参数";
+            // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.Color.White;
+            this.panel4.Controls.Add(this.lbTip);
+            this.panel4.Controls.Add(this.pgBar);
+            this.panel4.Location = new System.Drawing.Point(364, 131);
+            this.panel4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(249, 80);
+            this.panel4.TabIndex = 36;
+            this.panel4.Visible = false;
+            // 
+            // lbTip
+            // 
+            this.lbTip.AutoSize = true;
+            this.lbTip.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lbTip.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.lbTip.Location = new System.Drawing.Point(123, 60);
+            this.lbTip.Name = "lbTip";
+            this.lbTip.Size = new System.Drawing.Size(121, 17);
+            this.lbTip.TabIndex = 67;
+            this.lbTip.Text = "正在写入，请稍后. . .";
+            // 
+            // pgBar
+            // 
+            // 
+            // 
+            // 
+            this.pgBar.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.pgBar.Location = new System.Drawing.Point(17, 32);
+            this.pgBar.Name = "pgBar";
+            this.pgBar.Size = new System.Drawing.Size(216, 17);
+            this.pgBar.Style = DevComponents.DotNetBar.eDotNetBarStyle.OfficeXP;
+            this.pgBar.TabIndex = 66;
             // 
             // label19
             // 
@@ -1537,27 +1572,27 @@
             // chart1
             // 
             this.chart1.BackColor = System.Drawing.Color.Transparent;
-            chartArea5.Name = "ChartArea1";
-            chartArea5.Position.Auto = false;
-            chartArea5.Position.Height = 97F;
-            chartArea5.Position.Width = 100F;
-            chartArea5.Position.Y = 3F;
-            this.chart1.ChartAreas.Add(chartArea5);
-            legend5.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Top;
-            legend5.Enabled = false;
-            legend5.MaximumAutoSize = 40F;
-            legend5.Name = "Legend1";
-            this.chart1.Legends.Add(legend5);
+            chartArea2.Name = "ChartArea1";
+            chartArea2.Position.Auto = false;
+            chartArea2.Position.Height = 97F;
+            chartArea2.Position.Width = 100F;
+            chartArea2.Position.Y = 3F;
+            this.chart1.ChartAreas.Add(chartArea2);
+            legend2.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Top;
+            legend2.Enabled = false;
+            legend2.MaximumAutoSize = 40F;
+            legend2.Name = "Legend1";
+            this.chart1.Legends.Add(legend2);
             this.chart1.Location = new System.Drawing.Point(235, 46);
             this.chart1.Name = "chart1";
             this.chart1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            series5.ChartArea = "ChartArea1";
-            series5.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series5.Legend = "Legend1";
-            series5.Name = "Series1";
-            series5.ToolTip = "#VALX #VAL";
-            series5.YValuesPerPoint = 6;
-            this.chart1.Series.Add(series5);
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            series2.ToolTip = "#VALX #VAL";
+            series2.YValuesPerPoint = 6;
+            this.chart1.Series.Add(series2);
             this.chart1.Size = new System.Drawing.Size(739, 266);
             this.chart1.TabIndex = 28;
             // 
@@ -1773,41 +1808,6 @@
             this.timer2.Interval = 5000;
             this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
             // 
-            // panel4
-            // 
-            this.panel4.BackColor = System.Drawing.Color.White;
-            this.panel4.Controls.Add(this.lbTip);
-            this.panel4.Controls.Add(this.pgBar);
-            this.panel4.Location = new System.Drawing.Point(364, 131);
-            this.panel4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(249, 80);
-            this.panel4.TabIndex = 36;
-            this.panel4.Visible = false;
-            // 
-            // lbTip
-            // 
-            this.lbTip.AutoSize = true;
-            this.lbTip.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lbTip.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.lbTip.Location = new System.Drawing.Point(123, 60);
-            this.lbTip.Name = "lbTip";
-            this.lbTip.Size = new System.Drawing.Size(121, 17);
-            this.lbTip.TabIndex = 67;
-            this.lbTip.Text = "正在写入，请稍后. . .";
-            // 
-            // pgBar
-            // 
-            // 
-            // 
-            // 
-            this.pgBar.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.pgBar.Location = new System.Drawing.Point(17, 32);
-            this.pgBar.Name = "pgBar";
-            this.pgBar.Size = new System.Drawing.Size(216, 17);
-            this.pgBar.Style = DevComponents.DotNetBar.eDotNetBarStyle.OfficeXP;
-            this.pgBar.TabIndex = 66;
-            // 
             // backgroundWorker1
             // 
             this.backgroundWorker1.WorkerReportsProgress = true;
@@ -1816,7 +1816,7 @@
             this.backgroundWorker1.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorker1_ProgressChanged);
             this.backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
             // 
-            // setDali
+            // SetDali
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -1827,7 +1827,7 @@
             this.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Name = "setDali";
+            this.Name = "SetDali";
             this.Text = "setDali";
             this.Load += new System.EventHandler(this.setDali_Load);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.setDali_Paint);
@@ -1839,13 +1839,13 @@
             this.flowLayoutPanel2.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tblmTiao)).EndInit();
-            this.panel4.ResumeLayout(false);
-            this.panel4.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1960,6 +1960,5 @@
         private System.Windows.Forms.Label lbTip;
         private DevComponents.DotNetBar.Controls.ProgressBarX pgBar;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
-
     }
 }

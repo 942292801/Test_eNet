@@ -732,24 +732,38 @@ namespace eNet编辑器.DgvView
                             //当IP相等时候进入module里面 
                             if (dev.ip == strip)
                             {
+                                //临时添加网关  改好serial就删除！！！！！！！！！！！！！！！！！！！！！！！！！！！！
+                                dataGridView1.Rows[0].Cells[6].Value = Resources.DevStateOn;
+                                dataGridView1.Rows[0].Cells[6].Style.BackColor = Color.Lime;
+                                dataGridView1.Rows[0].Cells[6].Style.ForeColor = Color.Black;
 
                                 foreach (DataJson.serials sl in FileMesege.serialList.serial)
                                 {
                                     //获取到的Serial文件在线 的ID 对比dataList信息
                                     foreach (DataJson.Module mdl in dev.module)
                                     {
+
                                         //当设备的号码相同 名字相同  修改序列号 版本号 状态 
-                                        if (sl.id == mdl.id && sl.serial.Trim() == mdl.device)
+                                        if (sl.id == mdl.id)// && sl.serial.Trim() == mdl.device)
                                         {
+                                            
+
+                                            string filepath = string.Format("{0}\\devices\\{1}.ini", Application.StartupPath, sl.serial.Trim());
+                                            if (string.IsNullOrEmpty(filepath))
+                                            {
+                                                continue;
+                                            }
+                                            string device = IniConfig.GetValue(filepath, "define", "display");
+                                            if (device != mdl.device)
+                                            {
+                                                continue;
+                                            }
                                             mdl.sn = sl.mac8.Trim().Replace(":", "");
                                             mdl.ver = sl.version.Trim();
 
                                             changeSn_ver(mdl);
                                             //寻找到该信息就退出当前循环
-                                            //临时添加  改好serial就删除
-                                            dataGridView1.Rows[0].Cells[6].Value = Resources.DevStateOn;
-                                            dataGridView1.Rows[0].Cells[6].Style.BackColor = Color.Lime;
-                                            dataGridView1.Rows[0].Cells[6].Style.ForeColor = Color.Black;
+                                            
                                             break;
                                         }
 

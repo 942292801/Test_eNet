@@ -42,6 +42,7 @@ namespace eNet编辑器.DgvView
         public event Action<string> AppTxtShow;
 
         public event Action updateSectionTitleNode;
+        public event Action unSelectTitleNode;
         /// <summary>
         /// 传输point点跳转窗口
         /// </summary>
@@ -147,7 +148,6 @@ namespace eNet编辑器.DgvView
                 imgSlider.ImageList = null;
                 cbPage.SelectedIndex = 0;
                 cbDevNum.Items.Clear();
-                cbDevNum.Text = "";
                 int tmpId = -1;
                 try
                 {
@@ -267,11 +267,15 @@ namespace eNet编辑器.DgvView
                     dataGridView1.Rows[dex].Cells[7].Value = DgvMesege.addressTransform(plInfo.showAddress);
                     dataGridView1.Rows[dex].Cells[8].Value = plInfo.showMode;
                     dataGridView1.Rows[dex].Cells[9].Value = "删除";
-                    
+                    if (dataGridView1.Rows[dex].Cells[1].Value != null)
+                    {
+                        cbDevNum.Text = dataGridView1.Rows[dex].Cells[1].Value.ToString().Split('.')[0];
 
+                    }
 
                 }
-                for(int i = 0; i < delPanel.Count; i++)
+
+                for (int i = 0; i < delPanel.Count; i++)
                 {
                     pls.panelsInfo.Remove(delPanel[i]);
                 }
@@ -1680,22 +1684,16 @@ namespace eNet编辑器.DgvView
                     dataGridView1.Rows[id].Cells[5].Value = eq.name;
                     if (eq.address != "FFFFFFFF" && dataGridView1.Rows[id].Cells[0].Value != null)
                     {
-
                         plInfo.showAddress = eq.address;
                         plInfo.showMode = "同步";
                         dataGridView1.Rows[id].Cells[7].Value = dataGridView1.Rows[id].Cells[2].Value;
                         dataGridView1.Rows[id].Cells[8].Value = "同步";
-
-
                     }
                 }
                 else
                 {
                     plInfo.pid = eq.pid;
-
-
                     plInfo.objAddress = eq.address;
-
                     plInfo.objType = eq.type;
                     plInfo.opt = 0;
 
@@ -1706,7 +1704,6 @@ namespace eNet编辑器.DgvView
                     dataGridView1.Rows[id].Cells[6].Value = updataMode(plInfo.objType, id, plInfo.opt);
                     if (eq.address != "FFFFFFFF" && dataGridView1.Rows[id].Cells[0].Value != null)
                     {
-
                         plInfo.showAddress = eq.address;
                         plInfo.showMode = "同步";
                         dataGridView1.Rows[id].Cells[7].Value = dataGridView1.Rows[id].Cells[2].Value;
@@ -1716,9 +1713,11 @@ namespace eNet编辑器.DgvView
                 }
                 DataJson.totalList NewList = FileMesege.cmds.getListInfos();
                 FileMesege.cmds.DoNewCommand(NewList, OldList);
+                //取消选中节点
+                unSelectTitleNode();
             }
-            catch { 
-            
+            catch (Exception ex){
+                ToolsUtil.WriteLog(ex.Message + "\r\n" + ex.StackTrace + "\r\n" + ex.ToString());
             }
        
         }
@@ -1756,7 +1755,7 @@ namespace eNet编辑器.DgvView
 
             DataJson.totalList NewList = FileMesege.cmds.getListInfos();
             FileMesege.cmds.DoNewCommand(NewList, OldList);
-
+            unSelectTitleNode();
 
         }
 
@@ -2534,27 +2533,26 @@ namespace eNet编辑器.DgvView
             }
 
         }
+
+
+
         #endregion
 
+        #region 右击菜单 升序 相同 降序
+        private void 相同ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Same();
+        }
 
-      
+        private void 升序ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Ascending();
+        }
 
- 
-
-
- 
-
-      
-
-    
-
-       
-
-    
-
-
-
-
-
+        private void 降序ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Descending();
+        }
+        #endregion
     }
 }

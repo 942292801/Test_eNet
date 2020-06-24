@@ -328,7 +328,7 @@ namespace eNet编辑器.ThreeView
                     if (copySensor != null)
                     {
                         //复制副本
-                        srs.sensorsInfo = (List<DataJson.sensorsInfo>)CommandManager.CloneObject(copySensor.sensorsInfo);
+                        srs.sensorsInfo = (List<DataJson.sensorsInfo>)ToolsUtil.CloneObject(copySensor.sensorsInfo);
                         
                         //srs.sensorsInfo = TransExpV2<List<DataJson.sensorsInfo>, List<DataJson.sensorsInfo>>.Trans(copySensor.sensorsInfo);
                         srs.ioNum = copySensor.ioNum;
@@ -540,7 +540,7 @@ namespace eNet编辑器.ThreeView
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            if (treeView1.SelectedNode == null || treeView1.SelectedNode.Parent != null)
+            if (treeView1.SelectedNode == null )
             {
                 return;
             }

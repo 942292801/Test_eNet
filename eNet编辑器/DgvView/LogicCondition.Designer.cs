@@ -30,48 +30,18 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LogicCondition));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle27 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle28 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle29 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle30 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnAttr = new DevComponents.DotNetBar.ButtonX();
             this.cbAttr = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.btnIfAdd = new DevComponents.DotNetBar.ButtonX();
-            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.btnElseIfAdd = new DevComponents.DotNetBar.ButtonX();
-            this.label3 = new System.Windows.Forms.Label();
-            this.dataGridView3 = new System.Windows.Forms.DataGridView();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.btnElseAdd = new DevComponents.DotNetBar.ButtonX();
-            this.label5 = new System.Windows.Forms.Label();
-            this.splitContainer2 = new System.Windows.Forms.SplitContainer();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.doubleClickTimer1 = new System.Windows.Forms.Timer(this.components);
-            this.doubleClickTimer2 = new System.Windows.Forms.Timer(this.components);
-            this.doubleClickTimer3 = new System.Windows.Forms.Timer(this.components);
-            this.num2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.address2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.section2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.name2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.operation2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.delay2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.del2 = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.num3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.address3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.section3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.name3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.operation3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.delay3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.del3 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.num = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.a = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.objAddress = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -80,6 +50,41 @@
             this.compareAddress = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.d = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.del1 = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.btnIfAdd = new DevComponents.DotNetBar.ButtonX();
+            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.num2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.address2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.section2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.name2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.operation2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.delay2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.del2 = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.btnElseIfAdd = new DevComponents.DotNetBar.ButtonX();
+            this.label3 = new System.Windows.Forms.Label();
+            this.dataGridView3 = new System.Windows.Forms.DataGridView();
+            this.num3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.address3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.section3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.name3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.operation3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.delay3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.del3 = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.btnElseAdd = new DevComponents.DotNetBar.ButtonX();
+            this.label5 = new System.Windows.Forms.Label();
+            this.splitContainer2 = new System.Windows.Forms.SplitContainer();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.doubleClickTimer1 = new System.Windows.Forms.Timer(this.components);
+            this.doubleClickTimer2 = new System.Windows.Forms.Timer(this.components);
+            this.doubleClickTimer3 = new System.Windows.Forms.Timer(this.components);
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.相同ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
+            this.升序ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.降序ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -96,6 +101,7 @@
             this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
             this.panel5.SuspendLayout();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -167,14 +173,14 @@
             this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
             this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridView1.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableAlwaysIncludeHeaderText;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle25.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle25.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle25.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle25.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle25.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle25.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle25.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle25;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.num,
@@ -185,14 +191,14 @@
             this.compareAddress,
             this.d,
             this.del1});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(235)))), ((int)(((byte)(248)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle26.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle26.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle26.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle26.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle26.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(235)))), ((int)(((byte)(248)))));
+            dataGridViewCellStyle26.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle26.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle26;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.dataGridView1.Location = new System.Drawing.Point(0, 22);
@@ -211,6 +217,66 @@
             this.dataGridView1.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dataGridView1_DataError);
             this.dataGridView1.Scroll += new System.Windows.Forms.ScrollEventHandler(this.dataGridView1_Scroll);
             this.dataGridView1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.dataGridView1_MouseDown);
+            // 
+            // num
+            // 
+            this.num.HeaderText = "序号";
+            this.num.Name = "num";
+            this.num.ReadOnly = true;
+            this.num.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.num.Width = 60;
+            // 
+            // a
+            // 
+            this.a.HeaderText = "A*";
+            this.a.Name = "a";
+            this.a.ReadOnly = true;
+            this.a.Width = 60;
+            // 
+            // objAddress
+            // 
+            this.objAddress.HeaderText = "对象";
+            this.objAddress.Name = "objAddress";
+            this.objAddress.ReadOnly = true;
+            this.objAddress.Width = 160;
+            // 
+            // b
+            // 
+            this.b.HeaderText = "+B";
+            this.b.Name = "b";
+            this.b.ReadOnly = true;
+            this.b.Width = 60;
+            // 
+            // c
+            // 
+            this.c.HeaderText = "C*";
+            this.c.Name = "c";
+            this.c.ReadOnly = true;
+            this.c.Width = 60;
+            // 
+            // compareAddress
+            // 
+            this.compareAddress.HeaderText = "比较对象";
+            this.compareAddress.Name = "compareAddress";
+            this.compareAddress.ReadOnly = true;
+            this.compareAddress.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.compareAddress.Width = 160;
+            // 
+            // d
+            // 
+            this.d.HeaderText = "+D";
+            this.d.Name = "d";
+            this.d.ReadOnly = true;
+            this.d.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.d.Width = 60;
+            // 
+            // del1
+            // 
+            this.del1.HeaderText = "删除";
+            this.del1.Name = "del1";
+            this.del1.ReadOnly = true;
+            this.del1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.del1.Width = 55;
             // 
             // panel2
             // 
@@ -273,14 +339,14 @@
             this.dataGridView2.BackgroundColor = System.Drawing.Color.White;
             this.dataGridView2.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridView2.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableAlwaysIncludeHeaderText;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle27.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle27.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle27.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle27.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle27.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle27.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle27.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle27;
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.num2,
@@ -290,14 +356,14 @@
             this.operation2,
             this.delay2,
             this.del2});
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(235)))), ((int)(((byte)(248)))));
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView2.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle28.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle28.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle28.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle28.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle28.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(235)))), ((int)(((byte)(248)))));
+            dataGridViewCellStyle28.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle28.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView2.DefaultCellStyle = dataGridViewCellStyle28;
             this.dataGridView2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView2.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.dataGridView2.Location = new System.Drawing.Point(0, 22);
@@ -317,6 +383,56 @@
             this.dataGridView2.Scroll += new System.Windows.Forms.ScrollEventHandler(this.dataGridView2_Scroll);
             this.dataGridView2.KeyUp += new System.Windows.Forms.KeyEventHandler(this.dataGridView2_KeyUp);
             this.dataGridView2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.dataGridView2_MouseDown);
+            // 
+            // num2
+            // 
+            this.num2.HeaderText = "序号";
+            this.num2.Name = "num2";
+            this.num2.ReadOnly = true;
+            this.num2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.num2.Width = 60;
+            // 
+            // address2
+            // 
+            this.address2.HeaderText = "地址";
+            this.address2.Name = "address2";
+            this.address2.ReadOnly = true;
+            // 
+            // section2
+            // 
+            this.section2.HeaderText = "区域";
+            this.section2.Name = "section2";
+            this.section2.ReadOnly = true;
+            this.section2.Width = 160;
+            // 
+            // name2
+            // 
+            this.name2.HeaderText = "名称";
+            this.name2.Name = "name2";
+            this.name2.ReadOnly = true;
+            this.name2.Width = 80;
+            // 
+            // operation2
+            // 
+            this.operation2.HeaderText = "操作";
+            this.operation2.Name = "operation2";
+            this.operation2.ReadOnly = true;
+            this.operation2.Width = 140;
+            // 
+            // delay2
+            // 
+            this.delay2.HeaderText = "延时（秒）";
+            this.delay2.Name = "delay2";
+            this.delay2.ReadOnly = true;
+            this.delay2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // del2
+            // 
+            this.del2.HeaderText = "删除";
+            this.del2.Name = "del2";
+            this.del2.ReadOnly = true;
+            this.del2.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.del2.Width = 55;
             // 
             // panel3
             // 
@@ -363,14 +479,14 @@
             this.dataGridView3.BackgroundColor = System.Drawing.Color.White;
             this.dataGridView3.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridView3.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableAlwaysIncludeHeaderText;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView3.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle29.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle29.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle29.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle29.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle29.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle29.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle29.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView3.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle29;
             this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dataGridView3.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.num3,
@@ -380,14 +496,14 @@
             this.operation3,
             this.delay3,
             this.del3});
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(235)))), ((int)(((byte)(248)))));
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView3.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle30.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle30.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle30.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle30.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle30.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(235)))), ((int)(((byte)(248)))));
+            dataGridViewCellStyle30.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle30.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView3.DefaultCellStyle = dataGridViewCellStyle30;
             this.dataGridView3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView3.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.dataGridView3.Location = new System.Drawing.Point(0, 22);
@@ -407,6 +523,56 @@
             this.dataGridView3.Scroll += new System.Windows.Forms.ScrollEventHandler(this.dataGridView3_Scroll);
             this.dataGridView3.KeyUp += new System.Windows.Forms.KeyEventHandler(this.dataGridView3_KeyUp);
             this.dataGridView3.MouseDown += new System.Windows.Forms.MouseEventHandler(this.dataGridView3_MouseDown);
+            // 
+            // num3
+            // 
+            this.num3.HeaderText = "序号";
+            this.num3.Name = "num3";
+            this.num3.ReadOnly = true;
+            this.num3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.num3.Width = 60;
+            // 
+            // address3
+            // 
+            this.address3.HeaderText = "地址";
+            this.address3.Name = "address3";
+            this.address3.ReadOnly = true;
+            // 
+            // section3
+            // 
+            this.section3.HeaderText = "区域";
+            this.section3.Name = "section3";
+            this.section3.ReadOnly = true;
+            this.section3.Width = 160;
+            // 
+            // name3
+            // 
+            this.name3.HeaderText = "名称";
+            this.name3.Name = "name3";
+            this.name3.ReadOnly = true;
+            this.name3.Width = 80;
+            // 
+            // operation3
+            // 
+            this.operation3.HeaderText = "操作";
+            this.operation3.Name = "operation3";
+            this.operation3.ReadOnly = true;
+            this.operation3.Width = 140;
+            // 
+            // delay3
+            // 
+            this.delay3.HeaderText = "延时（秒）";
+            this.delay3.Name = "delay3";
+            this.delay3.ReadOnly = true;
+            this.delay3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // del3
+            // 
+            this.del3.HeaderText = "删除";
+            this.del3.Name = "del3";
+            this.del3.ReadOnly = true;
+            this.del3.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.del3.Width = 55;
             // 
             // panel4
             // 
@@ -494,171 +660,48 @@
             this.doubleClickTimer3.Interval = 40;
             this.doubleClickTimer3.Tick += new System.EventHandler(this.doubleClickTimer3_Tick);
             // 
-            // num2
+            // contextMenuStrip1
             // 
-            this.num2.HeaderText = "序号";
-            this.num2.Name = "num2";
-            this.num2.ReadOnly = true;
-            this.num2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.num2.Width = 60;
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.相同ToolStripMenuItem,
+            this.toolStripMenuItem1,
+            this.升序ToolStripMenuItem,
+            this.降序ToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip2";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 98);
             // 
-            // address2
+            // 相同ToolStripMenuItem
             // 
-            this.address2.HeaderText = "地址";
-            this.address2.Name = "address2";
-            this.address2.ReadOnly = true;
+            this.相同ToolStripMenuItem.Name = "相同ToolStripMenuItem";
+            this.相同ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.相同ToolStripMenuItem.Text = "相同(Ctrl+Q)";
+            this.相同ToolStripMenuItem.Click += new System.EventHandler(this.相同ToolStripMenuItem_Click);
             // 
-            // section2
+            // toolStripMenuItem1
             // 
-            this.section2.HeaderText = "区域";
-            this.section2.Name = "section2";
-            this.section2.ReadOnly = true;
-            this.section2.Width = 160;
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(177, 6);
             // 
-            // name2
+            // 升序ToolStripMenuItem
             // 
-            this.name2.HeaderText = "名称";
-            this.name2.Name = "name2";
-            this.name2.ReadOnly = true;
-            this.name2.Width = 80;
+            this.升序ToolStripMenuItem.Name = "升序ToolStripMenuItem";
+            this.升序ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.升序ToolStripMenuItem.Text = "升序(Ctrl+W)";
+            this.升序ToolStripMenuItem.Click += new System.EventHandler(this.升序ToolStripMenuItem_Click);
             // 
-            // operation2
+            // 降序ToolStripMenuItem
             // 
-            this.operation2.HeaderText = "操作";
-            this.operation2.Name = "operation2";
-            this.operation2.ReadOnly = true;
-            this.operation2.Width = 140;
-            // 
-            // delay2
-            // 
-            this.delay2.HeaderText = "延时（秒）";
-            this.delay2.Name = "delay2";
-            this.delay2.ReadOnly = true;
-            this.delay2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // del2
-            // 
-            this.del2.HeaderText = "删除";
-            this.del2.Name = "del2";
-            this.del2.ReadOnly = true;
-            this.del2.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.del2.Width = 55;
-            // 
-            // num3
-            // 
-            this.num3.HeaderText = "序号";
-            this.num3.Name = "num3";
-            this.num3.ReadOnly = true;
-            this.num3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.num3.Width = 60;
-            // 
-            // address3
-            // 
-            this.address3.HeaderText = "地址";
-            this.address3.Name = "address3";
-            this.address3.ReadOnly = true;
-            // 
-            // section3
-            // 
-            this.section3.HeaderText = "区域";
-            this.section3.Name = "section3";
-            this.section3.ReadOnly = true;
-            this.section3.Width = 160;
-            // 
-            // name3
-            // 
-            this.name3.HeaderText = "名称";
-            this.name3.Name = "name3";
-            this.name3.ReadOnly = true;
-            this.name3.Width = 80;
-            // 
-            // operation3
-            // 
-            this.operation3.HeaderText = "操作";
-            this.operation3.Name = "operation3";
-            this.operation3.ReadOnly = true;
-            this.operation3.Width = 140;
-            // 
-            // delay3
-            // 
-            this.delay3.HeaderText = "延时（秒）";
-            this.delay3.Name = "delay3";
-            this.delay3.ReadOnly = true;
-            this.delay3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // del3
-            // 
-            this.del3.HeaderText = "删除";
-            this.del3.Name = "del3";
-            this.del3.ReadOnly = true;
-            this.del3.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.del3.Width = 55;
-            // 
-            // num
-            // 
-            this.num.HeaderText = "序号";
-            this.num.Name = "num";
-            this.num.ReadOnly = true;
-            this.num.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.num.Width = 60;
-            // 
-            // a
-            // 
-            this.a.HeaderText = "A*";
-            this.a.Name = "a";
-            this.a.ReadOnly = true;
-            this.a.Width = 60;
-            // 
-            // objAddress
-            // 
-            this.objAddress.HeaderText = "对象";
-            this.objAddress.Name = "objAddress";
-            this.objAddress.ReadOnly = true;
-            this.objAddress.Width = 160;
-            // 
-            // b
-            // 
-            this.b.HeaderText = "+B";
-            this.b.Name = "b";
-            this.b.ReadOnly = true;
-            this.b.Width = 60;
-            // 
-            // c
-            // 
-            this.c.HeaderText = "C*";
-            this.c.Name = "c";
-            this.c.ReadOnly = true;
-            this.c.Width = 60;
-            // 
-            // compareAddress
-            // 
-            this.compareAddress.HeaderText = "比较对象";
-            this.compareAddress.Name = "compareAddress";
-            this.compareAddress.ReadOnly = true;
-            this.compareAddress.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.compareAddress.Width = 160;
-            // 
-            // d
-            // 
-            this.d.HeaderText = "+D";
-            this.d.Name = "d";
-            this.d.ReadOnly = true;
-            this.d.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.d.Width = 60;
-            // 
-            // del1
-            // 
-            this.del1.HeaderText = "删除";
-            this.del1.Name = "del1";
-            this.del1.ReadOnly = true;
-            this.del1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.del1.Width = 55;
+            this.降序ToolStripMenuItem.Name = "降序ToolStripMenuItem";
+            this.降序ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.降序ToolStripMenuItem.Text = "降序(Ctrl+D)";
+            this.降序ToolStripMenuItem.Click += new System.EventHandler(this.降序ToolStripMenuItem_Click);
             // 
             // LogicCondition
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightGray;
+            this.ContextMenuStrip = this.contextMenuStrip1;
             this.Controls.Add(this.splitContainer2);
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
@@ -686,6 +729,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -736,6 +780,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn compareAddress;
         private System.Windows.Forms.DataGridViewTextBoxColumn d;
         private System.Windows.Forms.DataGridViewButtonColumn del1;
-
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem 相同ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem 升序ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 降序ToolStripMenuItem;
     }
 }

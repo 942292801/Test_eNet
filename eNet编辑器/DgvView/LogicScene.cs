@@ -425,7 +425,7 @@ namespace eNet编辑器.DgvView
             DataJson.LogicSceneContent logicSceneContent = new DataJson.LogicSceneContent();
             logicSceneContent.pid = sc.pid;
             logicSceneContent.SceneItemInfo.Clear();
-            List<DataJson.sceneInfo> list = (List<DataJson.sceneInfo>)CommandManager.CloneObject(sc.sceneInfo);
+            List<DataJson.sceneInfo> list = (List<DataJson.sceneInfo>)ToolsUtil.CloneObject(sc.sceneInfo);
             foreach (DataJson.sceneInfo tmp in list)
             {
                 DataJson.SceneItem item = new DataJson.SceneItem();

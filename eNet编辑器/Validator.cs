@@ -37,6 +37,10 @@ namespace eNet编辑器
 
       
         #region 匹配方法
+
+
+
+
         /// <summary>  
         /// 验证字符串是否匹配正则表达式描述的规则  
         /// </summary>  
@@ -95,6 +99,20 @@ namespace eNet编辑器
         #endregion
 
         #region 验证方法
+
+
+        /// <summary>
+        /// 判断是否十六进制格式字符串
+        /// </summary>
+        /// <param name="str"></param>
+        /// <returns></returns>
+        public static bool IsHexadecimal(string input)
+        {
+            string pattern = @"[A-Fa-f0-9]+$";
+            return IsMatch(input, pattern);
+        }
+
+
         /// <summary>  
         /// 验证数字(double类型)  
         /// [可以包含负号和小数点]  

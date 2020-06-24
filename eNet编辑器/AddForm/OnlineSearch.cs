@@ -21,7 +21,7 @@ namespace eNet编辑器.AddForm
         //UDP客户端
         UdpSocket udp;
         //网关节点 选中的IP地址
-        string selectIP = "";
+        string selectIP = string.Empty;
         TreeMesege tm ;
         public OnlineSearch()
         {
@@ -62,9 +62,9 @@ namespace eNet编辑器.AddForm
 
 
                 }
-                catch
+                catch (Exception ex)
                 {
-                    //报错不处理
+                    ToolsUtil.WriteLog(ex.Message);
                 }
             });
         }
@@ -115,9 +115,10 @@ namespace eNet编辑器.AddForm
                     if (bufferMsg.Contains("serial"))
                     {
                         // 序列化接收信息
-                        FileMesege.serialList = JsonConvert.DeserializeObject<DataJson.Serial>(bufferMsg);
-                        bufferMsg = "";
-
+                        FileMesege.serialList = JsonConvert.DeserializeObject<DataJson.Serial>(bufferMsg.Replace(" ",""));
+                        bufferMsg = string.Empty;
+                        string filepath = string.Empty;
+                        string device = string.Empty;
                         //当前选中节点和IP相等时  
                         if (treeView1.SelectedNode.Text == selectIP)
                         {
@@ -125,7 +126,9 @@ namespace eNet编辑器.AddForm
                             int indexs = treeView1.SelectedNode.Index;
                             foreach (DataJson.serials sl in FileMesege.serialList.serial)
                             {
-                                tm.AddNode2(treeView1, Resources.Device + sl.id + " " + sl.serial, indexs);
+                                filepath = string.Format("{0}\\devices\\{1}.ini", Application.StartupPath, sl.serial.Trim());
+                                device = IniConfig.GetValue(filepath, "define", "display");
+                                tm.AddNode2(treeView1, Resources.Device + sl.id + " " + device, indexs);
 
                             }
                             //展开所有节点
@@ -137,7 +140,9 @@ namespace eNet编辑器.AddForm
 
                 }
             }
-            catch { }
+            catch(Exception ex) {
+                ToolsUtil.WriteLog(ex.Message);
+            }
            
 
         }
@@ -186,7 +191,10 @@ namespace eNet编辑器.AddForm
                     DataJson.totalList NewList = FileMesege.cmds.getListInfos();
                     FileMesege.cmds.DoNewCommand(NewList, OldList);
                 }
-                catch { }
+                catch (Exception ex)
+                {
+                    ToolsUtil.WriteLog(ex.Message);
+                }
             }
             else
             {
@@ -202,7 +210,7 @@ namespace eNet编辑器.AddForm
         /// <param name="device">设备名称</param>
         private void UpdataDev(string parentIp, TreeNode tn)
         {
-            if (parentIp == "" || tn == null)
+            if (string.IsNullOrEmpty(parentIp) || tn == null)
             {
                 return;
             }
@@ -211,7 +219,10 @@ namespace eNet编辑器.AddForm
             //获取ID号 正则表达式只获取数字
             string ID = Regex.Replace(infos[0], @"[^\d]*", "");
             //设备型号
-            string device = infos[1];
+            string filepath = IniHelper.findDevicesDisplay(infos[1]);
+            string device = IniConfig.GetValue(filepath, "define", "display");
+            
+       
             bool isExit = false;
             foreach (DataJson.Device dev in FileMesege.DeviceList)
             {
@@ -296,7 +307,7 @@ namespace eNet编辑器.AddForm
             }
         }
         //本地IP
-        string Localip = "";
+        string Localip = string.Empty;
 
         /// <summary>
         /// 搜索按钮
@@ -305,28 +316,35 @@ namespace eNet编辑器.AddForm
         /// <param name="e"></param>
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            //每次搜索清空树状图
-            treeView1.Nodes.Clear();
-            udp.udpClose();
-            udpIni();
-            //获取本地IP
-            Localip = ToolsUtil.GetLocalIP();
-            //udp 绑定
-            udp.udpBing(Localip, ToolsUtil.GetFreePort().ToString());              
-            
-            //绑定成功
-            if (udp.isbing)
+            try
             {
-                string[]tmps = Localip.Split('.');
-                string broadcastIp = String.Format("{0}.{1}.{2}.255", tmps[0], tmps[1], tmps[2]);
-                udp.udpSend(broadcastIp, "6002", "Search all");
-                udp.udpSend(broadcastIp, "6002", "search all");
-                udp.udpSend("255.255.255.255", "6002", "Search all");
-                udp.udpSend("255.255.255.255", "6002", "search all");
+                //每次搜索清空树状图
+                treeView1.Nodes.Clear();
+                udp.udpClose();
+                udpIni();
+                //获取本地IP
+                Localip = ToolsUtil.GetLocalIP();
+                //udp 绑定
+                udp.udpBing(Localip, ToolsUtil.GetFreePort().ToString());
 
-                
+                //绑定成功
+                if (udp.isbing)
+                {
+                    string[] tmps = Localip.Split('.');
+                    string broadcastIp = String.Format("{0}.{1}.{2}.255", tmps[0], tmps[1], tmps[2]);
+                    udp.udpSend(broadcastIp, "6002", "Search all");
+                    udp.udpSend(broadcastIp, "6002", "search all");
+                    udp.udpSend("255.255.255.255", "6002", "Search all");
+                    udp.udpSend("255.255.255.255", "6002", "search all");
+
+
+                }
+                TxtShow("搜索主机结束！");
             }
-            TxtShow("搜索主机结束！");
+            catch (Exception ex)
+            {
+                ToolsUtil.WriteLog(ex.Message);
+            }
 
         }
 
@@ -352,7 +370,7 @@ namespace eNet编辑器.AddForm
             ClientAsync client = new ClientAsync();
             client.Completed += new Action<System.Net.Sockets.TcpClient, ClientAsync.EnSocketAction>((c, enAction) =>
             {
-                string key = "";
+                string key = string.Empty;
 
                 try
                 {
@@ -362,7 +380,10 @@ namespace eNet编辑器.AddForm
                         key = string.Format("{0}:{1}", iep.Address.ToString(), iep.Port);
                     }
                 }
-                catch { }
+                catch (Exception ex)
+                {
+                    ToolsUtil.WriteLog(ex.Message);
+                }
                 switch (enAction)
                 {
                     case ClientAsync.EnSocketAction.Connect:
@@ -411,21 +432,28 @@ namespace eNet编辑器.AddForm
         /// <param name="e"></param>
         private void treeView1_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            selectIP = "";
-            if (treeView1.SelectedNode != null && treeView1.SelectedNode.Level == 0)
+            try
             {
-                //清空当前选中节点
-                treeView1.SelectedNode.Nodes.Clear();
-                selectIP = treeView1.SelectedNode.Text;
-                if (selectIP != "")
+                selectIP = string.Empty;
+                if (treeView1.SelectedNode != null && treeView1.SelectedNode.Level == 0)
                 {
-                    selectHandle();
-                }
+                    //清空当前选中节点
+                    treeView1.SelectedNode.Nodes.Clear();
+                    selectIP = treeView1.SelectedNode.Text;
+                    if (!string.IsNullOrEmpty(selectIP))
+                    {
+                        selectHandle();
+                    }
 
+                }
+                else if (treeView1.SelectedNode != null && treeView1.SelectedNode.Level == 1)
+                {
+                    btnImport_Click(this, EventArgs.Empty);
+                }
             }
-            else if (treeView1.SelectedNode != null && treeView1.SelectedNode.Level == 1)
+            catch (Exception ex)
             {
-                btnImport_Click(this, EventArgs.Empty);
+                ToolsUtil.WriteLog(ex.Message);
             }
         }
        
@@ -459,8 +487,6 @@ namespace eNet编辑器.AddForm
             //e.Graphics.FillRectangle(new SolidBrush(backColor), new Rectangle(e.Bounds.Location, new Size(this.treeView1.Width - e.Bounds.X, e.Bounds.Height)));
             e.Graphics.FillRectangle(new SolidBrush(backColor), e.Bounds);
             e.Graphics.DrawString(e.Node.Text, this.treeView1.Font, new SolidBrush(foreColor), e.Bounds.X, e.Bounds.Y + 4);
-
-
         }
 
 

@@ -45,9 +45,9 @@
             // 
             // panel1
             // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.panel1.BackColor = System.Drawing.Color.DarkGray;
             this.panel1.Controls.Add(this.panel2);
@@ -60,9 +60,9 @@
             // 
             // panel2
             // 
-            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.BackColor = System.Drawing.Color.White;
             this.panel2.Controls.Add(this.btnNo);
             this.panel2.Controls.Add(this.lbMessage);
@@ -80,7 +80,7 @@
             this.btnNo.Location = new System.Drawing.Point(160, 70);
             this.btnNo.Name = "btnNo";
             this.btnNo.Size = new System.Drawing.Size(66, 24);
-            this.btnNo.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnNo.Style = DevComponents.DotNetBar.eDotNetBarStyle.VS2005;
             this.btnNo.TabIndex = 2;
             this.btnNo.Text = "否（N）";
             this.btnNo.Click += new System.EventHandler(this.btnNo_Click);
@@ -100,7 +100,7 @@
             this.btnYES.Location = new System.Drawing.Point(62, 70);
             this.btnYES.Name = "btnYES";
             this.btnYES.Size = new System.Drawing.Size(66, 24);
-            this.btnYES.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnYES.Style = DevComponents.DotNetBar.eDotNetBarStyle.VS2005;
             this.btnYES.TabIndex = 0;
             this.btnYES.Text = "是（Y）";
             this.btnYES.Click += new System.EventHandler(this.btnYES_Click);

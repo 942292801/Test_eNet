@@ -1,20 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 using System.Text.RegularExpressions;
 using System.Net;
 using System.Windows.Forms.DataVisualization.Charting;
 using System.Runtime.InteropServices;
 using Newtonsoft.Json;
+using eNet编辑器.Properties;
 
 namespace eNet编辑器.Controller
 {
-    public partial class setDali : Form
+    public partial class SetDali : Form
     {
 
         private string ip;
@@ -51,7 +49,7 @@ namespace eNet编辑器.Controller
         List<string> xData = new List<string>();
         List<int> yData = new List<int>();
 
-        public setDali()
+        public SetDali()
         {
             m_aeroEnabled = false;//样色2
             InitializeComponent();
@@ -64,6 +62,8 @@ namespace eNet编辑器.Controller
         {
             allWriteDelegate += new Action(allWrite);
             tcp6003receviceDelegate += new Action<string>(tcp6003ReceviceDelegateMsg);
+
+            label1.Text = label1.Text + "-" + Resources.Port + DevPort.portID.ToString();
             //链接tcp
             Connect6003Tcp(ip);
             lastIP = ip.Split('.')[3];
@@ -357,19 +357,24 @@ namespace eNet编辑器.Controller
             FileMesege.portDali= SaveFormState();
             this.DialogResult = System.Windows.Forms.DialogResult.No;
             string Hexid = DevPort.portID.ToString("X2");
+            string ord = string.Empty;
             if (ClickBtn != null)
             {
                 //清除对应ID闪和组闪
-                string ord = string.Format("{0}{1}0000", (Convert.ToInt32(ClickBtn.Text) - 1).ToString("X2"), Hexid);
+                //ToolsUtil.DelayMilli(3000);
+                ord = string.Format("{0}{1}0000", (Convert.ToInt32(ClickBtn.Text) - 1).ToString("X2"), Hexid);
                 sendRegOrder(ord, "17", "41");
             }
-            else
+           /* else
             {
                 //清除组闪
-                string ord = string.Format("ff{0}0000",  Hexid);
+                string ord = string.Format("ff{0}0000", Hexid);
                 sendRegOrder(ord, "17", "41");
-            }
+            }*/
 
+            //清除组闪
+            ord = string.Format("ff{0}0000", Hexid);
+            sendRegOrder(ord, "17", "41");
             timer2.Stop();
             if (client6003 != null)
             {
@@ -543,6 +548,7 @@ namespace eNet编辑器.Controller
                 {
                     continue;
                 }
+                //反馈数据
                 string data = strArray[i].Split(new string[] { ";" }, StringSplitOptions.RemoveEmptyEntries)[2];
                 Match match = reg.Match(strArray[i]);
                 if (match.Groups[3].Value == dataID && match.Groups[5].Value == "64")//40上电状态
@@ -564,7 +570,7 @@ namespace eNet编辑器.Controller
                     GetMax(data);
                     getLinespA(1, yData[0], 100, Convert.ToInt32(data, 16));
                     chart1.Series[0].Points.DataBindXY(xData, yData);
-                   
+
                 }
                 else if (match.Groups[3].Value == dataID && match.Groups[5].Value == "99")//63最小值
                 {
@@ -576,11 +582,15 @@ namespace eNet编辑器.Controller
                 {
                     //GetLinesp(data);
                 }
+                else if (match.Groups[3].Value == dataID && match.Groups[5].Value == "66")//66 绑定的驱动
+                {
+                    GetBind(devPort.portID,data);
+                    
+                }
+
 
             }//for
             bufferMsg = "";
-
-
         }
 
 
@@ -622,6 +632,7 @@ namespace eNet编辑器.Controller
                 string tmp = string.Format("set;{{{1}.0.{2}.{3}:{4}}};{0};\r\n", dataOrder, lastIP, DevModuel.id, portID, reg);
                 //发送
                 client6003.SendAsync(tmp);
+                Console.WriteLine(tmp);
                 return true;
             }
             return false;
@@ -663,6 +674,30 @@ namespace eNet编辑器.Controller
             {
                 reg = Convert.ToInt32(reg, 16).ToString();
                 string tmp = string.Format("get;{{{0}.0.{1}.{2}:{3}}};\r\n", lastIP, DevModuel.id, DevPort.portID, reg);
+                //发送
+                client6003.SendAsync(tmp);
+                return true;
+            }
+            return false;
+        }
+
+        /// <summary>
+        /// 发送读取指令 发送到寄存器寄存器
+        /// </summary>
+        /// <param name="portID">端口ID</param>
+        /// <param name="reg"></param>
+        /// <returns></returns>
+        private bool sendGetOrder(string portID ,string reg)
+        {
+            if (string.IsNullOrEmpty(portID) || string.IsNullOrEmpty(reg))
+            {
+                return false;
+            }
+            if (client6003 != null && client6003.Connected())
+            {
+                portID = Convert.ToInt32(portID, 16).ToString();
+                reg = Convert.ToInt32(reg, 16).ToString();
+                string tmp = string.Format("get;{{{0}.0.{1}.{2}:{3}}};\r\n", lastIP, DevModuel.id, portID, reg);
                 //发送
                 client6003.SendAsync(tmp);
                 return true;
@@ -812,8 +847,18 @@ namespace eNet编辑器.Controller
             sendGetOrder("62");
             ToolsUtil.DelayMilli(200);
             sendGetOrder("63");
-
-
+            ToolsUtil.DelayMilli(200);
+            Button btn = null;
+            foreach (Control ctl in this.flowLayoutPanel2.Controls)
+            {
+                if (ctl is Button)
+                {
+                    btn = ctl as Button;
+                    btn.BackColor = Color.White;
+                }
+            }
+            sendGetOrder("11","42");//dali绑定数据
+            
 
         }
 
@@ -1063,6 +1108,42 @@ namespace eNet编辑器.Controller
             { MessageBox.Show(e.ToString()); }
         }
 
+        /// <summary>
+        /// 获取绑定的驱动
+        /// </summary>
+        /// <param name="info"></param>
+        private void GetBind(int id ,string info)
+        {
+            Console.WriteLine("bangding:" + info);
+            //bangding:03 3efa c002 0004 0000 0001 
+            int num = Convert.ToInt32(info.Substring(0, 2),16);
+            Button btn = null;
+            for (int i = 0; i < num; i++)
+            {
+                string binVal = DataChange.HexString2BinString(info.Substring(i*4+2,4)).Replace(" ", "");
+                string val = DataChange.getBinBit(binVal, (id-1).ToString());
+                Console.WriteLine("binVal:" + binVal);
+                Console.WriteLine("val:" + val);
+                if (val == "1")
+                {
+                    foreach (Control ctl in this.flowLayoutPanel2.Controls)
+                    {
+                        if (ctl is Button)
+                        {
+                            btn = ctl as Button;
+                            if (Convert.ToInt32(btn.Text) - 1 == i)
+                            {
+                                btn.BackColor = Color.FromArgb(204, 235, 248);
+                            }
+                           
+                        }
+                    }
+                }
+               
+
+            }
+            
+        }
 
         #endregion
 
@@ -1364,6 +1445,8 @@ namespace eNet编辑器.Controller
             }
         }
 
+ 
+
 
         private void allWrite()
         {
@@ -1454,9 +1537,5 @@ namespace eNet编辑器.Controller
         }
 
       
-
-
-
-
     }//class
 }

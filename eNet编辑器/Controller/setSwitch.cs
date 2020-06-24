@@ -10,10 +10,11 @@ using System.Text.RegularExpressions;
 using System.Net;
 using System.Runtime.InteropServices;
 using Newtonsoft.Json;
+using eNet编辑器.Properties;
 
 namespace eNet编辑器.Controller
 {
-    public partial class setSwitch : Form
+    public partial class SetSwitch : Form
     {
 
         private string ip;
@@ -46,7 +47,7 @@ namespace eNet编辑器.Controller
         private event Action<string> tcp6003receviceDelegate;
         private event Action allWriteDelegate;
 
-        public setSwitch()
+        public SetSwitch()
         {
             InitializeComponent();
         }
@@ -58,6 +59,7 @@ namespace eNet编辑器.Controller
             {
                 allWriteDelegate += new Action(allWrite);
                 tcp6003receviceDelegate += new Action<string>(tcp6003ReceviceDelegateMsg);
+                label6.Text = label6.Text + "-" + Resources.Port + DevPort.portID.ToString();
                 //链接tcp
                 Connect6003Tcp(ip);
                 lastIP = ip.Split('.')[3];

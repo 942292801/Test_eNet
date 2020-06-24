@@ -256,7 +256,7 @@ namespace eNet编辑器.ThreeView
                     if (copyTimer != null)
                     {
                         //复制副本
-                        tms.timersInfo = (List<DataJson.timersInfo>)CommandManager.CloneObject(copyTimer.timersInfo);
+                        tms.timersInfo = (List<DataJson.timersInfo>)ToolsUtil.CloneObject(copyTimer.timersInfo);
                         //tms.timersInfo = TransExpV2<List<DataJson.timersInfo>, List<DataJson.timersInfo>>.Trans(copyTimer.timersInfo);
                         tms.dates = copyTimer.dates;
                         tms.priorHoloday = copyTimer.priorHoloday;
@@ -479,7 +479,7 @@ namespace eNet编辑器.ThreeView
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            if (treeView1.SelectedNode == null || treeView1.SelectedNode.Parent != null)
+            if (treeView1.SelectedNode == null)
             {
                 return;
             }
@@ -488,7 +488,7 @@ namespace eNet编辑器.ThreeView
         }
         private void btnAddHoliday_Click(object sender, EventArgs e)
         {
-            if (treeView1.SelectedNode == null || treeView1.SelectedNode.Parent != null)
+            if (treeView1.SelectedNode == null)
             {
                 return;
             }

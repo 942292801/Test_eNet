@@ -652,7 +652,6 @@ namespace eNet编辑器.DgvView
         #endregion
 
 
-
         #region 表格单击双击 操作 高亮显示
         private bool isFirstClick = true;
         private bool isDoubleClick = false;
@@ -1783,23 +1782,41 @@ namespace eNet编辑器.DgvView
             }
 
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         #endregion
 
+        #region 右击菜单 升序 相同 降序
+        private void 相同ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Same();
+        }
 
+        private void 升序ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Ascending();
+        }
 
-        
-
-        
-
-       
-
-     
-
-
-
-
-
-
+        private void 降序ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Descending();
+        }
+        #endregion
 
     }
 }

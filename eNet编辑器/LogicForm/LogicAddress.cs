@@ -519,7 +519,7 @@ namespace eNet编辑器.AddForm
             {
                 if (devName[i].Split(' ')[0] == id)
                 {
-                    string filepath = string.Format("{0}\\devices\\{1}.ini", Application.StartupPath, devName[i].Split(' ')[1]);
+                    string filepath = IniHelper.findDevicesDisplay(devName[i].Split(' ')[1]);
                     //获取全部Section下的Key
                     List<string> list = IniConfig.ReadKeys("ports", filepath);
                     cb4.Items.Clear();

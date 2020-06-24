@@ -336,7 +336,7 @@ namespace eNet编辑器.ThreeView
                     if (copyPanel != null)
                     {
                         //复制副本
-                        pls.panelsInfo = (List<DataJson.panelsInfo>)CommandManager.CloneObject(copyPanel.panelsInfo);
+                        pls.panelsInfo = (List<DataJson.panelsInfo>)ToolsUtil.CloneObject(copyPanel.panelsInfo);
                         //pls.panelsInfo = TransExpV2<List<DataJson.panelsInfo>, List<DataJson.panelsInfo>>.Trans(copyPanel.panelsInfo);
                         pls.keyNum = copyPanel.keyNum;
                     }
@@ -550,7 +550,7 @@ namespace eNet编辑器.ThreeView
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            if (treeView1.SelectedNode == null || treeView1.SelectedNode.Parent != null)
+            if (treeView1.SelectedNode == null)
             {
                 return;
             }

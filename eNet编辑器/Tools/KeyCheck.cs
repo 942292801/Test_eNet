@@ -47,25 +47,34 @@ namespace eNet编辑器.Tools
         {
             try
             {
-
+                udp = null;
                 //寻找加载在线的网关
                 udp.udpClose();
             }
-            catch
+            catch (Exception ex)
             {
+                ToolsUtil.WriteLog(ex.Message + "\r\n" + ex.StackTrace + "\r\n" + ex.ToString());
             }
-            udpIni();
-            //获取本地IP
-            Localip = ToolsUtil.GetLocalIP();
-            //udp 绑定
-            udp.udpBing(Localip, ToolsUtil.GetFreePort().ToString());
-            //绑定成功
-            if (udp.isbing)
+            
+            try
             {
+                udpIni();
+                //获取本地IP
+                Localip = ToolsUtil.GetLocalIP();
+                //udp 绑定
+                udp.udpBing(Localip, ToolsUtil.GetFreePort().ToString());
+                //绑定成功
+                if (udp.isbing)
+                {
 
-                udp.udpSend("255.255.255.255", "6002", "search all");
-                udp.udpSend("255.255.255.255", "6002", "Search all");
+                    udp.udpSend("255.255.255.255", "6002", "search all");
+                    udp.udpSend("255.255.255.255", "6002", "Search all");
+                }
             }
+            catch (Exception ex) {
+                ToolsUtil.WriteLog(ex.Message + "\r\n" + ex.StackTrace + "\r\n" + ex.ToString());
+            }
+            
         }
 
         /// <summary>
@@ -130,14 +139,14 @@ namespace eNet编辑器.Tools
                         cbOnlineIP.Items.Add(devIP[1]);
 
                     }
-
-
-
-
                 }
 
             }
-            catch { }
+            catch (Exception ex)
+            {
+                ToolsUtil.WriteLog(ex.Message + "\n" + ex.StackTrace + "\n" + ex.ToString());
+                return;
+            }
 
 
         }
@@ -167,9 +176,10 @@ namespace eNet编辑器.Tools
                 sendHerat();
                
             }
-            catch
+            catch(Exception ex)
             {
                 client6003 = null;
+                ToolsUtil.WriteLog(ex.Message + "\r\n" + ex.StackTrace + "\r\n" + ex.ToString());
                 return;
             }
         }
@@ -179,15 +189,22 @@ namespace eNet编辑器.Tools
         /// </summary>
         private void sendHerat()
         {
-            if (client6003 != null && client6003.Connected())
+            try
             {
-                if (string.IsNullOrEmpty(cbOnlineIP.Text))
+                if (client6003 != null && client6003.Connected())
                 {
-                    return;
+                    if (string.IsNullOrEmpty(cbOnlineIP.Text))
+                    {
+                        return;
+                    }
+                    string hearMsg = "SET;0000000A;{" + cbOnlineIP.Text.Split('.')[3] + ".251.0.1};\r\n";
+                    client6003.SendAsync(hearMsg);
                 }
-                string hearMsg = "SET;0000000A;{" + cbOnlineIP.Text.Split('.')[3] + ".251.0.1};\r\n";
-                client6003.SendAsync(hearMsg);
             }
+            catch (Exception ex) {
+                ToolsUtil.WriteLog(ex.Message + "\r\n" + ex.StackTrace + "\r\n" + ex.ToString());
+            }
+            
         }
 
         private void client6003Ini()
@@ -268,7 +285,7 @@ namespace eNet编辑器.Tools
                     {
                         cbDevNum.Text = match.Groups[3].Value.ToString();
 
-                        cbKeyNum.Text = (Convert.ToInt32(strs[1].Substring(0, 2)) * 256 + Convert.ToInt32(strs[1].Substring(4, 2))).ToString();
+                        cbKeyNum.Text = (Convert.ToInt32(strs[1].Substring(0, 2),16) * 256 + Convert.ToInt32(strs[1].Substring(4, 2),16)).ToString();
                     }
 
                 }

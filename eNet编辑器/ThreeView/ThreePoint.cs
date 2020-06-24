@@ -132,8 +132,14 @@ namespace eNet编辑器.ThreeView
            
         }
 
-      
+        /// <summary>
+        /// 取消节点选中
+        /// </summary>
+        public void unSelectNode()
+        {
+            treeView1.SelectedNode = null;
+        }
 
-      
+
     }
 }

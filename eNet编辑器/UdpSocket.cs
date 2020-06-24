@@ -59,8 +59,11 @@ namespace eNet编辑器
                 });
                 
             }
-            catch {
+            catch (Exception ex)
+            {
                 isbing = false;
+                Console.WriteLine(ex.Message);
+ 
             }
         }
 
@@ -73,30 +76,39 @@ namespace eNet编辑器
         /// <param name="msg">发送的信息</param>
         public void udpSend(string IP,string Port,string msg)
         {
-            if (isbing)
+            try
             {
-                IPAddress RemoteIP;   //远端 IP                
-                int RemotePort;      //远端 Port
-                IPEndPoint RemoteIPEndPoint; //远端 IP&Port
-                if (IPAddress.TryParse(IP, out RemoteIP) == false)//远端 IP
+
+
+                if (isbing)
                 {
-                    MessageBox.Show("IP地址错误！Remote IP is Wrong!", "Wrong");
-                    return;
+                    IPAddress RemoteIP;   //远端 IP                
+                    int RemotePort;      //远端 Port
+                    IPEndPoint RemoteIPEndPoint; //远端 IP&Port
+                    if (IPAddress.TryParse(IP, out RemoteIP) == false)//远端 IP
+                    {
+                        MessageBox.Show("IP地址错误！Remote IP is Wrong!", "Wrong");
+                        return;
+                    }
+
+
+                    RemotePort = Convert.ToInt32(Port);//远端 Port
+                    RemoteIPEndPoint = new IPEndPoint(RemoteIP, RemotePort);//远端 IP和Port
+                                                                            //Get Data
+                    byte[] sendBytes = System.Text.Encoding.Default.GetBytes(msg);
+                    int cnt = sendBytes.Length;
+
+                    if (0 == cnt)
+                    {
+                        return;
+                    }
+                    //Send
+                    m_UdpClient.Send(sendBytes, cnt, RemoteIPEndPoint);
                 }
-
-
-                RemotePort = Convert.ToInt32(Port);//远端 Port
-                RemoteIPEndPoint = new IPEndPoint(RemoteIP, RemotePort);//远端 IP和Port
-                //Get Data
-                byte[] sendBytes = System.Text.Encoding.Default.GetBytes(msg);
-                int cnt = sendBytes.Length;
-
-                if (0 == cnt)
-                {
-                    return;
-                }
-                //Send
-                m_UdpClient.Send(sendBytes, cnt, RemoteIPEndPoint);
+            }
+            catch (Exception ex)
+            {
+                ToolsUtil.WriteLog(ex.Message);
             }
         }
 

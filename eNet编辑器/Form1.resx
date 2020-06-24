@@ -129,83 +129,83 @@
     <value>Ctrl+N</value>
   </data>
   <data name="新建项目ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>177, 22</value>
+    <value>201, 22</value>
   </data>
   <data name="新建项目ToolStripMenuItem.Text" xml:space="preserve">
-    <value>新建(N)</value>
+    <value>新建工程(N)</value>
   </data>
   <data name="打开项目ToolStripMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
     <value>Ctrl+O</value>
   </data>
   <data name="打开项目ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>177, 22</value>
+    <value>201, 22</value>
   </data>
   <data name="打开项目ToolStripMenuItem.Text" xml:space="preserve">
-    <value>打开(O)</value>
+    <value>打开工程(O)</value>
   </data>
   <data name="最近打开ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>177, 22</value>
+    <value>201, 22</value>
   </data>
   <data name="最近打开ToolStripMenuItem.Text" xml:space="preserve">
-    <value>最近打开</value>
+    <value>最近打开工程</value>
   </data>
   <data name="toolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>174, 6</value>
+    <value>198, 6</value>
   </data>
   <data name="保存ToolStripMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
     <value>Ctrl+S</value>
   </data>
   <data name="保存ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>177, 22</value>
+    <value>201, 22</value>
   </data>
   <data name="保存ToolStripMenuItem.Text" xml:space="preserve">
-    <value>保存(S)</value>
+    <value>保存工程(S)</value>
   </data>
   <data name="toolStripMenuItem13.Size" type="System.Drawing.Size, System.Drawing">
-    <value>174, 6</value>
+    <value>198, 6</value>
   </data>
   <data name="另存为ToolStripMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
     <value>Ctrl+A</value>
   </data>
   <data name="另存为ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>177, 22</value>
+    <value>201, 22</value>
   </data>
   <data name="另存为ToolStripMenuItem.Text" xml:space="preserve">
-    <value>另存为(A) </value>
+    <value>另存为工程(A) </value>
   </data>
   <data name="toolStripMenuItem2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>174, 6</value>
+    <value>198, 6</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="导出ToolStripMenuItem.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
   <data name="导出ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>177, 22</value>
+    <value>201, 22</value>
   </data>
   <data name="导出ToolStripMenuItem.Text" xml:space="preserve">
     <value>导出</value>
   </data>
   <data name="toolStripMenuItem11.Size" type="System.Drawing.Size, System.Drawing">
-    <value>174, 6</value>
+    <value>198, 6</value>
   </data>
   <data name="打印ToolStripMenuItem.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
   <data name="打印ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>177, 22</value>
+    <value>201, 22</value>
   </data>
   <data name="打印ToolStripMenuItem.Text" xml:space="preserve">
     <value>打印</value>
   </data>
   <data name="toolStripMenuItem12.Size" type="System.Drawing.Size, System.Drawing">
-    <value>174, 6</value>
+    <value>198, 6</value>
   </data>
   <data name="退出ToolStripMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
     <value>Ctrl+X</value>
   </data>
   <data name="退出ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>177, 22</value>
+    <value>201, 22</value>
   </data>
   <data name="退出ToolStripMenuItem.Text" xml:space="preserve">
     <value>退出(X)</value>

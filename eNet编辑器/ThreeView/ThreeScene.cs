@@ -256,7 +256,7 @@ namespace eNet编辑器.ThreeView
                     if (copyScene != null)
                     {
 
-                        scs.sceneInfo = (List<DataJson.sceneInfo>)CommandManager.CloneObject(copyScene);
+                        scs.sceneInfo = (List<DataJson.sceneInfo>)ToolsUtil.CloneObject(copyScene);
                         //scs.sceneInfo = TransExpV2<List<DataJson.sceneInfo>, List<DataJson.sceneInfo>>.Trans(copyScene);
                     }
                     sc.scenes.Add(scs);
@@ -466,7 +466,7 @@ namespace eNet编辑器.ThreeView
         //添加场景
         private void btnAddGw_Click(object sender, EventArgs e)
         {
-            if (treeView1.SelectedNode == null || treeView1.SelectedNode.Parent != null)
+            if (treeView1.SelectedNode == null)
             {
                 return;
             }

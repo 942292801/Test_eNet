@@ -226,22 +226,7 @@ namespace eNet编辑器
         }
 
         
-       /// <summary>
-       /// 普通的对象可以克隆 有object的不行
-       /// </summary>
-       /// <param name="obj"></param>
-       /// <returns></returns>
-        public static object CloneObject(object obj)
-        {
-            using (MemoryStream memStream = new MemoryStream())
-            {
-                BinaryFormatter binaryFormatter = new BinaryFormatter(null,
-                  new StreamingContext(StreamingContextStates.Clone));
-                binaryFormatter.Serialize(memStream, obj);
-                memStream.Seek(0, SeekOrigin.Begin);
-                return binaryFormatter.Deserialize(memStream);
-            }
-        }
+  
 
         /// <summary>
         /// 父类对象赋值给子类对象

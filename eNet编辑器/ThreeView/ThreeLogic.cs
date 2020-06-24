@@ -327,7 +327,7 @@ namespace eNet编辑器.ThreeView
                     if (copyLogic != null)
                     {
                         //复制副本
-                        lgs.logicsInfo = (List<DataJson.logicsInfo>)CommandManager.CloneObject(copyLogic.logicsInfo);
+                        lgs.logicsInfo = (List<DataJson.logicsInfo>)ToolsUtil.CloneObject(copyLogic.logicsInfo);
                         //变量要唯一
                         //srs.ioNum = copySensor.ioNum;
                     }
@@ -623,7 +623,7 @@ namespace eNet编辑器.ThreeView
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            if (treeView1.SelectedNode == null || treeView1.SelectedNode.Parent != null)
+            if (treeView1.SelectedNode == null)
             {
                 return;
             }

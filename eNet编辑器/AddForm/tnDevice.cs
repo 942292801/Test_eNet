@@ -63,7 +63,7 @@ namespace eNet编辑器.AddForm
             lbip.Text = infos[0];
             //获取设备名称
             DirectoryInfo folder = new DirectoryInfo(Application.StartupPath + "//devices");
-            string[] names = null;
+            string display = null;
             //循环添加设备号
             for (int i = 0; i < 64; i++)
             {
@@ -72,8 +72,8 @@ namespace eNet编辑器.AddForm
             //循环添加设备名字
             foreach (FileInfo file in folder.GetFiles("*.ini"))
             {
-                names = file.Name.Split('.');
-                cbVersion.Items.Add(names[0]);
+                display = IniConfig.GetValue(file.FullName, "define", "display");
+                cbVersion.Items.Add(display);
 
             }
 

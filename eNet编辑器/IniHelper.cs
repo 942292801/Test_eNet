@@ -184,6 +184,28 @@ namespace eNet编辑器
             return "";
         }
 
+        /// <summary>
+        /// 通过display名称  寻找ini 返回改Ini文件路径 
+        /// </summary>
+        /// <param name="display"></param>
+        /// <returns></returns>
+        public static string findDevicesDisplay(string display)
+        {
+            DirectoryInfo folder = new DirectoryInfo(Application.StartupPath + "//devices");
+            string readname = "";
+            foreach (FileInfo file in folder.GetFiles("*.ini"))
+            {
+                readname = IniConfig.GetValue(file.FullName, "define", "display");
+                //DGV类型名称和Types.Iin Name 相同的类型名称
+                if (readname == display)
+                {
+
+                    return file.FullName;
+                }
+            }
+            return string.Empty;
+        }
+
 
         /// <summary>
         /// 根据地址Address寻找 该个地址的链路类型 设备 场景 定时 。。。。
@@ -341,7 +363,7 @@ namespace eNet编辑器
                 {
                     if (md.id == id)
                     {
-                        string filepath = Application.StartupPath + "\\devices\\" + md.device + ".ini";
+                        string filepath = findDevicesDisplay(md.device);
                         return IniConfig.GetValue(filepath, "ports", port); ;
                     }
                 }

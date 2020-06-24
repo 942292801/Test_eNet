@@ -390,7 +390,7 @@ namespace eNet编辑器
         /// <param name="version"></param>
         public static void addPortType( List<DataJson.DevPort> portList,string version)
         {
-            string filepath = Application.StartupPath + "\\devices\\" + version + ".ini";
+            string filepath = IniHelper.findDevicesDisplay(version);
             //获取全部Section下的Key
             List<string> list = IniConfig.ReadKeys("ports", filepath);
             string[] value ;

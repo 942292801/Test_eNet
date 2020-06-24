@@ -1,14 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 using eNet编辑器.ThreeView;
 using System.Runtime.InteropServices;
-using Microsoft.VisualBasic;
 using System.IO;
 using eNet编辑器.DgvView;
 using eNet编辑器.AddForm;
@@ -151,6 +147,9 @@ namespace eNet编辑器
             LogicScene.AppTxtShow += new Action<string>(AppTxtShow);
             LogicCondition.AppTxtShow += new Action<string>(AppTxtShow);
             LogicVoice.AppTxtShow += new Action<string>(AppTxtShow);
+
+            LogicCondition.unSelectTitleNode += new Action(threetitle.unSelectTitleNode);
+            LogicVoice.unSelectTitleNode += new Action(threetitle.unSelectTitleNode);
             /////////////////////////////////////////////////////////////
             //  网关 根据DeviceList更新同步加载所有的TreeView
             //  os.UpdateTreeView += new Action<bool>((flag) =>
@@ -198,6 +197,7 @@ namespace eNet编辑器
             threesection.updatePointDgv += new Action(dgvpoint.dgvPointAddItemBySection);
             threepoint.updateDgvPoint += new Action(dgvpoint.dgvPointAddItemByObjType);
             threesection.logicCbSceneGetItem +=new Action(dgvlogic.delegeteLogicCbSceneGetItem);
+            threesection.unSelectPointNode += new Action(threepoint.unSelectNode);
             /////////////////////////////////////////////////////////////
             //光标事件调用 
             //添加加号光标
@@ -206,7 +206,7 @@ namespace eNet编辑器
             //threetitle.addTitleDevCursor += new AddTitleDevCursor(dgvdevice.cursor_copy);
             //threetitle.addTitlenNameCursor += new AddTitlenNameCursor(dgvname.cursor_copy);
 
-   
+
             dgvdevice.unSelectTitleNode += new Action(() =>//刷新右边两树状图 取消选中状态 
             {
                 threetitle.unSelectTitleNode();
@@ -238,11 +238,13 @@ namespace eNet编辑器
                 //threesection.ThreeSEctionAddNode();
                 threetitle.ThreeTitleAddNode(cbType.SelectedIndex);
             });
+            dgvpanel.unSelectTitleNode += new Action(threetitle.unSelectTitleNode);
             dgvsensor.updateSectionTitleNode += new Action(() =>//刷新右边两树状图 取消选中状态 
             {
                 //threesection.ThreeSEctionAddNode();
                 threetitle.ThreeTitleAddNode(cbType.SelectedIndex);
             });
+            dgvsensor.unSelectTitleNode += new Action(threetitle.unSelectTitleNode);
             //默认光标
             //dgvname.dgvDeviceCursorDefault +=new DgvDeviceCursorDefault(dgvdevice.cursor_default);
             //dgvdevice.dgvNameCursorDefault += new DgvNameCursorDefault(dgvname.cursor_default);
@@ -259,8 +261,13 @@ namespace eNet编辑器
             this.Text = Resources.SoftName + "Edit New Project";
         }
 
+        private void LogicCondition_unSelectTitleNode()
+        {
+            throw new NotImplementedException();
+        }
+
         #region 刷新窗口
-        
+
         /// <summary>
         /// 刷新左栏树状图的节点
         /// </summary>
@@ -310,10 +317,8 @@ namespace eNet编辑器
             switch (FileMesege.formType)
             {
                 case "name":
-          
                     threename.ThreeNameAddNode();
                     break;
-
                 case "point":
 
                     if (FileMesege.sectionNode != null)
@@ -321,16 +326,12 @@ namespace eNet编辑器
                         if (!string.IsNullOrEmpty(FileMesege.objType))
                         {
                             threepoint.ThreePointAddNode();
-                           
                         }
                         else
                         {
                             threesection.ThreeSEctionAddNode();
-                        
                         }
-                        
                     }
-     
                     break;
                 case "scene":
                     threescene.ThreeSceneAddNode();
@@ -566,19 +567,13 @@ namespace eNet编辑器
             //自定义函数加载窗体 CleanRecycle  
             Control_Add(threescene, plLeft);
             Control_Add(dgvscene, plDgv);
-            if (string.IsNullOrEmpty(FileMesege.formType) || 
-                FileMesege.formType == "name" || 
-                FileMesege.formType == "point" || 
-                FileMesege.formType == "virtualport" 
-                )//FileMesege.formType == "scene")
-            {
+          
                 //cbtype添加选择项
                 cbtypeName("scene");
                 //添加对象树状图
                 threetitle.ThreeTitleAddNode(cbType.SelectedIndex);
                 //更改Title 小标题
                 LbTitleName.Text = Resources.lbTitleObj;
-            }
             //界面显示类型 
             FileMesege.formType = "scene";
             threescene.ThreeSceneAddNode();
@@ -589,22 +584,15 @@ namespace eNet编辑器
             //自定义函数加载窗体 CleanRecycle  
             Control_Add(threetimer, plLeft);
             Control_Add(dgvtimer, plDgv);
-            if (string.IsNullOrEmpty(FileMesege.formType) ||
-               FileMesege.formType == "name" ||
-               FileMesege.formType == "point" ||
-               FileMesege.formType == "virtualport"
-               )//FileMesege.formType == "timer")
-            {
+            
                 //cbtype添加选择项 
                 cbtypeName("timer");
                 //添加对象树状图
                 threetitle.ThreeTitleAddNode(cbType.SelectedIndex);
                 //更改Title 小标题
                 LbTitleName.Text = Resources.lbTitleObj;
-            }
             //界面显示类型 
             FileMesege.formType = "timer";
-            
             threetimer.ThreeTimerAddNode();
             
         }
@@ -615,22 +603,14 @@ namespace eNet编辑器
             //自定义函数加载窗体 CleanRecycle  
             Control_Add(threepanel, plLeft);
             Control_Add(dgvpanel, plDgv);
-            if (string.IsNullOrEmpty(FileMesege.formType) ||
-               FileMesege.formType == "name" ||
-               FileMesege.formType == "point" ||
-               FileMesege.formType == "virtualport"
-               )//FileMesege.formType == "panel")
-            {
-                //cbtype添加选择项 
-                cbtypeName("link");
-                //添加对象树状图
-                threetitle.ThreeTitleAddNode(cbType.SelectedIndex);
-                //更改Title 小标题
-                LbTitleName.Text = Resources.lbTitleObj;
-            }
+            //cbtype添加选择项 
+            cbtypeName("link");
+            //添加对象树状图
+            threetitle.ThreeTitleAddNode(cbType.SelectedIndex);
+            //更改Title 小标题
+            LbTitleName.Text = Resources.lbTitleObj;
             //界面显示类型 
             FileMesege.formType = "panel";
-            
             threepanel.ThreePanelAddNode();
         }
 
@@ -642,19 +622,13 @@ namespace eNet编辑器
             //自定义函数加载窗体 CleanRecycle  
             Control_Add(threesensor, plLeft);
             Control_Add(dgvsensor, plDgv);
-            if (string.IsNullOrEmpty(FileMesege.formType) ||
-               FileMesege.formType == "name" ||
-               FileMesege.formType == "point" ||
-               FileMesege.formType == "virtualport"
-              )// FileMesege.formType == "sensor")
-            {
+           
                 //cbtype添加选择项 
                 cbtypeName("sensor");
                 //添加对象树状图
                 threetitle.ThreeTitleAddNode(cbType.SelectedIndex);
                 //更改Title 小标题
                 LbTitleName.Text = Resources.lbTitleObj;
-            }
             //界面显示类型 
             FileMesege.formType = "sensor";
            
@@ -666,19 +640,13 @@ namespace eNet编辑器
             //自定义函数加载窗体 CleanRecycle  
             Control_Add(threelogic, plLeft);
             Control_Add(dgvlogic, plDgv);
-            if (string.IsNullOrEmpty(FileMesege.formType) ||
-               FileMesege.formType == "name" ||
-               FileMesege.formType == "point" ||
-               FileMesege.formType == "virtualport"
-               )//FileMesege.formType == "logic")
-            {
+            
                 //cbtype添加选择项 
                 cbtypeName("logic");
                 //添加对象树状图
                 threetitle.ThreeTitleAddNode(cbType.SelectedIndex);
                 //更改Title 小标题
                 LbTitleName.Text = Resources.lbTitleObj;
-            }
             //界面显示类型 
             FileMesege.formType = "logic";
             threelogic.ThreeLogicAddNode();
@@ -800,7 +768,7 @@ namespace eNet编辑器
             if (fm.openfile())
             {
 
-                    AppTxtShow("打开工程成功！");
+                    AppTxtShow("打开工程成功！" + FileMesege.filePath);
                     this.Text = Resources.SoftName + FileMesege.filePath;
                     clearDgvClear();
                     threesection.ThreeSEctionAddNode();
@@ -819,7 +787,6 @@ namespace eNet编辑器
             try
             {
                 FileMesege fm = new FileMesege();
-
                 if (fm.savefile())
                 {
 
@@ -827,7 +794,15 @@ namespace eNet编辑器
                 }
                 else
                 {
-                    AppTxtShow("保存工程失败！");
+                    if (fm.savefile())
+                    {
+                        AppTxtShow("保存工程成功！");
+                    }
+                    else
+                    {
+
+                        AppTxtShow("保存工程失败！");
+                    }
                 }
             }
             catch { }
@@ -919,7 +894,7 @@ namespace eNet编辑器
                 threesection.ThreeSEctionAddNode();
                 //刷新所有窗口
                 updateTreeByFormType();
-
+                AppTxtShow("打开工程成功!"+ but.Text);
             }
             else
             {

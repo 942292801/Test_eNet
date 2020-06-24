@@ -172,7 +172,6 @@ namespace eNet编辑器
 
         public bool newfile()
         {
-            //IniConfig.SetValue(Application.StartupPath + "\\conf.ini", "filepath", "path", filePath);
             iniPath();
             return true;            
             
@@ -354,8 +353,9 @@ namespace eNet编辑器
             }
             catch (Exception ex)
             {
-                MessageBox.Show("操作失败！\n" + ex.Message, "提示", MessageBoxButtons.OK,
-                    MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
+                /* MessageBox.Show("操作失败！\n" + ex.Message, "提示", MessageBoxButtons.OK,
+                     MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);*/
+                Console.WriteLine(ex.StackTrace);
                 return false;
             }  
 
@@ -969,7 +969,7 @@ namespace eNet编辑器
             }
             catch (Exception e)
             {
-                MessageBox.Show(e.ToString());
+                MessageBox.Show(e.Message);
                 return false;
             }
         }
