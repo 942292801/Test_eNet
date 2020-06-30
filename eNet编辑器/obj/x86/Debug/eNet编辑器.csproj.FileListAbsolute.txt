@@ -329,3 +329,4 @@ C:\Users\Administrator\Desktop\Project\eNET编辑器\eNet\eNet编辑器\obj\x86\
 C:\Users\Administrator\Desktop\Project\eNET编辑器\eNet\eNet编辑器\obj\x86\Debug\eNet编辑器.exe
 C:\Users\Administrator\Desktop\Project\eNET编辑器\eNet\eNet编辑器\obj\x86\Debug\eNet编辑器.pdb
 C:\Users\Administrator\Desktop\Project\eNET编辑器\eNet\eNet编辑器\obj\x86\Debug\eNet编辑器.Controller.SetData.resources
+C:\Users\Administrator\Desktop\Project\eNET编辑器\eNet\eNet编辑器\obj\x86\Debug\eNet编辑器.OtherView.PgView.resources
