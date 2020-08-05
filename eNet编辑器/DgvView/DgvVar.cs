@@ -54,7 +54,14 @@ namespace eNet编辑器.DgvView
         public delegate void FormIniDelegate();
         private void ShowDatatable()
         {
-            this.Invoke(new FormIniDelegate(TabIni));
+            try
+            {
+                this.Invoke(new FormIniDelegate(TabIni));
+
+            }
+            catch
+            {
+            }
 
         }
 

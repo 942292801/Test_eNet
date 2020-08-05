@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
             this.PlMeustrip = new Infragistics.Win.Misc.UltraPanel();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.文件ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -102,9 +102,9 @@
             this.line1 = new DevComponents.DotNetBar.Controls.Line();
             this.btnCompileDownload = new DevComponents.DotNetBar.ButtonX();
             this.line4 = new DevComponents.DotNetBar.Controls.Line();
+            this.btnOnlineSearch = new DevComponents.DotNetBar.ButtonX();
             this.btnCopy = new DevComponents.DotNetBar.ButtonX();
             this.btnPast = new DevComponents.DotNetBar.ButtonX();
-            this.buttonX12 = new DevComponents.DotNetBar.ButtonX();
             this.buttonX10 = new DevComponents.DotNetBar.ButtonX();
             this.buttonX9 = new DevComponents.DotNetBar.ButtonX();
             this.buttonX16 = new DevComponents.DotNetBar.ButtonX();
@@ -115,6 +115,12 @@
             this.tabStrip = new DevComponents.DotNetBar.TabControl();
             this.tabControlPanel1 = new DevComponents.DotNetBar.TabControlPanel();
             this.tabName = new DevComponents.DotNetBar.TabItem(this.components);
+            this.tabControlPanel5 = new DevComponents.DotNetBar.TabControlPanel();
+            this.tabPanel = new DevComponents.DotNetBar.TabItem(this.components);
+            this.tabControlPanel4 = new DevComponents.DotNetBar.TabControlPanel();
+            this.tabTimer = new DevComponents.DotNetBar.TabItem(this.components);
+            this.tabControlPanel3 = new DevComponents.DotNetBar.TabControlPanel();
+            this.tabScene = new DevComponents.DotNetBar.TabItem(this.components);
             this.tabControlPanel2 = new DevComponents.DotNetBar.TabControlPanel();
             this.tabPoint = new DevComponents.DotNetBar.TabItem(this.components);
             this.tabControlPanel8 = new DevComponents.DotNetBar.TabControlPanel();
@@ -123,12 +129,6 @@
             this.tabLogic = new DevComponents.DotNetBar.TabItem(this.components);
             this.tabControlPanel6 = new DevComponents.DotNetBar.TabControlPanel();
             this.tabSensor = new DevComponents.DotNetBar.TabItem(this.components);
-            this.tabControlPanel5 = new DevComponents.DotNetBar.TabControlPanel();
-            this.tabPanel = new DevComponents.DotNetBar.TabItem(this.components);
-            this.tabControlPanel4 = new DevComponents.DotNetBar.TabControlPanel();
-            this.tabTimer = new DevComponents.DotNetBar.TabItem(this.components);
-            this.tabControlPanel3 = new DevComponents.DotNetBar.TabControlPanel();
-            this.tabScene = new DevComponents.DotNetBar.TabItem(this.components);
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.LbTitleName = new System.Windows.Forms.Label();
             this.cbType = new System.Windows.Forms.ComboBox();
@@ -150,6 +150,8 @@
             this.plTitle = new System.Windows.Forms.Panel();
             this.plTitleTree = new System.Windows.Forms.Panel();
             this.plTitleCbbox = new System.Windows.Forms.Panel();
+            this.btnAddTitleItem = new DevComponents.DotNetBar.ButtonX();
+            this.btnClear = new DevComponents.DotNetBar.ButtonX();
             this.symbolBox2 = new DevComponents.DotNetBar.Controls.SymbolBox();
             this.plLeft = new System.Windows.Forms.Panel();
             this.PlMeustrip.ClientArea.SuspendLayout();
@@ -173,8 +175,8 @@
             // 
             // PlMeustrip
             // 
-            appearance1.BackColor = System.Drawing.Color.DarkGray;
-            this.PlMeustrip.Appearance = appearance1;
+            appearance3.BackColor = System.Drawing.Color.DarkGray;
+            this.PlMeustrip.Appearance = appearance3;
             // 
             // PlMeustrip.ClientArea
             // 
@@ -536,8 +538,8 @@
             // 
             // PlToolstrip
             // 
-            appearance2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.PlToolstrip.Appearance = appearance2;
+            appearance4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.PlToolstrip.Appearance = appearance4;
             // 
             // PlToolstrip.ClientArea
             // 
@@ -561,9 +563,9 @@
             this.flowLayoutPanel1.Controls.Add(this.line1);
             this.flowLayoutPanel1.Controls.Add(this.btnCompileDownload);
             this.flowLayoutPanel1.Controls.Add(this.line4);
+            this.flowLayoutPanel1.Controls.Add(this.btnOnlineSearch);
             this.flowLayoutPanel1.Controls.Add(this.btnCopy);
             this.flowLayoutPanel1.Controls.Add(this.btnPast);
-            this.flowLayoutPanel1.Controls.Add(this.buttonX12);
             this.flowLayoutPanel1.Controls.Add(this.buttonX10);
             this.flowLayoutPanel1.Controls.Add(this.buttonX9);
             this.flowLayoutPanel1.Controls.Add(this.buttonX16);
@@ -731,6 +733,20 @@
             resources.ApplyResources(this.line4, "line4");
             this.line4.Name = "line4";
             // 
+            // btnOnlineSearch
+            // 
+            this.btnOnlineSearch.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            resources.ApplyResources(this.btnOnlineSearch, "btnOnlineSearch");
+            this.btnOnlineSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnOnlineSearch.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
+            this.btnOnlineSearch.FocusCuesEnabled = false;
+            this.btnOnlineSearch.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None;
+            this.btnOnlineSearch.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnOnlineSearch.HoverImage")));
+            this.btnOnlineSearch.Image = ((System.Drawing.Image)(resources.GetObject("btnOnlineSearch.Image")));
+            this.btnOnlineSearch.Name = "btnOnlineSearch";
+            this.btnOnlineSearch.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnOnlineSearch.Click += new System.EventHandler(this.BtnOnlineSearch_Click);
+            // 
             // btnCopy
             // 
             this.btnCopy.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
@@ -758,19 +774,6 @@
             this.btnPast.Name = "btnPast";
             this.btnPast.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnPast.Click += new System.EventHandler(this.btnPast_Click);
-            // 
-            // buttonX12
-            // 
-            this.buttonX12.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            resources.ApplyResources(this.buttonX12, "buttonX12");
-            this.buttonX12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.buttonX12.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
-            this.buttonX12.FocusCuesEnabled = false;
-            this.buttonX12.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None;
-            this.buttonX12.HoverImage = ((System.Drawing.Image)(resources.GetObject("buttonX12.HoverImage")));
-            this.buttonX12.Image = ((System.Drawing.Image)(resources.GetObject("buttonX12.Image")));
-            this.buttonX12.Name = "buttonX12";
-            this.buttonX12.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             // 
             // buttonX10
             // 
@@ -852,8 +855,8 @@
             // 
             // PlTabStrip
             // 
-            appearance3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(145)))), ((int)(((byte)(230)))));
-            this.PlTabStrip.Appearance = appearance3;
+            appearance1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(145)))), ((int)(((byte)(230)))));
+            this.PlTabStrip.Appearance = appearance1;
             // 
             // PlTabStrip.ClientArea
             // 
@@ -890,13 +893,13 @@
             this.tabStrip.ColorScheme.TabItemSelectedBorderLight = System.Drawing.Color.Empty;
             this.tabStrip.ColorScheme.TabItemSelectedText = System.Drawing.Color.White;
             this.tabStrip.Controls.Add(this.tabControlPanel1);
+            this.tabStrip.Controls.Add(this.tabControlPanel5);
+            this.tabStrip.Controls.Add(this.tabControlPanel4);
+            this.tabStrip.Controls.Add(this.tabControlPanel3);
             this.tabStrip.Controls.Add(this.tabControlPanel2);
             this.tabStrip.Controls.Add(this.tabControlPanel8);
             this.tabStrip.Controls.Add(this.tabControlPanel7);
             this.tabStrip.Controls.Add(this.tabControlPanel6);
-            this.tabStrip.Controls.Add(this.tabControlPanel5);
-            this.tabStrip.Controls.Add(this.tabControlPanel4);
-            this.tabStrip.Controls.Add(this.tabControlPanel3);
             this.tabStrip.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.tabStrip.Name = "tabStrip";
             this.tabStrip.SelectedTabFont = new System.Drawing.Font("微软雅黑", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
@@ -932,6 +935,71 @@
             this.tabName.Name = "tabName";
             resources.ApplyResources(this.tabName, "tabName");
             this.tabName.Click += new System.EventHandler(this.tabName_Click);
+            // 
+            // tabControlPanel5
+            // 
+            this.tabControlPanel5.DisabledBackColor = System.Drawing.Color.Empty;
+            resources.ApplyResources(this.tabControlPanel5, "tabControlPanel5");
+            this.tabControlPanel5.Name = "tabControlPanel5";
+            this.tabControlPanel5.Style.BackColor2.Color = System.Drawing.Color.Silver;
+            this.tabControlPanel5.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
+            this.tabControlPanel5.Style.BorderColor.Color = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(158)))), ((int)(((byte)(216)))));
+            this.tabControlPanel5.Style.BorderSide = ((DevComponents.DotNetBar.eBorderSide)(((DevComponents.DotNetBar.eBorderSide.Left | DevComponents.DotNetBar.eBorderSide.Right) 
+            | DevComponents.DotNetBar.eBorderSide.Bottom)));
+            this.tabControlPanel5.Style.GradientAngle = 90;
+            this.tabControlPanel5.TabItem = this.tabPanel;
+            // 
+            // tabPanel
+            // 
+            this.tabPanel.AttachedControl = this.tabControlPanel5;
+            this.tabPanel.Image = ((System.Drawing.Image)(resources.GetObject("tabPanel.Image")));
+            this.tabPanel.Name = "tabPanel";
+            resources.ApplyResources(this.tabPanel, "tabPanel");
+            this.tabPanel.Click += new System.EventHandler(this.tabPanel_Click);
+            // 
+            // tabControlPanel4
+            // 
+            this.tabControlPanel4.DisabledBackColor = System.Drawing.Color.Empty;
+            resources.ApplyResources(this.tabControlPanel4, "tabControlPanel4");
+            this.tabControlPanel4.Name = "tabControlPanel4";
+            this.tabControlPanel4.Style.BackColor2.Color = System.Drawing.Color.Silver;
+            this.tabControlPanel4.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
+            this.tabControlPanel4.Style.BorderColor.Color = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(158)))), ((int)(((byte)(216)))));
+            this.tabControlPanel4.Style.BorderSide = ((DevComponents.DotNetBar.eBorderSide)(((DevComponents.DotNetBar.eBorderSide.Left | DevComponents.DotNetBar.eBorderSide.Right) 
+            | DevComponents.DotNetBar.eBorderSide.Bottom)));
+            this.tabControlPanel4.Style.GradientAngle = 90;
+            this.tabControlPanel4.TabItem = this.tabTimer;
+            // 
+            // tabTimer
+            // 
+            this.tabTimer.AttachedControl = this.tabControlPanel4;
+            this.tabTimer.Image = ((System.Drawing.Image)(resources.GetObject("tabTimer.Image")));
+            this.tabTimer.Name = "tabTimer";
+            resources.ApplyResources(this.tabTimer, "tabTimer");
+            this.tabTimer.Click += new System.EventHandler(this.tabTimer_Click);
+            // 
+            // tabControlPanel3
+            // 
+            this.tabControlPanel3.DisabledBackColor = System.Drawing.Color.Empty;
+            resources.ApplyResources(this.tabControlPanel3, "tabControlPanel3");
+            this.tabControlPanel3.Name = "tabControlPanel3";
+            this.tabControlPanel3.Style.BackColor2.Color = System.Drawing.Color.Silver;
+            this.tabControlPanel3.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
+            this.tabControlPanel3.Style.BorderColor.Color = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(158)))), ((int)(((byte)(216)))));
+            this.tabControlPanel3.Style.BorderSide = ((DevComponents.DotNetBar.eBorderSide)(((DevComponents.DotNetBar.eBorderSide.Left | DevComponents.DotNetBar.eBorderSide.Right) 
+            | DevComponents.DotNetBar.eBorderSide.Bottom)));
+            this.tabControlPanel3.Style.GradientAngle = 90;
+            this.tabControlPanel3.StyleMouseDown.Alignment = System.Drawing.StringAlignment.Center;
+            this.tabControlPanel3.StyleMouseOver.Alignment = System.Drawing.StringAlignment.Center;
+            this.tabControlPanel3.TabItem = this.tabScene;
+            // 
+            // tabScene
+            // 
+            this.tabScene.AttachedControl = this.tabControlPanel3;
+            this.tabScene.Image = ((System.Drawing.Image)(resources.GetObject("tabScene.Image")));
+            this.tabScene.Name = "tabScene";
+            resources.ApplyResources(this.tabScene, "tabScene");
+            this.tabScene.Click += new System.EventHandler(this.tabScene_Click);
             // 
             // tabControlPanel2
             // 
@@ -1019,71 +1087,6 @@
             this.tabSensor.Name = "tabSensor";
             resources.ApplyResources(this.tabSensor, "tabSensor");
             this.tabSensor.Click += new System.EventHandler(this.tabSensor_Click);
-            // 
-            // tabControlPanel5
-            // 
-            this.tabControlPanel5.DisabledBackColor = System.Drawing.Color.Empty;
-            resources.ApplyResources(this.tabControlPanel5, "tabControlPanel5");
-            this.tabControlPanel5.Name = "tabControlPanel5";
-            this.tabControlPanel5.Style.BackColor2.Color = System.Drawing.Color.Silver;
-            this.tabControlPanel5.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
-            this.tabControlPanel5.Style.BorderColor.Color = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(158)))), ((int)(((byte)(216)))));
-            this.tabControlPanel5.Style.BorderSide = ((DevComponents.DotNetBar.eBorderSide)(((DevComponents.DotNetBar.eBorderSide.Left | DevComponents.DotNetBar.eBorderSide.Right) 
-            | DevComponents.DotNetBar.eBorderSide.Bottom)));
-            this.tabControlPanel5.Style.GradientAngle = 90;
-            this.tabControlPanel5.TabItem = this.tabPanel;
-            // 
-            // tabPanel
-            // 
-            this.tabPanel.AttachedControl = this.tabControlPanel5;
-            this.tabPanel.Image = ((System.Drawing.Image)(resources.GetObject("tabPanel.Image")));
-            this.tabPanel.Name = "tabPanel";
-            resources.ApplyResources(this.tabPanel, "tabPanel");
-            this.tabPanel.Click += new System.EventHandler(this.tabPanel_Click);
-            // 
-            // tabControlPanel4
-            // 
-            this.tabControlPanel4.DisabledBackColor = System.Drawing.Color.Empty;
-            resources.ApplyResources(this.tabControlPanel4, "tabControlPanel4");
-            this.tabControlPanel4.Name = "tabControlPanel4";
-            this.tabControlPanel4.Style.BackColor2.Color = System.Drawing.Color.Silver;
-            this.tabControlPanel4.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
-            this.tabControlPanel4.Style.BorderColor.Color = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(158)))), ((int)(((byte)(216)))));
-            this.tabControlPanel4.Style.BorderSide = ((DevComponents.DotNetBar.eBorderSide)(((DevComponents.DotNetBar.eBorderSide.Left | DevComponents.DotNetBar.eBorderSide.Right) 
-            | DevComponents.DotNetBar.eBorderSide.Bottom)));
-            this.tabControlPanel4.Style.GradientAngle = 90;
-            this.tabControlPanel4.TabItem = this.tabTimer;
-            // 
-            // tabTimer
-            // 
-            this.tabTimer.AttachedControl = this.tabControlPanel4;
-            this.tabTimer.Image = ((System.Drawing.Image)(resources.GetObject("tabTimer.Image")));
-            this.tabTimer.Name = "tabTimer";
-            resources.ApplyResources(this.tabTimer, "tabTimer");
-            this.tabTimer.Click += new System.EventHandler(this.tabTimer_Click);
-            // 
-            // tabControlPanel3
-            // 
-            this.tabControlPanel3.DisabledBackColor = System.Drawing.Color.Empty;
-            resources.ApplyResources(this.tabControlPanel3, "tabControlPanel3");
-            this.tabControlPanel3.Name = "tabControlPanel3";
-            this.tabControlPanel3.Style.BackColor2.Color = System.Drawing.Color.Silver;
-            this.tabControlPanel3.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
-            this.tabControlPanel3.Style.BorderColor.Color = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(158)))), ((int)(((byte)(216)))));
-            this.tabControlPanel3.Style.BorderSide = ((DevComponents.DotNetBar.eBorderSide)(((DevComponents.DotNetBar.eBorderSide.Left | DevComponents.DotNetBar.eBorderSide.Right) 
-            | DevComponents.DotNetBar.eBorderSide.Bottom)));
-            this.tabControlPanel3.Style.GradientAngle = 90;
-            this.tabControlPanel3.StyleMouseDown.Alignment = System.Drawing.StringAlignment.Center;
-            this.tabControlPanel3.StyleMouseOver.Alignment = System.Drawing.StringAlignment.Center;
-            this.tabControlPanel3.TabItem = this.tabScene;
-            // 
-            // tabScene
-            // 
-            this.tabScene.AttachedControl = this.tabControlPanel3;
-            this.tabScene.Image = ((System.Drawing.Image)(resources.GetObject("tabScene.Image")));
-            this.tabScene.Name = "tabScene";
-            resources.ApplyResources(this.tabScene, "tabScene");
-            this.tabScene.Click += new System.EventHandler(this.tabScene_Click);
             // 
             // timer1
             // 
@@ -1239,11 +1242,41 @@
             // plTitleCbbox
             // 
             this.plTitleCbbox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.plTitleCbbox.Controls.Add(this.btnAddTitleItem);
+            this.plTitleCbbox.Controls.Add(this.btnClear);
             this.plTitleCbbox.Controls.Add(this.symbolBox2);
             this.plTitleCbbox.Controls.Add(this.cbType);
             this.plTitleCbbox.Controls.Add(this.LbTitleName);
             resources.ApplyResources(this.plTitleCbbox, "plTitleCbbox");
             this.plTitleCbbox.Name = "plTitleCbbox";
+            // 
+            // btnAddTitleItem
+            // 
+            this.btnAddTitleItem.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            resources.ApplyResources(this.btnAddTitleItem, "btnAddTitleItem");
+            this.btnAddTitleItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnAddTitleItem.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
+            this.btnAddTitleItem.FocusCuesEnabled = false;
+            this.btnAddTitleItem.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None;
+            this.btnAddTitleItem.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnAddTitleItem.HoverImage")));
+            this.btnAddTitleItem.Image = ((System.Drawing.Image)(resources.GetObject("btnAddTitleItem.Image")));
+            this.btnAddTitleItem.Name = "btnAddTitleItem";
+            this.btnAddTitleItem.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnAddTitleItem.Click += new System.EventHandler(this.BtnAddTitleItem_Click);
+            // 
+            // btnClear
+            // 
+            this.btnClear.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            resources.ApplyResources(this.btnClear, "btnClear");
+            this.btnClear.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnClear.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
+            this.btnClear.FocusCuesEnabled = false;
+            this.btnClear.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None;
+            this.btnClear.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnClear.HoverImage")));
+            this.btnClear.Image = ((System.Drawing.Image)(resources.GetObject("btnClear.Image")));
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnClear.Click += new System.EventHandler(this.BtnClear_Click);
             // 
             // symbolBox2
             // 
@@ -1394,7 +1427,7 @@
         private DevComponents.DotNetBar.ButtonX buttonX9;
         private DevComponents.DotNetBar.ButtonX buttonX10;
         private DevComponents.DotNetBar.ButtonX btnSet;
-        private DevComponents.DotNetBar.ButtonX buttonX12;
+        private DevComponents.DotNetBar.ButtonX btnOnlineSearch;
         private DevComponents.DotNetBar.ButtonX btnCompileDownload;
         private DevComponents.DotNetBar.ButtonX btnRedo;
         private DevComponents.DotNetBar.ButtonX btnUndo;
@@ -1424,7 +1457,8 @@
         private System.Windows.Forms.ToolStripMenuItem 升序ToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem16;
         private System.Windows.Forms.ToolStripMenuItem 降序ToolStripMenuItem;
-
+        private DevComponents.DotNetBar.ButtonX btnAddTitleItem;
+        private DevComponents.DotNetBar.ButtonX btnClear;
     }
 }
 

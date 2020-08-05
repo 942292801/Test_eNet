@@ -342,6 +342,15 @@ namespace eNet编辑器.Properties {
         }
         
         /// <summary>
+        ///   查找类似 未识别设备 的本地化字符串。
+        /// </summary>
+        internal static string UnrecognizedDev {
+            get {
+                return ResourceManager.GetString("UnrecognizedDev", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 虚拟端口 的本地化字符串。
         /// </summary>
         internal static string Virtualport {

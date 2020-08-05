@@ -93,16 +93,25 @@ namespace eNet编辑器.DgvView
             t.IsBackground = true;
             t.Start();
         }
+
         #region 测试异步加载
         public delegate void FormIniDelegate();
         private void ShowDatatable()
         {
-            this.Invoke(new FormIniDelegate(TabIni));
+            try
+            {
+                this.Invoke(new FormIniDelegate(TabIni));
+
+            }
+            catch
+            {
+            }
 
         }
 
 
         #endregion
+
         /// <summary>
         /// 刷新该节点的所有信息
         /// </summary>
@@ -1262,11 +1271,15 @@ namespace eNet编辑器.DgvView
                 {
                     tms.timersInfo.Remove(info);
                 }
+                timerInfoSort(tms);
                 DataJson.totalList NewList = FileMesege.cmds.getListInfos();
                 FileMesege.cmds.DoNewCommand(NewList, OldList);
                 multipleList.Clear();
-                timerInfoSort(tms);
                 TimerAddItem();
+                for (int i = 0; i < dataGridView1.Rows.Count; i++)
+                {
+                    dataGridView1.Rows[i].Cells[0].Value = (i + 1);
+                }
             }
         }
 
@@ -1589,14 +1602,17 @@ namespace eNet编辑器.DgvView
 
                     case "checkDel":
                         dataGridView1.Rows[rowNum].Selected = true;//选中行
-
-                        for (int i = dataGridView1.SelectedRows.Count; i > 0; i--)
+                        if (dataGridView1.SelectedRows.Count != 1)
                         {
-                            dataGridView1.SelectedRows[i - 1].Cells[8].Value = true;
+                            for (int i = dataGridView1.SelectedRows.Count; i > 0; i--)
+                            {
+                                dataGridView1.SelectedRows[i - 1].Cells[8].Value = true;
 
+                            }
+                            //提交编辑
+                            dataGridView1.EndEdit();
                         }
-                        //提交编辑
-                        dataGridView1.EndEdit();
+                        
                         break;
 
 

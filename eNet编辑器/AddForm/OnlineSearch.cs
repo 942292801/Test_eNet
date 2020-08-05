@@ -12,6 +12,7 @@ using Newtonsoft.Json;
 using System.Text.RegularExpressions;
 using eNet编辑器.Properties;
 using System.Runtime.InteropServices;
+using System.IO;
 
 namespace eNet编辑器.AddForm
 {
@@ -126,9 +127,22 @@ namespace eNet编辑器.AddForm
                             int indexs = treeView1.SelectedNode.Index;
                             foreach (DataJson.serials sl in FileMesege.serialList.serial)
                             {
+                                if (sl.id == 254)
+                                {
+                                    continue;
+                                }
                                 filepath = string.Format("{0}\\devices\\{1}.ini", Application.StartupPath, sl.serial.Trim());
                                 device = IniConfig.GetValue(filepath, "define", "display");
-                                tm.AddNode2(treeView1, Resources.Device + sl.id + " " + device, indexs);
+                                if (string.IsNullOrEmpty(device))
+                                {
+                                    device = sl.serial;
+                                    tm.AddNode2(treeView1, Resources.UnrecognizedDev + sl.id + " " + device, indexs);
+                                }
+                                else
+                                {
+                                    tm.AddNode2(treeView1, Resources.Device + sl.id + " " + device, indexs);
+
+                                }
 
                             }
                             //展开所有节点
@@ -173,7 +187,7 @@ namespace eNet编辑器.AddForm
                                 UpdataDev(parentIp, tn);
 
                             }     
-                            TxtShow("添加设备成功!");
+                            TxtShow("添加网关成功!");
                             break;
                         case 1:
                             //父节点的IP地址
@@ -218,11 +232,23 @@ namespace eNet编辑器.AddForm
             string[] infos = tn.Text.Split(' ');
             //获取ID号 正则表达式只获取数字
             string ID = Regex.Replace(infos[0], @"[^\d]*", "");
-            //设备型号
+            //获取设备名称 ET-XXXXX .INI
+            string device = "";
             string filepath = IniHelper.findDevicesDisplay(infos[1]);
-            string device = IniConfig.GetValue(filepath, "define", "display");
+            if (string.IsNullOrEmpty(filepath))
+            {
+                device = infos[1];
+            }
+            else
+            {
+                device = Path.GetFileNameWithoutExtension(filepath);
+                if (string.IsNullOrEmpty(device))
+                {
+                    device = infos[1];
+                }
+
+            }
             
-       
             bool isExit = false;
             foreach (DataJson.Device dev in FileMesege.DeviceList)
             {

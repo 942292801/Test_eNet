@@ -464,7 +464,6 @@ namespace eNet编辑器
             public string objAddress { get; set; }
             public string objType { get; set; }
             public int opt { get; set; }
-
             public string showAddress { get; set; }
             public string showMode { get; set; }
         }

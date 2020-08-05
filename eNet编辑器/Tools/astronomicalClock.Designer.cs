@@ -61,20 +61,20 @@
             // 
             // plInfoTitle
             // 
-            resources.ApplyResources(this.plInfoTitle, "plInfoTitle");
             this.plInfoTitle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(228)))), ((int)(((byte)(228)))));
             this.plInfoTitle.Controls.Add(this.btnUpdate);
             this.plInfoTitle.Controls.Add(this.btnClose);
             this.plInfoTitle.Controls.Add(this.symbolBox1);
             this.plInfoTitle.Controls.Add(this.lbTitle);
+            resources.ApplyResources(this.plInfoTitle, "plInfoTitle");
             this.plInfoTitle.Name = "plInfoTitle";
             this.plInfoTitle.MouseDown += new System.Windows.Forms.MouseEventHandler(this.plInfoTitle_MouseDown);
             this.plInfoTitle.MouseMove += new System.Windows.Forms.MouseEventHandler(this.plInfoTitle_MouseMove);
             // 
             // btnUpdate
             // 
-            resources.ApplyResources(this.btnUpdate, "btnUpdate");
             this.btnUpdate.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            resources.ApplyResources(this.btnUpdate, "btnUpdate");
             this.btnUpdate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnUpdate.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
             this.btnUpdate.FocusCuesEnabled = false;
@@ -87,8 +87,8 @@
             // 
             // btnClose
             // 
-            resources.ApplyResources(this.btnClose, "btnClose");
             this.btnClose.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            resources.ApplyResources(this.btnClose, "btnClose");
             this.btnClose.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(228)))), ((int)(((byte)(228)))));
             this.btnClose.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
             this.btnClose.FocusCuesEnabled = false;
@@ -101,12 +101,12 @@
             // 
             // symbolBox1
             // 
-            resources.ApplyResources(this.symbolBox1, "symbolBox1");
             // 
             // 
             // 
             this.symbolBox1.BackgroundStyle.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("symbolBox1.BackgroundStyle.BackgroundImage")));
             this.symbolBox1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            resources.ApplyResources(this.symbolBox1, "symbolBox1");
             this.symbolBox1.Name = "symbolBox1";
             this.symbolBox1.Symbol = "";
             this.symbolBox1.SymbolColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(119)))), ((int)(((byte)(119)))));
@@ -122,7 +122,6 @@
             // 
             // panel4
             // 
-            resources.ApplyResources(this.panel4, "panel4");
             this.panel4.BackColor = System.Drawing.Color.White;
             this.panel4.Controls.Add(this.cbltSeconds);
             this.panel4.Controls.Add(this.cbltMinute);
@@ -144,66 +143,76 @@
             this.panel4.Controls.Add(this.btnRefresh);
             this.panel4.Controls.Add(this.cbOnlineIP);
             this.panel4.Controls.Add(this.lbName);
+            resources.ApplyResources(this.panel4, "panel4");
             this.panel4.Name = "panel4";
             // 
             // cbltSeconds
             // 
-            resources.ApplyResources(this.cbltSeconds, "cbltSeconds");
+            this.cbltSeconds.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbltSeconds.FormattingEnabled = true;
+            resources.ApplyResources(this.cbltSeconds, "cbltSeconds");
             this.cbltSeconds.Name = "cbltSeconds";
             // 
             // cbltMinute
             // 
-            resources.ApplyResources(this.cbltMinute, "cbltMinute");
+            this.cbltMinute.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbltMinute.FormattingEnabled = true;
+            resources.ApplyResources(this.cbltMinute, "cbltMinute");
             this.cbltMinute.Name = "cbltMinute";
             // 
             // cbltDegree
             // 
-            resources.ApplyResources(this.cbltDegree, "cbltDegree");
+            this.cbltDegree.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbltDegree.FormattingEnabled = true;
+            resources.ApplyResources(this.cbltDegree, "cbltDegree");
             this.cbltDegree.Name = "cbltDegree";
             // 
             // cbLatitude
             // 
-            resources.ApplyResources(this.cbLatitude, "cbLatitude");
+            this.cbLatitude.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbLatitude.FormattingEnabled = true;
             this.cbLatitude.Items.AddRange(new object[] {
             resources.GetString("cbLatitude.Items"),
             resources.GetString("cbLatitude.Items1")});
+            resources.ApplyResources(this.cbLatitude, "cbLatitude");
             this.cbLatitude.Name = "cbLatitude";
             // 
             // cblgSeconds
             // 
-            resources.ApplyResources(this.cblgSeconds, "cblgSeconds");
+            this.cblgSeconds.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cblgSeconds.FormattingEnabled = true;
+            resources.ApplyResources(this.cblgSeconds, "cblgSeconds");
             this.cblgSeconds.Name = "cblgSeconds";
             // 
             // cblgMinute
             // 
-            resources.ApplyResources(this.cblgMinute, "cblgMinute");
+            this.cblgMinute.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cblgMinute.FormattingEnabled = true;
+            resources.ApplyResources(this.cblgMinute, "cblgMinute");
             this.cblgMinute.Name = "cblgMinute";
             // 
             // cblgDegree
             // 
-            resources.ApplyResources(this.cblgDegree, "cblgDegree");
+            this.cblgDegree.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cblgDegree.FormattingEnabled = true;
+            resources.ApplyResources(this.cblgDegree, "cblgDegree");
             this.cblgDegree.Name = "cblgDegree";
             // 
             // cbLongitude
             // 
-            resources.ApplyResources(this.cbLongitude, "cbLongitude");
+            this.cbLongitude.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbLongitude.FormattingEnabled = true;
             this.cbLongitude.Items.AddRange(new object[] {
             resources.GetString("cbLongitude.Items"),
             resources.GetString("cbLongitude.Items1")});
+            resources.ApplyResources(this.cbLongitude, "cbLongitude");
             this.cbLongitude.Name = "cbLongitude";
             // 
             // cbTimeZone
             // 
-            resources.ApplyResources(this.cbTimeZone, "cbTimeZone");
+            this.cbTimeZone.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbTimeZone.FormattingEnabled = true;
+            resources.ApplyResources(this.cbTimeZone, "cbTimeZone");
             this.cbTimeZone.Name = "cbTimeZone";
             // 
             // label9
@@ -249,8 +258,8 @@
             // 
             // btnRefresh
             // 
-            resources.ApplyResources(this.btnRefresh, "btnRefresh");
             this.btnRefresh.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            resources.ApplyResources(this.btnRefresh, "btnRefresh");
             this.btnRefresh.BackColor = System.Drawing.Color.White;
             this.btnRefresh.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
             this.btnRefresh.FocusCuesEnabled = false;
@@ -263,9 +272,9 @@
             // 
             // cbOnlineIP
             // 
-            resources.ApplyResources(this.cbOnlineIP, "cbOnlineIP");
             this.cbOnlineIP.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbOnlineIP.FormattingEnabled = true;
+            resources.ApplyResources(this.cbOnlineIP, "cbOnlineIP");
             this.cbOnlineIP.Name = "cbOnlineIP";
             // 
             // lbName

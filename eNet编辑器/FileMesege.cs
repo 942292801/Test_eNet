@@ -286,7 +286,6 @@ namespace eNet编辑器
                 //数据在缓存文件夹中
                 if (string.IsNullOrEmpty(filePath))
                 {
-                    
                     SaveFileDialog sfd = new SaveFileDialog();
                     sfd.Title = "请选择保存路径";
                     //设置文件类型 
@@ -295,11 +294,8 @@ namespace eNet编辑器
                     sfd.FilterIndex = 1;
                     //保存对话框是否记忆上次打开的目录 
                     sfd.RestoreDirectory = true;
-
                     //设置默认的文件名
-
                     sfd.FileName = "ProjectFile";// in wpf is  sfd.FileName = "YourFileName";
-
                     string newPath = IniConfig.GetValue(Application.StartupPath + "\\conf.ini", "filepath", "path");
                     if (newPath != "")
                     {
@@ -929,7 +925,6 @@ namespace eNet编辑器
                         //确保有信息
                         if (string.IsNullOrEmpty(plInfo.keyAddress) 
                             || string.IsNullOrEmpty(plInfo.objAddress)
-                            || plInfo.opt == 0 
                             || string.IsNullOrEmpty(plInfo.objType)
                             || plInfo.objAddress == "FFFFFFFF"
                             )

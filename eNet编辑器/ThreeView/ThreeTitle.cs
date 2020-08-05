@@ -179,6 +179,11 @@ namespace eNet编辑器.ThreeView
             treeView1.SelectedNode = null;
             FileMesege.titlePointSection = null;
             FileMesege.titleinfo = "";
+            for (int i = 0; i < treeView1.Nodes.Count; i++)
+            {
+                treeView1.Nodes[i].Checked = false;
+
+            }
         }
 
         public void UpdataNodeText(string oldNodeText,string newNodeText)
@@ -613,6 +618,11 @@ namespace eNet编辑器.ThreeView
 
         private void 添加ToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            addTitleItem();
+        }
+
+        public void addTitleItem()
+        {
             try
             {
                 //循环判断treeView的节点 如果是选中
@@ -621,15 +631,13 @@ namespace eNet编辑器.ThreeView
                     if (tn.Checked)
                     {
                         dgvNodeAdd(tn);
-                     
+
                     }
                 }//foreach所有节点信息处理完
-                
+
             }
             catch { }
         }
-
-
 
         /// <summary>
         /// title节点 添加到dgv表中

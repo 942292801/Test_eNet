@@ -110,14 +110,31 @@ namespace eNet编辑器.ThreeView
             //记录当前节点展开状况
             int index = 0;
             int index2 = 0;
+            string filepath = "";
+            string device = "";
+            string gwdevice = "";
             foreach (DataJson.Device d in FileMesege.DeviceList)
             {
                 //添加网关
-                index = tm.AddNode1(treeView1, d.ip + " " + d.master);
+                filepath = string.Format("{0}\\devices\\{1}.ini", Application.StartupPath, d.master);
+                gwdevice = IniConfig.GetValue(filepath, "define", "display");
+                index = tm.AddNode1(treeView1, d.ip + " " + gwdevice);
                 foreach (DataJson.Module m in d.module)
                 {
-                    //判断加英文         Resources.treeName为资源文件的KEY值
-                    index2 = tm.AddNode2(treeView1, Resources.Device + m.id + " " + m.device , index);
+                    filepath = filepath = string.Format("{0}\\devices\\{1}.ini", Application.StartupPath, m.device);
+                    device = IniConfig.GetValue(filepath, "define", "display");
+                    if (string.IsNullOrEmpty(device))
+                    {
+                        //判断加英文         Resources.treeName为资源文件的KEY值
+                        index2 = tm.AddNode2(treeView1, Resources.UnrecognizedDev + m.id + " " + m.device, index);
+                    }
+                    else
+                    {
+                        //判断加英文         Resources.treeName为资源文件的KEY值
+                        index2 = tm.AddNode2(treeView1, Resources.Device + m.id + " " + device, index);
+                    }
+                
+                    
                 }
             }
             //展开记录的节点
@@ -184,15 +201,15 @@ namespace eNet编辑器.ThreeView
             string ip = strs[0];
             //设备号
             string id = strs[1];
-            //设备型号
-            string version = strs[2];
+            //Ini设备型号
+            string version = Path.GetFileNameWithoutExtension(IniHelper.findDevicesDisplay(strs[2]));
+
             foreach (DataJson.Device dev in FileMesege.DeviceList)
             {
 
                 if (dev.ip == ip)
                 {
-                    fullpath = ip + " " + dev.master + "\\" + Resources.Device + id + " " + version;
-
+                    fullpath = ip + " " + dev.master + "\\" + Resources.Device + id + " " + strs[2];
                     DataListHelper.newDevice(dev, id, version);
                     break;
                 }
@@ -234,8 +251,8 @@ namespace eNet编辑器.ThreeView
             //网关IP
             string ip = strs[0];
             //设备型号
-            string master = strs[1];
-            fullpath = ip + " " + master;
+            string master = Path.GetFileNameWithoutExtension(IniHelper.findDevicesDisplay(strs[1]));
+            fullpath = ip + " " + strs[1];
             DataListHelper.newGateway(ip,master);
             DataJson.totalList NewList = FileMesege.cmds.getListInfos();
             FileMesege.cmds.DoNewCommand(NewList, OldList);
@@ -270,10 +287,10 @@ namespace eNet编辑器.ThreeView
                     //网关IP
                     string ip = strs[0];
                     //设备型号
-                    string master = strs[1];
+                    string master = Path.GetFileNameWithoutExtension(IniHelper.findDevicesDisplay(strs[1]));
                     //网关IP
                     string oldip = strs[2];
-                    fullpath = ip + " " + master;
+                    fullpath = ip + " " + strs[1];
                     DataListHelper.changeGateway(ip,master,oldip);
                     DataJson.totalList NewList = FileMesege.cmds.getListInfos();
                     FileMesege.cmds.DoNewCommand(NewList, OldList);
@@ -303,7 +320,7 @@ namespace eNet编辑器.ThreeView
                 //网关IP
                 string ip = strs[0];
                 //设备型号
-                string master = strs[1];
+                string master = Path.GetFileNameWithoutExtension(IniHelper.findDevicesDisplay(strs[1]));
                 DataListHelper.delGateway(ip,master);
                 DataJson.totalList NewList = FileMesege.cmds.getListInfos();
                 FileMesege.cmds.DoNewCommand(NewList, OldList);
@@ -369,11 +386,11 @@ namespace eNet编辑器.ThreeView
                 //设备号
                 string id = strs[1];
                 //设备型号
-                string version = strs[2];
+                string version = Path.GetFileNameWithoutExtension(IniHelper.findDevicesDisplay(strs[2]));
                 //设备号
                 string oldid = strs[3];
                 //设备型号
-                string oldVersion = strs[4];
+                string oldVersion = Path.GetFileNameWithoutExtension(IniHelper.findDevicesDisplay(strs[4]));
 
                 //修改IP
                 if (tnd.IsChange)
@@ -392,7 +409,7 @@ namespace eNet编辑器.ThreeView
                 {
                     if (dev.ip == ip)
                     {
-                        fullpath = ip + " " + dev.master + "\\" + Resources.Device + id + " " + version;
+                        fullpath = ip + " " + dev.master + "\\" + Resources.Device + id + " " + strs[2];
                         DataListHelper.changeDevice(dev, id, version, oldid, oldVersion);
 
                     }
@@ -422,7 +439,7 @@ namespace eNet编辑器.ThreeView
                 int Nodeindex = treeView1.SelectedNode.Index;
                 int pNodeindex = treeView1.SelectedNode.Parent.Index;
                 string id = Regex.Replace(treeView1.SelectedNode.Text.Split(' ')[0], @"[^\d]*", "");
-                string version = treeView1.SelectedNode.Text.Split(' ')[1];
+                string version = Path.GetFileNameWithoutExtension(IniHelper.findDevicesDisplay(treeView1.SelectedNode.Text.Split(' ')[1])); ;
                 //修改网关
                 DataJson.totalList OldList = FileMesege.cmds.getListInfos();
                 DataListHelper.delDevice(ip, id, version);

@@ -40,7 +40,8 @@ namespace eNet编辑器.DgvView
         DataGridViewComboBoxColumn cbObjType;
         DataGridViewComboBoxColumn cbValue;
         HashSet<DataJson.PointInfo> multipleList = new HashSet<DataJson.PointInfo>();
-        
+        public event Action unSelectTitleNode;
+
         private void DgvPoint_Load(object sender, EventArgs e)
         {
             try
@@ -99,7 +100,13 @@ namespace eNet编辑器.DgvView
         public delegate void AddItemByObjTypeDelegate();
         private void ShowDatatableByObjType()
         {
-            this.Invoke(new AddItemByObjTypeDelegate(AddItemByObjType));
+            try
+            {
+                this.Invoke(new AddItemByObjTypeDelegate(AddItemByObjType));
+
+            }
+            catch {
+            }
 
         }
 
@@ -415,7 +422,8 @@ namespace eNet编辑器.DgvView
             DataJson.totalList NewList = FileMesege.cmds.getListInfos();
             FileMesege.cmds.DoNewCommand(NewList, OldList);
             CountAddInfo(point);
-            DgvMesege.selectLastCount(dataGridView1);  
+            DgvMesege.selectLastCount(dataGridView1);
+            unSelectTitleNode();
         }
 
         /// <summary>
@@ -931,6 +939,7 @@ namespace eNet编辑器.DgvView
                     dataGridView1.Rows[rowCount].Cells[3].Value = name;
                     DataJson.totalList NewList = FileMesege.cmds.getListInfos();
                     FileMesege.cmds.DoNewCommand(NewList, OldList);
+                    unSelectTitleNode();
                     break;
                 }
             }

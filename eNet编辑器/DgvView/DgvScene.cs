@@ -82,7 +82,13 @@ namespace eNet编辑器.DgvView
         public delegate void FormIniDelegate();
         private void ShowDatatable()
         {
-            this.Invoke(new FormIniDelegate(TabIni));
+            try
+            {
+                this.Invoke(new FormIniDelegate(TabIni));
+
+            }
+            catch {
+            }
 
         }
 
@@ -270,18 +276,7 @@ namespace eNet编辑器.DgvView
             });
         }*/
 
-        /// <summary>
-        /// 场景信息 scenInfo 序号重新排序赋值
-        /// </summary>
-        private void sceneInfoSort(DataJson.scenes sc)
-        {
-            int i = 1;
-            foreach (DataJson.sceneInfo scinfo in sc.sceneInfo)
-            {
-                scinfo.id = i;
-                i++;
-            }
-        }
+     
 
         #endregion
 
@@ -641,11 +636,15 @@ namespace eNet编辑器.DgvView
                 {
                     sc.sceneInfo.Remove(info);
                 }
+                for (int i = 0; i < sc.sceneInfo.Count; i++)
+                {
+                    sc.sceneInfo[i].id = i + 1;
+                }
                 DataJson.totalList NewList = FileMesege.cmds.getListInfos();
                 FileMesege.cmds.DoNewCommand(NewList, OldList);
                 multipleList.Clear();
-                sceneInfoSort(sc);
                 dgvsceneAddItem();
+              
             }
         }
 
@@ -883,14 +882,21 @@ namespace eNet编辑器.DgvView
                     
                     case "checkDel":
                         dataGridView1.Rows[rowNum].Selected = true;//选中行
-
-                        for (int i = dataGridView1.SelectedRows.Count; i > 0; i--)
+                        if (dataGridView1.SelectedRows.Count != 1)
                         {
-                            dataGridView1.SelectedRows[i - 1].Cells[8].Value = true;
-                            
+                            for (int i = dataGridView1.SelectedRows.Count; i > 0; i--)
+                            {
+                                if (!Convert.ToBoolean(dataGridView1.SelectedRows[i - 1].Cells[8].Value))
+                                {
+                                    dataGridView1.SelectedRows[i - 1].Cells[8].Value = true;
+
+                                }
+
+                            }
+                            //提交编辑
+                            dataGridView1.EndEdit();
                         }
-                        //提交编辑
-                        dataGridView1.EndEdit();
+                        
                         break;
                     case "delay":
                         
@@ -979,15 +985,18 @@ namespace eNet编辑器.DgvView
             //获取sceneInfo对象表中对应ID号info对象
             DataJson.sceneInfo info = getSceneID(sc, id);
             sc.sceneInfo.Remove(info);
-            sceneInfoSort(sc);
+            for (int i = 0; i < sc.sceneInfo.Count; i++)
+            {
+                sc.sceneInfo[i].id = i + 1;
+            }
             DataJson.totalList NewList = FileMesege.cmds.getListInfos();
             FileMesege.cmds.DoNewCommand(NewList, OldList);
-            dataGridView1.Rows.Remove(dataGridView1.Rows[id-1]);
+            dataGridView1.Rows.Remove(dataGridView1.Rows[id - 1]);
             for (int i = id - 1; i < dataGridView1.Rows.Count; i++)
             {
                 dataGridView1.Rows[i].Cells[0].Value = (i + 1);
             }
-               
+
         }
 
         /// <summary>

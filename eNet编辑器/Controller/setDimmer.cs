@@ -13,6 +13,7 @@ using System.IO;
 using System.Runtime.InteropServices;
 using Newtonsoft.Json;
 using eNet编辑器.Properties;
+using eNet编辑器.OtherView;
 
 namespace eNet编辑器.Controller
 {
@@ -47,9 +48,9 @@ namespace eNet编辑器.Controller
 
         ClientAsync client6003;
         private event Action<string> tcp6003receviceDelegate;
-
-        private event Action allWriteDelegate;
-
+        private BackgroundWorker backgroundWorker1;
+        private PgView pgv;
+        DataJson.PortDimmer portDimmer;
         //曲线数据点
         List<string> xData = new List<string>();
         List<int> yData = new List<int>();
@@ -61,7 +62,6 @@ namespace eNet编辑器.Controller
 
         private void setDimmer_Load(object sender, EventArgs e)
         {
-            allWriteDelegate += new Action(allWrite);
             tcp6003receviceDelegate += new Action<string>(tcp6003ReceviceDelegateMsg);
             label1.Text = label1.Text + "-" + Resources.Port + DevPort.portID.ToString();
             //链接tcp
@@ -70,12 +70,18 @@ namespace eNet编辑器.Controller
             timer2.Start();
             //图表初始化
             chart1Init();
-            //获取表格数字
-            updateTable();
             //窗口状态初始化
             getFormState(devPort.portContent);
+            groupBox2.Click += new EventHandler(groupBox2Click);
+            cbMode.SelectedIndex = 0;
+
         }
 
+        //添加点击事情 获取焦点
+        private void groupBox2Click(object sender, EventArgs e)
+        {
+            groupBox2.Focus();
+        }
 
         #region  图形初始化函数
 
@@ -84,12 +90,13 @@ namespace eNet编辑器.Controller
         /// </summary>
         private void chart1Init()
         {
+            //开关曲线
             xData.Clear();
             yData.Clear();
             for (int i = 1; i <= 100; i++)
             {
                 xData.Add(i.ToString() + "%");
-                yData.Add(i * 100);
+                yData.Add(10000);
 
             }
             //线条颜色
@@ -113,19 +120,16 @@ namespace eNet编辑器.Controller
             //绘制黑色的连线
             chart1.Series[0]["PieSplineColor"] = "Black";
 
-            chart1.Series[0].Points.DataBindXY(xData, yData);
-
             chart1.Series[0].ShadowOffset = 1;
             chart1.Series[0].MarkerStep = 3;
               
             chart1.ChartAreas[0].AxisX.IsLabelAutoFit = false;
             //chart1.ChartAreas[0].AxisX.Title = "百分点(0-100%)";
             //chart1.ChartAreas[0].AxisY.Title = "TEMPERATURE";
-           
- 
+            chart1.Series[0].Points.DataBindXY(xData, yData);
 
             //改变X轴刻度间隔
-            chart1.ChartAreas[0].AxisX.Interval = 25;
+            chart1.ChartAreas[0].AxisX.Interval = 5;
             chart1.ChartAreas[0].AxisX.Maximum = 100;
             chart1.ChartAreas[0].AxisX.Minimum = 0;
             //改变Y轴刻度间隔
@@ -135,11 +139,9 @@ namespace eNet编辑器.Controller
             //设置游标
             chart1.ChartAreas[0].CursorX.IsUserEnabled = true;
             chart1.ChartAreas[0].CursorY.IsUserEnabled = true;
-            
-            
+
+
         }
-
-
 
         #endregion
 
@@ -446,7 +448,6 @@ namespace eNet编辑器.Controller
 
         #endregion
 
-
         #region 窗体样色
 
 
@@ -590,7 +591,6 @@ namespace eNet编辑器.Controller
 
         #endregion
 
-
         #region 操作框
 
         /// <summary>
@@ -647,7 +647,6 @@ namespace eNet编辑器.Controller
 
         #endregion
 
-
         #region 曲线图 
         private void chart1_Click(object sender, EventArgs e)
         {
@@ -657,11 +656,13 @@ namespace eNet编辑器.Controller
                 panel1.Focus();
                 Point p = chart1.PointToClient(MousePosition);
                 double XVal = chart1.ChartAreas[0].CursorX.Position;//获取X轴
-
-                if (0 < XVal && XVal <= 100)
+                int x = Convert.ToInt32(XVal);
+                if (0 < x && x <= 100)
                 {
-                    sendliangdu(Convert.ToInt32(XVal));
+                    sendliangdu(x);
                 }
+                TxtBackStyleChange(x,false);
+
             }
             catch { 
             
@@ -678,73 +679,17 @@ namespace eNet编辑器.Controller
             try
             {
                 Point p = chart1.PointToClient(MousePosition);
-                
                 double XVal = chart1.ChartAreas[0].CursorX.Position;//获取X轴
                 double YVal = chart1.ChartAreas[0].CursorY.Position;//获取Y轴
                 int x = Convert.ToInt32(XVal);
-                //确保xy的值为正常值
-                if (0 < XVal && XVal <= 100)
-                {
-                    if (YVal < 100 ) 
-                    {
-                        YVal = 0.0;
-                    }
-                    if (YVal > 9900)
-                    {
-                        YVal = 10000.0;
-                    }
-                    switch(x)
-                    {
-                        case 1:
-                            getLinespA(XVal, YVal, 100, yData[99]);
-                            break;
-                        case 25:
-                            getLinespA(1, yData[0], XVal, YVal);
-                            getLinespA(XVal, YVal, 50, yData[49]);
-                            break;
-                        case 50:
-                            getLinespA(25, yData[24], XVal, YVal);
-                            getLinespA(XVal, YVal, 75, yData[74]);
-                            break;
-                        case 75:
-                            getLinespA(50, yData[49], XVal, YVal);
-                            getLinespA(XVal, YVal, 100, yData[99]);
-                            break;
-                        case 100:
-                            getLinespA(1, yData[0], XVal, YVal);
-                            break;
+                int y = Convert.ToInt32(YVal);
+                LineUpdateByPoint(x,y);
+                chart1.Series[0].Points.DataBindXY(xData, yData);
+                //当连接时候发送当前亮度代码
+                sendliangdu(x);
+                updateTable();
 
-                        default:
-                            if (75 < x && x < 100)
-                            {
-                                getLinespA(75, yData[74], XVal, YVal);
-                                getLinespA(XVal, YVal, 100, yData[99]);
-                            }
-                            else if (50 < x && x < 75)
-                            {
-                                getLinespA(50, yData[49], XVal, YVal);
-                                getLinespA(XVal, YVal, 75, yData[74]);
-                            }
-                            else if (25 < x && x < 50)
-                            {
-                                getLinespA(25, yData[24], XVal, YVal);
-                                getLinespA(XVal, YVal, 50, yData[49]);
-                            }
-                            else
-                            {
-                                getLinespA(1, yData[0], XVal, YVal);
-                                getLinespA(XVal, YVal, 25, yData[24]);
-                            }
-                            break;
 
-                    }
-                    chart1.Series[0].Points.DataBindXY(xData, yData);
-                    //当连接时候发送当前亮度代码
-                    sendliangdu(x);
-                    updateTable();
-                }
-                
-                
             }
             catch 
             {
@@ -754,7 +699,7 @@ namespace eNet编辑器.Controller
         }
 
         /// <summary>
-        /// 获取二次函数的 a  以 (x1,y1)点为定点产生
+        /// 获取二次函数的 a  以 (x1,y1)点为定点产生 曲线函数
         /// </summary>
         /// <param name="x1"></param>
         /// <param name="y1"></param>
@@ -769,7 +714,7 @@ namespace eNet编辑器.Controller
             bool isMin = false;
             int maxIndex = 0;
             //找左边y1小过y2 没有就以y2为标准
-            for (int i = Convert.ToInt32(x2); i > 0 ; i--)
+            for (int i = Convert.ToInt32(x2); i > 0; i--)
             {
                 if (yData[i - 1] > y2)
                 {
@@ -828,16 +773,436 @@ namespace eNet编辑器.Controller
                 a = 0;
                 y1 = y2;
             }
-            
-   
+
+
             for (int i = Convert.ToInt32(x1); i <= Convert.ToInt32(x2); i++)
             {
 
                 yData[i - 1] = Convert.ToInt32(a * Math.Pow(i - x1, 2) + y1);
             }
-            
-            
+
+
         }
+
+        /// <summary>
+        /// 根据某一个点更新图表
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        private void LineUpdateByPoint(int x,int y)
+        {
+            //确保xy的值为正常值
+            if (x < 1 || x > 100)
+            {
+                return;
+            }
+            if (y < 1 || y > 11000)
+            {
+                return;
+            }
+            if (y > 10000)
+            {
+                y = 10000;
+            }
+            if (y < 100)
+            {
+                y = 100;
+            }
+            //确保xy的值为正常值
+            if (cbMode.SelectedIndex == 0)
+            {
+                switch (x)
+                {
+                    case 1:
+                        LinePointUpdate(1, y, 10, yData[9]);
+                        break;
+                    case 10:
+                        if (yData[0] <= y && y <= yData[24])
+                        {
+                            LinePointUpdate(1, yData[0], 10, y);
+                            LinePointUpdate(10, y, 25, yData[24]);
+
+                        }
+                        else
+                        {
+                            if (y < yData[0])
+                            {
+                                LinePointUpdate(1, yData[0], 10, yData[0]);
+                                LinePointUpdate(10, yData[0], 25, yData[24]);
+                            }
+                            else if (y > yData[24])
+                            {
+                                LinePointUpdate(1, yData[0], 10, yData[24]);
+                                LinePointUpdate(10, yData[24], 25, yData[24]);
+                            }
+                        }
+                        
+
+                        break;
+                    case 25:
+                    
+                        //正常范围值    
+                        if (yData[9] <= y && y <= yData[49])
+                        {
+                            LinePointUpdate(10, yData[9], 25, y);
+                            LinePointUpdate(25, y, 50, yData[49]);
+
+                        }
+                        else
+                        {
+                            
+                            if (y < yData[9])
+                            {
+                                //范围值小于最低
+                                LinePointUpdate(10, yData[9], 25, yData[9]);
+                                LinePointUpdate(25, yData[9], 50, yData[49]);
+                            }
+                            else if (y > yData[49])
+                            {
+                                //范围值大于最大
+                                LinePointUpdate(10, yData[9], 25, yData[49]);
+                                LinePointUpdate(25, yData[49], 50, yData[49]);
+                            }
+                        }
+                        break;
+                    case 50:
+                        //正常范围值    
+                        if (yData[24] <= y && y <= yData[74])
+                        {
+                            LinePointUpdate(25, yData[24], 50, y);
+                            LinePointUpdate(50, y, 75, yData[74]);
+
+                        }
+                        else
+                        {
+
+                            if (y < yData[24])
+                            {
+                                //范围值小于最低
+                                LinePointUpdate(25, yData[24], 50, yData[24]);
+                                LinePointUpdate(50, yData[24], 75, yData[74]);
+                            }
+                            else if (y > yData[74])
+                            {
+                                //范围值大于最大
+                                LinePointUpdate(25, yData[24], 50, yData[74]);
+                                LinePointUpdate(50, yData[74], 75, yData[74]);
+                            }
+                        }
+                        break;
+                    case 75:
+               
+                        //正常范围值    
+                        if (yData[49] <= y && y <= yData[99])
+                        {
+                            LinePointUpdate(50, yData[49], 75, y);
+                            LinePointUpdate(75, y, 100, yData[99]);
+
+                        }
+                        else
+                        {
+
+                            if (y < yData[49])
+                            {
+                                //范围值小于最低
+                                LinePointUpdate(50, yData[49], 75, yData[49]);
+                                LinePointUpdate(75, yData[49], 100, yData[99]);
+                            }
+                            else if (y > yData[99])
+                            {
+                                //范围值大于最大
+                                LinePointUpdate(50, yData[49], 75, yData[99]);
+                                LinePointUpdate(75, yData[99], 100, yData[99]);
+                            }
+                        }
+                        break;
+                    case 100:
+                        if (y <= yData[74])
+                        {
+                            LinePointUpdate(75, yData[74], 100, yData[74]);
+                        }
+                        else
+                        {
+                            LinePointUpdate(75, yData[74], 100, y);
+
+                        }
+
+                        break;
+                    default:
+                        break;
+
+                }
+            }
+            else if (cbMode.SelectedIndex == 1)
+            {
+                switch (x)
+                {
+                    case 1:
+                        LinePointUpdate(1, y, 10, yData[9]);
+                        break;
+                    case 10:
+                        if (yData[0] <= y && y <= yData[19])
+                        {
+                            LinePointUpdate(1, yData[0], 10, y);
+                            LinePointUpdate(10, y, 20, yData[19]);
+
+                        }
+                        else
+                        {
+                            if (y < yData[0])
+                            {
+                                LinePointUpdate(1, yData[0], 10, yData[0]);
+                                LinePointUpdate(10, yData[0], 20, yData[19]);
+                            }
+                            else if (y > yData[19])
+                            {
+                                LinePointUpdate(1, yData[0], 10, yData[19]);
+                                LinePointUpdate(10, yData[19], 20, yData[19]);
+                            }
+                        }
+
+
+                        break;
+                    case 20:
+
+                        //正常范围值    
+                        if (yData[9] <= y && y <= yData[29])
+                        {
+                            LinePointUpdate(10, yData[9], 20, y);
+                            LinePointUpdate(20, y, 30, yData[29]);
+
+                        }
+                        else
+                        {
+
+                            if (y < yData[9])
+                            {
+                                //范围值小于最低
+                                LinePointUpdate(10, yData[9], 20, yData[9]);
+                                LinePointUpdate(20, yData[9], 30, yData[29]);
+                            }
+                            else if (y > yData[29])
+                            {
+                                //范围值大于最大
+                                LinePointUpdate(10, yData[9], 20, yData[29]);
+                                LinePointUpdate(20, yData[29], 30, yData[29]);
+                            }
+                        }
+                        break;
+                    case 30:
+                        if (yData[19] <= y && y <= yData[39])
+                        {
+                            LinePointUpdate(20, yData[19], 30, y);
+                            LinePointUpdate(30, y, 40, yData[39]);
+
+                        }
+                        else
+                        {
+                            if (y < yData[19])
+                            {
+                                LinePointUpdate(20, yData[19], 30, yData[19]);
+                                LinePointUpdate(30, yData[19], 40, yData[39]);
+                            }
+                            else if (y > yData[39])
+                            {
+                                LinePointUpdate(20, yData[19], 30, yData[39]);
+                                LinePointUpdate(30, yData[39], 40, yData[39]);
+                            }
+                        }
+
+
+                        break;
+                    case 40:
+                        if (yData[29] <= y && y <= yData[49])
+                        {
+                            LinePointUpdate(30, yData[29], 40, y);
+                            LinePointUpdate(40, y, 50, yData[49]);
+
+                        }
+                        else
+                        {
+                            if (y < yData[29])
+                            {
+                                LinePointUpdate(30, yData[29], 40, yData[29]);
+                                LinePointUpdate(40, yData[29], 50, yData[49]);
+                            }
+                            else if (y > yData[49])
+                            {
+                                LinePointUpdate(30, yData[29], 40, yData[49]);
+                                LinePointUpdate(40, yData[49], 50, yData[49]);
+                            }
+                        }
+
+
+                        break;
+                    case 50:
+                        //正常范围值    
+                        if (yData[39] <= y && y <= yData[59])
+                        {
+                            LinePointUpdate(40, yData[39], 50, y);
+                            LinePointUpdate(50, y, 60, yData[59]);
+
+                        }
+                        else
+                        {
+
+                            if (y < yData[39])
+                            {
+                                //范围值小于最低
+                                LinePointUpdate(40, yData[39], 50, yData[39]);
+                                LinePointUpdate(50, yData[39], 60, yData[59]);
+                            }
+                            else if (y > yData[59])
+                            {
+                                //范围值大于最大
+                                LinePointUpdate(40, yData[39], 50, yData[59]);
+                                LinePointUpdate(50, yData[59], 60, yData[59]);
+                            }
+                        }
+                        break;
+                    case 60:
+                        if (yData[49] <= y && y <= yData[69])
+                        {
+                            LinePointUpdate(50, yData[49], 60, y);
+                            LinePointUpdate(60, y, 70, yData[69]);
+
+                        }
+                        else
+                        {
+                            if (y < yData[49])
+                            {
+                                LinePointUpdate(50, yData[49], 60, yData[49]);
+                                LinePointUpdate(60, yData[49], 70, yData[69]);
+                            }
+                            else if (y > yData[69])
+                            {
+                                LinePointUpdate(50, yData[49], 60, yData[69]);
+                                LinePointUpdate(60, yData[69], 70, yData[69]);
+                            }
+                        }
+                        break;
+                    case 70:
+
+                        //正常范围值    
+                        if (yData[59] <= y && y <= yData[79])
+                        {
+                            LinePointUpdate(60, yData[59], 70, y);
+                            LinePointUpdate(70, y, 80, yData[79]);
+
+                        }
+                        else
+                        {
+
+                            if (y < yData[59])
+                            {
+                                //范围值小于最低
+                                LinePointUpdate(60, yData[59], 70, yData[59]);
+                                LinePointUpdate(70, yData[59], 80, yData[79]);
+                            }
+                            else if (y > yData[79])
+                            {
+                                //范围值大于最大
+                                LinePointUpdate(60, yData[59], 70, yData[79]);
+                                LinePointUpdate(70, yData[79], 80, yData[79]);
+                            }
+                        }
+                        break;
+                    case 80:
+                        if (yData[69] <= y && y <= yData[89])
+                        {
+                            LinePointUpdate(70, yData[69], 80, y);
+                            LinePointUpdate(80, y, 90, yData[89]);
+
+                        }
+                        else
+                        {
+                            if (y < yData[69])
+                            {
+                                LinePointUpdate(70, yData[69], 80, yData[69]);
+                                LinePointUpdate(80, yData[69], 90, yData[89]);
+                            }
+                            else if (y > yData[89])
+                            {
+                                LinePointUpdate(70, yData[69], 80, yData[89]);
+                                LinePointUpdate(80, yData[89], 90, yData[89]);
+                            }
+                        }
+
+
+                        break;
+                    case 90:
+                        if (yData[79] <= y && y <= yData[99])
+                        {
+                            LinePointUpdate(80, yData[79], 90, y);
+                            LinePointUpdate(90, y, 100, yData[99]);
+
+                        }
+                        else
+                        {
+                            if (y < yData[79])
+                            {
+                                LinePointUpdate(80, yData[79], 90, yData[79]);
+                                LinePointUpdate(90, yData[79], 100, yData[99]);
+                            }
+                            else if (y > yData[99])
+                            {
+                                LinePointUpdate(80, yData[79], 90, yData[99]);
+                                LinePointUpdate(90, yData[99], 100, yData[99]);
+                            }
+                        }
+
+
+                        break;
+                    case 100:
+                        if (y <= yData[89])
+                        {
+                            LinePointUpdate(90, yData[89], 100, yData[89]);
+                        }
+                        else
+                        {
+                            LinePointUpdate(90, yData[89], 100, y);
+
+                        }
+
+                        break;
+                    default:
+                        break;
+
+                }
+            }
+
+           
+        }
+
+        /// <summary>
+        /// 根据两点产生直线函数
+        /// </summary>
+        /// <param name="Xstart"></param>
+        /// <param name="XEnd"></param>
+        /// <param name="YEndVal"></param>
+        private void LinePointUpdate(int XStart, int YStartVal,int XEnd,int YEndVal)
+        {
+            //如果前面比后面高则拉平
+            if (YStartVal >= YEndVal)
+            {
+                for (int i = XStart; i <= XEnd; i++)
+                {
+                    yData[i - 1] = YEndVal;
+                }
+            }
+            else
+            {
+                double k = Convert.ToDouble(YEndVal - YStartVal) / Convert.ToDouble(XEnd - XStart);
+                double b = YEndVal - (XEnd * k);
+                for (int i = XStart; i <= XEnd; i++)
+                {
+                    yData[i - 1] = Convert.ToInt32(k * i + b);
+                }
+            }
+           
+
+        }
+
 
         //发送当前亮度
         private void sendliangdu(int x)
@@ -847,9 +1212,6 @@ namespace eNet编辑器.Controller
             sendRegOrder(str, "03");
   
         }
-
-
-
 
         /// <summary>
         /// 曲线图按键
@@ -865,16 +1227,30 @@ namespace eNet编辑器.Controller
                     return;
                 }
                 int x = (int)chart1.ChartAreas[0].CursorX.Position;//获取X轴
+                //int y = (int)chart1.ChartAreas[0].CursorY.Position;//获取X轴
                 switch (e.KeyCode)
                 {
                     case Keys.Left:
-
                         chart1.ChartAreas[0].CursorX.Position = x - 1;
                         sendliangdu(x-1);
                         break;
                     case Keys.Right:
                         chart1.ChartAreas[0].CursorX.Position = x + 1;
                         sendliangdu(x + 1);
+                        break;
+                    case Keys.Up:
+                        LineUpdateByPoint(x,yData[x-1] +5);
+                        chart1.Series[0].Points.DataBindXY(xData, yData);
+                        //当连接时候发送当前亮度代码
+                        sendliangdu(x);
+                        updateTable();
+                        break;
+                    case Keys.Down:
+                        LineUpdateByPoint(x, yData[x - 1] - 5);
+                        chart1.Series[0].Points.DataBindXY(xData, yData);
+                        //当连接时候发送当前亮度代码
+                        sendliangdu(x);
+                        updateTable();
                         break;
                     default:
                         break;
@@ -887,58 +1263,62 @@ namespace eNet编辑器.Controller
 
             }
         }
+
+        private void Txtabs1_KeyDown(object sender, KeyEventArgs e)
+        {
+            try
+            {
+                int x = (int)chart1.ChartAreas[0].CursorX.Position;//获取X轴
+                //int y = (int)chart1.ChartAreas[0].CursorY.Position;//获取X轴
+                switch (e.KeyCode)
+                {
+            
+                    case Keys.Up:
+                        LineUpdateByPoint(x, yData[x - 1] + 5);
+                        chart1.Series[0].Points.DataBindXY(xData, yData);
+                        //当连接时候发送当前亮度代码
+                        sendliangdu(x);
+                        updateTable();
+                        break;
+                    case Keys.Down:
+                        LineUpdateByPoint(x, yData[x - 1] - 5);
+                        chart1.Series[0].Points.DataBindXY(xData, yData);
+                        //当连接时候发送当前亮度代码
+                        sendliangdu(x);
+                        updateTable();
+                        break;
+                    default:
+                        break;
+                }
+            }
+            catch
+            {
+
+            }
+        }
         #endregion
 
+        #region 百分比 表格
 
-        #region 图表
-        private void btnLeft_Click(object sender, EventArgs e)
-        {
-            TextBox[] txtunits = new TextBox[] { txtunit1, txtunit2, txtunit3, txtunit4, txtunit5, txtunit6, txtunit7, txtunit8, txtunit9, txtunit10 };
-            if (txtunits[0].Text == "1%")
-            {
-                return;
-            }
-            //获取数字
-            int start = Convert.ToInt32(Regex.Replace(txtunit1.Text, @"[^\d]*", "")) - 10;
-            for (int i = 0; i < txtunits.Length; i++)
-            {
-                txtunits[i].Text = string.Format("{0}%", start + i);
-            }
-            updateTable();
-        }
-
-        private void btnRight_Click(object sender, EventArgs e)
-        {
-            TextBox[] txtunits = new TextBox[] { txtunit1, txtunit2, txtunit3, txtunit4, txtunit5, txtunit6, txtunit7, txtunit8, txtunit9, txtunit10 };
-            if (txtunits[0].Text == "91%")
-            {
-                return;
-            }
-            //获取数字
-            int start = Convert.ToInt32(Regex.Replace(txtunit1.Text, @"[^\d]*", "")) + 10;
-            for (int i = 0; i < txtunits.Length; i++)
-            {
-                txtunits[i].Text = string.Format("{0}%", start + i);
-            }
-            updateTable();
-            
-        }
-
+        #region 改变数值 和更新数值
         /// <summary>
         /// 更新表格上面的数值
         /// </summary>
         private void updateTable()
         {
-            TextBox[] txtabs = new TextBox[] { txtabs1, txtabs2, txtabs3, txtabs4, txtabs5, txtabs6, txtabs7, txtabs8, txtabs9, txtabs10 };
 
-            //获取数字
-            int start = Convert.ToInt32(Regex.Replace(txtunit1.Text, @"[^\d]*", ""));
-            int end = start + 9;
-            int j = 0;
-            for (int i = start; i <= end; i++)
+            TextBox[] txtPercent= new TextBox[] { txtunit1, txtunit2, txtunit3, txtunit4, txtunit5, txtunit6, txtunit7, txtunit8, txtunit9, txtunit10, txtunit11};
+            TextBox[] txtvals = new TextBox[] { txtabs1, txtabs2, txtabs3, txtabs4, txtabs5, txtabs6, txtabs7, txtabs8, txtabs9, txtabs10, txtabs11};
+            int percent = 0;
+
+            for (int i = 0; i < txtPercent.Length; i++)
             {
-                txtabs[j].Text = yData[i - 1].ToString();
-                j++;
+                if (txtPercent[i].Visible)
+                {
+                    percent = Convert.ToInt32(Regex.Replace(txtPercent[i].Text, @"[^\d]*", ""));
+                    txtvals[i].Text = yData[percent - 1].ToString();
+                }
+                    
             }
 
         }
@@ -950,7 +1330,7 @@ namespace eNet编辑器.Controller
         /// <param name="e"></param>
         private void txtabs1_Leave(object sender, EventArgs e)
         {
-            ChangeNum();
+            TableValUpdataLine();
         }
 
         private void txtabs1_KeyPress(object sender, KeyPressEventArgs e)
@@ -960,53 +1340,169 @@ namespace eNet编辑器.Controller
             {
                 e.Handled = true;
             }
+            //回车
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                groupBox2.Focus();
+            }
         }
 
         /// <summary>
-        /// 更新表格上面的数值
+        /// 通过表格更新曲线图
         /// </summary>
-        private void ChangeNum()
+        private void TableValUpdataLine()
         {
             try
             {
-                TextBox[] txtabs = new TextBox[] { txtabs1, txtabs2, txtabs3, txtabs4, txtabs5, txtabs6, txtabs7, txtabs8, txtabs9, txtabs10 };
-
-                //获取数字
-                int start = Convert.ToInt32(Regex.Replace(txtunit1.Text, @"[^\d]*", ""));
-                int end = start + 9;
-                int j = 0;
-                int data = 0;
-                for (int i = start; i <= end; i++)
+                TextBox[] txtPercent = new TextBox[] { txtunit1, txtunit2, txtunit3, txtunit4, txtunit5, txtunit6, txtunit7, txtunit8, txtunit9, txtunit10, txtunit11 };
+                TextBox[] txtvals = new TextBox[] { txtabs1, txtabs2, txtabs3, txtabs4, txtabs5, txtabs6, txtabs7, txtabs8, txtabs9, txtabs10, txtabs11 };
+                int percent = 0;
+                int y = 0;
+                for (int i = 0; i < txtPercent.Length; i++)
                 {
-                    data = Convert.ToInt32(Regex.Replace(txtabs[j].Text, @"[^\d]*", ""));
-                    if (data > 10000)
+                    if (txtPercent[i].Visible)
                     {
-                        data = 10000;
+                        percent = Convert.ToInt32(Regex.Replace(txtPercent[i].Text, @"[^\d]*", ""));
+                        y = Convert.ToInt32(txtvals[i].Text);
+                        LineUpdateByPoint(percent, y);
                     }
-                    else if (data < 0)
-                    {
-                        data = 1;
-                    }
-                    yData[i - 1] = data;
-                    j++;
+
                 }
                 //更新曲线
                 chart1.Series[0].Points.DataBindXY(xData, yData);
+
             }
-            catch {
+            catch
+            {
                 updateTable();
             }
 
-        }
 
+
+        }
         #endregion
 
+        #region 点击编辑表格变橙色 图表定位
+        /// <summary>
+        /// 选中框变橙色 并定位到xy点
+        /// </summary>
+        /// <param name="XSelect"></param>
+        private void TxtBackStyleChange(int XSelect,bool isChangeLine)
+        {
+            try
+            {
+                TextBox[] txtPercent = new TextBox[] { txtunit1, txtunit2, txtunit3, txtunit4, txtunit5, txtunit6, txtunit7, txtunit8, txtunit9, txtunit10, txtunit11 };
+                TextBox[] txtvals = new TextBox[] { txtabs1, txtabs2, txtabs3, txtabs4, txtabs5, txtabs6, txtabs7, txtabs8, txtabs9, txtabs10, txtabs11 };
+                int percent = 0;
+                int y = 0;
+                for (int i = 0; i < txtPercent.Length; i++)
+                {
+                    if (txtPercent[i].Visible)
+                    {
+                        percent = Convert.ToInt32(Regex.Replace(txtPercent[i].Text, @"[^\d]*", ""));
+                        if (XSelect == percent)
+                        {
+                            txtPercent[i].BackColor = Color.LightSalmon;
+                            txtvals[i].BackColor = Color.LightSalmon;
+                            if (isChangeLine)
+                            {
+                                y = Convert.ToInt32(txtvals[i].Text);
+                                chart1.ChartAreas[0].CursorX.Position = Convert.ToDouble(percent);
+                                chart1.ChartAreas[0].CursorY.Position = Convert.ToDouble(y);
+                            }
+                            
+                        }
+                        else
+                        {
+                            txtPercent[i].BackColor = Color.WhiteSmoke;
+                            txtvals[i].BackColor = Color.WhiteSmoke;
+                        }
+                    }
+
+                }
+                //更新曲线
+                chart1.Series[0].Points.DataBindXY(xData, yData);
+
+            }
+            catch
+            {
+                updateTable();
+            }
+        }
+
+        private void Txtabs1_Enter(object sender, EventArgs e)
+        {
+            int percent = Convert.ToInt32(Regex.Replace(txtunit1.Text, @"[^\d]*", ""));
+            TxtBackStyleChange(percent,true);
+        }
+
+        private void Txtabs2_Enter(object sender, EventArgs e)
+        {
+            int percent = Convert.ToInt32(Regex.Replace(txtunit2.Text, @"[^\d]*", ""));
+            TxtBackStyleChange(percent, true);
+        }
+
+        private void Txtabs3_Enter(object sender, EventArgs e)
+        {
+            int percent = Convert.ToInt32(Regex.Replace(txtunit3.Text, @"[^\d]*", ""));
+            TxtBackStyleChange(percent, true);
+        }
+
+        private void Txtabs4_Enter(object sender, EventArgs e)
+        {
+            int percent = Convert.ToInt32(Regex.Replace(txtunit4.Text, @"[^\d]*", ""));
+            TxtBackStyleChange(percent, true);
+        }
+
+        private void Txtabs5_Enter(object sender, EventArgs e)
+        {
+            int percent = Convert.ToInt32(Regex.Replace(txtunit5.Text, @"[^\d]*", ""));
+            TxtBackStyleChange(percent, true);
+        }
+
+        private void Txtabs6_Enter(object sender, EventArgs e)
+        {
+            int percent = Convert.ToInt32(Regex.Replace(txtunit6.Text, @"[^\d]*", ""));
+            TxtBackStyleChange(percent, true);
+        }
+
+        private void Txtabs7_Enter(object sender, EventArgs e)
+        {
+            int percent = Convert.ToInt32(Regex.Replace(txtunit7.Text, @"[^\d]*", ""));
+            TxtBackStyleChange(percent, true);
+        }
+
+        private void Txtabs8_Enter(object sender, EventArgs e)
+        {
+            int percent = Convert.ToInt32(Regex.Replace(txtunit8.Text, @"[^\d]*", ""));
+            TxtBackStyleChange(percent, true);
+        }
+
+        private void Txtabs9_Enter(object sender, EventArgs e)
+        {
+            int percent = Convert.ToInt32(Regex.Replace(txtunit9.Text, @"[^\d]*", ""));
+            TxtBackStyleChange(percent, true);
+        }
+
+        private void Txtabs10_Enter(object sender, EventArgs e)
+        {
+            int percent = Convert.ToInt32(Regex.Replace(txtunit10.Text, @"[^\d]*", ""));
+            TxtBackStyleChange(percent, true);
+        }
+
+        private void Txtabs11_Enter(object sender, EventArgs e)
+        {
+            int percent = Convert.ToInt32(Regex.Replace(txtunit11.Text, @"[^\d]*", ""));
+            TxtBackStyleChange(percent, true);
+        }
+        #endregion
+
+        #endregion
 
         #region 菜单栏 按钮
         private void btnRefresh_Click(object sender, EventArgs e)
         {
             getFormState(JsonConvert.SerializeObject(FileMesege.portDimmer));
-            
         }
 
         private void btnIni_Click(object sender, EventArgs e)
@@ -1016,8 +1512,29 @@ namespace eNet编辑器.Controller
 
         private void btnAllWrite_Click(object sender, EventArgs e)
         {
-            backgroundWorker1.RunWorkerAsync();
-            
+            try
+            {
+                backgroundWorker1 = new BackgroundWorker();
+                backgroundWorker1.WorkerReportsProgress = true;
+                backgroundWorker1.WorkerSupportsCancellation = true;
+                backgroundWorker1.DoWork += BackgroundWorker1_DoWork_AllWrite;
+                backgroundWorker1.ProgressChanged += BackgroundWorker1_ProgressChanged;
+                backgroundWorker1.RunWorkerCompleted += BackgroundWorker1_RunWorkerCompleted;
+                portDimmer = SaveFormState();
+                pgv = new PgView();
+                pgv.setMaxValue(devModuel.devPortList.Count *7 +1);
+                this.Enabled = false;
+                backgroundWorker1.RunWorkerAsync();
+                pgv.ShowDialog();
+                if (pgv.DialogResult == DialogResult.Cancel)
+                {
+                    backgroundWorker1.CancelAsync();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
 
         }
 
@@ -1025,75 +1542,174 @@ namespace eNet编辑器.Controller
         {
             try
             {
-                DataJson.PortDimmer portDimmer = SaveFormState();
+                backgroundWorker1 = new BackgroundWorker();
+                backgroundWorker1.WorkerReportsProgress = true;
+                backgroundWorker1.WorkerSupportsCancellation = true;
+                backgroundWorker1.DoWork += BackgroundWorker1_DoWork_Write;
+                backgroundWorker1.ProgressChanged += BackgroundWorker1_ProgressChanged;
+                backgroundWorker1.RunWorkerCompleted += BackgroundWorker1_RunWorkerCompleted;
+                portDimmer = SaveFormState();
+                pgv = new PgView();
+                pgv.setMaxValue(8);
+                this.Enabled = false;
+                backgroundWorker1.RunWorkerAsync();
+                pgv.ShowDialog();
+                if (pgv.DialogResult == DialogResult.Cancel)
+                {
+                    backgroundWorker1.CancelAsync();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+        }
+
+        #region 全部写入 和写入 
+        private void BackgroundWorker1_DoWork_Write(object sender, DoWorkEventArgs e)
+        {
+            try
+            {
                 bool isSend = true;
+                int count = 0;
                 if (portDimmer == null)
                 {
                     return;
                 }
-                devPort.portContent = JsonConvert.SerializeObject(portDimmer).Replace("\\","");
+                devPort.portContent = JsonConvert.SerializeObject(portDimmer).Replace("\\", "");
+
                 isSend = sendRegOrder("01", "64");//设置为线性模式 00自定义 01曲线 02废除了 
                 if (!isSend)
                 {
-                    MessageBox.Show("写入失败！\r\n请检查网络连接或参数", "提示");
+                    MessageBox.Show("写入失败！\r\n请检查网络连接或参数", "提示", MessageBoxButtons.OK, MessageBoxIcon.None, MessageBoxDefaultButton.Button1, MessageBoxOptions.ServiceNotification);
                     return;
                 }
-                ToolsUtil.DelayMilli(400);
-                sendRegOrder(portDimmer.powerState,"40");
+                ToolsUtil.DelayMilli(800);
+                count++;
+                backgroundWorker1.ReportProgress(count);
+                if (backgroundWorker1.CancellationPending)
+                {
+                    e.Cancel = true;
+                    return;
+                }
+
+
+                sendRegOrder(portDimmer.powerState, "40");
                 if (!isSend)
                 {
-                    MessageBox.Show("写入失败！\r\n请检查网络连接或参数", "提示");
+                    MessageBox.Show("写入失败！\r\n请检查网络连接或参数", "提示", MessageBoxButtons.OK, MessageBoxIcon.None, MessageBoxDefaultButton.Button1, MessageBoxOptions.ServiceNotification);
                     return;
                 }
-                ToolsUtil.DelayMilli(400);
-                sendRegOrder(portDimmer.onState,"60");
+                ToolsUtil.DelayMilli(800);
+                count++;
+                backgroundWorker1.ReportProgress(count);
+                if (backgroundWorker1.CancellationPending)
+                {
+                    e.Cancel = true;
+                    return;
+                }
+
+
+                sendRegOrder(portDimmer.onState, "60");
                 if (!isSend)
                 {
-                    MessageBox.Show("写入失败！\r\n请检查网络连接或参数", "提示");
+                    MessageBox.Show("写入失败！\r\n请检查网络连接或参数", "提示", MessageBoxButtons.OK, MessageBoxIcon.None, MessageBoxDefaultButton.Button1, MessageBoxOptions.ServiceNotification);
                     return;
                 }
-                ToolsUtil.DelayMilli(400);
+                ToolsUtil.DelayMilli(800);
+                count++;
+                backgroundWorker1.ReportProgress(count);
+                if (backgroundWorker1.CancellationPending)
+                {
+                    e.Cancel = true;
+                    return;
+                }
+
+
                 sendRegOrder(portDimmer.changeState, "61");
                 if (!isSend)
                 {
-                    MessageBox.Show("写入失败！\r\n请检查网络连接或参数", "提示");
+                    MessageBox.Show("写入失败！\r\n请检查网络连接或参数", "提示", MessageBoxButtons.OK, MessageBoxIcon.None, MessageBoxDefaultButton.Button1, MessageBoxOptions.ServiceNotification);
                     return;
                 }
-                ToolsUtil.DelayMilli(400);
+                ToolsUtil.DelayMilli(800);
+                count++;
+                backgroundWorker1.ReportProgress(count);
+                if (backgroundWorker1.CancellationPending)
+                {
+                    e.Cancel = true;
+                    return;
+                }
+
+
                 sendRegOrder(portDimmer.max, "62");
                 if (!isSend)
                 {
-                    MessageBox.Show("写入失败！\r\n请检查网络连接或参数", "提示");
+                    MessageBox.Show("写入失败！\r\n请检查网络连接或参数", "提示", MessageBoxButtons.OK, MessageBoxIcon.None, MessageBoxDefaultButton.Button1, MessageBoxOptions.ServiceNotification);
                     return;
                 }
-                ToolsUtil.DelayMilli(400);
+                ToolsUtil.DelayMilli(800);
+                count++;
+                backgroundWorker1.ReportProgress(count);
+                if (backgroundWorker1.CancellationPending)
+                {
+                    e.Cancel = true;
+                    return;
+                }
+
+
                 sendRegOrder(portDimmer.min, "63");
                 if (!isSend)
                 {
-                    MessageBox.Show("写入失败！\r\n请检查网络连接或参数", "提示");
+                    MessageBox.Show("写入失败！\r\n请检查网络连接或参数", "提示", MessageBoxButtons.OK, MessageBoxIcon.None, MessageBoxDefaultButton.Button1, MessageBoxOptions.ServiceNotification);
                     return;
                 }
-                ToolsUtil.DelayMilli(400);
+                ToolsUtil.DelayMilli(800);
+                count++;
+                backgroundWorker1.ReportProgress(count);
+                if (backgroundWorker1.CancellationPending)
+                {
+                    e.Cancel = true;
+                    return;
+                }
+
+
                 sendRegOrder(portDimmer.spline, "65");
                 if (!isSend)
                 {
-                    MessageBox.Show("写入失败！\r\n请检查网络连接或参数", "提示");
+                    MessageBox.Show("写入失败！\r\n请检查网络连接或参数", "提示",MessageBoxButtons.OK, MessageBoxIcon.None, MessageBoxDefaultButton.Button1, MessageBoxOptions.ServiceNotification);
                     return;
                 }
-                ToolsUtil.DelayMilli(2000);
-                if (sendResetdriver())//重启设备
+                ToolsUtil.DelayMilli(800);
+                count++;
+                backgroundWorker1.ReportProgress(count);
+                if (backgroundWorker1.CancellationPending)
                 {
-                    MessageBox.Show("成功写入至模块,设备重启中请稍候！", "提示");
+                    e.Cancel = true;
+                    return;
+                }
+
+
+                isSend = sendResetdriver();
+                if (isSend)
+                {
+                    ToolsUtil.DelayMilli(3000);
+                    count++;
+                    backgroundWorker1.ReportProgress(count);
+                    MessageBox.Show("成功写入至模块,设备重启中请稍候！", "提示", MessageBoxButtons.OK, MessageBoxIcon.None, MessageBoxDefaultButton.Button1, MessageBoxOptions.ServiceNotification);
                 }
                 else
                 {
-                    MessageBox.Show("写入失败！\r\n请检查网络连接或参数", "提示");
-                    
+                    count++;
+                    backgroundWorker1.ReportProgress(count);
+                    MessageBox.Show("写入失败！\r\n请检查网络连接或参数", "提示", MessageBoxButtons.OK, MessageBoxIcon.None, MessageBoxDefaultButton.Button1, MessageBoxOptions.ServiceNotification);
                 }
                 
-                 
 
-               
+
+
+
             }
             catch (Exception ex)
             {
@@ -1101,6 +1717,120 @@ namespace eNet编辑器.Controller
                     MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
             }
         }
+
+        private void BackgroundWorker1_DoWork_AllWrite(object sender, DoWorkEventArgs e)
+        {
+            try
+            {
+                if (portDimmer == null)
+                {
+                    return;
+                }
+                string id = "";
+                string msg = "";
+                bool isSend = true;
+                int count = 0;
+                foreach (DataJson.DevPort dp in devModuel.devPortList)
+                {
+                    if (backgroundWorker1.CancellationPending)
+                    {
+                        e.Cancel = true;
+                        break;
+                    }
+                    if (dp.portType == DevPort.portType)
+                    {
+                        dp.portContent = JsonConvert.SerializeObject(portDimmer);
+                        id = dp.portID.ToString();
+                        isSend = sendRegOrder("01", id, "64");//设置为线性模式 00自定义 01曲线 02废除了 
+                        ToolsUtil.DelayMilli(1000);
+                        count++;
+                        backgroundWorker1.ReportProgress(count);
+
+                        isSend = sendRegOrder(portDimmer.powerState, id, "40");
+                        ToolsUtil.DelayMilli(1000);
+                        count++;
+                        backgroundWorker1.ReportProgress(count);
+
+                        isSend = sendRegOrder(portDimmer.onState, id, "60");
+                        ToolsUtil.DelayMilli(1000);
+                        count++;
+                        backgroundWorker1.ReportProgress(count);
+                        isSend = sendRegOrder(portDimmer.changeState, id, "61");
+                        ToolsUtil.DelayMilli(1000);
+                        count++;
+                        backgroundWorker1.ReportProgress(count);
+
+                        isSend = sendRegOrder(portDimmer.max, id, "62");
+                        ToolsUtil.DelayMilli(1000);
+                        count++;
+                        backgroundWorker1.ReportProgress(count);
+
+                        isSend = sendRegOrder(portDimmer.min, id, "63");
+                        ToolsUtil.DelayMilli(1000);
+                        count++;
+                        backgroundWorker1.ReportProgress(count);
+
+                        isSend = sendRegOrder(portDimmer.spline, id, "65");
+                        ToolsUtil.DelayMilli(1000);
+                        count++;
+                        backgroundWorker1.ReportProgress(count);
+
+                        if (isSend)
+                        {
+                            msg += string.Format("写入至模块端口{0}成功！\r\n", dp.portID);
+                        }
+                        else
+                        {
+                            msg += string.Format("写入至模块端口{0}失败！\r\n", dp.portID);
+                            break;
+                        }
+
+                    }
+                }
+
+                isSend = sendResetdriver();
+                if (isSend)
+                {
+                    ToolsUtil.DelayMilli(5000);
+                }
+                else
+                {
+                    msg += "发送重启指令失败！\r\n";
+                }
+                count++;
+                backgroundWorker1.ReportProgress(count);
+                MessageBox.Show(msg, "提示", MessageBoxButtons.OK, MessageBoxIcon.None, MessageBoxDefaultButton.Button1, MessageBoxOptions.ServiceNotification);
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("操作失败！\n" + ex.Message, "提示", MessageBoxButtons.OK,
+                MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
+            }
+        }
+
+        private void BackgroundWorker1_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+            //设置值
+            pgv.setValue(e.ProgressPercentage);
+        }
+
+        private void BackgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            try
+            {
+                this.Enabled = true;
+                if (pgv != null)
+                {
+                    pgv.Close();
+                }
+            }
+            catch
+            {
+
+            }
+        }
+        #endregion
 
         private void btnRead_Click(object sender, EventArgs e)
         {
@@ -1197,7 +1927,6 @@ namespace eNet编辑器.Controller
         }
 
         #endregion
-
 
         #region 把十六进制参数 展现在窗体中
 
@@ -1486,18 +2215,26 @@ namespace eNet编辑器.Controller
 
         #endregion
 
-
         #region 把窗体参数 存储起来
         private DataJson.PortDimmer SaveFormState()
         {
-            DataJson.PortDimmer tmp = new DataJson.PortDimmer();
-            tmp.powerState = SavePowerState(cbPowerState.Text);
-            tmp.onState = SaveOnState(cbOnState.Text);
-            tmp.changeState = SaveChangeState(cbChangeState.Text);
-            tmp.max = SaveMax(txtMax.Text);
-            tmp.min = SaveMin(txtMin.Text);
-            tmp.spline = SaveLinesp();
-            return tmp;
+            try
+            {
+
+                DataJson.PortDimmer tmp = new DataJson.PortDimmer();
+                tmp.powerState = SavePowerState(cbPowerState.Text);
+                tmp.onState = SaveOnState(cbOnState.Text);
+                tmp.changeState = SaveChangeState(cbChangeState.Text);
+                tmp.max = SaveMax(txtMax.Text);
+                tmp.min = SaveMin(txtMin.Text);
+                tmp.spline = SaveLinesp();
+                return tmp;
+            }
+            catch
+            {
+                return null;
+            }
+            
         }
 
         /// <summary>
@@ -1702,112 +2439,120 @@ namespace eNet编辑器.Controller
 
 
         #endregion
-
-        #region 全部写入按钮
-        private void allWrite()
+      
+        #region 默认直线 曲线按钮
+        private void BtnSwitchLine_Click(object sender, EventArgs e)
         {
-            try
+            //开关曲线
+            xData.Clear();
+            yData.Clear();
+            for (int i = 1; i <= 100; i++)
             {
-                panel4.Visible = true;
-                DataJson.PortDimmer portDimmer = SaveFormState();
-                if (portDimmer == null)
-                {
-                    return;
-                }
-                string id = "";
-                string msg = "";
-                bool isSend = true;
-                int i = 0;
-                foreach (DataJson.DevPort dp in devModuel.devPortList)
-                {
-                    if (dp.portType == DevPort.portType)
-                    {
-                        dp.portContent = JsonConvert.SerializeObject(portDimmer);
-                        id = dp.portID.ToString();
-                        isSend = sendRegOrder("01", id, "64");//设置为线性模式 00自定义 01曲线 02废除了 
-                        i += 2;
-                        backgroundWorker1.ReportProgress(i);
-                        ToolsUtil.DelayMilli(1000);
-                        isSend = sendRegOrder(portDimmer.powerState, id, "40");
-                        i += 2;
-                        backgroundWorker1.ReportProgress(i);
-                        ToolsUtil.DelayMilli(1000);
-                        isSend = sendRegOrder(portDimmer.onState, id, "60");
-                        i += 2;
-                        backgroundWorker1.ReportProgress(i);
-                        ToolsUtil.DelayMilli(1000);
-                        isSend = sendRegOrder(portDimmer.changeState, id, "61");
-                        i += 2;
-                        backgroundWorker1.ReportProgress(i);
-                        ToolsUtil.DelayMilli(1000);
-                        isSend = sendRegOrder(portDimmer.max, id, "62");
-                        i += 2;
-                        backgroundWorker1.ReportProgress(i);
-                        ToolsUtil.DelayMilli(1000);
-                        isSend = sendRegOrder(portDimmer.min, id, "63");
-                        i += 2;
-                        backgroundWorker1.ReportProgress(i);
-                        ToolsUtil.DelayMilli(1000);
-                        isSend = sendRegOrder(portDimmer.spline, id, "65");
-                        i += 2;
-                        backgroundWorker1.ReportProgress(i);
-                        ToolsUtil.DelayMilli(1000);
-
-                        
-                        if (isSend)
-                        {
-
-                            msg += string.Format("写入至模块端口{0}成功！\r\n", dp.portID);
-                        }
-                        else
-                        {
-                            msg += string.Format("写入至模块端口{0}失败！\r\n", dp.portID);
-                            break;
-                        }
-
-                    }
-                }
-
-                pgBar.Value = 100;
-                if (sendResetdriver())//重启设备
-                {
-                    MessageBox.Show(msg + "设备重启中请稍候", "提示");
-                }
-                else
-                {
-                    MessageBox.Show("写入失败！\r\n请检查网络连接或参数", "提示");
-                }
+                xData.Add(i.ToString() + "%");
+                yData.Add(10000);
 
             }
-            catch (Exception ex)
+            chart1.Series[0].Points.DataBindXY(xData, yData);
+            updateTable();
+        }
+
+        private void BtnStraightLine_Click(object sender, EventArgs e)
+        {
+            //直线
+            xData.Clear();
+            yData.Clear();
+            for (int i = 1; i <= 100; i++)
             {
-                backgroundWorker1.CancelAsync();
-                MessageBox.Show("操作失败！\n" + ex.Message, "提示", MessageBoxButtons.OK,
-                    MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
+                xData.Add(i.ToString() + "%");
+                yData.Add(i * 100);
+
             }
+            chart1.Series[0].Points.DataBindXY(xData, yData);
+            updateTable();
         }
 
-        private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
+        
+        private void BtnCurveLine_Click(object sender, EventArgs e)
         {
-            this.Invoke(allWriteDelegate);
+            //曲线
+            getLinespA(1, 100, 100, 10000);
+            chart1.Series[0].Points.DataBindXY(xData, yData);
+            updateTable();
         }
 
-        private void backgroundWorker1_ProgressChanged(object sender, ProgressChangedEventArgs e)
-        {
-            pgBar.Value = e.ProgressPercentage;
-        }
 
-        private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
-        {
-            panel4.Visible = false;
-            pgBar.Value = 0;
-
-        }
         #endregion
 
+        #region 快速模式和精细模式切换
+        private void CbMode_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            if (cbMode.SelectedIndex == 0)
+            {
+                //快速模式
+                ModeVisable(true);
+            }
+            else if (cbMode.SelectedIndex == 1)
+            {
+                //精细模式
+                ModeVisable(false);
+            }
+
+        }
+
+        private void ModeVisable(bool isQuick)
+        {
+            txtunit7.Visible = !isQuick;
+            txtunit8.Visible = !isQuick;
+            txtunit9.Visible = !isQuick;
+            txtunit10.Visible = !isQuick;
+            txtunit11.Visible = !isQuick;
+
+            txtabs7.Visible = !isQuick;
+            txtabs8.Visible = !isQuick;
+            txtabs9.Visible = !isQuick;
+            txtabs10.Visible = !isQuick;
+            txtabs11.Visible = !isQuick;
+            if (isQuick)
+            {
+                flowLayoutPanel2.Size = new Size(370,46);
+                txtunit1.Text = "1%";
+                txtunit2.Text = "10%";
+                txtunit3.Text = "25%";
+                txtunit4.Text = "50%";
+                txtunit5.Text = "75%";
+                txtunit6.Text = "100%";
+            }
+            else
+            {
+                flowLayoutPanel2.Size = new Size(653, 46);
+                txtunit1.Text = "1%";
+                txtunit2.Text = "10%";
+                txtunit3.Text = "20%";
+                txtunit4.Text = "30%";
+                txtunit5.Text = "40%";
+                txtunit6.Text = "50%";
+                txtunit7.Text = "60%";
+                txtunit8.Text = "70%";
+                txtunit9.Text = "80%";
+                txtunit10.Text = "90%";
+                txtunit11.Text = "100%";
+            }
+            int x = 0;
+            try
+            {
+                x = Convert.ToInt32(chart1.ChartAreas[0].CursorX.Position);
+            }catch{ }
+            TxtBackStyleChange(x, false);
+            updateTable();
+
+        }
 
 
 
 
+        #endregion
+
+       
     }//endClass
 }

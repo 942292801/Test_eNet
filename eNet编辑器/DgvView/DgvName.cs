@@ -37,7 +37,7 @@ namespace eNet编辑器.DgvView
         public event Action unSelectTitleNode;
         public event Action unSelectSectionNode;
         public event Action<string,string> updateTitleNodeText;
-        
+
         //public event DgvDeviceCursorDefault dgvDeviceCursorDefault;
         /// <summary>
         /// 解决窗体闪烁问题
@@ -72,7 +72,16 @@ namespace eNet编辑器.DgvView
         public delegate void FormIniDelegate();
         private void ShowDatatable()
         {
-            this.Invoke(new FormIniDelegate(TabIni));
+            try
+            {
+                this.Invoke(new FormIniDelegate(TabIni));
+
+            }
+            catch
+            {
+
+            }
+           
 
         }
         
@@ -413,23 +422,31 @@ namespace eNet编辑器.DgvView
         /// </summary>
         private void DgvStateShow() 
         {
-            DgvNameState dns = new DgvNameState();
-            dns.RowNum = rowCount;
-            if (dataGridView1.Rows[rowCount].Cells[4].Value != null)
+            try
             {
-                //当前状态显示值
-                dns.StateValue = getStateValue(dataGridView1.Rows[rowCount].Cells[4].Value.ToString());
+                DgvNameState dns = new DgvNameState();
+                dns.RowNum = rowCount;
+                if (dataGridView1.Rows[rowCount].Cells[4].Value != null)
+                {
+                    //当前状态显示值
+                    dns.StateValue = getStateValue(dataGridView1.Rows[rowCount].Cells[4].Value.ToString());
+                }
+                else
+                {
+                    return;
+                }
+                Point pt = MousePosition;
+                //把窗口向屏幕中间刷新
+                dns.StartPosition = FormStartPosition.Manual;
+                dns.Left = pt.X + 10;
+                dns.Top = pt.Y + 10;
+                dns.Show();
+
             }
-            else
-            {
-                return;
+            catch {
+
             }
-            Point pt = MousePosition;
-            //把窗口向屏幕中间刷新
-            dns.StartPosition = FormStartPosition.Manual;
-            dns.Left = pt.X + 10;
-            dns.Top = pt.Y + 10;
-            dns.Show();
+            
         }
 
         /// <summary>
@@ -439,30 +456,37 @@ namespace eNet编辑器.DgvView
         /// <returns></returns>
         private List<int> getStateValue(string stateString)
         {
-            if (string.IsNullOrEmpty(stateString))
+            try
             {
-                //状态栏为空 直接返回null
+                if (string.IsNullOrEmpty(stateString))
+                {
+                    //状态栏为空 直接返回null
+                    return null;
+                }
+                else
+                {
+                    //提出来存放的数组List
+                    List<int> stateList = new List<int>();
+                    string stateValue = null;
+                    string[] strArry = stateString.Replace(" ", "").Split(':');
+                    for (int i = 0; i < strArry.Length; i++)
+                    {
+
+                        stateValue = Regex.Replace(strArry[i], @"[^\d]*", "");
+                        if (!string.IsNullOrEmpty(stateValue))
+                        {
+                            //获取到的值非空 且为数字
+                            stateList.Add(Convert.ToInt32(stateValue));
+                        }
+                    }
+
+                    return stateList;
+                }
+            }
+            catch {
                 return null;
             }
-            else
-            {
-                //提出来存放的数组List
-                List<int> stateList = new List<int>();
-                string stateValue = null;
-                string[] strArry =  stateString.Replace(" ","").Split(':');
-                for (int i = 0; i < strArry.Length; i++)
-                {
-                    
-                     stateValue = Regex.Replace(strArry[i], @"[^\d]*", "");
-                     if (!string.IsNullOrEmpty(stateValue))
-                     {
-                         //获取到的值非空 且为数字
-                         stateList.Add(Convert.ToInt32(stateValue));
-                     }
-                }
-               
-                return stateList;
-            }
+            
         }
 
         #region  设置弹框
@@ -838,7 +862,7 @@ namespace eNet编辑器.DgvView
                             { 
                                 //添加地址区域 名称 point添加地址  device添加                            
                                 pointAddAddress();
-                           
+                                
                             }
                             /*
                             try
@@ -855,7 +879,9 @@ namespace eNet编辑器.DgvView
 
                             }*/
                         }//try
-                        catch (Exception ex) { MessageBox.Show(ex + "临时调试错误信息"); }
+                        catch  {
+                            //MessageBox.Show(ex + "临时调试错误信息");
+                        }
                     }
                 }
                 isFirstClick = true;
@@ -934,6 +960,8 @@ namespace eNet编辑器.DgvView
                     FileMesege.cmds.DoNewCommand(NewList, OldList);
                     //刷新dgv
                     dgvNameAddItem();
+                    //取消选中节点
+                    unSelectTitleNode();
                     updateTitleNodeText(oldNodeText, DataListHelper.dealSection(eq));
                     break;
                 }

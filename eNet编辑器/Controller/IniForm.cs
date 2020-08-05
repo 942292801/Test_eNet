@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
+using eNet编辑器.OtherView;
 
 namespace eNet编辑器.Controller
 {
@@ -28,6 +29,7 @@ namespace eNet编辑器.Controller
             set { message = value; }
         }
 
+     
         public IniForm()
         {
             InitializeComponent();
@@ -181,7 +183,11 @@ namespace eNet编辑器.Controller
 
         private void btnYES_Click(object sender, EventArgs e)
         {
+           
+            
             this.DialogResult = System.Windows.Forms.DialogResult.Yes;
+
+          
         }
 
         private void btnNo_Click(object sender, EventArgs e)
@@ -189,6 +195,8 @@ namespace eNet编辑器.Controller
             this.DialogResult = System.Windows.Forms.DialogResult.No;
         }
 
+
+        
 
 
     }

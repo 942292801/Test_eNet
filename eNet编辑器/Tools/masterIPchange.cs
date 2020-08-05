@@ -58,6 +58,7 @@ namespace eNet编辑器.Tools
             
             //获取本地IP
             Localip = ToolsUtil.GetLocalIP();
+            lbLocalIP.Text = Localip;
             //udp 绑定
             udp.udpBing(Localip, ToolsUtil.GetFreePort().ToString());
             //绑定成功

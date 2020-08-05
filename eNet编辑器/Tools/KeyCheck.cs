@@ -47,13 +47,13 @@ namespace eNet编辑器.Tools
         {
             try
             {
-                udp = null;
+                //udp = null;
                 //寻找加载在线的网关
                 udp.udpClose();
             }
-            catch (Exception ex)
+            catch 
             {
-                ToolsUtil.WriteLog(ex.Message + "\r\n" + ex.StackTrace + "\r\n" + ex.ToString());
+                //ToolsUtil.WriteLog(ex.Message + "\r\n" + ex.StackTrace + "\r\n" + ex.ToString());
             }
             
             try

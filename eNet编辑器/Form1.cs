@@ -231,7 +231,7 @@ namespace eNet编辑器
             {
                 threetitle.ThreeTitleAddNode(cbType.SelectedIndex);
             });
-
+            dgvpoint.unSelectTitleNode += new Action(threetitle.unSelectTitleNode);
 
             dgvpanel.updateSectionTitleNode += new Action(() =>//刷新右边两树状图 取消选中状态 
             {
@@ -259,6 +259,10 @@ namespace eNet编辑器
             cbtypeName("equipment");//初始化title类型表               
             timer1.Enabled = false; //开启清除内存时钟
             this.Text = Resources.SoftName + "Edit New Project";
+
+            Rectangle ScreenArea = System.Windows.Forms.Screen.GetBounds(this);
+            this.MaximizedBounds = ScreenArea;
+          
         }
 
         private void LogicCondition_unSelectTitleNode()
@@ -501,7 +505,6 @@ namespace eNet编辑器
         /// <param name="e"></param>
         private void cbType_SelectedIndexChanged(object sender, EventArgs e)
         {
-
             threetitle.ThreeTitleAddNode(cbType.SelectedIndex);
         }
 
@@ -514,6 +517,17 @@ namespace eNet编辑器
             cbType_SelectedIndexChanged(null,EventArgs.Empty);
         }
 
+        //场景 定时 右击的添加按钮
+        private void BtnAddTitleItem_Click(object sender, EventArgs e)
+        {
+            threetitle.addTitleItem();
+        }
+
+        private void BtnClear_Click(object sender, EventArgs e)
+        {
+            //取消选中
+            threetitle.unSelectTitleNode();
+        }
         #endregion
 
 
@@ -542,6 +556,8 @@ namespace eNet编辑器
             //更改Title 小标题
             LbTitleName.Text = Resources.lbTitleDevice;
             threename.ThreeNameAddNode();
+            btnAddTitleItem.Visible = false;
+            btnClear.Visible = true;
         }
 
         private void tabPoint_Click(object sender, EventArgs e)
@@ -560,6 +576,7 @@ namespace eNet编辑器
             LbTitleName.Text = Resources.lbTitleDevice;
             //更新加载表格
             updateTreeByFormType();
+            btnAddTitleItem.Visible = false;
         }
 
         private void tabScene_Click(object sender, EventArgs e)
@@ -577,6 +594,7 @@ namespace eNet编辑器
             //界面显示类型 
             FileMesege.formType = "scene";
             threescene.ThreeSceneAddNode();
+            btnAddTitleItem.Visible = true;
         }
 
         private void tabTimer_Click(object sender, EventArgs e)
@@ -594,7 +612,7 @@ namespace eNet编辑器
             //界面显示类型 
             FileMesege.formType = "timer";
             threetimer.ThreeTimerAddNode();
-            
+            btnAddTitleItem.Visible = true;
         }
 
         //面板绑定
@@ -612,27 +630,27 @@ namespace eNet编辑器
             //界面显示类型 
             FileMesege.formType = "panel";
             threepanel.ThreePanelAddNode();
+            btnAddTitleItem.Visible = false;
+            btnClear.Visible = true;
         }
 
         //感应设置
         private void tabSensor_Click(object sender, EventArgs e)
         {
-            
-   
             //自定义函数加载窗体 CleanRecycle  
             Control_Add(threesensor, plLeft);
             Control_Add(dgvsensor, plDgv);
-           
-                //cbtype添加选择项 
-                cbtypeName("sensor");
-                //添加对象树状图
-                threetitle.ThreeTitleAddNode(cbType.SelectedIndex);
-                //更改Title 小标题
-                LbTitleName.Text = Resources.lbTitleObj;
+            //cbtype添加选择项 
+            cbtypeName("sensor");
+            //添加对象树状图
+            threetitle.ThreeTitleAddNode(cbType.SelectedIndex);
+            //更改Title 小标题
+            LbTitleName.Text = Resources.lbTitleObj;
             //界面显示类型 
             FileMesege.formType = "sensor";
-           
             threesensor.ThreeSensorAddNode();
+            btnAddTitleItem.Visible = false;
+            btnClear.Visible = true;
         }
 
         private void tabLogic_Click(object sender, EventArgs e)
@@ -650,6 +668,8 @@ namespace eNet编辑器
             //界面显示类型 
             FileMesege.formType = "logic";
             threelogic.ThreeLogicAddNode();
+            btnAddTitleItem.Visible = false;
+
         }
 
 
@@ -667,6 +687,7 @@ namespace eNet编辑器
             //更改Title 小标题
             LbTitleName.Text = Resources.lbTitleObj;
             threevar.ThreeVarAddNode();
+            btnAddTitleItem.Visible = false;
         }
 
         /// <summary>
@@ -789,18 +810,18 @@ namespace eNet编辑器
                 FileMesege fm = new FileMesege();
                 if (fm.savefile())
                 {
-
+                    this.Text = Resources.SoftName + FileMesege.filePath;
                     AppTxtShow("保存工程成功！");
                 }
                 else
                 {
                     if (fm.savefile())
                     {
+                        this.Text = Resources.SoftName + FileMesege.filePath;
                         AppTxtShow("保存工程成功！");
                     }
                     else
                     {
-
                         AppTxtShow("保存工程失败！");
                     }
                 }
@@ -1358,7 +1379,11 @@ namespace eNet编辑器
             cpdown.StartPosition = FormStartPosition.CenterParent;
             cpdown.ShowDialog();
         }
-
+        //在线搜索
+        private void BtnOnlineSearch_Click(object sender, EventArgs e)
+        {
+            设备在线搜索ToolStripMenuItem_Click(sender,EventArgs.Empty);
+        }
 
         #endregion
 
@@ -1445,97 +1470,100 @@ namespace eNet编辑器
             
         }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         #endregion
 
-       
-
-
-
-
-
-
-       
-
-
-    
-
-  
-
- 
-
-     
-
-     
-
-
-
-
-
-     
-
- 
-
-       
-
-       
-
-      
         
-
- 
-
-      
-    
-
-      
-
- 
-
-   
-  
-
-
-
-     
-
-     
-   
-   
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     }
 }
  

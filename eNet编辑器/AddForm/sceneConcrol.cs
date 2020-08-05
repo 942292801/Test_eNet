@@ -551,6 +551,7 @@ namespace eNet编辑器.AddForm
         /// <param name="info"></param>
         private void cbTextChange(ComboBox cb, string info)
         {
+
             cb.Items.Clear();
             cb.Enabled = true;
             if (info.Contains("\\"))
@@ -584,8 +585,14 @@ namespace eNet编辑器.AddForm
                 cb.Items.Add(info);
                 cb.Enabled = false;
             }
-            //初始化索引
-            cb.SelectedIndex = 0;
+            try
+            {
+                //初始化索引
+                cb.SelectedIndex = 0;
+            }
+            catch {
+            }
+            
          
         }
 

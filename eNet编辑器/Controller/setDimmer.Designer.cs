@@ -30,9 +30,9 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SetDimmer));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.plInfoTitle = new System.Windows.Forms.Panel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.btnRefresh = new DevComponents.DotNetBar.ButtonX();
@@ -42,20 +42,22 @@
             this.btnRead = new DevComponents.DotNetBar.ButtonX();
             this.btnImport = new DevComponents.DotNetBar.ButtonX();
             this.btnOutput = new DevComponents.DotNetBar.ButtonX();
-            this.label1 = new System.Windows.Forms.Label();
             this.btnClose = new DevComponents.DotNetBar.ButtonX();
+            this.label1 = new System.Windows.Forms.Label();
             this.symbolBox1 = new DevComponents.DotNetBar.Controls.SymbolBox();
             this.lbTitle = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.lbTip = new System.Windows.Forms.Label();
-            this.pgBar = new DevComponents.DotNetBar.Controls.ProgressBarX();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.btnSwitchLine = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.cbMode = new System.Windows.Forms.ComboBox();
+            this.btnCurveLine = new System.Windows.Forms.Button();
+            this.btnStraightLine = new System.Windows.Forms.Button();
             this.label19 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
-            this.btnLeft = new DevComponents.DotNetBar.ButtonX();
-            this.btnRight = new DevComponents.DotNetBar.ButtonX();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.txtunit1 = new System.Windows.Forms.TextBox();
             this.txtunit2 = new System.Windows.Forms.TextBox();
@@ -67,6 +69,7 @@
             this.txtunit8 = new System.Windows.Forms.TextBox();
             this.txtunit9 = new System.Windows.Forms.TextBox();
             this.txtunit10 = new System.Windows.Forms.TextBox();
+            this.txtunit11 = new System.Windows.Forms.TextBox();
             this.txtabs1 = new System.Windows.Forms.TextBox();
             this.txtabs2 = new System.Windows.Forms.TextBox();
             this.txtabs3 = new System.Windows.Forms.TextBox();
@@ -77,6 +80,7 @@
             this.txtabs8 = new System.Windows.Forms.TextBox();
             this.txtabs9 = new System.Windows.Forms.TextBox();
             this.txtabs10 = new System.Windows.Forms.TextBox();
+            this.txtabs11 = new System.Windows.Forms.TextBox();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.label14 = new System.Windows.Forms.Label();
             this.txtMin = new System.Windows.Forms.TextBox();
@@ -98,12 +102,10 @@
             this.lblmTiao = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.timer2 = new System.Windows.Forms.Timer(this.components);
-            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.plInfoTitle.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            this.panel4.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -286,19 +288,6 @@
             this.btnOutput.Tooltip = "导出曲线";
             this.btnOutput.Click += new System.EventHandler(this.btnOutput_Click);
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label1.Location = new System.Drawing.Point(25, 4);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(32, 17);
-            this.label1.TabIndex = 10;
-            this.label1.Text = "设置";
-            this.label1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.plInfoTitle_MouseDown);
-            this.label1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.plInfoTitle_MouseMove);
-            // 
             // btnClose
             // 
             this.btnClose.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
@@ -318,6 +307,19 @@
             this.btnClose.TabIndex = 9;
             this.btnClose.Tooltip = "关闭";
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label1.Location = new System.Drawing.Point(25, 4);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(32, 17);
+            this.label1.TabIndex = 10;
+            this.label1.Text = "设置";
+            this.label1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.plInfoTitle_MouseDown);
+            this.label1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.plInfoTitle_MouseMove);
             // 
             // symbolBox1
             // 
@@ -349,22 +351,29 @@
             // 
             // panel1
             // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BackColor = System.Drawing.Color.White;
             this.panel1.Controls.Add(this.groupBox2);
             this.panel1.Controls.Add(this.groupBox1);
             this.panel1.Location = new System.Drawing.Point(1, 27);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(997, 491);
+            this.panel1.Size = new System.Drawing.Size(997, 545);
             this.panel1.TabIndex = 82;
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.panel4);
+            this.groupBox2.Controls.Add(this.label4);
+            this.groupBox2.Controls.Add(this.label3);
+            this.groupBox2.Controls.Add(this.btnSwitchLine);
+            this.groupBox2.Controls.Add(this.label2);
+            this.groupBox2.Controls.Add(this.cbMode);
+            this.groupBox2.Controls.Add(this.btnCurveLine);
+            this.groupBox2.Controls.Add(this.btnStraightLine);
             this.groupBox2.Controls.Add(this.label19);
             this.groupBox2.Controls.Add(this.label21);
             this.groupBox2.Controls.Add(this.label20);
-            this.groupBox2.Controls.Add(this.btnLeft);
-            this.groupBox2.Controls.Add(this.btnRight);
             this.groupBox2.Controls.Add(this.flowLayoutPanel2);
             this.groupBox2.Controls.Add(this.chart1);
             this.groupBox2.Controls.Add(this.label14);
@@ -382,52 +391,102 @@
             this.groupBox2.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.groupBox2.Location = new System.Drawing.Point(11, 80);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(976, 401);
+            this.groupBox2.Size = new System.Drawing.Size(976, 455);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "参数";
             // 
-            // panel4
+            // label4
             // 
-            this.panel4.BackColor = System.Drawing.Color.White;
-            this.panel4.Controls.Add(this.lbTip);
-            this.panel4.Controls.Add(this.pgBar);
-            this.panel4.Location = new System.Drawing.Point(391, 150);
-            this.panel4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(249, 80);
-            this.panel4.TabIndex = 35;
-            this.panel4.Visible = false;
+            this.label4.AutoSize = true;
+            this.label4.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label4.Location = new System.Drawing.Point(194, 417);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(93, 20);
+            this.label4.TabIndex = 42;
+            this.label4.Text = "亮度绝对值：";
             // 
-            // lbTip
+            // label3
             // 
-            this.lbTip.AutoSize = true;
-            this.lbTip.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lbTip.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.lbTip.Location = new System.Drawing.Point(123, 60);
-            this.lbTip.Name = "lbTip";
-            this.lbTip.Size = new System.Drawing.Size(121, 17);
-            this.lbTip.TabIndex = 67;
-            this.lbTip.Text = "正在写入，请稍后. . .";
+            this.label3.AutoSize = true;
+            this.label3.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label3.Location = new System.Drawing.Point(222, 389);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(65, 20);
+            this.label3.TabIndex = 41;
+            this.label3.Text = "百分比：";
             // 
-            // pgBar
+            // btnSwitchLine
             // 
+            this.btnSwitchLine.BackColor = System.Drawing.Color.White;
+            this.btnSwitchLine.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnSwitchLine.ForeColor = System.Drawing.Color.Black;
+            this.btnSwitchLine.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.btnSwitchLine.Location = new System.Drawing.Point(746, 78);
+            this.btnSwitchLine.Name = "btnSwitchLine";
+            this.btnSwitchLine.Size = new System.Drawing.Size(67, 25);
+            this.btnSwitchLine.TabIndex = 40;
+            this.btnSwitchLine.Text = "默认开关线";
+            this.btnSwitchLine.UseVisualStyleBackColor = false;
+            this.btnSwitchLine.Click += new System.EventHandler(this.BtnSwitchLine_Click);
             // 
+            // label2
             // 
+            this.label2.AutoSize = true;
+            this.label2.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label2.Location = new System.Drawing.Point(816, 37);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(79, 20);
+            this.label2.TabIndex = 39;
+            this.label2.Text = "调节模式：";
             // 
-            this.pgBar.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.pgBar.Location = new System.Drawing.Point(17, 32);
-            this.pgBar.Name = "pgBar";
-            this.pgBar.Size = new System.Drawing.Size(216, 17);
-            this.pgBar.Style = DevComponents.DotNetBar.eDotNetBarStyle.OfficeXP;
-            this.pgBar.TabIndex = 66;
+            // cbMode
+            // 
+            this.cbMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbMode.FormattingEnabled = true;
+            this.cbMode.Items.AddRange(new object[] {
+            "快速",
+            "精细"});
+            this.cbMode.Location = new System.Drawing.Point(901, 32);
+            this.cbMode.Name = "cbMode";
+            this.cbMode.Size = new System.Drawing.Size(54, 28);
+            this.cbMode.TabIndex = 38;
+            this.cbMode.SelectedIndexChanged += new System.EventHandler(this.CbMode_SelectedIndexChanged);
+            // 
+            // btnCurveLine
+            // 
+            this.btnCurveLine.BackColor = System.Drawing.Color.White;
+            this.btnCurveLine.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnCurveLine.ForeColor = System.Drawing.Color.Black;
+            this.btnCurveLine.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.btnCurveLine.Location = new System.Drawing.Point(892, 78);
+            this.btnCurveLine.Name = "btnCurveLine";
+            this.btnCurveLine.Size = new System.Drawing.Size(67, 25);
+            this.btnCurveLine.TabIndex = 37;
+            this.btnCurveLine.Text = "默认曲线";
+            this.btnCurveLine.UseVisualStyleBackColor = false;
+            this.btnCurveLine.Click += new System.EventHandler(this.BtnCurveLine_Click);
+            // 
+            // btnStraightLine
+            // 
+            this.btnStraightLine.BackColor = System.Drawing.Color.White;
+            this.btnStraightLine.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnStraightLine.ForeColor = System.Drawing.Color.Black;
+            this.btnStraightLine.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.btnStraightLine.Location = new System.Drawing.Point(819, 78);
+            this.btnStraightLine.Name = "btnStraightLine";
+            this.btnStraightLine.Size = new System.Drawing.Size(67, 25);
+            this.btnStraightLine.TabIndex = 36;
+            this.btnStraightLine.Text = "默认直线";
+            this.btnStraightLine.UseVisualStyleBackColor = false;
+            this.btnStraightLine.Click += new System.EventHandler(this.BtnStraightLine_Click);
             // 
             // label19
             // 
             this.label19.AutoSize = true;
             this.label19.Font = new System.Drawing.Font("幼圆", 9F);
             this.label19.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label19.Location = new System.Drawing.Point(592, 311);
+            this.label19.Location = new System.Drawing.Point(592, 369);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(89, 12);
             this.label19.TabIndex = 34;
@@ -438,7 +497,7 @@
             this.label21.AutoSize = true;
             this.label21.Font = new System.Drawing.Font("幼圆", 9F);
             this.label21.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label21.Location = new System.Drawing.Point(255, 27);
+            this.label21.Location = new System.Drawing.Point(255, 85);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(155, 12);
             this.label21.TabIndex = 33;
@@ -449,51 +508,11 @@
             this.label20.AutoSize = true;
             this.label20.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label20.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label20.Location = new System.Drawing.Point(578, 22);
+            this.label20.Location = new System.Drawing.Point(578, 80);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(74, 21);
             this.label20.TabIndex = 32;
             this.label20.Text = "调光曲线";
-            // 
-            // btnLeft
-            // 
-            this.btnLeft.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnLeft.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnLeft.BackColor = System.Drawing.Color.White;
-            this.btnLeft.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
-            this.btnLeft.FocusCuesEnabled = false;
-            this.btnLeft.Font = new System.Drawing.Font("黑体", 9F);
-            this.btnLeft.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None;
-            this.btnLeft.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnLeft.HoverImage")));
-            this.btnLeft.Image = ((System.Drawing.Image)(resources.GetObject("btnLeft.Image")));
-            this.btnLeft.Location = new System.Drawing.Point(298, 349);
-            this.btnLeft.Margin = new System.Windows.Forms.Padding(6);
-            this.btnLeft.Name = "btnLeft";
-            this.btnLeft.Size = new System.Drawing.Size(15, 15);
-            this.btnLeft.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnLeft.TabIndex = 31;
-            this.btnLeft.Tooltip = "调用";
-            this.btnLeft.Click += new System.EventHandler(this.btnLeft_Click);
-            // 
-            // btnRight
-            // 
-            this.btnRight.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnRight.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnRight.BackColor = System.Drawing.Color.White;
-            this.btnRight.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
-            this.btnRight.FocusCuesEnabled = false;
-            this.btnRight.Font = new System.Drawing.Font("黑体", 9F);
-            this.btnRight.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None;
-            this.btnRight.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnRight.HoverImage")));
-            this.btnRight.Image = ((System.Drawing.Image)(resources.GetObject("btnRight.Image")));
-            this.btnRight.Location = new System.Drawing.Point(915, 349);
-            this.btnRight.Margin = new System.Windows.Forms.Padding(6);
-            this.btnRight.Name = "btnRight";
-            this.btnRight.Size = new System.Drawing.Size(15, 15);
-            this.btnRight.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnRight.TabIndex = 30;
-            this.btnRight.Tooltip = "调用";
-            this.btnRight.Click += new System.EventHandler(this.btnRight_Click);
             // 
             // flowLayoutPanel2
             // 
@@ -508,6 +527,7 @@
             this.flowLayoutPanel2.Controls.Add(this.txtunit8);
             this.flowLayoutPanel2.Controls.Add(this.txtunit9);
             this.flowLayoutPanel2.Controls.Add(this.txtunit10);
+            this.flowLayoutPanel2.Controls.Add(this.txtunit11);
             this.flowLayoutPanel2.Controls.Add(this.txtabs1);
             this.flowLayoutPanel2.Controls.Add(this.txtabs2);
             this.flowLayoutPanel2.Controls.Add(this.txtabs3);
@@ -518,10 +538,11 @@
             this.flowLayoutPanel2.Controls.Add(this.txtabs8);
             this.flowLayoutPanel2.Controls.Add(this.txtabs9);
             this.flowLayoutPanel2.Controls.Add(this.txtabs10);
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(319, 336);
+            this.flowLayoutPanel2.Controls.Add(this.txtabs11);
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(291, 391);
             this.flowLayoutPanel2.Margin = new System.Windows.Forms.Padding(0);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(594, 50);
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(653, 46);
             this.flowLayoutPanel2.TabIndex = 29;
             // 
             // txtunit1
@@ -554,7 +575,7 @@
             this.txtunit2.ReadOnly = true;
             this.txtunit2.Size = new System.Drawing.Size(59, 23);
             this.txtunit2.TabIndex = 18;
-            this.txtunit2.Text = "2%";
+            this.txtunit2.Text = "10%";
             this.txtunit2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtunit3
@@ -570,7 +591,7 @@
             this.txtunit3.ReadOnly = true;
             this.txtunit3.Size = new System.Drawing.Size(59, 23);
             this.txtunit3.TabIndex = 19;
-            this.txtunit3.Text = "3%";
+            this.txtunit3.Text = "20%";
             this.txtunit3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtunit4
@@ -586,7 +607,7 @@
             this.txtunit4.ReadOnly = true;
             this.txtunit4.Size = new System.Drawing.Size(59, 23);
             this.txtunit4.TabIndex = 20;
-            this.txtunit4.Text = "4%";
+            this.txtunit4.Text = "30%";
             this.txtunit4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtunit5
@@ -602,7 +623,7 @@
             this.txtunit5.ReadOnly = true;
             this.txtunit5.Size = new System.Drawing.Size(59, 23);
             this.txtunit5.TabIndex = 21;
-            this.txtunit5.Text = "5%";
+            this.txtunit5.Text = "40%";
             this.txtunit5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtunit6
@@ -618,7 +639,7 @@
             this.txtunit6.ReadOnly = true;
             this.txtunit6.Size = new System.Drawing.Size(59, 23);
             this.txtunit6.TabIndex = 22;
-            this.txtunit6.Text = "6%";
+            this.txtunit6.Text = "50%";
             this.txtunit6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtunit7
@@ -634,7 +655,7 @@
             this.txtunit7.ReadOnly = true;
             this.txtunit7.Size = new System.Drawing.Size(59, 23);
             this.txtunit7.TabIndex = 23;
-            this.txtunit7.Text = "7%";
+            this.txtunit7.Text = "60%";
             this.txtunit7.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtunit8
@@ -650,7 +671,7 @@
             this.txtunit8.ReadOnly = true;
             this.txtunit8.Size = new System.Drawing.Size(59, 23);
             this.txtunit8.TabIndex = 33;
-            this.txtunit8.Text = "8%";
+            this.txtunit8.Text = "70%";
             this.txtunit8.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtunit9
@@ -666,7 +687,7 @@
             this.txtunit9.ReadOnly = true;
             this.txtunit9.Size = new System.Drawing.Size(59, 23);
             this.txtunit9.TabIndex = 37;
-            this.txtunit9.Text = "9%";
+            this.txtunit9.Text = "80%";
             this.txtunit9.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtunit10
@@ -682,8 +703,24 @@
             this.txtunit10.ReadOnly = true;
             this.txtunit10.Size = new System.Drawing.Size(59, 23);
             this.txtunit10.TabIndex = 24;
-            this.txtunit10.Text = "10%";
+            this.txtunit10.Text = "90%";
             this.txtunit10.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // txtunit11
+            // 
+            this.txtunit11.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.txtunit11.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtunit11.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.txtunit11.Enabled = false;
+            this.txtunit11.Font = new System.Drawing.Font("幼圆", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.txtunit11.Location = new System.Drawing.Point(590, 0);
+            this.txtunit11.Margin = new System.Windows.Forms.Padding(0);
+            this.txtunit11.Name = "txtunit11";
+            this.txtunit11.ReadOnly = true;
+            this.txtunit11.Size = new System.Drawing.Size(59, 23);
+            this.txtunit11.TabIndex = 42;
+            this.txtunit11.Text = "100%";
+            this.txtunit11.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtabs1
             // 
@@ -697,6 +734,8 @@
             this.txtabs1.Size = new System.Drawing.Size(59, 23);
             this.txtabs1.TabIndex = 26;
             this.txtabs1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtabs1.Enter += new System.EventHandler(this.Txtabs1_Enter);
+            this.txtabs1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Txtabs1_KeyDown);
             this.txtabs1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtabs1_KeyPress);
             this.txtabs1.Leave += new System.EventHandler(this.txtabs1_Leave);
             // 
@@ -712,6 +751,8 @@
             this.txtabs2.Size = new System.Drawing.Size(59, 23);
             this.txtabs2.TabIndex = 27;
             this.txtabs2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtabs2.Enter += new System.EventHandler(this.Txtabs2_Enter);
+            this.txtabs2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Txtabs1_KeyDown);
             this.txtabs2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtabs1_KeyPress);
             this.txtabs2.Leave += new System.EventHandler(this.txtabs1_Leave);
             // 
@@ -727,6 +768,8 @@
             this.txtabs3.Size = new System.Drawing.Size(59, 23);
             this.txtabs3.TabIndex = 28;
             this.txtabs3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtabs3.Enter += new System.EventHandler(this.Txtabs3_Enter);
+            this.txtabs3.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Txtabs1_KeyDown);
             this.txtabs3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtabs1_KeyPress);
             this.txtabs3.Leave += new System.EventHandler(this.txtabs1_Leave);
             // 
@@ -742,6 +785,8 @@
             this.txtabs4.Size = new System.Drawing.Size(59, 23);
             this.txtabs4.TabIndex = 29;
             this.txtabs4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtabs4.Enter += new System.EventHandler(this.Txtabs4_Enter);
+            this.txtabs4.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Txtabs1_KeyDown);
             this.txtabs4.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtabs1_KeyPress);
             this.txtabs4.Leave += new System.EventHandler(this.txtabs1_Leave);
             // 
@@ -757,6 +802,8 @@
             this.txtabs5.Size = new System.Drawing.Size(59, 23);
             this.txtabs5.TabIndex = 30;
             this.txtabs5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtabs5.Enter += new System.EventHandler(this.Txtabs5_Enter);
+            this.txtabs5.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Txtabs1_KeyDown);
             this.txtabs5.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtabs1_KeyPress);
             this.txtabs5.Leave += new System.EventHandler(this.txtabs1_Leave);
             // 
@@ -772,6 +819,8 @@
             this.txtabs6.Size = new System.Drawing.Size(59, 23);
             this.txtabs6.TabIndex = 31;
             this.txtabs6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtabs6.Enter += new System.EventHandler(this.Txtabs6_Enter);
+            this.txtabs6.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Txtabs1_KeyDown);
             this.txtabs6.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtabs1_KeyPress);
             this.txtabs6.Leave += new System.EventHandler(this.txtabs1_Leave);
             // 
@@ -787,6 +836,8 @@
             this.txtabs7.Size = new System.Drawing.Size(59, 23);
             this.txtabs7.TabIndex = 32;
             this.txtabs7.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtabs7.Enter += new System.EventHandler(this.Txtabs7_Enter);
+            this.txtabs7.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Txtabs1_KeyDown);
             this.txtabs7.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtabs1_KeyPress);
             this.txtabs7.Leave += new System.EventHandler(this.txtabs1_Leave);
             // 
@@ -802,6 +853,8 @@
             this.txtabs8.Size = new System.Drawing.Size(59, 23);
             this.txtabs8.TabIndex = 39;
             this.txtabs8.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtabs8.Enter += new System.EventHandler(this.Txtabs8_Enter);
+            this.txtabs8.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Txtabs1_KeyDown);
             this.txtabs8.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtabs1_KeyPress);
             this.txtabs8.Leave += new System.EventHandler(this.txtabs1_Leave);
             // 
@@ -817,6 +870,8 @@
             this.txtabs9.Size = new System.Drawing.Size(59, 23);
             this.txtabs9.TabIndex = 40;
             this.txtabs9.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtabs9.Enter += new System.EventHandler(this.Txtabs9_Enter);
+            this.txtabs9.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Txtabs1_KeyDown);
             this.txtabs9.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtabs1_KeyPress);
             this.txtabs9.Leave += new System.EventHandler(this.txtabs1_Leave);
             // 
@@ -832,33 +887,51 @@
             this.txtabs10.Size = new System.Drawing.Size(59, 23);
             this.txtabs10.TabIndex = 41;
             this.txtabs10.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtabs10.Enter += new System.EventHandler(this.Txtabs10_Enter);
+            this.txtabs10.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Txtabs1_KeyDown);
             this.txtabs10.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtabs1_KeyPress);
             this.txtabs10.Leave += new System.EventHandler(this.txtabs1_Leave);
+            // 
+            // txtabs11
+            // 
+            this.txtabs11.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.txtabs11.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtabs11.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtabs11.Font = new System.Drawing.Font("幼圆", 10.5F);
+            this.txtabs11.Location = new System.Drawing.Point(590, 23);
+            this.txtabs11.Margin = new System.Windows.Forms.Padding(0);
+            this.txtabs11.Name = "txtabs11";
+            this.txtabs11.Size = new System.Drawing.Size(59, 23);
+            this.txtabs11.TabIndex = 43;
+            this.txtabs11.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtabs11.Enter += new System.EventHandler(this.Txtabs11_Enter);
+            this.txtabs11.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Txtabs1_KeyDown);
+            this.txtabs11.Leave += new System.EventHandler(this.txtabs1_Leave);
             // 
             // chart1
             // 
             this.chart1.BackColor = System.Drawing.Color.Transparent;
-            chartArea2.Name = "ChartArea1";
-            chartArea2.Position.Auto = false;
-            chartArea2.Position.Height = 97F;
-            chartArea2.Position.Width = 100F;
-            chartArea2.Position.Y = 3F;
-            this.chart1.ChartAreas.Add(chartArea2);
-            legend2.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Top;
-            legend2.Enabled = false;
-            legend2.MaximumAutoSize = 40F;
-            legend2.Name = "Legend1";
-            this.chart1.Legends.Add(legend2);
-            this.chart1.Location = new System.Drawing.Point(235, 39);
+            chartArea1.Name = "ChartArea1";
+            chartArea1.Position.Auto = false;
+            chartArea1.Position.Height = 97F;
+            chartArea1.Position.Width = 100F;
+            chartArea1.Position.Y = 3F;
+            this.chart1.ChartAreas.Add(chartArea1);
+            legend1.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Top;
+            legend1.Enabled = false;
+            legend1.MaximumAutoSize = 40F;
+            legend1.Name = "Legend1";
+            this.chart1.Legends.Add(legend1);
+            this.chart1.Location = new System.Drawing.Point(235, 97);
             this.chart1.Name = "chart1";
             this.chart1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series2.Legend = "Legend1";
-            series2.Name = "Series1";
-            series2.ToolTip = "#VALX #VAL";
-            series2.YValuesPerPoint = 6;
-            this.chart1.Series.Add(series2);
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            series1.ToolTip = "#VALX #VAL";
+            series1.YValuesPerPoint = 6;
+            this.chart1.Series.Add(series1);
             this.chart1.Size = new System.Drawing.Size(739, 266);
             this.chart1.TabIndex = 28;
             this.chart1.Click += new System.EventHandler(this.chart1_Click);
@@ -868,7 +941,7 @@
             // 
             this.label14.AutoSize = true;
             this.label14.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label14.Location = new System.Drawing.Point(180, 314);
+            this.label14.Location = new System.Drawing.Point(180, 298);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(49, 20);
             this.label14.TabIndex = 26;
@@ -876,7 +949,7 @@
             // 
             // txtMin
             // 
-            this.txtMin.Location = new System.Drawing.Point(121, 311);
+            this.txtMin.Location = new System.Drawing.Point(121, 295);
             this.txtMin.Name = "txtMin";
             this.txtMin.Size = new System.Drawing.Size(55, 26);
             this.txtMin.TabIndex = 25;
@@ -887,7 +960,7 @@
             // 
             this.label15.AutoSize = true;
             this.label15.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label15.Location = new System.Drawing.Point(13, 314);
+            this.label15.Location = new System.Drawing.Point(13, 298);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(107, 20);
             this.label15.TabIndex = 24;
@@ -897,7 +970,7 @@
             // 
             this.label13.AutoSize = true;
             this.label13.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label13.Location = new System.Drawing.Point(180, 249);
+            this.label13.Location = new System.Drawing.Point(180, 233);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(49, 20);
             this.label13.TabIndex = 23;
@@ -907,7 +980,7 @@
             // 
             this.label12.AutoSize = true;
             this.label12.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label12.Location = new System.Drawing.Point(13, 185);
+            this.label12.Location = new System.Drawing.Point(13, 169);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(107, 20);
             this.label12.TabIndex = 22;
@@ -969,7 +1042,7 @@
             "220s",
             "230s",
             "240s"});
-            this.cbChangeState.Location = new System.Drawing.Point(121, 182);
+            this.cbChangeState.Location = new System.Drawing.Point(121, 166);
             this.cbChangeState.Name = "cbChangeState";
             this.cbChangeState.Size = new System.Drawing.Size(107, 28);
             this.cbChangeState.TabIndex = 21;
@@ -979,7 +1052,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label11.Location = new System.Drawing.Point(13, 117);
+            this.label11.Location = new System.Drawing.Point(13, 101);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(107, 20);
             this.label11.TabIndex = 20;
@@ -1000,7 +1073,7 @@
             "90%",
             "100%",
             "恢复上次亮度"});
-            this.cbOnState.Location = new System.Drawing.Point(121, 114);
+            this.cbOnState.Location = new System.Drawing.Point(121, 98);
             this.cbOnState.Name = "cbOnState";
             this.cbOnState.Size = new System.Drawing.Size(107, 28);
             this.cbOnState.TabIndex = 19;
@@ -1010,7 +1083,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label10.Location = new System.Drawing.Point(13, 53);
+            this.label10.Location = new System.Drawing.Point(13, 37);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(107, 20);
             this.label10.TabIndex = 18;
@@ -1032,7 +1105,7 @@
             "90%",
             "100%",
             "恢复断电状态"});
-            this.cbPowerState.Location = new System.Drawing.Point(121, 50);
+            this.cbPowerState.Location = new System.Drawing.Point(121, 34);
             this.cbPowerState.Name = "cbPowerState";
             this.cbPowerState.Size = new System.Drawing.Size(107, 28);
             this.cbPowerState.TabIndex = 17;
@@ -1040,7 +1113,7 @@
             // 
             // txtMax
             // 
-            this.txtMax.Location = new System.Drawing.Point(121, 246);
+            this.txtMax.Location = new System.Drawing.Point(121, 230);
             this.txtMax.Name = "txtMax";
             this.txtMax.Size = new System.Drawing.Size(55, 26);
             this.txtMax.TabIndex = 16;
@@ -1051,7 +1124,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label9.Location = new System.Drawing.Point(13, 249);
+            this.label9.Location = new System.Drawing.Point(13, 233);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(107, 20);
             this.label9.TabIndex = 15;
@@ -1134,20 +1207,12 @@
             this.timer2.Interval = 5000;
             this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
             // 
-            // backgroundWorker1
-            // 
-            this.backgroundWorker1.WorkerReportsProgress = true;
-            this.backgroundWorker1.WorkerSupportsCancellation = true;
-            this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
-            this.backgroundWorker1.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorker1_ProgressChanged);
-            this.backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
-            // 
             // SetDimmer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkGray;
-            this.ClientSize = new System.Drawing.Size(1000, 520);
+            this.ClientSize = new System.Drawing.Size(1000, 574);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.plInfoTitle);
             this.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
@@ -1164,8 +1229,6 @@
             this.panel1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            this.panel4.ResumeLayout(false);
-            this.panel4.PerformLayout();
             this.flowLayoutPanel2.ResumeLayout(false);
             this.flowLayoutPanel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
@@ -1231,8 +1294,6 @@
         private System.Windows.Forms.TextBox txtabs8;
         private System.Windows.Forms.TextBox txtabs9;
         private System.Windows.Forms.TextBox txtabs10;
-        private DevComponents.DotNetBar.ButtonX btnRight;
-        private DevComponents.DotNetBar.ButtonX btnLeft;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Timer timer1;
@@ -1241,9 +1302,14 @@
         private DevComponents.DotNetBar.ButtonX btnOutput;
         private System.Windows.Forms.Timer timer2;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.ComponentModel.BackgroundWorker backgroundWorker1;
-        private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.Label lbTip;
-        private DevComponents.DotNetBar.Controls.ProgressBarX pgBar;
+        private System.Windows.Forms.Button btnCurveLine;
+        private System.Windows.Forms.Button btnStraightLine;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ComboBox cbMode;
+        private System.Windows.Forms.TextBox txtunit11;
+        private System.Windows.Forms.TextBox txtabs11;
+        private System.Windows.Forms.Button btnSwitchLine;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label3;
     }
 }

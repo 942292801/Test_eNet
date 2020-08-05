@@ -45,6 +45,11 @@
             this.shortTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.del = new System.Windows.Forms.DataGridViewButtonColumn();
             this.checkDel = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.相同ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
+            this.升序ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.降序ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ultraSplitter1 = new Infragistics.Win.Misc.UltraSplitter();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
@@ -84,15 +89,11 @@
             this.styleManager1 = new DevComponents.DotNetBar.StyleManager(this.components);
             this.checkBoxItem1 = new DevComponents.DotNetBar.CheckBoxItem();
             this.doubleClickTimer = new System.Windows.Forms.Timer(this.components);
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.相同ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
-            this.升序ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.降序ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.contextMenuStrip1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel6.SuspendLayout();
@@ -102,7 +103,6 @@
             this.panel9.SuspendLayout();
             this.plInfoTitle.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
-            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -140,6 +140,7 @@
             // 
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.AllowUserToResizeRows = false;
             this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
             this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridView1.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableAlwaysIncludeHeaderText;
@@ -251,6 +252,42 @@
             this.checkDel.Name = "checkDel";
             this.checkDel.Width = 50;
             // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.相同ToolStripMenuItem,
+            this.toolStripMenuItem1,
+            this.升序ToolStripMenuItem,
+            this.降序ToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip2";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(150, 76);
+            // 
+            // 相同ToolStripMenuItem
+            // 
+            this.相同ToolStripMenuItem.Name = "相同ToolStripMenuItem";
+            this.相同ToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
+            this.相同ToolStripMenuItem.Text = "相同(Ctrl+Q)";
+            this.相同ToolStripMenuItem.Click += new System.EventHandler(this.相同ToolStripMenuItem_Click);
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(146, 6);
+            // 
+            // 升序ToolStripMenuItem
+            // 
+            this.升序ToolStripMenuItem.Name = "升序ToolStripMenuItem";
+            this.升序ToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
+            this.升序ToolStripMenuItem.Text = "升序(Ctrl+W)";
+            this.升序ToolStripMenuItem.Click += new System.EventHandler(this.升序ToolStripMenuItem_Click);
+            // 
+            // 降序ToolStripMenuItem
+            // 
+            this.降序ToolStripMenuItem.Name = "降序ToolStripMenuItem";
+            this.降序ToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
+            this.降序ToolStripMenuItem.Text = "降序(Ctrl+D)";
+            this.降序ToolStripMenuItem.Click += new System.EventHandler(this.降序ToolStripMenuItem_Click);
+            // 
             // ultraSplitter1
             // 
             this.ultraSplitter1.Location = new System.Drawing.Point(204, 0);
@@ -312,7 +349,6 @@
             this.listbox.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Rounded;
             this.listbox.BackgroundStyle.TextColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarCaptionText;
             this.listbox.BackgroundStyle.TextShadowColor = System.Drawing.Color.Blue;
-            this.listbox.CheckStateMember = null;
             this.listbox.ContainerControlProcessDialogKey = true;
             this.listbox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.listbox.DragDropSupport = true;
@@ -836,42 +872,6 @@
             this.doubleClickTimer.Interval = 40;
             this.doubleClickTimer.Tick += new System.EventHandler(this.doubleClickTimer_Tick);
             // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.相同ToolStripMenuItem,
-            this.toolStripMenuItem1,
-            this.升序ToolStripMenuItem,
-            this.降序ToolStripMenuItem});
-            this.contextMenuStrip1.Name = "contextMenuStrip2";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(150, 76);
-            // 
-            // 相同ToolStripMenuItem
-            // 
-            this.相同ToolStripMenuItem.Name = "相同ToolStripMenuItem";
-            this.相同ToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
-            this.相同ToolStripMenuItem.Text = "相同(Ctrl+Q)";
-            this.相同ToolStripMenuItem.Click += new System.EventHandler(this.相同ToolStripMenuItem_Click);
-            // 
-            // toolStripMenuItem1
-            // 
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(146, 6);
-            // 
-            // 升序ToolStripMenuItem
-            // 
-            this.升序ToolStripMenuItem.Name = "升序ToolStripMenuItem";
-            this.升序ToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
-            this.升序ToolStripMenuItem.Text = "升序(Ctrl+W)";
-            this.升序ToolStripMenuItem.Click += new System.EventHandler(this.升序ToolStripMenuItem_Click);
-            // 
-            // 降序ToolStripMenuItem
-            // 
-            this.降序ToolStripMenuItem.Name = "降序ToolStripMenuItem";
-            this.降序ToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
-            this.降序ToolStripMenuItem.Text = "降序(Ctrl+D)";
-            this.降序ToolStripMenuItem.Click += new System.EventHandler(this.降序ToolStripMenuItem_Click);
-            // 
             // DgvTimer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -887,6 +887,7 @@
             this.panel2.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.contextMenuStrip1.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
             this.panel6.ResumeLayout(false);
@@ -900,7 +901,6 @@
             this.plInfoTitle.ResumeLayout(false);
             this.plInfoTitle.PerformLayout();
             this.flowLayoutPanel1.ResumeLayout(false);
-            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

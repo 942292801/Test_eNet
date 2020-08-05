@@ -233,4 +233,7 @@
     <value>端口</value>
     <comment>端口</comment>
   </data>
+  <data name="UnrecognizedDev" xml:space="preserve">
+    <value>未识别设备</value>
+  </data>
 </root>

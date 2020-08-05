@@ -99,16 +99,25 @@ namespace eNet编辑器.DgvView
             t.IsBackground = true;
             t.Start();
         }
+
         #region 测试异步加载
         public delegate void FormIniDelegate();
         private void ShowDatatable()
         {
-            this.Invoke(new FormIniDelegate(TabIni));
+            try
+            {
+                this.Invoke(new FormIniDelegate(TabIni));
+
+            }
+            catch
+            {
+            }
 
         }
 
 
         #endregion
+
         /// <summary>
         /// 加载DgV所有信息
         /// </summary>

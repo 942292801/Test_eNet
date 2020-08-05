@@ -46,6 +46,8 @@
             this.btnRefresh = new DevComponents.DotNetBar.ButtonX();
             this.cbOnlineIP = new System.Windows.Forms.ComboBox();
             this.lbName = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.lbLocalIP = new System.Windows.Forms.Label();
             this.plInfoTitle.SuspendLayout();
             this.panel4.SuspendLayout();
             this.SuspendLayout();
@@ -68,8 +70,8 @@
             // btnUpdate
             // 
             this.btnUpdate.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnUpdate.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnUpdate.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.btnUpdate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnUpdate.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
             this.btnUpdate.FocusCuesEnabled = false;
@@ -139,7 +141,11 @@
             // 
             // panel4
             // 
+            this.panel4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.panel4.BackColor = System.Drawing.Color.White;
+            this.panel4.Controls.Add(this.lbLocalIP);
+            this.panel4.Controls.Add(this.label1);
             this.panel4.Controls.Add(this.txtDevMAC);
             this.panel4.Controls.Add(this.txtDevIP);
             this.panel4.Controls.Add(this.txtDevMask);
@@ -154,7 +160,7 @@
             this.panel4.Location = new System.Drawing.Point(1, 27);
             this.panel4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(258, 219);
+            this.panel4.Size = new System.Drawing.Size(258, 245);
             this.panel4.TabIndex = 10;
             // 
             // txtDevMAC
@@ -244,7 +250,7 @@
             this.btnRefresh.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None;
             this.btnRefresh.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnRefresh.HoverImage")));
             this.btnRefresh.Image = ((System.Drawing.Image)(resources.GetObject("btnRefresh.Image")));
-            this.btnRefresh.Location = new System.Drawing.Point(229, 23);
+            this.btnRefresh.Location = new System.Drawing.Point(230, 23);
             this.btnRefresh.Margin = new System.Windows.Forms.Padding(6);
             this.btnRefresh.Name = "btnRefresh";
             this.btnRefresh.Size = new System.Drawing.Size(15, 15);
@@ -273,12 +279,32 @@
             this.lbName.TabIndex = 64;
             this.lbName.Text = "主机：";
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(7, 215);
+            this.label1.Margin = new System.Windows.Forms.Padding(6);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(79, 17);
+            this.label1.TabIndex = 82;
+            this.label1.Text = "本地IP地址：";
+            // 
+            // lbLocalIP
+            // 
+            this.lbLocalIP.AutoSize = true;
+            this.lbLocalIP.Location = new System.Drawing.Point(89, 215);
+            this.lbLocalIP.Margin = new System.Windows.Forms.Padding(6);
+            this.lbLocalIP.Name = "lbLocalIP";
+            this.lbLocalIP.Size = new System.Drawing.Size(26, 17);
+            this.lbLocalIP.TabIndex = 83;
+            this.lbLocalIP.Text = "xxx";
+            // 
             // masterIPchange
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkGray;
-            this.ClientSize = new System.Drawing.Size(261, 248);
+            this.ClientSize = new System.Drawing.Size(261, 274);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.plInfoTitle);
             this.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
@@ -315,5 +341,7 @@
         private DevComponents.DotNetBar.ButtonX btnRefresh;
         private System.Windows.Forms.ComboBox cbOnlineIP;
         private System.Windows.Forms.Label lbName;
+        private System.Windows.Forms.Label lbLocalIP;
+        private System.Windows.Forms.Label label1;
     }
 }

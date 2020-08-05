@@ -101,18 +101,6 @@ namespace eNet编辑器
         #region 验证方法
 
 
-        /// <summary>
-        /// 判断是否十六进制格式字符串
-        /// </summary>
-        /// <param name="str"></param>
-        /// <returns></returns>
-        public static bool IsHexadecimal(string input)
-        {
-            string pattern = @"[A-Fa-f0-9]+$";
-            return IsMatch(input, pattern);
-        }
-
-
         /// <summary>  
         /// 验证数字(double类型)  
         /// [可以包含负号和小数点]  
@@ -128,6 +116,24 @@ namespace eNet编辑器
                 return true;
             else
                 return false;
+        }
+
+
+        public static IList<char> HexSet = new List<char>()
+       { '0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F','a','b','c','d','e','f' };
+        /// <summary>
+        /// 判断十六进制字符串hex是否正确
+        /// </summary>
+        /// <param name="hex">十六进制字符串</param>
+        /// <returns>true：不正确，false：正确</returns>
+        public static bool IsHexadecimal(string hex)
+        {
+            foreach (char item in hex)
+            {
+                if (!HexSet.Contains<char>(item))
+                    return false;
+            }
+            return true;
         }
 
         /// <summary>  

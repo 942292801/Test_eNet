@@ -41,6 +41,11 @@
             this.showAddress = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.del = new System.Windows.Forms.DataGridViewButtonColumn();
             this.add = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.相同ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
+            this.升序ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.降序ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.plInfoTitle = new System.Windows.Forms.Panel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.btnDown = new DevComponents.DotNetBar.ButtonX();
@@ -81,12 +86,8 @@
             this.imgList6 = new DevExpress.Utils.ImageCollection(this.components);
             this.imgList7 = new DevExpress.Utils.ImageCollection(this.components);
             this.imgList8 = new DevExpress.Utils.ImageCollection(this.components);
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.相同ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
-            this.升序ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.降序ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.contextMenuStrip1.SuspendLayout();
             this.plInfoTitle.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -107,13 +108,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.imgList6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgList7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgList8)).BeginInit();
-            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // dataGridView1
             // 
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.AllowUserToResizeRows = false;
             this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
             this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridView1.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableAlwaysIncludeHeaderText;
@@ -224,6 +225,42 @@
             this.add.Name = "add";
             this.add.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.add.Width = 60;
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.相同ToolStripMenuItem,
+            this.toolStripMenuItem1,
+            this.升序ToolStripMenuItem,
+            this.降序ToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip2";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(150, 76);
+            // 
+            // 相同ToolStripMenuItem
+            // 
+            this.相同ToolStripMenuItem.Name = "相同ToolStripMenuItem";
+            this.相同ToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
+            this.相同ToolStripMenuItem.Text = "相同(Ctrl+Q)";
+            this.相同ToolStripMenuItem.Click += new System.EventHandler(this.相同ToolStripMenuItem_Click);
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(146, 6);
+            // 
+            // 升序ToolStripMenuItem
+            // 
+            this.升序ToolStripMenuItem.Name = "升序ToolStripMenuItem";
+            this.升序ToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
+            this.升序ToolStripMenuItem.Text = "升序(Ctrl+W)";
+            this.升序ToolStripMenuItem.Click += new System.EventHandler(this.升序ToolStripMenuItem_Click);
+            // 
+            // 降序ToolStripMenuItem
+            // 
+            this.降序ToolStripMenuItem.Name = "降序ToolStripMenuItem";
+            this.降序ToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
+            this.降序ToolStripMenuItem.Text = "降序(Ctrl+D)";
+            this.降序ToolStripMenuItem.Click += new System.EventHandler(this.降序ToolStripMenuItem_Click);
             // 
             // plInfoTitle
             // 
@@ -742,42 +779,6 @@
             this.imgList8.Images.SetKeyName(4, "button8_5.png");
             this.imgList8.Images.SetKeyName(5, "button8_6.png");
             // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.相同ToolStripMenuItem,
-            this.toolStripMenuItem1,
-            this.升序ToolStripMenuItem,
-            this.降序ToolStripMenuItem});
-            this.contextMenuStrip1.Name = "contextMenuStrip2";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 98);
-            // 
-            // 相同ToolStripMenuItem
-            // 
-            this.相同ToolStripMenuItem.Name = "相同ToolStripMenuItem";
-            this.相同ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.相同ToolStripMenuItem.Text = "相同(Ctrl+Q)";
-            this.相同ToolStripMenuItem.Click += new System.EventHandler(this.相同ToolStripMenuItem_Click);
-            // 
-            // toolStripMenuItem1
-            // 
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(177, 6);
-            // 
-            // 升序ToolStripMenuItem
-            // 
-            this.升序ToolStripMenuItem.Name = "升序ToolStripMenuItem";
-            this.升序ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.升序ToolStripMenuItem.Text = "升序(Ctrl+W)";
-            this.升序ToolStripMenuItem.Click += new System.EventHandler(this.升序ToolStripMenuItem_Click);
-            // 
-            // 降序ToolStripMenuItem
-            // 
-            this.降序ToolStripMenuItem.Name = "降序ToolStripMenuItem";
-            this.降序ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.降序ToolStripMenuItem.Text = "降序(Ctrl+D)";
-            this.降序ToolStripMenuItem.Click += new System.EventHandler(this.降序ToolStripMenuItem_Click);
-            // 
             // DgvPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -790,6 +791,7 @@
             this.Text = "DgvBind";
             this.Load += new System.EventHandler(this.DgvBind_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.contextMenuStrip1.ResumeLayout(false);
             this.plInfoTitle.ResumeLayout(false);
             this.plInfoTitle.PerformLayout();
             this.flowLayoutPanel1.ResumeLayout(false);
@@ -813,7 +815,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.imgList6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgList7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgList8)).EndInit();
-            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

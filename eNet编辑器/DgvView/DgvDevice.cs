@@ -14,7 +14,7 @@ using System.Text.RegularExpressions;
 using eNet编辑器.Controller;
 using System.Net.Sockets;
 using System.Threading;
-
+using eNet编辑器.OtherView;
 
 namespace eNet编辑器.DgvView
 {
@@ -65,15 +65,32 @@ namespace eNet编辑器.DgvView
 
         public void dgvDeviceAddItem()
         {
-            Thread t = new Thread(ShowDatatable);
-            t.IsBackground = true;
-            t.Start();
+            try
+            {
+
+                Thread t = new Thread(ShowDatatable);
+                t.IsBackground = true;
+                t.Start();
+            }
+            catch
+            {
+
+            }
+           
         }
         #region 测试异步加载
         public delegate void FormIniDelegate();
         private void ShowDatatable()
         {
-            this.Invoke(new FormIniDelegate(TabIni));
+            try
+            {
+                this.Invoke(new FormIniDelegate(TabIni));
+
+            }
+            catch
+            {
+
+            }
 
         }
 
@@ -86,62 +103,69 @@ namespace eNet编辑器.DgvView
         /// <param name="num">树状图索引号</param>
         public void TabIni()
         {
-            this.dataGridView1.Rows.Clear();
-            if (FileMesege.tnselectNode == null)
+            try
             {
-                return;
-            }
-            string[] ips = FileMesege.tnselectNode.Text.Split(' ');   
-            if (ips == null)
-            {
-                return;
-            }
-            //封装一个添加DGV信息的函数 打开配置文件自己读
-            foreach (DataJson.Device dec in FileMesege.DeviceList)
-            {
-                if (dec.ip == ips[0])
+                this.dataGridView1.Rows.Clear();
+                if (FileMesege.tnselectNode == null)
                 {
-                    int index = this.dataGridView1.Rows.Add();
-
-                    this.dataGridView1.Rows[index].Cells[4].Value = string.Format("{0} {1} {2} {3}", dec.area1, dec.area2, dec.area3, dec.area4).Trim();
-                    this.dataGridView1.Rows[index].Cells[5].Value = dec.name;
-                    this.dataGridView1.Rows[index].Cells[0].Value = "网关";
-                    this.dataGridView1.Rows[index].Cells[1].Value = dec.master;
-                    this.dataGridView1.Rows[index].Cells[2].Value = dec.sn;
-                    this.dataGridView1.Rows[index].Cells[3].Value = dec.ver;
-                    
-
-                    //添加区域名称和操作
-                    foreach (DataJson.Module m in dec.module)
+                    return;
+                }
+                string[] ips = FileMesege.tnselectNode.Text.Split(' ');
+                if (ips == null)
+                {
+                    return;
+                }
+                //封装一个添加DGV信息的函数 打开配置文件自己读
+                foreach (DataJson.Device dec in FileMesege.DeviceList)
+                {
+                    if (dec.ip == ips[0])
                     {
-                        index = this.dataGridView1.Rows.Add();
-                        this.dataGridView1.Rows[index].Cells[0].Value = m.id;
-                        this.dataGridView1.Rows[index].Cells[1].Value = m.device;
-                        this.dataGridView1.Rows[index].Cells[2].Value = m.sn;
-                        this.dataGridView1.Rows[index].Cells[3].Value = m.ver;
-                        this.dataGridView1.Rows[index].Cells[4].Value = string.Format("{0} {1} {2} {3}", m.area1, m.area2, m.area3, m.area4).Trim();
-                        this.dataGridView1.Rows[index].Cells[5].Value = m.name;
+                        int index = this.dataGridView1.Rows.Add();
+
+                        this.dataGridView1.Rows[index].Cells[4].Value = string.Format("{0} {1} {2} {3}", dec.area1, dec.area2, dec.area3, dec.area4).Trim();
+                        this.dataGridView1.Rows[index].Cells[5].Value = dec.name;
+                        this.dataGridView1.Rows[index].Cells[0].Value = "网关";
+                        this.dataGridView1.Rows[index].Cells[1].Value = dec.master;
+                        this.dataGridView1.Rows[index].Cells[2].Value = dec.sn;
+                        this.dataGridView1.Rows[index].Cells[3].Value = dec.ver;
                         this.dataGridView1.Rows[index].Cells[6].Style.ForeColor = Color.Red;
                         this.dataGridView1.Rows[index].Cells[6].Value = Resources.DevStateOff;
-                        this.dataGridView1.Rows[index].Cells[7].Value = "初始化";
-                    }
-                    break;
-                }//eq.ip == ips
-            }//foreach DeviceList表
-            this.cbOnline.CheckedChanged -= new System.EventHandler(this.cbOnline_CheckedChanged);
-            if (FileMesege.isDgvNameDeviceConnet)
-            {
-                cbOnline.Checked = true;
-                clientConnect();
-            }
-            else
-            {
-                cbOnline.Checked = false;
-                client = null;
-            }
-            this.cbOnline.CheckedChanged += new System.EventHandler(this.cbOnline_CheckedChanged);
-            DgvMesege.RecoverDgvForm(dataGridView1, X_Value, Y_Value, rowcount, columnCount);
 
+                        //添加区域名称和操作
+                        foreach (DataJson.Module m in dec.module)
+                        {
+                            index = this.dataGridView1.Rows.Add();
+                            this.dataGridView1.Rows[index].Cells[0].Value = m.id;
+                            this.dataGridView1.Rows[index].Cells[1].Value = m.device;
+                            this.dataGridView1.Rows[index].Cells[2].Value = m.sn;
+                            this.dataGridView1.Rows[index].Cells[3].Value = m.ver;
+                            this.dataGridView1.Rows[index].Cells[4].Value = string.Format("{0} {1} {2} {3}", m.area1, m.area2, m.area3, m.area4).Trim();
+                            this.dataGridView1.Rows[index].Cells[5].Value = m.name;
+                            this.dataGridView1.Rows[index].Cells[6].Style.ForeColor = Color.Red;
+                            this.dataGridView1.Rows[index].Cells[6].Value = Resources.DevStateOff;
+                            this.dataGridView1.Rows[index].Cells[7].Value = "初始化";
+                        }
+                        break;
+                    }//eq.ip == ips
+                }//foreach DeviceList表
+                this.cbOnline.CheckedChanged -= new System.EventHandler(this.cbOnline_CheckedChanged);
+                if (FileMesege.isDgvNameDeviceConnet)
+                {
+                    cbOnline.Checked = true;
+                    clientConnect();
+                }
+                else
+                {
+                    cbOnline.Checked = false;
+                    client = null;
+                }
+                this.cbOnline.CheckedChanged += new System.EventHandler(this.cbOnline_CheckedChanged);
+                DgvMesege.RecoverDgvForm(dataGridView1, X_Value, Y_Value, rowcount, columnCount);
+
+            }
+            catch {
+            }
+           
             
         }
 
@@ -375,6 +399,7 @@ namespace eNet编辑器.DgvView
                         return ;
                     }
 
+              
 
                     int flag = -1;
 
@@ -387,15 +412,29 @@ namespace eNet编辑器.DgvView
                     }
                     if (flag == 0)
                     {
-                        AppTxtShow(string.Format("初始化设备（{0}）成功", dataID));
+                        backgroundWorker1 = new BackgroundWorker();
+                        backgroundWorker1.WorkerReportsProgress = true;
+                        backgroundWorker1.WorkerSupportsCancellation = true;
+                        backgroundWorker1.DoWork += BackgroundWorker1_DoWork;
+                        backgroundWorker1.ProgressChanged += BackgroundWorker1_ProgressChanged;
+                        backgroundWorker1.RunWorkerCompleted += BackgroundWorker1_RunWorkerCompleted;
+                        pgv = new PgView();
+                        pgv.setMaxValue(10);
+                        pgv.setCancelEnable(false);
+                        this.Enabled = false;
+                        backgroundWorker1.RunWorkerAsync();
+                        pgv.ShowDialog();
+                        if (pgv.DialogResult == DialogResult.Cancel)
+                        {
+                            backgroundWorker1.CancelAsync();
+                        }
+                        AppTxtShow(string.Format("初始化设备（{0}）成功，请稍后", dataID));
 
                     }
                     else
                     {
                         AppTxtShow(string.Format("初始化设备（{0}）失败", dataID));
                     }
-
-                    
                     
                 }
                 catch (Exception e)
@@ -589,12 +628,12 @@ namespace eNet编辑器.DgvView
         {
             try
             {
-                for (int i = 0; i < this.dataGridView1.Rows.Count;i++ )
+               /* for (int i = 0; i < this.dataGridView1.Rows.Count;i++ )
                 {
                     this.dataGridView1.Rows[i].Cells[6].Style.BackColor = Color.White;
                     this.dataGridView1.Rows[i].Cells[6].Style.ForeColor = Color.Red;
                     this.dataGridView1.Rows[i].Cells[6].Value = Resources.DevStateOff;
-                }
+                }*/
              
                 clientConnect();
                 
@@ -638,13 +677,11 @@ namespace eNet编辑器.DgvView
         {
             try
             {
-   
                 string strip = FileMesege.tnselectNode.Text.Split(' ')[0];
                 if (client != null)
                 {
                     client.Dispoes();
                 }
-   
                 client = new ClientAsync();
                 ClientIni();
                 //异步连接
@@ -654,6 +691,7 @@ namespace eNet编辑器.DgvView
                     client.SendAsync("read serial.json$");
 
                 }
+                
             }
             catch
             {
@@ -723,22 +761,62 @@ namespace eNet编辑器.DgvView
                     //SocketUtil.WriteLog(bufferMsg);
                     if (bufferMsg.Contains("serial"))
                     {
-
+                        
                         // 序列化接收信息
                         FileMesege.serialList = JsonConvert.DeserializeObject<DataJson.Serial>(bufferMsg);
                         bufferMsg = "";
+                        //清除原来界面显示的离线状态
+                        bool isDevContain = false;
+                        int tmpid = 0;
+                        foreach (DataJson.serials sl in FileMesege.serialList.serial)
+                        {
+                            if (sl.id == 254)
+                            {
+                                isDevContain = true;
+                                break;
+                            }
+                        }
+                        if (!isDevContain)
+                        {
+                            this.dataGridView1.Rows[0].Cells[6].Style.BackColor = Color.White;
+                            this.dataGridView1.Rows[0].Cells[6].Style.ForeColor = Color.Red;
+                            this.dataGridView1.Rows[0].Cells[6].Value = Resources.DevStateOff;
+                        }
+                        for (int i = 1; i < dataGridView1.Rows.Count; i++)
+                        {
+                            isDevContain = false;
+                            tmpid = Convert.ToInt32(dataGridView1.Rows[i].Cells[0].Value);
+                            foreach (DataJson.serials sl in FileMesege.serialList.serial)
+                            {
+                                if (tmpid == sl.id)
+                                {
+                                    isDevContain = true;
+                                    break;
+                                }
+                            }
+                            if (!isDevContain)
+                            {
+                                this.dataGridView1.Rows[i].Cells[6].Style.BackColor = Color.White;
+                                this.dataGridView1.Rows[i].Cells[6].Style.ForeColor = Color.Red;
+                                this.dataGridView1.Rows[i].Cells[6].Value = Resources.DevStateOff;
+                            }
+                        }
                         foreach (DataJson.Device dev in FileMesege.DeviceList)
                         {
                             //当IP相等时候进入module里面 
                             if (dev.ip == strip)
                             {
-                                //临时添加网关  改好serial就删除！！！！！！！！！！！！！！！！！！！！！！！！！！！！
-                                dataGridView1.Rows[0].Cells[6].Value = Resources.DevStateOn;
-                                dataGridView1.Rows[0].Cells[6].Style.BackColor = Color.Lime;
-                                dataGridView1.Rows[0].Cells[6].Style.ForeColor = Color.Black;
-
+                                
                                 foreach (DataJson.serials sl in FileMesege.serialList.serial)
                                 {
+                                    //网关显示状态
+                                    if (sl.id == 254)
+                                    {
+                                        dev.sn = sl.mac8.Trim();
+                                        dev.ver = sl.version.Trim();
+                                        changeSn_ver(dev);
+                                        continue;
+                                    }
                                     //获取到的Serial文件在线 的ID 对比dataList信息
                                     foreach (DataJson.Module mdl in dev.module)
                                     {
@@ -746,8 +824,6 @@ namespace eNet编辑器.DgvView
                                         //当设备的号码相同 名字相同  修改序列号 版本号 状态 
                                         if (sl.id == mdl.id)// && sl.serial.Trim() == mdl.device)
                                         {
-                                            
-
                                             string filepath = string.Format("{0}\\devices\\{1}.ini", Application.StartupPath, sl.serial.Trim());
                                             if (string.IsNullOrEmpty(filepath))
                                             {
@@ -758,9 +834,8 @@ namespace eNet编辑器.DgvView
                                             {
                                                 continue;
                                             }
-                                            mdl.sn = sl.mac8.Trim().Replace(":", "");
+                                            mdl.sn = sl.mac8.Trim();
                                             mdl.ver = sl.version.Trim();
-
                                             changeSn_ver(mdl);
                                             //寻找到该信息就退出当前循环
                                             
@@ -794,7 +869,6 @@ namespace eNet编辑器.DgvView
         {
             //因为主机还没修改完成 这里 i = 1  跳过第一格  后面 要改成i=0  主机返回状态时候加上网关的反馈
             //循环DGV表格
-         
             for (int i = 1; i < dataGridView1.RowCount; i++)
             {
                 //找到该ID 退出循环
@@ -817,6 +891,25 @@ namespace eNet编辑器.DgvView
                     break;
                 }
             }
+
+        }
+
+        //修改网关显示的sn ver 和 状态
+        private void changeSn_ver(DataJson.Device dev)
+        {
+            if (dataGridView1.Rows[0].Cells[2].Value != null && dataGridView1.Rows[0].Cells[3].Value != null)
+            {
+                if (dev.sn != dataGridView1.Rows[0].Cells[2].Value.ToString() || dataGridView1.Rows[0].Cells[3].Value.ToString() != dev.ver)
+                {
+                    dataGridView1.Rows[0].Cells[2].Style.ForeColor = Color.Red;
+                    dataGridView1.Rows[0].Cells[3].Style.ForeColor = Color.Red;
+                }
+            }
+            dataGridView1.Rows[0].Cells[2].Value = dev.sn;
+            dataGridView1.Rows[0].Cells[3].Value = dev.ver;
+            dataGridView1.Rows[0].Cells[6].Value = Resources.DevStateOn;
+            dataGridView1.Rows[0].Cells[6].Style.BackColor = Color.Lime;
+            dataGridView1.Rows[0].Cells[6].Style.ForeColor = Color.Black;
 
         }
 
@@ -1254,18 +1347,58 @@ namespace eNet编辑器.DgvView
         }
         #endregion
 
-      
 
-   
-
-
-
-      
+        #region 初始化弹框
+        private BackgroundWorker backgroundWorker1;
+        private PgView pgv;
 
 
-       
+        private void BackgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
+        {
+            int count = 0;
+            while (count < 10)
+            {
+                count++;
+                backgroundWorker1.ReportProgress(count);
+                ToolsUtil.DelayMilli(1000);
+            }
 
-      
+        }
+
+        private void BackgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            try
+            {
+                this.Enabled = true;
+                if (pgv != null)
+                {
+                    pgv.Close();
+                }
+            }
+            catch
+            {
+
+            }
+
+        }
+
+        private void BackgroundWorker1_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+            //设置值
+            pgv.setValue(e.ProgressPercentage);
+
+        }
+        #endregion
+
+
+
+
+
+
+
+
+
+
 
     }
 }
