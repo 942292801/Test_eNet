@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
             this.PlMeustrip = new Infragistics.Win.Misc.UltraPanel();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.文件ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -175,8 +175,8 @@
             // 
             // PlMeustrip
             // 
-            appearance3.BackColor = System.Drawing.Color.DarkGray;
-            this.PlMeustrip.Appearance = appearance3;
+            appearance1.BackColor = System.Drawing.Color.DarkGray;
+            this.PlMeustrip.Appearance = appearance1;
             // 
             // PlMeustrip.ClientArea
             // 
@@ -538,8 +538,8 @@
             // 
             // PlToolstrip
             // 
-            appearance4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.PlToolstrip.Appearance = appearance4;
+            appearance2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.PlToolstrip.Appearance = appearance2;
             // 
             // PlToolstrip.ClientArea
             // 
@@ -855,8 +855,8 @@
             // 
             // PlTabStrip
             // 
-            appearance1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(145)))), ((int)(((byte)(230)))));
-            this.PlTabStrip.Appearance = appearance1;
+            appearance3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(145)))), ((int)(((byte)(230)))));
+            this.PlTabStrip.Appearance = appearance3;
             // 
             // PlTabStrip.ClientArea
             // 

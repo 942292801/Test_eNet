@@ -124,98 +124,7 @@
   <data name="menuStrip1.Font" type="System.Drawing.Font, System.Drawing">
     <value>微软雅黑, 9pt</value>
   </data>
-  <data name="文件ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>74, 21</value>
-  </data>
-  <data name="文件ToolStripMenuItem.Text" xml:space="preserve">
-    <value>文件（F）</value>
-  </data>
-  <data name="编辑ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 21</value>
-  </data>
-  <data name="编辑ToolStripMenuItem.Text" xml:space="preserve">
-    <value>编辑（E）</value>
-  </data>
-  <data name="功能GToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>77, 21</value>
-  </data>
-  <data name="功能GToolStripMenuItem.Text" xml:space="preserve">
-    <value>功能（G）</value>
-  </data>
-  <data name="工具TToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 21</value>
-  </data>
-  <data name="工具TToolStripMenuItem.Text" xml:space="preserve">
-    <value>工具（T）</value>
-  </data>
-  <data name="帮助HToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>77, 21</value>
-  </data>
-  <data name="帮助HToolStripMenuItem.Text" xml:space="preserve">
-    <value>帮助（H）</value>
-  </data>
-  <data name="menuStrip1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="menuStrip1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1264, 25</value>
-  </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="menuStrip1.TabIndex" type="System.Int32, mscorlib">
-    <value>10</value>
-  </data>
-  <data name="menuStrip1.Text" xml:space="preserve">
-    <value>menuStrip1</value>
-  </data>
-  <data name="&gt;&gt;menuStrip1.Name" xml:space="preserve">
-    <value>menuStrip1</value>
-  </data>
-  <data name="&gt;&gt;menuStrip1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.MenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;menuStrip1.Parent" xml:space="preserve">
-    <value>PlMeustrip.ClientArea</value>
-  </data>
-  <data name="&gt;&gt;menuStrip1.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;PlMeustrip.ClientArea.Name" xml:space="preserve">
-    <value>PlMeustrip.ClientArea</value>
-  </data>
-  <data name="&gt;&gt;PlMeustrip.ClientArea.Type" xml:space="preserve">
-    <value>Infragistics.Win.Misc.UltraPanelClientAreaUnsafe, Infragistics4.Win.Misc.v12.2, Version=12.2.20122.2123, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb</value>
-  </data>
-  <data name="&gt;&gt;PlMeustrip.ClientArea.Parent" xml:space="preserve">
-    <value>PlMeustrip</value>
-  </data>
-  <data name="&gt;&gt;PlMeustrip.ClientArea.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="PlMeustrip.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
-  </data>
-  <data name="PlMeustrip.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="PlMeustrip.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1264, 26</value>
-  </data>
-  <data name="PlMeustrip.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;PlMeustrip.Name" xml:space="preserve">
-    <value>PlMeustrip</value>
-  </data>
-  <data name="&gt;&gt;PlMeustrip.Type" xml:space="preserve">
-    <value>Infragistics.Win.Misc.UltraPanel, Infragistics4.Win.Misc.v12.2, Version=12.2.20122.2123, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb</value>
-  </data>
-  <data name="&gt;&gt;PlMeustrip.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;PlMeustrip.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
   <data name="新建项目ToolStripMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
     <value>Ctrl+N</value>
   </data>
@@ -267,6 +176,7 @@
   <data name="toolStripMenuItem2.Size" type="System.Drawing.Size, System.Drawing">
     <value>198, 6</value>
   </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="导出ToolStripMenuItem.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
@@ -299,6 +209,12 @@
   </data>
   <data name="退出ToolStripMenuItem.Text" xml:space="preserve">
     <value>退出(X)</value>
+  </data>
+  <data name="文件ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>74, 21</value>
+  </data>
+  <data name="文件ToolStripMenuItem.Text" xml:space="preserve">
+    <value>文件（F）</value>
   </data>
   <data name="撤销ToolStripMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
     <value>Ctrl+Z</value>
@@ -387,6 +303,12 @@
   <data name="降序ToolStripMenuItem.Text" xml:space="preserve">
     <value>降序</value>
   </data>
+  <data name="编辑ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 21</value>
+  </data>
+  <data name="编辑ToolStripMenuItem.Text" xml:space="preserve">
+    <value>编辑（E）</value>
+  </data>
   <data name="设备在线搜索ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>179, 22</value>
   </data>
@@ -404,6 +326,12 @@
   </data>
   <data name="编译下载ToolStripMenuItem.Text" xml:space="preserve">
     <value>编译&amp;&amp;下载</value>
+  </data>
+  <data name="功能GToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>77, 21</value>
+  </data>
+  <data name="功能GToolStripMenuItem.Text" xml:space="preserve">
+    <value>功能（G）</value>
   </data>
   <data name="时钟设置ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>148, 22</value>
@@ -480,6 +408,12 @@
   <data name="主机网络设置ToolStripMenuItem.Text" xml:space="preserve">
     <value>网关网络设置</value>
   </data>
+  <data name="工具TToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 21</value>
+  </data>
+  <data name="工具TToolStripMenuItem.Text" xml:space="preserve">
+    <value>工具（T）</value>
+  </data>
   <data name="帮助ToolStripMenuItem.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
@@ -498,326 +432,71 @@
   <data name="关于软件ToolStripMenuItem.Text" xml:space="preserve">
     <value>关于软件</value>
   </data>
-  <data name="&gt;&gt;btnOpen.Name" xml:space="preserve">
-    <value>btnOpen</value>
+  <data name="帮助HToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>77, 21</value>
   </data>
-  <data name="&gt;&gt;btnOpen.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.ButtonX, DevComponents.DotNetBar2, Version=14.0.0.3, Culture=neutral, PublicKeyToken=c39c3242a43eee2b</value>
+  <data name="帮助HToolStripMenuItem.Text" xml:space="preserve">
+    <value>帮助（H）</value>
   </data>
-  <data name="&gt;&gt;btnOpen.Parent" xml:space="preserve">
-    <value>flowLayoutPanel1</value>
+  <data name="menuStrip1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
   </data>
-  <data name="&gt;&gt;btnOpen.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="menuStrip1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1264, 25</value>
   </data>
-  <data name="&gt;&gt;btnSave.Name" xml:space="preserve">
-    <value>btnSave</value>
-  </data>
-  <data name="&gt;&gt;btnSave.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.ButtonX, DevComponents.DotNetBar2, Version=14.0.0.3, Culture=neutral, PublicKeyToken=c39c3242a43eee2b</value>
-  </data>
-  <data name="&gt;&gt;btnSave.Parent" xml:space="preserve">
-    <value>flowLayoutPanel1</value>
-  </data>
-  <data name="&gt;&gt;btnSave.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;line2.Name" xml:space="preserve">
-    <value>line2</value>
-  </data>
-  <data name="&gt;&gt;line2.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.Controls.Line, DevComponents.DotNetBar2, Version=14.0.0.3, Culture=neutral, PublicKeyToken=c39c3242a43eee2b</value>
-  </data>
-  <data name="&gt;&gt;line2.Parent" xml:space="preserve">
-    <value>flowLayoutPanel1</value>
-  </data>
-  <data name="&gt;&gt;line2.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;btnUndo.Name" xml:space="preserve">
-    <value>btnUndo</value>
-  </data>
-  <data name="&gt;&gt;btnUndo.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.ButtonX, DevComponents.DotNetBar2, Version=14.0.0.3, Culture=neutral, PublicKeyToken=c39c3242a43eee2b</value>
-  </data>
-  <data name="&gt;&gt;btnUndo.Parent" xml:space="preserve">
-    <value>flowLayoutPanel1</value>
-  </data>
-  <data name="&gt;&gt;btnUndo.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;btnRedo.Name" xml:space="preserve">
-    <value>btnRedo</value>
-  </data>
-  <data name="&gt;&gt;btnRedo.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.ButtonX, DevComponents.DotNetBar2, Version=14.0.0.3, Culture=neutral, PublicKeyToken=c39c3242a43eee2b</value>
-  </data>
-  <data name="&gt;&gt;btnRedo.Parent" xml:space="preserve">
-    <value>flowLayoutPanel1</value>
-  </data>
-  <data name="&gt;&gt;btnRedo.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;line3.Name" xml:space="preserve">
-    <value>line3</value>
-  </data>
-  <data name="&gt;&gt;line3.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.Controls.Line, DevComponents.DotNetBar2, Version=14.0.0.3, Culture=neutral, PublicKeyToken=c39c3242a43eee2b</value>
-  </data>
-  <data name="&gt;&gt;line3.Parent" xml:space="preserve">
-    <value>flowLayoutPanel1</value>
-  </data>
-  <data name="&gt;&gt;line3.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;btnSame.Name" xml:space="preserve">
-    <value>btnSame</value>
-  </data>
-  <data name="&gt;&gt;btnSame.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.ButtonX, DevComponents.DotNetBar2, Version=14.0.0.3, Culture=neutral, PublicKeyToken=c39c3242a43eee2b</value>
-  </data>
-  <data name="&gt;&gt;btnSame.Parent" xml:space="preserve">
-    <value>flowLayoutPanel1</value>
-  </data>
-  <data name="&gt;&gt;btnSame.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="&gt;&gt;btnAscending.Name" xml:space="preserve">
-    <value>btnAscending</value>
-  </data>
-  <data name="&gt;&gt;btnAscending.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.ButtonX, DevComponents.DotNetBar2, Version=14.0.0.3, Culture=neutral, PublicKeyToken=c39c3242a43eee2b</value>
-  </data>
-  <data name="&gt;&gt;btnAscending.Parent" xml:space="preserve">
-    <value>flowLayoutPanel1</value>
-  </data>
-  <data name="&gt;&gt;btnAscending.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="&gt;&gt;btnDescending.Name" xml:space="preserve">
-    <value>btnDescending</value>
-  </data>
-  <data name="&gt;&gt;btnDescending.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.ButtonX, DevComponents.DotNetBar2, Version=14.0.0.3, Culture=neutral, PublicKeyToken=c39c3242a43eee2b</value>
-  </data>
-  <data name="&gt;&gt;btnDescending.Parent" xml:space="preserve">
-    <value>flowLayoutPanel1</value>
-  </data>
-  <data name="&gt;&gt;btnDescending.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <data name="&gt;&gt;btnSet.Name" xml:space="preserve">
-    <value>btnSet</value>
-  </data>
-  <data name="&gt;&gt;btnSet.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.ButtonX, DevComponents.DotNetBar2, Version=14.0.0.3, Culture=neutral, PublicKeyToken=c39c3242a43eee2b</value>
-  </data>
-  <data name="&gt;&gt;btnSet.Parent" xml:space="preserve">
-    <value>flowLayoutPanel1</value>
-  </data>
-  <data name="&gt;&gt;btnSet.ZOrder" xml:space="preserve">
-    <value>9</value>
-  </data>
-  <data name="&gt;&gt;line1.Name" xml:space="preserve">
-    <value>line1</value>
-  </data>
-  <data name="&gt;&gt;line1.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.Controls.Line, DevComponents.DotNetBar2, Version=14.0.0.3, Culture=neutral, PublicKeyToken=c39c3242a43eee2b</value>
-  </data>
-  <data name="&gt;&gt;line1.Parent" xml:space="preserve">
-    <value>flowLayoutPanel1</value>
-  </data>
-  <data name="&gt;&gt;line1.ZOrder" xml:space="preserve">
+  <data name="menuStrip1.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
   </data>
-  <data name="&gt;&gt;btnCompileDownload.Name" xml:space="preserve">
-    <value>btnCompileDownload</value>
+  <data name="menuStrip1.Text" xml:space="preserve">
+    <value>menuStrip1</value>
   </data>
-  <data name="&gt;&gt;btnCompileDownload.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.ButtonX, DevComponents.DotNetBar2, Version=14.0.0.3, Culture=neutral, PublicKeyToken=c39c3242a43eee2b</value>
+  <data name="&gt;&gt;menuStrip1.Name" xml:space="preserve">
+    <value>menuStrip1</value>
   </data>
-  <data name="&gt;&gt;btnCompileDownload.Parent" xml:space="preserve">
-    <value>flowLayoutPanel1</value>
+  <data name="&gt;&gt;menuStrip1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.MenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;btnCompileDownload.ZOrder" xml:space="preserve">
-    <value>11</value>
+  <data name="&gt;&gt;menuStrip1.Parent" xml:space="preserve">
+    <value>PlMeustrip.ClientArea</value>
   </data>
-  <data name="&gt;&gt;line4.Name" xml:space="preserve">
-    <value>line4</value>
-  </data>
-  <data name="&gt;&gt;line4.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.Controls.Line, DevComponents.DotNetBar2, Version=14.0.0.3, Culture=neutral, PublicKeyToken=c39c3242a43eee2b</value>
-  </data>
-  <data name="&gt;&gt;line4.Parent" xml:space="preserve">
-    <value>flowLayoutPanel1</value>
-  </data>
-  <data name="&gt;&gt;line4.ZOrder" xml:space="preserve">
-    <value>12</value>
-  </data>
-  <data name="&gt;&gt;btnOnlineSearch.Name" xml:space="preserve">
-    <value>btnOnlineSearch</value>
-  </data>
-  <data name="&gt;&gt;btnOnlineSearch.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.ButtonX, DevComponents.DotNetBar2, Version=14.0.0.3, Culture=neutral, PublicKeyToken=c39c3242a43eee2b</value>
-  </data>
-  <data name="&gt;&gt;btnOnlineSearch.Parent" xml:space="preserve">
-    <value>flowLayoutPanel1</value>
-  </data>
-  <data name="&gt;&gt;btnOnlineSearch.ZOrder" xml:space="preserve">
-    <value>13</value>
-  </data>
-  <data name="&gt;&gt;btnCopy.Name" xml:space="preserve">
-    <value>btnCopy</value>
-  </data>
-  <data name="&gt;&gt;btnCopy.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.ButtonX, DevComponents.DotNetBar2, Version=14.0.0.3, Culture=neutral, PublicKeyToken=c39c3242a43eee2b</value>
-  </data>
-  <data name="&gt;&gt;btnCopy.Parent" xml:space="preserve">
-    <value>flowLayoutPanel1</value>
-  </data>
-  <data name="&gt;&gt;btnCopy.ZOrder" xml:space="preserve">
-    <value>14</value>
-  </data>
-  <data name="&gt;&gt;btnPast.Name" xml:space="preserve">
-    <value>btnPast</value>
-  </data>
-  <data name="&gt;&gt;btnPast.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.ButtonX, DevComponents.DotNetBar2, Version=14.0.0.3, Culture=neutral, PublicKeyToken=c39c3242a43eee2b</value>
-  </data>
-  <data name="&gt;&gt;btnPast.Parent" xml:space="preserve">
-    <value>flowLayoutPanel1</value>
-  </data>
-  <data name="&gt;&gt;btnPast.ZOrder" xml:space="preserve">
-    <value>15</value>
-  </data>
-  <data name="&gt;&gt;buttonX10.Name" xml:space="preserve">
-    <value>buttonX10</value>
-  </data>
-  <data name="&gt;&gt;buttonX10.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.ButtonX, DevComponents.DotNetBar2, Version=14.0.0.3, Culture=neutral, PublicKeyToken=c39c3242a43eee2b</value>
-  </data>
-  <data name="&gt;&gt;buttonX10.Parent" xml:space="preserve">
-    <value>flowLayoutPanel1</value>
-  </data>
-  <data name="&gt;&gt;buttonX10.ZOrder" xml:space="preserve">
-    <value>16</value>
-  </data>
-  <data name="&gt;&gt;buttonX9.Name" xml:space="preserve">
-    <value>buttonX9</value>
-  </data>
-  <data name="&gt;&gt;buttonX9.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.ButtonX, DevComponents.DotNetBar2, Version=14.0.0.3, Culture=neutral, PublicKeyToken=c39c3242a43eee2b</value>
-  </data>
-  <data name="&gt;&gt;buttonX9.Parent" xml:space="preserve">
-    <value>flowLayoutPanel1</value>
-  </data>
-  <data name="&gt;&gt;buttonX9.ZOrder" xml:space="preserve">
-    <value>17</value>
-  </data>
-  <data name="&gt;&gt;buttonX16.Name" xml:space="preserve">
-    <value>buttonX16</value>
-  </data>
-  <data name="&gt;&gt;buttonX16.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.ButtonX, DevComponents.DotNetBar2, Version=14.0.0.3, Culture=neutral, PublicKeyToken=c39c3242a43eee2b</value>
-  </data>
-  <data name="&gt;&gt;buttonX16.Parent" xml:space="preserve">
-    <value>flowLayoutPanel1</value>
-  </data>
-  <data name="&gt;&gt;buttonX16.ZOrder" xml:space="preserve">
-    <value>18</value>
-  </data>
-  <data name="&gt;&gt;buttonX14.Name" xml:space="preserve">
-    <value>buttonX14</value>
-  </data>
-  <data name="&gt;&gt;buttonX14.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.ButtonX, DevComponents.DotNetBar2, Version=14.0.0.3, Culture=neutral, PublicKeyToken=c39c3242a43eee2b</value>
-  </data>
-  <data name="&gt;&gt;buttonX14.Parent" xml:space="preserve">
-    <value>flowLayoutPanel1</value>
-  </data>
-  <data name="&gt;&gt;buttonX14.ZOrder" xml:space="preserve">
-    <value>19</value>
-  </data>
-  <data name="&gt;&gt;buttonX13.Name" xml:space="preserve">
-    <value>buttonX13</value>
-  </data>
-  <data name="&gt;&gt;buttonX13.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.ButtonX, DevComponents.DotNetBar2, Version=14.0.0.3, Culture=neutral, PublicKeyToken=c39c3242a43eee2b</value>
-  </data>
-  <data name="&gt;&gt;buttonX13.Parent" xml:space="preserve">
-    <value>flowLayoutPanel1</value>
-  </data>
-  <data name="&gt;&gt;buttonX13.ZOrder" xml:space="preserve">
-    <value>20</value>
-  </data>
-  <data name="&gt;&gt;buttonX8.Name" xml:space="preserve">
-    <value>buttonX8</value>
-  </data>
-  <data name="&gt;&gt;buttonX8.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.ButtonX, DevComponents.DotNetBar2, Version=14.0.0.3, Culture=neutral, PublicKeyToken=c39c3242a43eee2b</value>
-  </data>
-  <data name="&gt;&gt;buttonX8.Parent" xml:space="preserve">
-    <value>flowLayoutPanel1</value>
-  </data>
-  <data name="&gt;&gt;buttonX8.ZOrder" xml:space="preserve">
-    <value>21</value>
-  </data>
-  <data name="flowLayoutPanel1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>11, 5</value>
-  </data>
-  <data name="flowLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>866, 40</value>
-  </data>
-  <data name="flowLayoutPanel1.TabIndex" type="System.Int32, mscorlib">
-    <value>26</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanel1.Name" xml:space="preserve">
-    <value>flowLayoutPanel1</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanel1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanel1.Parent" xml:space="preserve">
-    <value>PlToolstrip.ClientArea</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanel1.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;menuStrip1.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="&gt;&gt;PlToolstrip.ClientArea.Name" xml:space="preserve">
-    <value>PlToolstrip.ClientArea</value>
+  <data name="&gt;&gt;PlMeustrip.ClientArea.Name" xml:space="preserve">
+    <value>PlMeustrip.ClientArea</value>
   </data>
-  <data name="&gt;&gt;PlToolstrip.ClientArea.Type" xml:space="preserve">
+  <data name="&gt;&gt;PlMeustrip.ClientArea.Type" xml:space="preserve">
     <value>Infragistics.Win.Misc.UltraPanelClientAreaUnsafe, Infragistics4.Win.Misc.v12.2, Version=12.2.20122.2123, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb</value>
   </data>
-  <data name="&gt;&gt;PlToolstrip.ClientArea.Parent" xml:space="preserve">
-    <value>PlToolstrip</value>
+  <data name="&gt;&gt;PlMeustrip.ClientArea.Parent" xml:space="preserve">
+    <value>PlMeustrip</value>
   </data>
-  <data name="&gt;&gt;PlToolstrip.ClientArea.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;PlMeustrip.ClientArea.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="PlToolstrip.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+  <data name="PlMeustrip.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>
   </data>
-  <data name="PlToolstrip.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 26</value>
+  <data name="PlMeustrip.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
   </data>
-  <data name="PlToolstrip.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1264, 50</value>
+  <data name="PlMeustrip.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1264, 26</value>
   </data>
-  <data name="PlToolstrip.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
+  <data name="PlMeustrip.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
   </data>
-  <data name="&gt;&gt;PlToolstrip.Name" xml:space="preserve">
-    <value>PlToolstrip</value>
+  <data name="&gt;&gt;PlMeustrip.Name" xml:space="preserve">
+    <value>PlMeustrip</value>
   </data>
-  <data name="&gt;&gt;PlToolstrip.Type" xml:space="preserve">
+  <data name="&gt;&gt;PlMeustrip.Type" xml:space="preserve">
     <value>Infragistics.Win.Misc.UltraPanel, Infragistics4.Win.Misc.v12.2, Version=12.2.20122.2123, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb</value>
   </data>
-  <data name="&gt;&gt;PlToolstrip.Parent" xml:space="preserve">
+  <data name="&gt;&gt;PlMeustrip.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;PlToolstrip.ZOrder" xml:space="preserve">
-    <value>2</value>
+  <data name="&gt;&gt;PlMeustrip.ZOrder" xml:space="preserve">
+    <value>3</value>
   </data>
   <data name="btnOpen.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>None</value>
@@ -10212,167 +9891,65 @@
   <data name="&gt;&gt;buttonX8.ZOrder" xml:space="preserve">
     <value>21</value>
   </data>
-  <data name="tabStrip.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
-    <value>None</value>
+  <data name="flowLayoutPanel1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>11, 5</value>
   </data>
-  <data name="&gt;&gt;tabControlPanel1.Name" xml:space="preserve">
-    <value>tabControlPanel1</value>
+  <data name="flowLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>866, 40</value>
   </data>
-  <data name="&gt;&gt;tabControlPanel1.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.TabControlPanel, DevComponents.DotNetBar2, Version=14.0.0.3, Culture=neutral, PublicKeyToken=c39c3242a43eee2b</value>
+  <data name="flowLayoutPanel1.TabIndex" type="System.Int32, mscorlib">
+    <value>26</value>
   </data>
-  <data name="&gt;&gt;tabControlPanel1.Parent" xml:space="preserve">
-    <value>tabStrip</value>
+  <data name="&gt;&gt;flowLayoutPanel1.Name" xml:space="preserve">
+    <value>flowLayoutPanel1</value>
   </data>
-  <data name="&gt;&gt;tabControlPanel1.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;flowLayoutPanel1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel1.Parent" xml:space="preserve">
+    <value>PlToolstrip.ClientArea</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel1.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="&gt;&gt;tabControlPanel5.Name" xml:space="preserve">
-    <value>tabControlPanel5</value>
+  <data name="&gt;&gt;PlToolstrip.ClientArea.Name" xml:space="preserve">
+    <value>PlToolstrip.ClientArea</value>
   </data>
-  <data name="&gt;&gt;tabControlPanel5.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.TabControlPanel, DevComponents.DotNetBar2, Version=14.0.0.3, Culture=neutral, PublicKeyToken=c39c3242a43eee2b</value>
-  </data>
-  <data name="&gt;&gt;tabControlPanel5.Parent" xml:space="preserve">
-    <value>tabStrip</value>
-  </data>
-  <data name="&gt;&gt;tabControlPanel5.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;tabControlPanel4.Name" xml:space="preserve">
-    <value>tabControlPanel4</value>
-  </data>
-  <data name="&gt;&gt;tabControlPanel4.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.TabControlPanel, DevComponents.DotNetBar2, Version=14.0.0.3, Culture=neutral, PublicKeyToken=c39c3242a43eee2b</value>
-  </data>
-  <data name="&gt;&gt;tabControlPanel4.Parent" xml:space="preserve">
-    <value>tabStrip</value>
-  </data>
-  <data name="&gt;&gt;tabControlPanel4.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <data name="&gt;&gt;tabControlPanel3.Name" xml:space="preserve">
-    <value>tabControlPanel3</value>
-  </data>
-  <data name="&gt;&gt;tabControlPanel3.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.TabControlPanel, DevComponents.DotNetBar2, Version=14.0.0.3, Culture=neutral, PublicKeyToken=c39c3242a43eee2b</value>
-  </data>
-  <data name="&gt;&gt;tabControlPanel3.Parent" xml:space="preserve">
-    <value>tabStrip</value>
-  </data>
-  <data name="&gt;&gt;tabControlPanel3.ZOrder" xml:space="preserve">
-    <value>12</value>
-  </data>
-  <data name="&gt;&gt;tabControlPanel2.Name" xml:space="preserve">
-    <value>tabControlPanel2</value>
-  </data>
-  <data name="&gt;&gt;tabControlPanel2.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.TabControlPanel, DevComponents.DotNetBar2, Version=14.0.0.3, Culture=neutral, PublicKeyToken=c39c3242a43eee2b</value>
-  </data>
-  <data name="&gt;&gt;tabControlPanel2.Parent" xml:space="preserve">
-    <value>tabStrip</value>
-  </data>
-  <data name="&gt;&gt;tabControlPanel2.ZOrder" xml:space="preserve">
-    <value>16</value>
-  </data>
-  <data name="&gt;&gt;tabControlPanel8.Name" xml:space="preserve">
-    <value>tabControlPanel8</value>
-  </data>
-  <data name="&gt;&gt;tabControlPanel8.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.TabControlPanel, DevComponents.DotNetBar2, Version=14.0.0.3, Culture=neutral, PublicKeyToken=c39c3242a43eee2b</value>
-  </data>
-  <data name="&gt;&gt;tabControlPanel8.Parent" xml:space="preserve">
-    <value>tabStrip</value>
-  </data>
-  <data name="&gt;&gt;tabControlPanel8.ZOrder" xml:space="preserve">
-    <value>20</value>
-  </data>
-  <data name="&gt;&gt;tabControlPanel7.Name" xml:space="preserve">
-    <value>tabControlPanel7</value>
-  </data>
-  <data name="&gt;&gt;tabControlPanel7.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.TabControlPanel, DevComponents.DotNetBar2, Version=14.0.0.3, Culture=neutral, PublicKeyToken=c39c3242a43eee2b</value>
-  </data>
-  <data name="&gt;&gt;tabControlPanel7.Parent" xml:space="preserve">
-    <value>tabStrip</value>
-  </data>
-  <data name="&gt;&gt;tabControlPanel7.ZOrder" xml:space="preserve">
-    <value>24</value>
-  </data>
-  <data name="&gt;&gt;tabControlPanel6.Name" xml:space="preserve">
-    <value>tabControlPanel6</value>
-  </data>
-  <data name="&gt;&gt;tabControlPanel6.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.TabControlPanel, DevComponents.DotNetBar2, Version=14.0.0.3, Culture=neutral, PublicKeyToken=c39c3242a43eee2b</value>
-  </data>
-  <data name="&gt;&gt;tabControlPanel6.Parent" xml:space="preserve">
-    <value>tabStrip</value>
-  </data>
-  <data name="&gt;&gt;tabControlPanel6.ZOrder" xml:space="preserve">
-    <value>28</value>
-  </data>
-  <data name="tabStrip.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
-  </data>
-  <data name="tabStrip.Font" type="System.Drawing.Font, System.Drawing">
-    <value>微软雅黑, 9.75pt</value>
-  </data>
-  <data name="tabStrip.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="tabStrip.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1264, 27</value>
-  </data>
-  <data name="tabStrip.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;tabStrip.Name" xml:space="preserve">
-    <value>tabStrip</value>
-  </data>
-  <data name="&gt;&gt;tabStrip.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.TabControl, DevComponents.DotNetBar2, Version=14.0.0.3, Culture=neutral, PublicKeyToken=c39c3242a43eee2b</value>
-  </data>
-  <data name="&gt;&gt;tabStrip.Parent" xml:space="preserve">
-    <value>PlTabStrip.ClientArea</value>
-  </data>
-  <data name="&gt;&gt;tabStrip.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;PlTabStrip.ClientArea.Name" xml:space="preserve">
-    <value>PlTabStrip.ClientArea</value>
-  </data>
-  <data name="&gt;&gt;PlTabStrip.ClientArea.Type" xml:space="preserve">
+  <data name="&gt;&gt;PlToolstrip.ClientArea.Type" xml:space="preserve">
     <value>Infragistics.Win.Misc.UltraPanelClientAreaUnsafe, Infragistics4.Win.Misc.v12.2, Version=12.2.20122.2123, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb</value>
   </data>
-  <data name="&gt;&gt;PlTabStrip.ClientArea.Parent" xml:space="preserve">
-    <value>PlTabStrip</value>
+  <data name="&gt;&gt;PlToolstrip.ClientArea.Parent" xml:space="preserve">
+    <value>PlToolstrip</value>
   </data>
-  <data name="&gt;&gt;PlTabStrip.ClientArea.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;PlToolstrip.ClientArea.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="PlTabStrip.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+  <data name="PlToolstrip.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>
   </data>
-  <data name="PlTabStrip.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 76</value>
+  <data name="PlToolstrip.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 26</value>
   </data>
-  <data name="PlTabStrip.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1264, 30</value>
+  <data name="PlToolstrip.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1264, 50</value>
   </data>
-  <data name="PlTabStrip.TabIndex" type="System.Int32, mscorlib">
-    <value>14</value>
+  <data name="PlToolstrip.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
   </data>
-  <data name="&gt;&gt;PlTabStrip.Name" xml:space="preserve">
-    <value>PlTabStrip</value>
+  <data name="&gt;&gt;PlToolstrip.Name" xml:space="preserve">
+    <value>PlToolstrip</value>
   </data>
-  <data name="&gt;&gt;PlTabStrip.Type" xml:space="preserve">
+  <data name="&gt;&gt;PlToolstrip.Type" xml:space="preserve">
     <value>Infragistics.Win.Misc.UltraPanel, Infragistics4.Win.Misc.v12.2, Version=12.2.20122.2123, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb</value>
   </data>
-  <data name="&gt;&gt;PlTabStrip.Parent" xml:space="preserve">
+  <data name="&gt;&gt;PlToolstrip.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;PlTabStrip.ZOrder" xml:space="preserve">
-    <value>1</value>
+  <data name="&gt;&gt;PlToolstrip.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="tabStrip.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
+    <value>None</value>
   </data>
   <data name="tabControlPanel1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -11302,6 +10879,69 @@
   <data name="&gt;&gt;tabControlPanel6.ZOrder" xml:space="preserve">
     <value>28</value>
   </data>
+  <data name="tabStrip.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="tabStrip.Font" type="System.Drawing.Font, System.Drawing">
+    <value>微软雅黑, 9.75pt</value>
+  </data>
+  <data name="tabStrip.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="tabStrip.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1264, 27</value>
+  </data>
+  <data name="tabStrip.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;tabStrip.Name" xml:space="preserve">
+    <value>tabStrip</value>
+  </data>
+  <data name="&gt;&gt;tabStrip.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.TabControl, DevComponents.DotNetBar2, Version=14.0.0.3, Culture=neutral, PublicKeyToken=c39c3242a43eee2b</value>
+  </data>
+  <data name="&gt;&gt;tabStrip.Parent" xml:space="preserve">
+    <value>PlTabStrip.ClientArea</value>
+  </data>
+  <data name="&gt;&gt;tabStrip.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;PlTabStrip.ClientArea.Name" xml:space="preserve">
+    <value>PlTabStrip.ClientArea</value>
+  </data>
+  <data name="&gt;&gt;PlTabStrip.ClientArea.Type" xml:space="preserve">
+    <value>Infragistics.Win.Misc.UltraPanelClientAreaUnsafe, Infragistics4.Win.Misc.v12.2, Version=12.2.20122.2123, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb</value>
+  </data>
+  <data name="&gt;&gt;PlTabStrip.ClientArea.Parent" xml:space="preserve">
+    <value>PlTabStrip</value>
+  </data>
+  <data name="&gt;&gt;PlTabStrip.ClientArea.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="PlTabStrip.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="PlTabStrip.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 76</value>
+  </data>
+  <data name="PlTabStrip.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1264, 30</value>
+  </data>
+  <data name="PlTabStrip.TabIndex" type="System.Int32, mscorlib">
+    <value>14</value>
+  </data>
+  <data name="&gt;&gt;PlTabStrip.Name" xml:space="preserve">
+    <value>PlTabStrip</value>
+  </data>
+  <data name="&gt;&gt;PlTabStrip.Type" xml:space="preserve">
+    <value>Infragistics.Win.Misc.UltraPanel, Infragistics4.Win.Misc.v12.2, Version=12.2.20122.2123, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb</value>
+  </data>
+  <data name="&gt;&gt;PlTabStrip.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;PlTabStrip.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
   <metadata name="timer1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>139, 29</value>
   </metadata>
@@ -11368,150 +11008,6 @@
   <data name="&gt;&gt;cbType.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="&gt;&gt;plCentent.Name" xml:space="preserve">
-    <value>plCentent</value>
-  </data>
-  <data name="&gt;&gt;plCentent.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;plCentent.Parent" xml:space="preserve">
-    <value>plMain</value>
-  </data>
-  <data name="&gt;&gt;plCentent.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;ultraSplitter2.Name" xml:space="preserve">
-    <value>ultraSplitter2</value>
-  </data>
-  <data name="&gt;&gt;ultraSplitter2.Type" xml:space="preserve">
-    <value>Infragistics.Win.Misc.UltraSplitter, Infragistics4.Win.Misc.v12.2, Version=12.2.20122.2123, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb</value>
-  </data>
-  <data name="&gt;&gt;ultraSplitter2.Parent" xml:space="preserve">
-    <value>plMain</value>
-  </data>
-  <data name="&gt;&gt;ultraSplitter2.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;ultraSplitter1.Name" xml:space="preserve">
-    <value>ultraSplitter1</value>
-  </data>
-  <data name="&gt;&gt;ultraSplitter1.Type" xml:space="preserve">
-    <value>Infragistics.Win.Misc.UltraSplitter, Infragistics4.Win.Misc.v12.2, Version=12.2.20122.2123, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb</value>
-  </data>
-  <data name="&gt;&gt;ultraSplitter1.Parent" xml:space="preserve">
-    <value>plMain</value>
-  </data>
-  <data name="&gt;&gt;ultraSplitter1.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;plRight.Name" xml:space="preserve">
-    <value>plRight</value>
-  </data>
-  <data name="&gt;&gt;plRight.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;plRight.Parent" xml:space="preserve">
-    <value>plMain</value>
-  </data>
-  <data name="&gt;&gt;plRight.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;plLeft.Name" xml:space="preserve">
-    <value>plLeft</value>
-  </data>
-  <data name="&gt;&gt;plLeft.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;plLeft.Parent" xml:space="preserve">
-    <value>plMain</value>
-  </data>
-  <data name="&gt;&gt;plLeft.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="plMain.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="plMain.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 106</value>
-  </data>
-  <data name="plMain.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1264, 536</value>
-  </data>
-  <data name="plMain.TabIndex" type="System.Int32, mscorlib">
-    <value>15</value>
-  </data>
-  <data name="&gt;&gt;plMain.Name" xml:space="preserve">
-    <value>plMain</value>
-  </data>
-  <data name="&gt;&gt;plMain.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;plMain.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;plMain.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;plDgv.Name" xml:space="preserve">
-    <value>plDgv</value>
-  </data>
-  <data name="&gt;&gt;plDgv.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;plDgv.Parent" xml:space="preserve">
-    <value>plCentent</value>
-  </data>
-  <data name="&gt;&gt;plDgv.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;ultraSplitter3.Name" xml:space="preserve">
-    <value>ultraSplitter3</value>
-  </data>
-  <data name="&gt;&gt;ultraSplitter3.Type" xml:space="preserve">
-    <value>Infragistics.Win.Misc.UltraSplitter, Infragistics4.Win.Misc.v12.2, Version=12.2.20122.2123, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb</value>
-  </data>
-  <data name="&gt;&gt;ultraSplitter3.Parent" xml:space="preserve">
-    <value>plCentent</value>
-  </data>
-  <data name="&gt;&gt;ultraSplitter3.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;plInfo.Name" xml:space="preserve">
-    <value>plInfo</value>
-  </data>
-  <data name="&gt;&gt;plInfo.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;plInfo.Parent" xml:space="preserve">
-    <value>plCentent</value>
-  </data>
-  <data name="&gt;&gt;plInfo.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="plCentent.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="plCentent.Location" type="System.Drawing.Point, System.Drawing">
-    <value>214, 0</value>
-  </data>
-  <data name="plCentent.Size" type="System.Drawing.Size, System.Drawing">
-    <value>836, 536</value>
-  </data>
-  <data name="plCentent.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;plCentent.Name" xml:space="preserve">
-    <value>plCentent</value>
-  </data>
-  <data name="&gt;&gt;plCentent.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;plCentent.Parent" xml:space="preserve">
-    <value>plMain</value>
-  </data>
-  <data name="&gt;&gt;plCentent.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
   <data name="plDgv.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
@@ -11560,54 +11056,6 @@
   <data name="&gt;&gt;ultraSplitter3.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="&gt;&gt;txtShow.Name" xml:space="preserve">
-    <value>txtShow</value>
-  </data>
-  <data name="&gt;&gt;txtShow.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RichTextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtShow.Parent" xml:space="preserve">
-    <value>plInfo</value>
-  </data>
-  <data name="&gt;&gt;txtShow.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;plInfoTitle.Name" xml:space="preserve">
-    <value>plInfoTitle</value>
-  </data>
-  <data name="&gt;&gt;plInfoTitle.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;plInfoTitle.Parent" xml:space="preserve">
-    <value>plInfo</value>
-  </data>
-  <data name="&gt;&gt;plInfoTitle.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="plInfo.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Bottom</value>
-  </data>
-  <data name="plInfo.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 443</value>
-  </data>
-  <data name="plInfo.Size" type="System.Drawing.Size, System.Drawing">
-    <value>836, 93</value>
-  </data>
-  <data name="plInfo.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;plInfo.Name" xml:space="preserve">
-    <value>plInfo</value>
-  </data>
-  <data name="&gt;&gt;plInfo.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;plInfo.Parent" xml:space="preserve">
-    <value>plCentent</value>
-  </data>
-  <data name="&gt;&gt;plInfo.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
   <data name="txtShow.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
@@ -11637,66 +11085,6 @@
   </data>
   <data name="&gt;&gt;txtShow.ZOrder" xml:space="preserve">
     <value>0</value>
-  </data>
-  <data name="&gt;&gt;symbolBox1.Name" xml:space="preserve">
-    <value>symbolBox1</value>
-  </data>
-  <data name="&gt;&gt;symbolBox1.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.Controls.SymbolBox, DevComponents.DotNetBar2, Version=14.0.0.3, Culture=neutral, PublicKeyToken=c39c3242a43eee2b</value>
-  </data>
-  <data name="&gt;&gt;symbolBox1.Parent" xml:space="preserve">
-    <value>plInfoTitle</value>
-  </data>
-  <data name="&gt;&gt;symbolBox1.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;btnInfoClear.Name" xml:space="preserve">
-    <value>btnInfoClear</value>
-  </data>
-  <data name="&gt;&gt;btnInfoClear.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.ButtonX, DevComponents.DotNetBar2, Version=14.0.0.3, Culture=neutral, PublicKeyToken=c39c3242a43eee2b</value>
-  </data>
-  <data name="&gt;&gt;btnInfoClear.Parent" xml:space="preserve">
-    <value>plInfoTitle</value>
-  </data>
-  <data name="&gt;&gt;btnInfoClear.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;label1.Name" xml:space="preserve">
-    <value>label1</value>
-  </data>
-  <data name="&gt;&gt;label1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label1.Parent" xml:space="preserve">
-    <value>plInfoTitle</value>
-  </data>
-  <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="plInfoTitle.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
-  </data>
-  <data name="plInfoTitle.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="plInfoTitle.Size" type="System.Drawing.Size, System.Drawing">
-    <value>836, 25</value>
-  </data>
-  <data name="plInfoTitle.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;plInfoTitle.Name" xml:space="preserve">
-    <value>plInfoTitle</value>
-  </data>
-  <data name="&gt;&gt;plInfoTitle.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;plInfoTitle.Parent" xml:space="preserve">
-    <value>plInfo</value>
-  </data>
-  <data name="&gt;&gt;plInfoTitle.ZOrder" xml:space="preserve">
-    <value>1</value>
   </data>
   <data name="symbolBox1.BackgroundStyle.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -11941,6 +11329,78 @@
   <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
+  <data name="plInfoTitle.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="plInfoTitle.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="plInfoTitle.Size" type="System.Drawing.Size, System.Drawing">
+    <value>836, 25</value>
+  </data>
+  <data name="plInfoTitle.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;plInfoTitle.Name" xml:space="preserve">
+    <value>plInfoTitle</value>
+  </data>
+  <data name="&gt;&gt;plInfoTitle.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;plInfoTitle.Parent" xml:space="preserve">
+    <value>plInfo</value>
+  </data>
+  <data name="&gt;&gt;plInfoTitle.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="plInfo.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Bottom</value>
+  </data>
+  <data name="plInfo.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 443</value>
+  </data>
+  <data name="plInfo.Size" type="System.Drawing.Size, System.Drawing">
+    <value>836, 93</value>
+  </data>
+  <data name="plInfo.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;plInfo.Name" xml:space="preserve">
+    <value>plInfo</value>
+  </data>
+  <data name="&gt;&gt;plInfo.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;plInfo.Parent" xml:space="preserve">
+    <value>plCentent</value>
+  </data>
+  <data name="&gt;&gt;plInfo.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="plCentent.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="plCentent.Location" type="System.Drawing.Point, System.Drawing">
+    <value>214, 0</value>
+  </data>
+  <data name="plCentent.Size" type="System.Drawing.Size, System.Drawing">
+    <value>836, 536</value>
+  </data>
+  <data name="plCentent.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;plCentent.Name" xml:space="preserve">
+    <value>plCentent</value>
+  </data>
+  <data name="&gt;&gt;plCentent.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;plCentent.Parent" xml:space="preserve">
+    <value>plMain</value>
+  </data>
+  <data name="&gt;&gt;plCentent.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="ultraSplitter2.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Right</value>
   </data>
@@ -11985,66 +11445,6 @@
   </data>
   <data name="&gt;&gt;ultraSplitter1.ZOrder" xml:space="preserve">
     <value>2</value>
-  </data>
-  <data name="&gt;&gt;plSection.Name" xml:space="preserve">
-    <value>plSection</value>
-  </data>
-  <data name="&gt;&gt;plSection.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;plSection.Parent" xml:space="preserve">
-    <value>plRight</value>
-  </data>
-  <data name="&gt;&gt;plSection.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;ultraSplitter4.Name" xml:space="preserve">
-    <value>ultraSplitter4</value>
-  </data>
-  <data name="&gt;&gt;ultraSplitter4.Type" xml:space="preserve">
-    <value>Infragistics.Win.Misc.UltraSplitter, Infragistics4.Win.Misc.v12.2, Version=12.2.20122.2123, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb</value>
-  </data>
-  <data name="&gt;&gt;ultraSplitter4.Parent" xml:space="preserve">
-    <value>plRight</value>
-  </data>
-  <data name="&gt;&gt;ultraSplitter4.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;plTitle.Name" xml:space="preserve">
-    <value>plTitle</value>
-  </data>
-  <data name="&gt;&gt;plTitle.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;plTitle.Parent" xml:space="preserve">
-    <value>plRight</value>
-  </data>
-  <data name="&gt;&gt;plTitle.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="plRight.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Right</value>
-  </data>
-  <data name="plRight.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1060, 0</value>
-  </data>
-  <data name="plRight.Size" type="System.Drawing.Size, System.Drawing">
-    <value>204, 536</value>
-  </data>
-  <data name="plRight.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;plRight.Name" xml:space="preserve">
-    <value>plRight</value>
-  </data>
-  <data name="&gt;&gt;plRight.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;plRight.Parent" xml:space="preserve">
-    <value>plMain</value>
-  </data>
-  <data name="&gt;&gt;plRight.ZOrder" xml:space="preserve">
-    <value>3</value>
   </data>
   <data name="plSection.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -12094,54 +11494,6 @@
   <data name="&gt;&gt;ultraSplitter4.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="&gt;&gt;plTitleTree.Name" xml:space="preserve">
-    <value>plTitleTree</value>
-  </data>
-  <data name="&gt;&gt;plTitleTree.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;plTitleTree.Parent" xml:space="preserve">
-    <value>plTitle</value>
-  </data>
-  <data name="&gt;&gt;plTitleTree.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;plTitleCbbox.Name" xml:space="preserve">
-    <value>plTitleCbbox</value>
-  </data>
-  <data name="&gt;&gt;plTitleCbbox.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;plTitleCbbox.Parent" xml:space="preserve">
-    <value>plTitle</value>
-  </data>
-  <data name="&gt;&gt;plTitleCbbox.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="plTitle.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Bottom</value>
-  </data>
-  <data name="plTitle.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 284</value>
-  </data>
-  <data name="plTitle.Size" type="System.Drawing.Size, System.Drawing">
-    <value>204, 252</value>
-  </data>
-  <data name="plTitle.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;plTitle.Name" xml:space="preserve">
-    <value>plTitle</value>
-  </data>
-  <data name="&gt;&gt;plTitle.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;plTitle.Parent" xml:space="preserve">
-    <value>plRight</value>
-  </data>
-  <data name="&gt;&gt;plTitle.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
   <data name="plTitleTree.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
@@ -12165,66 +11517,6 @@
   </data>
   <data name="&gt;&gt;plTitleTree.ZOrder" xml:space="preserve">
     <value>0</value>
-  </data>
-  <data name="&gt;&gt;btnAddTitleItem.Name" xml:space="preserve">
-    <value>btnAddTitleItem</value>
-  </data>
-  <data name="&gt;&gt;btnAddTitleItem.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.ButtonX, DevComponents.DotNetBar2, Version=14.0.0.3, Culture=neutral, PublicKeyToken=c39c3242a43eee2b</value>
-  </data>
-  <data name="&gt;&gt;btnAddTitleItem.Parent" xml:space="preserve">
-    <value>plTitleCbbox</value>
-  </data>
-  <data name="&gt;&gt;btnAddTitleItem.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;btnClear.Name" xml:space="preserve">
-    <value>btnClear</value>
-  </data>
-  <data name="&gt;&gt;btnClear.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.ButtonX, DevComponents.DotNetBar2, Version=14.0.0.3, Culture=neutral, PublicKeyToken=c39c3242a43eee2b</value>
-  </data>
-  <data name="&gt;&gt;btnClear.Parent" xml:space="preserve">
-    <value>plTitleCbbox</value>
-  </data>
-  <data name="&gt;&gt;btnClear.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;symbolBox2.Name" xml:space="preserve">
-    <value>symbolBox2</value>
-  </data>
-  <data name="&gt;&gt;symbolBox2.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.Controls.SymbolBox, DevComponents.DotNetBar2, Version=14.0.0.3, Culture=neutral, PublicKeyToken=c39c3242a43eee2b</value>
-  </data>
-  <data name="&gt;&gt;symbolBox2.Parent" xml:space="preserve">
-    <value>plTitleCbbox</value>
-  </data>
-  <data name="&gt;&gt;symbolBox2.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="plTitleCbbox.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
-  </data>
-  <data name="plTitleCbbox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="plTitleCbbox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>204, 25</value>
-  </data>
-  <data name="plTitleCbbox.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;plTitleCbbox.Name" xml:space="preserve">
-    <value>plTitleCbbox</value>
-  </data>
-  <data name="&gt;&gt;plTitleCbbox.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;plTitleCbbox.Parent" xml:space="preserve">
-    <value>plTitle</value>
-  </data>
-  <data name="&gt;&gt;plTitleCbbox.ZOrder" xml:space="preserve">
-    <value>1</value>
   </data>
   <data name="btnAddTitleItem.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Right</value>
@@ -12574,6 +11866,78 @@
   <data name="&gt;&gt;symbolBox2.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
+  <data name="plTitleCbbox.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="plTitleCbbox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="plTitleCbbox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>204, 25</value>
+  </data>
+  <data name="plTitleCbbox.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;plTitleCbbox.Name" xml:space="preserve">
+    <value>plTitleCbbox</value>
+  </data>
+  <data name="&gt;&gt;plTitleCbbox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;plTitleCbbox.Parent" xml:space="preserve">
+    <value>plTitle</value>
+  </data>
+  <data name="&gt;&gt;plTitleCbbox.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="plTitle.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Bottom</value>
+  </data>
+  <data name="plTitle.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 284</value>
+  </data>
+  <data name="plTitle.Size" type="System.Drawing.Size, System.Drawing">
+    <value>204, 252</value>
+  </data>
+  <data name="plTitle.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;plTitle.Name" xml:space="preserve">
+    <value>plTitle</value>
+  </data>
+  <data name="&gt;&gt;plTitle.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;plTitle.Parent" xml:space="preserve">
+    <value>plRight</value>
+  </data>
+  <data name="&gt;&gt;plTitle.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="plRight.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="plRight.Location" type="System.Drawing.Point, System.Drawing">
+    <value>1060, 0</value>
+  </data>
+  <data name="plRight.Size" type="System.Drawing.Size, System.Drawing">
+    <value>204, 536</value>
+  </data>
+  <data name="plRight.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;plRight.Name" xml:space="preserve">
+    <value>plRight</value>
+  </data>
+  <data name="&gt;&gt;plRight.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;plRight.Parent" xml:space="preserve">
+    <value>plMain</value>
+  </data>
+  <data name="&gt;&gt;plRight.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
   <data name="plLeft.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Left</value>
   </data>
@@ -12597,6 +11961,30 @@
   </data>
   <data name="&gt;&gt;plLeft.ZOrder" xml:space="preserve">
     <value>4</value>
+  </data>
+  <data name="plMain.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="plMain.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 106</value>
+  </data>
+  <data name="plMain.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1264, 536</value>
+  </data>
+  <data name="plMain.TabIndex" type="System.Int32, mscorlib">
+    <value>15</value>
+  </data>
+  <data name="&gt;&gt;plMain.Name" xml:space="preserve">
+    <value>plMain</value>
+  </data>
+  <data name="&gt;&gt;plMain.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;plMain.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;plMain.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>

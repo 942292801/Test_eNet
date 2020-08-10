@@ -77,11 +77,7 @@ namespace eNet编辑器.Controller
 
         }
 
-        //添加点击事情 获取焦点
-        private void groupBox2Click(object sender, EventArgs e)
-        {
-            groupBox2.Focus();
-        }
+        
 
         #region  图形初始化函数
 
@@ -106,13 +102,17 @@ namespace eNet编辑器.Controller
             //标记点边框颜色      
             chart1.Series[0].MarkerBorderColor = Color.Blue;
             //标记点边框大小
-            chart1.Series[0].MarkerBorderWidth = 3; //chart1.;// Xaxis 
+            chart1.Series[0].MarkerBorderWidth = 2; //chart1.;// Xaxis 
             //标记点中心颜色
-            chart1.Series[0].MarkerColor = Color.White;//AxisColor
+            chart1.Series[0].MarkerColor = Color.LightBlue;//AxisColor
             //标记点大小
             chart1.Series[0].MarkerSize = 2;
             //标记点类型     
             chart1.Series[0].MarkerStyle = MarkerStyle.Circle;
+            //标记点偏移量
+            chart1.Series[0].MarkerStep = 1;
+            
+
             //需要提示的信息    
             chart1.Series[0].ToolTip = "X轴：#VALX\nY轴：#VAL\n";
             //将文字移到外侧
@@ -120,8 +120,7 @@ namespace eNet编辑器.Controller
             //绘制黑色的连线
             chart1.Series[0]["PieSplineColor"] = "Black";
 
-            chart1.Series[0].ShadowOffset = 1;
-            chart1.Series[0].MarkerStep = 3;
+            chart1.Series[0].ShadowOffset = 0;
               
             chart1.ChartAreas[0].AxisX.IsLabelAutoFit = false;
             //chart1.ChartAreas[0].AxisX.Title = "百分点(0-100%)";
@@ -140,12 +139,10 @@ namespace eNet编辑器.Controller
             chart1.ChartAreas[0].CursorX.IsUserEnabled = true;
             chart1.ChartAreas[0].CursorY.IsUserEnabled = true;
 
-
         }
 
         #endregion
 
-       
         #region tcp6003 链接 以及处理反馈信息 发送信息
 
         /// <summary>
@@ -1207,6 +1204,10 @@ namespace eNet编辑器.Controller
         //发送当前亮度
         private void sendliangdu(int x)
         {
+            if (x - 1 < 0)
+            {
+                return;
+            }
             //当连接时候发送当前亮度代码
             string str = yData[x - 1].ToString("X8");
             sendRegOrder(str, "03");
@@ -1222,41 +1223,11 @@ namespace eNet编辑器.Controller
         {
             try
             {
-                if (!panel1.Focused)
+                if (!panel1.Focused )
                 {
                     return;
                 }
-                int x = (int)chart1.ChartAreas[0].CursorX.Position;//获取X轴
-                //int y = (int)chart1.ChartAreas[0].CursorY.Position;//获取X轴
-                switch (e.KeyCode)
-                {
-                    case Keys.Left:
-                        chart1.ChartAreas[0].CursorX.Position = x - 1;
-                        sendliangdu(x-1);
-                        break;
-                    case Keys.Right:
-                        chart1.ChartAreas[0].CursorX.Position = x + 1;
-                        sendliangdu(x + 1);
-                        break;
-                    case Keys.Up:
-                        LineUpdateByPoint(x,yData[x-1] +5);
-                        chart1.Series[0].Points.DataBindXY(xData, yData);
-                        //当连接时候发送当前亮度代码
-                        sendliangdu(x);
-                        updateTable();
-                        break;
-                    case Keys.Down:
-                        LineUpdateByPoint(x, yData[x - 1] - 5);
-                        chart1.Series[0].Points.DataBindXY(xData, yData);
-                        //当连接时候发送当前亮度代码
-                        sendliangdu(x);
-                        updateTable();
-                        break;
-                    default:
-                        break;
-                }
-
-
+                keyDown(e);
             }
             catch
             {
@@ -1264,7 +1235,46 @@ namespace eNet编辑器.Controller
             }
         }
 
+        private void SetDimmer_KeyUp(object sender, KeyEventArgs e)
+        {
+            try
+            {
+                if (!panel1.Focused)
+                {
+                    return;
+                }
+                keyUp(e);
+            }
+            catch
+            {
+
+            }
+        }
+
+        private void Txtunit1_KeyDown(object sender, KeyEventArgs e)
+        {
+            keyDown(e);
+        }
+
+        private void Txtunit1_KeyUp(object sender, KeyEventArgs e)
+        {
+            keyUp(e);
+        }
+
+        //按下修改值
         private void Txtabs1_KeyDown(object sender, KeyEventArgs e)
+        {
+            keyDown(e);
+        
+        }
+
+        //释放按键 发送代码
+        private void Txtabs1_KeyUp(object sender, KeyEventArgs e)
+        {
+            keyUp(e);
+        }
+
+        private void keyDown(KeyEventArgs e)
         {
             try
             {
@@ -1272,30 +1282,84 @@ namespace eNet编辑器.Controller
                 //int y = (int)chart1.ChartAreas[0].CursorY.Position;//获取X轴
                 switch (e.KeyCode)
                 {
-            
+                    case Keys.Left:
+                        if (x - 1 < 0)
+                        {
+                            break;
+                        }
+                        chart1.ChartAreas[0].CursorX.Position = x - 1;
+                        TxtBackStyleChange(x-1, true);
+                        break;
+                    case Keys.Right:
+                        if (x +1 > 100)
+                        {
+                            break;
+                        }
+                        chart1.ChartAreas[0].CursorX.Position = x + 1;
+                        TxtBackStyleChange(x + 1, true);
+                        break;
                     case Keys.Up:
+                        if (x - 1 < 0)
+                        {
+                            break;
+                        }
                         LineUpdateByPoint(x, yData[x - 1] + 5);
                         chart1.Series[0].Points.DataBindXY(xData, yData);
-                        //当连接时候发送当前亮度代码
-                        sendliangdu(x);
+
                         updateTable();
                         break;
                     case Keys.Down:
+                        if (x - 1 < 0)
+                        {
+                            break;
+                        }
                         LineUpdateByPoint(x, yData[x - 1] - 5);
                         chart1.Series[0].Points.DataBindXY(xData, yData);
-                        //当连接时候发送当前亮度代码
-                        sendliangdu(x);
                         updateTable();
                         break;
                     default:
                         break;
                 }
+
+
             }
             catch
             {
 
             }
         }
+
+        private void keyUp(KeyEventArgs e)
+        {
+            try
+            {
+                int x = (int)chart1.ChartAreas[0].CursorX.Position;//获取X轴
+                switch (e.KeyCode)
+                {
+                    case Keys.Left:
+                        sendliangdu(x - 1);
+                        break;
+                    case Keys.Right:
+                        sendliangdu(x + 1);
+                        break;
+                    case Keys.Up:
+                        sendliangdu(x);
+                        break;
+                    case Keys.Down:
+                        sendliangdu(x);
+                        break;
+                    default:
+                        break;
+                }
+
+
+            }
+            catch
+            {
+
+            }
+        }
+
         #endregion
 
         #region 百分比 表格
@@ -1309,14 +1373,24 @@ namespace eNet编辑器.Controller
 
             TextBox[] txtPercent= new TextBox[] { txtunit1, txtunit2, txtunit3, txtunit4, txtunit5, txtunit6, txtunit7, txtunit8, txtunit9, txtunit10, txtunit11};
             TextBox[] txtvals = new TextBox[] { txtabs1, txtabs2, txtabs3, txtabs4, txtabs5, txtabs6, txtabs7, txtabs8, txtabs9, txtabs10, txtabs11};
+            TextBox[] txtCankaoVals = new TextBox[] { txtVal1, txtVal2, txtVal3, txtVal4, txtVal5, txtVal6, txtVal7, txtVal8, txtVal9, txtVal10, txtVal11 };
             int percent = 0;
-
+            int val = 0;
             for (int i = 0; i < txtPercent.Length; i++)
             {
                 if (txtPercent[i].Visible)
                 {
                     percent = Convert.ToInt32(Regex.Replace(txtPercent[i].Text, @"[^\d]*", ""));
                     txtvals[i].Text = yData[percent - 1].ToString();
+                    if (string.IsNullOrEmpty(txtVal100.Text))
+                    {
+                        val = 0;
+                    }
+                    else
+                    {
+                        val = Convert.ToInt32(txtVal100.Text);
+                    }
+                    txtCankaoVals[i].Text = (val*percent/100).ToString();
                 }
                     
             }
@@ -1330,13 +1404,14 @@ namespace eNet编辑器.Controller
         /// <param name="e"></param>
         private void txtabs1_Leave(object sender, EventArgs e)
         {
-            TableValUpdataLine();
+            //TableValUpdataLine();
         }
 
         private void txtabs1_KeyPress(object sender, KeyPressEventArgs e)
         {
+            e.Handled = true;
             //如果输入的不是数字键，也不是wu、Backspace键，则取消该输入
-            if (!(Char.IsNumber(e.KeyChar)) && e.KeyChar != (char)8)
+            /*if (!(Char.IsNumber(e.KeyChar)) && e.KeyChar != (char)8)
             {
                 e.Handled = true;
             }
@@ -1344,7 +1419,7 @@ namespace eNet编辑器.Controller
             if (e.KeyChar == (char)Keys.Enter)
             {
                 groupBox2.Focus();
-            }
+            }*/
         }
 
         /// <summary>
@@ -1380,19 +1455,26 @@ namespace eNet编辑器.Controller
 
 
         }
+
+        //添加点击事情 获取焦点 用于边框点恐怖地方
+        private void groupBox2Click(object sender, EventArgs e)
+        {
+            groupBox2.Focus();
+        }
         #endregion
 
         #region 点击编辑表格变橙色 图表定位
         /// <summary>
         /// 选中框变橙色 并定位到xy点
         /// </summary>
-        /// <param name="XSelect"></param>
+        /// <param name="XSelect">是否定位到xy轴点</param>
         private void TxtBackStyleChange(int XSelect,bool isChangeLine)
         {
             try
             {
                 TextBox[] txtPercent = new TextBox[] { txtunit1, txtunit2, txtunit3, txtunit4, txtunit5, txtunit6, txtunit7, txtunit8, txtunit9, txtunit10, txtunit11 };
                 TextBox[] txtvals = new TextBox[] { txtabs1, txtabs2, txtabs3, txtabs4, txtabs5, txtabs6, txtabs7, txtabs8, txtabs9, txtabs10, txtabs11 };
+                TextBox[] txtCankaoVals = new TextBox[] { txtVal1, txtVal2, txtVal3, txtVal4, txtVal5, txtVal6, txtVal7, txtVal8, txtVal9, txtVal10, txtVal11 };
                 int percent = 0;
                 int y = 0;
                 for (int i = 0; i < txtPercent.Length; i++)
@@ -1404,11 +1486,13 @@ namespace eNet编辑器.Controller
                         {
                             txtPercent[i].BackColor = Color.LightSalmon;
                             txtvals[i].BackColor = Color.LightSalmon;
+                            txtCankaoVals[i].BackColor = Color.LightSalmon;
                             if (isChangeLine)
                             {
                                 y = Convert.ToInt32(txtvals[i].Text);
                                 chart1.ChartAreas[0].CursorX.Position = Convert.ToDouble(percent);
                                 chart1.ChartAreas[0].CursorY.Position = Convert.ToDouble(y);
+                                sendliangdu(percent);
                             }
                             
                         }
@@ -1416,6 +1500,7 @@ namespace eNet编辑器.Controller
                         {
                             txtPercent[i].BackColor = Color.WhiteSmoke;
                             txtvals[i].BackColor = Color.WhiteSmoke;
+                            txtCankaoVals[i].BackColor = Color.WhiteSmoke;
                         }
                     }
 
@@ -1434,67 +1519,234 @@ namespace eNet编辑器.Controller
         {
             int percent = Convert.ToInt32(Regex.Replace(txtunit1.Text, @"[^\d]*", ""));
             TxtBackStyleChange(percent,true);
+            panel1.Focus();
+            
         }
 
         private void Txtabs2_Enter(object sender, EventArgs e)
         {
             int percent = Convert.ToInt32(Regex.Replace(txtunit2.Text, @"[^\d]*", ""));
             TxtBackStyleChange(percent, true);
+            panel1.Focus();
         }
 
         private void Txtabs3_Enter(object sender, EventArgs e)
         {
             int percent = Convert.ToInt32(Regex.Replace(txtunit3.Text, @"[^\d]*", ""));
             TxtBackStyleChange(percent, true);
+            panel1.Focus();
         }
 
         private void Txtabs4_Enter(object sender, EventArgs e)
         {
             int percent = Convert.ToInt32(Regex.Replace(txtunit4.Text, @"[^\d]*", ""));
             TxtBackStyleChange(percent, true);
+            panel1.Focus();
         }
 
         private void Txtabs5_Enter(object sender, EventArgs e)
         {
             int percent = Convert.ToInt32(Regex.Replace(txtunit5.Text, @"[^\d]*", ""));
             TxtBackStyleChange(percent, true);
+            panel1.Focus();
         }
 
         private void Txtabs6_Enter(object sender, EventArgs e)
         {
             int percent = Convert.ToInt32(Regex.Replace(txtunit6.Text, @"[^\d]*", ""));
             TxtBackStyleChange(percent, true);
+            panel1.Focus();
         }
 
         private void Txtabs7_Enter(object sender, EventArgs e)
         {
             int percent = Convert.ToInt32(Regex.Replace(txtunit7.Text, @"[^\d]*", ""));
             TxtBackStyleChange(percent, true);
+            panel1.Focus();
         }
 
         private void Txtabs8_Enter(object sender, EventArgs e)
         {
             int percent = Convert.ToInt32(Regex.Replace(txtunit8.Text, @"[^\d]*", ""));
             TxtBackStyleChange(percent, true);
+            panel1.Focus();
         }
 
         private void Txtabs9_Enter(object sender, EventArgs e)
         {
             int percent = Convert.ToInt32(Regex.Replace(txtunit9.Text, @"[^\d]*", ""));
             TxtBackStyleChange(percent, true);
+            panel1.Focus();
         }
 
         private void Txtabs10_Enter(object sender, EventArgs e)
         {
             int percent = Convert.ToInt32(Regex.Replace(txtunit10.Text, @"[^\d]*", ""));
             TxtBackStyleChange(percent, true);
+            panel1.Focus();
         }
 
         private void Txtabs11_Enter(object sender, EventArgs e)
         {
             int percent = Convert.ToInt32(Regex.Replace(txtunit11.Text, @"[^\d]*", ""));
             TxtBackStyleChange(percent, true);
+            panel1.Focus();
         }
+        private void Txtunit1_Enter(object sender, EventArgs e)
+        {
+            int percent = Convert.ToInt32(Regex.Replace(txtunit1.Text, @"[^\d]*", ""));
+            TxtBackStyleChange(percent, true);
+            panel1.Focus();
+        }
+
+        private void Txtunit2_Enter(object sender, EventArgs e)
+        {
+            int percent = Convert.ToInt32(Regex.Replace(txtunit2.Text, @"[^\d]*", ""));
+            TxtBackStyleChange(percent, true);
+            panel1.Focus();
+        }
+
+        private void Txtunit3_Enter(object sender, EventArgs e)
+        {
+            int percent = Convert.ToInt32(Regex.Replace(txtunit3.Text, @"[^\d]*", ""));
+            TxtBackStyleChange(percent, true);
+            panel1.Focus();
+        }
+
+        private void Txtunit4_Enter(object sender, EventArgs e)
+        {
+            int percent = Convert.ToInt32(Regex.Replace(txtunit4.Text, @"[^\d]*", ""));
+            TxtBackStyleChange(percent, true);
+            panel1.Focus();
+        }
+
+        private void Txtunit5_Enter(object sender, EventArgs e)
+        {
+            int percent = Convert.ToInt32(Regex.Replace(txtunit5.Text, @"[^\d]*", ""));
+            TxtBackStyleChange(percent, true);
+            panel1.Focus();
+        }
+
+        private void Txtunit6_Enter(object sender, EventArgs e)
+        {
+            int percent = Convert.ToInt32(Regex.Replace(txtunit6.Text, @"[^\d]*", ""));
+            TxtBackStyleChange(percent, true);
+            panel1.Focus();
+        }
+
+        private void Txtunit7_Enter(object sender, EventArgs e)
+        {
+            int percent = Convert.ToInt32(Regex.Replace(txtunit7.Text, @"[^\d]*", ""));
+            TxtBackStyleChange(percent, true);
+            panel1.Focus();
+        }
+
+        private void Txtunit8_Enter(object sender, EventArgs e)
+        {
+            int percent = Convert.ToInt32(Regex.Replace(txtunit8.Text, @"[^\d]*", ""));
+            TxtBackStyleChange(percent, true);
+            panel1.Focus();
+        }
+
+        private void Txtunit9_Enter(object sender, EventArgs e)
+        {
+            int percent = Convert.ToInt32(Regex.Replace(txtunit9.Text, @"[^\d]*", ""));
+            TxtBackStyleChange(percent, true);
+            panel1.Focus();
+        }
+
+        private void Txtunit10_Enter(object sender, EventArgs e)
+        {
+            int percent = Convert.ToInt32(Regex.Replace(txtunit10.Text, @"[^\d]*", ""));
+            TxtBackStyleChange(percent, true);
+            panel1.Focus();
+        }
+
+        private void Txtunit11_Enter(object sender, EventArgs e)
+        {
+            int percent = Convert.ToInt32(Regex.Replace(txtunit11.Text, @"[^\d]*", ""));
+            TxtBackStyleChange(percent, true);
+            panel1.Focus();
+        }
+
+        private void TxtVal1_Enter(object sender, EventArgs e)
+        {
+            int percent = Convert.ToInt32(Regex.Replace(txtunit1.Text, @"[^\d]*", ""));
+            TxtBackStyleChange(percent, true);
+            panel1.Focus();
+
+        }
+
+        private void TxtVal2_Enter(object sender, EventArgs e)
+        {
+            int percent = Convert.ToInt32(Regex.Replace(txtunit2.Text, @"[^\d]*", ""));
+            TxtBackStyleChange(percent, true);
+            panel1.Focus();
+        }
+
+        private void TxtVal3_Enter(object sender, EventArgs e)
+        {
+            int percent = Convert.ToInt32(Regex.Replace(txtunit3.Text, @"[^\d]*", ""));
+            TxtBackStyleChange(percent, true);
+            panel1.Focus();
+        }
+
+        private void TxtVal4_Enter(object sender, EventArgs e)
+        {
+            int percent = Convert.ToInt32(Regex.Replace(txtunit4.Text, @"[^\d]*", ""));
+            TxtBackStyleChange(percent, true);
+            panel1.Focus();
+        }
+
+        private void TxtVal5_Enter(object sender, EventArgs e)
+        {
+            int percent = Convert.ToInt32(Regex.Replace(txtunit5.Text, @"[^\d]*", ""));
+            TxtBackStyleChange(percent, true);
+            panel1.Focus();
+        }
+
+        private void TxtVal6_Enter(object sender, EventArgs e)
+        {
+            int percent = Convert.ToInt32(Regex.Replace(txtunit6.Text, @"[^\d]*", ""));
+            TxtBackStyleChange(percent, true);
+            panel1.Focus();
+        }
+
+        private void TxtVal7_Enter(object sender, EventArgs e)
+        {
+            int percent = Convert.ToInt32(Regex.Replace(txtunit7.Text, @"[^\d]*", ""));
+            TxtBackStyleChange(percent, true);
+            panel1.Focus();
+        }
+
+        private void TxtVal8_Enter(object sender, EventArgs e)
+        {
+            int percent = Convert.ToInt32(Regex.Replace(txtunit8.Text, @"[^\d]*", ""));
+            TxtBackStyleChange(percent, true);
+            panel1.Focus();
+        }
+
+        private void TxtVal9_Enter(object sender, EventArgs e)
+        {
+            int percent = Convert.ToInt32(Regex.Replace(txtunit9.Text, @"[^\d]*", ""));
+            TxtBackStyleChange(percent, true);
+            panel1.Focus();
+        }
+
+        private void TxtVal10_Enter(object sender, EventArgs e)
+        {
+            int percent = Convert.ToInt32(Regex.Replace(txtunit10.Text, @"[^\d]*", ""));
+            TxtBackStyleChange(percent, true);
+            panel1.Focus();
+        }
+
+        private void TxtVal11_Enter(object sender, EventArgs e)
+        {
+            int percent = Convert.ToInt32(Regex.Replace(txtunit11.Text, @"[^\d]*", ""));
+            TxtBackStyleChange(percent, true);
+            panel1.Focus();
+        }
+
         #endregion
 
         #endregion
@@ -2513,9 +2765,15 @@ namespace eNet编辑器.Controller
             txtabs9.Visible = !isQuick;
             txtabs10.Visible = !isQuick;
             txtabs11.Visible = !isQuick;
+
+            txtVal7.Visible = !isQuick;
+            txtVal8.Visible = !isQuick;
+            txtVal9.Visible = !isQuick;
+            txtVal10.Visible = !isQuick;
+            txtVal11.Visible = !isQuick;
             if (isQuick)
             {
-                flowLayoutPanel2.Size = new Size(370,46);
+                flowLayoutPanel2.Size = new Size(370,78);
                 txtunit1.Text = "1%";
                 txtunit2.Text = "10%";
                 txtunit3.Text = "25%";
@@ -2525,7 +2783,7 @@ namespace eNet编辑器.Controller
             }
             else
             {
-                flowLayoutPanel2.Size = new Size(653, 46);
+                flowLayoutPanel2.Size = new Size(653, 78);
                 txtunit1.Text = "1%";
                 txtunit2.Text = "10%";
                 txtunit3.Text = "20%";
@@ -2549,10 +2807,68 @@ namespace eNet编辑器.Controller
         }
 
 
+        #endregion
 
+        #region 左栏参数设置默认值  和限制输入 参考输入值
+        private void TxtMax_KeyPress(object sender, KeyPressEventArgs e)
+        {
+             if (!(Char.IsNumber(e.KeyChar)) && e.KeyChar != (char)8)
+            {
+                e.Handled = true;
+            }
+        }
+        private void BtnSetIni_Click(object sender, EventArgs e)
+        {
+            cbPowerState.SelectedIndex = 0;
+            cbOnState.SelectedIndex = 10;
+            cbChangeState.SelectedIndex = 10;
+            txtMax.Text = "100";
+            txtMin.Text = "0";
+        }
+
+        /// <summary>
+        /// 100参考照度值
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void TxtVal100_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //如果输入的不是数字键，也不是wu、Backspace键，则取消该输入
+            if (!(Char.IsNumber(e.KeyChar)) && e.KeyChar != (char)8)
+            {
+                e.Handled = true;
+            }
+            //回车
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                groupBox2.Focus();
+            }
+        }
+        private void TxtVal100_Leave(object sender, EventArgs e)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(txtVal100.Text))
+                {
+                    txtVal100.Text = "0";
+                }
+                int val = Convert.ToInt32(txtVal100.Text);
+                if (val > 99999)
+                {
+                    txtVal100.Text = "10000";
+                }
+                //更新表格内容
+                updateTable();
+            }
+            catch {
+            }
+           
+        }
+
+   
 
         #endregion
 
-       
+
     }//endClass
 }

@@ -234,27 +234,23 @@ namespace eNet编辑器
         public static void newDevice(DataJson.Device dev, string id,string version)
         {
             
-           
-                    DataJson.Module md = new DataJson.Module();
-                    md.id = Convert.ToInt32(id);
-                    md.device = version;
-                    md.area1 = "";
-                    md.area2 = "";
-                    md.area3 = "";
-                    md.area4 = "";
-                    md.name = "";
-                    md.sn = "";
-                    md.ver = "";
-                    addPortType(md.devPortList,version);
-                    //插入新设备信息
-                    dev.module.Add(md);
-                    //按ID号排序
-                    DeviceSort(dev);
-                    //刷新所有Tree的节点
-                    UpdateTreeView();
-         
-            
-           
+            DataJson.Module md = new DataJson.Module();
+            md.id = Convert.ToInt32(id);
+            md.device = version;
+            md.area1 = "";
+            md.area2 = "";
+            md.area3 = "";
+            md.area4 = "";
+            md.name = "";
+            md.sn = "";
+            md.ver = "";
+            addPortType(md.devPortList,version);
+            //插入新设备信息
+            dev.module.Add(md);
+            //按ID号排序
+            DeviceSort(dev);
+            //刷新所有Tree的节点
+            UpdateTreeView();
         }
 
         /// <summary>
@@ -288,9 +284,6 @@ namespace eNet编辑器
                     break;
                 }
             }
-
-           
-
 
 
         }

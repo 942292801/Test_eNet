@@ -296,7 +296,7 @@ namespace eNet编辑器.ThreeView
                 treeView1.SelectedNode.Expand();
 
             }
-            //获取定时号
+            //获取面板号
             string num = Convert.ToInt32(pladd.Num).ToString("X4");
             //获取IP最后一位 定时为20
             string address ="FE30" + num;

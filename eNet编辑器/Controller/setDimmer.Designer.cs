@@ -30,9 +30,9 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SetDimmer));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea15 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend15 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series15 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.plInfoTitle = new System.Windows.Forms.Panel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.btnRefresh = new DevComponents.DotNetBar.ButtonX();
@@ -48,6 +48,10 @@
             this.lbTitle = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txtVal100 = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.btnSetIni = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.btnSwitchLine = new System.Windows.Forms.Button();
@@ -81,6 +85,17 @@
             this.txtabs9 = new System.Windows.Forms.TextBox();
             this.txtabs10 = new System.Windows.Forms.TextBox();
             this.txtabs11 = new System.Windows.Forms.TextBox();
+            this.txtVal1 = new System.Windows.Forms.TextBox();
+            this.txtVal2 = new System.Windows.Forms.TextBox();
+            this.txtVal3 = new System.Windows.Forms.TextBox();
+            this.txtVal4 = new System.Windows.Forms.TextBox();
+            this.txtVal5 = new System.Windows.Forms.TextBox();
+            this.txtVal6 = new System.Windows.Forms.TextBox();
+            this.txtVal7 = new System.Windows.Forms.TextBox();
+            this.txtVal8 = new System.Windows.Forms.TextBox();
+            this.txtVal9 = new System.Windows.Forms.TextBox();
+            this.txtVal10 = new System.Windows.Forms.TextBox();
+            this.txtVal11 = new System.Windows.Forms.TextBox();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.label14 = new System.Windows.Forms.Label();
             this.txtMin = new System.Windows.Forms.TextBox();
@@ -359,11 +374,15 @@
             this.panel1.Controls.Add(this.groupBox1);
             this.panel1.Location = new System.Drawing.Point(1, 27);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(997, 545);
+            this.panel1.Size = new System.Drawing.Size(997, 585);
             this.panel1.TabIndex = 82;
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.label6);
+            this.groupBox2.Controls.Add(this.txtVal100);
+            this.groupBox2.Controls.Add(this.label5);
+            this.groupBox2.Controls.Add(this.btnSetIni);
             this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.btnSwitchLine);
@@ -391,16 +410,60 @@
             this.groupBox2.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.groupBox2.Location = new System.Drawing.Point(11, 80);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(976, 455);
+            this.groupBox2.Size = new System.Drawing.Size(976, 495);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "参数";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label6.Location = new System.Drawing.Point(13, 438);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(115, 20);
+            this.label6.TabIndex = 49;
+            this.label6.Text = "100%参考照度：";
+            // 
+            // txtVal100
+            // 
+            this.txtVal100.Location = new System.Drawing.Point(133, 438);
+            this.txtVal100.Name = "txtVal100";
+            this.txtVal100.Size = new System.Drawing.Size(55, 26);
+            this.txtVal100.TabIndex = 48;
+            this.txtVal100.Text = "0";
+            this.txtVal100.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtVal100_KeyPress);
+            this.txtVal100.Leave += new System.EventHandler(this.TxtVal100_Leave);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label5.Location = new System.Drawing.Point(194, 439);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(93, 20);
+            this.label5.TabIndex = 44;
+            this.label5.Text = "参考照度值：";
+            // 
+            // btnSetIni
+            // 
+            this.btnSetIni.BackColor = System.Drawing.Color.White;
+            this.btnSetIni.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnSetIni.ForeColor = System.Drawing.Color.Black;
+            this.btnSetIni.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.btnSetIni.Location = new System.Drawing.Point(17, 347);
+            this.btnSetIni.Name = "btnSetIni";
+            this.btnSetIni.Size = new System.Drawing.Size(123, 25);
+            this.btnSetIni.TabIndex = 43;
+            this.btnSetIni.Text = "参数默认出厂设置";
+            this.btnSetIni.UseVisualStyleBackColor = false;
+            this.btnSetIni.Click += new System.EventHandler(this.BtnSetIni_Click);
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label4.Location = new System.Drawing.Point(194, 417);
+            this.label4.Location = new System.Drawing.Point(195, 414);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(93, 20);
             this.label4.TabIndex = 42;
@@ -410,7 +473,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label3.Location = new System.Drawing.Point(222, 389);
+            this.label3.Location = new System.Drawing.Point(223, 392);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(65, 20);
             this.label3.TabIndex = 41;
@@ -539,10 +602,21 @@
             this.flowLayoutPanel2.Controls.Add(this.txtabs9);
             this.flowLayoutPanel2.Controls.Add(this.txtabs10);
             this.flowLayoutPanel2.Controls.Add(this.txtabs11);
+            this.flowLayoutPanel2.Controls.Add(this.txtVal1);
+            this.flowLayoutPanel2.Controls.Add(this.txtVal2);
+            this.flowLayoutPanel2.Controls.Add(this.txtVal3);
+            this.flowLayoutPanel2.Controls.Add(this.txtVal4);
+            this.flowLayoutPanel2.Controls.Add(this.txtVal5);
+            this.flowLayoutPanel2.Controls.Add(this.txtVal6);
+            this.flowLayoutPanel2.Controls.Add(this.txtVal7);
+            this.flowLayoutPanel2.Controls.Add(this.txtVal8);
+            this.flowLayoutPanel2.Controls.Add(this.txtVal9);
+            this.flowLayoutPanel2.Controls.Add(this.txtVal10);
+            this.flowLayoutPanel2.Controls.Add(this.txtVal11);
             this.flowLayoutPanel2.Location = new System.Drawing.Point(291, 391);
             this.flowLayoutPanel2.Margin = new System.Windows.Forms.Padding(0);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(653, 46);
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(653, 78);
             this.flowLayoutPanel2.TabIndex = 29;
             // 
             // txtunit1
@@ -550,23 +624,25 @@
             this.txtunit1.BackColor = System.Drawing.Color.WhiteSmoke;
             this.txtunit1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtunit1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.txtunit1.Enabled = false;
             this.txtunit1.Font = new System.Drawing.Font("幼圆", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.txtunit1.ForeColor = System.Drawing.Color.Black;
             this.txtunit1.Location = new System.Drawing.Point(0, 0);
             this.txtunit1.Margin = new System.Windows.Forms.Padding(0);
             this.txtunit1.Name = "txtunit1";
+            this.txtunit1.ReadOnly = true;
             this.txtunit1.Size = new System.Drawing.Size(59, 23);
             this.txtunit1.TabIndex = 17;
             this.txtunit1.Text = "1%";
             this.txtunit1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtunit1.Enter += new System.EventHandler(this.Txtunit1_Enter);
+            this.txtunit1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Txtunit1_KeyDown);
+            this.txtunit1.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Txtunit1_KeyUp);
             // 
             // txtunit2
             // 
             this.txtunit2.BackColor = System.Drawing.Color.WhiteSmoke;
             this.txtunit2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtunit2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.txtunit2.Enabled = false;
             this.txtunit2.Font = new System.Drawing.Font("幼圆", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.txtunit2.ForeColor = System.Drawing.Color.Black;
             this.txtunit2.Location = new System.Drawing.Point(59, 0);
@@ -577,13 +653,15 @@
             this.txtunit2.TabIndex = 18;
             this.txtunit2.Text = "10%";
             this.txtunit2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtunit2.Enter += new System.EventHandler(this.Txtunit2_Enter);
+            this.txtunit2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Txtunit1_KeyDown);
+            this.txtunit2.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Txtunit1_KeyUp);
             // 
             // txtunit3
             // 
             this.txtunit3.BackColor = System.Drawing.Color.WhiteSmoke;
             this.txtunit3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtunit3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.txtunit3.Enabled = false;
             this.txtunit3.Font = new System.Drawing.Font("幼圆", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.txtunit3.Location = new System.Drawing.Point(118, 0);
             this.txtunit3.Margin = new System.Windows.Forms.Padding(0);
@@ -593,13 +671,15 @@
             this.txtunit3.TabIndex = 19;
             this.txtunit3.Text = "20%";
             this.txtunit3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtunit3.Enter += new System.EventHandler(this.Txtunit3_Enter);
+            this.txtunit3.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Txtunit1_KeyDown);
+            this.txtunit3.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Txtunit1_KeyUp);
             // 
             // txtunit4
             // 
             this.txtunit4.BackColor = System.Drawing.Color.WhiteSmoke;
             this.txtunit4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtunit4.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.txtunit4.Enabled = false;
             this.txtunit4.Font = new System.Drawing.Font("幼圆", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.txtunit4.Location = new System.Drawing.Point(177, 0);
             this.txtunit4.Margin = new System.Windows.Forms.Padding(0);
@@ -609,13 +689,15 @@
             this.txtunit4.TabIndex = 20;
             this.txtunit4.Text = "30%";
             this.txtunit4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtunit4.Enter += new System.EventHandler(this.Txtunit4_Enter);
+            this.txtunit4.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Txtunit1_KeyDown);
+            this.txtunit4.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Txtunit1_KeyUp);
             // 
             // txtunit5
             // 
             this.txtunit5.BackColor = System.Drawing.Color.WhiteSmoke;
             this.txtunit5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtunit5.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.txtunit5.Enabled = false;
             this.txtunit5.Font = new System.Drawing.Font("幼圆", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.txtunit5.Location = new System.Drawing.Point(236, 0);
             this.txtunit5.Margin = new System.Windows.Forms.Padding(0);
@@ -625,13 +707,15 @@
             this.txtunit5.TabIndex = 21;
             this.txtunit5.Text = "40%";
             this.txtunit5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtunit5.Enter += new System.EventHandler(this.Txtunit5_Enter);
+            this.txtunit5.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Txtunit1_KeyDown);
+            this.txtunit5.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Txtunit1_KeyUp);
             // 
             // txtunit6
             // 
             this.txtunit6.BackColor = System.Drawing.Color.WhiteSmoke;
             this.txtunit6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtunit6.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.txtunit6.Enabled = false;
             this.txtunit6.Font = new System.Drawing.Font("幼圆", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.txtunit6.Location = new System.Drawing.Point(295, 0);
             this.txtunit6.Margin = new System.Windows.Forms.Padding(0);
@@ -641,13 +725,15 @@
             this.txtunit6.TabIndex = 22;
             this.txtunit6.Text = "50%";
             this.txtunit6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtunit6.Enter += new System.EventHandler(this.Txtunit6_Enter);
+            this.txtunit6.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Txtunit1_KeyDown);
+            this.txtunit6.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Txtunit1_KeyUp);
             // 
             // txtunit7
             // 
             this.txtunit7.BackColor = System.Drawing.Color.WhiteSmoke;
             this.txtunit7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtunit7.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.txtunit7.Enabled = false;
             this.txtunit7.Font = new System.Drawing.Font("幼圆", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.txtunit7.Location = new System.Drawing.Point(354, 0);
             this.txtunit7.Margin = new System.Windows.Forms.Padding(0);
@@ -657,13 +743,15 @@
             this.txtunit7.TabIndex = 23;
             this.txtunit7.Text = "60%";
             this.txtunit7.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtunit7.Enter += new System.EventHandler(this.Txtunit7_Enter);
+            this.txtunit7.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Txtunit1_KeyDown);
+            this.txtunit7.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Txtunit1_KeyUp);
             // 
             // txtunit8
             // 
             this.txtunit8.BackColor = System.Drawing.Color.WhiteSmoke;
             this.txtunit8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtunit8.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.txtunit8.Enabled = false;
             this.txtunit8.Font = new System.Drawing.Font("幼圆", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.txtunit8.Location = new System.Drawing.Point(413, 0);
             this.txtunit8.Margin = new System.Windows.Forms.Padding(0);
@@ -673,13 +761,15 @@
             this.txtunit8.TabIndex = 33;
             this.txtunit8.Text = "70%";
             this.txtunit8.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtunit8.Enter += new System.EventHandler(this.Txtunit8_Enter);
+            this.txtunit8.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Txtunit1_KeyDown);
+            this.txtunit8.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Txtunit1_KeyUp);
             // 
             // txtunit9
             // 
             this.txtunit9.BackColor = System.Drawing.Color.WhiteSmoke;
             this.txtunit9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtunit9.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.txtunit9.Enabled = false;
             this.txtunit9.Font = new System.Drawing.Font("幼圆", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.txtunit9.Location = new System.Drawing.Point(472, 0);
             this.txtunit9.Margin = new System.Windows.Forms.Padding(0);
@@ -689,13 +779,15 @@
             this.txtunit9.TabIndex = 37;
             this.txtunit9.Text = "80%";
             this.txtunit9.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtunit9.Enter += new System.EventHandler(this.Txtunit9_Enter);
+            this.txtunit9.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Txtunit1_KeyDown);
+            this.txtunit9.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Txtunit1_KeyUp);
             // 
             // txtunit10
             // 
             this.txtunit10.BackColor = System.Drawing.Color.WhiteSmoke;
             this.txtunit10.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtunit10.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.txtunit10.Enabled = false;
             this.txtunit10.Font = new System.Drawing.Font("幼圆", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.txtunit10.Location = new System.Drawing.Point(531, 0);
             this.txtunit10.Margin = new System.Windows.Forms.Padding(0);
@@ -705,13 +797,15 @@
             this.txtunit10.TabIndex = 24;
             this.txtunit10.Text = "90%";
             this.txtunit10.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtunit10.Enter += new System.EventHandler(this.Txtunit10_Enter);
+            this.txtunit10.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Txtunit1_KeyDown);
+            this.txtunit10.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Txtunit1_KeyUp);
             // 
             // txtunit11
             // 
             this.txtunit11.BackColor = System.Drawing.Color.WhiteSmoke;
             this.txtunit11.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtunit11.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.txtunit11.Enabled = false;
             this.txtunit11.Font = new System.Drawing.Font("幼圆", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.txtunit11.Location = new System.Drawing.Point(590, 0);
             this.txtunit11.Margin = new System.Windows.Forms.Padding(0);
@@ -721,217 +815,407 @@
             this.txtunit11.TabIndex = 42;
             this.txtunit11.Text = "100%";
             this.txtunit11.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtunit11.Enter += new System.EventHandler(this.Txtunit11_Enter);
+            this.txtunit11.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Txtunit1_KeyDown);
+            this.txtunit11.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Txtunit1_KeyUp);
             // 
             // txtabs1
             // 
             this.txtabs1.BackColor = System.Drawing.Color.WhiteSmoke;
             this.txtabs1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtabs1.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtabs1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.txtabs1.Font = new System.Drawing.Font("幼圆", 10.5F);
             this.txtabs1.Location = new System.Drawing.Point(0, 23);
             this.txtabs1.Margin = new System.Windows.Forms.Padding(0);
             this.txtabs1.Name = "txtabs1";
+            this.txtabs1.ReadOnly = true;
             this.txtabs1.Size = new System.Drawing.Size(59, 23);
             this.txtabs1.TabIndex = 26;
             this.txtabs1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtabs1.Enter += new System.EventHandler(this.Txtabs1_Enter);
             this.txtabs1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Txtabs1_KeyDown);
             this.txtabs1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtabs1_KeyPress);
+            this.txtabs1.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Txtabs1_KeyUp);
             this.txtabs1.Leave += new System.EventHandler(this.txtabs1_Leave);
             // 
             // txtabs2
             // 
             this.txtabs2.BackColor = System.Drawing.Color.WhiteSmoke;
             this.txtabs2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtabs2.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtabs2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.txtabs2.Font = new System.Drawing.Font("幼圆", 10.5F);
             this.txtabs2.Location = new System.Drawing.Point(59, 23);
             this.txtabs2.Margin = new System.Windows.Forms.Padding(0);
             this.txtabs2.Name = "txtabs2";
+            this.txtabs2.ReadOnly = true;
             this.txtabs2.Size = new System.Drawing.Size(59, 23);
             this.txtabs2.TabIndex = 27;
             this.txtabs2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtabs2.Enter += new System.EventHandler(this.Txtabs2_Enter);
             this.txtabs2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Txtabs1_KeyDown);
             this.txtabs2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtabs1_KeyPress);
+            this.txtabs2.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Txtabs1_KeyUp);
             this.txtabs2.Leave += new System.EventHandler(this.txtabs1_Leave);
             // 
             // txtabs3
             // 
             this.txtabs3.BackColor = System.Drawing.Color.WhiteSmoke;
             this.txtabs3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtabs3.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtabs3.Cursor = System.Windows.Forms.Cursors.Hand;
             this.txtabs3.Font = new System.Drawing.Font("幼圆", 10.5F);
             this.txtabs3.Location = new System.Drawing.Point(118, 23);
             this.txtabs3.Margin = new System.Windows.Forms.Padding(0);
             this.txtabs3.Name = "txtabs3";
+            this.txtabs3.ReadOnly = true;
             this.txtabs3.Size = new System.Drawing.Size(59, 23);
             this.txtabs3.TabIndex = 28;
             this.txtabs3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtabs3.Enter += new System.EventHandler(this.Txtabs3_Enter);
             this.txtabs3.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Txtabs1_KeyDown);
             this.txtabs3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtabs1_KeyPress);
+            this.txtabs3.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Txtabs1_KeyUp);
             this.txtabs3.Leave += new System.EventHandler(this.txtabs1_Leave);
             // 
             // txtabs4
             // 
             this.txtabs4.BackColor = System.Drawing.Color.WhiteSmoke;
             this.txtabs4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtabs4.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtabs4.Cursor = System.Windows.Forms.Cursors.Hand;
             this.txtabs4.Font = new System.Drawing.Font("幼圆", 10.5F);
             this.txtabs4.Location = new System.Drawing.Point(177, 23);
             this.txtabs4.Margin = new System.Windows.Forms.Padding(0);
             this.txtabs4.Name = "txtabs4";
+            this.txtabs4.ReadOnly = true;
             this.txtabs4.Size = new System.Drawing.Size(59, 23);
             this.txtabs4.TabIndex = 29;
             this.txtabs4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtabs4.Enter += new System.EventHandler(this.Txtabs4_Enter);
             this.txtabs4.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Txtabs1_KeyDown);
             this.txtabs4.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtabs1_KeyPress);
+            this.txtabs4.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Txtabs1_KeyUp);
             this.txtabs4.Leave += new System.EventHandler(this.txtabs1_Leave);
             // 
             // txtabs5
             // 
             this.txtabs5.BackColor = System.Drawing.Color.WhiteSmoke;
             this.txtabs5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtabs5.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtabs5.Cursor = System.Windows.Forms.Cursors.Hand;
             this.txtabs5.Font = new System.Drawing.Font("幼圆", 10.5F);
             this.txtabs5.Location = new System.Drawing.Point(236, 23);
             this.txtabs5.Margin = new System.Windows.Forms.Padding(0);
             this.txtabs5.Name = "txtabs5";
+            this.txtabs5.ReadOnly = true;
             this.txtabs5.Size = new System.Drawing.Size(59, 23);
             this.txtabs5.TabIndex = 30;
             this.txtabs5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtabs5.Enter += new System.EventHandler(this.Txtabs5_Enter);
             this.txtabs5.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Txtabs1_KeyDown);
             this.txtabs5.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtabs1_KeyPress);
+            this.txtabs5.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Txtabs1_KeyUp);
             this.txtabs5.Leave += new System.EventHandler(this.txtabs1_Leave);
             // 
             // txtabs6
             // 
             this.txtabs6.BackColor = System.Drawing.Color.WhiteSmoke;
             this.txtabs6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtabs6.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtabs6.Cursor = System.Windows.Forms.Cursors.Hand;
             this.txtabs6.Font = new System.Drawing.Font("幼圆", 10.5F);
             this.txtabs6.Location = new System.Drawing.Point(295, 23);
             this.txtabs6.Margin = new System.Windows.Forms.Padding(0);
             this.txtabs6.Name = "txtabs6";
+            this.txtabs6.ReadOnly = true;
             this.txtabs6.Size = new System.Drawing.Size(59, 23);
             this.txtabs6.TabIndex = 31;
             this.txtabs6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtabs6.Enter += new System.EventHandler(this.Txtabs6_Enter);
             this.txtabs6.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Txtabs1_KeyDown);
             this.txtabs6.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtabs1_KeyPress);
+            this.txtabs6.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Txtabs1_KeyUp);
             this.txtabs6.Leave += new System.EventHandler(this.txtabs1_Leave);
             // 
             // txtabs7
             // 
             this.txtabs7.BackColor = System.Drawing.Color.WhiteSmoke;
             this.txtabs7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtabs7.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtabs7.Cursor = System.Windows.Forms.Cursors.Hand;
             this.txtabs7.Font = new System.Drawing.Font("幼圆", 10.5F);
             this.txtabs7.Location = new System.Drawing.Point(354, 23);
             this.txtabs7.Margin = new System.Windows.Forms.Padding(0);
             this.txtabs7.Name = "txtabs7";
+            this.txtabs7.ReadOnly = true;
             this.txtabs7.Size = new System.Drawing.Size(59, 23);
             this.txtabs7.TabIndex = 32;
             this.txtabs7.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtabs7.Enter += new System.EventHandler(this.Txtabs7_Enter);
             this.txtabs7.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Txtabs1_KeyDown);
             this.txtabs7.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtabs1_KeyPress);
+            this.txtabs7.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Txtabs1_KeyUp);
             this.txtabs7.Leave += new System.EventHandler(this.txtabs1_Leave);
             // 
             // txtabs8
             // 
             this.txtabs8.BackColor = System.Drawing.Color.WhiteSmoke;
             this.txtabs8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtabs8.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtabs8.Cursor = System.Windows.Forms.Cursors.Hand;
             this.txtabs8.Font = new System.Drawing.Font("幼圆", 10.5F);
             this.txtabs8.Location = new System.Drawing.Point(413, 23);
             this.txtabs8.Margin = new System.Windows.Forms.Padding(0);
             this.txtabs8.Name = "txtabs8";
+            this.txtabs8.ReadOnly = true;
             this.txtabs8.Size = new System.Drawing.Size(59, 23);
             this.txtabs8.TabIndex = 39;
             this.txtabs8.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtabs8.Enter += new System.EventHandler(this.Txtabs8_Enter);
             this.txtabs8.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Txtabs1_KeyDown);
             this.txtabs8.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtabs1_KeyPress);
+            this.txtabs8.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Txtabs1_KeyUp);
             this.txtabs8.Leave += new System.EventHandler(this.txtabs1_Leave);
             // 
             // txtabs9
             // 
             this.txtabs9.BackColor = System.Drawing.Color.WhiteSmoke;
             this.txtabs9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtabs9.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtabs9.Cursor = System.Windows.Forms.Cursors.Hand;
             this.txtabs9.Font = new System.Drawing.Font("幼圆", 10.5F);
             this.txtabs9.Location = new System.Drawing.Point(472, 23);
             this.txtabs9.Margin = new System.Windows.Forms.Padding(0);
             this.txtabs9.Name = "txtabs9";
+            this.txtabs9.ReadOnly = true;
             this.txtabs9.Size = new System.Drawing.Size(59, 23);
             this.txtabs9.TabIndex = 40;
             this.txtabs9.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtabs9.Enter += new System.EventHandler(this.Txtabs9_Enter);
             this.txtabs9.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Txtabs1_KeyDown);
             this.txtabs9.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtabs1_KeyPress);
+            this.txtabs9.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Txtabs1_KeyUp);
             this.txtabs9.Leave += new System.EventHandler(this.txtabs1_Leave);
             // 
             // txtabs10
             // 
             this.txtabs10.BackColor = System.Drawing.Color.WhiteSmoke;
             this.txtabs10.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtabs10.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtabs10.Cursor = System.Windows.Forms.Cursors.Hand;
             this.txtabs10.Font = new System.Drawing.Font("幼圆", 10.5F);
             this.txtabs10.Location = new System.Drawing.Point(531, 23);
             this.txtabs10.Margin = new System.Windows.Forms.Padding(0);
             this.txtabs10.Name = "txtabs10";
+            this.txtabs10.ReadOnly = true;
             this.txtabs10.Size = new System.Drawing.Size(59, 23);
             this.txtabs10.TabIndex = 41;
             this.txtabs10.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtabs10.Enter += new System.EventHandler(this.Txtabs10_Enter);
             this.txtabs10.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Txtabs1_KeyDown);
             this.txtabs10.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtabs1_KeyPress);
+            this.txtabs10.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Txtabs1_KeyUp);
             this.txtabs10.Leave += new System.EventHandler(this.txtabs1_Leave);
             // 
             // txtabs11
             // 
             this.txtabs11.BackColor = System.Drawing.Color.WhiteSmoke;
             this.txtabs11.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtabs11.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtabs11.Cursor = System.Windows.Forms.Cursors.Hand;
             this.txtabs11.Font = new System.Drawing.Font("幼圆", 10.5F);
             this.txtabs11.Location = new System.Drawing.Point(590, 23);
             this.txtabs11.Margin = new System.Windows.Forms.Padding(0);
             this.txtabs11.Name = "txtabs11";
+            this.txtabs11.ReadOnly = true;
             this.txtabs11.Size = new System.Drawing.Size(59, 23);
             this.txtabs11.TabIndex = 43;
             this.txtabs11.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtabs11.Enter += new System.EventHandler(this.Txtabs11_Enter);
             this.txtabs11.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Txtabs1_KeyDown);
+            this.txtabs11.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Txtabs1_KeyUp);
             this.txtabs11.Leave += new System.EventHandler(this.txtabs1_Leave);
+            // 
+            // txtVal1
+            // 
+            this.txtVal1.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.txtVal1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtVal1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.txtVal1.Font = new System.Drawing.Font("幼圆", 10.5F);
+            this.txtVal1.Location = new System.Drawing.Point(0, 46);
+            this.txtVal1.Margin = new System.Windows.Forms.Padding(0);
+            this.txtVal1.Name = "txtVal1";
+            this.txtVal1.ReadOnly = true;
+            this.txtVal1.Size = new System.Drawing.Size(59, 23);
+            this.txtVal1.TabIndex = 44;
+            this.txtVal1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtVal1.Enter += new System.EventHandler(this.TxtVal1_Enter);
+            // 
+            // txtVal2
+            // 
+            this.txtVal2.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.txtVal2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtVal2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.txtVal2.Font = new System.Drawing.Font("幼圆", 10.5F);
+            this.txtVal2.Location = new System.Drawing.Point(59, 46);
+            this.txtVal2.Margin = new System.Windows.Forms.Padding(0);
+            this.txtVal2.Name = "txtVal2";
+            this.txtVal2.ReadOnly = true;
+            this.txtVal2.Size = new System.Drawing.Size(59, 23);
+            this.txtVal2.TabIndex = 45;
+            this.txtVal2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtVal2.Enter += new System.EventHandler(this.TxtVal2_Enter);
+            // 
+            // txtVal3
+            // 
+            this.txtVal3.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.txtVal3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtVal3.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.txtVal3.Font = new System.Drawing.Font("幼圆", 10.5F);
+            this.txtVal3.Location = new System.Drawing.Point(118, 46);
+            this.txtVal3.Margin = new System.Windows.Forms.Padding(0);
+            this.txtVal3.Name = "txtVal3";
+            this.txtVal3.ReadOnly = true;
+            this.txtVal3.Size = new System.Drawing.Size(59, 23);
+            this.txtVal3.TabIndex = 46;
+            this.txtVal3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtVal3.Enter += new System.EventHandler(this.TxtVal3_Enter);
+            // 
+            // txtVal4
+            // 
+            this.txtVal4.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.txtVal4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtVal4.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.txtVal4.Font = new System.Drawing.Font("幼圆", 10.5F);
+            this.txtVal4.Location = new System.Drawing.Point(177, 46);
+            this.txtVal4.Margin = new System.Windows.Forms.Padding(0);
+            this.txtVal4.Name = "txtVal4";
+            this.txtVal4.ReadOnly = true;
+            this.txtVal4.Size = new System.Drawing.Size(59, 23);
+            this.txtVal4.TabIndex = 47;
+            this.txtVal4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtVal4.Enter += new System.EventHandler(this.TxtVal4_Enter);
+            // 
+            // txtVal5
+            // 
+            this.txtVal5.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.txtVal5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtVal5.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.txtVal5.Font = new System.Drawing.Font("幼圆", 10.5F);
+            this.txtVal5.Location = new System.Drawing.Point(236, 46);
+            this.txtVal5.Margin = new System.Windows.Forms.Padding(0);
+            this.txtVal5.Name = "txtVal5";
+            this.txtVal5.ReadOnly = true;
+            this.txtVal5.Size = new System.Drawing.Size(59, 23);
+            this.txtVal5.TabIndex = 48;
+            this.txtVal5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtVal5.Enter += new System.EventHandler(this.TxtVal5_Enter);
+            // 
+            // txtVal6
+            // 
+            this.txtVal6.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.txtVal6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtVal6.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.txtVal6.Font = new System.Drawing.Font("幼圆", 10.5F);
+            this.txtVal6.Location = new System.Drawing.Point(295, 46);
+            this.txtVal6.Margin = new System.Windows.Forms.Padding(0);
+            this.txtVal6.Name = "txtVal6";
+            this.txtVal6.ReadOnly = true;
+            this.txtVal6.Size = new System.Drawing.Size(59, 23);
+            this.txtVal6.TabIndex = 49;
+            this.txtVal6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtVal6.Enter += new System.EventHandler(this.TxtVal6_Enter);
+            // 
+            // txtVal7
+            // 
+            this.txtVal7.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.txtVal7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtVal7.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.txtVal7.Font = new System.Drawing.Font("幼圆", 10.5F);
+            this.txtVal7.Location = new System.Drawing.Point(354, 46);
+            this.txtVal7.Margin = new System.Windows.Forms.Padding(0);
+            this.txtVal7.Name = "txtVal7";
+            this.txtVal7.ReadOnly = true;
+            this.txtVal7.Size = new System.Drawing.Size(59, 23);
+            this.txtVal7.TabIndex = 50;
+            this.txtVal7.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtVal7.Enter += new System.EventHandler(this.TxtVal7_Enter);
+            // 
+            // txtVal8
+            // 
+            this.txtVal8.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.txtVal8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtVal8.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.txtVal8.Font = new System.Drawing.Font("幼圆", 10.5F);
+            this.txtVal8.Location = new System.Drawing.Point(413, 46);
+            this.txtVal8.Margin = new System.Windows.Forms.Padding(0);
+            this.txtVal8.Name = "txtVal8";
+            this.txtVal8.ReadOnly = true;
+            this.txtVal8.Size = new System.Drawing.Size(59, 23);
+            this.txtVal8.TabIndex = 51;
+            this.txtVal8.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtVal8.Enter += new System.EventHandler(this.TxtVal8_Enter);
+            // 
+            // txtVal9
+            // 
+            this.txtVal9.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.txtVal9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtVal9.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.txtVal9.Font = new System.Drawing.Font("幼圆", 10.5F);
+            this.txtVal9.Location = new System.Drawing.Point(472, 46);
+            this.txtVal9.Margin = new System.Windows.Forms.Padding(0);
+            this.txtVal9.Name = "txtVal9";
+            this.txtVal9.ReadOnly = true;
+            this.txtVal9.Size = new System.Drawing.Size(59, 23);
+            this.txtVal9.TabIndex = 52;
+            this.txtVal9.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtVal9.Enter += new System.EventHandler(this.TxtVal9_Enter);
+            // 
+            // txtVal10
+            // 
+            this.txtVal10.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.txtVal10.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtVal10.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.txtVal10.Font = new System.Drawing.Font("幼圆", 10.5F);
+            this.txtVal10.Location = new System.Drawing.Point(531, 46);
+            this.txtVal10.Margin = new System.Windows.Forms.Padding(0);
+            this.txtVal10.Name = "txtVal10";
+            this.txtVal10.ReadOnly = true;
+            this.txtVal10.Size = new System.Drawing.Size(59, 23);
+            this.txtVal10.TabIndex = 53;
+            this.txtVal10.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtVal10.Enter += new System.EventHandler(this.TxtVal10_Enter);
+            // 
+            // txtVal11
+            // 
+            this.txtVal11.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.txtVal11.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtVal11.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.txtVal11.Font = new System.Drawing.Font("幼圆", 10.5F);
+            this.txtVal11.Location = new System.Drawing.Point(590, 46);
+            this.txtVal11.Margin = new System.Windows.Forms.Padding(0);
+            this.txtVal11.Name = "txtVal11";
+            this.txtVal11.ReadOnly = true;
+            this.txtVal11.Size = new System.Drawing.Size(59, 23);
+            this.txtVal11.TabIndex = 54;
+            this.txtVal11.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtVal11.Enter += new System.EventHandler(this.TxtVal11_Enter);
             // 
             // chart1
             // 
             this.chart1.BackColor = System.Drawing.Color.Transparent;
-            chartArea1.Name = "ChartArea1";
-            chartArea1.Position.Auto = false;
-            chartArea1.Position.Height = 97F;
-            chartArea1.Position.Width = 100F;
-            chartArea1.Position.Y = 3F;
-            this.chart1.ChartAreas.Add(chartArea1);
-            legend1.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Top;
-            legend1.Enabled = false;
-            legend1.MaximumAutoSize = 40F;
-            legend1.Name = "Legend1";
-            this.chart1.Legends.Add(legend1);
+            chartArea15.Name = "ChartArea1";
+            chartArea15.Position.Auto = false;
+            chartArea15.Position.Height = 97F;
+            chartArea15.Position.Width = 100F;
+            chartArea15.Position.Y = 3F;
+            this.chart1.ChartAreas.Add(chartArea15);
+            legend15.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Top;
+            legend15.Enabled = false;
+            legend15.MaximumAutoSize = 40F;
+            legend15.Name = "Legend1";
+            this.chart1.Legends.Add(legend15);
             this.chart1.Location = new System.Drawing.Point(235, 97);
             this.chart1.Name = "chart1";
             this.chart1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            series1.ToolTip = "#VALX #VAL";
-            series1.YValuesPerPoint = 6;
-            this.chart1.Series.Add(series1);
+            series15.ChartArea = "ChartArea1";
+            series15.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series15.Legend = "Legend1";
+            series15.Name = "Series1";
+            series15.ToolTip = "#VALX #VAL";
+            series15.YValuesPerPoint = 6;
+            this.chart1.Series.Add(series15);
             this.chart1.Size = new System.Drawing.Size(739, 266);
             this.chart1.TabIndex = 28;
             this.chart1.Click += new System.EventHandler(this.chart1_Click);
@@ -954,7 +1238,7 @@
             this.txtMin.Size = new System.Drawing.Size(55, 26);
             this.txtMin.TabIndex = 25;
             this.txtMin.Text = "10";
-            this.txtMin.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtabs1_KeyPress);
+            this.txtMin.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtMax_KeyPress);
             // 
             // label15
             // 
@@ -1118,7 +1402,7 @@
             this.txtMax.Size = new System.Drawing.Size(55, 26);
             this.txtMax.TabIndex = 16;
             this.txtMax.Text = "90";
-            this.txtMax.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtabs1_KeyPress);
+            this.txtMax.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtMax_KeyPress);
             // 
             // label9
             // 
@@ -1212,7 +1496,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkGray;
-            this.ClientSize = new System.Drawing.Size(1000, 574);
+            this.ClientSize = new System.Drawing.Size(1000, 614);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.plInfoTitle);
             this.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
@@ -1223,6 +1507,7 @@
             this.Load += new System.EventHandler(this.setDimmer_Load);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.setDimmer_Paint);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.setDimmer_KeyDown);
+            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.SetDimmer_KeyUp);
             this.plInfoTitle.ResumeLayout(false);
             this.plInfoTitle.PerformLayout();
             this.flowLayoutPanel1.ResumeLayout(false);
@@ -1311,5 +1596,20 @@
         private System.Windows.Forms.Button btnSwitchLine;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button btnSetIni;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox txtVal100;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox txtVal1;
+        private System.Windows.Forms.TextBox txtVal2;
+        private System.Windows.Forms.TextBox txtVal3;
+        private System.Windows.Forms.TextBox txtVal4;
+        private System.Windows.Forms.TextBox txtVal5;
+        private System.Windows.Forms.TextBox txtVal6;
+        private System.Windows.Forms.TextBox txtVal7;
+        private System.Windows.Forms.TextBox txtVal8;
+        private System.Windows.Forms.TextBox txtVal9;
+        private System.Windows.Forms.TextBox txtVal10;
+        private System.Windows.Forms.TextBox txtVal11;
     }
 }

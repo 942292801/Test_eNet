@@ -1276,7 +1276,7 @@ namespace eNet编辑器.DgvView
             else
             { 
                 //清空当条信息
-                pls.panelsInfo[rowCount].keyAddress = "";
+                //pls.panelsInfo[rowCount].keyAddress = "";
                 pls.panelsInfo[rowCount].objAddress = "";
                 pls.panelsInfo[rowCount].objType = "";
                 pls.panelsInfo[rowCount].opt = 255;
@@ -1284,7 +1284,7 @@ namespace eNet编辑器.DgvView
                 pls.panelsInfo[rowCount].showAddress = "";
                 pls.panelsInfo[rowCount].showMode = "";
                 
-                dataGridView1.Rows[rowCount].Cells[1].Value = null;
+                //dataGridView1.Rows[rowCount].Cells[1].Value = null;
                 dataGridView1.Rows[rowCount].Cells[2].Value = null;
                 dataGridView1.Rows[rowCount].Cells[3].Value = "";
                 dataGridView1.Rows[rowCount].Cells[4].Value = null;
