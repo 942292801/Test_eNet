@@ -57,9 +57,9 @@ namespace eNet编辑器
                     
                 }
             }
-            catch
-            { 
-            
+            catch (Exception ex)
+            {
+                Console.WriteLine("ConnectAsync出错:" + ex.StackTrace);
             }
 
         }
@@ -69,19 +69,38 @@ namespace eNet编辑器
         /// <param name="port">要连接服务端的端口</param>
         public void ConnectAsync(int port)
         {
-            ConnectAsync("127.0.0.1", port);
+            try
+            {
+                ConnectAsync("127.0.0.1", port);
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("ConnectAsync出错:" + ex.StackTrace);
+            }
         }
         /// <summary>
         /// 异步接收消息
         /// </summary>
         private void ReceiveAsync()
         {
-            doReceive.Reset();
-            StateObject obj=new StateObject();
-            obj.Client=client;
+            try
+            {
+                doReceive.Reset();
+                StateObject obj = new StateObject();
+                obj.Client = client;
+                if (client != null && client.Connected)
+                {
+                    client.Client.BeginReceive(obj.ListData, 0, obj.ListData.Length, SocketFlags.None, ReceiveCallBack, obj);
 
-            client.Client.BeginReceive(obj.ListData, 0, obj.ListData.Length, SocketFlags.None, ReceiveCallBack, obj);
-            doReceive.WaitOne();
+                }
+                doReceive.WaitOne();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("ReceiveAsync出错:" + ex.StackTrace);
+            }
+            
         }
         /// <summary>
         /// 异步发送消息
@@ -91,14 +110,15 @@ namespace eNet编辑器
         {
             try
             {
-                if (client.Connected)
+                if (client != null && client.Connected)
                 {
                     byte[] listData = Encoding.UTF8.GetBytes(msg);
                     client.Client.BeginSend(listData, 0, listData.Length, SocketFlags.None, SendCallBack, client);
                 }
             }
-            catch
+            catch (Exception ex)
             {
+                Console.WriteLine("SendAsync出错:" + ex.StackTrace);
                 Close();
                 OnComplete(client, EnSocketAction.Close);
 
@@ -120,8 +140,9 @@ namespace eNet编辑器
                     client.Client.BeginSend(listData, 0, listData.Length, SocketFlags.None, SendCallBack, client);
                 }
             }
-            catch
+            catch (Exception ex)
             {
+                Console.WriteLine("SendHexAsync出错:" + ex.StackTrace);
                 Close();
                 OnComplete(client, EnSocketAction.Close);
 
@@ -138,11 +159,18 @@ namespace eNet编辑器
             {
 
                 TcpClient client = ar.AsyncState as TcpClient;
+                if (!client.Connected)
+                {
+                    OnComplete(client, EnSocketAction.Error);
+                    return;
+                }
                 client.EndConnect(ar);
                 OnComplete(client, EnSocketAction.Connect);
             }
-            catch {
-               
+            catch (Exception ex)
+            {
+
+                //Console.WriteLine("ConnectCallBack出错:" + ex.StackTrace);
                 OnComplete(client, EnSocketAction.Error);
             }
         }
@@ -152,33 +180,40 @@ namespace eNet编辑器
         /// <param name="ar"></param>
         private void ReceiveCallBack(IAsyncResult ar)
         {
-   
-            StateObject obj = ar.AsyncState as StateObject;
-            int count=-1;
             try
             {
-                count = obj.Client.Client.EndReceive(ar);
-                doReceive.Set();
-            }
-            catch (Exception)
-            {
-                //如果发生异常，说明客户端失去连接，触发关闭事件
-                Close();
-                OnComplete(obj.Client, EnSocketAction.Close);
-            }
-            if (count > 0)
-            {
-                string msg = Encoding.UTF8.GetString(obj.ListData, 0, count);
-                if (!string.IsNullOrEmpty(msg))
+                StateObject obj = ar.AsyncState as StateObject;
+                int count = -1;
+                try
                 {
-                    if (Received != null)
+                    count = obj.Client.Client.EndReceive(ar);
+                    doReceive.Set();
+                }
+                catch (Exception)
+                {
+                    //如果发生异常，说明客户端失去连接，触发关闭事件
+                    Close();
+                    OnComplete(obj.Client, EnSocketAction.Close);
+                }
+                if (count > 0)
+                {
+                    string msg = Encoding.UTF8.GetString(obj.ListData, 0, count);
+                    if (!string.IsNullOrEmpty(msg))
                     {
-                        IPEndPoint iep = obj.Client.Client.RemoteEndPoint as IPEndPoint;
-                        string key = string.Format("{0}:{1}", iep.Address, iep.Port);
-                        Received(key,msg);
+                        if (Received != null)
+                        {
+                            IPEndPoint iep = obj.Client.Client.RemoteEndPoint as IPEndPoint;
+                            string key = string.Format("{0}:{1}", iep.Address, iep.Port);
+                            Received(key, msg);
+                        }
                     }
                 }
             }
+            catch (Exception ex)
+            {
+                Console.WriteLine("ReceiveCallBack出错:" + ex.StackTrace);
+            }
+           
         }
         private void SendCallBack(IAsyncResult ar)
         {
@@ -189,8 +224,9 @@ namespace eNet编辑器
                 client.Client.EndSend(ar);
                 OnComplete(client, EnSocketAction.SendMsg);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                Console.WriteLine("SendCallBack出错:" + ex.StackTrace);
                 //如果发生异常，说明客户端失去连接，触发关闭事件
                 Close();
                 OnComplete(client, EnSocketAction.Close);
@@ -198,11 +234,13 @@ namespace eNet编辑器
         }
         public virtual void OnComplete(TcpClient client, EnSocketAction enAction)
         {
-            if (Completed != null)
-                Completed(client, enAction);
-            if (enAction == EnSocketAction.Connect)//建立连接后，开始接收数据
+            try
             {
-                ThreadPool.QueueUserWorkItem(x =>
+                if (Completed != null)
+                    Completed(client, enAction);
+                if (enAction == EnSocketAction.Connect)//建立连接后，开始接收数据
+                {
+                    ThreadPool.QueueUserWorkItem(x =>
                     {
                         while (!isClose)
                         {
@@ -219,7 +257,13 @@ namespace eNet编辑器
                             }
                         }
                     });
+                }
             }
+            catch (Exception ex)
+            {
+                Console.WriteLine("OnComplete出错:"+ex.StackTrace);
+            }
+            
         }
 
         /// <summary>
@@ -235,10 +279,11 @@ namespace eNet编辑器
                 //cl.Client.EndDisconnect(ar);
                 cl.Client.Close();
             }
-            catch
+            catch(Exception e)
             {
 
                 OnComplete(client, EnSocketAction.Error);
+                Console.WriteLine("DisConnectCallBack错误：" + e.StackTrace + e.Message);
             }
         }
 
@@ -255,11 +300,15 @@ namespace eNet编辑器
         {
             try
             {
-                client.Client.BeginDisconnect(false, DisConnectCallBack, client);
+                if (client != null && client.Client != null&&  client.Connected && client.Client.Connected)
+                {
+                    client.Client.BeginDisconnect(false, DisConnectCallBack, client);
+
+                }
             }
-            catch
+            catch (Exception e)
             {
-                
+                Console.WriteLine("client.Dispoes()错误：" + e.StackTrace+e.Message);
             }
 
         }
@@ -270,8 +319,17 @@ namespace eNet编辑器
         /// <returns></returns>
         public bool Connected()
         {
-            return client.Connected;
-            
+            try
+            {
+                return client.Connected;
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Connected出错:" + ex.StackTrace);
+                return false;
+            }
+
         }
 
 

@@ -11,12 +11,14 @@ using eNet编辑器.Properties;
 using eNet编辑器.AddForm;
 using System.Text.RegularExpressions;
 using System.Reflection;
+using System.Net;
 
 namespace eNet编辑器.ThreeView
 {
-    public delegate void DgvPanelAddItem();
+    public delegate void DgvPanelAddItem(object page);
     public partial class ThreePanel : Form
     {
+
         /// <summary>
         /// 主Form信息显示
         /// </summary>
@@ -24,6 +26,8 @@ namespace eNet编辑器.ThreeView
         public event Action updatePanelView;
         public event DgvPanelAddItem dgvpanelAddItem;
         public event Action addTitleNode;
+
+        private event Action<string> TCP6003Delegate;
         public ThreePanel()
         {
             InitializeComponent();
@@ -56,6 +60,7 @@ namespace eNet编辑器.ThreeView
         #endregion
 
         private panelAdd pladd;
+        string ip = "";
 
         //判断true为选中父节点
         bool isSelectParetnNode = false;
@@ -63,11 +68,17 @@ namespace eNet编辑器.ThreeView
         //树状图节点
         string fullpath = "";
 
+        //客户端
+        ClientAsync client;
+
         private void ThreePanel_Load(object sender, EventArgs e)
         {
+            TCP6003Delegate += ThreePanel_TCP6003Delegate;
             pladd = new panelAdd();
             pladd.addPanelNode += new Action(addPanelNode);
         }
+
+       
 
         /// <summary>
         /// 初始化添加device名字树状图 根据JsonList文件重新加载子节点
@@ -119,6 +130,7 @@ namespace eNet编辑器.ThreeView
                 //展开记录的节点
                 tm.treeIspandsStateRcv(treeView1, isExpands);
                 TreeMesege.SetPrevVisitNode(treeView1, fullpath);
+             
             }
             catch
             {
@@ -146,6 +158,7 @@ namespace eNet编辑器.ThreeView
         /// <param name="e"></param>
         private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
         {
+            
             if (FileMesege.panelSelectNode == null)
             {
                 addTitleNode();
@@ -158,15 +171,24 @@ namespace eNet编辑器.ThreeView
 
                 }
             }
+            
+            TreeNodeIni();
+            if (FileMesege.isDgvNameDeviceConnet)
+            {
+                if (client == null || !client.Connected())
+                {
+                    clientConnect();
+                    timer1.Start();
+                }
+            }
             FileMesege.panelSelectNode = treeView1.SelectedNode;
             fullpath = treeView1.SelectedNode.FullPath;
-            //DGVtimer添加定时
-            dgvpanelAddItem();
-       
+            //刷新dgv表格
+            dgvpanelAddItem(0);
             string[] names = treeView1.SelectedNode.Text.Split(' ');
             if (treeView1.SelectedNode.Parent != null)
             {
-
+                
                 clearTxtShow(Resources.TxtShowPanelName + treeView1.SelectedNode.Text + "\r\n");
             }
             else
@@ -264,27 +286,22 @@ namespace eNet编辑器.ThreeView
             //展示居中
             pladd.StartPosition = FormStartPosition.CenterParent;
             pladd.Xflag = false;
-
+            string[] ips;
             if (treeView1.SelectedNode.Parent == null)
             {
-                //获取IP
-                string[] ips = treeView1.SelectedNode.Text.Split(' ');
-                pladd.Ip = ips[0];
-                //获取定面板数
-                pladd.Num = (treeView1.SelectedNode.GetNodeCount(false) + 1).ToString();
+                ips = treeView1.SelectedNode.Text.Split(' ');
             }
             else
             {
-                //复制的时候调用
-                //获取IP
-                string[] ips = treeView1.SelectedNode.Parent.Text.Split(' ');
-                pladd.Ip = ips[0];
-                //获取面板数
-                pladd.Num = (Convert.ToInt32(Regex.Replace(treeView1.SelectedNode.Text.Split(' ')[0], @"[^\d]*", "")) + 1).ToString();
+                ips = treeView1.SelectedNode.Parent.Text.Split(' ');
             }
-
+            pladd.Ip = ips[0];
+            //获取定面板数
+            pladd.Num = (treeView1.SelectedNode.GetNodeCount(false) + 101).ToString();
             pladd.ShowDialog();
         }
+
+   
 
         /// <summary>
         /// 新建面板回调操作
@@ -331,14 +348,11 @@ namespace eNet编辑器.ThreeView
                     DataJson.panels pls = new DataJson.panels();
                     pls.id = Convert.ToInt32(pladd.Num);
                     pls.pid = randomNum;
-                    pls.keyNum = 0;
                     pls.panelsInfo = new List<DataJson.panelsInfo>();
                     if (copyPanel != null)
                     {
                         //复制副本
                         pls.panelsInfo = (List<DataJson.panelsInfo>)ToolsUtil.CloneObject(copyPanel.panelsInfo);
-                        //pls.panelsInfo = TransExpV2<List<DataJson.panelsInfo>, List<DataJson.panelsInfo>>.Trans(copyPanel.panelsInfo);
-                        pls.keyNum = copyPanel.keyNum;
                     }
 
                     pl.panels.Add(pls);
@@ -480,10 +494,16 @@ namespace eNet编辑器.ThreeView
                 //进入IP同一个
                 if (pl.IP == ips[0])
                 {
+                    int id =Convert.ToInt32( Regex.Replace(panelNodetxt[0], @"[^\d]*", ""));
+                    if (id < 100)
+                    {
+
+                        return;
+                    }
                     foreach (DataJson.panels pls in pl.panels)
                     {
-                        //当场景号一样
-                        if (pls.id.ToString() == Regex.Replace(panelNodetxt[0], @"[^\d]*", ""))
+                        //当面板号一样
+                        if (pls.id == id)
                         {
                             //撤销
                             DataJson.totalList OldList = FileMesege.cmds.getListInfos();
@@ -543,9 +563,23 @@ namespace eNet编辑器.ThreeView
             DataJson.panels pls = DataListHelper.getPanelsInfoList(ips[0], panelNum);
             //可能存在克隆现象需要解决
             copyPanel = pls;
-            //新建面板
-            newPanel();
-            
+            //复制面板
+            if (copyPanel == null)
+            {
+                return;
+            }
+            //展示居中
+            pladd.StartPosition = FormStartPosition.CenterParent;
+            pladd.Xflag = false;
+            //复制的时候调用
+            //获取IP
+            //string[] ips = treeView1.SelectedNode.Parent.Text.Split(' ');
+            pladd.Ip = ips[0];
+            //获取面板数
+            pladd.Num = (Convert.ToInt32(Regex.Replace(treeView1.SelectedNode.Text.Split(' ')[0], @"[^\d]*", "")) + 1).ToString();
+            pladd.ShowDialog();
+
+
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -554,6 +588,8 @@ namespace eNet编辑器.ThreeView
             {
                 return;
             }
+            //清除复制的定时
+            copyPanel = null;
             newPanel();
         }
 
@@ -562,18 +598,311 @@ namespace eNet编辑器.ThreeView
             删除ToolStripMenuItem_Click(this, EventArgs.Empty);
         }
 
+
+
+
+
+
+
+
+
+
+
+
+
         #endregion
 
-       
+        #region 获取面板开启状态
+
+        private void Timer1_Tick(object sender, EventArgs e)
+        {
+            try
+            {
+                if (client != null && client.Connected())
+                {
+                    string msg = "GET;{254.48.255.255};\r\n";
+                    //客户端发送数据
+                    client.SendAsync(msg);
+                }
+                if (!FileMesege.isDgvNameDeviceConnet)
+                {
+                    timer1.Stop();
+                    client = null;
+                }
+
+            }
+            catch
+            {
+                timer1.Stop();
+                client = null;
+                return;
+            }
+        }
+
+        private void clientConnect()
+        {
+            try
+            {
+
+                if (client != null)
+                {
+                    client.Dispoes();
+                    //client = null;
+                }
+                client = new ClientAsync();
+                IniClient();
+                if (treeView1.SelectedNode == null)
+                {
+                    return;
+                }
+                if (treeView1.SelectedNode.Parent == null)
+                {
+                    ip = treeView1.SelectedNode.Text.Split(' ')[0];
+                }
+                else
+                {
+                    ip = treeView1.SelectedNode.Parent.Text.Split(' ')[0];
+                }
+                //异步连接
+                if (client != null)
+                {
+                    client.ConnectAsync(ip, 6003);
+
+                }
+                if (client != null && client.Connected())
+                {
+                    string msg = "GET;{254.48.255.255};\r\n";
+                    //客户端发送数据
+                    client.SendAsync(msg);
+                }
+
+
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine("连接错误：" + ex.StackTrace + ex.Message);
+                client = null;
+                timer1.Stop();
+                return;
+            }
+        }
 
 
 
+        /// <summary>
+        /// 初始化客户端的处理
+        /// </summary>
+        private void IniClient()
+        {
+
+            //实例化事件 传值到封装函数  c为函数类处理返回的client
+            client.Completed += new Action<System.Net.Sockets.TcpClient, ClientAsync.EnSocketAction>((c, enAction) =>
+            {
+                string key = "";
+
+                try
+                {
+                    if (c.Client.Connected)
+                    {
+                        //强转类型
+                        IPEndPoint iep = c.Client.RemoteEndPoint as IPEndPoint;
+                        //返回的IP 和 端口号
+                        key = string.Format("{0}:{1}", iep.Address.ToString(), iep.Port);
+                    }
+                }
+                catch { }
+
+                try
+                {
+                    switch (enAction)
+                    {
+                        case ClientAsync.EnSocketAction.Connect:
+                            //MessageBox.Show("已经与" + key + "建立连接");
+
+                            //timer1.Start();
+
+                            break;
+                        case ClientAsync.EnSocketAction.SendMsg:
+
+                            //MessageBox.Show(DateTime.Now + "：向" + key + "发送了一条消息");
+                            break;
+                        case ClientAsync.EnSocketAction.Close:
+                            //client.Close();
+                            //btnNew.Style = DevComponents.DotNetBar.eDotNetBarStyle.VS2005;
+                            //MessageBox.Show("服务端连接关闭");
+                            break;
+                        case ClientAsync.EnSocketAction.Error:
+                            //btnNew.Style = DevComponents.DotNetBar.eDotNetBarStyle.VS2005;
+                            //MessageBox.Show("连接发生错误,请检查网络连接");
+
+                            break;
+                        default:
+                            break;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+                
+            });
+            //信息接收处理
+            client.Received += new Action<string, string>((key, msg) =>
+            {
+                Invoke(TCP6003Delegate,msg);
+                
+            });
+        }
 
 
+        /// <summary>
+        /// 回调处理信息函数
+        /// </summary>
+        /// <param name="rcvInfo"></param>
+        private void ThreePanel_TCP6003Delegate(string rcvInfo)
+        {
+            try
+            {
 
+                //获取FB开头的信息
+                string[] strArray = rcvInfo.Split(new string[] { "FB", "ACK" }, StringSplitOptions.RemoveEmptyEntries);
+                //MessageBox.Show(msg);
+                Regex reg = new Regex(@"(\d+)\.(\d+)\.(\d+)\.(\d+)");
+                for (int i = 0; i < strArray.Length; i++)
+                {
+                    //数组信息按IP提取 
+                    Match match = reg.Match(strArray[i]);
+                    //分割内容 FB;00000001;{230.48.0.102};
+                    string[] strs = strArray[i].Split(';');
+                    if (strs.Length > 2)
+                    {
+                        if (match.Groups[2].Value == "48")
+                        {
+                            UpdateTreeNode(strs[1], match.Groups[4].Value);
 
+                        }
+                    }
+                    //面板号
+                    /*int panelID = Convert.ToInt32(match.Groups[4].Value);
+                    Console.WriteLine("panelsID:"+ match.Groups[4].Value);*/
 
+                }
+            }
+            catch
+            {
 
+            }
+        }
+
+        //更新网关里面key文件的开关
+        private void UpdateTreeNode(string val,string panelID)
+        {
+            foreach (TreeNode ipNode in treeView1.Nodes)
+            {
+                if (ipNode.Text.Contains(ip) && !string.IsNullOrWhiteSpace(ip))
+                {
+                    string name = Resources.Panel + panelID;
+                    //循环子节点
+                    foreach (TreeNode tn in ipNode.Nodes)
+                    {
+                        if (tn.Text.Contains(name))
+                        {
+                            if (val.Contains("1"))
+                            {
+                                //绿色图标开启
+                                tn.ImageIndex = 5;
+                                tn.SelectedImageIndex = 5;
+
+                            }
+                            else
+                            {
+                                //红色图标关闭
+                                tn.ImageIndex = 4;
+                                tn.SelectedImageIndex = 4;
+                            }
+                            break;
+
+                        }
+                    }
+                    break;
+                }
+            }
+        }
+
+        //更新树状图 图标
+        private void TreeNodeIni()
+        {
+            if (FileMesege.panelSelectNode == null )
+            {
+                return;
+            }
+            if (treeView1.SelectedNode.Parent == null)
+            {
+                //选中网关IP
+                if (FileMesege.panelSelectNode.Parent == null)
+                {
+                    if (FileMesege.panelSelectNode == treeView1.SelectedNode)
+                    {
+                        return;
+                    }
+                }
+                else
+                {
+                    if (FileMesege.panelSelectNode.Parent == treeView1.SelectedNode)
+                    {
+                        return;
+                    }
+                }
+            }
+            else
+            {
+                //选中子节点
+                if (FileMesege.panelSelectNode.Parent == null)
+                {
+                    if (FileMesege.panelSelectNode== treeView1.SelectedNode.Parent)
+                    {
+                        return;
+                    }
+                }
+                else
+                {
+                    if (FileMesege.panelSelectNode.Parent == treeView1.SelectedNode.Parent)
+                    {
+                        return;
+                    }
+                }
+               
+            }
+            //重新连接
+            //获取当前状态
+            if (FileMesege.isDgvNameDeviceConnet)
+            {
+                clientConnect();
+                timer1.Start();
+
+            }
+            else
+            {
+                timer1.Stop();
+                client = null;
+            }
+
+            foreach (TreeNode ipNode in treeView1.Nodes)
+            {
+                //循环子节点
+                foreach (TreeNode tn in ipNode.Nodes)
+                {
+                    //白色图标开启
+                    tn.ImageIndex = 1;
+                    tn.SelectedImageIndex = 3;
+                        
+                }
+                    
+                
+            }
+        }
+
+        #endregion
 
 
     }//class

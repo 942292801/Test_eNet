@@ -260,15 +260,14 @@ namespace eNet编辑器
             timer1.Enabled = false; //开启清除内存时钟
             this.Text = Resources.SoftName + "Edit New Project";
 
-            Rectangle ScreenArea = System.Windows.Forms.Screen.GetBounds(this);
-            this.MaximizedBounds = ScreenArea;
-          
+            //全屏
         }
 
-        private void LogicCondition_unSelectTitleNode()
+   
+        /*private void LogicCondition_unSelectTitleNode()
         {
             throw new NotImplementedException();
-        }
+        }*/
 
         #region 刷新窗口
 
@@ -562,132 +561,195 @@ namespace eNet编辑器
 
         private void tabPoint_Click(object sender, EventArgs e)
         {
-            //自定义函数加载窗体 CleanRecycle  
-            Control_Add(threepoint, plLeft);
-            Control_Add(dgvpoint, plDgv);
-            //cbtype添加选择项 
-            cbtypeName("point");
-            //界面显示类型 
-            FileMesege.formType = "point";
-            //添加对象树状图
-            threetitle.ThreeTitleAddNode(cbType.SelectedIndex);
-            threepoint.ThreePointAddNode();
-            //更改Title 小标题
-            LbTitleName.Text = Resources.lbTitleDevice;
-            //更新加载表格
-            updateTreeByFormType();
-            btnAddTitleItem.Visible = false;
+            try
+            {
+                //自定义函数加载窗体 CleanRecycle  
+                Control_Add(threepoint, plLeft);
+                Control_Add(dgvpoint, plDgv);
+                //cbtype添加选择项 
+                cbtypeName("point");
+                //界面显示类型 
+                FileMesege.formType = "point";
+                //添加对象树状图
+                threetitle.ThreeTitleAddNode(cbType.SelectedIndex);
+                threepoint.ThreePointAddNode();
+                //更改Title 小标题
+                LbTitleName.Text = Resources.lbTitleDevice;
+                //更新加载表格
+                updateTreeByFormType();
+                btnAddTitleItem.Visible = false;
+
+            }
+            catch {
+
+            }
+           
         }
 
         private void tabScene_Click(object sender, EventArgs e)
         {
-            //自定义函数加载窗体 CleanRecycle  
-            Control_Add(threescene, plLeft);
-            Control_Add(dgvscene, plDgv);
-          
+            try
+            {
+                //自定义函数加载窗体 CleanRecycle  
+                Control_Add(threescene, plLeft);
+                Control_Add(dgvscene, plDgv);
+
                 //cbtype添加选择项
                 cbtypeName("scene");
                 //添加对象树状图
                 threetitle.ThreeTitleAddNode(cbType.SelectedIndex);
                 //更改Title 小标题
                 LbTitleName.Text = Resources.lbTitleObj;
-            //界面显示类型 
-            FileMesege.formType = "scene";
-            threescene.ThreeSceneAddNode();
-            btnAddTitleItem.Visible = true;
+                //界面显示类型 
+                FileMesege.formType = "scene";
+                threescene.ThreeSceneAddNode();
+                btnAddTitleItem.Visible = true;
+
+            }
+            catch
+            {
+
+            }
+      
         }
 
         private void tabTimer_Click(object sender, EventArgs e)
         {
-            //自定义函数加载窗体 CleanRecycle  
-            Control_Add(threetimer, plLeft);
-            Control_Add(dgvtimer, plDgv);
-            
+            try
+            {
+
+                //自定义函数加载窗体 CleanRecycle  
+                Control_Add(threetimer, plLeft);
+                Control_Add(dgvtimer, plDgv);
+
                 //cbtype添加选择项 
                 cbtypeName("timer");
                 //添加对象树状图
                 threetitle.ThreeTitleAddNode(cbType.SelectedIndex);
                 //更改Title 小标题
                 LbTitleName.Text = Resources.lbTitleObj;
-            //界面显示类型 
-            FileMesege.formType = "timer";
-            threetimer.ThreeTimerAddNode();
-            btnAddTitleItem.Visible = true;
+                //界面显示类型 
+                FileMesege.formType = "timer";
+                threetimer.ThreeTimerAddNode();
+                btnAddTitleItem.Visible = true;
+            }
+            catch
+            {
+
+            }
+          
         }
 
         //面板绑定
         private void tabPanel_Click(object sender, EventArgs e)
         {
-            //自定义函数加载窗体 CleanRecycle  
-            Control_Add(threepanel, plLeft);
-            Control_Add(dgvpanel, plDgv);
-            //cbtype添加选择项 
-            cbtypeName("link");
-            //添加对象树状图
-            threetitle.ThreeTitleAddNode(cbType.SelectedIndex);
-            //更改Title 小标题
-            LbTitleName.Text = Resources.lbTitleObj;
-            //界面显示类型 
-            FileMesege.formType = "panel";
-            threepanel.ThreePanelAddNode();
-            btnAddTitleItem.Visible = false;
-            btnClear.Visible = true;
+            try
+            {
+                //自定义函数加载窗体 CleanRecycle  
+                Control_Add(threepanel, plLeft);
+                Control_Add(dgvpanel, plDgv);
+                //cbtype添加选择项 
+                cbtypeName("link");
+                //添加对象树状图
+                threetitle.ThreeTitleAddNode(cbType.SelectedIndex);
+                //更改Title 小标题
+                LbTitleName.Text = Resources.lbTitleObj;
+                //界面显示类型 
+                FileMesege.formType = "panel";
+                threepanel.ThreePanelAddNode();
+                dgvpanel.dgvPanelAddItem(0);
+                btnAddTitleItem.Visible = false;
+                btnClear.Visible = true;
+
+            }
+            catch
+            {
+
+            }
+        
         }
 
         //感应设置
         private void tabSensor_Click(object sender, EventArgs e)
         {
-            //自定义函数加载窗体 CleanRecycle  
-            Control_Add(threesensor, plLeft);
-            Control_Add(dgvsensor, plDgv);
-            //cbtype添加选择项 
-            cbtypeName("sensor");
-            //添加对象树状图
-            threetitle.ThreeTitleAddNode(cbType.SelectedIndex);
-            //更改Title 小标题
-            LbTitleName.Text = Resources.lbTitleObj;
-            //界面显示类型 
-            FileMesege.formType = "sensor";
-            threesensor.ThreeSensorAddNode();
-            btnAddTitleItem.Visible = false;
-            btnClear.Visible = true;
+            try
+            {
+                //自定义函数加载窗体 CleanRecycle  
+                Control_Add(threesensor, plLeft);
+                Control_Add(dgvsensor, plDgv);
+                //cbtype添加选择项 
+                cbtypeName("sensor");
+                //添加对象树状图
+                threetitle.ThreeTitleAddNode(cbType.SelectedIndex);
+                //更改Title 小标题
+                LbTitleName.Text = Resources.lbTitleObj;
+                //界面显示类型 
+                FileMesege.formType = "sensor";
+                threesensor.ThreeSensorAddNode();
+                btnAddTitleItem.Visible = false;
+                btnClear.Visible = true;
+
+            }
+            catch
+            {
+
+            }
+           
         }
 
         private void tabLogic_Click(object sender, EventArgs e)
         {
-            //自定义函数加载窗体 CleanRecycle  
-            Control_Add(threelogic, plLeft);
-            Control_Add(dgvlogic, plDgv);
-            
+            try
+            {
+                //自定义函数加载窗体 CleanRecycle  
+                Control_Add(threelogic, plLeft);
+                Control_Add(dgvlogic, plDgv);
+
                 //cbtype添加选择项 
                 cbtypeName("logic");
                 //添加对象树状图
                 threetitle.ThreeTitleAddNode(cbType.SelectedIndex);
                 //更改Title 小标题
                 LbTitleName.Text = Resources.lbTitleObj;
-            //界面显示类型 
-            FileMesege.formType = "logic";
-            threelogic.ThreeLogicAddNode();
-            btnAddTitleItem.Visible = false;
+                //界面显示类型 
+                FileMesege.formType = "logic";
+                threelogic.ThreeLogicAddNode();
+                btnAddTitleItem.Visible = false;
+
+            }
+            catch
+            {
+
+            }
+           
 
         }
 
 
         private void tabVar_Click(object sender, EventArgs e)
         {
-            //自定义函数加载窗体 CleanRecycle  
-            Control_Add(threevar, plLeft);
-            Control_Add(dgvvar, plDgv);
-            //界面显示类型 
-            FileMesege.formType = "virtualport";
-            //cbtype添加选择项 
-            cbtypeName("virtualport");
-            //添加对象树状图
-            threetitle.ThreeTitleAddNode(cbType.SelectedIndex);
-            //更改Title 小标题
-            LbTitleName.Text = Resources.lbTitleObj;
-            threevar.ThreeVarAddNode();
-            btnAddTitleItem.Visible = false;
+            try
+            {
+                //自定义函数加载窗体 CleanRecycle  
+                Control_Add(threevar, plLeft);
+                Control_Add(dgvvar, plDgv);
+                //界面显示类型 
+                FileMesege.formType = "virtualport";
+                //cbtype添加选择项 
+                cbtypeName("virtualport");
+                //添加对象树状图
+                threetitle.ThreeTitleAddNode(cbType.SelectedIndex);
+                //更改Title 小标题
+                LbTitleName.Text = Resources.lbTitleObj;
+                threevar.ThreeVarAddNode();
+                btnAddTitleItem.Visible = false;
+
+            }
+            catch
+            {
+
+            }
+           
         }
 
         /// <summary>

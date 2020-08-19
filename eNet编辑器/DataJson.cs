@@ -451,7 +451,7 @@ namespace eNet编辑器
             //ID号限制为1-999
             public int id { get; set; }
             public int pid { get; set; }
-            public int keyNum { get; set; }
+            //public int keyNum { get; set; }
             public List<panelsInfo> panelsInfo = new List<panelsInfo>();
         }
         [Serializable]

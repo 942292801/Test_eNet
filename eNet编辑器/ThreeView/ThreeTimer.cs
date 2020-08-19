@@ -10,6 +10,7 @@ using eNet编辑器.AddForm;
 using System.Text.RegularExpressions;
 using eNet编辑器.Properties;
 using System.Reflection;
+using System.Net;
 
 namespace eNet编辑器.ThreeView
 {
@@ -58,7 +59,7 @@ namespace eNet编辑器.ThreeView
         public event Action updateTimerView;
         public event Action dgvTimerAddItem;
         public event Action addTitleNode;
-
+        private event Action<string> TCP6003Delegate;
         private timerAdd timeradd = null;
 
         //判断true为选中父节点
@@ -66,9 +67,13 @@ namespace eNet编辑器.ThreeView
 
         //树状图节点
         string fullpath = "";
+        //客户端
+        ClientAsync client;
+        string ip = "";
 
         private void ThreeTimer_Load(object sender, EventArgs e)
         {
+            TCP6003Delegate += ThreePanel_TCP6003Delegate;
             timeradd = new timerAdd();
             timeradd.addTimerNode += new Action(addTimerNode);
         }
@@ -552,6 +557,15 @@ namespace eNet编辑器.ThreeView
 
                 }
             }
+            TreeNodeIni();
+            if (FileMesege.isDgvNameDeviceConnet)
+            {
+                if (client == null || !client.Connected())
+                {
+                    clientConnect();
+                    timer1.Start();
+                }
+            }
             FileMesege.timerSelectNode = treeView1.SelectedNode;
             fullpath = treeView1.SelectedNode.FullPath;
             //DGVtimer添加定时
@@ -602,16 +616,306 @@ namespace eNet编辑器.ThreeView
         }
 
 
+
+
+
+
+
+
+
+
+
         #endregion
 
-       
+        #region 获取定时开启状态
+        private void Timer1_Tick(object sender, EventArgs e)
+        {
+            try
+            {
+                if (client != null && client.Connected())
+                {
+                    string msg = "GET;{254.32.255.255};\r\n";
+                    //客户端发送数据
+                    client.SendAsync(msg);
+                }
+                if (!FileMesege.isDgvNameDeviceConnet)
+                {
+                    timer1.Stop();
+                    client = null;
+                }
 
-       
+            }
+            catch
+            {
+                timer1.Stop();
+                client = null;
+                return;
+            }
+        }
+
+        private void clientConnect()
+        {
+            try
+            {
+
+                if (client != null)
+                {
+                    client.Dispoes();
+                    //client = null;
+                }
+                client = new ClientAsync();
+                IniClient();
+                if (treeView1.SelectedNode == null)
+                {
+                    return;
+                }
+                if (treeView1.SelectedNode.Parent == null)
+                {
+                    ip = treeView1.SelectedNode.Text.Split(' ')[0];
+                }
+                else
+                {
+                    ip = treeView1.SelectedNode.Parent.Text.Split(' ')[0];
+                }
+                //异步连接
+                if (client != null)
+                {
+                    client.ConnectAsync(ip, 6003);
+
+                }
+                if (client != null && client.Connected())
+                {
+                    string msg = "GET;{254.32.255.255};\r\n";
+                    //客户端发送数据
+                    client.SendAsync(msg);
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("连接错误：" + ex.StackTrace + ex.Message);
+                client = null;
+                timer1.Stop();
+                return;
+            }
+        }
 
 
 
+        /// <summary>
+        /// 初始化客户端的处理
+        /// </summary>
+        private void IniClient()
+        {
+
+            //实例化事件 传值到封装函数  c为函数类处理返回的client
+            client.Completed += new Action<System.Net.Sockets.TcpClient, ClientAsync.EnSocketAction>((c, enAction) =>
+            {
+                string key = "";
+
+                try
+                {
+                    if (c.Client.Connected)
+                    {
+                        //强转类型
+                        IPEndPoint iep = c.Client.RemoteEndPoint as IPEndPoint;
+                        //返回的IP 和 端口号
+                        key = string.Format("{0}:{1}", iep.Address.ToString(), iep.Port);
+                    }
+                }
+                catch { }
+
+                try
+                {
+                    switch (enAction)
+                    {
+                        case ClientAsync.EnSocketAction.Connect:
+                            //MessageBox.Show("已经与" + key + "建立连接");
+
+                            //timer1.Start();
+
+                            break;
+                        case ClientAsync.EnSocketAction.SendMsg:
+
+                            //MessageBox.Show(DateTime.Now + "：向" + key + "发送了一条消息");
+                            break;
+                        case ClientAsync.EnSocketAction.Close:
+                            //client.Close();
+                            //btnNew.Style = DevComponents.DotNetBar.eDotNetBarStyle.VS2005;
+                            //MessageBox.Show("服务端连接关闭");
+                            break;
+                        case ClientAsync.EnSocketAction.Error:
+                            //btnNew.Style = DevComponents.DotNetBar.eDotNetBarStyle.VS2005;
+                            //MessageBox.Show("连接发生错误,请检查网络连接");
+
+                            break;
+                        default:
+                            break;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+
+            });
+            //信息接收处理
+            client.Received += new Action<string, string>((key, msg) =>
+            {
+                Invoke(TCP6003Delegate, msg);
+
+            });
+        }
 
 
+        /// <summary>
+        /// 回调处理信息函数
+        /// </summary>
+        /// <param name="rcvInfo"></param>
+        private void ThreePanel_TCP6003Delegate(string rcvInfo)
+        {
+            try
+            {
+
+                //获取FB开头的信息
+                string[] strArray = rcvInfo.Split(new string[] { "FB", "ACK" }, StringSplitOptions.RemoveEmptyEntries);
+                //MessageBox.Show(msg);
+                Regex reg = new Regex(@"(\d+)\.(\d+)\.(\d+)\.(\d+)");
+                for (int i = 0; i < strArray.Length; i++)
+                {
+                    //数组信息按IP提取 
+                    Match match = reg.Match(strArray[i]);
+                    //分割内容 FB;00000001;{230.32.0.102};
+                    string[] strs = strArray[i].Split(';');
+                    if (strs.Length > 2)
+                    {
+                        if (match.Groups[2].Value == "32")
+                        {
+                            UpdateTreeNode(strs[1], match.Groups[4].Value);
+
+                        }
+                    }
+                    //面板号
+                    /*int panelID = Convert.ToInt32(match.Groups[4].Value);
+                    Console.WriteLine("panelsID:"+ match.Groups[4].Value);*/
+
+                }
+            }
+            catch
+            {
+
+            }
+        }
+
+        //更新网关里面key文件的开关
+        private void UpdateTreeNode(string val, string panelID)
+        {
+            foreach (TreeNode ipNode in treeView1.Nodes)
+            {
+                if (ipNode.Text.Contains(ip) && !string.IsNullOrWhiteSpace(ip))
+                {
+                    string name = Resources.Timer + panelID;
+                    //循环子节点
+                    foreach (TreeNode tn in ipNode.Nodes)
+                    {
+                        if (tn.Text.Contains(name))
+                        {
+                            if (val.Contains("1"))
+                            {
+                                //绿色图标开启
+                                tn.ImageIndex = 5;
+                                tn.SelectedImageIndex = 5;
+
+                            }
+                            else
+                            {
+                                //红色图标关闭
+                                tn.ImageIndex = 4;
+                                tn.SelectedImageIndex = 4;
+                            }
+                            break;
+
+                        }
+                    }
+                    break;
+                }
+            }
+        }
+
+        //更新树状图 图标
+        private void TreeNodeIni()
+        {
+            if (FileMesege.timerSelectNode == null)
+            {
+                return;
+            }
+            if (treeView1.SelectedNode.Parent == null)
+            {
+                //选中网关IP
+                if (FileMesege.timerSelectNode.Parent == null)
+                {
+                    if (FileMesege.timerSelectNode == treeView1.SelectedNode)
+                    {
+                        return;
+                    }
+                }
+                else
+                {
+                    if (FileMesege.timerSelectNode.Parent == treeView1.SelectedNode)
+                    {
+                        return;
+                    }
+                }
+            }
+            else
+            {
+                //选中子节点
+                if (FileMesege.timerSelectNode.Parent == null)
+                {
+                    if (FileMesege.timerSelectNode == treeView1.SelectedNode.Parent)
+                    {
+                        return;
+                    }
+                }
+                else
+                {
+                    if (FileMesege.timerSelectNode.Parent == treeView1.SelectedNode.Parent)
+                    {
+                        return;
+                    }
+                }
+
+            }
+            //重新连接
+            //获取当前状态
+            if (FileMesege.isDgvNameDeviceConnet)
+            {
+                clientConnect();
+                timer1.Start();
+
+            }
+            else
+            {
+                timer1.Stop();
+                client = null;
+            }
+
+            foreach (TreeNode ipNode in treeView1.Nodes)
+            {
+                //循环子节点
+                foreach (TreeNode tn in ipNode.Nodes)
+                {
+                    //白色图标开启
+                    tn.ImageIndex = 1;
+                    tn.SelectedImageIndex = 3;
+
+                }
+
+
+            }
+        }
+        #endregion
 
     }
 }

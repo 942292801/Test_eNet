@@ -1004,6 +1004,10 @@ namespace eNet编辑器.DgvView
                 //实例化客户端
                 client = new ClientAsync();
                 IniClient();
+                if (FileMesege.tnselectNode == null)
+                {
+                    return;
+                }
                 string[] strip = FileMesege.tnselectNode.Parent.Text.Split(' ');
                 //异步连接
                 client.ConnectAsync(strip[0], 6003);
@@ -1039,6 +1043,11 @@ namespace eNet编辑器.DgvView
 
                     //客户端发送数据
                     client.SendAsync(msg);
+                }
+                if (!FileMesege.isDgvNameDeviceConnet)
+                {
+                    timer1.Stop();
+                    client = null;
                 }
             }
             catch
@@ -1105,14 +1114,13 @@ namespace eNet编辑器.DgvView
             {
                 try
                 {
-                    
                     //获取FB开头的信息
                     string[] strArray = msg.Split(new string[] { "FB", "ACK" }, StringSplitOptions.RemoveEmptyEntries);
                     //MessageBox.Show(msg);
                     Regex reg = new Regex(@"(\d+)\.(\d+)\.(\d+)\.(\d+)");
                     for (int i = 0; i < strArray.Length; i++)
                     {
-                        //数组信息按IP提取 
+                        //数组信息按IP提取
                         Match match = reg.Match(strArray[i]);
                         string[] strs = strArray[i].Split(';');
                         //行数

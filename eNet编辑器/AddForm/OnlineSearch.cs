@@ -260,7 +260,7 @@ namespace eNet编辑器.AddForm
                         //存在则修改
                         if (md.id.ToString() == ID)
                         {
-                            //修改网关
+                            //修改设备
                             DataJson.totalList OldList = FileMesege.cmds.getListInfos();
                             if (md.device != device)
                             {                                

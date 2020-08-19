@@ -233,7 +233,6 @@ namespace eNet编辑器
         /// <param name="infos">新IP + 设备号 +设备型号 例：（192.168.1.111+空格+2 + 空格 + ET1000）</param>
         public static void newDevice(DataJson.Device dev, string id,string version)
         {
-            
             DataJson.Module md = new DataJson.Module();
             md.id = Convert.ToInt32(id);
             md.device = version;
@@ -249,6 +248,7 @@ namespace eNet编辑器
             dev.module.Add(md);
             //按ID号排序
             DeviceSort(dev);
+            AddDevPanel(dev.ip,Convert.ToInt32(id),version);
             //刷新所有Tree的节点
             UpdateTreeView();
         }
@@ -279,6 +279,7 @@ namespace eNet编辑器
                     dev.module.Add(md);
                     //按ID号排序
                     DeviceSort(dev);
+                    AddDevPanel(dev.ip, Convert.ToInt32(id), version);
                     //刷新所有Tree的节点
                     UpdateTreeView();
                     break;
@@ -310,6 +311,16 @@ namespace eNet编辑器
                             addPortType(m.devPortList, version);
                             //按ID号排序
                             DeviceSort(dev);
+                            if (id != oldid && version == oldVersion)
+                            {
+                                ChangeDevPanel(ip, Convert.ToInt32(id), version, Convert.ToInt32(oldid));
+                            }
+                            else
+                            {
+                                ChangeDevIDVerPanel(dev.ip, Convert.ToInt32(id), version, Convert.ToInt32(oldid));
+                                /*DelDevPanel(ip, Convert.ToInt32(oldid));
+                                AddDevPanel(dev.ip, Convert.ToInt32(id), version);*/
+                            }
                             //刷新所有Tree的节点
                             UpdateTreeView();
                             break;
@@ -337,6 +348,16 @@ namespace eNet编辑器
                     addPortType(m.devPortList, version);
                     //按ID号排序
                     DeviceSort(dev);
+                    if (id != oldid && version == oldVersion)
+                    {
+                        ChangeDevPanel(dev.ip, Convert.ToInt32(id), version, Convert.ToInt32(oldid));
+                    }
+                    else
+                    {
+                        ChangeDevIDVerPanel(dev.ip, Convert.ToInt32(id), version, Convert.ToInt32(oldid));
+                        //DelDevPanel(dev.ip, Convert.ToInt32(oldid));
+                        //AddDevPanel(dev.ip, Convert.ToInt32(id),version);
+                    }
                     //刷新所有Tree的节点
                     UpdateTreeView();
                     break;
@@ -365,6 +386,7 @@ namespace eNet编辑器
 
                             dev.module.Remove(m);
                             delPointID(ip,id);
+                            DelDevPanel(ip, Convert.ToInt32(id));
                             //刷新所有Tree的节点
                             UpdateTreeView();
                             break;
@@ -493,6 +515,9 @@ namespace eNet编辑器
             }
             return null;
         }
+
+
+
 
         #endregion
 
@@ -1480,23 +1505,28 @@ namespace eNet编辑器
 
 
         #region 操作panelList的管理工具
-   
-
         /// <summary>
         /// 在选中节点的基础上 按IP和定时号ID 寻找panelList表中是panels
         /// </summary>
         /// <returns></returns>
         public static DataJson.panels getPanelsInfoListByNode()
         {
-            if (FileMesege.panelSelectNode == null || FileMesege.panelSelectNode.Parent == null)
+            try
             {
+                if (FileMesege.panelSelectNode == null || FileMesege.panelSelectNode.Parent == null)
+                {
+                    return null;
+                }
+
+                string ip = FileMesege.panelSelectNode.Parent.Text.Split(' ')[0];
+                string[] panelNodetxt = FileMesege.panelSelectNode.Text.Split(' ');
+                int panelNum = Convert.ToInt32(Regex.Replace(panelNodetxt[0], @"[^\d]*", ""));
+                return getPanelsInfoList(ip, panelNum);
+            }
+            catch {
                 return null;
             }
-
-            string ip = FileMesege.panelSelectNode.Parent.Text.Split(' ')[0];
-            string[] panelNodetxt = FileMesege.panelSelectNode.Text.Split(' ');
-            int panelNum = Convert.ToInt32(Regex.Replace(panelNodetxt[0], @"[^\d]*", ""));
-            return getPanelsInfoList(ip, panelNum);
+            
         }
 
         /// <summary>
@@ -1505,16 +1535,24 @@ namespace eNet编辑器
         /// <param name="sc"></param>
         /// <param name="id"></param>
         /// <returns></returns>
-        public static DataJson.panelsInfo getPanelInfo(DataJson.panels pls, int id)
+        public static DataJson.panelsInfo getPanelInfoByid(DataJson.panels pls, int id)
         {
-            foreach (DataJson.panelsInfo info in pls.panelsInfo)
+            try
             {
-                if (info.id == id)
+                foreach (DataJson.panelsInfo info in pls.panelsInfo)
                 {
-                    return info;
+                    if (info.id == id)
+                    {
+                        return info;
+                    }
                 }
+                return null;
             }
-            return null;
+            catch
+            {
+                return null;
+            }
+            
         }
 
 
@@ -1576,6 +1614,372 @@ namespace eNet编辑器
                 FileMesege.panelList[i].panels.RemoveAll(panels => panels.pid == pid);
             }
 
+        }
+
+        /// <summary>
+        /// 添加设备时候 添加面板
+        /// </summary>
+        /// <param name="ip"></param>
+        /// <param name="id"></param>
+        /// <param name="version"></param>
+        private static void AddDevPanel(string ip,int id,string version)
+        {
+            string keyVal = "";
+            string path = Application.StartupPath + "\\devices\\";
+            keyVal = IniConfig.GetValue(path + version + ".ini", "input", "key");
+            if (string.IsNullOrEmpty(keyVal) || keyVal == "null" )
+            {
+                return;
+            }
+            //获取面板号
+            string num = id.ToString("X4");
+            string address = "FE30" + num;
+            if (FileMesege.panelList == null)
+            {
+                FileMesege.panelList = new List<DataJson.Panel>();
+
+            }
+            //该IP在timerList里面是否存在  
+            if (!FileMesege.panelList.Exists(x => x.IP == ip))
+            {
+                //不存在新建List
+                DataJson.Panel pl = new DataJson.Panel();
+                pl.IP = ip;
+                pl.Dev = "GW100A";
+                pl.panels = new List<DataJson.panels>();
+                FileMesege.panelList.Add(pl);
+
+            }
+
+            int randomNum = DataChange.randomNum();
+            foreach (DataJson.Panel pl in FileMesege.panelList)
+            {
+                //节点的IP相等 进入创建 不会存在相同ID号新建信息
+                if (pl.IP == ip)
+                {
+                    DataJson.panels pls = new DataJson.panels();
+                    pls.id = id;
+                    pls.pid = randomNum;
+                    //pls.keyNum = 0;
+                    pls.panelsInfo = new List<DataJson.panelsInfo>();
+
+                    //添加point点
+                    DataJson.PointInfo eq = new DataJson.PointInfo();
+                    eq.area1 = "";
+                    eq.area2 = "";
+                    eq.area3 = "";
+                    eq.area4 = "";
+                    eq.address = address;
+                    eq.pid = randomNum;
+                    eq.ip = ip;
+                    eq.name = IniConfig.GetValue(path + version + ".ini", "define", "note")+id.ToString();
+                    eq.type = IniHelper.findTypesIniTypebyName("面板");
+                    eq.objType = "";
+                    eq.value = "";
+                    foreach (DataJson.PointInfo pi in FileMesege.PointList.link)
+                    {
+                        if (pi.area1 == "" && pi.area2 == "" && pi.area3 == "" && pi.area4 == "" && pi.name == eq.name)
+                        {
+                            MessageBox.Show("该名称已存在，请更换名称");
+                            return;
+                        }
+
+                    }
+                    //根据keyval添加按键地址
+                    setKeyNum(pls,keyVal,ip,id);
+                    pl.panels.Add(pls);
+                    FileMesege.PointList.link.Add(eq);
+                    //排序
+                    pl.panels.Sort(delegate (DataJson.panels x, DataJson.panels y)
+                    {
+                        return Convert.ToInt32(x.id).CompareTo(Convert.ToInt32(y.id));
+                    });
+
+                    break;
+                }
+
+            }
+        }
+
+        /// <summary>
+        /// 设置当前面板为 几键面板 成功返回true
+        /// </summary>
+        /// <param name="keyNum"></param>
+        /// <returns></returns>
+        public static void setKeyNum(DataJson.panels pls, string keyVal,string ip,int id)
+        {
+            
+            int keyNum = 0;
+            if (keyVal.Contains("-"))
+            {
+                string[] infos = keyVal.Split('-');
+                int j = Convert.ToInt32(infos[1]);
+                keyNum = j;
+
+            }
+            else if (keyVal.Contains(","))
+            {
+                string[] infos = keyVal.Split(',');
+             
+                keyNum = Convert.ToInt32(infos[infos.Length-1]);
+            }
+            else
+            {
+                keyNum = Convert.ToInt32(keyVal);
+            }
+            if (keyNum > 255 || keyNum <= 0)
+            {
+                return ;
+            }
+            //循环每一页 
+            string ipLast = ToolsUtil.strtohexstr(ip.Split('.')[3]);
+            string tmpNum = "";
+            string idHex = id.ToString("X2");
+
+            //是否存在该键值ID
+            bool isExit = false;
+            List<DataJson.panelsInfo> delPanel = new List<DataJson.panelsInfo>();
+            HashSet<int> numList = new HashSet<int>();
+            int start = 0;
+            int end = 0;
+            for (int pageNum = 0; pageNum < 20; pageNum++)
+            {
+                delPanel.Clear();
+                numList.Clear();
+                start = pageNum * 255 + keyNum;
+                end = pageNum * 255 + 256;
+                foreach (DataJson.panelsInfo plInfo in pls.panelsInfo)
+                {
+                    if (plInfo.id > pageNum *255 + keyNum && plInfo.id <end)
+                    {
+                        delPanel.Add(plInfo);
+                    }
+                    if (plInfo.id > pageNum * 255 && plInfo.id < end)
+                    {
+                        numList.Add(plInfo.id);
+                    }
+                }
+
+                for (int i = 0; i < delPanel.Count; i++)
+                {
+                    //删除id大于面板按键值
+                    pls.panelsInfo.Remove(delPanel[i]);
+                }
+                List<int> list = numList.ToList<int>();
+                for (int i = 1; i <= keyNum; i++)
+                {
+                    isExit = false;
+                    for (int j = 0; j < list.Count; j++)
+                    {
+                        if (pageNum * 255 + i == list[j])
+                        {
+                            isExit = true;
+                            break;
+                        }
+                    }
+                    if (!isExit)
+                    {
+                        //添加改id的按键
+                        DataJson.panelsInfo plInfo = new DataJson.panelsInfo();
+                        plInfo.id = pageNum * 255 + i;
+                        plInfo.pid = 0;
+                        tmpNum = plInfo.id.ToString("X4");
+                        plInfo.keyAddress = string.Format("{0}{1}{2}", ipLast, idHex, tmpNum);
+                        plInfo.objAddress = "";
+                        plInfo.objType = "";
+                        plInfo.opt = 255;
+                        plInfo.showAddress = "";
+                        plInfo.showMode = "";
+                        pls.panelsInfo.Add(plInfo);
+
+                    }
+                }
+            }
+            
+            //排序
+            pls.panelsInfo.Sort(delegate (DataJson.panelsInfo x, DataJson.panelsInfo y)
+            {
+
+                return x.id.CompareTo(y.id);
+            });
+
+            return ;
+        }
+
+
+
+        /// <summary>
+        /// 修改设备ID的时候 修改面板信息 
+        /// </summary>
+        /// <param name="ip"></param>
+        /// <param name="id"></param>
+        /// <param name="version"></param>
+        /// <param name="oldid"></param>
+        private static void ChangeDevPanel(string ip, int id,string version,int oldid)
+        {
+            string keyVal = "";
+            string path = Application.StartupPath + "\\devices\\";
+            keyVal = IniConfig.GetValue(path + version + ".ini", "input", "key");
+            if (string.IsNullOrEmpty(keyVal) || keyVal == "null")
+            {
+                return;
+            }
+            //获取该节点IP地址面板下的 面板信息对象
+            DataJson.panels pls = DataListHelper.getPanelsInfoList(ip, oldid);
+            if (pls == null)
+            {
+                return;
+            }
+            //获取面板号
+            string num = id.ToString("X4");
+            //获取IP最后一位
+            string address = "FE30" + num;
+            foreach (DataJson.PointInfo eq in FileMesege.PointList.link)
+            {
+                //修改当前的point点信息
+                if (pls.pid == eq.pid)
+                {
+                    
+                    pls.id = id;
+                    eq.area1 = "";
+                    eq.area2 = "";
+                    eq.area3 = "";
+                    eq.area4 = "";
+                    eq.address = address;
+                    eq.name = IniConfig.GetValue(path + version + ".ini", "define", "note") + id.ToString();
+                    break;
+                }
+
+            }
+            string idHex = id.ToString("X2");
+            //修改键地址
+            foreach (DataJson.panelsInfo plInfo in pls.panelsInfo)
+            {
+                if (!string.IsNullOrEmpty(plInfo.keyAddress))
+                {
+                    plInfo.keyAddress = plInfo.keyAddress.Remove(2,2);
+                    plInfo.keyAddress = plInfo.keyAddress.Insert(2, idHex);
+                }
+            }
+            foreach (DataJson.Panel pl in FileMesege.panelList)
+            {
+                if (pl.IP == ip)
+                {
+                    //排序
+                    pl.panels.Sort(delegate (DataJson.panels x, DataJson.panels y)
+                    {
+                        return Convert.ToInt32(x.id).CompareTo(Convert.ToInt32(y.id));
+                    });
+                    break;
+                }
+            }
+         
+        }
+
+        private static void ChangeDevIDVerPanel(string ip, int id, string version, int oldid)
+        {
+            string keyVal = "";
+            string path = Application.StartupPath + "\\devices\\";
+            keyVal = IniConfig.GetValue(path + version + ".ini", "input", "key");
+            if (string.IsNullOrEmpty(keyVal) || keyVal == "null")
+            {
+                DelDevPanel(ip,id);
+                return ;
+            }
+            //获取该节点IP地址面板下的 面板信息对象
+            DataJson.panels pls = DataListHelper.getPanelsInfoList(ip, oldid);
+            if (pls == null)
+            {
+                AddDevPanel(ip, id, version);
+                return;
+            }
+            //获取面板号
+            string num = id.ToString("X4");
+            //获取IP最后一位
+            string address = "FE30" + num;
+            
+            foreach (DataJson.PointInfo eq in FileMesege.PointList.link)
+            {
+                //修改当前的point点信息
+                if (pls.pid == eq.pid)
+                {
+                    pls.id = id;
+                    eq.area1 = "";
+                    eq.area2 = "";
+                    eq.area3 = "";
+                    eq.area4 = "";
+                    eq.address = address;
+                    eq.name = IniConfig.GetValue(path + version + ".ini", "define", "note") + id.ToString();
+                    break;
+                }
+
+            }
+            //检查配对的ID
+            setKeyNum(pls, keyVal, ip, id);
+
+            string idHex = id.ToString("X2");
+            //修改键地址
+            foreach (DataJson.panelsInfo plInfo in pls.panelsInfo)
+            {
+                if (!string.IsNullOrEmpty(plInfo.keyAddress))
+                {
+                    plInfo.keyAddress = plInfo.keyAddress.Remove(2, 2);
+                    plInfo.keyAddress = plInfo.keyAddress.Insert(2, idHex);
+                }
+            }
+            foreach (DataJson.Panel pl in FileMesege.panelList)
+            {
+                if (pl.IP == ip)
+                {
+                    //排序
+                    pl.panels.Sort(delegate (DataJson.panels x, DataJson.panels y)
+                    {
+                        return Convert.ToInt32(x.id).CompareTo(Convert.ToInt32(y.id));
+                    });
+                    break;
+                }
+            }
+
+        }
+
+        /// <summary>
+        /// 删除设备的时候 删除面板
+        /// </summary>
+        /// <param name="ip"></param>
+        /// <param name="id"></param>
+        private static void DelDevPanel(string ip, int id)
+        {
+            
+            foreach (DataJson.Panel pl in FileMesege.panelList)
+            {
+                //进入IP同一个
+                if (pl.IP == ip)
+                {
+                    foreach (DataJson.panels pls in pl.panels)
+                    {
+                        //当面板号一样
+                        if (pls.id == id)
+                        {
+                            //移除pointList 中地址
+                            foreach (DataJson.PointInfo eq in FileMesege.PointList.link)
+                            {
+                                //获取address与IP地址相同的对象
+                                if (eq.pid == pls.pid)
+                                {
+                                    //移除Namelist 的对象
+                                    FileMesege.PointList.link.Remove(eq);
+                                    break;
+                                }
+                            }
+                            //移除panellist的对象
+                            pl.panels.Remove(pls);
+                            return;
+                        }
+                    }
+
+                }
+
+            }//IP FOREACH
         }
 
         #endregion

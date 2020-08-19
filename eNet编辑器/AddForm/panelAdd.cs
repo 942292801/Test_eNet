@@ -293,14 +293,16 @@ namespace eNet编辑器.AddForm
 
         private void btnDecid_Click(object sender, EventArgs e)
         {
-            if (txtNum.Text == "")
+            if (string.IsNullOrEmpty(txtNum.Text))
             {
                 MessageBox.Show("面板号不能为空");
                 return;
             }
+            int panelnum =0;
             try
             {
-                if (Convert.ToInt32(txtNum.Text) > 999)
+                panelnum = Convert.ToInt32(txtNum.Text);
+                if (panelnum > 999)
                 {
                     MessageBox.Show("面板号不能大于999");
                     return;
@@ -314,6 +316,11 @@ namespace eNet编辑器.AddForm
 
             if (xflag == false)
             {
+                if (panelnum < 100)
+                {
+                    MessageBox.Show("面板号不能小于于100");
+                    return;
+                }
                 //新建
                 if (FileMesege.panelList != null)
                 {
@@ -324,7 +331,7 @@ namespace eNet编辑器.AddForm
                         {
                             foreach (DataJson.panels pls in FileMesege.panelList[i].panels)
                             {
-                                if (pls.id.ToString() == txtNum.Text)
+                                if (pls.id == panelnum)
                                 {
                                     MessageBox.Show("已存在该面板号！The Panel Number already exist", "提示");
                                     return;
@@ -338,14 +345,14 @@ namespace eNet编辑器.AddForm
             else
             {
                 //修改
-                //检测是否存在该设备号
+                //检测是否存在该面板号
                 for (int i = 0; i < FileMesege.panelList.Count; i++)
                 {
                     if (ip == FileMesege.panelList[i].IP)
                     {
                         foreach (DataJson.panels pls in FileMesege.panelList[i].panels)
                         {
-                            if (pls.id.ToString() == txtNum.Text && this.Num != txtNum.Text)
+                            if (pls.id == panelnum && this.Num != txtNum.Text)
                             {
                                 MessageBox.Show("已存在该面板号！The Panel Number already exist", "提示");
                                 return;
@@ -385,6 +392,16 @@ namespace eNet编辑器.AddForm
             {
                 if (oldnum != num)
                 {
+                    if (Convert.ToInt32(oldnum)  < 100)
+                    {
+                        MessageBox.Show("不能修改面板号");
+                        return;
+                    }
+                    if (Convert.ToInt32(num) < 100)
+                    {
+                        MessageBox.Show("不能修改面板号");
+                        return;
+                    }
                     //修改了编号
                     if (area1 == OldArea1 && area2 == OldArea2 && area3 == OldArea3 && area4 == OldArea4 && PanelName == OldName)
                     {
@@ -413,8 +430,6 @@ namespace eNet编辑器.AddForm
                         return;
                     }
                 }
-
-
                 //修改面板
                 this.DialogResult = DialogResult.OK;
             }

@@ -51,6 +51,7 @@
             this.添加定时ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
             this.添加节假日定时ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -89,6 +90,8 @@
             this.imgLIst.Images.SetKeyName(1, "u84.png");
             this.imgLIst.Images.SetKeyName(2, "u100_1.png");
             this.imgLIst.Images.SetKeyName(3, "u84_2.png");
+            this.imgLIst.Images.SetKeyName(4, "u84_4.png");
+            this.imgLIst.Images.SetKeyName(5, "u84_5.png");
             // 
             // panel1
             // 
@@ -299,6 +302,11 @@
             this.添加节假日定时ToolStripMenuItem.Text = "添加节假日定时";
             this.添加节假日定时ToolStripMenuItem.Click += new System.EventHandler(this.添加节假日定时ToolStripMenuItem_Click);
             // 
+            // timer1
+            // 
+            this.timer1.Interval = 3000;
+            this.timer1.Tick += new System.EventHandler(this.Timer1_Tick);
+            // 
             // ThreeTimer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -345,5 +353,6 @@
         private DevComponents.DotNetBar.ButtonX btnAddHoliday;
         private DevComponents.DotNetBar.Controls.SymbolBox symbolBox1;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Timer timer1;
     }
 }

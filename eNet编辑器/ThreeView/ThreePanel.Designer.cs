@@ -47,6 +47,7 @@
             this.复制ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.新建ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -84,6 +85,8 @@
             this.imgLIst.Images.SetKeyName(1, "u83_1.png");
             this.imgLIst.Images.SetKeyName(2, "u100_1.png");
             this.imgLIst.Images.SetKeyName(3, "u83_3.png");
+            this.imgLIst.Images.SetKeyName(4, "u83_4.png");
+            this.imgLIst.Images.SetKeyName(5, "u83_5.png");
             // 
             // panel1
             // 
@@ -248,6 +251,11 @@
             this.新建ToolStripMenuItem.Text = "新建";
             this.新建ToolStripMenuItem.Click += new System.EventHandler(this.新建ToolStripMenuItem_Click);
             // 
+            // timer1
+            // 
+            this.timer1.Interval = 3000;
+            this.timer1.Tick += new System.EventHandler(this.Timer1_Tick);
+            // 
             // ThreePanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -289,5 +297,6 @@
         private System.Windows.Forms.ToolStripMenuItem 复制ToolStripMenuItem;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem 新建ToolStripMenuItem;
+        private System.Windows.Forms.Timer timer1;
     }
 }

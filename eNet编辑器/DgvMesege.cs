@@ -395,12 +395,16 @@ namespace eNet编辑器
         {
             try
             {
+                if (dataGridView.Rows.Count < 1)
+                {
+                    return;
+                }
                 dataGridView.FirstDisplayedScrollingRowIndex = Y_Value;//设置垂直滚动条位置
                 dataGridView.HorizontalScrollingOffset = X_Value;
                 dataGridView.CurrentCell = dataGridView.Rows[rowCount].Cells[columnCount];//设置单元格焦点
-            }catch{//(Exception ex){
+            }catch(Exception ex){
                 //throw ex;
-                //MessageBox.Show(ex.ToString());
+                MessageBox.Show(ex.ToString());
             }
         }
 

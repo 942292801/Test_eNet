@@ -149,6 +149,20 @@ namespace eNet编辑器.AddForm
                 //设备号改变 
                 if (cbDevice.Text != oldDevNum)
                 {
+                    foreach (DataJson.Device dev in FileMesege.DeviceList)
+                    {
+                        if (dev.ip == lbip.Text)
+                        {
+                            foreach (DataJson.Module m in dev.module)
+                            {
+                                if (m.id.ToString() == cbDevice.Text)
+                                {
+                                    AppTxtShow("设备号已存在！请检查设备号！");
+                                    return;
+                                }
+                            }
+                        }
+                    }
                     isChange = true;
                 }
                 if (cbVersion.Text != oldDevVersion)
@@ -161,6 +175,7 @@ namespace eNet编辑器.AddForm
                 this.DialogResult = DialogResult.OK;
             }
         }
+
         #region 窗体样色
 
 

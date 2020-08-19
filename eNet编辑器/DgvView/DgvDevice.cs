@@ -157,6 +157,7 @@ namespace eNet编辑器.DgvView
                 else
                 {
                     cbOnline.Checked = false;
+                    timer1.Stop();
                     client = null;
                 }
                 this.cbOnline.CheckedChanged += new System.EventHandler(this.cbOnline_CheckedChanged);
@@ -628,15 +629,7 @@ namespace eNet编辑器.DgvView
         {
             try
             {
-               /* for (int i = 0; i < this.dataGridView1.Rows.Count;i++ )
-                {
-                    this.dataGridView1.Rows[i].Cells[6].Style.BackColor = Color.White;
-                    this.dataGridView1.Rows[i].Cells[6].Style.ForeColor = Color.Red;
-                    this.dataGridView1.Rows[i].Cells[6].Value = Resources.DevStateOff;
-                }*/
-             
                 clientConnect();
-                
             }
             catch
             {
@@ -649,26 +642,34 @@ namespace eNet编辑器.DgvView
 
         private void cbOnline_CheckedChanged(object sender, EventArgs e)
         {
-            if (cbOnline.Checked)
+            try
             {
-                FileMesege.isDgvNameDeviceConnet = true;
-                clientConnect();
-                timer1.Start();
+                if (cbOnline.Checked)
+                {
+                    FileMesege.isDgvNameDeviceConnet = true;
+                    clientConnect();
+                    timer1.Start();
+
+                }
+                else
+                {
+                    for (int i = 0; i < this.dataGridView1.Rows.Count; i++)
+                    {
+                        this.dataGridView1.Rows[i].Cells[6].Style.BackColor = Color.White;
+                        this.dataGridView1.Rows[i].Cells[6].Style.ForeColor = Color.Red;
+                        this.dataGridView1.Rows[i].Cells[6].Value = Resources.DevStateOff;
+                    }
+                    FileMesege.isDgvNameDeviceConnet = false;
+                    client = null;
+                    timer1.Stop();
+                    return;
+                }
+            }
+            catch
+            {
 
             }
-            else
-            {
-                for (int i = 0; i < this.dataGridView1.Rows.Count; i++)
-                {
-                    this.dataGridView1.Rows[i].Cells[6].Style.BackColor = Color.White;
-                    this.dataGridView1.Rows[i].Cells[6].Style.ForeColor = Color.Red;
-                    this.dataGridView1.Rows[i].Cells[6].Value = Resources.DevStateOff;
-                }
-                FileMesege.isDgvNameDeviceConnet = false;
-                client = null;
-                timer1.Stop();
-                return;
-            }
+            
 
         }
  
@@ -677,13 +678,18 @@ namespace eNet编辑器.DgvView
         {
             try
             {
-                string strip = FileMesege.tnselectNode.Text.Split(' ')[0];
+                
                 if (client != null)
                 {
                     client.Dispoes();
                 }
                 client = new ClientAsync();
                 ClientIni();
+                if (FileMesege.tnselectNode == null)
+                {
+                    return;
+                }
+                string strip = FileMesege.tnselectNode.Text.Split(' ')[0];
                 //异步连接
                 client.ConnectAsync(strip, 6001);
                 if (client != null && client.Connected())
