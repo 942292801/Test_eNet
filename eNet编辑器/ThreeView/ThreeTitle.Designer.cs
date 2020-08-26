@@ -37,8 +37,13 @@
             this.反选ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
+            this.编辑ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.编辑ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip2.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // treeView1
@@ -68,33 +73,35 @@
             this.添加ToolStripMenuItem,
             this.toolStripMenuItem1,
             this.全选ToolStripMenuItem,
-            this.反选ToolStripMenuItem});
+            this.反选ToolStripMenuItem,
+            this.toolStripMenuItem2,
+            this.编辑ToolStripMenuItem});
             this.contextMenuStrip2.Name = "contextMenuStrip2";
-            this.contextMenuStrip2.Size = new System.Drawing.Size(101, 76);
+            this.contextMenuStrip2.Size = new System.Drawing.Size(101, 104);
             // 
             // 添加ToolStripMenuItem
             // 
             this.添加ToolStripMenuItem.Name = "添加ToolStripMenuItem";
-            this.添加ToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
+            this.添加ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.添加ToolStripMenuItem.Text = "添加";
             this.添加ToolStripMenuItem.Click += new System.EventHandler(this.添加ToolStripMenuItem_Click);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(97, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(177, 6);
             // 
             // 全选ToolStripMenuItem
             // 
             this.全选ToolStripMenuItem.Name = "全选ToolStripMenuItem";
-            this.全选ToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
+            this.全选ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.全选ToolStripMenuItem.Text = "全选";
             this.全选ToolStripMenuItem.Click += new System.EventHandler(this.全选ToolStripMenuItem_Click);
             // 
             // 反选ToolStripMenuItem
             // 
             this.反选ToolStripMenuItem.Name = "反选ToolStripMenuItem";
-            this.反选ToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
+            this.反选ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.反选ToolStripMenuItem.Text = "反选";
             this.反选ToolStripMenuItem.Click += new System.EventHandler(this.反选ToolStripMenuItem_Click);
             // 
@@ -118,6 +125,32 @@
             this.panel1.Size = new System.Drawing.Size(280, 377);
             this.panel1.TabIndex = 8;
             // 
+            // toolStripMenuItem2
+            // 
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(177, 6);
+            // 
+            // 编辑ToolStripMenuItem
+            // 
+            this.编辑ToolStripMenuItem.Name = "编辑ToolStripMenuItem";
+            this.编辑ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.编辑ToolStripMenuItem.Text = "编辑";
+            this.编辑ToolStripMenuItem.Click += new System.EventHandler(this.编辑ToolStripMenuItem_Click);
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.编辑ToolStripMenuItem1});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 48);
+            // 
+            // 编辑ToolStripMenuItem1
+            // 
+            this.编辑ToolStripMenuItem1.Name = "编辑ToolStripMenuItem1";
+            this.编辑ToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.编辑ToolStripMenuItem1.Text = "编辑";
+            this.编辑ToolStripMenuItem1.Click += new System.EventHandler(this.编辑ToolStripMenuItem_Click);
+            // 
             // ThreeTitle
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -132,6 +165,7 @@
             this.Load += new System.EventHandler(this.ThreeTitle_Load);
             this.contextMenuStrip2.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -146,5 +180,9 @@
         private System.Windows.Forms.ToolStripMenuItem 反选ToolStripMenuItem;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem 编辑ToolStripMenuItem;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem 编辑ToolStripMenuItem1;
     }
 }

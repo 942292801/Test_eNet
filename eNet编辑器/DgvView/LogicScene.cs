@@ -463,7 +463,10 @@ namespace eNet编辑器.DgvView
         private void dataGridView1_MouseDown(object sender, MouseEventArgs e)
         {
 
-            DgvMesege.endDataViewCurrent(dataGridView1, e.Y, e.X);
+            if (DgvMesege.endDataViewCurrent(dataGridView1, e.Y, e.X))
+            {
+                isClick = false;
+            }
 
         }
 
@@ -845,7 +848,10 @@ namespace eNet编辑器.DgvView
         /// </summary>
         private void setTitleAddress()
         {
-
+            if (dataGridView1.CurrentCell == null)
+            {
+                return;
+            }
             int colIndex = dataGridView1.SelectedCells[0].ColumnIndex;
             int id = dataGridView1.CurrentCell.RowIndex;
             //找到当前操作tab对象

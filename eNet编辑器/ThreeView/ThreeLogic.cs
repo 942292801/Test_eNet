@@ -126,6 +126,15 @@ namespace eNet编辑器.ThreeView
             }
         }
 
+        /// <summary>
+        /// 根据point点信息 定位到树节点 用于窗口跳转
+        /// </summary>
+        /// <param name="point"></param>
+        public void FindNodeSelect(DataJson.PointInfo point)
+        {
+            TreeMesege.SelectNodeByPoint(treeView1, point);
+        }
+
         #region 节点样式
         //选中节点高亮不消失
         private void treeView1_DrawNode(object sender, DrawTreeNodeEventArgs e)

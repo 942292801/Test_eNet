@@ -167,7 +167,7 @@ namespace eNet编辑器
                 client.EndConnect(ar);
                 OnComplete(client, EnSocketAction.Connect);
             }
-            catch (Exception ex)
+            catch// (Exception ex)
             {
 
                 //Console.WriteLine("ConnectCallBack出错:" + ex.StackTrace);

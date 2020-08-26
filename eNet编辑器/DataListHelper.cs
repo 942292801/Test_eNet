@@ -1742,7 +1742,8 @@ namespace eNet编辑器
             HashSet<int> numList = new HashSet<int>();
             int start = 0;
             int end = 0;
-            for (int pageNum = 0; pageNum < 20; pageNum++)
+            //循环新建每页内容
+            for (int pageNum = 0; pageNum < 1; pageNum++)
             {
                 delPanel.Clear();
                 numList.Clear();

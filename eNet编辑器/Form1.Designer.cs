@@ -1298,8 +1298,8 @@
             // Form1
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            resources.ApplyResources(this, "$this");
             this.BackColor = System.Drawing.Color.White;
+            resources.ApplyResources(this, "$this");
             this.Controls.Add(this.plMain);
             this.Controls.Add(this.PlTabStrip);
             this.Controls.Add(this.PlToolstrip);

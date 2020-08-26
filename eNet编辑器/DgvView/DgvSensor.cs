@@ -37,7 +37,7 @@ namespace eNet编辑器.DgvView
         /// </summary>
         public event Action<string> AppTxtShow;
 
-        public event Action updateSectionTitleNode;
+        //public event Action updateSectionTitleNode;
         public event Action unSelectTitleNode;
 
         DataGridViewComboBoxColumn showmode;
@@ -979,13 +979,25 @@ namespace eNet编辑器.DgvView
 
         private void dataGridView1_MouseDown(object sender, MouseEventArgs e)
         {
-            if (e.Button == MouseButtons.Right)
+            try
+            {
+
+                if (DgvMesege.endDataViewCurrent(dataGridView1, e.Y, e.X))
+                {
+                    isClick = false;
+                }
+
+            }
+            catch
+            {
+
+            }
+            /*if (e.Button == MouseButtons.Right)
             {
                 //清除title的节点
                 updateSectionTitleNode();
 
-            }
-            DgvMesege.endDataViewCurrent(dataGridView1, e.Y, e.X);
+            }*/
         }
 
         private void dataGridView1_CellMouseMove(object sender, DataGridViewCellMouseEventArgs e)
@@ -1264,7 +1276,7 @@ namespace eNet编辑器.DgvView
             {
                 return null;
             }
-            if (srInfo.objType == "4.0_scene" || srInfo.objType == "5.0_timer" || srInfo.objType == "6.1_panel" || srInfo.objType == "6.2_sensor")
+            if (srInfo.objType == "3.0_logic" || srInfo.objType == "4.0_scene" || srInfo.objType == "5.0_timer" || srInfo.objType == "6.1_panel" || srInfo.objType == "6.2_sensor")
             {
                 return DataListHelper.findPointByType_address(srInfo.objType, srInfo.objAddress,ip);
             }
@@ -1680,6 +1692,10 @@ namespace eNet编辑器.DgvView
             //int colIndex = dataGridView1.SelectedCells[0].ColumnIndex;
             DataJson.sensors srs = DataListHelper.getSensorInfoListByNode();
             if (srs == null)
+            {
+                return;
+            }
+            if (dataGridView1.CurrentCell == null)
             {
                 return;
             }

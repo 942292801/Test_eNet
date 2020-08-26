@@ -730,7 +730,11 @@ namespace eNet编辑器.DgvView
 
         private void dataGridView1_MouseDown(object sender, MouseEventArgs e)
         {
-            DgvMesege.endDataViewCurrent(dataGridView1, e.Y, e.X);
+            
+            if (DgvMesege.endDataViewCurrent(dataGridView1, e.Y, e.X))
+            {
+                isClick = false;
+            }
             dataGridView2.ClearSelection();
             dataGridView3.ClearSelection();
         }
@@ -1300,6 +1304,10 @@ namespace eNet编辑器.DgvView
         {
             try
             {
+                if (dataGridView1.CurrentCell == null)
+                {
+                    return;
+                }
                 int colIndex = dataGridView1.SelectedCells[0].ColumnIndex;
                 int id = dataGridView1.CurrentCell.RowIndex;
 
@@ -1354,6 +1362,10 @@ namespace eNet编辑器.DgvView
         {
             try
             {
+                if (dataGridView1.CurrentCell == null)
+                {
+                    return;
+                }
                 int colIndex = dataGridView1.SelectedCells[0].ColumnIndex;
                 int id = dataGridView1.CurrentCell.RowIndex;
 
@@ -1408,7 +1420,10 @@ namespace eNet编辑器.DgvView
 
         private void dataGridView2_MouseDown(object sender, MouseEventArgs e)
         {
-            DgvMesege.endDataViewCurrent(dataGridView2, e.Y, e.X);
+            if (DgvMesege.endDataViewCurrent(dataGridView1, e.Y, e.X))
+            {
+                isClick = false;
+            }
             dataGridView1.ClearSelection();
             dataGridView3.ClearSelection();
         }
@@ -1848,6 +1863,10 @@ namespace eNet编辑器.DgvView
         {
             try
             {
+                if (dataGridView1.CurrentCell == null)
+                {
+                    return;
+                }
                 int colIndex = dataGridView2.SelectedCells[0].ColumnIndex;
                 int id = dataGridView2.CurrentCell.RowIndex;
 
@@ -1919,7 +1938,10 @@ namespace eNet编辑器.DgvView
         #region falseDo 不符合执行
         private void dataGridView3_MouseDown(object sender, MouseEventArgs e)
         {
-            DgvMesege.endDataViewCurrent(dataGridView3, e.Y, e.X);
+            if (DgvMesege.endDataViewCurrent(dataGridView1, e.Y, e.X))
+            {
+                isClick = false;
+            }
             dataGridView1.ClearSelection();
             dataGridView2.ClearSelection();
         }
@@ -2348,6 +2370,10 @@ namespace eNet编辑器.DgvView
         {
             try
             {
+                if (dataGridView1.CurrentCell == null)
+                {
+                    return;
+                }
                 int colIndex = dataGridView3.SelectedCells[0].ColumnIndex;
                 int id = dataGridView3.CurrentCell.RowIndex;
 

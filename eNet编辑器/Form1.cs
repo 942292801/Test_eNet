@@ -239,11 +239,11 @@ namespace eNet编辑器
                 threetitle.ThreeTitleAddNode(cbType.SelectedIndex);
             });
             dgvpanel.unSelectTitleNode += new Action(threetitle.unSelectTitleNode);
-            dgvsensor.updateSectionTitleNode += new Action(() =>//刷新右边两树状图 取消选中状态 
+            /*dgvsensor.updateSectionTitleNode += new Action(() =>//刷新右边两树状图 取消选中状态 
             {
                 //threesection.ThreeSEctionAddNode();
                 threetitle.ThreeTitleAddNode(cbType.SelectedIndex);
-            });
+            });*/
             dgvsensor.unSelectTitleNode += new Action(threetitle.unSelectTitleNode);
             //默认光标
             //dgvname.dgvDeviceCursorDefault +=new DgvDeviceCursorDefault(dgvdevice.cursor_default);
@@ -254,13 +254,13 @@ namespace eNet编辑器
             dgvtimer.jumpSetInfo += new Action<DataJson.PointInfo>(dgv_jumpSetInfo);
             dgvpanel.jumpSetInfo += new Action<DataJson.PointInfo>(dgv_jumpSetInfo);
             dgvsensor.jumpSetInfo += new Action<DataJson.PointInfo>(dgv_jumpSetInfo);
+            threetitle.jumpSetInfo += new Action<DataJson.PointInfo>(dgv_jumpSetInfo);
             /////////////////////////////////////////////////////
             //初始化类型表
             cbtypeName("equipment");//初始化title类型表               
             timer1.Enabled = false; //开启清除内存时钟
             this.Text = Resources.SoftName + "Edit New Project";
-
-            //全屏
+            
         }
 
    
@@ -398,7 +398,11 @@ namespace eNet编辑器
                     tabStrip.SelectedTab = tabSensor;
                     threesensor.FindNodeSelect(point);
                     break;
-
+                case "logic":
+                    tabLogic_Click(this, EventArgs.Empty);
+                    tabStrip.SelectedTab = tabLogic;
+                    threelogic.FindNodeSelect(point);
+                    break;
                 default:
 
                     break;
@@ -660,6 +664,7 @@ namespace eNet编辑器
                 dgvpanel.dgvPanelAddItem(0);
                 btnAddTitleItem.Visible = false;
                 btnClear.Visible = true;
+                FileMesege.titlePointSection = "";
 
             }
             catch
@@ -688,7 +693,7 @@ namespace eNet编辑器
                 threesensor.ThreeSensorAddNode();
                 btnAddTitleItem.Visible = false;
                 btnClear.Visible = true;
-
+                FileMesege.titlePointSection = "";
             }
             catch
             {
@@ -704,7 +709,6 @@ namespace eNet编辑器
                 //自定义函数加载窗体 CleanRecycle  
                 Control_Add(threelogic, plLeft);
                 Control_Add(dgvlogic, plDgv);
-
                 //cbtype添加选择项 
                 cbtypeName("logic");
                 //添加对象树状图
@@ -715,7 +719,7 @@ namespace eNet编辑器
                 FileMesege.formType = "logic";
                 threelogic.ThreeLogicAddNode();
                 btnAddTitleItem.Visible = false;
-
+                FileMesege.titlePointSection = "";
             }
             catch
             {

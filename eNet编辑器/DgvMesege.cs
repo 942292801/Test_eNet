@@ -336,12 +336,14 @@ namespace eNet编辑器
         /// </summary>
         /// <param name="dataGridView1"></param>
         /// <param name="y"></param>
-        public static void endDataViewCurrent(DataGridView dataGridView1,int y,int x)
+        public static bool endDataViewCurrent(DataGridView dataGridView1,int y,int x)
         {
             if (GetRowIndexAt(dataGridView1,y,x) == -1)
             {
                 dataGridView1.CurrentCell = null;
+                return true;
             }
+            return false;
         }
         public static int GetRowIndexAt(DataGridView dataGridView1, int mouseLocation_Y, int mouseLocation_X)
         {
@@ -402,9 +404,9 @@ namespace eNet编辑器
                 dataGridView.FirstDisplayedScrollingRowIndex = Y_Value;//设置垂直滚动条位置
                 dataGridView.HorizontalScrollingOffset = X_Value;
                 dataGridView.CurrentCell = dataGridView.Rows[rowCount].Cells[columnCount];//设置单元格焦点
-            }catch(Exception ex){
+            }catch{//(Exception ex){
                 //throw ex;
-                MessageBox.Show(ex.ToString());
+                ///MessageBox.Show(ex.ToString());
             }
         }
 

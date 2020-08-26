@@ -411,7 +411,7 @@ namespace eNet编辑器
                         string nodeName = "";
                         foreach (TreeNode node2 in node1.Nodes)
                         {
-                            nodeName = node2.Text.Replace(node2.Text.Split(' ')[0], "").Trim();
+                            nodeName = node2.Text.Replace(node2.Text.Split(' ')[0]+" ", "").Trim();
                             if (nodeName == pointName)
                             {
                                 tv.SelectedNode = node2;

@@ -123,6 +123,20 @@ namespace eNet编辑器.AddForm
             set { area4 = value; }
         }
 
+        private bool isPanelAdd = false;
+        public bool IsPanelAdd
+        {
+            get { return isPanelAdd; }
+            set { isPanelAdd = value; }
+        }
+
+        private string panelName = "";
+
+        public string PanelName
+        {
+            get { return panelName; }
+            set { panelName = value; }
+        }
         private void TsSceneAdd_Load(object sender, EventArgs e)
         {
             
@@ -162,10 +176,15 @@ namespace eNet编辑器.AddForm
                 }
             }
             txtName.SelectedIndex = 0;
+            
             if (xflag == false)
             {
                 try
                 {
+                    if (isPanelAdd)
+                    {
+                        txtName.Text = panelName + txtName.Text;
+                    }
                     if (FileMesege.sectionNodeCopy != null)
                     {
                         string[] sections = FileMesege.sectionNodeCopy.Split('\\');
@@ -318,8 +337,14 @@ namespace eNet编辑器.AddForm
                     }
 
                 }
+                if (isPanelAdd)
+                {
+                    this.DialogResult = DialogResult.OK;
+                    return;
+                }
                 addSceneNode();
                 txtNum.Text = (Convert.ToInt32(txtNum.Text) + 1).ToString();
+               
             }
             else
             {
@@ -357,8 +382,6 @@ namespace eNet编辑器.AddForm
                 //修改场景
                 this.DialogResult = DialogResult.OK;
             }
-            
-
         }
 
         
@@ -483,6 +506,9 @@ namespace eNet编辑器.AddForm
                 return cp;
             }
         }
+
+     
+   
 
         private bool CheckAeroEnabled()
         {

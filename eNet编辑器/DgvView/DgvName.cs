@@ -1236,7 +1236,10 @@ namespace eNet编辑器.DgvView
                 //cursor_default();
                 //dgvDeviceCursorDefault();
             }
-            DgvMesege.endDataViewCurrent(dataGridView1, e.Y, e.X);
+            if (DgvMesege.endDataViewCurrent(dataGridView1, e.Y, e.X))
+            {
+                isClick = false;
+            }
         }
 
         bool isClick = false;

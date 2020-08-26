@@ -49,11 +49,14 @@
             this.btnDel = new DevComponents.DotNetBar.ButtonX();
             this.symbolBox1 = new DevComponents.DotNetBar.Controls.SymbolBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.相同ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.plInfoTitle.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // dataGridView1
@@ -80,6 +83,7 @@
             this.pointName,
             this.pointDel,
             this.pointMultiple});
+            this.dataGridView1.ContextMenuStrip = this.contextMenuStrip1;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("微软雅黑", 9F);
@@ -291,6 +295,20 @@
             this.label1.TabIndex = 11;
             this.label1.Text = "内容";
             // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.相同ToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip2";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(148, 26);
+            // 
+            // 相同ToolStripMenuItem
+            // 
+            this.相同ToolStripMenuItem.Name = "相同ToolStripMenuItem";
+            this.相同ToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
+            this.相同ToolStripMenuItem.Text = "相同(Ctrl+Q)";
+            this.相同ToolStripMenuItem.Click += new System.EventHandler(this.相同ToolStripMenuItem_Click);
+            // 
             // DgvPoint
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -309,6 +327,7 @@
             this.plInfoTitle.ResumeLayout(false);
             this.plInfoTitle.PerformLayout();
             this.flowLayoutPanel1.ResumeLayout(false);
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -332,5 +351,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn pointName;
         private System.Windows.Forms.DataGridViewButtonColumn pointDel;
         private System.Windows.Forms.DataGridViewCheckBoxColumn pointMultiple;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem 相同ToolStripMenuItem;
     }
 }

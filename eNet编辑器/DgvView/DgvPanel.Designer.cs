@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DgvPanel));
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -46,6 +46,9 @@
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.升序ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.降序ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
+            this.新建场景ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.编辑场景ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.plInfoTitle = new System.Windows.Forms.Panel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.btnDown = new DevComponents.DotNetBar.ButtonX();
@@ -65,6 +68,8 @@
             this.panel6 = new System.Windows.Forms.Panel();
             this.panel8 = new System.Windows.Forms.Panel();
             this.panel7 = new System.Windows.Forms.Panel();
+            this.btnPrev = new DevComponents.DotNetBar.ButtonX();
+            this.btnNext = new DevComponents.DotNetBar.ButtonX();
             this.btnKeyNum = new DevComponents.DotNetBar.ButtonX();
             this.btnAttr = new DevComponents.DotNetBar.ButtonX();
             this.cbKeyNum = new System.Windows.Forms.ComboBox();
@@ -87,8 +92,7 @@
             this.imgList6 = new DevExpress.Utils.ImageCollection(this.components);
             this.imgList7 = new DevExpress.Utils.ImageCollection(this.components);
             this.imgList8 = new DevExpress.Utils.ImageCollection(this.components);
-            this.btnNext = new DevComponents.DotNetBar.ButtonX();
-            this.btnPrev = new DevComponents.DotNetBar.ButtonX();
+            this.修改场景ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             this.plInfoTitle.SuspendLayout();
@@ -121,14 +125,14 @@
             this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
             this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridView1.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableAlwaysIncludeHeaderText;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("微软雅黑", 9F);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("微软雅黑", 9F);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.id,
@@ -140,14 +144,14 @@
             this.del,
             this.add});
             this.dataGridView1.ContextMenuStrip = this.contextMenuStrip1;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("微软雅黑", 9F);
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(235)))), ((int)(((byte)(248)))));
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("微软雅黑", 9F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(235)))), ((int)(((byte)(248)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
@@ -235,35 +239,58 @@
             this.相同ToolStripMenuItem,
             this.toolStripMenuItem1,
             this.升序ToolStripMenuItem,
-            this.降序ToolStripMenuItem});
+            this.降序ToolStripMenuItem,
+            this.toolStripMenuItem2,
+            this.新建场景ToolStripMenuItem,
+            this.编辑场景ToolStripMenuItem,
+            this.修改场景ToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip2";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(150, 76);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 170);
             // 
             // 相同ToolStripMenuItem
             // 
             this.相同ToolStripMenuItem.Name = "相同ToolStripMenuItem";
-            this.相同ToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
+            this.相同ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.相同ToolStripMenuItem.Text = "相同(Ctrl+Q)";
             this.相同ToolStripMenuItem.Click += new System.EventHandler(this.相同ToolStripMenuItem_Click);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(146, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(177, 6);
             // 
             // 升序ToolStripMenuItem
             // 
             this.升序ToolStripMenuItem.Name = "升序ToolStripMenuItem";
-            this.升序ToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
+            this.升序ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.升序ToolStripMenuItem.Text = "升序(Ctrl+W)";
             this.升序ToolStripMenuItem.Click += new System.EventHandler(this.升序ToolStripMenuItem_Click);
             // 
             // 降序ToolStripMenuItem
             // 
             this.降序ToolStripMenuItem.Name = "降序ToolStripMenuItem";
-            this.降序ToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
+            this.降序ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.降序ToolStripMenuItem.Text = "降序(Ctrl+D)";
             this.降序ToolStripMenuItem.Click += new System.EventHandler(this.降序ToolStripMenuItem_Click);
+            // 
+            // toolStripMenuItem2
+            // 
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(177, 6);
+            // 
+            // 新建场景ToolStripMenuItem
+            // 
+            this.新建场景ToolStripMenuItem.Name = "新建场景ToolStripMenuItem";
+            this.新建场景ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.新建场景ToolStripMenuItem.Text = "新建场景";
+            this.新建场景ToolStripMenuItem.Click += new System.EventHandler(this.新建场景ToolStripMenuItem_Click);
+            // 
+            // 编辑场景ToolStripMenuItem
+            // 
+            this.编辑场景ToolStripMenuItem.Name = "编辑场景ToolStripMenuItem";
+            this.编辑场景ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.编辑场景ToolStripMenuItem.Text = "编辑场景";
+            this.编辑场景ToolStripMenuItem.Click += new System.EventHandler(this.编辑场景ToolStripMenuItem_Click);
             // 
             // plInfoTitle
             // 
@@ -548,6 +575,44 @@
             this.panel7.Size = new System.Drawing.Size(204, 479);
             this.panel7.TabIndex = 31;
             // 
+            // btnPrev
+            // 
+            this.btnPrev.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnPrev.BackColor = System.Drawing.Color.White;
+            this.btnPrev.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
+            this.btnPrev.FocusCuesEnabled = false;
+            this.btnPrev.Font = new System.Drawing.Font("黑体", 9F);
+            this.btnPrev.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None;
+            this.btnPrev.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnPrev.HoverImage")));
+            this.btnPrev.Image = ((System.Drawing.Image)(resources.GetObject("btnPrev.Image")));
+            this.btnPrev.Location = new System.Drawing.Point(77, 281);
+            this.btnPrev.Margin = new System.Windows.Forms.Padding(6);
+            this.btnPrev.Name = "btnPrev";
+            this.btnPrev.Size = new System.Drawing.Size(24, 24);
+            this.btnPrev.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnPrev.TabIndex = 45;
+            this.btnPrev.Tooltip = "上一页";
+            this.btnPrev.Click += new System.EventHandler(this.BtnPrev_Click);
+            // 
+            // btnNext
+            // 
+            this.btnNext.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnNext.BackColor = System.Drawing.Color.White;
+            this.btnNext.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
+            this.btnNext.FocusCuesEnabled = false;
+            this.btnNext.Font = new System.Drawing.Font("黑体", 9F);
+            this.btnNext.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None;
+            this.btnNext.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnNext.HoverImage")));
+            this.btnNext.Image = ((System.Drawing.Image)(resources.GetObject("btnNext.Image")));
+            this.btnNext.Location = new System.Drawing.Point(165, 281);
+            this.btnNext.Margin = new System.Windows.Forms.Padding(6);
+            this.btnNext.Name = "btnNext";
+            this.btnNext.Size = new System.Drawing.Size(24, 24);
+            this.btnNext.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnNext.TabIndex = 44;
+            this.btnNext.Tooltip = "下一页";
+            this.btnNext.Click += new System.EventHandler(this.BtnNext_Click);
+            // 
             // btnKeyNum
             // 
             this.btnKeyNum.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
@@ -779,43 +844,12 @@
             this.imgList8.Images.SetKeyName(4, "button8_5.png");
             this.imgList8.Images.SetKeyName(5, "button8_6.png");
             // 
-            // btnNext
+            // 修改场景ToolStripMenuItem
             // 
-            this.btnNext.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnNext.BackColor = System.Drawing.Color.White;
-            this.btnNext.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
-            this.btnNext.FocusCuesEnabled = false;
-            this.btnNext.Font = new System.Drawing.Font("黑体", 9F);
-            this.btnNext.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None;
-            this.btnNext.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnNext.HoverImage")));
-            this.btnNext.Image = ((System.Drawing.Image)(resources.GetObject("btnNext.Image")));
-            this.btnNext.Location = new System.Drawing.Point(165, 281);
-            this.btnNext.Margin = new System.Windows.Forms.Padding(6);
-            this.btnNext.Name = "btnNext";
-            this.btnNext.Size = new System.Drawing.Size(24, 24);
-            this.btnNext.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnNext.TabIndex = 44;
-            this.btnNext.Tooltip = "下一页";
-            this.btnNext.Click += new System.EventHandler(this.BtnNext_Click);
-            // 
-            // btnPrev
-            // 
-            this.btnPrev.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnPrev.BackColor = System.Drawing.Color.White;
-            this.btnPrev.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
-            this.btnPrev.FocusCuesEnabled = false;
-            this.btnPrev.Font = new System.Drawing.Font("黑体", 9F);
-            this.btnPrev.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None;
-            this.btnPrev.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnPrev.HoverImage")));
-            this.btnPrev.Image = ((System.Drawing.Image)(resources.GetObject("btnPrev.Image")));
-            this.btnPrev.Location = new System.Drawing.Point(77, 281);
-            this.btnPrev.Margin = new System.Windows.Forms.Padding(6);
-            this.btnPrev.Name = "btnPrev";
-            this.btnPrev.Size = new System.Drawing.Size(24, 24);
-            this.btnPrev.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnPrev.TabIndex = 45;
-            this.btnPrev.Tooltip = "上一页";
-            this.btnPrev.Click += new System.EventHandler(this.BtnPrev_Click);
+            this.修改场景ToolStripMenuItem.Name = "修改场景ToolStripMenuItem";
+            this.修改场景ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.修改场景ToolStripMenuItem.Text = "修改场景";
+            this.修改场景ToolStripMenuItem.Click += new System.EventHandler(this.修改场景ToolStripMenuItem_Click);
             // 
             // DgvPanel
             // 
@@ -916,5 +950,9 @@
         private DevComponents.DotNetBar.ButtonX btnKeyNum;
         private DevComponents.DotNetBar.ButtonX btnNext;
         private DevComponents.DotNetBar.ButtonX btnPrev;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem 新建场景ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 编辑场景ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 修改场景ToolStripMenuItem;
     }
 }

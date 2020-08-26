@@ -180,7 +180,6 @@ namespace eNet编辑器.ThreeView
         /// <returns></returns>
         private void newTsScene()
         {
-            
             //展示居中
             tss.StartPosition = FormStartPosition.CenterParent;
             tss.Xflag = false;

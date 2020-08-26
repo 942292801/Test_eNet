@@ -13,6 +13,7 @@ using System.Threading;
 using eNet编辑器.AddForm;
 using System.Reflection;
 using Newtonsoft.Json;
+using eNet编辑器.Properties;
 
 namespace eNet编辑器.DgvView
 {
@@ -172,6 +173,7 @@ namespace eNet编辑器.DgvView
                 {
                     cbPage.SelectedIndex = pageIndex;
                 }
+                
                 int tmpId = -1;
                 try
                 {
@@ -278,20 +280,45 @@ namespace eNet编辑器.DgvView
                     dataGridView1.Rows[dex].Cells[7].Value = DgvMesege.addressTransform(plInfo.showAddress);
                     dataGridView1.Rows[dex].Cells[8].Value = plInfo.showMode;
                     dataGridView1.Rows[dex].Cells[9].Value = "删除";
-                    if (dataGridView1.Rows[dex].Cells[1].Value != null)
-                    {
-                        cbDevNum.Text = dataGridView1.Rows[dex].Cells[1].Value.ToString().Split('.')[0];
-
-                    }
+                   
 
                 }
-               
+
+                if (dataGridView1.Rows.Count > 0 && dataGridView1.Rows[0].Cells[1].Value != null && dataGridView1.Rows[0].Cells[1].Value.ToString() != "")
+                {
+                    cbDevNum.Text = dataGridView1.Rows[0].Cells[1].Value.ToString().Split('.')[0];
+                    if (Convert.ToInt32(cbDevNum.Text) < 64)
+                    {
+                        cbDevNum.Enabled = false;
+                        btnAttr.Enabled = false;
+                    }
+                    else
+                    {
+                        cbDevNum.Enabled = true;
+                        btnAttr.Enabled = true;
+                    }
+                }
+                else
+                {
+                    cbDevNum.Text = "";
+                    cbDevNum.Enabled = true;
+                    btnAttr.Enabled = true;
+                }
                 for (int i = 0; i < delPanel.Count; i++)
                 {
                     pls.panelsInfo.Remove(delPanel[i]);
                 }
                 //设置按键数量
-                cbKeyNum.Text = keyNum.ToString();
+                if (keyNum == 0)
+                {
+                    cbKeyNum.SelectedIndex = 0;
+                }
+                else
+                {
+                    cbKeyNum.Text = keyNum.ToString();
+
+                }
+
                 DgvMesege.RecoverDgvForm(dataGridView1, X_Value, Y_Value, rowCount, columnCount);
             }
             catch (Exception ex)
@@ -818,13 +845,16 @@ namespace eNet编辑器.DgvView
 
         private void dataGridView1_MouseDown(object sender, MouseEventArgs e)
         {
-            if (e.Button == MouseButtons.Right)
+            /*if (e.Button == MouseButtons.Right)
             {
                 //清除title的节点
                 updateSectionTitleNode();
 
+            }*/
+            if (DgvMesege.endDataViewCurrent(dataGridView1, e.Y, e.X))
+            {
+                isClick = false;
             }
-            DgvMesege.endDataViewCurrent(dataGridView1, e.Y, e.X);
         }
 
         private void dataGridView1_CellMouseMove(object sender, DataGridViewCellMouseEventArgs e)
@@ -1191,7 +1221,7 @@ namespace eNet编辑器.DgvView
             {
                 return null;
             }
-            if (plsInfo.objType == "4.0_scene" || plsInfo.objType == "5.0_timer" || plsInfo.objType == "6.1_panel" || plsInfo.objType == "6.2_sensor")
+            if (plsInfo.objType == "3.0_logic" || plsInfo.objType == "4.0_scene" || plsInfo.objType == "5.0_timer" || plsInfo.objType == "6.1_panel" || plsInfo.objType == "6.2_sensor")
             {
     
                 return DataListHelper.findPointByType_address(plsInfo.objType, plsInfo.objAddress, ip);
@@ -1764,6 +1794,10 @@ namespace eNet编辑器.DgvView
                 {
                     return;
                 }
+                if (dataGridView1.CurrentCell == null)
+                {
+                    return;
+                }
                 int rowIndex = dataGridView1.CurrentCell.RowIndex;
                 //int id = cbPage.SelectedIndex * 255 + rowIndex + 1;
                 DataJson.panelsInfo plsInfo = GetPanelInfoByRowIndex(pls, rowIndex);
@@ -1792,13 +1826,15 @@ namespace eNet编辑器.DgvView
                     dataGridView1.Rows[rowIndex].Cells[2].Value = DgvMesege.addressTransform(plsInfo.objAddress);
                     dataGridView1.Rows[rowIndex].Cells[4].Value = string.Format("{0} {1} {2} {3}", eq.area1, eq.area2, eq.area3, eq.area4).Trim();//改根据地址从信息里面获取
                     dataGridView1.Rows[rowIndex].Cells[5].Value = eq.name;
-                    if (eq.address != "FFFFFFFF" && dataGridView1.Rows[rowIndex].Cells[0].Value != null)
+                    if (eq.address != "FFFFFFFF" && dataGridView1.Rows[rowIndex].Cells[0].Value != null )
                     {
+                        
                         plsInfo.showAddress = eq.address;
                         plsInfo.showMode = "同步";
                         dataGridView1.Rows[rowIndex].Cells[7].Value = dataGridView1.Rows[rowIndex].Cells[2].Value;
                         dataGridView1.Rows[rowIndex].Cells[8].Value = "同步";
                     }
+
                 }
                 else
                 {
@@ -1812,7 +1848,7 @@ namespace eNet编辑器.DgvView
                     dataGridView1.Rows[rowIndex].Cells[4].Value = string.Format("{0} {1} {2} {3}", eq.area1, eq.area2, eq.area3, eq.area4).Trim();//改根据地址从信息里面获取
                     dataGridView1.Rows[rowIndex].Cells[5].Value = eq.name;
                     dataGridView1.Rows[rowIndex].Cells[6].Value = updataMode(plsInfo.objType, rowIndex, plsInfo.opt);
-                    if (eq.address != "FFFFFFFF" && dataGridView1.Rows[rowIndex].Cells[0].Value != null)
+                    if (eq.address != "FFFFFFFF" && dataGridView1.Rows[rowIndex].Cells[0].Value != null && plsInfo.objType != "4.0_scene")
                     {
                         plsInfo.showAddress = eq.address;
                         plsInfo.showMode = "同步";
@@ -1820,6 +1856,13 @@ namespace eNet编辑器.DgvView
                         dataGridView1.Rows[rowIndex].Cells[8].Value = "同步";
                     }
 
+                }
+                if (plsInfo.objType == "4.0_scene")
+                {
+                    plsInfo.showAddress = "";
+                    plsInfo.showMode = "";
+                    dataGridView1.Rows[rowIndex].Cells[7].Value = "";
+                    dataGridView1.Rows[rowIndex].Cells[8].Value = "";
                 }
                 DataJson.totalList NewList = FileMesege.cmds.getListInfos();
                 FileMesege.cmds.DoNewCommand(NewList, OldList);
@@ -2778,8 +2821,302 @@ namespace eNet编辑器.DgvView
 
 
 
+
         #endregion
 
-    
+        #region 新建场景 编辑场景
+        private void 新建场景ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+               
+                //选中行 序号
+                int id = 0;
+                //列号
+                int colIndex = 0;
+                //记录第一个选中格的列号
+                //int FirstColumnIndex = -1;
+                DataJson.panels pls = DataListHelper.getPanelsInfoListByNode();
+                if (pls == null)
+                {
+                    return;
+                }
+                DataJson.panelsInfo plInfo = null;
+                for (int i = dataGridView1.SelectedCells.Count - 1; i >= 0; i--)
+                {
+                    //获取当前选中单元格的列序号
+                    colIndex = dataGridView1.SelectedCells[i].ColumnIndex;
+                    if (colIndex == 2)
+                    {
+                        id = dataGridView1.SelectedCells[i].RowIndex;
+                        //撤销
+                        DataJson.totalList OldList = FileMesege.cmds.getListInfos();
+                        plInfo = GetPanelInfoByRowIndex(pls, dataGridView1.SelectedCells[i].RowIndex);
+                        if (plInfo == null)
+                        {
+                            return;
+                        }
+
+                        //新建场景
+                        sceneAdd tss = new sceneAdd();
+                        //展示居中
+                        tss.StartPosition = FormStartPosition.CenterParent;
+                        if (FileMesege.panelSelectNode == null)
+                        {
+                            return;
+                        }
+                        //获取IP
+                        if (FileMesege.panelSelectNode.Parent == null)
+                        {
+                            tss.Ip  = FileMesege.panelSelectNode.Text.Split(' ')[0];
+                        }
+                        else
+                        {
+                            tss.Ip = FileMesege.panelSelectNode.Parent.Text.Split(' ')[0];
+                        }
+                        //获取场景号数
+
+                        int scneID = 1;
+                        foreach (DataJson.Scene sc in FileMesege.sceneList)
+                        {
+                            if (sc.IP == tss.Ip)
+                            {
+                                scneID = sc.scenes[sc.scenes.Count - 1].id + 1;
+                                break;
+                            }
+                        }
+                        tss.Num = scneID.ToString() ;
+                        tss.IsPanelAdd = true;
+                        tss.PanelName = string.Format("{0}{1}.{2}-", Resources.Panel, pls.id, plInfo.id );
+                        if (tss.ShowDialog() == DialogResult.OK)
+                        {
+                            //获取地址
+                            string address = "FE10" + Convert.ToInt32(tss.Num).ToString("X4");
+                            if (FileMesege.sceneList == null)
+                            {
+                                FileMesege.sceneList = new List<DataJson.Scene>();
+
+                            }
+                            if (!FileMesege.sceneList.Exists(x => x.IP == tss.Ip))
+                            {
+                                //不存在新建List
+                                DataJson.Scene sc = new DataJson.Scene();
+                                sc.IP = tss.Ip;
+                                sc.Dev = "GW100A";
+                                sc.scenes = new List<DataJson.scenes>();
+                                FileMesege.sceneList.Add(sc);
+                            }
+                            //判断是否已经存在该点位信息
+                            int randomNum = DataChange.randomNum();
+                            foreach (DataJson.Scene sc in FileMesege.sceneList)
+                            {
+                                //节点的IP相等 进入创建 不会存在相同ID号新建信息
+                                if (sc.IP == tss.Ip)
+                                {
+                                    DataJson.scenes scs = new DataJson.scenes();
+                                    scs.id = Convert.ToInt32(tss.Num);
+                                    scs.pid = randomNum;
+                                    //scs.address = address;
+                                    scs.sceneInfo = new List<DataJson.sceneInfo>();
+                                    sc.scenes.Add(scs);
+                                    //添加point点
+                                    DataJson.PointInfo eq = new DataJson.PointInfo();
+                                    eq.area1 = tss.Area1;
+                                    eq.area2 = tss.Area2;
+                                    eq.area3 = tss.Area3;
+                                    eq.area4 = tss.Area4;
+                                    eq.address = address;
+                                    eq.pid = randomNum;
+                                    eq.ip = tss.Ip;
+                                    eq.name = tss.SceneName;
+                                    eq.type = IniHelper.findTypesIniTypebyName("场景");
+                                    eq.objType = "";
+                                    //eq.range = "";
+                                    eq.value = "";
+                                    FileMesege.PointList.scene.Add(eq);
+                                    //排序
+                                    sc.scenes.Sort(delegate (DataJson.scenes x, DataJson.scenes y)
+                                    {
+                                        return Convert.ToInt32(x.id).CompareTo(Convert.ToInt32(y.id));
+                                    });
+                                    //面板信息添加内容
+                                    plInfo.objAddress = address;
+                                    if (plInfo.objType != eq.type)
+                                    {
+                                        plInfo.opt = 255;
+                                    }
+                                    plInfo.objType = eq.type;
+                                    plInfo.pid = randomNum;
+
+                                    plInfo.showAddress = "";
+                                    plInfo.showMode = "";
+
+                                    DataJson.totalList NewList = FileMesege.cmds.getListInfos();
+                                    FileMesege.cmds.DoNewCommand(NewList, OldList);
+
+                                    dataGridView1.Rows[id].Cells[2].Value = DgvMesege.addressTransform(plInfo.objAddress);
+                                    dataGridView1.Rows[id].Cells[3].Value = IniHelper.findTypesIniNamebyType(plInfo.objType);
+                                    dataGridView1.Rows[id].Cells[4].Value = string.Format("{0} {1} {2} {3}", eq.area1, eq.area2, eq.area3, eq.area4).Trim();//改根据地址从信息里面获取
+                                    dataGridView1.Rows[id].Cells[5].Value = eq.name;
+                                    dataGridView1.Rows[id].Cells[6].Value = updataMode(plInfo.objType, id, plInfo.opt);
+                                    dataGridView1.Rows[id].Cells[7].Value = DgvMesege.addressTransform(plInfo.showAddress);
+                                    dataGridView1.Rows[id].Cells[8].Value = plInfo.showMode;
+                                    
+                                    break;
+                                }
+                            }
+
+
+                        }
+                        break;
+                    }
+  
+                }
+          
+            }//try
+            catch
+            {
+
+            }
+        }
+
+
+        private void 编辑场景ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                //设置对象跳转
+                DataJson.PointInfo point = dgvJumpSet();
+                if (point != null)
+                {
+                    //传输到form窗口控制
+                    //AppTxtShow("传输到主窗口"+DateTime.Now);
+                    jumpSetInfo(point);
+                }
+            }
+            catch
+            {
+
+            }
+          
+        }
+
+        private void 修改场景ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                
+                //选中行 序号
+                int id = 0;
+                //列号
+                int colIndex = 0;
+                DataJson.panels pls = DataListHelper.getPanelsInfoListByNode();
+                if (pls == null)
+                {
+                    return;
+                }
+                DataJson.panelsInfo plInfo = null;
+                for (int i = dataGridView1.SelectedCells.Count - 1; i >= 0; i--)
+                {
+                    //获取当前选中单元格的列序号
+                    colIndex = dataGridView1.SelectedCells[i].ColumnIndex;
+                    if (colIndex == 2)
+                    {
+                        
+                        id = dataGridView1.SelectedCells[i].RowIndex;
+                        DataJson.PointInfo eq = DataListHelper.findPointBySectionName(dataGridView1.Rows[id].Cells[4].Value.ToString(), dataGridView1.Rows[id].Cells[5].Value.ToString().Split('@')[0]);
+                        if (eq == null)
+                        {
+                            return;
+                        }
+                        plInfo = GetPanelInfoByRowIndex(pls, id);
+                        if (plInfo == null)
+                        {
+                            return;
+                        }
+                        sceneAdd tss = new sceneAdd();
+                        //展示居中
+                        tss.StartPosition = FormStartPosition.CenterParent;
+                        //获取IP
+                        if (FileMesege.panelSelectNode == null)
+                        {
+                            return;
+                        }
+                        //获取IP
+                        if (FileMesege.panelSelectNode.Parent == null)
+                        {
+                            tss.Ip = FileMesege.panelSelectNode.Text.Split(' ')[0];
+                        }
+                        else
+                        {
+                            tss.Ip = FileMesege.panelSelectNode.Parent.Text.Split(' ')[0];
+                        }
+
+                        DataJson.scenes scs = DataListHelper.getSceneInfoListByPid(tss.Ip,eq.pid);
+                        if (scs == null)
+                        {
+                            return;
+                        }
+
+                        //获取场景号数
+                        tss.Num = scs.id.ToString();
+                        tss.Xflag = true;
+                        tss.ShowDialog();
+                        
+                        if (tss.DialogResult == DialogResult.OK)
+                        {
+                            //撤销
+                            DataJson.totalList OldList = FileMesege.cmds.getListInfos();
+                            //获取场景号
+                            string num = Convert.ToInt32(tss.Num).ToString("X4");
+                            //获取IP最后一位
+                            string address = "FE10" + num;
+                            scs.id = Convert.ToInt32(tss.Num);
+                            plInfo.objAddress = address;
+                            eq.area1 = tss.Area1;
+                            eq.area2 = tss.Area2;
+                            eq.area3 = tss.Area3;
+                            eq.area4 = tss.Area4;
+                            eq.address = address;
+                            eq.name = tss.SceneName;
+                            //排序
+                            foreach (DataJson.Scene sc in FileMesege.sceneList)
+                            {
+                                if (sc.IP == tss.Ip)
+                                {
+                                    sc.scenes.Sort(delegate (DataJson.scenes x, DataJson.scenes y)
+                                    {
+                                        return Convert.ToInt32(x.id).CompareTo(Convert.ToInt32(y.id));
+                                    });
+                                    break;
+                                }
+                            }
+                           
+                            dataGridView1.Rows[id].Cells[2].Value = DgvMesege.addressTransform(plInfo.objAddress);
+                            dataGridView1.Rows[id].Cells[4].Value = string.Format("{0} {1} {2} {3}", eq.area1, eq.area2, eq.area3, eq.area4).Trim();//改根据地址从信息里面获取
+                            dataGridView1.Rows[id].Cells[5].Value = eq.name;
+
+                            DataJson.totalList NewList = FileMesege.cmds.getListInfos();
+                            FileMesege.cmds.DoNewCommand(NewList, OldList);
+                        }
+                        break;
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.StackTrace);
+            }
+
+            
+            
+        }
+
+
+
+        #endregion
+
+
     }
 }

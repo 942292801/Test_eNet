@@ -1404,7 +1404,10 @@ namespace eNet编辑器.DgvView
 
         private void dataGridView1_MouseDown(object sender, MouseEventArgs e)
         {
-            DgvMesege.endDataViewCurrent(dataGridView1, e.Y, e.X);
+            if (DgvMesege.endDataViewCurrent(dataGridView1, e.Y, e.X))
+            {
+                isClick = false;
+            }
         }
 
         //移动到删除的时候高亮一行
@@ -1673,7 +1676,7 @@ namespace eNet编辑器.DgvView
             {
                 return null;
             }
-            if (tmInfo.type == "4.0_scene" || tmInfo.type == "5.0_timer" || tmInfo.type == "6.1_panel" || tmInfo.type == "6.2_sensor")
+            if (tmInfo.type == "3.0_logic" || tmInfo.type == "4.0_scene" || tmInfo.type == "5.0_timer" || tmInfo.type == "6.1_panel" || tmInfo.type == "6.2_sensor")
             {
                 return DataListHelper.findPointByType_address(tmInfo.type, tmInfo.address,ip);
             }
@@ -1933,6 +1936,10 @@ namespace eNet编辑器.DgvView
         /// </summary>
         public void copyData()
         {
+            if (dataGridView1.CurrentCell == null)
+            {
+                return;
+            }
             //获取当前选中单元格的列序号
             int colIndex = dataGridView1.CurrentRow.Cells.IndexOf(dataGridView1.CurrentCell);
             //当粘贴选中单元格为操作

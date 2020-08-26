@@ -665,7 +665,10 @@ namespace eNet编辑器.DgvView
 
         private void dataGridView1_MouseDown(object sender, MouseEventArgs e)
         {
-            DgvMesege.endDataViewCurrent(dataGridView1, e.Y, e.X);
+            if (DgvMesege.endDataViewCurrent(dataGridView1, e.Y, e.X))
+            {
+                isClick = false;
+            }
             dataGridView2.ClearSelection();
         }
 
@@ -942,6 +945,11 @@ namespace eNet编辑器.DgvView
         {
             try
             {
+             
+                if (dataGridView1.CurrentCell == null)
+                {
+                    return;
+                }
                 int colIndex = dataGridView1.SelectedCells[0].ColumnIndex;
                 //string ip = FileMesege.panelSelectNode.Parent.Text.Split(' ')[0];
                 int id = dataGridView1.CurrentCell.RowIndex;
@@ -1497,6 +1505,10 @@ namespace eNet编辑器.DgvView
         {
             try
             {
+                if (dataGridView1.CurrentCell == null)
+                {
+                    return;
+                }
                 int colIndex = dataGridView2.SelectedCells[0].ColumnIndex;
                 //string ip = FileMesege.panelSelectNode.Parent.Text.Split(' ')[0];
                 int id = dataGridView2.CurrentCell.RowIndex ;

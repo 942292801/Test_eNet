@@ -25,6 +25,11 @@ namespace eNet编辑器.ThreeView
         public event Action selectLastCountTimer;
         public event Action selectLastCountLocalVar;
 
+        /// <summary>
+        /// 传输point点跳转窗口
+        /// </summary>
+        public event Action<DataJson.PointInfo> jumpSetInfo;
+
         //树状图节点
         public string fullpath = "";
 
@@ -137,13 +142,13 @@ namespace eNet编辑器.ThreeView
                             break;
                         case "panel":
                             treeView1.CheckBoxes = false;
-                            treeView1.ContextMenuStrip = null;
+                            treeView1.ContextMenuStrip = contextMenuStrip1;
                             panelAdd(FileMesege.cbTypeIndex, ToolsUtil.getIP(FileMesege.panelSelectNode));
                             // MessageBox.Show("bind");
                             break;
                         case "sensor":
                              treeView1.CheckBoxes = false;
-                             treeView1.ContextMenuStrip = null;
+                             treeView1.ContextMenuStrip = contextMenuStrip1;
                              sensorAdd(FileMesege.cbTypeIndex, ToolsUtil.getIP(FileMesege.sensorSelectNode));
                             break;
                         case "logic":
@@ -1009,20 +1014,49 @@ namespace eNet编辑器.ThreeView
 
         #endregion
 
-       
+
+        #region 编辑 跳转函数
+        private void 编辑ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                //设置对象跳转
+                DataJson.PointInfo point = dgvJumpSet();
+                if (point != null)
+                {
+                    //传输到form窗口控制
+                    //AppTxtShow("传输到主窗口"+DateTime.Now);
+                    jumpSetInfo(point);
+                }
+            }
+            catch
+            {
+
+            }
+        }
 
 
 
-
-
-
-
-
-
-
-
-
-
+        /// <summary>
+        /// 对象跳转获取 场景 定时 编组 point点
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        private DataJson.PointInfo dgvJumpSet()
+        {
+            if (treeView1.SelectedNode == null)
+            {
+                return null;
+            }
+            List<string> section_name = DataListHelper.dealPointInfo(treeView1.SelectedNode.Text);
+            DataJson.PointInfo eq = DataListHelper.findPointBySection_name(section_name);
+            if (eq.type == "3.0_logic" || eq.type == "4.0_scene" || eq.type == "5.0_timer" || eq.type == "6.1_panel" || eq.type == "6.2_sensor")
+            {
+                return eq;
+            }
+            return null;
+        }
+        #endregion
 
     }
 }

@@ -1101,7 +1101,10 @@ namespace eNet编辑器.DgvView
                 updateTitleNode();
                 
             }
-            DgvMesege.endDataViewCurrent(dataGridView1, e.Y,e.X);
+            if (DgvMesege.endDataViewCurrent(dataGridView1, e.Y, e.X))
+            {
+                isClick = false;
+            }
         }
 
  
@@ -1136,7 +1139,10 @@ namespace eNet编辑器.DgvView
         /// </summary>
         public void copyData()
         {
-            
+            if (dataGridView1.CurrentCell == null)
+            {
+                return;
+            }
             //获取当前选中单元格的列序号
             int colIndex = dataGridView1.CurrentRow.Cells.IndexOf(dataGridView1.CurrentCell);
          
@@ -1318,6 +1324,11 @@ namespace eNet编辑器.DgvView
         {
             
         }
+
+        private void 相同ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Same();
+        }
         #endregion
 
 
@@ -1414,31 +1425,32 @@ namespace eNet编辑器.DgvView
             }
 
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         #endregion
 
-
        
-
-        
-
-      
-
-       
-        
-
-
-      
-
-  
-
- 
-
-   
-
-     
-       
-
-
-
     }
 }
