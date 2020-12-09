@@ -143,7 +143,7 @@ namespace eNet编辑器.DgvView
             DataJson.VoiceContent logicVoiceContent = JsonConvert.DeserializeObject<DataJson.VoiceContent>(LogicInfo.content);
             //表达式和赋值
             txtVoice.Text = logicVoiceContent.voice;
-            txtAssignment.Text = DgvMesege.addressTransform(logicVoiceContent.voiceGive);
+            txtAssignment.Text = DgvMesege.addressTransform(logicVoiceContent.voiceGive, ip);
             //加载对象比较表格
             dgvVoiceAddItem(dataGridView1, logicVoiceContent.voiceItem, ip);
             //加载确定 否 表格
@@ -235,7 +235,7 @@ namespace eNet编辑器.DgvView
                     }
 
                     dataGridView.Rows[dex].Cells[0].Value = info.letter;
-                    dataGridView.Rows[dex].Cells[2].Value = DgvMesege.addressTransform(info.address);
+                    dataGridView.Rows[dex].Cells[2].Value = DgvMesege.addressTransform(info.address, ip);
                     dataGridView.Rows[dex].Cells[1].Value = IniHelper.findTypesIniNamebyType(info.type);
                     dataGridView.Rows[dex].Cells[5].Value = "删除";
 
@@ -346,7 +346,7 @@ namespace eNet编辑器.DgvView
 
                     dataGridView.Rows[dex].Cells[0].Value = info.id;
                     dataGridView.Rows[dex].Cells[1].Value = info.result;
-                    dataGridView.Rows[dex].Cells[3].Value = DgvMesege.addressTransform(info.address);
+                    dataGridView.Rows[dex].Cells[3].Value = DgvMesege.addressTransform(info.address, ip);
                     dataGridView.Rows[dex].Cells[2].Value = IniHelper.findTypesIniNamebyType(info.type);
                     dataGridView.Rows[dex].Cells[6].Value = (info.optName + " " + info.opt).Trim();
                     dataGridView.Rows[dex].Cells[7].Value = Convert.ToDouble(info.delay) / 10;
@@ -465,7 +465,7 @@ namespace eNet编辑器.DgvView
             //把窗口向屏幕中间刷新
             dc.StartPosition = FormStartPosition.CenterParent;
             //把当前选仲树状图网关传递到info里面 给新建设备框网关使用  
-            dc.Obj = DgvMesege.addressTransform(logicVoiceContent.voiceGive);
+            dc.Obj = DgvMesege.addressTransform(logicVoiceContent.voiceGive, ip);
             if (string.IsNullOrEmpty(logicVoiceContent.voiceGive))
             {
                 dc.ObjType = "";
@@ -484,7 +484,7 @@ namespace eNet编辑器.DgvView
                 DataJson.totalList NewList = FileMesege.cmds.getListInfos();
                 FileMesege.cmds.DoNewCommand(NewList, OldList);
                 AppTxtShow("设置赋值地址成功");
-                txtAssignment.Text = DgvMesege.addressTransform(dc.Obj);
+                txtAssignment.Text = DgvMesege.addressTransform(dc.Obj, ip);
             }
         }
 
@@ -986,7 +986,7 @@ namespace eNet编辑器.DgvView
                     info.address = eq.address;
 
 
-                    dataGridView1.Rows[id].Cells[2].Value = DgvMesege.addressTransform(info.address);
+                    dataGridView1.Rows[id].Cells[2].Value = DgvMesege.addressTransform(info.address, ip);
                     dataGridView1.Rows[id].Cells[3].Value = string.Format("{0} {1} {2} {3}", eq.area1, eq.area2, eq.area3, eq.area4).Trim();//改根据地址从信息里面获取
                     dataGridView1.Rows[id].Cells[4].Value = eq.name;
               
@@ -998,7 +998,7 @@ namespace eNet编辑器.DgvView
 
                     info.type = eq.type;
 
-                    dataGridView1.Rows[id].Cells[2].Value = DgvMesege.addressTransform(info.address);
+                    dataGridView1.Rows[id].Cells[2].Value = DgvMesege.addressTransform(info.address, ip);
                     dataGridView1.Rows[id].Cells[1].Value = IniHelper.findTypesIniNamebyType(info.type);
                     dataGridView1.Rows[id].Cells[3].Value = string.Format("{0} {1} {2} {3}", eq.area1, eq.area2, eq.area3, eq.area4).Trim();//改根据地址从信息里面获取
                     dataGridView1.Rows[id].Cells[4].Value = eq.name;
@@ -1543,7 +1543,7 @@ namespace eNet编辑器.DgvView
                     info.pid = eq.pid;
                     info.address = eq.address;
 
-                    dataGridView2.Rows[id].Cells[3].Value = DgvMesege.addressTransform(info.address);
+                    dataGridView2.Rows[id].Cells[3].Value = DgvMesege.addressTransform(info.address, ip);
                     dataGridView2.Rows[id].Cells[4].Value = string.Format("{0} {1} {2} {3}", eq.area1, eq.area2, eq.area3, eq.area4).Trim();//改根据地址从信息里面获取
                     dataGridView2.Rows[id].Cells[5].Value = eq.name;
 
@@ -1555,7 +1555,7 @@ namespace eNet编辑器.DgvView
                     info.type = eq.type;
                     info.opt = "";
                     info.optName = "";
-                    dataGridView2.Rows[id].Cells[3].Value = DgvMesege.addressTransform(info.address);
+                    dataGridView2.Rows[id].Cells[3].Value = DgvMesege.addressTransform(info.address, ip);
                     dataGridView2.Rows[id].Cells[2].Value = IniHelper.findTypesIniNamebyType(info.type);
                     dataGridView2.Rows[id].Cells[4].Value = string.Format("{0} {1} {2} {3}", eq.area1, eq.area2, eq.area3, eq.area4).Trim();//改根据地址从信息里面获取
                     dataGridView2.Rows[id].Cells[5].Value = eq.name;
@@ -1836,7 +1836,7 @@ namespace eNet编辑器.DgvView
                             dataGridView1.Rows[id].Cells[3].Value = string.Empty;
                             dataGridView1.Rows[id].Cells[4].Value = string.Empty;
                         }
-                        dataGridView1.Rows[id].Cells[2].Value = DgvMesege.addressTransform(info.address);
+                        dataGridView1.Rows[id].Cells[2].Value = DgvMesege.addressTransform(info.address, ip);
                         dataGridView1.Rows[id].Cells[1].Value = IniHelper.findTypesIniNamebyType(info.type);
                         ischange = true;
 
@@ -1946,7 +1946,7 @@ namespace eNet编辑器.DgvView
                             dataGridView2.Rows[id ].Cells[5].Value = string.Empty;
                         }
                         dataGridView2.Rows[id ].Cells[2].Value = IniHelper.findTypesIniNamebyType(info.type);
-                        dataGridView2.Rows[id ].Cells[3].Value = DgvMesege.addressTransform(info.address);
+                        dataGridView2.Rows[id ].Cells[3].Value = DgvMesege.addressTransform(info.address, ip);
                         dataGridView2.Rows[id ].Cells[6].Value = (info.optName + " " + info.opt).Trim();
 
                         ischange = true;
@@ -2103,7 +2103,7 @@ namespace eNet编辑器.DgvView
                             dataGridView1.Rows[id].Cells[3].Value = string.Empty;
                             dataGridView1.Rows[id].Cells[4].Value = string.Empty;
                         }
-                        dataGridView1.Rows[id].Cells[2].Value = DgvMesege.addressTransform(info.address);
+                        dataGridView1.Rows[id].Cells[2].Value = DgvMesege.addressTransform(info.address, ip);
                         dataGridView1.Rows[id].Cells[1].Value = IniHelper.findTypesIniNamebyType(info.type);
                         ischange = true;
 
@@ -2232,7 +2232,7 @@ namespace eNet编辑器.DgvView
                         info.opt = string.Empty;
                         info.optName = string.Empty;
                         dataGridView2.Rows[id].Cells[2].Value = IniHelper.findTypesIniNamebyType(info.type);
-                        dataGridView2.Rows[id].Cells[3].Value = DgvMesege.addressTransform(info.address);
+                        dataGridView2.Rows[id].Cells[3].Value = DgvMesege.addressTransform(info.address, ip);
                         dataGridView2.Rows[id].Cells[6].Value = (info.optName + " " + info.opt).Trim();
                        
                         ischange = true;
@@ -2368,7 +2368,7 @@ namespace eNet编辑器.DgvView
                             dataGridView1.Rows[id].Cells[3].Value = string.Empty;
                             dataGridView1.Rows[id].Cells[4].Value = string.Empty;
                         }
-                        dataGridView1.Rows[id].Cells[2].Value = DgvMesege.addressTransform(info.address);
+                        dataGridView1.Rows[id].Cells[2].Value = DgvMesege.addressTransform(info.address, ip);
                         dataGridView1.Rows[id].Cells[1].Value = IniHelper.findTypesIniNamebyType(info.type);
                         ischange = true;
 
@@ -2500,7 +2500,7 @@ namespace eNet编辑器.DgvView
                         info.opt = string.Empty;
                         info.optName = string.Empty;
                         dataGridView2.Rows[id].Cells[2].Value = IniHelper.findTypesIniNamebyType(info.type);
-                        dataGridView2.Rows[id].Cells[3].Value = DgvMesege.addressTransform(info.address);
+                        dataGridView2.Rows[id].Cells[3].Value = DgvMesege.addressTransform(info.address, ip);
                         dataGridView2.Rows[id].Cells[6].Value = (info.optName + " " + info.opt).Trim();
 
                         ischange = true;

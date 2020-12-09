@@ -228,7 +228,7 @@ namespace eNet编辑器.DgvView
             }
             dataGridView1.Rows[dex].Cells[0].Value = tmInfo.id;
             dataGridView1.Rows[dex].Cells[1].Value = IniHelper.findTypesIniNamebyType(tmInfo.type);
-            dataGridView1.Rows[dex].Cells[2].Value = DgvMesege.addressTransform(tmInfo.address);
+            dataGridView1.Rows[dex].Cells[2].Value = DgvMesege.addressTransform(tmInfo.address, ip);
 
             dataGridView1.Rows[dex].Cells[5].Value = (tmInfo.optName + " " + tmInfo.opt).Trim();
             dataGridView1.Rows[dex].Cells[6].Value = tmInfo.shortTime;
@@ -1761,18 +1761,18 @@ namespace eNet编辑器.DgvView
         /// 获取新的地址 刷新地域 名字
         /// </summary>
         /// <param name="id"></param>
-        /// <param name="objType">当前对象的类型</param>
-        /// <param name="add">当前对象的地址</param>
+        /// <param name="nowType">当前对象的类型</param>
+        /// <param name="address">当前对象的地址</param>
         /// <returns></returns>
-        private void dgvAddress(int id, string objType, string add)
+        private void dgvAddress(int id,  string nowType, string address)
         {
             sceneAddress dc = new sceneAddress();
             //把窗口向屏幕中间刷新
             dc.StartPosition = FormStartPosition.CenterParent;
             //把当前选仲树状图网关传递到info里面 给新建设备框网关使用  
-            //dc.Obj = obj;
-            dc.ObjType = objType;
-            dc.Obj = add;
+            dc.IP = ip;
+            dc.Address = address;
+            dc.NowType = nowType;
             dc.ShowDialog();
             if (dc.DialogResult == DialogResult.OK)
             {
@@ -1789,30 +1789,28 @@ namespace eNet编辑器.DgvView
                 }
                 DataJson.totalList OldList = FileMesege.cmds.getListInfos();
                 //地址
-                tmInfo.address = dc.Obj;
-                if (string.IsNullOrEmpty(tmInfo.address))
+                if (string.IsNullOrEmpty(dc.Address))
                 {
                     //地址为空直接退出
                     return;
                 }
-                
                 //按照地址查找type的类型 
-                string type = IniHelper.findIniTypesByAddress(ip, tmInfo.address).Split(',')[0];
-                if (string.IsNullOrEmpty(type))
+                string rtType = IniHelper.findIniTypesByAddress(ip, dc.Address).Split(',')[0];
+                if (string.IsNullOrEmpty(rtType))
                 {
-                    type = dc.RtType; 
+                    MessageBox.Show("寻找不到该地址类型的ini文件");
+                    return;
+
                 }
-                tmInfo.type = type;
-                //获取树状图的IP第四位  + Address地址的 后六位
-                string ad = tmInfo.address;
+                tmInfo.address = dc.Address;
+          
                 //区域加名称
-                DataJson.PointInfo point = DataListHelper.findPointByType_address(type, ad,ip);
+                DataJson.PointInfo point = DataListHelper.findPointByType_address(rtType, tmInfo.address, ip);
                 //撤销 
-                
                 if (point != null)
                 {
                     tmInfo.pid = point.pid;
-                    tmInfo.type = point.type;
+                   
                     if (tmInfo.type != point.type)
                     {
                         tmInfo.opt = "";
@@ -1822,9 +1820,15 @@ namespace eNet编辑器.DgvView
                 else
                 {
                     tmInfo.pid = 0;
-                    tmInfo.opt = "";
-                    tmInfo.optName = "";
+                    if (tmInfo.type != rtType)
+                    {
+                        tmInfo.opt = "";
+                        tmInfo.optName = "";
+                    }
+                
                 }
+                tmInfo.type = rtType;
+
                 DataJson.totalList NewList = FileMesege.cmds.getListInfos();
                 FileMesege.cmds.DoNewCommand(NewList, OldList);
             }
@@ -2120,7 +2124,7 @@ namespace eNet编辑器.DgvView
                             dataGridView1.Rows[id - 1].Cells[4].Value = string.Empty;
                         }
                         dataGridView1.Rows[id - 1].Cells[1].Value = IniHelper.findTypesIniNamebyType(tmInfo.type);
-                        dataGridView1.Rows[id - 1].Cells[2].Value = DgvMesege.addressTransform(tmInfo.address);
+                        dataGridView1.Rows[id - 1].Cells[2].Value = DgvMesege.addressTransform(tmInfo.address, ip);
                         dataGridView1.Rows[id - 1].Cells[5].Value = (tmInfo.optName + " " + tmInfo.opt).Trim();
               
                         ischange = true;
@@ -2293,7 +2297,7 @@ namespace eNet编辑器.DgvView
                         tmInfo.opt = string.Empty;
                         tmInfo.optName = string.Empty;
                         dataGridView1.Rows[id - 1].Cells[1].Value = IniHelper.findTypesIniNamebyType(tmInfo.type);
-                        dataGridView1.Rows[id - 1].Cells[2].Value = DgvMesege.addressTransform(tmInfo.address);
+                        dataGridView1.Rows[id - 1].Cells[2].Value = DgvMesege.addressTransform(tmInfo.address, ip);
                         dataGridView1.Rows[id - 1].Cells[5].Value = (tmInfo.optName + " " + tmInfo.opt).Trim();
                       
                         ischange = true;
@@ -2468,7 +2472,7 @@ namespace eNet编辑器.DgvView
                         tmInfo.opt = string.Empty;
                         tmInfo.optName = string.Empty;
                         dataGridView1.Rows[id - 1].Cells[1].Value = IniHelper.findTypesIniNamebyType(tmInfo.type);
-                        dataGridView1.Rows[id - 1].Cells[2].Value = DgvMesege.addressTransform(tmInfo.address);
+                        dataGridView1.Rows[id - 1].Cells[2].Value = DgvMesege.addressTransform(tmInfo.address, ip);
                         dataGridView1.Rows[id - 1].Cells[5].Value = (tmInfo.optName + " " + tmInfo.opt).Trim();
                   
                         ischange = true;

@@ -124,19 +124,22 @@ namespace eNet编辑器.DgvView
 
                         this.dataGridView1.Rows[index].Cells[4].Value = string.Format("{0} {1} {2} {3}", dec.area1, dec.area2, dec.area3, dec.area4).Trim();
                         this.dataGridView1.Rows[index].Cells[5].Value = dec.name;
-                        this.dataGridView1.Rows[index].Cells[0].Value = "网关";
+                        this.dataGridView1.Rows[index].Cells[0].Value = Resources.Master;
                         this.dataGridView1.Rows[index].Cells[1].Value = dec.master;
                         this.dataGridView1.Rows[index].Cells[2].Value = dec.sn;
                         this.dataGridView1.Rows[index].Cells[3].Value = dec.ver;
                         this.dataGridView1.Rows[index].Cells[6].Style.ForeColor = Color.Red;
                         this.dataGridView1.Rows[index].Cells[6].Value = Resources.DevStateOff;
+                        this.dataGridView1.Rows[index].Cells[7].Value = "无";
 
                         //添加区域名称和操作
                         foreach (DataJson.Module m in dec.module)
                         {
                             index = this.dataGridView1.Rows.Add();
                             this.dataGridView1.Rows[index].Cells[0].Value = m.id;
-                            this.dataGridView1.Rows[index].Cells[1].Value = m.device;
+                        
+
+                            this.dataGridView1.Rows[index].Cells[1].Value = IniConfig.GetValue(string.Format("{0}\\devices\\{1}.ini", Application.StartupPath, m.device.Trim()), "define", "display");
                             this.dataGridView1.Rows[index].Cells[2].Value = m.sn;
                             this.dataGridView1.Rows[index].Cells[3].Value = m.ver;
                             this.dataGridView1.Rows[index].Cells[4].Value = string.Format("{0} {1} {2} {3}", m.area1, m.area2, m.area3, m.area4).Trim();
@@ -370,6 +373,10 @@ namespace eNet编辑器.DgvView
         private void devIni()
         {
             if (dataGridView1.Rows[rowcount].Cells[6].Value == null || dataGridView1.Rows[rowcount].Cells[6].Value.ToString() == Resources.DevStateOff)
+            {
+                return;
+            }
+            if (dataGridView1.Rows[rowcount].Cells[0].Value.ToString() == Resources.Master)
             {
                 return;
             }
@@ -621,7 +628,7 @@ namespace eNet编辑器.DgvView
 
         #endregion
 
-        #region 按钮刷新处理
+        #region 刷新在线状态处理
 
         ClientAsync client;
 
@@ -633,8 +640,6 @@ namespace eNet编辑器.DgvView
             }
             catch
             {
-                timer1.Stop();
-                client = null;
                 return;
             }
         }
@@ -678,7 +683,6 @@ namespace eNet编辑器.DgvView
         {
             try
             {
-                
                 if (client != null)
                 {
                     client.Dispoes();
@@ -692,17 +696,19 @@ namespace eNet编辑器.DgvView
                 string strip = FileMesege.tnselectNode.Text.Split(' ')[0];
                 //异步连接
                 client.ConnectAsync(strip, 6001);
+                ToolsUtil.DelayMilli(200);
                 if (client != null && client.Connected())
                 {
                     client.SendAsync("read serial.json$");
 
                 }
-                
             }
             catch
             {
-                client = null;
+                /*client = null;
                 timer1.Stop();
+                cbOnline.Checked = false;
+                FileMesege.isDgvNameDeviceConnet = false;*/
                 return;
             }
         }
@@ -759,7 +765,7 @@ namespace eNet编辑器.DgvView
                 try
                 {
                     bufferMsg = bufferMsg + msg;
-                    if (msg.Length == 1024)
+                    if (msg.Length == 2048)
                     {
                         return;
                     }
@@ -767,34 +773,22 @@ namespace eNet编辑器.DgvView
                     //SocketUtil.WriteLog(bufferMsg);
                     if (bufferMsg.Contains("serial"))
                     {
-                        
-                        // 序列化接收信息
-                        FileMesege.serialList = JsonConvert.DeserializeObject<DataJson.Serial>(bufferMsg);
-                        bufferMsg = "";
-                        //清除原来界面显示的离线状态
-                        bool isDevContain = false;
-                        int tmpid = 0;
-                        foreach (DataJson.serials sl in FileMesege.serialList.serial)
+                        lock (FileMesege.resLock)
                         {
-                            if (sl.id == 254)
+                            // 序列化接收信息
+                            DataJson.Serial tmp = JsonConvert.DeserializeObject<DataJson.Serial>(bufferMsg);
+                            if (tmp == null)
                             {
-                                isDevContain = true;
-                                break;
+                                return;
                             }
-                        }
-                        if (!isDevContain)
-                        {
-                            this.dataGridView1.Rows[0].Cells[6].Style.BackColor = Color.White;
-                            this.dataGridView1.Rows[0].Cells[6].Style.ForeColor = Color.Red;
-                            this.dataGridView1.Rows[0].Cells[6].Value = Resources.DevStateOff;
-                        }
-                        for (int i = 1; i < dataGridView1.Rows.Count; i++)
-                        {
-                            isDevContain = false;
-                            tmpid = Convert.ToInt32(dataGridView1.Rows[i].Cells[0].Value);
+                            FileMesege.serialList = tmp;
+                            bufferMsg = string.Empty;
+                            //清除原来界面显示的离线状态
+                            bool isDevContain = false;
+                            int tmpid = 0;
                             foreach (DataJson.serials sl in FileMesege.serialList.serial)
                             {
-                                if (tmpid == sl.id)
+                                if (sl.id == 254)
                                 {
                                     isDevContain = true;
                                     break;
@@ -802,59 +796,79 @@ namespace eNet编辑器.DgvView
                             }
                             if (!isDevContain)
                             {
-                                this.dataGridView1.Rows[i].Cells[6].Style.BackColor = Color.White;
-                                this.dataGridView1.Rows[i].Cells[6].Style.ForeColor = Color.Red;
-                                this.dataGridView1.Rows[i].Cells[6].Value = Resources.DevStateOff;
+                                this.dataGridView1.Rows[0].Cells[6].Style.BackColor = Color.White;
+                                this.dataGridView1.Rows[0].Cells[6].Style.ForeColor = Color.Red;
+                                this.dataGridView1.Rows[0].Cells[6].Value = Resources.DevStateOff;
                             }
-                        }
-                        foreach (DataJson.Device dev in FileMesege.DeviceList)
-                        {
-                            //当IP相等时候进入module里面 
-                            if (dev.ip == strip)
+                            for (int i = 1; i < dataGridView1.Rows.Count; i++)
                             {
-                                
+                                isDevContain = false;
+                                tmpid = Convert.ToInt32(dataGridView1.Rows[i].Cells[0].Value);
                                 foreach (DataJson.serials sl in FileMesege.serialList.serial)
                                 {
-                                    //网关显示状态
-                                    if (sl.id == 254)
+                                    if (tmpid == sl.id)
                                     {
-                                        dev.sn = sl.mac8.Trim();
-                                        dev.ver = sl.version.Trim();
-                                        changeSn_ver(dev);
-                                        continue;
+                                        isDevContain = true;
+                                        break;
                                     }
-                                    //获取到的Serial文件在线 的ID 对比dataList信息
-                                    foreach (DataJson.Module mdl in dev.module)
+                                }
+                                if (!isDevContain)
+                                {
+                                    this.dataGridView1.Rows[i].Cells[6].Style.BackColor = Color.White;
+                                    this.dataGridView1.Rows[i].Cells[6].Style.ForeColor = Color.Red;
+                                    this.dataGridView1.Rows[i].Cells[6].Value = Resources.DevStateOff;
+                                }
+                            }
+                            foreach (DataJson.Device dev in FileMesege.DeviceList)
+                            {
+                                //当IP相等时候进入module里面 
+                                if (dev.ip == strip)
+                                {
+
+                                    foreach (DataJson.serials sl in FileMesege.serialList.serial)
                                     {
-
-                                        //当设备的号码相同 名字相同  修改序列号 版本号 状态 
-                                        if (sl.id == mdl.id)// && sl.serial.Trim() == mdl.device)
+                                        //网关显示状态
+                                        if (sl.id == 254)
                                         {
-                                            string filepath = string.Format("{0}\\devices\\{1}.ini", Application.StartupPath, sl.serial.Trim());
-                                            if (string.IsNullOrEmpty(filepath))
-                                            {
-                                                continue;
-                                            }
-                                            string device = IniConfig.GetValue(filepath, "define", "display");
-                                            if (device != mdl.device)
-                                            {
-                                                continue;
-                                            }
-                                            mdl.sn = sl.mac8.Trim();
-                                            mdl.ver = sl.version.Trim();
-                                            changeSn_ver(mdl);
-                                            //寻找到该信息就退出当前循环
-                                            
-                                            break;
+                                            dev.sn = sl.mac8.Trim();
+                                            dev.ver = sl.version.Trim();
+                                            changeSn_ver(dev);
+                                            continue;
                                         }
+                                        //获取到的Serial文件在线 的ID 对比dataList信息
+                                        foreach (DataJson.Module mdl in dev.module)
+                                        {
 
-                                    }//for 
+                                            //当设备的号码相同 名字相同  修改序列号 版本号 状态 
+                                            if (sl.id == mdl.id)// && sl.serial.Trim() == mdl.device)
+                                            {
+                                                string filepath = string.Format("{0}\\devices\\{1}.ini", Application.StartupPath, sl.serial.Trim());
+                                                if (string.IsNullOrEmpty(filepath))
+                                                {
+                                                    continue;
+                                                }
+                                                string device = IniConfig.GetValue(filepath, "define", "display");
+                                                /*if (device != mdl.device)
+                                                {
+                                                    continue;
+                                                }*/
+                                                mdl.sn = sl.mac8.Trim();
+                                                mdl.ver = sl.version.Trim();
+                                                changeSn_ver(mdl);
+                                                //寻找到该信息就退出当前循环
+
+                                                break;
+                                            }
+
+                                        }//for 
+
+                                    }
 
                                 }
 
-                            }
-
-                        }//for dev
+                            }//for dev
+                        }//lock
+                       
 
 
                     }//ifserial
@@ -917,6 +931,21 @@ namespace eNet编辑器.DgvView
             dataGridView1.Rows[0].Cells[6].Style.BackColor = Color.Lime;
             dataGridView1.Rows[0].Cells[6].Style.ForeColor = Color.Black;
 
+        }
+
+
+        public void StopOnline()
+        {
+            client = null;
+            timer1.Stop();
+            cbOnline.Checked = false;
+            FileMesege.isDgvNameDeviceConnet = false;
+        }
+
+        public void StopTimer()
+        {
+            client = null;
+            timer1.Stop();
         }
 
         #endregion

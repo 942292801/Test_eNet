@@ -236,4 +236,8 @@
   <data name="UnrecognizedDev" xml:space="preserve">
     <value>未识别设备</value>
   </data>
+  <data name="Master" xml:space="preserve">
+    <value>网关</value>
+    <comment>网关</comment>
+  </data>
 </root>

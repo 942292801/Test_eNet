@@ -14,14 +14,15 @@ namespace eNet编辑器
     class TcpSocket
     {
 
-        
-        /**//// <summary>
+
+        /// <summary>
         /// 连接使用 tcp 协议的服务端
         /// </summary>
-        /// <param name="ip">服务端的ip地址</param>
-        /// <param name="port">服务端的端口号</param>
+        /// <param name="ip"></param>
+        /// <param name="port"></param>
+        /// <param name="timeout">毫秒</param>
         /// <returns></returns>
-        public  Socket ConnectServer( string ip ,int port ,int timeout) {
+        public Socket ConnectServer( string ip ,int port ,int timeout) {
             Socket s = null;
             //int TimeOut = 1;
             try {

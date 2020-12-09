@@ -233,11 +233,11 @@ namespace eNet编辑器
             });
             dgvpoint.unSelectTitleNode += new Action(threetitle.unSelectTitleNode);
 
-            dgvpanel.updateSectionTitleNode += new Action(() =>//刷新右边两树状图 取消选中状态 
+            /*dgvpanel.updateSectionTitleNode += new Action(() =>//刷新右边两树状图 取消选中状态 
             {
                 //threesection.ThreeSEctionAddNode();
                 threetitle.ThreeTitleAddNode(cbType.SelectedIndex);
-            });
+            });*/
             dgvpanel.unSelectTitleNode += new Action(threetitle.unSelectTitleNode);
             /*dgvsensor.updateSectionTitleNode += new Action(() =>//刷新右边两树状图 取消选中状态 
             {
@@ -421,13 +421,16 @@ namespace eNet编辑器
             {
                 Control_Add(dgvdevice, plDgv);
                 isGwDgv = true;
+                //dgvname.StopTimer();
             }
             else
             {
                 Control_Add(dgvname, plDgv);
                 isGwDgv = false;
+                //dgvdevice.StopTimer();
+
             }
-            
+
         }
 
 
@@ -808,7 +811,7 @@ namespace eNet编辑器
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            //ClearMemory();
+            ClearMemory();
         }
         [DllImport("kernel32.dll", EntryPoint = "SetProcessWorkingSetSize")]
         public static extern int SetProcessWorkingSetSize(IntPtr process, int minSize, int maxSize);
@@ -1419,6 +1422,15 @@ namespace eNet编辑器
             {
                 AppTxtShow(msg);//后面直接加 非清空
             });
+            os.StopOnline += new Action(()=>
+            {
+                dgvdevice.StopOnline();
+                dgvname.StopOnline();
+            });
+            os.UpdateNode += new Action(() => {
+                updataTreeNode();
+            });
+
             //展示居中
             os.StartPosition = FormStartPosition.CenterParent;
             os.ShowDialog();

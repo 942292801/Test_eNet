@@ -187,6 +187,15 @@ namespace eNet编辑器.Properties {
         }
         
         /// <summary>
+        ///   查找类似 网关 的本地化字符串。
+        /// </summary>
+        internal static string Master {
+            get {
+                return ResourceManager.GetString("Master", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
         internal static System.Drawing.Bitmap Online {

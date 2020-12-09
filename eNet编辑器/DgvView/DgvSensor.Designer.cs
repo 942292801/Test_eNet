@@ -271,7 +271,7 @@
             // 
             this.降序ToolStripMenuItem.Name = "降序ToolStripMenuItem";
             this.降序ToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
-            this.降序ToolStripMenuItem.Text = "降序(Ctrl+D)";
+            this.降序ToolStripMenuItem.Text = "降序(Ctrl+E)";
             this.降序ToolStripMenuItem.Click += new System.EventHandler(this.降序ToolStripMenuItem_Click);
             // 
             // ultraSplitter1

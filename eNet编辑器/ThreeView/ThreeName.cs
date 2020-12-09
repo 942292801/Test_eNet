@@ -254,6 +254,7 @@ namespace eNet编辑器.ThreeView
             string master = Path.GetFileNameWithoutExtension(IniHelper.findDevicesDisplay(strs[1]));
             fullpath = ip + " " + strs[1];
             DataListHelper.newGateway(ip,master);
+            ThreeNameAddNode();
             DataJson.totalList NewList = FileMesege.cmds.getListInfos();
             FileMesege.cmds.DoNewCommand(NewList, OldList);
 
@@ -292,6 +293,7 @@ namespace eNet编辑器.ThreeView
                     string oldip = strs[2];
                     fullpath = ip + " " + strs[1];
                     DataListHelper.changeGateway(ip,master,oldip);
+                    
                     DataJson.totalList NewList = FileMesege.cmds.getListInfos();
                     FileMesege.cmds.DoNewCommand(NewList, OldList);
                 }

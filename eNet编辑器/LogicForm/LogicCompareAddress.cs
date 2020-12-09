@@ -157,7 +157,7 @@ namespace eNet编辑器.LogicForm
                         cbVersion.SelectedIndex = 1;
                         typeChange(IniHelper.findIniLinkTypeByAddress(address));
                         //地址开头 且类型不为空  则为赋值
-                        string[] infos = DgvMesege.addressTransform(address).Split('.');
+                        string[] infos = DgvMesege.addressTransform(address, ip).Split('.');
                         if (linkType == LinkType.Com)
                         {
                             //不为设备类型

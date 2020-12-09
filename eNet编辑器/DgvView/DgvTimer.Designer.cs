@@ -285,7 +285,7 @@
             // 
             this.降序ToolStripMenuItem.Name = "降序ToolStripMenuItem";
             this.降序ToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
-            this.降序ToolStripMenuItem.Text = "降序(Ctrl+D)";
+            this.降序ToolStripMenuItem.Text = "降序(Ctrl+E)";
             this.降序ToolStripMenuItem.Click += new System.EventHandler(this.降序ToolStripMenuItem_Click);
             // 
             // ultraSplitter1
@@ -349,6 +349,7 @@
             this.listbox.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Rounded;
             this.listbox.BackgroundStyle.TextColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarCaptionText;
             this.listbox.BackgroundStyle.TextShadowColor = System.Drawing.Color.Blue;
+            this.listbox.CheckStateMember = null;
             this.listbox.ContainerControlProcessDialogKey = true;
             this.listbox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.listbox.DragDropSupport = true;

@@ -10,6 +10,7 @@ using System.Net.Sockets;
 using System.Runtime.InteropServices;
 using System.IO;
 using Ionic.Zip;
+using eNet编辑器.OtherView;
 
 namespace eNet编辑器.AddForm
 {
@@ -22,6 +23,10 @@ namespace eNet编辑器.AddForm
 
         public event Action<string> AppTxtShow;
 
+        private string downIP;
+        private BackgroundWorker backgroundWorker1;
+        private PgView pgv;
+
         private void compileDownload_Load(object sender, EventArgs e)
         {
             
@@ -30,7 +35,7 @@ namespace eNet编辑器.AddForm
                 return;
             }
  
-                //从设备加载网关信息
+            //从设备加载网关信息
             foreach (DataJson.Device d in FileMesege.DeviceList)
             {
                 cbIP.Items.Add(d.ip);
@@ -40,32 +45,10 @@ namespace eNet编辑器.AddForm
                 cbIP.SelectedIndex = 0;
             }
 
-            showIp();
+       
         }
 
-        private void showPgBar()
-        {
-            pgBar.Value = 0;
-            pgBar.Visible = true;
-            lbTip.Visible = true;
-            lbName.Visible = false;
-            cbIP.Visible = false;
-            btnClose.Enabled = false;
-            btnSend.Enabled = false;
-            timer1.Stop();
-        }
-
-        private void showIp()
-        {
-            pgBar.Value = 0;
-            pgBar.Visible = false;
-            lbTip.Visible = false;
-            lbName.Visible = true;
-            cbIP.Visible = true;
-            btnClose.Enabled = true;
-            btnSend.Enabled = true;
-            timer1.Stop();
-        }
+   
 
         #region 窗体样色
 
@@ -198,331 +181,426 @@ namespace eNet编辑器.AddForm
         #endregion
 
 
-        /// <summary>
-        /// 已经隐藏该按钮功能
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void btnCompile_Click(object sender, EventArgs e)
-        {
-            //编译
-            compile(cbIP.Text);
-        }
-
+        #region 编译和下载
         //下载到主机
         private void btnSend_Click(object sender, EventArgs e)
         {
-            showPgBar();
-            //编译s.json k.json t.json 并压缩
-            if (!compile(cbIP.Text))
-            {
-                showIp();
-                return;
-            }
-          
-            if (!sendBackUp(cbIP.Text))
-            {
-                showIp();
-                return;
-            }
-            download(cbIP.Text);
             
-        }
-
-        /// <summary>
-        /// //编译s.json k.json t.json L.json并压缩
-        /// </summary>
-        /// <param name="ip"></param>
-        private bool compile(string ip)
-        {
-         
-            for (int i = 0; i < cbIP.Items.Count; i++)
+            try
             {
-                if (cbIP.Items[i].ToString() == ip)
+                downIP = cbIP.Text;
+                if (string.IsNullOrEmpty(cbIP.Text))
                 {
-                    //存在该Ip的信息 可以进行编译
-                    FileMesege fm = new FileMesege();
-                    if (fm.ObjDirClearByIP(cbIP.Text))
-                    {
-                        AppTxtShow(string.Format("({0})工程文件初始化成功！", ip));
-                        pgBar.Value += 4;
-                    }
-                    else
-                    {
-                        AppTxtShow(string.Format("({0})工程文件初始化失败！", ip));
-                        return false;
-                    }
-                    ToolsUtil.DelayMilli(200);
-                  
-                    
-                    //编译场景
-                    if (fm.getSceneJsonByIP(ip))
-                    {
-                        AppTxtShow("scene.json编译通过！");
-                        pgBar.Value += 2;
-                    }
-                    else
-                    {
-                        AppTxtShow("scene.json编译失败！");
+                    AppTxtShow("请选取需下载网关！");
+                    return;
+                }
 
-                    }
-                    ToolsUtil.DelayMilli(200);
-                    //编译定时
-                    if (fm.getTimerJsonByIP(ip))
-                    {
-                        AppTxtShow("timer.json编译通过！");
-                        pgBar.Value += 2;
-                    }
-                    else
-                    {
-                        AppTxtShow("timer.json编译失败！");
+                backgroundWorker1 = new BackgroundWorker();
+                backgroundWorker1.WorkerReportsProgress = true;
+                backgroundWorker1.WorkerSupportsCancellation = true;
+                backgroundWorker1.DoWork += BackgroundWorker1_DoWork;
+                backgroundWorker1.ProgressChanged += BackgroundWorker1_ProgressChanged;
+                backgroundWorker1.RunWorkerCompleted += BackgroundWorker1_RunWorkerCompleted;
+                pgv = new PgView();
+                pgv.setMaxValue(100);
+                this.Enabled = false;
+                backgroundWorker1.RunWorkerAsync();
+                pgv.ShowDialog();
+                if (pgv.DialogResult == DialogResult.Cancel)
+                {
+                   
+                    backgroundWorker1.CancelAsync();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
 
-                    }
-                    ToolsUtil.DelayMilli(200);
-                    //编译面板
-                    if (fm.getPanelJsonByIP(ip))
-                    {
-                        AppTxtShow("panel.json编译通过！");
-                        pgBar.Value += 2;
-                    }
-                    else
-                    {
-                        AppTxtShow("panel.json编译失败！");
+        }
 
-                    }
-                    ToolsUtil.DelayMilli(200);
-                    //编译感应
-                    if (fm.getSensorJsonByIP(ip))
-                    {
-                        AppTxtShow("sensor.json编译通过！");
-                        pgBar.Value += 2;
-                    }
-                    else
-                    {
-                        AppTxtShow("sensor.json编译失败！");
-
-                    }
-                    ToolsUtil.DelayMilli(200);
-                    //编译逻辑
-                    if (fm.getLogicJsonByIp(ip))
-                    {
-                        AppTxtShow("logic.json编译通过！");
-                        pgBar.Value += 2;
-                    }
-                    else
-                    {
-                        AppTxtShow("logic.json编译失败！");
-
-                    }
-                    ToolsUtil.DelayMilli(200);
-                    string file = string.Format("{0}\\objs\\{1}", FileMesege.TmpFilePath, ip);
-                    try
-                    {
-
-                        //使用2.0版本Ionic.Zip压缩文件
-                        ///////zipHelp.ZipFolder(file, string.Format("{0}.zip", file),out msg);
-                        using (ZipFile zip = new ZipFile(string.Format("{0}.zip", file), Encoding.Default))
-                        {
-                     
-                            //将要压缩的文件夹添加到zip对象中去(要压缩的文件夹路径和名称)
-                            zip.AddDirectory(file);
-                            //将要压缩的文件添加到zip对象中去,如果文件不存在抛错FileNotFoundExcept
-                            //zip.AddFile(@"E:\\yangfeizai\\12051214544443\\"+"Jayzai.xml");
-                            zip.Save();
-                        }
-                        pgBar.Value += 2;
-                        return true;
-                    }
-                    catch
-                    {
-                        //AppTxtShow(string.Format("({0})工程文件编译失败！", ip));
-
-                        return false;
-                    }
-                    
-                }// if(ip)
-            }//for
-            return false;
+        //运行工作
+        private void BackgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
+        {
             
+            CompileDown(e);
+        }
+
+        private void BackgroundWorker1_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+            //设置值
+            pgv.setValue(e.ProgressPercentage);
+            if (e.UserState != null)
+            {
+                AppTxtShow(e.UserState.ToString());
+            }
+
         }
 
 
-        /// <summary>
-        /// 编译并下载 point.json area.json device.json 
-        /// </summary>
-        /// <param name="ip"></param>
-        /// <returns></returns>
-        private bool sendBackUp(string ip)
+        private void BackgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             try
             {
-              
-                FileMesege fm = new FileMesege();
-
-                #region 获取point area device 文件
-                //抽离point 信息
-                string point  = fm.getPointJsonByIP(ip);
-                if (!string.IsNullOrEmpty(point))
+                if (e.Cancelled)
                 {
-                    AppTxtShow("point.json编译通过！");
-                    pgBar.Value += 2;
-                }
-                else
-                {
-                    AppTxtShow("point.json编译失败！");
-                    return false;
+                    AppTxtShow(string.Format("({0})下载终止！", cbIP.Text));
                 }
 
-                //获取area 信息
-                string area = fm.getAreaJsonByIP(ip);
-                if (!string.IsNullOrEmpty(area))
+                this.Enabled = true;
+                if (pgv != null)
                 {
-                    AppTxtShow("area.json编译通过！");
-                    pgBar.Value += 2;
-                }
-                else
-                {
-                    AppTxtShow("area.json编译失败！");
-                    return false;
+                    pgv.Close();
                 }
 
-                //获取device 信息
-                string device = fm.getDeviceJsonByIP(ip);
-                if (!string.IsNullOrEmpty(device))
-                {
-                    AppTxtShow("device.json编译通过！");
-                    pgBar.Value += 2;
-                }
-                else
-                {
-                    AppTxtShow("device.json编译失败！");
-                    return false;
-                }
-                #endregion
-
-                /////////////////链接 写入
-                if (sendData(ip, point, "point.json"))
-                {
-                    AppTxtShow("point.json载入完成！");
-                    pgBar.Value += 4;
-                 
-                }
-                else
-                {
-                    AppTxtShow("point.json载入失败！");
-                    return false;
-                }
-                ToolsUtil.DelayMilli(200);
-                if (sendData(ip, area, "area.json"))
-                {
-                    AppTxtShow("area.json载入完成！");
-                    pgBar.Value += 4;
-
-                }
-                else
-                {
-                    AppTxtShow("area.json载入失败！");
-                    return false;
-                }
-                ToolsUtil.DelayMilli(200);
-                if (sendData(ip, device, "device.json"))
-                {
-                    AppTxtShow("device.json载入完成！");
-                    pgBar.Value += 4;
-
-                }
-                else
-                {
-                    AppTxtShow("device.json载入失败！");
-                    return false;
-                }
-
-                return true;
             }
-            catch 
+            catch
             {
-                return false;
+
             }
 
-          
         }
+
+
+
+
+        /// <summary>
+        /// 编译和下载
+        /// </summary>
+        private void CompileDown(DoWorkEventArgs e)
+        {
+            //存在该Ip的信息 可以进行编译
+            FileMesege fm = new FileMesege();
+            if (fm.ObjDirClearByIP(downIP))
+            {
+                backgroundWorker1.ReportProgress(5, string.Format("({0})工程文件夹创建成功！", downIP));
+            }
+            else
+            {
+                backgroundWorker1.ReportProgress(100, string.Format("({0})工程文件夹创建失败！！", downIP));
+                return ;
+            }
+
+            ToolsUtil.DelayMilli(2000);
+            if (backgroundWorker1.CancellationPending)
+            {
+                e.Cancel = true;
+                return;
+            }
+
+            //编译场景
+            if (fm.getSceneJsonByIP(downIP))
+            {
+           
+                backgroundWorker1.ReportProgress(10, "场景文件编译通过！");
+            }
+            else
+            {
+                backgroundWorker1.ReportProgress(100, "场景文件编译失败！");
+                return ;
+
+            }
+            ToolsUtil.DelayMilli(300);
+            if (backgroundWorker1.CancellationPending)
+            {
+                e.Cancel = true;
+                return;
+            }
+
+            //编译定时
+            if (fm.getTimerJsonByIP(downIP))
+            {
+                backgroundWorker1.ReportProgress(15, "定时文件编译通过！");
+            }
+            else
+            {
+                backgroundWorker1.ReportProgress(100, "定时文件编译失败！");
+                return ;
+
+            }
+            ToolsUtil.DelayMilli(300);
+            if (backgroundWorker1.CancellationPending)
+            {
+                e.Cancel = true;
+                return;
+            }
+            //编译面板
+            if (fm.getPanelJsonByIP(downIP))
+            {
+                backgroundWorker1.ReportProgress(20, "面板文件编译通过！");
+            }
+            else
+            {
+                backgroundWorker1.ReportProgress(100, "面板文件编译失败！");
+                return ;
+
+            }
+            ToolsUtil.DelayMilli(300);
+            if (backgroundWorker1.CancellationPending)
+            {
+                e.Cancel = true;
+                return;
+            }
+            //编译感应
+            if (fm.getSensorJsonByIP(downIP))
+            {
+                backgroundWorker1.ReportProgress(25, "感应编组文件编译通过！");
+            }
+            else
+            {
+                backgroundWorker1.ReportProgress(100, "感应编组文件编译失败！");
+                return ;
+
+            }
+            ToolsUtil.DelayMilli(300);
+            if (backgroundWorker1.CancellationPending)
+            {
+                e.Cancel = true;
+                return;
+            }
+            //编译逻辑
+            if (fm.getLogicJsonByIp(downIP))
+            {
+                backgroundWorker1.ReportProgress(30, "逻辑文件编译通过！");
+            }
+            else
+            {
+                backgroundWorker1.ReportProgress(100, "逻辑文件编译失败！");
+                return ;
+
+            }
+            ToolsUtil.DelayMilli(300);
+            if (backgroundWorker1.CancellationPending)
+            {
+                e.Cancel = true;
+                return;
+            }
+
+            #region 获取point area device 文件
+            //抽离point 信息
+            string point = fm.getPointJsonByIP(downIP);
+            if (!string.IsNullOrEmpty(point))
+            {
+                backgroundWorker1.ReportProgress(35, "点位文件编译通过！");
+            }
+            else
+            {
+                backgroundWorker1.ReportProgress(100, "点位文件编译失败！");
+                return ;
+            }
+            ToolsUtil.DelayMilli(300);
+            if (backgroundWorker1.CancellationPending)
+            {
+                e.Cancel = true;
+                return;
+            }
+            //获取area 信息
+            string area = fm.getAreaJsonByIP(downIP);
+            if (!string.IsNullOrEmpty(area))
+            {
+                backgroundWorker1.ReportProgress(40, "区域文件编译通过！");
+            }
+            else
+            {
+                backgroundWorker1.ReportProgress(100, "区域文件编译失败！");
+                return ;
+            }
+            ToolsUtil.DelayMilli(300);
+            if (backgroundWorker1.CancellationPending)
+            {
+                e.Cancel = true;
+                return;
+            }
+            //获取device 信息
+            string device = fm.getDeviceJsonByIP(downIP);
+            if (!string.IsNullOrEmpty(device))
+            {
+                backgroundWorker1.ReportProgress(45, "设备列表文件编译通过！");
+            }
+            else
+            {
+                backgroundWorker1.ReportProgress(100, "设备列表文件编译失败！");
+                return ;
+            }
+            ToolsUtil.DelayMilli(300);
+            if (backgroundWorker1.CancellationPending)
+            {
+                e.Cancel = true;
+                return;
+            }
+            #endregion
+
+            //建立压缩包
+            string file = string.Format("{0}\\objs\\{1}", FileMesege.TmpFilePath, downIP);
+            try
+            {
+
+                //使用2.0版本Ionic.Zip压缩文件
+                using (ZipFile zip = new ZipFile(string.Format("{0}.zip", file), Encoding.Default))
+                {
+                     
+                    //将要压缩的文件夹添加到zip对象中去(要压缩的文件夹路径和名称)
+                    zip.AddDirectory(file);
+                    //将要压缩的文件添加到zip对象中去,如果文件不存在抛错FileNotFoundExcept
+                    zip.Save();
+                }
+                backgroundWorker1.ReportProgress(50, null);
+                ToolsUtil.DelayMilli(300);
+                if (backgroundWorker1.CancellationPending)
+                {
+                    e.Cancel = true;
+                    return;
+                }
+
+                if (SendFile2Backup(downIP, point, "point.json"))
+                {
+                    backgroundWorker1.ReportProgress(60, "点位文件载入完成！");
+
+                }
+                else
+                {
+                    backgroundWorker1.ReportProgress(100, "点位文件载入失败！");
+                    return ;
+                }
+                ToolsUtil.DelayMilli(300);
+                if (backgroundWorker1.CancellationPending)
+                {
+                    e.Cancel = true;
+                    return;
+                }
+
+                if (SendFile2Backup(downIP, area, "area.json"))
+                {
+                    backgroundWorker1.ReportProgress(70, "区域文件载入完成！");
+
+                }
+                else
+                {
+                    backgroundWorker1.ReportProgress(100, "区域文件载入失败！");
+                    return ;
+                }
+                ToolsUtil.DelayMilli(300);
+                if (backgroundWorker1.CancellationPending)
+                {
+                    e.Cancel = true;
+                    return;
+                }
+
+                if (SendFile2Backup(downIP, device, "device.json"))
+                {
+                    backgroundWorker1.ReportProgress(80, "设备列表文件载入完成！");
+
+                }
+                else
+                {
+                    backgroundWorker1.ReportProgress(100, "设备列表文件载入失败！");
+                    return ;
+                }
+                ToolsUtil.DelayMilli(300);
+                if (backgroundWorker1.CancellationPending)
+                {
+                    e.Cancel = true;
+                    return;
+                }
+                DownZIP2Master(e);
+            }
+            catch(Exception ex)
+            {
+              
+                backgroundWorker1.ReportProgress(100, ex.Message);
+              
+            }
+
+
+
+        }
+
+
 
         /// <summary>
         /// 把ip.zip压缩包下载到主机里面
         /// </summary>
         /// <param name="ip"></param>
-        private void download(string ip)
+        private void DownZIP2Master(DoWorkEventArgs e)
         { 
-            //连接网络 发送当前IP的压缩包到里面
-            Socket sock = null;
+            
             try
             {
+                //连接网络 发送当前IP的压缩包到里面
+                Socket sock = null;
+                TimeOutHelper timeOutHelper = new TimeOutHelper();
+                int count = 0;
 
                 //写入数据格式
                 string data = "down /enet.prj$";
-                string filepath = string.Format("{0}\\objs\\{1}.zip",FileMesege.TmpFilePath,ip);
+                string filepath = string.Format("{0}\\objs\\{1}.zip", FileMesege.TmpFilePath, downIP);
+
                 TcpSocket ts = new TcpSocket();
 
-                sock = ts.ConnectServer(ip, 6001, 2);
-                ToolsUtil.DelayMilli(2000);
-                if (sock == null)
+                sock = ts.ConnectServer(downIP, 6001, 2000);
+                while (true)
                 {
-                    sock = ts.ConnectServer(ip, 6001, 2);
-                    ToolsUtil.DelayMilli(2000);
-                    if (sock == null)
+                    if (timeOutHelper.IsTimeout())
                     {
-                        //防止一连失败
-                        sock = ts.ConnectServer(ip, 6001, 2);
-                        ToolsUtil.DelayMilli(2000);
-                        if (sock == null)
+                        count++;
+                        if (count == 2)
                         {
-                            AppTxtShow("文件载入主机失败");
-                            showIp();
+                            //连接2次超时 退出操作
+                            backgroundWorker1.ReportProgress(100, string.Format("({0})工程写入失败！", downIP));
                             return;
                         }
+                        timeOutHelper = new TimeOutHelper();
+                        sock = ts.ConnectServer(downIP, 6001, 2000);
                     }
-                    
+                    ToolsUtil.DelayMilli(100);
+                    if (sock != null)
+                    {
+                        //连接成功
+                        break;
+                    }
+
                 }
 
-
-                int flag = -1;
+                int flag = 2;
 
                 //0:发送数据成功；-1:超时；-2:发送数据出现错误；-3:发送数据时出现异常
-                flag = ts.SendData(sock, data, 1);
+                flag = ts.SendData(sock, data, 1000);
                 if (flag == 0)
                 {
                     flag = ts.SendFile(sock, filepath);
-                    
+
                     if (flag == 0)
                     {
-                        AppTxtShow("文件载入主机成功！请等待主机重启程序！");
-                        timer1.Start();
-                    }
-                    else
-                    {
-                         AppTxtShow("文件载入主机失败");
-                         showIp();
-                    }
+                        
+                        backgroundWorker1.ReportProgress(82, string.Format("({0})工程写入成功，网关正在重启！", downIP));
+                        for (int i = 1; i < 19; i++)
+                        {
+                            ToolsUtil.DelayMilli(1000);
+                            if (backgroundWorker1.CancellationPending)
+                            {
+                                e.Cancel = true;
+                                return;
+                            }
+                            backgroundWorker1.ReportProgress(82+i, null);
+                        }
+                        return;
+                    }        
 
                 }
-                else
-                {
-                    AppTxtShow("文件载入主机失败");
-                    showIp();
-                }
-
+                backgroundWorker1.ReportProgress(100, string.Format("({0})工程写入失败！", downIP));
+            
                 if (sock != null)
                 {
 
                     sock.Dispose();
                 }
-                
+
             }
-            catch//(Exception e)
+            catch(Exception ex)
             {
-                //MessageBox.Show(e.ToString());
-                showIp();
+                backgroundWorker1.ReportProgress(100, string.Format("({0})工程写入失败！", downIP));
             }
+
         }//private
 
 
@@ -532,69 +610,88 @@ namespace eNet编辑器.AddForm
         /// <param name="ip">ip网关</param>
         /// <param name="json">工程信息</param>
         /// <param name="name">写进backup的文件名</param>
-        private bool sendData(string ip, string json, string fileName)
+        private bool SendFile2Backup(string ip, string json, string fileName)
         {
-            //连接网络 发送当前IP的压缩包到里面
-            Socket sock = null;
+           
             try
             {
+                
+                //连接网络 发送当前IP的压缩包到里面
+                Socket sock = null;
+                TimeOutHelper timeOutHelper = new TimeOutHelper();
+                int count = 0;
                 //写入数据格式
                 string data = string.Format("down /backup/{0}${1}",fileName,json);
                 TcpSocket ts = new TcpSocket();
          
-
-                sock = ts.ConnectServer(ip, 6001, 2);
-                ToolsUtil.DelayMilli(2000);
-                if (sock == null)
+                sock = ts.ConnectServer(ip, 6001, 2000);
+                while (true)
                 {
-                    sock = ts.ConnectServer(ip, 6001, 2);
-                    ToolsUtil.DelayMilli(2000);
-                    if (sock == null)
+                    ToolsUtil.DelayMilli(100);
+                    if (timeOutHelper.IsTimeout())
                     {
-                        //防止一连失败
-                        sock = ts.ConnectServer(ip, 6001, 2);
-                        ToolsUtil.DelayMilli(2000);
-                        if (sock == null)
+                        count++;
+                        if (count == 2)
                         {
-                            AppTxtShow("连接主机失败，请检查网络！");
+                     
+                            //连接2次超时 退出操作
+                            Console.WriteLine("连接2次超时 退出操作");
                             return false;
                         }
+                        timeOutHelper = new TimeOutHelper();
+                        sock = ts.ConnectServer(ip, 6001, 2000);
                     }
-
+                    if (sock != null)
+                    {
+                        //连接成功
+                        //Console.WriteLine("连接成功");
+                        break;
+                    }
+                    
                 }
 
-                int flag = 0;
+                int flag = 2;
                 //0:发送数据成功；-1:超时；-2:发送数据出现错误；-3:发送数据时出现异常
-                flag = ts.SendData(sock, data, 1);
+                //Console.WriteLine("发送");
+                flag = ts.SendData(sock, data, 2000);
+                timeOutHelper = new TimeOutHelper();
+                while (true)
+                {
+                    Console.WriteLine("等待发送结果");
+                    ToolsUtil.DelayMilli(100);
+                    if (timeOutHelper.IsTimeout() )
+                    {
+                        break;
+                    }
+                    if (flag != 2)
+                    {
+                        break;
+                    }
+                }
+
                 if (sock != null)
                 {
-                  
                     sock.Dispose();
                 }
-                if (flag != 0)
+                if (flag == 0)
                 {
-
+                    return true;
+                }
+                else
+                {
                     return false;
                 }
-                return true;
 
                 
             }
             catch//(Exception e )
             {
-                //MessageBox.Show(e.ToString());
                 return false;
             }
         }
 
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-            pgBar.Value += 1;
-            if (pgBar.Value > 98)
-            {
-                showIp();
-            }
-        }
+
+        #endregion
 
 
 

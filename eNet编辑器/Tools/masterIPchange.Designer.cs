@@ -35,6 +35,9 @@
             this.symbolBox1 = new DevComponents.DotNetBar.Controls.SymbolBox();
             this.lbTitle = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.cbAutoGet = new System.Windows.Forms.CheckBox();
+            this.lbLocalIP = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.txtDevMAC = new System.Windows.Forms.TextBox();
             this.txtDevIP = new System.Windows.Forms.TextBox();
             this.txtDevMask = new System.Windows.Forms.TextBox();
@@ -46,8 +49,6 @@
             this.btnRefresh = new DevComponents.DotNetBar.ButtonX();
             this.cbOnlineIP = new System.Windows.Forms.ComboBox();
             this.lbName = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.lbLocalIP = new System.Windows.Forms.Label();
             this.plInfoTitle.SuspendLayout();
             this.panel4.SuspendLayout();
             this.SuspendLayout();
@@ -135,7 +136,7 @@
             this.lbTitle.Name = "lbTitle";
             this.lbTitle.Size = new System.Drawing.Size(80, 17);
             this.lbTitle.TabIndex = 1;
-            this.lbTitle.Text = "主机网络设置";
+            this.lbTitle.Text = "网关网络设置";
             this.lbTitle.MouseDown += new System.Windows.Forms.MouseEventHandler(this.plInfoTitle_MouseDown);
             this.lbTitle.MouseMove += new System.Windows.Forms.MouseEventHandler(this.plInfoTitle_MouseMove);
             // 
@@ -144,6 +145,7 @@
             this.panel4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.panel4.BackColor = System.Drawing.Color.White;
+            this.panel4.Controls.Add(this.cbAutoGet);
             this.panel4.Controls.Add(this.lbLocalIP);
             this.panel4.Controls.Add(this.label1);
             this.panel4.Controls.Add(this.txtDevMAC);
@@ -160,8 +162,38 @@
             this.panel4.Location = new System.Drawing.Point(1, 27);
             this.panel4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(258, 245);
+            this.panel4.Size = new System.Drawing.Size(258, 272);
             this.panel4.TabIndex = 10;
+            // 
+            // cbAutoGet
+            // 
+            this.cbAutoGet.AutoSize = true;
+            this.cbAutoGet.Location = new System.Drawing.Point(170, 241);
+            this.cbAutoGet.Name = "cbAutoGet";
+            this.cbAutoGet.Size = new System.Drawing.Size(75, 21);
+            this.cbAutoGet.TabIndex = 84;
+            this.cbAutoGet.Text = "自动获取";
+            this.cbAutoGet.UseVisualStyleBackColor = true;
+            // 
+            // lbLocalIP
+            // 
+            this.lbLocalIP.AutoSize = true;
+            this.lbLocalIP.Location = new System.Drawing.Point(89, 215);
+            this.lbLocalIP.Margin = new System.Windows.Forms.Padding(6);
+            this.lbLocalIP.Name = "lbLocalIP";
+            this.lbLocalIP.Size = new System.Drawing.Size(26, 17);
+            this.lbLocalIP.TabIndex = 83;
+            this.lbLocalIP.Text = "xxx";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(7, 215);
+            this.label1.Margin = new System.Windows.Forms.Padding(6);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(79, 17);
+            this.label1.TabIndex = 82;
+            this.label1.Text = "本地IP地址：";
             // 
             // txtDevMAC
             // 
@@ -279,32 +311,12 @@
             this.lbName.TabIndex = 64;
             this.lbName.Text = "主机：";
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(7, 215);
-            this.label1.Margin = new System.Windows.Forms.Padding(6);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(79, 17);
-            this.label1.TabIndex = 82;
-            this.label1.Text = "本地IP地址：";
-            // 
-            // lbLocalIP
-            // 
-            this.lbLocalIP.AutoSize = true;
-            this.lbLocalIP.Location = new System.Drawing.Point(89, 215);
-            this.lbLocalIP.Margin = new System.Windows.Forms.Padding(6);
-            this.lbLocalIP.Name = "lbLocalIP";
-            this.lbLocalIP.Size = new System.Drawing.Size(26, 17);
-            this.lbLocalIP.TabIndex = 83;
-            this.lbLocalIP.Text = "xxx";
-            // 
             // masterIPchange
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkGray;
-            this.ClientSize = new System.Drawing.Size(261, 274);
+            this.ClientSize = new System.Drawing.Size(261, 301);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.plInfoTitle);
             this.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
@@ -343,5 +355,6 @@
         private System.Windows.Forms.Label lbName;
         private System.Windows.Forms.Label lbLocalIP;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.CheckBox cbAutoGet;
     }
 }

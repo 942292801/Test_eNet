@@ -99,7 +99,17 @@ namespace eNet编辑器
         #endregion
 
         #region 验证方法
+        public static bool isMAC6(string strInput)
+        {
 
+            return Regex.IsMatch(strInput, @"^([0-9a-fA-F]{2})(([/\s:][0-9a-fA-F]{2}){5})$");
+        }
+
+        public static bool isMAC8(string strInput)
+        {
+
+            return Regex.IsMatch(strInput, @"^([0-9a-fA-F]{2})(([/\s:][0-9a-fA-F]{2}){7})$");
+        }
 
         /// <summary>  
         /// 验证数字(double类型)  

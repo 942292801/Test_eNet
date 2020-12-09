@@ -103,6 +103,9 @@ namespace eNet编辑器
 
         public static DataJson.PortDimmer portDali = null;
 
+        //资源锁
+        public static Object resLock = new Object();
+
         /// <summary>
         /// 窗体关闭发生事件
         /// </summary>
@@ -522,8 +525,10 @@ namespace eNet编辑器
                 {
                     Directory.Delete(tmpPath, true);
                 }
-       
-                File.Delete(tmpPath + ".zip");
+                if (File.Exists(tmpPath + ".zip"))
+                {
+                    File.Delete(tmpPath + ".zip");
+                }
                 Directory.CreateDirectory(tmpPath);
                 return true;
             }
@@ -624,7 +629,7 @@ namespace eNet编辑器
             }
             catch(Exception e)
             {
-                MessageBox.Show(e.ToString());
+                ToolsUtil.WriteLog(e.Message);
                 return "";
             }
         }
@@ -648,7 +653,7 @@ namespace eNet编辑器
             }
             catch (Exception e)
             {
-                MessageBox.Show(e.ToString());
+                ToolsUtil.WriteLog(e.Message);
                 return "";
             }
         }
@@ -681,7 +686,7 @@ namespace eNet编辑器
             }
             catch (Exception e)
             {
-                MessageBox.Show(e.ToString());
+                ToolsUtil.WriteLog(e.Message);
                 return "";
             }
         }
@@ -734,6 +739,11 @@ namespace eNet编辑器
                     }
                     if (sn.action.Count > 0)
                     {
+                        /*string tmpPath = string.Format("{0}\\objs\\{1}", TmpFilePath, ip);
+                        if (Directory.Exists(tmpPath))
+                        {
+                            Directory.CreateDirectory(tmpPath);
+                        }*/
                         File.WriteAllText(string.Format("{0}\\objs\\{1}\\s{2}.json", TmpFilePath, ip, scs.id), ConvertJsonString(JsonConvert.SerializeObject(sn)));
                     }
                     
@@ -743,7 +753,7 @@ namespace eNet编辑器
             }
             catch (Exception e)
             {
-                MessageBox.Show(e.ToString());
+                ToolsUtil.WriteLog(e.Message);
                 return false;
             }
         }
@@ -886,7 +896,7 @@ namespace eNet编辑器
             }
             catch (Exception e)
             {
-                MessageBox.Show(e.ToString());
+                ToolsUtil.WriteLog(e.Message);
                 return false;
             }
         }
@@ -964,7 +974,7 @@ namespace eNet编辑器
             }
             catch (Exception e)
             {
-                MessageBox.Show(e.Message);
+                ToolsUtil.WriteLog(e.Message);
                 return false;
             }
         }
@@ -1062,7 +1072,7 @@ namespace eNet编辑器
             }
             catch (Exception e)
             {
-                MessageBox.Show(e.ToString());
+                ToolsUtil.WriteLog(e.Message);
                 return false;
             }
         }
@@ -1136,7 +1146,7 @@ namespace eNet编辑器
             }
             catch (Exception e)
             {
-                MessageBox.Show(e.ToString());
+                ToolsUtil.WriteLog(e.Message);
                 return false;
             }
         }

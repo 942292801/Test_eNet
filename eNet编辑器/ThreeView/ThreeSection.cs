@@ -88,11 +88,32 @@ namespace eNet编辑器.ThreeView
             if (FileMesege.AreaList == null)
             {
                 treeView1.Nodes.Clear();
-                tm.AddNode1(treeView1, "查看所有区域");             
+                tm.AddNode1(treeView1, "查看所有区域");
                 return;
             }
             //记录当前节点展开状况
             List<string> isExpands = tm.treeIsExpandsState(treeView1);
+            //循环区域一 查看有没 未定义区域 没有就新建
+            bool isExitNode = false;
+            foreach (DataJson.Area1 a1 in FileMesege.AreaList)
+            {
+                if (a1.area == "未定义区域")
+                {
+                    isExitNode = true;
+                }
+            }
+            if (!isExitNode)
+            {
+                sectionname = "未定义区域";
+                DataJson.Area1 a1 = new DataJson.Area1();
+                a1.area = sectionname;
+                a1.id1 = FileMesege.AreaList.Count.ToString();
+                a1.id2 = "";
+                a1.id3 = "";
+                a1.id4 = "";
+                a1.area2 = new List<DataJson.Area2>();
+                FileMesege.AreaList.Add(a1);
+            }
             //区域一
             foreach (DataJson.Area1 a1 in FileMesege.AreaList)
             {
@@ -163,7 +184,7 @@ namespace eNet编辑器.ThreeView
 
         private void 添加子节点ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (treeView1.SelectedNode == null || treeView1.SelectedNode.Text == "查看所有区域")
+            if (treeView1.SelectedNode == null || treeView1.SelectedNode.Text == "查看所有区域" || treeView1.SelectedNode.Text == "未定义区域")
             {
                 return;
             }
@@ -187,7 +208,7 @@ namespace eNet编辑器.ThreeView
             if (treeView1.SelectedNode != null)
             {
                 i = treeView1.SelectedNode.Level + 1;
-                if (treeView1.SelectedNode.Text == "查看所有区域")
+                if (treeView1.SelectedNode.Text == "查看所有区域" || treeView1.SelectedNode.Text == "未定义区域")
                 {
                     isAddChild = false;
                     i = 0;
@@ -212,7 +233,7 @@ namespace eNet编辑器.ThreeView
             try
             {
                 sectionname = FileMesege.info;
-                if (sectionname == "查看所有区域")
+                if (sectionname == "查看所有区域" || sectionname == "未定义区域")
                 {
                     return;
                 }
@@ -229,9 +250,13 @@ namespace eNet编辑器.ThreeView
                     TreeMesege tm = new TreeMesege();
                     if (isAddChild)
                     {
-                        if (addSelectNode != null && addSelectNode.Text == "查看所有区域")
+                        if (addSelectNode != null )
                         {
-                            return;
+                            if (addSelectNode.Text == "查看所有区域" || addSelectNode.Text == "未定义区域")
+                            {
+                                return;
+
+                            }
                         }
 
                         //添加子节点
@@ -307,7 +332,7 @@ namespace eNet编辑器.ThreeView
         private void 修改ToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
-            if (treeView1.SelectedNode == null || treeView1.SelectedNode.Text == "查看所有区域")
+            if (treeView1.SelectedNode == null || treeView1.SelectedNode.Text == "查看所有区域" || treeView1.SelectedNode.Text == "未定义区域")
             {
                 return;
             }
@@ -610,7 +635,7 @@ namespace eNet编辑器.ThreeView
 
         private void 删除ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (treeView1.SelectedNode != null && FileMesege.sectionNode.Text != "查看所有区域")
+            if (treeView1.SelectedNode != null && FileMesege.sectionNode.Text != "查看所有区域" && FileMesege.sectionNode.Text != "未定义区域")
             {
               
                 //右击树状图外面区域
@@ -1393,18 +1418,24 @@ namespace eNet编辑器.ThreeView
             {
                 MessageBox.Show("error");
             }
-            if (myNode != null && myNode.Text == "查看所有区域")
+            if (myNode != null )
             {
-                return;
+                if (myNode.Text == "查看所有区域" || myNode.Text == "未定义区域")
+                {
+                    return;
+                }
             }
             Position.X = e.X;
             Position.Y = e.Y;
             Position = treeView1.PointToClient(Position);
             //目标节点
             TreeNode DropNode = this.treeView1.GetNodeAt(Position);
-            if (DropNode != null && DropNode.Text == "查看所有区域")
+            if (DropNode != null)
             {
-                return;
+                if (DropNode.Text == "查看所有区域" || DropNode.Text == "未定义区域")
+                {
+                    return;
+                }
             }
             // 1.目标节点不是空。2.目标节点不是被拖拽接点的字节点。3.目标节点不是被拖拽节点本身
             if (DropNode != null && DropNode.Parent != myNode && DropNode != myNode)
@@ -1873,7 +1904,7 @@ namespace eNet编辑器.ThreeView
 
         private void btnAddChild_Click(object sender, EventArgs e)
         {
-            if (treeView1.SelectedNode == null || treeView1.SelectedNode.Text == "查看所有区域")
+            if (treeView1.SelectedNode == null || treeView1.SelectedNode.Text == "查看所有区域" || treeView1.SelectedNode.Text == "未定义区域")
             {
                 return;
             }
@@ -1884,7 +1915,7 @@ namespace eNet编辑器.ThreeView
 
         private void btnDel_Click(object sender, EventArgs e)
         {
-            if (treeView1.SelectedNode != null && FileMesege.sectionNode.Text != "查看所有区域")
+            if (treeView1.SelectedNode != null && FileMesege.sectionNode.Text != "查看所有区域" && FileMesege.sectionNode.Text != "未定义区域")
             {
 
                 if (deleteNode(treeView1.SelectedNode))

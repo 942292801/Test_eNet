@@ -41,14 +41,15 @@ namespace eNet编辑器
             dl.name = "";
             dl.sn = "";
             dl.ver = "";
+            if (FileMesege.DeviceList == null)
+            {
+                FileMesege.DeviceList = new List<DataJson.Device>();
+            }
             //创建成功
             FileMesege.DeviceList.Add(dl);
             //网关排序
             GatewaySort();
-            //刷新所有Tree的节点
-            UpdateTreeView();
-            
-            
+          
         }
 
 
@@ -280,8 +281,7 @@ namespace eNet编辑器
                     //按ID号排序
                     DeviceSort(dev);
                     AddDevPanel(dev.ip, Convert.ToInt32(id), version);
-                    //刷新所有Tree的节点
-                    UpdateTreeView();
+                  
                     break;
                 }
             }
@@ -318,11 +318,9 @@ namespace eNet编辑器
                             else
                             {
                                 ChangeDevIDVerPanel(dev.ip, Convert.ToInt32(id), version, Convert.ToInt32(oldid));
-                                /*DelDevPanel(ip, Convert.ToInt32(oldid));
-                                AddDevPanel(dev.ip, Convert.ToInt32(id), version);*/
+                            
                             }
-                            //刷新所有Tree的节点
-                            UpdateTreeView();
+                    
                             break;
                         }
                     }
@@ -355,8 +353,7 @@ namespace eNet编辑器
                     else
                     {
                         ChangeDevIDVerPanel(dev.ip, Convert.ToInt32(id), version, Convert.ToInt32(oldid));
-                        //DelDevPanel(dev.ip, Convert.ToInt32(oldid));
-                        //AddDevPanel(dev.ip, Convert.ToInt32(id),version);
+                 
                     }
                     //刷新所有Tree的节点
                     UpdateTreeView();
@@ -872,6 +869,10 @@ namespace eNet编辑器
         {
             try
             {
+                if (string.IsNullOrEmpty(address) || string.IsNullOrEmpty(ip))
+                {
+                    return null;
+                }
                 string tmp = address.Substring(0, 2);
                 if (address != "FFFFFFFF" && tmp != "FE")
                 {
@@ -1002,6 +1003,10 @@ namespace eNet编辑器
         /// <returns></returns>
         public static DataJson.PointInfo findPointByList_add(List<DataJson.PointInfo> Jsonlist, string address, string ip)
         {
+            if (string.IsNullOrEmpty(address) || string.IsNullOrEmpty(ip))
+            {
+                return null;
+            }
             if (Jsonlist == null)
             {
                 return null;
@@ -1676,6 +1681,10 @@ namespace eNet编辑器
                     eq.type = IniHelper.findTypesIniTypebyName("面板");
                     eq.objType = "";
                     eq.value = "";
+                    if (FileMesege.PointList == null)
+                    {
+                        FileMesege.PointList= new DataJson.Point();
+                    }
                     foreach (DataJson.PointInfo pi in FileMesege.PointList.link)
                     {
                         if (pi.area1 == "" && pi.area2 == "" && pi.area3 == "" && pi.area4 == "" && pi.name == eq.name)
@@ -1743,20 +1752,23 @@ namespace eNet编辑器
             int start = 0;
             int end = 0;
             //循环新建每页内容
-            for (int pageNum = 0; pageNum < 1; pageNum++)
+            for (int pageNum = 0; pageNum < 10; pageNum++)
             {
+                //循环清理多余的按键
                 delPanel.Clear();
                 numList.Clear();
-                start = pageNum * 255 + keyNum;
-                end = pageNum * 255 + 256;
+                start = pageNum * 256 + keyNum;
+                end = pageNum * 256 + 256;
                 foreach (DataJson.panelsInfo plInfo in pls.panelsInfo)
                 {
-                    if (plInfo.id > pageNum *255 + keyNum && plInfo.id <end)
+                    if (plInfo.id > start && plInfo.id <=end)
                     {
+                        //删除的
                         delPanel.Add(plInfo);
                     }
-                    if (plInfo.id > pageNum * 255 && plInfo.id < end)
+                    if (plInfo.id > pageNum * 256 && plInfo.id <= end)
                     {
+                        //保留的
                         numList.Add(plInfo.id);
                     }
                 }
@@ -1767,12 +1779,13 @@ namespace eNet编辑器
                     pls.panelsInfo.Remove(delPanel[i]);
                 }
                 List<int> list = numList.ToList<int>();
+                //添加面板按键和地址
                 for (int i = 1; i <= keyNum; i++)
                 {
                     isExit = false;
                     for (int j = 0; j < list.Count; j++)
                     {
-                        if (pageNum * 255 + i == list[j])
+                        if (pageNum * 256 + i == list[j])
                         {
                             isExit = true;
                             break;
@@ -1782,7 +1795,16 @@ namespace eNet编辑器
                     {
                         //添加改id的按键
                         DataJson.panelsInfo plInfo = new DataJson.panelsInfo();
-                        plInfo.id = pageNum * 255 + i;
+                        plInfo.id = pageNum * 256 + i;
+                       /* if (pageNum == 0)
+                        {
+                            plInfo.id =  i;
+
+                        }
+                        else
+                        {
+                            plInfo.id = pageNum * 256 + i +1;
+                        }*/
                         plInfo.pid = 0;
                         tmpNum = plInfo.id.ToString("X4");
                         plInfo.keyAddress = string.Format("{0}{1}{2}", ipLast, idHex, tmpNum);

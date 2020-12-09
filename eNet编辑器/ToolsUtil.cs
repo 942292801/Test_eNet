@@ -360,5 +360,65 @@ namespace eNet编辑器
         }
 
 
+
+        /// <summary>
+        /// 根据设备列表添加IP地址的最后一位到ComboBox里面
+        /// </summary>
+        /// <param name="cb"></param>
+        public static void CBGetIp(ComboBox cb)
+        {
+            if (FileMesege.DeviceList == null)
+            {
+                return;
+            }
+            cb.Items.Clear();
+            foreach (DataJson.Device d in FileMesege.DeviceList)
+            {
+                cb.Items.Add(d.ip.Split('.')[3]);
+            }
+        }
+
+
+        /// <summary>
+        /// 判断1-9 或 1,2,3  或数字（链路类型）,再添加到ComboBox里面
+        /// </summary>
+        /// <param name="cb"></param>
+        /// <param name="info"></param>
+        public static void CBDealNumFormat(ComboBox cb, string info)
+        {
+            cb.Items.Clear();
+            if (info.Contains("-"))
+            {
+                string[] infos = info.Split('-');
+                int start = Convert.ToInt32(infos[0]);
+                int end = Convert.ToInt32(infos[1]);
+                if (end - start > 100)
+                {
+                    end = start + 100;
+                }
+                for (int i = start; i < end; i++)
+                {
+                    cb.Items.Add(i.ToString());
+
+                }
+              
+            }
+            else if (info.Contains(","))
+            {
+                string[] infos = info.Split(',');
+
+                for (int i = 0; i < infos.Length; i++)
+                {
+                    cb.Items.Add(infos[i]);
+                }
+            }
+            else
+            {
+                cb.Items.Add(info);
+
+            }
+
+        }
+
     }
 }

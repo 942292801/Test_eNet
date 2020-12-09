@@ -1,10 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 using System.IO;
 using eNet编辑器.Properties;
@@ -14,7 +10,6 @@ using eNet编辑器.AddForm;
 using System.Net;
 using System.Text.RegularExpressions;
 using System.Threading;
-using System.Diagnostics;
 using eNet编辑器.LogicForm;
 
 namespace eNet编辑器.DgvView
@@ -318,7 +313,7 @@ namespace eNet编辑器.DgvView
                     }
 
                     dataGridView1.Rows[dex].Cells[0].Value = info.id;
-                    dataGridView1.Rows[dex].Cells[2].Value = DgvMesege.addressTransform(info.address);
+                    dataGridView1.Rows[dex].Cells[2].Value = DgvMesege.addressTransform(info.address, ip);
                     dataGridView1.Rows[dex].Cells[1].Value = IniHelper.findTypesIniNamebyType(info.type);
                     dataGridView1.Rows[dex].Cells[5].Value = (info.optName + " " + info.opt).Trim();
                     dataGridView1.Rows[dex].Cells[6].Value = info.state; //状态
@@ -409,18 +404,6 @@ namespace eNet编辑器.DgvView
             }
             //撤销 
             DataJson.totalList OldList = FileMesege.cmds.getListInfos();
-            /*
-            //主动模式
-            if (cbAttr.SelectedIndex != -1)
-            {
-                LogicInfo.attr = cbAttr.SelectedIndex;
-
-            }
-            else
-            {
-                cbAttr.SelectedIndex = 1;
-                LogicInfo.attr = 1;
-            }*/
 
             DataJson.LogicSceneContent logicSceneContent = new DataJson.LogicSceneContent();
             logicSceneContent.pid = sc.pid;
@@ -883,7 +866,7 @@ namespace eNet编辑器.DgvView
                 info.address = eq.address;
 
 
-                dataGridView1.Rows[id].Cells[2].Value = DgvMesege.addressTransform(info.address);
+                dataGridView1.Rows[id].Cells[2].Value = DgvMesege.addressTransform(info.address, ip);
                 dataGridView1.Rows[id].Cells[3].Value = string.Format("{0} {1} {2} {3}", eq.area1, eq.area2, eq.area3, eq.area4).Trim();//改根据地址从信息里面获取
                 dataGridView1.Rows[id].Cells[4].Value = eq.name;
 
@@ -897,7 +880,7 @@ namespace eNet编辑器.DgvView
                 info.opt = "";
                 info.optName = "";
 
-                dataGridView1.Rows[id].Cells[2].Value = DgvMesege.addressTransform(info.address);
+                dataGridView1.Rows[id].Cells[2].Value = DgvMesege.addressTransform(info.address, ip);
                 dataGridView1.Rows[id].Cells[1].Value = IniHelper.findTypesIniNamebyType(info.type);
                 dataGridView1.Rows[id].Cells[3].Value = string.Format("{0} {1} {2} {3}", eq.area1, eq.area2, eq.area3, eq.area4).Trim();//改根据地址从信息里面获取
                 dataGridView1.Rows[id].Cells[4].Value = eq.name;

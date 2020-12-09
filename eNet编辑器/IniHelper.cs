@@ -298,6 +298,10 @@ namespace eNet编辑器
         {
             try
             {
+                if (string.IsNullOrEmpty(address) || string.IsNullOrEmpty(ip))
+                {
+                    return "";
+                }
                 string addressType = address.Substring(2, 2);
                 if (addressType != "00")
                 {
@@ -310,7 +314,7 @@ namespace eNet编辑器
                             return "5.0_timer";
                         case "30":
                             //objType = "6.0_group";
-                            int num = Convert.ToInt32(address.Substring(4, 2)) * 256 + Convert.ToInt32(address.Substring(6, 2));
+                            int num = Convert.ToInt32(address.Substring(4, 2),16) * 256 + Convert.ToInt32(address.Substring(6, 2),16);
                             if (num <= 999)
                             {
                                 return "6.1_panel";
@@ -369,14 +373,77 @@ namespace eNet编辑器
                 }
                 return "";
             }
-            catch
+            catch(Exception ex)
             {
+                Console.WriteLine(ex.Message);
                 return "";
             }
         }
 
 
-        //public static 
+        /// <summary>
+        /// 读取tyoes下的所有文件的 address -2的链路信息
+        /// </summary>
+        /// <returns></returns>
+        public static Dictionary<string, string> ReadTypesAddress2Info()
+        {
+            try
+            {
+                Dictionary<string, string> linkDic = new Dictionary<string, string>();
+                //循环读取INI里面的信息
+                DirectoryInfo folder = new DirectoryInfo(Application.StartupPath + "//types");
+                string[] address_2;
+                //HashSet<string> nameList = new HashSet<string>();
+                string tmp = "";
+                foreach (FileInfo file in folder.GetFiles("*.ini"))
+                {
+                    tmp = IniConfig.GetValue(file.FullName, "address", "2");
+                    if (!string.IsNullOrEmpty(tmp))
+                    {
+                        address_2 = tmp.Split(',');
+                        if (address_2.Length == 3)
+                        {
+                            if (!linkDic.ContainsKey(address_2[1]))
+                            {
+                                linkDic.Add(address_2[1], address_2[2]);
+
+                            }
+
+                        }
+                    }
+
+                }
+                return linkDic;
+            }
+            catch
+            {
+                return null;
+            }
+            
+
+        }
+
+        /// <summary>
+        /// 通过tyoes下的所有文件的 address -2的链路信息  寻找该类型 返回改Ini文件路径 
+        /// </summary>
+        /// <param name="display"></param>
+        /// <returns></returns>
+        public static string FindPathByAddressType(string cbtype)
+        {
+            DirectoryInfo folder = new DirectoryInfo(Application.StartupPath + "//types");
+            string readname = "";
+            foreach (FileInfo file in folder.GetFiles("*.ini"))
+            {
+                readname = IniConfig.GetValue(file.FullName, "address", "2");
+                //DGV类型名称和Types.Iin Name 相同的类型名称
+                if (readname.Contains(cbtype))
+                {
+
+                    return file.FullName;
+                }
+            }
+            return string.Empty;
+        }
 
         #endregion
     }

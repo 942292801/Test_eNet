@@ -98,7 +98,7 @@ namespace eNet编辑器
             }
             catch (Exception ex)
             {
-                Console.WriteLine("ReceiveAsync出错:" + ex.StackTrace);
+                Console.WriteLine("ReceiveAsync出错:" +ex.Message+ ex.StackTrace);
             }
             
         }

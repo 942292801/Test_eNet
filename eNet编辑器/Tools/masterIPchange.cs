@@ -98,7 +98,6 @@ namespace eNet编辑器.Tools
                         this.Invoke(udpreceviceDelegate, msg);
                     }
 
-
                 }
                 catch
                 {
@@ -349,12 +348,12 @@ namespace eNet编辑器.Tools
             {
                 return;
             }
-            if (cbOnlineIP.Text == txtDevIP.Text)
+           /* if (cbOnlineIP.Text == txtDevIP.Text)
             {
                 //地址和修改地址相同
                 //AppTxtShow("地址格式错误");
                 return;
-            }
+            }*/
             try
             {
                 //寻找加载在线的网关
@@ -391,11 +390,17 @@ namespace eNet编辑器.Tools
                 }
                 string setip = string.Format("setip {0} {1} {2} {3} {4}", cbOnlineIP.Text, txtDevIP.Text, txtDevMask.Text, txtDevDNS.Text, txtDevDNS.Text);
                 //设置IP
-                udp.udpSend(cbOnlineIP.Text, "6002", setip);
+                //udp.udpSend(cbOnlineIP.Text, "6002", setip);
+                if (cbAutoGet.Checked)
+                {
+                    setip = setip + " on";
+                }
+                udp.udpSend("255.255.255.255", "6002", setip);
                 AppTxtShow("修改IP地址成功！主机重启，请稍后...");
 
             }
         }
 
+       
     }
 }

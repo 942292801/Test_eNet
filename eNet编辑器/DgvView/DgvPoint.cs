@@ -287,7 +287,7 @@ namespace eNet编辑器.DgvView
             //序号
             this.dataGridView1.Rows[rowNum].Cells[0].Value = (rowNum + 1);
             //地址
-            this.dataGridView1.Rows[rowNum].Cells[1].Value = DgvMesege.addressTransform( eq.address);
+            this.dataGridView1.Rows[rowNum].Cells[1].Value = DgvMesege.addressTransform(eq.address, eq.ip);
             //区域
             this.dataGridView1.Rows[rowNum].Cells[2].Value = string.Format("{0} {1} {2} {3}", eq.area1, eq.area2, eq.area3, eq.area4).Trim();
             //名字

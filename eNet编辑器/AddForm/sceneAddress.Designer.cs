@@ -94,7 +94,7 @@
             this.cb3.Name = "cb3";
             this.cb3.Size = new System.Drawing.Size(175, 25);
             this.cb3.TabIndex = 75;
-            this.cb3.TextChanged += new System.EventHandler(this.cb3_TextChanged);
+            this.cb3.SelectedIndexChanged += new System.EventHandler(this.Cb3_SelectedIndexChanged);
             // 
             // cb2
             // 
@@ -108,12 +108,14 @@
             // 
             // cb1
             // 
+            this.cb1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cb1.FormattingEnabled = true;
             this.cb1.Location = new System.Drawing.Point(19, 36);
             this.cb1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.cb1.Name = "cb1";
             this.cb1.Size = new System.Drawing.Size(175, 25);
             this.cb1.TabIndex = 73;
+            this.cb1.SelectedIndexChanged += new System.EventHandler(this.Cb1_SelectedIndexChanged);
             // 
             // lb1
             // 

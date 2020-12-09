@@ -56,7 +56,7 @@ namespace eNet编辑器.DgvView
 
         //当前device ini路径
         private string filepath = string.Empty;
-
+        private string tmpIP = "";
 
         #region 刷新窗体事件
 
@@ -199,15 +199,17 @@ namespace eNet编辑器.DgvView
 
                 DgvMesege.RecoverDgvForm(dataGridView1, X_Value, Y_Value, rowCount, columnCount);
                 this.cbOnline.CheckedChanged -= new System.EventHandler(this.cbOnline_CheckedChanged);
+                timer1.Stop();
+
                 if (FileMesege.isDgvNameDeviceConnet)
                 {
-                    shuaxinBtn();
+                    ConnetClient();
                     cbOnline.Checked = true;
+                    timer1.Start();
                 }
                 else
                 {
                     cbOnline.Checked = false;
-                    timer1.Stop();
                     client = null;
                 }
                 this.cbOnline.CheckedChanged += new System.EventHandler(this.cbOnline_CheckedChanged);
@@ -223,6 +225,21 @@ namespace eNet编辑器.DgvView
         {
             dataGridView1.Rows.Clear();
         }
+
+        public void StopOnline()
+        {
+            client = null;
+            timer1.Stop();
+            cbOnline.Checked = false;
+            FileMesege.isDgvNameDeviceConnet = false;
+        }
+
+        public void StopTimer()
+        {
+            client = null;
+            timer1.Stop();
+        }
+
         #endregion
 
 
@@ -242,9 +259,8 @@ namespace eNet编辑器.DgvView
                 {
                     string[] parents = FileMesege.tnselectNode.Parent.Text.Split(' ');
                     string[] devs = FileMesege.tnselectNode.Text.Split(' ');
-                    
                     //获取IP最后一位
-                     string IP = ToolsUtil.GetIPstyle(parents[0], 4);
+                     //string IP = ToolsUtil.GetIPstyle(parents[0], 4);
                     //获取10进制的设备ID号
                     string idstr = Regex.Replace(devs[0], @"[^\d]*", "");
                     //十六进制的ID号
@@ -255,9 +271,9 @@ namespace eNet编辑器.DgvView
                     string IDports = ToolsUtil.strtohexstr(idportstr);
                     string address = "FE00" + ID + IDports;
                     string name = "";
-
                     //暂时存储名称 去掉数字
                     TreeMesege tm = new TreeMesege();
+                    //Console.WriteLine(FileMesege.sectionNode.Text);
                     string[] tmID = tm.GetSectionId(FileMesege.sectionNode.FullPath.Split('\\'));
                     string[] sections = tm.GetSection(tmID[0],tmID[1],tmID[2],tmID[3]).Split('\\');
                     string type = dataGridView1.Rows[rowCount].Cells[1].Value.ToString();
@@ -286,24 +302,35 @@ namespace eNet编辑器.DgvView
                     catch (Exception ex){
                         MessageBox.Show(ex.Message);
                     }
-                    
                     dataGridView1.Rows[rowCount].Cells[2].Value = section;
-                    
                     //正常的修改名称操作
                     name = sectionChangeName();
-                    
-                    dataGridView1.Rows[rowCount].Cells[3].Value = name;
 
                     foreach (DataJson.PointInfo e in FileMesege.PointList.equipment)
                     {
                         //循环判断 NameList中是否存在该节点
                         if (address == e.address && e.ip == parents[0])
                         {
-                            e.name = string.Format("{0}@{1}", name, parents[0].Split('.')[3]);
-                            e.type = IniHelper.findTypesIniTypebyName(dataGridView1.Rows[rowCount].Cells[1].Value.ToString());
-                            return;
+                            if (string.IsNullOrWhiteSpace(e.name))
+                            {
+                                e.name = string.Format("{0}@{1}", name, parents[0].Split('.')[3]);
+                                dataGridView1.Rows[rowCount].Cells[3].Value = name;
+                            }
+                            else if (e.name.Contains("未定义"))
+                            {
+                                e.name = string.Format("{0}@{1}", name, parents[0].Split('.')[3]);
+                                dataGridView1.Rows[rowCount].Cells[3].Value = name;
+                            }
+                            else
+                            {
+                                //非空有内容
+
+                            }
+                           
+                            break;
                         }
                     }
+
                 }
             }//try
             catch (Exception ex)
@@ -567,7 +594,11 @@ namespace eNet编辑器.DgvView
             setData.ShowDialog();
             if (setData.DialogResult == DialogResult.OK)
             {
-
+                if (setData.IsSync)
+                {
+                    //是否同步 同步更新表格
+                    dgvNameAddItem();
+                }
             }
         }
 
@@ -972,19 +1003,21 @@ namespace eNet编辑器.DgvView
 
         #endregion
 
-        #region  刷新按键
+        #region  刷新最新状态
+
+        private bool isConnet;
         private void cbOnline_CheckedChanged(object sender, EventArgs e)
         {
             if (cbOnline.Checked)
             {
-                shuaxinBtn();
+                ConnetClient();
                 FileMesege.isDgvNameDeviceConnet = true;
+                timer1.Start();
             }
             else
             {
                 FileMesege.isDgvNameDeviceConnet = false;
                 timer1.Stop();
-                //timer1.Enabled = false;
                 client = null;
             }
         }
@@ -992,39 +1025,53 @@ namespace eNet编辑器.DgvView
         /// <summary>
         /// 刷新按钮 把当前设备状态刷回来
         /// </summary>
-        public void shuaxinBtn()
+        public void ConnetClient()
         {
-
             try
             {
+              
+                isConnet = true;
+                if (FileMesege.tnselectNode == null)
+                {
+                    isConnet = false;
+                    return;
+                }
+                string[] strip = FileMesege.tnselectNode.Parent.Text.Split(' ');
+                if (client != null && client.Connected())
+                {
+                    if (strip[0] == tmpIP)
+                    {
+                        isConnet = false;
+                        timer1_Tick(this,EventArgs.Empty);
+                        timer1.Start();
+                        return;
+                    }
+                }
+
                 if (client != null )
                 {
+                    
                     client.Dispoes();
                 }
                 //实例化客户端
                 client = new ClientAsync();
                 IniClient();
-                if (FileMesege.tnselectNode == null)
-                {
-                    return;
-                }
-                string[] strip = FileMesege.tnselectNode.Parent.Text.Split(' ');
+               
                 //异步连接
                 client.ConnectAsync(strip[0], 6003);
+                ToolsUtil.DelayMilli(200);
                 if (client != null && client.Connected())
                 {
+                    tmpIP = strip[0];
                     timer1_Tick(this, EventArgs.Empty);
-                    //timer1.Enabled = true;
-                    timer1.Start();
                 }
-                
+              
+                isConnet = false;
             }
-            catch
+            catch(Exception ex)
             {
-                timer1.Stop();
-                //timer1.Enabled = false;
-                client = null;
-                return;
+                Console.WriteLine(ex.Message);
+                isConnet = false;
             }
         }
 
@@ -1040,22 +1087,22 @@ namespace eNet编辑器.DgvView
                 if (client != null && client.Connected())
                 {
                     string msg = "GET;{" + ToolsUtil.getIP(FileMesege.tnselectNode) + ".0." + ToolsUtil.getID(FileMesege.tnselectNode) + ".255};\r\n";
-
                     //客户端发送数据
                     client.SendAsync(msg);
                 }
-                if (!FileMesege.isDgvNameDeviceConnet)
+                else
                 {
-                    timer1.Stop();
-                    client = null;
+                    if (isConnet)
+                    {
+                        return;
+                    }
+                    ConnetClient();
                 }
+
             }
             catch
             {
-                timer1.Stop();
-                //timer1.Enabled = false;
-                client = null;
-                return;
+              
             }
             
         }
@@ -1114,25 +1161,37 @@ namespace eNet编辑器.DgvView
             {
                 try
                 {
-                    //获取FB开头的信息
-                    string[] strArray = msg.Split(new string[] { "FB", "ACK" }, StringSplitOptions.RemoveEmptyEntries);
-                    //MessageBox.Show(msg);
-                    Regex reg = new Regex(@"(\d+)\.(\d+)\.(\d+)\.(\d+)");
-                    for (int i = 0; i < strArray.Length; i++)
-                    {
-                        //数组信息按IP提取
-                        Match match = reg.Match(strArray[i]);
-                        string[] strs = strArray[i].Split(';');
-                        //行数
-                        int j = Convert.ToInt32(match.Groups[4].Value) - 1;
-                        //判断ini类型
-                        dataGridView1.Rows[j].Cells[4].Value = getDataType(j + 1, strs[1]);
+                    
+                    lock(FileMesege.resLock){
+                        //获取FB开头的信息
+                        string[] strArray = msg.Split(new string[] { "FB", "ACK" }, StringSplitOptions.RemoveEmptyEntries);
+                        //MessageBox.Show(msg);
+                        Regex reg = new Regex(@"(\d+)\.(\d+)\.(\d+)\.(\d+)");
+                        for (int i = 0; i < strArray.Length; i++)
+                        {
+                            //数组信息按IP提取
+                            Match match = reg.Match(strArray[i]);
+                            string[] strs = strArray[i].Split(';');
+                            //行数
+                            int j = Convert.ToInt32(match.Groups[4].Value) - 1;
+
+                            if (strs.Length >= 2)
+                            {
+                                /* Console.WriteLine("j:" + j.ToString());
+                                 Console.WriteLine("   strArray[i]:"+ strArray[i]);*/
+                                //判断ini类型
+                                dataGridView1.Rows[j].Cells[4].Value = getDataType(j + 1, strs[1]);
+                            }
+
+                        }
                     }
+                   
                 }
-                catch
+                catch(Exception ex)
                 {
+
                     //报错不处理
-                    //MessageBox.Show("DgvName处理信息出错869行");
+                    Console.WriteLine(ex.Message + ex.StackTrace);
                 }
             });
         }
@@ -1145,45 +1204,55 @@ namespace eNet编辑器.DgvView
         /// <returns>正常返回截取后的值 否则全值返回</returns>
         private string getDataType(int rowNum , string val)
         {
-            
-            if (FileMesege.tnselectNode == null || FileMesege.tnselectNode.Parent == null)
+            try
             {
-                return val;
-            }
-            //转换为二进制的返回值
-            string binVal = DataChange.HexString2BinString(val).Replace(" ","");
-            //Convert.ToString(0xval,2);
-            string type = "";
-            
-            string[] arr = FileMesege.tnselectNode.Text.Split(' ');
-            string filepath = IniHelper.findDevicesDisplay(arr[1]);
-            //获取types下 ini类型名称
-            type = IniConfig.GetValue(filepath, "ports", rowNum.ToString()).Split(',')[0];
-            filepath = string.Format("{0}\\types\\{1}.ini",Application.StartupPath,type) ;
-            //获取全部Section下的Key
-            List<string> list = IniConfig.ReadKeys("data", filepath);
-            
-            string[]  infos = null;
-            string nowState = "";
-            //最后返回的信息值
-            string sataename = "";
-            for (int i = 0; i < list.Count; i++)
-            {
-                //获取类型下data的数据  rw,uint8,0-1,0-1,亮度(%)
-                infos = IniConfig.GetValue(filepath, "data", list[i]).Split(',');
-                //读取的value的格式不规范 直接退出不作处理 排除format
-                if (infos.Length != 5)
+                if (FileMesege.tnselectNode == null || FileMesege.tnselectNode.Parent == null)
                 {
-                    continue; 
+                    return val;
                 }
-                nowState = getBinBit(binVal, infos[2]);
-                
-                sataename = sataename + string.Format("{0}:{1} ", infos[4], nowState);
-                
+                //转换为二进制的返回值
+                string binVal = DataChange.HexString2BinString(val).Replace(" ", "");
+                //Convert.ToString(0xval,2);
+                string type = "";
+
+                string[] arr = FileMesege.tnselectNode.Text.Split(' ');
+                string filepath = IniHelper.findDevicesDisplay(arr[1]);
+                //获取types下 ini类型名称
+                type = IniConfig.GetValue(filepath, "ports", rowNum.ToString()).Split(',')[0];
+                filepath = string.Format("{0}\\types\\{1}.ini", Application.StartupPath, type);
+                //获取全部Section下的Key
+                List<string> list = IniConfig.ReadKeys("data", filepath);
+
+                string[] infos = null;
+                string nowState = "";
+                //最后返回的信息值
+                string sataename = "";
+                for (int i = 0; i < list.Count; i++)
+                {
+                    //获取类型下data的数据  rw,uint8,0-1,0-1,亮度(%)
+                    infos = IniConfig.GetValue(filepath, "data", list[i]).Split(',');
+                    //读取的value的格式不规范 直接退出不作处理 排除format
+                    if (infos.Length != 5)
+                    {
+                        continue;
+                    }
+                    nowState = getBinBit(binVal, infos[2]);
+
+                    sataename = sataename + string.Format("{0}:{1} ", infos[4], nowState);
+
+                }
+
+                return sataename;
+
+            }
+            catch (Exception ex)
+            {
+                //报错不处理
+                Console.WriteLine(ex.Message + ex.StackTrace);
+                return "";
             }
 
-            return sataename;
-                          
+
         }
 
         /// <summary>

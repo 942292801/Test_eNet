@@ -45,19 +45,51 @@ namespace eNet编辑器
         /// 地址转换  FFFFFFFF转换为255.255.255.255
         /// </summary>
         /// <returns></returns>
-        public static string addressTransform(string address)
+        public static string addressTransform(string address,string masterIP)
         {
-            if (string.IsNullOrEmpty(address))
+            if (string.IsNullOrEmpty(address) )
             {
                 return "";
             }
+
             string ip = Convert.ToInt32(address.Substring(0, 2),16).ToString();
+            if (ip == "254" && !string.IsNullOrEmpty(masterIP))
+            {
+                try
+                {
+                    //如果等于本机IP
+                    ip = masterIP.Split('.')[3];
+                }
+                catch
+                {
+
+                }
+            }
             string link = Convert.ToInt32(address.Substring(2, 2), 16).ToString();
             string ID = Convert.ToInt32(address.Substring(4, 2), 16).ToString();
             string Port = Convert.ToInt32(address.Substring(6, 2), 16).ToString();
         
             return string.Format("{0}.{1}.{2}.{3}",ip,link,ID,Port);
         }
+
+
+        /*public static string addressTransform(string address)
+        {
+            if (string.IsNullOrEmpty(address))
+            {
+                return "";
+            }
+
+            string ip = Convert.ToInt32(address.Substring(0, 2), 16).ToString();
+
+            string link = Convert.ToInt32(address.Substring(2, 2), 16).ToString();
+            string ID = Convert.ToInt32(address.Substring(4, 2), 16).ToString();
+            string Port = Convert.ToInt32(address.Substring(6, 2), 16).ToString();
+
+            return string.Format("{0}.{1}.{2}.{3}", ip, link, ID, Port);
+        }*/
+
+
 
         /// <summary>
         /// 地址加j  例如 230.0.5.6 + 2  = 230.0.5.8
@@ -66,7 +98,7 @@ namespace eNet编辑器
         /// <returns></returns>
         public static string addressAdd(string address,int j)
         {
-            if (string.IsNullOrEmpty(address) || address == "FFFFFFFF" || address.Length != 8 || address.Substring(0, 2) != "FE")
+            if (string.IsNullOrEmpty(address) || address == "FFFFFFFF" || address.Length != 8)//测试临时屏蔽 || address.Substring(0, 2) != "FE")
             {
                 return string.Empty;
             }
@@ -111,7 +143,7 @@ namespace eNet编辑器
         /// <returns></returns>
         public static string addressReduce(string address, int j)
         {
-            if (string.IsNullOrEmpty(address) || address == "FFFFFFFF" || address.Length != 8 || address.Substring(0, 2) != "FE")
+            if (string.IsNullOrEmpty(address) || address == "FFFFFFFF" || address.Length != 8 )//测试临时屏蔽 || address.Substring(0, 2) != "FE")
             {
                 return string.Empty;
             }

@@ -28,20 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(compileDownload));
             this.plInfoTitle = new System.Windows.Forms.Panel();
-            this.btnCompile = new DevComponents.DotNetBar.ButtonX();
             this.btnSend = new DevComponents.DotNetBar.ButtonX();
             this.btnClose = new DevComponents.DotNetBar.ButtonX();
             this.symbolBox1 = new DevComponents.DotNetBar.Controls.SymbolBox();
             this.lbTitle = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.lbTip = new System.Windows.Forms.Label();
-            this.pgBar = new DevComponents.DotNetBar.Controls.ProgressBarX();
             this.cbIP = new System.Windows.Forms.ComboBox();
             this.lbName = new System.Windows.Forms.Label();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.plInfoTitle.SuspendLayout();
             this.panel4.SuspendLayout();
             this.SuspendLayout();
@@ -49,7 +44,6 @@
             // plInfoTitle
             // 
             this.plInfoTitle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(228)))), ((int)(((byte)(228)))));
-            this.plInfoTitle.Controls.Add(this.btnCompile);
             this.plInfoTitle.Controls.Add(this.btnSend);
             this.plInfoTitle.Controls.Add(this.btnClose);
             this.plInfoTitle.Controls.Add(this.symbolBox1);
@@ -62,33 +56,11 @@
             this.plInfoTitle.MouseDown += new System.Windows.Forms.MouseEventHandler(this.plInfoTitle_MouseDown);
             this.plInfoTitle.MouseMove += new System.Windows.Forms.MouseEventHandler(this.plInfoTitle_MouseMove);
             // 
-            // btnCompile
-            // 
-            this.btnCompile.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnCompile.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCompile.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btnCompile.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
-            this.btnCompile.FocusCuesEnabled = false;
-            this.btnCompile.Font = new System.Drawing.Font("黑体", 9F);
-            this.btnCompile.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None;
-            this.btnCompile.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnCompile.HoverImage")));
-            this.btnCompile.Image = ((System.Drawing.Image)(resources.GetObject("btnCompile.Image")));
-            this.btnCompile.Location = new System.Drawing.Point(127, 4);
-            this.btnCompile.Margin = new System.Windows.Forms.Padding(6);
-            this.btnCompile.Name = "btnCompile";
-            this.btnCompile.Size = new System.Drawing.Size(15, 15);
-            this.btnCompile.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnCompile.TabIndex = 21;
-            this.btnCompile.Tooltip = "编译";
-            this.btnCompile.Visible = false;
-            this.btnCompile.Click += new System.EventHandler(this.btnCompile_Click);
-            // 
             // btnSend
             // 
             this.btnSend.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnSend.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSend.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSend.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnSend.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
             this.btnSend.FocusCuesEnabled = false;
@@ -159,8 +131,6 @@
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.White;
-            this.panel4.Controls.Add(this.lbTip);
-            this.panel4.Controls.Add(this.pgBar);
             this.panel4.Controls.Add(this.cbIP);
             this.panel4.Controls.Add(this.lbName);
             this.panel4.Location = new System.Drawing.Point(1, 27);
@@ -169,33 +139,9 @@
             this.panel4.Size = new System.Drawing.Size(200, 60);
             this.panel4.TabIndex = 5;
             // 
-            // lbTip
-            // 
-            this.lbTip.AutoSize = true;
-            this.lbTip.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lbTip.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.lbTip.Location = new System.Drawing.Point(122, 38);
-            this.lbTip.Name = "lbTip";
-            this.lbTip.Size = new System.Drawing.Size(61, 17);
-            this.lbTip.TabIndex = 67;
-            this.lbTip.Text = "请稍后. . .";
-            this.lbTip.Visible = false;
-            // 
-            // pgBar
-            // 
-            // 
-            // 
-            // 
-            this.pgBar.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.pgBar.Location = new System.Drawing.Point(17, 16);
-            this.pgBar.Name = "pgBar";
-            this.pgBar.Size = new System.Drawing.Size(167, 17);
-            this.pgBar.Style = DevComponents.DotNetBar.eDotNetBarStyle.OfficeXP;
-            this.pgBar.TabIndex = 66;
-            this.pgBar.Visible = false;
-            // 
             // cbIP
             // 
+            this.cbIP.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbIP.FormattingEnabled = true;
             this.cbIP.Location = new System.Drawing.Point(63, 14);
             this.cbIP.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -212,11 +158,6 @@
             this.lbName.Size = new System.Drawing.Size(44, 17);
             this.lbName.TabIndex = 64;
             this.lbName.Text = "主机：";
-            // 
-            // timer1
-            // 
-            this.timer1.Interval = 570;
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // compileDownload
             // 
@@ -251,9 +192,5 @@
         private System.Windows.Forms.ComboBox cbIP;
         private System.Windows.Forms.Label lbName;
         private DevComponents.DotNetBar.ButtonX btnSend;
-        private DevComponents.DotNetBar.ButtonX btnCompile;
-        private System.Windows.Forms.Label lbTip;
-        private DevComponents.DotNetBar.Controls.ProgressBarX pgBar;
-        private System.Windows.Forms.Timer timer1;
     }
 }

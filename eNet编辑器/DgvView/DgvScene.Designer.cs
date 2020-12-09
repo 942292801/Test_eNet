@@ -184,32 +184,32 @@
             this.升序ToolStripMenuItem,
             this.降序ToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip2";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(150, 76);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 98);
             // 
             // 相同ToolStripMenuItem
             // 
             this.相同ToolStripMenuItem.Name = "相同ToolStripMenuItem";
-            this.相同ToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
+            this.相同ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.相同ToolStripMenuItem.Text = "相同(Ctrl+Q)";
             this.相同ToolStripMenuItem.Click += new System.EventHandler(this.相同ToolStripMenuItem_Click);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(146, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(177, 6);
             // 
             // 升序ToolStripMenuItem
             // 
             this.升序ToolStripMenuItem.Name = "升序ToolStripMenuItem";
-            this.升序ToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
+            this.升序ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.升序ToolStripMenuItem.Text = "升序(Ctrl+W)";
             this.升序ToolStripMenuItem.Click += new System.EventHandler(this.升序ToolStripMenuItem_Click);
             // 
             // 降序ToolStripMenuItem
             // 
             this.降序ToolStripMenuItem.Name = "降序ToolStripMenuItem";
-            this.降序ToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
-            this.降序ToolStripMenuItem.Text = "降序(Ctrl+D)";
+            this.降序ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.降序ToolStripMenuItem.Text = "降序(Ctrl+E)";
             this.降序ToolStripMenuItem.Click += new System.EventHandler(this.降序ToolStripMenuItem_Click);
             // 
             // doubleClickTimer
