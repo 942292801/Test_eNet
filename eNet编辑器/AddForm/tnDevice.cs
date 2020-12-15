@@ -65,7 +65,7 @@ namespace eNet编辑器.AddForm
             DirectoryInfo folder = new DirectoryInfo(Application.StartupPath + "//devices");
             string display = null;
             //循环添加设备号
-            for (int i = 0; i < 64; i++)
+            for (int i = 1; i < 64; i++)
             {
                 cbDevice.Items.Add(i);
             }

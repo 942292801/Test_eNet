@@ -1,0 +1,77 @@
+{
+    "key": [
+        {
+            "num": 1,
+            "key": "000A0001",
+            "obj": "A6000502",
+            "mode": 255,
+            "fback": "FE000502",
+            "fbmode": 1
+        },
+        {
+            "num": 2,
+            "key": "000A0002",
+            "obj": "A6F80404",
+            "mode": 255,
+            "fback": "FEF80404",
+            "fbmode": 1
+        },
+        {
+            "num": 3,
+            "key": "000A0003",
+            "obj": "A6FA0605",
+            "mode": 255,
+            "fback": "FEFA0605",
+            "fbmode": 1
+        },
+        {
+            "num": 4,
+            "key": "000A0004",
+            "obj": "A6400004",
+            "mode": 1,
+            "fback": "FE400004",
+            "fbmode": 1
+        },
+        {
+            "num": 5,
+            "key": "000A0005",
+            "obj": "A6100001",
+            "mode": 18,
+            "fback": "FE100001",
+            "fbmode": 1
+        },
+        {
+            "num": 6,
+            "key": "000A0006",
+            "obj": "A6200001",
+            "mode": 19,
+            "fback": "FE200001",
+            "fbmode": 1
+        },
+        {
+            "num": 7,
+            "key": "000A0007",
+            "obj": "A63003E7",
+            "mode": 255,
+            "fback": "FE3003E7",
+            "fbmode": 1
+        },
+        {
+            "num": 8,
+            "key": "000A0008",
+            "obj": "A63003E8",
+            "mode": 255,
+            "fback": "FE3003E8",
+            "fbmode": 1
+        },
+        {
+            "num": 9,
+            "key": "000A0009",
+            "obj": "A6FB0305",
+            "mode": 255,
+            "fback": "FEFB0305",
+            "fbmode": 1
+        }
+    ],
+    "type": "key"
+}

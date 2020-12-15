@@ -1,0 +1,342 @@
+{
+    "action": [
+        {
+            "num": 1,
+            "obj": "FE000205",
+            "val": "00000001",
+            "optname": "开启",
+            "delay": 1
+        },
+        {
+            "num": 11,
+            "obj": "FE000203",
+            "val": "00000001",
+            "optname": "开启",
+            "delay": 1
+        },
+        {
+            "num": 12,
+            "obj": "FE000204",
+            "val": "00000001",
+            "optname": "开启",
+            "delay": 1
+        },
+        {
+            "num": 13,
+            "obj": "FE000205",
+            "val": "00000001",
+            "optname": "开启",
+            "delay": 1
+        },
+        {
+            "num": 14,
+            "obj": "FE000206",
+            "val": "00000001",
+            "optname": "开启",
+            "delay": 1
+        },
+        {
+            "num": 15,
+            "obj": "FE000207",
+            "val": "00000001",
+            "optname": "开启",
+            "delay": 1
+        },
+        {
+            "num": 16,
+            "obj": "FE000208",
+            "val": "00000001",
+            "optname": "开启",
+            "delay": 1
+        },
+        {
+            "num": 17,
+            "obj": "FE000301",
+            "val": "00000001",
+            "optname": "开启",
+            "delay": 1
+        },
+        {
+            "num": 18,
+            "obj": "FE000302",
+            "val": "00000001",
+            "optname": "开启",
+            "delay": 1
+        },
+        {
+            "num": 19,
+            "obj": "FE000304",
+            "val": "00000001",
+            "optname": "开启",
+            "delay": 1
+        },
+        {
+            "num": 20,
+            "obj": "FE000303",
+            "val": "00000001",
+            "optname": "开启",
+            "delay": 1
+        },
+        {
+            "num": 21,
+            "obj": "FE000305",
+            "val": "00000001",
+            "optname": "开启",
+            "delay": 1
+        },
+        {
+            "num": 22,
+            "obj": "FE000306",
+            "val": "00000001",
+            "optname": "开启",
+            "delay": 1
+        },
+        {
+            "num": 23,
+            "obj": "FE000307",
+            "val": "00000001",
+            "optname": "开启",
+            "delay": 1
+        },
+        {
+            "num": 24,
+            "obj": "FE000308",
+            "val": "00000001",
+            "optname": "开启",
+            "delay": 1
+        },
+        {
+            "num": 25,
+            "obj": "FE000401",
+            "val": "00000001",
+            "optname": "开启",
+            "delay": 1
+        },
+        {
+            "num": 26,
+            "obj": "FE000402",
+            "val": "00000001",
+            "optname": "开启",
+            "delay": 1
+        },
+        {
+            "num": 27,
+            "obj": "FE000403",
+            "val": "00000001",
+            "optname": "开启",
+            "delay": 1
+        },
+        {
+            "num": 28,
+            "obj": "FE000404",
+            "val": "00000001",
+            "optname": "开启",
+            "delay": 1
+        },
+        {
+            "num": 29,
+            "obj": "FE000405",
+            "val": "00000001",
+            "optname": "开启",
+            "delay": 1
+        },
+        {
+            "num": 30,
+            "obj": "FE000406",
+            "val": "00000001",
+            "optname": "开启",
+            "delay": 1
+        },
+        {
+            "num": 31,
+            "obj": "FE000407",
+            "val": "00000001",
+            "optname": "开启",
+            "delay": 1
+        },
+        {
+            "num": 32,
+            "obj": "FE000408",
+            "val": "00000001",
+            "optname": "开启",
+            "delay": 1
+        },
+        {
+            "num": 33,
+            "obj": "FE000501",
+            "val": "00000001",
+            "optname": "开启",
+            "delay": 1
+        },
+        {
+            "num": 34,
+            "obj": "FE000502",
+            "val": "00000001",
+            "optname": "开启",
+            "delay": 1
+        },
+        {
+            "num": 35,
+            "obj": "FE000503",
+            "val": "00000001",
+            "optname": "开启",
+            "delay": 1
+        },
+        {
+            "num": 36,
+            "obj": "FE000504",
+            "val": "00000001",
+            "optname": "开启",
+            "delay": 1
+        },
+        {
+            "num": 37,
+            "obj": "FE000505",
+            "val": "00000001",
+            "optname": "开启",
+            "delay": 1
+        },
+        {
+            "num": 38,
+            "obj": "FE000506",
+            "val": "00000001",
+            "optname": "开启",
+            "delay": 1
+        },
+        {
+            "num": 39,
+            "obj": "FE000507",
+            "val": "00000001",
+            "optname": "开启",
+            "delay": 1
+        },
+        {
+            "num": 40,
+            "obj": "FE000508",
+            "val": "00000001",
+            "optname": "开启",
+            "delay": 1
+        },
+        {
+            "num": 41,
+            "obj": "FE000601",
+            "val": "00000001",
+            "optname": "开启",
+            "delay": 1
+        },
+        {
+            "num": 42,
+            "obj": "FE000602",
+            "val": "00000001",
+            "optname": "开启",
+            "delay": 1
+        },
+        {
+            "num": 43,
+            "obj": "FE000603",
+            "val": "00000001",
+            "optname": "开启",
+            "delay": 1
+        },
+        {
+            "num": 44,
+            "obj": "FE000604",
+            "val": "00000001",
+            "optname": "开启",
+            "delay": 1
+        },
+        {
+            "num": 45,
+            "obj": "FE000605",
+            "val": "00000001",
+            "optname": "开启",
+            "delay": 1
+        },
+        {
+            "num": 46,
+            "obj": "FE000606",
+            "val": "00000001",
+            "optname": "开启",
+            "delay": 1
+        },
+        {
+            "num": 47,
+            "obj": "FE000607",
+            "val": "00000001",
+            "optname": "开启",
+            "delay": 1
+        },
+        {
+            "num": 48,
+            "obj": "FE000608",
+            "val": "00000001",
+            "optname": "开启",
+            "delay": 1
+        },
+        {
+            "num": 49,
+            "obj": "FE000701",
+            "val": "00000001",
+            "optname": "开启",
+            "delay": 1
+        },
+        {
+            "num": 50,
+            "obj": "FE000702",
+            "val": "00000001",
+            "optname": "开启",
+            "delay": 1
+        },
+        {
+            "num": 51,
+            "obj": "FE000703",
+            "val": "00000001",
+            "optname": "开启",
+            "delay": 1
+        },
+        {
+            "num": 52,
+            "obj": "FE000704",
+            "val": "00000001",
+            "optname": "开启",
+            "delay": 1
+        },
+        {
+            "num": 53,
+            "obj": "FE000705",
+            "val": "00000001",
+            "optname": "开启",
+            "delay": 1
+        },
+        {
+            "num": 54,
+            "obj": "FE000706",
+            "val": "00000001",
+            "optname": "开启",
+            "delay": 1
+        },
+        {
+            "num": 55,
+            "obj": "FE000707",
+            "val": "00000001",
+            "optname": "开启",
+            "delay": 1
+        },
+        {
+            "num": 56,
+            "obj": "FE000708",
+            "val": "00000001",
+            "optname": "开启",
+            "delay": 1
+        },
+        {
+            "num": 57,
+            "obj": "FE100002",
+            "val": "00000001",
+            "optname": "场景调用",
+            "delay": 2
+        }
+    ],
+    "type": "scene",
+    "describe": "create by system"
+}

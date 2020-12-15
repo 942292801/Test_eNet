@@ -1,0 +1,182 @@
+[
+    {
+        "scenes": [
+            {
+                "sceneInfo": [
+                    {
+                        "id": 1,
+                        "pid": 320423183,
+                        "type": "1.0_switch",
+                        "address": "FE000101",
+                        "opt": "00000001",
+                        "optName": "开启",
+                        "delay": 2
+                    },
+                    {
+                        "id": 2,
+                        "pid": 687480834,
+                        "type": "1.0_switch",
+                        "address": "FE000102",
+                        "opt": "00000001",
+                        "optName": "开启",
+                        "delay": 2
+                    },
+                    {
+                        "id": 3,
+                        "pid": 170615881,
+                        "type": "1.0_switch",
+                        "address": "FE000103",
+                        "opt": "00000001",
+                        "optName": "开启",
+                        "delay": 2
+                    },
+                    {
+                        "id": 4,
+                        "pid": 164672330,
+                        "type": "1.0_switch",
+                        "address": "FE000104",
+                        "opt": "00000001",
+                        "optName": "开启",
+                        "delay": 2
+                    },
+                    {
+                        "id": 5,
+                        "pid": 510061310,
+                        "type": "1.0_switch",
+                        "address": "FE000105",
+                        "opt": "00000001",
+                        "optName": "开启",
+                        "delay": 2
+                    },
+                    {
+                        "id": 6,
+                        "pid": 537743987,
+                        "type": "1.0_switch",
+                        "address": "FE000106",
+                        "opt": "00000001",
+                        "optName": "开启",
+                        "delay": 2
+                    },
+                    {
+                        "id": 7,
+                        "pid": 824070507,
+                        "type": "1.0_switch",
+                        "address": "FE000107",
+                        "opt": "00000001",
+                        "optName": "开启",
+                        "delay": 2
+                    },
+                    {
+                        "id": 8,
+                        "pid": 868203633,
+                        "type": "1.0_switch",
+                        "address": "FE000108",
+                        "opt": "00000001",
+                        "optName": "开启",
+                        "delay": 2
+                    },
+                    {
+                        "id": 9,
+                        "pid": 697349108,
+                        "type": "4.0_scene",
+                        "address": "FE100002",
+                        "opt": "00000001",
+                        "optName": "场景调用",
+                        "delay": 2
+                    }
+                ],
+                "id": 1,
+                "pid": 520816601
+            },
+            {
+                "sceneInfo": [
+                    {
+                        "id": 1,
+                        "pid": 320423183,
+                        "type": "1.0_switch",
+                        "address": "FE000101",
+                        "opt": "00000000",
+                        "optName": "关闭",
+                        "delay": 2
+                    },
+                    {
+                        "id": 2,
+                        "pid": 687480834,
+                        "type": "1.0_switch",
+                        "address": "FE000102",
+                        "opt": "00000000",
+                        "optName": "关闭",
+                        "delay": 2
+                    },
+                    {
+                        "id": 3,
+                        "pid": 170615881,
+                        "type": "1.0_switch",
+                        "address": "FE000103",
+                        "opt": "00000000",
+                        "optName": "关闭",
+                        "delay": 2
+                    },
+                    {
+                        "id": 4,
+                        "pid": 164672330,
+                        "type": "1.0_switch",
+                        "address": "FE000104",
+                        "opt": "00000000",
+                        "optName": "关闭",
+                        "delay": 2
+                    },
+                    {
+                        "id": 5,
+                        "pid": 510061310,
+                        "type": "1.0_switch",
+                        "address": "FE000105",
+                        "opt": "00000000",
+                        "optName": "关闭",
+                        "delay": 2
+                    },
+                    {
+                        "id": 6,
+                        "pid": 537743987,
+                        "type": "1.0_switch",
+                        "address": "FE000106",
+                        "opt": "00000000",
+                        "optName": "关闭",
+                        "delay": 2
+                    },
+                    {
+                        "id": 7,
+                        "pid": 824070507,
+                        "type": "1.0_switch",
+                        "address": "FE000107",
+                        "opt": "00000000",
+                        "optName": "关闭",
+                        "delay": 2
+                    },
+                    {
+                        "id": 8,
+                        "pid": 868203633,
+                        "type": "1.0_switch",
+                        "address": "FE000108",
+                        "opt": "00000000",
+                        "optName": "关闭",
+                        "delay": 2
+                    },
+                    {
+                        "id": 9,
+                        "pid": 520816601,
+                        "type": "4.0_scene",
+                        "address": "FE100001",
+                        "opt": "00000001",
+                        "optName": "场景调用",
+                        "delay": 2
+                    }
+                ],
+                "id": 2,
+                "pid": 697349108
+            }
+        ],
+        "IP": "192.168.1.230",
+        "Dev": "GW100A"
+    }
+]

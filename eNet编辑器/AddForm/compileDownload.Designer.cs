@@ -35,7 +35,9 @@
             this.symbolBox1 = new DevComponents.DotNetBar.Controls.SymbolBox();
             this.lbTitle = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.cbIP = new System.Windows.Forms.ComboBox();
+            this.cbTargetIp = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.cbSourceIP = new System.Windows.Forms.ComboBox();
             this.lbName = new System.Windows.Forms.Label();
             this.plInfoTitle.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -51,7 +53,7 @@
             this.plInfoTitle.Location = new System.Drawing.Point(1, 1);
             this.plInfoTitle.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.plInfoTitle.Name = "plInfoTitle";
-            this.plInfoTitle.Size = new System.Drawing.Size(200, 25);
+            this.plInfoTitle.Size = new System.Drawing.Size(220, 25);
             this.plInfoTitle.TabIndex = 3;
             this.plInfoTitle.MouseDown += new System.Windows.Forms.MouseEventHandler(this.plInfoTitle_MouseDown);
             this.plInfoTitle.MouseMove += new System.Windows.Forms.MouseEventHandler(this.plInfoTitle_MouseMove);
@@ -68,7 +70,7 @@
             this.btnSend.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None;
             this.btnSend.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnSend.HoverImage")));
             this.btnSend.Image = ((System.Drawing.Image)(resources.GetObject("btnSend.Image")));
-            this.btnSend.Location = new System.Drawing.Point(154, 4);
+            this.btnSend.Location = new System.Drawing.Point(180, 5);
             this.btnSend.Margin = new System.Windows.Forms.Padding(6);
             this.btnSend.Name = "btnSend";
             this.btnSend.Size = new System.Drawing.Size(15, 15);
@@ -88,7 +90,7 @@
             this.btnClose.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None;
             this.btnClose.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnClose.HoverImage")));
             this.btnClose.Image = ((System.Drawing.Image)(resources.GetObject("btnClose.Image")));
-            this.btnClose.Location = new System.Drawing.Point(181, 6);
+            this.btnClose.Location = new System.Drawing.Point(202, 6);
             this.btnClose.Margin = new System.Windows.Forms.Padding(6);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(13, 13);
@@ -131,40 +133,62 @@
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.White;
-            this.panel4.Controls.Add(this.cbIP);
+            this.panel4.Controls.Add(this.cbTargetIp);
+            this.panel4.Controls.Add(this.label1);
+            this.panel4.Controls.Add(this.cbSourceIP);
             this.panel4.Controls.Add(this.lbName);
             this.panel4.Location = new System.Drawing.Point(1, 27);
             this.panel4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(200, 60);
+            this.panel4.Size = new System.Drawing.Size(220, 100);
             this.panel4.TabIndex = 5;
             // 
-            // cbIP
+            // cbTargetIp
             // 
-            this.cbIP.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbIP.FormattingEnabled = true;
-            this.cbIP.Location = new System.Drawing.Point(63, 14);
-            this.cbIP.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.cbIP.Name = "cbIP";
-            this.cbIP.Size = new System.Drawing.Size(122, 25);
-            this.cbIP.TabIndex = 65;
+            this.cbTargetIp.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbTargetIp.FormattingEnabled = true;
+            this.cbTargetIp.Location = new System.Drawing.Point(79, 53);
+            this.cbTargetIp.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.cbTargetIp.Name = "cbTargetIp";
+            this.cbTargetIp.Size = new System.Drawing.Size(122, 25);
+            this.cbTargetIp.TabIndex = 67;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("微软雅黑", 9F);
+            this.label1.Location = new System.Drawing.Point(14, 56);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(56, 17);
+            this.label1.TabIndex = 66;
+            this.label1.Text = "下载到：";
+            // 
+            // cbSourceIP
+            // 
+            this.cbSourceIP.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbSourceIP.FormattingEnabled = true;
+            this.cbSourceIP.Location = new System.Drawing.Point(79, 14);
+            this.cbSourceIP.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.cbSourceIP.Name = "cbSourceIP";
+            this.cbSourceIP.Size = new System.Drawing.Size(122, 25);
+            this.cbSourceIP.TabIndex = 65;
             // 
             // lbName
             // 
             this.lbName.AutoSize = true;
             this.lbName.Font = new System.Drawing.Font("微软雅黑", 9F);
-            this.lbName.Location = new System.Drawing.Point(13, 17);
+            this.lbName.Location = new System.Drawing.Point(14, 17);
             this.lbName.Name = "lbName";
-            this.lbName.Size = new System.Drawing.Size(44, 17);
+            this.lbName.Size = new System.Drawing.Size(68, 17);
             this.lbName.TabIndex = 64;
-            this.lbName.Text = "主机：";
+            this.lbName.Text = "工程文件：";
             // 
             // compileDownload
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkGray;
-            this.ClientSize = new System.Drawing.Size(203, 89);
+            this.ClientSize = new System.Drawing.Size(223, 129);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.plInfoTitle);
             this.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
@@ -189,8 +213,10 @@
         private DevComponents.DotNetBar.Controls.SymbolBox symbolBox1;
         private System.Windows.Forms.Label lbTitle;
         private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.ComboBox cbIP;
+        private System.Windows.Forms.ComboBox cbSourceIP;
         private System.Windows.Forms.Label lbName;
         private DevComponents.DotNetBar.ButtonX btnSend;
+        private System.Windows.Forms.ComboBox cbTargetIp;
+        private System.Windows.Forms.Label label1;
     }
 }

@@ -185,9 +185,11 @@ namespace eNet编辑器.DgvView
 
                 int keyNum = 0;
                 //循环加载该定时号的所有信息
+                int start = pageIndex * 256;
+                int end = pageIndex * 256 + 256;
                 foreach (DataJson.panelsInfo plInfo in pls.panelsInfo)
                 {
-                    if(plInfo.id < pageIndex * 255 || plInfo.id > pageIndex * 255 +255)
+                    if(plInfo.id <= start || plInfo.id > end)
                     {
                         continue;
                     }
@@ -454,10 +456,11 @@ namespace eNet编辑器.DgvView
                 }
                 //撤销 
                 DataJson.totalList OldList = FileMesege.cmds.getListInfos();
-
+                int start = cbPage.SelectedIndex * 256;
+                int end = cbPage.SelectedIndex * 256 + 256;
                 foreach (DataJson.panelsInfo plInfo in pls.panelsInfo)
                 {
-                    if (plInfo.id < cbPage.SelectedIndex * 255 || plInfo.id > cbPage.SelectedIndex * 255 + 255)
+                    if (plInfo.id <= start || plInfo.id > end)
                     {
                         continue;
                     }
@@ -1171,17 +1174,18 @@ namespace eNet编辑器.DgvView
                 {
                     if (dataGridView1.Rows[i].Cells[0].Value != null)
                     {
-                        if (cbPage.SelectedIndex == 0)
+                       /* if (cbPage.SelectedIndex == 0)
                         {
                             KeyId = Convert.ToInt32(dataGridView1.Rows[i].Cells[0].Value);
                             AddCount = rowIndex - i;
                         }
                         else
                         {
-                            KeyId = cbPage.SelectedIndex * 255 + Convert.ToInt32(dataGridView1.Rows[i].Cells[0].Value) + 1;
+                            KeyId = cbPage.SelectedIndex * 256 + Convert.ToInt32(dataGridView1.Rows[i].Cells[0].Value);
                             AddCount = rowIndex - i;
-                        }
-                       
+                        }*/
+                        KeyId = cbPage.SelectedIndex * 256 + Convert.ToInt32(dataGridView1.Rows[i].Cells[0].Value);
+                        AddCount = rowIndex - i;
                         break;
                     }
                 }
@@ -1257,13 +1261,14 @@ namespace eNet编辑器.DgvView
             }
             //页码开始值
             int pageNum;
+
             if (cbPage.SelectedIndex == 0)
             {
                 pageNum = 0;
             }
             else
             {
-                pageNum = cbPage.SelectedIndex * 255 + 1;
+                pageNum = cbPage.SelectedIndex * 256 ;
             }
             int id = pageNum + Convert.ToInt32(dataGridView1.Rows[rowCount].Cells[0].Value);
             int opt = 255;
@@ -1425,19 +1430,24 @@ namespace eNet编辑器.DgvView
                     }
                    
                 
-                    int id = cbPage.SelectedIndex * 255 + Convert.ToInt32(dataGridView1.Rows[rowCount].Cells[0].Value);
-
+                    //int id = cbPage.SelectedIndex * 256 + Convert.ToInt32(dataGridView1.Rows[rowCount].Cells[0].Value);
+                    DataJson.panelsInfo plsInfo = GetPanelInfoByRowIndex(pls, rowCount);
+                    if (plsInfo == null)
+                    {
+                        return;
+                    }
 
                     //撤销 
                     DataJson.totalList OldList = FileMesege.cmds.getListInfos();
-                    foreach (DataJson.panelsInfo plsInfo in pls.panelsInfo)
-                    {
-                        if (plsInfo.id == id)
-                        {
-                            plsInfo.keyAddress = plc.RtAddress;
+                    plsInfo.keyAddress = plc.RtAddress;
+                    /* foreach (DataJson.panelsInfo plsInfo in pls.panelsInfo)
+                     {
+                         if (plsInfo.id == id)
+                         {
+                             plsInfo.keyAddress = plc.RtAddress;
 
-                        }
-                    }
+                         }
+                     }*/
                     DataJson.totalList NewList = FileMesege.cmds.getListInfos();
                     FileMesege.cmds.DoNewCommand(NewList, OldList);
 
@@ -1475,7 +1485,6 @@ namespace eNet编辑器.DgvView
                 }
                 //撤销 
                 DataJson.totalList OldList = FileMesege.cmds.getListInfos();
-                //int id = cbPage.SelectedIndex * 255 + rowCount +1;
                 DataJson.panelsInfo plsInfo = GetPanelInfoByRowIndex(pls, rowCount);
                 if (plsInfo == null)
                 {
@@ -1617,7 +1626,6 @@ namespace eNet编辑器.DgvView
             {
                 return;
             }
-            //int id = cbPage.SelectedIndex * 255 + rowCount + 1;
             DataJson.panelsInfo plsInfo = GetPanelInfoByRowIndex(pls, rowCount);
             if (plsInfo == null)
             {
@@ -1646,7 +1654,6 @@ namespace eNet编辑器.DgvView
             {
                 return null;
             }
-            //int id = cbPage.SelectedIndex * 255 + rowIndex + 1;
             DataJson.panelsInfo plsInfo = GetPanelInfoByRowIndex(pls, rowIndex);
             if (plsInfo == null)
             {
@@ -1726,7 +1733,6 @@ namespace eNet编辑器.DgvView
                 dataGridView1.Rows[rowIndex].Cells[7].ToolTipText = null;
                 return;
             }
-            //int id = cbPage.SelectedIndex * 255 + rowIndex + 1;
             DataJson.panelsInfo plsInfo = GetPanelInfoByRowIndex(pls, rowIndex);
             if (plsInfo == null)
             {
@@ -1769,7 +1775,7 @@ namespace eNet编辑器.DgvView
             {
                 return;
             }
-            //int id = cbPage.SelectedIndex * 255 + rowIndex + 1;
+       
             DataJson.panelsInfo plsInfo = GetPanelInfoByRowIndex(pls, rowIndex);
             if (plsInfo == null)
             {
@@ -1819,7 +1825,7 @@ namespace eNet编辑器.DgvView
                     return;
                 }
                 int rowIndex = dataGridView1.CurrentCell.RowIndex;
-                //int id = cbPage.SelectedIndex * 255 + rowIndex + 1;
+         
                 DataJson.panelsInfo plsInfo = GetPanelInfoByRowIndex(pls, rowIndex);
                 if (plsInfo == null)
                 {
@@ -1909,7 +1915,7 @@ namespace eNet编辑器.DgvView
                 return;
             }
             int rowIndex = dataGridView1.CurrentCell.RowIndex;
-            //int id = cbPage.SelectedIndex * 255 + rowIndex + 1;
+      
             DataJson.panelsInfo plsInfo = GetPanelInfoByRowIndex(pls, rowIndex);
             if (plsInfo == null)
             {
