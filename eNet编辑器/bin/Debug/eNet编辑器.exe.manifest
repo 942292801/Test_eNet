@@ -739,14 +739,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="eNet编辑器.exe" size="44676096">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="eNet编辑器.exe" size="44676608">
       <assemblyIdentity name="eNet编辑器" version="0.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>S+Cfh4SAqUxIh8wZw+xr8oqh7kY=</dsig:DigestValue>
+        <dsig:DigestValue>A3ndBkaWWT7XEJa4wZPqtPAJjkE=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -758,7 +758,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>8+UFVamPxQTs1Wo7ztNNc8mVsCo=</dsig:DigestValue>
+        <dsig:DigestValue>oJoYtV55DR9DuDGxga4A4ucS+7c=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

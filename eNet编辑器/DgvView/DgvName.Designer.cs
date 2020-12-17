@@ -34,13 +34,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DgvName));
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.NamePort = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NameType = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NameSection = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NameName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NameState = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NameOperation = new DevComponents.DotNetBar.Controls.DataGridViewButtonXColumn();
-            this.NameSet = new DevComponents.DotNetBar.Controls.DataGridViewButtonXColumn();
             this.doubleClickTimer = new System.Windows.Forms.Timer(this.components);
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
@@ -49,6 +42,14 @@
             this.cbOnline = new System.Windows.Forms.CheckBox();
             this.symbolBox1 = new DevComponents.DotNetBar.Controls.SymbolBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.NamePort = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NameType = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NameSection = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NameName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NameState = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NameOperation = new DevComponents.DotNetBar.Controls.DataGridViewButtonXColumn();
+            this.NameSet = new DevComponents.DotNetBar.Controls.DataGridViewButtonXColumn();
+            this.NameDel = new DevComponents.DotNetBar.Controls.DataGridViewButtonXColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -81,7 +82,8 @@
             this.NameName,
             this.NameState,
             this.NameOperation,
-            this.NameSet});
+            this.NameSet,
+            this.NameDel});
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("微软雅黑", 9F);
@@ -107,65 +109,6 @@
             this.dataGridView1.Scroll += new System.Windows.Forms.ScrollEventHandler(this.dataGridView1_Scroll);
             this.dataGridView1.KeyUp += new System.Windows.Forms.KeyEventHandler(this.dataGridView1_KeyUp);
             this.dataGridView1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.dataGridView1_MouseDown);
-            // 
-            // NamePort
-            // 
-            this.NamePort.HeaderText = "端口";
-            this.NamePort.MinimumWidth = 10;
-            this.NamePort.Name = "NamePort";
-            this.NamePort.ReadOnly = true;
-            this.NamePort.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.NamePort.Width = 60;
-            // 
-            // NameType
-            // 
-            this.NameType.HeaderText = "类型";
-            this.NameType.Name = "NameType";
-            this.NameType.ReadOnly = true;
-            this.NameType.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.NameType.Width = 60;
-            // 
-            // NameSection
-            // 
-            this.NameSection.HeaderText = "区域";
-            this.NameSection.Name = "NameSection";
-            this.NameSection.ReadOnly = true;
-            this.NameSection.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.NameSection.Width = 300;
-            // 
-            // NameName
-            // 
-            this.NameName.HeaderText = "名称";
-            this.NameName.Name = "NameName";
-            this.NameName.ReadOnly = true;
-            this.NameName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // NameState
-            // 
-            this.NameState.HeaderText = "状态";
-            this.NameState.Name = "NameState";
-            this.NameState.ReadOnly = true;
-            this.NameState.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.NameState.Width = 60;
-            // 
-            // NameOperation
-            // 
-            this.NameOperation.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
-            this.NameOperation.HeaderText = "操作";
-            this.NameOperation.Name = "NameOperation";
-            this.NameOperation.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.NameOperation.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.NameOperation.Text = null;
-            this.NameOperation.Width = 60;
-            // 
-            // NameSet
-            // 
-            this.NameSet.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
-            this.NameSet.HeaderText = "设置";
-            this.NameSet.Name = "NameSet";
-            this.NameSet.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.NameSet.Text = null;
-            this.NameSet.Width = 60;
             // 
             // doubleClickTimer
             // 
@@ -251,6 +194,74 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "内容";
             // 
+            // NamePort
+            // 
+            this.NamePort.HeaderText = "端口";
+            this.NamePort.MinimumWidth = 10;
+            this.NamePort.Name = "NamePort";
+            this.NamePort.ReadOnly = true;
+            this.NamePort.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.NamePort.Width = 60;
+            // 
+            // NameType
+            // 
+            this.NameType.HeaderText = "类型";
+            this.NameType.Name = "NameType";
+            this.NameType.ReadOnly = true;
+            this.NameType.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.NameType.Width = 60;
+            // 
+            // NameSection
+            // 
+            this.NameSection.HeaderText = "区域";
+            this.NameSection.Name = "NameSection";
+            this.NameSection.ReadOnly = true;
+            this.NameSection.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.NameSection.Width = 300;
+            // 
+            // NameName
+            // 
+            this.NameName.HeaderText = "名称";
+            this.NameName.Name = "NameName";
+            this.NameName.ReadOnly = true;
+            this.NameName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // NameState
+            // 
+            this.NameState.HeaderText = "状态";
+            this.NameState.Name = "NameState";
+            this.NameState.ReadOnly = true;
+            this.NameState.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.NameState.Width = 60;
+            // 
+            // NameOperation
+            // 
+            this.NameOperation.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
+            this.NameOperation.HeaderText = "操作";
+            this.NameOperation.Name = "NameOperation";
+            this.NameOperation.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.NameOperation.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.NameOperation.Text = null;
+            this.NameOperation.Width = 60;
+            // 
+            // NameSet
+            // 
+            this.NameSet.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
+            this.NameSet.HeaderText = "设置";
+            this.NameSet.Name = "NameSet";
+            this.NameSet.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.NameSet.Text = null;
+            this.NameSet.Width = 60;
+            // 
+            // NameDel
+            // 
+            this.NameDel.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
+            this.NameDel.HeaderText = "清空";
+            this.NameDel.Name = "NameDel";
+            this.NameDel.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.NameDel.Text = null;
+            this.NameDel.Width = 60;
+            // 
             // DgvName
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -281,6 +292,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel2;
         private DevComponents.DotNetBar.Controls.SymbolBox symbolBox1;
+        private System.Windows.Forms.CheckBox cbOnline;
         private System.Windows.Forms.DataGridViewTextBoxColumn NamePort;
         private System.Windows.Forms.DataGridViewTextBoxColumn NameType;
         private System.Windows.Forms.DataGridViewTextBoxColumn NameSection;
@@ -288,6 +300,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn NameState;
         private DevComponents.DotNetBar.Controls.DataGridViewButtonXColumn NameOperation;
         private DevComponents.DotNetBar.Controls.DataGridViewButtonXColumn NameSet;
-        private System.Windows.Forms.CheckBox cbOnline;
+        private DevComponents.DotNetBar.Controls.DataGridViewButtonXColumn NameDel;
     }
 }

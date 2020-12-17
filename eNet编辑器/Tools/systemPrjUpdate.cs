@@ -352,8 +352,6 @@ namespace eNet编辑器.AddForm
                 op.Title = "选择文件";
                 if (op.ShowDialog() == DialogResult.OK)
                 {
-
-
                     //添加打开过的地址
                     IniConfig.SetValue(configPath, "filepath", key, op.FileName);
                     tb.Text = op.FileName.ToString();
@@ -436,16 +434,6 @@ namespace eNet编辑器.AddForm
                     }
 
                 }
-
-
-              /*  sock = ts.ConnectServer(ip, 6001, 1000);
-                ToolsUtil.DelayMilli(1000);
-                
-                if (sock == null)
-                {
-                    AppTxtShow("连接失败！请重试");
-                    return false;
-                }*/
 
 
                 int flag = 2;

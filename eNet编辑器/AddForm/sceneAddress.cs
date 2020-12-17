@@ -120,8 +120,7 @@ namespace eNet编辑器.AddForm
         {
             if (address == "255.255.255.255")
             {
-                //未赋值的时候 默认选取第一项
-                cb1.Text = ip.Split('.')[3];
+                cb1.Text = ip;
                 if (cb2.Items.Count > 0)
                 {
                     cb2.SelectedIndex = 0;
@@ -129,18 +128,35 @@ namespace eNet编辑器.AddForm
                 }
                 return;
             }
+            else if (string.IsNullOrEmpty(address))
+            {
+                cb1.Text = ip;
+                cb2.SelectedIndex = 0;
+                return;
+            }
             //IP还原
             string[] addInfos = address.Split('.');
-            cb1.Text = addInfos[0];
+            for (int i = 0; i < cb1.Items.Count; i++)
+            {
+                if (cb1.Items[i].ToString().Split('.')[3] == addInfos[0])
+                {
+                    cb1.SelectedItem = cb1.Items[i];
+                    break;
+                }
+            }
 
             //类型还原
             if (string.IsNullOrEmpty(nowType))
             {
+                //没有类型 默认选中为设备
+                cb2.SelectedIndex = 0;
                 return;
             }
             string fileName = IniHelper.findTypesIniTypebyName(nowType);
             if (string.IsNullOrEmpty(fileName))
             {
+                //没有类型 默认选中为设备
+                cb2.SelectedIndex = 0;
                 return;
             }
 
@@ -192,7 +208,7 @@ namespace eNet编辑器.AddForm
         private void Cb1_SelectedIndexChanged(object sender, EventArgs e)
         {
             cb2.Items.Clear();
-            if (cb1.Text == ip.Split('.')[3])
+            if (cb1.Text == ip)
             {
                 //非跨主机
                 if (linkDic == null)
@@ -420,14 +436,14 @@ namespace eNet编辑器.AddForm
                 switch (cb2.SelectedItem.ToString())
                 {
                     case "场景":
-                        string tmpip = ip;
-                        if (cb1.Text != "254")
+                       /* string tmpip = ip;
+                        if (!cb1.Text.Contains("254"))
                         {
                             string[] ips = ip.Split('.');
                             tmpip = string.Format("{0}.{1}.{2}.{3}", ips[0], ips[1], ips[2], cb1.Text);
                         }
-                        DataJson.Scene scene = DataListHelper.getSceneList(tmpip);
-
+                        DataJson.Scene scene = DataListHelper.getSceneList(tmpip);*/
+                        DataJson.Scene scene = DataListHelper.getSceneList(cb1.Text);
                         foreach (DataJson.scenes scenes in scene.scenes)
                         {
                             cb4.Items.Add(scenes.id);
@@ -501,13 +517,13 @@ namespace eNet编辑器.AddForm
                 string newAddress = "";
                 if (!string.IsNullOrEmpty(cb1.Text) && !string.IsNullOrEmpty(cb2.Text))
                 {
-                    if (ip.Split('.')[3] == cb1.Text)
+                    if (ip == cb1.Text)
                     {
                         newAddress = "FE" + ToolsUtil.strtohexstr(linkDic[cb2.SelectedItem.ToString()]);
                     }
                     else
                     {
-                        newAddress = ToolsUtil.strtohexstr(cb1.Text) + ToolsUtil.strtohexstr(linkDic[cb2.SelectedItem.ToString()]);
+                        newAddress = ToolsUtil.strtohexstr(cb1.Text.Split('.')[3]) + ToolsUtil.strtohexstr(linkDic[cb2.SelectedItem.ToString()]);
                     }
 
                     switch (linkDic[cb2.SelectedItem.ToString()])

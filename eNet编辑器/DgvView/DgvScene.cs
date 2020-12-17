@@ -286,94 +286,99 @@ namespace eNet编辑器.DgvView
         {
             try
             {
-            //没有选中或者选中了网关节点
-            if (FileMesege.sceneSelectNode == null|| FileMesege.sceneSelectNode.Parent == null)
-            {
-                return;
-            }
-            if (FileMesege.sceneList == null)
-            {
-                FileMesege.sceneList = new List<DataJson.Scene>();
-            }
-            //选中子节点
-            //循环获取
-            string[] ids = FileMesege.sceneSelectNode.Text.Split(' ');
-            int sceneNum = Convert.ToInt32(Regex.Replace(ids[0], @"[^\d]*", ""));
-            //获取该节点IP地址场景下的 场景信息对象
-            DataJson.scenes sc = DataListHelper.getSceneInfoList(ip, sceneNum);
-            //新建表
-            DataJson.sceneInfo info = new DataJson.sceneInfo();
-            
-            int id = 0;
-            string type = "",opt = "",optname = "",add = "";
-            //撤销 
-            DataJson.totalList OldList = FileMesege.cmds.getListInfos();
-            int delay = 0;
-            if (sc.sceneInfo.Count > 0)
-            {
-                id = sc.sceneInfo[sc.sceneInfo.Count - 1].id;
-                type = sc.sceneInfo[sc.sceneInfo.Count - 1].type;
-                opt = sc.sceneInfo[sc.sceneInfo.Count - 1].opt;
-                optname = sc.sceneInfo[sc.sceneInfo.Count - 1].optName;
-                delay = sc.sceneInfo[sc.sceneInfo.Count - 1].delay;
-                add = sc.sceneInfo[sc.sceneInfo.Count - 1].address;
-            }
-            
-            info.id = id +1 ;
-            info.pid = 0;
-            info.type = type;
-            
-            info.opt = opt;
-            info.optName = optname;
-            info.delay = delay; 
-            //地址加一处理 并搜索PointList表获取地址 信息
-            if (!string.IsNullOrEmpty(add) && add != "FFFFFFFF")
-            {
-                switch (add.Substring(2, 2))
-                { 
-                    case "00":
-                            add = add.Substring(0,6)+ToolsUtil.strtohexstr((Convert.ToInt32(add.Substring(6, 2), 16) +1).ToString());
-                        break;
-                    default:
-                        string hexnum = ToolsUtil.strtohexstr((Convert.ToInt32(add.Substring(4, 4), 16) + 1).ToString());
-                        while(hexnum.Length<4)
-                        {
-                            hexnum = hexnum.Insert(0,"0");
-                        }
-                        add = add.Substring(0, 4) + hexnum;
-                        break;
-                }
-                //按照地址查找type的类型 
-                type = IniHelper.findIniTypesByAddress(ip, add).Split(',')[0];
-
-                info.type = type;
-                //添加地域和名称 在sceneInfo表中
-                DataJson.PointInfo point = DataListHelper.findPointByType_address("",add,ip);
-                if (point != null)
+                //没有选中或者选中了网关节点
+                if (FileMesege.sceneSelectNode == null|| FileMesege.sceneSelectNode.Parent == null)
                 {
-                    info.pid = point.pid;
-                    info.type = point.type;
-                    if (info.type != point.type)
+                    return;
+                }
+                if (FileMesege.sceneList == null)
+                {
+                    FileMesege.sceneList = new List<DataJson.Scene>();
+                }
+                //选中子节点
+                //循环获取
+                string[] ids = FileMesege.sceneSelectNode.Text.Split(' ');
+                int sceneNum = Convert.ToInt32(Regex.Replace(ids[0], @"[^\d]*", ""));
+                //获取该节点IP地址场景下的 场景信息对象
+                DataJson.scenes sc = DataListHelper.getSceneInfoList(ip, sceneNum);
+                //新建表
+                DataJson.sceneInfo info = new DataJson.sceneInfo();
+            
+                int id = 0;
+                string type = "",opt = "",optname = "",add = "";
+                //撤销 
+                DataJson.totalList OldList = FileMesege.cmds.getListInfos();
+                int delay = 0;
+                if (sc.sceneInfo.Count > 0)
+                {
+                    id = sc.sceneInfo[sc.sceneInfo.Count - 1].id;
+                    type = sc.sceneInfo[sc.sceneInfo.Count - 1].type;
+                    opt = sc.sceneInfo[sc.sceneInfo.Count - 1].opt;
+                    optname = sc.sceneInfo[sc.sceneInfo.Count - 1].optName;
+                    delay = sc.sceneInfo[sc.sceneInfo.Count - 1].delay;
+                    add = sc.sceneInfo[sc.sceneInfo.Count - 1].address;
+                }
+            
+                info.id = id +1 ;
+                info.pid = 0;
+                info.type = type;
+            
+                info.opt = opt;
+                info.optName = optname;
+                info.delay = delay; 
+                //地址加一处理 并搜索PointList表获取地址 信息
+                if (!string.IsNullOrEmpty(add) && add != "FFFFFFFF")
+                {
+                    switch (add.Substring(2, 2))
+                    { 
+                        case "00":
+                                add = add.Substring(0,6)+ToolsUtil.strtohexstr((Convert.ToInt32(add.Substring(6, 2), 16) +1).ToString());
+                            break;
+                        default:
+                            string hexnum = ToolsUtil.strtohexstr((Convert.ToInt32(add.Substring(4, 4), 16) + 1).ToString());
+                            while(hexnum.Length<4)
+                            {
+                                hexnum = hexnum.Insert(0,"0");
+                            }
+                            add = add.Substring(0, 4) + hexnum;
+                            break;
+                    }
+                    //按照地址查找type的类型 
+                    type = IniHelper.findIniTypesByAddress(ip, add).Split(',')[0];
+
+                    info.type = type;
+                    //添加地域和名称 在sceneInfo表中
+                    DataJson.PointInfo point = DataListHelper.findPointByType_address("",add,ip);
+                    if (point != null)
                     {
-                        info.opt = "";
-                        info.optName = "";
+                        info.pid = point.pid;
+                        info.type = point.type;
+                        if (info.type != point.type)
+                        {
+                            info.opt = "";
+                            info.optName = "";
+                        }
+                    }
+                    else
+                    {
+                        info.pid = 0;
                     }
                 }
-                else
+                info.address = add;
+                //添加操作
+
+                sc.sceneInfo.Add(info);
+           
+
+                DataJson.totalList NewList = FileMesege.cmds.getListInfos();
+                FileMesege.cmds.DoNewCommand(NewList, OldList);
+                addItem(info,ip);
+                DgvMesege.selectLastCount(dataGridView1);
+                //第一行为空的话就 弹出对象选择框
+                if (info.id == 1 && string.IsNullOrEmpty(info.address))
                 {
-                    info.pid = 0;
+                    dgvAddress(1, "", "");
                 }
-            }
-            info.address = add;
-            
-            sc.sceneInfo.Add(info);
-            //排序
-            //sceneInfoSort(sc);
-            DataJson.totalList NewList = FileMesege.cmds.getListInfos();
-            FileMesege.cmds.DoNewCommand(NewList, OldList);
-            addItem(info,ip);
-            DgvMesege.selectLastCount(dataGridView1);  
-      
             }
             catch (Exception ex) { MessageBox.Show(ex + "临时调试错误信息"); }
             
@@ -960,14 +965,14 @@ namespace eNet编辑器.DgvView
                                 AppTxtShow("延时格式错误，请正确填写！");
                             }
                             break;
-                        case "type":
+                        /*case "type":
                             //改变对象  
                             string isChange = dgvObjtype(Convert.ToInt32(dataGridView1.Rows[rowNum].Cells[0].Value), dataGridView1.Rows[rowNum].Cells[1].EditedFormattedValue.ToString());
                             if (!string.IsNullOrEmpty(isChange))
                             {
                                 dataGridView1.Rows[rowNum].Cells[1].Value = IniHelper.findTypesIniNamebyType(isChange);
                             }   
-                            break;
+                            break;*/
                         default: break;
                     }
                 }
@@ -1058,7 +1063,7 @@ namespace eNet编辑器.DgvView
         /// </summary>
         /// <param name="id"></param>
         /// <param name="type"></param>
-        private string dgvObjtype(int id,string type)
+        /*private string dgvObjtype(int id,string type)
         {
             string[] ids = FileMesege.sceneSelectNode.Text.Split(' ');
             int sceneNum = Convert.ToInt32(Regex.Replace(ids[0], @"[^\d]*", ""));
@@ -1084,7 +1089,7 @@ namespace eNet编辑器.DgvView
             DataJson.totalList NewList = FileMesege.cmds.getListInfos();
             FileMesege.cmds.DoNewCommand(NewList, OldList);
             return null;
-        }
+        }*/
 
         /// <summary>
         /// DGV表 操作栏
@@ -1108,7 +1113,6 @@ namespace eNet编辑器.DgvView
             //把窗口向屏幕中间刷新
             dc.StartPosition = FormStartPosition.CenterParent;
             dc.ObjType = type;
-
             dc.Opt = info.opt;
             dc.Ver = info.optName;
             dc.ShowDialog();
@@ -1180,8 +1184,19 @@ namespace eNet编辑器.DgvView
                     info.pid = point.pid;
                     if (info.type != point.type)
                     {
-                        info.opt = "";
-                        info.optName = "";
+                        List<string> optList = IniHelper.findTypesIniCommandbyType(rtType);
+                        if (optList != null)
+                        {
+                            info.optName = optList[0];
+                            info.opt = optList[1];
+
+                        }
+                        else
+                        {
+                            info.optName = "";
+                            info.opt = "";
+
+                        }
                     }
 
                 }
@@ -1191,8 +1206,19 @@ namespace eNet编辑器.DgvView
                     info.pid = 0;
                     if (info.type != rtType)
                     {
-                        info.opt = "";
-                        info.optName = "";
+                        List<string> optList = IniHelper.findTypesIniCommandbyType(rtType);
+                        if (optList != null)
+                        {
+                            info.optName = optList[0];
+                            info.opt = optList[1];
+
+                        }
+                        else
+                        {
+                            info.optName = "";
+                            info.opt = "";
+
+                        }
                     }
                    
                 }
@@ -1208,7 +1234,7 @@ namespace eNet编辑器.DgvView
 
         }
 
-    
+        
        
         #endregion
 

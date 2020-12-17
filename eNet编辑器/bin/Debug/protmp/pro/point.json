@@ -58,12 +58,12 @@
             "area2": "",
             "area3": "",
             "area4": "",
-            "name": "筒灯5@41",
-            "ip": "192.168.1.41",
-            "address": "FE000105",
+            "name": "筒灯5@255",
+            "ip": "",
+            "address": "FFFFFFFF",
             "objType": "",
             "value": "",
-            "type": "1.0_switch"
+            "type": ""
         },
         {
             "pid": 320738199,
@@ -73,10 +73,10 @@
             "area4": "",
             "name": "筒灯6@41",
             "ip": "192.168.1.41",
-            "address": "FE000106",
+            "address": "FE000902",
             "objType": "",
             "value": "",
-            "type": "1.0_switch"
+            "type": "2.0_dimmer"
         },
         {
             "pid": 540537591,
@@ -86,10 +86,10 @@
             "area4": "",
             "name": "筒灯7@41",
             "ip": "192.168.1.41",
-            "address": "FE000107",
+            "address": "FE000901",
             "objType": "",
             "value": "",
-            "type": "1.0_switch"
+            "type": "2.0_dimmer"
         },
         {
             "pid": 760336983,
@@ -97,12 +97,12 @@
             "area2": "",
             "area3": "",
             "area4": "",
-            "name": "筒灯8@41",
-            "ip": "192.168.1.41",
-            "address": "FE000108",
+            "name": "筒灯8@255",
+            "ip": "",
+            "address": "FFFFFFFF",
             "objType": "",
             "value": "",
-            "type": "1.0_switch"
+            "type": ""
         },
         {
             "pid": 466976654,
@@ -909,6 +909,58 @@
             "objType": "",
             "value": "",
             "type": "2.0_dimmer"
+        },
+        {
+            "pid": 632327179,
+            "area1": "北区",
+            "area2": "",
+            "area3": "",
+            "area4": "",
+            "name": "筒灯1@41",
+            "ip": "192.168.1.41",
+            "address": "FE000105",
+            "objType": "",
+            "value": "",
+            "type": "1.0_switch"
+        },
+        {
+            "pid": 115835280,
+            "area1": "北区",
+            "area2": "",
+            "area3": "",
+            "area4": "",
+            "name": "筒灯2@41",
+            "ip": "192.168.1.41",
+            "address": "FE000106",
+            "objType": "",
+            "value": "",
+            "type": "1.0_switch"
+        },
+        {
+            "pid": 737043881,
+            "area1": "北区",
+            "area2": "",
+            "area3": "",
+            "area4": "",
+            "name": "筒灯3@41",
+            "ip": "192.168.1.41",
+            "address": "FE000107",
+            "objType": "",
+            "value": "",
+            "type": "1.0_switch"
+        },
+        {
+            "pid": 605510742,
+            "area1": "北区",
+            "area2": "",
+            "area3": "",
+            "area4": "",
+            "name": "筒灯4@41",
+            "ip": "192.168.1.41",
+            "address": "FE000108",
+            "objType": "",
+            "value": "",
+            "type": "1.0_switch"
         }
     ],
     "scene": [
@@ -988,6 +1040,19 @@
             "name": "工作日@41",
             "ip": "192.168.1.41",
             "address": "FE200001",
+            "objType": "",
+            "value": "",
+            "type": "5.0_timer"
+        },
+        {
+            "pid": 223979435,
+            "area1": "",
+            "area2": "",
+            "area3": "",
+            "area4": "",
+            "name": "休息日@41",
+            "ip": "192.168.1.41",
+            "address": "FE200002",
             "objType": "",
             "value": "",
             "type": "5.0_timer"

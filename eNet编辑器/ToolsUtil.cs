@@ -362,7 +362,7 @@ namespace eNet编辑器
 
 
         /// <summary>
-        /// 根据设备列表添加IP地址的最后一位到ComboBox里面
+        /// 根据设备列表添加IP地址的到ComboBox里面
         /// </summary>
         /// <param name="cb"></param>
         public static void CBGetIp(ComboBox cb)
@@ -374,7 +374,7 @@ namespace eNet编辑器
             cb.Items.Clear();
             foreach (DataJson.Device d in FileMesege.DeviceList)
             {
-                cb.Items.Add(d.ip.Split('.')[3]);
+                cb.Items.Add(d.ip);
             }
         }
 
@@ -419,6 +419,8 @@ namespace eNet编辑器
             }
 
         }
+
+
 
     }
 }

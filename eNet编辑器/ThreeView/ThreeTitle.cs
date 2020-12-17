@@ -630,16 +630,25 @@ namespace eNet编辑器.ThreeView
         {
             try
             {
+                bool isChange = false;
+                DataJson.totalList OldList = FileMesege.cmds.getListInfos();
                 //循环判断treeView的节点 如果是选中
                 foreach (TreeNode tn in treeView1.Nodes)
                 {
                     if (tn.Checked)
                     {
-                        dgvNodeAdd(tn);
+                        if (dgvNodeAdd(tn))
+                        {
+                            isChange = true;
+                        }
 
                     }
                 }//foreach所有节点信息处理完
-
+                if (isChange)
+                {
+                    DataJson.totalList NewList = FileMesege.cmds.getListInfos();
+                    FileMesege.cmds.DoNewCommand(NewList, OldList);
+                }
             }
             catch { }
         }
@@ -648,8 +657,9 @@ namespace eNet编辑器.ThreeView
         /// title节点 添加到dgv表中
         /// </summary>
         /// <param name="tn"></param>
-        private void dgvNodeAdd(TreeNode tn)
+        private bool dgvNodeAdd(TreeNode tn)
         {
+            bool isChange = false;
             //区域
             switch (FileMesege.formType)
             {
@@ -660,13 +670,15 @@ namespace eNet编辑器.ThreeView
                 case "point":
                     //添加点位
                     addPoint(keys[FileMesege.cbTypeIndex]);
-                    //MessageBox.Show("name");
+                   
                     break;
                 case "scene":
                     sceneFormtype(tn.Text);
+                    isChange = true;
                     break;
                 case "timer":
                     timerFormtype(tn.Text);
+                    isChange = true;
                     break;
                 case "panel":
                     //不允许双击添加
@@ -678,11 +690,11 @@ namespace eNet编辑器.ThreeView
                     break;
                 case "virtualport":
                     addVar(tn.Text);
-                    
+                    isChange = true;
                     break;
                 default: break;
             }
-            //选中添加的类型 搜索Title  NameList中的各种类型
+            return isChange;
         }
 
         /// <summary>
@@ -696,16 +708,12 @@ namespace eNet编辑器.ThreeView
                 
                 int number = Convert.ToInt32( Regex.Replace(nodeTxt, @"[^\d]*", ""));
                 FileMesege.titleinfo = nodeTxt.Split('+')[0];
-                //撤销
-                DataJson.totalList OldList = FileMesege.cmds.getListInfos();
                 for (int i = 0; i < number; i++)
                 {
                     //添加虚拟端口
                     addVirtualport(keys[FileMesege.cbTypeIndex]);
                 }
-                //
-                DataJson.totalList NewList = FileMesege.cmds.getListInfos();
-                FileMesege.cmds.DoNewCommand(NewList, OldList);
+             
                
                 selectLastCountLocalVar();
             }
@@ -789,8 +797,7 @@ namespace eNet编辑器.ThreeView
                 {
           
                     
-                    //撤销
-                    DataJson.totalList OldList = FileMesege.cmds.getListInfos();
+        
                     //新建表
                     DataJson.sceneInfo info = new DataJson.sceneInfo();
                     int id = 0;
@@ -813,13 +820,27 @@ namespace eNet编辑器.ThreeView
                         info.address = eq.address;
                     }
                     info.pid = eq.pid;
-                    info.opt = "";
-                    info.optName = "";
+               
                     info.type = eq.type;
+
+                    List<string> optList = IniHelper.findTypesIniCommandbyType(eq.type);
+                    if (optList != null)
+                    {
+                        info.optName = optList[0];
+                        info.opt = optList[1];
+
+                    }
+                    else
+                    {
+                        info.optName = "";
+                        info.opt = "";
+
+                    }
+
                     //插入到 sceneList
                     sc.sceneInfo.Add(info);
-                    DataJson.totalList NewList = FileMesege.cmds.getListInfos();
-                    FileMesege.cmds.DoNewCommand(NewList, OldList);
+
+                    
                     dgvsceneAddOneItem(info, ip);
                     selectLastCountScene();
                     break;
@@ -927,9 +948,6 @@ namespace eNet编辑器.ThreeView
                 //NameList中查找到匹配的信息
                 if (eq.area1 == section_name[0] && eq.area2 == section_name[1] && eq.area3 == section_name[2] && eq.area4 == section_name[3] && eq.name == section_name[4])
                 {
-
-                    //撤销
-                    DataJson.totalList OldList = FileMesege.cmds.getListInfos();
                     //新建表
                     DataJson.timersInfo tmInfo = new DataJson.timersInfo();
                     int id = 0;
@@ -952,12 +970,23 @@ namespace eNet编辑器.ThreeView
                         tmInfo.address = eq.address;
                     }
                     tmInfo.pid = eq.pid;
-                    tmInfo.opt = "";
-                    tmInfo.optName = "";
+                    
                     tmInfo.type = eq.type;
+                    List<string> optList = IniHelper.findTypesIniCommandbyType(eq.type);
+                    if (optList != null)
+                    {
+                        tmInfo.optName = optList[0];
+                        tmInfo.opt = optList[1];
+
+                    }
+                    else
+                    {
+                        tmInfo.optName = "";
+                        tmInfo.opt = "";
+
+                    }
                     tms.timersInfo.Add(tmInfo);
-                    DataJson.totalList NewList = FileMesege.cmds.getListInfos();
-                    FileMesege.cmds.DoNewCommand(NewList, OldList);
+             
                     dgvtimerAddOneItem(tmInfo,ip);
                     selectLastCountTimer();
                     break;

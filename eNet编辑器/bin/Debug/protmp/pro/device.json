@@ -477,6 +477,44 @@
                 "devPortList": [
                     {
                         "portID": 1,
+                        "portType": "2.0_dimmer",
+                        "portInterface": "0-10V",
+                        "portContent": null
+                    },
+                    {
+                        "portID": 2,
+                        "portType": "2.0_dimmer",
+                        "portInterface": "0-10V",
+                        "portContent": null
+                    },
+                    {
+                        "portID": 3,
+                        "portType": "2.0_dimmer",
+                        "portInterface": "0-10V",
+                        "portContent": null
+                    },
+                    {
+                        "portID": 4,
+                        "portType": "2.0_dimmer",
+                        "portInterface": "0-10V",
+                        "portContent": null
+                    }
+                ],
+                "id": 9,
+                "device": "ET-D0405D",
+                "sn": "",
+                "ver": "",
+                "area1": "",
+                "area2": "",
+                "area3": "",
+                "area4": "",
+                "name": "",
+                "devContent": null
+            },
+            {
+                "devPortList": [
+                    {
+                        "portID": 1,
                         "portType": "14.0_data",
                         "portInterface": "Data",
                         "portContent": null

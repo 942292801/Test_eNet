@@ -1,1 +1,97 @@
-[]
+[
+    {
+        "timers": [
+            {
+                "timersInfo": [
+                    {
+                        "id": 1,
+                        "pid": 922454120,
+                        "type": "1.0_switch",
+                        "address": "A6000105",
+                        "opt": "00000001",
+                        "optName": "开启",
+                        "shortTime": ""
+                    },
+                    {
+                        "id": 2,
+                        "pid": 0,
+                        "type": "10.2_io",
+                        "address": "A6F80302",
+                        "opt": "",
+                        "optName": "",
+                        "shortTime": ""
+                    },
+                    {
+                        "id": 3,
+                        "pid": 0,
+                        "type": "16.0_PanelButton",
+                        "address": "A6FA0603",
+                        "opt": "",
+                        "optName": "",
+                        "shortTime": ""
+                    },
+                    {
+                        "id": 4,
+                        "pid": 0,
+                        "type": "3.0_logic",
+                        "address": "A6400004",
+                        "opt": "",
+                        "optName": "",
+                        "shortTime": ""
+                    },
+                    {
+                        "id": 5,
+                        "pid": 844056141,
+                        "type": "1.0_switch",
+                        "address": "A6000405",
+                        "opt": "",
+                        "optName": "",
+                        "shortTime": ""
+                    },
+                    {
+                        "id": 6,
+                        "pid": 0,
+                        "type": "5.0_timer",
+                        "address": "A6200006",
+                        "opt": "",
+                        "optName": "",
+                        "shortTime": ""
+                    },
+                    {
+                        "id": 7,
+                        "pid": 0,
+                        "type": "6.1_panel",
+                        "address": "A63003E7",
+                        "opt": "",
+                        "optName": "",
+                        "shortTime": ""
+                    },
+                    {
+                        "id": 8,
+                        "pid": 0,
+                        "type": "6.2_sensor",
+                        "address": "A63003E8",
+                        "opt": "",
+                        "optName": "",
+                        "shortTime": ""
+                    },
+                    {
+                        "id": 9,
+                        "pid": 0,
+                        "type": "9.0_virtualport",
+                        "address": "A6FB0358",
+                        "opt": "",
+                        "optName": "",
+                        "shortTime": ""
+                    }
+                ],
+                "id": 1,
+                "pid": 340643528,
+                "dates": "",
+                "priorHoloday": "01000001"
+            }
+        ],
+        "IP": "192.168.1.41",
+        "Dev": "GW100A"
+    }
+]

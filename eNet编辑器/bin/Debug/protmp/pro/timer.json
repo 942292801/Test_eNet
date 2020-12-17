@@ -6,10 +6,10 @@
                     {
                         "id": 1,
                         "pid": 922454120,
-                        "type": "1.0_switch",
-                        "address": "A6000105",
-                        "opt": "00000001",
-                        "optName": "开启",
+                        "type": "",
+                        "address": "FFFFFFFF",
+                        "opt": "",
+                        "optName": "",
                         "shortTime": ""
                     },
                     {
@@ -87,6 +87,13 @@
                 ],
                 "id": 1,
                 "pid": 340643528,
+                "dates": "",
+                "priorHoloday": "01000001"
+            },
+            {
+                "timersInfo": [],
+                "id": 2,
+                "pid": 223979435,
                 "dates": "",
                 "priorHoloday": "01000001"
             }
