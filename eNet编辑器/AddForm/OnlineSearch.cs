@@ -9,6 +9,8 @@ using eNet编辑器.Properties;
 using System.Runtime.InteropServices;
 using System.IO;
 using System.Threading;
+using System.ComponentModel;
+using eNet编辑器.OtherView;
 
 namespace eNet编辑器.AddForm
 {
@@ -18,11 +20,12 @@ namespace eNet编辑器.AddForm
         //UDP客户端
         UdpSocket udp;
         //网关节点 选中的IP地址
-        string selectIP = string.Empty;
+        private string searchIP = string.Empty;
+        private bool isSearchIP = false;
         // 记录延时操作
         private long lastTicks = 0;
         //本地IP
-        string Localip = string.Empty;
+        private string Localip = string.Empty;
 
         TreeMesege tm ;
         public OnlineSearch()
@@ -41,28 +44,145 @@ namespace eNet编辑器.AddForm
         //更新节点
         public event Action UpdateNode;
 
-        private delegate void ReceviceDelegate(string msg);
-        private event ReceviceDelegate receviceDelegate;
+        private BackgroundWorker backgroundWorker1;
+        private PgView pgv;
+
+
+        private delegate void SearchMasterRcvDelegate(string msg);
+        private event SearchMasterRcvDelegate searchMasterRcvDelegate;
+
+        private delegate void GetMasterDevDelegate(string msg);
+        private event GetMasterDevDelegate getMasterDevDelegate;
 
         private delegate void UpdateNodeDelegate();
         private event UpdateNodeDelegate updateNodeDelegate;
 
+        //搜索存放网关IP
+        private HashSet<string> masterHs = new HashSet<string>();
+
+
         private void OnlineSearch_Load(object sender, EventArgs e)
         {
             StopOnline();
-            udpIni();
-            //获取本地IP
-            Localip = ToolsUtil.GetLocalIP();
-            //udp 绑定
-            udp.udpBing(Localip, ToolsUtil.GetFreePort().ToString());
             tm = new TreeMesege();
-            receviceDelegate = new ReceviceDelegate(receviceDelegateMsg);
+            searchMasterRcvDelegate = new SearchMasterRcvDelegate(SearchMasterRcvDeal);
+            getMasterDevDelegate = new GetMasterDevDelegate(GetMasterDevRcvDeal);
             updateNodeDelegate = new UpdateNodeDelegate(UpdateNode);
 
         }
 
-        private void udpIni()
+
+
+        #region 搜索功能
+       
+        /// <summary>
+        /// 搜索按钮
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnSearch_Click(object sender, EventArgs e)
         {
+   
+            try
+            {
+                backgroundWorker1 = new BackgroundWorker();
+                backgroundWorker1.WorkerReportsProgress = true;
+                backgroundWorker1.WorkerSupportsCancellation = true;
+                backgroundWorker1.DoWork += BackgroundWorker1_DoWork;
+                backgroundWorker1.ProgressChanged += BackgroundWorker1_ProgressChanged;
+                backgroundWorker1.RunWorkerCompleted += BackgroundWorker1_RunWorkerCompleted;
+                pgv = new PgView();
+                pgv.setMaxValue(100);
+                this.Enabled = false;
+                backgroundWorker1.RunWorkerAsync();
+                pgv.ShowDialog();
+                if (pgv.DialogResult == DialogResult.Cancel)
+                {
+
+                    backgroundWorker1.CancelAsync();
+                }
+            }
+            catch (Exception ex)
+            {
+                ToolsUtil.WriteLog(ex.Message);
+            }
+
+        }
+
+
+        private void BackgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
+        {
+            SearchOnlineMaster();
+            
+
+        }
+
+        private void BackgroundWorker1_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+            //设置值
+            pgv.setValue(e.ProgressPercentage);
+            if (e.UserState != null)
+            {
+                switch (e.UserState.ToString())
+                {
+                    case "1":
+                        //添加节点
+                        treeView1.Nodes.Clear();
+                        List<string> list = ToolsUtil.IPSort(masterHs);
+                        foreach (string masterIP in list)
+                        {
+                            tm.AddNode1(treeView1, masterIP);
+                        }
+                        //开启添加设备
+                        break;
+
+                    default:
+                        TxtShow(e.UserState.ToString());
+                        break;
+                }
+              
+            }
+
+        }
+
+
+
+
+        private void BackgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            try
+            {
+                if (e.Cancelled)
+                {
+                    TxtShow("搜索终止！");
+                }
+
+                this.Enabled = true;
+                if (pgv != null)
+                {
+                    pgv.Close();
+                }
+                treeView1.ExpandAll();
+            }
+            catch
+            {
+
+            }
+
+        }
+
+
+
+
+        /// <summary>
+        /// 搜索在线主机
+        /// </summary>
+        private void SearchOnlineMaster()
+        {
+            if (udp != null)
+            {
+                udp.udpClose();
+            }
             //初始化UDP
             udp = new UdpSocket();
             udp.Received += new Action<string, string>((IP, msg) =>
@@ -72,17 +192,178 @@ namespace eNet编辑器.AddForm
                     if (!String.IsNullOrWhiteSpace(msg))
                     {
                         //跨线程调用
-                        this.Invoke(receviceDelegate, msg);
+                        this.Invoke(searchMasterRcvDelegate, msg);
                     }
-
-
                 }
                 catch (Exception ex)
                 {
                     ToolsUtil.WriteLog(ex.Message);
                 }
             });
+
+            //获取本地IP
+            Localip = ToolsUtil.GetLocalIP();
+            //udp 绑定
+            udp.udpBing(Localip, ToolsUtil.GetFreePort().ToString());
+           
+            if (udp.isbing)
+            {
+                masterHs.Clear();
+                string[] tmps = Localip.Split('.');
+                string broadcastIp = String.Format("{0}.{1}.{2}.255", tmps[0], tmps[1], tmps[2]);
+                udp.udpSend(broadcastIp, "6002", "Search all");
+                ToolsUtil.DelayMilli(200);
+                backgroundWorker1.ReportProgress(2, null);
+                udp.udpSend(broadcastIp, "6002", "search all");
+                ToolsUtil.DelayMilli(200);
+                backgroundWorker1.ReportProgress(4, null);
+                udp.udpSend("255.255.255.255", "6002", "Search all");
+                ToolsUtil.DelayMilli(200);
+                backgroundWorker1.ReportProgress(6, null);
+                udp.udpSend("255.255.255.255", "6002", "search all");
+
+                //检查 如果ip数目还没变就退出 进行下一步操作
+                int masterCount = masterHs.Count;
+                ToolsUtil.DelayMilli(500);
+                backgroundWorker1.ReportProgress(10, null);
+                while (masterCount != masterHs.Count)
+                {
+                    masterCount = masterHs.Count;
+                    ToolsUtil.DelayMilli(500);
+                    backgroundWorker1.ReportProgress(14, null);
+                }
+                backgroundWorker1.ReportProgress(20, 1);//pg = 20
+                int pgCount = 20;
+                int time = 0;
+                //逐个IP搜索设备
+                foreach (string masterIP in masterHs)
+                {
+                    searchIP = masterIP;
+                    isSearchIP = true;
+                    time = 0;
+                    ReadSerial();
+                    while (isSearchIP)
+                    {
+                        //超时3秒信息不回来 就断开这次
+                        ToolsUtil.DelayMilli(300);
+                        time = time + 300;
+                        if (time >= 2700)
+                        {
+                            continue;
+                        }
+                    }
+                    backgroundWorker1.ReportProgress(pgCount++, null);
+                }
+
+
+                backgroundWorker1.ReportProgress(100, "搜索设备完成");
+
+
+
+
+            }
+            
+
+
         }
+
+        
+
+        private void SearchMasterRcvDeal(string msg)
+        {
+            try
+            {
+                if (msg.Contains("devIP"))
+                {
+                    //搜索在线的主机处理
+                    string[] devInfos = msg.Split(' ');
+                    string[] devIP = devInfos[0].Split('=');
+                    masterHs.Add(devIP[1]);
+                }
+            }
+            catch (Exception ex)
+            {
+                ToolsUtil.WriteLog(ex.Message);
+            }
+
+        }
+
+   
+
+
+
+        /// <summary>
+        /// 获取serial设备信息 并处理
+        /// </summary>
+        private void ReadSerial()
+        {
+
+            ClientAsync client = new ClientAsync();
+            client.Completed += new Action<System.Net.Sockets.TcpClient, ClientAsync.EnSocketAction>((c, enAction) =>
+            {
+                string key = string.Empty;
+                try
+                {
+                    if (c.Client.Connected)
+                    {
+                        IPEndPoint iep = c.Client.RemoteEndPoint as IPEndPoint;
+                        key = string.Format("{0}:{1}", iep.Address.ToString(), iep.Port);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    ToolsUtil.WriteLog(ex.Message);
+                }
+                switch (enAction)
+                {
+                    case ClientAsync.EnSocketAction.Connect:
+                        // MessageBox.Show("已经与" + key + "建立连接");
+                        break;
+                    case ClientAsync.EnSocketAction.SendMsg:
+
+                        //MessageBox.Show(DateTime.Now + "：向" + key + "发送了一条消息");
+                        break;
+                    case ClientAsync.EnSocketAction.Close:
+
+                        //MessageBox.Show("服务端连接关闭");
+                        break;
+                    case ClientAsync.EnSocketAction.Error:
+
+                        //MessageBox.Show("连接发生错误,请检查网络连接");
+
+                        break;
+                    default:
+                        break;
+                }
+            });
+            //信息接收处理
+            client.Received += new Action<string, string>((key, msg) =>
+            {
+                if (!String.IsNullOrWhiteSpace(msg))
+                {
+                    //跨线程调用
+                    this.Invoke(getMasterDevDelegate, msg);
+                }
+            });
+
+            int count = 0;
+
+            //异步连接
+            client.ConnectAsync(searchIP, 6001);
+            while (!client.Connected())
+            {
+                ToolsUtil.DelayMilli(200);
+                count++;
+                if (count == 10)
+                {
+                    isSearchIP = false;
+                    return;
+                }
+            }
+
+            client.SendAsync("read serial.json$");
+        }
+
 
 
         //接收区信息缓存buffer
@@ -92,61 +373,39 @@ namespace eNet编辑器.AddForm
         /// udp信息 回调处理函数
         /// </summary>
         /// <param name="msg"></param>
-        private void receviceDelegateMsg(string msg) 
+        private void GetMasterDevRcvDeal(string msg)
         {
 
             try
             {
-                
-                if (msg.Contains("devIP"))
+                //搜索子设备的信息返回
+                bufferMsg = bufferMsg + msg;
+                if (msg.Length == 2048)
                 {
-
-                    //网关加载
-                    string[] devInfos = msg.Split(' ');
-                    //devIP = 0.0.0.0
-                    string[] devIP = devInfos[0].Split('=');
-                    bool isExeit = false;
-                    for (int i = 0; i < treeView1.Nodes.Count; i++)
-                    {
-                        if (treeView1.Nodes[i].Text == devIP[1])
-                        {
-                            isExeit = true;
-                        }
-                    }
-                    if (!isExeit)
-                    {
-                        //添加网关
-                        tm.AddNode1(treeView1, devIP[1]);
-                    }
-
+                    return;
                 }
-                else //(msg.Contains("serial"))
+                if (bufferMsg.Contains("serial"))
                 {
-                    bufferMsg = bufferMsg + msg;
-                    if (msg.Length == 2048)
+                    // 序列化接收信息
+                    DataJson.Serial tmp = JsonConvert.DeserializeObject<DataJson.Serial>(bufferMsg);
+                    if (tmp == null)
                     {
-                        //Console.WriteLine("长度:" +  msg.Length.ToString()+"   " + msg);
+                        isSearchIP = false;
                         return;
                     }
-                    if (bufferMsg.Contains("serial") )
-                    {
-                        // 序列化接收信息
-                        DataJson.Serial tmp = JsonConvert.DeserializeObject<DataJson.Serial>(bufferMsg);
-                        if (tmp == null)
-                        {
-                            return;
-                        }
-                        FileMesege.serialList = tmp;
 
-                        bufferMsg = string.Empty;
-                        string filepath = string.Empty;
-                        string device = string.Empty;
-                        //当前选中节点和IP相等时  
-                        if (treeView1.SelectedNode.Text == selectIP)
+                    FileMesege.serialList = tmp;
+                    bufferMsg = string.Empty;
+                    isSearchIP = false;
+                    string filepath = string.Empty;
+                    string device = string.Empty;
+           
+
+                    foreach (TreeNode node in treeView1.Nodes)
+                    {
+                        if (node.Text == searchIP)
                         {
-                            treeView1.SelectedNode.Nodes.Clear();
-                            //选中索引
-                            int indexs = treeView1.SelectedNode.Index;
+                            int indexs = node.Index;
                             foreach (DataJson.serials sl in FileMesege.serialList.serial)
                             {
                                 if (sl.id == 254)
@@ -167,21 +426,28 @@ namespace eNet编辑器.AddForm
                                 }
 
                             }
-                            //展开所有节点
-                            treeView1.ExpandAll();
-
+                            break;
                         }
                     }
-
+                    isSearchIP = false;
 
                 }
+
             }
-            catch(Exception ex) {
+            catch (Exception ex)
+            {
+                isSearchIP = false;
                 ToolsUtil.WriteLog(ex.Message);
             }
-           
+
 
         }
+
+
+        #endregion
+
+
+        #region 导入功能
 
         private string parentIp = "";
         private List<string> addDevList = new List<string>();
@@ -417,154 +683,10 @@ namespace eNet编辑器.AddForm
         }
 
 
-     
-
-        /// <summary>
-        /// 搜索按钮
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void btnSearch_Click(object sender, EventArgs e)
-        {
-            try
-            {
-
-                udp.udpClose();
-                udpIni();
-                //获取本地IP
-                Localip = ToolsUtil.GetLocalIP();
-                //udp 绑定
-                udp.udpBing(Localip, ToolsUtil.GetFreePort().ToString());
-
-                long elapsedTicks = DateTime.Now.Ticks - lastTicks;
-                TimeSpan span = new TimeSpan(elapsedTicks);
-                double diff = span.TotalSeconds;
-
-                if (diff < 1)
-                {
-                    //Console.WriteLine(DateTime.Now.Ticks.ToString());
-
-                    lastTicks = DateTime.Now.Ticks;
-                    return;
-                }
-                lastTicks = DateTime.Now.Ticks;
-                //每次搜索清空树状图
-                treeView1.Nodes.Clear();
-                //绑定成功
-                if (udp.isbing)
-                {
-                    string[] tmps = Localip.Split('.');
-                    string broadcastIp = String.Format("{0}.{1}.{2}.255", tmps[0], tmps[1], tmps[2]);
-                    udp.udpSend(broadcastIp, "6002", "Search all");
-                    ToolsUtil.DelayMilli(100);
-                    udp.udpSend(broadcastIp, "6002", "search all");
-                    ToolsUtil.DelayMilli(100);
-                    udp.udpSend("255.255.255.255", "6002", "Search all");
-                    ToolsUtil.DelayMilli(100);
-                    udp.udpSend("255.255.255.255", "6002", "search all");
+        #endregion
 
 
-                }
-                TxtShow("搜索主机结束！");
-                //btnSearch.Enabled = true;
-            }
-            catch (Exception ex)
-            {
-                //btnSearch.Enabled = true;
-                ToolsUtil.WriteLog(ex.Message);
-            }
-
-        }
-
-        /// <summary>
-        /// 关闭窗体
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void OnlineSearch_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            //关闭窗体自动停止UDP
-            udp.udpClose();
-            treeView1.SelectedNode = null;
-        }
-
-
-
-        /// <summary>
-        /// 刷新按钮  获取serial设备信息 并处理
-        /// </summary>
-        private void selectHandle()
-        {
-
-            ClientAsync client = new ClientAsync();
-            client.Completed += new Action<System.Net.Sockets.TcpClient, ClientAsync.EnSocketAction>((c, enAction) =>
-            {
-                string key = string.Empty;
-
-                try
-                {
-                    if (c.Client.Connected)
-                    {
-                        IPEndPoint iep = c.Client.RemoteEndPoint as IPEndPoint;
-                        key = string.Format("{0}:{1}", iep.Address.ToString(), iep.Port);
-                    }
-                }
-                catch (Exception ex)
-                {
-                    ToolsUtil.WriteLog(ex.Message);
-                }
-                switch (enAction)
-                {
-                    case ClientAsync.EnSocketAction.Connect:
-                        // MessageBox.Show("已经与" + key + "建立连接");
-                        break;
-                    case ClientAsync.EnSocketAction.SendMsg:
-
-                        //MessageBox.Show(DateTime.Now + "：向" + key + "发送了一条消息");
-                        break;
-                    case ClientAsync.EnSocketAction.Close:
-
-                        //MessageBox.Show("服务端连接关闭");
-                        break;
-                    case ClientAsync.EnSocketAction.Error:
-
-                        //MessageBox.Show("连接发生错误,请检查网络连接");
-
-                        break;
-                    default:
-                        break;
-                }
-            });
-            //信息接收处理
-            client.Received += new Action<string, string>((key, msg) =>
-            {
-           
-                    if (!String.IsNullOrWhiteSpace(msg))
-                    {
-                        //跨线程调用
-                        this.Invoke(receviceDelegate, msg);
-                    }
-
-            
-
-            });
-            int count = 0;
-            //异步连接
-            client.ConnectAsync(selectIP, 6001);
-            while (!client.Connected())
-            {
-                ToolsUtil.DelayMilli(200);
-                count++;
-                if (count == 10)
-                {
-                    return;
-                }
-            }
-
-            client.SendAsync("read serial.json$");
-        }
-
-
+        #region 窗体关闭  树状图操作
         /// <summary>
         /// 双击控件
         /// </summary>
@@ -574,33 +696,32 @@ namespace eNet编辑器.AddForm
         {
             try
             {
-                long elapsedTicks = DateTime.Now.Ticks - lastTicks;
+                /*long elapsedTicks = DateTime.Now.Ticks - lastTicks;
                 TimeSpan span = new TimeSpan(elapsedTicks);
                 double diff = span.TotalSeconds;
 
                 if (diff < 1)
                 {
-                    //Console.WriteLine(DateTime.Now.Ticks.ToString());
-
                     lastTicks = DateTime.Now.Ticks;
                     return;
                 }
                 lastTicks = DateTime.Now.Ticks;
 
-                selectIP = string.Empty;
+                searchIP = string.Empty;
                 if (treeView1.SelectedNode != null && treeView1.SelectedNode.Level == 0)
                 {
-                
-                    
+
+
                     treeView1.SelectedNode.Nodes.Clear();
-                    selectIP = treeView1.SelectedNode.Text;
-                    if (!string.IsNullOrEmpty(selectIP) )
+                    searchIP = treeView1.SelectedNode.Text;
+                    if (!string.IsNullOrEmpty(searchIP))
                     {
-                        selectHandle();
+                        ReadSerial();
                     }
                     //ToolsUtil.DelayMilli(2000);
                 }
-                else if (treeView1.SelectedNode != null && treeView1.SelectedNode.Level == 1)
+                else*/
+                if (treeView1.SelectedNode != null && treeView1.SelectedNode.Level == 1)
                 {
                     btnImport_Click(this, EventArgs.Empty);
                 }
@@ -610,7 +731,8 @@ namespace eNet编辑器.AddForm
                 ToolsUtil.WriteLog(ex.Message);
             }
         }
-       
+
+
 
 
         /// <summary>
@@ -643,6 +765,20 @@ namespace eNet编辑器.AddForm
             e.Graphics.DrawString(e.Node.Text, this.treeView1.Font, new SolidBrush(foreColor), e.Bounds.X, e.Bounds.Y + 4);
         }
 
+
+        /// <summary>
+        /// 关闭窗体
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void OnlineSearch_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            //关闭窗体自动停止UDP
+            udp.udpClose();
+            treeView1.SelectedNode = null;
+        }
+
+        #endregion
 
         #region 窗体样色
 

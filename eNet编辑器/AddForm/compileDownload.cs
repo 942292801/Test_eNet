@@ -217,7 +217,7 @@ namespace eNet编辑器.AddForm
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                ToolsUtil.WriteLog(ex.Message);
             }
 
         }
