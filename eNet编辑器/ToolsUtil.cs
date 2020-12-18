@@ -362,7 +362,7 @@ namespace eNet编辑器
 
 
         /// <summary>
-        /// 根据设备列表添加IP地址的最后一位到ComboBox里面
+        /// 根据设备列表添加IP地址的到ComboBox里面
         /// </summary>
         /// <param name="cb"></param>
         public static void CBGetIp(ComboBox cb)
@@ -374,7 +374,7 @@ namespace eNet编辑器
             cb.Items.Clear();
             foreach (DataJson.Device d in FileMesege.DeviceList)
             {
-                cb.Items.Add(d.ip.Split('.')[3]);
+                cb.Items.Add(d.ip);
             }
         }
 
@@ -419,6 +419,39 @@ namespace eNet编辑器
             }
 
         }
+
+
+        /// <summary>
+        /// 把IP地址排序
+        /// </summary>
+        /// <param name="hsList"></param>
+        /// <returns></returns>
+        public static List<string> IPSort(HashSet<string> hsList)
+        {
+            List<string> list = new List<string>(hsList);
+
+            list.Sort(delegate (string x, string y)
+            {
+                string[] xip = x.Split('.');
+                string[] yip = y.Split('.');
+                if (xip[0] == yip[0])
+                {
+                    if (xip[1] == yip[1])
+                    {
+                        if (xip[2] == yip[2])
+                        {
+                            return Convert.ToInt32(xip[3]).CompareTo(Convert.ToInt32(yip[3]));
+                        }
+                        return Convert.ToInt32(xip[2]).CompareTo(Convert.ToInt32(yip[2]));
+                    }
+                    return Convert.ToInt32(xip[1]).CompareTo(Convert.ToInt32(yip[1]));
+                }
+                return Convert.ToInt32(xip[0]).CompareTo(Convert.ToInt32(yip[0]));
+            });
+
+            return list;
+        }
+
 
     }
 }

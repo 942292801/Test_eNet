@@ -352,8 +352,6 @@ namespace eNet编辑器.AddForm
                 op.Title = "选择文件";
                 if (op.ShowDialog() == DialogResult.OK)
                 {
-
-
                     //添加打开过的地址
                     IniConfig.SetValue(configPath, "filepath", key, op.FileName);
                     tb.Text = op.FileName.ToString();
@@ -398,30 +396,50 @@ namespace eNet编辑器.AddForm
                 AppTxtShow("路径文件不存在");
                 return false;
             }
-            //连接网络 发送当前IP的压缩包到里面
-            Socket sock = null;
+          
             try
             {
 
                 //写入数据格式
                 string data = "down system.prj$";
 
+                //连接网络 发送当前IP的压缩包到里面
+                Socket sock = null;
+                TimeOutHelper timeOutHelper = new TimeOutHelper();
+                int count = 0;
                 TcpSocket ts = new TcpSocket();
 
-                sock = ts.ConnectServer(ip, 6001, 1);
-                ToolsUtil.DelayMilli(1000);
-                
-                if (sock == null)
+                sock = ts.ConnectServer(ip, 6001, 2000);
+                while (true)
                 {
-                    AppTxtShow("连接失败！请重试");
-                    return false;
+                    ToolsUtil.DelayMilli(100);
+                    if (timeOutHelper.IsTimeout())
+                    {
+                        count++;
+                        if (count == 2)
+                        {
+
+                            //连接2次超时 退出操作
+                            AppTxtShow("连接超时！请重试");
+                            return false;
+                        }
+                        timeOutHelper = new TimeOutHelper();
+                        sock = ts.ConnectServer(ip, 6001, 2000);
+                    }
+                    if (sock != null)
+                    {
+                        //连接成功
+                        //Console.WriteLine("连接成功");
+                        break;
+                    }
+
                 }
 
 
-                int flag = -1;
+                int flag = 2;
 
                 //0:发送数据成功；-1:超时；-2:发送数据出现错误；-3:发送数据时出现异常
-                flag = ts.SendData(sock, data, 1);
+                flag = ts.SendData(sock, data, 2000);
                 if (flag == 0)
                 {
                     flag = ts.SendFile(sock, filepath);
@@ -449,7 +467,7 @@ namespace eNet编辑器.AddForm
             }
             catch (Exception e)
             {
-                MessageBox.Show(e.ToString());
+                ToolsUtil.WriteLog(e.ToString());
                 AppTxtShow("更新失败");
                 return false;
 

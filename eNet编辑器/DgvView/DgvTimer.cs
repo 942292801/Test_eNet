@@ -879,7 +879,11 @@ namespace eNet编辑器.DgvView
                 DataJson.totalList NewList = FileMesege.cmds.getListInfos();
                 FileMesege.cmds.DoNewCommand(NewList, OldList);
                 addItem(tmInfo,ip);
-                DgvMesege.selectLastCount(dataGridView1);  
+                DgvMesege.selectLastCount(dataGridView1);
+                if (tmInfo.id == 1 && string.IsNullOrEmpty(tmInfo.address))
+                {
+                    dgvAddress(1, "", "");
+                }
             }
             catch (Exception ex) { MessageBox.Show(ex + "临时调试错误信息"); }
         }
@@ -1813,8 +1817,20 @@ namespace eNet编辑器.DgvView
                    
                     if (tmInfo.type != point.type)
                     {
-                        tmInfo.opt = "";
-                        tmInfo.optName = "";
+                        List<string> optList = IniHelper.findTypesIniCommandbyType(rtType);
+                        if (optList != null)
+                        {
+                            tmInfo.optName = optList[0];
+                            tmInfo.opt = optList[1];
+
+                        }
+                        else
+                        {
+                            tmInfo.optName = "";
+                            tmInfo.opt = "";
+
+                        }
+                      
                     }
                 }
                 else
@@ -1822,8 +1838,20 @@ namespace eNet编辑器.DgvView
                     tmInfo.pid = 0;
                     if (tmInfo.type != rtType)
                     {
-                        tmInfo.opt = "";
-                        tmInfo.optName = "";
+
+                        List<string> optList = IniHelper.findTypesIniCommandbyType(rtType);
+                        if (optList != null)
+                        {
+                            tmInfo.optName = optList[0];
+                            tmInfo.opt = optList[1];
+
+                        }
+                        else
+                        {
+                            tmInfo.optName = "";
+                            tmInfo.opt = "";
+
+                        }
                     }
                 
                 }

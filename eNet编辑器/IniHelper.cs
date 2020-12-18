@@ -72,6 +72,73 @@ namespace eNet编辑器
         }
 
         /// <summary>
+        /// 寻找第一个command的操作内容返回  开启 00000001
+        /// </summary>
+        /// <param name="type">1.0_switch,开关  or 1.0_switch </param>
+        /// <returns>列表 开启 00000001</returns>
+        public static List<string> findTypesIniCommandbyType(string type)
+        {
+            try
+            {
+                string[] str = type.Split(',');
+                string filepath = Application.StartupPath + "\\types\\" + str[0] + ".ini";
+                if (File.Exists(filepath))
+                {
+                    string info = IniConfig.GetValue(filepath, "command", "1");
+                    if (string.IsNullOrEmpty(info))
+                    {
+                        return null;
+                    }
+                    string[] infos = info.Split(',');
+                    string command = DealCommandInfo(infos[2]) + DealCommandInfo(infos[4]) + DealCommandInfo(infos[6]) + DealCommandInfo(infos[8]);
+                    if (command.Length != 8)
+                    {
+                        return null;
+                    }
+                    List<string> list = new List<string>();
+                    list.Add(infos[0]);
+                    list.Add(command);
+                    return list ;
+                }
+
+                return null;
+            }
+            catch
+            {
+                return null;
+            }
+
+        }
+
+
+        public static string DealCommandInfo(string info)
+        {
+            try
+            {
+                string tmpNum = "";
+                if (info.Contains(":"))
+                {
+                    tmpNum = info.Split(':')[0];
+                }
+                else if (info.Contains("-"))
+                {
+                    tmpNum = info.Split('-')[0];
+
+                }
+                else
+                {
+                    tmpNum = info;
+                }
+                return Convert.ToInt32(tmpNum).ToString("X2");
+            }
+            catch
+            {
+                return "";
+            }
+            
+        }
+
+        /// <summary>
         /// Objs文件夹里 文件名tv_ir 返回  电视（define的name）
         /// </summary>
         /// <param name="objType">tv_ir</param>
