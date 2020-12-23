@@ -940,6 +940,7 @@ namespace eNet编辑器.DgvView
                     DataJson.totalList NewList = FileMesege.cmds.getListInfos();
                     FileMesege.cmds.DoNewCommand(NewList, OldList);
                     unSelectTitleNode();
+                    updatePointSectionNode();
                     break;
                 }
             }
@@ -971,6 +972,7 @@ namespace eNet编辑器.DgvView
                     DataJson.totalList NewList = FileMesege.cmds.getListInfos();
                     FileMesege.cmds.DoNewCommand(NewList, OldList);
                     dgvPointAddItemBySection();
+                    updatePointSectionNode();
                     break;
                 }
             }
@@ -1058,6 +1060,7 @@ namespace eNet编辑器.DgvView
                     dataGridView1.Rows[rowNum].Cells[3].Value = nowName;
                     DataJson.totalList NewList = FileMesege.cmds.getListInfos();
                     FileMesege.cmds.DoNewCommand(NewList, OldList);
+                    updatePointSectionNode();
                     break;
                 }
             }

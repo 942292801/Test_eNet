@@ -142,6 +142,7 @@ namespace eNet编辑器
             dgvsensor.AppTxtShow += new Action<string>(AppTxtShow);
             threetimer.clearTxtShow += new Action<string>(clearTxtShow);
             dgvtimer.AppTxtShow += new Action<string>(AppTxtShow);
+            threepoint.AppTxtShow += new Action<string>(AppTxtShow);
             tnGateway.AppTxtShow += new Action<string>(AppTxtShow);
             tnDevice.AppTxtShow += new Action<string>(AppTxtShow);
             LogicScene.AppTxtShow += new Action<string>(AppTxtShow);
@@ -178,6 +179,7 @@ namespace eNet编辑器
             threesensor.updateSensorView += new Action(updateTreeByFormType);
             threelogic.updateLogicView += new Action(updateTreeByFormType);
             dgvpoint.updatePointSectionNode += new Action(updateTreeByFormType);
+
             //调用添加场景
             threetitle.dgvsceneAddOneItem += new DgvsceneAddOneItem(dgvscene.addItem);
             threetitle.selectLastCountScene += new Action(dgvscene.selectLastCount);
@@ -197,7 +199,7 @@ namespace eNet编辑器
             threesection.updatePointDgv += new Action(dgvpoint.dgvPointAddItemBySection);
             threepoint.updateDgvPoint += new Action(dgvpoint.dgvPointAddItemByObjType);
             threesection.logicCbSceneGetItem +=new Action(dgvlogic.delegeteLogicCbSceneGetItem);
-            threesection.unSelectPointNode += new Action(threepoint.unSelectNode);
+            //threesection.unSelectPointNode += new Action(threepoint.unSelectNode);
             /////////////////////////////////////////////////////////////
             //光标事件调用 
             //添加加号光标
@@ -285,6 +287,7 @@ namespace eNet编辑器
             threesection.ThreeSEctionAddNode();
             threevar.ThreeVarAddNode();
             threelogic.ThreeLogicAddNode();
+            threepoint.ThreePointAddNode();
         }
 
         /// <summary>
@@ -323,8 +326,9 @@ namespace eNet编辑器
                     threename.ThreeNameAddNode();
                     break;
                 case "point":
-
-                    if (FileMesege.sectionNode != null)
+                    threepoint.ThreePointAddNode();
+                    threesection.ThreeSEctionAddNode();
+                   /* if (FileMesege.sectionNode != null)
                     {
                         if (!string.IsNullOrEmpty(FileMesege.objType))
                         {
@@ -334,7 +338,7 @@ namespace eNet编辑器
                         {
                             threesection.ThreeSEctionAddNode();
                         }
-                    }
+                    }*/
                     break;
                 case "scene":
                     threescene.ThreeSceneAddNode();
@@ -583,7 +587,8 @@ namespace eNet编辑器
                 //更改Title 小标题
                 LbTitleName.Text = Resources.lbTitleDevice;
                 //更新加载表格
-                updateTreeByFormType();
+                //updateTreeByFormType();
+                dgvpoint.AddItemBySection();
                 btnAddTitleItem.Visible = false;
 
             }

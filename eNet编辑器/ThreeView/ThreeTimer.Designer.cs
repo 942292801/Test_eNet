@@ -189,7 +189,7 @@
             this.btnAddHoliday.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None;
             this.btnAddHoliday.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnAddHoliday.HoverImage")));
             this.btnAddHoliday.Image = ((System.Drawing.Image)(resources.GetObject("btnAddHoliday.Image")));
-            this.btnAddHoliday.Location = new System.Drawing.Point(234, 5);
+            this.btnAddHoliday.Location = new System.Drawing.Point(232, 5);
             this.btnAddHoliday.Margin = new System.Windows.Forms.Padding(6);
             this.btnAddHoliday.Name = "btnAddHoliday";
             this.btnAddHoliday.Size = new System.Drawing.Size(15, 15);
@@ -209,7 +209,7 @@
             this.btnAdd.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None;
             this.btnAdd.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnAdd.HoverImage")));
             this.btnAdd.Image = ((System.Drawing.Image)(resources.GetObject("btnAdd.Image")));
-            this.btnAdd.Location = new System.Drawing.Point(207, 5);
+            this.btnAdd.Location = new System.Drawing.Point(205, 5);
             this.btnAdd.Margin = new System.Windows.Forms.Padding(6);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(15, 15);
@@ -229,7 +229,7 @@
             this.btnDel.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None;
             this.btnDel.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnDel.HoverImage")));
             this.btnDel.Image = ((System.Drawing.Image)(resources.GetObject("btnDel.Image")));
-            this.btnDel.Location = new System.Drawing.Point(261, 5);
+            this.btnDel.Location = new System.Drawing.Point(259, 5);
             this.btnDel.Margin = new System.Windows.Forms.Padding(6);
             this.btnDel.Name = "btnDel";
             this.btnDel.Size = new System.Drawing.Size(15, 15);

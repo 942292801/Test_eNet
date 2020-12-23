@@ -39,8 +39,8 @@ namespace eNet编辑器
         {
             TreeNode tn = new TreeNode();
             tn.Text = name;
-            tn.ImageIndex = 3;
-            tn.SelectedImageIndex = 4;
+            tn.ImageIndex = 4;
+            tn.SelectedImageIndex = 5;
             tn.Expand();
             return treeView1.Nodes[index].Nodes[index2].Nodes.Add((TreeNode)(tn.Clone()));
         }
@@ -49,8 +49,8 @@ namespace eNet编辑器
         {
             TreeNode tn = new TreeNode();
             tn.Text = name;
-            tn.ImageIndex = 3;
-            tn.SelectedImageIndex = 4;
+            tn.ImageIndex = 4;
+            tn.SelectedImageIndex = 5;
             tn.Expand();
             return treeView1.Nodes[index].Nodes[index2].Nodes[index3].Nodes.Add((TreeNode)(tn.Clone()));
         }
@@ -306,12 +306,14 @@ namespace eNet编辑器
         /// <param name="treeView1"></param>
         /// <param name="isExpands"></param>
         public void treeIspandsStateRcv(TreeView treeView1, List<string> isExpands)
-        {      
+        {
+            string tmpname = "";
             foreach (TreeNode node1 in treeView1.Nodes)
             {
+                tmpname = node1.Text;
                 foreach (string name in isExpands)
                 {
-                    if (node1.Text.Contains(name))
+                    if (node1.Text == name)
                     {
                         node1.Expand();
 
@@ -323,9 +325,10 @@ namespace eNet编辑器
                 }
                 foreach (TreeNode node2 in node1.Nodes)
                 {
+                    tmpname = string.Format("{0} {1}", node1.Text, node2.Text);
                     foreach (string name in isExpands)
                     {
-                        if (string.Format("{0} {1}", node1.Text, node2.Text).Contains(name))
+                        if (tmpname ==name)
                         {
                             node2.Expand();
 
@@ -337,9 +340,10 @@ namespace eNet编辑器
                     }
                     foreach (TreeNode node3 in node2.Nodes)
                     {
+                        tmpname = string.Format("{0} {1} {2}", node1.Text, node2.Text, node3.Text);
                         foreach (string name in isExpands)
                         {
-                            if (string.Format("{0} {1} {2}", node1.Text, node2.Text, node3.Text).Contains(name))
+                            if (tmpname == name)
                             {
                                 node3.Expand();
 

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ThreePoint));
             this.treeView1 = new System.Windows.Forms.TreeView();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -37,11 +38,21 @@
             this.plInfoTitle = new System.Windows.Forms.Panel();
             this.symbolBox1 = new DevComponents.DotNetBar.Controls.SymbolBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.imgLIst = new System.Windows.Forms.ImageList(this.components);
+            this.btnAddPoint = new DevComponents.DotNetBar.ButtonX();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.添加点位ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.删除ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
+            this.展开所有节点ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.收起所有节点ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnDelPoint = new DevComponents.DotNetBar.ButtonX();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
             this.plInfoTitle.SuspendLayout();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // treeView1
@@ -49,6 +60,8 @@
             this.treeView1.AllowDrop = true;
             this.treeView1.BackColor = System.Drawing.Color.White;
             this.treeView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.treeView1.CheckBoxes = true;
+            this.treeView1.ContextMenuStrip = this.contextMenuStrip1;
             this.treeView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.treeView1.DrawMode = System.Windows.Forms.TreeViewDrawMode.OwnerDrawText;
             this.treeView1.Font = new System.Drawing.Font("微软雅黑", 9F);
@@ -59,8 +72,8 @@
             this.treeView1.Name = "treeView1";
             this.treeView1.Size = new System.Drawing.Size(236, 389);
             this.treeView1.TabIndex = 2;
+            this.treeView1.AfterCheck += new System.Windows.Forms.TreeViewEventHandler(this.TreeView1_AfterCheck);
             this.treeView1.DrawNode += new System.Windows.Forms.DrawTreeNodeEventHandler(this.treeView1_DrawNode);
-            this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
             // 
             // panel1
             // 
@@ -107,6 +120,8 @@
             // plInfoTitle
             // 
             this.plInfoTitle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.plInfoTitle.Controls.Add(this.btnDelPoint);
+            this.plInfoTitle.Controls.Add(this.btnAddPoint);
             this.plInfoTitle.Controls.Add(this.symbolBox1);
             this.plInfoTitle.Controls.Add(this.label1);
             this.plInfoTitle.Dock = System.Windows.Forms.DockStyle.Top;
@@ -144,6 +159,101 @@
             this.label1.TabIndex = 7;
             this.label1.Text = "导航";
             // 
+            // imgLIst
+            // 
+            this.imgLIst.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imgLIst.ImageStream")));
+            this.imgLIst.TransparentColor = System.Drawing.Color.White;
+            this.imgLIst.Images.SetKeyName(0, "u100.png");
+            this.imgLIst.Images.SetKeyName(1, "u101.png");
+            this.imgLIst.Images.SetKeyName(2, "u100_1.png");
+            this.imgLIst.Images.SetKeyName(3, "u101_1.png");
+            this.imgLIst.Images.SetKeyName(4, "初始化.png");
+            this.imgLIst.Images.SetKeyName(5, "初始化_2.png");
+            // 
+            // btnAddPoint
+            // 
+            this.btnAddPoint.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnAddPoint.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.btnAddPoint.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnAddPoint.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
+            this.btnAddPoint.FocusCuesEnabled = false;
+            this.btnAddPoint.Font = new System.Drawing.Font("微软雅黑", 9F);
+            this.btnAddPoint.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None;
+            this.btnAddPoint.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnAddPoint.HoverImage")));
+            this.btnAddPoint.Image = ((System.Drawing.Image)(resources.GetObject("btnAddPoint.Image")));
+            this.btnAddPoint.Location = new System.Drawing.Point(187, 5);
+            this.btnAddPoint.Margin = new System.Windows.Forms.Padding(6);
+            this.btnAddPoint.Name = "btnAddPoint";
+            this.btnAddPoint.Size = new System.Drawing.Size(15, 15);
+            this.btnAddPoint.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnAddPoint.TabIndex = 9;
+            this.btnAddPoint.Tooltip = "添加";
+            this.btnAddPoint.Click += new System.EventHandler(this.BtnAddPoint_Click);
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.添加点位ToolStripMenuItem,
+            this.删除ToolStripMenuItem,
+            this.toolStripMenuItem1,
+            this.展开所有节点ToolStripMenuItem,
+            this.收起所有节点ToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(149, 98);
+            // 
+            // 添加点位ToolStripMenuItem
+            // 
+            this.添加点位ToolStripMenuItem.Name = "添加点位ToolStripMenuItem";
+            this.添加点位ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.添加点位ToolStripMenuItem.Text = "添加";
+            this.添加点位ToolStripMenuItem.Click += new System.EventHandler(this.添加点位ToolStripMenuItem_Click);
+            // 
+            // 删除ToolStripMenuItem
+            // 
+            this.删除ToolStripMenuItem.Name = "删除ToolStripMenuItem";
+            this.删除ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.删除ToolStripMenuItem.Text = "删除";
+            this.删除ToolStripMenuItem.Click += new System.EventHandler(this.删除ToolStripMenuItem_Click);
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(145, 6);
+            // 
+            // 展开所有节点ToolStripMenuItem
+            // 
+            this.展开所有节点ToolStripMenuItem.Name = "展开所有节点ToolStripMenuItem";
+            this.展开所有节点ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.展开所有节点ToolStripMenuItem.Text = "展开所有节点";
+            this.展开所有节点ToolStripMenuItem.Click += new System.EventHandler(this.展开所有节点ToolStripMenuItem_Click);
+            // 
+            // 收起所有节点ToolStripMenuItem
+            // 
+            this.收起所有节点ToolStripMenuItem.Name = "收起所有节点ToolStripMenuItem";
+            this.收起所有节点ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.收起所有节点ToolStripMenuItem.Text = "收起所有节点";
+            this.收起所有节点ToolStripMenuItem.Click += new System.EventHandler(this.收起所有节点ToolStripMenuItem_Click);
+            // 
+            // btnDelPoint
+            // 
+            this.btnDelPoint.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnDelPoint.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.btnDelPoint.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnDelPoint.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
+            this.btnDelPoint.FocusCuesEnabled = false;
+            this.btnDelPoint.Font = new System.Drawing.Font("微软雅黑", 9F);
+            this.btnDelPoint.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None;
+            this.btnDelPoint.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnDelPoint.HoverImage")));
+            this.btnDelPoint.Image = ((System.Drawing.Image)(resources.GetObject("btnDelPoint.Image")));
+            this.btnDelPoint.Location = new System.Drawing.Point(214, 5);
+            this.btnDelPoint.Margin = new System.Windows.Forms.Padding(6);
+            this.btnDelPoint.Name = "btnDelPoint";
+            this.btnDelPoint.Size = new System.Drawing.Size(15, 15);
+            this.btnDelPoint.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnDelPoint.TabIndex = 10;
+            this.btnDelPoint.Tooltip = "删除";
+            this.btnDelPoint.Click += new System.EventHandler(this.BtnDelPoint_Click);
+            // 
             // ThreePoint
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -161,6 +271,7 @@
             this.panel3.ResumeLayout(false);
             this.plInfoTitle.ResumeLayout(false);
             this.plInfoTitle.PerformLayout();
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -175,6 +286,14 @@
         private System.Windows.Forms.Panel panel3;
         private DevComponents.DotNetBar.Controls.SymbolBox symbolBox1;
         private System.Windows.Forms.Label label1;
-
+        private System.Windows.Forms.ImageList imgLIst;
+        private DevComponents.DotNetBar.ButtonX btnAddPoint;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem 添加点位ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 删除ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem 展开所有节点ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 收起所有节点ToolStripMenuItem;
+        private DevComponents.DotNetBar.ButtonX btnDelPoint;
     }
 }
