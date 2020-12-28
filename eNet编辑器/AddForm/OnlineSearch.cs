@@ -773,8 +773,12 @@ namespace eNet编辑器.AddForm
         /// <param name="e"></param>
         private void OnlineSearch_FormClosing(object sender, FormClosingEventArgs e)
         {
+
             //关闭窗体自动停止UDP
-            udp.udpClose();
+            if (udp != null)
+            {
+                udp.udpClose();
+            }
             treeView1.SelectedNode = null;
         }
 

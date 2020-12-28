@@ -133,6 +133,23 @@ namespace eNet编辑器
 
         #endregion
 
+        #region 网关对象列表文件 obj.json
+        [Serializable]
+        public class Obj
+        {
+            public string type { get; set; }
+            public List<Data> data = new List<Data>();
+
+        }
+
+        [Serializable]
+        public class Data
+        {
+            public string obj { get; set; }
+            public string val { get; set; }
+        }
+
+        #endregion
 
         #region 在线设备型号及版本序列号数据文件 serial.json
         [Serializable]
@@ -641,6 +658,7 @@ namespace eNet编辑器
         }
 
         #endregion
+
 
 
     }

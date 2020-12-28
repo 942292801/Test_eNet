@@ -109,7 +109,7 @@ namespace eNet编辑器
         /// <returns>否返回空</returns>
         public string GetSection(string id1, string id2, string id3, string id4)
         {
-           
+          
             string section = "";
             if (id1 != "" && id1 != null)
             {

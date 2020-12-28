@@ -32,6 +32,7 @@ namespace eNet编辑器.ThreeView
 
         //树状图节点
         string fullpath = "";
+        SearchSection searchSection = new SearchSection();
 
         public ThreeScene()
         {
@@ -140,7 +141,7 @@ namespace eNet编辑器.ThreeView
             TreeMesege.SelectNodeByPoint(treeView1, point);
         }
 
-        #region 树状图新建 删除 修改 排序
+        #region 树状图新建 删除 修改 排序 搜索区域
         private void 新建ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             
@@ -482,6 +483,113 @@ namespace eNet编辑器.ThreeView
         }
 
 
+
+        //搜索
+        private void BtnSearch_Click(object sender, EventArgs e)
+        {
+            searchSection.StartPosition = FormStartPosition.CenterParent;
+            searchSection.ShowDialog();
+            if (searchSection.DialogResult == DialogResult.OK)
+            {
+                if (string.IsNullOrEmpty(searchSection.Area1))
+                {
+                    ThreeSceneAddNode();
+                    return;
+                }
+                //添加特定区域
+                treeView1.Nodes.Clear();
+                if (FileMesege.DeviceList == null)
+                {
+                    return;
+                }
+                //记录当前节点展开状况 
+                TreeMesege tm = new TreeMesege();
+                DataJson.PointInfo point = null;
+                string section = "";
+                //从设备加载网关信息
+                foreach (DataJson.Device d in FileMesege.DeviceList)
+                {
+                    int index = tm.AddNode1(treeView1, d.ip + " " + d.master);
+                    if (FileMesege.sceneList != null)
+                    {
+                        foreach (DataJson.Scene sc in FileMesege.sceneList)
+                        {
+                            //  添加该网关IP的子节点
+                            if (sc.IP == d.ip)
+                            {
+                                foreach (DataJson.scenes scs in sc.scenes)
+                                {
+                                    point = DataListHelper.findPointByPid(scs.pid, FileMesege.PointList.scene);
+                                    if (point != null)
+                                    {
+                                        //判断是否符合搜索的点位
+                                        if (string.IsNullOrEmpty(searchSection.Area4))
+                                        {
+                                            if (string.IsNullOrEmpty(searchSection.Area3))
+                                            {
+                                                if (string.IsNullOrEmpty(searchSection.Area2))
+                                                {
+                                                    if (string.IsNullOrEmpty(searchSection.Area1))
+                                                    {
+
+                                                    }
+                                                    else
+                                                    {
+                                                        if (point.area1 != searchSection.Area1)
+                                                        {
+                                                            continue;
+                                                        }
+                                                    }
+                                                }
+                                                else
+                                                {
+                                                    if (point.area1 != searchSection.Area1
+                                                        || point.area2 != searchSection.Area2)
+                                                    {
+                                                        continue;
+                                                    }
+                                                }
+                                            }
+                                            else
+                                            {
+                                                if (point.area1 != searchSection.Area1
+                                                    || point.area2 != searchSection.Area2
+                                                    || point.area3 != searchSection.Area3)
+                                                {
+                                                    continue;
+                                                }
+                                            }
+                                        }
+                                        else
+                                        {
+                                            if (point.area1 != searchSection.Area1 
+                                                || point.area2 != searchSection.Area2 
+                                                || point.area3 != searchSection.Area3 
+                                                || point.area4 != searchSection.Area4)
+                                            {
+                                                continue;
+                                            }
+                                        }
+                                        section = string.Format("{0} {1} {2} {3}", point.area1, point.area2, point.area3, point.area4).Trim().Replace(" ", "\\");
+                                        int index2 = tm.AddNode2(treeView1, string.Format("{0}{1} {2} {3}", Resources.Scene, scs.id, section, point.name), index);
+
+                                    }
+
+                                }
+
+                            }
+                        }
+                    }
+
+                }
+                foreach (TreeNode node in treeView1.Nodes)
+                {
+                    node.ExpandAll();
+                }
+       
+            }
+        }
+
         #endregion
 
 
@@ -586,17 +694,18 @@ namespace eNet编辑器.ThreeView
             e.Graphics.DrawString(e.Node.Text, this.treeView1.Font, new SolidBrush(foreColor), e.Bounds.X, e.Bounds.Y + 4);
         }
 
+
+
+
+
+
+
+
+
+
+
         #endregion
 
-       
-
         
-
-
-
-
-
-
-
     }//class
 }

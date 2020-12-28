@@ -697,22 +697,24 @@ namespace eNet编辑器.DgvView
                         //循环判断 NameList中是否存在该节点
                         if (address == e.address && e.ip == parents[0])
                         {
-                            if (string.IsNullOrWhiteSpace(e.name) || e.name != tmpName)
+                            if (string.IsNullOrWhiteSpace(e.name))
                             {
-                                e.name = tmpName;
-                                dataGridView1.Rows[rowCount].Cells[3].Value = name;
-                            }
-                            else if (e.name.Contains("未定义"))
-                            {
+
                                 e.name = tmpName;
                                 dataGridView1.Rows[rowCount].Cells[3].Value = name;
                             }
                             else
                             {
-                                //非空有内容
-
+                                if (e.name != tmpName)
+                                {
+                                    if (!tmpName.Contains("未定义"))
+                                    {
+                                        e.name = tmpName;
+                                        dataGridView1.Rows[rowCount].Cells[3].Value = name;
+                                    }
+                                }
+                              
                             }
-
                             break;
                         }
                     }

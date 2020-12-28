@@ -154,10 +154,105 @@ namespace eNet编辑器.ThreeView
             {
                 node.Checked = e.Node.Checked;
             }
+            
         }
 
+        /// <summary>
+        /// DgvPoint的定点 绑定点位
+        /// </summary>
+        public void LocaBindNode()
+        {
+            try
+            {
+                if (FileMesege.pointLocaPointInfo == null)
+                {
+                    return;
+                }
+                //处理点位配置问题
+                TreeMesege tm = new TreeMesege();
+                string[] tmID = tm.GetSectionId(FileMesege.sectionNode.FullPath.Split('\\'));
+                string[] sections = tm.GetSection(tmID[0], tmID[1], tmID[2], tmID[3]).Split('\\');
+                string ip = "";
+                string id = "";
+                string port = "";
+                string address = "";
+                string filepath = "";
+                string type = "";
+                string[] portNodeTxt;
+                string title = "";
+                string titleNum = "";
+                string tmpName = "";
+                //DGV表的点位的节点不为空
+                foreach (TreeNode MasterNode in treeView1.Nodes)
+                {
+                    ip = MasterNode.Text.Split(' ')[0];
+                    foreach (TreeNode DevNode in MasterNode.Nodes)
+                    {
+                        foreach (TreeNode PortNode in DevNode.Nodes)
+                        {
+                            //非选中节点退出
+                            if (!PortNode.Checked)
+                            {
+                                continue;
+                            }
+                            filepath = string.Format("{0}\\devices\\{1}.ini", Application.StartupPath, DevNode.Text.Split(' ')[1].Trim());
+                            port = Regex.Replace(PortNode.Text.Split(' ')[0], @"[^\d]*", "");
+                            type = IniConfig.GetValue(filepath, "ports", port);
+                            if (string.IsNullOrEmpty(type))
+                            {
+                                continue;
+                            }
+                            type = type.Trim().Split(',')[0];
+                            id = Regex.Replace(DevNode.Text.Split(' ')[0], @"[^\d]*", "");
+                            address = "FE00" + Convert.ToInt32(id).ToString("X2") + Convert.ToInt32(port).ToString("X2");
+                            if (address.Length != 8)
+                            {
+                                continue;
+                            }
+                            //撤销
+                            DataJson.totalList OldList = FileMesege.cmds.getListInfos();
+                            //解绑已经绑定了地址的point
+                            foreach (DataJson.PointInfo eq in FileMesege.PointList.equipment)
+                            {
+                                if (eq.address == address && eq.ip == ip)
+                                {
+                                    eq.address = "FFFFFFFF";
+                                    eq.ip = "";
+                                    eq.name = string.Format("{0}@255", eq.name.Split('@')[0]);
+                                    break;
+                                }
+                            }
+                            //赋值绑定点位
+                            if (!string.IsNullOrEmpty(FileMesege.pointLocaPointInfo.type) && FileMesege.pointLocaPointInfo.type != type)
+                            {
+
+                                AppTxtShow(string.Format("该点位类型为（{0}）与端口类型不一致！", IniHelper.findTypesIniNamebyType(FileMesege.pointLocaPointInfo.type)));
+                                return;
+                            }
+                            FileMesege.pointLocaPointInfo.ip = ip;
+                            FileMesege.pointLocaPointInfo.address = address;
+                            FileMesege.pointLocaPointInfo.type = type;
+                            FileMesege.pointLocaPointInfo.name = string.Format("{0}@{1}", FileMesege.pointLocaPointInfo.name.Split('@')[0], ip.Split('.')[3]);
+                            DataJson.totalList NewList = FileMesege.cmds.getListInfos();
+                            FileMesege.cmds.DoNewCommand(NewList, OldList);
+                            //更新树状图和DGV
+                            ThreePointAddNode();
+                            updateDgvPoint();
+                            //结束退出
+                            return;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                ToolsUtil.WriteLog(ex.Message);
+            }
+           
 
 
+
+        }
         #endregion
 
         #region 按钮 ：添加或删除  点位
@@ -245,12 +340,6 @@ namespace eNet编辑器.ThreeView
                                 continue;
                             }
 
-                            //新建点位
-                            //DataListHelper.newPoint(address, ip, sections, type, FileMesege.PointList.equipment);
-
-                          
-
-
 
                             //添加 点位名称
                             title = FileMesege.titleinfo;
@@ -315,25 +404,6 @@ namespace eNet编辑器.ThreeView
                             }
                             tmpName = string.Format("{0}@{1}", title, ip.Split('.')[3]);
 
-                            /*foreach (DataJson.PointInfo e in FileMesege.PointList.equipment)
-                            {
-                                if (address == e.address && e.ip == ip)
-                                {
-                                    if (string.IsNullOrWhiteSpace(e.name) || e.name != tmpName)
-                                    {
-                                        e.name = tmpName;
-                                    }
-                                    else if (e.name.Contains("未定义"))
-                                    {
-                                        e.name = tmpName;
-                                    }
-                                    else
-                                    {
-                                        //非空有内容
-                                    }
-                                    break;
-                                }
-                            }*/
                             isExit = false;
                             foreach (DataJson.PointInfo e in FileMesege.PointList.equipment)
                             {

@@ -234,6 +234,8 @@ namespace eNet编辑器
                 threetitle.ThreeTitleAddNode(cbType.SelectedIndex);
             });
             dgvpoint.unSelectTitleNode += new Action(threetitle.unSelectTitleNode);
+            dgvpoint.LocaBindNode += new Action(threepoint.LocaBindNode);
+
 
             /*dgvpanel.updateSectionTitleNode += new Action(() =>//刷新右边两树状图 取消选中状态 
             {
@@ -1034,7 +1036,7 @@ namespace eNet编辑器
         #endregion
 
 
-        #region 编辑 快捷键
+        #region 任务栏
 
         private void 撤销ToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -1415,10 +1417,20 @@ namespace eNet编辑器
             cpdown.ShowDialog();
         }
 
+        //读取主机工程
+        private void BtnReadMaster_Click(object sender, EventArgs e)
+        {
+            ReadMasterPrj readMasterPrj = new ReadMasterPrj();
+            readMasterPrj.AppTxtShow += new Action<string>(AppTxtShow);
+            //展示居中
+            readMasterPrj.StartPosition = FormStartPosition.CenterParent;
+            readMasterPrj.ShowDialog();
+        }
+
         #endregion
 
 
-        #region 功能
+        #region 功能菜单栏
         private void 设备在线搜索ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //在线栏
@@ -1467,6 +1479,8 @@ namespace eNet编辑器
         {
             设备在线搜索ToolStripMenuItem_Click(sender,EventArgs.Empty);
         }
+
+     
 
         #endregion
 
@@ -1644,9 +1658,10 @@ namespace eNet编辑器
 
 
 
+
         #endregion
 
-        
+       
     }
 }
  

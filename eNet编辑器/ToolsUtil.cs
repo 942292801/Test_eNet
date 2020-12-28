@@ -9,6 +9,7 @@ using System.Net.NetworkInformation;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Runtime.Serialization;
+using System.Text;
 
 namespace eNet编辑器
 {
@@ -452,6 +453,26 @@ namespace eNet编辑器
             return list;
         }
 
+
+        public static String ByteToString(byte[] bytes)
+        {
+
+            StringBuilder strBuilder = new StringBuilder();
+            for (int i = 0; i < bytes.Length; i++)
+            {
+                if (bytes[i] != 0)
+                {
+                    strBuilder.Append(Convert.ToChar(bytes[i]));
+
+                }
+                else
+                {
+                    break;
+                }
+
+            }
+            return strBuilder.ToString();
+        }
 
     }
 }

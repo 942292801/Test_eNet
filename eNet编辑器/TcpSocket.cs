@@ -160,6 +160,7 @@ namespace eNet编辑器
             if ( buffer == null || buffer.Length == 0 ) {
                 throw new ArgumentException ("参数buffer 为null ,或者长度为 0");
             }
+            
             buffer.Initialize ();
             int left = buffer.Length ;
             int curRcv = 0;
@@ -167,8 +168,10 @@ namespace eNet编辑器
  
             try {
                 while ( true ) {
-                    if ( socket.Poll (outTime*1000000,SelectMode.SelectRead ) == true ) {        // 已经有数据等待接收
-                        curRcv = socket.Receive (buffer,curRcv,left ,SocketFlags.None );
+                    if ( socket.Poll (outTime*1000000,SelectMode.SelectRead ) == true )
+                    {        
+                        // 已经有数据等待接收
+                       curRcv = socket.Receive (buffer,curRcv,left ,SocketFlags.None );
                        left -= curRcv;
                        if ( left == 0 ) {                                    // 数据已经全部接收 
                             flag = 0;
@@ -198,6 +201,9 @@ namespace eNet编辑器
             return flag;
         }
  
+
+
+
         /**//// <summary>
         /// 接收远程主机发送的数据
         /// </summary>
@@ -209,17 +215,64 @@ namespace eNet编辑器
         /// <remarks >
         /// 当 outTime 指定为-1时，将一直等待直到有数据需要接收；
         /// </remarks>
-        public  int RecvData ( Socket socket,string buffer ,int bufferLen,int outTime ) {
-            if ( bufferLen <= 0 ) {
-                throw new ArgumentException ("存储待接收数据的缓冲区长度必须大于0");
+        public  int RecvDataStr ( Socket socket,out string rcvstr ,int outTime ) {
+
+            if (socket == null || socket.Connected == false)
+            {
+                throw new ArgumentException("参数socket 为null，或者未连接到远程计算机");
             }
-            byte[] tmp = new byte [ bufferLen ];
+           
+
+            rcvstr = "";
+            //int left = buffer.Length;
+            int curRcv = 0;
             int flag = 0;
-            if ( ( flag = RecvData ( socket,tmp,outTime)) == 0) {
-                buffer = System.Text.Encoding .Default .GetString ( tmp );
+
+            try
+            {
+                while (true)
+                {
+                    if (socket.Poll(outTime * 1000000, SelectMode.SelectRead) == true)
+                    {
+                        byte[] buffer = new byte[1024];
+                        // 已经有数据等待接收
+                        curRcv = socket.Receive(buffer, 0, buffer.Length, SocketFlags.None);
+                        if (curRcv > 0)
+                        {
+                            //Console.WriteLine("接收："+Encoding.Default.GetString(buffer));
+                            rcvstr += ToolsUtil.ByteToString(buffer);
+                            continue;
+                        }
+                        else if (curRcv == 0)
+                        {
+                            //数据全部接受
+                            flag = 0;
+                            break;
+                        }
+                        else
+                        {
+                            flag = -2;
+                            break;
+                        }
+
+                    }
+                    else
+                    {                                                    // 超时退出
+                        flag = -1;
+                        break;
+                    }
+                }
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                socket.Dispose();
+                flag = -3;
             }
             return flag;
         }
+
+
  
  
         /**//// <summary>

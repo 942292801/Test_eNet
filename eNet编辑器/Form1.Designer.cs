@@ -101,12 +101,12 @@
             this.btnSet = new DevComponents.DotNetBar.ButtonX();
             this.line1 = new DevComponents.DotNetBar.Controls.Line();
             this.btnCompileDownload = new DevComponents.DotNetBar.ButtonX();
+            this.btnReadMaster = new DevComponents.DotNetBar.ButtonX();
             this.line4 = new DevComponents.DotNetBar.Controls.Line();
             this.btnOnlineSearch = new DevComponents.DotNetBar.ButtonX();
             this.btnCopy = new DevComponents.DotNetBar.ButtonX();
             this.btnPast = new DevComponents.DotNetBar.ButtonX();
             this.buttonX10 = new DevComponents.DotNetBar.ButtonX();
-            this.buttonX9 = new DevComponents.DotNetBar.ButtonX();
             this.buttonX16 = new DevComponents.DotNetBar.ButtonX();
             this.buttonX14 = new DevComponents.DotNetBar.ButtonX();
             this.buttonX13 = new DevComponents.DotNetBar.ButtonX();
@@ -562,12 +562,12 @@
             this.flowLayoutPanel1.Controls.Add(this.btnSet);
             this.flowLayoutPanel1.Controls.Add(this.line1);
             this.flowLayoutPanel1.Controls.Add(this.btnCompileDownload);
+            this.flowLayoutPanel1.Controls.Add(this.btnReadMaster);
             this.flowLayoutPanel1.Controls.Add(this.line4);
             this.flowLayoutPanel1.Controls.Add(this.btnOnlineSearch);
             this.flowLayoutPanel1.Controls.Add(this.btnCopy);
             this.flowLayoutPanel1.Controls.Add(this.btnPast);
             this.flowLayoutPanel1.Controls.Add(this.buttonX10);
-            this.flowLayoutPanel1.Controls.Add(this.buttonX9);
             this.flowLayoutPanel1.Controls.Add(this.buttonX16);
             this.flowLayoutPanel1.Controls.Add(this.buttonX14);
             this.flowLayoutPanel1.Controls.Add(this.buttonX13);
@@ -725,6 +725,20 @@
             this.btnCompileDownload.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnCompileDownload.Click += new System.EventHandler(this.btnCompileDownload_Click_1);
             // 
+            // btnReadMaster
+            // 
+            this.btnReadMaster.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            resources.ApplyResources(this.btnReadMaster, "btnReadMaster");
+            this.btnReadMaster.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnReadMaster.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
+            this.btnReadMaster.FocusCuesEnabled = false;
+            this.btnReadMaster.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None;
+            this.btnReadMaster.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnReadMaster.HoverImage")));
+            this.btnReadMaster.Image = ((System.Drawing.Image)(resources.GetObject("btnReadMaster.Image")));
+            this.btnReadMaster.Name = "btnReadMaster";
+            this.btnReadMaster.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnReadMaster.Click += new System.EventHandler(this.BtnReadMaster_Click);
+            // 
             // line4
             // 
             this.line4.BackColor = System.Drawing.Color.Silver;
@@ -787,19 +801,6 @@
             this.buttonX10.Image = ((System.Drawing.Image)(resources.GetObject("buttonX10.Image")));
             this.buttonX10.Name = "buttonX10";
             this.buttonX10.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            // 
-            // buttonX9
-            // 
-            this.buttonX9.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            resources.ApplyResources(this.buttonX9, "buttonX9");
-            this.buttonX9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.buttonX9.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
-            this.buttonX9.FocusCuesEnabled = false;
-            this.buttonX9.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None;
-            this.buttonX9.HoverImage = ((System.Drawing.Image)(resources.GetObject("buttonX9.HoverImage")));
-            this.buttonX9.Image = ((System.Drawing.Image)(resources.GetObject("buttonX9.Image")));
-            this.buttonX9.Name = "buttonX9";
-            this.buttonX9.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             // 
             // buttonX16
             // 
@@ -1427,7 +1428,7 @@
         private DevComponents.DotNetBar.ButtonX buttonX14;
         private DevComponents.DotNetBar.ButtonX btnAscending;
         private DevComponents.DotNetBar.ButtonX buttonX16;
-        private DevComponents.DotNetBar.ButtonX buttonX9;
+        private DevComponents.DotNetBar.ButtonX btnReadMaster;
         private DevComponents.DotNetBar.ButtonX buttonX10;
         private DevComponents.DotNetBar.ButtonX btnSet;
         private DevComponents.DotNetBar.ButtonX btnOnlineSearch;

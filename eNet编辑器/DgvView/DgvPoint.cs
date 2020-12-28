@@ -1,14 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 using System.Reflection;
 using System.IO;
-using System.Text.RegularExpressions;
 using eNet编辑器.ThreeView;
 using System.Threading;
 
@@ -21,6 +16,8 @@ namespace eNet编辑器.DgvView
         public event Action updateTitleNode;
         //更新 点位 和 位置 树状图
         public event Action updatePointSectionNode;
+
+        public event Action LocaBindNode;
 
         public DgvPoint()
         {
@@ -205,8 +202,8 @@ namespace eNet编辑器.DgvView
             }
             catch (Exception e)
             {
-                MessageBox.Show(e.Message);
                 //报错不作处理
+                ToolsUtil.WriteLog(e.Message);
             }
         }
 
@@ -305,6 +302,7 @@ namespace eNet编辑器.DgvView
             }         
 
             this.dataGridView1.Rows[rowNum].Cells[6].Value = "删除";
+            this.dataGridView1.Rows[rowNum].Cells[7].Value = "定点";
         }
 
 
@@ -487,7 +485,7 @@ namespace eNet编辑器.DgvView
 
             for (int i = 0; i < dataGridView1.RowCount; i++)
             {
-                if ((bool)dataGridView1.Rows[i].Cells[7].EditedFormattedValue)
+                if ((bool)dataGridView1.Rows[i].Cells[8].EditedFormattedValue)
                 {
                     Multiple(i);
                 }
@@ -528,7 +526,7 @@ namespace eNet编辑器.DgvView
         {
             for (int i = 0; i < dataGridView1.RowCount; i++)
             {
-                if ((bool)dataGridView1.Rows[i].Cells[7].EditedFormattedValue)
+                if ((bool)dataGridView1.Rows[i].Cells[8].EditedFormattedValue)
                 {
                     Multiple(i);
                 }
@@ -651,6 +649,11 @@ namespace eNet编辑器.DgvView
                                 delBtn();
 
                                 break;
+                            case "pointLoca":
+
+                                //定位
+                                LocaBind();
+                                break;
                             default: break;
                         }
                         try
@@ -695,6 +698,10 @@ namespace eNet编辑器.DgvView
                                 //删除当前行点位信息
                                 delBtn();
                                 
+                                break;
+                            case "pointLoca":
+                                //定位
+                                LocaBind();
                                 break;
                             case "pointAdd":
                                 dgvShowTxt();
@@ -855,7 +862,7 @@ namespace eNet编辑器.DgvView
                         for (int i = dataGridView1.SelectedRows.Count; i > 0; i--)
                         {
                     
-                             dataGridView1.SelectedRows[i - 1].Cells[7].Value = true;                         
+                             dataGridView1.SelectedRows[i - 1].Cells[8].Value = true;                         
                         }
                         //提交编辑
                         dataGridView1.EndEdit();
@@ -979,7 +986,34 @@ namespace eNet编辑器.DgvView
             
 
         }
-        
+
+        private void LocaBind()
+        {
+
+
+            //区域
+            List<string> section = dataGridView1.Rows[rowCount].Cells[2].Value.ToString().Split(' ').ToList();
+            while (section.Count != 4)
+            {
+                section.Add("");
+            }
+            oldName = dataGridView1.Rows[rowCount].Cells[3].Value.ToString();
+            FileMesege.pointLocaPointInfo = null;
+            foreach (DataJson.PointInfo eq in FileMesege.PointList.equipment)
+            {
+                //当地域信息相同
+                if (eq.area1 == section[0] && eq.area2 == section[1] && eq.area3 == section[2] && eq.area4 == section[3] && eq.name.Split('@')[0] == oldName)
+                {
+                    FileMesege.pointLocaPointInfo = eq;
+                    //定位选中的树状图点
+                    LocaBindNode();
+                    break;
+                }
+            }
+
+        }
+
+
         /// <summary>
         /// 并联节点
         /// </summary>
@@ -1000,7 +1034,7 @@ namespace eNet编辑器.DgvView
                 { 
                     //合并数据列表添加
                     multipleList.Add(eq);
-                    if (!(bool)dataGridView1.Rows[rowNumber].Cells[7].EditedFormattedValue)
+                    if (!(bool)dataGridView1.Rows[rowNumber].Cells[8].EditedFormattedValue)
                     {
                         return;
                     }
@@ -1065,6 +1099,9 @@ namespace eNet编辑器.DgvView
                 }
             }
         }
+
+
+
 
         /// <summary>
         /// 寻找当前选中行信息
