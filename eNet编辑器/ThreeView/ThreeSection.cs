@@ -31,11 +31,7 @@ namespace eNet编辑器.ThreeView
             SetStyle(ControlStyles.AllPaintingInWmPaint, true); // 禁止擦除背景.
             SetStyle(ControlStyles.DoubleBuffer, true); // 双缓冲
             this.UpdateStyles();
-            //利用反射设置DataGridView的双缓冲
-            //Type dgvType = this.treeView1.GetType();
-            //PropertyInfo pi = dgvType.GetProperty("DoubleBuffered",
-            //BindingFlags.Instance | BindingFlags.NonPublic);
-            //pi.SetValue(this.treeView1, true, null);   
+     
            
         }
 
@@ -70,7 +66,8 @@ namespace eNet编辑器.ThreeView
 
         public event Action logicCbSceneGetItem;
         //取消选中点位
-        public event Action unSelectPointNode;
+        //public event Action unSelectPointNode;
+
         //树状图节点
         string fullpath = "";
 
@@ -375,8 +372,8 @@ namespace eNet编辑器.ThreeView
                         default: break;
                     }
                     sectionUpdateTreeByFormType();
+                    updatePointDgv();
 
-                 
                 }
                     
             }
@@ -700,7 +697,7 @@ namespace eNet编辑器.ThreeView
                 default: return false;
             }
             sectionUpdateTreeByFormType();
-        
+            updatePointDgv();
             DataJson.totalList NewList = FileMesege.cmds.getListInfos();
             FileMesege.cmds.DoNewCommand(NewList, OldList);
             return true;
@@ -1330,7 +1327,7 @@ namespace eNet编辑器.ThreeView
             fullpath = treeView1.SelectedNode.FullPath;
             if (FileMesege.formType == "point")
             {
-                unSelectPointNode();
+                //unSelectPointNode();
                 //刷PointDGV
                 updatePointDgv();
             }

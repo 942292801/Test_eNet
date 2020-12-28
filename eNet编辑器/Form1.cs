@@ -142,6 +142,7 @@ namespace eNet编辑器
             dgvsensor.AppTxtShow += new Action<string>(AppTxtShow);
             threetimer.clearTxtShow += new Action<string>(clearTxtShow);
             dgvtimer.AppTxtShow += new Action<string>(AppTxtShow);
+            threepoint.AppTxtShow += new Action<string>(AppTxtShow);
             tnGateway.AppTxtShow += new Action<string>(AppTxtShow);
             tnDevice.AppTxtShow += new Action<string>(AppTxtShow);
             LogicScene.AppTxtShow += new Action<string>(AppTxtShow);
@@ -178,6 +179,7 @@ namespace eNet编辑器
             threesensor.updateSensorView += new Action(updateTreeByFormType);
             threelogic.updateLogicView += new Action(updateTreeByFormType);
             dgvpoint.updatePointSectionNode += new Action(updateTreeByFormType);
+
             //调用添加场景
             threetitle.dgvsceneAddOneItem += new DgvsceneAddOneItem(dgvscene.addItem);
             threetitle.selectLastCountScene += new Action(dgvscene.selectLastCount);
@@ -197,7 +199,7 @@ namespace eNet编辑器
             threesection.updatePointDgv += new Action(dgvpoint.dgvPointAddItemBySection);
             threepoint.updateDgvPoint += new Action(dgvpoint.dgvPointAddItemByObjType);
             threesection.logicCbSceneGetItem +=new Action(dgvlogic.delegeteLogicCbSceneGetItem);
-            threesection.unSelectPointNode += new Action(threepoint.unSelectNode);
+            //threesection.unSelectPointNode += new Action(threepoint.unSelectNode);
             /////////////////////////////////////////////////////////////
             //光标事件调用 
             //添加加号光标
@@ -232,6 +234,8 @@ namespace eNet编辑器
                 threetitle.ThreeTitleAddNode(cbType.SelectedIndex);
             });
             dgvpoint.unSelectTitleNode += new Action(threetitle.unSelectTitleNode);
+            dgvpoint.LocaBindNode += new Action(threepoint.LocaBindNode);
+
 
             /*dgvpanel.updateSectionTitleNode += new Action(() =>//刷新右边两树状图 取消选中状态 
             {
@@ -285,6 +289,7 @@ namespace eNet编辑器
             threesection.ThreeSEctionAddNode();
             threevar.ThreeVarAddNode();
             threelogic.ThreeLogicAddNode();
+            threepoint.ThreePointAddNode();
         }
 
         /// <summary>
@@ -323,8 +328,9 @@ namespace eNet编辑器
                     threename.ThreeNameAddNode();
                     break;
                 case "point":
-
-                    if (FileMesege.sectionNode != null)
+                    threepoint.ThreePointAddNode();
+                    threesection.ThreeSEctionAddNode();
+                   /* if (FileMesege.sectionNode != null)
                     {
                         if (!string.IsNullOrEmpty(FileMesege.objType))
                         {
@@ -334,7 +340,7 @@ namespace eNet编辑器
                         {
                             threesection.ThreeSEctionAddNode();
                         }
-                    }
+                    }*/
                     break;
                 case "scene":
                     threescene.ThreeSceneAddNode();
@@ -583,7 +589,8 @@ namespace eNet编辑器
                 //更改Title 小标题
                 LbTitleName.Text = Resources.lbTitleDevice;
                 //更新加载表格
-                updateTreeByFormType();
+                //updateTreeByFormType();
+                dgvpoint.AddItemBySection();
                 btnAddTitleItem.Visible = false;
 
             }
@@ -1029,7 +1036,7 @@ namespace eNet编辑器
         #endregion
 
 
-        #region 编辑 快捷键
+        #region 任务栏
 
         private void 撤销ToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -1410,10 +1417,20 @@ namespace eNet编辑器
             cpdown.ShowDialog();
         }
 
+        //读取主机工程
+        private void BtnReadMaster_Click(object sender, EventArgs e)
+        {
+            ReadMasterPrj readMasterPrj = new ReadMasterPrj();
+            readMasterPrj.AppTxtShow += new Action<string>(AppTxtShow);
+            //展示居中
+            readMasterPrj.StartPosition = FormStartPosition.CenterParent;
+            readMasterPrj.ShowDialog();
+        }
+
         #endregion
 
 
-        #region 功能
+        #region 功能菜单栏
         private void 设备在线搜索ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //在线栏
@@ -1462,6 +1479,8 @@ namespace eNet编辑器
         {
             设备在线搜索ToolStripMenuItem_Click(sender,EventArgs.Empty);
         }
+
+     
 
         #endregion
 
@@ -1639,9 +1658,10 @@ namespace eNet编辑器
 
 
 
+
         #endregion
 
-        
+       
     }
 }
  

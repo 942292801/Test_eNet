@@ -62,6 +62,10 @@ namespace eNet编辑器
 
         //左栏 树状图treeLogic节点选中临时存放
         public static TreeNode logicSelectNode = null;
+
+        //DGVPoint的定点的设备位置 
+        public static DataJson.PointInfo pointLocaPointInfo = null;
+
         /// <summary>
         /// form下按钮的选择命名、场景。。。。  默认为命名 用来设置treetitle的显示功能 name,point,scene,timer,panel,sensor,logic,virtualport
         /// </summary>

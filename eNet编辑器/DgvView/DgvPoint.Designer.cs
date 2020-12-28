@@ -33,12 +33,8 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DgvPoint));
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.pointNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.pointAdd = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.pointSection = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.pointName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.pointDel = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.pointMultiple = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.相同ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.doubleClickTimer = new System.Windows.Forms.Timer(this.components);
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -49,14 +45,19 @@
             this.btnDel = new DevComponents.DotNetBar.ButtonX();
             this.symbolBox1 = new DevComponents.DotNetBar.Controls.SymbolBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.相同ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pointNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pointAdd = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pointSection = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pointName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pointDel = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.pointLoca = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.pointMultiple = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.contextMenuStrip1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.plInfoTitle.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
-            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // dataGridView1
@@ -82,6 +83,7 @@
             this.pointSection,
             this.pointName,
             this.pointDel,
+            this.pointLoca,
             this.pointMultiple});
             this.dataGridView1.ContextMenuStrip = this.contextMenuStrip1;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
@@ -112,50 +114,19 @@
             this.dataGridView1.KeyUp += new System.Windows.Forms.KeyEventHandler(this.dataGridView1_KeyUp);
             this.dataGridView1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.dataGridView1_MouseDown);
             // 
-            // pointNum
+            // contextMenuStrip1
             // 
-            this.pointNum.HeaderText = "序号";
-            this.pointNum.Name = "pointNum";
-            this.pointNum.ReadOnly = true;
-            this.pointNum.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.pointNum.Width = 60;
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.相同ToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip2";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(148, 26);
             // 
-            // pointAdd
+            // 相同ToolStripMenuItem
             // 
-            this.pointAdd.HeaderText = "地址";
-            this.pointAdd.Name = "pointAdd";
-            this.pointAdd.ReadOnly = true;
-            this.pointAdd.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // pointSection
-            // 
-            this.pointSection.HeaderText = "区域";
-            this.pointSection.Name = "pointSection";
-            this.pointSection.ReadOnly = true;
-            this.pointSection.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.pointSection.Width = 160;
-            // 
-            // pointName
-            // 
-            this.pointName.HeaderText = "名称";
-            this.pointName.Name = "pointName";
-            this.pointName.ReadOnly = true;
-            this.pointName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.pointName.Width = 80;
-            // 
-            // pointDel
-            // 
-            this.pointDel.HeaderText = "删除";
-            this.pointDel.Name = "pointDel";
-            this.pointDel.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.pointDel.Width = 55;
-            // 
-            // pointMultiple
-            // 
-            this.pointMultiple.HeaderText = "";
-            this.pointMultiple.Name = "pointMultiple";
-            this.pointMultiple.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.pointMultiple.Width = 50;
+            this.相同ToolStripMenuItem.Name = "相同ToolStripMenuItem";
+            this.相同ToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
+            this.相同ToolStripMenuItem.Text = "相同(Ctrl+Q)";
+            this.相同ToolStripMenuItem.Click += new System.EventHandler(this.相同ToolStripMenuItem_Click);
             // 
             // doubleClickTimer
             // 
@@ -295,19 +266,56 @@
             this.label1.TabIndex = 11;
             this.label1.Text = "内容";
             // 
-            // contextMenuStrip1
+            // pointNum
             // 
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.相同ToolStripMenuItem});
-            this.contextMenuStrip1.Name = "contextMenuStrip2";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(148, 26);
+            this.pointNum.HeaderText = "序号";
+            this.pointNum.Name = "pointNum";
+            this.pointNum.ReadOnly = true;
+            this.pointNum.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.pointNum.Width = 60;
             // 
-            // 相同ToolStripMenuItem
+            // pointAdd
             // 
-            this.相同ToolStripMenuItem.Name = "相同ToolStripMenuItem";
-            this.相同ToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
-            this.相同ToolStripMenuItem.Text = "相同(Ctrl+Q)";
-            this.相同ToolStripMenuItem.Click += new System.EventHandler(this.相同ToolStripMenuItem_Click);
+            this.pointAdd.HeaderText = "地址";
+            this.pointAdd.Name = "pointAdd";
+            this.pointAdd.ReadOnly = true;
+            this.pointAdd.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // pointSection
+            // 
+            this.pointSection.HeaderText = "区域";
+            this.pointSection.Name = "pointSection";
+            this.pointSection.ReadOnly = true;
+            this.pointSection.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.pointSection.Width = 160;
+            // 
+            // pointName
+            // 
+            this.pointName.HeaderText = "名称";
+            this.pointName.Name = "pointName";
+            this.pointName.ReadOnly = true;
+            this.pointName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.pointName.Width = 80;
+            // 
+            // pointDel
+            // 
+            this.pointDel.HeaderText = "删除";
+            this.pointDel.Name = "pointDel";
+            this.pointDel.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.pointDel.Width = 55;
+            // 
+            // pointLoca
+            // 
+            this.pointLoca.HeaderText = "定点";
+            this.pointLoca.Name = "pointLoca";
+            this.pointLoca.Width = 55;
+            // 
+            // pointMultiple
+            // 
+            this.pointMultiple.HeaderText = "";
+            this.pointMultiple.Name = "pointMultiple";
+            this.pointMultiple.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.pointMultiple.Width = 50;
             // 
             // DgvPoint
             // 
@@ -322,12 +330,12 @@
             this.Text = "DgvPoint";
             this.Load += new System.EventHandler(this.DgvPoint_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.contextMenuStrip1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.plInfoTitle.ResumeLayout(false);
             this.plInfoTitle.PerformLayout();
             this.flowLayoutPanel1.ResumeLayout(false);
-            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -345,13 +353,14 @@
         private DevComponents.DotNetBar.Controls.SymbolBox symbolBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem 相同ToolStripMenuItem;
         private System.Windows.Forms.DataGridViewTextBoxColumn pointNum;
         private System.Windows.Forms.DataGridViewTextBoxColumn pointAdd;
         private System.Windows.Forms.DataGridViewTextBoxColumn pointSection;
         private System.Windows.Forms.DataGridViewTextBoxColumn pointName;
         private System.Windows.Forms.DataGridViewButtonColumn pointDel;
+        private System.Windows.Forms.DataGridViewButtonColumn pointLoca;
         private System.Windows.Forms.DataGridViewCheckBoxColumn pointMultiple;
-        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem 相同ToolStripMenuItem;
     }
 }

@@ -154,6 +154,7 @@ namespace eNet编辑器.DgvView
                     this.dataGridView1.Rows[index].Cells[7].Value = "清空";
                     //this.dataGridView1.Rows[index].Cells[3].Value =arr[arr.Length-1];
                 }
+
                 #region 添加区域和名称
                 //分割的DeviceList 里面ip地址
                 string iplast = FileMesege.DeviceList[master].ip;
@@ -165,7 +166,6 @@ namespace eNet编辑器.DgvView
                     //判断与选中网关节点IP是否相同
                     if (e.ip == iplast)
                     {
-
                         str = e.address;
                         //为0直接退出
                         if (str.Substring(6, 2) == "00")
@@ -697,22 +697,24 @@ namespace eNet编辑器.DgvView
                         //循环判断 NameList中是否存在该节点
                         if (address == e.address && e.ip == parents[0])
                         {
-                            if (string.IsNullOrWhiteSpace(e.name) || e.name != tmpName)
+                            if (string.IsNullOrWhiteSpace(e.name))
                             {
-                                e.name = tmpName;
-                                dataGridView1.Rows[rowCount].Cells[3].Value = name;
-                            }
-                            else if (e.name.Contains("未定义"))
-                            {
+
                                 e.name = tmpName;
                                 dataGridView1.Rows[rowCount].Cells[3].Value = name;
                             }
                             else
                             {
-                                //非空有内容
-
+                                if (e.name != tmpName)
+                                {
+                                    if (!tmpName.Contains("未定义"))
+                                    {
+                                        e.name = tmpName;
+                                        dataGridView1.Rows[rowCount].Cells[3].Value = name;
+                                    }
+                                }
+                              
                             }
-
                             break;
                         }
                     }

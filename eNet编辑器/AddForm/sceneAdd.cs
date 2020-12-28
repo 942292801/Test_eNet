@@ -137,6 +137,7 @@ namespace eNet编辑器.AddForm
             get { return panelName; }
             set { panelName = value; }
         }
+
         private void TsSceneAdd_Load(object sender, EventArgs e)
         {
             

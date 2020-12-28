@@ -94,6 +94,7 @@ namespace eNet编辑器.ThreeView
             tnd.adddev +=new AddDev(newdevDelegate);
             
         }
+
         /// <summary>
         /// 初始化添加device名字树状图 根据JsonList文件重新加载
         /// </summary>
@@ -650,12 +651,13 @@ namespace eNet编辑器.ThreeView
                
             }
         }
+
+
+
+
+
         #endregion
 
-
-
-
-
-
+     
     }
 }
