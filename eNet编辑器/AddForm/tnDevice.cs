@@ -51,14 +51,7 @@ namespace eNet编辑器.AddForm
             lbTitle.Text = title;
             //btnDecid.Tooltip = title;
             string[] infos = FileMesege.info.Split(' ');
-            if (infos.Length > 2)
-            {
-                //修改模式
-                cbDevice.Text = Regex.Replace(infos[2], @"[^\d]*", "");
-                oldDevNum = cbDevice.Text;
-                cbVersion.Text = infos[3];
-                oldDevVersion = infos[3];
-            }
+           
             //网关名称
             lbip.Text = infos[0];
             //获取设备名称
@@ -76,12 +69,54 @@ namespace eNet编辑器.AddForm
                 cbVersion.Items.Add(display);
 
             }
+            //补齐空缺的设备号 否则的加一
+            SetDeviceId();
+            if (infos.Length > 2)
+            {
+                //修改模式
+                cbDevice.Text = Regex.Replace(infos[2], @"[^\d]*", "");
+                oldDevNum = cbDevice.Text;
+                cbVersion.Text = infos[3];
+                oldDevVersion = infos[3];
+            }
+        }
+
+        /// <summary>
+        /// 补齐空缺的设备号 否则的加一
+        /// </summary>
+        private void SetDeviceId()
+        {
+            if (FileMesege.DeviceList != null)
+            {
+                foreach (DataJson.Device dev in FileMesege.DeviceList)
+                {
+                    if (dev.ip == lbip.Text)
+                    {
+
+                        for (int i = 0; i < dev.module.Count; i++)
+                        {
+                            if (i + 1 != dev.module[i].id)
+                            {
+                                cbDevice.Text = (i + 1).ToString();
+                                return;
+                            }
+                        }
+                        cbDevice.Text = (dev.module.Count + 1).ToString();
+
+                        break;
+                    }
+                }
+            }
+            else
+            {
+                cbDevice.Text = "1";
+
+            }
 
 
 
         }
 
-   
 
 
         private void btnDecid_Click_1(object sender, EventArgs e)
@@ -131,18 +166,19 @@ namespace eNet编辑器.AddForm
                     }
                 }
                 FileMesege.info = string.Format("{0} {1} {2}", lbip.Text.Replace(" ", ""), cbDevice.Text.Replace(" ", ""), cbVersion.Text.Replace(" ", ""));
+               
+                //添加设备回调
+                adddev();
                 try
                 {
+                    SetDeviceId();
                     //自动序号加一
-                    cbDevice.SelectedIndex = Convert.ToInt32(cbDevice.Text) + 1;
+                    //cbDevice.Text = (Convert.ToInt32(cbDevice.Text) + 1).ToString();
                 }
                 catch
                 {
 
                 }
-                //添加设备回调
-                adddev();
-
             }
             else
             {

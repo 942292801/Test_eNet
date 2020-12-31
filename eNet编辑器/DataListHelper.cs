@@ -338,7 +338,7 @@ namespace eNet编辑器
        
             foreach (DataJson.Module m in dev.module)
             {
-                if (m.id.ToString() == oldid && m.device == oldVersion)
+                if (m.id.ToString() == oldid )//&& m.device == oldVersion)
                 {
 
                     m.id = Convert.ToInt32(id);
@@ -378,7 +378,7 @@ namespace eNet编辑器
                 {
                     foreach (DataJson.Module m in dev.module)
                     {
-                        if (m.id.ToString() == id && m.device == version)
+                        if (m.id.ToString() == id)
                         {
 
                             dev.module.Remove(m);
@@ -1330,41 +1330,65 @@ namespace eNet编辑器
         /// <returns></returns>
         public static DataJson.scenes getSceneInfoList(string ip, int num)
         {
-            foreach (DataJson.Scene scIP in FileMesege.sceneList)
+            try
             {
-                if (scIP.IP == ip)
+                if (FileMesege.sceneList == null)
                 {
-                    foreach (DataJson.scenes sc in scIP.scenes)
-                    {
-                        if (sc.id == num)
-                        {
-                            return sc;
-                        }
-                    }
-
+                    FileMesege.sceneList = new List<DataJson.Scene>();
                 }
+                foreach (DataJson.Scene scIP in FileMesege.sceneList)
+                {
+                    if (scIP.IP == ip)
+                    {
+                        foreach (DataJson.scenes sc in scIP.scenes)
+                        {
+                            if (sc.id == num)
+                            {
+                                return sc;
+                            }
+                        }
+
+                    }
+                }
+                return null;
             }
-            return null;
+            catch
+            {
+                return null;
+            }
+            
         }
 
 
         public static DataJson.scenes getSceneInfoListByPid(string ip, int pid)
         {
-            foreach (DataJson.Scene scIP in FileMesege.sceneList)
+            try
             {
-                if (scIP.IP == ip)
+                if (FileMesege.sceneList == null)
                 {
-                    foreach (DataJson.scenes sc in scIP.scenes)
-                    {
-                        if (sc.pid == pid)
-                        {
-                            return sc;
-                        }
-                    }
-
+                    FileMesege.sceneList = new List<DataJson.Scene>();
                 }
+                foreach (DataJson.Scene scIP in FileMesege.sceneList)
+                {
+                    if (scIP.IP == ip)
+                    {
+                        foreach (DataJson.scenes sc in scIP.scenes)
+                        {
+                            if (sc.pid == pid)
+                            {
+                                return sc;
+                            }
+                        }
+
+                    }
+                }
+                return null;
             }
-            return null;
+            catch
+            {
+                return null;
+            }
+           
         }
 
         /// <summary>
@@ -1374,15 +1398,27 @@ namespace eNet编辑器
         /// <returns></returns>
         public static DataJson.Scene getSceneList(string ip)
         {
-            foreach (DataJson.Scene scIP in FileMesege.sceneList)
+            try
             {
-                if (scIP.IP == ip)
+                if (FileMesege.sceneList == null)
                 {
-                    return scIP;
-
+                    FileMesege.sceneList = new List<DataJson.Scene>();
                 }
+                foreach (DataJson.Scene scIP in FileMesege.sceneList)
+                {
+                    if (scIP.IP == ip)
+                    {
+                        return scIP;
+
+                    }
+                }
+                return null;
             }
-            return null;
+            catch
+            {
+                return null;
+            }
+            
         }
 
         /// <summary>
@@ -1435,6 +1471,7 @@ namespace eNet编辑器
         /// <returns></returns>
         public static DataJson.timersInfo getTimerInfo(DataJson.timers tms, int id)
         {
+            
             foreach (DataJson.timersInfo info in tms.timersInfo)
             {
                 if (info.id == id)
@@ -1454,21 +1491,33 @@ namespace eNet编辑器
         /// <returns></returns>
         public static DataJson.timers getTimersInfoList(string ip, int num)
         {
-            foreach (DataJson.Timer tmIP in FileMesege.timerList)
+            try
             {
-                if (tmIP.IP == ip)
+                if (FileMesege.timerList == null)
                 {
-                    foreach (DataJson.timers tms in tmIP.timers)
-                    {
-                        if (tms.id == num)
-                        {
-                            return tms;
-                        }
-                    }
-
+                    FileMesege.timerList = new List<DataJson.Timer>();
                 }
+                foreach (DataJson.Timer tmIP in FileMesege.timerList)
+                {
+                    if (tmIP.IP == ip)
+                    {
+                        foreach (DataJson.timers tms in tmIP.timers)
+                        {
+                            if (tms.id == num)
+                            {
+                                return tms;
+                            }
+                        }
+
+                    }
+                }
+                return null;
             }
-            return null;
+            catch
+            {
+                return null;
+            }
+           
         }
 
         /// <summary>
@@ -1478,15 +1527,27 @@ namespace eNet编辑器
         /// <returns></returns>
         public static DataJson.Timer getTimerList(string ip)
         {
-            foreach (DataJson.Timer tmlIP in FileMesege.timerList)
+            try
             {
-                if (tmlIP.IP == ip)
+                if (FileMesege.timerList == null)
                 {
-                    return tmlIP;
-
+                    FileMesege.timerList = new List<DataJson.Timer>();
                 }
+                foreach (DataJson.Timer tmlIP in FileMesege.timerList)
+                {
+                    if (tmlIP.IP == ip)
+                    {
+                        return tmlIP;
+
+                    }
+                }
+                return null;
             }
-            return null;
+            catch
+            {
+                return null;
+            }
+            
         }
 
         /// <summary>
@@ -1569,21 +1630,29 @@ namespace eNet编辑器
         /// <returns></returns>
         public static DataJson.panels getPanelsInfoList(string ip, int num)
         {
-            foreach (DataJson.Panel plIp in FileMesege.panelList)
+            try
             {
-                if (plIp.IP == ip)
+                foreach (DataJson.Panel plIp in FileMesege.panelList)
                 {
-                    foreach (DataJson.panels pls in plIp.panels)
+                    if (plIp.IP == ip)
                     {
-                        if (pls.id == num)
+                        foreach (DataJson.panels pls in plIp.panels)
                         {
-                            return pls;
+                            if (pls.id == num)
+                            {
+                                return pls;
+                            }
                         }
-                    }
 
+                    }
                 }
+                return null;
             }
-            return null;
+            catch
+            {
+                return null;
+            }
+            
         }
 
         /// <summary>
@@ -1593,15 +1662,23 @@ namespace eNet编辑器
         /// <returns></returns>
         public static DataJson.Panel getPanelList(string ip)
         {
-            foreach (DataJson.Panel plIP in FileMesege.panelList)
+            try
             {
-                if (plIP.IP == ip)
+                foreach (DataJson.Panel plIP in FileMesege.panelList)
                 {
-                    return plIP;
+                    if (plIP.IP == ip)
+                    {
+                        return plIP;
 
+                    }
                 }
+                return null;
             }
-            return null;
+            catch
+            {
+                return null;
+            }
+            
         }
 
         /// <summary>
@@ -1610,6 +1687,7 @@ namespace eNet编辑器
         /// <param name="pid"></param>
         public static void reMoveAllPanelsByPid(int pid)
         {
+
             if (FileMesege.panelList == null)
             {
                 return;
@@ -2036,14 +2114,22 @@ namespace eNet编辑器
         /// <returns></returns>
         public static DataJson.sensorsInfo getSensorInfo(DataJson.sensors srs, int id)
         {
-            foreach (DataJson.sensorsInfo info in srs.sensorsInfo)
+            try
             {
-                if (info.id == id)
+                foreach (DataJson.sensorsInfo info in srs.sensorsInfo)
                 {
-                    return info;
+                    if (info.id == id)
+                    {
+                        return info;
+                    }
                 }
+                return null;
             }
-            return null;
+            catch
+            {
+                return null;
+            }
+           
         }
 
 
@@ -2055,21 +2141,29 @@ namespace eNet编辑器
         /// <returns></returns>
         public static DataJson.sensors getSensorsInfoList(string ip, int num)
         {
-            foreach (DataJson.Sensor srIp in FileMesege.sensorList)
+            try
             {
-                if (srIp.IP == ip)
+                foreach (DataJson.Sensor srIp in FileMesege.sensorList)
                 {
-                    foreach (DataJson.sensors srs in srIp.sensors)
+                    if (srIp.IP == ip)
                     {
-                        if (srs.id == num)
+                        foreach (DataJson.sensors srs in srIp.sensors)
                         {
-                            return srs;
+                            if (srs.id == num)
+                            {
+                                return srs;
+                            }
                         }
-                    }
 
+                    }
                 }
+                return null;
             }
-            return null;
+            catch
+            {
+                return null;
+            }
+            
         }
 
         /// <summary>
@@ -2079,15 +2173,23 @@ namespace eNet编辑器
         /// <returns></returns>
         public static DataJson.Sensor getSensorList(string ip)
         {
-            foreach (DataJson.Sensor sr in FileMesege.sensorList)
+            try
             {
-                if (sr.IP == ip)
+                foreach (DataJson.Sensor sr in FileMesege.sensorList)
                 {
-                    return sr;
+                    if (sr.IP == ip)
+                    {
+                        return sr;
 
+                    }
                 }
+                return null;
             }
-            return null;
+            catch
+            {
+                return null;
+            }
+            
         }
 
         /// <summary>
@@ -2138,14 +2240,22 @@ namespace eNet编辑器
         /// <returns></returns>
         public static DataJson.logicsInfo getLogicInfo(DataJson.logics lgs, int id)
         {
-            foreach (DataJson.logicsInfo info in lgs.logicsInfo)
+            try
             {
-                if (info.id == id)
+                foreach (DataJson.logicsInfo info in lgs.logicsInfo)
                 {
-                    return info;
+                    if (info.id == id)
+                    {
+                        return info;
+                    }
                 }
+                return null;
             }
-            return null;
+            catch
+            {
+                return null;
+            }
+           
         }
 
 
@@ -2157,21 +2267,29 @@ namespace eNet编辑器
         /// <returns></returns>
         public static DataJson.logics getLogicsInfoList(string ip, int num)
         {
-            foreach (DataJson.Logic lgIp in FileMesege.logicList)
+            try
             {
-                if (lgIp.IP == ip)
+                foreach (DataJson.Logic lgIp in FileMesege.logicList)
                 {
-                    foreach (DataJson.logics lgs in lgIp.logics)
+                    if (lgIp.IP == ip)
                     {
-                        if (lgs.id == num)
+                        foreach (DataJson.logics lgs in lgIp.logics)
                         {
-                            return lgs;
+                            if (lgs.id == num)
+                            {
+                                return lgs;
+                            }
                         }
-                    }
 
+                    }
                 }
+                return null;
             }
-            return null;
+            catch
+            {
+                return null;
+            }
+           
         }
 
         /// <summary>
@@ -2181,15 +2299,23 @@ namespace eNet编辑器
         /// <returns></returns>
         public static DataJson.Logic getLogicList(string ip)
         {
-            foreach (DataJson.Logic lg in FileMesege.logicList)
+            try
             {
-                if (lg.IP == ip)
+                foreach (DataJson.Logic lg in FileMesege.logicList)
                 {
-                    return lg;
+                    if (lg.IP == ip)
+                    {
+                        return lg;
 
+                    }
                 }
+                return null;
             }
-            return null;
+            catch
+            {
+                return null;
+            }
+            
         }
 
 

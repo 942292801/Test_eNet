@@ -370,6 +370,65 @@ namespace eNet编辑器
         }
 
 
+        //更新所有的窗体
+        private void UpdateAllForm()
+        {
+            try
+            {
+                clearDgvClear();
+                threesection.ThreeSEctionAddNode();
+                switch (FileMesege.formType)
+                {
+                    case "name":
+                        threename.ThreeNameAddNode();
+                        break;
+                    case "point":
+                        threepoint.ThreePointAddNode();
+                        threesection.ThreeSEctionAddNode();
+                        /* if (FileMesege.sectionNode != null)
+                         {
+                             if (!string.IsNullOrEmpty(FileMesege.objType))
+                             {
+                                 threepoint.ThreePointAddNode();
+                             }
+                             else
+                             {
+                                 threesection.ThreeSEctionAddNode();
+                             }
+                         }*/
+                        break;
+                    case "scene":
+                        threescene.ThreeSceneAddNode();
+                        break;
+                    case "timer":
+                        threetimer.ThreeTimerAddNode();
+                        break;
+                    case "panel":
+                        threepanel.ThreePanelAddNode();
+                        break;
+                    case "sensor":
+                        threesensor.ThreeSensorAddNode();
+                        break;
+                    case "logic":
+                        threelogic.ThreeLogicAddNode();
+                        break;
+                    case "virtualport":
+                        threevar.ThreeVarAddNode();
+                        break;
+
+                    default: break;
+                }
+
+                //threesection.ThreeSEctionAddNode();
+                threetitle.ThreeTitleAddNode(cbType.SelectedIndex);
+            }
+            catch
+            {
+
+            }
+          
+        }
+
         #endregion
 
 
@@ -1053,8 +1112,6 @@ namespace eNet编辑器
             
         }
 
-
-
         private void 重做ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (FileMesege.cmds == null || !FileMesege.cmds.CanReDo)
@@ -1096,10 +1153,6 @@ namespace eNet编辑器
             }
             updateTreeByFormType();
         }
-
-
-
-
 
         private void btnCopy_Click(object sender, EventArgs e)
         {
@@ -1228,8 +1281,6 @@ namespace eNet编辑器
         {
             相同ToolStripMenuItem_Click(this, EventArgs.Empty);
         }
-
-       
 
         private void 相同ToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -1422,11 +1473,11 @@ namespace eNet编辑器
         {
             ReadMasterPrj readMasterPrj = new ReadMasterPrj();
             readMasterPrj.AppTxtShow += new Action<string>(AppTxtShow);
+            readMasterPrj.UpdateAllForm += new Action(UpdateAllForm);
             //展示居中
             readMasterPrj.StartPosition = FormStartPosition.CenterParent;
             readMasterPrj.ShowDialog();
         }
-
         #endregion
 
 

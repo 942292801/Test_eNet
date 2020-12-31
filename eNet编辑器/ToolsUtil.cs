@@ -454,16 +454,14 @@ namespace eNet编辑器
         }
 
 
-        public static String ByteToString(byte[] bytes)
+        public static String ByteToString(byte[] src)
         {
-
-            StringBuilder strBuilder = new StringBuilder();
-            for (int i = 0; i < bytes.Length; i++)
+            int len = 0;
+            for (int i = 0; i < src.Length; i++)
             {
-                if (bytes[i] != 0)
+                if (src[i] != 0)
                 {
-                    strBuilder.Append(Convert.ToChar(bytes[i]));
-
+                    len++;
                 }
                 else
                 {
@@ -471,7 +469,12 @@ namespace eNet编辑器
                 }
 
             }
-            return strBuilder.ToString();
+            byte[] dest = new byte[len];
+            if (len > 0)
+            {
+                Array.Copy(src, dest, len);
+            }
+            return Encoding.Default.GetString(dest);
         }
 
     }

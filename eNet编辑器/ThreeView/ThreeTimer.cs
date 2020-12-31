@@ -512,8 +512,18 @@ namespace eNet编辑器.ThreeView
         private void BtnSearch_Click(object sender, EventArgs e)
         {
             searchSection.StartPosition = FormStartPosition.CenterParent;
+            searchSection.SearchTreeNode += new Action(SearchTreeNode);
             searchSection.ShowDialog();
             if (searchSection.DialogResult == DialogResult.OK)
+            {
+                
+
+            }
+        }
+
+        private void SearchTreeNode()
+        {
+            try
             {
                 if (string.IsNullOrEmpty(searchSection.Area1))
                 {
@@ -610,10 +620,13 @@ namespace eNet编辑器.ThreeView
                 {
                     node.ExpandAll();
                 }
+            }
+            catch
+            {
 
             }
+           
         }
-
 
         #endregion
 
