@@ -18,7 +18,6 @@ namespace eNet编辑器.ThreeView
             SetStyle(ControlStyles.AllPaintingInWmPaint, true); // 禁止擦除背景.
             SetStyle(ControlStyles.DoubleBuffer, true); // 双缓冲
             this.UpdateStyles();
-        
         }
 
         public event Action updateDgvPoint;
@@ -112,6 +111,28 @@ namespace eNet编辑器.ThreeView
             TreeMesege.SetPrevVisitNode(treeView1, fullpath);
         }
 
+
+        #region 解决背景闪烁
+        //测试 解决背景闪烁
+        protected override void WndProc(ref Message m)
+        {
+            if (m.Msg == 0x0014)
+                // 禁掉清除背景消息         
+                return;
+            base.WndProc(ref m);
+        }
+        //测试 解决背景闪烁
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                CreateParams cp = base.CreateParams;
+                cp.ExStyle |= 0x02000000;
+                return cp;
+            }
+        }
+        #endregion
+
         #region 点击树状图 树状图重绘
         /// <summary>
         /// 高亮显示选中项 重绘
@@ -138,7 +159,8 @@ namespace eNet编辑器.ThreeView
                 backColor = this.treeView1.BackColor;
             }
             //e.Graphics.FillRectangle(new SolidBrush(backColor), new Rectangle(e.Bounds.Location, new Size(this.treeView1.Width - e.Bounds.X, e.Bounds.Height)));
-            e.Graphics.FillRectangle(new SolidBrush(backColor), e.Bounds);
+            e.Graphics.FillRectangle(new SolidBrush(backColor), e.Bounds.X+1, e.Bounds.Y, e.Bounds.Width, e.Bounds.Height);
+
             e.Graphics.DrawString(e.Node.Text, this.treeView1.Font, new SolidBrush(foreColor), e.Bounds.X, e.Bounds.Y + 4);
 
         }

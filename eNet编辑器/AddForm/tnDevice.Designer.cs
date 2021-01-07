@@ -41,6 +41,8 @@
             this.lbTitle = new System.Windows.Forms.Label();
             this.btnDecid = new DevComponents.DotNetBar.ButtonX();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.cbSpecies = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.plInfoTitle.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -61,9 +63,9 @@
             this.label2.Font = new System.Drawing.Font("微软雅黑", 9F);
             this.label2.Location = new System.Drawing.Point(21, 52);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(56, 17);
+            this.label2.Size = new System.Drawing.Size(45, 17);
             this.label2.TabIndex = 2;
-            this.label2.Text = "设备号：";
+            this.label2.Text = "ID号：";
             // 
             // lbip
             // 
@@ -79,7 +81,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("微软雅黑", 9F);
-            this.label3.Location = new System.Drawing.Point(21, 92);
+            this.label3.Location = new System.Drawing.Point(21, 120);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(44, 17);
             this.label3.TabIndex = 4;
@@ -88,7 +90,7 @@
             // cbVersion
             // 
             this.cbVersion.FormattingEnabled = true;
-            this.cbVersion.Location = new System.Drawing.Point(83, 89);
+            this.cbVersion.Location = new System.Drawing.Point(83, 117);
             this.cbVersion.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.cbVersion.Name = "cbVersion";
             this.cbVersion.Size = new System.Drawing.Size(102, 25);
@@ -180,7 +182,7 @@
             this.btnDecid.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None;
             this.btnDecid.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnDecid.HoverImage")));
             this.btnDecid.Image = ((System.Drawing.Image)(resources.GetObject("btnDecid.Image")));
-            this.btnDecid.Location = new System.Drawing.Point(161, 122);
+            this.btnDecid.Location = new System.Drawing.Point(161, 150);
             this.btnDecid.Margin = new System.Windows.Forms.Padding(6);
             this.btnDecid.Name = "btnDecid";
             this.btnDecid.Size = new System.Drawing.Size(24, 24);
@@ -192,6 +194,8 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.cbSpecies);
+            this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.btnDecid);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.cbDevice);
@@ -201,15 +205,35 @@
             this.panel1.Controls.Add(this.label3);
             this.panel1.Location = new System.Drawing.Point(1, 27);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(211, 152);
+            this.panel1.Size = new System.Drawing.Size(211, 187);
             this.panel1.TabIndex = 80;
+            // 
+            // cbSpecies
+            // 
+            this.cbSpecies.FormattingEnabled = true;
+            this.cbSpecies.Location = new System.Drawing.Point(83, 83);
+            this.cbSpecies.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.cbSpecies.Name = "cbSpecies";
+            this.cbSpecies.Size = new System.Drawing.Size(102, 25);
+            this.cbSpecies.TabIndex = 62;
+            this.cbSpecies.SelectedIndexChanged += new System.EventHandler(this.CbSpecies_SelectedIndexChanged);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("微软雅黑", 9F);
+            this.label4.Location = new System.Drawing.Point(21, 86);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(44, 17);
+            this.label4.TabIndex = 61;
+            this.label4.Text = "种类：";
             // 
             // tnDevice
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkGray;
-            this.ClientSize = new System.Drawing.Size(214, 181);
+            this.ClientSize = new System.Drawing.Size(214, 216);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.plInfoTitle);
             this.Font = new System.Drawing.Font("微软雅黑", 9F);
@@ -241,5 +265,7 @@
         private DevComponents.DotNetBar.Controls.SymbolBox symbolBox1;
         private System.Windows.Forms.Panel panel1;
         private DevComponents.DotNetBar.ButtonX btnClose;
+        private System.Windows.Forms.ComboBox cbSpecies;
+        private System.Windows.Forms.Label label4;
     }
 }

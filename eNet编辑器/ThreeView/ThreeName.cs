@@ -50,12 +50,6 @@ namespace eNet编辑器.ThreeView
             SetStyle(ControlStyles.AllPaintingInWmPaint, true); // 禁止擦除背景.
             SetStyle(ControlStyles.DoubleBuffer, true); // 双缓冲
             this.UpdateStyles();
-            //利用反射设置DataGridView的双缓冲
-            //Type dgvType = this.treeView1.GetType();
-            //PropertyInfo pi = dgvType.GetProperty("DoubleBuffered",
-            //BindingFlags.Instance | BindingFlags.NonPublic);
-            //pi.SetValue(this.treeView1, true, null);
-
         }
 
 
@@ -92,7 +86,6 @@ namespace eNet编辑器.ThreeView
             tnd = new tnDevice();
             //回调添加新设备
             tnd.adddev +=new AddDev(newdevDelegate);
-            
         }
 
         /// <summary>
@@ -506,7 +499,7 @@ namespace eNet编辑器.ThreeView
             {
 
                 //显示设备node
-                sendFormContrl(Resources.TxtShowDevName + IniConfig.GetValue(filepath, "define", "note") + "\r\n");
+                sendFormContrl(Resources.TxtShowDevName + IniConfig.GetValue(filepath, "define", "note").Replace("&&", "\r\n"));
               
                 //调用dgv的ini配置
                 if (treeView1.SelectedNode.Parent == null)

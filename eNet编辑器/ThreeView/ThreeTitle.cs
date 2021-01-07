@@ -515,7 +515,8 @@ namespace eNet编辑器.ThreeView
                 backColor = this.treeView1.BackColor;
             }
             //e.Graphics.FillRectangle(new SolidBrush(backColor), new Rectangle(e.Bounds.Location, new Size(this.treeView1.Width - e.Bounds.X, e.Bounds.Height)));
-            e.Graphics.FillRectangle(new SolidBrush(backColor), e.Bounds);
+            //e.Graphics.FillRectangle(new SolidBrush(backColor), e.Bounds);
+            e.Graphics.FillRectangle(new SolidBrush(backColor), e.Bounds.X +1, e.Bounds.Y, e.Bounds.Width, e.Bounds.Height);
             e.Graphics.DrawString(e.Node.Text, this.treeView1.Font, new SolidBrush(foreColor), e.Bounds.X, e.Bounds.Y + 4);
             
         }
