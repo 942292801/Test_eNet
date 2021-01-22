@@ -4543,6 +4543,137 @@
             "type": "6.1_panel"
         }
     ],
-    "virtualport": [],
+    "virtualport": [
+        {
+            "pid": 992525148,
+            "area1": "",
+            "area2": "",
+            "area3": "",
+            "area4": "",
+            "name": "虚拟端口1@241",
+            "ip": "192.168.0.241",
+            "address": "FEFB0301",
+            "objType": "",
+            "value": "",
+            "type": "9.0_virtualport"
+        },
+        {
+            "pid": 845266890,
+            "area1": "",
+            "area2": "",
+            "area3": "",
+            "area4": "",
+            "name": "虚拟端口2@241",
+            "ip": "192.168.0.241",
+            "address": "FEFB0302",
+            "objType": "",
+            "value": "",
+            "type": "9.0_virtualport"
+        },
+        {
+            "pid": 268191415,
+            "area1": "",
+            "area2": "",
+            "area3": "",
+            "area4": "",
+            "name": "虚拟端口3@241",
+            "ip": "192.168.0.241",
+            "address": "FEFB0303",
+            "objType": "",
+            "value": "",
+            "type": "9.0_virtualport"
+        },
+        {
+            "pid": 591115939,
+            "area1": "",
+            "area2": "",
+            "area3": "",
+            "area4": "",
+            "name": "虚拟端口4@241",
+            "ip": "192.168.0.241",
+            "address": "FEFB0304",
+            "objType": "",
+            "value": "",
+            "type": "9.0_virtualport"
+        },
+        {
+            "pid": 443857680,
+            "area1": "",
+            "area2": "",
+            "area3": "",
+            "area4": "",
+            "name": "虚拟端口5@241",
+            "ip": "192.168.0.241",
+            "address": "FEFB0305",
+            "objType": "",
+            "value": "",
+            "type": "9.0_virtualport"
+        },
+        {
+            "pid": 766782204,
+            "area1": "",
+            "area2": "",
+            "area3": "",
+            "area4": "",
+            "name": "虚拟端口6@241",
+            "ip": "192.168.0.241",
+            "address": "FEFB0306",
+            "objType": "",
+            "value": "",
+            "type": "9.0_virtualport"
+        },
+        {
+            "pid": 619523946,
+            "area1": "",
+            "area2": "",
+            "area3": "",
+            "area4": "",
+            "name": "虚拟端口7@241",
+            "ip": "192.168.0.241",
+            "address": "FEFB0307",
+            "objType": "",
+            "value": "",
+            "type": "9.0_virtualport"
+        },
+        {
+            "pid": 942448470,
+            "area1": "",
+            "area2": "",
+            "area3": "",
+            "area4": "",
+            "name": "虚拟端口8@241",
+            "ip": "192.168.0.241",
+            "address": "FEFB0308",
+            "objType": "",
+            "value": "",
+            "type": "9.0_virtualport"
+        },
+        {
+            "pid": 365372995,
+            "area1": "",
+            "area2": "",
+            "area3": "",
+            "area4": "",
+            "name": "虚拟端口9@241",
+            "ip": "192.168.0.241",
+            "address": "FEFB0309",
+            "objType": "",
+            "value": "",
+            "type": "9.0_virtualport"
+        },
+        {
+            "pid": 218114737,
+            "area1": "",
+            "area2": "",
+            "area3": "",
+            "area4": "",
+            "name": "虚拟端口10@241",
+            "ip": "192.168.0.241",
+            "address": "FEFB030A",
+            "objType": "",
+            "value": "",
+            "type": "9.0_virtualport"
+        }
+    ],
     "logic": []
 }

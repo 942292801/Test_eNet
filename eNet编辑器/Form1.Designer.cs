@@ -893,8 +893,8 @@
             this.tabStrip.ColorScheme.TabItemSelectedBorderDark = System.Drawing.Color.Empty;
             this.tabStrip.ColorScheme.TabItemSelectedBorderLight = System.Drawing.Color.Empty;
             this.tabStrip.ColorScheme.TabItemSelectedText = System.Drawing.Color.White;
-            this.tabStrip.Controls.Add(this.tabControlPanel1);
             this.tabStrip.Controls.Add(this.tabControlPanel8);
+            this.tabStrip.Controls.Add(this.tabControlPanel1);
             this.tabStrip.Controls.Add(this.tabControlPanel7);
             this.tabStrip.Controls.Add(this.tabControlPanel6);
             this.tabStrip.Controls.Add(this.tabControlPanel5);
@@ -956,7 +956,6 @@
             this.tabVar.Image = ((System.Drawing.Image)(resources.GetObject("tabVar.Image")));
             this.tabVar.Name = "tabVar";
             resources.ApplyResources(this.tabVar, "tabVar");
-            this.tabVar.Visible = false;
             this.tabVar.Click += new System.EventHandler(this.tabVar_Click);
             // 
             // tabControlPanel7
