@@ -218,6 +218,7 @@ namespace eNet编辑器.AddForm
             }
             catch (Exception ex)
             {
+                
                 ToolsUtil.WriteLog(ex.Message);
             }
 
@@ -226,8 +227,14 @@ namespace eNet编辑器.AddForm
         //运行工作
         private void BackgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
-            
-            CompileDown(e);
+            try
+            {
+                CompileDown(e);
+            }
+            catch (Exception ex)
+            {
+                ToolsUtil.WriteLog(ex.Message);
+            }
         }
 
         private void BackgroundWorker1_ProgressChanged(object sender, ProgressChangedEventArgs e)
@@ -258,9 +265,9 @@ namespace eNet编辑器.AddForm
                 }
 
             }
-            catch
+            catch(Exception ex)
             {
-
+                ToolsUtil.WriteLog(ex.Message);
             }
 
         }
@@ -282,13 +289,33 @@ namespace eNet编辑器.AddForm
                 return ;
             }
 
-            ToolsUtil.DelayMilli(1000);
+            ToolsUtil.DelayMilli(2000);
+            if (backgroundWorker1.CancellationPending)
+            {
+                e.Cancel = true;
+                return;
+            }
             backgroundWorker1.ReportProgress(6, null);
             ToolsUtil.DelayMilli(1000);
+            if (backgroundWorker1.CancellationPending)
+            {
+                e.Cancel = true;
+                return;
+            }
             backgroundWorker1.ReportProgress(7, null);
             ToolsUtil.DelayMilli(1000);
+            if (backgroundWorker1.CancellationPending)
+            {
+                e.Cancel = true;
+                return;
+            }
             backgroundWorker1.ReportProgress(8, null);
             ToolsUtil.DelayMilli(1000);
+            if (backgroundWorker1.CancellationPending)
+            {
+                e.Cancel = true;
+                return;
+            }
             backgroundWorker1.ReportProgress(9, null);
             if (backgroundWorker1.CancellationPending)
             {
@@ -308,7 +335,7 @@ namespace eNet编辑器.AddForm
                 return ;
 
             }
-            ToolsUtil.DelayMilli(500);
+            ToolsUtil.DelayMilli(800);
             if (backgroundWorker1.CancellationPending)
             {
                 e.Cancel = true;
@@ -326,7 +353,7 @@ namespace eNet编辑器.AddForm
                 return ;
 
             }
-            ToolsUtil.DelayMilli(500);
+            ToolsUtil.DelayMilli(800);
             if (backgroundWorker1.CancellationPending)
             {
                 e.Cancel = true;
@@ -343,7 +370,7 @@ namespace eNet编辑器.AddForm
                 return ;
 
             }
-            ToolsUtil.DelayMilli(500);
+            ToolsUtil.DelayMilli(800);
             if (backgroundWorker1.CancellationPending)
             {
                 e.Cancel = true;
@@ -360,7 +387,7 @@ namespace eNet编辑器.AddForm
                 return ;
 
             }
-            ToolsUtil.DelayMilli(500);
+            ToolsUtil.DelayMilli(800);
             if (backgroundWorker1.CancellationPending)
             {
                 e.Cancel = true;
@@ -377,7 +404,7 @@ namespace eNet编辑器.AddForm
                 return ;
 
             }
-            ToolsUtil.DelayMilli(500);
+            ToolsUtil.DelayMilli(800);
             if (backgroundWorker1.CancellationPending)
             {
                 e.Cancel = true;
@@ -397,7 +424,7 @@ namespace eNet编辑器.AddForm
                 backgroundWorker1.ReportProgress(100, "Backup点位文件编译失败！");
                 return ;
             }
-            ToolsUtil.DelayMilli(500);
+            ToolsUtil.DelayMilli(1000);
             if (backgroundWorker1.CancellationPending)
             {
                 e.Cancel = true;
@@ -414,7 +441,7 @@ namespace eNet编辑器.AddForm
                 backgroundWorker1.ReportProgress(100, "Backup区域文件编译失败！");
                 return ;
             }
-            ToolsUtil.DelayMilli(500);
+            ToolsUtil.DelayMilli(1000);
             if (backgroundWorker1.CancellationPending)
             {
                 e.Cancel = true;
@@ -431,7 +458,7 @@ namespace eNet编辑器.AddForm
                 backgroundWorker1.ReportProgress(100, "Backup设备列表文件编译失败！");
                 return ;
             }
-            ToolsUtil.DelayMilli(500);
+            ToolsUtil.DelayMilli(1000);
             if (backgroundWorker1.CancellationPending)
             {
                 e.Cancel = true;
@@ -449,7 +476,7 @@ namespace eNet编辑器.AddForm
                 backgroundWorker1.ReportProgress(100, "Backup场景文件编译失败！");
                 return;
             }
-            ToolsUtil.DelayMilli(500);
+            ToolsUtil.DelayMilli(1000);
             if (backgroundWorker1.CancellationPending)
             {
                 e.Cancel = true;
@@ -467,7 +494,7 @@ namespace eNet编辑器.AddForm
                 backgroundWorker1.ReportProgress(100, "Backup定时文件编译失败！");
                 return;
             }
-            ToolsUtil.DelayMilli(500);
+            ToolsUtil.DelayMilli(1000);
             if (backgroundWorker1.CancellationPending)
             {
                 e.Cancel = true;
@@ -485,7 +512,7 @@ namespace eNet编辑器.AddForm
                 backgroundWorker1.ReportProgress(100, "Backup面板文件编译失败！");
                 return;
             }
-            ToolsUtil.DelayMilli(500);
+            ToolsUtil.DelayMilli(1000);
             if (backgroundWorker1.CancellationPending)
             {
                 e.Cancel = true;
@@ -503,7 +530,7 @@ namespace eNet编辑器.AddForm
                 backgroundWorker1.ReportProgress(100, "Backup感应编组文件编译失败！");
                 return;
             }
-            ToolsUtil.DelayMilli(500);
+            ToolsUtil.DelayMilli(1000);
             if (backgroundWorker1.CancellationPending)
             {
                 e.Cancel = true;
@@ -521,7 +548,7 @@ namespace eNet编辑器.AddForm
                 backgroundWorker1.ReportProgress(100, "Backup逻辑文件编译失败！");
                 return;
             }
-            ToolsUtil.DelayMilli(500);
+            ToolsUtil.DelayMilli(1000);
             if (backgroundWorker1.CancellationPending)
             {
                 e.Cancel = true;
@@ -545,7 +572,7 @@ namespace eNet编辑器.AddForm
                     zip.Save();
                 }
                 backgroundWorker1.ReportProgress(50, null);
-                ToolsUtil.DelayMilli(1000);
+                ToolsUtil.DelayMilli(2000);
                 if (backgroundWorker1.CancellationPending)
                 {
                     e.Cancel = true;
@@ -563,7 +590,7 @@ namespace eNet编辑器.AddForm
                     backgroundWorker1.ReportProgress(100, "Backup点位文件载入失败！");
                     return ;
                 }
-                ToolsUtil.DelayMilli(500);
+                ToolsUtil.DelayMilli(1000);
                 if (backgroundWorker1.CancellationPending)
                 {
                     e.Cancel = true;
@@ -581,7 +608,7 @@ namespace eNet编辑器.AddForm
                     backgroundWorker1.ReportProgress(100, "Backup区域文件载入失败！");
                     return ;
                 }
-                ToolsUtil.DelayMilli(500);
+                ToolsUtil.DelayMilli(1000);
                 if (backgroundWorker1.CancellationPending)
                 {
                     e.Cancel = true;
@@ -599,7 +626,7 @@ namespace eNet编辑器.AddForm
                     backgroundWorker1.ReportProgress(100, "Backup设备列表文件载入失败！");
                     return ;
                 }
-                ToolsUtil.DelayMilli(500);
+                ToolsUtil.DelayMilli(1000);
                 if (backgroundWorker1.CancellationPending)
                 {
                     e.Cancel = true;
@@ -617,7 +644,7 @@ namespace eNet编辑器.AddForm
                     backgroundWorker1.ReportProgress(100, "Backup场景文件载入失败！");
                     return;
                 }
-                ToolsUtil.DelayMilli(500);
+                ToolsUtil.DelayMilli(1000);
                 if (backgroundWorker1.CancellationPending)
                 {
                     e.Cancel = true;
@@ -635,7 +662,7 @@ namespace eNet编辑器.AddForm
                     backgroundWorker1.ReportProgress(100, "Backup定时文件载入失败！");
                     return;
                 }
-                ToolsUtil.DelayMilli(500);
+                ToolsUtil.DelayMilli(1000);
                 if (backgroundWorker1.CancellationPending)
                 {
                     e.Cancel = true;
@@ -654,7 +681,7 @@ namespace eNet编辑器.AddForm
                     backgroundWorker1.ReportProgress(100, "Backup面板文件载入失败！");
                     return;
                 }
-                ToolsUtil.DelayMilli(500);
+                ToolsUtil.DelayMilli(1000);
                 if (backgroundWorker1.CancellationPending)
                 {
                     e.Cancel = true;
@@ -672,7 +699,7 @@ namespace eNet编辑器.AddForm
                     backgroundWorker1.ReportProgress(100, "Backup感应编组文件载入失败！");
                     return;
                 }
-                ToolsUtil.DelayMilli(500);
+                ToolsUtil.DelayMilli(1000);
                 if (backgroundWorker1.CancellationPending)
                 {
                     e.Cancel = true;
@@ -690,7 +717,7 @@ namespace eNet编辑器.AddForm
                     backgroundWorker1.ReportProgress(100, "Backup逻辑文件载入失败！");
                     return;
                 }
-                ToolsUtil.DelayMilli(500);
+                ToolsUtil.DelayMilli(1000);
                 if (backgroundWorker1.CancellationPending)
                 {
                     e.Cancel = true;
@@ -703,7 +730,7 @@ namespace eNet编辑器.AddForm
             {
               
                 backgroundWorker1.ReportProgress(100, ex.Message);
-              
+                ToolsUtil.WriteLog(ex.Message);
             }
 
 
@@ -794,6 +821,7 @@ namespace eNet编辑器.AddForm
             catch(Exception ex)
             {
                 backgroundWorker1.ReportProgress(100, string.Format("({0})工程写入失败！", targetIP));
+                ToolsUtil.WriteLog(ex.Message);
             }
 
         }//private
@@ -852,7 +880,7 @@ namespace eNet编辑器.AddForm
                 timeOutHelper = new TimeOutHelper();
                 while (true)
                 {
-                    Console.WriteLine("等待发送结果");
+                    //Console.WriteLine("等待发送结果");
                     ToolsUtil.DelayMilli(100);
                     if (timeOutHelper.IsTimeout() )
                     {

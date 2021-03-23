@@ -200,10 +200,10 @@ namespace eNet编辑器.ThreeView
                 string address = "";
                 string filepath = "";
                 string type = "";
-                string[] portNodeTxt;
+               /* string[] portNodeTxt;
                 string title = "";
                 string titleNum = "";
-                string tmpName = "";
+                string tmpName = "";*/
                 //DGV表的点位的节点不为空
                 foreach (TreeNode MasterNode in treeView1.Nodes)
                 {

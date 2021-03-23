@@ -128,7 +128,7 @@ namespace eNet编辑器.AddForm
                             cbVersion.Items.Add(comd.list[0]);
                         }
                         //该版本临时删除 ！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
-                        //cbVersion.Items.Add("赋值");
+                        cbVersion.Items.Add("赋值");
                         // ！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
 
                         //默认加载cbversion第一个选项信息

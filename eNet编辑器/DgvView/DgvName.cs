@@ -1015,7 +1015,6 @@ namespace eNet编辑器.DgvView
         {
             try
             {
-              
                 isConnet = true;
                 if (FileMesege.tnselectNode == null)
                 {
@@ -1042,7 +1041,6 @@ namespace eNet编辑器.DgvView
                 //实例化客户端
                 client = new ClientAsync();
                 IniClient();
-               
                 //异步连接
                 client.ConnectAsync(strip[0], 6003);
                 ToolsUtil.DelayMilli(200);

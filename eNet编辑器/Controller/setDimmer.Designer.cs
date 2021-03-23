@@ -30,9 +30,9 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SetDimmer));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea15 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend15 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series15 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.plInfoTitle = new System.Windows.Forms.Panel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.btnRefresh = new DevComponents.DotNetBar.ButtonX();
@@ -117,6 +117,8 @@
             this.lblmTiao = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.timer2 = new System.Windows.Forms.Timer(this.components);
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.plInfoTitle.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -126,10 +128,14 @@
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tblmTiao)).BeginInit();
+            this.groupBox3.SuspendLayout();
+            this.groupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
             // plInfoTitle
             // 
+            this.plInfoTitle.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.plInfoTitle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(228)))), ((int)(((byte)(228)))));
             this.plInfoTitle.Controls.Add(this.flowLayoutPanel1);
             this.plInfoTitle.Controls.Add(this.label1);
@@ -138,7 +144,7 @@
             this.plInfoTitle.Location = new System.Drawing.Point(1, 1);
             this.plInfoTitle.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.plInfoTitle.Name = "plInfoTitle";
-            this.plInfoTitle.Size = new System.Drawing.Size(997, 25);
+            this.plInfoTitle.Size = new System.Drawing.Size(1089, 25);
             this.plInfoTitle.TabIndex = 81;
             this.plInfoTitle.MouseDown += new System.Windows.Forms.MouseEventHandler(this.plInfoTitle_MouseDown);
             this.plInfoTitle.MouseMove += new System.Windows.Forms.MouseEventHandler(this.plInfoTitle_MouseMove);
@@ -154,7 +160,7 @@
             this.flowLayoutPanel1.Controls.Add(this.btnImport);
             this.flowLayoutPanel1.Controls.Add(this.btnOutput);
             this.flowLayoutPanel1.Controls.Add(this.btnClose);
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(825, 0);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(917, 0);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(170, 25);
             this.flowLayoutPanel1.TabIndex = 21;
@@ -374,43 +380,17 @@
             this.panel1.Controls.Add(this.groupBox1);
             this.panel1.Location = new System.Drawing.Point(1, 27);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(997, 585);
+            this.panel1.Size = new System.Drawing.Size(1089, 607);
             this.panel1.TabIndex = 82;
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.label6);
-            this.groupBox2.Controls.Add(this.txtVal100);
-            this.groupBox2.Controls.Add(this.label5);
-            this.groupBox2.Controls.Add(this.btnSetIni);
-            this.groupBox2.Controls.Add(this.label4);
-            this.groupBox2.Controls.Add(this.label3);
-            this.groupBox2.Controls.Add(this.btnSwitchLine);
-            this.groupBox2.Controls.Add(this.label2);
-            this.groupBox2.Controls.Add(this.cbMode);
-            this.groupBox2.Controls.Add(this.btnCurveLine);
-            this.groupBox2.Controls.Add(this.btnStraightLine);
-            this.groupBox2.Controls.Add(this.label19);
-            this.groupBox2.Controls.Add(this.label21);
-            this.groupBox2.Controls.Add(this.label20);
-            this.groupBox2.Controls.Add(this.flowLayoutPanel2);
-            this.groupBox2.Controls.Add(this.chart1);
-            this.groupBox2.Controls.Add(this.label14);
-            this.groupBox2.Controls.Add(this.txtMin);
-            this.groupBox2.Controls.Add(this.label15);
-            this.groupBox2.Controls.Add(this.label13);
-            this.groupBox2.Controls.Add(this.label12);
-            this.groupBox2.Controls.Add(this.cbChangeState);
-            this.groupBox2.Controls.Add(this.label11);
-            this.groupBox2.Controls.Add(this.cbOnState);
-            this.groupBox2.Controls.Add(this.label10);
-            this.groupBox2.Controls.Add(this.cbPowerState);
-            this.groupBox2.Controls.Add(this.txtMax);
-            this.groupBox2.Controls.Add(this.label9);
+            this.groupBox2.Controls.Add(this.groupBox4);
+            this.groupBox2.Controls.Add(this.groupBox3);
             this.groupBox2.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.groupBox2.Location = new System.Drawing.Point(11, 80);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(976, 495);
+            this.groupBox2.Size = new System.Drawing.Size(1069, 517);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "参数";
@@ -419,7 +399,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label6.Location = new System.Drawing.Point(13, 438);
+            this.label6.Location = new System.Drawing.Point(4, 361);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(115, 20);
             this.label6.TabIndex = 49;
@@ -427,7 +407,7 @@
             // 
             // txtVal100
             // 
-            this.txtVal100.Location = new System.Drawing.Point(133, 438);
+            this.txtVal100.Location = new System.Drawing.Point(121, 359);
             this.txtVal100.Name = "txtVal100";
             this.txtVal100.Size = new System.Drawing.Size(55, 26);
             this.txtVal100.TabIndex = 48;
@@ -439,7 +419,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label5.Location = new System.Drawing.Point(194, 439);
+            this.label5.Location = new System.Drawing.Point(24, 446);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(93, 20);
             this.label5.TabIndex = 44;
@@ -451,19 +431,20 @@
             this.btnSetIni.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.btnSetIni.ForeColor = System.Drawing.Color.Black;
             this.btnSetIni.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnSetIni.Location = new System.Drawing.Point(17, 347);
+            this.btnSetIni.Location = new System.Drawing.Point(25, 343);
             this.btnSetIni.Name = "btnSetIni";
             this.btnSetIni.Size = new System.Drawing.Size(123, 25);
             this.btnSetIni.TabIndex = 43;
             this.btnSetIni.Text = "参数默认出厂设置";
             this.btnSetIni.UseVisualStyleBackColor = false;
+            this.btnSetIni.Visible = false;
             this.btnSetIni.Click += new System.EventHandler(this.BtnSetIni_Click);
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label4.Location = new System.Drawing.Point(195, 414);
+            this.label4.Location = new System.Drawing.Point(25, 421);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(93, 20);
             this.label4.TabIndex = 42;
@@ -473,7 +454,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label3.Location = new System.Drawing.Point(223, 392);
+            this.label3.Location = new System.Drawing.Point(53, 399);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(65, 20);
             this.label3.TabIndex = 41;
@@ -485,7 +466,7 @@
             this.btnSwitchLine.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.btnSwitchLine.ForeColor = System.Drawing.Color.Black;
             this.btnSwitchLine.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnSwitchLine.Location = new System.Drawing.Point(746, 78);
+            this.btnSwitchLine.Location = new System.Drawing.Point(557, 63);
             this.btnSwitchLine.Name = "btnSwitchLine";
             this.btnSwitchLine.Size = new System.Drawing.Size(67, 25);
             this.btnSwitchLine.TabIndex = 40;
@@ -497,7 +478,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label2.Location = new System.Drawing.Point(816, 37);
+            this.label2.Location = new System.Drawing.Point(627, 22);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(79, 20);
             this.label2.TabIndex = 39;
@@ -510,7 +491,7 @@
             this.cbMode.Items.AddRange(new object[] {
             "快速",
             "精细"});
-            this.cbMode.Location = new System.Drawing.Point(901, 32);
+            this.cbMode.Location = new System.Drawing.Point(712, 17);
             this.cbMode.Name = "cbMode";
             this.cbMode.Size = new System.Drawing.Size(54, 28);
             this.cbMode.TabIndex = 38;
@@ -522,7 +503,7 @@
             this.btnCurveLine.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.btnCurveLine.ForeColor = System.Drawing.Color.Black;
             this.btnCurveLine.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnCurveLine.Location = new System.Drawing.Point(892, 78);
+            this.btnCurveLine.Location = new System.Drawing.Point(703, 63);
             this.btnCurveLine.Name = "btnCurveLine";
             this.btnCurveLine.Size = new System.Drawing.Size(67, 25);
             this.btnCurveLine.TabIndex = 37;
@@ -536,7 +517,7 @@
             this.btnStraightLine.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.btnStraightLine.ForeColor = System.Drawing.Color.Black;
             this.btnStraightLine.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnStraightLine.Location = new System.Drawing.Point(819, 78);
+            this.btnStraightLine.Location = new System.Drawing.Point(630, 63);
             this.btnStraightLine.Name = "btnStraightLine";
             this.btnStraightLine.Size = new System.Drawing.Size(67, 25);
             this.btnStraightLine.TabIndex = 36;
@@ -549,7 +530,7 @@
             this.label19.AutoSize = true;
             this.label19.Font = new System.Drawing.Font("幼圆", 9F);
             this.label19.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label19.Location = new System.Drawing.Point(592, 369);
+            this.label19.Location = new System.Drawing.Point(422, 376);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(89, 12);
             this.label19.TabIndex = 34;
@@ -560,7 +541,7 @@
             this.label21.AutoSize = true;
             this.label21.Font = new System.Drawing.Font("幼圆", 9F);
             this.label21.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label21.Location = new System.Drawing.Point(255, 85);
+            this.label21.Location = new System.Drawing.Point(23, 69);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(155, 12);
             this.label21.TabIndex = 33;
@@ -571,7 +552,7 @@
             this.label20.AutoSize = true;
             this.label20.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label20.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label20.Location = new System.Drawing.Point(578, 80);
+            this.label20.Location = new System.Drawing.Point(372, 67);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(74, 21);
             this.label20.TabIndex = 32;
@@ -613,7 +594,7 @@
             this.flowLayoutPanel2.Controls.Add(this.txtVal9);
             this.flowLayoutPanel2.Controls.Add(this.txtVal10);
             this.flowLayoutPanel2.Controls.Add(this.txtVal11);
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(291, 391);
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(121, 398);
             this.flowLayoutPanel2.Margin = new System.Windows.Forms.Padding(0);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
             this.flowLayoutPanel2.Size = new System.Drawing.Size(653, 78);
@@ -1195,27 +1176,27 @@
             // chart1
             // 
             this.chart1.BackColor = System.Drawing.Color.Transparent;
-            chartArea15.Name = "ChartArea1";
-            chartArea15.Position.Auto = false;
-            chartArea15.Position.Height = 97F;
-            chartArea15.Position.Width = 100F;
-            chartArea15.Position.Y = 3F;
-            this.chart1.ChartAreas.Add(chartArea15);
-            legend15.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Top;
-            legend15.Enabled = false;
-            legend15.MaximumAutoSize = 40F;
-            legend15.Name = "Legend1";
-            this.chart1.Legends.Add(legend15);
-            this.chart1.Location = new System.Drawing.Point(235, 97);
+            chartArea2.Name = "ChartArea1";
+            chartArea2.Position.Auto = false;
+            chartArea2.Position.Height = 97F;
+            chartArea2.Position.Width = 100F;
+            chartArea2.Position.Y = 3F;
+            this.chart1.ChartAreas.Add(chartArea2);
+            legend2.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Top;
+            legend2.Enabled = false;
+            legend2.MaximumAutoSize = 40F;
+            legend2.Name = "Legend1";
+            this.chart1.Legends.Add(legend2);
+            this.chart1.Location = new System.Drawing.Point(27, 83);
             this.chart1.Name = "chart1";
             this.chart1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            series15.ChartArea = "ChartArea1";
-            series15.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series15.Legend = "Legend1";
-            series15.Name = "Series1";
-            series15.ToolTip = "#VALX #VAL";
-            series15.YValuesPerPoint = 6;
-            this.chart1.Series.Add(series15);
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            series2.ToolTip = "#VALX #VAL";
+            series2.YValuesPerPoint = 6;
+            this.chart1.Series.Add(series2);
             this.chart1.Size = new System.Drawing.Size(739, 266);
             this.chart1.TabIndex = 28;
             this.chart1.Click += new System.EventHandler(this.chart1_Click);
@@ -1225,7 +1206,7 @@
             // 
             this.label14.AutoSize = true;
             this.label14.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label14.Location = new System.Drawing.Point(180, 298);
+            this.label14.Location = new System.Drawing.Point(188, 294);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(49, 20);
             this.label14.TabIndex = 26;
@@ -1233,7 +1214,7 @@
             // 
             // txtMin
             // 
-            this.txtMin.Location = new System.Drawing.Point(121, 295);
+            this.txtMin.Location = new System.Drawing.Point(129, 291);
             this.txtMin.Name = "txtMin";
             this.txtMin.Size = new System.Drawing.Size(55, 26);
             this.txtMin.TabIndex = 25;
@@ -1244,7 +1225,7 @@
             // 
             this.label15.AutoSize = true;
             this.label15.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label15.Location = new System.Drawing.Point(13, 298);
+            this.label15.Location = new System.Drawing.Point(21, 294);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(107, 20);
             this.label15.TabIndex = 24;
@@ -1254,7 +1235,7 @@
             // 
             this.label13.AutoSize = true;
             this.label13.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label13.Location = new System.Drawing.Point(180, 233);
+            this.label13.Location = new System.Drawing.Point(188, 229);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(49, 20);
             this.label13.TabIndex = 23;
@@ -1264,7 +1245,7 @@
             // 
             this.label12.AutoSize = true;
             this.label12.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label12.Location = new System.Drawing.Point(13, 169);
+            this.label12.Location = new System.Drawing.Point(21, 165);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(107, 20);
             this.label12.TabIndex = 22;
@@ -1326,7 +1307,7 @@
             "220s",
             "230s",
             "240s"});
-            this.cbChangeState.Location = new System.Drawing.Point(121, 166);
+            this.cbChangeState.Location = new System.Drawing.Point(129, 162);
             this.cbChangeState.Name = "cbChangeState";
             this.cbChangeState.Size = new System.Drawing.Size(107, 28);
             this.cbChangeState.TabIndex = 21;
@@ -1336,7 +1317,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label11.Location = new System.Drawing.Point(13, 101);
+            this.label11.Location = new System.Drawing.Point(21, 97);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(107, 20);
             this.label11.TabIndex = 20;
@@ -1357,7 +1338,7 @@
             "90%",
             "100%",
             "恢复上次亮度"});
-            this.cbOnState.Location = new System.Drawing.Point(121, 98);
+            this.cbOnState.Location = new System.Drawing.Point(129, 94);
             this.cbOnState.Name = "cbOnState";
             this.cbOnState.Size = new System.Drawing.Size(107, 28);
             this.cbOnState.TabIndex = 19;
@@ -1367,7 +1348,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label10.Location = new System.Drawing.Point(13, 37);
+            this.label10.Location = new System.Drawing.Point(21, 33);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(107, 20);
             this.label10.TabIndex = 18;
@@ -1389,7 +1370,7 @@
             "90%",
             "100%",
             "恢复断电状态"});
-            this.cbPowerState.Location = new System.Drawing.Point(121, 34);
+            this.cbPowerState.Location = new System.Drawing.Point(129, 30);
             this.cbPowerState.Name = "cbPowerState";
             this.cbPowerState.Size = new System.Drawing.Size(107, 28);
             this.cbPowerState.TabIndex = 17;
@@ -1397,7 +1378,7 @@
             // 
             // txtMax
             // 
-            this.txtMax.Location = new System.Drawing.Point(121, 230);
+            this.txtMax.Location = new System.Drawing.Point(129, 226);
             this.txtMax.Name = "txtMax";
             this.txtMax.Size = new System.Drawing.Size(55, 26);
             this.txtMax.TabIndex = 16;
@@ -1408,7 +1389,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label9.Location = new System.Drawing.Point(13, 233);
+            this.label9.Location = new System.Drawing.Point(21, 229);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(107, 20);
             this.label9.TabIndex = 15;
@@ -1424,7 +1405,7 @@
             this.groupBox1.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.groupBox1.Location = new System.Drawing.Point(11, 7);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(976, 72);
+            this.groupBox1.Size = new System.Drawing.Size(1068, 72);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "操作";
@@ -1491,12 +1472,60 @@
             this.timer2.Interval = 5000;
             this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
             // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.label10);
+            this.groupBox3.Controls.Add(this.label9);
+            this.groupBox3.Controls.Add(this.txtMax);
+            this.groupBox3.Controls.Add(this.cbPowerState);
+            this.groupBox3.Controls.Add(this.cbOnState);
+            this.groupBox3.Controls.Add(this.btnSetIni);
+            this.groupBox3.Controls.Add(this.label11);
+            this.groupBox3.Controls.Add(this.cbChangeState);
+            this.groupBox3.Controls.Add(this.label12);
+            this.groupBox3.Controls.Add(this.label13);
+            this.groupBox3.Controls.Add(this.label15);
+            this.groupBox3.Controls.Add(this.txtMin);
+            this.groupBox3.Controls.Add(this.label14);
+            this.groupBox3.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.groupBox3.Location = new System.Drawing.Point(6, 25);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(270, 486);
+            this.groupBox3.TabIndex = 50;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "常规";
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.label2);
+            this.groupBox4.Controls.Add(this.btnStraightLine);
+            this.groupBox4.Controls.Add(this.label6);
+            this.groupBox4.Controls.Add(this.txtVal100);
+            this.groupBox4.Controls.Add(this.btnCurveLine);
+            this.groupBox4.Controls.Add(this.cbMode);
+            this.groupBox4.Controls.Add(this.label5);
+            this.groupBox4.Controls.Add(this.btnSwitchLine);
+            this.groupBox4.Controls.Add(this.label4);
+            this.groupBox4.Controls.Add(this.label21);
+            this.groupBox4.Controls.Add(this.label3);
+            this.groupBox4.Controls.Add(this.label20);
+            this.groupBox4.Controls.Add(this.label19);
+            this.groupBox4.Controls.Add(this.flowLayoutPanel2);
+            this.groupBox4.Controls.Add(this.chart1);
+            this.groupBox4.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.groupBox4.Location = new System.Drawing.Point(281, 25);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(782, 486);
+            this.groupBox4.TabIndex = 51;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "调光曲线";
+            // 
             // SetDimmer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkGray;
-            this.ClientSize = new System.Drawing.Size(1000, 614);
+            this.ClientSize = new System.Drawing.Size(1092, 636);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.plInfoTitle);
             this.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
@@ -1513,7 +1542,6 @@
             this.flowLayoutPanel1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
             this.flowLayoutPanel2.ResumeLayout(false);
             this.flowLayoutPanel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
@@ -1521,6 +1549,10 @@
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tblmTiao)).EndInit();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1611,5 +1643,7 @@
         private System.Windows.Forms.TextBox txtVal9;
         private System.Windows.Forms.TextBox txtVal10;
         private System.Windows.Forms.TextBox txtVal11;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.GroupBox groupBox3;
     }
 }

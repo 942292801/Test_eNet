@@ -143,8 +143,9 @@ namespace eNet编辑器
             threetimer.clearTxtShow += new Action<string>(clearTxtShow);
             dgvtimer.AppTxtShow += new Action<string>(AppTxtShow);
             threepoint.AppTxtShow += new Action<string>(AppTxtShow);
+
             tnGateway.AppTxtShow += new Action<string>(AppTxtShow);
-            tnDevice.AppTxtShow += new Action<string>(AppTxtShow);
+            tnDevice.ClearTxtShow += new Action<string>(clearTxtShow);
             LogicScene.AppTxtShow += new Action<string>(AppTxtShow);
             LogicCondition.AppTxtShow += new Action<string>(AppTxtShow);
             LogicVoice.AppTxtShow += new Action<string>(AppTxtShow);

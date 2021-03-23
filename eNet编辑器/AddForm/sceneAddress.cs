@@ -404,7 +404,8 @@ namespace eNet编辑器.AddForm
                 {
                     if (item.Key == id)
                     {
-                        string filepath = IniHelper.findDevicesDisplay(item.Value);
+                        //string filepath = IniHelper.findDevicesDisplay(item.Value);
+                        string filepath = Application.StartupPath + "//devices//" + item.Value + ".ini";
                         //获取全部Section下的Key
                         List<string> list = IniConfig.ReadKeys("ports", filepath);
                         //循环添加行信息

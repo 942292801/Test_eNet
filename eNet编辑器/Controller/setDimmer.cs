@@ -54,6 +54,8 @@ namespace eNet编辑器.Controller
         //曲线数据点
         List<string> xData = new List<string>();
         List<int> yData = new List<int>();
+        //默认曲线
+        private static string DEFAULT_CURVE = "03E8040D04330459047E04A604CE04F6051E05460564058205A005BE05DC06180654069006CC070807300758078007A807D0080C0848088408C008FC0938097409B009EC0A280A640AA00ADC0B180B540B900BCC0C080C440C800CBC0CF80D340D700DAC0DE80E240E600E9C0ED80F140F500F8C0FC81004105410A410F41144119411E41234128412D41324137413C41414146414B41504155415A415F41644169E16F8175217AC1806187418E2195019BE1A2C1AB81B441BD01C5C1CE81DD81EC81FB820A82710";
 
         public SetDimmer()
         {
@@ -1759,7 +1761,16 @@ namespace eNet编辑器.Controller
 
         private void btnIni_Click(object sender, EventArgs e)
         {
-            getFormState("64", "64", "01", "64", "00", "");
+            //getFormState("0", "10", "10", "64", "00", "");
+            cbPowerState.SelectedIndex = 0;
+            cbOnState.SelectedIndex = 10;
+            cbChangeState.SelectedIndex = 10;
+            txtMax.Text = "100";
+            txtMin.Text = "0";
+            GetLinesp(DEFAULT_CURVE);
+            //获取表格数字
+            updateTable();
+          
         }
 
         private void btnAllWrite_Click(object sender, EventArgs e)
@@ -2086,6 +2097,7 @@ namespace eNet编辑器.Controller
 
         private void btnRead_Click(object sender, EventArgs e)
         {
+            this.btnRead.Enabled = false;
             sendGetOrder("40");//上电状态
             ToolsUtil.DelayMilli(200);
             sendGetOrder("60");//开启状态
@@ -2097,7 +2109,7 @@ namespace eNet编辑器.Controller
             sendGetOrder("63");
             ToolsUtil.DelayMilli(200);
             sendGetOrder("65");
-
+            this.btnRead.Enabled = true;
         }
 
         private void btnImport_Click(object sender, EventArgs e)
@@ -2726,10 +2738,13 @@ namespace eNet编辑器.Controller
         
         private void BtnCurveLine_Click(object sender, EventArgs e)
         {
-            //曲线
-            getLinespA(1, 100, 100, 10000);
-            chart1.Series[0].Points.DataBindXY(xData, yData);
+            GetLinesp(DEFAULT_CURVE);
+            //获取表格数字
             updateTable();
+            //曲线
+            /*getLinespA(1, 100, 100, 10000);
+            chart1.Series[0].Points.DataBindXY(xData, yData);
+            updateTable();*/
         }
 
 
@@ -2819,11 +2834,11 @@ namespace eNet编辑器.Controller
         }
         private void BtnSetIni_Click(object sender, EventArgs e)
         {
-            cbPowerState.SelectedIndex = 0;
+            /*cbPowerState.SelectedIndex = 0;
             cbOnState.SelectedIndex = 10;
             cbChangeState.SelectedIndex = 10;
             txtMax.Text = "100";
-            txtMin.Text = "0";
+            txtMin.Text = "0";*/
         }
 
         /// <summary>

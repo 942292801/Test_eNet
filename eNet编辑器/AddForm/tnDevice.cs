@@ -16,7 +16,8 @@ namespace eNet编辑器.AddForm
         {
             InitializeComponent();
         }
-        public static event Action<string> AppTxtShow;
+        public static event Action<string> ClearTxtShow;
+
         public bool isNew = false;
         //回调添加设备节点
         public event AddDev adddev;
@@ -72,6 +73,7 @@ namespace eNet编辑器.AddForm
                 }
 
             }
+            cbSpecies.Items.Clear();
             foreach (string str in hs)
             {
                 cbSpecies.Items.Add(str);
@@ -180,14 +182,14 @@ namespace eNet编辑器.AddForm
             //设备号不为空
             if (string.IsNullOrEmpty(cbDevice.Text) || string.IsNullOrEmpty(cbVersion.Text))
             {
-                AppTxtShow("设备信息错误");
+                ClearTxtShow("请正确填写设备号和版本号");
                 return;
             }
             //设备ID号为数字
             if (!Regex.IsMatch(cbDevice.Text, @"^[+-]?\d*[.]?\d*$"))
             {
 
-                AppTxtShow("设备号输入格式错误");
+                ClearTxtShow("请正确填写设备号和版本号");
                 return;
             }
             bool isVersion = false;
@@ -201,7 +203,7 @@ namespace eNet编辑器.AddForm
             }
             if (!isVersion)
             {
-                AppTxtShow("设备型号不存在");
+                ClearTxtShow("设备型号不存在");
                 return;
             }
 
@@ -215,7 +217,7 @@ namespace eNet编辑器.AddForm
                         {
                             if (m.id.ToString() == cbDevice.Text)
                             {
-                                AppTxtShow("操作失败！请检查设备号！");
+                                ClearTxtShow("请正确填写设备号！");
                                 return;
                             }
                         }
@@ -249,7 +251,7 @@ namespace eNet编辑器.AddForm
                             {
                                 if (m.id.ToString() == cbDevice.Text)
                                 {
-                                    AppTxtShow("设备号已存在！请检查设备号！");
+                                    ClearTxtShow("设备号已存在！");
                                     return;
                                 }
                             }
@@ -405,9 +407,19 @@ namespace eNet编辑器.AddForm
             AddVersionBySpecies();
         }
 
-       
-
-
-
+        private void CbVersion_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string display;
+            foreach (FileInfo file in folder.GetFiles("*.ini"))
+            {
+                display = IniConfig.GetValue(file.FullName, "define", "display");
+                if (!string.IsNullOrEmpty(display) && display == cbVersion.Text)
+                {
+                    string note = IniConfig.GetValue(file.FullName, "define", "note");
+                    ClearTxtShow(note);
+                    break;
+                }
+            }
+        }
     }
 }
