@@ -1,5 +1,58 @@
 {
-    "equipment": [],
+    "equipment": [
+        {
+            "pid": 392306854,
+            "area1": "A区",
+            "area2": "",
+            "area3": "",
+            "area4": "",
+            "name": "灯1@196",
+            "ip": "192.168.1.196",
+            "address": "FE000701",
+            "objType": "",
+            "value": "",
+            "type": "2.0_dimmer"
+        },
+        {
+            "pid": 926115443,
+            "area1": "A区",
+            "area2": "",
+            "area3": "",
+            "area4": "",
+            "name": "灯2@196",
+            "ip": "192.168.1.196",
+            "address": "FE000702",
+            "objType": "",
+            "value": "",
+            "type": "2.0_dimmer"
+        },
+        {
+            "pid": 310406884,
+            "area1": "A区",
+            "area2": "",
+            "area3": "",
+            "area4": "",
+            "name": "筒灯1@255",
+            "ip": "",
+            "address": "FFFFFFFF",
+            "objType": "lighting",
+            "value": "value1",
+            "type": "1.0_switch"
+        },
+        {
+            "pid": 658767639,
+            "area1": "A区",
+            "area2": "",
+            "area3": "",
+            "area4": "",
+            "name": "筒灯2@196",
+            "ip": "192.168.1.196",
+            "address": "FE000102",
+            "objType": "",
+            "value": "",
+            "type": "1.0_switch"
+        }
+    ],
     "scene": [
         {
             "pid": 372434298,
@@ -10,6 +63,32 @@
             "name": "全开@196",
             "ip": "192.168.1.196",
             "address": "FE100001",
+            "objType": "",
+            "value": "",
+            "type": "4.0_scene"
+        },
+        {
+            "pid": 776587078,
+            "area1": "A区",
+            "area2": "",
+            "area3": "",
+            "area4": "",
+            "name": "全开@230",
+            "ip": "192.168.1.230",
+            "address": "FE100001",
+            "objType": "",
+            "value": "",
+            "type": "4.0_scene"
+        },
+        {
+            "pid": 348742611,
+            "area1": "A区",
+            "area2": "",
+            "area3": "",
+            "area4": "",
+            "name": "全关@196",
+            "ip": "192.168.1.196",
+            "address": "FE100002",
             "objType": "",
             "value": "",
             "type": "4.0_scene"

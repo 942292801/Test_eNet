@@ -1875,7 +1875,7 @@ namespace eNet编辑器.DgvView
         {
 
             
-            sceneConcrol dc = new sceneConcrol();
+            sceneConcrol sceneconcrol = new sceneConcrol();
             DataJson.timers tms = DataListHelper.getTimersInfoList();
             if (tms == null)
             {
@@ -1887,22 +1887,24 @@ namespace eNet编辑器.DgvView
             {
                 return null;
             }
-            dc.Point = DataListHelper.findPointByPid(tmInfo.pid, FileMesege.PointList.equipment);
+            sceneconcrol.Point = DataListHelper.findPointByPid(tmInfo.pid, FileMesege.PointList.equipment);
+
             //把窗口向屏幕中间刷新
-            dc.StartPosition = FormStartPosition.CenterParent;
-            dc.ObjType = type;
-            dc.Opt = tmInfo.opt;
-            dc.Ver = tmInfo.optName;
-            dc.ShowDialog();
-            if (dc.DialogResult == DialogResult.OK)
+            sceneconcrol.StartPosition = FormStartPosition.CenterParent;
+            sceneconcrol.IP = ip;
+            sceneconcrol.ObjType = type;
+            sceneconcrol.Opt = tmInfo.opt;
+            sceneconcrol.Ver = tmInfo.optName;
+            sceneconcrol.ShowDialog();
+            if (sceneconcrol.DialogResult == DialogResult.OK)
             {
                 //撤销 
                 DataJson.totalList OldList = FileMesege.cmds.getListInfos();
-                tmInfo.opt = dc.Opt;
-                tmInfo.optName = dc.Ver;
+                tmInfo.opt = sceneconcrol.Opt;
+                tmInfo.optName = sceneconcrol.Ver;
                 DataJson.totalList NewList = FileMesege.cmds.getListInfos();
                 FileMesege.cmds.DoNewCommand(NewList, OldList);
-                return dc.Ver + " " + dc.Opt;
+                return sceneconcrol.Ver + " " + sceneconcrol.Opt;
             }
             
             return null;

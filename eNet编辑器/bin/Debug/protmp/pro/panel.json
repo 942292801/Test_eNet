@@ -7,11 +7,11 @@
                         "id": 1,
                         "pid": 0,
                         "keyAddress": "C4020001",
-                        "objAddress": "",
-                        "objType": "",
-                        "opt": 255,
-                        "showAddress": "",
-                        "showMode": ""
+                        "objAddress": "FE000101",
+                        "objType": "1.0_switch",
+                        "opt": 1,
+                        "showAddress": "FE000101",
+                        "showMode": "同步"
                     },
                     {
                         "id": 2,

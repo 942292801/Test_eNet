@@ -14,7 +14,7 @@ namespace eNet编辑器.AddForm
         }
 
         /// <summary>
-        /// 选择按钮的地址
+        /// 地址
         /// </summary>
         private string ip;
 
@@ -437,13 +437,7 @@ namespace eNet编辑器.AddForm
                 switch (cb2.SelectedItem.ToString())
                 {
                     case "场景":
-                       /* string tmpip = ip;
-                        if (!cb1.Text.Contains("254"))
-                        {
-                            string[] ips = ip.Split('.');
-                            tmpip = string.Format("{0}.{1}.{2}.{3}", ips[0], ips[1], ips[2], cb1.Text);
-                        }
-                        DataJson.Scene scene = DataListHelper.getSceneList(tmpip);*/
+               
                         DataJson.Scene scene = DataListHelper.getSceneList(cb1.Text);
                         foreach (DataJson.scenes scenes in scene.scenes)
                         {
