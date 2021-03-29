@@ -25,8 +25,6 @@ namespace eNet编辑器
         public ThreeSection threesection;
         public ThreeTitle threetitle;
         public ThreeVar threevar;
-
-
         public DgvName dgvname;
         public DgvPoint dgvpoint;
         public DgvDevice dgvdevice;
@@ -47,9 +45,9 @@ namespace eNet编辑器
             InitializeComponent();
 
         }
-  
+
         #region 解决背景闪烁
-   
+
         //测试 解决背景闪烁
         protected override CreateParams CreateParams
         {
@@ -120,13 +118,13 @@ namespace eNet编辑器
             /////////////////////////////////////////////////////////////
             
             //txt窗口 信息显示 清空所有
-            threename.sendFormContrl += new SendFormContrl(clearTxtShow);
+            threename.sendFormContrl += new SendFormContrl(ClearTxtShow);
             //txt窗口 信息显示 清空所有
-            threescene.clearTxtShow += new Action<string>(clearTxtShow);
-            threepanel.clearTxtShow += new Action<string>(clearTxtShow);
-            threesensor.clearTxtShow += new Action<string>(clearTxtShow);
-            threelogic.clearTxtShow += new Action<string>(clearTxtShow);
-            threevar.clearTxtShow += new Action<string>(clearTxtShow);
+            threescene.clearTxtShow += new Action<string>(ClearTxtShow);
+            threepanel.clearTxtShow += new Action<string>(ClearTxtShow);
+            threesensor.clearTxtShow += new Action<string>(ClearTxtShow);
+            threelogic.clearTxtShow += new Action<string>(ClearTxtShow);
+            threevar.clearTxtShow += new Action<string>(ClearTxtShow);
             dgvpoint.txtAppShow += new Action<string>(AppTxtShow);
             dgvname.txtAppShow += new Action<string>(AppTxtShow);
             dgvdevice.AppTxtShow += new Action<string>(AppTxtShow);
@@ -140,12 +138,12 @@ namespace eNet编辑器
                 AppTxtShow(msg);//后面直接加 非清空
             });
             dgvsensor.AppTxtShow += new Action<string>(AppTxtShow);
-            threetimer.clearTxtShow += new Action<string>(clearTxtShow);
+            threetimer.clearTxtShow += new Action<string>(ClearTxtShow);
             dgvtimer.AppTxtShow += new Action<string>(AppTxtShow);
             threepoint.AppTxtShow += new Action<string>(AppTxtShow);
 
             tnGateway.AppTxtShow += new Action<string>(AppTxtShow);
-            tnDevice.ClearTxtShow += new Action<string>(clearTxtShow);
+            tnDevice.ClearTxtShow += new Action<string>(ClearTxtShow);
             LogicScene.AppTxtShow += new Action<string>(AppTxtShow);
             LogicCondition.AppTxtShow += new Action<string>(AppTxtShow);
             LogicVoice.AppTxtShow += new Action<string>(AppTxtShow);
@@ -200,14 +198,7 @@ namespace eNet编辑器
             threesection.updatePointDgv += new Action(dgvpoint.dgvPointAddItemBySection);
             threepoint.updateDgvPoint += new Action(dgvpoint.dgvPointAddItemByObjType);
             threesection.logicCbSceneGetItem +=new Action(dgvlogic.delegeteLogicCbSceneGetItem);
-            //threesection.unSelectPointNode += new Action(threepoint.unSelectNode);
-            /////////////////////////////////////////////////////////////
-            //光标事件调用 
-            //添加加号光标
-            //threesection.addSectionDevCursor += new AddSectionDevCursor(dgvdevice.cursor_copy);
-            //threesection.addSectionNameCursor +=new AddSectionNameCursor(dgvname.cursor_copy);
-            //threetitle.addTitleDevCursor += new AddTitleDevCursor(dgvdevice.cursor_copy);
-            //threetitle.addTitlenNameCursor += new AddTitlenNameCursor(dgvname.cursor_copy);
+ 
 
 
             dgvdevice.unSelectTitleNode += new Action(() =>//刷新右边两树状图 取消选中状态 
@@ -238,22 +229,10 @@ namespace eNet编辑器
             dgvpoint.LocaBindNode += new Action(threepoint.LocaBindNode);
 
 
-            /*dgvpanel.updateSectionTitleNode += new Action(() =>//刷新右边两树状图 取消选中状态 
-            {
-                //threesection.ThreeSEctionAddNode();
-                threetitle.ThreeTitleAddNode(cbType.SelectedIndex);
-            });*/
             dgvpanel.unSelectTitleNode += new Action(threetitle.unSelectTitleNode);
-            /*dgvsensor.updateSectionTitleNode += new Action(() =>//刷新右边两树状图 取消选中状态 
-            {
-                //threesection.ThreeSEctionAddNode();
-                threetitle.ThreeTitleAddNode(cbType.SelectedIndex);
-            });*/
+
             dgvsensor.unSelectTitleNode += new Action(threetitle.unSelectTitleNode);
-            //默认光标
-            //dgvname.dgvDeviceCursorDefault +=new DgvDeviceCursorDefault(dgvdevice.cursor_default);
-            //dgvdevice.dgvNameCursorDefault += new DgvNameCursorDefault(dgvname.cursor_default);
-            /////////////////////////////////////////////////////////////
+     
             //dgv窗体跳转
             dgvscene.jumpSetInfo += new Action<DataJson.PointInfo>(dgv_jumpSetInfo);
             dgvtimer.jumpSetInfo += new Action<DataJson.PointInfo>(dgv_jumpSetInfo);
@@ -269,10 +248,7 @@ namespace eNet编辑器
         }
 
    
-        /*private void LogicCondition_unSelectTitleNode()
-        {
-            throw new NotImplementedException();
-        }*/
+   
 
         #region 刷新窗口
 
@@ -515,60 +491,7 @@ namespace eNet编辑器
             form.Show();                      //窗体运行  
         }
 
-        #region 文本框操作信息
-
-        int clearNum = 0;
-        /// <summary>
-        /// 窗体显示信息 清空信息后显示
-        /// </summary>
-        /// <param name="msg"></param>
-        public void clearTxtShow(string msg)
-        {
-            clearNum = 0;
-            txtShow.Clear();
-            txtShow.AppendText(msg);
-        }
-
-        /// <summary>
-        /// 窗体显示信息 直接换行追加
-        /// </summary>
-        /// <param name="msg"></param>
-        public void AppTxtShow(string msg)
-        {
-            try
-            {
-                string tmp = string.Format("({1}) {0}\r\n", msg, DateTime.Now.ToLongTimeString());
-
-                if (clearNum == 2)
-                {
-                    txtShow.AppendText(tmp);
-                    this.txtShow.ScrollToCaret();
-                }
-                else
-                {
-                    this.txtShow.ScrollToCaret();
-                    txtShow.AppendText(tmp);
-                }
-                //来一个延时
-                ToolsUtil.DelayMilli(300);
-                txtShow.SelectAll();
-                this.txtShow.SelectionColor = Color.Black;
-
-                txtShow.Select(txtShow.Text.Length - tmp.Length + 1, tmp.Length);
-                this.txtShow.SelectionColor = Color.Red;
-                clearNum++;
-            }
-            catch
-            { }
-            
-        }
-
-        //清除txt信息
-        private void btnInfoClear_Click(object sender, EventArgs e)
-        {
-            txtShow.Clear();
-        }
-        #endregion
+      
 
         /// <summary>
         /// treetitle对象选择框改变
@@ -602,6 +525,60 @@ namespace eNet编辑器
         }
         #endregion
 
+        #region RichText信息显示
+
+        /// <summary>
+        /// 窗体显示信息 清空信息后显示
+        /// </summary>
+        /// <param name="msg"></param>
+        public void ClearTxtShow(string msg)
+        {
+            txtShow.Clear();
+            txtShow.AppendText(msg.Replace("&&", "\r\n"));
+            txtShow.SelectAll();
+            this.txtShow.SelectionColor = Color.Black;
+        }
+
+        /// <summary>
+        /// 窗体显示信息 直接换行追加
+        /// </summary>
+        /// <param name="msg"></param>
+        public void AppTxtShow(string msg)
+        {
+            try
+            {
+                int lastLen = 0;
+                string showStr = string.Empty;
+                if (string.IsNullOrEmpty(txtShow.Text))
+                {
+                    showStr = string.Format("时间：{0}\r\n信息：{1}", DateTime.Now.ToLongTimeString(), msg);
+                }
+                else
+                {
+                    //已有内容
+                    showStr = string.Format("\r\n时间：{0}\r\n信息：{1}", DateTime.Now.ToLongTimeString(), msg);
+                    txtShow.SelectAll();
+                    this.txtShow.SelectionColor = Color.Black;
+                    lastLen = txtShow.Text.Length;
+                }
+
+                txtShow.AppendText(showStr);
+                txtShow.Select(lastLen, showStr.Length);
+                this.txtShow.SelectionColor = Color.Red;
+                this.txtShow.ScrollToCaret();
+
+            }
+            catch
+            { }
+
+        }
+
+        //清除txt信息
+        private void btnInfoClear_Click(object sender, EventArgs e)
+        {
+            txtShow.Clear();
+        }
+        #endregion
 
         #region 按钮 设备 场景 时钟 绑定 逻辑 运算 cbtype 读取
 
@@ -875,7 +852,6 @@ namespace eNet编辑器
 
 
         #region 内存回收
-
         private void timer1_Tick(object sender, EventArgs e)
         {
             ClearMemory();
@@ -896,7 +872,6 @@ namespace eNet编辑器
         }
         #endregion
 
-
         #region Muilt 新建文件 打开文件 另存为 保存 退出 窗体关闭
 
         private void 新建项目ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -904,18 +879,19 @@ namespace eNet编辑器
             FileMesege fm = new FileMesege();
             if (fm.newfile())
             {
-                    this.Text = Resources.SoftName + "Edit New Project";
-                    clearDgvClear();
-                    threesection.ThreeSEctionAddNode();
-                    updateTreeByFormType();
+                this.Text = Resources.SoftName + "Edit New Project";
+                clearDgvClear();
+                threesection.ThreeSEctionAddNode();
+                updateTreeByFormType();
 
-                    txtShow.Clear();
-                    AppTxtShow("新建工程！");
+                txtShow.Clear();
+
+                ClearTxtShow("新建工程！");
             }
             else
             {
 
-                AppTxtShow("新建工程失败！");
+                ClearTxtShow("新建工程失败！");
             }           
         }
 
@@ -925,17 +901,17 @@ namespace eNet编辑器
             if (fm.openfile())
             {
 
-                    AppTxtShow("打开工程成功！" + FileMesege.filePath);
-                    this.Text = Resources.SoftName + FileMesege.filePath;
-                    clearDgvClear();
-                    threesection.ThreeSEctionAddNode();
-                    //刷新所有窗口           
-                    updateTreeByFormType();
+                ClearTxtShow("打开工程成功！" + FileMesege.filePath);
+                this.Text = Resources.SoftName + FileMesege.filePath;
+                clearDgvClear();
+                threesection.ThreeSEctionAddNode();
+                //刷新所有窗口           
+                updateTreeByFormType();
                
             }
             else
             {
-                AppTxtShow("打开工程失败！");
+                ClearTxtShow("打开工程失败！");
             }            
         }
 
@@ -951,15 +927,8 @@ namespace eNet编辑器
                 }
                 else
                 {
-                    if (fm.savefile())
-                    {
-                        this.Text = Resources.SoftName + FileMesege.filePath;
-                        AppTxtShow("保存工程成功！");
-                    }
-                    else
-                    {
-                        AppTxtShow("保存工程失败！");
-                    }
+                    
+                    AppTxtShow("保存工程失败");
                 }
             }
             catch { }

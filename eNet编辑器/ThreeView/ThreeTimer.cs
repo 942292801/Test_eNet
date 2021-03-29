@@ -694,12 +694,12 @@ namespace eNet编辑器.ThreeView
             if (treeView1.SelectedNode.Parent != null)
             {
 
-                clearTxtShow(Resources.TxtShowTimerName + treeView1.SelectedNode.Text + "\r\n");
+                clearTxtShow(Resources.TxtShowTimerName + treeView1.SelectedNode.Text );
             }
             else
             {
                 string filepath = Application.StartupPath + "\\devices\\" + names[1]+".ini";
-                clearTxtShow(Resources.TxtShowDevName + IniConfig.GetValue(filepath, "define", "note") + "\r\n");
+                clearTxtShow(Resources.TxtShowDevName + IniConfig.GetValue(filepath, "define", "note"));
             }
         }
 

@@ -20,11 +20,7 @@ namespace eNet编辑器.ThreeView
             SetStyle(ControlStyles.AllPaintingInWmPaint, true); // 禁止擦除背景.
             SetStyle(ControlStyles.DoubleBuffer, true); // 双缓冲
             this.UpdateStyles();
-            //利用反射设置DataGridView的双缓冲
-            //Type dgvType = this.treeView1.GetType();
-            //PropertyInfo pi = dgvType.GetProperty("DoubleBuffered",
-            //BindingFlags.Instance | BindingFlags.NonPublic);
-            //pi.SetValue(this.treeView1, true, null);
+        
         }
 
         //树状图节点
@@ -139,7 +135,7 @@ namespace eNet编辑器.ThreeView
             else
             {
                 string filepath = Application.StartupPath + "\\devices\\" + names[1] + ".ini";
-                clearTxtShow(Resources.TxtShowDevName + IniConfig.GetValue(filepath, "define", "note") + "\r\n");
+                clearTxtShow(Resources.TxtShowDevName + IniConfig.GetValue(filepath, "define", "note") );
             }
         }
 

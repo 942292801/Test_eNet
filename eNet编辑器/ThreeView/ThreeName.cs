@@ -46,33 +46,11 @@ namespace eNet编辑器.ThreeView
         public ThreeName()
         {
             InitializeComponent();
-            SetStyle(ControlStyles.UserPaint, true);
-            SetStyle(ControlStyles.AllPaintingInWmPaint, true); // 禁止擦除背景.
-            SetStyle(ControlStyles.DoubleBuffer, true); // 双缓冲
-            this.UpdateStyles();
+     
         }
 
 
-        #region 解决背景闪烁
-        //测试 解决背景闪烁
-        protected override void WndProc(ref Message m)
-        {
-            if (m.Msg == 0x0014)
-                // 禁掉清除背景消息         
-                return;
-            base.WndProc(ref m);
-        }
-        //测试 解决背景闪烁
-        protected override CreateParams CreateParams
-        {
-            get
-            {
-                CreateParams cp = base.CreateParams;
-                cp.ExStyle |= 0x02000000;
-                return cp;
-            }
-        }
-        #endregion
+  
 
 
 
@@ -499,7 +477,7 @@ namespace eNet编辑器.ThreeView
             {
 
                 //显示设备node
-                sendFormContrl(Resources.TxtShowDevName + IniConfig.GetValue(filepath, "define", "note").Replace("&&", "\r\n"));
+                sendFormContrl(Resources.TxtShowDevName + IniConfig.GetValue(filepath, "define", "note"));
               
                 //调用dgv的ini配置
                 if (treeView1.SelectedNode.Parent == null)
@@ -523,9 +501,6 @@ namespace eNet编辑器.ThreeView
                 sendFormContrl("");
                 showDevice(false);
                 dgvNameAddItem();
-             
-
-
                 return;
                 //MessageBox.Show("bu存在文件夹");
 
@@ -586,20 +561,16 @@ namespace eNet编辑器.ThreeView
             else if ((e.State & TreeNodeStates.Hot) > 0)
             {
                 return;
-                //foreColor = Color.Lime;//鼠标经过时文字颜色
-                //backColor = Color.Gray;//鼠标经过时背景颜色
+
             }
             else
             {
                 foreColor = this.treeView1.ForeColor;
                 backColor = this.treeView1.BackColor;
             }
-            
+
             e.Graphics.FillRectangle(new SolidBrush(backColor), e.Bounds);
             e.Graphics.DrawString(e.Node.Text, this.treeView1.Font, new SolidBrush(foreColor), e.Bounds.X, e.Bounds.Y + 4);
-
-
-
         }
         #endregion
 

@@ -185,7 +185,7 @@
             this.btnDecid.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None;
             this.btnDecid.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnDecid.HoverImage")));
             this.btnDecid.Image = ((System.Drawing.Image)(resources.GetObject("btnDecid.Image")));
-            this.btnDecid.Location = new System.Drawing.Point(176, 150);
+            this.btnDecid.Location = new System.Drawing.Point(196, 152);
             this.btnDecid.Margin = new System.Windows.Forms.Padding(6);
             this.btnDecid.Name = "btnDecid";
             this.btnDecid.Size = new System.Drawing.Size(24, 24);
@@ -231,7 +231,7 @@
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(44, 17);
             this.label4.TabIndex = 61;
-            this.label4.Text = "种类：";
+            this.label4.Text = "类型：";
             // 
             // tnDevice
             // 

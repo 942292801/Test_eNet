@@ -560,6 +560,10 @@ namespace eNet编辑器.AddForm
             lb4.Text = address_4[0];
             ToolsUtil.CBDealNumFormat(cb4, address_4[1]);
             FindTotalNum();
+            if (cb3.Items.Count > 0)
+            {
+                cb3.SelectedIndex = 0;
+            }
         }
         #endregion
 
@@ -618,6 +622,7 @@ namespace eNet编辑器.AddForm
                 return;
             }
             cb4.Items.Clear();
+            cb4.Text = string.Empty;
             switch (linkDic[cb2.SelectedItem.ToString()])
             {
                 //设备  面板按键 感应输入
@@ -644,6 +649,10 @@ namespace eNet编辑器.AddForm
                     findVarNum();
                     cb3.Enabled = false;
                     break;
+            }
+            if (cb4.Items.Count > 0)
+            {
+                cb4.SelectedIndex = 0;
             }
         }
 

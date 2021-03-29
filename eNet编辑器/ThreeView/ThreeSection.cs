@@ -12,8 +12,7 @@ using System.Reflection;
 namespace eNet编辑器.ThreeView
 {
     public delegate void AddTitleNode();
-    //public delegate void AddSectionDevCursor();
-    //public delegate void AddSectionNameCursor();
+
   
     public partial class ThreeSection : Form
     {
@@ -27,38 +26,15 @@ namespace eNet编辑器.ThreeView
         public ThreeSection()
         {
             InitializeComponent();
-            SetStyle(ControlStyles.UserPaint, true);
-            SetStyle(ControlStyles.AllPaintingInWmPaint, true); // 禁止擦除背景.
-            SetStyle(ControlStyles.DoubleBuffer, true); // 双缓冲
-            this.UpdateStyles();
+       
      
            
         }
 
-        #region 解决背景闪烁
-        //测试 解决背景闪烁
-        protected override void WndProc(ref Message m)
-        {
-            if (m.Msg == 0x0014)
-                // 禁掉清除背景消息         
-                return;
-            base.WndProc(ref m);
-        }
-        //测试 解决背景闪烁
-        protected override CreateParams CreateParams
-        {
-            get
-            {
-                CreateParams cp = base.CreateParams;
-                cp.ExStyle |= 0x02000000;
-                return cp;
-            }
-        }
-        #endregion
+
 
         public event AddTitleNode addTitleNode;
-        //public event AddSectionDevCursor addSectionDevCursor;
-        //public event AddSectionNameCursor addSectionNameCursor;
+
    
         //按窗口类型来更新窗口
         public event Action sectionUpdateTreeByFormType;

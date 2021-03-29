@@ -37,37 +37,9 @@ namespace eNet编辑器.ThreeView
         public ThreeScene()
         {
             InitializeComponent();
-            SetStyle(ControlStyles.UserPaint, true);
-            SetStyle(ControlStyles.AllPaintingInWmPaint, true); // 禁止擦除背景.
-            SetStyle(ControlStyles.DoubleBuffer, true); // 双缓冲
-            this.UpdateStyles();
-            //利用反射设置DataGridView的双缓冲
-            //Type dgvType = this.treeView1.GetType();
-            //PropertyInfo pi = dgvType.GetProperty("DoubleBuffered",
-            //BindingFlags.Instance | BindingFlags.NonPublic);
-            //pi.SetValue(this.treeView1, true, null);
+  
         }
 
-        #region 解决背景闪烁
-        //测试 解决背景闪烁
-        protected override void WndProc(ref Message m)
-        {
-            if (m.Msg == 0x0014)
-                // 禁掉清除背景消息         
-                return;
-            base.WndProc(ref m);
-        }
-        //测试 解决背景闪烁
-        protected override CreateParams CreateParams
-        {
-            get
-            {
-                CreateParams cp = base.CreateParams;
-                cp.ExStyle |= 0x02000000;
-                return cp;
-            }
-        }
-        #endregion
 
 
         private void ThreeScene_Load(object sender, EventArgs e)
@@ -670,12 +642,12 @@ namespace eNet编辑器.ThreeView
             if (treeView1.SelectedNode.Parent != null)
             {
 
-                clearTxtShow(Resources.TxtShowScnName + treeView1.SelectedNode.Text + "\r\n");
+                clearTxtShow(Resources.TxtShowScnName + treeView1.SelectedNode.Text );
             }
             else
             {
                 string filepath = Application.StartupPath + "\\devices\\" + names[1]+".ini";
-                clearTxtShow(Resources.TxtShowDevName + IniConfig.GetValue(filepath, "define", "note") + "\r\n");
+                clearTxtShow(Resources.TxtShowDevName + IniConfig.GetValue(filepath, "define", "note"));
             }
            
             

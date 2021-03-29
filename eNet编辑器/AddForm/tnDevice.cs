@@ -174,6 +174,10 @@ namespace eNet编辑器.AddForm
                 cbVersion.Items.Add(display);
 
             }
+            if (cbVersion.Items.Count > 0)
+            {
+                cbVersion.SelectedIndex = 0;
+            }
         }
 
 
@@ -182,14 +186,20 @@ namespace eNet编辑器.AddForm
             //设备号不为空
             if (string.IsNullOrEmpty(cbDevice.Text) || string.IsNullOrEmpty(cbVersion.Text))
             {
-                ClearTxtShow("请正确填写设备号和版本号");
+                MessageBox.Show("请正确填写设备号和版本号");
                 return;
             }
             //设备ID号为数字
             if (!Regex.IsMatch(cbDevice.Text, @"^[+-]?\d*[.]?\d*$"))
             {
 
-                ClearTxtShow("请正确填写设备号和版本号");
+                MessageBox.Show("请正确填写设备号和版本号");
+                return;
+            }
+            int devid = Convert.ToInt32(cbDevice.Text);
+            if (devid < 0 || devid > 63)
+            {
+                MessageBox.Show("设备号超出范围值");
                 return;
             }
             bool isVersion = false;
@@ -203,7 +213,7 @@ namespace eNet编辑器.AddForm
             }
             if (!isVersion)
             {
-                ClearTxtShow("设备型号不存在");
+                MessageBox.Show("设备型号不存在");
                 return;
             }
 
@@ -217,7 +227,7 @@ namespace eNet编辑器.AddForm
                         {
                             if (m.id.ToString() == cbDevice.Text)
                             {
-                                ClearTxtShow("请正确填写设备号！");
+                                MessageBox.Show("请正确填写设备号！");
                                 return;
                             }
                         }
@@ -251,7 +261,7 @@ namespace eNet编辑器.AddForm
                             {
                                 if (m.id.ToString() == cbDevice.Text)
                                 {
-                                    ClearTxtShow("设备号已存在！");
+                                    MessageBox.Show("设备号已存在！");
                                     return;
                                 }
                             }
