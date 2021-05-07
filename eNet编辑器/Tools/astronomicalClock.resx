@@ -2153,7 +2153,7 @@
     <value>64</value>
   </data>
   <data name="lbName.Text" xml:space="preserve">
-    <value>主机：</value>
+    <value>网关：</value>
   </data>
   <data name="&gt;&gt;lbName.Name" xml:space="preserve">
     <value>lbName</value>

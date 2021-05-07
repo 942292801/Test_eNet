@@ -165,7 +165,7 @@ namespace eNet编辑器
             public int nid { get; set; }
             public int lid { get; set; }
             public int id { get; set; }
-            public int Portnum { get; set; }
+            public int portnum { get; set; }
             public string serial { get; set; }
             public string version { get; set; }
             public string mac8 { get; set; }

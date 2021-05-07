@@ -347,7 +347,7 @@ namespace eNet编辑器.AddForm
                     cb1.SelectedIndex = 0;
 
                 }
-                lb1.Text = "主机";
+                lb1.Text = "网关";
                 foreach (var item in linkDic)
                 {
                     cb2.Items.Add(item.Key);

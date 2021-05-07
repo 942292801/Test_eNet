@@ -2140,7 +2140,8 @@ namespace eNet编辑器.DgvView
                     else
                     {
                         tmpNum = plInfo.id.ToString("X4");
-                        plInfo.keyAddress = string.Format("{0}{1}{2}", ipLast, idHex, tmpNum);
+                        plInfo.keyAddress = string.Format("FE{0}{1}", idHex, tmpNum);
+                        //plInfo.keyAddress = string.Format("{0}{1}{2}", ipLast, idHex, tmpNum);
                     }
                     plInfo.objAddress = "";
                     plInfo.objType = "";
@@ -2178,7 +2179,8 @@ namespace eNet编辑器.DgvView
                 if (plInfo.id > start && plInfo.id <= end)
                 {
                     tmpNum = plInfo.id.ToString("X4");
-                    plInfo.keyAddress = string.Format("{0}{1}{2}", ipLast, idHex, tmpNum);
+                    plInfo.keyAddress = string.Format("FE{0}{1}", idHex, tmpNum);
+                    //plInfo.keyAddress = string.Format("{0}{1}{2}", ipLast, idHex, tmpNum);
                 }
             }
 

@@ -156,7 +156,7 @@
             this.lbName.Name = "lbName";
             this.lbName.Size = new System.Drawing.Size(44, 17);
             this.lbName.TabIndex = 71;
-            this.lbName.Text = "主机：";
+            this.lbName.Text = "网关：";
             // 
             // label2
             // 

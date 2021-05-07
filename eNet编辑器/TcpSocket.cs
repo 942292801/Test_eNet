@@ -138,7 +138,7 @@ namespace eNet编辑器
             if ( buffer == null || buffer.Length == 0 ) {
                 throw new ArgumentException ("待发送的字符串长度不能为零.");
             }
-            return  ( SendData ( socket,System.Text .Encoding .Default .GetBytes ( buffer ),outTime) );
+            return  ( SendData ( socket,System.Text .Encoding .UTF8 .GetBytes ( buffer ),outTime) );
         }
  
  
@@ -227,9 +227,10 @@ namespace eNet编辑器
             //int left = buffer.Length;
             int curRcv = 0;
             int flag = 0;
-
+            List<byte> rcvbufflist = new List<byte>();
             try
             {
+
                 while (true)
                 {
                     if (socket.Poll(outTime * 1000000, SelectMode.SelectRead) == true)
@@ -239,13 +240,18 @@ namespace eNet编辑器
                         curRcv = socket.Receive(buffer, 0, buffer.Length, SocketFlags.None);
                         if (curRcv > 0)
                         {
-                            //Console.WriteLine("接收："+Encoding.Default.GetString(buffer));
-                            rcvstr += ToolsUtil.ByteToString(buffer);
+                            for (int i = 0; i < curRcv; i++)
+                            {
+                                //rcvbuff.Add(buffer.Skip(0).Take(curRcv).ToArray());
+                                rcvbufflist.Add(buffer[i]);
+                            }
+                            //rcvstr += Encoding.UTF8.GetString(buffer.Skip(0).Take(curRcv).ToArray());
                             continue;
                         }
                         else if (curRcv == 0)
                         {
                             //数据全部接受
+                            rcvstr = Encoding.UTF8.GetString(rcvbufflist.ToArray());
                             flag = 0;
                             break;
                         }

@@ -93,12 +93,11 @@ namespace eNet编辑器.AddForm
                 backgroundWorker1.RunWorkerCompleted += BackgroundWorker1_RunWorkerCompleted;
                 pgv = new PgView();
                 pgv.setMaxValue(100);
-                this.Enabled = false;
+                //this.Enabled = false;
                 backgroundWorker1.RunWorkerAsync();
                 pgv.ShowDialog();
-                if (pgv.DialogResult == DialogResult.Cancel)
+                if (pgv.DialogResult != DialogResult.OK)
                 {
-
                     backgroundWorker1.CancelAsync();
                 }
             }
@@ -112,7 +111,97 @@ namespace eNet编辑器.AddForm
 
         private void BackgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
-            SearchOnlineMaster();
+            if (udp != null)
+            {
+                udp.udpClose();
+            }
+            //初始化UDP
+            udp = new UdpSocket();
+            udp.Received += new Action<string, string>((IP, msg) =>
+            {
+                try
+                {
+                    if (!String.IsNullOrWhiteSpace(msg))
+                    {
+                        //跨线程调用
+                        this.Invoke(searchMasterRcvDelegate, msg);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    ToolsUtil.WriteLog(ex.Message);
+                }
+            });
+
+            //获取本地IP
+            Localip = ToolsUtil.GetLocalIP();
+            //udp 绑定
+            udp.udpBing(Localip, ToolsUtil.GetFreePort().ToString());
+
+            if (udp.isbing)
+            {
+                masterHs.Clear();
+                string[] tmps = Localip.Split('.');
+                string broadcastIp = String.Format("{0}.{1}.{2}.255", tmps[0], tmps[1], tmps[2]);
+                udp.udpSend(broadcastIp, "6002", "Search all");
+                ToolsUtil.DelayMilli(200);
+                backgroundWorker1.ReportProgress(2, null);
+                udp.udpSend(broadcastIp, "6002", "search all");
+                ToolsUtil.DelayMilli(200);
+                backgroundWorker1.ReportProgress(4, null);
+                udp.udpSend("255.255.255.255", "6002", "Search all");
+                ToolsUtil.DelayMilli(200);
+                backgroundWorker1.ReportProgress(6, null);
+                udp.udpSend("255.255.255.255", "6002", "search all");
+
+                //检查 如果ip数目还没变就退出 进行下一步操作
+                int masterCount = masterHs.Count;
+                ToolsUtil.DelayMilli(500);
+                backgroundWorker1.ReportProgress(10, null);
+                while (masterCount != masterHs.Count)
+                {
+                    masterCount = masterHs.Count;
+                    ToolsUtil.DelayMilli(500);
+                    backgroundWorker1.ReportProgress(14, null);
+                }
+                backgroundWorker1.ReportProgress(20, 1);//pg = 20
+                int pgCount = 20;
+                int time = 0;
+                if (backgroundWorker1.CancellationPending)
+                {
+                    e.Cancel = true;
+                    return;
+                }
+                //逐个IP搜索设备
+                foreach (string masterIP in masterHs)
+                {
+                    searchIP = masterIP;
+                    isSearchIP = true;
+                    time = 0;
+                    ReadSerial();
+                    while (isSearchIP)
+                    {
+                        //超时3秒信息不回来 就断开这次
+                        ToolsUtil.DelayMilli(500);
+                        time = time + 500;
+                        if (time >= 4000)
+                        {
+                            break;
+                        }
+                    }
+                    backgroundWorker1.ReportProgress(pgCount++, null);
+                    if (backgroundWorker1.CancellationPending)
+                    {
+                        e.Cancel = true;
+                        return;
+                    }
+                }
+                backgroundWorker1.ReportProgress(100, "搜索设备完成");
+
+
+
+
+            }
             
 
         }
@@ -152,12 +241,11 @@ namespace eNet编辑器.AddForm
         {
             try
             {
+                this.Enabled = true;
                 if (e.Cancelled)
                 {
                     TxtShow("搜索终止！");
                 }
-
-                this.Enabled = true;
                 if (pgv != null)
                 {
                     pgv.Close();
@@ -174,100 +262,6 @@ namespace eNet编辑器.AddForm
 
 
 
-        /// <summary>
-        /// 搜索在线主机
-        /// </summary>
-        private void SearchOnlineMaster()
-        {
-            if (udp != null)
-            {
-                udp.udpClose();
-            }
-            //初始化UDP
-            udp = new UdpSocket();
-            udp.Received += new Action<string, string>((IP, msg) =>
-            {
-                try
-                {
-                    if (!String.IsNullOrWhiteSpace(msg))
-                    {
-                        //跨线程调用
-                        this.Invoke(searchMasterRcvDelegate, msg);
-                    }
-                }
-                catch (Exception ex)
-                {
-                    ToolsUtil.WriteLog(ex.Message);
-                }
-            });
-
-            //获取本地IP
-            Localip = ToolsUtil.GetLocalIP();
-            //udp 绑定
-            udp.udpBing(Localip, ToolsUtil.GetFreePort().ToString());
-           
-            if (udp.isbing)
-            {
-                masterHs.Clear();
-                string[] tmps = Localip.Split('.');
-                string broadcastIp = String.Format("{0}.{1}.{2}.255", tmps[0], tmps[1], tmps[2]);
-                udp.udpSend(broadcastIp, "6002", "Search all");
-                ToolsUtil.DelayMilli(200);
-                backgroundWorker1.ReportProgress(2, null);
-                udp.udpSend(broadcastIp, "6002", "search all");
-                ToolsUtil.DelayMilli(200);
-                backgroundWorker1.ReportProgress(4, null);
-                udp.udpSend("255.255.255.255", "6002", "Search all");
-                ToolsUtil.DelayMilli(200);
-                backgroundWorker1.ReportProgress(6, null);
-                udp.udpSend("255.255.255.255", "6002", "search all");
-
-                //检查 如果ip数目还没变就退出 进行下一步操作
-                int masterCount = masterHs.Count;
-                ToolsUtil.DelayMilli(500);
-                backgroundWorker1.ReportProgress(10, null);
-                while (masterCount != masterHs.Count)
-                {
-                    masterCount = masterHs.Count;
-                    ToolsUtil.DelayMilli(500);
-                    backgroundWorker1.ReportProgress(14, null);
-                }
-                backgroundWorker1.ReportProgress(20, 1);//pg = 20
-                int pgCount = 20;
-                int time = 0;
-                //逐个IP搜索设备
-                foreach (string masterIP in masterHs)
-                {
-                    searchIP = masterIP;
-                    isSearchIP = true;
-                    time = 0;
-                    ReadSerial();
-                    while (isSearchIP)
-                    {
-                        //超时3秒信息不回来 就断开这次
-                        ToolsUtil.DelayMilli(300);
-                        time = time + 300;
-                        if (time >= 2700)
-                        {
-                            continue;
-                        }
-                    }
-                    backgroundWorker1.ReportProgress(pgCount++, null);
-                }
-
-
-                backgroundWorker1.ReportProgress(100, "搜索设备完成");
-
-
-
-
-            }
-            
-
-
-        }
-
-        
 
         private void SearchMasterRcvDeal(string msg)
         {

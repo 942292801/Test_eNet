@@ -511,47 +511,56 @@ namespace eNet编辑器
         /// <param name="path">Pro文件路径</param>
         private void writeAlltoPro(string path)
         {
-            tmpPathClear();
-            if (PointList == null)
+            try
             {
-                PointList = new DataJson.Point();
+                tmpPathClear();
+                if (PointList == null)
+                {
+                    PointList = new DataJson.Point();
+                }
+                File.WriteAllText(path + "\\pro\\point.json", ConvertJsonString(JsonConvert.SerializeObject(PointList)));
+                if (AreaList == null)
+                {
+                    AreaList = new List<DataJson.Area1>();
+                }
+                File.WriteAllText(path + "\\pro\\area.json", ConvertJsonString(JsonConvert.SerializeObject(AreaList)));
+                if (DeviceList == null)
+                {
+                    DeviceList = new List<DataJson.Device>();
+                }
+                File.WriteAllText(path + "\\pro\\device.json", ConvertJsonString(JsonConvert.SerializeObject(DeviceList)));
+                if (sceneList == null)
+                {
+                    sceneList = new List<DataJson.Scene>();
+                }
+                File.WriteAllText(path + "\\pro\\scene.json", ConvertJsonString(JsonConvert.SerializeObject(sceneList)));
+                if (panelList == null)
+                {
+                    panelList = new List<DataJson.Panel>();
+                }
+                File.WriteAllText(path + "\\pro\\panel.json", ConvertJsonString(JsonConvert.SerializeObject(panelList)));
+                if (timerList == null)
+                {
+                    timerList = new List<DataJson.Timer>();
+                }
+                File.WriteAllText(path + "\\pro\\timer.json", ConvertJsonString(JsonConvert.SerializeObject(timerList)));
+                if (sensorList == null)
+                {
+                    sensorList = new List<DataJson.Sensor>();
+                }
+                File.WriteAllText(path + "\\pro\\sensor.json", ConvertJsonString(JsonConvert.SerializeObject(sensorList)));
+                if (logicList == null)
+                {
+                    logicList = new List<DataJson.Logic>();
+                }
+                File.WriteAllText(path + "\\pro\\logic.json", ConvertJsonString(JsonConvert.SerializeObject(logicList)));
             }
-            File.WriteAllText(path + "\\pro\\point.json", ConvertJsonString(JsonConvert.SerializeObject(PointList)));
-            if (AreaList == null)
+            catch(Exception ex)
             {
-                AreaList = new List<DataJson.Area1>();
+                Console.WriteLine(ex.StackTrace);
+
             }
-            File.WriteAllText(path + "\\pro\\area.json", ConvertJsonString(JsonConvert.SerializeObject(AreaList)));
-            if (DeviceList == null)
-            {
-                DeviceList = new List<DataJson.Device>();
-            }
-            File.WriteAllText(path + "\\pro\\device.json", ConvertJsonString(JsonConvert.SerializeObject(DeviceList)));
-            if (sceneList == null)
-            {
-                sceneList = new List<DataJson.Scene>();
-            }
-            File.WriteAllText(path + "\\pro\\scene.json", ConvertJsonString(JsonConvert.SerializeObject(sceneList)));
-            if (panelList == null)
-            {
-                panelList = new List<DataJson.Panel>();
-            }
-            File.WriteAllText(path + "\\pro\\panel.json", ConvertJsonString(JsonConvert.SerializeObject(panelList)));
-            if (timerList == null)
-            {
-                timerList = new List<DataJson.Timer>();
-            }
-            File.WriteAllText(path + "\\pro\\timer.json", ConvertJsonString(JsonConvert.SerializeObject(timerList)));
-            if (sensorList == null)
-            {
-                sensorList = new List<DataJson.Sensor>();
-            }
-            File.WriteAllText(path + "\\pro\\sensor.json", ConvertJsonString(JsonConvert.SerializeObject(sensorList)));
-            if (logicList == null)
-            {
-                logicList = new List<DataJson.Logic>();
-            }
-            File.WriteAllText(path + "\\pro\\logic.json", ConvertJsonString(JsonConvert.SerializeObject(logicList)));
+           
         }
 
         /// <summary>
@@ -567,9 +576,29 @@ namespace eNet编辑器
                 {
                     Directory.Delete(TmpFilePath, true);
                 }
-                Directory.CreateDirectory(TmpFilePath);
-                Directory.CreateDirectory(TmpFilePath + "\\objs");
-                Directory.CreateDirectory(TmpFilePath + "\\pro");
+                
+                while (!Directory.Exists(TmpFilePath))
+                {
+                    Directory.CreateDirectory(TmpFilePath);
+                    ToolsUtil.DelayMilli(200);
+                }
+
+                string objpath = TmpFilePath + "\\objs";
+                string propath = TmpFilePath + "\\pro";
+
+                while (!Directory.Exists(objpath)) {
+                    Directory.CreateDirectory(objpath);
+                    ToolsUtil.DelayMilli(200);
+
+                }
+                while (!Directory.Exists(propath))
+                {
+                    Directory.CreateDirectory(propath);
+                    ToolsUtil.DelayMilli(200);
+
+                }
+              
+                
             }
             catch{
                 

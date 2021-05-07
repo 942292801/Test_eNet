@@ -454,28 +454,7 @@ namespace eNet编辑器
         }
 
 
-        public static String ByteToString(byte[] src)
-        {
-            int len = 0;
-            for (int i = 0; i < src.Length; i++)
-            {
-                if (src[i] != 0)
-                {
-                    len++;
-                }
-                else
-                {
-                    break;
-                }
-
-            }
-            byte[] dest = new byte[len];
-            if (len > 0)
-            {
-                Array.Copy(src, dest, len);
-            }
-            return Encoding.Default.GetString(dest);
-        }
+       
 
     }
 }

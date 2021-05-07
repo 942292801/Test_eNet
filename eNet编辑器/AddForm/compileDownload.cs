@@ -230,6 +230,7 @@ namespace eNet编辑器.AddForm
             try
             {
                 CompileDown(e);
+                //DownZIP2Master(e);
             }
             catch (Exception ex)
             {

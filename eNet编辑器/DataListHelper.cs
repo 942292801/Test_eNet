@@ -728,6 +728,7 @@ namespace eNet编辑器
             }*/
         }
 
+
         /// <summary>
         /// 设备删除 删除Point点的信息某个IP下某个ID所有点信息
         /// </summary>
@@ -740,6 +741,218 @@ namespace eNet编辑器
             foreach (DataJson.PointInfo p in dellist)
             {
                 FileMesege.PointList.equipment.Remove(p);
+            }
+
+        }
+
+        /// <summary>
+        /// 通过区域名称  删除某一个区域的点位 包括删除场景、定时、虚拟变量、逻辑、感应的有关信息
+        /// </summary>
+        /// <param name="area1"></param>
+        public static void DelPointByArea(string area1){
+            //设备
+            FileMesege.PointList.equipment.RemoveAll(point=>point.area1 == area1);
+            //虚拟变量
+            FileMesege.PointList.virtualport.RemoveAll(point => point.area1 == area1);
+            //场景
+            List<DataJson.PointInfo> dellist = FileMesege.PointList.scene.FindAll(point => point.area1 == area1);
+            foreach (DataJson.PointInfo p in dellist)
+            {
+                foreach (DataJson.Scene scene in FileMesege.sceneList) {
+                    scene.scenes.RemoveAll(scenes => scenes.pid == p.pid);
+                }
+                FileMesege.PointList.scene.Remove(p);
+            }
+            //定时
+            dellist = FileMesege.PointList.timer.FindAll(point => point.area1 == area1);
+            foreach (DataJson.PointInfo p in dellist)
+            {
+                foreach (DataJson.Timer timer in FileMesege.timerList)
+                {
+                    timer.timers.RemoveAll(timers => timers.pid == p.pid);
+                }
+                FileMesege.PointList.timer.Remove(p);
+            }
+            //感应和 面板
+            dellist = FileMesege.PointList.link.FindAll(point => point.area1 == area1);
+            foreach (DataJson.PointInfo p in dellist)
+            {
+                foreach (DataJson.Sensor sensor in FileMesege.sensorList)
+                {
+                    sensor.sensors.RemoveAll(sensors => sensors.pid == p.pid);
+                }
+                foreach (DataJson.Panel panel in FileMesege.panelList)
+                {
+                    panel.panels.RemoveAll(panels => panels.pid == p.pid);
+                }
+                FileMesege.PointList.link.Remove(p);
+            }
+            //逻辑
+            dellist = FileMesege.PointList.logic.FindAll(point => point.area1 == area1);
+            foreach (DataJson.PointInfo p in dellist)
+            {
+                foreach (DataJson.Logic logic in FileMesege.logicList)
+                {
+                    logic.logics.RemoveAll(logics => logics.pid == p.pid);
+                }
+                FileMesege.PointList.logic.Remove(p);
+            }
+
+        }
+
+        public static void DelPointByArea(string area1, string area2)
+        {
+            //设备
+            FileMesege.PointList.equipment.RemoveAll(point => point.area1 == area1 && point.area2 == area2);
+            //虚拟变量
+            FileMesege.PointList.virtualport.RemoveAll(point => point.area1 == area1 && point.area2 == area2);
+            //场景
+            List<DataJson.PointInfo> dellist = FileMesege.PointList.scene.FindAll(point => point.area1 == area1 && point.area2 == area2);
+            foreach (DataJson.PointInfo p in dellist)
+            {
+                foreach (DataJson.Scene scene in FileMesege.sceneList)
+                {
+                    scene.scenes.RemoveAll(scenes => scenes.pid == p.pid);
+                }
+                FileMesege.PointList.scene.Remove(p);
+            }
+            //定时
+            dellist = FileMesege.PointList.timer.FindAll(point => point.area1 == area1 && point.area2 == area2);
+            foreach (DataJson.PointInfo p in dellist)
+            {
+                foreach (DataJson.Timer timer in FileMesege.timerList)
+                {
+                    timer.timers.RemoveAll(timers => timers.pid == p.pid);
+                }
+                FileMesege.PointList.timer.Remove(p);
+            }
+            //感应和面板
+            dellist = FileMesege.PointList.link.FindAll(point => point.area1 == area1 && point.area2 == area2);
+            foreach (DataJson.PointInfo p in dellist)
+            {
+                foreach (DataJson.Sensor sensor in FileMesege.sensorList)
+                {
+                    sensor.sensors.RemoveAll(sensors => sensors.pid == p.pid);
+                }
+                foreach (DataJson.Panel panel in FileMesege.panelList)
+                {
+                    panel.panels.RemoveAll(panels => panels.pid == p.pid);
+                }
+                FileMesege.PointList.link.Remove(p);
+            }
+            //逻辑
+            dellist = FileMesege.PointList.logic.FindAll(point => point.area1 == area1 && point.area2 == area2);
+            foreach (DataJson.PointInfo p in dellist)
+            {
+                foreach (DataJson.Logic logic in FileMesege.logicList)
+                {
+                    logic.logics.RemoveAll(logics => logics.pid == p.pid);
+                }
+                FileMesege.PointList.logic.Remove(p);
+            }
+        }
+
+        public static void DelPointByArea(string area1, string area2, string area3)
+        {
+            //设备
+            FileMesege.PointList.equipment.RemoveAll(point => point.area1 == area1 && point.area2 == area2 && point.area3 == area3);
+            //虚拟变量
+            FileMesege.PointList.virtualport.RemoveAll(point => point.area1 == area1 && point.area2 == area2 && point.area3 == area3);
+            //场景
+            List<DataJson.PointInfo> dellist = FileMesege.PointList.scene.FindAll(point => point.area1 == area1 && point.area2 == area2 && point.area3 == area3);
+            foreach (DataJson.PointInfo p in dellist)
+            {
+                foreach (DataJson.Scene scene in FileMesege.sceneList)
+                {
+                    scene.scenes.RemoveAll(scenes => scenes.pid == p.pid);
+                }
+                FileMesege.PointList.scene.Remove(p);
+            }
+            //定时
+            dellist = FileMesege.PointList.timer.FindAll(point => point.area1 == area1 && point.area2 == area2 && point.area3 == area3);
+            foreach (DataJson.PointInfo p in dellist)
+            {
+                foreach (DataJson.Timer timer in FileMesege.timerList)
+                {
+                    timer.timers.RemoveAll(timers => timers.pid == p.pid);
+                }
+                FileMesege.PointList.timer.Remove(p);
+            }
+            //感应和面板
+            dellist = FileMesege.PointList.link.FindAll(point => point.area1 == area1 && point.area2 == area2 && point.area3 == area3);
+            foreach (DataJson.PointInfo p in dellist)
+            {
+                foreach (DataJson.Sensor sensor in FileMesege.sensorList)
+                {
+                    sensor.sensors.RemoveAll(sensors => sensors.pid == p.pid);
+                }
+                foreach (DataJson.Panel panel in FileMesege.panelList)
+                {
+                    panel.panels.RemoveAll(panels => panels.pid == p.pid);
+                }
+                FileMesege.PointList.link.Remove(p);
+            }
+            //逻辑
+            dellist = FileMesege.PointList.logic.FindAll(point => point.area1 == area1 && point.area2 == area2 && point.area3 == area3);
+            foreach (DataJson.PointInfo p in dellist)
+            {
+                foreach (DataJson.Logic logic in FileMesege.logicList)
+                {
+                    logic.logics.RemoveAll(logics => logics.pid == p.pid);
+                }
+                FileMesege.PointList.logic.Remove(p);
+            }
+        }
+
+        public static void DelPointByArea(string area1, string area2, string area3, string area4)
+        {
+            //设备
+            FileMesege.PointList.equipment.RemoveAll(point => point.area1 == area1 && point.area2 == area2 && point.area3 == area3 && point.area4 == area4);
+            //虚拟变量
+            FileMesege.PointList.virtualport.RemoveAll(point => point.area1 == area1 && point.area2 == area2 && point.area3 == area3 && point.area4 == area4);
+            //场景
+            List<DataJson.PointInfo> dellist = FileMesege.PointList.scene.FindAll(point => point.area1 == area1 && point.area2 == area2 && point.area3 == area3 && point.area4 == area4);
+            foreach (DataJson.PointInfo p in dellist)
+            {
+                foreach (DataJson.Scene scene in FileMesege.sceneList)
+                {
+                    scene.scenes.RemoveAll(scenes => scenes.pid == p.pid);
+                }
+                FileMesege.PointList.scene.Remove(p);
+            }
+            //定时
+            dellist = FileMesege.PointList.timer.FindAll(point => point.area1 == area1 && point.area2 == area2 && point.area3 == area3 && point.area4 == area4);
+            foreach (DataJson.PointInfo p in dellist)
+            {
+                foreach (DataJson.Timer timer in FileMesege.timerList)
+                {
+                    timer.timers.RemoveAll(timers => timers.pid == p.pid);
+                }
+                FileMesege.PointList.timer.Remove(p);
+            }
+            //感应和面板
+            dellist = FileMesege.PointList.link.FindAll(point => point.area1 == area1 && point.area2 == area2 && point.area3 == area3 && point.area4 == area4);
+            foreach (DataJson.PointInfo p in dellist)
+            {
+                foreach (DataJson.Sensor sensor in FileMesege.sensorList)
+                {
+                    sensor.sensors.RemoveAll(sensors => sensors.pid == p.pid);
+                }
+                foreach (DataJson.Panel panel in FileMesege.panelList)
+                {
+                    panel.panels.RemoveAll(panels => panels.pid == p.pid);
+                }
+                FileMesege.PointList.link.Remove(p);
+            }
+            //逻辑
+            dellist = FileMesege.PointList.logic.FindAll(point => point.area1 == area1 && point.area2 == area2 && point.area3 == area3 && point.area4 == area4);
+            foreach (DataJson.PointInfo p in dellist)
+            {
+                foreach (DataJson.Logic logic in FileMesege.logicList)
+                {
+                    logic.logics.RemoveAll(logics => logics.pid == p.pid);
+                }
+                FileMesege.PointList.logic.Remove(p);
             }
         }
 
@@ -1885,7 +2098,8 @@ namespace eNet编辑器
                         }*/
                         plInfo.pid = 0;
                         tmpNum = plInfo.id.ToString("X4");
-                        plInfo.keyAddress = string.Format("{0}{1}{2}", ipLast, idHex, tmpNum);
+                        plInfo.keyAddress = string.Format("FE{0}{1}",  idHex, tmpNum);
+                        //plInfo.keyAddress = string.Format("{0}{1}{2}", ipLast, idHex, tmpNum);
                         plInfo.objAddress = "";
                         plInfo.objType = "";
                         plInfo.opt = 255;

@@ -34,7 +34,7 @@ namespace eNet编辑器
             {
                 return "";
             }
-            return s.ToString();
+            return s.ToString() ;
         }
 
 

@@ -655,7 +655,6 @@ namespace eNet编辑器.ThreeView
                 case 4:
                     section = tm.GetSection(nums[0], nums[1], nums[2], nums[3]);
                     AreaListDelect(section,nums[0], nums[1], nums[2], nums[3],true);
-
                     break;
                 case 1:
 
@@ -672,10 +671,11 @@ namespace eNet编辑器.ThreeView
                     break;
                 default: return false;
             }
-            sectionUpdateTreeByFormType();
-            updatePointDgv();
+           
             DataJson.totalList NewList = FileMesege.cmds.getListInfos();
             FileMesege.cmds.DoNewCommand(NewList, OldList);
+            sectionUpdateTreeByFormType();
+            updatePointDgv();
             return true;
         }
 
@@ -713,36 +713,9 @@ namespace eNet编辑器.ThreeView
                     a4.id4 = (oldid4 - 1).ToString();
                 }
             }
-            //删除NameList的设备地域信息 或更新信息  、、、、、、、、、、、、、、、后续还需添加
-            foreach (DataJson.PointInfo eq in FileMesege.PointList.equipment)
-            {
-                delupdatePoint4(eq,sections,objDel);
-            }
-            foreach (DataJson.PointInfo eq in FileMesege.PointList.scene)
-            {
-                delupdatePoint4(eq, sections, objDel);
-            }
-            foreach (DataJson.PointInfo eq in FileMesege.PointList.timer)
-            {
-                delupdatePoint4(eq, sections, objDel);
-            }
-            foreach (DataJson.PointInfo eq in FileMesege.PointList.link)
-            {
-                delupdatePoint4(eq, sections, objDel);
-            }
-            foreach (DataJson.PointInfo eq in FileMesege.PointList.virtualport)
-            {
-                delupdatePoint4(eq, sections, objDel);
-            }
-            foreach (DataJson.PointInfo eq in FileMesege.PointList.logic)
-            {
-                delupdatePoint4(eq, sections, objDel);
-            }
-            /*
-            foreach (DataJson.PointInfo eq in FileMesege.PointList.localvar)
-            {
-                delupdatePoint4(eq, sections, objDel);
-            }*/
+
+            //删除NameList的设备地域信息 或更新信息
+            DataListHelper.DelPointByArea(sections[0], sections[1], sections[2], sections[3]);
             //删除的节点所有信息
             DataJson.Area4 obj = FileMesege.AreaList[i1].area2[i2].area3[i3].area4[i4];
             FileMesege.AreaList[i1].area2[i2].area3[i3].area4.Remove( FileMesege.AreaList[i1].area2[i2].area3[i3].area4[i4]);
@@ -751,35 +724,7 @@ namespace eNet编辑器.ThreeView
            
         }
 
-        private void delupdatePoint4(DataJson.PointInfo eq, string[] sections,bool objDel)
-        {
-            //是否为节点同一个父节点  前面3个ID相等
-            if (eq.area1 == sections[0] && eq.area2 == sections[1] && eq.area3 == sections[2])
-            {
-                //是否为当前删除节点
-                if (eq.area4 == sections[3])
-                {
-
-                    if (objDel)
-                    {
-                        //当前删除节点的信息清除
-                        eq.area1 = "";
-                        eq.area2 = "";
-                        eq.area3 = "";
-                        eq.area4 = "";
-                    }
-                    else
-                    {
-                        //拖拽标记
-                        eq.area1 = "del";
-                        eq.area2 = "del";
-                        eq.area3 = "del";
-                        eq.area4 = "del";
-                    }
-                }
-
-            }
-        }
+  
 
         private DataJson.Area3 AreaListDelect(string section, string index1, string index2, string index3, bool objDel)
         {
@@ -808,36 +753,9 @@ namespace eNet编辑器.ThreeView
                     }
                 }
             }
+
             //删除NameList的设备地域信息 或更新信息
-            foreach (DataJson.PointInfo eq in FileMesege.PointList.equipment)
-            {
-                delupdatePoint3(eq, sections, objDel);
-            }
-            foreach (DataJson.PointInfo eq in FileMesege.PointList.scene)
-            {
-                delupdatePoint3(eq, sections, objDel);
-            }
-            foreach (DataJson.PointInfo eq in FileMesege.PointList.timer )
-            {
-                delupdatePoint3(eq, sections, objDel);
-            }
-            foreach (DataJson.PointInfo eq in FileMesege.PointList.link)
-            {
-                delupdatePoint3(eq, sections, objDel);
-            }
-            foreach (DataJson.PointInfo eq in FileMesege.PointList.virtualport)
-            {
-                delupdatePoint3(eq, sections, objDel);
-            }
-            foreach (DataJson.PointInfo eq in FileMesege.PointList.logic)
-            {
-                delupdatePoint3(eq, sections, objDel);
-            }
-            /*
-            foreach (DataJson.PointInfo eq in FileMesege.PointList.localvar)
-            {
-                delupdatePoint3(eq, sections, objDel);
-            }*/
+            DataListHelper.DelPointByArea(sections[0], sections[1], sections[2]);
             //删除的节点所有信息
             DataJson.Area3 obj = FileMesege.AreaList[i1].area2[i2].area3[i3];
             FileMesege.AreaList[i1].area2[i2].area3.Remove(FileMesege.AreaList[i1].area2[i2].area3[i3]);
@@ -845,35 +763,7 @@ namespace eNet编辑器.ThreeView
             
         }
 
-        private void delupdatePoint3(DataJson.PointInfo eq, string[] sections, bool objDel)
-        {
-            //是否为节点同一个父节点  前面2个ID相等
-            if (eq.area1 == sections[0] && eq.area2 == sections[1])
-            {
-                //是否为当前节点
-                if (eq.area3 == sections[2])
-                {
-
-                    if (objDel)
-                    {
-                        //当前删除节点的信息清除
-                        eq.area1 = "";
-                        eq.area2 = "";
-                        eq.area3 = "";
-                        eq.area4 = "";
-                    }
-                    else
-                    {
-                        //拖拽标记
-                        eq.area1 = "del";
-                        eq.area2 = "del";
-                        eq.area3 = "del";
-                        //eq.area4 = "del";
-                    }
-                }
-
-            }
-        }
+    
 
         private DataJson.Area2 AreaListDelect(string section, string index1, string index2, bool objDel)
         {
@@ -906,35 +796,7 @@ namespace eNet编辑器.ThreeView
                 }
             }
             //删除NameList的设备地域信息 或更新信息
-            foreach (DataJson.PointInfo eq in FileMesege.PointList.equipment)
-            {
-                delupdatePoint2(eq, sections, objDel);
-            }
-            foreach (DataJson.PointInfo eq in FileMesege.PointList.scene)
-            {
-                delupdatePoint2(eq, sections, objDel);
-            }
-            foreach (DataJson.PointInfo eq in FileMesege.PointList.link)
-            {
-                delupdatePoint2(eq, sections, objDel);
-            }
-            foreach (DataJson.PointInfo eq in FileMesege.PointList.timer)
-            {
-                delupdatePoint2(eq, sections, objDel);
-            }
-            foreach (DataJson.PointInfo eq in FileMesege.PointList.virtualport)
-            {
-                delupdatePoint2(eq, sections, objDel);
-            }
-            foreach (DataJson.PointInfo eq in FileMesege.PointList.logic)
-            {
-                delupdatePoint2(eq, sections, objDel);
-            }
-            /*
-            foreach (DataJson.PointInfo eq in FileMesege.PointList.localvar)
-            {
-                delupdatePoint2(eq, sections, objDel);
-            }*/
+            DataListHelper.DelPointByArea(sections[0],sections[1]);
             //删除的节点所有信息
             DataJson.Area2 obj = FileMesege.AreaList[i1].area2[i2];
             FileMesege.AreaList[i1].area2.Remove(FileMesege.AreaList[i1].area2[i2]);
@@ -942,35 +804,7 @@ namespace eNet编辑器.ThreeView
              
         }
 
-        private void delupdatePoint2(DataJson.PointInfo eq, string[] sections, bool objDel)
-        {
-            //是否为节点同一个父节点  前面1个ID相等
-            if (eq.area1 == sections[0])
-            {
-                //是否为当前节点
-                if (eq.area2 == sections[1])
-                {
 
-                    if (objDel)
-                    {
-                        //当前删除节点的信息清除
-                        eq.area1 = "";
-                        eq.area2 = "";
-                        eq.area3 = "";
-                        eq.area4 = "";
-                    }
-                    else
-                    {
-                        //拖拽标记
-                        eq.area1 = "del";
-                        eq.area2 = "del";
-                        //eq.area3 = "del";
-                        //eq.area4 = "del";
-                    }
-                }
-
-            }
-        }
 
         private DataJson.Area1 AreaListDelect(string section, string index1, bool objDel)
         {
@@ -1008,35 +842,7 @@ namespace eNet编辑器.ThreeView
                 }//if
             }
             //删除NameList的设备地域信息 或更新信息
-            foreach (DataJson.PointInfo eq in FileMesege.PointList.equipment)
-            {
-                delupdatePoint1(eq, sections, objDel);
-            }
-            foreach (DataJson.PointInfo eq in FileMesege.PointList.link)
-            {
-                delupdatePoint1(eq, sections, objDel);
-            }
-            foreach (DataJson.PointInfo eq in FileMesege.PointList.scene)
-            {
-                delupdatePoint1(eq, sections, objDel);
-            }
-            foreach (DataJson.PointInfo eq in FileMesege.PointList.timer)
-            {
-                delupdatePoint1(eq, sections, objDel);
-            }
-            foreach (DataJson.PointInfo eq in FileMesege.PointList.virtualport)
-            {
-                delupdatePoint1(eq, sections, objDel);
-            }
-            foreach (DataJson.PointInfo eq in FileMesege.PointList.logic)
-            {
-                delupdatePoint1(eq, sections, objDel);
-            }
-            /*
-            foreach (DataJson.PointInfo eq in FileMesege.PointList.localvar)
-            {
-                delupdatePoint1(eq, sections, objDel);
-            }*/
+            DataListHelper.DelPointByArea(sections[0]);
             //删除的节点所有信息
             DataJson.Area1 obj = FileMesege.AreaList[i1];
             FileMesege.AreaList.Remove(FileMesege.AreaList[i1]);
@@ -1044,30 +850,6 @@ namespace eNet编辑器.ThreeView
             
         }
 
-        private void delupdatePoint1(DataJson.PointInfo eq, string[] sections, bool objDel)
-        {
-            //是否为节点同一个父节点  前面1个ID相等
-            if (eq.area1 == sections[0])
-            {
-
-                if (objDel)
-                {
-                    //当前删除节点的信息清除
-                    eq.area1 = "";
-                    eq.area2 = "";
-                    eq.area3 = "";
-                    eq.area4 = "";
-                }
-                else
-                {
-                    //拖拽标记
-                    eq.area1 = "del";
-                    //eq.area2 = "del";
-                    //eq.area3 = "del";
-                    //eq.area4 = "del";
-                }
-            }
-        }
 
 
         #endregion
@@ -1358,7 +1140,7 @@ namespace eNet编辑器.ThreeView
 
         #endregion
 
-        #region 树状图拖拽节点
+        #region 树状图拖拽节点   目前禁止删除
 
         Point Position = new Point(0, 0);
         //当用户开始拖动节点时发生
@@ -1373,16 +1155,16 @@ namespace eNet编辑器.ThreeView
         {
             
             //判断拖动的是否为树节点
-            if (e.Data.GetDataPresent(typeof(TreeNode)))
+            /*if (e.Data.GetDataPresent(typeof(TreeNode)))
                 e.Effect = DragDropEffects.Move;
             else
-                e.Effect = DragDropEffects.None;
+                e.Effect = DragDropEffects.None;*/
         }
 
         private void treeView1_DragDrop(object sender, DragEventArgs e)
         {
             
-            TreeNode myNode = null;
+           /* TreeNode myNode = null;
             if (e.Data.GetDataPresent(typeof(TreeNode)))
             {
                 myNode = (TreeNode)(e.Data.GetData(typeof(TreeNode)));
@@ -1539,14 +1321,8 @@ namespace eNet编辑器.ThreeView
                 }
                 
                
-            }
-            /* 如果目标节点不存在，即拖拽的位置不存在节点，那么就将被拖拽节点放在根节点之下
-            if (DropNode == null)
-            {
-                TreeNode DragNode = myNode;
-                myNode.Remove();
-                treeView1.Nodes.Add(DragNode);
             }*/
+          
         }
 
         //拖拽节点 修改AreaList
@@ -1848,6 +1624,7 @@ namespace eNet编辑器.ThreeView
                 eq.area1 = FileMesege.AreaList[i1].area;
             }
         }
+
         #endregion
 
         #region 新增节点  子节点 删除 （按键）

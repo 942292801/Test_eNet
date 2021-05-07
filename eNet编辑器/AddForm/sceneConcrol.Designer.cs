@@ -124,7 +124,7 @@
             this.lb1.Name = "lb1";
             this.lb1.Size = new System.Drawing.Size(32, 17);
             this.lb1.TabIndex = 72;
-            this.lb1.Text = "主机";
+            this.lb1.Text = "网关";
             // 
             // cbVersion
             // 
