@@ -46,39 +46,11 @@ namespace eNet编辑器.ThreeView
         public ThreeName()
         {
             InitializeComponent();
-            SetStyle(ControlStyles.UserPaint, true);
-            SetStyle(ControlStyles.AllPaintingInWmPaint, true); // 禁止擦除背景.
-            SetStyle(ControlStyles.DoubleBuffer, true); // 双缓冲
-            this.UpdateStyles();
-            //利用反射设置DataGridView的双缓冲
-            //Type dgvType = this.treeView1.GetType();
-            //PropertyInfo pi = dgvType.GetProperty("DoubleBuffered",
-            //BindingFlags.Instance | BindingFlags.NonPublic);
-            //pi.SetValue(this.treeView1, true, null);
-
+     
         }
 
 
-        #region 解决背景闪烁
-        //测试 解决背景闪烁
-        protected override void WndProc(ref Message m)
-        {
-            if (m.Msg == 0x0014)
-                // 禁掉清除背景消息         
-                return;
-            base.WndProc(ref m);
-        }
-        //测试 解决背景闪烁
-        protected override CreateParams CreateParams
-        {
-            get
-            {
-                CreateParams cp = base.CreateParams;
-                cp.ExStyle |= 0x02000000;
-                return cp;
-            }
-        }
-        #endregion
+  
 
 
 
@@ -92,7 +64,6 @@ namespace eNet编辑器.ThreeView
             tnd = new tnDevice();
             //回调添加新设备
             tnd.adddev +=new AddDev(newdevDelegate);
-            
         }
 
         /// <summary>
@@ -100,47 +71,54 @@ namespace eNet编辑器.ThreeView
         /// </summary>
         public void ThreeNameAddNode()
         {
-            if (FileMesege.DeviceList == null)
+            try
             {
-                treeView1.Nodes.Clear();
-                return;
-            }
-            
-            TreeMesege tm = new TreeMesege();
-            List<string> isExpands = tm.treeIsExpandsState(treeView1);            
-            //记录当前节点展开状况
-            int index = 0;
-            int index2 = 0;
-            string filepath = "";
-            string device = "";
-            string gwdevice = "";
-            foreach (DataJson.Device d in FileMesege.DeviceList)
-            {
-                //添加网关
-                filepath = string.Format("{0}\\devices\\{1}.ini", Application.StartupPath, d.master);
-                gwdevice = IniConfig.GetValue(filepath, "define", "display");
-                index = tm.AddNode1(treeView1, d.ip + " " + gwdevice);
-                foreach (DataJson.Module m in d.module)
+
+                if (FileMesege.DeviceList == null)
                 {
-                    filepath = filepath = string.Format("{0}\\devices\\{1}.ini", Application.StartupPath, m.device);
-                    device = IniConfig.GetValue(filepath, "define", "display");
-                    if (string.IsNullOrEmpty(device))
-                    {
-                        //判断加英文         Resources.treeName为资源文件的KEY值
-                        index2 = tm.AddNode2(treeView1, Resources.UnrecognizedDev + m.id + " " + m.device, index);
-                    }
-                    else
-                    {
-                        //判断加英文         Resources.treeName为资源文件的KEY值
-                        index2 = tm.AddNode2(treeView1, Resources.Device + m.id + " " + device, index);
-                    }
-                
-                    
+                    treeView1.Nodes.Clear();
+                    return;
                 }
+
+                TreeMesege tm = new TreeMesege();
+                List<string> isExpands = tm.treeIsExpandsState(treeView1);
+                //记录当前节点展开状况
+                int index = 0;
+                int index2 = 0;
+                string filepath = "";
+                string device = "";
+                //string gwdevice = "";
+                foreach (DataJson.Device d in FileMesege.DeviceList)
+                {
+                    //添加网关
+                    filepath = string.Format("{0}\\devices\\{1}.ini", Application.StartupPath, d.master);
+                    //gwdevice = IniConfig.GetValue(filepath, "define", "display");
+                    index = tm.AddNode1(treeView1, d.ip + " " + d.master);
+                    foreach (DataJson.Module m in d.module)
+                    {
+                        filepath = filepath = string.Format("{0}\\devices\\{1}.ini", Application.StartupPath, m.device);
+                        device = IniConfig.GetValue(filepath, "define", "display");
+                        if (string.IsNullOrEmpty(device))
+                        {
+                            //判断加英文         Resources.treeName为资源文件的KEY值
+                            index2 = tm.AddNode2(treeView1, Resources.UnrecognizedDev + m.id + " " + m.device, index);
+                        }
+                        else
+                        {
+                            //判断加英文         Resources.treeName为资源文件的KEY值
+                            index2 = tm.AddNode2(treeView1, Resources.Device + m.id + " " + device, index);
+                        }
+
+
+                    }
+                }
+                //展开记录的节点
+                tm.treeIspandsStateRcv(treeView1, isExpands);
+                TreeMesege.SetPrevVisitNode(treeView1, fullpath);
             }
-            //展开记录的节点
-            tm.treeIspandsStateRcv(treeView1, isExpands);
-            TreeMesege.SetPrevVisitNode(treeView1, fullpath);
+            catch (Exception ex) {
+                Console.WriteLine(ex.StackTrace);
+            }
         }
 
         #region 对树状图网关增 删 改和  设备增
@@ -314,6 +292,8 @@ namespace eNet编辑器.ThreeView
             }
             else//右击树状图区域
             {
+                //清空窗体信息
+                sendFormContrl("");
                 newitemflag = false;
                 int Nodeindex = treeView1.SelectedNode.Index;
                 //删除网关
@@ -343,8 +323,7 @@ namespace eNet编辑器.ThreeView
                 }
             }
             dgvDeviceAddItem();
-            
-             
+
         }
 
         private void 展开所有节点ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -395,11 +374,13 @@ namespace eNet编辑器.ThreeView
                 //设备型号
                 string oldVersion = Path.GetFileNameWithoutExtension(IniHelper.findDevicesDisplay(strs[4]));
 
-                //修改IP
+                //修改ID
                 if (tnd.IsChange)
                 {
                     //修改NameList信息
                     DataListHelper.changePointID(ip, id, oldid);
+
+
                 }
                 else
                 {
@@ -417,6 +398,7 @@ namespace eNet编辑器.ThreeView
 
                     }
                 }
+
                 DataJson.totalList NewList = FileMesege.cmds.getListInfos();
                 FileMesege.cmds.DoNewCommand(NewList, OldList);
                 //刷新窗体清空窗体信息
@@ -432,43 +414,46 @@ namespace eNet编辑器.ThreeView
         private void 删除ToolStripMenuItem1_Click(object sender, EventArgs e)
         {
            
-                 //删除设备
-                string ip = treeView1.SelectedNode.Parent.Text.Split(' ')[0];
-                bool isip = Regex.IsMatch(ip, @"^[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}$");
-                if (!isip)
-                {
-                    return;
-                }
-                int Nodeindex = treeView1.SelectedNode.Index;
-                int pNodeindex = treeView1.SelectedNode.Parent.Index;
-                string id = Regex.Replace(treeView1.SelectedNode.Text.Split(' ')[0], @"[^\d]*", "");
-                string version = Path.GetFileNameWithoutExtension(IniHelper.findDevicesDisplay(treeView1.SelectedNode.Text.Split(' ')[1])); ;
-                //修改网关
-                DataJson.totalList OldList = FileMesege.cmds.getListInfos();
-                DataListHelper.delDevice(ip, id, version);
-                DataJson.totalList NewList = FileMesege.cmds.getListInfos();
-                FileMesege.cmds.DoNewCommand(NewList, OldList);
-                FileMesege.tnselectNode = null;
-                //刷新窗体清空窗体信息
-                dgvNameAddItem();
+            //删除设备
+            string ip = treeView1.SelectedNode.Parent.Text.Split(' ')[0];
+            bool isip = Regex.IsMatch(ip, @"^[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}$");
+            if (!isip)
+            {
+                return;
+            }
+            //清空窗体信息
+            sendFormContrl("");
+            int Nodeindex = treeView1.SelectedNode.Index;
+            int pNodeindex = treeView1.SelectedNode.Parent.Index;
+            string id = Regex.Replace(treeView1.SelectedNode.Text.Split(' ')[0], @"[^\d]*", "");
+            string version = Path.GetFileNameWithoutExtension(IniHelper.findDevicesDisplay(treeView1.SelectedNode.Text.Split(' ')[1])); ;
+            //修改网关
+            DataJson.totalList OldList = FileMesege.cmds.getListInfos();
+            DataListHelper.delDevice(ip, id, version);
+            DataJson.totalList NewList = FileMesege.cmds.getListInfos();
+            FileMesege.cmds.DoNewCommand(NewList, OldList);
+            FileMesege.tnselectNode = null;
+            //刷新窗体清空窗体信息
+            dgvNameAddItem();
 
-                //选中删除节点的下一个节点 没有节点就直接选中父节点
-                if (treeView1.Nodes[pNodeindex].Nodes.Count > 0)
+            //选中删除节点的下一个节点 没有节点就直接选中父节点
+            if (treeView1.Nodes[pNodeindex].Nodes.Count > 0)
+            {
+                if (Nodeindex < treeView1.Nodes[pNodeindex].Nodes.Count)
                 {
-                    if (Nodeindex < treeView1.Nodes[pNodeindex].Nodes.Count)
-                    {
-                        treeView1.SelectedNode = treeView1.Nodes[pNodeindex].Nodes[Nodeindex];
-                    }
-                    else
-                    {
-                        treeView1.SelectedNode = treeView1.Nodes[pNodeindex].Nodes[0];
-                    }
-
+                    treeView1.SelectedNode = treeView1.Nodes[pNodeindex].Nodes[Nodeindex];
                 }
                 else
                 {
-                    treeView1.SelectedNode = treeView1.Nodes[pNodeindex];
+                    treeView1.SelectedNode = treeView1.Nodes[pNodeindex].Nodes[0];
                 }
+
+            }
+            else
+            {
+                treeView1.SelectedNode = treeView1.Nodes[pNodeindex];
+            }
+            
         }
 
         #endregion
@@ -506,7 +491,7 @@ namespace eNet编辑器.ThreeView
             {
 
                 //显示设备node
-                sendFormContrl(Resources.TxtShowDevName + IniConfig.GetValue(filepath, "define", "note") + "\r\n");
+                sendFormContrl(Resources.TxtShowDevName + IniConfig.GetValue(filepath, "define", "note"));
               
                 //调用dgv的ini配置
                 if (treeView1.SelectedNode.Parent == null)
@@ -530,9 +515,6 @@ namespace eNet编辑器.ThreeView
                 sendFormContrl("");
                 showDevice(false);
                 dgvNameAddItem();
-             
-
-
                 return;
                 //MessageBox.Show("bu存在文件夹");
 
@@ -593,20 +575,16 @@ namespace eNet编辑器.ThreeView
             else if ((e.State & TreeNodeStates.Hot) > 0)
             {
                 return;
-                //foreColor = Color.Lime;//鼠标经过时文字颜色
-                //backColor = Color.Gray;//鼠标经过时背景颜色
+
             }
             else
             {
                 foreColor = this.treeView1.ForeColor;
                 backColor = this.treeView1.BackColor;
             }
-            
+
             e.Graphics.FillRectangle(new SolidBrush(backColor), e.Bounds);
             e.Graphics.DrawString(e.Node.Text, this.treeView1.Font, new SolidBrush(foreColor), e.Bounds.X, e.Bounds.Y + 4);
-
-
-
         }
         #endregion
 

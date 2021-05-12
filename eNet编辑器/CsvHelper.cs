@@ -25,7 +25,7 @@ namespace eNet编辑器
             }
             System.IO.FileStream fs = new System.IO.FileStream(fullPath, System.IO.FileMode.Create,
             System.IO.FileAccess.Write);
-            System.IO.StreamWriter sw = new System.IO.StreamWriter(fs, System.Text.Encoding.UTF8);
+            System.IO.StreamWriter sw = new System.IO.StreamWriter(fs, System.Text.Encoding.Default);
             string data = "";
 
             for (int i = 0; i < dt.Columns.Count; i++)//写入列名
@@ -244,7 +244,7 @@ namespace eNet编辑器
             try
             {
                 FileStream FileStream = new FileStream(fullPath, FileMode.Append);
-                StreamWriter sw = new StreamWriter(FileStream, System.Text.Encoding.UTF8);
+                StreamWriter sw = new StreamWriter(FileStream, System.Text.Encoding.Default);
                 sw.WriteLine(Data);
                 //清空缓冲区
                 sw.Flush();

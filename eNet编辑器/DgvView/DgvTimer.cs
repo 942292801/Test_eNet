@@ -1875,7 +1875,7 @@ namespace eNet编辑器.DgvView
         {
 
             
-            sceneConcrol dc = new sceneConcrol();
+            sceneConcrol sceneconcrol = new sceneConcrol();
             DataJson.timers tms = DataListHelper.getTimersInfoList();
             if (tms == null)
             {
@@ -1887,22 +1887,24 @@ namespace eNet编辑器.DgvView
             {
                 return null;
             }
-            dc.Point = DataListHelper.findPointByPid(tmInfo.pid, FileMesege.PointList.equipment);
+            sceneconcrol.Point = DataListHelper.findPointByPid(tmInfo.pid, FileMesege.PointList.equipment);
+
             //把窗口向屏幕中间刷新
-            dc.StartPosition = FormStartPosition.CenterParent;
-            dc.ObjType = type;
-            dc.Opt = tmInfo.opt;
-            dc.Ver = tmInfo.optName;
-            dc.ShowDialog();
-            if (dc.DialogResult == DialogResult.OK)
+            sceneconcrol.StartPosition = FormStartPosition.CenterParent;
+            sceneconcrol.IP = ip;
+            sceneconcrol.ObjType = type;
+            sceneconcrol.Opt = tmInfo.opt;
+            sceneconcrol.Ver = tmInfo.optName;
+            sceneconcrol.ShowDialog();
+            if (sceneconcrol.DialogResult == DialogResult.OK)
             {
                 //撤销 
                 DataJson.totalList OldList = FileMesege.cmds.getListInfos();
-                tmInfo.opt = dc.Opt;
-                tmInfo.optName = dc.Ver;
+                tmInfo.opt = sceneconcrol.Opt;
+                tmInfo.optName = sceneconcrol.Ver;
                 DataJson.totalList NewList = FileMesege.cmds.getListInfos();
                 FileMesege.cmds.DoNewCommand(NewList, OldList);
-                return dc.Ver + " " + dc.Opt;
+                return sceneconcrol.Ver + " " + sceneconcrol.Opt;
             }
             
             return null;
@@ -1921,11 +1923,21 @@ namespace eNet编辑器.DgvView
             timerHHMM th = new timerHHMM();
             selectCellId = id;
             th.AddShortTime += new Action<string>(th_AddShortTime);
+            //这个区域包括任务栏，就是屏幕显示的物理范围
+            Rectangle ScreenArea = System.Windows.Forms.Screen.GetBounds(this);
+          
             Point pt = MousePosition;
-            //把窗口向屏幕中间刷新
             th.StartPosition = FormStartPosition.Manual;
             th.Left = pt.X + 10;
-            th.Top = pt.Y + 10;
+            if (ScreenArea.Height - pt.Y < 300)
+            {
+                th.Top = pt.Y - 220;
+
+            }
+            else {
+                th.Top = pt.Y + 10;
+
+            }
             th.Date = shortTime;
             //把窗口向屏幕中间刷新
             th.Show();

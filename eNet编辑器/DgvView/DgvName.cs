@@ -756,23 +756,31 @@ namespace eNet编辑器.DgvView
             //获取id1 - id4
             string[] tmID = tm.GetSectionId(FileMesege.sectionNode.FullPath.Split('\\'));
             string[] section = tm.GetSection(tmID[0], tmID[1], tmID[2], tmID[3]).Split('\\');
+
             //循环所有信息
             foreach (DataJson.PointInfo eq in FileMesege.PointList.equipment)
             {
                 //当地域信息相同
                 if (eq.area1 == section[0] && eq.area2 == section[1] && eq.area3 == section[2] && eq.area4 == section[3])
                 {
-                    if (eq.name != null && eq.name.Substring(0, strTitle.Length) == strTitle)
+                    if (eq.name != null)
                     {
-                        //获取序号
-                        num = eq.name.Split('@')[0].Replace(strTitle, "");
-                        if (num != "")
+                        //这里有问题 如何是 热水水  和热水 比较 会出现错误
+                        string tmpname = Regex.Replace(eq.name.Split('@')[0], @"[\d]$", "");
+
+                        if (tmpname == strTitle)
                         {
-                            hasharry.Add(Convert.ToInt32(num));
+                            //获取序号
+                            num = eq.name.Split('@')[0].Replace(strTitle, "");
+                            if (num != "")
+                            {
+                                hasharry.Add(Convert.ToInt32(num));
+
+                            }
 
                         }
-
                     }
+                   
                 }
 
             }
@@ -784,6 +792,7 @@ namespace eNet编辑器.DgvView
                 //该区域节点前面数字不存在
                 return strTitle + "1";
             }
+
             //哈希表 不存在序号 直接返回
             for (int i = 0; i < arry.Count; i++)
             {
@@ -1015,7 +1024,6 @@ namespace eNet编辑器.DgvView
         {
             try
             {
-              
                 isConnet = true;
                 if (FileMesege.tnselectNode == null)
                 {
@@ -1042,7 +1050,6 @@ namespace eNet编辑器.DgvView
                 //实例化客户端
                 client = new ClientAsync();
                 IniClient();
-               
                 //异步连接
                 client.ConnectAsync(strip[0], 6003);
                 ToolsUtil.DelayMilli(200);

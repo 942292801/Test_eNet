@@ -94,7 +94,7 @@ namespace eNet编辑器
                 if (client.Connected)
                 {
                     
-                    byte[] listData = Encoding.UTF8.GetBytes(msg);
+                    byte[] listData = Encoding.Default.GetBytes(msg);
                     client.Client.BeginSend(listData, 0, listData.Length, SocketFlags.None, SendCallBack, client);
                 }
             }

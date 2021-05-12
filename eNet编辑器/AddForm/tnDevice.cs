@@ -1,10 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 using System.IO;
 using System.Text.RegularExpressions;
@@ -20,7 +16,8 @@ namespace eNet编辑器.AddForm
         {
             InitializeComponent();
         }
-        public static event Action<string> AppTxtShow;
+        public static event Action<string> ClearTxtShow;
+
         public bool isNew = false;
         //回调添加设备节点
         public event AddDev adddev;
@@ -29,7 +26,7 @@ namespace eNet编辑器.AddForm
         private string oldDevVersion = "";
 
         private bool isChange = false;
-
+        private DirectoryInfo folder;
         public bool IsChange
         {
             get { return isChange; }
@@ -51,29 +48,102 @@ namespace eNet编辑器.AddForm
             lbTitle.Text = title;
             //btnDecid.Tooltip = title;
             string[] infos = FileMesege.info.Split(' ');
-            if (infos.Length > 2)
-            {
-                //修改模式
-                cbDevice.Text = Regex.Replace(infos[2], @"[^\d]*", "");
-                oldDevNum = cbDevice.Text;
-                cbVersion.Text = infos[3];
-                oldDevVersion = infos[3];
-            }
+           
             //网关名称
             lbip.Text = infos[0];
-            //获取设备名称
-            DirectoryInfo folder = new DirectoryInfo(Application.StartupPath + "//devices");
-            string display = null;
+          
             //循环添加设备号
             for (int i = 1; i < 64; i++)
             {
                 cbDevice.Items.Add(i);
             }
-            //循环添加设备名字
+
+            //获取设备名称
+            folder = new DirectoryInfo(Application.StartupPath + "//devices");
+            string species = "";
+            HashSet<string> hs = new HashSet<string>();
+            //循环添加种类
             foreach (FileInfo file in folder.GetFiles("*.ini"))
             {
-                display = IniConfig.GetValue(file.FullName, "define", "display");
-                cbVersion.Items.Add(display);
+                species = IniConfig.GetValue(file.FullName, "define", "species");
+                if (!string.IsNullOrEmpty(species))
+                {
+                    hs.Add(species);
+                }
+
+            }
+            cbSpecies.Items.Clear();
+            foreach (string str in hs)
+            {
+                cbSpecies.Items.Add(str);
+
+            }
+
+            //补齐空缺的设备号 否则的加一
+            SetDeviceId();
+            string display;
+            if (infos.Length > 2)
+            {
+
+                //修改模式
+                cbDevice.Text = Regex.Replace(infos[2], @"[^\d]*", "");
+                oldDevNum = cbDevice.Text;
+                
+                //还原种类
+                foreach (FileInfo file in folder.GetFiles("*.ini"))
+                {
+                    display = IniConfig.GetValue(file.FullName, "define", "display");
+                    if (!string.IsNullOrEmpty(display) && display == infos[3])
+                    {
+                        species = IniConfig.GetValue(file.FullName, "define", "species");
+                        cbSpecies.SelectedItem = species;
+                        break;
+                    }
+                }
+                cbVersion.Text = infos[3];
+                oldDevVersion = infos[3];
+                /*cbVersion.SelectedItem = oldDevVersion;*/
+
+            }
+            else
+            {
+                if (hs.Count > 0)
+                {
+                    cbSpecies.SelectedIndex = 0;
+                }
+            }
+           
+        }
+
+        /// <summary>
+        /// 补齐空缺的设备号 否则的加一
+        /// </summary>
+        private void SetDeviceId()
+        {
+            if (FileMesege.DeviceList != null)
+            {
+                foreach (DataJson.Device dev in FileMesege.DeviceList)
+                {
+                    if (dev.ip == lbip.Text)
+                    {
+
+                        for (int i = 0; i < dev.module.Count; i++)
+                        {
+                            if (i + 1 != dev.module[i].id)
+                            {
+                                cbDevice.Text = (i + 1).ToString();
+                                return;
+                            }
+                        }
+                        cbDevice.Text = (dev.module.Count + 1).ToString();
+
+                        break;
+                    }
+                }
+            }
+            else
+            {
+                cbDevice.Text = "1";
 
             }
 
@@ -81,7 +151,35 @@ namespace eNet编辑器.AddForm
 
         }
 
-   
+        /// <summary>
+        /// 获取该个类型的所有种类设备型号
+        /// </summary>
+        private void AddVersionBySpecies()
+        {
+            if (string.IsNullOrEmpty(cbSpecies.Text))
+            {
+                return;
+            }
+            cbVersion.Items.Clear();
+            string display = "";
+            string species = "";
+            //循环添加设备名字
+            foreach (FileInfo file in folder.GetFiles("*.ini"))
+            {
+                species = IniConfig.GetValue(file.FullName, "define", "species");
+                if (species != cbSpecies.Text)
+                {
+                    continue;
+                }
+                display = IniConfig.GetValue(file.FullName, "define", "display");
+                cbVersion.Items.Add(display);
+
+            }
+            if (cbVersion.Items.Count > 0)
+            {
+                cbVersion.SelectedIndex = 0;
+            }
+        }
 
 
         private void btnDecid_Click_1(object sender, EventArgs e)
@@ -89,14 +187,20 @@ namespace eNet编辑器.AddForm
             //设备号不为空
             if (string.IsNullOrEmpty(cbDevice.Text) || string.IsNullOrEmpty(cbVersion.Text))
             {
-                AppTxtShow("设备信息错误");
+                MessageBox.Show("请正确填写设备号和版本号");
                 return;
             }
             //设备ID号为数字
             if (!Regex.IsMatch(cbDevice.Text, @"^[+-]?\d*[.]?\d*$"))
             {
 
-                AppTxtShow("设备号输入格式错误");
+                MessageBox.Show("请正确填写设备号和版本号");
+                return;
+            }
+            int devid = Convert.ToInt32(cbDevice.Text);
+            if (devid < 0 || devid > 63)
+            {
+                MessageBox.Show("设备号超出范围值");
                 return;
             }
             bool isVersion = false;
@@ -110,7 +214,7 @@ namespace eNet编辑器.AddForm
             }
             if (!isVersion)
             {
-                AppTxtShow("设备型号不存在");
+                MessageBox.Show("设备型号不存在");
                 return;
             }
 
@@ -124,25 +228,26 @@ namespace eNet编辑器.AddForm
                         {
                             if (m.id.ToString() == cbDevice.Text)
                             {
-                                AppTxtShow("操作失败！请检查设备号！");
+                                MessageBox.Show("请正确填写设备号！");
                                 return;
                             }
                         }
                     }
                 }
                 FileMesege.info = string.Format("{0} {1} {2}", lbip.Text.Replace(" ", ""), cbDevice.Text.Replace(" ", ""), cbVersion.Text.Replace(" ", ""));
+               
+                //添加设备回调
+                adddev();
                 try
                 {
+                    SetDeviceId();
                     //自动序号加一
-                    cbDevice.SelectedIndex = Convert.ToInt32(cbDevice.Text) + 1;
+                    //cbDevice.Text = (Convert.ToInt32(cbDevice.Text) + 1).ToString();
                 }
                 catch
                 {
 
                 }
-                //添加设备回调
-                adddev();
-
             }
             else
             {
@@ -157,7 +262,7 @@ namespace eNet编辑器.AddForm
                             {
                                 if (m.id.ToString() == cbDevice.Text)
                                 {
-                                    AppTxtShow("设备号已存在！请检查设备号！");
+                                    MessageBox.Show("设备号已存在！");
                                     return;
                                 }
                             }
@@ -307,5 +412,25 @@ namespace eNet编辑器.AddForm
         }
 
         #endregion
+
+        private void CbSpecies_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            AddVersionBySpecies();
+        }
+
+        private void CbVersion_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string display;
+            foreach (FileInfo file in folder.GetFiles("*.ini"))
+            {
+                display = IniConfig.GetValue(file.FullName, "define", "display");
+                if (!string.IsNullOrEmpty(display) && display == cbVersion.Text)
+                {
+                    string note = IniConfig.GetValue(file.FullName, "define", "note");
+                    ClearTxtShow(note);
+                    break;
+                }
+            }
+        }
     }
 }

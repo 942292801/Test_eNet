@@ -151,8 +151,6 @@ namespace eNet编辑器
             AreaList = null;
             //Title表的设备信息
             PointList = null;           
-            //命名在线设备文件
-            serialList = null;
             //场景
             sceneList = null;
             //定时
@@ -163,6 +161,9 @@ namespace eNet编辑器
             sensorList = null;
             //逻辑
             logicList = null;
+
+            //命名在线设备文件
+            serialList = null;
             //undo redo
             cmds = new CommandManager();
             filePath = "";
@@ -272,13 +273,45 @@ namespace eNet编辑器
             }
             iniPath();
             DeviceList = JsonConvert.DeserializeObject<List<DataJson.Device>>(File.ReadAllText(TmpFilePath + "\\pro\\device.json"));
+            if (DeviceList == null)
+            {
+                DeviceList = new List<DataJson.Device>();
+            }
             AreaList = JsonConvert.DeserializeObject<List<DataJson.Area1>>(File.ReadAllText(TmpFilePath + "\\pro\\area.json"));
+            if (AreaList == null)
+            {
+                AreaList = new List<DataJson.Area1>();
+            }
             PointList = JsonConvert.DeserializeObject<DataJson.Point>(File.ReadAllText(TmpFilePath + "\\pro\\point.json"));
+            if (PointList == null)
+            {
+                PointList = new DataJson.Point();
+            }
             sceneList = JsonConvert.DeserializeObject<List<DataJson.Scene>>(File.ReadAllText(TmpFilePath + "\\pro\\scene.json"));
+            if (sceneList == null)
+            {
+                sceneList = new List<DataJson.Scene>();
+            }
             panelList = JsonConvert.DeserializeObject<List<DataJson.Panel>>(File.ReadAllText(TmpFilePath + "\\pro\\panel.json"));
+            if (panelList == null)
+            {
+                panelList = new List<DataJson.Panel>();
+            }
             timerList = JsonConvert.DeserializeObject<List<DataJson.Timer>>(File.ReadAllText(TmpFilePath + "\\pro\\timer.json"));
+            if (timerList == null)
+            {
+                timerList = new List<DataJson.Timer>();
+            }
             sensorList = JsonConvert.DeserializeObject<List<DataJson.Sensor>>(File.ReadAllText(TmpFilePath + "\\pro\\sensor.json"));
+            if (sensorList == null)
+            {
+                sensorList = new List<DataJson.Sensor>();
+            }
             logicList = JsonConvert.DeserializeObject<List<DataJson.Logic>>(File.ReadAllText(TmpFilePath + "\\pro\\logic.json"));
+            if (logicList == null)
+            {
+                logicList = new List<DataJson.Logic>();
+            }
             filePath = localFilePath;
             fileName = filename + extension;
             return true;
@@ -478,15 +511,56 @@ namespace eNet编辑器
         /// <param name="path">Pro文件路径</param>
         private void writeAlltoPro(string path)
         {
-            tmpPathClear();
-            File.WriteAllText(path + "\\pro\\point.json", ConvertJsonString(JsonConvert.SerializeObject(PointList)));
-            File.WriteAllText(path + "\\pro\\area.json", ConvertJsonString(JsonConvert.SerializeObject(AreaList)));
-            File.WriteAllText(path + "\\pro\\device.json", ConvertJsonString(JsonConvert.SerializeObject(DeviceList)));
-            File.WriteAllText(path + "\\pro\\scene.json", ConvertJsonString(JsonConvert.SerializeObject(sceneList)));
-            File.WriteAllText(path + "\\pro\\panel.json", ConvertJsonString(JsonConvert.SerializeObject(panelList)));
-            File.WriteAllText(path + "\\pro\\timer.json", ConvertJsonString(JsonConvert.SerializeObject(timerList)));
-            File.WriteAllText(path + "\\pro\\sensor.json", ConvertJsonString(JsonConvert.SerializeObject(sensorList)));
-            File.WriteAllText(path + "\\pro\\logic.json", ConvertJsonString(JsonConvert.SerializeObject(logicList)));
+            try
+            {
+                tmpPathClear();
+                if (PointList == null)
+                {
+                    PointList = new DataJson.Point();
+                }
+                File.WriteAllText(path + "\\pro\\point.json", ConvertJsonString(JsonConvert.SerializeObject(PointList)));
+                if (AreaList == null)
+                {
+                    AreaList = new List<DataJson.Area1>();
+                }
+                File.WriteAllText(path + "\\pro\\area.json", ConvertJsonString(JsonConvert.SerializeObject(AreaList)));
+                if (DeviceList == null)
+                {
+                    DeviceList = new List<DataJson.Device>();
+                }
+                File.WriteAllText(path + "\\pro\\device.json", ConvertJsonString(JsonConvert.SerializeObject(DeviceList)));
+                if (sceneList == null)
+                {
+                    sceneList = new List<DataJson.Scene>();
+                }
+                File.WriteAllText(path + "\\pro\\scene.json", ConvertJsonString(JsonConvert.SerializeObject(sceneList)));
+                if (panelList == null)
+                {
+                    panelList = new List<DataJson.Panel>();
+                }
+                File.WriteAllText(path + "\\pro\\panel.json", ConvertJsonString(JsonConvert.SerializeObject(panelList)));
+                if (timerList == null)
+                {
+                    timerList = new List<DataJson.Timer>();
+                }
+                File.WriteAllText(path + "\\pro\\timer.json", ConvertJsonString(JsonConvert.SerializeObject(timerList)));
+                if (sensorList == null)
+                {
+                    sensorList = new List<DataJson.Sensor>();
+                }
+                File.WriteAllText(path + "\\pro\\sensor.json", ConvertJsonString(JsonConvert.SerializeObject(sensorList)));
+                if (logicList == null)
+                {
+                    logicList = new List<DataJson.Logic>();
+                }
+                File.WriteAllText(path + "\\pro\\logic.json", ConvertJsonString(JsonConvert.SerializeObject(logicList)));
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+
+            }
+           
         }
 
         /// <summary>
@@ -502,9 +576,29 @@ namespace eNet编辑器
                 {
                     Directory.Delete(TmpFilePath, true);
                 }
-                Directory.CreateDirectory(TmpFilePath);
-                Directory.CreateDirectory(TmpFilePath + "\\objs");
-                Directory.CreateDirectory(TmpFilePath + "\\pro");
+                
+                while (!Directory.Exists(TmpFilePath))
+                {
+                    Directory.CreateDirectory(TmpFilePath);
+                    ToolsUtil.DelayMilli(200);
+                }
+
+                string objpath = TmpFilePath + "\\objs";
+                string propath = TmpFilePath + "\\pro";
+
+                while (!Directory.Exists(objpath)) {
+                    Directory.CreateDirectory(objpath);
+                    ToolsUtil.DelayMilli(200);
+
+                }
+                while (!Directory.Exists(propath))
+                {
+                    Directory.CreateDirectory(propath);
+                    ToolsUtil.DelayMilli(200);
+
+                }
+              
+                
             }
             catch{
                 
@@ -542,13 +636,13 @@ namespace eNet编辑器
             }
         }
 
-        #region 点位 位置 设备列表
+        #region backup文件夹下的 点位 位置 设备列表 场景 定时 面板 感应 逻辑
         /// <summary>
         /// 在point.json总文件中抽取该网关ip的信息并写进 所有点位信息 成功：返回json字符串 失败：返回""
         /// </summary>
         /// <param name="ip"></param>
         /// <returns></returns>
-        public string getPointJsonByIP(string ip)
+        public string BackupPointJsonByIP(string ip, string targetIP)
         {
             try
             {
@@ -612,24 +706,17 @@ namespace eNet编辑器
                         {
                             if (point.ip == ip)
                             {
+
                                 gwPoint.logic.Add(point);
                             }
                         }
                     }
-                    /*
-                    if (PointList.localvar != null)
-                    {
-                        foreach (DataJson.PointInfo point in PointList.localvar)
-                        {
-                            if (point.ip == ip)
-                            {
-                                gwPoint.localvar.Add(point);
-                            }
-                        }
-                    }*/
+             
                 }
-                //File.WriteAllText(string.Format("{0}\\objs\\{1}\\point.json", TmpFilePath, ip), ConvertJsonString(JsonConvert.SerializeObject(gwPoint)));
-                return JsonConvert.SerializeObject(gwPoint);
+                //修改名称@230
+                string iplast =  "@"+ ip.Split('.')[3];
+                string targetIPLast = "@" + targetIP.Split('.')[3];
+                return ConvertJsonString(JsonConvert.SerializeObject(gwPoint)).Replace(ip,targetIP).Replace(iplast, targetIPLast);
             }
             catch(Exception e)
             {
@@ -643,7 +730,7 @@ namespace eNet编辑器
         /// </summary>
         /// <param name="ip"></param>
         /// <returns></returns>
-        public string getAreaJsonByIP(string ip)
+        public string BackupAreaJsonByIP()
         {
             try
             {
@@ -652,8 +739,7 @@ namespace eNet编辑器
                 {
                     AreaList = new List<DataJson.Area1>();
                 }
-                //File.WriteAllText(string.Format("{0}\\objs\\{1}\\area.json", TmpFilePath, ip), ConvertJsonString(JsonConvert.SerializeObject(AreaList)));
-                return JsonConvert.SerializeObject(AreaList);
+                return ConvertJsonString(JsonConvert.SerializeObject(AreaList));
             }
             catch (Exception e)
             {
@@ -667,11 +753,10 @@ namespace eNet编辑器
         /// </summary>
         /// <param name="ip"></param>
         /// <returns></returns>
-        public string getDeviceJsonByIP(string ip)
+        public string BackupDeviceJsonByIP(string ip, string targetIP)
         {
             try
             {
-
                 if (DeviceList == null)
                 {
                     DeviceList = new List<DataJson.Device>();
@@ -685,8 +770,7 @@ namespace eNet编辑器
                         break;
                     }
                 }
-                //File.WriteAllText(string.Format("{0}\\objs\\{1}\\device.json", TmpFilePath, ip), ConvertJsonString(JsonConvert.SerializeObject(tmp)));
-                return JsonConvert.SerializeObject(tmp);
+                return ConvertJsonString(JsonConvert.SerializeObject(tmp)).Replace(ip, targetIP);
             }
             catch (Exception e)
             {
@@ -694,6 +778,147 @@ namespace eNet编辑器
                 return "";
             }
         }
+
+        /// <summary>
+        /// 把scene.json总文件中抽取该ip的信息  成功：返回json字符串 失败：返回""
+        /// </summary>
+        /// <param name="ip"></param>
+        /// <returns></returns>
+        public string BackupSceneJsonByIP(string ip, string targetIP)
+        {
+            try
+            {
+
+                DataJson.Scene sc = DataListHelper.getSceneList(ip);
+                //获取该IP下的所有场景
+                if (sc == null || sc.scenes.Count == 0)
+                {
+
+                    sc = new DataJson.Scene();
+                    sc.IP = ip;
+                    sc.Dev = "GW100A";
+                }
+                return ConvertJsonString(JsonConvert.SerializeObject(sc)).Replace(ip, targetIP);
+            }
+            catch (Exception e)
+            {
+                ToolsUtil.WriteLog(e.Message);
+                return "";
+            }
+        }
+
+        /// <summary>
+        /// 把timer.json总文件中抽取该ip的信息  成功：返回json字符串 失败：返回""
+        /// </summary>
+        /// <param name="ip"></param>
+        /// <returns></returns>
+        public string BackupTimerJsonByIP(string ip, string targetIP)
+        {
+            try
+            {
+
+                DataJson.Timer tm = DataListHelper.getTimerList(ip);
+
+                //获取该IP下的所有定时
+                if (tm == null || tm.timers.Count == 0)
+                {
+                    tm = new DataJson.Timer();
+                    tm.IP = ip;
+                    tm.Dev = "GW100A";
+                }
+
+                return ConvertJsonString(JsonConvert.SerializeObject(tm)).Replace(ip, targetIP);
+            }
+            catch (Exception e)
+            {
+                ToolsUtil.WriteLog(e.Message);
+                return "";
+            }
+        }
+
+        /// <summary>
+        /// 把panel.json总文件中抽取该ip的信息  成功：返回json字符串 失败：返回""
+        /// </summary>
+        /// <param name="ip"></param>
+        /// <returns></returns>
+        public string BackupPanelJsonByIP(string ip, string targetIP)
+        {
+            try
+            {
+
+                DataJson.Panel pl = DataListHelper.getPanelList(ip);
+
+                //获取该IP下的所有场景
+                if (pl == null || pl.panels.Count == 0)
+                {
+                    pl = new DataJson.Panel();
+                    pl.IP = ip;
+                    pl.Dev = "GW100A";
+                }
+
+                return ConvertJsonString(JsonConvert.SerializeObject(pl)).Replace(ip, targetIP);
+            }
+            catch (Exception e)
+            {
+                ToolsUtil.WriteLog(e.Message);
+                return "";
+            }
+        }
+
+        /// <summary>
+        /// 把sensor.json总文件中抽取该ip的信息  成功：返回json字符串 失败：返回""
+        /// </summary>
+        /// <param name="ip"></param>
+        /// <returns></returns>
+        public string BackupSensorJsonByIP(string ip, string targetIP)
+        {
+            try
+            {
+
+                DataJson.Sensor sr = DataListHelper.getSensorList(ip);
+
+                //获取该IP下的所有场景
+                if (sr == null || sr.sensors.Count == 0)
+                {
+                    sr = new DataJson.Sensor();
+                    sr.IP = ip;
+                    sr.Dev = "GW100A";
+                }
+                return ConvertJsonString(JsonConvert.SerializeObject(sr)).Replace(ip, targetIP);
+            }
+            catch (Exception e)
+            {
+                ToolsUtil.WriteLog(e.Message);
+                return "";
+            }
+        }
+
+        /// <summary>
+        /// 把logic.json总文件中抽取该ip的信息  成功：返回json字符串 失败：返回""
+        /// </summary>
+        /// <param name="ip"></param>
+        /// <returns></returns>
+        public string BackupLogicJsonByIP(string ip, string targetIP)
+        {
+            try
+            {
+                DataJson.Logic lg = DataListHelper.getLogicList(ip);
+                //获取该IP下的所有逻辑
+                if (lg == null || lg.logics.Count == 0)
+                {
+                    lg = new DataJson.Logic();
+                    lg.IP = ip;
+                    lg.Dev = "GW100A";
+                }
+                return ConvertJsonString(JsonConvert.SerializeObject(lg)).Replace(ip, targetIP);
+            }
+            catch (Exception e)
+            {
+                ToolsUtil.WriteLog(e.Message);
+                return "";
+            }
+        }
+
         #endregion
 
         #region 场景
@@ -702,7 +927,7 @@ namespace eNet编辑器
         /// </summary>
         /// <param name="ip"></param>
         /// <returns></returns>
-        public bool getSceneJsonByIP(string ip)
+        public bool getSceneJsonByIP(string ip, string targetIP)
         {
             try
             {
@@ -743,12 +968,7 @@ namespace eNet编辑器
                     }
                     if (sn.action.Count > 0)
                     {
-                        /*string tmpPath = string.Format("{0}\\objs\\{1}", TmpFilePath, ip);
-                        if (Directory.Exists(tmpPath))
-                        {
-                            Directory.CreateDirectory(tmpPath);
-                        }*/
-                        File.WriteAllText(string.Format("{0}\\objs\\{1}\\s{2}.json", TmpFilePath, ip, scs.id), ConvertJsonString(JsonConvert.SerializeObject(sn)));
+                        File.WriteAllText(string.Format("{0}\\objs\\{1}\\s{2}.json", TmpFilePath, targetIP, scs.id), ConvertJsonString(JsonConvert.SerializeObject(sn)));
                     }
                     
 
@@ -769,7 +989,7 @@ namespace eNet编辑器
         /// </summary>
         /// <param name="ip"></param>
         /// <returns></returns>
-        public bool getTimerJsonByIP(string ip)
+        public bool getTimerJsonByIP(string ip, string targetIP)
         {
             try
             {
@@ -891,7 +1111,7 @@ namespace eNet编辑器
                     }
                     if (tn.timer.Count > 0)
                     {
-                        File.WriteAllText(string.Format("{0}\\objs\\{1}\\t{2}.json", TmpFilePath, ip, tms.id), ConvertJsonString(JsonConvert.SerializeObject(tn)));
+                        File.WriteAllText(string.Format("{0}\\objs\\{1}\\t{2}.json", TmpFilePath, targetIP, tms.id), ConvertJsonString(JsonConvert.SerializeObject(tn)));
                     }
 
 
@@ -912,7 +1132,7 @@ namespace eNet编辑器
         /// </summary>
         /// <param name="ip"></param>
         /// <returns></returns>
-        public bool getPanelJsonByIP(string ip)
+        public bool getPanelJsonByIP(string ip, string targetIP)
         {
             try
             {
@@ -969,7 +1189,7 @@ namespace eNet编辑器
                     }
                     if (kn.key.Count > 0)
                     {
-                        File.WriteAllText(string.Format("{0}\\objs\\{1}\\k{2}.json", TmpFilePath, ip, pls.id), ConvertJsonString(JsonConvert.SerializeObject(kn)));
+                        File.WriteAllText(string.Format("{0}\\objs\\{1}\\k{2}.json", TmpFilePath, targetIP, pls.id), ConvertJsonString(JsonConvert.SerializeObject(kn)));
                     }
 
 
@@ -1018,7 +1238,7 @@ namespace eNet编辑器
         /// </summary>
         /// <param name="ip"></param>
         /// <returns></returns>
-        public bool getSensorJsonByIP(string ip)
+        public bool getSensorJsonByIP(string ip, string targetIP)
         {
             try
             {
@@ -1067,7 +1287,7 @@ namespace eNet编辑器
                     }
                     if (kn.key.Count > 0)
                     {
-                        File.WriteAllText(string.Format("{0}\\objs\\{1}\\k{2}.json", TmpFilePath, ip, srs.id), ConvertJsonString(JsonConvert.SerializeObject(kn)));
+                        File.WriteAllText(string.Format("{0}\\objs\\{1}\\k{2}.json", TmpFilePath, targetIP, srs.id), ConvertJsonString(JsonConvert.SerializeObject(kn)));
                     }
 
 
@@ -1083,7 +1303,7 @@ namespace eNet编辑器
         #endregion
 
         #region 逻辑
-        public bool getLogicJsonByIp(string ip)
+        public bool getLogicJsonByIp(string ip, string targetIP)
         {
             try
             {
@@ -1139,7 +1359,7 @@ namespace eNet编辑器
                     if (lc.trigger.Count > 0)
                     {
                         
-                        File.WriteAllText(string.Format("{0}\\objs\\{1}\\l{2}.json", TmpFilePath, ip, lgs.id), ConvertJsonString(JsonConvert.SerializeObject(lc)));
+                        File.WriteAllText(string.Format("{0}\\objs\\{1}\\l{2}.json", TmpFilePath, targetIP, lgs.id), ConvertJsonString(JsonConvert.SerializeObject(lc)));
                         //暂时输出到某个目录下面
                         //File.WriteAllText(string.Format("C:\\Users\\Administrator\\Desktop\\工程obj\\tmp\\l{0}.json", lgs.id), ConvertJsonString(JsonConvert.SerializeObject(lc)));
                     }

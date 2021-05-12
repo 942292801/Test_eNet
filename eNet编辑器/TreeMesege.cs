@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 
 namespace eNet编辑器
@@ -16,43 +14,80 @@ namespace eNet编辑器
         /// <returns>当前节点 索引号</returns>
         public  int AddNode1(TreeView treeView1, string name)
         {
-            TreeNode tn = new TreeNode();
-            //添加根节点
-            tn.Text = name;
-            tn.ImageIndex = 0;
-            tn.SelectedImageIndex = 2;
-            tn.Expand();
-            return treeView1.Nodes.Add((TreeNode)(tn.Clone()));
+            try
+            {
+                TreeNode tn = new TreeNode();
+                //添加根节点
+                tn.Text = name;
+                tn.ImageIndex = 0;
+                tn.SelectedImageIndex = 2;
+                tn.Expand();
+                return treeView1.Nodes.Add((TreeNode)(tn.Clone()));
+            }
+            catch (Exception ex)
+            {
+                ToolsUtil.WriteLog(ex.Message);
+                return 0;
+            }
+
+           
           
         }
 
         public  int AddNode2(TreeView treeView1, string name, int index)
         {
-            TreeNode tn = new TreeNode();
-            tn.Text = name;
-            tn.ImageIndex = 1;
-            tn.SelectedImageIndex = 3;
-            tn.Expand();
-            return treeView1.Nodes[index].Nodes.Add((TreeNode)(tn.Clone()));
+            try
+            {
+                TreeNode tn = new TreeNode();
+                tn.Text = name;
+                tn.ImageIndex = 1;
+                tn.SelectedImageIndex = 3;
+                tn.Expand();
+                return treeView1.Nodes[index].Nodes.Add((TreeNode)(tn.Clone()));
+            }
+            catch (Exception ex)
+            {
+                ToolsUtil.WriteLog(ex.Message);
+                return 0;
+            }
+            
         }
         public  int AddNode3(TreeView treeView1, string name, int index, int index2)
         {
-            TreeNode tn = new TreeNode();
-            tn.Text = name;
-            tn.ImageIndex = 4;
-            tn.SelectedImageIndex = 5;
-            tn.Expand();
-            return treeView1.Nodes[index].Nodes[index2].Nodes.Add((TreeNode)(tn.Clone()));
+            try
+            {
+                TreeNode tn = new TreeNode();
+                tn.Text = name;
+                tn.ImageIndex = 4;
+                tn.SelectedImageIndex = 5;
+                tn.Expand();
+                return treeView1.Nodes[index].Nodes[index2].Nodes.Add((TreeNode)(tn.Clone()));
+            }
+            catch (Exception ex)
+            {
+                ToolsUtil.WriteLog(ex.Message);
+                return 0;
+            }
+           
         }
 
         public  int AddNode4(TreeView treeView1, string name, int index, int index2, int index3)
         {
-            TreeNode tn = new TreeNode();
-            tn.Text = name;
-            tn.ImageIndex = 4;
-            tn.SelectedImageIndex = 5;
-            tn.Expand();
-            return treeView1.Nodes[index].Nodes[index2].Nodes[index3].Nodes.Add((TreeNode)(tn.Clone()));
+            try
+            {
+                TreeNode tn = new TreeNode();
+                tn.Text = name;
+                tn.ImageIndex = 4;
+                tn.SelectedImageIndex = 5;
+                tn.Expand();
+                return treeView1.Nodes[index].Nodes[index2].Nodes[index3].Nodes.Add((TreeNode)(tn.Clone()));
+            }
+            catch (Exception ex)
+            {
+                ToolsUtil.WriteLog(ex.Message);
+                return 0;
+            }
+            
         }
 
         /// <summary>

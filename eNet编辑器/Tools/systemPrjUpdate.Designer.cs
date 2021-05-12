@@ -61,8 +61,8 @@
             // btnPath
             // 
             this.btnPath.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnPath.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnPath.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.btnPath.BackColor = System.Drawing.Color.White;
             this.btnPath.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
             this.btnPath.FocusCuesEnabled = false;
@@ -115,7 +115,7 @@
             this.lbName.Name = "lbName";
             this.lbName.Size = new System.Drawing.Size(44, 17);
             this.lbName.TabIndex = 64;
-            this.lbName.Text = "主机：";
+            this.lbName.Text = "网关：";
             // 
             // plInfoTitle
             // 
@@ -135,8 +135,8 @@
             // btnUpdate
             // 
             this.btnUpdate.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnUpdate.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnUpdate.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.btnUpdate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnUpdate.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
             this.btnUpdate.FocusCuesEnabled = false;

@@ -1101,7 +1101,7 @@ namespace eNet编辑器.DgvView
         {
 
 
-            sceneConcrol dc = new sceneConcrol();
+            sceneConcrol sceneconcrol = new sceneConcrol();
             string[] ids = FileMesege.sceneSelectNode.Text.Split(' ');
             int sceneNum = Convert.ToInt32(Regex.Replace(ids[0], @"[^\d]*", ""));
             //撤销 
@@ -1109,22 +1109,23 @@ namespace eNet编辑器.DgvView
             DataJson.scenes sc = DataListHelper.getSceneInfoList(ip, sceneNum);
             //获取sceneInfo对象表中对应ID号info对象
             DataJson.sceneInfo info = getSceneID(sc, id);
-            dc.Point = DataListHelper.findPointByPid(info.pid);
+            sceneconcrol.Point = DataListHelper.findPointByPid(info.pid);
             //把窗口向屏幕中间刷新
-            dc.StartPosition = FormStartPosition.CenterParent;
-            dc.ObjType = type;
-            dc.Opt = info.opt;
-            dc.Ver = info.optName;
-            dc.ShowDialog();
-            if (dc.DialogResult == DialogResult.OK)
+            sceneconcrol.StartPosition = FormStartPosition.CenterParent;
+            sceneconcrol.IP = ip;
+            sceneconcrol.ObjType = type;
+            sceneconcrol.Opt = info.opt;
+            sceneconcrol.Ver = info.optName;
+            sceneconcrol.ShowDialog();
+            if (sceneconcrol.DialogResult == DialogResult.OK)
             {
                 //撤销 
                 DataJson.totalList OldList = FileMesege.cmds.getListInfos();  
-                info.opt = dc.Opt;
-                info.optName = dc.Ver;
+                info.opt = sceneconcrol.Opt;
+                info.optName = sceneconcrol.Ver;
                 DataJson.totalList NewList = FileMesege.cmds.getListInfos();
                 FileMesege.cmds.DoNewCommand(NewList, OldList);
-                return dc.Ver + " " + dc.Opt;
+                return sceneconcrol.Ver + " " + sceneconcrol.Opt;
             }
             else
             {

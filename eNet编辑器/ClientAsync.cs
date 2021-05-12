@@ -112,7 +112,7 @@ namespace eNet编辑器
             {
                 if (client != null && client.Connected)
                 {
-                    byte[] listData = Encoding.UTF8.GetBytes(msg);
+                    byte[] listData = Encoding.Default.GetBytes(msg);
                     client.Client.BeginSend(listData, 0, listData.Length, SocketFlags.None, SendCallBack, client);
                 }
             }
@@ -197,7 +197,7 @@ namespace eNet编辑器
                 }
                 if (count > 0)
                 {
-                    string msg = Encoding.UTF8.GetString(obj.ListData, 0, count);
+                    string msg = Encoding.Default.GetString(obj.ListData, 0, count);
                     if (!string.IsNullOrEmpty(msg))
                     {
                         if (Received != null)

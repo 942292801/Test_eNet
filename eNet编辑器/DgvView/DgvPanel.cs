@@ -161,14 +161,14 @@ namespace eNet编辑器.DgvView
             
             try
             {
+                this.dataGridView1.Rows.Clear();
+                cbDevNum.Items.Clear();
                 DataJson.panels pls = DataListHelper.getPanelsInfoListByNode();
                 if (pls == null)
                 {
                     return;
                 }
 
-                this.dataGridView1.Rows.Clear();
-                cbDevNum.Items.Clear();
                 if (cbPage.SelectedIndex != pageIndex)
                 {
                     cbPage.SelectedIndex = pageIndex;
@@ -1525,7 +1525,11 @@ namespace eNet编辑器.DgvView
                         {
                             return;
                         }
-                        plsInfo.opt = Convert.ToInt32(keys[0]) ;
+                        if (keys.Count > 0)
+                        {
+                            plsInfo.opt = Convert.ToInt32(keys[0]);
+
+                        }
                     }
 
                 }
@@ -1541,7 +1545,11 @@ namespace eNet编辑器.DgvView
                         {
                             return;
                         }
-                        plsInfo.opt = Convert.ToInt32(keys[0]);
+                        if (keys.Count > 0)
+                        {
+                            plsInfo.opt = Convert.ToInt32(keys[0]);
+
+                        }
                     }
 
                 }
@@ -2132,7 +2140,8 @@ namespace eNet编辑器.DgvView
                     else
                     {
                         tmpNum = plInfo.id.ToString("X4");
-                        plInfo.keyAddress = string.Format("{0}{1}{2}", ipLast, idHex, tmpNum);
+                        plInfo.keyAddress = string.Format("FE{0}{1}", idHex, tmpNum);
+                        //plInfo.keyAddress = string.Format("{0}{1}{2}", ipLast, idHex, tmpNum);
                     }
                     plInfo.objAddress = "";
                     plInfo.objType = "";
@@ -2170,7 +2179,8 @@ namespace eNet编辑器.DgvView
                 if (plInfo.id > start && plInfo.id <= end)
                 {
                     tmpNum = plInfo.id.ToString("X4");
-                    plInfo.keyAddress = string.Format("{0}{1}{2}", ipLast, idHex, tmpNum);
+                    plInfo.keyAddress = string.Format("FE{0}{1}", idHex, tmpNum);
+                    //plInfo.keyAddress = string.Format("{0}{1}{2}", ipLast, idHex, tmpNum);
                 }
             }
 
@@ -2483,8 +2493,23 @@ namespace eNet编辑器.DgvView
                         ischange = true;
 
                     }
+                    else if (colIndex == 7)
+                    {
+                        //显示地址
+                        if (dataGridView1.Rows[id].Cells[0].Value != null)
+                        {
+                            //不是添加的附加按键
+                            plInfo.showAddress = FileMesege.copyPanel.showAddress;
+                            plInfo.showMode = FileMesege.copyPanel.showMode;
+                            dataGridView1.Rows[id].Cells[7].Value = DgvMesege.addressTransform(plInfo.showAddress, ip);
+                            dataGridView1.Rows[id].Cells[8].Value = plInfo.showMode;
+                            ischange = true;
+                        }
+
+                    }
                     else if (colIndex == 8)
                     {
+                        //显示模式
                         if (dataGridView1.Rows[id].Cells[0].Value != null)
                         {
                             if (string.IsNullOrEmpty(FileMesege.copyPanel.showAddress))
@@ -2510,11 +2535,11 @@ namespace eNet编辑器.DgvView
 
                             }
 
-
+                            dataGridView1.Rows[id].Cells[7].Value = DgvMesege.addressTransform(plInfo.showAddress, ip);
+                            dataGridView1.Rows[id].Cells[8].Value = plInfo.showMode;
+                            ischange = true;
                         }
-                        dataGridView1.Rows[id].Cells[7].Value = DgvMesege.addressTransform(plInfo.showAddress, ip);
-                        dataGridView1.Rows[id].Cells[8].Value = plInfo.showMode;
-                        ischange = true;
+                        
                     }
                     else if (colIndex == 1)
                     {
@@ -2647,7 +2672,7 @@ namespace eNet编辑器.DgvView
                         if (dataGridView1.Rows[id].Cells[0].Value != null)
                         {
                             plInfo.showAddress = plInfo.objAddress;
-                            plInfo.showMode ="同步";
+                            plInfo.showMode = "同步";
                         }
                         else
                         {
@@ -2669,6 +2694,22 @@ namespace eNet编辑器.DgvView
                         plInfo.keyAddress = DgvMesege.KeyAddressAdd(FileMesege.copyPanel.keyAddress, addCount * Convert.ToInt32(FileMesege.AsDesCendingNum));
                         dataGridView1.Rows[id].Cells[1].Value = keyAddressTransform(plInfo.keyAddress);
                         ischange = true;
+                    }
+                    else if (colIndex == 7)
+                    {
+                        if (dataGridView1.Rows[id].Cells[0].Value != null)
+                        {
+                            if (!Validator.IsInteger(FileMesege.AsDesCendingNum.ToString()))
+                            {
+                                FileMesege.AsDesCendingNum = 1;
+                            }
+                            plInfo.showAddress = DgvMesege.addressAdd(FileMesege.copyPanel.showAddress, addCount * Convert.ToInt32(FileMesege.AsDesCendingNum));
+                            plInfo.showMode = FileMesege.copyPanel.showMode;
+                            dataGridView1.Rows[id].Cells[7].Value = DgvMesege.addressTransform(plInfo.showAddress, ip);
+                            dataGridView1.Rows[id].Cells[8].Value = plInfo.showMode;
+                            ischange = true;
+                        }
+                       
                     }
                     addCount--;
                 }
@@ -2805,6 +2846,24 @@ namespace eNet编辑器.DgvView
                         plInfo.keyAddress = DgvMesege.KeyAddressReduce(FileMesege.copyPanel.keyAddress, reduceCount * Convert.ToInt32(FileMesege.AsDesCendingNum));
                         dataGridView1.Rows[id].Cells[1].Value = keyAddressTransform(plInfo.keyAddress);
                         ischange = true;
+                    }
+                    else if (colIndex == 7)
+                    {
+                        if (dataGridView1.Rows[id].Cells[0].Value != null)
+                        {
+
+                            if (!Validator.IsInteger(FileMesege.AsDesCendingNum.ToString()))
+                            {
+                                FileMesege.AsDesCendingNum = 1;
+                            }
+
+                            plInfo.showAddress = DgvMesege.addressReduce(FileMesege.copyPanel.showAddress, reduceCount * Convert.ToInt32(FileMesege.AsDesCendingNum));
+                            plInfo.showMode = FileMesege.copyPanel.showMode;
+                            dataGridView1.Rows[id].Cells[7].Value = DgvMesege.addressTransform(plInfo.showAddress, ip);
+                            dataGridView1.Rows[id].Cells[8].Value = plInfo.showMode;
+                            ischange = true;
+                        }
+                        
                     }
                     reduceCount--;
                 }

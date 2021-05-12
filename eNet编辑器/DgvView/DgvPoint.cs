@@ -120,7 +120,13 @@ namespace eNet编辑器.DgvView
         public delegate void AddItemBySectionDelegate();
         private void ShowDatatableBySection()
         {
-            this.Invoke(new AddItemBySectionDelegate(AddItemBySection));
+            try
+            {
+                this.Invoke(new AddItemBySectionDelegate(AddItemBySection));
+
+            }
+            catch {
+            }
 
         }
 

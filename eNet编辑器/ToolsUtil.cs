@@ -454,25 +454,7 @@ namespace eNet编辑器
         }
 
 
-        public static String ByteToString(byte[] bytes)
-        {
-
-            StringBuilder strBuilder = new StringBuilder();
-            for (int i = 0; i < bytes.Length; i++)
-            {
-                if (bytes[i] != 0)
-                {
-                    strBuilder.Append(Convert.ToChar(bytes[i]));
-
-                }
-                else
-                {
-                    break;
-                }
-
-            }
-            return strBuilder.ToString();
-        }
+       
 
     }
 }

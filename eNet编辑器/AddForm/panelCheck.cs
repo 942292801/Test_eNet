@@ -498,7 +498,8 @@ namespace eNet编辑器.AddForm
                     this.DialogResult = DialogResult.No;
                     return;
                 }
-                newobj = ToolsUtil.strtohexstr(ip.Split('.')[3]);
+                //newobj = ToolsUtil.strtohexstr(ip.Split('.')[3]);
+                newobj = "FE";
                 newobj = newobj + ToolsUtil.strtohexstr(cbDevNum.Text);
 
 

@@ -11,6 +11,7 @@ using System.Runtime.InteropServices;
 using System.IO;
 using Ionic.Zip;
 using eNet编辑器.OtherView;
+using Newtonsoft.Json;
 
 namespace eNet编辑器.AddForm
 {
@@ -217,6 +218,7 @@ namespace eNet编辑器.AddForm
             }
             catch (Exception ex)
             {
+                
                 ToolsUtil.WriteLog(ex.Message);
             }
 
@@ -225,8 +227,15 @@ namespace eNet编辑器.AddForm
         //运行工作
         private void BackgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
-            
-            CompileDown(e);
+            try
+            {
+                CompileDown(e);
+                //DownZIP2Master(e);
+            }
+            catch (Exception ex)
+            {
+                ToolsUtil.WriteLog(ex.Message);
+            }
         }
 
         private void BackgroundWorker1_ProgressChanged(object sender, ProgressChangedEventArgs e)
@@ -257,15 +266,12 @@ namespace eNet编辑器.AddForm
                 }
 
             }
-            catch
+            catch(Exception ex)
             {
-
+                ToolsUtil.WriteLog(ex.Message);
             }
 
         }
-
-
-
 
         /// <summary>
         /// 编译和下载
@@ -274,23 +280,43 @@ namespace eNet编辑器.AddForm
         {
             //存在该Ip的信息 可以进行编译
             FileMesege fm = new FileMesege();
-            if (fm.ObjDirClearByIP(sourceIP))
+            if (fm.ObjDirClearByIP(targetIP))
             {
-                backgroundWorker1.ReportProgress(5, string.Format("({0})工程文件夹创建成功！", sourceIP));
+                backgroundWorker1.ReportProgress(5, string.Format("({0})工程文件夹创建成功！", targetIP));
             }
             else
             {
-                backgroundWorker1.ReportProgress(100, string.Format("({0})工程文件夹创建失败！", sourceIP));
+                backgroundWorker1.ReportProgress(100, string.Format("({0})工程文件夹创建失败！", targetIP));
                 return ;
             }
 
-            ToolsUtil.DelayMilli(1000);
+            ToolsUtil.DelayMilli(2000);
+            if (backgroundWorker1.CancellationPending)
+            {
+                e.Cancel = true;
+                return;
+            }
             backgroundWorker1.ReportProgress(6, null);
             ToolsUtil.DelayMilli(1000);
+            if (backgroundWorker1.CancellationPending)
+            {
+                e.Cancel = true;
+                return;
+            }
             backgroundWorker1.ReportProgress(7, null);
             ToolsUtil.DelayMilli(1000);
+            if (backgroundWorker1.CancellationPending)
+            {
+                e.Cancel = true;
+                return;
+            }
             backgroundWorker1.ReportProgress(8, null);
             ToolsUtil.DelayMilli(1000);
+            if (backgroundWorker1.CancellationPending)
+            {
+                e.Cancel = true;
+                return;
+            }
             backgroundWorker1.ReportProgress(9, null);
             if (backgroundWorker1.CancellationPending)
             {
@@ -299,7 +325,7 @@ namespace eNet编辑器.AddForm
             }
 
             //编译场景
-            if (fm.getSceneJsonByIP(sourceIP))
+            if (fm.getSceneJsonByIP(sourceIP, targetIP))
             {
            
                 backgroundWorker1.ReportProgress(10, "场景文件编译通过！");
@@ -310,7 +336,7 @@ namespace eNet编辑器.AddForm
                 return ;
 
             }
-            ToolsUtil.DelayMilli(500);
+            ToolsUtil.DelayMilli(800);
             if (backgroundWorker1.CancellationPending)
             {
                 e.Cancel = true;
@@ -318,7 +344,7 @@ namespace eNet编辑器.AddForm
             }
 
             //编译定时
-            if (fm.getTimerJsonByIP(sourceIP))
+            if (fm.getTimerJsonByIP(sourceIP, targetIP))
             {
                 backgroundWorker1.ReportProgress(15, "定时文件编译通过！");
             }
@@ -328,14 +354,14 @@ namespace eNet编辑器.AddForm
                 return ;
 
             }
-            ToolsUtil.DelayMilli(500);
+            ToolsUtil.DelayMilli(800);
             if (backgroundWorker1.CancellationPending)
             {
                 e.Cancel = true;
                 return;
             }
             //编译面板
-            if (fm.getPanelJsonByIP(sourceIP))
+            if (fm.getPanelJsonByIP(sourceIP, targetIP))
             {
                 backgroundWorker1.ReportProgress(20, "面板文件编译通过！");
             }
@@ -345,14 +371,14 @@ namespace eNet编辑器.AddForm
                 return ;
 
             }
-            ToolsUtil.DelayMilli(500);
+            ToolsUtil.DelayMilli(800);
             if (backgroundWorker1.CancellationPending)
             {
                 e.Cancel = true;
                 return;
             }
             //编译感应
-            if (fm.getSensorJsonByIP(sourceIP))
+            if (fm.getSensorJsonByIP(sourceIP, targetIP))
             {
                 backgroundWorker1.ReportProgress(25, "感应编组文件编译通过！");
             }
@@ -362,14 +388,14 @@ namespace eNet编辑器.AddForm
                 return ;
 
             }
-            ToolsUtil.DelayMilli(500);
+            ToolsUtil.DelayMilli(800);
             if (backgroundWorker1.CancellationPending)
             {
                 e.Cancel = true;
                 return;
             }
             //编译逻辑
-            if (fm.getLogicJsonByIp(sourceIP))
+            if (fm.getLogicJsonByIp(sourceIP, targetIP))
             {
                 backgroundWorker1.ReportProgress(30, "逻辑文件编译通过！");
             }
@@ -379,69 +405,161 @@ namespace eNet编辑器.AddForm
                 return ;
 
             }
-            ToolsUtil.DelayMilli(500);
+            ToolsUtil.DelayMilli(800);
             if (backgroundWorker1.CancellationPending)
             {
                 e.Cancel = true;
                 return;
             }
 
-            #region 获取point area device 文件
+
+            #region 获取point area device scene timer panel sensor logic文件 放入Backup
             //抽离point 信息
-            string point = fm.getPointJsonByIP(sourceIP);
+            string point = fm.BackupPointJsonByIP(sourceIP,targetIP);
             if (!string.IsNullOrEmpty(point))
             {
-                backgroundWorker1.ReportProgress(35, "点位文件编译通过！");
+                backgroundWorker1.ReportProgress(33, "Backup点位文件编译通过！");
             }
             else
             {
-                backgroundWorker1.ReportProgress(100, "点位文件编译失败！");
+                backgroundWorker1.ReportProgress(100, "Backup点位文件编译失败！");
                 return ;
             }
-            ToolsUtil.DelayMilli(500);
+            ToolsUtil.DelayMilli(1000);
             if (backgroundWorker1.CancellationPending)
             {
                 e.Cancel = true;
                 return;
             }
             //获取area 信息
-            string area = fm.getAreaJsonByIP(sourceIP);
+            string area = fm.BackupAreaJsonByIP();
             if (!string.IsNullOrEmpty(area))
             {
-                backgroundWorker1.ReportProgress(40, "区域文件编译通过！");
+                backgroundWorker1.ReportProgress(36, "Backup区域文件编译通过！");
             }
             else
             {
-                backgroundWorker1.ReportProgress(100, "区域文件编译失败！");
+                backgroundWorker1.ReportProgress(100, "Backup区域文件编译失败！");
                 return ;
             }
-            ToolsUtil.DelayMilli(500);
+            ToolsUtil.DelayMilli(1000);
             if (backgroundWorker1.CancellationPending)
             {
                 e.Cancel = true;
                 return;
             }
             //获取device 信息
-            string device = fm.getDeviceJsonByIP(sourceIP);
+            string device = fm.BackupDeviceJsonByIP(sourceIP, targetIP);
             if (!string.IsNullOrEmpty(device))
             {
-                backgroundWorker1.ReportProgress(45, "设备列表文件编译通过！");
+                backgroundWorker1.ReportProgress(39, "Backup设备列表文件编译通过！");
             }
             else
             {
-                backgroundWorker1.ReportProgress(100, "设备列表文件编译失败！");
+                backgroundWorker1.ReportProgress(100, "Backup设备列表文件编译失败！");
                 return ;
             }
-            ToolsUtil.DelayMilli(500);
+            ToolsUtil.DelayMilli(1000);
             if (backgroundWorker1.CancellationPending)
             {
                 e.Cancel = true;
                 return;
             }
+
+            //获取scene 信息
+            string scene = fm.BackupSceneJsonByIP(sourceIP, targetIP);
+            if (!string.IsNullOrEmpty(scene))
+            {
+                backgroundWorker1.ReportProgress(42, "Backup场景文件编译通过！");
+            }
+            else
+            {
+                backgroundWorker1.ReportProgress(100, "Backup场景文件编译失败！");
+                return;
+            }
+            ToolsUtil.DelayMilli(1000);
+            if (backgroundWorker1.CancellationPending)
+            {
+                e.Cancel = true;
+                return;
+            }
+
+            //获取timer 信息
+            string timer = fm.BackupTimerJsonByIP(sourceIP, targetIP);
+            if (!string.IsNullOrEmpty(timer))
+            {
+                backgroundWorker1.ReportProgress(45, "Backup定时文件编译通过！");
+            }
+            else
+            {
+                backgroundWorker1.ReportProgress(100, "Backup定时文件编译失败！");
+                return;
+            }
+            ToolsUtil.DelayMilli(1000);
+            if (backgroundWorker1.CancellationPending)
+            {
+                e.Cancel = true;
+                return;
+            }
+
+            //获取panel 信息
+            string panel = fm.BackupPanelJsonByIP(sourceIP, targetIP);
+            if (!string.IsNullOrEmpty(panel))
+            {
+                backgroundWorker1.ReportProgress(46, "Backup面板文件编译通过！");
+            }
+            else
+            {
+                backgroundWorker1.ReportProgress(100, "Backup面板文件编译失败！");
+                return;
+            }
+            ToolsUtil.DelayMilli(1000);
+            if (backgroundWorker1.CancellationPending)
+            {
+                e.Cancel = true;
+                return;
+            }
+
+            //获取sensor信息
+            string sensor = fm.BackupSensorJsonByIP(sourceIP, targetIP);
+            if (!string.IsNullOrEmpty(sensor))
+            {
+                backgroundWorker1.ReportProgress(47, "Backup感应编组文件编译通过！");
+            }
+            else
+            {
+                backgroundWorker1.ReportProgress(100, "Backup感应编组文件编译失败！");
+                return;
+            }
+            ToolsUtil.DelayMilli(1000);
+            if (backgroundWorker1.CancellationPending)
+            {
+                e.Cancel = true;
+                return;
+            }
+
+            //获取logic信息
+            string logic = fm.BackupLogicJsonByIP(sourceIP, targetIP);
+            if (!string.IsNullOrEmpty(logic))
+            {
+                backgroundWorker1.ReportProgress(48, "Backup逻辑文件编译通过！");
+            }
+            else
+            {
+                backgroundWorker1.ReportProgress(100, "Backup逻辑文件编译失败！");
+                return;
+            }
+            ToolsUtil.DelayMilli(1000);
+            if (backgroundWorker1.CancellationPending)
+            {
+                e.Cancel = true;
+                return;
+            }
+
             #endregion
 
             //建立压缩包
-            string file = string.Format("{0}\\objs\\{1}", FileMesege.TmpFilePath, sourceIP);
+            string file = string.Format("{0}\\objs\\{1}", FileMesege.TmpFilePath, targetIP);
             try
             {
 
@@ -455,7 +573,7 @@ namespace eNet编辑器.AddForm
                     zip.Save();
                 }
                 backgroundWorker1.ReportProgress(50, null);
-                ToolsUtil.DelayMilli(1000);
+                ToolsUtil.DelayMilli(2000);
                 if (backgroundWorker1.CancellationPending)
                 {
                     e.Cancel = true;
@@ -464,16 +582,16 @@ namespace eNet编辑器.AddForm
 
                 if (SendFile2Backup(targetIP, point, "point.json"))
                 {
-                    backgroundWorker1.ReportProgress(60, "点位文件载入完成！");
+                    backgroundWorker1.ReportProgress(60, "Backup点位文件载入完成！");
                     //临时添加
-                    File.WriteAllText(string.Format("{0}\\point.json", file),FileMesege.ConvertJsonString(point));
+                    File.WriteAllText(string.Format("{0}\\point.json", file),point);
                 }
                 else
                 {
-                    backgroundWorker1.ReportProgress(100, "点位文件载入失败！");
+                    backgroundWorker1.ReportProgress(100, "Backup点位文件载入失败！");
                     return ;
                 }
-                ToolsUtil.DelayMilli(500);
+                ToolsUtil.DelayMilli(1000);
                 if (backgroundWorker1.CancellationPending)
                 {
                     e.Cancel = true;
@@ -482,16 +600,16 @@ namespace eNet编辑器.AddForm
 
                 if (SendFile2Backup(targetIP, area, "area.json"))
                 {
-                    backgroundWorker1.ReportProgress(70, "区域文件载入完成！");
+                    backgroundWorker1.ReportProgress(63, "Backup区域文件载入完成！");
                     //临时添加
-                    File.WriteAllText(string.Format("{0}\\area.json", file), FileMesege.ConvertJsonString(area));
+                    File.WriteAllText(string.Format("{0}\\area.json", file), area);
                 }
                 else
                 {
-                    backgroundWorker1.ReportProgress(100, "区域文件载入失败！");
+                    backgroundWorker1.ReportProgress(100, "Backup区域文件载入失败！");
                     return ;
                 }
-                ToolsUtil.DelayMilli(500);
+                ToolsUtil.DelayMilli(1000);
                 if (backgroundWorker1.CancellationPending)
                 {
                     e.Cancel = true;
@@ -500,28 +618,120 @@ namespace eNet编辑器.AddForm
 
                 if (SendFile2Backup(targetIP, device, "device.json"))
                 {
-                    backgroundWorker1.ReportProgress(80, "设备列表文件载入完成！");
+                    backgroundWorker1.ReportProgress(66, "Backup设备列表文件载入完成！");
                     //临时添加
-                    File.WriteAllText(string.Format("{0}\\device.json", file), FileMesege.ConvertJsonString(device));
+                    File.WriteAllText(string.Format("{0}\\device.json", file), device);
                 }
                 else
                 {
-                    backgroundWorker1.ReportProgress(100, "设备列表文件载入失败！");
+                    backgroundWorker1.ReportProgress(100, "Backup设备列表文件载入失败！");
                     return ;
                 }
-                ToolsUtil.DelayMilli(500);
+                ToolsUtil.DelayMilli(1000);
                 if (backgroundWorker1.CancellationPending)
                 {
                     e.Cancel = true;
                     return;
                 }
+
+                if (SendFile2Backup(targetIP, scene, "scene.json"))
+                {
+                    backgroundWorker1.ReportProgress(69, "Backup场景文件载入完成！");
+                    //临时添加
+                    File.WriteAllText(string.Format("{0}\\scene.json", file), scene);
+                }
+                else
+                {
+                    backgroundWorker1.ReportProgress(100, "Backup场景文件载入失败！");
+                    return;
+                }
+                ToolsUtil.DelayMilli(1000);
+                if (backgroundWorker1.CancellationPending)
+                {
+                    e.Cancel = true;
+                    return;
+                }
+
+                if (SendFile2Backup(targetIP, timer, "timer.json"))
+                {
+                    backgroundWorker1.ReportProgress(72, "Backup定时文件载入完成！");
+                    //临时添加
+                    File.WriteAllText(string.Format("{0}\\timer.json", file), timer);
+                }
+                else
+                {
+                    backgroundWorker1.ReportProgress(100, "Backup定时文件载入失败！");
+                    return;
+                }
+                ToolsUtil.DelayMilli(1000);
+                if (backgroundWorker1.CancellationPending)
+                {
+                    e.Cancel = true;
+                    return;
+                }
+
+
+                if (SendFile2Backup(targetIP, panel, "panel.json"))
+                {
+                    backgroundWorker1.ReportProgress(73, "Backup面板文件载入完成！");
+                    //临时添加
+                    File.WriteAllText(string.Format("{0}\\panel.json", file), panel);
+                }
+                else
+                {
+                    backgroundWorker1.ReportProgress(100, "Backup面板文件载入失败！");
+                    return;
+                }
+                ToolsUtil.DelayMilli(1000);
+                if (backgroundWorker1.CancellationPending)
+                {
+                    e.Cancel = true;
+                    return;
+                }
+
+                if (SendFile2Backup(targetIP, sensor, "sensor.json"))
+                {
+                    backgroundWorker1.ReportProgress(76, "Backup感应编组文件载入完成！");
+                    //临时添加
+                    File.WriteAllText(string.Format("{0}\\sensor.json", file), sensor);
+                }
+                else
+                {
+                    backgroundWorker1.ReportProgress(100, "Backup感应编组文件载入失败！");
+                    return;
+                }
+                ToolsUtil.DelayMilli(1000);
+                if (backgroundWorker1.CancellationPending)
+                {
+                    e.Cancel = true;
+                    return;
+                }
+
+                if (SendFile2Backup(targetIP, logic, "logic.json"))
+                {
+                    backgroundWorker1.ReportProgress(80, "Backup逻辑文件载入完成！");
+                    //临时添加
+                    File.WriteAllText(string.Format("{0}\\logic.json", file), logic);
+                }
+                else
+                {
+                    backgroundWorker1.ReportProgress(100, "Backup逻辑文件载入失败！");
+                    return;
+                }
+                ToolsUtil.DelayMilli(1000);
+                if (backgroundWorker1.CancellationPending)
+                {
+                    e.Cancel = true;
+                    return;
+                }
+
                 DownZIP2Master(e);
             }
             catch(Exception ex)
             {
               
                 backgroundWorker1.ReportProgress(100, ex.Message);
-              
+                ToolsUtil.WriteLog(ex.Message);
             }
 
 
@@ -546,7 +756,7 @@ namespace eNet编辑器.AddForm
 
                 //写入数据格式
                 string data = "down /enet.prj$";
-                string filepath = string.Format("{0}\\objs\\{1}.zip", FileMesege.TmpFilePath, sourceIP);
+                string filepath = string.Format("{0}\\objs\\{1}.zip", FileMesege.TmpFilePath, targetIP);
 
                 TcpSocket ts = new TcpSocket();
 
@@ -612,6 +822,7 @@ namespace eNet编辑器.AddForm
             catch(Exception ex)
             {
                 backgroundWorker1.ReportProgress(100, string.Format("({0})工程写入失败！", targetIP));
+                ToolsUtil.WriteLog(ex.Message);
             }
 
         }//private
@@ -670,7 +881,7 @@ namespace eNet编辑器.AddForm
                 timeOutHelper = new TimeOutHelper();
                 while (true)
                 {
-                    Console.WriteLine("等待发送结果");
+                    //Console.WriteLine("等待发送结果");
                     ToolsUtil.DelayMilli(100);
                     if (timeOutHelper.IsTimeout() )
                     {

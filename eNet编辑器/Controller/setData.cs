@@ -1192,10 +1192,11 @@ namespace eNet编辑器.Controller
 
                 }
             }
-            catch {
-
+            catch (Exception ex)
+            {
+                ToolsUtil.WriteLog(ex.Message);
             }
-            
+
         }
 
         private void BackgroundWorker1_ProgressChanged(object sender, ProgressChangedEventArgs e)

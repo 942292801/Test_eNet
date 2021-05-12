@@ -1436,30 +1436,30 @@ namespace eNet编辑器.DgvView
         private string dgvOperation( string type)
         {
 
-            sceneConcrol dc = new sceneConcrol();
+            sceneConcrol sceneconcrol = new sceneConcrol();
             DataJson.sensors srs = DataListHelper.getSensorInfoListByNode();
             if (srs == null)
             {
                 return null;
             }
             DataJson.sensorsInfo srInfo = srs.sensorsInfo[rowCount];
-            dc.Point = DataListHelper.findPointByPid(srInfo.pid);
+            sceneconcrol.Point = DataListHelper.findPointByPid(srInfo.pid);
             //把窗口向屏幕中间刷新
-            dc.StartPosition = FormStartPosition.CenterParent;
-            dc.ObjType = type;
-
-            dc.Opt = srInfo.opt;
-            dc.Ver = srInfo.optName;
-            dc.ShowDialog();
-            if (dc.DialogResult == DialogResult.OK)
+            sceneconcrol.StartPosition = FormStartPosition.CenterParent;
+            sceneconcrol.ObjType = type;
+            sceneconcrol.IP = ip;
+            sceneconcrol.Opt = srInfo.opt;
+            sceneconcrol.Ver = srInfo.optName;
+            sceneconcrol.ShowDialog();
+            if (sceneconcrol.DialogResult == DialogResult.OK)
             {
                 //撤销 
                 DataJson.totalList OldList = FileMesege.cmds.getListInfos();
-                srInfo.opt = dc.Opt;
-                srInfo.optName = dc.Ver;
+                srInfo.opt = sceneconcrol.Opt;
+                srInfo.optName = sceneconcrol.Ver;
                 DataJson.totalList NewList = FileMesege.cmds.getListInfos();
                 FileMesege.cmds.DoNewCommand(NewList, OldList);
-                return dc.Ver + " " + dc.Opt;
+                return sceneconcrol.Ver + " " + sceneconcrol.Opt;
             }
             else
             {

@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DgvPanel));
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -125,14 +125,14 @@
             this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
             this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridView1.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableAlwaysIncludeHeaderText;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("微软雅黑", 9F);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("微软雅黑", 9F);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.id,
@@ -144,14 +144,14 @@
             this.del,
             this.add});
             this.dataGridView1.ContextMenuStrip = this.contextMenuStrip1;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("微软雅黑", 9F);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(235)))), ((int)(((byte)(248)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("微软雅黑", 9F);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(235)))), ((int)(((byte)(248)))));
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
@@ -245,57 +245,57 @@
             this.编辑场景ToolStripMenuItem,
             this.修改场景ToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip2";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 170);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(150, 148);
             // 
             // 相同ToolStripMenuItem
             // 
             this.相同ToolStripMenuItem.Name = "相同ToolStripMenuItem";
-            this.相同ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.相同ToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
             this.相同ToolStripMenuItem.Text = "相同(Ctrl+Q)";
             this.相同ToolStripMenuItem.Click += new System.EventHandler(this.相同ToolStripMenuItem_Click);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(177, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(146, 6);
             // 
             // 升序ToolStripMenuItem
             // 
             this.升序ToolStripMenuItem.Name = "升序ToolStripMenuItem";
-            this.升序ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.升序ToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
             this.升序ToolStripMenuItem.Text = "升序(Ctrl+W)";
             this.升序ToolStripMenuItem.Click += new System.EventHandler(this.升序ToolStripMenuItem_Click);
             // 
             // 降序ToolStripMenuItem
             // 
             this.降序ToolStripMenuItem.Name = "降序ToolStripMenuItem";
-            this.降序ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.降序ToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
             this.降序ToolStripMenuItem.Text = "降序(Ctrl+E)";
             this.降序ToolStripMenuItem.Click += new System.EventHandler(this.降序ToolStripMenuItem_Click);
             // 
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(177, 6);
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(146, 6);
             // 
             // 新建场景ToolStripMenuItem
             // 
             this.新建场景ToolStripMenuItem.Name = "新建场景ToolStripMenuItem";
-            this.新建场景ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.新建场景ToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
             this.新建场景ToolStripMenuItem.Text = "新建场景";
             this.新建场景ToolStripMenuItem.Click += new System.EventHandler(this.新建场景ToolStripMenuItem_Click);
             // 
             // 编辑场景ToolStripMenuItem
             // 
             this.编辑场景ToolStripMenuItem.Name = "编辑场景ToolStripMenuItem";
-            this.编辑场景ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.编辑场景ToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
             this.编辑场景ToolStripMenuItem.Text = "编辑场景";
             this.编辑场景ToolStripMenuItem.Click += new System.EventHandler(this.编辑场景ToolStripMenuItem_Click);
             // 
             // 修改场景ToolStripMenuItem
             // 
             this.修改场景ToolStripMenuItem.Name = "修改场景ToolStripMenuItem";
-            this.修改场景ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.修改场景ToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
             this.修改场景ToolStripMenuItem.Text = "修改场景";
             this.修改场景ToolStripMenuItem.Click += new System.EventHandler(this.修改场景ToolStripMenuItem_Click);
             // 
@@ -782,74 +782,46 @@
             // 
             this.imgList1.ImageSize = new System.Drawing.Size(120, 120);
             this.imgList1.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("imgList1.ImageStream")));
-            this.imgList1.Images.SetKeyName(0, "button1_1.png");
-            this.imgList1.Images.SetKeyName(1, "button1_2.png");
             // 
             // imgList2
             // 
             this.imgList2.ImageSize = new System.Drawing.Size(120, 120);
             this.imgList2.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("imgList2.ImageStream")));
             this.imgList2.Images.SetKeyName(0, "button2_1.png");
-            this.imgList2.Images.SetKeyName(1, "button2_2.png");
-            this.imgList2.Images.SetKeyName(2, "button2_3.png");
-            this.imgList2.Images.SetKeyName(3, "button2_4.png");
             // 
             // imgList3
             // 
             this.imgList3.ImageSize = new System.Drawing.Size(120, 120);
             this.imgList3.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("imgList3.ImageStream")));
-            this.imgList3.Images.SetKeyName(0, "button3_1.png");
-            this.imgList3.Images.SetKeyName(1, "button3_2.png");
-            this.imgList3.Images.SetKeyName(2, "button3_3.png");
             // 
             // imgList4
             // 
             this.imgList4.ImageSize = new System.Drawing.Size(120, 120);
             this.imgList4.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("imgList4.ImageStream")));
-            this.imgList4.Images.SetKeyName(0, "button4_1.png");
-            this.imgList4.Images.SetKeyName(1, "button4_2.png");
-            this.imgList4.Images.SetKeyName(2, "button4_3.png");
-            this.imgList4.Images.SetKeyName(3, "button4_4.png");
-            this.imgList4.Images.SetKeyName(4, "button4_5.png");
-            this.imgList4.Images.SetKeyName(5, "button4_6.png");
+            this.imgList4.Images.SetKeyName(0, "button4_7.png");
             // 
             // imgList5
             // 
             this.imgList5.ImageSize = new System.Drawing.Size(120, 120);
             this.imgList5.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("imgList5.ImageStream")));
-            this.imgList5.Images.SetKeyName(0, "button5_1.png");
-            this.imgList5.Images.SetKeyName(1, "button5_2.png");
-            this.imgList5.Images.SetKeyName(2, "button5_3.png");
-            this.imgList5.Images.SetKeyName(3, "button5_4.png");
             // 
             // imgList6
             // 
             this.imgList6.ImageSize = new System.Drawing.Size(120, 120);
             this.imgList6.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("imgList6.ImageStream")));
-            this.imgList6.Images.SetKeyName(0, "button6_1.png");
-            this.imgList6.Images.SetKeyName(1, "button6_2.png");
-            this.imgList6.Images.SetKeyName(2, "button6_3.png");
-            this.imgList6.Images.SetKeyName(3, "button6_4.png");
-            this.imgList6.Images.SetKeyName(4, "button6_5.png");
+            this.imgList6.Images.SetKeyName(0, "button6_4.png");
+            this.imgList6.Images.SetKeyName(1, "button6_3.png");
             // 
             // imgList7
             // 
             this.imgList7.ImageSize = new System.Drawing.Size(120, 120);
             this.imgList7.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("imgList7.ImageStream")));
-            this.imgList7.Images.SetKeyName(0, "button7_1.png");
-            this.imgList7.Images.SetKeyName(1, "button7_2.png");
-            this.imgList7.Images.SetKeyName(2, "button7_3.png");
             // 
             // imgList8
             // 
             this.imgList8.ImageSize = new System.Drawing.Size(120, 120);
             this.imgList8.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("imgList8.ImageStream")));
-            this.imgList8.Images.SetKeyName(0, "button8_1.png");
-            this.imgList8.Images.SetKeyName(1, "button8_2.png");
-            this.imgList8.Images.SetKeyName(2, "button8_3.png");
-            this.imgList8.Images.SetKeyName(3, "button8_4.png");
-            this.imgList8.Images.SetKeyName(4, "button8_5.png");
-            this.imgList8.Images.SetKeyName(5, "button8_6.png");
+            this.imgList8.Images.SetKeyName(0, "button8_3.png");
             // 
             // DgvPanel
             // 

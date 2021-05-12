@@ -956,7 +956,6 @@
             this.tabVar.Image = ((System.Drawing.Image)(resources.GetObject("tabVar.Image")));
             this.tabVar.Name = "tabVar";
             resources.ApplyResources(this.tabVar, "tabVar");
-            this.tabVar.Visible = false;
             this.tabVar.Click += new System.EventHandler(this.tabVar_Click);
             // 
             // tabControlPanel7

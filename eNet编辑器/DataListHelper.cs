@@ -28,27 +28,37 @@ namespace eNet编辑器
         /// <param name="infos">新IP + 设备型号 例：（192.168.1.111+空格+GW100） </param>
         public static void newGateway(string ip, string master)
         {
-            DataJson.Device dl = new DataJson.Device();
-            dl.ip = ip;
-            dl.master = master;
-            dl.area1 = "";
-            dl.area2 = "";
-            dl.area3 = "";
-            dl.area4 = "";
-            dl.gateway = "";
-            dl.mac = "";
-            dl.mask = "";
-            dl.name = "";
-            dl.sn = "";
-            dl.ver = "";
-            if (FileMesege.DeviceList == null)
+            try
             {
-                FileMesege.DeviceList = new List<DataJson.Device>();
+                if (FileMesege.DeviceList == null)
+                {
+                    FileMesege.DeviceList = new List<DataJson.Device>();
+                }
+                DataJson.Device dl = new DataJson.Device();
+                dl.ip = ip;
+                dl.master = master;
+                dl.area1 = "";
+                dl.area2 = "";
+                dl.area3 = "";
+                dl.area4 = "";
+                dl.gateway = "";
+                dl.mac = "";
+                dl.mask = "";
+                dl.name = "";
+                dl.sn = "";
+                dl.ver = "";
+                //创建成功
+                FileMesege.DeviceList.Add(dl);
+                Console.WriteLine("添加网关成功：" + ip + "数量：" + FileMesege.DeviceList.Count());
+
+                //网关排序
+                GatewaySort();
             }
-            //创建成功
-            FileMesege.DeviceList.Add(dl);
-            //网关排序
-            GatewaySort();
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+            }
+          
           
         }
 
@@ -143,20 +153,11 @@ namespace eNet编辑器
             
             if (FileMesege.DeviceList == null)
             {
-                FileMesege.DeviceList = new List<DataJson.Device>();
+                return;
             }
-            //循环寻找当前IP匹配数据
-            foreach (DataJson.Device dev in FileMesege.DeviceList)
-            {
-                if (dev.ip == ip)
-                {
-                    //删除网关节点
-                    FileMesege.DeviceList.Remove(dev);
-                    
-                    
-                    break;
-                }
-            }
+            
+           
+
             if (FileMesege.sceneList != null)
             {
                 //Scenes删除IP
@@ -222,6 +223,17 @@ namespace eNet编辑器
             }
             //、、、、、、、、、、、、、、、、、、/后期数据完善
             delPointIP(ip);
+
+            //循环寻找当前IP匹配数据
+            foreach (DataJson.Device dev in FileMesege.DeviceList)
+            {
+                if (dev.ip == ip)
+                {
+                    //删除网关节点
+                    FileMesege.DeviceList.Remove(dev);
+                    break;
+                }
+            }
             //刷新所有Tree的节点
             UpdateTreeView();
             
@@ -234,24 +246,31 @@ namespace eNet编辑器
         /// <param name="infos">新IP + 设备号 +设备型号 例：（192.168.1.111+空格+2 + 空格 + ET1000）</param>
         public static void newDevice(DataJson.Device dev, string id,string version)
         {
-            DataJson.Module md = new DataJson.Module();
-            md.id = Convert.ToInt32(id);
-            md.device = version;
-            md.area1 = "";
-            md.area2 = "";
-            md.area3 = "";
-            md.area4 = "";
-            md.name = "";
-            md.sn = "";
-            md.ver = "";
-            addPortType(md.devPortList,version);
-            //插入新设备信息
-            dev.module.Add(md);
-            //按ID号排序
-            DeviceSort(dev);
-            AddDevPanel(dev.ip,Convert.ToInt32(id),version);
-            //刷新所有Tree的节点
-            UpdateTreeView();
+            try {
+                DataJson.Module md = new DataJson.Module();
+                md.id = Convert.ToInt32(id);
+                md.device = version;
+                md.area1 = "";
+                md.area2 = "";
+                md.area3 = "";
+                md.area4 = "";
+                md.name = "";
+                md.sn = "";
+                md.ver = "";
+                addPortType(md.devPortList, version);
+                //插入新设备信息
+                dev.module.Add(md);
+                //按ID号排序
+                DeviceSort(dev);
+                AddDevPanel(dev.ip, Convert.ToInt32(id), version);
+                //刷新所有Tree的节点
+                UpdateTreeView();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+            }
+           
         }
 
         /// <summary>
@@ -260,31 +279,38 @@ namespace eNet编辑器
         /// <param name="infos">新IP + 设备号 +设备型号 例：（192.168.1.111+空格+2 + 空格 + ET1000）</param>
         public static void newDevice(string ip, string id, string version)
         {
-            foreach (DataJson.Device dev in FileMesege.DeviceList)
-            {
-
-                if (dev.ip == ip)
+            try {
+                foreach (DataJson.Device dev in FileMesege.DeviceList)
                 {
-                    DataJson.Module md = new DataJson.Module();
-                    md.id = Convert.ToInt32(id);
-                    md.device = version;
-                    md.area1 = "";
-                    md.area2 = "";
-                    md.area3 = "";
-                    md.area4 = "";
-                    md.name = "";
-                    md.sn = "";
-                    md.ver = "";
-                    addPortType(md.devPortList, version);
-                    //插入新设备信息
-                    dev.module.Add(md);
-                    //按ID号排序
-                    DeviceSort(dev);
-                    AddDevPanel(dev.ip, Convert.ToInt32(id), version);
-                  
-                    break;
+
+                    if (dev.ip == ip)
+                    {
+                        DataJson.Module md = new DataJson.Module();
+                        md.id = Convert.ToInt32(id);
+                        md.device = version;
+                        md.area1 = "";
+                        md.area2 = "";
+                        md.area3 = "";
+                        md.area4 = "";
+                        md.name = "";
+                        md.sn = "";
+                        md.ver = "";
+                        addPortType(md.devPortList, version);
+                        //插入新设备信息
+                        dev.module.Add(md);
+                        //按ID号排序
+                        DeviceSort(dev);
+                        AddDevPanel(dev.ip, Convert.ToInt32(id), version);
+                        //Console.WriteLine("设备添加成功:" + id + "   " + version);
+                        break;
+                    }
                 }
             }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+            }
+           
 
 
         }
@@ -338,7 +364,7 @@ namespace eNet编辑器
        
             foreach (DataJson.Module m in dev.module)
             {
-                if (m.id.ToString() == oldid && m.device == oldVersion)
+                if (m.id.ToString() == oldid )//&& m.device == oldVersion)
                 {
 
                     m.id = Convert.ToInt32(id);
@@ -346,14 +372,29 @@ namespace eNet编辑器
                     addPortType(m.devPortList, version);
                     //按ID号排序
                     DeviceSort(dev);
+                    int tmpid = Convert.ToInt32(id);
+                    int tmpOldid = Convert.ToInt32(oldid);
                     if (id != oldid && version == oldVersion)
                     {
-                        ChangeDevPanel(dev.ip, Convert.ToInt32(id), version, Convert.ToInt32(oldid));
+                        //只修改ID号
+                        ChangeDevPanel(dev.ip, tmpid, version, tmpOldid);
+                        //修改信息
+                        changeSceneInfoByid(dev.ip, tmpid, tmpOldid);
+                        changeTimerInfoByid(dev.ip, tmpid, tmpOldid);
+                        changePanelInfoByid(dev.ip, tmpid, tmpOldid);
+                        //changeSensorInfoByid(dev.ip, tmpOldid);//还需要完善
+                        //changeLogicInfoByid(dev.ip, tmpOldid);//还需要完善
                     }
                     else
                     {
-                        ChangeDevIDVerPanel(dev.ip, Convert.ToInt32(id), version, Convert.ToInt32(oldid));
-                 
+                        //修改型号
+                        ChangeDevIDVerPanel(dev.ip, tmpid, version, tmpOldid);
+                        //删除信息
+                        removeSceneInfoByid(dev.ip, tmpOldid);
+                        removeTimerInfoByid(dev.ip, tmpOldid);
+                        removePanelInfoByid(dev.ip, tmpOldid);
+                        removeSensorInfoByid(dev.ip, tmpOldid);//还需要完善
+                        removeLogicInfoByid(dev.ip, tmpOldid);//还需要完善
                     }
                     //刷新所有Tree的节点
                     UpdateTreeView();
@@ -378,12 +419,17 @@ namespace eNet编辑器
                 {
                     foreach (DataJson.Module m in dev.module)
                     {
-                        if (m.id.ToString() == id && m.device == version)
+                        if (m.id.ToString() == id)
                         {
-
+                            int tmpid = Convert.ToInt32(id);
                             dev.module.Remove(m);
                             delPointID(ip,id);
-                            DelDevPanel(ip, Convert.ToInt32(id));
+                            DelDevPanel(ip, tmpid);
+                            removeSceneInfoByid(ip, tmpid);
+                            removeTimerInfoByid(ip, tmpid);
+                            removePanelInfoByid(ip, tmpid);
+                            removeSensorInfoByid(ip, tmpid);//还需要完善
+                            removeLogicInfoByid(ip, tmpid);//还需要完善
                             //刷新所有Tree的节点
                             UpdateTreeView();
                             break;
@@ -436,6 +482,7 @@ namespace eNet编辑器
         /// </summary>
         public static void GatewaySort()
         {
+
             FileMesege.DeviceList.Sort(delegate(DataJson.Device x, DataJson.Device y)
             {
                 string[] xip = x.ip.Split('.');
@@ -454,7 +501,7 @@ namespace eNet编辑器
                 }
                 return Convert.ToInt32(xip[0]).CompareTo(Convert.ToInt32(yip[0]));
             });
-            //ThreeNameAddNode();
+
         }
 
         /// <summary>
@@ -728,6 +775,7 @@ namespace eNet编辑器
             }*/
         }
 
+
         /// <summary>
         /// 设备删除 删除Point点的信息某个IP下某个ID所有点信息
         /// </summary>
@@ -740,6 +788,218 @@ namespace eNet编辑器
             foreach (DataJson.PointInfo p in dellist)
             {
                 FileMesege.PointList.equipment.Remove(p);
+            }
+
+        }
+
+        /// <summary>
+        /// 通过区域名称  删除某一个区域的点位 包括删除场景、定时、虚拟变量、逻辑、感应的有关信息
+        /// </summary>
+        /// <param name="area1"></param>
+        public static void DelPointByArea(string area1){
+            //设备
+            FileMesege.PointList.equipment.RemoveAll(point=>point.area1 == area1);
+            //虚拟变量
+            FileMesege.PointList.virtualport.RemoveAll(point => point.area1 == area1);
+            //场景
+            List<DataJson.PointInfo> dellist = FileMesege.PointList.scene.FindAll(point => point.area1 == area1);
+            foreach (DataJson.PointInfo p in dellist)
+            {
+                foreach (DataJson.Scene scene in FileMesege.sceneList) {
+                    scene.scenes.RemoveAll(scenes => scenes.pid == p.pid);
+                }
+                FileMesege.PointList.scene.Remove(p);
+            }
+            //定时
+            dellist = FileMesege.PointList.timer.FindAll(point => point.area1 == area1);
+            foreach (DataJson.PointInfo p in dellist)
+            {
+                foreach (DataJson.Timer timer in FileMesege.timerList)
+                {
+                    timer.timers.RemoveAll(timers => timers.pid == p.pid);
+                }
+                FileMesege.PointList.timer.Remove(p);
+            }
+            //感应和 面板
+            dellist = FileMesege.PointList.link.FindAll(point => point.area1 == area1);
+            foreach (DataJson.PointInfo p in dellist)
+            {
+                foreach (DataJson.Sensor sensor in FileMesege.sensorList)
+                {
+                    sensor.sensors.RemoveAll(sensors => sensors.pid == p.pid);
+                }
+                foreach (DataJson.Panel panel in FileMesege.panelList)
+                {
+                    panel.panels.RemoveAll(panels => panels.pid == p.pid);
+                }
+                FileMesege.PointList.link.Remove(p);
+            }
+            //逻辑
+            dellist = FileMesege.PointList.logic.FindAll(point => point.area1 == area1);
+            foreach (DataJson.PointInfo p in dellist)
+            {
+                foreach (DataJson.Logic logic in FileMesege.logicList)
+                {
+                    logic.logics.RemoveAll(logics => logics.pid == p.pid);
+                }
+                FileMesege.PointList.logic.Remove(p);
+            }
+
+        }
+
+        public static void DelPointByArea(string area1, string area2)
+        {
+            //设备
+            FileMesege.PointList.equipment.RemoveAll(point => point.area1 == area1 && point.area2 == area2);
+            //虚拟变量
+            FileMesege.PointList.virtualport.RemoveAll(point => point.area1 == area1 && point.area2 == area2);
+            //场景
+            List<DataJson.PointInfo> dellist = FileMesege.PointList.scene.FindAll(point => point.area1 == area1 && point.area2 == area2);
+            foreach (DataJson.PointInfo p in dellist)
+            {
+                foreach (DataJson.Scene scene in FileMesege.sceneList)
+                {
+                    scene.scenes.RemoveAll(scenes => scenes.pid == p.pid);
+                }
+                FileMesege.PointList.scene.Remove(p);
+            }
+            //定时
+            dellist = FileMesege.PointList.timer.FindAll(point => point.area1 == area1 && point.area2 == area2);
+            foreach (DataJson.PointInfo p in dellist)
+            {
+                foreach (DataJson.Timer timer in FileMesege.timerList)
+                {
+                    timer.timers.RemoveAll(timers => timers.pid == p.pid);
+                }
+                FileMesege.PointList.timer.Remove(p);
+            }
+            //感应和面板
+            dellist = FileMesege.PointList.link.FindAll(point => point.area1 == area1 && point.area2 == area2);
+            foreach (DataJson.PointInfo p in dellist)
+            {
+                foreach (DataJson.Sensor sensor in FileMesege.sensorList)
+                {
+                    sensor.sensors.RemoveAll(sensors => sensors.pid == p.pid);
+                }
+                foreach (DataJson.Panel panel in FileMesege.panelList)
+                {
+                    panel.panels.RemoveAll(panels => panels.pid == p.pid);
+                }
+                FileMesege.PointList.link.Remove(p);
+            }
+            //逻辑
+            dellist = FileMesege.PointList.logic.FindAll(point => point.area1 == area1 && point.area2 == area2);
+            foreach (DataJson.PointInfo p in dellist)
+            {
+                foreach (DataJson.Logic logic in FileMesege.logicList)
+                {
+                    logic.logics.RemoveAll(logics => logics.pid == p.pid);
+                }
+                FileMesege.PointList.logic.Remove(p);
+            }
+        }
+
+        public static void DelPointByArea(string area1, string area2, string area3)
+        {
+            //设备
+            FileMesege.PointList.equipment.RemoveAll(point => point.area1 == area1 && point.area2 == area2 && point.area3 == area3);
+            //虚拟变量
+            FileMesege.PointList.virtualport.RemoveAll(point => point.area1 == area1 && point.area2 == area2 && point.area3 == area3);
+            //场景
+            List<DataJson.PointInfo> dellist = FileMesege.PointList.scene.FindAll(point => point.area1 == area1 && point.area2 == area2 && point.area3 == area3);
+            foreach (DataJson.PointInfo p in dellist)
+            {
+                foreach (DataJson.Scene scene in FileMesege.sceneList)
+                {
+                    scene.scenes.RemoveAll(scenes => scenes.pid == p.pid);
+                }
+                FileMesege.PointList.scene.Remove(p);
+            }
+            //定时
+            dellist = FileMesege.PointList.timer.FindAll(point => point.area1 == area1 && point.area2 == area2 && point.area3 == area3);
+            foreach (DataJson.PointInfo p in dellist)
+            {
+                foreach (DataJson.Timer timer in FileMesege.timerList)
+                {
+                    timer.timers.RemoveAll(timers => timers.pid == p.pid);
+                }
+                FileMesege.PointList.timer.Remove(p);
+            }
+            //感应和面板
+            dellist = FileMesege.PointList.link.FindAll(point => point.area1 == area1 && point.area2 == area2 && point.area3 == area3);
+            foreach (DataJson.PointInfo p in dellist)
+            {
+                foreach (DataJson.Sensor sensor in FileMesege.sensorList)
+                {
+                    sensor.sensors.RemoveAll(sensors => sensors.pid == p.pid);
+                }
+                foreach (DataJson.Panel panel in FileMesege.panelList)
+                {
+                    panel.panels.RemoveAll(panels => panels.pid == p.pid);
+                }
+                FileMesege.PointList.link.Remove(p);
+            }
+            //逻辑
+            dellist = FileMesege.PointList.logic.FindAll(point => point.area1 == area1 && point.area2 == area2 && point.area3 == area3);
+            foreach (DataJson.PointInfo p in dellist)
+            {
+                foreach (DataJson.Logic logic in FileMesege.logicList)
+                {
+                    logic.logics.RemoveAll(logics => logics.pid == p.pid);
+                }
+                FileMesege.PointList.logic.Remove(p);
+            }
+        }
+
+        public static void DelPointByArea(string area1, string area2, string area3, string area4)
+        {
+            //设备
+            FileMesege.PointList.equipment.RemoveAll(point => point.area1 == area1 && point.area2 == area2 && point.area3 == area3 && point.area4 == area4);
+            //虚拟变量
+            FileMesege.PointList.virtualport.RemoveAll(point => point.area1 == area1 && point.area2 == area2 && point.area3 == area3 && point.area4 == area4);
+            //场景
+            List<DataJson.PointInfo> dellist = FileMesege.PointList.scene.FindAll(point => point.area1 == area1 && point.area2 == area2 && point.area3 == area3 && point.area4 == area4);
+            foreach (DataJson.PointInfo p in dellist)
+            {
+                foreach (DataJson.Scene scene in FileMesege.sceneList)
+                {
+                    scene.scenes.RemoveAll(scenes => scenes.pid == p.pid);
+                }
+                FileMesege.PointList.scene.Remove(p);
+            }
+            //定时
+            dellist = FileMesege.PointList.timer.FindAll(point => point.area1 == area1 && point.area2 == area2 && point.area3 == area3 && point.area4 == area4);
+            foreach (DataJson.PointInfo p in dellist)
+            {
+                foreach (DataJson.Timer timer in FileMesege.timerList)
+                {
+                    timer.timers.RemoveAll(timers => timers.pid == p.pid);
+                }
+                FileMesege.PointList.timer.Remove(p);
+            }
+            //感应和面板
+            dellist = FileMesege.PointList.link.FindAll(point => point.area1 == area1 && point.area2 == area2 && point.area3 == area3 && point.area4 == area4);
+            foreach (DataJson.PointInfo p in dellist)
+            {
+                foreach (DataJson.Sensor sensor in FileMesege.sensorList)
+                {
+                    sensor.sensors.RemoveAll(sensors => sensors.pid == p.pid);
+                }
+                foreach (DataJson.Panel panel in FileMesege.panelList)
+                {
+                    panel.panels.RemoveAll(panels => panels.pid == p.pid);
+                }
+                FileMesege.PointList.link.Remove(p);
+            }
+            //逻辑
+            dellist = FileMesege.PointList.logic.FindAll(point => point.area1 == area1 && point.area2 == area2 && point.area3 == area3 && point.area4 == area4);
+            foreach (DataJson.PointInfo p in dellist)
+            {
+                foreach (DataJson.Logic logic in FileMesege.logicList)
+                {
+                    logic.logics.RemoveAll(logics => logics.pid == p.pid);
+                }
+                FileMesege.PointList.logic.Remove(p);
             }
         }
 
@@ -1330,41 +1590,65 @@ namespace eNet编辑器
         /// <returns></returns>
         public static DataJson.scenes getSceneInfoList(string ip, int num)
         {
-            foreach (DataJson.Scene scIP in FileMesege.sceneList)
+            try
             {
-                if (scIP.IP == ip)
+                if (FileMesege.sceneList == null)
                 {
-                    foreach (DataJson.scenes sc in scIP.scenes)
-                    {
-                        if (sc.id == num)
-                        {
-                            return sc;
-                        }
-                    }
-
+                    FileMesege.sceneList = new List<DataJson.Scene>();
                 }
+                foreach (DataJson.Scene scIP in FileMesege.sceneList)
+                {
+                    if (scIP.IP == ip)
+                    {
+                        foreach (DataJson.scenes sc in scIP.scenes)
+                        {
+                            if (sc.id == num)
+                            {
+                                return sc;
+                            }
+                        }
+
+                    }
+                }
+                return null;
             }
-            return null;
+            catch
+            {
+                return null;
+            }
+            
         }
 
 
         public static DataJson.scenes getSceneInfoListByPid(string ip, int pid)
         {
-            foreach (DataJson.Scene scIP in FileMesege.sceneList)
+            try
             {
-                if (scIP.IP == ip)
+                if (FileMesege.sceneList == null)
                 {
-                    foreach (DataJson.scenes sc in scIP.scenes)
-                    {
-                        if (sc.pid == pid)
-                        {
-                            return sc;
-                        }
-                    }
-
+                    FileMesege.sceneList = new List<DataJson.Scene>();
                 }
+                foreach (DataJson.Scene scIP in FileMesege.sceneList)
+                {
+                    if (scIP.IP == ip)
+                    {
+                        foreach (DataJson.scenes sc in scIP.scenes)
+                        {
+                            if (sc.pid == pid)
+                            {
+                                return sc;
+                            }
+                        }
+
+                    }
+                }
+                return null;
             }
-            return null;
+            catch
+            {
+                return null;
+            }
+           
         }
 
         /// <summary>
@@ -1374,15 +1658,27 @@ namespace eNet编辑器
         /// <returns></returns>
         public static DataJson.Scene getSceneList(string ip)
         {
-            foreach (DataJson.Scene scIP in FileMesege.sceneList)
+            try
             {
-                if (scIP.IP == ip)
+                if (FileMesege.sceneList == null)
                 {
-                    return scIP;
-
+                    FileMesege.sceneList = new List<DataJson.Scene>();
                 }
+                foreach (DataJson.Scene scIP in FileMesege.sceneList)
+                {
+                    if (scIP.IP == ip)
+                    {
+                        return scIP;
+
+                    }
+                }
+                return null;
             }
-            return null;
+            catch
+            {
+                return null;
+            }
+            
         }
 
         /// <summary>
@@ -1403,7 +1699,68 @@ namespace eNet编辑器
         }
 
 
-    
+        /// <summary>
+        /// 修改场景某设备ID下的所有信息修改为新的ID
+        /// </summary>
+        /// <param name="ip"></param>
+        /// <param name="id"></param>
+        /// <param name="oldid"></param>
+        public static void changeSceneInfoByid(string ip, int id,int oldid)
+        {
+            if (FileMesege.sceneList == null)
+            {
+                return;
+            }
+            string hexID =  id.ToString("X2");
+            string hexOLDID = "00" + oldid.ToString("X2");
+            foreach (DataJson.Scene scIP in FileMesege.sceneList)
+            {
+                if (scIP.IP == ip)
+                {
+                    foreach (DataJson.scenes sc in scIP.scenes)
+                    {
+                        foreach (DataJson.sceneInfo sceneInfo in sc.sceneInfo) {
+                            
+                            if (sceneInfo.address.Length == 8 && sceneInfo.address.Substring(2, 4) == hexOLDID) {
+                                //修改新ID
+                                sceneInfo.address = sceneInfo.address.Substring(0, 4) + hexID + sceneInfo.address.Substring(6, 2);
+                            }
+                        }
+
+                        
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// 删除场景某设备ID下的所有信息
+        /// </summary>
+        /// <param name="ip"></param>
+        /// <param name="id"></param>
+        public static void removeSceneInfoByid(string ip,int id)
+        {
+            if (FileMesege.sceneList == null)
+            {
+                return;
+            }
+            string hexID =  "00"+id.ToString("X2");
+            foreach (DataJson.Scene scIP in FileMesege.sceneList)
+            {
+                if (scIP.IP == ip)
+                {
+                    foreach (DataJson.scenes sc in scIP.scenes)
+                    {
+                        sc.sceneInfo.RemoveAll(item=> item.address.Length == 8 && item.address.Substring(2,4) == hexID );
+                        //排序
+                        for (int i = 0; i < sc.sceneInfo.Count; i++)
+                        {
+                            sc.sceneInfo[i].id = i + 1;
+                        }
+                    }
+                }
+            }
+        }
 
         #endregion
 
@@ -1435,6 +1792,7 @@ namespace eNet编辑器
         /// <returns></returns>
         public static DataJson.timersInfo getTimerInfo(DataJson.timers tms, int id)
         {
+            
             foreach (DataJson.timersInfo info in tms.timersInfo)
             {
                 if (info.id == id)
@@ -1454,21 +1812,33 @@ namespace eNet编辑器
         /// <returns></returns>
         public static DataJson.timers getTimersInfoList(string ip, int num)
         {
-            foreach (DataJson.Timer tmIP in FileMesege.timerList)
+            try
             {
-                if (tmIP.IP == ip)
+                if (FileMesege.timerList == null)
                 {
-                    foreach (DataJson.timers tms in tmIP.timers)
-                    {
-                        if (tms.id == num)
-                        {
-                            return tms;
-                        }
-                    }
-
+                    FileMesege.timerList = new List<DataJson.Timer>();
                 }
+                foreach (DataJson.Timer tmIP in FileMesege.timerList)
+                {
+                    if (tmIP.IP == ip)
+                    {
+                        foreach (DataJson.timers tms in tmIP.timers)
+                        {
+                            if (tms.id == num)
+                            {
+                                return tms;
+                            }
+                        }
+
+                    }
+                }
+                return null;
             }
-            return null;
+            catch
+            {
+                return null;
+            }
+           
         }
 
         /// <summary>
@@ -1478,15 +1848,27 @@ namespace eNet编辑器
         /// <returns></returns>
         public static DataJson.Timer getTimerList(string ip)
         {
-            foreach (DataJson.Timer tmlIP in FileMesege.timerList)
+            try
             {
-                if (tmlIP.IP == ip)
+                if (FileMesege.timerList == null)
                 {
-                    return tmlIP;
-
+                    FileMesege.timerList = new List<DataJson.Timer>();
                 }
+                foreach (DataJson.Timer tmlIP in FileMesege.timerList)
+                {
+                    if (tmlIP.IP == ip)
+                    {
+                        return tmlIP;
+
+                    }
+                }
+                return null;
             }
-            return null;
+            catch
+            {
+                return null;
+            }
+            
         }
 
         /// <summary>
@@ -1504,6 +1886,72 @@ namespace eNet编辑器
                 FileMesege.timerList[i].timers.RemoveAll(timers => timers.pid == pid);
             }
 
+        }
+
+
+        /// <summary>
+        /// 修改定时某设备ID下的所有信息修改为新的ID
+        /// </summary>
+        /// <param name="ip"></param>
+        /// <param name="id"></param>
+        /// <param name="oldid"></param>
+        public static void changeTimerInfoByid(string ip, int id, int oldid)
+        {
+            if (FileMesege.timerList == null)
+            {
+                return;
+            }
+            string hexID = id.ToString("X2");
+            string hexOLDID = "00" + oldid.ToString("X2");
+            foreach (DataJson.Timer scIP in FileMesege.timerList)
+            {
+                if (scIP.IP == ip)
+                {
+                    foreach (DataJson.timers sc in scIP.timers)
+                    {
+                        foreach (DataJson.timersInfo sceneInfo in sc.timersInfo)
+                        {
+
+                            if (sceneInfo.address.Length == 8 && sceneInfo.address.Substring(2, 4) == hexOLDID)
+                            {
+                                //修改新ID
+                                sceneInfo.address = sceneInfo.address.Substring(0, 4) + hexID + sceneInfo.address.Substring(6, 2);
+                            }
+                        }
+
+
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// 删除定时某设备ID下的所有信息
+        /// </summary>
+        /// <param name="ip"></param>
+        /// <param name="id"></param>
+        public static void removeTimerInfoByid(string ip, int id)
+        {
+            if (FileMesege.timerList == null)
+            {
+                return;
+            }
+            string hexID = "00" + id.ToString("X2");
+            foreach (DataJson.Timer scIP in FileMesege.timerList)
+            {
+                if (scIP.IP == ip)
+                {
+                    foreach (DataJson.timers sc in scIP.timers)
+                    {
+                        sc.timersInfo.RemoveAll(item => item.address.Length == 8 && item.address.Substring(2, 4) == hexID);
+                        //排序
+                        for (int i = 0; i < sc.timersInfo.Count; i++)
+                        {
+                            sc.timersInfo[i].id = i + 1;
+                        }
+                    }
+                }
+            }
         }
 
         #endregion
@@ -1569,21 +2017,29 @@ namespace eNet编辑器
         /// <returns></returns>
         public static DataJson.panels getPanelsInfoList(string ip, int num)
         {
-            foreach (DataJson.Panel plIp in FileMesege.panelList)
+            try
             {
-                if (plIp.IP == ip)
+                foreach (DataJson.Panel plIp in FileMesege.panelList)
                 {
-                    foreach (DataJson.panels pls in plIp.panels)
+                    if (plIp.IP == ip)
                     {
-                        if (pls.id == num)
+                        foreach (DataJson.panels pls in plIp.panels)
                         {
-                            return pls;
+                            if (pls.id == num)
+                            {
+                                return pls;
+                            }
                         }
-                    }
 
+                    }
                 }
+                return null;
             }
-            return null;
+            catch
+            {
+                return null;
+            }
+            
         }
 
         /// <summary>
@@ -1593,15 +2049,23 @@ namespace eNet编辑器
         /// <returns></returns>
         public static DataJson.Panel getPanelList(string ip)
         {
-            foreach (DataJson.Panel plIP in FileMesege.panelList)
+            try
             {
-                if (plIP.IP == ip)
+                foreach (DataJson.Panel plIP in FileMesege.panelList)
                 {
-                    return plIP;
+                    if (plIP.IP == ip)
+                    {
+                        return plIP;
 
+                    }
                 }
+                return null;
             }
-            return null;
+            catch
+            {
+                return null;
+            }
+            
         }
 
         /// <summary>
@@ -1610,6 +2074,7 @@ namespace eNet编辑器
         /// <param name="pid"></param>
         public static void reMoveAllPanelsByPid(int pid)
         {
+
             if (FileMesege.panelList == null)
             {
                 return;
@@ -1677,7 +2142,7 @@ namespace eNet编辑器
                     eq.address = address;
                     eq.pid = randomNum;
                     eq.ip = ip;
-                    eq.name = IniConfig.GetValue(path + version + ".ini", "define", "note")+id.ToString();
+                    eq.name = IniConfig.GetValue(path + version + ".ini", "define", "note").Split('&')[0]+id.ToString();
                     eq.type = IniHelper.findTypesIniTypebyName("面板");
                     eq.objType = "";
                     eq.value = "";
@@ -1807,7 +2272,8 @@ namespace eNet编辑器
                         }*/
                         plInfo.pid = 0;
                         tmpNum = plInfo.id.ToString("X4");
-                        plInfo.keyAddress = string.Format("{0}{1}{2}", ipLast, idHex, tmpNum);
+                        plInfo.keyAddress = string.Format("FE{0}{1}",  idHex, tmpNum);
+                        //plInfo.keyAddress = string.Format("{0}{1}{2}", ipLast, idHex, tmpNum);
                         plInfo.objAddress = "";
                         plInfo.objType = "";
                         plInfo.opt = 255;
@@ -1869,7 +2335,7 @@ namespace eNet编辑器
                     eq.area3 = "";
                     eq.area4 = "";
                     eq.address = address;
-                    eq.name = IniConfig.GetValue(path + version + ".ini", "define", "note") + id.ToString();
+                    eq.name = IniConfig.GetValue(path + version + ".ini", "define", "note").Split('&')[0] + id.ToString();
                     break;
                 }
 
@@ -1965,6 +2431,9 @@ namespace eNet编辑器
 
         }
 
+
+
+
         /// <summary>
         /// 删除设备的时候 删除面板
         /// </summary>
@@ -2005,6 +2474,82 @@ namespace eNet编辑器
             }//IP FOREACH
         }
 
+
+        /// <summary>
+        /// 修改面板某设备ID下的所有信息修改为新的ID
+        /// </summary>
+        /// <param name="ip"></param>
+        /// <param name="id"></param>
+        /// <param name="oldid"></param>
+        public static void changePanelInfoByid(string ip, int id, int oldid)
+        {
+            if (FileMesege.panelList == null)
+            {
+                return;
+            }
+            string hexID = id.ToString("X2");
+            string hexOLDID = "00" + oldid.ToString("X2");
+            foreach (DataJson.Panel scIP in FileMesege.panelList)
+            {
+                if (scIP.IP == ip)
+                {
+                    foreach (DataJson.panels sc in scIP.panels)
+                    {
+                        foreach (DataJson.panelsInfo sceneInfo in sc.panelsInfo)
+                        {
+
+                            if (sceneInfo.objAddress.Length == 8 && sceneInfo.objAddress.Substring(2, 4) == hexOLDID)
+                            {
+                                //修改新ID
+                                sceneInfo.objAddress = sceneInfo.objAddress.Substring(0, 4) + hexID + sceneInfo.objAddress.Substring(6, 2);
+                            }
+                            if (sceneInfo.showAddress.Length == 8 && sceneInfo.showAddress.Substring(2, 4) == hexOLDID)
+                            {
+                                //修改新ID
+                                sceneInfo.showAddress = sceneInfo.showAddress.Substring(0, 4) + hexID + sceneInfo.showAddress.Substring(6, 2);
+                            }
+
+                        }
+
+
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// 删除面板某设备ID下的所有信息
+        /// </summary>
+        /// <param name="ip"></param>
+        /// <param name="id"></param>
+        public static void removePanelInfoByid(string ip, int id)
+        {
+            if (FileMesege.panelList == null)
+            {
+                return;
+            }
+            string hexID = "00" + id.ToString("X2");
+            foreach (DataJson.Panel scIP in FileMesege.panelList)
+            {
+                if (scIP.IP == ip)
+                {
+                    foreach (DataJson.panels sc in scIP.panels)
+                    {
+                        foreach (DataJson.panelsInfo plsInfo in sc.panelsInfo) {
+                            if (plsInfo.objAddress.Length == 8 && plsInfo.objAddress.Substring(2, 4) == hexID) {
+                                plsInfo.objAddress = "";
+                                plsInfo.objType = "";
+                                plsInfo.opt = 255;
+                                plsInfo.pid = 0;
+                                plsInfo.showAddress = "";
+                                plsInfo.showMode = "";
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
         #endregion
 
 
@@ -2036,14 +2581,22 @@ namespace eNet编辑器
         /// <returns></returns>
         public static DataJson.sensorsInfo getSensorInfo(DataJson.sensors srs, int id)
         {
-            foreach (DataJson.sensorsInfo info in srs.sensorsInfo)
+            try
             {
-                if (info.id == id)
+                foreach (DataJson.sensorsInfo info in srs.sensorsInfo)
                 {
-                    return info;
+                    if (info.id == id)
+                    {
+                        return info;
+                    }
                 }
+                return null;
             }
-            return null;
+            catch
+            {
+                return null;
+            }
+           
         }
 
 
@@ -2055,21 +2608,29 @@ namespace eNet编辑器
         /// <returns></returns>
         public static DataJson.sensors getSensorsInfoList(string ip, int num)
         {
-            foreach (DataJson.Sensor srIp in FileMesege.sensorList)
+            try
             {
-                if (srIp.IP == ip)
+                foreach (DataJson.Sensor srIp in FileMesege.sensorList)
                 {
-                    foreach (DataJson.sensors srs in srIp.sensors)
+                    if (srIp.IP == ip)
                     {
-                        if (srs.id == num)
+                        foreach (DataJson.sensors srs in srIp.sensors)
                         {
-                            return srs;
+                            if (srs.id == num)
+                            {
+                                return srs;
+                            }
                         }
-                    }
 
+                    }
                 }
+                return null;
             }
-            return null;
+            catch
+            {
+                return null;
+            }
+            
         }
 
         /// <summary>
@@ -2079,15 +2640,23 @@ namespace eNet编辑器
         /// <returns></returns>
         public static DataJson.Sensor getSensorList(string ip)
         {
-            foreach (DataJson.Sensor sr in FileMesege.sensorList)
+            try
             {
-                if (sr.IP == ip)
+                foreach (DataJson.Sensor sr in FileMesege.sensorList)
                 {
-                    return sr;
+                    if (sr.IP == ip)
+                    {
+                        return sr;
 
+                    }
                 }
+                return null;
             }
-            return null;
+            catch
+            {
+                return null;
+            }
+            
         }
 
         /// <summary>
@@ -2105,6 +2674,48 @@ namespace eNet编辑器
                 FileMesege.sensorList[i].sensors.RemoveAll(sensors => sensors.pid == pid);
             }
 
+        }
+
+        /// <summary>
+        /// 删除感应某设备ID下的所有信息
+        /// </summary>
+        /// <param name="ip"></param>
+        /// <param name="id"></param>
+        public static void removeSensorInfoByid(string ip, int id)
+        {
+            if (FileMesege.sensorList == null)
+            {
+                return;
+            }
+            string hexID = "00" + id.ToString("X2");
+            foreach (DataJson.Sensor scIP in FileMesege.sensorList)
+            {
+                if (scIP.IP == ip)
+                {
+                    foreach (DataJson.sensors sc in scIP.sensors)
+                    {
+                        foreach (DataJson.sensorsInfo srsInfo in sc.sensorsInfo)
+                        {
+                            if (srsInfo.objAddress.Length == 8 && srsInfo.objAddress.Substring(2, 4) == hexID)
+                            {
+                                srsInfo.keyAddress = "";
+                                srsInfo.objAddress = "";
+                                srsInfo.objType = "";
+                                srsInfo.opt = "";
+                                srsInfo.optName = "";
+                                srsInfo.pid = 0;
+                                srsInfo.fbmode = 0;
+                            }
+                        }
+                        /*sc.sensorsInfo.RemoveAll(item => item.objAddress.Substring(2, 4) == hexID);
+                        //排序
+                        for (int i = 0; i < sc.sensorsInfo.Count; i++)
+                        {
+                            sc.sensorsInfo[i].id = i + 1;
+                        }*/
+                    }
+                }
+            }
         }
 
         #endregion
@@ -2138,14 +2749,22 @@ namespace eNet编辑器
         /// <returns></returns>
         public static DataJson.logicsInfo getLogicInfo(DataJson.logics lgs, int id)
         {
-            foreach (DataJson.logicsInfo info in lgs.logicsInfo)
+            try
             {
-                if (info.id == id)
+                foreach (DataJson.logicsInfo info in lgs.logicsInfo)
                 {
-                    return info;
+                    if (info.id == id)
+                    {
+                        return info;
+                    }
                 }
+                return null;
             }
-            return null;
+            catch
+            {
+                return null;
+            }
+           
         }
 
 
@@ -2157,21 +2776,29 @@ namespace eNet编辑器
         /// <returns></returns>
         public static DataJson.logics getLogicsInfoList(string ip, int num)
         {
-            foreach (DataJson.Logic lgIp in FileMesege.logicList)
+            try
             {
-                if (lgIp.IP == ip)
+                foreach (DataJson.Logic lgIp in FileMesege.logicList)
                 {
-                    foreach (DataJson.logics lgs in lgIp.logics)
+                    if (lgIp.IP == ip)
                     {
-                        if (lgs.id == num)
+                        foreach (DataJson.logics lgs in lgIp.logics)
                         {
-                            return lgs;
+                            if (lgs.id == num)
+                            {
+                                return lgs;
+                            }
                         }
-                    }
 
+                    }
                 }
+                return null;
             }
-            return null;
+            catch
+            {
+                return null;
+            }
+           
         }
 
         /// <summary>
@@ -2181,15 +2808,23 @@ namespace eNet编辑器
         /// <returns></returns>
         public static DataJson.Logic getLogicList(string ip)
         {
-            foreach (DataJson.Logic lg in FileMesege.logicList)
+            try
             {
-                if (lg.IP == ip)
+                foreach (DataJson.Logic lg in FileMesege.logicList)
                 {
-                    return lg;
+                    if (lg.IP == ip)
+                    {
+                        return lg;
 
+                    }
                 }
+                return null;
             }
-            return null;
+            catch
+            {
+                return null;
+            }
+            
         }
 
 
@@ -2353,6 +2988,35 @@ namespace eNet编辑器
             }
             return null;
 
+        }
+
+        /// <summary>
+        /// 删除逻辑某设备ID下的所有信息          还需要完善
+        /// </summary>
+        /// <param name="ip"></param>
+        /// <param name="id"></param>
+        public static void removeLogicInfoByid(string ip, int id)
+        {
+            if (FileMesege.logicList == null)
+            {
+                return;
+            }
+            /*string hexID = "00" + id.ToString("X2");
+            foreach (DataJson.Logic scIP in FileMesege.logicList)
+            {
+                if (scIP.IP == ip)
+                {
+                    foreach (DataJson.logics sc in scIP.logics)
+                    {
+                        sc.logicsInfo.RemoveAll(item => item.content.Substring(2, 4) == hexID);
+                        //排序
+                        for (int i = 0; i < sc.logicsInfo.Count; i++)
+                        {
+                            sc.logicsInfo[i].id = i + 1;
+                        }
+                    }
+                }
+            }*/
         }
 
         #endregion

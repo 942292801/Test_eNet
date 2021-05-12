@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 using System.Runtime.InteropServices;
-using System.IO;
 
 namespace eNet编辑器
 {
@@ -36,7 +34,7 @@ namespace eNet编辑器
             {
                 return "";
             }
-            return s.ToString();
+            return s.ToString() ;
         }
 
 

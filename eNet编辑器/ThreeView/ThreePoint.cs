@@ -14,11 +14,7 @@ namespace eNet编辑器.ThreeView
         public ThreePoint()
         {
             InitializeComponent();
-            SetStyle(ControlStyles.UserPaint, true);
-            SetStyle(ControlStyles.AllPaintingInWmPaint, true); // 禁止擦除背景.
-            SetStyle(ControlStyles.DoubleBuffer, true); // 双缓冲
-            this.UpdateStyles();
-        
+   
         }
 
         public event Action updateDgvPoint;
@@ -48,7 +44,7 @@ namespace eNet编辑器.ThreeView
             int index3 = 0;
             string filepath = "";
             string device = "";
-            string gwdevice = "";
+            //string gwdevice = "";
             string portVal = "";
             string address = "";
             string section = "";
@@ -56,8 +52,8 @@ namespace eNet编辑器.ThreeView
             {
                 //添加网关
                 filepath = string.Format("{0}\\devices\\{1}.ini", Application.StartupPath, master.master);
-                gwdevice = IniConfig.GetValue(filepath, "define", "display");
-                index = tm.AddNode1(treeView1, master.ip + " " + gwdevice);
+                //gwdevice = IniConfig.GetValue(filepath, "define", "display");
+                index = tm.AddNode1(treeView1, master.ip + " " + master.master);
                 foreach (DataJson.Module m in master.module)
                 {
                     filepath = filepath = string.Format("{0}\\devices\\{1}.ini", Application.StartupPath, m.device);
@@ -112,6 +108,7 @@ namespace eNet编辑器.ThreeView
             TreeMesege.SetPrevVisitNode(treeView1, fullpath);
         }
 
+
         #region 点击树状图 树状图重绘
         /// <summary>
         /// 高亮显示选中项 重绘
@@ -138,7 +135,8 @@ namespace eNet编辑器.ThreeView
                 backColor = this.treeView1.BackColor;
             }
             //e.Graphics.FillRectangle(new SolidBrush(backColor), new Rectangle(e.Bounds.Location, new Size(this.treeView1.Width - e.Bounds.X, e.Bounds.Height)));
-            e.Graphics.FillRectangle(new SolidBrush(backColor), e.Bounds);
+            e.Graphics.FillRectangle(new SolidBrush(backColor), e.Bounds.X+1, e.Bounds.Y, e.Bounds.Width, e.Bounds.Height);
+
             e.Graphics.DrawString(e.Node.Text, this.treeView1.Font, new SolidBrush(foreColor), e.Bounds.X, e.Bounds.Y + 4);
 
         }
@@ -178,10 +176,10 @@ namespace eNet编辑器.ThreeView
                 string address = "";
                 string filepath = "";
                 string type = "";
-                string[] portNodeTxt;
+               /* string[] portNodeTxt;
                 string title = "";
                 string titleNum = "";
-                string tmpName = "";
+                string tmpName = "";*/
                 //DGV表的点位的节点不为空
                 foreach (TreeNode MasterNode in treeView1.Nodes)
                 {
