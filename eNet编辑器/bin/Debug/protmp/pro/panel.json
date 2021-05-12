@@ -1,92 +1,87 @@
 [
     {
-        "panels": [],
-        "IP": null,
-        "Dev": null
-    },
-    {
         "panels": [
             {
                 "panelsInfo": [
                     {
                         "id": 1,
-                        "pid": 945030246,
+                        "pid": 0,
                         "keyAddress": "FE230001",
-                        "objAddress": "FE000201",
+                        "objAddress": "FE000701",
                         "objType": "1.0_switch",
                         "opt": 1,
-                        "showAddress": "FE000201",
+                        "showAddress": "FE000701",
                         "showMode": "同步"
                     },
                     {
                         "id": 2,
-                        "pid": 975966521,
+                        "pid": 0,
                         "keyAddress": "FE230002",
-                        "objAddress": "FE000202",
+                        "objAddress": "FE000702",
                         "objType": "1.0_switch",
-                        "opt": 1,
-                        "showAddress": "FE000202",
+                        "opt": 255,
+                        "showAddress": "FE000702",
                         "showMode": "同步"
                     },
                     {
                         "id": 3,
-                        "pid": 723477596,
+                        "pid": 0,
                         "keyAddress": "FE230003",
-                        "objAddress": "FE000203",
+                        "objAddress": "FE000703",
                         "objType": "1.0_switch",
-                        "opt": 1,
-                        "showAddress": "FE000203",
+                        "opt": 255,
+                        "showAddress": "FE000703",
                         "showMode": "同步"
                     },
                     {
                         "id": 4,
-                        "pid": 708618717,
+                        "pid": 0,
                         "keyAddress": "FE230004",
-                        "objAddress": "FE000204",
+                        "objAddress": "FE000704",
                         "objType": "1.0_switch",
-                        "opt": 1,
-                        "showAddress": "FE000204",
+                        "opt": 255,
+                        "showAddress": "FE000704",
                         "showMode": "同步"
                     },
                     {
                         "id": 5,
-                        "pid": 910587455,
+                        "pid": 0,
                         "keyAddress": "FE230005",
-                        "objAddress": "FE000205",
+                        "objAddress": "FE000705",
                         "objType": "1.0_switch",
-                        "opt": 1,
-                        "showAddress": "FE000205",
+                        "opt": 255,
+                        "showAddress": "FE000705",
                         "showMode": "同步"
                     },
                     {
                         "id": 6,
-                        "pid": 406053114,
+                        "pid": 0,
                         "keyAddress": "FE230006",
-                        "objAddress": "FE000206",
+                        "objAddress": "FE000706",
                         "objType": "1.0_switch",
-                        "opt": 1,
-                        "showAddress": "FE000206",
+                        "opt": 255,
+                        "showAddress": "FE000706",
                         "showMode": "同步"
                     },
                     {
                         "id": 7,
                         "pid": 0,
                         "keyAddress": "FE230007",
-                        "objAddress": "",
-                        "objType": "",
+                        "objAddress": "FE000707",
+                        "objType": "1.0_switch",
                         "opt": 255,
-                        "showAddress": "",
-                        "showMode": ""
+                        "showAddress": "FE000707",
+                        "showMode": "同步"
                     },
                     {
                         "id": 8,
                         "pid": 0,
                         "keyAddress": "FE230008",
-                        "objAddress": "",
-                        "objType": "",
+                        "objAddress": "FE000708",
+                        "objType": "1.0_switch",
                         "opt": 255,
-                        "showAddress": "",
-                        "showMode": ""
+                        "showAddress": "FE000708",
+                        "showMode": "同步"
                     },
                     {
                         "id": 257,
@@ -810,68 +805,68 @@
                     }
                 ],
                 "id": 35,
-                "pid": 479068832
+                "pid": 893222226
             },
             {
                 "panelsInfo": [
                     {
                         "id": 1,
-                        "pid": 893954542,
+                        "pid": 0,
                         "keyAddress": "FE3F0001",
-                        "objAddress": "FE000301",
+                        "objAddress": "FE000701",
                         "objType": "1.0_switch",
                         "opt": 1,
-                        "showAddress": "FE000301",
+                        "showAddress": "FE000701",
                         "showMode": "同步"
                     },
                     {
                         "id": 2,
-                        "pid": 612191369,
+                        "pid": 0,
                         "keyAddress": "FE3F0002",
-                        "objAddress": "FE000302",
+                        "objAddress": "FE000702",
                         "objType": "1.0_switch",
-                        "opt": 1,
-                        "showAddress": "FE000302",
+                        "opt": 255,
+                        "showAddress": "FE000702",
                         "showMode": "同步"
                     },
                     {
                         "id": 3,
-                        "pid": 871842363,
+                        "pid": 0,
                         "keyAddress": "FE3F0003",
-                        "objAddress": "FE000303",
+                        "objAddress": "FE000703",
                         "objType": "1.0_switch",
-                        "opt": 1,
-                        "showAddress": "FE000303",
+                        "opt": 255,
+                        "showAddress": "FE000703",
                         "showMode": "同步"
                     },
                     {
                         "id": 4,
-                        "pid": 611747860,
+                        "pid": 0,
                         "keyAddress": "FE3F0004",
-                        "objAddress": "FE000304",
+                        "objAddress": "FE000704",
                         "objType": "1.0_switch",
-                        "opt": 1,
-                        "showAddress": "FE000304",
+                        "opt": 255,
+                        "showAddress": "FE000704",
                         "showMode": "同步"
                     },
                     {
                         "id": 5,
-                        "pid": 760091851,
+                        "pid": 0,
                         "keyAddress": "FE3F0005",
-                        "objAddress": "FE000305",
+                        "objAddress": "FE000705",
                         "objType": "1.0_switch",
-                        "opt": 1,
-                        "showAddress": "FE000305",
+                        "opt": 255,
+                        "showAddress": "FE000705",
                         "showMode": "同步"
                     },
                     {
                         "id": 6,
-                        "pid": 305634188,
+                        "pid": 0,
                         "keyAddress": "FE3F0006",
-                        "objAddress": "FE000306",
+                        "objAddress": "FE000706",
                         "objType": "1.0_switch",
-                        "opt": 1,
-                        "showAddress": "FE000306",
+                        "opt": 255,
+                        "showAddress": "FE000706",
                         "showMode": "同步"
                     },
                     {
@@ -1416,83 +1411,93 @@
                     }
                 ],
                 "id": 63,
-                "pid": 218530821
+                "pid": 491813016
             },
             {
                 "panelsInfo": [
                     {
                         "id": 1,
                         "pid": 0,
-                        "keyAddress": "",
-                        "objAddress": "",
-                        "objType": "",
-                        "opt": 255,
-                        "showAddress": "",
-                        "showMode": ""
+                        "keyAddress": "FE3F0001",
+                        "objAddress": "FE000701",
+                        "objType": "1.0_switch",
+                        "opt": 1,
+                        "showAddress": "FE000701",
+                        "showMode": "同步"
                     },
                     {
                         "id": 2,
                         "pid": 0,
-                        "keyAddress": "",
-                        "objAddress": "",
-                        "objType": "",
+                        "keyAddress": "FE3F0002",
+                        "objAddress": "FE000702",
+                        "objType": "1.0_switch",
                         "opt": 255,
-                        "showAddress": "",
-                        "showMode": ""
+                        "showAddress": "FE000702",
+                        "showMode": "同步"
+                    },
+                    {
+                        "id": 3,
+                        "pid": 0,
+                        "keyAddress": "FE3F0003",
+                        "objAddress": "FE000703",
+                        "objType": "1.0_switch",
+                        "opt": 255,
+                        "showAddress": "FE000703",
+                        "showMode": "同步"
+                    },
+                    {
+                        "id": 4,
+                        "pid": 0,
+                        "keyAddress": "FE3F0004",
+                        "objAddress": "FE000704",
+                        "objType": "1.0_switch",
+                        "opt": 255,
+                        "showAddress": "FE000704",
+                        "showMode": "同步"
+                    },
+                    {
+                        "id": 5,
+                        "pid": 0,
+                        "keyAddress": "FE3F0005",
+                        "objAddress": "FE000705",
+                        "objType": "1.0_switch",
+                        "opt": 255,
+                        "showAddress": "FE000705",
+                        "showMode": "同步"
+                    },
+                    {
+                        "id": 6,
+                        "pid": 0,
+                        "keyAddress": "FE3F0006",
+                        "objAddress": "FE000706",
+                        "objType": "1.0_switch",
+                        "opt": 255,
+                        "showAddress": "FE000706",
+                        "showMode": "同步"
+                    },
+                    {
+                        "id": 7,
+                        "pid": 0,
+                        "keyAddress": "FE3F0007",
+                        "objAddress": "FE000707",
+                        "objType": "1.0_switch",
+                        "opt": 255,
+                        "showAddress": "FE000707",
+                        "showMode": "同步"
+                    },
+                    {
+                        "id": 8,
+                        "pid": 0,
+                        "keyAddress": "FE3F0008",
+                        "objAddress": "FE000708",
+                        "objType": "1.0_switch",
+                        "opt": 255,
+                        "showAddress": "FE000708",
+                        "showMode": "同步"
                     }
                 ],
-                "id": 101,
-                "pid": 758555603
-            },
-            {
-                "panelsInfo": [],
-                "id": 102,
-                "pid": 743696725
-            },
-            {
-                "panelsInfo": [],
                 "id": 103,
-                "pid": 713978968
-            },
-            {
-                "panelsInfo": [],
-                "id": 104,
-                "pid": 141537295
-            },
-            {
-                "panelsInfo": [],
-                "id": 105,
-                "pid": 217916445
-            },
-            {
-                "panelsInfo": [],
-                "id": 106,
-                "pid": 701648356
-            },
-            {
-                "panelsInfo": [],
-                "id": 107,
-                "pid": 773745982
-            },
-            {
-                "panelsInfo": [],
-                "id": 108,
-                "pid": 530172384
-            },
-            {
-                "panelsInfo": [],
-                "id": 109,
-                "pid": 685036220
-            },
-            {
-                "panelsInfo": [],
-                "id": 110,
-                "pid": 488124016
-            },
-            {
-                "panelsInfo": [],
-                "id": 111,
-                "pid": 598854725
+                "pid": 177154081
             }
         ],
         "IP": "192.168.1.96",

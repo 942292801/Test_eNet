@@ -1,295 +1,173 @@
 [
     {
-        "timers": [],
-        "IP": null,
-        "Dev": null
-    },
-    {
         "timers": [
             {
                 "timersInfo": [
                     {
                         "id": 1,
-                        "pid": 945030246,
-                        "type": "1.0_switch",
-                        "address": "FE000201",
-                        "opt": "00000001",
-                        "optName": "开启",
-                        "shortTime": "01:00"
-                    },
-                    {
-                        "id": 2,
-                        "pid": 975966521,
-                        "type": "1.0_switch",
-                        "address": "FE000202",
-                        "opt": "00000001",
-                        "optName": "开启",
-                        "shortTime": "01:00"
-                    }
-                ],
-                "id": 1,
-                "pid": 852255970,
-                "dates": "1",
-                "priorHoloday": "01000001"
-            },
-            {
-                "timersInfo": [
-                    {
-                        "id": 1,
-                        "pid": 723477596,
-                        "type": "1.0_switch",
-                        "address": "FE000203",
-                        "opt": "00000001",
-                        "optName": "开启",
-                        "shortTime": "02:00"
-                    },
-                    {
-                        "id": 2,
-                        "pid": 708618717,
-                        "type": "1.0_switch",
-                        "address": "FE000204",
-                        "opt": "00000001",
-                        "optName": "开启",
-                        "shortTime": "02:00"
-                    }
-                ],
-                "id": 2,
-                "pid": 564549245,
-                "dates": "2",
-                "priorHoloday": "01000001"
-            },
-            {
-                "timersInfo": [
-                    {
-                        "id": 1,
-                        "pid": 910587455,
-                        "type": "1.0_switch",
-                        "address": "FE000205",
-                        "opt": "00000001",
-                        "optName": "开启",
-                        "shortTime": "11:00"
-                    },
-                    {
-                        "id": 2,
-                        "pid": 406053114,
-                        "type": "1.0_switch",
-                        "address": "FE000206",
-                        "opt": "00000001",
-                        "optName": "开启",
-                        "shortTime": "11:00"
-                    }
-                ],
-                "id": 3,
-                "pid": 825509988,
-                "dates": "3",
-                "priorHoloday": "01000001"
-            },
-            {
-                "timersInfo": [
-                    {
-                        "id": 1,
-                        "pid": 893954542,
-                        "type": "1.0_switch",
-                        "address": "FE000301",
-                        "opt": "00000001",
-                        "optName": "开启",
-                        "shortTime": "19:00"
-                    },
-                    {
-                        "id": 2,
-                        "pid": 612191369,
-                        "type": "1.0_switch",
-                        "address": "FE000302",
-                        "opt": "00000001",
-                        "optName": "开启",
-                        "shortTime": "19:00"
-                    }
-                ],
-                "id": 4,
-                "pid": 144865873,
-                "dates": "4",
-                "priorHoloday": "01000001"
-            },
-            {
-                "timersInfo": [
-                    {
-                        "id": 1,
-                        "pid": 871842363,
-                        "type": "1.0_switch",
-                        "address": "FE000303",
-                        "opt": "00000001",
-                        "optName": "开启",
-                        "shortTime": "20:00"
-                    },
-                    {
-                        "id": 2,
-                        "pid": 611747860,
-                        "type": "1.0_switch",
-                        "address": "FE000304",
-                        "opt": "00000001",
-                        "optName": "开启",
-                        "shortTime": "16:00"
-                    }
-                ],
-                "id": 5,
-                "pid": 255596582,
-                "dates": "5",
-                "priorHoloday": "01000001"
-            },
-            {
-                "timersInfo": [
-                    {
-                        "id": 1,
-                        "pid": 760091851,
-                        "type": "1.0_switch",
-                        "address": "FE000305",
-                        "opt": "00000001",
-                        "optName": "开启",
-                        "shortTime": "22:00"
-                    },
-                    {
-                        "id": 2,
-                        "pid": 305634188,
-                        "type": "1.0_switch",
-                        "address": "FE000306",
-                        "opt": "00000001",
-                        "optName": "开启",
-                        "shortTime": "23:00"
-                    }
-                ],
-                "id": 6,
-                "pid": 607795354,
-                "dates": "6",
-                "priorHoloday": "01000001"
-            },
-            {
-                "timersInfo": [
-                    {
-                        "id": 1,
-                        "pid": 481188445,
-                        "type": "1.0_switch",
-                        "address": "FE000401",
-                        "opt": "00000001",
-                        "optName": "开启",
-                        "shortTime": "02:00"
-                    },
-                    {
-                        "id": 2,
-                        "pid": 748092740,
-                        "type": "1.0_switch",
-                        "address": "FE000402",
-                        "opt": "00000001",
-                        "optName": "开启",
-                        "shortTime": "02:01"
-                    }
-                ],
-                "id": 7,
-                "pid": 334060491,
-                "dates": "0",
-                "priorHoloday": "01000001"
-            },
-            {
-                "timersInfo": [
-                    {
-                        "id": 1,
-                        "pid": 574954741,
-                        "type": "1.0_switch",
-                        "address": "FE000403",
-                        "opt": "00000001",
-                        "optName": "开启",
-                        "shortTime": "00:00"
-                    },
-                    {
-                        "id": 2,
-                        "pid": 823162141,
-                        "type": "1.0_switch",
-                        "address": "FE000404",
-                        "opt": "00000001",
-                        "optName": "开启",
-                        "shortTime": "00:05"
-                    }
-                ],
-                "id": 8,
-                "pid": 807434540,
-                "dates": "0,1,2,3,4,5,6",
-                "priorHoloday": "01000001"
-            },
-            {
-                "timersInfo": [
-                    {
-                        "id": 1,
-                        "pid": 990779320,
-                        "type": "1.0_switch",
-                        "address": "FE000405",
-                        "opt": "00000001",
-                        "optName": "开启",
-                        "shortTime": "00:55"
-                    },
-                    {
-                        "id": 2,
-                        "pid": 564729664,
-                        "type": "1.0_switch",
-                        "address": "FE000406",
-                        "opt": "00000001",
-                        "optName": "开启",
-                        "shortTime": "00:56"
-                    }
-                ],
-                "id": 9,
-                "pid": 708147425,
-                "dates": "1",
-                "priorHoloday": "01000001"
-            },
-            {
-                "timersInfo": [
-                    {
-                        "id": 1,
-                        "pid": 810388020,
+                        "pid": 0,
                         "type": "1.0_switch",
                         "address": "FE000701",
                         "opt": "00000001",
                         "optName": "开启",
-                        "shortTime": "00:45"
+                        "shortTime": ""
                     },
                     {
                         "id": 2,
-                        "pid": 403035260,
+                        "pid": 0,
                         "type": "1.0_switch",
                         "address": "FE000702",
                         "opt": "00000001",
                         "optName": "开启",
-                        "shortTime": "00:50"
+                        "shortTime": ""
+                    },
+                    {
+                        "id": 3,
+                        "pid": 0,
+                        "type": "1.0_switch",
+                        "address": "FE000703",
+                        "opt": "00000001",
+                        "optName": "开启",
+                        "shortTime": ""
+                    },
+                    {
+                        "id": 4,
+                        "pid": 0,
+                        "type": "1.0_switch",
+                        "address": "FE000704",
+                        "opt": "00000001",
+                        "optName": "开启",
+                        "shortTime": ""
+                    },
+                    {
+                        "id": 5,
+                        "pid": 0,
+                        "type": "1.0_switch",
+                        "address": "FE000705",
+                        "opt": "00000001",
+                        "optName": "开启",
+                        "shortTime": ""
+                    },
+                    {
+                        "id": 6,
+                        "pid": 0,
+                        "type": "1.0_switch",
+                        "address": "FE000706",
+                        "opt": "00000001",
+                        "optName": "开启",
+                        "shortTime": ""
+                    },
+                    {
+                        "id": 7,
+                        "pid": 0,
+                        "type": "1.0_switch",
+                        "address": "FE000707",
+                        "opt": "00000001",
+                        "optName": "开启",
+                        "shortTime": ""
+                    },
+                    {
+                        "id": 8,
+                        "pid": 0,
+                        "type": "1.0_switch",
+                        "address": "FE000708",
+                        "opt": "00000001",
+                        "optName": "开启",
+                        "shortTime": ""
+                    },
+                    {
+                        "id": 9,
+                        "pid": 0,
+                        "type": "",
+                        "address": "FE000709",
+                        "opt": "00000001",
+                        "optName": "开启",
+                        "shortTime": ""
                     }
                 ],
-                "id": 10,
-                "pid": 979685522,
-                "dates": "2",
+                "id": 1,
+                "pid": 503535548,
+                "dates": "",
                 "priorHoloday": "01000001"
             },
             {
                 "timersInfo": [
                     {
                         "id": 1,
-                        "pid": 216700409,
+                        "pid": 0,
+                        "type": "1.0_switch",
+                        "address": "FE000701",
+                        "opt": "00000001",
+                        "optName": "开启",
+                        "shortTime": ""
+                    },
+                    {
+                        "id": 2,
+                        "pid": 0,
+                        "type": "1.0_switch",
+                        "address": "FE000302",
+                        "opt": "00000001",
+                        "optName": "开启",
+                        "shortTime": ""
+                    },
+                    {
+                        "id": 3,
+                        "pid": 0,
                         "type": "1.0_switch",
                         "address": "FE000703",
                         "opt": "00000001",
                         "optName": "开启",
-                        "shortTime": "23:00"
+                        "shortTime": ""
                     },
                     {
-                        "id": 2,
-                        "pid": 310910213,
+                        "id": 4,
+                        "pid": 0,
                         "type": "1.0_switch",
-                        "address": "FE000704",
+                        "address": "FE000404",
                         "opt": "00000001",
                         "optName": "开启",
-                        "shortTime": "23:00"
+                        "shortTime": ""
+                    },
+                    {
+                        "id": 5,
+                        "pid": 0,
+                        "type": "1.0_switch",
+                        "address": "FE000705",
+                        "opt": "00000001",
+                        "optName": "开启",
+                        "shortTime": ""
+                    },
+                    {
+                        "id": 6,
+                        "pid": 0,
+                        "type": "1.0_switch",
+                        "address": "FE000406",
+                        "opt": "00000001",
+                        "optName": "开启",
+                        "shortTime": ""
+                    },
+                    {
+                        "id": 7,
+                        "pid": 0,
+                        "type": "1.0_switch",
+                        "address": "FE000707",
+                        "opt": "00000001",
+                        "optName": "开启",
+                        "shortTime": ""
+                    },
+                    {
+                        "id": 8,
+                        "pid": 0,
+                        "type": "1.0_switch",
+                        "address": "FE000708",
+                        "opt": "00000001",
+                        "optName": "开启",
+                        "shortTime": ""
                     }
                 ],
-                "id": 11,
-                "pid": 563417434,
-                "dates": "3",
+                "id": 7,
+                "pid": 192920859,
+                "dates": "",
                 "priorHoloday": "01000001"
             }
         ],

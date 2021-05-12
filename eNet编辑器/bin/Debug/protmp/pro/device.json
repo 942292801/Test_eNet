@@ -350,6 +350,140 @@
                 "devContent": null
             },
             {
+                "devPortList": [
+                    {
+                        "portID": 1,
+                        "portType": "1.0_switch",
+                        "portInterface": "Switch",
+                        "portContent": null
+                    },
+                    {
+                        "portID": 2,
+                        "portType": "1.0_switch",
+                        "portInterface": "Switch",
+                        "portContent": null
+                    },
+                    {
+                        "portID": 3,
+                        "portType": "1.0_switch",
+                        "portInterface": "Switch",
+                        "portContent": null
+                    },
+                    {
+                        "portID": 4,
+                        "portType": "1.0_switch",
+                        "portInterface": "Switch",
+                        "portContent": null
+                    },
+                    {
+                        "portID": 5,
+                        "portType": "19.0_electricity",
+                        "portInterface": "Electricity",
+                        "portContent": null
+                    },
+                    {
+                        "portID": 6,
+                        "portType": "19.0_electricity",
+                        "portInterface": "Electricity",
+                        "portContent": null
+                    },
+                    {
+                        "portID": 7,
+                        "portType": "19.0_electricity",
+                        "portInterface": "Electricity",
+                        "portContent": null
+                    },
+                    {
+                        "portID": 8,
+                        "portType": "19.0_electricity",
+                        "portInterface": "Electricity",
+                        "portContent": null
+                    },
+                    {
+                        "portID": 9,
+                        "portType": "20.0_voltage",
+                        "portInterface": "Voltage",
+                        "portContent": null
+                    },
+                    {
+                        "portID": 10,
+                        "portType": "20.0_voltage",
+                        "portInterface": "Voltage",
+                        "portContent": null
+                    },
+                    {
+                        "portID": 11,
+                        "portType": "20.0_voltage",
+                        "portInterface": "Voltage",
+                        "portContent": null
+                    },
+                    {
+                        "portID": 12,
+                        "portType": "20.0_voltage",
+                        "portInterface": "Voltage",
+                        "portContent": null
+                    },
+                    {
+                        "portID": 13,
+                        "portType": "21.0_watt",
+                        "portInterface": "Watt",
+                        "portContent": null
+                    },
+                    {
+                        "portID": 14,
+                        "portType": "21.0_watt",
+                        "portInterface": "Watt",
+                        "portContent": null
+                    },
+                    {
+                        "portID": 15,
+                        "portType": "21.0_watt",
+                        "portInterface": "Watt",
+                        "portContent": null
+                    },
+                    {
+                        "portID": 16,
+                        "portType": "21.0_watt",
+                        "portInterface": "Watt",
+                        "portContent": null
+                    },
+                    {
+                        "portID": 17,
+                        "portType": "22.0_power",
+                        "portInterface": "Power",
+                        "portContent": null
+                    },
+                    {
+                        "portID": 18,
+                        "portType": "22.0_power",
+                        "portInterface": "Power",
+                        "portContent": null
+                    },
+                    {
+                        "portID": 19,
+                        "portType": "22.0_power",
+                        "portInterface": "Power",
+                        "portContent": null
+                    },
+                    {
+                        "portID": 20,
+                        "portType": "22.0_power",
+                        "portInterface": "Power",
+                        "portContent": null
+                    }
+                ],
+                "id": 31,
+                "device": "ET-R0420AUT",
+                "sn": "",
+                "ver": "",
+                "area1": "",
+                "area2": "",
+                "area3": "",
+                "area4": "",
+                "name": "",
+                "devContent": null
+            },
+            {
                 "devPortList": [],
                 "id": 35,
                 "device": "KP08C",

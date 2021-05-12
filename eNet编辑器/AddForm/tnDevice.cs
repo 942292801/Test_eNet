@@ -60,7 +60,6 @@ namespace eNet编辑器.AddForm
 
             //获取设备名称
             folder = new DirectoryInfo(Application.StartupPath + "//devices");
-
             string species = "";
             HashSet<string> hs = new HashSet<string>();
             //循环添加种类
@@ -89,8 +88,7 @@ namespace eNet编辑器.AddForm
                 //修改模式
                 cbDevice.Text = Regex.Replace(infos[2], @"[^\d]*", "");
                 oldDevNum = cbDevice.Text;
-                cbVersion.Text = infos[3];
-                oldDevVersion = infos[3];
+                
                 //还原种类
                 foreach (FileInfo file in folder.GetFiles("*.ini"))
                 {
@@ -102,6 +100,9 @@ namespace eNet编辑器.AddForm
                         break;
                     }
                 }
+                cbVersion.Text = infos[3];
+                oldDevVersion = infos[3];
+                /*cbVersion.SelectedItem = oldDevVersion;*/
 
             }
             else

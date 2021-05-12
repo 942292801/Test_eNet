@@ -44,7 +44,7 @@ namespace eNet编辑器.ThreeView
             int index3 = 0;
             string filepath = "";
             string device = "";
-            string gwdevice = "";
+            //string gwdevice = "";
             string portVal = "";
             string address = "";
             string section = "";
@@ -52,8 +52,8 @@ namespace eNet编辑器.ThreeView
             {
                 //添加网关
                 filepath = string.Format("{0}\\devices\\{1}.ini", Application.StartupPath, master.master);
-                gwdevice = IniConfig.GetValue(filepath, "define", "display");
-                index = tm.AddNode1(treeView1, master.ip + " " + gwdevice);
+                //gwdevice = IniConfig.GetValue(filepath, "define", "display");
+                index = tm.AddNode1(treeView1, master.ip + " " + master.master);
                 foreach (DataJson.Module m in master.module)
                 {
                     filepath = filepath = string.Format("{0}\\devices\\{1}.ini", Application.StartupPath, m.device);

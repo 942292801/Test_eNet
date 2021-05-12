@@ -10016,7 +10016,7 @@
 </value>
   </data>
   <data name="tabName.Text" xml:space="preserve">
-    <value>  设 备</value>
+    <value>  设备管理</value>
   </data>
   <data name="&gt;&gt;tabControlPanel1.Name" xml:space="preserve">
     <value>tabControlPanel1</value>
@@ -10366,7 +10366,7 @@
     <value>tabStrip</value>
   </data>
   <data name="&gt;&gt;tabControlPanel8.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>4</value>
   </data>
   <data name="tabControlPanel7.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -13445,16 +13445,16 @@
   <data name="&gt;&gt;关于软件ToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;tabVar.Name" xml:space="preserve">
-    <value>tabVar</value>
-  </data>
-  <data name="&gt;&gt;tabVar.Type" xml:space="preserve">
-    <value>DevComponents.DotNetBar.TabItem, DevComponents.DotNetBar2, Version=14.0.0.3, Culture=neutral, PublicKeyToken=c39c3242a43eee2b</value>
-  </data>
   <data name="&gt;&gt;tabName.Name" xml:space="preserve">
     <value>tabName</value>
   </data>
   <data name="&gt;&gt;tabName.Type" xml:space="preserve">
+    <value>DevComponents.DotNetBar.TabItem, DevComponents.DotNetBar2, Version=14.0.0.3, Culture=neutral, PublicKeyToken=c39c3242a43eee2b</value>
+  </data>
+  <data name="&gt;&gt;tabVar.Name" xml:space="preserve">
+    <value>tabVar</value>
+  </data>
+  <data name="&gt;&gt;tabVar.Type" xml:space="preserve">
     <value>DevComponents.DotNetBar.TabItem, DevComponents.DotNetBar2, Version=14.0.0.3, Culture=neutral, PublicKeyToken=c39c3242a43eee2b</value>
   </data>
   <data name="&gt;&gt;tabLogic.Name" xml:space="preserve">

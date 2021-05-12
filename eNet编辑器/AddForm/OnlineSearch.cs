@@ -428,10 +428,10 @@ namespace eNet编辑器.AddForm
                 }
 
             }
-            catch (Exception ex)
+            catch
             {
                 isSearchIP = false;
-                ToolsUtil.WriteLog(ex.Message);
+                //ToolsUtil.WriteLog(ex.Message);
             }
 
 
@@ -474,38 +474,31 @@ namespace eNet编辑器.AddForm
                     try
                     {
                         //新建网关
-                        DataJson.totalList OldList = FileMesege.cmds.getListInfos();
                         Thread thread = new Thread(ThreadRunAddDev);
-                        
                         addDevList.Clear();
                         switch (treeView1.SelectedNode.Level)
                         {
                             case 0:
-                                //父节点的IP地址
+                                //添加子设备
                                 parentIp = treeView1.SelectedNode.Text;
-                                
                                 foreach (TreeNode tn in treeView1.SelectedNode.Nodes)
                                 {
                                     addDevList.Add(tn.Text);
 
                                 }
-                                TxtShow("添加设备个数：" + addDevList.Count.ToString());
+                                //TxtShow("添加设备个数：" + addDevList.Count.ToString());
                                 thread.Start();
-
-                                
                                 break;
                             case 1:
-                                //父节点的IP地址
                                 parentIp = treeView1.SelectedNode.Parent.Text;
                                 addDevList.Add(treeView1.SelectedNode.Text);
                                 thread.Start();
                                 break;
                             default:
-                                TxtShow("添加设备失败!请选择添加设备!");
+                                TxtShow("请选择需添加设备!");
                                 break;
                         }
-                        DataJson.totalList NewList = FileMesege.cmds.getListInfos();
-                        FileMesege.cmds.DoNewCommand(NewList, OldList);
+                     
                     }
                     catch (Exception ex)
                     {
@@ -525,14 +518,30 @@ namespace eNet编辑器.AddForm
         {
             try
             {
-                //新建网关
-                checkDevList(parentIp);
+                //检查网关新建
+                bool isChange = false;
+                DataJson.totalList OldList = FileMesege.cmds.getListInfos();
+                if (checkDevList(parentIp))
+                {
+                    isChange = true;
+                }
+                Console.WriteLine("网关：" + parentIp + "数量：" + FileMesege.DeviceList.Count);
                 foreach (string info in addDevList)
                 {
-                    UpdataDev(parentIp, info);
-
+                    Console.WriteLine("网关：" + parentIp + "数量：" + FileMesege.DeviceList.Count);
+                    if (UpdataDev(parentIp, info)) {
+                        isChange = true;
+                    }
+                    
                 }
                 this.Invoke(updateNodeDelegate);
+                if (isChange)
+                {
+                    DataJson.totalList NewList = FileMesege.cmds.getListInfos();
+                    FileMesege.cmds.DoNewCommand(NewList, OldList);
+                }
+
+                Console.WriteLine("更新节点" );
                 TxtShow("设备添加成功!");
             }
             catch(Exception ex)
@@ -543,19 +552,18 @@ namespace eNet编辑器.AddForm
         }
 
         /// <summary>
-        /// DevList 添加设备或 更新设备
+        /// DevList 添加设备或 更新设备  返回是否修改
         /// </summary>
         /// <param name="parentIp">父节点ID</param>
         /// <param name="ID">子节点ID号</param>
         /// <param name="device">设备名称</param>
-        private void UpdataDev(string parentIp, string info)
+        private bool UpdataDev(string parentIp, string info)
         {
             try
             {
-
                 if (string.IsNullOrEmpty(parentIp) || string.IsNullOrEmpty(info))
                 {
-                    return;
+                    return false;
                 }
                 //设备节点的ID和名称信息
                 string[] infos = info.Split(' ');
@@ -590,7 +598,6 @@ namespace eNet编辑器.AddForm
                             if (md.id.ToString() == ID)
                             {
                                 //修改设备
-                                DataJson.totalList OldList = FileMesege.cmds.getListInfos();
                                 if (md.device != device)
                                 {
                                     //删除Point信息
@@ -604,8 +611,6 @@ namespace eNet编辑器.AddForm
 
                                 }
                                 DataListHelper.changeDevice(parentIp, ID, device, ID, md.device);
-                                DataJson.totalList NewList = FileMesege.cmds.getListInfos();
-                                FileMesege.cmds.DoNewCommand(NewList, OldList);
                                 isExit = true;
                                 break;
 
@@ -616,19 +621,19 @@ namespace eNet编辑器.AddForm
                         if (!isExit)
                         {
                             //新建设备
-                            DataJson.totalList OldList = FileMesege.cmds.getListInfos();
                             DataListHelper.newDevice(parentIp, ID, device);
-                            DataJson.totalList NewList = FileMesege.cmds.getListInfos();
-                            FileMesege.cmds.DoNewCommand(NewList, OldList);
-                            break;
+                     
+                            return true;
                         }
-
+                        return true;
                     }
                 }
+                return false;
             }
             catch (Exception ex)
             {
                 ToolsUtil.WriteLog(ex.Message);
+                return false;
             }
             
 
@@ -641,37 +646,32 @@ namespace eNet编辑器.AddForm
         /// 新建网关 并判断该IP网关是否存在 
         /// </summary>
         /// <param name="ip"></param>
-        private void checkDevList(string parentIp)
+        private bool checkDevList(string parentIp)
         {
             try
             {
-                bool b = Regex.IsMatch(parentIp, @"^[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}$");
-                if (!b)
-                {
-                    return;
-                }
                 bool isExit = false;
-                if (FileMesege.DeviceList == null)
+                if (FileMesege.DeviceList != null)
                 {
-                    FileMesege.DeviceList = new List<DataJson.Device>();
-                }
-                foreach (DataJson.Device dev in FileMesege.DeviceList)
-                {
-                    if (dev.ip == parentIp)
+                    foreach (DataJson.Device dev in FileMesege.DeviceList)
                     {
-                        isExit = true;
+                        if (dev.ip == parentIp)
+                        {
+                            isExit = true;
+                        }
                     }
                 }
-
                 if (!isExit)
                 {
                     DataListHelper.newGateway(parentIp, "GW100A");
+                    return true;
                 }
-
+                return false;
             }
             catch (Exception ex)
             {
                 ToolsUtil.WriteLog(ex.Message);
+                return false;
             }
            
         }
@@ -690,31 +690,7 @@ namespace eNet编辑器.AddForm
         {
             try
             {
-                /*long elapsedTicks = DateTime.Now.Ticks - lastTicks;
-                TimeSpan span = new TimeSpan(elapsedTicks);
-                double diff = span.TotalSeconds;
-
-                if (diff < 1)
-                {
-                    lastTicks = DateTime.Now.Ticks;
-                    return;
-                }
-                lastTicks = DateTime.Now.Ticks;
-
-                searchIP = string.Empty;
-                if (treeView1.SelectedNode != null && treeView1.SelectedNode.Level == 0)
-                {
-
-
-                    treeView1.SelectedNode.Nodes.Clear();
-                    searchIP = treeView1.SelectedNode.Text;
-                    if (!string.IsNullOrEmpty(searchIP))
-                    {
-                        ReadSerial();
-                    }
-                    //ToolsUtil.DelayMilli(2000);
-                }
-                else*/
+              
                 if (treeView1.SelectedNode != null && treeView1.SelectedNode.Level == 1)
                 {
                     btnImport_Click(this, EventArgs.Empty);

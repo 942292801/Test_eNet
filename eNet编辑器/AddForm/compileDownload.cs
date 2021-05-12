@@ -280,13 +280,13 @@ namespace eNet编辑器.AddForm
         {
             //存在该Ip的信息 可以进行编译
             FileMesege fm = new FileMesege();
-            if (fm.ObjDirClearByIP(sourceIP))
+            if (fm.ObjDirClearByIP(targetIP))
             {
-                backgroundWorker1.ReportProgress(5, string.Format("({0})工程文件夹创建成功！", sourceIP));
+                backgroundWorker1.ReportProgress(5, string.Format("({0})工程文件夹创建成功！", targetIP));
             }
             else
             {
-                backgroundWorker1.ReportProgress(100, string.Format("({0})工程文件夹创建失败！", sourceIP));
+                backgroundWorker1.ReportProgress(100, string.Format("({0})工程文件夹创建失败！", targetIP));
                 return ;
             }
 
@@ -325,7 +325,7 @@ namespace eNet编辑器.AddForm
             }
 
             //编译场景
-            if (fm.getSceneJsonByIP(sourceIP))
+            if (fm.getSceneJsonByIP(sourceIP, targetIP))
             {
            
                 backgroundWorker1.ReportProgress(10, "场景文件编译通过！");
@@ -344,7 +344,7 @@ namespace eNet编辑器.AddForm
             }
 
             //编译定时
-            if (fm.getTimerJsonByIP(sourceIP))
+            if (fm.getTimerJsonByIP(sourceIP, targetIP))
             {
                 backgroundWorker1.ReportProgress(15, "定时文件编译通过！");
             }
@@ -361,7 +361,7 @@ namespace eNet编辑器.AddForm
                 return;
             }
             //编译面板
-            if (fm.getPanelJsonByIP(sourceIP))
+            if (fm.getPanelJsonByIP(sourceIP, targetIP))
             {
                 backgroundWorker1.ReportProgress(20, "面板文件编译通过！");
             }
@@ -378,7 +378,7 @@ namespace eNet编辑器.AddForm
                 return;
             }
             //编译感应
-            if (fm.getSensorJsonByIP(sourceIP))
+            if (fm.getSensorJsonByIP(sourceIP, targetIP))
             {
                 backgroundWorker1.ReportProgress(25, "感应编组文件编译通过！");
             }
@@ -395,7 +395,7 @@ namespace eNet编辑器.AddForm
                 return;
             }
             //编译逻辑
-            if (fm.getLogicJsonByIp(sourceIP))
+            if (fm.getLogicJsonByIp(sourceIP, targetIP))
             {
                 backgroundWorker1.ReportProgress(30, "逻辑文件编译通过！");
             }
@@ -413,9 +413,9 @@ namespace eNet编辑器.AddForm
             }
 
 
-            #region 获取point area device scene timer panel sensor logic文件
+            #region 获取point area device scene timer panel sensor logic文件 放入Backup
             //抽离point 信息
-            string point = fm.BackupPointJsonByIP(sourceIP);
+            string point = fm.BackupPointJsonByIP(sourceIP,targetIP);
             if (!string.IsNullOrEmpty(point))
             {
                 backgroundWorker1.ReportProgress(33, "Backup点位文件编译通过！");
@@ -449,7 +449,7 @@ namespace eNet编辑器.AddForm
                 return;
             }
             //获取device 信息
-            string device = fm.BackupDeviceJsonByIP(sourceIP);
+            string device = fm.BackupDeviceJsonByIP(sourceIP, targetIP);
             if (!string.IsNullOrEmpty(device))
             {
                 backgroundWorker1.ReportProgress(39, "Backup设备列表文件编译通过！");
@@ -467,7 +467,7 @@ namespace eNet编辑器.AddForm
             }
 
             //获取scene 信息
-            string scene = fm.BackupSceneJsonByIP(sourceIP);
+            string scene = fm.BackupSceneJsonByIP(sourceIP, targetIP);
             if (!string.IsNullOrEmpty(scene))
             {
                 backgroundWorker1.ReportProgress(42, "Backup场景文件编译通过！");
@@ -485,7 +485,7 @@ namespace eNet编辑器.AddForm
             }
 
             //获取timer 信息
-            string timer = fm.BackupTimerJsonByIP(sourceIP);
+            string timer = fm.BackupTimerJsonByIP(sourceIP, targetIP);
             if (!string.IsNullOrEmpty(timer))
             {
                 backgroundWorker1.ReportProgress(45, "Backup定时文件编译通过！");
@@ -503,7 +503,7 @@ namespace eNet编辑器.AddForm
             }
 
             //获取panel 信息
-            string panel = fm.BackupPanelJsonByIP(sourceIP);
+            string panel = fm.BackupPanelJsonByIP(sourceIP, targetIP);
             if (!string.IsNullOrEmpty(panel))
             {
                 backgroundWorker1.ReportProgress(46, "Backup面板文件编译通过！");
@@ -521,7 +521,7 @@ namespace eNet编辑器.AddForm
             }
 
             //获取sensor信息
-            string sensor = fm.BackupSensorJsonByIP(sourceIP);
+            string sensor = fm.BackupSensorJsonByIP(sourceIP, targetIP);
             if (!string.IsNullOrEmpty(sensor))
             {
                 backgroundWorker1.ReportProgress(47, "Backup感应编组文件编译通过！");
@@ -539,7 +539,7 @@ namespace eNet编辑器.AddForm
             }
 
             //获取logic信息
-            string logic = fm.BackupLogicJsonByIP(sourceIP);
+            string logic = fm.BackupLogicJsonByIP(sourceIP, targetIP);
             if (!string.IsNullOrEmpty(logic))
             {
                 backgroundWorker1.ReportProgress(48, "Backup逻辑文件编译通过！");
@@ -559,7 +559,7 @@ namespace eNet编辑器.AddForm
             #endregion
 
             //建立压缩包
-            string file = string.Format("{0}\\objs\\{1}", FileMesege.TmpFilePath, sourceIP);
+            string file = string.Format("{0}\\objs\\{1}", FileMesege.TmpFilePath, targetIP);
             try
             {
 
@@ -756,7 +756,7 @@ namespace eNet编辑器.AddForm
 
                 //写入数据格式
                 string data = "down /enet.prj$";
-                string filepath = string.Format("{0}\\objs\\{1}.zip", FileMesege.TmpFilePath, sourceIP);
+                string filepath = string.Format("{0}\\objs\\{1}.zip", FileMesege.TmpFilePath, targetIP);
 
                 TcpSocket ts = new TcpSocket();
 

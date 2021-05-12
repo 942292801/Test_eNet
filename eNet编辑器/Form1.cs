@@ -257,16 +257,24 @@ namespace eNet编辑器
         /// </summary>
         private void updataTreeNode()
         {
-            threename.ThreeNameAddNode();
-            threescene.ThreeSceneAddNode();
-            threetimer.ThreeTimerAddNode();
-            threepanel.ThreePanelAddNode();
-            threesensor.ThreeSensorAddNode();
-            threelogic.ThreeLogicAddNode();
-            threesection.ThreeSEctionAddNode();
-            threevar.ThreeVarAddNode();
-            threelogic.ThreeLogicAddNode();
-            threepoint.ThreePointAddNode();
+            try {
+
+                threename.ThreeNameAddNode();
+                threescene.ThreeSceneAddNode();
+                threetimer.ThreeTimerAddNode();
+                threepanel.ThreePanelAddNode();
+                threesensor.ThreeSensorAddNode();
+                threelogic.ThreeLogicAddNode();
+                threesection.ThreeSEctionAddNode();
+                threevar.ThreeVarAddNode();
+                threelogic.ThreeLogicAddNode();
+                threepoint.ThreePointAddNode();
+            }
+            catch (Exception ex)
+            {
+                ToolsUtil.WriteLog(ex.Message);
+            }
+            
         }
 
         /// <summary>

@@ -1923,11 +1923,21 @@ namespace eNet编辑器.DgvView
             timerHHMM th = new timerHHMM();
             selectCellId = id;
             th.AddShortTime += new Action<string>(th_AddShortTime);
+            //这个区域包括任务栏，就是屏幕显示的物理范围
+            Rectangle ScreenArea = System.Windows.Forms.Screen.GetBounds(this);
+          
             Point pt = MousePosition;
-            //把窗口向屏幕中间刷新
             th.StartPosition = FormStartPosition.Manual;
             th.Left = pt.X + 10;
-            th.Top = pt.Y + 10;
+            if (ScreenArea.Height - pt.Y < 300)
+            {
+                th.Top = pt.Y - 220;
+
+            }
+            else {
+                th.Top = pt.Y + 10;
+
+            }
             th.Date = shortTime;
             //把窗口向屏幕中间刷新
             th.Show();

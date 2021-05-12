@@ -161,14 +161,14 @@ namespace eNet编辑器.DgvView
             
             try
             {
+                this.dataGridView1.Rows.Clear();
+                cbDevNum.Items.Clear();
                 DataJson.panels pls = DataListHelper.getPanelsInfoListByNode();
                 if (pls == null)
                 {
                     return;
                 }
 
-                this.dataGridView1.Rows.Clear();
-                cbDevNum.Items.Clear();
                 if (cbPage.SelectedIndex != pageIndex)
                 {
                     cbPage.SelectedIndex = pageIndex;
