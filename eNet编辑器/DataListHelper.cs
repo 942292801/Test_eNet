@@ -337,16 +337,30 @@ namespace eNet编辑器
                             addPortType(m.devPortList, version);
                             //按ID号排序
                             DeviceSort(dev);
+                            int tmpid = Convert.ToInt32(id);
+                            int tmpOldid = Convert.ToInt32(oldid);
                             if (id != oldid && version == oldVersion)
                             {
-                                ChangeDevPanel(ip, Convert.ToInt32(id), version, Convert.ToInt32(oldid));
+                                ChangeDevPanel(ip, tmpid, version, tmpOldid);
+                                //修改信息
+                                changeSceneInfoByid(dev.ip, tmpid, tmpOldid);
+                                changeTimerInfoByid(dev.ip, tmpid, tmpOldid);
+                                changePanelInfoByid(dev.ip, tmpid, tmpOldid);
+                                //changeSensorInfoByid(dev.ip, tmpOldid);//还需要完善
+                                //changeLogicInfoByid(dev.ip, tmpOldid);//还需要完善
                             }
                             else
                             {
-                                ChangeDevIDVerPanel(dev.ip, Convert.ToInt32(id), version, Convert.ToInt32(oldid));
-                            
+                                //修改型号
+                                ChangeDevIDVerPanel(dev.ip, tmpid, version, tmpOldid);
+                                //删除信息
+                                removeSceneInfoByid(dev.ip, tmpOldid);
+                                removeTimerInfoByid(dev.ip, tmpOldid);
+                                removePanelInfoByid(dev.ip, tmpOldid);
+                                //removeSensorInfoByid(dev.ip, tmpOldid);//还需要完善
+                                //removeLogicInfoByid(dev.ip, tmpOldid);//还需要完善
                             }
-                    
+
                             break;
                         }
                     }
@@ -393,8 +407,8 @@ namespace eNet编辑器
                         removeSceneInfoByid(dev.ip, tmpOldid);
                         removeTimerInfoByid(dev.ip, tmpOldid);
                         removePanelInfoByid(dev.ip, tmpOldid);
-                        removeSensorInfoByid(dev.ip, tmpOldid);//还需要完善
-                        removeLogicInfoByid(dev.ip, tmpOldid);//还需要完善
+                        //removeSensorInfoByid(dev.ip, tmpOldid);//还需要完善
+                        //removeLogicInfoByid(dev.ip, tmpOldid);//还需要完善
                     }
                     //刷新所有Tree的节点
                     UpdateTreeView();
@@ -550,6 +564,7 @@ namespace eNet编辑器
 
         public static DataJson.DevPort findPortByModule_Port(DataJson.Module md, int port)
         {
+
             foreach (DataJson.DevPort dp in md.devPortList)
             {
                 if (dp.portID == port)
@@ -583,7 +598,6 @@ namespace eNet编辑器
                 //循环判断 NameList中是否存在该节点
                 if (address == e.address && e.ip == ip)
                 {
-                   
                     e.area1 = sections[0];
                     e.area2 = sections[1];
                     e.area3 = sections[2];
@@ -2142,7 +2156,7 @@ namespace eNet编辑器
                     eq.address = address;
                     eq.pid = randomNum;
                     eq.ip = ip;
-                    eq.name = IniConfig.GetValue(path + version + ".ini", "define", "note").Split('&')[0]+id.ToString();
+                    eq.name = IniConfig.GetValue(path + version + ".ini", "define", "note").Split('&')[0]+id.ToString()+"@"+ip.Split('.')[3];
                     eq.type = IniHelper.findTypesIniTypebyName("面板");
                     eq.objType = "";
                     eq.value = "";
@@ -2330,12 +2344,12 @@ namespace eNet编辑器
                 {
                     
                     pls.id = id;
-                    eq.area1 = "";
+                   /* eq.area1 = "";
                     eq.area2 = "";
                     eq.area3 = "";
-                    eq.area4 = "";
+                    eq.area4 = "";*/
                     eq.address = address;
-                    eq.name = IniConfig.GetValue(path + version + ".ini", "define", "note").Split('&')[0] + id.ToString();
+                    eq.name = IniConfig.GetValue(path + version + ".ini", "define", "note").Split('&')[0] + id.ToString() + "@" + ip.Split('.')[3]; ;
                     break;
                 }
 
@@ -2398,7 +2412,7 @@ namespace eNet编辑器
                     eq.area3 = "";
                     eq.area4 = "";
                     eq.address = address;
-                    eq.name = IniConfig.GetValue(path + version + ".ini", "define", "note") + id.ToString();
+                    eq.name = IniConfig.GetValue(path + version + ".ini", "define", "note").Split('&')[0] + id.ToString() + "@" + ip.Split('.')[3]; ;
                     break;
                 }
 

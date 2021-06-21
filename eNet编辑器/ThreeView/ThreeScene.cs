@@ -113,10 +113,10 @@ namespace eNet编辑器.ThreeView
             TreeMesege.SelectNodeByPoint(treeView1, point);
         }
 
+
         #region 树状图新建 删除 修改 排序 搜索区域
         private void 新建ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            
             //右击树状图外面区域
             if (newitemflag != true)
             {
@@ -130,8 +130,6 @@ namespace eNet编辑器.ThreeView
                 newTsScene();
                     
             }
-
-            
         }
 
         /// <summary>
@@ -569,9 +567,9 @@ namespace eNet编辑器.ThreeView
                     node.ExpandAll();
                 }
             }
-            catch
+            catch(Exception ex)
             {
-
+                Console.WriteLine(ex.StackTrace);
             }
            
         }

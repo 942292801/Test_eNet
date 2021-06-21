@@ -619,6 +619,7 @@ namespace eNet编辑器.Tools
         /// <param name="e"></param>
         private void btnUpdate_Click(object sender, EventArgs e)
         {
+            btnUpdate.Enabled = false;
             getMsterTimeConnet();
             if (client6003 != null && client6003.Connected())
             {
@@ -635,6 +636,7 @@ namespace eNet编辑器.Tools
                 //再次获取日出日落时间
                 client6003.SendAsync("GET;{254.251.0.18};\r\n");
             }
+            btnUpdate.Enabled = true;
         }
 
         /// <summary>

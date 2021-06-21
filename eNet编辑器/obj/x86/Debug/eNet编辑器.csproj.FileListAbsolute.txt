@@ -332,3 +332,5 @@ C:\Users\Administrator\Desktop\Project\eNET编辑器\eNet\eNet编辑器\obj\x86\
 C:\Users\Administrator\Desktop\Project\eNET编辑器\eNet\eNet编辑器\obj\x86\Debug\eNet编辑器.OtherView.PgView.resources
 C:\Users\Administrator\Desktop\Project\eNET编辑器\eNet\eNet编辑器\obj\x86\Debug\eNet编辑器.AddForm.SearchSection.resources
 C:\Users\Administrator\Desktop\Project\eNET编辑器\eNet\eNet编辑器\obj\x86\Debug\eNet编辑器.AddForm.ReadMasterPrj.resources
+C:\Users\Administrator\Desktop\Project\eNET编辑器\eNet\eNet编辑器\obj\x86\Debug\eNet编辑器.Style.FormStyle.resources
+C:\Users\Administrator\Desktop\Project\eNET编辑器\eNet\eNet编辑器\obj\x86\Debug\eNet编辑器.Tools.NineKeySet.resources

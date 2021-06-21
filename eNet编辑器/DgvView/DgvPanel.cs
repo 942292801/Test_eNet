@@ -1972,9 +1972,23 @@ namespace eNet编辑器.DgvView
 
         #endregion
 
+        #region 鼠标图标改变
+        public void CursorIsNormal(bool isNormal)
+        {
+            if (isNormal)
+            {
+                dataGridView1.Cursor = Cursors.Default;
+            }
+            else
+            {
+                dataGridView1.Cursor = Cursors.NoMove2D;
+            }
+        }
+        #endregion
+
         #region 按键号 页号 面板设备号 图片显示
 
-        
+
         private void CbKeyNum_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
@@ -3127,6 +3141,9 @@ namespace eNet编辑器.DgvView
                     {
                         
                         id = dataGridView1.SelectedCells[i].RowIndex;
+                        if (dataGridView1.Rows[id].Cells[4].Value == null) {
+                            return;
+                        }
                         DataJson.PointInfo eq = DataListHelper.findPointBySectionName(dataGridView1.Rows[id].Cells[4].Value.ToString(), dataGridView1.Rows[id].Cells[5].Value.ToString().Split('@')[0]);
                         if (eq == null)
                         {

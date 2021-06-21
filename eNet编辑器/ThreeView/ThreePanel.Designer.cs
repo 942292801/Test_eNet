@@ -36,6 +36,7 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.plInfoTitle = new System.Windows.Forms.Panel();
+            this.btnSearch = new DevComponents.DotNetBar.ButtonX();
             this.btnDel = new DevComponents.DotNetBar.ButtonX();
             this.btnAdd = new DevComponents.DotNetBar.ButtonX();
             this.symbolBox1 = new DevComponents.DotNetBar.Controls.SymbolBox();
@@ -48,6 +49,7 @@
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.新建ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.buttonX1 = new DevComponents.DotNetBar.ButtonX();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -123,6 +125,8 @@
             // plInfoTitle
             // 
             this.plInfoTitle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.plInfoTitle.Controls.Add(this.buttonX1);
+            this.plInfoTitle.Controls.Add(this.btnSearch);
             this.plInfoTitle.Controls.Add(this.btnDel);
             this.plInfoTitle.Controls.Add(this.btnAdd);
             this.plInfoTitle.Controls.Add(this.symbolBox1);
@@ -133,6 +137,26 @@
             this.plInfoTitle.Name = "plInfoTitle";
             this.plInfoTitle.Size = new System.Drawing.Size(260, 25);
             this.plInfoTitle.TabIndex = 5;
+            // 
+            // btnSearch
+            // 
+            this.btnSearch.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnSearch.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.btnSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnSearch.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
+            this.btnSearch.FocusCuesEnabled = false;
+            this.btnSearch.Font = new System.Drawing.Font("微软雅黑", 9F);
+            this.btnSearch.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None;
+            this.btnSearch.HoverImage = ((System.Drawing.Image)(resources.GetObject("btnSearch.HoverImage")));
+            this.btnSearch.Image = ((System.Drawing.Image)(resources.GetObject("btnSearch.Image")));
+            this.btnSearch.Location = new System.Drawing.Point(184, 5);
+            this.btnSearch.Margin = new System.Windows.Forms.Padding(6);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(15, 15);
+            this.btnSearch.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnSearch.TabIndex = 13;
+            this.btnSearch.Tooltip = "搜索区域";
+            this.btnSearch.Click += new System.EventHandler(this.BtnSearch_Click);
             // 
             // btnDel
             // 
@@ -256,6 +280,26 @@
             this.timer1.Interval = 3000;
             this.timer1.Tick += new System.EventHandler(this.Timer1_Tick);
             // 
+            // buttonX1
+            // 
+            this.buttonX1.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.buttonX1.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.buttonX1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.buttonX1.ColorTable = DevComponents.DotNetBar.eButtonColor.Blue;
+            this.buttonX1.FocusCuesEnabled = false;
+            this.buttonX1.Font = new System.Drawing.Font("微软雅黑", 9F);
+            this.buttonX1.HotTrackingStyle = DevComponents.DotNetBar.eHotTrackingStyle.None;
+            this.buttonX1.HoverImage = ((System.Drawing.Image)(resources.GetObject("buttonX1.HoverImage")));
+            this.buttonX1.Image = ((System.Drawing.Image)(resources.GetObject("buttonX1.Image")));
+            this.buttonX1.Location = new System.Drawing.Point(157, 5);
+            this.buttonX1.Margin = new System.Windows.Forms.Padding(6);
+            this.buttonX1.Name = "buttonX1";
+            this.buttonX1.Size = new System.Drawing.Size(15, 15);
+            this.buttonX1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.buttonX1.TabIndex = 14;
+            this.buttonX1.Tooltip = "九键面板设置";
+            this.buttonX1.Click += new System.EventHandler(this.ButtonX1_Click);
+            // 
             // ThreePanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -298,5 +342,7 @@
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem 新建ToolStripMenuItem;
         private System.Windows.Forms.Timer timer1;
+        private DevComponents.DotNetBar.ButtonX btnSearch;
+        private DevComponents.DotNetBar.ButtonX buttonX1;
     }
 }

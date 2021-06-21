@@ -24,6 +24,8 @@ namespace eNet编辑器.ThreeView
         public event Action selectLastCountScene;
         public event Action selectLastCountTimer;
         public event Action selectLastCountLocalVar;
+        public event Action<bool> CursorIsNormal;
+
 
         /// <summary>
         /// 传输point点跳转窗口
@@ -85,11 +87,9 @@ namespace eNet编辑器.ThreeView
         {
             try
             {
-                
                 //路径非空
                 if (!String.IsNullOrWhiteSpace(inifilepath))
                 {
-                  
                     treeView1.Nodes.Clear();
                     FileMesege.titleinfo = "";
                     FileMesege.titlePointSection = "";
@@ -100,6 +100,9 @@ namespace eNet编辑器.ThreeView
                             treeView1.CheckBoxes = false;
                             treeView1.ContextMenuStrip = null;
                             nameAdd(FileMesege.cbTypeIndex, ToolsUtil.getIP(FileMesege.tnselectNode));
+                            if (treeView1.SelectedNode == null) {
+                                CursorIsNormal(true);
+                            }
                             //MessageBox.Show("name");
                             break;
                         case "point":
@@ -166,6 +169,7 @@ namespace eNet编辑器.ThreeView
                 treeView1.Nodes[i].Checked = false;
 
             }
+            CursorIsNormal(true);
         }
 
         public void UpdataNodeText(string oldNodeText,string newNodeText)
@@ -263,42 +267,45 @@ namespace eNet编辑器.ThreeView
         /// <param name="num"></param>
         private void sceneAdd(int num,string ipLast)
         {
-                try
+            try
+            {
+                if (FileMesege.PointList == null) {
+                    return;
+                }
+                //按cbtype类型 来加载title节点
+                switch (IniConfig.GetValue(inifilepath, "scene", keys[num]))
                 {
-                    //按cbtype类型 来加载title节点
-                    switch (IniConfig.GetValue(inifilepath, "scene", keys[num]))
-                    {
-                        case "equipment":
-                            getNametree(FileMesege.PointList.equipment, "equipment", ipLast);
-                            break;
-                        case "scene":
-                            getNametree(FileMesege.PointList.scene, "scene", ipLast);
-                            break;
-                        case "timer":
-                            getNametree(FileMesege.PointList.timer, "timer", ipLast);
-                            break;
-                        case "link":
-                            getNametree(FileMesege.PointList.link, "link", ipLast);
-                            break;
-                        case "sensor":
-                            getNametree(FileMesege.PointList.link, "sensor", ipLast);
-                            break;
-                        case "virtualport":
-                            getNametree(FileMesege.PointList.virtualport, "virtualport", ipLast);
-                            break;
-                        case "logic":
-                            getNametree(FileMesege.PointList.logic, "logic", ipLast);
-                            break;
-                            /*
-                        case "localvar":
-                            getNametree(FileMesege.PointList.localvar, "localvar", ipLast);
-                            break;*/
-                        default: break;
-                    }
+                    case "equipment":
+                        getNametree(FileMesege.PointList.equipment, "equipment", ipLast);
+                        break;
+                    case "scene":
+                        getNametree(FileMesege.PointList.scene, "scene", ipLast);
+                        break;
+                    case "timer":
+                        getNametree(FileMesege.PointList.timer, "timer", ipLast);
+                        break;
+                    case "link":
+                        getNametree(FileMesege.PointList.link, "link", ipLast);
+                        break;
+                    case "sensor":
+                        getNametree(FileMesege.PointList.link, "sensor", ipLast);
+                        break;
+                    case "virtualport":
+                        getNametree(FileMesege.PointList.virtualport, "virtualport", ipLast);
+                        break;
+                    case "logic":
+                        getNametree(FileMesege.PointList.logic, "logic", ipLast);
+                        break;
+                        /*
+                    case "localvar":
+                        getNametree(FileMesege.PointList.localvar, "localvar", ipLast);
+                        break;*/
+                    default: break;
                 }
-                catch {
-                    //MessageBox.Show("节点加载失败!请检查names.ini文件","提示");
-                }
+            }catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
           
         }
 
@@ -442,29 +449,74 @@ namespace eNet编辑器.ThreeView
             //把选中节点保存至文档中 
             FileMesege.titleinfo = treeView1.SelectedNode.Text;
             fullpath = treeView1.SelectedNode.FullPath;
-            if (FileMesege.formType == "name" && FileMesege.cbTypeIndex == 0)
-            {
-                //当选中为 命名和点位
-                FileMesege.titlePointSection = treeView1.SelectedNode.Text;
-                FileMesege.titleinfo = "";
-            }
-            /*
-            if (FileMesege.formType == "scene")
-            {
-                //选中为场景时候
-                FileMesege.titlePointSection = treeView1.SelectedNode.Text;
-                FileMesege.titleinfo = "";
-            }*/
-            if (FileMesege.formType == "scene"|| FileMesege.formType == "panel" || FileMesege.formType == "sensor" || FileMesege.formType == "logic")
-            {
-                FileMesege.titlePointSection = treeView1.SelectedNode.Text;
-                FileMesege.titleinfo = "";
-            }
+           
+            switch (FileMesege.formType) {
+                case "name":
+                    if (FileMesege.cbTypeIndex == 0)
+                    {
+                        //当选中为 命名和点位
+                        FileMesege.titlePointSection = treeView1.SelectedNode.Text;
+                        FileMesege.titleinfo = "";
+                        CursorIsNormal(false);
+                    }
+                    else {
+                        if (FileMesege.sectionNode != null)
+                        {
+                            CursorIsNormal(false);
+                        }
+                        else {
+                            CursorIsNormal(true);
+                        }
+                    }
+                    break;
 
-            //鼠标光标改变
-            //addTitleDevCursor();
-            //addTitlenNameCursor();
-            
+                case "scene":
+                    FileMesege.titlePointSection = treeView1.SelectedNode.Text;
+                    FileMesege.titleinfo = "";
+
+                    break;
+                case "timer":
+                    FileMesege.titlePointSection = treeView1.SelectedNode.Text;
+                    FileMesege.titleinfo = "";
+                    break;
+                case "panel":
+                    FileMesege.titlePointSection = treeView1.SelectedNode.Text;
+                    FileMesege.titleinfo = "";
+                    CursorIsNormal(false);
+
+                    break;
+                case "sensor":
+                    FileMesege.titlePointSection = treeView1.SelectedNode.Text;
+                    FileMesege.titleinfo = "";
+                    CursorIsNormal(false);
+                    break;
+                case "logic":
+                    FileMesege.titlePointSection = treeView1.SelectedNode.Text;
+                    FileMesege.titleinfo = "";
+                    break;
+                default:
+                    FileMesege.titlePointSection = treeView1.SelectedNode.Text;
+                    FileMesege.titleinfo = "";
+                    break;
+            }
+            /*   if (FileMesege.formType == "name" && FileMesege.cbTypeIndex == 0)
+               {
+                   //当选中为 命名和点位
+                   FileMesege.titlePointSection = treeView1.SelectedNode.Text;
+                   FileMesege.titleinfo = "";
+               }
+
+               if (FileMesege.formType == "scene"|| FileMesege.formType == "panel" || FileMesege.formType == "sensor" || FileMesege.formType == "logic")
+               {
+                   FileMesege.titlePointSection = treeView1.SelectedNode.Text;
+                   FileMesege.titleinfo = "";
+                   if (FileMesege.formType == "panel") {
+                       CursorChange(true);
+                   }
+               }*/
+
+
+
         }
 
         /// <summary>

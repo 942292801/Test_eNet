@@ -43,7 +43,7 @@ namespace eNet编辑器.ThreeView
         public event Action logicCbSceneGetItem;
         //取消选中点位
         //public event Action unSelectPointNode;
-
+        public event Action<bool> CursorIsNormal;
         //树状图节点
         string fullpath = "";
 
@@ -67,26 +67,6 @@ namespace eNet编辑器.ThreeView
             //记录当前节点展开状况
             List<string> isExpands = tm.treeIsExpandsState(treeView1);
             //循环区域一 查看有没 未定义区域 没有就新建
-            bool isExitNode = false;
-            foreach (DataJson.Area1 a1 in FileMesege.AreaList)
-            {
-                if (a1.area == "未定义区域")
-                {
-                    isExitNode = true;
-                }
-            }
-            if (!isExitNode)
-            {
-                sectionname = "未定义区域";
-                DataJson.Area1 a1 = new DataJson.Area1();
-                a1.area = sectionname;
-                a1.id1 = FileMesege.AreaList.Count.ToString();
-                a1.id2 = "";
-                a1.id3 = "";
-                a1.id4 = "";
-                a1.area2 = new List<DataJson.Area2>();
-                FileMesege.AreaList.Add(a1);
-            }
             //区域一
             foreach (DataJson.Area1 a1 in FileMesege.AreaList)
             {
@@ -128,9 +108,6 @@ namespace eNet编辑器.ThreeView
    
 
         #region 新建 修改 删除 展开（收起）节点
-
-  
-
         private void 新建节点ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             isAddChild = false;
@@ -671,7 +648,7 @@ namespace eNet编辑器.ThreeView
                     break;
                 default: return false;
             }
-           
+            addSelectNode = null;
             DataJson.totalList NewList = FileMesege.cmds.getListInfos();
             FileMesege.cmds.DoNewCommand(NewList, OldList);
             sectionUpdateTreeByFormType();
@@ -846,6 +823,7 @@ namespace eNet编辑器.ThreeView
             //删除的节点所有信息
             DataJson.Area1 obj = FileMesege.AreaList[i1];
             FileMesege.AreaList.Remove(FileMesege.AreaList[i1]);
+           
             return obj;
             
         }
@@ -894,9 +872,17 @@ namespace eNet编辑器.ThreeView
         private int area1()
         {
             //新建节点 FileMesege.AreaList
-            if (FileMesege.AreaList == null)
+            if (FileMesege.AreaList == null || FileMesege.AreaList.Count ==0)
             {
                 FileMesege.AreaList = new List<DataJson.Area1>();
+                DataJson.Area1 head = new DataJson.Area1();
+                head.area = "未定义区域";
+                head.id1 = "0";
+                head.id2 = "";
+                head.id3 = "";
+                head.id4 = "";
+                head.area2 = new List<DataJson.Area2>();
+                FileMesege.AreaList.Add(head);
             }
             foreach (DataJson.Area1 area1 in FileMesege.AreaList)
             {
@@ -1078,38 +1064,57 @@ namespace eNet编辑器.ThreeView
         //选中节点后发生的事件
         private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
         {
-            //把选中节点保存至文档中 
-            FileMesege.sectionNode = treeView1.SelectedNode;
-            TreeMesege tm = new TreeMesege();
-            FileMesege.sectionNodeCopy = tm.GetSectionByNode(treeView1.SelectedNode);
-            fullpath = treeView1.SelectedNode.FullPath;
-            if (FileMesege.formType == "point")
+            try
             {
-                //unSelectPointNode();
-                //刷PointDGV
-                updatePointDgv();
+                //把选中节点保存至文档中 
+                FileMesege.sectionNode = treeView1.SelectedNode;
+                TreeMesege tm = new TreeMesege();
+                FileMesege.sectionNodeCopy = tm.GetSectionByNode(treeView1.SelectedNode);
+                fullpath = treeView1.SelectedNode.FullPath;
+                if (FileMesege.formType == "point")
+                {
+                    //unSelectPointNode();
+                    //刷PointDGV
+                    updatePointDgv();
+                }
+                if (FileMesege.formType == "name")
+                {
+
+                    if (FileMesege.cbTypeIndex == 0)
+                    {
+                        //刷title新树状图
+                        addTitleNode();
+                    }
+                    else
+                    {
+                        if (!string.IsNullOrEmpty(FileMesege.titleinfo))
+                        {
+                            CursorIsNormal(false);
+                        }
+                    }
+
+
+                }
+
+                if (FileMesege.formType == "scene" || FileMesege.formType == "timer" || FileMesege.formType == "panel" || FileMesege.formType == "sensor" || FileMesege.formType == "logic")
+                {
+                    //刷title新树状图
+                    addTitleNode();
+                }
+
+                if (FileMesege.formType == "logic")
+                {
+                    //逻辑的场景cb框内容 按区域搜索
+                    logicCbSceneGetItem();
+                }
             }
-            if (FileMesege.formType == "name" && FileMesege.cbTypeIndex == 0)
-            {
-                //刷title新树状图
-                addTitleNode();
+            catch (Exception ex) {
+                Console.WriteLine(ex.StackTrace);
             }
 
-            if (FileMesege.formType == "scene" || FileMesege.formType == "timer" || FileMesege.formType == "panel" || FileMesege.formType == "sensor" || FileMesege.formType == "logic")
-            {
-                //刷title新树状图
-                addTitleNode();
-            }
-            
-            if (FileMesege.formType == "logic")
-            {
-                //逻辑的场景cb框内容 按区域搜索
-                logicCbSceneGetItem();
-            }
+           
 
-            //修改光标为加号
-            //addSectionDevCursor();
-            //addSectionNameCursor();
+       
             
         }
 

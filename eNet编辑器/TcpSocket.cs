@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 using System.IO ;
 using System.Net.Sockets;
@@ -28,7 +27,7 @@ namespace eNet编辑器
             try {
                 IPAddress ipAddress = IPAddress.Parse ( ip );
                 IPEndPoint ipEndPoint = new IPEndPoint ( ipAddress,port );
-                s = new Socket ( ipEndPoint.AddressFamily ,SocketType.Stream ,ProtocolType.Tcp );
+                //s = new Socket ( ipEndPoint.AddressFamily ,SocketType.Stream ,ProtocolType.Tcp );
                 bool is_ok = false;
                 TimeoutObject.Reset();
                 s = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
@@ -41,8 +40,9 @@ namespace eNet编辑器
                 }
                 else
                 {
+                    s.Close();
+                    s.Dispose();
                     is_ok = false;//连接中断
-
                 }
                 if (!is_ok)
                 {
