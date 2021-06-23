@@ -11,6 +11,7 @@ using System.IO;
 using System.Threading;
 using System.ComponentModel;
 using eNet编辑器.OtherView;
+using System.Net.Sockets;
 
 namespace eNet编辑器.AddForm
 {
@@ -20,8 +21,7 @@ namespace eNet编辑器.AddForm
         //UDP客户端
         UdpSocket udp;
         //网关节点 选中的IP地址
-        private string searchIP = string.Empty;
-        private bool isSearchIP = false;
+        //private string searchIP = string.Empty;
         // 记录延时操作
         private long lastTicks = 0;
         //本地IP
@@ -51,7 +51,7 @@ namespace eNet编辑器.AddForm
         private delegate void SearchMasterRcvDelegate(string msg);
         private event SearchMasterRcvDelegate searchMasterRcvDelegate;
 
-        private delegate void GetMasterDevDelegate(string msg);
+        private delegate void GetMasterDevDelegate(string msg,string ip);
         private event GetMasterDevDelegate getMasterDevDelegate;
 
         private delegate void UpdateNodeDelegate();
@@ -82,7 +82,6 @@ namespace eNet编辑器.AddForm
         /// <param name="e"></param>
         private void btnSearch_Click(object sender, EventArgs e)
         {
-   
             try
             {
                 backgroundWorker1 = new BackgroundWorker();
@@ -137,7 +136,6 @@ namespace eNet编辑器.AddForm
             Localip = ToolsUtil.GetLocalIP();
             //udp 绑定
             udp.udpBing(Localip, ToolsUtil.GetFreePort().ToString());
-
             if (udp.isbing)
             {
                 masterHs.Clear();
@@ -153,7 +151,6 @@ namespace eNet编辑器.AddForm
                 ToolsUtil.DelayMilli(200);
                 backgroundWorker1.ReportProgress(6, null);
                 udp.udpSend("255.255.255.255", "6002", "search all");
-
                 //检查 如果ip数目还没变就退出 进行下一步操作
                 int masterCount = masterHs.Count;
                 ToolsUtil.DelayMilli(500);
@@ -164,36 +161,33 @@ namespace eNet编辑器.AddForm
                     ToolsUtil.DelayMilli(500);
                     backgroundWorker1.ReportProgress(14, null);
                 }
+                //添加节点
                 backgroundWorker1.ReportProgress(20, 1);//pg = 20
+                ToolsUtil.DelayMilli(1000);
                 int pgCount = 20;
-                int time = 0;
+                //int time = 0;
                 if (backgroundWorker1.CancellationPending)
                 {
                     e.Cancel = true;
                     return;
                 }
-                //逐个IP搜索设备
-                foreach (string masterIP in masterHs)
-                {
-                    searchIP = masterIP;
-                    isSearchIP = true;
-                    time = 0;
-                    ReadSerial();
-                    while (isSearchIP)
+                Console.WriteLine("开始读取-----------------------");
+                if (masterCount != 0) {
+                    int addcount = 80 / masterCount;
+                   
+
+                    //逐个IP搜索设备
+                    foreach (string masterIP in masterHs)
                     {
-                        //超时3秒信息不回来 就断开这次
-                        ToolsUtil.DelayMilli(500);
-                        time = time + 500;
-                        if (time >= 4000)
+                        NewReadSerial(masterIP);
+                        //ToolsUtil.DelayMilli(200);
+                        pgCount += addcount;
+                        backgroundWorker1.ReportProgress(pgCount, null);
+                        if (backgroundWorker1.CancellationPending)
                         {
-                            break;
+                            e.Cancel = true;
+                            return;
                         }
-                    }
-                    backgroundWorker1.ReportProgress(pgCount++, null);
-                    if (backgroundWorker1.CancellationPending)
-                    {
-                        e.Cancel = true;
-                        return;
                     }
                 }
                 backgroundWorker1.ReportProgress(100, "搜索设备完成");
@@ -234,9 +228,6 @@ namespace eNet编辑器.AddForm
 
         }
 
-
-
-
         private void BackgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             try
@@ -260,9 +251,6 @@ namespace eNet编辑器.AddForm
         }
 
 
-
-
-
         private void SearchMasterRcvDeal(string msg)
         {
             try
@@ -282,122 +270,71 @@ namespace eNet编辑器.AddForm
 
         }
 
-   
-
-
-
-        /// <summary>
-        /// 获取serial设备信息 并处理
-        /// </summary>
-        private void ReadSerial()
-        {
-
-            ClientAsync client = new ClientAsync();
-            client.Completed += new Action<System.Net.Sockets.TcpClient, ClientAsync.EnSocketAction>((c, enAction) =>
-            {
-                string key = string.Empty;
-                try
-                {
-                    if (c.Client.Connected)
-                    {
-                        IPEndPoint iep = c.Client.RemoteEndPoint as IPEndPoint;
-                        key = string.Format("{0}:{1}", iep.Address.ToString(), iep.Port);
-                    }
-                }
-                catch (Exception ex)
-                {
-                    ToolsUtil.WriteLog(ex.Message);
-                }
-                switch (enAction)
-                {
-                    case ClientAsync.EnSocketAction.Connect:
-                        // MessageBox.Show("已经与" + key + "建立连接");
-                        break;
-                    case ClientAsync.EnSocketAction.SendMsg:
-
-                        //MessageBox.Show(DateTime.Now + "：向" + key + "发送了一条消息");
-                        break;
-                    case ClientAsync.EnSocketAction.Close:
-
-                        //MessageBox.Show("服务端连接关闭");
-                        break;
-                    case ClientAsync.EnSocketAction.Error:
-
-                        //MessageBox.Show("连接发生错误,请检查网络连接");
-
-                        break;
-                    default:
-                        break;
-                }
-            });
-            //信息接收处理
-            client.Received += new Action<string, string>((key, msg) =>
-            {
-                if (!String.IsNullOrWhiteSpace(msg))
-                {
-                    //跨线程调用
-                    this.Invoke(getMasterDevDelegate, msg);
-                }
-            });
-
-            int count = 0;
-
-            //异步连接
-            client.ConnectAsync(searchIP, 6001);
-            while (!client.Connected())
-            {
-                ToolsUtil.DelayMilli(200);
-                count++;
-                if (count == 10)
-                {
-                    isSearchIP = false;
-                    return;
-                }
-            }
-
-            client.SendAsync("read serial.json$");
-        }
-
-
-
-        //接收区信息缓存buffer
-        string bufferMsg = "";
-
-        /// <summary>
-        /// udp信息 回调处理函数
-        /// </summary>
-        /// <param name="msg"></param>
-        private void GetMasterDevRcvDeal(string msg)
-        {
-
+        private void NewReadSerial(string searchIP) {
             try
             {
-                //搜索子设备的信息返回
-                bufferMsg = bufferMsg + msg;
-                if (msg.Length == 2048)
+                TcpSocket ts = new TcpSocket();
+                Socket sock = null;
+                Console.WriteLine(searchIP + "尝试连接");
+                sock = ts.ConnectServer(searchIP, 6001, 800);
+                if (sock == null || !sock.Connected)
+                {
+                    //重新连接
+                    ToolsUtil.DelayMilli(3000);
+                    Console.WriteLine(searchIP + "再尝试连接2");
+                    sock = ts.ConnectServer(searchIP, 6001, 800);
+                }
+                if (sock == null || !sock.Connected)
+                {
+                    //退出
+                    Console.WriteLine(searchIP + "连接失败");
+                    return;
+                }
+                Console.WriteLine(searchIP + "连接成功");
+                int flag = 2;
+                //0:发送数据成功；-1:超时；-2:发送数据出现错误；-3:发送数据时出现异常
+                Console.WriteLine(searchIP+"读取");
+                flag = ts.SendData(sock, "read serial.json$", 0);
+                if (flag != 0)
                 {
                     return;
                 }
-                if (bufferMsg.Contains("serial"))
+                string rcvString = "";
+                flag = ts.RecvDataStr(sock, out rcvString, 2000);
+               
+                if (!string.IsNullOrEmpty(rcvString)) {
+                    Console.WriteLine(searchIP + "  接收成功/r/n" + rcvString);
+                    this.Invoke(getMasterDevDelegate, rcvString, searchIP);
+
+                }
+             
+            }
+            catch (Exception ex) {
+                Console.WriteLine(ex.Message);
+                //ToolsUtil.WriteLog(ex.Message);
+            }
+            
+        }
+
+        object lok = new object();
+        private void GetMasterDevRcvDeal(string msg,string ip)
+        {
+            try
+            {
+                // 序列化接收信息
+                DataJson.Serial tmp = JsonConvert.DeserializeObject<DataJson.Serial>(msg);
+                if (tmp == null)
                 {
-                    // 序列化接收信息
-                    DataJson.Serial tmp = JsonConvert.DeserializeObject<DataJson.Serial>(bufferMsg);
-                    if (tmp == null)
-                    {
-                        isSearchIP = false;
-                        return;
-                    }
-
-                    FileMesege.serialList = tmp;
-                    bufferMsg = string.Empty;
-                    isSearchIP = false;
-                    string filepath = string.Empty;
-                    string device = string.Empty;
-           
-
+                    return;
+                }
+                
+                FileMesege.serialList = tmp;
+                string filepath = string.Empty;
+                string device = string.Empty;
+                lock (lok) {
                     foreach (TreeNode node in treeView1.Nodes)
                     {
-                        if (node.Text == searchIP)
+                        if (node.Text == ip)
                         {
                             int indexs = node.Index;
                             foreach (DataJson.serials sl in FileMesege.serialList.serial)
@@ -410,34 +347,29 @@ namespace eNet编辑器.AddForm
                                 device = IniConfig.GetValue(filepath, "define", "display");
                                 if (string.IsNullOrEmpty(device))
                                 {
-                                    device = sl.serial;
+                                    device = sl.serial.Trim();
                                     tm.AddNode2(treeView1, Resources.UnrecognizedDev + sl.id + " " + device, indexs);
                                 }
                                 else
                                 {
                                     tm.AddNode2(treeView1, Resources.Device + sl.id + " " + device, indexs);
-
                                 }
-
                             }
                             break;
                         }
                     }
-                    isSearchIP = false;
-
                 }
+                
+
 
             }
-            catch
+            catch(Exception ex)
             {
-                isSearchIP = false;
-                //ToolsUtil.WriteLog(ex.Message);
+                ToolsUtil.WriteLog(ex.Message);
             }
 
 
         }
-
-
         #endregion
 
 

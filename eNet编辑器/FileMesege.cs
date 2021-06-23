@@ -70,6 +70,7 @@ namespace eNet编辑器
         /// form下按钮的选择命名、场景。。。。  默认为命名 用来设置treetitle的显示功能 name,point,scene,timer,panel,sensor,logic,virtualport
         /// </summary>
         public static string formType = "name";
+
         /// <summary>
         /// form下面cbType的索引号
         /// </summary>
@@ -240,7 +241,6 @@ namespace eNet编辑器
                 return false;
             }
             tmpPathClear();
-            
             try
             {
                 string msg;
@@ -264,8 +264,8 @@ namespace eNet编辑器
                 || !System.IO.File.Exists(TmpFilePath + "\\pro\\scene.json")
                 || !System.IO.File.Exists(TmpFilePath + "\\pro\\panel.json")
                 || !System.IO.File.Exists(TmpFilePath + "\\pro\\timer.json")
-                || !System.IO.File.Exists(TmpFilePath + "\\pro\\sensor.json")
-                || !System.IO.File.Exists(TmpFilePath + "\\pro\\logic.json")
+              /*  || !System.IO.File.Exists(TmpFilePath + "\\pro\\sensor.json")
+                || !System.IO.File.Exists(TmpFilePath + "\\pro\\logic.json")*/
                 )
             {
                 //MessageBox.Show("打开文件失败！", "提示");
@@ -314,6 +314,7 @@ namespace eNet编辑器
             }
             filePath = localFilePath;
             fileName = filename + extension;
+            tmpPathClear();
             return true;
         }
 
@@ -371,14 +372,16 @@ namespace eNet编辑器
                 }
                 filePath = localFilePath;
                 fileName = fileNameExt;
+                ///这里有偶然性保存丢失工程
                 writeAlltoPro(TmpFilePath);
-                string[] fileList = {TmpFilePath+"//pro",TmpFilePath+"//objs"};
+                //string[] fileList = {TmpFilePath+"//pro",TmpFilePath+"//objs"};
                 try
                 {
                     string msg;
                     ZipHelper zipHelper = new ZipHelper();
                     //压缩到选中路径
                     zipHelper.ZipFolder(TmpFilePath, localFilePath, out msg);
+                    
                 }
                 catch
                 {
@@ -439,7 +442,7 @@ namespace eNet编辑器
                         IniConfig.SetValue(Application.StartupPath + "\\conf.ini", "filepath", "path", localFilePath + "," + historyPath);
                     }
                     writeAlltoPro(TmpFilePath);
-                    string[] fileList = { TmpFilePath + "//pro", TmpFilePath + "//objs" };
+                    //string[] fileList = { TmpFilePath + "//pro", TmpFilePath + "//objs" };
                     try
                     {
 
@@ -574,31 +577,35 @@ namespace eNet编辑器
                 
                 if (System.IO.Directory.Exists(TmpFilePath))
                 {
+                    //删除文件
                     Directory.Delete(TmpFilePath, true);
                 }
                 
-                while (!Directory.Exists(TmpFilePath))
+                while (Directory.Exists(TmpFilePath))
                 {
-                    Directory.CreateDirectory(TmpFilePath);
-                    ToolsUtil.DelayMilli(200);
+                    //存在该文件夹则等待删除
+                    ToolsUtil.DelayMilli(100);
                 }
 
+                Directory.CreateDirectory(TmpFilePath);
+                while (!Directory.Exists(TmpFilePath))
+                {
+                    //存在该文件夹则等待删除
+                    ToolsUtil.DelayMilli(100);
+                }
                 string objpath = TmpFilePath + "\\objs";
                 string propath = TmpFilePath + "\\pro";
+                Directory.CreateDirectory(objpath);
+                Directory.CreateDirectory(propath);
 
                 while (!Directory.Exists(objpath)) {
-                    Directory.CreateDirectory(objpath);
-                    ToolsUtil.DelayMilli(200);
-
+                    ToolsUtil.DelayMilli(100);
                 }
                 while (!Directory.Exists(propath))
                 {
-                    Directory.CreateDirectory(propath);
-                    ToolsUtil.DelayMilli(200);
+                    ToolsUtil.DelayMilli(100);
 
                 }
-              
-                
             }
             catch{
                 

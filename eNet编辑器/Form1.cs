@@ -99,11 +99,7 @@ namespace eNet编辑器
             dgvsensor = new DgvSensor();
             dgvvar = new DgvVar();
 
-            //第一次加载基本窗口
-            Control_Add(threename, plLeft);//默认添加窗口一
-            Control_Add(threesection, plSection);
-            Control_Add(dgvname, plDgv);
-            Control_Add(threetitle, plTitleTree);
+        
 
             //刷新titleNode节点
             threesection.addTitleNode += new AddTitleNode(threesection_addTitleNode);
@@ -239,16 +235,29 @@ namespace eNet编辑器
             dgvpanel.jumpSetInfo += new Action<DataJson.PointInfo>(dgv_jumpSetInfo);
             dgvsensor.jumpSetInfo += new Action<DataJson.PointInfo>(dgv_jumpSetInfo);
             threetitle.jumpSetInfo += new Action<DataJson.PointInfo>(dgv_jumpSetInfo);
+
+
+            threetitle.CursorIsNormal += new Action<bool>(CursorIsNormal);
+            threesection.CursorIsNormal += new Action<bool>(CursorIsNormal);
+
+            //第一次加载基本窗口
+            Control_Add(dgvname, plDgv);
+            Control_Add(threename, plLeft);//默认添加窗口一
+            Control_Add(threesection, plSection);
+            Control_Add(threetitle, plTitleTree);
+
             /////////////////////////////////////////////////////
             //初始化类型表
             cbtypeName("equipment");//初始化title类型表               
             timer1.Enabled = false; //开启清除内存时钟
             this.Text = Resources.SoftName + "Edit New Project";
-            
+            CursorIsNormal(true);
+
+
         }
 
-   
-   
+
+
 
         #region 刷新窗口
 
@@ -509,6 +518,7 @@ namespace eNet编辑器
         private void cbType_SelectedIndexChanged(object sender, EventArgs e)
         {
             threetitle.ThreeTitleAddNode(cbType.SelectedIndex);
+            
         }
 
         
@@ -533,7 +543,7 @@ namespace eNet编辑器
         }
         #endregion
 
-        #region RichText信息显示
+        #region RichText信息显示  鼠标图标改变
 
         /// <summary>
         /// 窗体显示信息 清空信息后显示
@@ -542,9 +552,10 @@ namespace eNet编辑器
         public void ClearTxtShow(string msg)
         {
             txtShow.Clear();
-            txtShow.AppendText(msg.Replace("&&", "\r\n"));
+            
+            txtShow.AppendText(string.Format("时间：{0}\r\n信息：\r\n{1}", DateTime.Now.ToLongTimeString(), msg.Replace("&&", "\r\n")));
             txtShow.SelectAll();
-            this.txtShow.SelectionColor = Color.Black;
+            this.txtShow.SelectionColor = Color.Red;
         }
 
         /// <summary>
@@ -586,12 +597,30 @@ namespace eNet编辑器
         {
             txtShow.Clear();
         }
+
+
+        //鼠标更改
+        public void CursorIsNormal(bool isNormal) {
+            if (isNormal)
+            {
+                this.Cursor = Cursors.Default;
+            }
+            else {
+                this.Cursor = Cursors.NoMove2D;
+            }
+            dgvname.CursorIsNormal(isNormal);
+            dgvpanel.CursorIsNormal(isNormal);
+
+        }
+
+
         #endregion
 
         #region 按钮 设备 场景 时钟 绑定 逻辑 运算 cbtype 读取
 
         private void tabName_Click(object sender, EventArgs e)
         {
+            
             //自定义函数加载窗体 CleanRecycle  
             Control_Add(threename, plLeft);
             if (FileMesege.tnselectNode != null && FileMesege.tnselectNode.Parent == null)
@@ -602,6 +631,7 @@ namespace eNet编辑器
             {
                 Control_Add(dgvname, plDgv);
             }
+            CursorIsNormal(true);
             tabName.ImageIndex = 6;
             
             //cbtype添加选择项 
@@ -621,6 +651,7 @@ namespace eNet编辑器
         {
             try
             {
+                CursorIsNormal(true);
                 //自定义函数加载窗体 CleanRecycle  
                 Control_Add(threepoint, plLeft);
                 Control_Add(dgvpoint, plDgv);
@@ -649,6 +680,7 @@ namespace eNet编辑器
         {
             try
             {
+                CursorIsNormal(true);
                 //自定义函数加载窗体 CleanRecycle  
                 Control_Add(threescene, plLeft);
                 Control_Add(dgvscene, plDgv);
@@ -676,7 +708,7 @@ namespace eNet编辑器
         {
             try
             {
-
+                CursorIsNormal(true);
                 //自定义函数加载窗体 CleanRecycle  
                 Control_Add(threetimer, plLeft);
                 Control_Add(dgvtimer, plDgv);
@@ -704,6 +736,7 @@ namespace eNet编辑器
         {
             try
             {
+                CursorIsNormal(true);
                 //自定义函数加载窗体 CleanRecycle  
                 Control_Add(threepanel, plLeft);
                 Control_Add(dgvpanel, plDgv);
@@ -734,6 +767,7 @@ namespace eNet编辑器
         {
             try
             {
+                CursorIsNormal(true);
                 //自定义函数加载窗体 CleanRecycle  
                 Control_Add(threesensor, plLeft);
                 Control_Add(dgvsensor, plDgv);
@@ -761,6 +795,7 @@ namespace eNet编辑器
         {
             try
             {
+                CursorIsNormal(true);
                 //自定义函数加载窗体 CleanRecycle  
                 Control_Add(threelogic, plLeft);
                 Control_Add(dgvlogic, plDgv);
@@ -789,6 +824,7 @@ namespace eNet编辑器
         {
             try
             {
+                CursorIsNormal(true);
                 //自定义函数加载窗体 CleanRecycle  
                 Control_Add(threevar, plLeft);
                 Control_Add(dgvvar, plDgv);
@@ -817,7 +853,7 @@ namespace eNet编辑器
         /// <param name="typeName"></param>
         private void cbtypeName(string typeName)
         {
-
+           
             ThreeTitle.keys.Clear();
             if (typeName == "point")
             {
@@ -1584,6 +1620,11 @@ namespace eNet编辑器
 
         private void 帮助ToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            string path = Application.StartupPath + "\\help.chm";
+            if (File.Exists(path)) {
+                System.Diagnostics.Process.Start(path);
+
+            }
 
         }
 

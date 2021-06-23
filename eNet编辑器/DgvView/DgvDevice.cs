@@ -18,7 +18,6 @@ using eNet编辑器.OtherView;
 
 namespace eNet编辑器.DgvView
 {
-    //public delegate void DgvNameCursorDefault();
     public partial class DgvDevice : Form
     {
         public DgvDevice()
@@ -36,7 +35,6 @@ namespace eNet编辑器.DgvView
             pi.SetValue(this.dataGridView1, true, null);
         }
 
-        //public event DgvNameCursorDefault dgvNameCursorDefault;
 
         public event Action unSelectTitleNode;
         public event Action unSelectSectionNode;
@@ -1071,8 +1069,7 @@ namespace eNet编辑器.DgvView
                 unSelectTitleNode();
                 unSelectSectionNode();
                 //鼠标图标变为正常 DGVname DGVdevice也变
-                //cursor_default();
-                //dgvNameCursorDefault();
+               
             }
             if (DgvMesege.endDataViewCurrent(dataGridView1, e.Y, e.X))
             {
@@ -1103,27 +1100,8 @@ namespace eNet编辑器.DgvView
             }
         }
 
-        /// <summary>
-        /// 鼠标图标更改为正常图标
-        /// </summary>
-        public void cursor_default()
-        {
+     
 
-            dataGridView1.Cursor = Cursors.Default;
-        }
-       
-        /// <summary>
-        /// 鼠标图标更改为正常图标
-        /// </summary>
-        public void cursor_copy()
-        {
-           
-            //定义图片
-            Bitmap a = (Bitmap)Bitmap.FromFile(Application.StartupPath + "\\cursor32.png");
-            //定义加载到那个控件
-            DgvMesege.SetCursor(a, new Point(0, 0), dataGridView1);
-            
-        }
         #endregion
 
 

@@ -257,7 +257,6 @@ namespace eNet编辑器.Controller
         {
             if (client6003 != null && !client6003.Connected())
             {
-
                 //链接tcp
                 Connect6003Tcp(ip);
             }
@@ -574,7 +573,6 @@ namespace eNet编辑器.Controller
 
         #endregion
 
-
         #region 菜单栏 按钮
         private void btnIni_Click(object sender, EventArgs e)
         {
@@ -623,7 +621,6 @@ namespace eNet编辑器.Controller
         }
 
         #endregion
-
 
         #region 把十六进制参数 展现在窗体中
         /// <summary>
@@ -710,7 +707,6 @@ namespace eNet编辑器.Controller
         }
 
         #endregion
-
 
         #region 把窗体参数 存储起来
         /// <summary>

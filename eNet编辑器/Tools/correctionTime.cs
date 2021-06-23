@@ -429,9 +429,13 @@ namespace eNet编辑器.AddForm
         {
             if (!string.IsNullOrEmpty(yyMMdd) && !string.IsNullOrEmpty(hhmmss))
             {
-                //string dateString = string.Format("{0}{1}",hhmmss.Substring(2,6));
-                //DateTime dt = DateTime.ParseExact(dateString, "yyyyMMddhhmmss", System.Globalization.CultureInfo.CurrentCulture);
-                lbMasterTime.Text = string.Format("20{0}/{1}/{2} {3}:{4}:{5}", yyMMdd.Substring(2, 2), yyMMdd.Substring(4, 2), yyMMdd.Substring(6, 2), hhmmss.Substring(2, 2), hhmmss.Substring(4, 2), hhmmss.Substring(6, 2));
+                string year = yyMMdd.Substring(2, 2);
+                string month = yyMMdd.Substring(4, 2);
+                string day = yyMMdd.Substring(6, 2);
+                string hour = hhmmss.Substring(2, 2);
+                string minute = hhmmss.Substring(4, 2);
+                string second = hhmmss.Substring(6, 2);
+                lbMasterTime.Text = string.Format("20{0}/{1}/{2} {3}:{4}:{5}", year, month, day, hour, minute, second);
                 yyMMdd = "";
                 hhmmss = "";
 
@@ -448,7 +452,7 @@ namespace eNet编辑器.AddForm
         /// <param name="e"></param>
         private void btnRefresh_Click(object sender, EventArgs e)
         {
-      
+            btnRefresh.Enabled = false;
             lbMasterTime.Text = "";
             getMsterTimeConnet();
             if (client6003 != null && client6003.Connected())
@@ -457,6 +461,7 @@ namespace eNet编辑器.AddForm
                 client6003.SendAsync("GET;{254.251.0.2};\r\n");
                 client6003.SendAsync("GET;{254.251.0.3};\r\n");
             }
+            btnRefresh.Enabled = true;
         }
 
         /// <summary>
@@ -466,32 +471,45 @@ namespace eNet编辑器.AddForm
         /// <param name="e"></param>
         private void timer1_Tick(object sender, EventArgs e)
         {
-            lbBJTime.Text = DateTime.Now.ToString();
-            if(!string.IsNullOrEmpty(lbMasterTime.Text))
+            try
             {
-                DateTime tmp = Convert.ToDateTime(lbMasterTime.Text);
-                lbMasterTime.Text = tmp.AddSeconds(1.0).ToString();
+                lbBJTime.Text = DateTime.Now.ToString();
+                if (!string.IsNullOrEmpty(lbMasterTime.Text))
+                {
+                    DateTime tmp = Convert.ToDateTime(lbMasterTime.Text);
+                    lbMasterTime.Text = tmp.AddSeconds(1.0).ToString();
+                }
+
             }
-             
+            catch (Exception ex) {
+                ToolsUtil.WriteLog(ex.Message);
+            }
+          
         }
+
 
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
+            btnUpdate.Enabled = false;
             getMsterTimeConnet();
             if (client6003 != null && client6003.Connected())
             {
                 //2016-05-09T13:09:55
                 string[] tmp = DateTime.Now.ToString("s").Split('T');
                 //客户端发送数据
-                client6003.SendAsync("SET;"+ tmp[0].Replace("-","")+";{254.251.0.2};\r\n");
+                string yymmdd ="00"+ tmp[0].Replace("-", "").Substring(2, 6);
+                client6003.SendAsync("SET;"+ yymmdd + ";{254.251.0.2};\r\n");
                 client6003.SendAsync("SET;00"+tmp[1].Replace(":","")+";{254.251.0.3};\r\n");
-                AppTxtShow("更新主机时间成功");
 
                 //再次获取时间
+                ToolsUtil.DelayMilli(1000);
                 client6003.SendAsync("GET;{254.251.0.2};\r\n");
                 client6003.SendAsync("GET;{254.251.0.3};\r\n");
+                AppTxtShow("更新主机时间成功");
+
             }
+            btnUpdate.Enabled = true;
         }
 
 

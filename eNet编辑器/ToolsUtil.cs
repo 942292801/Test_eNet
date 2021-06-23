@@ -18,7 +18,23 @@ namespace eNet编辑器
     /// </summary>
     class ToolsUtil
     {
-       
+
+        /// <summary>
+        /// 字符串转换为十六进制
+        /// </summary>
+        /// <param name="strData">字符串</param>
+        /// <returns>十六进制编码</returns>
+        public static string GetStrHex(string strData) {
+            string strResult = "";
+            byte[] data1 = Encoding.Default.GetBytes(strData); // 将“字符或数字”字符串转换成byte数组
+
+            // 将 byte 数组中的每一个元素都转换成 16进制 字符串。
+            for (int i = 0; i < data1.Length; i++)
+            {
+                strResult += data1[i].ToString("X2");
+            }
+            return strResult;
+        }
   
         /// <summary>
         /// 把IP地址某位转换成十六进制 并补0
@@ -82,6 +98,17 @@ namespace eNet编辑器
             PortIP = Convert.ToInt32(PortIP).ToString("X2");
             return PortIP;
         }
+
+        /// <summary>
+        /// 十六进制字符串转十进制字符串
+        /// </summary>
+        /// <param name="hexstr"></param>
+        /// <returns></returns>
+        public static string hexStr2str(string hexstr) {
+
+           return  Convert.ToInt32(hexstr,16).ToString();
+        }
+
 
         /// <summary>
         /// 从Treeview选中中获取IP地址的最后一位

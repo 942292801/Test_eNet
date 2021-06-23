@@ -300,6 +300,7 @@ namespace eNet编辑器.AddForm
                     lb3.Text = address_3[0];
                     cb3.Text = address_3[1];
                     cb3.Enabled = false;
+                    cb3.Items.Clear();
                     break;
             }
 

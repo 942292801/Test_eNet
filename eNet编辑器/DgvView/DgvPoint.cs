@@ -51,7 +51,6 @@ namespace eNet编辑器.DgvView
                 string name = "";
                 foreach (FileInfo file in folder.GetFiles("*.ini"))
                 {
-
                     name = IniConfig.GetValue(file.FullName, "define", "name");
                     if (name != "")
                     {
@@ -90,9 +89,9 @@ namespace eNet编辑器.DgvView
         #region 根据区域和 类型TYPE  测试异步加载
         public void dgvPointAddItemByObjType()
         {
-            Thread t = new Thread(ShowDatatableByObjType);
+            /*Thread t = new Thread(ShowDatatableByObjType);
             t.IsBackground = true;
-            t.Start();
+            t.Start();*/
         }
         public delegate void AddItemByObjTypeDelegate();
         private void ShowDatatableByObjType()
@@ -113,9 +112,9 @@ namespace eNet编辑器.DgvView
         #region 加载信息到Dgv表中 根据区域 测试异步加载
         public void dgvPointAddItemBySection()
         {
-            Thread t = new Thread(ShowDatatableBySection);
+           /* Thread t = new Thread(ShowDatatableBySection);
             t.IsBackground = true;
-            t.Start();
+            t.Start();*/
         }
         public delegate void AddItemBySectionDelegate();
         private void ShowDatatableBySection()

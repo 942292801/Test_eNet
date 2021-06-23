@@ -22,7 +22,7 @@ namespace eNet编辑器.OtherView
         private void PgView_Load(object sender, EventArgs e)
         {
             pg.Value = 0;
-            pg.Maximum = 100;
+            //pg.Maximum = 100;
         }
 
         public void setCancelEnable(bool flag)

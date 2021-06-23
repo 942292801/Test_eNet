@@ -10,36 +10,7 @@ namespace eNet编辑器
 {
     class DgvMesege
     {
-        /// <summary>
-        /// 改变鼠标的图标 只支持GIF  PNG图片
-        /// </summary>
-        /// <param name="cursor">图像参数  Bitmap a = (Bitmap)Bitmap.FromFile(Application.StartupPath + "\\cursor64.png");</param>
-        /// <param name="hotPoint">参数输入 new Point(0, 0)</param>
-        /// <param name="ctl">参数为控件名</param>
-        public static void SetCursor(Bitmap cursor, Point hotPoint, Control ctl)
-        {
-
-            int hotX = hotPoint.X;
-
-            int hotY = hotPoint.Y;
-
-            Bitmap myNewCursor = new Bitmap(cursor.Width * 2 - hotX, cursor.Height * 2 - hotY);
-
-            Graphics g = Graphics.FromImage(myNewCursor);
-
-            g.Clear(Color.FromArgb(0, 0, 0, 0));
-
-            g.DrawImage(cursor, cursor.Width - hotX, cursor.Height - hotY, cursor.Width,
-
-            cursor.Height);
-
-            ctl.Cursor = new Cursor(myNewCursor.GetHicon());
-
-            g.Dispose();
-
-            myNewCursor.Dispose();
-
-        }
+       
 
         /// <summary>
         /// 地址转换  FFFFFFFF转换为255.255.255.255

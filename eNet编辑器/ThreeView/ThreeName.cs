@@ -1,18 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
-using eNet编辑器;
-using eNet编辑器.DgvView;
 using System.IO;
 using eNet编辑器.AddForm;
 using System.Text.RegularExpressions;
 using eNet编辑器.Properties;
-using System.Reflection;
 namespace eNet编辑器.ThreeView
 {
     public delegate void SendFormContrl(string msg);
@@ -166,7 +159,6 @@ namespace eNet编辑器.ThreeView
             tnd.isNew = true;
             tnd.Title = "添加";
             tnd.ShowDialog();
-
         }
 
         //新建设备
@@ -193,9 +185,6 @@ namespace eNet编辑器.ThreeView
                     break;
                 }
             }
-
-
-            
             DataJson.totalList NewList = FileMesege.cmds.getListInfos();
             FileMesege.cmds.DoNewCommand(NewList, OldList);
             dgvDeviceAddItem();

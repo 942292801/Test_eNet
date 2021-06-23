@@ -34,6 +34,7 @@ namespace eNet编辑器.Controller
         public bool IsSync { get => isSync; set => isSync = value; }
 
         private BackgroundWorker backgroundWorker1;
+        private BackgroundWorker backgroundWorker2;
         private PgView pgv;
         private string hexBand;
         private string rcvIP;
@@ -427,7 +428,6 @@ namespace eNet编辑器.Controller
         {
             if (client5000 != null && !client5000.Connected())
             {
-
                 //链接tcp
                 Connect5000Tcp(ip);
             }
@@ -626,6 +626,7 @@ namespace eNet编辑器.Controller
                 {
                     //读写应答
                     isTimeOut = false;
+                    
                 }
 
                 if (nowType == "91")
@@ -930,7 +931,6 @@ namespace eNet编辑器.Controller
         #region 写入 读取
         private void BtnWrite_Click(object sender, EventArgs e)
         {
-
             try
             {
                 backgroundWorker1 = new BackgroundWorker();
@@ -941,8 +941,7 @@ namespace eNet编辑器.Controller
                 backgroundWorker1.RunWorkerCompleted += BackgroundWorker1_RunWorkerCompleted;
                 hexBand = GetSerialVal();
                 pgv = new PgView();
-                pgv.setMaxValue(devRS3000.portDatas.Count *5+2) ;
-                this.Enabled = false;
+                pgv.setMaxValue(devRS3000.portDatas.Count *5+2);
                 backgroundWorker1.RunWorkerAsync();
                 pgv.ShowDialog();
                 if (pgv.DialogResult == DialogResult.Cancel )
@@ -1058,12 +1057,12 @@ namespace eNet编辑器.Controller
         {
             try
             {
-                backgroundWorker1 = new BackgroundWorker();
-                backgroundWorker1.WorkerReportsProgress = true;
-                backgroundWorker1.WorkerSupportsCancellation = true;
-                backgroundWorker1.DoWork += BackgroundWorker1_DoWork_Read;
-                backgroundWorker1.ProgressChanged += BackgroundWorker1_ProgressChanged;
-                backgroundWorker1.RunWorkerCompleted += BackgroundWorker1_RunWorkerCompleted;
+                backgroundWorker2 = new BackgroundWorker();
+                backgroundWorker2.WorkerReportsProgress = true;
+                backgroundWorker2.WorkerSupportsCancellation = true;
+                backgroundWorker2.DoWork += BackgroundWorker1_DoWork_Read;
+                backgroundWorker2.ProgressChanged += BackgroundWorker1_ProgressChanged;
+                backgroundWorker2.RunWorkerCompleted += BackgroundWorker1_RunWorkerCompleted;
                 //添加行 并填入信息
                 dataGridView1.Rows.Clear();
                 int index;
@@ -1078,13 +1077,14 @@ namespace eNet编辑器.Controller
                     devRS3000.portDatas[i].logicCode = "";
                 }
                 pgv = new PgView();
-                pgv.setMaxValue(devRS3000.portDatas.Count * 5 + 4)  ;
-                this.Enabled = false;
-                backgroundWorker1.RunWorkerAsync();
+                pgv.setMaxValue(devRS3000.portDatas.Count * 5 + 4);
+          
+           
+                backgroundWorker2.RunWorkerAsync();
                 pgv.ShowDialog();
                 if (pgv.DialogResult == DialogResult.Cancel)
                 {
-                    backgroundWorker1.CancelAsync();
+                    backgroundWorker2.CancelAsync();
                 }
             }
             catch (Exception ex)
@@ -1105,15 +1105,16 @@ namespace eNet编辑器.Controller
             {
                 return;
             }
+
             count++;
-            backgroundWorker1.ReportProgress(count);
+            backgroundWorker2.ReportProgress(count);
             //7.读取接收时间
             if (!ReadOrder(hexID, "FF", "08"))
             {
                 return;
             }
             count++;
-            backgroundWorker1.ReportProgress(count);
+            backgroundWorker2.ReportProgress(count);
             //查询时间写0
             pollingTime = devRS3000.pollingTime;
             devRS3000.pollingTime = 0;
@@ -1122,11 +1123,11 @@ namespace eNet编辑器.Controller
                 return;
             }
             count++;
-            backgroundWorker1.ReportProgress(count);
+            backgroundWorker2.ReportProgress(count);
             ToolsUtil.DelayMilli(3000);
             foreach (DataJson.PortData portData in devRS3000.portDatas)
             {
-                if (backgroundWorker1.CancellationPending)
+                if (backgroundWorker2.CancellationPending)
                 {
                     e.Cancel = true;
                     break;
@@ -1138,37 +1139,40 @@ namespace eNet编辑器.Controller
                     return;
                 }
                 count++;
-                backgroundWorker1.ReportProgress(count);
-
+                backgroundWorker2.ReportProgress(count);
+                ToolsUtil.DelayMilli(100);
                 //2.接收代码发送
                 if (!ReadOrder(hexID, hexPort, "60"))
                 {
                     return;
                 }
                 count++;
-                backgroundWorker1.ReportProgress(count);
+                backgroundWorker2.ReportProgress(count);
+                ToolsUtil.DelayMilli(100);
                 //3.查询代码发送
                 if (!ReadOrder(hexID, hexPort, "62"))
                 {
                     return;
                 }
                 count++;
-                backgroundWorker1.ReportProgress(count);
-
+                backgroundWorker2.ReportProgress(count);
+                ToolsUtil.DelayMilli(100);
                 //4.发送数据定义代码写入 
                 if (!ReadOrder(hexID, hexPort, "63"))
                 {
                     return;
                 }
                 count++;
-                backgroundWorker1.ReportProgress(count);
+                backgroundWorker2.ReportProgress(count);
+                ToolsUtil.DelayMilli(100);
                 //5.逻辑代码发送
                 if (!ReadOrder(hexID, hexPort, "64"))
                 {
                     return;
                 }
                 count++;
-                backgroundWorker1.ReportProgress(count);
+                backgroundWorker2.ReportProgress(count);
+                ToolsUtil.DelayMilli(100);
             }
             //设置查询时间
             devRS3000.pollingTime = pollingTime;
@@ -1177,7 +1181,7 @@ namespace eNet编辑器.Controller
                 return;
             }
             count++;
-            backgroundWorker1.ReportProgress(count);
+            backgroundWorker2.ReportProgress(count);
 
         }
 
@@ -1185,9 +1189,9 @@ namespace eNet编辑器.Controller
         {
             try
             {
-                this.Enabled = true;
                 if (pgv != null)
                 {
+                    Console.WriteLine("进度框关闭");
                     pgv.Close();
 
                 }
@@ -1201,6 +1205,7 @@ namespace eNet编辑器.Controller
 
         private void BackgroundWorker1_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
+            Console.WriteLine("更新进度条"+ e.ProgressPercentage.ToString());
             //设置值
             pgv.setValue(e.ProgressPercentage);
 
@@ -1263,6 +1268,8 @@ namespace eNet编辑器.Controller
         {
             int count = 0;
             isTimeOut = true;
+            //发送
+            Console.WriteLine(ord + " 发送指令：" + count.ToString());
             client5000.SendHexAsync(ord);
             TimeOutHelper timeOutHelper = new TimeOutHelper();
             while (isTimeOut)
@@ -1273,13 +1280,15 @@ namespace eNet编辑器.Controller
                     //超过2秒没回应 重新发送资源
                     timeOutHelper = new TimeOutHelper();
                     client5000.SendHexAsync(ord);
-                    Console.WriteLine(ord + " 发送指令回应超时，重发信息次数：" + count.ToString() );
+                    //发送
+                    Console.WriteLine(ord + " 发送指令：" + count.ToString());
+                    //Console.WriteLine(ord + " 发送指令回应超时，重发信息次数：" + count.ToString() );
                     if (count == 3)
                     {
                         //超时发送3次 直接退出
                         count = 1;
                         //发送失败
-                        MessageBox.Show("发送回应超时："+ ord);
+                        //MessageBox.Show("发送回应超时："+ ord);
                         return false;
                     }
                 }
@@ -1302,7 +1311,8 @@ namespace eNet编辑器.Controller
                 backgroundWorker1.RunWorkerCompleted += BackgroundWorker1_RunWorkerCompleted;
                 pgv = new PgView();
                 pgv.setMaxValue(2);
-                this.Enabled = false;
+                //this.Enabled = false;
+      
                 backgroundWorker1.RunWorkerAsync();
                 pgv.ShowDialog();
                 if (pgv.DialogResult == DialogResult.Cancel)
@@ -2055,7 +2065,8 @@ namespace eNet编辑器.Controller
                 pgv = new PgView();
                 pgv.setMaxValue(12);
                 pgv.setCancelEnable(false);
-                this.Enabled = false;
+                //this.Enabled = false;
+              
                 backgroundWorker1.RunWorkerAsync();
                 pgv.ShowDialog();
                 if (pgv.DialogResult == DialogResult.Cancel)
@@ -2127,7 +2138,7 @@ namespace eNet编辑器.Controller
                 {
                     devRS3000.pollingTime = Convert.ToInt32(cbTime.Text);
                 }
-                this.Enabled = false;
+                //this.Enabled = false;
                 backgroundWorker1.RunWorkerAsync();
                
             }

@@ -348,12 +348,6 @@ namespace eNet编辑器.Tools
             {
                 return;
             }
-           /* if (cbOnlineIP.Text == txtDevIP.Text)
-            {
-                //地址和修改地址相同
-                //AppTxtShow("地址格式错误");
-                return;
-            }*/
             try
             {
                 //寻找加载在线的网关

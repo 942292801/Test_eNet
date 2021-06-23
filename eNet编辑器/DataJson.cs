@@ -271,8 +271,33 @@ namespace eNet编辑器
 
         }
 
+        #region devContent的内容
+
+        //九键智能触摸面板的内容
+        [Serializable]
+        public class PanelContent
+        {
+            public string title1 { get; set; }
+            public string title2 { get; set; }
+
+            public List<KeyName> keyNames = new List<KeyName>();
+
+        }
+
+        [Serializable]
+        public class KeyName
+        {
+            public int page { get; set; }
+            public int keyid { get; set; }
+            public string name1 { get; set; }
+            public string name2 { get; set; }
+
+        }
+
+        #endregion
+
         #region 端口内容 开关 调光 串口3000 温感 光感
-        
+
         [Serializable]
         public class PortSwitch 
         {

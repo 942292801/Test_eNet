@@ -57,6 +57,7 @@
             // 
             this.pg.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.pg.Location = new System.Drawing.Point(8, 16);
+            this.pg.Maximum = 1000;
             this.pg.Name = "pg";
             this.pg.Size = new System.Drawing.Size(220, 21);
             this.pg.Style = DevComponents.DotNetBar.eDotNetBarStyle.OfficeXP;

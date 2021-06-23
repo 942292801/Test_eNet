@@ -12,6 +12,7 @@ using eNet编辑器.AddForm;
 using System.Text.RegularExpressions;
 using System.Reflection;
 using System.Net;
+using eNet编辑器.Tools;
 
 namespace eNet编辑器.ThreeView
 {
@@ -45,6 +46,8 @@ namespace eNet编辑器.ThreeView
 
         //树状图节点
         string fullpath = "";
+        //搜索区域
+        SearchSection searchSection = new SearchSection();
 
         //客户端
         ClientAsync client;
@@ -577,17 +580,7 @@ namespace eNet编辑器.ThreeView
         }
 
 
-
-
-
-
-
-
-
-
-
-
-
+      
         #endregion
 
         #region 获取面板开启状态
@@ -880,6 +873,157 @@ namespace eNet编辑器.ThreeView
             }
         }
 
+
+
+        #endregion
+
+
+        #region 九键面板设置 和 搜索
+        private void ButtonX1_Click(object sender, EventArgs e)
+        {
+            if (treeView1.SelectedNode == null || !treeView1.SelectedNode.Text.Contains("智能触摸屏")) {
+                clearTxtShow("请先选中智能触摸屏的树状图节点");
+                return;
+            }
+            string ip = treeView1.SelectedNode.Parent.Text.Split(' ')[0];
+            string id = Regex.Replace(treeView1.SelectedNode.Text.Split(' ')[0], @"[^\d]*", "");
+            NineKeySet nineKeySet = new NineKeySet();
+            nineKeySet.Ip = ip;
+            nineKeySet.Id = Convert.ToInt32(id);
+
+            DataJson.Module devModuel = DataListHelper.findDeviceByIP_ID(ip, Convert.ToInt32(id));
+            if (devModuel == null)
+            {
+                return;
+            }
+            //假如从手机读回来的端口没有信息  在这里添加类型
+            if (devModuel.devPortList == null || devModuel.devPortList.Count == 0)
+            {
+                DataListHelper.addPortType(devModuel.devPortList, devModuel.device);
+            }
+            nineKeySet.DevModuel = devModuel;
+            nineKeySet.ShowDialog();
+        }
+
+        //搜索
+        private void BtnSearch_Click(object sender, EventArgs e)
+        {
+            searchSection.StartPosition = FormStartPosition.CenterParent;
+            searchSection.SearchTreeNode += new Action(SearchTreeNode);
+            searchSection.ShowDialog();
+            if (searchSection.DialogResult == DialogResult.OK)
+            {
+
+
+            }
+        }
+
+        private void SearchTreeNode()
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(searchSection.Area1))
+                {
+                    ThreePanelAddNode();
+                    return;
+                }
+                //添加特定区域
+                treeView1.Nodes.Clear();
+                if (FileMesege.DeviceList == null)
+                {
+                    return;
+                }
+                //记录当前节点展开状况 
+                TreeMesege tm = new TreeMesege();
+                DataJson.PointInfo point = null;
+                string section = "";
+                //从设备加载网关信息
+                foreach (DataJson.Device d in FileMesege.DeviceList)
+                {
+                    int index = tm.AddNode1(treeView1, d.ip + " " + d.master);
+                    if (FileMesege.panelList != null)
+                    {
+                        foreach (DataJson.Panel sc in FileMesege.panelList)
+                        {
+                            //  添加该网关IP的子节点
+                            if (sc.IP == d.ip)
+                            {
+                                foreach (DataJson.panels scs in sc.panels)
+                                {
+                                    point = DataListHelper.findPointByPid(scs.pid, FileMesege.PointList.link);
+                                    if (point != null)
+                                    {
+                                        //判断是否符合搜索的点位
+                                        if (string.IsNullOrEmpty(searchSection.Area4))
+                                        {
+                                            if (string.IsNullOrEmpty(searchSection.Area3))
+                                            {
+                                                if (string.IsNullOrEmpty(searchSection.Area2))
+                                                {
+                                                    if (string.IsNullOrEmpty(searchSection.Area1))
+                                                    {
+
+                                                    }
+                                                    else
+                                                    {
+                                                        if (point.area1 != searchSection.Area1)
+                                                        {
+                                                            continue;
+                                                        }
+                                                    }
+                                                }
+                                                else
+                                                {
+                                                    if (point.area1 != searchSection.Area1
+                                                        || point.area2 != searchSection.Area2)
+                                                    {
+                                                        continue;
+                                                    }
+                                                }
+                                            }
+                                            else
+                                            {
+                                                if (point.area1 != searchSection.Area1
+                                                    || point.area2 != searchSection.Area2
+                                                    || point.area3 != searchSection.Area3)
+                                                {
+                                                    continue;
+                                                }
+                                            }
+                                        }
+                                        else
+                                        {
+                                            if (point.area1 != searchSection.Area1
+                                                || point.area2 != searchSection.Area2
+                                                || point.area3 != searchSection.Area3
+                                                || point.area4 != searchSection.Area4)
+                                            {
+                                                continue;
+                                            }
+                                        }
+                                        section = string.Format("{0} {1} {2} {3}", point.area1, point.area2, point.area3, point.area4).Trim().Replace(" ", "\\");
+                                        int index2 = tm.AddNode2(treeView1, string.Format("{0}{1} {2} {3}", Resources.Panel, scs.id, section, point.name), index);
+
+                                    }
+
+                                }
+
+                            }
+                        }
+                    }
+
+                }
+                foreach (TreeNode node in treeView1.Nodes)
+                {
+                    node.ExpandAll();
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+            }
+
+        }
         #endregion
 
 

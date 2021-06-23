@@ -13,7 +13,6 @@ using System.Threading;
 
 namespace eNet编辑器.DgvView
 {
-    //public delegate void DgvDeviceCursorDefault();
     public partial class DgvName : Form
     {
        
@@ -38,7 +37,6 @@ namespace eNet编辑器.DgvView
         public event Action unSelectSectionNode;
         public event Action<string,string> updateTitleNodeText;
 
-        //public event DgvDeviceCursorDefault dgvDeviceCursorDefault;
         /// <summary>
         /// 解决窗体闪烁问题
         /// </summary>
@@ -112,7 +110,6 @@ namespace eNet编辑器.DgvView
                 }
                 TreeMesege tm = new TreeMesege();
                 string[] num = tm.GetNodeNum(FileMesege.tnselectNode).Split(' ');
-
 
                 if (filepath == "" || num == null)
                 {
@@ -246,8 +243,6 @@ namespace eNet编辑器.DgvView
 
         #region 单双击事件
 
-    
-
         #region  设置弹框
         /// <summary>
         /// 设置 弹框
@@ -262,6 +257,11 @@ namespace eNet编辑器.DgvView
             if (devModuel == null)
             { 
                 return;
+            }
+            //假如从手机读回来的端口没有信息  在这里添加类型
+            if (devModuel.devPortList == null || devModuel.devPortList.Count == 0)
+            {
+                DataListHelper.addPortType(devModuel.devPortList, devModuel.device);
             }
             DataJson.DevPort devPort = DataListHelper.findPortByModule_Port(devModuel, Convert.ToInt32(port));
             if (devPort == null)
@@ -403,61 +403,97 @@ namespace eNet编辑器.DgvView
         private void dataGridView1_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
             try{
-            //行数
-            int count = e.RowIndex;
-            dataGridView1.Columns[3].ReadOnly = true;
-            if (FileMesege.tnselectNode == null)
-            {
-                return;
-            }
-            string[] parents = FileMesege.tnselectNode.Parent.Text.Split(' ');
-            string[] devs = FileMesege.tnselectNode.Text.Split(' ');
-            string IP = ToolsUtil.GetIPstyle(parents[0], 4);
-            string ID = ToolsUtil.strtohexstr(Regex.Replace(devs[0], @"[^\d]*", ""));
-            string IDports = ToolsUtil.strtohexstr((count + 1).ToString());
-            string address = "FE00" + ID + IDports;
-            //撤销
-            DataJson.totalList OldList = FileMesege.cmds.getListInfos();
-            foreach (DataJson.PointInfo ep in FileMesege.PointList.equipment)
-            {
-                //循环判断 NameList中是否存在该节点
-                if (address == ep.address && ep.ip == parents[0])
+                int count = e.RowIndex;
+                dataGridView1.Columns[3].ReadOnly = true;
+                if (FileMesege.tnselectNode == null || dataGridView1.Rows[count].Cells[3].Value == null)
                 {
-   
-                    if (dataGridView1.Rows[count].Cells[3].Value != null && !string.IsNullOrEmpty(dataGridView1.Rows[count].Cells[3].Value.ToString().Trim()))
-                    {
-                        string EditName = dataGridView1.Rows[count].Cells[3].Value.ToString();
-                        
-                        //剔除名字相同 
-                        foreach (DataJson.PointInfo et in FileMesege.PointList.equipment)
-                        {
-                            if (et.area1 == ep.area1 && et.area2 == ep.area2 && et.area3 == ep.area3 && et.area4 == ep.area4 && et.address != ep.address)
-                            {
-                                if (et.name.Split('@')[0] == EditName)
-                                {
-                                    
-                                    dataGridView1.Rows[count].Cells[3].Value = ep.name.Split('@')[0];
-                                    return;
-                                }
-                            }
-                        }
-                        ep.name = string.Format("{0}@{1}", EditName, parents[0].Split('.')[3]);
-                    }
-                    else
-                    {
-                        dataGridView1.Rows[count].Cells[3].Value = ep.name.Split('@')[0];
-                        return;
-                    }
-                    DataJson.totalList NewList = FileMesege.cmds.getListInfos();
-                    FileMesege.cmds.DoNewCommand(NewList, OldList);
-                    
                     return;
                 }
-            }
-            dataGridView1.Rows[count].Cells[3].Value = null;
-          
+                string[] parents = FileMesege.tnselectNode.Parent.Text.Split(' ');
+                string[] devs = FileMesege.tnselectNode.Text.Split(' ');
+                string IP = ToolsUtil.GetIPstyle(parents[0], 4);
+                string ID = ToolsUtil.strtohexstr(Regex.Replace(devs[0], @"[^\d]*", ""));
+                string IDports = ToolsUtil.strtohexstr((count + 1).ToString());
+                string address = "FE00" + ID + IDports;
+
+                //撤销
+                DataJson.totalList OldList = FileMesege.cmds.getListInfos();
+                string EditName = dataGridView1.Rows[count].Cells[3].Value.ToString().Trim();
+
+                foreach (DataJson.PointInfo ep in FileMesege.PointList.equipment)
+                {
+                    //循环判断 NameList中是否存在该节点
+                    if (address == ep.address && ep.ip == parents[0])
+                    {
+
+                        if (!string.IsNullOrEmpty(EditName))
+                        {
+                        
+                            //剔除名字相同 
+                            foreach (DataJson.PointInfo et in FileMesege.PointList.equipment)
+                            {
+                                if (et.area1 == ep.area1 && et.area2 == ep.area2 && et.area3 == ep.area3 && et.area4 == ep.area4 && et.address != ep.address)
+                                {
+                                    if (et.name.Split('@')[0] == EditName)
+                                    {
+                                    
+                                        dataGridView1.Rows[count].Cells[3].Value = ep.name.Split('@')[0];
+                                        return;
+                                    }
+                                }
+                            }
+                            ep.name = string.Format("{0}@{1}", EditName, parents[0].Split('.')[3]);
+                        }
+                        else
+                        {
+                            dataGridView1.Rows[count].Cells[3].Value = ep.name.Split('@')[0];
+                            return;
+                        }
+                        DataJson.totalList NewList = FileMesege.cmds.getListInfos();
+                        FileMesege.cmds.DoNewCommand(NewList, OldList);
+                    
+                        return;
+                    }
+                }
+                //新添加区域和名称
+                DataJson.PointInfo point = DataListHelper.findPointBySectionName("未定义区域", EditName);
+                if (point == null)
+                {
+                    string section = "未定义区域";
+                    while (section.Split('\\').Length != 4)
+                    {
+                        section = string.Format("{0}\\", section);
+                    }
+                    string type = dataGridView1.Rows[count].Cells[1].Value.ToString();
+                    //添加新的Point点
+                    string[] sections = section.Split('\\');
+                    DataJson.PointInfo eq = new DataJson.PointInfo();
+                    eq.pid = DataChange.randomNum();
+                    eq.area1 = sections[0];
+                    eq.area2 = sections[1];
+                    eq.area3 = sections[2];
+                    eq.area4 = sections[3];
+                    eq.name = string.Format("{0}@{1}", EditName, parents[0].Split('.')[3]);
+                    eq.ip = parents[0];
+                    eq.address = address;
+                    eq.objType = "";
+                    eq.value = "";
+                    eq.type = IniHelper.findTypesIniTypebyName(type);
+                    FileMesege.PointList.equipment.Add(eq);
+                    dataGridView1.Rows[count].Cells[2].Value = eq.area1;
+                    DataJson.totalList NewList = FileMesege.cmds.getListInfos();
+                    FileMesege.cmds.DoNewCommand(NewList, OldList);
+                }
+                else {
+                    dataGridView1.Rows[count].Cells[3].Value = null;
+
+                }
+
             }//try
-            catch (Exception ex) { MessageBox.Show(ex + "临时调试错误信息"); }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message );
+            }
         }
 
         private bool isFirstClick = true;
@@ -641,85 +677,84 @@ namespace eNet编辑器.DgvView
             try
             {
                 //区域信息 选中节点非空
-                if (FileMesege.sectionNode != null)
+                string[] parents = FileMesege.tnselectNode.Parent.Text.Split(' ');
+                string[] devs = FileMesege.tnselectNode.Text.Split(' ');
+                //获取10进制的设备ID号
+                string idstr = Regex.Replace(devs[0], @"[^\d]*", "");
+                //十六进制的ID号
+                string ID = ToolsUtil.strtohexstr(idstr);
+                //10进制的ID端口号 
+                string idportstr = dataGridView1.Rows[rowCount].Cells[0].Value.ToString();
+                //十六进制的ID端口号
+                string IDports = ToolsUtil.strtohexstr(idportstr);
+                string address = "FE00" + ID + IDports;
+                string name = "";
+                //暂时存储名称 去掉数字
+                TreeMesege tm = new TreeMesege();
+                string[] tmID = tm.GetSectionId(FileMesege.sectionNode.FullPath.Split('\\'));
+                string[] sections = tm.GetSection(tmID[0], tmID[1], tmID[2], tmID[3]).Split('\\');
+                string type = dataGridView1.Rows[rowCount].Cells[1].Value.ToString();
+                string section = FileMesege.sectionNode.FullPath.Replace("\\", " ");
+                if (section.Contains("查看所有区域"))
                 {
-                    string[] parents = FileMesege.tnselectNode.Parent.Text.Split(' ');
-                    string[] devs = FileMesege.tnselectNode.Text.Split(' ');
-                    //获取10进制的设备ID号
-                    string idstr = Regex.Replace(devs[0], @"[^\d]*", "");
-                    //十六进制的ID号
-                    string ID = ToolsUtil.strtohexstr(idstr);
-                    //10进制的ID端口号 
-                    string idportstr = dataGridView1.Rows[rowCount].Cells[0].Value.ToString();
-                    //十六进制的ID端口号
-                    string IDports = ToolsUtil.strtohexstr(idportstr);
-                    string address = "FE00" + ID + IDports;
-                    string name = "";
-                    //暂时存储名称 去掉数字
-                    TreeMesege tm = new TreeMesege();
-                    string[] tmID = tm.GetSectionId(FileMesege.sectionNode.FullPath.Split('\\'));
-                    string[] sections = tm.GetSection(tmID[0], tmID[1], tmID[2], tmID[3]).Split('\\');
-                    string type = dataGridView1.Rows[rowCount].Cells[1].Value.ToString();
-                    string section = FileMesege.sectionNode.FullPath.Replace("\\", " ");
-                    if (section.Contains("查看所有区域"))
-                    {
-                        txtAppShow("请正确选择区域");
-                        return;
-                    }
-                    //新建point点
-                    DataListHelper.newPoint(address, parents[0], sections, type, FileMesege.PointList.equipment);
+                    txtAppShow("请正确选择区域");
+                    return;
+                }
+                //新建point点
+                DataListHelper.newPoint(address, parents[0], sections, type, FileMesege.PointList.equipment);
 
-                    try
+                try
+                {
+                    if (dataGridView1.Rows[rowCount].Cells[2].Value != null && dataGridView1.Rows[rowCount].Cells[3].Value != null)
                     {
-                        if (dataGridView1.Rows[rowCount].Cells[2].Value != null && dataGridView1.Rows[rowCount].Cells[3].Value != null)
+                        string oldStr = dataGridView1.Rows[rowCount].Cells[3].Value.ToString();
+                        //同一个区域和同一个名称 直接返回
+                        if (section == dataGridView1.Rows[rowCount].Cells[2].Value.ToString() && oldStr.Contains(FileMesege.titleinfo) && oldStr.Substring(0, FileMesege.titleinfo.Length) == FileMesege.titleinfo)
                         {
-                            string oldStr = dataGridView1.Rows[rowCount].Cells[3].Value.ToString();
-                            //同一个区域和同一个名称 直接返回
-                            if (section == dataGridView1.Rows[rowCount].Cells[2].Value.ToString() && oldStr.Contains(FileMesege.titleinfo) && oldStr.Substring(0, FileMesege.titleinfo.Length) == FileMesege.titleinfo)
-                            {
-                                return;
-                            }
-                        }
-
-                    }
-                    catch (Exception ex)
-                    {
-                        ToolsUtil.WriteLog(ex.Message);
-                    }
-
-                    dataGridView1.Rows[rowCount].Cells[2].Value = section;
-                    //正常的修改名称操作
-                    name = sectionChangeName();
-                    string tmpName = string.Format("{0}@{1}", name, parents[0].Split('.')[3]);
-
-                    foreach (DataJson.PointInfo e in FileMesege.PointList.equipment)
-                    {
-                        //循环判断 NameList中是否存在该节点
-                        if (address == e.address && e.ip == parents[0])
-                        {
-                            if (string.IsNullOrWhiteSpace(e.name))
-                            {
-
-                                e.name = tmpName;
-                                dataGridView1.Rows[rowCount].Cells[3].Value = name;
-                            }
-                            else
-                            {
-                                if (e.name != tmpName)
-                                {
-                                    if (!tmpName.Contains("未定义"))
-                                    {
-                                        e.name = tmpName;
-                                        dataGridView1.Rows[rowCount].Cells[3].Value = name;
-                                    }
-                                }
-                              
-                            }
-                            break;
+                            return;
                         }
                     }
 
                 }
+                catch (Exception ex)
+                {
+                    ToolsUtil.WriteLog(ex.Message);
+                }
+
+                dataGridView1.Rows[rowCount].Cells[2].Value = section;
+                //正常的修改名称操作
+                name = sectionChangeName();
+                string tmpName = string.Format("{0}@{1}", name, parents[0].Split('.')[3]);
+
+                foreach (DataJson.PointInfo e in FileMesege.PointList.equipment)
+                {
+                    //循环判断 NameList中是否存在该节点
+                    if (address == e.address && e.ip == parents[0])
+                    {
+                        if (string.IsNullOrWhiteSpace(e.name))
+                        {
+
+                            e.name = tmpName;
+                            dataGridView1.Rows[rowCount].Cells[3].Value = name;
+                        }
+                        else
+                        {
+                            if (e.name != tmpName)
+                            {
+                                e.name = tmpName;
+                                dataGridView1.Rows[rowCount].Cells[3].Value = name;
+                                /* if (!tmpName.Contains("未定义"))
+                                {
+                                    e.name = tmpName;
+                                    dataGridView1.Rows[rowCount].Cells[3].Value = name;
+                                }*/
+                            }
+                              
+                        }
+                        break;
+                    }
+                }
+
             }//try
             catch (Exception ex)
             {
@@ -735,7 +770,6 @@ namespace eNet编辑器.DgvView
         /// <returns></returns>
         private string sectionChangeName()
         {
-
             string title = FileMesege.titleinfo;
             //名称栏为空 或者区域栏 返回空值 
             if (string.IsNullOrEmpty(title))
@@ -1182,7 +1216,6 @@ namespace eNet编辑器.DgvView
                 }
                 catch(Exception ex)
                 {
-
                     //报错不处理
                     Console.WriteLine(ex.Message + ex.StackTrace);
                 }
@@ -1279,7 +1312,7 @@ namespace eNet编辑器.DgvView
 
         #endregion
 
-        #region 鼠标右击  鼠标图标更改
+        #region 鼠标右击 
         /// <summary>
         /// 右击鼠标清位置信息与名字信息
         /// </summary>
@@ -1294,9 +1327,6 @@ namespace eNet编辑器.DgvView
                 //需要添加
                 unSelectTitleNode();
                 unSelectSectionNode();
-                //鼠标图标改变
-                //cursor_default();
-                //dgvDeviceCursorDefault();
             }
             if (DgvMesege.endDataViewCurrent(dataGridView1, e.Y, e.X))
             {
@@ -1327,28 +1357,19 @@ namespace eNet编辑器.DgvView
             }
         }
 
-        /// <summary>
-        /// 鼠标图标更改为正常图标
-        /// </summary>
-        public void cursor_default()
-        {
 
-            dataGridView1.Cursor = Cursors.Default;
+        public void CursorIsNormal(bool isNormal)
+        {
+            if (isNormal)
+            {
+                dataGridView1.Cursor = Cursors.Default;
+            }
+            else
+            {
+                dataGridView1.Cursor = Cursors.NoMove2D;
+            }
         }
 
-        /// <summary>
-        /// 鼠标图标更改为复制图标
-        /// </summary>
-        public void cursor_copy()
-        {
-           
-            //定义图片
-            Bitmap a = (Bitmap)Bitmap.FromFile(Application.StartupPath + "\\cursor32.png");
-            //定义加载到那个控件
-            DgvMesege.SetCursor(a, new Point(0, 0), dataGridView1);
-            //dataGridView1.Cursor = Cursors.PanWest;
-            
-        }
         #endregion
 
         #region Del按键处理
@@ -1455,19 +1476,9 @@ namespace eNet编辑器.DgvView
             }
 
         }
-        #endregion
 
       
-
-
-
-
-
-
-
-
-
-
+        #endregion
 
         //end
     }

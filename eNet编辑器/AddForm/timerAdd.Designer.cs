@@ -149,6 +149,7 @@
             // 
             // cbs4
             // 
+            this.cbs4.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbs4.Enabled = false;
             this.cbs4.FormattingEnabled = true;
             this.cbs4.Location = new System.Drawing.Point(79, 217);
@@ -170,6 +171,7 @@
             // 
             // cbs3
             // 
+            this.cbs3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbs3.Enabled = false;
             this.cbs3.FormattingEnabled = true;
             this.cbs3.Location = new System.Drawing.Point(79, 175);
@@ -191,6 +193,7 @@
             // 
             // cbs2
             // 
+            this.cbs2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbs2.Enabled = false;
             this.cbs2.FormattingEnabled = true;
             this.cbs2.Location = new System.Drawing.Point(79, 136);
@@ -212,6 +215,7 @@
             // 
             // cbs1
             // 
+            this.cbs1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbs1.Enabled = false;
             this.cbs1.FormattingEnabled = true;
             this.cbs1.Location = new System.Drawing.Point(79, 94);

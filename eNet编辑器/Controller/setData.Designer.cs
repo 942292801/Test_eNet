@@ -114,25 +114,94 @@
             this.superTabControlPanel11 = new DevComponents.DotNetBar.SuperTabControlPanel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.superTabControl1 = new DevComponents.DotNetBar.SuperTabControl();
-            this.superTabControlPanel1 = new DevComponents.DotNetBar.SuperTabControlPanel();
-            this.label79 = new System.Windows.Forms.Label();
-            this.btnSendTest = new System.Windows.Forms.Button();
-            this.txtSendCode = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.btnSendSet = new System.Windows.Forms.Button();
-            this.lbSendCheckSection = new System.Windows.Forms.Label();
-            this.label20 = new System.Windows.Forms.Label();
-            this.label19 = new System.Windows.Forms.Label();
-            this.lbSendNum = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.txtSendAdd = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.txtSendEnd = new System.Windows.Forms.TextBox();
-            this.txtSendStart = new System.Windows.Forms.TextBox();
-            this.label119 = new System.Windows.Forms.Label();
-            this.cbSendCheck = new System.Windows.Forms.ComboBox();
-            this.label122 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.superTabItem1 = new DevComponents.DotNetBar.SuperTabItem();
+            this.superTabControlPanel2 = new DevComponents.DotNetBar.SuperTabControlPanel();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.cbRcvKeyFeedback = new System.Windows.Forms.ComboBox();
+            this.btnRcvSet = new System.Windows.Forms.Button();
+            this.btnTimeSet = new System.Windows.Forms.Button();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.btnRcvPortSet = new System.Windows.Forms.Button();
+            this.label30 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.txtPollingCode = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.cbRcvDealMode = new System.Windows.Forms.ComboBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.btnSaveChange = new System.Windows.Forms.Button();
+            this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
+            this.cbRcvData27 = new System.Windows.Forms.CheckBox();
+            this.cbRcvData26 = new System.Windows.Forms.CheckBox();
+            this.cbRcvData25 = new System.Windows.Forms.CheckBox();
+            this.cbRcvData24 = new System.Windows.Forms.CheckBox();
+            this.cbRcvData23 = new System.Windows.Forms.CheckBox();
+            this.cbRcvData22 = new System.Windows.Forms.CheckBox();
+            this.cbRcvData21 = new System.Windows.Forms.CheckBox();
+            this.cbRcvData20 = new System.Windows.Forms.CheckBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.flowLayoutPanel5 = new System.Windows.Forms.FlowLayoutPanel();
+            this.cbRcvData47 = new System.Windows.Forms.CheckBox();
+            this.cbRcvData46 = new System.Windows.Forms.CheckBox();
+            this.cbRcvData45 = new System.Windows.Forms.CheckBox();
+            this.cbRcvData44 = new System.Windows.Forms.CheckBox();
+            this.cbRcvData43 = new System.Windows.Forms.CheckBox();
+            this.cbRcvData42 = new System.Windows.Forms.CheckBox();
+            this.cbRcvData41 = new System.Windows.Forms.CheckBox();
+            this.cbRcvData40 = new System.Windows.Forms.CheckBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
+            this.cbRcvData17 = new System.Windows.Forms.CheckBox();
+            this.cbRcvData16 = new System.Windows.Forms.CheckBox();
+            this.cbRcvData15 = new System.Windows.Forms.CheckBox();
+            this.cbRcvData14 = new System.Windows.Forms.CheckBox();
+            this.cbRcvData13 = new System.Windows.Forms.CheckBox();
+            this.cbRcvData12 = new System.Windows.Forms.CheckBox();
+            this.cbRcvData11 = new System.Windows.Forms.CheckBox();
+            this.cbRcvData10 = new System.Windows.Forms.CheckBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
+            this.cbRcvData37 = new System.Windows.Forms.CheckBox();
+            this.cbRcvData36 = new System.Windows.Forms.CheckBox();
+            this.cbRcvData35 = new System.Windows.Forms.CheckBox();
+            this.cbRcvData34 = new System.Windows.Forms.CheckBox();
+            this.cbRcvData33 = new System.Windows.Forms.CheckBox();
+            this.cbRcvData32 = new System.Windows.Forms.CheckBox();
+            this.cbRcvData31 = new System.Windows.Forms.CheckBox();
+            this.cbRcvData30 = new System.Windows.Forms.CheckBox();
+            this.label82 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.txtRcvCode = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.label4 = new System.Windows.Forms.Label();
+            this.cbTime = new System.Windows.Forms.ComboBox();
+            this.lbRcvNum = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.superTabItem2 = new DevComponents.DotNetBar.SuperTabItem();
+            this.superTabControlPanel3 = new DevComponents.DotNetBar.SuperTabControlPanel();
+            this.btnSendSave = new System.Windows.Forms.Button();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.label76 = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
+            this.txtMinVal = new System.Windows.Forms.TextBox();
+            this.txtMaxVal = new System.Windows.Forms.TextBox();
+            this.txtDataMode = new System.Windows.Forms.TextBox();
+            this.label21 = new System.Windows.Forms.Label();
+            this.label26 = new System.Windows.Forms.Label();
+            this.txtMove1 = new System.Windows.Forms.TextBox();
+            this.txtMove5 = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label27 = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
+            this.txtMove4 = new System.Windows.Forms.TextBox();
+            this.txtMove2 = new System.Windows.Forms.TextBox();
+            this.label24 = new System.Windows.Forms.Label();
+            this.label25 = new System.Windows.Forms.Label();
+            this.txtMove3 = new System.Windows.Forms.TextBox();
+            this.lbSendHnum = new System.Windows.Forms.Label();
+            this.label29 = new System.Windows.Forms.Label();
+            this.btnSendBack = new System.Windows.Forms.Button();
+            this.superTabItem3 = new DevComponents.DotNetBar.SuperTabItem();
             this.superTabControlPanel4 = new DevComponents.DotNetBar.SuperTabControlPanel();
             this.btnFuncSave = new System.Windows.Forms.Button();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
@@ -251,94 +320,25 @@
             this.label31 = new System.Windows.Forms.Label();
             this.btnRcvBack = new System.Windows.Forms.Button();
             this.superTabItem4 = new DevComponents.DotNetBar.SuperTabItem();
-            this.superTabControlPanel3 = new DevComponents.DotNetBar.SuperTabControlPanel();
-            this.btnSendSave = new System.Windows.Forms.Button();
-            this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.label76 = new System.Windows.Forms.Label();
-            this.label22 = new System.Windows.Forms.Label();
-            this.txtMinVal = new System.Windows.Forms.TextBox();
-            this.txtMaxVal = new System.Windows.Forms.TextBox();
-            this.txtDataMode = new System.Windows.Forms.TextBox();
-            this.label21 = new System.Windows.Forms.Label();
-            this.label26 = new System.Windows.Forms.Label();
-            this.txtMove1 = new System.Windows.Forms.TextBox();
-            this.txtMove5 = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label27 = new System.Windows.Forms.Label();
-            this.label23 = new System.Windows.Forms.Label();
-            this.txtMove4 = new System.Windows.Forms.TextBox();
-            this.txtMove2 = new System.Windows.Forms.TextBox();
-            this.label24 = new System.Windows.Forms.Label();
-            this.label25 = new System.Windows.Forms.Label();
-            this.txtMove3 = new System.Windows.Forms.TextBox();
-            this.lbSendHnum = new System.Windows.Forms.Label();
-            this.label29 = new System.Windows.Forms.Label();
-            this.btnSendBack = new System.Windows.Forms.Button();
-            this.superTabItem3 = new DevComponents.DotNetBar.SuperTabItem();
-            this.superTabControlPanel2 = new DevComponents.DotNetBar.SuperTabControlPanel();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.label16 = new System.Windows.Forms.Label();
-            this.cbRcvKeyFeedback = new System.Windows.Forms.ComboBox();
-            this.btnRcvSet = new System.Windows.Forms.Button();
-            this.btnTimeSet = new System.Windows.Forms.Button();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.btnRcvPortSet = new System.Windows.Forms.Button();
-            this.label30 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.txtPollingCode = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.cbRcvDealMode = new System.Windows.Forms.ComboBox();
-            this.label17 = new System.Windows.Forms.Label();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.groupBox8 = new System.Windows.Forms.GroupBox();
-            this.label12 = new System.Windows.Forms.Label();
-            this.btnSaveChange = new System.Windows.Forms.Button();
-            this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
-            this.cbRcvData27 = new System.Windows.Forms.CheckBox();
-            this.cbRcvData26 = new System.Windows.Forms.CheckBox();
-            this.cbRcvData25 = new System.Windows.Forms.CheckBox();
-            this.cbRcvData24 = new System.Windows.Forms.CheckBox();
-            this.cbRcvData23 = new System.Windows.Forms.CheckBox();
-            this.cbRcvData22 = new System.Windows.Forms.CheckBox();
-            this.cbRcvData21 = new System.Windows.Forms.CheckBox();
-            this.cbRcvData20 = new System.Windows.Forms.CheckBox();
-            this.label13 = new System.Windows.Forms.Label();
-            this.flowLayoutPanel5 = new System.Windows.Forms.FlowLayoutPanel();
-            this.cbRcvData47 = new System.Windows.Forms.CheckBox();
-            this.cbRcvData46 = new System.Windows.Forms.CheckBox();
-            this.cbRcvData45 = new System.Windows.Forms.CheckBox();
-            this.cbRcvData44 = new System.Windows.Forms.CheckBox();
-            this.cbRcvData43 = new System.Windows.Forms.CheckBox();
-            this.cbRcvData42 = new System.Windows.Forms.CheckBox();
-            this.cbRcvData41 = new System.Windows.Forms.CheckBox();
-            this.cbRcvData40 = new System.Windows.Forms.CheckBox();
-            this.label14 = new System.Windows.Forms.Label();
-            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
-            this.cbRcvData17 = new System.Windows.Forms.CheckBox();
-            this.cbRcvData16 = new System.Windows.Forms.CheckBox();
-            this.cbRcvData15 = new System.Windows.Forms.CheckBox();
-            this.cbRcvData14 = new System.Windows.Forms.CheckBox();
-            this.cbRcvData13 = new System.Windows.Forms.CheckBox();
-            this.cbRcvData12 = new System.Windows.Forms.CheckBox();
-            this.cbRcvData11 = new System.Windows.Forms.CheckBox();
-            this.cbRcvData10 = new System.Windows.Forms.CheckBox();
-            this.label15 = new System.Windows.Forms.Label();
-            this.flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
-            this.cbRcvData37 = new System.Windows.Forms.CheckBox();
-            this.cbRcvData36 = new System.Windows.Forms.CheckBox();
-            this.cbRcvData35 = new System.Windows.Forms.CheckBox();
-            this.cbRcvData34 = new System.Windows.Forms.CheckBox();
-            this.cbRcvData33 = new System.Windows.Forms.CheckBox();
-            this.cbRcvData32 = new System.Windows.Forms.CheckBox();
-            this.cbRcvData31 = new System.Windows.Forms.CheckBox();
-            this.cbRcvData30 = new System.Windows.Forms.CheckBox();
-            this.label82 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.txtRcvCode = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.label4 = new System.Windows.Forms.Label();
-            this.cbTime = new System.Windows.Forms.ComboBox();
-            this.lbRcvNum = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.superTabItem2 = new DevComponents.DotNetBar.SuperTabItem();
+            this.superTabControlPanel1 = new DevComponents.DotNetBar.SuperTabControlPanel();
+            this.label79 = new System.Windows.Forms.Label();
+            this.btnSendTest = new System.Windows.Forms.Button();
+            this.txtSendCode = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.btnSendSet = new System.Windows.Forms.Button();
+            this.lbSendCheckSection = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
+            this.lbSendNum = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txtSendAdd = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtSendEnd = new System.Windows.Forms.TextBox();
+            this.txtSendStart = new System.Windows.Forms.TextBox();
+            this.label119 = new System.Windows.Forms.Label();
+            this.cbSendCheck = new System.Windows.Forms.ComboBox();
+            this.label122 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.superTabItem1 = new DevComponents.DotNetBar.SuperTabItem();
             this.ultraSplitter2 = new Infragistics.Win.Misc.UltraSplitter();
             this.panel3 = new System.Windows.Forms.Panel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -375,7 +375,17 @@
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.superTabControl1)).BeginInit();
             this.superTabControl1.SuspendLayout();
-            this.superTabControlPanel1.SuspendLayout();
+            this.superTabControlPanel2.SuspendLayout();
+            this.groupBox5.SuspendLayout();
+            this.groupBox4.SuspendLayout();
+            this.groupBox3.SuspendLayout();
+            this.groupBox8.SuspendLayout();
+            this.flowLayoutPanel3.SuspendLayout();
+            this.flowLayoutPanel5.SuspendLayout();
+            this.flowLayoutPanel2.SuspendLayout();
+            this.flowLayoutPanel4.SuspendLayout();
+            this.superTabControlPanel3.SuspendLayout();
+            this.groupBox6.SuspendLayout();
             this.superTabControlPanel4.SuspendLayout();
             this.groupBox7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.superTabControl2)).BeginInit();
@@ -386,17 +396,7 @@
             this.superTabControlPanel8.SuspendLayout();
             this.superTabControlPanel7.SuspendLayout();
             this.superTabControlPanel6.SuspendLayout();
-            this.superTabControlPanel3.SuspendLayout();
-            this.groupBox6.SuspendLayout();
-            this.superTabControlPanel2.SuspendLayout();
-            this.groupBox5.SuspendLayout();
-            this.groupBox4.SuspendLayout();
-            this.groupBox3.SuspendLayout();
-            this.groupBox8.SuspendLayout();
-            this.flowLayoutPanel3.SuspendLayout();
-            this.flowLayoutPanel5.SuspendLayout();
-            this.flowLayoutPanel2.SuspendLayout();
-            this.flowLayoutPanel4.SuspendLayout();
+            this.superTabControlPanel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -1159,9 +1159,9 @@
             this.superTabControl1.ControlBox.MenuBox,
             this.superTabControl1.ControlBox.CloseBox});
             this.superTabControl1.Controls.Add(this.superTabControlPanel1);
-            this.superTabControl1.Controls.Add(this.superTabControlPanel4);
-            this.superTabControl1.Controls.Add(this.superTabControlPanel3);
             this.superTabControl1.Controls.Add(this.superTabControlPanel2);
+            this.superTabControl1.Controls.Add(this.superTabControlPanel3);
+            this.superTabControl1.Controls.Add(this.superTabControlPanel4);
             this.superTabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.superTabControl1.ForeColor = System.Drawing.Color.Black;
             this.superTabControl1.Location = new System.Drawing.Point(0, 0);
@@ -1180,224 +1180,1086 @@
             this.superTabControl1.TabStyle = DevComponents.DotNetBar.eSuperTabStyle.VisualStudio2008Dock;
             this.superTabControl1.Text = "接收高级设置";
             // 
-            // superTabControlPanel1
+            // superTabControlPanel2
             // 
-            this.superTabControlPanel1.AutoScroll = true;
-            this.superTabControlPanel1.Controls.Add(this.label79);
-            this.superTabControlPanel1.Controls.Add(this.btnSendTest);
-            this.superTabControlPanel1.Controls.Add(this.txtSendCode);
-            this.superTabControlPanel1.Controls.Add(this.btnSendSet);
-            this.superTabControlPanel1.Controls.Add(this.lbSendCheckSection);
-            this.superTabControlPanel1.Controls.Add(this.label20);
-            this.superTabControlPanel1.Controls.Add(this.label19);
-            this.superTabControlPanel1.Controls.Add(this.lbSendNum);
-            this.superTabControlPanel1.Controls.Add(this.label6);
-            this.superTabControlPanel1.Controls.Add(this.txtSendAdd);
-            this.superTabControlPanel1.Controls.Add(this.label5);
-            this.superTabControlPanel1.Controls.Add(this.txtSendEnd);
-            this.superTabControlPanel1.Controls.Add(this.txtSendStart);
-            this.superTabControlPanel1.Controls.Add(this.label119);
-            this.superTabControlPanel1.Controls.Add(this.cbSendCheck);
-            this.superTabControlPanel1.Controls.Add(this.label122);
-            this.superTabControlPanel1.Controls.Add(this.label7);
-            this.superTabControlPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.superTabControlPanel1.Location = new System.Drawing.Point(0, 28);
-            this.superTabControlPanel1.Name = "superTabControlPanel1";
-            this.superTabControlPanel1.Size = new System.Drawing.Size(536, 573);
-            this.superTabControlPanel1.TabIndex = 1;
-            this.superTabControlPanel1.TabItem = this.superTabItem1;
+            this.superTabControlPanel2.AutoScroll = true;
+            this.superTabControlPanel2.Controls.Add(this.groupBox5);
+            this.superTabControlPanel2.Controls.Add(this.btnRcvSet);
+            this.superTabControlPanel2.Controls.Add(this.btnTimeSet);
+            this.superTabControlPanel2.Controls.Add(this.groupBox4);
+            this.superTabControlPanel2.Controls.Add(this.groupBox3);
+            this.superTabControlPanel2.Controls.Add(this.label4);
+            this.superTabControlPanel2.Controls.Add(this.cbTime);
+            this.superTabControlPanel2.Controls.Add(this.lbRcvNum);
+            this.superTabControlPanel2.Controls.Add(this.label9);
+            this.superTabControlPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.superTabControlPanel2.Location = new System.Drawing.Point(0, 28);
+            this.superTabControlPanel2.Name = "superTabControlPanel2";
+            this.superTabControlPanel2.Size = new System.Drawing.Size(536, 573);
+            this.superTabControlPanel2.TabIndex = 0;
+            this.superTabControlPanel2.TabItem = this.superTabItem2;
+            this.superTabControlPanel2.Click += new System.EventHandler(this.SuperTabControlPanel2_Click);
             // 
-            // label79
+            // groupBox5
             // 
-            this.label79.AutoSize = true;
-            this.label79.Location = new System.Drawing.Point(104, 77);
-            this.label79.Margin = new System.Windows.Forms.Padding(8);
-            this.label79.Name = "label79";
-            this.label79.Size = new System.Drawing.Size(149, 12);
-            this.label79.TabIndex = 420;
-            this.label79.Text = "(发送指令长度最大53字节)";
+            this.groupBox5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox5.Controls.Add(this.label16);
+            this.groupBox5.Controls.Add(this.cbRcvKeyFeedback);
+            this.groupBox5.Location = new System.Drawing.Point(7, 434);
+            this.groupBox5.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(518, 67);
+            this.groupBox5.TabIndex = 363;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "按键触发";
             // 
-            // btnSendTest
+            // label16
             // 
-            this.btnSendTest.BackColor = System.Drawing.Color.White;
-            this.btnSendTest.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnSendTest.ForeColor = System.Drawing.Color.Black;
-            this.btnSendTest.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnSendTest.Location = new System.Drawing.Point(325, 315);
-            this.btnSendTest.Name = "btnSendTest";
-            this.btnSendTest.Size = new System.Drawing.Size(97, 25);
-            this.btnSendTest.TabIndex = 362;
-            this.btnSendTest.Text = "测试发送";
-            this.btnSendTest.UseVisualStyleBackColor = false;
-            this.btnSendTest.Click += new System.EventHandler(this.BtnSendTest_Click);
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(14, 26);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(89, 12);
+            this.label16.TabIndex = 361;
+            this.label16.Text = "键值反馈模式：";
             // 
-            // txtSendCode
+            // cbRcvKeyFeedback
             // 
-            this.txtSendCode.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.cbRcvKeyFeedback.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
+            this.cbRcvKeyFeedback.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbRcvKeyFeedback.FormattingEnabled = true;
+            this.cbRcvKeyFeedback.ItemHeight = 20;
+            this.cbRcvKeyFeedback.Location = new System.Drawing.Point(134, 23);
+            this.cbRcvKeyFeedback.Name = "cbRcvKeyFeedback";
+            this.cbRcvKeyFeedback.Size = new System.Drawing.Size(221, 26);
+            this.cbRcvKeyFeedback.TabIndex = 362;
+            this.cbRcvKeyFeedback.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.CbRcvKeyFeedback_DrawItem);
+            this.cbRcvKeyFeedback.SelectedIndexChanged += new System.EventHandler(this.CbRcvKeyFeedback_SelectedIndexChanged);
+            // 
+            // btnRcvSet
+            // 
+            this.btnRcvSet.BackColor = System.Drawing.Color.White;
+            this.btnRcvSet.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnRcvSet.ForeColor = System.Drawing.Color.Black;
+            this.btnRcvSet.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.btnRcvSet.Location = new System.Drawing.Point(428, 507);
+            this.btnRcvSet.Name = "btnRcvSet";
+            this.btnRcvSet.Size = new System.Drawing.Size(97, 25);
+            this.btnRcvSet.TabIndex = 360;
+            this.btnRcvSet.Text = "高级设置";
+            this.btnRcvSet.UseVisualStyleBackColor = false;
+            this.btnRcvSet.Click += new System.EventHandler(this.BtnRcvSet_Click);
+            // 
+            // btnTimeSet
+            // 
+            this.btnTimeSet.BackColor = System.Drawing.Color.White;
+            this.btnTimeSet.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnTimeSet.ForeColor = System.Drawing.Color.Black;
+            this.btnTimeSet.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.btnTimeSet.Location = new System.Drawing.Point(448, 12);
+            this.btnTimeSet.Name = "btnTimeSet";
+            this.btnTimeSet.Size = new System.Drawing.Size(72, 25);
+            this.btnTimeSet.TabIndex = 359;
+            this.btnTimeSet.Text = "设置";
+            this.btnTimeSet.UseVisualStyleBackColor = false;
+            this.btnTimeSet.Click += new System.EventHandler(this.BtnTimeSet_Click);
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox4.Controls.Add(this.btnRcvPortSet);
+            this.groupBox4.Controls.Add(this.label30);
+            this.groupBox4.Controls.Add(this.label11);
+            this.groupBox4.Controls.Add(this.txtPollingCode);
+            this.groupBox4.Controls.Add(this.cbRcvDealMode);
+            this.groupBox4.Controls.Add(this.label17);
+            this.groupBox4.Location = new System.Drawing.Point(6, 289);
+            this.groupBox4.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(520, 132);
+            this.groupBox4.TabIndex = 358;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "查询设置";
+            // 
+            // btnRcvPortSet
+            // 
+            this.btnRcvPortSet.BackColor = System.Drawing.Color.White;
+            this.btnRcvPortSet.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnRcvPortSet.ForeColor = System.Drawing.Color.Black;
+            this.btnRcvPortSet.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.btnRcvPortSet.Location = new System.Drawing.Point(135, 56);
+            this.btnRcvPortSet.Name = "btnRcvPortSet";
+            this.btnRcvPortSet.Size = new System.Drawing.Size(221, 25);
+            this.btnRcvPortSet.TabIndex = 371;
+            this.btnRcvPortSet.Text = "共用上一个查询指令";
+            this.btnRcvPortSet.UseVisualStyleBackColor = false;
+            this.btnRcvPortSet.Click += new System.EventHandler(this.BtnRcvPortSet_Click);
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label30.Location = new System.Drawing.Point(15, 63);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(89, 12);
+            this.label30.TabIndex = 370;
+            this.label30.Text = "指定查询端口：";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label11.Location = new System.Drawing.Point(15, 95);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(65, 12);
+            this.label11.TabIndex = 335;
+            this.label11.Text = "查询指令：";
+            // 
+            // txtPollingCode
+            // 
+            this.txtPollingCode.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             // 
             // 
             // 
-            this.txtSendCode.Border.Class = "TextBoxBorder";
-            this.txtSendCode.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtSendCode.ContextMenuStrip = this.contextMenuStrip1;
-            this.txtSendCode.Location = new System.Drawing.Point(104, 48);
-            this.txtSendCode.Name = "txtSendCode";
-            this.txtSendCode.PreventEnterBeep = true;
-            this.txtSendCode.Size = new System.Drawing.Size(421, 21);
-            this.txtSendCode.TabIndex = 14;
-            this.txtSendCode.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBoxX1_KeyPress);
-            this.txtSendCode.MouseUp += new System.Windows.Forms.MouseEventHandler(this.TxtSendCode_MouseUp);
+            this.txtPollingCode.Border.Class = "TextBoxBorder";
+            this.txtPollingCode.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtPollingCode.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtPollingCode.Location = new System.Drawing.Point(88, 93);
+            this.txtPollingCode.Name = "txtPollingCode";
+            this.txtPollingCode.PreventEnterBeep = true;
+            this.txtPollingCode.Size = new System.Drawing.Size(427, 21);
+            this.txtPollingCode.TabIndex = 336;
+            this.txtPollingCode.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtPollingCode_KeyPress);
+            this.txtPollingCode.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TxtPollingCode_KeyUp);
+            this.txtPollingCode.Leave += new System.EventHandler(this.TxtPollingCode_Leave);
+            this.txtPollingCode.MouseUp += new System.Windows.Forms.MouseEventHandler(this.TxtPollingCode_MouseUp);
             // 
-            // btnSendSet
+            // cbRcvDealMode
             // 
-            this.btnSendSet.BackColor = System.Drawing.Color.White;
-            this.btnSendSet.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnSendSet.ForeColor = System.Drawing.Color.Black;
-            this.btnSendSet.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnSendSet.Location = new System.Drawing.Point(428, 315);
-            this.btnSendSet.Name = "btnSendSet";
-            this.btnSendSet.Size = new System.Drawing.Size(97, 25);
-            this.btnSendSet.TabIndex = 361;
-            this.btnSendSet.Text = "高级设置";
-            this.btnSendSet.UseVisualStyleBackColor = false;
-            this.btnSendSet.Click += new System.EventHandler(this.BtnSendSet_Click);
+            this.cbRcvDealMode.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
+            this.cbRcvDealMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbRcvDealMode.FormattingEnabled = true;
+            this.cbRcvDealMode.ItemHeight = 20;
+            this.cbRcvDealMode.Location = new System.Drawing.Point(135, 27);
+            this.cbRcvDealMode.Name = "cbRcvDealMode";
+            this.cbRcvDealMode.Size = new System.Drawing.Size(221, 26);
+            this.cbRcvDealMode.TabIndex = 348;
+            this.cbRcvDealMode.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.CbRcvDealMode_DrawItem);
+            this.cbRcvDealMode.SelectedIndexChanged += new System.EventHandler(this.CbRcvDealMode_SelectedIndexChanged);
             // 
-            // lbSendCheckSection
+            // label17
             // 
-            this.lbSendCheckSection.AutoSize = true;
-            this.lbSendCheckSection.Location = new System.Drawing.Point(104, 275);
-            this.lbSendCheckSection.Name = "lbSendCheckSection";
-            this.lbSendCheckSection.Size = new System.Drawing.Size(17, 12);
-            this.lbSendCheckSection.TabIndex = 333;
-            this.lbSendCheckSection.Text = "无";
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(14, 31);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(113, 12);
+            this.label17.TabIndex = 347;
+            this.label17.Text = "处理接收数据模式：";
             // 
-            // label20
+            // groupBox3
             // 
-            this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(21, 190);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(77, 12);
-            this.label20.TabIndex = 332;
-            this.label20.Text = "校验结束位：";
+            this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox3.Controls.Add(this.groupBox8);
+            this.groupBox3.Controls.Add(this.label82);
+            this.groupBox3.Controls.Add(this.label10);
+            this.groupBox3.Controls.Add(this.txtRcvCode);
+            this.groupBox3.Location = new System.Drawing.Point(6, 48);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(520, 228);
+            this.groupBox3.TabIndex = 357;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "提取设置";
             // 
-            // label19
+            // groupBox8
             // 
-            this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(21, 275);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(77, 12);
-            this.label19.TabIndex = 331;
-            this.label19.Text = "校验值位置：";
+            this.groupBox8.Controls.Add(this.label12);
+            this.groupBox8.Controls.Add(this.btnSaveChange);
+            this.groupBox8.Controls.Add(this.flowLayoutPanel3);
+            this.groupBox8.Controls.Add(this.label13);
+            this.groupBox8.Controls.Add(this.flowLayoutPanel5);
+            this.groupBox8.Controls.Add(this.label14);
+            this.groupBox8.Controls.Add(this.flowLayoutPanel2);
+            this.groupBox8.Controls.Add(this.label15);
+            this.groupBox8.Controls.Add(this.flowLayoutPanel4);
+            this.groupBox8.Location = new System.Drawing.Point(14, 49);
+            this.groupBox8.Name = "groupBox8";
+            this.groupBox8.Size = new System.Drawing.Size(500, 173);
+            this.groupBox8.TabIndex = 3;
+            this.groupBox8.TabStop = false;
             // 
-            // lbSendNum
+            // label12
             // 
-            this.lbSendNum.AutoSize = true;
-            this.lbSendNum.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lbSendNum.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.lbSendNum.Location = new System.Drawing.Point(92, 16);
-            this.lbSendNum.Name = "lbSendNum";
-            this.lbSendNum.Size = new System.Drawing.Size(17, 16);
-            this.lbSendNum.TabIndex = 330;
-            this.lbSendNum.Text = "X";
+            this.label12.AutoSize = true;
+            this.label12.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label12.Location = new System.Drawing.Point(6, 28);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(149, 12);
+            this.label12.TabIndex = 337;
+            this.label12.Text = "数据1有效位(bit7-bit0)：";
             // 
-            // label6
+            // btnSaveChange
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(21, 18);
-            this.label6.Margin = new System.Windows.Forms.Padding(10, 3, 3, 3);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(65, 12);
-            this.label6.TabIndex = 329;
-            this.label6.Text = "当前端口：";
+            this.btnSaveChange.BackColor = System.Drawing.Color.White;
+            this.btnSaveChange.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnSaveChange.ForeColor = System.Drawing.Color.Black;
+            this.btnSaveChange.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.btnSaveChange.Location = new System.Drawing.Point(399, 142);
+            this.btnSaveChange.Name = "btnSaveChange";
+            this.btnSaveChange.Size = new System.Drawing.Size(92, 25);
+            this.btnSaveChange.TabIndex = 360;
+            this.btnSaveChange.Text = "保存修改";
+            this.btnSaveChange.UseVisualStyleBackColor = false;
+            this.btnSaveChange.Click += new System.EventHandler(this.BtnSaveChange_Click);
             // 
-            // txtSendAdd
+            // flowLayoutPanel3
             // 
-            this.txtSendAdd.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtSendAdd.Enabled = false;
-            this.txtSendAdd.Location = new System.Drawing.Point(104, 233);
-            this.txtSendAdd.Name = "txtSendAdd";
-            this.txtSendAdd.Size = new System.Drawing.Size(25, 21);
-            this.txtSendAdd.TabIndex = 327;
-            this.txtSendAdd.TextChanged += new System.EventHandler(this.TxtSendAdd_TextChanged);
-            this.txtSendAdd.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtSendAdd_KeyPress);
+            this.flowLayoutPanel3.Controls.Add(this.cbRcvData27);
+            this.flowLayoutPanel3.Controls.Add(this.cbRcvData26);
+            this.flowLayoutPanel3.Controls.Add(this.cbRcvData25);
+            this.flowLayoutPanel3.Controls.Add(this.cbRcvData24);
+            this.flowLayoutPanel3.Controls.Add(this.cbRcvData23);
+            this.flowLayoutPanel3.Controls.Add(this.cbRcvData22);
+            this.flowLayoutPanel3.Controls.Add(this.cbRcvData21);
+            this.flowLayoutPanel3.Controls.Add(this.cbRcvData20);
+            this.flowLayoutPanel3.Location = new System.Drawing.Point(157, 52);
+            this.flowLayoutPanel3.Margin = new System.Windows.Forms.Padding(0);
+            this.flowLayoutPanel3.Name = "flowLayoutPanel3";
+            this.flowLayoutPanel3.Size = new System.Drawing.Size(278, 22);
+            this.flowLayoutPanel3.TabIndex = 352;
             // 
-            // label5
+            // cbRcvData27
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(21, 236);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(77, 12);
-            this.label5.TabIndex = 328;
-            this.label5.Text = "校验附加值：";
+            this.cbRcvData27.AutoSize = true;
+            this.cbRcvData27.Checked = true;
+            this.cbRcvData27.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbRcvData27.Location = new System.Drawing.Point(1, 1);
+            this.cbRcvData27.Margin = new System.Windows.Forms.Padding(1);
+            this.cbRcvData27.Name = "cbRcvData27";
+            this.cbRcvData27.Size = new System.Drawing.Size(30, 16);
+            this.cbRcvData27.TabIndex = 8;
+            this.cbRcvData27.Text = "7";
+            this.cbRcvData27.UseVisualStyleBackColor = true;
             // 
-            // txtSendEnd
+            // cbRcvData26
             // 
-            this.txtSendEnd.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtSendEnd.Location = new System.Drawing.Point(104, 187);
-            this.txtSendEnd.Name = "txtSendEnd";
-            this.txtSendEnd.Size = new System.Drawing.Size(25, 21);
-            this.txtSendEnd.TabIndex = 325;
-            this.txtSendEnd.TextChanged += new System.EventHandler(this.TxtSendEnd_TextChanged);
-            this.txtSendEnd.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtSendEnd_KeyPress);
+            this.cbRcvData26.AutoSize = true;
+            this.cbRcvData26.Checked = true;
+            this.cbRcvData26.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbRcvData26.Location = new System.Drawing.Point(33, 1);
+            this.cbRcvData26.Margin = new System.Windows.Forms.Padding(1);
+            this.cbRcvData26.Name = "cbRcvData26";
+            this.cbRcvData26.Size = new System.Drawing.Size(30, 16);
+            this.cbRcvData26.TabIndex = 9;
+            this.cbRcvData26.Text = "6";
+            this.cbRcvData26.UseVisualStyleBackColor = true;
             // 
-            // txtSendStart
+            // cbRcvData25
             // 
-            this.txtSendStart.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtSendStart.Location = new System.Drawing.Point(104, 141);
-            this.txtSendStart.Name = "txtSendStart";
-            this.txtSendStart.Size = new System.Drawing.Size(25, 21);
-            this.txtSendStart.TabIndex = 323;
-            this.txtSendStart.TextChanged += new System.EventHandler(this.TxtSendStart_TextChanged);
-            this.txtSendStart.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtSendStart_KeyPress);
+            this.cbRcvData25.AutoSize = true;
+            this.cbRcvData25.Checked = true;
+            this.cbRcvData25.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbRcvData25.Location = new System.Drawing.Point(65, 1);
+            this.cbRcvData25.Margin = new System.Windows.Forms.Padding(1);
+            this.cbRcvData25.Name = "cbRcvData25";
+            this.cbRcvData25.Size = new System.Drawing.Size(30, 16);
+            this.cbRcvData25.TabIndex = 10;
+            this.cbRcvData25.Text = "5";
+            this.cbRcvData25.UseVisualStyleBackColor = true;
             // 
-            // label119
+            // cbRcvData24
             // 
-            this.label119.AutoSize = true;
-            this.label119.Location = new System.Drawing.Point(21, 144);
-            this.label119.Name = "label119";
-            this.label119.Size = new System.Drawing.Size(77, 12);
-            this.label119.TabIndex = 324;
-            this.label119.Text = "校验起始位：";
+            this.cbRcvData24.AutoSize = true;
+            this.cbRcvData24.Checked = true;
+            this.cbRcvData24.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbRcvData24.Location = new System.Drawing.Point(97, 1);
+            this.cbRcvData24.Margin = new System.Windows.Forms.Padding(1);
+            this.cbRcvData24.Name = "cbRcvData24";
+            this.cbRcvData24.Size = new System.Drawing.Size(30, 16);
+            this.cbRcvData24.TabIndex = 11;
+            this.cbRcvData24.Text = "4";
+            this.cbRcvData24.UseVisualStyleBackColor = true;
             // 
-            // cbSendCheck
+            // cbRcvData23
             // 
-            this.cbSendCheck.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
-            this.cbSendCheck.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbSendCheck.FormattingEnabled = true;
-            this.cbSendCheck.ItemHeight = 20;
-            this.cbSendCheck.Location = new System.Drawing.Point(106, 100);
-            this.cbSendCheck.Name = "cbSendCheck";
-            this.cbSendCheck.Size = new System.Drawing.Size(244, 26);
-            this.cbSendCheck.TabIndex = 320;
-            this.cbSendCheck.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.CbSendCheck_DrawItem);
-            this.cbSendCheck.SelectedIndexChanged += new System.EventHandler(this.CbSendCheck_SelectedIndexChanged);
+            this.cbRcvData23.AutoSize = true;
+            this.cbRcvData23.Checked = true;
+            this.cbRcvData23.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbRcvData23.Location = new System.Drawing.Point(129, 1);
+            this.cbRcvData23.Margin = new System.Windows.Forms.Padding(1);
+            this.cbRcvData23.Name = "cbRcvData23";
+            this.cbRcvData23.Size = new System.Drawing.Size(30, 16);
+            this.cbRcvData23.TabIndex = 12;
+            this.cbRcvData23.Text = "3";
+            this.cbRcvData23.UseVisualStyleBackColor = true;
             // 
-            // label122
+            // cbRcvData22
             // 
-            this.label122.AutoSize = true;
-            this.label122.Location = new System.Drawing.Point(21, 105);
-            this.label122.Name = "label122";
-            this.label122.Size = new System.Drawing.Size(65, 12);
-            this.label122.TabIndex = 319;
-            this.label122.Text = "校验类型：";
+            this.cbRcvData22.AutoSize = true;
+            this.cbRcvData22.Checked = true;
+            this.cbRcvData22.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbRcvData22.Location = new System.Drawing.Point(161, 1);
+            this.cbRcvData22.Margin = new System.Windows.Forms.Padding(1);
+            this.cbRcvData22.Name = "cbRcvData22";
+            this.cbRcvData22.Size = new System.Drawing.Size(30, 16);
+            this.cbRcvData22.TabIndex = 13;
+            this.cbRcvData22.Text = "2";
+            this.cbRcvData22.UseVisualStyleBackColor = true;
             // 
-            // label7
+            // cbRcvData21
             // 
-            this.label7.AutoSize = true;
-            this.label7.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label7.Location = new System.Drawing.Point(21, 53);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(65, 12);
-            this.label7.TabIndex = 13;
-            this.label7.Text = "发送指令：";
+            this.cbRcvData21.AutoSize = true;
+            this.cbRcvData21.Checked = true;
+            this.cbRcvData21.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbRcvData21.Location = new System.Drawing.Point(193, 1);
+            this.cbRcvData21.Margin = new System.Windows.Forms.Padding(1);
+            this.cbRcvData21.Name = "cbRcvData21";
+            this.cbRcvData21.Size = new System.Drawing.Size(30, 16);
+            this.cbRcvData21.TabIndex = 14;
+            this.cbRcvData21.Text = "1";
+            this.cbRcvData21.UseVisualStyleBackColor = true;
             // 
-            // superTabItem1
+            // cbRcvData20
             // 
-            this.superTabItem1.AttachedControl = this.superTabControlPanel1;
-            this.superTabItem1.GlobalItem = false;
-            this.superTabItem1.Name = "superTabItem1";
-            this.superTabItem1.Text = "发送";
+            this.cbRcvData20.AutoSize = true;
+            this.cbRcvData20.Checked = true;
+            this.cbRcvData20.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbRcvData20.Location = new System.Drawing.Point(225, 1);
+            this.cbRcvData20.Margin = new System.Windows.Forms.Padding(1);
+            this.cbRcvData20.Name = "cbRcvData20";
+            this.cbRcvData20.Size = new System.Drawing.Size(30, 16);
+            this.cbRcvData20.TabIndex = 15;
+            this.cbRcvData20.Text = "0";
+            this.cbRcvData20.UseVisualStyleBackColor = true;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label13.Location = new System.Drawing.Point(6, 56);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(149, 12);
+            this.label13.TabIndex = 351;
+            this.label13.Text = "数据2有效位(bit7-bit0)：";
+            // 
+            // flowLayoutPanel5
+            // 
+            this.flowLayoutPanel5.Controls.Add(this.cbRcvData47);
+            this.flowLayoutPanel5.Controls.Add(this.cbRcvData46);
+            this.flowLayoutPanel5.Controls.Add(this.cbRcvData45);
+            this.flowLayoutPanel5.Controls.Add(this.cbRcvData44);
+            this.flowLayoutPanel5.Controls.Add(this.cbRcvData43);
+            this.flowLayoutPanel5.Controls.Add(this.cbRcvData42);
+            this.flowLayoutPanel5.Controls.Add(this.cbRcvData41);
+            this.flowLayoutPanel5.Controls.Add(this.cbRcvData40);
+            this.flowLayoutPanel5.Location = new System.Drawing.Point(157, 109);
+            this.flowLayoutPanel5.Margin = new System.Windows.Forms.Padding(0);
+            this.flowLayoutPanel5.Name = "flowLayoutPanel5";
+            this.flowLayoutPanel5.Size = new System.Drawing.Size(278, 22);
+            this.flowLayoutPanel5.TabIndex = 356;
+            // 
+            // cbRcvData47
+            // 
+            this.cbRcvData47.AutoSize = true;
+            this.cbRcvData47.Checked = true;
+            this.cbRcvData47.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbRcvData47.Location = new System.Drawing.Point(1, 1);
+            this.cbRcvData47.Margin = new System.Windows.Forms.Padding(1);
+            this.cbRcvData47.Name = "cbRcvData47";
+            this.cbRcvData47.Size = new System.Drawing.Size(30, 16);
+            this.cbRcvData47.TabIndex = 8;
+            this.cbRcvData47.Text = "7";
+            this.cbRcvData47.UseVisualStyleBackColor = true;
+            // 
+            // cbRcvData46
+            // 
+            this.cbRcvData46.AutoSize = true;
+            this.cbRcvData46.Checked = true;
+            this.cbRcvData46.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbRcvData46.Location = new System.Drawing.Point(33, 1);
+            this.cbRcvData46.Margin = new System.Windows.Forms.Padding(1);
+            this.cbRcvData46.Name = "cbRcvData46";
+            this.cbRcvData46.Size = new System.Drawing.Size(30, 16);
+            this.cbRcvData46.TabIndex = 9;
+            this.cbRcvData46.Text = "6";
+            this.cbRcvData46.UseVisualStyleBackColor = true;
+            // 
+            // cbRcvData45
+            // 
+            this.cbRcvData45.AutoSize = true;
+            this.cbRcvData45.Checked = true;
+            this.cbRcvData45.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbRcvData45.Location = new System.Drawing.Point(65, 1);
+            this.cbRcvData45.Margin = new System.Windows.Forms.Padding(1);
+            this.cbRcvData45.Name = "cbRcvData45";
+            this.cbRcvData45.Size = new System.Drawing.Size(30, 16);
+            this.cbRcvData45.TabIndex = 10;
+            this.cbRcvData45.Text = "5";
+            this.cbRcvData45.UseVisualStyleBackColor = true;
+            // 
+            // cbRcvData44
+            // 
+            this.cbRcvData44.AutoSize = true;
+            this.cbRcvData44.Checked = true;
+            this.cbRcvData44.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbRcvData44.Location = new System.Drawing.Point(97, 1);
+            this.cbRcvData44.Margin = new System.Windows.Forms.Padding(1);
+            this.cbRcvData44.Name = "cbRcvData44";
+            this.cbRcvData44.Size = new System.Drawing.Size(30, 16);
+            this.cbRcvData44.TabIndex = 11;
+            this.cbRcvData44.Text = "4";
+            this.cbRcvData44.UseVisualStyleBackColor = true;
+            // 
+            // cbRcvData43
+            // 
+            this.cbRcvData43.AutoSize = true;
+            this.cbRcvData43.Checked = true;
+            this.cbRcvData43.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbRcvData43.Location = new System.Drawing.Point(129, 1);
+            this.cbRcvData43.Margin = new System.Windows.Forms.Padding(1);
+            this.cbRcvData43.Name = "cbRcvData43";
+            this.cbRcvData43.Size = new System.Drawing.Size(30, 16);
+            this.cbRcvData43.TabIndex = 12;
+            this.cbRcvData43.Text = "3";
+            this.cbRcvData43.UseVisualStyleBackColor = true;
+            // 
+            // cbRcvData42
+            // 
+            this.cbRcvData42.AutoSize = true;
+            this.cbRcvData42.Checked = true;
+            this.cbRcvData42.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbRcvData42.Location = new System.Drawing.Point(161, 1);
+            this.cbRcvData42.Margin = new System.Windows.Forms.Padding(1);
+            this.cbRcvData42.Name = "cbRcvData42";
+            this.cbRcvData42.Size = new System.Drawing.Size(30, 16);
+            this.cbRcvData42.TabIndex = 13;
+            this.cbRcvData42.Text = "2";
+            this.cbRcvData42.UseVisualStyleBackColor = true;
+            // 
+            // cbRcvData41
+            // 
+            this.cbRcvData41.AutoSize = true;
+            this.cbRcvData41.Checked = true;
+            this.cbRcvData41.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbRcvData41.Location = new System.Drawing.Point(193, 1);
+            this.cbRcvData41.Margin = new System.Windows.Forms.Padding(1);
+            this.cbRcvData41.Name = "cbRcvData41";
+            this.cbRcvData41.Size = new System.Drawing.Size(30, 16);
+            this.cbRcvData41.TabIndex = 14;
+            this.cbRcvData41.Text = "1";
+            this.cbRcvData41.UseVisualStyleBackColor = true;
+            // 
+            // cbRcvData40
+            // 
+            this.cbRcvData40.AutoSize = true;
+            this.cbRcvData40.Checked = true;
+            this.cbRcvData40.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbRcvData40.Location = new System.Drawing.Point(225, 1);
+            this.cbRcvData40.Margin = new System.Windows.Forms.Padding(1);
+            this.cbRcvData40.Name = "cbRcvData40";
+            this.cbRcvData40.Size = new System.Drawing.Size(30, 16);
+            this.cbRcvData40.TabIndex = 15;
+            this.cbRcvData40.Text = "0";
+            this.cbRcvData40.UseVisualStyleBackColor = true;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label14.Location = new System.Drawing.Point(6, 85);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(149, 12);
+            this.label14.TabIndex = 353;
+            this.label14.Text = "数据3有效位(bit7-bit0)：";
+            // 
+            // flowLayoutPanel2
+            // 
+            this.flowLayoutPanel2.Controls.Add(this.cbRcvData17);
+            this.flowLayoutPanel2.Controls.Add(this.cbRcvData16);
+            this.flowLayoutPanel2.Controls.Add(this.cbRcvData15);
+            this.flowLayoutPanel2.Controls.Add(this.cbRcvData14);
+            this.flowLayoutPanel2.Controls.Add(this.cbRcvData13);
+            this.flowLayoutPanel2.Controls.Add(this.cbRcvData12);
+            this.flowLayoutPanel2.Controls.Add(this.cbRcvData11);
+            this.flowLayoutPanel2.Controls.Add(this.cbRcvData10);
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(157, 24);
+            this.flowLayoutPanel2.Margin = new System.Windows.Forms.Padding(0);
+            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(278, 22);
+            this.flowLayoutPanel2.TabIndex = 338;
+            // 
+            // cbRcvData17
+            // 
+            this.cbRcvData17.AutoSize = true;
+            this.cbRcvData17.Checked = true;
+            this.cbRcvData17.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbRcvData17.Location = new System.Drawing.Point(1, 1);
+            this.cbRcvData17.Margin = new System.Windows.Forms.Padding(1);
+            this.cbRcvData17.Name = "cbRcvData17";
+            this.cbRcvData17.Size = new System.Drawing.Size(30, 16);
+            this.cbRcvData17.TabIndex = 8;
+            this.cbRcvData17.Text = "7";
+            this.cbRcvData17.UseVisualStyleBackColor = true;
+            // 
+            // cbRcvData16
+            // 
+            this.cbRcvData16.AutoSize = true;
+            this.cbRcvData16.Checked = true;
+            this.cbRcvData16.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbRcvData16.Location = new System.Drawing.Point(33, 1);
+            this.cbRcvData16.Margin = new System.Windows.Forms.Padding(1);
+            this.cbRcvData16.Name = "cbRcvData16";
+            this.cbRcvData16.Size = new System.Drawing.Size(30, 16);
+            this.cbRcvData16.TabIndex = 9;
+            this.cbRcvData16.Text = "6";
+            this.cbRcvData16.UseVisualStyleBackColor = true;
+            // 
+            // cbRcvData15
+            // 
+            this.cbRcvData15.AutoSize = true;
+            this.cbRcvData15.Checked = true;
+            this.cbRcvData15.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbRcvData15.Location = new System.Drawing.Point(65, 1);
+            this.cbRcvData15.Margin = new System.Windows.Forms.Padding(1);
+            this.cbRcvData15.Name = "cbRcvData15";
+            this.cbRcvData15.Size = new System.Drawing.Size(30, 16);
+            this.cbRcvData15.TabIndex = 10;
+            this.cbRcvData15.Text = "5";
+            this.cbRcvData15.UseVisualStyleBackColor = true;
+            // 
+            // cbRcvData14
+            // 
+            this.cbRcvData14.AutoSize = true;
+            this.cbRcvData14.Checked = true;
+            this.cbRcvData14.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbRcvData14.Location = new System.Drawing.Point(97, 1);
+            this.cbRcvData14.Margin = new System.Windows.Forms.Padding(1);
+            this.cbRcvData14.Name = "cbRcvData14";
+            this.cbRcvData14.Size = new System.Drawing.Size(30, 16);
+            this.cbRcvData14.TabIndex = 11;
+            this.cbRcvData14.Text = "4";
+            this.cbRcvData14.UseVisualStyleBackColor = true;
+            // 
+            // cbRcvData13
+            // 
+            this.cbRcvData13.AutoSize = true;
+            this.cbRcvData13.Checked = true;
+            this.cbRcvData13.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbRcvData13.Location = new System.Drawing.Point(129, 1);
+            this.cbRcvData13.Margin = new System.Windows.Forms.Padding(1);
+            this.cbRcvData13.Name = "cbRcvData13";
+            this.cbRcvData13.Size = new System.Drawing.Size(30, 16);
+            this.cbRcvData13.TabIndex = 12;
+            this.cbRcvData13.Text = "3";
+            this.cbRcvData13.UseVisualStyleBackColor = true;
+            // 
+            // cbRcvData12
+            // 
+            this.cbRcvData12.AutoSize = true;
+            this.cbRcvData12.Checked = true;
+            this.cbRcvData12.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbRcvData12.Location = new System.Drawing.Point(161, 1);
+            this.cbRcvData12.Margin = new System.Windows.Forms.Padding(1);
+            this.cbRcvData12.Name = "cbRcvData12";
+            this.cbRcvData12.Size = new System.Drawing.Size(30, 16);
+            this.cbRcvData12.TabIndex = 13;
+            this.cbRcvData12.Text = "2";
+            this.cbRcvData12.UseVisualStyleBackColor = true;
+            // 
+            // cbRcvData11
+            // 
+            this.cbRcvData11.AutoSize = true;
+            this.cbRcvData11.Checked = true;
+            this.cbRcvData11.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbRcvData11.Location = new System.Drawing.Point(193, 1);
+            this.cbRcvData11.Margin = new System.Windows.Forms.Padding(1);
+            this.cbRcvData11.Name = "cbRcvData11";
+            this.cbRcvData11.Size = new System.Drawing.Size(30, 16);
+            this.cbRcvData11.TabIndex = 14;
+            this.cbRcvData11.Text = "1";
+            this.cbRcvData11.UseVisualStyleBackColor = true;
+            // 
+            // cbRcvData10
+            // 
+            this.cbRcvData10.AutoSize = true;
+            this.cbRcvData10.Checked = true;
+            this.cbRcvData10.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbRcvData10.Location = new System.Drawing.Point(225, 1);
+            this.cbRcvData10.Margin = new System.Windows.Forms.Padding(1);
+            this.cbRcvData10.Name = "cbRcvData10";
+            this.cbRcvData10.Size = new System.Drawing.Size(30, 16);
+            this.cbRcvData10.TabIndex = 15;
+            this.cbRcvData10.Text = "0";
+            this.cbRcvData10.UseVisualStyleBackColor = true;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label15.Location = new System.Drawing.Point(6, 113);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(149, 12);
+            this.label15.TabIndex = 355;
+            this.label15.Text = "数据4有效位(bit7-bit0)：";
+            // 
+            // flowLayoutPanel4
+            // 
+            this.flowLayoutPanel4.Controls.Add(this.cbRcvData37);
+            this.flowLayoutPanel4.Controls.Add(this.cbRcvData36);
+            this.flowLayoutPanel4.Controls.Add(this.cbRcvData35);
+            this.flowLayoutPanel4.Controls.Add(this.cbRcvData34);
+            this.flowLayoutPanel4.Controls.Add(this.cbRcvData33);
+            this.flowLayoutPanel4.Controls.Add(this.cbRcvData32);
+            this.flowLayoutPanel4.Controls.Add(this.cbRcvData31);
+            this.flowLayoutPanel4.Controls.Add(this.cbRcvData30);
+            this.flowLayoutPanel4.Location = new System.Drawing.Point(157, 81);
+            this.flowLayoutPanel4.Margin = new System.Windows.Forms.Padding(0);
+            this.flowLayoutPanel4.Name = "flowLayoutPanel4";
+            this.flowLayoutPanel4.Size = new System.Drawing.Size(278, 22);
+            this.flowLayoutPanel4.TabIndex = 354;
+            // 
+            // cbRcvData37
+            // 
+            this.cbRcvData37.AutoSize = true;
+            this.cbRcvData37.Checked = true;
+            this.cbRcvData37.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbRcvData37.Location = new System.Drawing.Point(1, 1);
+            this.cbRcvData37.Margin = new System.Windows.Forms.Padding(1);
+            this.cbRcvData37.Name = "cbRcvData37";
+            this.cbRcvData37.Size = new System.Drawing.Size(30, 16);
+            this.cbRcvData37.TabIndex = 8;
+            this.cbRcvData37.Text = "7";
+            this.cbRcvData37.UseVisualStyleBackColor = true;
+            // 
+            // cbRcvData36
+            // 
+            this.cbRcvData36.AutoSize = true;
+            this.cbRcvData36.Checked = true;
+            this.cbRcvData36.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbRcvData36.Location = new System.Drawing.Point(33, 1);
+            this.cbRcvData36.Margin = new System.Windows.Forms.Padding(1);
+            this.cbRcvData36.Name = "cbRcvData36";
+            this.cbRcvData36.Size = new System.Drawing.Size(30, 16);
+            this.cbRcvData36.TabIndex = 9;
+            this.cbRcvData36.Text = "6";
+            this.cbRcvData36.UseVisualStyleBackColor = true;
+            // 
+            // cbRcvData35
+            // 
+            this.cbRcvData35.AutoSize = true;
+            this.cbRcvData35.Checked = true;
+            this.cbRcvData35.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbRcvData35.Location = new System.Drawing.Point(65, 1);
+            this.cbRcvData35.Margin = new System.Windows.Forms.Padding(1);
+            this.cbRcvData35.Name = "cbRcvData35";
+            this.cbRcvData35.Size = new System.Drawing.Size(30, 16);
+            this.cbRcvData35.TabIndex = 10;
+            this.cbRcvData35.Text = "5";
+            this.cbRcvData35.UseVisualStyleBackColor = true;
+            // 
+            // cbRcvData34
+            // 
+            this.cbRcvData34.AutoSize = true;
+            this.cbRcvData34.Checked = true;
+            this.cbRcvData34.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbRcvData34.Location = new System.Drawing.Point(97, 1);
+            this.cbRcvData34.Margin = new System.Windows.Forms.Padding(1);
+            this.cbRcvData34.Name = "cbRcvData34";
+            this.cbRcvData34.Size = new System.Drawing.Size(30, 16);
+            this.cbRcvData34.TabIndex = 11;
+            this.cbRcvData34.Text = "4";
+            this.cbRcvData34.UseVisualStyleBackColor = true;
+            // 
+            // cbRcvData33
+            // 
+            this.cbRcvData33.AutoSize = true;
+            this.cbRcvData33.Checked = true;
+            this.cbRcvData33.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbRcvData33.Location = new System.Drawing.Point(129, 1);
+            this.cbRcvData33.Margin = new System.Windows.Forms.Padding(1);
+            this.cbRcvData33.Name = "cbRcvData33";
+            this.cbRcvData33.Size = new System.Drawing.Size(30, 16);
+            this.cbRcvData33.TabIndex = 12;
+            this.cbRcvData33.Text = "3";
+            this.cbRcvData33.UseVisualStyleBackColor = true;
+            // 
+            // cbRcvData32
+            // 
+            this.cbRcvData32.AutoSize = true;
+            this.cbRcvData32.Checked = true;
+            this.cbRcvData32.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbRcvData32.Location = new System.Drawing.Point(161, 1);
+            this.cbRcvData32.Margin = new System.Windows.Forms.Padding(1);
+            this.cbRcvData32.Name = "cbRcvData32";
+            this.cbRcvData32.Size = new System.Drawing.Size(30, 16);
+            this.cbRcvData32.TabIndex = 13;
+            this.cbRcvData32.Text = "2";
+            this.cbRcvData32.UseVisualStyleBackColor = true;
+            // 
+            // cbRcvData31
+            // 
+            this.cbRcvData31.AutoSize = true;
+            this.cbRcvData31.Checked = true;
+            this.cbRcvData31.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbRcvData31.Location = new System.Drawing.Point(193, 1);
+            this.cbRcvData31.Margin = new System.Windows.Forms.Padding(1);
+            this.cbRcvData31.Name = "cbRcvData31";
+            this.cbRcvData31.Size = new System.Drawing.Size(30, 16);
+            this.cbRcvData31.TabIndex = 14;
+            this.cbRcvData31.Text = "1";
+            this.cbRcvData31.UseVisualStyleBackColor = true;
+            // 
+            // cbRcvData30
+            // 
+            this.cbRcvData30.AutoSize = true;
+            this.cbRcvData30.Checked = true;
+            this.cbRcvData30.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbRcvData30.Location = new System.Drawing.Point(225, 1);
+            this.cbRcvData30.Margin = new System.Windows.Forms.Padding(1);
+            this.cbRcvData30.Name = "cbRcvData30";
+            this.cbRcvData30.Size = new System.Drawing.Size(30, 16);
+            this.cbRcvData30.TabIndex = 15;
+            this.cbRcvData30.Text = "0";
+            this.cbRcvData30.UseVisualStyleBackColor = true;
+            // 
+            // label82
+            // 
+            this.label82.AutoSize = true;
+            this.label82.Location = new System.Drawing.Point(87, 49);
+            this.label82.Margin = new System.Windows.Forms.Padding(8);
+            this.label82.Name = "label82";
+            this.label82.Size = new System.Drawing.Size(149, 12);
+            this.label82.TabIndex = 421;
+            this.label82.Text = "(接收指令长度最大43字节)";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label10.Location = new System.Drawing.Point(14, 27);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(65, 12);
+            this.label10.TabIndex = 331;
+            this.label10.Text = "接收指令：";
+            // 
+            // txtRcvCode
+            // 
+            this.txtRcvCode.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            // 
+            // 
+            // 
+            this.txtRcvCode.Border.Class = "TextBoxBorder";
+            this.txtRcvCode.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtRcvCode.ContextMenuStrip = this.contextMenuStrip2;
+            this.txtRcvCode.Location = new System.Drawing.Point(88, 22);
+            this.txtRcvCode.Name = "txtRcvCode";
+            this.txtRcvCode.PreventEnterBeep = true;
+            this.txtRcvCode.Size = new System.Drawing.Size(426, 21);
+            this.txtRcvCode.TabIndex = 332;
+            this.txtRcvCode.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtRcvCode_KeyPress);
+            this.txtRcvCode.MouseUp += new System.Windows.Forms.MouseEventHandler(this.TxtRcvCode_MouseUp);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(177, 18);
+            this.label4.Margin = new System.Windows.Forms.Padding(10, 3, 3, 3);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(185, 12);
+            this.label4.TabIndex = 17;
+            this.label4.Text = "所有查询指令定时发送时间(ms)：";
+            // 
+            // cbTime
+            // 
+            this.cbTime.FormattingEnabled = true;
+            this.cbTime.Location = new System.Drawing.Point(368, 15);
+            this.cbTime.Name = "cbTime";
+            this.cbTime.Size = new System.Drawing.Size(74, 20);
+            this.cbTime.TabIndex = 18;
+            this.cbTime.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CbTime_KeyPress);
+            // 
+            // lbRcvNum
+            // 
+            this.lbRcvNum.AutoSize = true;
+            this.lbRcvNum.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lbRcvNum.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.lbRcvNum.Location = new System.Drawing.Point(92, 16);
+            this.lbRcvNum.Name = "lbRcvNum";
+            this.lbRcvNum.Size = new System.Drawing.Size(17, 16);
+            this.lbRcvNum.TabIndex = 334;
+            this.lbRcvNum.Text = "X";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(21, 18);
+            this.label9.Margin = new System.Windows.Forms.Padding(10, 3, 3, 3);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(65, 12);
+            this.label9.TabIndex = 333;
+            this.label9.Text = "当前端口：";
+            // 
+            // superTabItem2
+            // 
+            this.superTabItem2.AttachedControl = this.superTabControlPanel2;
+            this.superTabItem2.GlobalItem = false;
+            this.superTabItem2.Name = "superTabItem2";
+            this.superTabItem2.Text = "接收";
+            // 
+            // superTabControlPanel3
+            // 
+            this.superTabControlPanel3.Controls.Add(this.btnSendSave);
+            this.superTabControlPanel3.Controls.Add(this.groupBox6);
+            this.superTabControlPanel3.Controls.Add(this.lbSendHnum);
+            this.superTabControlPanel3.Controls.Add(this.label29);
+            this.superTabControlPanel3.Controls.Add(this.btnSendBack);
+            this.superTabControlPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.superTabControlPanel3.Location = new System.Drawing.Point(0, 28);
+            this.superTabControlPanel3.Name = "superTabControlPanel3";
+            this.superTabControlPanel3.Size = new System.Drawing.Size(536, 573);
+            this.superTabControlPanel3.TabIndex = 0;
+            this.superTabControlPanel3.TabItem = this.superTabItem3;
+            // 
+            // btnSendSave
+            // 
+            this.btnSendSave.BackColor = System.Drawing.Color.White;
+            this.btnSendSave.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnSendSave.ForeColor = System.Drawing.Color.Black;
+            this.btnSendSave.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.btnSendSave.Location = new System.Drawing.Point(373, 426);
+            this.btnSendSave.Name = "btnSendSave";
+            this.btnSendSave.Size = new System.Drawing.Size(72, 25);
+            this.btnSendSave.TabIndex = 381;
+            this.btnSendSave.Text = "保存";
+            this.btnSendSave.UseVisualStyleBackColor = false;
+            this.btnSendSave.Click += new System.EventHandler(this.BtnSendSave_Click);
+            // 
+            // groupBox6
+            // 
+            this.groupBox6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox6.Controls.Add(this.label76);
+            this.groupBox6.Controls.Add(this.label22);
+            this.groupBox6.Controls.Add(this.txtMinVal);
+            this.groupBox6.Controls.Add(this.txtMaxVal);
+            this.groupBox6.Controls.Add(this.txtDataMode);
+            this.groupBox6.Controls.Add(this.label21);
+            this.groupBox6.Controls.Add(this.label26);
+            this.groupBox6.Controls.Add(this.txtMove1);
+            this.groupBox6.Controls.Add(this.txtMove5);
+            this.groupBox6.Controls.Add(this.label8);
+            this.groupBox6.Controls.Add(this.label27);
+            this.groupBox6.Controls.Add(this.label23);
+            this.groupBox6.Controls.Add(this.txtMove4);
+            this.groupBox6.Controls.Add(this.txtMove2);
+            this.groupBox6.Controls.Add(this.label24);
+            this.groupBox6.Controls.Add(this.label25);
+            this.groupBox6.Controls.Add(this.txtMove3);
+            this.groupBox6.Location = new System.Drawing.Point(6, 48);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(519, 372);
+            this.groupBox6.TabIndex = 380;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "参数设置";
+            // 
+            // label76
+            // 
+            this.label76.AutoSize = true;
+            this.label76.Location = new System.Drawing.Point(293, 349);
+            this.label76.Margin = new System.Windows.Forms.Padding(8);
+            this.label76.Name = "label76";
+            this.label76.Size = new System.Drawing.Size(215, 12);
+            this.label76.TabIndex = 434;
+            this.label76.Text = "(取值范围：0 - 65535,默认值：65535)";
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(27, 25);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(77, 12);
+            this.label22.TabIndex = 363;
+            this.label22.Text = "数据最小值：";
+            // 
+            // txtMinVal
+            // 
+            this.txtMinVal.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtMinVal.Location = new System.Drawing.Point(134, 22);
+            this.txtMinVal.Name = "txtMinVal";
+            this.txtMinVal.Size = new System.Drawing.Size(64, 21);
+            this.txtMinVal.TabIndex = 362;
+            this.txtMinVal.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtMinVal_KeyPress);
+            // 
+            // txtMaxVal
+            // 
+            this.txtMaxVal.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtMaxVal.Location = new System.Drawing.Point(134, 62);
+            this.txtMaxVal.Name = "txtMaxVal";
+            this.txtMaxVal.Size = new System.Drawing.Size(64, 21);
+            this.txtMaxVal.TabIndex = 364;
+            this.txtMaxVal.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtMinVal_KeyPress);
+            // 
+            // txtDataMode
+            // 
+            this.txtDataMode.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtDataMode.Location = new System.Drawing.Point(134, 102);
+            this.txtDataMode.Name = "txtDataMode";
+            this.txtDataMode.Size = new System.Drawing.Size(64, 21);
+            this.txtDataMode.TabIndex = 376;
+            this.txtDataMode.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtMinVal_KeyPress);
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(27, 146);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(71, 12);
+            this.label21.TabIndex = 366;
+            this.label21.Text = "数值模式1：";
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Location = new System.Drawing.Point(27, 105);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(77, 12);
+            this.label26.TabIndex = 377;
+            this.label26.Text = "数据初始值：";
+            // 
+            // txtMove1
+            // 
+            this.txtMove1.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtMove1.Location = new System.Drawing.Point(134, 143);
+            this.txtMove1.Name = "txtMove1";
+            this.txtMove1.Size = new System.Drawing.Size(64, 21);
+            this.txtMove1.TabIndex = 365;
+            this.txtMove1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtMinVal_KeyPress);
+            // 
+            // txtMove5
+            // 
+            this.txtMove5.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtMove5.Location = new System.Drawing.Point(134, 310);
+            this.txtMove5.Name = "txtMove5";
+            this.txtMove5.Size = new System.Drawing.Size(64, 21);
+            this.txtMove5.TabIndex = 374;
+            this.txtMove5.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtMinVal_KeyPress);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(27, 65);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(77, 12);
+            this.label8.TabIndex = 367;
+            this.label8.Text = "数据最大值：";
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Location = new System.Drawing.Point(27, 313);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(71, 12);
+            this.label27.TabIndex = 375;
+            this.label27.Text = "数值模式5：";
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(27, 189);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(71, 12);
+            this.label23.TabIndex = 369;
+            this.label23.Text = "数值模式2：";
+            // 
+            // txtMove4
+            // 
+            this.txtMove4.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtMove4.Location = new System.Drawing.Point(134, 268);
+            this.txtMove4.Name = "txtMove4";
+            this.txtMove4.Size = new System.Drawing.Size(64, 21);
+            this.txtMove4.TabIndex = 372;
+            this.txtMove4.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtMinVal_KeyPress);
+            // 
+            // txtMove2
+            // 
+            this.txtMove2.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtMove2.Location = new System.Drawing.Point(134, 186);
+            this.txtMove2.Name = "txtMove2";
+            this.txtMove2.Size = new System.Drawing.Size(64, 21);
+            this.txtMove2.TabIndex = 368;
+            this.txtMove2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtMinVal_KeyPress);
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(27, 271);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(71, 12);
+            this.label24.TabIndex = 373;
+            this.label24.Text = "数值模式4：";
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Location = new System.Drawing.Point(27, 229);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(71, 12);
+            this.label25.TabIndex = 371;
+            this.label25.Text = "数值模式3：";
+            // 
+            // txtMove3
+            // 
+            this.txtMove3.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtMove3.Location = new System.Drawing.Point(134, 226);
+            this.txtMove3.Name = "txtMove3";
+            this.txtMove3.Size = new System.Drawing.Size(64, 21);
+            this.txtMove3.TabIndex = 370;
+            this.txtMove3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtMinVal_KeyPress);
+            // 
+            // lbSendHnum
+            // 
+            this.lbSendHnum.AutoSize = true;
+            this.lbSendHnum.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lbSendHnum.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.lbSendHnum.Location = new System.Drawing.Point(92, 16);
+            this.lbSendHnum.Name = "lbSendHnum";
+            this.lbSendHnum.Size = new System.Drawing.Size(17, 16);
+            this.lbSendHnum.TabIndex = 379;
+            this.lbSendHnum.Text = "X";
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Location = new System.Drawing.Point(21, 18);
+            this.label29.Margin = new System.Windows.Forms.Padding(10, 3, 3, 3);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(65, 12);
+            this.label29.TabIndex = 378;
+            this.label29.Text = "当前端口：";
+            // 
+            // btnSendBack
+            // 
+            this.btnSendBack.BackColor = System.Drawing.Color.White;
+            this.btnSendBack.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnSendBack.ForeColor = System.Drawing.Color.Black;
+            this.btnSendBack.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.btnSendBack.Location = new System.Drawing.Point(451, 426);
+            this.btnSendBack.Name = "btnSendBack";
+            this.btnSendBack.Size = new System.Drawing.Size(72, 25);
+            this.btnSendBack.TabIndex = 361;
+            this.btnSendBack.Text = "返回";
+            this.btnSendBack.UseVisualStyleBackColor = false;
+            this.btnSendBack.Click += new System.EventHandler(this.BtnSendBack_Click);
+            // 
+            // superTabItem3
+            // 
+            this.superTabItem3.AttachedControl = this.superTabControlPanel3;
+            this.superTabItem3.GlobalItem = false;
+            this.superTabItem3.Name = "superTabItem3";
+            this.superTabItem3.Text = "发送高级设置";
             // 
             // superTabControlPanel4
             // 
@@ -2716,1086 +3578,224 @@
             this.superTabItem4.Name = "superTabItem4";
             this.superTabItem4.Text = "接收高级设置";
             // 
-            // superTabControlPanel3
-            // 
-            this.superTabControlPanel3.Controls.Add(this.btnSendSave);
-            this.superTabControlPanel3.Controls.Add(this.groupBox6);
-            this.superTabControlPanel3.Controls.Add(this.lbSendHnum);
-            this.superTabControlPanel3.Controls.Add(this.label29);
-            this.superTabControlPanel3.Controls.Add(this.btnSendBack);
-            this.superTabControlPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.superTabControlPanel3.Location = new System.Drawing.Point(0, 28);
-            this.superTabControlPanel3.Name = "superTabControlPanel3";
-            this.superTabControlPanel3.Size = new System.Drawing.Size(536, 573);
-            this.superTabControlPanel3.TabIndex = 0;
-            this.superTabControlPanel3.TabItem = this.superTabItem3;
-            // 
-            // btnSendSave
-            // 
-            this.btnSendSave.BackColor = System.Drawing.Color.White;
-            this.btnSendSave.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnSendSave.ForeColor = System.Drawing.Color.Black;
-            this.btnSendSave.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnSendSave.Location = new System.Drawing.Point(373, 426);
-            this.btnSendSave.Name = "btnSendSave";
-            this.btnSendSave.Size = new System.Drawing.Size(72, 25);
-            this.btnSendSave.TabIndex = 381;
-            this.btnSendSave.Text = "保存";
-            this.btnSendSave.UseVisualStyleBackColor = false;
-            this.btnSendSave.Click += new System.EventHandler(this.BtnSendSave_Click);
-            // 
-            // groupBox6
-            // 
-            this.groupBox6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox6.Controls.Add(this.label76);
-            this.groupBox6.Controls.Add(this.label22);
-            this.groupBox6.Controls.Add(this.txtMinVal);
-            this.groupBox6.Controls.Add(this.txtMaxVal);
-            this.groupBox6.Controls.Add(this.txtDataMode);
-            this.groupBox6.Controls.Add(this.label21);
-            this.groupBox6.Controls.Add(this.label26);
-            this.groupBox6.Controls.Add(this.txtMove1);
-            this.groupBox6.Controls.Add(this.txtMove5);
-            this.groupBox6.Controls.Add(this.label8);
-            this.groupBox6.Controls.Add(this.label27);
-            this.groupBox6.Controls.Add(this.label23);
-            this.groupBox6.Controls.Add(this.txtMove4);
-            this.groupBox6.Controls.Add(this.txtMove2);
-            this.groupBox6.Controls.Add(this.label24);
-            this.groupBox6.Controls.Add(this.label25);
-            this.groupBox6.Controls.Add(this.txtMove3);
-            this.groupBox6.Location = new System.Drawing.Point(6, 48);
-            this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(519, 372);
-            this.groupBox6.TabIndex = 380;
-            this.groupBox6.TabStop = false;
-            this.groupBox6.Text = "参数设置";
-            // 
-            // label76
-            // 
-            this.label76.AutoSize = true;
-            this.label76.Location = new System.Drawing.Point(293, 349);
-            this.label76.Margin = new System.Windows.Forms.Padding(8);
-            this.label76.Name = "label76";
-            this.label76.Size = new System.Drawing.Size(215, 12);
-            this.label76.TabIndex = 434;
-            this.label76.Text = "(取值范围：0 - 65535,默认值：65535)";
-            // 
-            // label22
-            // 
-            this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(27, 25);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(77, 12);
-            this.label22.TabIndex = 363;
-            this.label22.Text = "数据最小值：";
-            // 
-            // txtMinVal
-            // 
-            this.txtMinVal.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtMinVal.Location = new System.Drawing.Point(134, 22);
-            this.txtMinVal.Name = "txtMinVal";
-            this.txtMinVal.Size = new System.Drawing.Size(64, 21);
-            this.txtMinVal.TabIndex = 362;
-            this.txtMinVal.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtMinVal_KeyPress);
-            // 
-            // txtMaxVal
-            // 
-            this.txtMaxVal.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtMaxVal.Location = new System.Drawing.Point(134, 62);
-            this.txtMaxVal.Name = "txtMaxVal";
-            this.txtMaxVal.Size = new System.Drawing.Size(64, 21);
-            this.txtMaxVal.TabIndex = 364;
-            this.txtMaxVal.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtMinVal_KeyPress);
-            // 
-            // txtDataMode
-            // 
-            this.txtDataMode.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtDataMode.Location = new System.Drawing.Point(134, 102);
-            this.txtDataMode.Name = "txtDataMode";
-            this.txtDataMode.Size = new System.Drawing.Size(64, 21);
-            this.txtDataMode.TabIndex = 376;
-            this.txtDataMode.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtMinVal_KeyPress);
-            // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(27, 146);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(71, 12);
-            this.label21.TabIndex = 366;
-            this.label21.Text = "数值模式1：";
-            // 
-            // label26
-            // 
-            this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(27, 105);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(77, 12);
-            this.label26.TabIndex = 377;
-            this.label26.Text = "数据初始值：";
-            // 
-            // txtMove1
-            // 
-            this.txtMove1.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtMove1.Location = new System.Drawing.Point(134, 143);
-            this.txtMove1.Name = "txtMove1";
-            this.txtMove1.Size = new System.Drawing.Size(64, 21);
-            this.txtMove1.TabIndex = 365;
-            this.txtMove1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtMinVal_KeyPress);
-            // 
-            // txtMove5
-            // 
-            this.txtMove5.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtMove5.Location = new System.Drawing.Point(134, 310);
-            this.txtMove5.Name = "txtMove5";
-            this.txtMove5.Size = new System.Drawing.Size(64, 21);
-            this.txtMove5.TabIndex = 374;
-            this.txtMove5.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtMinVal_KeyPress);
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(27, 65);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(77, 12);
-            this.label8.TabIndex = 367;
-            this.label8.Text = "数据最大值：";
-            // 
-            // label27
-            // 
-            this.label27.AutoSize = true;
-            this.label27.Location = new System.Drawing.Point(27, 313);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(71, 12);
-            this.label27.TabIndex = 375;
-            this.label27.Text = "数值模式5：";
-            // 
-            // label23
-            // 
-            this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(27, 189);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(71, 12);
-            this.label23.TabIndex = 369;
-            this.label23.Text = "数值模式2：";
-            // 
-            // txtMove4
-            // 
-            this.txtMove4.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtMove4.Location = new System.Drawing.Point(134, 268);
-            this.txtMove4.Name = "txtMove4";
-            this.txtMove4.Size = new System.Drawing.Size(64, 21);
-            this.txtMove4.TabIndex = 372;
-            this.txtMove4.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtMinVal_KeyPress);
-            // 
-            // txtMove2
-            // 
-            this.txtMove2.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtMove2.Location = new System.Drawing.Point(134, 186);
-            this.txtMove2.Name = "txtMove2";
-            this.txtMove2.Size = new System.Drawing.Size(64, 21);
-            this.txtMove2.TabIndex = 368;
-            this.txtMove2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtMinVal_KeyPress);
-            // 
-            // label24
-            // 
-            this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(27, 271);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(71, 12);
-            this.label24.TabIndex = 373;
-            this.label24.Text = "数值模式4：";
-            // 
-            // label25
-            // 
-            this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(27, 229);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(71, 12);
-            this.label25.TabIndex = 371;
-            this.label25.Text = "数值模式3：";
-            // 
-            // txtMove3
-            // 
-            this.txtMove3.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtMove3.Location = new System.Drawing.Point(134, 226);
-            this.txtMove3.Name = "txtMove3";
-            this.txtMove3.Size = new System.Drawing.Size(64, 21);
-            this.txtMove3.TabIndex = 370;
-            this.txtMove3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtMinVal_KeyPress);
-            // 
-            // lbSendHnum
-            // 
-            this.lbSendHnum.AutoSize = true;
-            this.lbSendHnum.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lbSendHnum.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.lbSendHnum.Location = new System.Drawing.Point(92, 16);
-            this.lbSendHnum.Name = "lbSendHnum";
-            this.lbSendHnum.Size = new System.Drawing.Size(17, 16);
-            this.lbSendHnum.TabIndex = 379;
-            this.lbSendHnum.Text = "X";
-            // 
-            // label29
-            // 
-            this.label29.AutoSize = true;
-            this.label29.Location = new System.Drawing.Point(21, 18);
-            this.label29.Margin = new System.Windows.Forms.Padding(10, 3, 3, 3);
-            this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(65, 12);
-            this.label29.TabIndex = 378;
-            this.label29.Text = "当前端口：";
-            // 
-            // btnSendBack
-            // 
-            this.btnSendBack.BackColor = System.Drawing.Color.White;
-            this.btnSendBack.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnSendBack.ForeColor = System.Drawing.Color.Black;
-            this.btnSendBack.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnSendBack.Location = new System.Drawing.Point(451, 426);
-            this.btnSendBack.Name = "btnSendBack";
-            this.btnSendBack.Size = new System.Drawing.Size(72, 25);
-            this.btnSendBack.TabIndex = 361;
-            this.btnSendBack.Text = "返回";
-            this.btnSendBack.UseVisualStyleBackColor = false;
-            this.btnSendBack.Click += new System.EventHandler(this.BtnSendBack_Click);
-            // 
-            // superTabItem3
-            // 
-            this.superTabItem3.AttachedControl = this.superTabControlPanel3;
-            this.superTabItem3.GlobalItem = false;
-            this.superTabItem3.Name = "superTabItem3";
-            this.superTabItem3.Text = "发送高级设置";
-            // 
-            // superTabControlPanel2
-            // 
-            this.superTabControlPanel2.AutoScroll = true;
-            this.superTabControlPanel2.Controls.Add(this.groupBox5);
-            this.superTabControlPanel2.Controls.Add(this.btnRcvSet);
-            this.superTabControlPanel2.Controls.Add(this.btnTimeSet);
-            this.superTabControlPanel2.Controls.Add(this.groupBox4);
-            this.superTabControlPanel2.Controls.Add(this.groupBox3);
-            this.superTabControlPanel2.Controls.Add(this.label4);
-            this.superTabControlPanel2.Controls.Add(this.cbTime);
-            this.superTabControlPanel2.Controls.Add(this.lbRcvNum);
-            this.superTabControlPanel2.Controls.Add(this.label9);
-            this.superTabControlPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.superTabControlPanel2.Location = new System.Drawing.Point(0, 28);
-            this.superTabControlPanel2.Name = "superTabControlPanel2";
-            this.superTabControlPanel2.Size = new System.Drawing.Size(536, 573);
-            this.superTabControlPanel2.TabIndex = 0;
-            this.superTabControlPanel2.TabItem = this.superTabItem2;
-            this.superTabControlPanel2.Click += new System.EventHandler(this.SuperTabControlPanel2_Click);
-            // 
-            // groupBox5
-            // 
-            this.groupBox5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox5.Controls.Add(this.label16);
-            this.groupBox5.Controls.Add(this.cbRcvKeyFeedback);
-            this.groupBox5.Location = new System.Drawing.Point(7, 434);
-            this.groupBox5.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(518, 67);
-            this.groupBox5.TabIndex = 363;
-            this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "按键触发";
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(14, 26);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(89, 12);
-            this.label16.TabIndex = 361;
-            this.label16.Text = "键值反馈模式：";
-            // 
-            // cbRcvKeyFeedback
-            // 
-            this.cbRcvKeyFeedback.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
-            this.cbRcvKeyFeedback.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbRcvKeyFeedback.FormattingEnabled = true;
-            this.cbRcvKeyFeedback.ItemHeight = 20;
-            this.cbRcvKeyFeedback.Location = new System.Drawing.Point(134, 23);
-            this.cbRcvKeyFeedback.Name = "cbRcvKeyFeedback";
-            this.cbRcvKeyFeedback.Size = new System.Drawing.Size(221, 26);
-            this.cbRcvKeyFeedback.TabIndex = 362;
-            this.cbRcvKeyFeedback.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.CbRcvKeyFeedback_DrawItem);
-            this.cbRcvKeyFeedback.SelectedIndexChanged += new System.EventHandler(this.CbRcvKeyFeedback_SelectedIndexChanged);
-            // 
-            // btnRcvSet
-            // 
-            this.btnRcvSet.BackColor = System.Drawing.Color.White;
-            this.btnRcvSet.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnRcvSet.ForeColor = System.Drawing.Color.Black;
-            this.btnRcvSet.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnRcvSet.Location = new System.Drawing.Point(428, 507);
-            this.btnRcvSet.Name = "btnRcvSet";
-            this.btnRcvSet.Size = new System.Drawing.Size(97, 25);
-            this.btnRcvSet.TabIndex = 360;
-            this.btnRcvSet.Text = "高级设置";
-            this.btnRcvSet.UseVisualStyleBackColor = false;
-            this.btnRcvSet.Click += new System.EventHandler(this.BtnRcvSet_Click);
-            // 
-            // btnTimeSet
-            // 
-            this.btnTimeSet.BackColor = System.Drawing.Color.White;
-            this.btnTimeSet.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnTimeSet.ForeColor = System.Drawing.Color.Black;
-            this.btnTimeSet.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnTimeSet.Location = new System.Drawing.Point(448, 12);
-            this.btnTimeSet.Name = "btnTimeSet";
-            this.btnTimeSet.Size = new System.Drawing.Size(72, 25);
-            this.btnTimeSet.TabIndex = 359;
-            this.btnTimeSet.Text = "设置";
-            this.btnTimeSet.UseVisualStyleBackColor = false;
-            this.btnTimeSet.Click += new System.EventHandler(this.BtnTimeSet_Click);
-            // 
-            // groupBox4
-            // 
-            this.groupBox4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox4.Controls.Add(this.btnRcvPortSet);
-            this.groupBox4.Controls.Add(this.label30);
-            this.groupBox4.Controls.Add(this.label11);
-            this.groupBox4.Controls.Add(this.txtPollingCode);
-            this.groupBox4.Controls.Add(this.cbRcvDealMode);
-            this.groupBox4.Controls.Add(this.label17);
-            this.groupBox4.Location = new System.Drawing.Point(6, 289);
-            this.groupBox4.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(520, 132);
-            this.groupBox4.TabIndex = 358;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "查询设置";
-            // 
-            // btnRcvPortSet
-            // 
-            this.btnRcvPortSet.BackColor = System.Drawing.Color.White;
-            this.btnRcvPortSet.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnRcvPortSet.ForeColor = System.Drawing.Color.Black;
-            this.btnRcvPortSet.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnRcvPortSet.Location = new System.Drawing.Point(135, 56);
-            this.btnRcvPortSet.Name = "btnRcvPortSet";
-            this.btnRcvPortSet.Size = new System.Drawing.Size(221, 25);
-            this.btnRcvPortSet.TabIndex = 371;
-            this.btnRcvPortSet.Text = "共用上一个查询指令";
-            this.btnRcvPortSet.UseVisualStyleBackColor = false;
-            this.btnRcvPortSet.Click += new System.EventHandler(this.BtnRcvPortSet_Click);
-            // 
-            // label30
-            // 
-            this.label30.AutoSize = true;
-            this.label30.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label30.Location = new System.Drawing.Point(15, 63);
-            this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(89, 12);
-            this.label30.TabIndex = 370;
-            this.label30.Text = "指定查询端口：";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label11.Location = new System.Drawing.Point(15, 95);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(65, 12);
-            this.label11.TabIndex = 335;
-            this.label11.Text = "查询指令：";
-            // 
-            // txtPollingCode
-            // 
-            this.txtPollingCode.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            // superTabControlPanel1
+            // 
+            this.superTabControlPanel1.AutoScroll = true;
+            this.superTabControlPanel1.Controls.Add(this.label79);
+            this.superTabControlPanel1.Controls.Add(this.btnSendTest);
+            this.superTabControlPanel1.Controls.Add(this.txtSendCode);
+            this.superTabControlPanel1.Controls.Add(this.btnSendSet);
+            this.superTabControlPanel1.Controls.Add(this.lbSendCheckSection);
+            this.superTabControlPanel1.Controls.Add(this.label20);
+            this.superTabControlPanel1.Controls.Add(this.label19);
+            this.superTabControlPanel1.Controls.Add(this.lbSendNum);
+            this.superTabControlPanel1.Controls.Add(this.label6);
+            this.superTabControlPanel1.Controls.Add(this.txtSendAdd);
+            this.superTabControlPanel1.Controls.Add(this.label5);
+            this.superTabControlPanel1.Controls.Add(this.txtSendEnd);
+            this.superTabControlPanel1.Controls.Add(this.txtSendStart);
+            this.superTabControlPanel1.Controls.Add(this.label119);
+            this.superTabControlPanel1.Controls.Add(this.cbSendCheck);
+            this.superTabControlPanel1.Controls.Add(this.label122);
+            this.superTabControlPanel1.Controls.Add(this.label7);
+            this.superTabControlPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.superTabControlPanel1.Location = new System.Drawing.Point(0, 28);
+            this.superTabControlPanel1.Name = "superTabControlPanel1";
+            this.superTabControlPanel1.Size = new System.Drawing.Size(536, 573);
+            this.superTabControlPanel1.TabIndex = 1;
+            this.superTabControlPanel1.TabItem = this.superTabItem1;
+            // 
+            // label79
+            // 
+            this.label79.AutoSize = true;
+            this.label79.Location = new System.Drawing.Point(104, 77);
+            this.label79.Margin = new System.Windows.Forms.Padding(8);
+            this.label79.Name = "label79";
+            this.label79.Size = new System.Drawing.Size(149, 12);
+            this.label79.TabIndex = 420;
+            this.label79.Text = "(发送指令长度最大53字节)";
+            // 
+            // btnSendTest
+            // 
+            this.btnSendTest.BackColor = System.Drawing.Color.White;
+            this.btnSendTest.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnSendTest.ForeColor = System.Drawing.Color.Black;
+            this.btnSendTest.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.btnSendTest.Location = new System.Drawing.Point(325, 315);
+            this.btnSendTest.Name = "btnSendTest";
+            this.btnSendTest.Size = new System.Drawing.Size(97, 25);
+            this.btnSendTest.TabIndex = 362;
+            this.btnSendTest.Text = "测试发送";
+            this.btnSendTest.UseVisualStyleBackColor = false;
+            this.btnSendTest.Click += new System.EventHandler(this.BtnSendTest_Click);
+            // 
+            // txtSendCode
+            // 
+            this.txtSendCode.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             // 
             // 
             // 
-            this.txtPollingCode.Border.Class = "TextBoxBorder";
-            this.txtPollingCode.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtPollingCode.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtPollingCode.Location = new System.Drawing.Point(88, 93);
-            this.txtPollingCode.Name = "txtPollingCode";
-            this.txtPollingCode.PreventEnterBeep = true;
-            this.txtPollingCode.Size = new System.Drawing.Size(427, 21);
-            this.txtPollingCode.TabIndex = 336;
-            this.txtPollingCode.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtPollingCode_KeyPress);
-            this.txtPollingCode.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TxtPollingCode_KeyUp);
-            this.txtPollingCode.Leave += new System.EventHandler(this.TxtPollingCode_Leave);
-            this.txtPollingCode.MouseUp += new System.Windows.Forms.MouseEventHandler(this.TxtPollingCode_MouseUp);
-            // 
-            // cbRcvDealMode
-            // 
-            this.cbRcvDealMode.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
-            this.cbRcvDealMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbRcvDealMode.FormattingEnabled = true;
-            this.cbRcvDealMode.ItemHeight = 20;
-            this.cbRcvDealMode.Location = new System.Drawing.Point(135, 27);
-            this.cbRcvDealMode.Name = "cbRcvDealMode";
-            this.cbRcvDealMode.Size = new System.Drawing.Size(221, 26);
-            this.cbRcvDealMode.TabIndex = 348;
-            this.cbRcvDealMode.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.CbRcvDealMode_DrawItem);
-            this.cbRcvDealMode.SelectedIndexChanged += new System.EventHandler(this.CbRcvDealMode_SelectedIndexChanged);
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(14, 31);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(113, 12);
-            this.label17.TabIndex = 347;
-            this.label17.Text = "处理接收数据模式：";
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox3.Controls.Add(this.groupBox8);
-            this.groupBox3.Controls.Add(this.label82);
-            this.groupBox3.Controls.Add(this.label10);
-            this.groupBox3.Controls.Add(this.txtRcvCode);
-            this.groupBox3.Location = new System.Drawing.Point(6, 48);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(520, 228);
-            this.groupBox3.TabIndex = 357;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "提取设置";
-            // 
-            // groupBox8
-            // 
-            this.groupBox8.Controls.Add(this.label12);
-            this.groupBox8.Controls.Add(this.btnSaveChange);
-            this.groupBox8.Controls.Add(this.flowLayoutPanel3);
-            this.groupBox8.Controls.Add(this.label13);
-            this.groupBox8.Controls.Add(this.flowLayoutPanel5);
-            this.groupBox8.Controls.Add(this.label14);
-            this.groupBox8.Controls.Add(this.flowLayoutPanel2);
-            this.groupBox8.Controls.Add(this.label15);
-            this.groupBox8.Controls.Add(this.flowLayoutPanel4);
-            this.groupBox8.Location = new System.Drawing.Point(14, 49);
-            this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(500, 173);
-            this.groupBox8.TabIndex = 3;
-            this.groupBox8.TabStop = false;
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label12.Location = new System.Drawing.Point(6, 28);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(149, 12);
-            this.label12.TabIndex = 337;
-            this.label12.Text = "数据1有效位(bit7-bit0)：";
-            // 
-            // btnSaveChange
-            // 
-            this.btnSaveChange.BackColor = System.Drawing.Color.White;
-            this.btnSaveChange.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnSaveChange.ForeColor = System.Drawing.Color.Black;
-            this.btnSaveChange.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnSaveChange.Location = new System.Drawing.Point(399, 142);
-            this.btnSaveChange.Name = "btnSaveChange";
-            this.btnSaveChange.Size = new System.Drawing.Size(92, 25);
-            this.btnSaveChange.TabIndex = 360;
-            this.btnSaveChange.Text = "保存修改";
-            this.btnSaveChange.UseVisualStyleBackColor = false;
-            this.btnSaveChange.Click += new System.EventHandler(this.BtnSaveChange_Click);
-            // 
-            // flowLayoutPanel3
-            // 
-            this.flowLayoutPanel3.Controls.Add(this.cbRcvData27);
-            this.flowLayoutPanel3.Controls.Add(this.cbRcvData26);
-            this.flowLayoutPanel3.Controls.Add(this.cbRcvData25);
-            this.flowLayoutPanel3.Controls.Add(this.cbRcvData24);
-            this.flowLayoutPanel3.Controls.Add(this.cbRcvData23);
-            this.flowLayoutPanel3.Controls.Add(this.cbRcvData22);
-            this.flowLayoutPanel3.Controls.Add(this.cbRcvData21);
-            this.flowLayoutPanel3.Controls.Add(this.cbRcvData20);
-            this.flowLayoutPanel3.Location = new System.Drawing.Point(157, 52);
-            this.flowLayoutPanel3.Margin = new System.Windows.Forms.Padding(0);
-            this.flowLayoutPanel3.Name = "flowLayoutPanel3";
-            this.flowLayoutPanel3.Size = new System.Drawing.Size(278, 22);
-            this.flowLayoutPanel3.TabIndex = 352;
-            // 
-            // cbRcvData27
-            // 
-            this.cbRcvData27.AutoSize = true;
-            this.cbRcvData27.Checked = true;
-            this.cbRcvData27.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cbRcvData27.Location = new System.Drawing.Point(1, 1);
-            this.cbRcvData27.Margin = new System.Windows.Forms.Padding(1);
-            this.cbRcvData27.Name = "cbRcvData27";
-            this.cbRcvData27.Size = new System.Drawing.Size(30, 16);
-            this.cbRcvData27.TabIndex = 8;
-            this.cbRcvData27.Text = "7";
-            this.cbRcvData27.UseVisualStyleBackColor = true;
-            // 
-            // cbRcvData26
-            // 
-            this.cbRcvData26.AutoSize = true;
-            this.cbRcvData26.Checked = true;
-            this.cbRcvData26.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cbRcvData26.Location = new System.Drawing.Point(33, 1);
-            this.cbRcvData26.Margin = new System.Windows.Forms.Padding(1);
-            this.cbRcvData26.Name = "cbRcvData26";
-            this.cbRcvData26.Size = new System.Drawing.Size(30, 16);
-            this.cbRcvData26.TabIndex = 9;
-            this.cbRcvData26.Text = "6";
-            this.cbRcvData26.UseVisualStyleBackColor = true;
-            // 
-            // cbRcvData25
-            // 
-            this.cbRcvData25.AutoSize = true;
-            this.cbRcvData25.Checked = true;
-            this.cbRcvData25.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cbRcvData25.Location = new System.Drawing.Point(65, 1);
-            this.cbRcvData25.Margin = new System.Windows.Forms.Padding(1);
-            this.cbRcvData25.Name = "cbRcvData25";
-            this.cbRcvData25.Size = new System.Drawing.Size(30, 16);
-            this.cbRcvData25.TabIndex = 10;
-            this.cbRcvData25.Text = "5";
-            this.cbRcvData25.UseVisualStyleBackColor = true;
-            // 
-            // cbRcvData24
-            // 
-            this.cbRcvData24.AutoSize = true;
-            this.cbRcvData24.Checked = true;
-            this.cbRcvData24.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cbRcvData24.Location = new System.Drawing.Point(97, 1);
-            this.cbRcvData24.Margin = new System.Windows.Forms.Padding(1);
-            this.cbRcvData24.Name = "cbRcvData24";
-            this.cbRcvData24.Size = new System.Drawing.Size(30, 16);
-            this.cbRcvData24.TabIndex = 11;
-            this.cbRcvData24.Text = "4";
-            this.cbRcvData24.UseVisualStyleBackColor = true;
-            // 
-            // cbRcvData23
-            // 
-            this.cbRcvData23.AutoSize = true;
-            this.cbRcvData23.Checked = true;
-            this.cbRcvData23.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cbRcvData23.Location = new System.Drawing.Point(129, 1);
-            this.cbRcvData23.Margin = new System.Windows.Forms.Padding(1);
-            this.cbRcvData23.Name = "cbRcvData23";
-            this.cbRcvData23.Size = new System.Drawing.Size(30, 16);
-            this.cbRcvData23.TabIndex = 12;
-            this.cbRcvData23.Text = "3";
-            this.cbRcvData23.UseVisualStyleBackColor = true;
-            // 
-            // cbRcvData22
-            // 
-            this.cbRcvData22.AutoSize = true;
-            this.cbRcvData22.Checked = true;
-            this.cbRcvData22.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cbRcvData22.Location = new System.Drawing.Point(161, 1);
-            this.cbRcvData22.Margin = new System.Windows.Forms.Padding(1);
-            this.cbRcvData22.Name = "cbRcvData22";
-            this.cbRcvData22.Size = new System.Drawing.Size(30, 16);
-            this.cbRcvData22.TabIndex = 13;
-            this.cbRcvData22.Text = "2";
-            this.cbRcvData22.UseVisualStyleBackColor = true;
-            // 
-            // cbRcvData21
-            // 
-            this.cbRcvData21.AutoSize = true;
-            this.cbRcvData21.Checked = true;
-            this.cbRcvData21.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cbRcvData21.Location = new System.Drawing.Point(193, 1);
-            this.cbRcvData21.Margin = new System.Windows.Forms.Padding(1);
-            this.cbRcvData21.Name = "cbRcvData21";
-            this.cbRcvData21.Size = new System.Drawing.Size(30, 16);
-            this.cbRcvData21.TabIndex = 14;
-            this.cbRcvData21.Text = "1";
-            this.cbRcvData21.UseVisualStyleBackColor = true;
-            // 
-            // cbRcvData20
-            // 
-            this.cbRcvData20.AutoSize = true;
-            this.cbRcvData20.Checked = true;
-            this.cbRcvData20.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cbRcvData20.Location = new System.Drawing.Point(225, 1);
-            this.cbRcvData20.Margin = new System.Windows.Forms.Padding(1);
-            this.cbRcvData20.Name = "cbRcvData20";
-            this.cbRcvData20.Size = new System.Drawing.Size(30, 16);
-            this.cbRcvData20.TabIndex = 15;
-            this.cbRcvData20.Text = "0";
-            this.cbRcvData20.UseVisualStyleBackColor = true;
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label13.Location = new System.Drawing.Point(6, 56);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(149, 12);
-            this.label13.TabIndex = 351;
-            this.label13.Text = "数据2有效位(bit7-bit0)：";
-            // 
-            // flowLayoutPanel5
-            // 
-            this.flowLayoutPanel5.Controls.Add(this.cbRcvData47);
-            this.flowLayoutPanel5.Controls.Add(this.cbRcvData46);
-            this.flowLayoutPanel5.Controls.Add(this.cbRcvData45);
-            this.flowLayoutPanel5.Controls.Add(this.cbRcvData44);
-            this.flowLayoutPanel5.Controls.Add(this.cbRcvData43);
-            this.flowLayoutPanel5.Controls.Add(this.cbRcvData42);
-            this.flowLayoutPanel5.Controls.Add(this.cbRcvData41);
-            this.flowLayoutPanel5.Controls.Add(this.cbRcvData40);
-            this.flowLayoutPanel5.Location = new System.Drawing.Point(157, 109);
-            this.flowLayoutPanel5.Margin = new System.Windows.Forms.Padding(0);
-            this.flowLayoutPanel5.Name = "flowLayoutPanel5";
-            this.flowLayoutPanel5.Size = new System.Drawing.Size(278, 22);
-            this.flowLayoutPanel5.TabIndex = 356;
-            // 
-            // cbRcvData47
-            // 
-            this.cbRcvData47.AutoSize = true;
-            this.cbRcvData47.Checked = true;
-            this.cbRcvData47.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cbRcvData47.Location = new System.Drawing.Point(1, 1);
-            this.cbRcvData47.Margin = new System.Windows.Forms.Padding(1);
-            this.cbRcvData47.Name = "cbRcvData47";
-            this.cbRcvData47.Size = new System.Drawing.Size(30, 16);
-            this.cbRcvData47.TabIndex = 8;
-            this.cbRcvData47.Text = "7";
-            this.cbRcvData47.UseVisualStyleBackColor = true;
-            // 
-            // cbRcvData46
-            // 
-            this.cbRcvData46.AutoSize = true;
-            this.cbRcvData46.Checked = true;
-            this.cbRcvData46.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cbRcvData46.Location = new System.Drawing.Point(33, 1);
-            this.cbRcvData46.Margin = new System.Windows.Forms.Padding(1);
-            this.cbRcvData46.Name = "cbRcvData46";
-            this.cbRcvData46.Size = new System.Drawing.Size(30, 16);
-            this.cbRcvData46.TabIndex = 9;
-            this.cbRcvData46.Text = "6";
-            this.cbRcvData46.UseVisualStyleBackColor = true;
-            // 
-            // cbRcvData45
-            // 
-            this.cbRcvData45.AutoSize = true;
-            this.cbRcvData45.Checked = true;
-            this.cbRcvData45.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cbRcvData45.Location = new System.Drawing.Point(65, 1);
-            this.cbRcvData45.Margin = new System.Windows.Forms.Padding(1);
-            this.cbRcvData45.Name = "cbRcvData45";
-            this.cbRcvData45.Size = new System.Drawing.Size(30, 16);
-            this.cbRcvData45.TabIndex = 10;
-            this.cbRcvData45.Text = "5";
-            this.cbRcvData45.UseVisualStyleBackColor = true;
-            // 
-            // cbRcvData44
-            // 
-            this.cbRcvData44.AutoSize = true;
-            this.cbRcvData44.Checked = true;
-            this.cbRcvData44.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cbRcvData44.Location = new System.Drawing.Point(97, 1);
-            this.cbRcvData44.Margin = new System.Windows.Forms.Padding(1);
-            this.cbRcvData44.Name = "cbRcvData44";
-            this.cbRcvData44.Size = new System.Drawing.Size(30, 16);
-            this.cbRcvData44.TabIndex = 11;
-            this.cbRcvData44.Text = "4";
-            this.cbRcvData44.UseVisualStyleBackColor = true;
-            // 
-            // cbRcvData43
-            // 
-            this.cbRcvData43.AutoSize = true;
-            this.cbRcvData43.Checked = true;
-            this.cbRcvData43.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cbRcvData43.Location = new System.Drawing.Point(129, 1);
-            this.cbRcvData43.Margin = new System.Windows.Forms.Padding(1);
-            this.cbRcvData43.Name = "cbRcvData43";
-            this.cbRcvData43.Size = new System.Drawing.Size(30, 16);
-            this.cbRcvData43.TabIndex = 12;
-            this.cbRcvData43.Text = "3";
-            this.cbRcvData43.UseVisualStyleBackColor = true;
-            // 
-            // cbRcvData42
-            // 
-            this.cbRcvData42.AutoSize = true;
-            this.cbRcvData42.Checked = true;
-            this.cbRcvData42.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cbRcvData42.Location = new System.Drawing.Point(161, 1);
-            this.cbRcvData42.Margin = new System.Windows.Forms.Padding(1);
-            this.cbRcvData42.Name = "cbRcvData42";
-            this.cbRcvData42.Size = new System.Drawing.Size(30, 16);
-            this.cbRcvData42.TabIndex = 13;
-            this.cbRcvData42.Text = "2";
-            this.cbRcvData42.UseVisualStyleBackColor = true;
-            // 
-            // cbRcvData41
-            // 
-            this.cbRcvData41.AutoSize = true;
-            this.cbRcvData41.Checked = true;
-            this.cbRcvData41.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cbRcvData41.Location = new System.Drawing.Point(193, 1);
-            this.cbRcvData41.Margin = new System.Windows.Forms.Padding(1);
-            this.cbRcvData41.Name = "cbRcvData41";
-            this.cbRcvData41.Size = new System.Drawing.Size(30, 16);
-            this.cbRcvData41.TabIndex = 14;
-            this.cbRcvData41.Text = "1";
-            this.cbRcvData41.UseVisualStyleBackColor = true;
-            // 
-            // cbRcvData40
-            // 
-            this.cbRcvData40.AutoSize = true;
-            this.cbRcvData40.Checked = true;
-            this.cbRcvData40.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cbRcvData40.Location = new System.Drawing.Point(225, 1);
-            this.cbRcvData40.Margin = new System.Windows.Forms.Padding(1);
-            this.cbRcvData40.Name = "cbRcvData40";
-            this.cbRcvData40.Size = new System.Drawing.Size(30, 16);
-            this.cbRcvData40.TabIndex = 15;
-            this.cbRcvData40.Text = "0";
-            this.cbRcvData40.UseVisualStyleBackColor = true;
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label14.Location = new System.Drawing.Point(6, 85);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(149, 12);
-            this.label14.TabIndex = 353;
-            this.label14.Text = "数据3有效位(bit7-bit0)：";
-            // 
-            // flowLayoutPanel2
-            // 
-            this.flowLayoutPanel2.Controls.Add(this.cbRcvData17);
-            this.flowLayoutPanel2.Controls.Add(this.cbRcvData16);
-            this.flowLayoutPanel2.Controls.Add(this.cbRcvData15);
-            this.flowLayoutPanel2.Controls.Add(this.cbRcvData14);
-            this.flowLayoutPanel2.Controls.Add(this.cbRcvData13);
-            this.flowLayoutPanel2.Controls.Add(this.cbRcvData12);
-            this.flowLayoutPanel2.Controls.Add(this.cbRcvData11);
-            this.flowLayoutPanel2.Controls.Add(this.cbRcvData10);
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(157, 24);
-            this.flowLayoutPanel2.Margin = new System.Windows.Forms.Padding(0);
-            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(278, 22);
-            this.flowLayoutPanel2.TabIndex = 338;
-            // 
-            // cbRcvData17
-            // 
-            this.cbRcvData17.AutoSize = true;
-            this.cbRcvData17.Checked = true;
-            this.cbRcvData17.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cbRcvData17.Location = new System.Drawing.Point(1, 1);
-            this.cbRcvData17.Margin = new System.Windows.Forms.Padding(1);
-            this.cbRcvData17.Name = "cbRcvData17";
-            this.cbRcvData17.Size = new System.Drawing.Size(30, 16);
-            this.cbRcvData17.TabIndex = 8;
-            this.cbRcvData17.Text = "7";
-            this.cbRcvData17.UseVisualStyleBackColor = true;
-            // 
-            // cbRcvData16
-            // 
-            this.cbRcvData16.AutoSize = true;
-            this.cbRcvData16.Checked = true;
-            this.cbRcvData16.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cbRcvData16.Location = new System.Drawing.Point(33, 1);
-            this.cbRcvData16.Margin = new System.Windows.Forms.Padding(1);
-            this.cbRcvData16.Name = "cbRcvData16";
-            this.cbRcvData16.Size = new System.Drawing.Size(30, 16);
-            this.cbRcvData16.TabIndex = 9;
-            this.cbRcvData16.Text = "6";
-            this.cbRcvData16.UseVisualStyleBackColor = true;
-            // 
-            // cbRcvData15
-            // 
-            this.cbRcvData15.AutoSize = true;
-            this.cbRcvData15.Checked = true;
-            this.cbRcvData15.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cbRcvData15.Location = new System.Drawing.Point(65, 1);
-            this.cbRcvData15.Margin = new System.Windows.Forms.Padding(1);
-            this.cbRcvData15.Name = "cbRcvData15";
-            this.cbRcvData15.Size = new System.Drawing.Size(30, 16);
-            this.cbRcvData15.TabIndex = 10;
-            this.cbRcvData15.Text = "5";
-            this.cbRcvData15.UseVisualStyleBackColor = true;
-            // 
-            // cbRcvData14
-            // 
-            this.cbRcvData14.AutoSize = true;
-            this.cbRcvData14.Checked = true;
-            this.cbRcvData14.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cbRcvData14.Location = new System.Drawing.Point(97, 1);
-            this.cbRcvData14.Margin = new System.Windows.Forms.Padding(1);
-            this.cbRcvData14.Name = "cbRcvData14";
-            this.cbRcvData14.Size = new System.Drawing.Size(30, 16);
-            this.cbRcvData14.TabIndex = 11;
-            this.cbRcvData14.Text = "4";
-            this.cbRcvData14.UseVisualStyleBackColor = true;
-            // 
-            // cbRcvData13
-            // 
-            this.cbRcvData13.AutoSize = true;
-            this.cbRcvData13.Checked = true;
-            this.cbRcvData13.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cbRcvData13.Location = new System.Drawing.Point(129, 1);
-            this.cbRcvData13.Margin = new System.Windows.Forms.Padding(1);
-            this.cbRcvData13.Name = "cbRcvData13";
-            this.cbRcvData13.Size = new System.Drawing.Size(30, 16);
-            this.cbRcvData13.TabIndex = 12;
-            this.cbRcvData13.Text = "3";
-            this.cbRcvData13.UseVisualStyleBackColor = true;
-            // 
-            // cbRcvData12
-            // 
-            this.cbRcvData12.AutoSize = true;
-            this.cbRcvData12.Checked = true;
-            this.cbRcvData12.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cbRcvData12.Location = new System.Drawing.Point(161, 1);
-            this.cbRcvData12.Margin = new System.Windows.Forms.Padding(1);
-            this.cbRcvData12.Name = "cbRcvData12";
-            this.cbRcvData12.Size = new System.Drawing.Size(30, 16);
-            this.cbRcvData12.TabIndex = 13;
-            this.cbRcvData12.Text = "2";
-            this.cbRcvData12.UseVisualStyleBackColor = true;
-            // 
-            // cbRcvData11
-            // 
-            this.cbRcvData11.AutoSize = true;
-            this.cbRcvData11.Checked = true;
-            this.cbRcvData11.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cbRcvData11.Location = new System.Drawing.Point(193, 1);
-            this.cbRcvData11.Margin = new System.Windows.Forms.Padding(1);
-            this.cbRcvData11.Name = "cbRcvData11";
-            this.cbRcvData11.Size = new System.Drawing.Size(30, 16);
-            this.cbRcvData11.TabIndex = 14;
-            this.cbRcvData11.Text = "1";
-            this.cbRcvData11.UseVisualStyleBackColor = true;
-            // 
-            // cbRcvData10
-            // 
-            this.cbRcvData10.AutoSize = true;
-            this.cbRcvData10.Checked = true;
-            this.cbRcvData10.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cbRcvData10.Location = new System.Drawing.Point(225, 1);
-            this.cbRcvData10.Margin = new System.Windows.Forms.Padding(1);
-            this.cbRcvData10.Name = "cbRcvData10";
-            this.cbRcvData10.Size = new System.Drawing.Size(30, 16);
-            this.cbRcvData10.TabIndex = 15;
-            this.cbRcvData10.Text = "0";
-            this.cbRcvData10.UseVisualStyleBackColor = true;
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label15.Location = new System.Drawing.Point(6, 113);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(149, 12);
-            this.label15.TabIndex = 355;
-            this.label15.Text = "数据4有效位(bit7-bit0)：";
-            // 
-            // flowLayoutPanel4
-            // 
-            this.flowLayoutPanel4.Controls.Add(this.cbRcvData37);
-            this.flowLayoutPanel4.Controls.Add(this.cbRcvData36);
-            this.flowLayoutPanel4.Controls.Add(this.cbRcvData35);
-            this.flowLayoutPanel4.Controls.Add(this.cbRcvData34);
-            this.flowLayoutPanel4.Controls.Add(this.cbRcvData33);
-            this.flowLayoutPanel4.Controls.Add(this.cbRcvData32);
-            this.flowLayoutPanel4.Controls.Add(this.cbRcvData31);
-            this.flowLayoutPanel4.Controls.Add(this.cbRcvData30);
-            this.flowLayoutPanel4.Location = new System.Drawing.Point(157, 81);
-            this.flowLayoutPanel4.Margin = new System.Windows.Forms.Padding(0);
-            this.flowLayoutPanel4.Name = "flowLayoutPanel4";
-            this.flowLayoutPanel4.Size = new System.Drawing.Size(278, 22);
-            this.flowLayoutPanel4.TabIndex = 354;
-            // 
-            // cbRcvData37
-            // 
-            this.cbRcvData37.AutoSize = true;
-            this.cbRcvData37.Checked = true;
-            this.cbRcvData37.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cbRcvData37.Location = new System.Drawing.Point(1, 1);
-            this.cbRcvData37.Margin = new System.Windows.Forms.Padding(1);
-            this.cbRcvData37.Name = "cbRcvData37";
-            this.cbRcvData37.Size = new System.Drawing.Size(30, 16);
-            this.cbRcvData37.TabIndex = 8;
-            this.cbRcvData37.Text = "7";
-            this.cbRcvData37.UseVisualStyleBackColor = true;
-            // 
-            // cbRcvData36
-            // 
-            this.cbRcvData36.AutoSize = true;
-            this.cbRcvData36.Checked = true;
-            this.cbRcvData36.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cbRcvData36.Location = new System.Drawing.Point(33, 1);
-            this.cbRcvData36.Margin = new System.Windows.Forms.Padding(1);
-            this.cbRcvData36.Name = "cbRcvData36";
-            this.cbRcvData36.Size = new System.Drawing.Size(30, 16);
-            this.cbRcvData36.TabIndex = 9;
-            this.cbRcvData36.Text = "6";
-            this.cbRcvData36.UseVisualStyleBackColor = true;
-            // 
-            // cbRcvData35
-            // 
-            this.cbRcvData35.AutoSize = true;
-            this.cbRcvData35.Checked = true;
-            this.cbRcvData35.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cbRcvData35.Location = new System.Drawing.Point(65, 1);
-            this.cbRcvData35.Margin = new System.Windows.Forms.Padding(1);
-            this.cbRcvData35.Name = "cbRcvData35";
-            this.cbRcvData35.Size = new System.Drawing.Size(30, 16);
-            this.cbRcvData35.TabIndex = 10;
-            this.cbRcvData35.Text = "5";
-            this.cbRcvData35.UseVisualStyleBackColor = true;
-            // 
-            // cbRcvData34
-            // 
-            this.cbRcvData34.AutoSize = true;
-            this.cbRcvData34.Checked = true;
-            this.cbRcvData34.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cbRcvData34.Location = new System.Drawing.Point(97, 1);
-            this.cbRcvData34.Margin = new System.Windows.Forms.Padding(1);
-            this.cbRcvData34.Name = "cbRcvData34";
-            this.cbRcvData34.Size = new System.Drawing.Size(30, 16);
-            this.cbRcvData34.TabIndex = 11;
-            this.cbRcvData34.Text = "4";
-            this.cbRcvData34.UseVisualStyleBackColor = true;
-            // 
-            // cbRcvData33
-            // 
-            this.cbRcvData33.AutoSize = true;
-            this.cbRcvData33.Checked = true;
-            this.cbRcvData33.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cbRcvData33.Location = new System.Drawing.Point(129, 1);
-            this.cbRcvData33.Margin = new System.Windows.Forms.Padding(1);
-            this.cbRcvData33.Name = "cbRcvData33";
-            this.cbRcvData33.Size = new System.Drawing.Size(30, 16);
-            this.cbRcvData33.TabIndex = 12;
-            this.cbRcvData33.Text = "3";
-            this.cbRcvData33.UseVisualStyleBackColor = true;
-            // 
-            // cbRcvData32
-            // 
-            this.cbRcvData32.AutoSize = true;
-            this.cbRcvData32.Checked = true;
-            this.cbRcvData32.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cbRcvData32.Location = new System.Drawing.Point(161, 1);
-            this.cbRcvData32.Margin = new System.Windows.Forms.Padding(1);
-            this.cbRcvData32.Name = "cbRcvData32";
-            this.cbRcvData32.Size = new System.Drawing.Size(30, 16);
-            this.cbRcvData32.TabIndex = 13;
-            this.cbRcvData32.Text = "2";
-            this.cbRcvData32.UseVisualStyleBackColor = true;
-            // 
-            // cbRcvData31
-            // 
-            this.cbRcvData31.AutoSize = true;
-            this.cbRcvData31.Checked = true;
-            this.cbRcvData31.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cbRcvData31.Location = new System.Drawing.Point(193, 1);
-            this.cbRcvData31.Margin = new System.Windows.Forms.Padding(1);
-            this.cbRcvData31.Name = "cbRcvData31";
-            this.cbRcvData31.Size = new System.Drawing.Size(30, 16);
-            this.cbRcvData31.TabIndex = 14;
-            this.cbRcvData31.Text = "1";
-            this.cbRcvData31.UseVisualStyleBackColor = true;
-            // 
-            // cbRcvData30
-            // 
-            this.cbRcvData30.AutoSize = true;
-            this.cbRcvData30.Checked = true;
-            this.cbRcvData30.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cbRcvData30.Location = new System.Drawing.Point(225, 1);
-            this.cbRcvData30.Margin = new System.Windows.Forms.Padding(1);
-            this.cbRcvData30.Name = "cbRcvData30";
-            this.cbRcvData30.Size = new System.Drawing.Size(30, 16);
-            this.cbRcvData30.TabIndex = 15;
-            this.cbRcvData30.Text = "0";
-            this.cbRcvData30.UseVisualStyleBackColor = true;
-            // 
-            // label82
-            // 
-            this.label82.AutoSize = true;
-            this.label82.Location = new System.Drawing.Point(87, 49);
-            this.label82.Margin = new System.Windows.Forms.Padding(8);
-            this.label82.Name = "label82";
-            this.label82.Size = new System.Drawing.Size(149, 12);
-            this.label82.TabIndex = 421;
-            this.label82.Text = "(接收指令长度最大43字节)";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label10.Location = new System.Drawing.Point(14, 27);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(65, 12);
-            this.label10.TabIndex = 331;
-            this.label10.Text = "接收指令：";
-            // 
-            // txtRcvCode
-            // 
-            this.txtRcvCode.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            // 
-            // 
-            // 
-            this.txtRcvCode.Border.Class = "TextBoxBorder";
-            this.txtRcvCode.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtRcvCode.ContextMenuStrip = this.contextMenuStrip2;
-            this.txtRcvCode.Location = new System.Drawing.Point(88, 22);
-            this.txtRcvCode.Name = "txtRcvCode";
-            this.txtRcvCode.PreventEnterBeep = true;
-            this.txtRcvCode.Size = new System.Drawing.Size(426, 21);
-            this.txtRcvCode.TabIndex = 332;
-            this.txtRcvCode.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtRcvCode_KeyPress);
-            this.txtRcvCode.MouseUp += new System.Windows.Forms.MouseEventHandler(this.TxtRcvCode_MouseUp);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(177, 18);
-            this.label4.Margin = new System.Windows.Forms.Padding(10, 3, 3, 3);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(185, 12);
-            this.label4.TabIndex = 17;
-            this.label4.Text = "所有查询指令定时发送时间(ms)：";
-            // 
-            // cbTime
-            // 
-            this.cbTime.FormattingEnabled = true;
-            this.cbTime.Location = new System.Drawing.Point(368, 15);
-            this.cbTime.Name = "cbTime";
-            this.cbTime.Size = new System.Drawing.Size(74, 20);
-            this.cbTime.TabIndex = 18;
-            this.cbTime.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CbTime_KeyPress);
-            // 
-            // lbRcvNum
-            // 
-            this.lbRcvNum.AutoSize = true;
-            this.lbRcvNum.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lbRcvNum.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.lbRcvNum.Location = new System.Drawing.Point(92, 16);
-            this.lbRcvNum.Name = "lbRcvNum";
-            this.lbRcvNum.Size = new System.Drawing.Size(17, 16);
-            this.lbRcvNum.TabIndex = 334;
-            this.lbRcvNum.Text = "X";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(21, 18);
-            this.label9.Margin = new System.Windows.Forms.Padding(10, 3, 3, 3);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(65, 12);
-            this.label9.TabIndex = 333;
-            this.label9.Text = "当前端口：";
-            // 
-            // superTabItem2
-            // 
-            this.superTabItem2.AttachedControl = this.superTabControlPanel2;
-            this.superTabItem2.GlobalItem = false;
-            this.superTabItem2.Name = "superTabItem2";
-            this.superTabItem2.Text = "接收";
+            this.txtSendCode.Border.Class = "TextBoxBorder";
+            this.txtSendCode.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtSendCode.ContextMenuStrip = this.contextMenuStrip1;
+            this.txtSendCode.Location = new System.Drawing.Point(104, 48);
+            this.txtSendCode.Name = "txtSendCode";
+            this.txtSendCode.PreventEnterBeep = true;
+            this.txtSendCode.Size = new System.Drawing.Size(421, 21);
+            this.txtSendCode.TabIndex = 14;
+            this.txtSendCode.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBoxX1_KeyPress);
+            this.txtSendCode.MouseUp += new System.Windows.Forms.MouseEventHandler(this.TxtSendCode_MouseUp);
+            // 
+            // btnSendSet
+            // 
+            this.btnSendSet.BackColor = System.Drawing.Color.White;
+            this.btnSendSet.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnSendSet.ForeColor = System.Drawing.Color.Black;
+            this.btnSendSet.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.btnSendSet.Location = new System.Drawing.Point(428, 315);
+            this.btnSendSet.Name = "btnSendSet";
+            this.btnSendSet.Size = new System.Drawing.Size(97, 25);
+            this.btnSendSet.TabIndex = 361;
+            this.btnSendSet.Text = "高级设置";
+            this.btnSendSet.UseVisualStyleBackColor = false;
+            this.btnSendSet.Click += new System.EventHandler(this.BtnSendSet_Click);
+            // 
+            // lbSendCheckSection
+            // 
+            this.lbSendCheckSection.AutoSize = true;
+            this.lbSendCheckSection.Location = new System.Drawing.Point(104, 275);
+            this.lbSendCheckSection.Name = "lbSendCheckSection";
+            this.lbSendCheckSection.Size = new System.Drawing.Size(17, 12);
+            this.lbSendCheckSection.TabIndex = 333;
+            this.lbSendCheckSection.Text = "无";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(21, 190);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(77, 12);
+            this.label20.TabIndex = 332;
+            this.label20.Text = "校验结束位：";
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(21, 275);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(77, 12);
+            this.label19.TabIndex = 331;
+            this.label19.Text = "校验值位置：";
+            // 
+            // lbSendNum
+            // 
+            this.lbSendNum.AutoSize = true;
+            this.lbSendNum.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lbSendNum.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.lbSendNum.Location = new System.Drawing.Point(92, 16);
+            this.lbSendNum.Name = "lbSendNum";
+            this.lbSendNum.Size = new System.Drawing.Size(17, 16);
+            this.lbSendNum.TabIndex = 330;
+            this.lbSendNum.Text = "X";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(21, 18);
+            this.label6.Margin = new System.Windows.Forms.Padding(10, 3, 3, 3);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(65, 12);
+            this.label6.TabIndex = 329;
+            this.label6.Text = "当前端口：";
+            // 
+            // txtSendAdd
+            // 
+            this.txtSendAdd.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtSendAdd.Enabled = false;
+            this.txtSendAdd.Location = new System.Drawing.Point(104, 233);
+            this.txtSendAdd.Name = "txtSendAdd";
+            this.txtSendAdd.Size = new System.Drawing.Size(25, 21);
+            this.txtSendAdd.TabIndex = 327;
+            this.txtSendAdd.TextChanged += new System.EventHandler(this.TxtSendAdd_TextChanged);
+            this.txtSendAdd.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtSendAdd_KeyPress);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(21, 236);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(77, 12);
+            this.label5.TabIndex = 328;
+            this.label5.Text = "校验附加值：";
+            // 
+            // txtSendEnd
+            // 
+            this.txtSendEnd.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtSendEnd.Location = new System.Drawing.Point(104, 187);
+            this.txtSendEnd.Name = "txtSendEnd";
+            this.txtSendEnd.Size = new System.Drawing.Size(25, 21);
+            this.txtSendEnd.TabIndex = 325;
+            this.txtSendEnd.TextChanged += new System.EventHandler(this.TxtSendEnd_TextChanged);
+            this.txtSendEnd.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtSendEnd_KeyPress);
+            // 
+            // txtSendStart
+            // 
+            this.txtSendStart.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtSendStart.Location = new System.Drawing.Point(104, 141);
+            this.txtSendStart.Name = "txtSendStart";
+            this.txtSendStart.Size = new System.Drawing.Size(25, 21);
+            this.txtSendStart.TabIndex = 323;
+            this.txtSendStart.TextChanged += new System.EventHandler(this.TxtSendStart_TextChanged);
+            this.txtSendStart.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtSendStart_KeyPress);
+            // 
+            // label119
+            // 
+            this.label119.AutoSize = true;
+            this.label119.Location = new System.Drawing.Point(21, 144);
+            this.label119.Name = "label119";
+            this.label119.Size = new System.Drawing.Size(77, 12);
+            this.label119.TabIndex = 324;
+            this.label119.Text = "校验起始位：";
+            // 
+            // cbSendCheck
+            // 
+            this.cbSendCheck.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
+            this.cbSendCheck.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbSendCheck.FormattingEnabled = true;
+            this.cbSendCheck.ItemHeight = 20;
+            this.cbSendCheck.Location = new System.Drawing.Point(106, 100);
+            this.cbSendCheck.Name = "cbSendCheck";
+            this.cbSendCheck.Size = new System.Drawing.Size(244, 26);
+            this.cbSendCheck.TabIndex = 320;
+            this.cbSendCheck.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.CbSendCheck_DrawItem);
+            this.cbSendCheck.SelectedIndexChanged += new System.EventHandler(this.CbSendCheck_SelectedIndexChanged);
+            // 
+            // label122
+            // 
+            this.label122.AutoSize = true;
+            this.label122.Location = new System.Drawing.Point(21, 105);
+            this.label122.Name = "label122";
+            this.label122.Size = new System.Drawing.Size(65, 12);
+            this.label122.TabIndex = 319;
+            this.label122.Text = "校验类型：";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label7.Location = new System.Drawing.Point(21, 53);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(65, 12);
+            this.label7.TabIndex = 13;
+            this.label7.Text = "发送指令：";
+            // 
+            // superTabItem1
+            // 
+            this.superTabItem1.AttachedControl = this.superTabControlPanel1;
+            this.superTabItem1.GlobalItem = false;
+            this.superTabItem1.Name = "superTabItem1";
+            this.superTabItem1.Text = "发送";
             // 
             // ultraSplitter2
             // 
@@ -4171,30 +4171,6 @@
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.superTabControl1)).EndInit();
             this.superTabControl1.ResumeLayout(false);
-            this.superTabControlPanel1.ResumeLayout(false);
-            this.superTabControlPanel1.PerformLayout();
-            this.superTabControlPanel4.ResumeLayout(false);
-            this.superTabControlPanel4.PerformLayout();
-            this.groupBox7.ResumeLayout(false);
-            this.groupBox7.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.superTabControl2)).EndInit();
-            this.superTabControl2.ResumeLayout(false);
-            this.superTabControlPanel5.ResumeLayout(false);
-            this.superTabControlPanel5.PerformLayout();
-            this.superTabControlPanel13.ResumeLayout(false);
-            this.superTabControlPanel13.PerformLayout();
-            this.superTabControlPanel12.ResumeLayout(false);
-            this.superTabControlPanel12.PerformLayout();
-            this.superTabControlPanel8.ResumeLayout(false);
-            this.superTabControlPanel8.PerformLayout();
-            this.superTabControlPanel7.ResumeLayout(false);
-            this.superTabControlPanel7.PerformLayout();
-            this.superTabControlPanel6.ResumeLayout(false);
-            this.superTabControlPanel6.PerformLayout();
-            this.superTabControlPanel3.ResumeLayout(false);
-            this.superTabControlPanel3.PerformLayout();
-            this.groupBox6.ResumeLayout(false);
-            this.groupBox6.PerformLayout();
             this.superTabControlPanel2.ResumeLayout(false);
             this.superTabControlPanel2.PerformLayout();
             this.groupBox5.ResumeLayout(false);
@@ -4213,6 +4189,30 @@
             this.flowLayoutPanel2.PerformLayout();
             this.flowLayoutPanel4.ResumeLayout(false);
             this.flowLayoutPanel4.PerformLayout();
+            this.superTabControlPanel3.ResumeLayout(false);
+            this.superTabControlPanel3.PerformLayout();
+            this.groupBox6.ResumeLayout(false);
+            this.groupBox6.PerformLayout();
+            this.superTabControlPanel4.ResumeLayout(false);
+            this.superTabControlPanel4.PerformLayout();
+            this.groupBox7.ResumeLayout(false);
+            this.groupBox7.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.superTabControl2)).EndInit();
+            this.superTabControl2.ResumeLayout(false);
+            this.superTabControlPanel5.ResumeLayout(false);
+            this.superTabControlPanel5.PerformLayout();
+            this.superTabControlPanel13.ResumeLayout(false);
+            this.superTabControlPanel13.PerformLayout();
+            this.superTabControlPanel12.ResumeLayout(false);
+            this.superTabControlPanel12.PerformLayout();
+            this.superTabControlPanel8.ResumeLayout(false);
+            this.superTabControlPanel8.PerformLayout();
+            this.superTabControlPanel7.ResumeLayout(false);
+            this.superTabControlPanel7.PerformLayout();
+            this.superTabControlPanel6.ResumeLayout(false);
+            this.superTabControlPanel6.PerformLayout();
+            this.superTabControlPanel1.ResumeLayout(false);
+            this.superTabControlPanel1.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
