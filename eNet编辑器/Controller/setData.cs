@@ -28,7 +28,6 @@ namespace eNet编辑器.Controller
 
         //接收标记
         private bool isTimeOut;
-        private object loc = new object();
         public string Ip { get => ip; set => ip = value; }
         public DataJson.Module DevModuel { get => devModuel; set => devModuel = value; }
 
@@ -625,10 +624,8 @@ namespace eNet编辑器.Controller
                 //Console.WriteLine(orderList[i]);
                 if (nowType == rcvType && nowID == rcvID && nowPort == rcvPort && nowReg == rcvReg)
                 {
-                    lock(loc){
-                        //读写应答
-                        isTimeOut = false;
-                    }
+                    //读写应答
+                    isTimeOut = false;
                     
                 }
 
@@ -1108,6 +1105,7 @@ namespace eNet编辑器.Controller
             {
                 return;
             }
+
             count++;
             backgroundWorker2.ReportProgress(count);
             //7.读取接收时间
@@ -1207,6 +1205,7 @@ namespace eNet编辑器.Controller
 
         private void BackgroundWorker1_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
+            Console.WriteLine("更新进度条"+ e.ProgressPercentage.ToString());
             //设置值
             pgv.setValue(e.ProgressPercentage);
 
@@ -1268,9 +1267,9 @@ namespace eNet编辑器.Controller
         private bool TimeOutSendOrder(string ord)
         {
             int count = 0;
-            lock (loc) {
-                isTimeOut = true;
-            }
+            isTimeOut = true;
+            //发送
+            Console.WriteLine(ord + " 发送指令：" + count.ToString());
             client5000.SendHexAsync(ord);
             TimeOutHelper timeOutHelper = new TimeOutHelper();
             while (isTimeOut)
@@ -1281,13 +1280,15 @@ namespace eNet编辑器.Controller
                     //超过2秒没回应 重新发送资源
                     timeOutHelper = new TimeOutHelper();
                     client5000.SendHexAsync(ord);
-                    Console.WriteLine(ord + " 发送指令回应超时，重发信息次数：" + count.ToString() );
+                    //发送
+                    Console.WriteLine(ord + " 发送指令：" + count.ToString());
+                    //Console.WriteLine(ord + " 发送指令回应超时，重发信息次数：" + count.ToString() );
                     if (count == 3)
                     {
                         //超时发送3次 直接退出
                         count = 1;
                         //发送失败
-                        MessageBox.Show("发送回应超时："+ ord);
+                        //MessageBox.Show("发送回应超时："+ ord);
                         return false;
                     }
                 }

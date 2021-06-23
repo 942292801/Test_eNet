@@ -7,7 +7,7 @@ namespace eNet编辑器
 {
     class TimeOutHelper
     {
-        private readonly int TimeoutInterval = 2;//超时时间
+        private readonly int TimeoutInterval = 3;//超时时间
         public long lastTicks;//用于存储新建操作开始的时间
         public long elapsedTicks;//用于存储操作消耗的时间
         public TimeOutHelper()
