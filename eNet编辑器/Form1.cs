@@ -608,6 +608,7 @@ namespace eNet编辑器
             else {
                 this.Cursor = Cursors.NoMove2D;
             }
+            dgvdevice.CursorIsNormal(isNormal);
             dgvname.CursorIsNormal(isNormal);
             dgvpanel.CursorIsNormal(isNormal);
 
