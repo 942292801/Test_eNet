@@ -232,108 +232,120 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AddForm\logicAdd.cs">
+    <Compile Include="CommonDialog\SectionNameSelect.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AddForm\logicAdd.Designer.cs">
+    <Compile Include="CommonDialog\SectionNameSelect.Designer.cs">
+      <DependentUpon>SectionNameSelect.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LogicForm\TreeDialog\logicAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LogicForm\TreeDialog\logicAdd.Designer.cs">
       <DependentUpon>logicAdd.cs</DependentUpon>
     </Compile>
-    <Compile Include="AddForm\AsDesCending.cs">
+    <Compile Include="Tools\AsDesCending.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AddForm\AsDesCending.Designer.cs">
+    <Compile Include="Tools\AsDesCending.Designer.cs">
       <DependentUpon>AsDesCending.cs</DependentUpon>
     </Compile>
-    <Compile Include="AddForm\ReadMasterPrj.cs">
+    <Compile Include="Tools\ReadMasterPrj.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AddForm\ReadMasterPrj.Designer.cs">
+    <Compile Include="Tools\ReadMasterPrj.Designer.cs">
       <DependentUpon>ReadMasterPrj.cs</DependentUpon>
     </Compile>
-    <Compile Include="AddForm\SearchSection.cs">
+    <Compile Include="CommonDialog\SearchSection.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AddForm\SearchSection.Designer.cs">
+    <Compile Include="CommonDialog\SearchSection.Designer.cs">
       <DependentUpon>SearchSection.cs</DependentUpon>
     </Compile>
-    <Compile Include="ClientAsync5000.cs" />
-    <Compile Include="Controller\SetData.cs">
+    <Compile Include="CommonUtil\TCP\ClientAsync5000.cs" />
+    <Compile Include="DevForm\SetDialog\SetData.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Controller\SetData.Designer.cs">
+    <Compile Include="DevForm\SetDialog\SetData.Designer.cs">
       <DependentUpon>SetData.cs</DependentUpon>
     </Compile>
-    <Compile Include="CsvHelper.cs" />
-    <Compile Include="DgvView\LogicCondition.cs">
+    <Compile Include="DevForm\SetDialog\SetElectricity.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DevForm\SetDialog\SetElectricity.Designer.cs">
+      <DependentUpon>SetElectricity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CommonUtil\Tools\CsvHelper.cs" />
+    <Compile Include="LogicForm\LogicCondition.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="DgvView\LogicCondition.Designer.cs">
+    <Compile Include="LogicForm\LogicCondition.Designer.cs">
       <DependentUpon>LogicCondition.cs</DependentUpon>
     </Compile>
-    <Compile Include="DgvView\LogicScene.cs">
+    <Compile Include="LogicForm\LogicScene.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="DgvView\LogicScene.Designer.cs">
+    <Compile Include="LogicForm\LogicScene.Designer.cs">
       <DependentUpon>LogicScene.cs</DependentUpon>
     </Compile>
-    <Compile Include="DgvView\LogicVoice.cs">
+    <Compile Include="LogicForm\LogicVoice.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="DgvView\LogicVoice.Designer.cs">
+    <Compile Include="LogicForm\LogicVoice.Designer.cs">
       <DependentUpon>LogicVoice.cs</DependentUpon>
     </Compile>
-    <Compile Include="LogicForm\LogicState.cs">
+    <Compile Include="LogicForm\DgvDialog\LogicState.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="LogicForm\LogicState.Designer.cs">
+    <Compile Include="LogicForm\DgvDialog\LogicState.Designer.cs">
       <DependentUpon>LogicState.cs</DependentUpon>
     </Compile>
-    <Compile Include="LogicForm\Voice.cs">
+    <Compile Include="LogicForm\DgvDialog\Voice.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="LogicForm\Voice.Designer.cs">
+    <Compile Include="LogicForm\DgvDialog\Voice.Designer.cs">
       <DependentUpon>Voice.cs</DependentUpon>
     </Compile>
-    <Compile Include="LogicForm\LogicResult.cs">
+    <Compile Include="LogicForm\DgvDialog\LogicResult.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="LogicForm\LogicResult.Designer.cs">
+    <Compile Include="LogicForm\DgvDialog\LogicResult.Designer.cs">
       <DependentUpon>LogicResult.cs</DependentUpon>
     </Compile>
-    <Compile Include="LogicForm\LogicAddress.cs">
+    <Compile Include="LogicForm\DgvDialog\LogicAddress.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="LogicForm\LogicAddress.Designer.cs">
+    <Compile Include="LogicForm\DgvDialog\LogicAddress.Designer.cs">
       <DependentUpon>LogicAddress.cs</DependentUpon>
     </Compile>
-    <Compile Include="LogicForm\LogicConcrol.cs">
+    <Compile Include="LogicForm\DgvDialog\LogicConcrol.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="LogicForm\LogicConcrol.Designer.cs">
+    <Compile Include="LogicForm\DgvDialog\LogicConcrol.Designer.cs">
       <DependentUpon>LogicConcrol.cs</DependentUpon>
     </Compile>
-    <Compile Include="LogicForm\LogicVoiceAddress.cs">
+    <Compile Include="LogicForm\DgvDialog\LogicVoiceAddress.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="LogicForm\LogicVoiceAddress.Designer.cs">
+    <Compile Include="LogicForm\DgvDialog\LogicVoiceAddress.Designer.cs">
       <DependentUpon>LogicVoiceAddress.cs</DependentUpon>
     </Compile>
-    <Compile Include="LogicForm\LogicConditionAddress.cs">
+    <Compile Include="LogicForm\DgvDialog\LogicConditionAddress.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="LogicForm\LogicConditionAddress.Designer.cs">
+    <Compile Include="LogicForm\DgvDialog\LogicConditionAddress.Designer.cs">
       <DependentUpon>LogicConditionAddress.cs</DependentUpon>
     </Compile>
-    <Compile Include="LogicForm\LogicCompareAddress.cs">
+    <Compile Include="LogicForm\DgvDialog\LogicCompareAddress.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="LogicForm\LogicCompareAddress.Designer.cs">
+    <Compile Include="LogicForm\DgvDialog\LogicCompareAddress.Designer.cs">
       <DependentUpon>LogicCompareAddress.cs</DependentUpon>
     </Compile>
-    <Compile Include="OtherView\PgView.cs">
+    <Compile Include="CommonDialog\PgView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="OtherView\PgView.Designer.cs">
+    <Compile Include="CommonDialog\PgView.Designer.cs">
       <DependentUpon>PgView.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\Resources.en-US.Designer.cs">
@@ -347,24 +359,24 @@
     <Compile Include="Style\FormStyle.Designer.cs">
       <DependentUpon>FormStyle.cs</DependentUpon>
     </Compile>
-    <Compile Include="TimeOutHelper.cs" />
+    <Compile Include="CommonUtil\Tools\TimeOutHelper.cs" />
     <Compile Include="Tools\NineKeySet.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Tools\NineKeySet.Designer.cs">
       <DependentUpon>NineKeySet.cs</DependentUpon>
     </Compile>
-    <Compile Include="Validator.cs" />
+    <Compile Include="CommonUtil\Tools\ValiHelper.cs" />
     <Compile Include="Tools\astronomicalClock.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Tools\astronomicalClock.Designer.cs">
       <DependentUpon>astronomicalClock.cs</DependentUpon>
     </Compile>
-    <Compile Include="AddForm\compileDownload.cs">
+    <Compile Include="Tools\compileDownload.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AddForm\compileDownload.Designer.cs">
+    <Compile Include="Tools\compileDownload.Designer.cs">
       <DependentUpon>compileDownload.cs</DependentUpon>
     </Compile>
     <Compile Include="Tools\correctionTime.cs">
@@ -373,52 +385,52 @@
     <Compile Include="Tools\correctionTime.Designer.cs">
       <DependentUpon>correctionTime.cs</DependentUpon>
     </Compile>
-    <Compile Include="AddForm\DGVconcrol.cs">
+    <Compile Include="DevForm\DgvDialog\DGVconcrol.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AddForm\DGVconcrol.Designer.cs">
+    <Compile Include="DevForm\DgvDialog\DGVconcrol.Designer.cs">
       <DependentUpon>DGVconcrol.cs</DependentUpon>
     </Compile>
-    <Compile Include="AddForm\DgvNameState.cs">
+    <Compile Include="DevForm\DgvDialog\DgvNameState.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AddForm\DgvNameState.Designer.cs">
+    <Compile Include="DevForm\DgvDialog\DgvNameState.Designer.cs">
       <DependentUpon>DgvNameState.cs</DependentUpon>
     </Compile>
-    <Compile Include="AddForm\OnlineSearch.cs">
+    <Compile Include="Tools\OnlineSearch.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AddForm\OnlineSearch.Designer.cs">
+    <Compile Include="Tools\OnlineSearch.Designer.cs">
       <DependentUpon>OnlineSearch.cs</DependentUpon>
     </Compile>
-    <Compile Include="AddForm\panelAdd.cs">
+    <Compile Include="PanelForm\TreeDialog\panelAdd.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AddForm\panelAdd.Designer.cs">
+    <Compile Include="PanelForm\TreeDialog\panelAdd.Designer.cs">
       <DependentUpon>panelAdd.cs</DependentUpon>
     </Compile>
-    <Compile Include="AddForm\panelCheck.cs">
+    <Compile Include="PanelForm\DgvDialog\panelCheck.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AddForm\panelCheck.Designer.cs">
+    <Compile Include="PanelForm\DgvDialog\panelCheck.Designer.cs">
       <DependentUpon>panelCheck.cs</DependentUpon>
     </Compile>
-    <Compile Include="AddForm\sceneAddress.cs">
+    <Compile Include="CommonDialog\sceneAddress.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AddForm\sceneAddress.Designer.cs">
+    <Compile Include="CommonDialog\sceneAddress.Designer.cs">
       <DependentUpon>sceneAddress.cs</DependentUpon>
     </Compile>
-    <Compile Include="AddForm\sceneConcrol.cs">
+    <Compile Include="CommonDialog\sceneConcrol.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AddForm\sceneConcrol.Designer.cs">
+    <Compile Include="CommonDialog\sceneConcrol.Designer.cs">
       <DependentUpon>sceneConcrol.cs</DependentUpon>
     </Compile>
-    <Compile Include="AddForm\sensorAdd.cs">
+    <Compile Include="SensorForm\TreeDialog\sensorAdd.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AddForm\sensorAdd.Designer.cs">
+    <Compile Include="SensorForm\TreeDialog\sensorAdd.Designer.cs">
       <DependentUpon>sensorAdd.cs</DependentUpon>
     </Compile>
     <Compile Include="Tools\holidayUpdate.cs">
@@ -445,281 +457,287 @@
     <Compile Include="Tools\systemPrjUpdate.Designer.cs">
       <DependentUpon>systemPrjUpdate.cs</DependentUpon>
     </Compile>
-    <Compile Include="AddForm\timerAdd.cs">
+    <Compile Include="TimerForm\TreeDialog\timerAdd.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AddForm\timerAdd.Designer.cs">
+    <Compile Include="TimerForm\TreeDialog\timerAdd.Designer.cs">
       <DependentUpon>timerAdd.cs</DependentUpon>
     </Compile>
-    <Compile Include="AddForm\timerHHMM.cs">
+    <Compile Include="TimerForm\DgvDialog\timerHHMM.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AddForm\timerHHMM.Designer.cs">
+    <Compile Include="TimerForm\DgvDialog\timerHHMM.Designer.cs">
       <DependentUpon>timerHHMM.cs</DependentUpon>
     </Compile>
-    <Compile Include="AddForm\timerYYHHDD.cs">
+    <Compile Include="TimerForm\DgvDialog\timerYYHHDD.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AddForm\timerYYHHDD.Designer.cs">
+    <Compile Include="TimerForm\DgvDialog\timerYYHHDD.Designer.cs">
       <DependentUpon>timerYYHHDD.cs</DependentUpon>
     </Compile>
-    <Compile Include="AddForm\tnDevice.cs">
+    <Compile Include="DevForm\TreeDialog\tnDevice.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AddForm\tnDevice.Designer.cs">
+    <Compile Include="DevForm\TreeDialog\tnDevice.Designer.cs">
       <DependentUpon>tnDevice.cs</DependentUpon>
     </Compile>
-    <Compile Include="AddForm\tnGateway.cs">
+    <Compile Include="DevForm\TreeDialog\tnGateway.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AddForm\tnGateway.Designer.cs">
+    <Compile Include="DevForm\TreeDialog\tnGateway.Designer.cs">
       <DependentUpon>tnGateway.cs</DependentUpon>
     </Compile>
-    <Compile Include="AddForm\tsChange.cs">
+    <Compile Include="SectionForm\TreeDialog\tsChange.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AddForm\tsChange.Designer.cs">
+    <Compile Include="SectionForm\TreeDialog\tsChange.Designer.cs">
       <DependentUpon>tsChange.cs</DependentUpon>
     </Compile>
-    <Compile Include="AddForm\sceneAdd.cs">
+    <Compile Include="SceneForm\TreeDialog\sceneAdd.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AddForm\sceneAdd.Designer.cs">
+    <Compile Include="SceneForm\TreeDialog\sceneAdd.Designer.cs">
       <DependentUpon>sceneAdd.cs</DependentUpon>
     </Compile>
-    <Compile Include="AddForm\tsSection.cs">
+    <Compile Include="SectionForm\TreeDialog\tsSection.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AddForm\tsSection.Designer.cs">
+    <Compile Include="SectionForm\TreeDialog\tsSection.Designer.cs">
       <DependentUpon>tsSection.cs</DependentUpon>
     </Compile>
-    <Compile Include="AddForm\virtualportAddress.cs">
+    <Compile Include="VirPortForm\DgvDialog\virtualportAddress.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AddForm\virtualportAddress.Designer.cs">
+    <Compile Include="VirPortForm\DgvDialog\virtualportAddress.Designer.cs">
       <DependentUpon>virtualportAddress.cs</DependentUpon>
     </Compile>
-    <Compile Include="AddForm\versionInfo.cs">
+    <Compile Include="Tools\versionInfo.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AddForm\versionInfo.Designer.cs">
+    <Compile Include="Tools\versionInfo.Designer.cs">
       <DependentUpon>versionInfo.cs</DependentUpon>
     </Compile>
-    <Compile Include="ClientAsync.cs" />
-    <Compile Include="CommandManager.cs" />
-    <Compile Include="Controller\IniForm.cs">
+    <Compile Include="CommonUtil\TCP\ClientAsync.cs" />
+    <Compile Include="CommonUtil\Project\CommandManager.cs" />
+    <Compile Include="DevForm\SetDialog\IniForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Controller\IniForm.Designer.cs">
+    <Compile Include="DevForm\SetDialog\IniForm.Designer.cs">
       <DependentUpon>IniForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controller\SetDali.cs">
+    <Compile Include="DevForm\SetDialog\SetDali.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Controller\SetDali.Designer.cs">
+    <Compile Include="DevForm\SetDialog\SetDali.Designer.cs">
       <DependentUpon>SetDali.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controller\SetDimmer.cs">
+    <Compile Include="DevForm\SetDialog\SetDimmer.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Controller\SetDimmer.Designer.cs">
+    <Compile Include="DevForm\SetDialog\SetDimmer.Designer.cs">
       <DependentUpon>SetDimmer.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controller\SetSwitch.cs">
+    <Compile Include="DevForm\SetDialog\SetSwitch.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Controller\SetSwitch.Designer.cs">
+    <Compile Include="DevForm\SetDialog\SetSwitch.Designer.cs">
       <DependentUpon>SetSwitch.cs</DependentUpon>
     </Compile>
-    <Compile Include="DataChange.cs" />
-    <Compile Include="DataJson.cs" />
-    <Compile Include="DataListHelper.cs" />
-    <Compile Include="DgvMesege.cs" />
-    <Compile Include="DgvView\DgvPanel.cs">
+    <Compile Include="CommonUtil\Tools\DataHelper.cs" />
+    <Compile Include="CommonUtil\Project\DataJson.cs" />
+    <Compile Include="CommonUtil\Project\DataListHelper.cs" />
+    <Compile Include="CommonUtil\Tools\DgvHelper.cs" />
+    <Compile Include="PanelForm\DgvPanel.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DgvView\DgvPanel.Designer.cs">
+    <Compile Include="PanelForm\DgvPanel.Designer.cs">
       <DependentUpon>DgvPanel.cs</DependentUpon>
     </Compile>
-    <Compile Include="DgvView\DgvDevice.cs">
+    <Compile Include="DevForm\DgvDevice.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DgvView\DgvDevice.Designer.cs">
+    <Compile Include="DevForm\DgvDevice.Designer.cs">
       <DependentUpon>DgvDevice.cs</DependentUpon>
     </Compile>
-    <Compile Include="DgvView\DgvLogic.cs">
+    <Compile Include="LogicForm\DgvLogic.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DgvView\DgvLogic.Designer.cs">
+    <Compile Include="LogicForm\DgvLogic.Designer.cs">
       <DependentUpon>DgvLogic.cs</DependentUpon>
     </Compile>
-    <Compile Include="DgvView\DgvName.cs">
+    <Compile Include="DevForm\DgvName.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DgvView\DgvName.Designer.cs">
+    <Compile Include="DevForm\DgvName.Designer.cs">
       <DependentUpon>DgvName.cs</DependentUpon>
     </Compile>
-    <Compile Include="DgvView\DgvPoint.cs">
+    <Compile Include="PointForm\DgvPoint.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DgvView\DgvPoint.Designer.cs">
+    <Compile Include="PointForm\DgvPoint.Designer.cs">
       <DependentUpon>DgvPoint.cs</DependentUpon>
     </Compile>
-    <Compile Include="DgvView\DgvScene.cs">
+    <Compile Include="SceneForm\DgvScene.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DgvView\DgvScene.Designer.cs">
+    <Compile Include="SceneForm\DgvScene.Designer.cs">
       <DependentUpon>DgvScene.cs</DependentUpon>
     </Compile>
-    <Compile Include="DgvView\DgvSensor.cs">
+    <Compile Include="SensorForm\DgvSensor.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DgvView\DgvSensor.Designer.cs">
+    <Compile Include="SensorForm\DgvSensor.Designer.cs">
       <DependentUpon>DgvSensor.cs</DependentUpon>
     </Compile>
-    <Compile Include="DgvView\DgvTimer.cs">
+    <Compile Include="TimerForm\DgvTimer.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DgvView\DgvTimer.Designer.cs">
+    <Compile Include="TimerForm\DgvTimer.Designer.cs">
       <DependentUpon>DgvTimer.cs</DependentUpon>
     </Compile>
-    <Compile Include="DgvView\DgvVar.cs">
+    <Compile Include="VirPortForm\DgvVar.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DgvView\DgvVar.Designer.cs">
+    <Compile Include="VirPortForm\DgvVar.Designer.cs">
       <DependentUpon>DgvVar.cs</DependentUpon>
     </Compile>
-    <Compile Include="FileMesege.cs" />
-    <Compile Include="FolderSelectDialog.cs" />
+    <Compile Include="CommonUtil\Project\FileMesege.cs" />
+    <Compile Include="CommonDialog\FolderSelectDialog.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="IniConfig.cs" />
-    <Compile Include="IniHelper.cs" />
+    <Compile Include="CommonUtil\RWIni\IniConfig.cs" />
+    <Compile Include="CommonUtil\RWIni\IniHelper.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
-    <Compile Include="ToolsUtil.cs" />
-    <Compile Include="TcpSocket.cs" />
-    <Compile Include="ThreeView\ThreePanel.cs">
+    <Compile Include="CommonUtil\ToolsUtil.cs" />
+    <Compile Include="CommonUtil\TCP\TcpSocket.cs" />
+    <Compile Include="PanelForm\ThreePanel.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ThreeView\ThreePanel.Designer.cs">
+    <Compile Include="PanelForm\ThreePanel.Designer.cs">
       <DependentUpon>ThreePanel.cs</DependentUpon>
     </Compile>
-    <Compile Include="ThreeView\ThreeLogic.cs">
+    <Compile Include="LogicForm\ThreeLogic.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ThreeView\ThreeLogic.Designer.cs">
+    <Compile Include="LogicForm\ThreeLogic.Designer.cs">
       <DependentUpon>ThreeLogic.cs</DependentUpon>
     </Compile>
-    <Compile Include="ThreeView\ThreeName.cs">
+    <Compile Include="DevForm\ThreeName.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ThreeView\ThreeName.Designer.cs">
+    <Compile Include="DevForm\ThreeName.Designer.cs">
       <DependentUpon>ThreeName.cs</DependentUpon>
     </Compile>
-    <Compile Include="ThreeView\ThreeSensor.cs">
+    <Compile Include="SensorForm\ThreeSensor.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ThreeView\ThreeSensor.Designer.cs">
+    <Compile Include="SensorForm\ThreeSensor.Designer.cs">
       <DependentUpon>ThreeSensor.cs</DependentUpon>
     </Compile>
-    <Compile Include="ThreeView\ThreePoint.cs">
+    <Compile Include="PointForm\ThreePoint.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ThreeView\ThreePoint.Designer.cs">
+    <Compile Include="PointForm\ThreePoint.Designer.cs">
       <DependentUpon>ThreePoint.cs</DependentUpon>
     </Compile>
-    <Compile Include="ThreeView\ThreeScene.cs">
+    <Compile Include="SceneForm\ThreeScene.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ThreeView\ThreeScene.Designer.cs">
+    <Compile Include="SceneForm\ThreeScene.Designer.cs">
       <DependentUpon>ThreeScene.cs</DependentUpon>
     </Compile>
-    <Compile Include="ThreeView\ThreeSection.cs">
+    <Compile Include="SectionForm\ThreeSection.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ThreeView\ThreeSection.Designer.cs">
+    <Compile Include="SectionForm\ThreeSection.Designer.cs">
       <DependentUpon>ThreeSection.cs</DependentUpon>
     </Compile>
-    <Compile Include="ThreeView\ThreeTimer.cs">
+    <Compile Include="TimerForm\ThreeTimer.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ThreeView\ThreeTimer.Designer.cs">
+    <Compile Include="TimerForm\ThreeTimer.Designer.cs">
       <DependentUpon>ThreeTimer.cs</DependentUpon>
     </Compile>
-    <Compile Include="ThreeView\ThreeTitle.cs">
+    <Compile Include="TitleForm\ThreeTitle.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ThreeView\ThreeTitle.Designer.cs">
+    <Compile Include="TitleForm\ThreeTitle.Designer.cs">
       <DependentUpon>ThreeTitle.cs</DependentUpon>
     </Compile>
-    <Compile Include="ThreeView\ThreeVar.cs">
+    <Compile Include="VirPortForm\ThreeVar.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ThreeView\ThreeVar.Designer.cs">
+    <Compile Include="VirPortForm\ThreeVar.Designer.cs">
       <DependentUpon>ThreeVar.cs</DependentUpon>
     </Compile>
-    <Compile Include="TreeMesege.cs" />
-    <Compile Include="UdpSocket.cs" />
-    <Compile Include="ZipHelper.cs" />
-    <EmbeddedResource Include="AddForm\logicAdd.resx">
+    <Compile Include="CommonUtil\Tools\TreeViewHelper.cs" />
+    <Compile Include="CommonUtil\UDP\UdpSocket.cs" />
+    <Compile Include="CommonUtil\Tools\ZipHelper.cs" />
+    <EmbeddedResource Include="CommonDialog\SectionNameSelect.resx">
+      <DependentUpon>SectionNameSelect.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LogicForm\TreeDialog\logicAdd.resx">
       <DependentUpon>logicAdd.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AddForm\AsDesCending.resx">
+    <EmbeddedResource Include="Tools\AsDesCending.resx">
       <DependentUpon>AsDesCending.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AddForm\ReadMasterPrj.resx">
+    <EmbeddedResource Include="Tools\ReadMasterPrj.resx">
       <DependentUpon>ReadMasterPrj.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AddForm\SearchSection.resx">
+    <EmbeddedResource Include="CommonDialog\SearchSection.resx">
       <DependentUpon>SearchSection.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controller\SetData.resx">
+    <EmbeddedResource Include="DevForm\SetDialog\SetData.resx">
       <DependentUpon>SetData.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DgvView\LogicCondition.resx">
+    <EmbeddedResource Include="DevForm\SetDialog\SetElectricity.resx">
+      <DependentUpon>SetElectricity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LogicForm\LogicCondition.resx">
       <DependentUpon>LogicCondition.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DgvView\LogicScene.resx">
+    <EmbeddedResource Include="LogicForm\LogicScene.resx">
       <DependentUpon>LogicScene.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DgvView\LogicVoice.resx">
+    <EmbeddedResource Include="LogicForm\LogicVoice.resx">
       <DependentUpon>LogicVoice.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.en-US.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="LogicForm\LogicState.resx">
+    <EmbeddedResource Include="LogicForm\DgvDialog\LogicState.resx">
       <DependentUpon>LogicState.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="LogicForm\Voice.resx">
+    <EmbeddedResource Include="LogicForm\DgvDialog\Voice.resx">
       <DependentUpon>Voice.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="LogicForm\LogicResult.resx">
+    <EmbeddedResource Include="LogicForm\DgvDialog\LogicResult.resx">
       <DependentUpon>LogicResult.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="LogicForm\LogicAddress.resx">
+    <EmbeddedResource Include="LogicForm\DgvDialog\LogicAddress.resx">
       <DependentUpon>LogicAddress.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="LogicForm\LogicConcrol.resx">
+    <EmbeddedResource Include="LogicForm\DgvDialog\LogicConcrol.resx">
       <DependentUpon>LogicConcrol.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="LogicForm\LogicVoiceAddress.resx">
+    <EmbeddedResource Include="LogicForm\DgvDialog\LogicVoiceAddress.resx">
       <DependentUpon>LogicVoiceAddress.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="LogicForm\LogicConditionAddress.resx">
+    <EmbeddedResource Include="LogicForm\DgvDialog\LogicConditionAddress.resx">
       <DependentUpon>LogicConditionAddress.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="LogicForm\LogicCompareAddress.resx">
+    <EmbeddedResource Include="LogicForm\DgvDialog\LogicCompareAddress.resx">
       <DependentUpon>LogicCompareAddress.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="OtherView\PgView.resx">
+    <EmbeddedResource Include="CommonDialog\PgView.resx">
       <DependentUpon>PgView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.en-US.resx">
@@ -735,35 +753,35 @@
     <EmbeddedResource Include="Tools\astronomicalClock.resx">
       <DependentUpon>astronomicalClock.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AddForm\compileDownload.resx">
+    <EmbeddedResource Include="Tools\compileDownload.resx">
       <DependentUpon>compileDownload.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Tools\correctionTime.resx">
       <DependentUpon>correctionTime.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AddForm\DGVconcrol.resx">
+    <EmbeddedResource Include="DevForm\DgvDialog\DGVconcrol.resx">
       <DependentUpon>DGVconcrol.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="AddForm\DgvNameState.resx">
+    <EmbeddedResource Include="DevForm\DgvDialog\DgvNameState.resx">
       <DependentUpon>DgvNameState.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AddForm\OnlineSearch.resx">
+    <EmbeddedResource Include="Tools\OnlineSearch.resx">
       <DependentUpon>OnlineSearch.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AddForm\panelAdd.resx">
+    <EmbeddedResource Include="PanelForm\TreeDialog\panelAdd.resx">
       <DependentUpon>panelAdd.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AddForm\panelCheck.resx">
+    <EmbeddedResource Include="PanelForm\DgvDialog\panelCheck.resx">
       <DependentUpon>panelCheck.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AddForm\sceneAddress.resx">
+    <EmbeddedResource Include="CommonDialog\sceneAddress.resx">
       <DependentUpon>sceneAddress.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AddForm\sceneConcrol.resx">
+    <EmbeddedResource Include="CommonDialog\sceneConcrol.resx">
       <DependentUpon>sceneConcrol.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AddForm\sensorAdd.resx">
+    <EmbeddedResource Include="SensorForm\TreeDialog\sensorAdd.resx">
       <DependentUpon>sensorAdd.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Tools\holidayUpdate.resx">
@@ -781,75 +799,75 @@
     <EmbeddedResource Include="Tools\systemPrjUpdate.resx">
       <DependentUpon>systemPrjUpdate.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AddForm\timerAdd.resx">
+    <EmbeddedResource Include="TimerForm\TreeDialog\timerAdd.resx">
       <DependentUpon>timerAdd.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AddForm\timerHHMM.resx">
+    <EmbeddedResource Include="TimerForm\DgvDialog\timerHHMM.resx">
       <DependentUpon>timerHHMM.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AddForm\timerYYHHDD.resx">
+    <EmbeddedResource Include="TimerForm\DgvDialog\timerYYHHDD.resx">
       <DependentUpon>timerYYHHDD.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AddForm\tnDevice.resx">
+    <EmbeddedResource Include="DevForm\TreeDialog\tnDevice.resx">
       <DependentUpon>tnDevice.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AddForm\tnGateway.resx">
+    <EmbeddedResource Include="DevForm\TreeDialog\tnGateway.resx">
       <DependentUpon>tnGateway.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AddForm\tsChange.resx">
+    <EmbeddedResource Include="SectionForm\TreeDialog\tsChange.resx">
       <DependentUpon>tsChange.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AddForm\sceneAdd.resx">
+    <EmbeddedResource Include="SceneForm\TreeDialog\sceneAdd.resx">
       <DependentUpon>sceneAdd.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AddForm\tsSection.resx">
+    <EmbeddedResource Include="SectionForm\TreeDialog\tsSection.resx">
       <DependentUpon>tsSection.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AddForm\virtualportAddress.resx">
+    <EmbeddedResource Include="VirPortForm\DgvDialog\virtualportAddress.resx">
       <DependentUpon>virtualportAddress.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AddForm\versionInfo.resx">
+    <EmbeddedResource Include="Tools\versionInfo.resx">
       <DependentUpon>versionInfo.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controller\IniForm.resx">
+    <EmbeddedResource Include="DevForm\SetDialog\IniForm.resx">
       <DependentUpon>IniForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controller\SetDali.resx">
+    <EmbeddedResource Include="DevForm\SetDialog\SetDali.resx">
       <DependentUpon>SetDali.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controller\SetDimmer.resx">
+    <EmbeddedResource Include="DevForm\SetDialog\SetDimmer.resx">
       <DependentUpon>SetDimmer.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controller\SetSwitch.resx">
+    <EmbeddedResource Include="DevForm\SetDialog\SetSwitch.resx">
       <DependentUpon>SetSwitch.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DgvView\DgvPanel.resx">
+    <EmbeddedResource Include="PanelForm\DgvPanel.resx">
       <DependentUpon>DgvPanel.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DgvView\DgvDevice.resx">
+    <EmbeddedResource Include="DevForm\DgvDevice.resx">
       <DependentUpon>DgvDevice.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DgvView\DgvLogic.resx">
+    <EmbeddedResource Include="LogicForm\DgvLogic.resx">
       <DependentUpon>DgvLogic.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DgvView\DgvName.resx">
+    <EmbeddedResource Include="DevForm\DgvName.resx">
       <DependentUpon>DgvName.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="DgvView\DgvPoint.resx">
+    <EmbeddedResource Include="PointForm\DgvPoint.resx">
       <DependentUpon>DgvPoint.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DgvView\DgvScene.resx">
+    <EmbeddedResource Include="SceneForm\DgvScene.resx">
       <DependentUpon>DgvScene.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DgvView\DgvSensor.resx">
+    <EmbeddedResource Include="SensorForm\DgvSensor.resx">
       <DependentUpon>DgvSensor.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DgvView\DgvTimer.resx">
+    <EmbeddedResource Include="TimerForm\DgvTimer.resx">
       <DependentUpon>DgvTimer.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="DgvView\DgvVar.resx">
+    <EmbeddedResource Include="VirPortForm\DgvVar.resx">
       <DependentUpon>DgvVar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
@@ -871,34 +889,34 @@
       <DesignTime>True</DesignTime>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
-    <EmbeddedResource Include="ThreeView\ThreePanel.resx">
+    <EmbeddedResource Include="PanelForm\ThreePanel.resx">
       <DependentUpon>ThreePanel.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ThreeView\ThreeLogic.resx">
+    <EmbeddedResource Include="LogicForm\ThreeLogic.resx">
       <DependentUpon>ThreeLogic.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ThreeView\ThreeName.resx">
+    <EmbeddedResource Include="DevForm\ThreeName.resx">
       <DependentUpon>ThreeName.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ThreeView\ThreeSensor.resx">
+    <EmbeddedResource Include="SensorForm\ThreeSensor.resx">
       <DependentUpon>ThreeSensor.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ThreeView\ThreePoint.resx">
+    <EmbeddedResource Include="PointForm\ThreePoint.resx">
       <DependentUpon>ThreePoint.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ThreeView\ThreeScene.resx">
+    <EmbeddedResource Include="SceneForm\ThreeScene.resx">
       <DependentUpon>ThreeScene.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ThreeView\ThreeSection.resx">
+    <EmbeddedResource Include="SectionForm\ThreeSection.resx">
       <DependentUpon>ThreeSection.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ThreeView\ThreeTimer.resx">
+    <EmbeddedResource Include="TimerForm\ThreeTimer.resx">
       <DependentUpon>ThreeTimer.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ThreeView\ThreeTitle.resx">
+    <EmbeddedResource Include="TitleForm\ThreeTitle.resx">
       <DependentUpon>ThreeTitle.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ThreeView\ThreeVar.resx">
+    <EmbeddedResource Include="VirPortForm\ThreeVar.resx">
       <DependentUpon>ThreeVar.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
@@ -949,7 +967,9 @@
       <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="SensorForm\DgvDialog\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Fody.6.0.0\build\Fody.targets" Condition="Exists('..\packages\Fody.6.0.0\build\Fody.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

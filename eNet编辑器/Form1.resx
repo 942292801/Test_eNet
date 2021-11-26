@@ -415,16 +415,16 @@
     <value>工具（T）</value>
   </data>
   <data name="帮助ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>124, 22</value>
   </data>
   <data name="帮助ToolStripMenuItem.Text" xml:space="preserve">
     <value>帮助</value>
   </data>
   <data name="toolStripMenuItem24.Size" type="System.Drawing.Size, System.Drawing">
-    <value>177, 6</value>
+    <value>121, 6</value>
   </data>
   <data name="关于软件ToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>124, 22</value>
   </data>
   <data name="关于软件ToolStripMenuItem.Text" xml:space="preserve">
     <value>关于软件</value>

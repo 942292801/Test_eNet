@@ -283,9 +283,9 @@ namespace eNet编辑器.Tools
                     //行数
                     if (match.Groups[4].Value == "0")
                     {
-                        cbDevNum.Text = match.Groups[3].Value.ToString();
-
-                        cbKeyNum.Text = (Convert.ToInt32(strs[1].Substring(0, 2),16) * 256 + Convert.ToInt32(strs[1].Substring(4, 2),16)).ToString();
+                        txtDevNum.Text = match.Groups[3].Value.ToString();
+                        txtPage.Text = (Convert.ToInt32(strs[1].Substring(2, 2), 16) + 1).ToString();
+                        txtKeyNum.Text = (Convert.ToInt32(strs[1].Substring(0, 2),16) * 256 + Convert.ToInt32(strs[1].Substring(4, 2),16)).ToString();
                     }
 
                 }

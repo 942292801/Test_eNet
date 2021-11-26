@@ -34,12 +34,14 @@
             this.symbolBox1 = new DevComponents.DotNetBar.Controls.SymbolBox();
             this.label6 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.cbKeyNum = new System.Windows.Forms.TextBox();
-            this.cbDevNum = new System.Windows.Forms.TextBox();
+            this.txtKeyNum = new System.Windows.Forms.TextBox();
+            this.txtDevNum = new System.Windows.Forms.TextBox();
             this.cbOnlineIP = new System.Windows.Forms.ComboBox();
             this.lbName = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.txtPage = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.plInfoTitle.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -112,8 +114,10 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
-            this.panel1.Controls.Add(this.cbKeyNum);
-            this.panel1.Controls.Add(this.cbDevNum);
+            this.panel1.Controls.Add(this.txtPage);
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.txtKeyNum);
+            this.panel1.Controls.Add(this.txtDevNum);
             this.panel1.Controls.Add(this.cbOnlineIP);
             this.panel1.Controls.Add(this.lbName);
             this.panel1.Controls.Add(this.label2);
@@ -123,19 +127,19 @@
             this.panel1.Size = new System.Drawing.Size(230, 152);
             this.panel1.TabIndex = 82;
             // 
-            // cbKeyNum
+            // txtKeyNum
             // 
-            this.cbKeyNum.Location = new System.Drawing.Point(71, 95);
-            this.cbKeyNum.Name = "cbKeyNum";
-            this.cbKeyNum.Size = new System.Drawing.Size(101, 23);
-            this.cbKeyNum.TabIndex = 74;
+            this.txtKeyNum.Location = new System.Drawing.Point(71, 115);
+            this.txtKeyNum.Name = "txtKeyNum";
+            this.txtKeyNum.Size = new System.Drawing.Size(101, 23);
+            this.txtKeyNum.TabIndex = 74;
             // 
-            // cbDevNum
+            // txtDevNum
             // 
-            this.cbDevNum.Location = new System.Drawing.Point(71, 55);
-            this.cbDevNum.Name = "cbDevNum";
-            this.cbDevNum.Size = new System.Drawing.Size(101, 23);
-            this.cbDevNum.TabIndex = 73;
+            this.txtDevNum.Location = new System.Drawing.Point(71, 55);
+            this.txtDevNum.Name = "txtDevNum";
+            this.txtDevNum.Size = new System.Drawing.Size(101, 23);
+            this.txtDevNum.TabIndex = 73;
             // 
             // cbOnlineIP
             // 
@@ -172,11 +176,28 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("微软雅黑", 9F);
-            this.label3.Location = new System.Drawing.Point(21, 98);
+            this.label3.Location = new System.Drawing.Point(21, 118);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(44, 17);
             this.label3.TabIndex = 4;
             this.label3.Text = "键值：";
+            // 
+            // txtPage
+            // 
+            this.txtPage.Location = new System.Drawing.Point(71, 86);
+            this.txtPage.Name = "txtPage";
+            this.txtPage.Size = new System.Drawing.Size(101, 23);
+            this.txtPage.TabIndex = 76;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("微软雅黑", 9F);
+            this.label1.Location = new System.Drawing.Point(21, 89);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(44, 17);
+            this.label1.TabIndex = 75;
+            this.label1.Text = "页号：";
             // 
             // KeyCheck
             // 
@@ -212,7 +233,9 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox cbOnlineIP;
         private System.Windows.Forms.Label lbName;
-        private System.Windows.Forms.TextBox cbKeyNum;
-        private System.Windows.Forms.TextBox cbDevNum;
+        private System.Windows.Forms.TextBox txtKeyNum;
+        private System.Windows.Forms.TextBox txtDevNum;
+        private System.Windows.Forms.TextBox txtPage;
+        private System.Windows.Forms.Label label1;
     }
 }
